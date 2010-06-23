@@ -4,11 +4,11 @@
 - ruby >= 1.8.6 <1.9
 - rubygems >= 1.3.5
 - mongodb >= 1.4
-- ruby on rails =2.3.5
+- ruby on rails =2.3.8
 
 == Install Ruby On Rails
 
-sudo gem install -v=2.3.5 rails
+sudo gem install -v=2.3.8 rails
 
 == Getting Started
 
