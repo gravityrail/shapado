@@ -2,11 +2,12 @@
 .DS_Store
 *.orig
 coverage
-*.log
-*.sqlite3
 public/stylesheets/compiled/
 config/shapado.yml
 data/*.dat
 config/database.yml
 base_packaged.*
 .directory
+.bundle
+log/*.log
+tmp/**/*
