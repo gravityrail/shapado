@@ -18,7 +18,7 @@ module Shapado
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    # config.load_paths += %W( #{config.root}/extras )
+    config.load_paths += %W( #{RAILS_ROOT}/app/middlewares #{RAILS_ROOT}/app/models/widgets )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -27,19 +27,25 @@ module Shapado
     # Activate observers that should always be running
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
+    config.action_mailer.delivery_method = :sendmail
+
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.load_path += Dir[File.join(RAILS_ROOT, 'config', 'locales', '**', '*.{rb,yml}')]
+    config.i18n.default_locale = :en
+    config.action_controller.use_accept_header = false
+
+    # middlewares
+    config.middleware.use "DynamicDomain"
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
     # config.generators do |g|
     #   g.orm             :active_record
-    #   g.template_engine :erb
-    #   g.test_framework  :test_unit, :fixture => true
+    #   g.template_engine :haml
+    #   g.test_framework  :rspec, :fixture => true, :views => false
     # end
 
     # Configure the default encoding used in templates for Ruby 1.9.
@@ -49,3 +55,7 @@ module Shapado
     config.filter_parameters += [:password]
   end
 end
+
+# needs to  be required after Rails.root/lib is added to the load path
+require "smtp_tls"
+
