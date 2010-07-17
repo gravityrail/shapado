@@ -1,28 +1,28 @@
-source 'http://rubygems.org'
+# Edit this Gemfile to bundle your application's dependencies.
+# This preamble is the current preamble for Rails 3 apps; edit as needed.
+source 'http://gemcutter.org'
 
 gem 'rails', '3.0.0.beta4'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
-# Use unicorn as the web server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri', '1.4.1'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for certain environments:
-# gem 'rspec', :group => :test
-# group :test do
-#   gem 'webrat'
-# end
+gem 'bson_ext', '1.0.1', :require => 'bson'
+gem 'compass', '0.10.0.rc4', :require => 'compass'
+gem 'compass-colors', '0.3.1'
+gem 'differ', '0.1.1'
+gem 'dcu-devise', '1.0.7', :require => 'devise'
+gem 'fancy-buttons', '0.5.1'
+gem 'jnunemaker-validatable', '1.8.4', :require => 'validatable'
+gem 'geoip'
+gem 'magent', '0.4'
+gem 'mongo', '1.0.3'
+gem 'mongo_mapper', '0.8.2'
+gem 'mongomapper_ext', '0.4.0'
+gem 'oauth2', '0.0.8'
+gem 'rdiscount', '1.6.3.1'
+gem 'ruby-stemmer', '>=0.5.3', :require => 'lingua/stemmer'
+gem 'sanitize', '1.2.1'
+gem 'super_exception_notifier', '~> 2.0.0', :require => 'exception_notifier'
+gem 'twitter_oauth', '0.3.6'
+gem 'twitter-text', '1.1.1'
+gem 'uuidtools', '2.1.1'
+gem 'whatlanguage', '1.0.0'
+gem 'warden', '0.10.7'
