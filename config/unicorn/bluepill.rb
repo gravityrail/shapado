@@ -1,7 +1,7 @@
 Rails.root = ENV["Rails.root"] || ENV["PWD"] || File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
-rails_env = ENV["RAILS_ENV"] || 'production'
+rails_env = ENV["Rails.env"] || 'production'
 
-puts ">> Starting bluepill with Rails.root=#{Rails.root} and RAILS_ENV=#{rails_env}"
+puts ">> Starting bluepill with Rails.root=#{Rails.root} and Rails.env=#{rails_env}"
 
 Bluepill.application("shapado", :log_file => Rails.root+"/log/bluepill.log") do |app|
   app.process("unicorn-shapado") do |process|

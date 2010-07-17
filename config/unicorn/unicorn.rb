@@ -71,7 +71,7 @@ after_fork do |server, worker|
       Process::UID.change_privilege(target_uid)
     end
   rescue => e
-    STDERR.puts "cannot change privileges on #{RAILS_ENV} environment"
+    STDERR.puts "cannot change privileges on #{Rails.env} environment"
     STDERR.puts "  #{e}"
   end
 
