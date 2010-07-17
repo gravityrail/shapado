@@ -11,11 +11,11 @@ end
 
 desc "Report code statistics (KLOCs, etc) from the application"
 task :stats do
-  RAILS_ROOT = File.dirname(__FILE__)
+  Rails.root = File.dirname(__FILE__)
   STATS_DIRECTORIES = [
     %w(Libraries  lib/),
     %w(Specs      spec/),
-  ].collect { |name, dir| [ name, "#{RAILS_ROOT}/#{dir}" ] }.select { |name, dir| File.directory?(dir) }
+  ].collect { |name, dir| [ name, "#{Rails.root}/#{dir}" ] }.select { |name, dir| File.directory?(dir) }
   require 'code_statistics'
   CodeStatistics.new(*STATS_DIRECTORIES).to_s
 end

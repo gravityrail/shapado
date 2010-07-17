@@ -135,7 +135,7 @@ class Notifier < ActionMailer::Base
     I18n.locale = language
 
     template_name = "#{@method_name}"
-    if Dir.glob(RAILS_ROOT+"/app/views/notifier/#{template_name}*").size == 0
+    if Dir.glob(Rails.root+"/app/views/notifier/#{template_name}*").size == 0
       template_name = @method_name
     end
 

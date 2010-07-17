@@ -45,7 +45,7 @@ namespace :setup do
       default_group.owner = admin
       default_group.add_member(admin, "owner")
     end
-    default_group.logo = File.open(RAILS_ROOT+"/public/images/logo.png")
+    default_group.logo = File.open(Rails.root+"/public/images/logo.png")
     default_group.logo.extension = "png"
     default_group.logo.content_type = "image/png"
     default_group.save
@@ -84,7 +84,7 @@ namespace :setup do
 
   desc "Create pages"
   task :create_pages => [:environment] do
-    Dir.glob(RAILS_ROOT+"/db/fixtures/pages/*.markdown") do |page_path|
+    Dir.glob(Rails.root+"/db/fixtures/pages/*.markdown") do |page_path|
       basename = File.basename(page_path, ".markdown")
       title = basename.gsub(/\.(\w\w)/, "").titleize
       language = $1

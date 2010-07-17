@@ -58,10 +58,10 @@ after_fork do |server, worker|
   begin
     uid, gid = Process.euid, Process.egid
 
-    target_uid = File.stat(RAILS_ROOT).uid
+    target_uid = File.stat(Rails.root).uid
     user = Etc.getpwuid(target_uid).name
 
-    target_gid = File.stat(RAILS_ROOT).gid
+    target_gid = File.stat(Rails.root).gid
     group = Etc.getgrgid(target_gid).name
 
     worker.tmp.chown(target_uid, target_gid)
