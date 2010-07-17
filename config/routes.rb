@@ -1,113 +1,107 @@
-ActionController::Routing::Routes.draw do |map|
-  map.oauth_authorize '/oauth/start', :controller => 'oauth', :action => 'start'
-  map.oauth_callback '/oauth/callback', :controller => 'oauth', :action => 'callback'
+Shapado::Application.routes.draw do
+  match '/oauth/start' => 'oauth#start', :as => :oauth_authorize
+  match '/oauth/callback' => 'oauth#callback', :as => :oauth_callback
+  match '/twitter/start' => 'twitter#start', :as => :twitter_authorize
+  match '/twitter/callback' => 'twitter#callback', :as => :twitter_callback
+  match '/twitter/share' => 'twitter#share', :as => :twitter_share
+  match 'users' => '#index', :as => :devise_for, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
+  match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
+  match '/register' => 'users#create', :as => :register
+  match '/signup' => 'users#new', :as => :signup
+  match '/moderate' => 'admin/moderate#index', :as => :moderate
+  match '/moderate/ban' => 'admin/moderate#ban', :as => :ban
+  match '/moderate/unban' => 'admin/moderate#unban', :as => :unban
+  match '/facts' => 'welcome#facts', :as => :facts
+  match '/plans' => 'doc#plans', :as => :plans
+  match '/chat' => 'doc#chat', :as => :chat
+  match '/feedback' => 'welcome#feedback', :as => :feedback
+  match '/send_feedback' => 'welcome#send_feedback', :as => :send_feedback
+  match '/settings' => 'users#edit', :as => :settings
+  match '/tos' => 'doc#tos', :as => :tos
+  match '/privacy' => 'doc#privacy', :as => :privacy
 
-  map.twitter_authorize '/twitter/start', :controller => 'twitter', :action => 'start'
-  map.twitter_callback '/twitter/callback', :controller => 'twitter', :action => 'callback'
-  map.twitter_share '/twitter/share', :controller => 'twitter', :action => 'share'
+  resources :users do
+    collection do
+      get :autocomplete_for_user_login
+    end
 
-  map.devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
-  map.confirm_age_welcome 'confirm_age_welcome', :controller => 'welcome', :action => 'confirm_age'
-  map.change_language_filter '/change_language_filter', :controller => 'welcome', :action => 'change_language_filter'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.moderate '/moderate', :controller => 'admin/moderate', :action => 'index'
-  map.ban '/moderate/ban', :controller => 'admin/moderate', :action => 'ban'
-  map.unban '/moderate/unban', :controller => 'admin/moderate', :action => 'unban'
-  map.facts '/facts', :controller => 'welcome', :action => 'facts'
-  map.plans '/plans', :controller => 'doc', :action => 'plans'
-  map.chat '/chat', :controller => 'doc', :action => 'chat'
-  map.feedback '/feedback', :controller => 'welcome', :action => 'feedback'
-  map.send_feedback '/send_feedback', :controller => 'welcome', :action => 'send_feedback'
-  map.settings '/settings', :controller => 'users', :action => 'edit'
-  map.tos '/tos', :controller => 'doc', :action => 'tos'
-  map.privacy '/privacy', :controller => 'doc', :action => 'privacy'
-  map.resources :users, :member => { :change_preferred_tags => :any,
-                                     :follow => :any, :unfollow => :any},
-                        :collection => {:autocomplete_for_user_login => :get}
-  map.resource :session
-  map.resources :ads
-  map.resources :adsenses
-  map.resources :adbards
-  map.resources :badges
-  map.resources :pages, :member => {:css => :get, :js => :get}
-  map.resources :announcements, :collection => {:hide => :any }
-  map.resources :imports, :collection => {:send_confirmation => :post}
-
-
-  def build_questions_routes(router, options ={})
-    router.with_options(options) do |route|
-      route.se_url "/questions/:id/:slug", :controller => "questions", :action => "show", :id => /\d+/,
- :conditions => { :method => :get }
-      route.resources :questions, :collection => {:tags => :get,
-                                                  :tags_for_autocomplete => :get,
-                                                  :unanswered => :get,
-                                                  :related_questions => :get},
-                                :member => {:solve => :get,
-                                            :unsolve => :get,
-                                            :favorite => :any,
-                                            :unfavorite => :any,
-                                            :watch => :any,
-                                            :unwatch => :any,
-                                            :history => :get,
-                                            :revert => :get,
-                                            :diff => :get,
-                                            :move => :get,
-                                            :move_to => :put,
-                                            :retag => :get,
-                                            :retag_to => :put,
-                                            :close => :put,
-                                            :open => :put} do |questions|
-        questions.resources :comments
-        questions.resources :answers, :member => {:history => :get,
-                                                  :diff => :get,
-                                                  :revert => :get} do |answers|
-          answers.resources :comments
-          answers.resources :flags
-        end
-        questions.resources :flags
-        questions.resources :close_requests
-        questions.resources :open_requests
-      end
+    member do
+      any :unfollow
+      any :change_preferred_tags
+      any :follow
     end
   end
 
+  resource :session
+  resources :ads
+  resources :adsenses
+  resources :adbards
+  resources :badges
 
-  map.connect 'questions/tags/:tags', :controller => :questions, :action => :index,:requirements => {:tags => /\S+/}
-  map.connect 'questions/unanswered/tags/:tags', :controller => :questions, :action => :unanswered
-
-  build_questions_routes(map)
-  build_questions_routes(map, :path_prefix => '/:language', :name_prefix => "with_language_") #deprecated route
-
-  map.resources :groups, :member => {:accept => :get,
-                                     :close => :get,
-                                     :allow_custom_ads => :get,
-                                     :disallow_custom_ads => :get,
-                                     :logo => :get,
-                                     :favicon => :get,
-                                     :css => :get},
-                          :collection => { :autocomplete_for_group_slug => :get}
-
-  map.resources :votes
-
-  map.resources :widgets, :member => {:move => :post}, :path_prefix => "/manage"
-  map.resources :members, :path_prefix => "/manage"
-
-  map.with_options :controller => 'admin/manage', :name_prefix => "manage_",
-                   :path_prefix => "/manage" do |manage|
-    manage.properties '/properties', :action => 'properties'
-    manage.content '/content', :action => 'content'
-    manage.theme '/theme', :action => 'theme'
-    manage.actions '/actions', :action => 'actions'
-    manage.stats '/stats', :action => 'stats'
-    manage.reputation '/reputation', :action => 'reputation'
-    manage.domain '/domain', :action => 'domain'
+  resources :pages do
+    member do
+      get :js
+      get :css
+    end
   end
 
-  map.search '/search.:format', :controller => "searches", :action => "index"
-  map.about '/about', :controller => "groups", :action => "show"
-  map.root :controller => "welcome"
+  resources :announcements do
+    collection do
+      any :hide
+    end
+  end
 
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  resources :imports do
+    collection do
+      post :send_confirmation
+    end
+  end
+
+  match '/questions/:id/:slug' => 'questions#show', :as => :se_url, :via => get, :id => /\d+/
+
+  resources :questions do
+    resources :comments
+
+    resources :answers do
+      resources :comments
+    end
+
+    resources :close_requests
+  end
+
+  match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }
+  match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
+
+  resources :groups do
+    collection do
+      get :autocomplete_for_group_slug
+    end
+
+    member do
+      get :logo
+      get :allow_custom_ads
+      get :disallow_custom_ads
+      get :favicon
+      get :close
+      get :accept
+      get :css
+    end
+  end
+
+  resources :votes
+  resources :flags
+
+  resources :widgets do
+    member do
+      post :move
+    end
+  end
+
+  resources :members
+  match 'controlleradmin/managepath_prefix/managename_prefixmanage_' => '#index', :as => :with_options
+  match '/search.:format' => 'searches#index', :as => :search
+  match '/about' => 'groups#show', :as => :about
+  match '/' => 'welcome#index'
+  match '/:controller(/:action(/:id))'
 end
