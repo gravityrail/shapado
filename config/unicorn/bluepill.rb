@@ -3,7 +3,7 @@ rails_env = ENV["Rails.env"] || 'production'
 
 puts ">> Starting bluepill with Rails.root=#{Rails.root} and Rails.env=#{rails_env}"
 
-Bluepill.application("shapado", :log_file => Rails.root+"/log/bluepill.log") do |app|
+Bluepill.application("shapado", :log_file => Rails.root + "log/bluepill.log") do |app|
   app.process("unicorn-shapado") do |process|
     process.pid_file = File.join(Rails.root, 'tmp', 'pids', 'unicorn.pid')
     process.working_dir = Rails.root

@@ -2,7 +2,7 @@ require 'ostruct'
 
 config_file = "/etc/shapado.yml"
 if !File.exist?(config_file)
-  config_file = Rails.root+"/config/shapado.yml"
+  config_file = Rails.root+"config/shapado.yml"
 end
 
 if !File.exist?(config_file)
@@ -18,7 +18,7 @@ AppConfig = OpenStruct.new(options[Rails.env])
 
 # check config
 begin
-  known_options = YAML.load_file(Rails.root+"/config/shapado.sample.yml")[Rails.env]
+  known_options = YAML.load_file(Rails.root+"config/shapado.sample.yml")[Rails.env]
   if known_options
     known_options.each do |k, v|
       if AppConfig.send(k).nil?
