@@ -27,9 +27,9 @@ Shapado::Application.routes.draw do
     end
 
     member do
-      any :unfollow
-      any :change_preferred_tags
-      any :follow
+      post :unfollow
+      post :change_preferred_tags
+      post :follow
     end
   end
 
@@ -48,7 +48,7 @@ Shapado::Application.routes.draw do
 
   resources :announcements do
     collection do
-      any :hide
+      post :hide
     end
   end
 
@@ -58,7 +58,7 @@ Shapado::Application.routes.draw do
     end
   end
 
-  match '/questions/:id/:slug' => 'questions#show', :as => :se_url, :via => get, :id => /\d+/
+  get '/questions/:id/:slug' => 'questions#show', :as => :se_url, :id => /\d+/
 
   resources :questions do
     resources :comments
@@ -92,16 +92,29 @@ Shapado::Application.routes.draw do
   resources :votes
   resources :flags
 
-  resources :widgets do
-    member do
-      post :move
+  scope '/manage' do
+    resources :widgets do
+      member do
+        post :move
+      end
+    end
+
+    resources :members
+  end
+
+  scope '/manage', :name_prefix => 'manage' do
+    controller 'admin/manage' do
+      match 'properties' => :properties
+      match 'theme' => :theme
+      match 'actions' => :actions
+      match 'stats' => :stats
+      match 'reputation' => :reputation
+      match 'domain' => :domain
     end
   end
 
-  resources :members
-  match 'controlleradmin/managepath_prefix/managename_prefixmanage_' => '#index', :as => :with_options
-  match '/search.:format' => 'searches#index', :as => :search
+  match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
-  match '/' => 'welcome#index'
+  root :to => 'welcome#index'
   match '/:controller(/:action(/:id))'
 end
