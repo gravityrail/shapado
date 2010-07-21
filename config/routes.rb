@@ -4,7 +4,7 @@ Shapado::Application.routes.draw do
   match '/twitter/start' => 'twitter#start', :as => :twitter_authorize
   match '/twitter/callback' => 'twitter#callback', :as => :twitter_callback
   match '/twitter/share' => 'twitter#share', :as => :twitter_share
-  match 'users' => '#index', :as => :devise_for, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+  devise_for :users, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
