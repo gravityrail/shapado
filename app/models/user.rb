@@ -86,7 +86,6 @@ class User
   validates_presence_of     :email,    :if => lambda { |e| !e.openid_login? && !e.twitter_login? }
   validates_uniqueness_of   :email,    :scope => [:anonymous], :if => lambda { |e| !e.openid_login? && !e.twitter_login? && !e.anonymous }
   validates_length_of       :email,    :within => 6..100, :allow_nil => true, :if => lambda { |e| !e.email.blank? }
-  validates_format_of       :email,    :with => Devise::EMAIL_REGEX, :allow_blank => true
 
   with_options :if => :password_required? do |v|
     v.validates_presence_of     :password
