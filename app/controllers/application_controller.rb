@@ -13,26 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  if AppConfig.exception_notification['activate']
-    include ExceptionNotifiable
-    include SuperExceptionNotifier
-    include ExceptionNotifierHelper
-
-    self.exception_notifiable_silent_exceptions = []
-    self.exception_notifiable_silent_exceptions << SuperExceptionNotifier::CustomExceptionClasses::PageNotFound
-    self.exception_notifiable_silent_exceptions << ActionController::InvalidAuthenticityToken
-
-    local_addresses.clear
-
-    exception_data :additional_data
-    def additional_data
-      { :group => find_group}
-    end
-    protected :additional_data
-  end
-
-  self.error_layout = 'application'
-
   protect_from_forgery
 
   before_filter :find_group
