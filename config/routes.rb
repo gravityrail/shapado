@@ -61,9 +61,41 @@ Shapado::Application.routes.draw do
   get '/questions/:id/:slug' => 'questions#show', :as => :se_url, :id => /\d+/
 
   resources :questions do
+    collection do
+      get :tags
+      get :tags_for_autocomplete
+      get :unanswered
+      get :related_questions
+    end
+
+    member do
+      get :solve
+      get :unsolve
+      get :flag
+      get :favorite
+      get :unfavorite
+      get :watch
+      get :unwatch
+      get :history
+      get :revert
+      get :diff
+      get :move
+      put :move_to
+      get :retag
+      put :retag_to
+      post :close
+    end
+
     resources :comments
 
     resources :answers do
+      member do
+        get :flag
+        get :history
+        get :diff
+        get :revert
+      end
+
       resources :comments
     end
 
