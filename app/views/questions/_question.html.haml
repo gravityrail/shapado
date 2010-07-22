@@ -42,7 +42,7 @@
             -else
               = image_tag "dialog-ok-apply.png"
           -elsif current_user != question.user
-            -form_tag votes_path, :class => "vote-up-form" do
+            = form_tag votes_path, :class => "vote-up-form" do
               .fields
                 = hidden_field_tag "voteable_type", question.class.name, :id => "voteable_type_#{question.id}"
                 = hidden_field_tag "voteable_id", question.id, :id =>  "voteable_id_#{question.id}"

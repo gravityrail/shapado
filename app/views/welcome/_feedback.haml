@@ -1,5 +1,5 @@
 -feedback = params[:feedback] || {}
--form_tag send_feedback_path, :class => "form", :method => "post" do
+= form_tag send_feedback_path, :class => "form", :method => "post" do
   .group
     = label_tag "feedback[title]", t(".feedback_title"), :class => "label"
     = text_field_tag "feedback[title]", feedback[:title], :class=> "text_field"
