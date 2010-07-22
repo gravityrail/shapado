@@ -13,7 +13,7 @@ module ActiveTab
 
       private
       define_method(:set_active_tab) do
-        @active_tab = tabs[params[:action].to_sym]
+        @active_tab = tabs[env['action_dispatch.request.path_parameters'][:action].to_sym]
         @active_tab = tabs[:default] if tabs[:default] && @active_tab.nil?
         @action_tab = 'default_tab' if @active_tab.nil?
         @active_tab
@@ -31,8 +31,8 @@ module ActiveTab
       helper_method :current_order
 
       define_method(:load_default_subtab) do
-        key = "#{params[:controller]}/#{params[:action]}"
-        @subtabs = subtabs[params[:action].to_sym]
+        key = "#{params[:controller]}/#{env['action_dispatch.request.path_parameters'][:action]}"
+        @subtabs = subtabs[env['action_dispatch.request.path_parameters'][:action].to_sym]
         @active_subtab = params[:sort] || params[:tab]
         @store_subtab = !@subtabs.blank?
 
@@ -68,7 +68,7 @@ module ActiveTab
 
         if @store_subtab
           subtab = [@active_subtab, @current_order]
-          key = "#{params[:controller]}/#{params[:action]}"
+          key = "#{params[:controller]}/#{env['action_dispatch.request.path_parameters'][:action]}"
           (session[:subtab] ||= {})[key] = subtab
           if logged_in?
             current_user.set({"default_subtab.#{key}" => subtab})
