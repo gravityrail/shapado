@@ -2,13 +2,13 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://gemcutter.org'
 
-gem 'rails', '3.0.0.beta4'
+gem 'rails', '3.0.0.rc'
 
 gem 'bson_ext', '1.0.1', :require => 'bson'
 gem 'compass', '~> 0.10.2'
 gem 'compass-colors', '~> 0.3.1'
 gem 'differ', '0.1.1'
-gem 'BadMinus-devise', '1.1.rc2', :require => 'devise'
+gem 'BadMinus-devise', '1.1.0', :require => 'devise'
 gem 'fancy-buttons', '0.5.1'
 gem 'jnunemaker-validatable', '1.8.4', :require => 'validatable'
 gem 'geoip'
