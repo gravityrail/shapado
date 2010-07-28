@@ -31,7 +31,7 @@ AVAILABLE_LANGUAGES = I18n.backend.available_locales.map { |l| l.to_s.split("-")
 ## this is only for the user settings, not related to translatewiki.net
 DEFAULT_USER_LANGUAGES = ['en', 'es', 'es-419', 'fr', 'pl', 'pt-BR', 'pt-PT', 'ja', 'el', 'de', 'ko', 'nl', 'ru', 'tl', 'it']
 
-RAILS_DEFAULT_LOGGER.debug "* Loaded locales: #{AVAILABLE_LOCALES.inspect}"
+Rails.logger.debug "* Loaded locales: #{AVAILABLE_LOCALES.inspect}"
 
 require "i18n/backend/fallbacks"
 I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)

@@ -18,7 +18,8 @@ module Shapado
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    config.load_paths += %W( #{Rails.root}/app/middlewares #{Rails.root}/app/models/widgets )
+    config.autoload_paths += %W( #{Rails.root}/app/middlewares #{Rails.root}/app/models/widgets
+                                 #{Rails.root}/lib/support )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named
@@ -36,7 +37,6 @@ module Shapado
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     config.i18n.load_path += Dir[File.join(Rails.root, 'config', 'locales', '**', '*.{rb,yml}')]
     config.i18n.default_locale = :en
-    config.action_controller.use_accept_header = false
 
     # middlewares
     config.middleware.use "DynamicDomain"
