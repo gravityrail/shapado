@@ -1,3 +1,0 @@
-[submodule "app/middlewares/goalie"]
-	path = app/middlewares/goalie
-	url = git://github.com/obvio171/goalie
