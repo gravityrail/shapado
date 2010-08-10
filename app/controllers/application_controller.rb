@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
 
     if logged_in?
       if !current_user.user_of?(@current_group)
-        access_denied
+        raise Goalie::Forbidden
       end
     else
       respond_to do |format|
@@ -220,19 +220,19 @@ class ApplicationController < ActionController::Base
 
   def admin_required
     unless current_user.admin?
-      access_denied
+      raise Goalie::Forbidden
     end
   end
 
   def moderator_required
     unless current_user.mod_of?(current_group)
-      access_denied
+      raise Goalie::Forbidden
     end
   end
 
   def owner_required
     unless current_user.owner_of?(current_group)
-      access_denied
+      raise Goalie::Forbidden
     end
   end
 
