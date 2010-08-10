@@ -30,3 +30,4 @@ Dir.glob("#{Rails.root}/app/javascripts/**/*.js") do |js_path|
 end
 
 require 'support/versionable'
+require 'support/voteable'
