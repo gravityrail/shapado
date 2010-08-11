@@ -46,7 +46,7 @@ Shapado::Application.configure do
   config.i18n.fallbacks = true
 end
 
-class ActionDispatch::ShowExceptions
+class Goalie::CustomErrorPages
   def local_request?(*args)
     false
   end
