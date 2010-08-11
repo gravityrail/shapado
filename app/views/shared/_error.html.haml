@@ -18,7 +18,10 @@
           %li
             -form_tag search_path, :class => "form", :method => :get do
               =t("errors.search")
-              = text_field_tag 'q', request.path.split("/").last.split("-").join(" "), :class => "text_field", :style => "width: 50%"
+              - query = request.path.split("/").last
+              -# query is nil when path is only '/'
+              - query = query.nil? ? '' : query.split("-").join(" ")
+              = text_field_tag 'q', query, :class => "text_field", :style => "width: 50%"
               %button{:type => "submit"}
                 = t('layouts.applications.search', :default => "Go")
     .clear
