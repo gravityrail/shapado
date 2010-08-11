@@ -1,4 +1,4 @@
-class PublicErrorsController < ActionController::Base
+class PublicErrorsController < ApplicationController
 
   # 403
   def forbidden
