@@ -89,7 +89,7 @@
           [flash[key]].flatten.compact.each do |msg|
             text = msg
             if options[:markdown]
-              text = markdown(msg)
+              text = markdown(msg, :sanitize => false)
             elsif options[:textilize]
               text = textilize(msg)
             end
