@@ -93,17 +93,20 @@
             elsif options[:textilize]
               text = textilize(msg)
             end
-            flash_text = content_tag('p', text)
-            messages << content_tag('li', flash_text, :class => key)
+            flash_text = content_tag('p', text, nil, false)
+            messages << content_tag('li', flash_text, {:class => key}, false)
           end
 
-          out << content_tag('ul', messages.join("\n"), :class => "message "+key.to_s) unless messages.empty?
+          if !messages.empty?
+            out << content_tag('ul', messages.join("\n"),
+                               {:class => "message "+key.to_s}, false)
+          end
         end
 
         attrs = {:id => options[:id]} if options[:id]
         attrs[:class] = options[:class] if options[:class]
         return nil if out.empty?
-        content_tag('div', out.join("\n"), attrs)
+        content_tag('div', out.join("\n"), attrs, false)
       end
     end
   end
