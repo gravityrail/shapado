@@ -1,3 +1,6 @@
+Encoding.default_internal = 'utf-8'
+Encoding.default_external = 'utf-8'
+
 REPUTATION_CONSTRAINS = {"vote_up" => 15, "flag" => 15, "post_images" => 15,
 "comment" => 50, "delete_own_comments" => 50, "vote_down" => 100,
 "create_new_tags" => 100, "post_whithout_limits" => 100, "edit_wiki_post" => 100,

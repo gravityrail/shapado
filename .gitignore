@@ -11,3 +11,4 @@ base_packaged.*
 .bundle
 log/*.log
 tmp/**/*
+vendor/cache/*.gem

@@ -14,6 +14,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Shapado
   class Application < Rails::Application
+    require File.expand_path('../load_config', __FILE__)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
