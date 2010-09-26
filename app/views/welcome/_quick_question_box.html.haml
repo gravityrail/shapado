@@ -1,5 +1,5 @@
 -@question = Question.new
--form_for(@question, :url => questions_url, :html=>{:class => "form", :id => "ask_question"}) do |f|
+=form_for(@question, :url => questions_url, :html=>{:class => "form", :id => "ask_question"}) do |f|
   -# TODO: refactor this
   -lang = logged_in? ? current_user.main_language : nil
   -lang = current_group.language ? current_group.language : lang

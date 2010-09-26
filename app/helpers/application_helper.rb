@@ -64,7 +64,7 @@ module ApplicationHelper
   end
 
   def language_desc(langs)
-    langs.map do |lang|
+    (langs.kind_of?(Array) ? langs : [langs]).map do |lang|
       I18n.t("languages.#{lang}", :default => lang).capitalize
     end.join(', ')
   end
@@ -87,11 +87,11 @@ module ApplicationHelper
 
   def locales_options(languages=nil)
     languages = AVAILABLE_LOCALES if languages.blank?
+
     languages.collect do |lang|
       [language_desc(lang), lang]
     end
   end
-
 
   def tag_cloud(tags = [], options = {})
     if tags.empty?
