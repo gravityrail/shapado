@@ -1,6 +1,6 @@
 $:.unshift(File.dirname(__FILE__) + '/../lib')
 
-ENV['Rails.env'] = "development"
+ENV['RAILS_ENV'] = "development"
 require File.dirname(__FILE__) + '/../../../../config/environment'
 require 'test/unit'
 require 'rubygems'
