@@ -7,6 +7,7 @@ Shapado::Application.routes.draw do
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
              :controllers => {:registrations => 'users'})
+  devise_for :openid_identity
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
@@ -26,6 +27,7 @@ Shapado::Application.routes.draw do
   resources :users do
     collection do
       get :autocomplete_for_user_login
+      post :connect
     end
 
     member do

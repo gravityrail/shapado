@@ -2,8 +2,10 @@ require 'digest/sha1'
 
 class User
   include MongoMapper::Document
+  include MultiauthSupport
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
-         :lockable, :token_authenticatable, :encryptable, :twitter_oauth
+         :lockable, :token_authenticatable, :encryptable, :twitter_oauth,
+         :oauthable, :openid_authenticatable
 
   ROLES = %w[user moderator admin]
   LANGUAGE_FILTERS = %w[any user] + AVAILABLE_LANGUAGES

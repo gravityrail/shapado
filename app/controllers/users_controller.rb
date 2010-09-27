@@ -146,6 +146,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def connect
+    authenticate_user!
+    warden.authenticate!(:scope => :openid_identity, :recall => "show")
+
+    current_openid_identity.user = current_user
+    current_openid_identity.save!
+    sign_out :openid_identity
+
+    redirect_to settings_path
+  end
+
   def change_preferred_tags
     @user = current_user
     if params[:tags]
