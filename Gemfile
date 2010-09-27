@@ -45,6 +45,7 @@ gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
 
 # devise
+gem 'rack-openid', '~>1.2.0'
 gem 'oauth2', '0.0.13'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
 #gem 'devise-mongo_mapper', :git => 'http://github.com/collectiveidea/devise-mongo_mapper.git'
