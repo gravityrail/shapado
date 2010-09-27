@@ -47,7 +47,7 @@ module Shapado
       g.orm             :mongo_mapper
       g.template_engine :haml
       g.test_framework  :rspec, :fixture => true, :views => false
-    # end
+    end
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"

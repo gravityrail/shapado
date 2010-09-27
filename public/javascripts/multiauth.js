@@ -86,5 +86,5 @@ jQuery(function ($) {
     }
   });
 
-  openidCarouselEffect();
+//  openidCarouselEffect();
 });
