@@ -49,8 +49,8 @@ gem 'oauth2', '0.0.13'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
 #gem 'devise-mongo_mapper', :git => 'http://github.com/collectiveidea/devise-mongo_mapper.git'
 gem 'devise_openid_authenticatable', '1.0.0.alpha7', :git => "http://github.com/nbudin/devise_openid_authenticatable.git"
-#gem 'devise-twitter', '0.1.1'
-gem 'multiauth', '0.1.2' #, :path => "vendor/gems/multiauth"
+gem 'devise-twitter', '0.1.1'
+gem 'multiauth', '0.1.3' #, :path => "vendor/gems/multiauth"
 
 
 group :development do

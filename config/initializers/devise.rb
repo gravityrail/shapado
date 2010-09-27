@@ -108,7 +108,7 @@ Devise.setup do |config|
 
   # Configure the default scope used by Devise. By default it's the first devise
   # role declared in your routes.
-  # config.default_scope = :user
+  config.default_scope = :user
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -131,7 +131,4 @@ Devise.setup do |config|
   #   end
   #   manager.default_strategies(:scope => :user).unshift :twitter_oauth
   # end
-  config.warden do |manager|
-    #manager.default_strategies.unshift :twitter_oauth
-  end
 end

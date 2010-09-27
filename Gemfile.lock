@@ -110,7 +110,7 @@ GEM
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
     multi_json (0.0.4)
-    multiauth (0.1.2)
+    multiauth (0.1.3)
       devise-twitter (= 0.1.1)
       devise_openid_authenticatable (= 1.0.0.alpha7)
       oauth2 (= 0.0.13)
@@ -179,6 +179,7 @@ DEPENDENCIES
   compass (= 0.10.5)
   compass-colors (= 0.3.1)
   devise!
+  devise-twitter (= 0.1.1)
   devise_openid_authenticatable (= 1.0.0.alpha7)!
   differ (= 0.1.1)
   dynamic_form
@@ -195,7 +196,7 @@ DEPENDENCIES
   mongo_mapper!
   mongomapper_ext (= 0.4.0)
   mongrel (= 1.2.0.pre2)
-  multiauth (= 0.1.2)
+  multiauth (= 0.1.3)
   niftier-generators (= 0.1.2)
   nokogiri
   oauth2 (= 0.0.13)
