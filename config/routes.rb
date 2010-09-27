@@ -6,7 +6,13 @@ Shapado::Application.routes.draw do
   match '/twitter/share' => 'twitter#share', :as => :twitter_share
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
-             :controllers => {:registrations => 'users'})
+             :controllers => {:registrations => 'users'}) do
+    match '/users/sign_in/twitter' => Devise::Twitter::Rack::Signin
+    match '/users/connect/twitter' => Devise::Twitter::Rack::Connect
+
+    match '/users/connect' => 'users#connect', :method => :post, :as => :connect
+  end
+
   devise_for :openid_identity
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
