@@ -3,9 +3,12 @@
 
 class ApplicationController < ActionController::Base
   include Rack::Recaptcha::Helpers
-  include AuthenticatedSystem
   include Subdomains
   include Sweepers
+
+  alias_method :logged_in?, :user_signed_in?
+  helper_method :logged_in?
+
 
   if !AppConfig.recaptcha['activate']
     def recaptcha_valid?

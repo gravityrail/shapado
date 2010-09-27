@@ -22,7 +22,7 @@ gem "bson", "1.0.9", :require => "bson"
 gem "mongo", "1.0.9"
 
 gem "jnunemaker-validatable", "1.8.4", :require => "validatable"
-gem "mongo_mapper", "0.8.3"
+gem "mongo_mapper", :git => 'http://github.com/jnunemaker/mongomapper.git'
 gem "mongomapper_ext", "0.4.0"
 
 gem "compass", "0.10.5", :require => "compass"
@@ -46,10 +46,10 @@ gem 'sanitize', '1.2.1'
 
 # devise
 gem 'oauth2', '0.0.13'
-gem 'mongomapper-devise', '1.2.0'
+gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
+#gem 'devise-mongo_mapper', :git => 'http://github.com/collectiveidea/devise-mongo_mapper.git'
 gem 'devise_openid_authenticatable', '1.0.0.alpha7', :git => "http://github.com/nbudin/devise_openid_authenticatable.git"
-gem 'devise-twitter', '0.1.1'
-gem 'devise_invitable', '0.3.2'
+#gem 'devise-twitter', '0.1.1'
 gem 'multiauth', '0.1.2' #, :path => "vendor/gems/multiauth"
 
 
@@ -59,3 +59,4 @@ group :development do
   gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
 end
+
