@@ -250,7 +250,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def openid_login?
-    !identity_url.blank? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
+    self.openid_identities.first(:select => [:id]).present? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
   end
 
   def twitter_login?

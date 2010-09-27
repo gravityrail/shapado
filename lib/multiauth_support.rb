@@ -26,6 +26,12 @@ module MultiauthSupport
     def build_from_identity_url(identity_url)
       user = User.new(:using_openid => true)
       user.openid_identities << OpenidIdentity.new(:identity_url => identity_url)
+      if user.login.blank?
+        login = user.email.to_s.split("@", 2)[0]
+        login = "#{user.id[0,8]}_openid" if login.blank?
+
+        user.login = login
+      end
       user
     end
 
@@ -89,7 +95,7 @@ module MultiauthSupport
 
         case key.to_s
         when /nickname/
-          self.login = value
+          self.login = value if self.login.blank?
         when "fullname", "http://axschema.org/namePerson"
           self.full_name = value
         when "email", "http://axschema.org/contact/email"
