@@ -1,9 +1,13 @@
 module MultiauthSupport
   def self.included(base)
     base.class_eval do
+      devise :database_authenticatable, :recoverable, :registerable, :rememberable,
+             :lockable, :token_authenticatable, :encryptable, :twitter_oauth,
+             :oauthable, :openid_authenticatable
+
       key :using_openid, Boolean, :default => false
 
-      has_many :openid_identities
+      has_many :openid_identities, :dependent => :destroy
       key :openid_email
 
       key :twitter_handle, String
