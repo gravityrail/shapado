@@ -22,7 +22,10 @@
               =link_to image_tag(logo_group_path(current_group), :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
             -else
               = link_to image_tag("default_logo.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
-          = render "shared/user_navigation"
+          - if params[:controller] =~ %r{moderate\/\.*}
+            = render "shared/moderate_navigation"
+          - else
+            = render "shared/user_navigation"
           .clear
 
           -announcements = current_announcements(session[:announcement_hide_time])

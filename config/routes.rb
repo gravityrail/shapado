@@ -9,9 +9,6 @@ Shapado::Application.routes.draw do
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
   match '/signup' => 'users#new', :as => :signup
-  match '/moderate' => 'admin/moderate#index', :as => :moderate
-  match '/moderate/ban' => 'admin/moderate#ban', :as => :ban
-  match '/moderate/unban' => 'admin/moderate#unban', :as => :unban
   match '/facts' => 'welcome#facts', :as => :facts
   match '/plans' => 'doc#plans', :as => :plans
   match '/chat' => 'doc#chat', :as => :chat
@@ -154,6 +151,14 @@ Shapado::Application.routes.draw do
       match 'content' => :content
     end
   end
+
+  scope '/moderate' do
+    resources :questions
+    resources :answers
+    resources :users
+  end
+
+  match '/moderate' => 'moderate#questions'
 
   match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
