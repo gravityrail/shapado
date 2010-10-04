@@ -1,0 +1,7 @@
+%ul
+  %li.retag
+    = link_to t(".retag"), moderate_questions_path, :title => t(".retag_tooltip")
+  %li.flagged
+    = link_to t(".flagged"), flagged_moderate_questions_path, :title => t(".flagged_tooltip")
+  %li.to_close
+    = link_to t(".to_close"), to_close_moderate_questions_path, :title => t(".to_close_tooltip")

@@ -148,7 +148,7 @@
         - if current_user.mod_of?(@question.group)
           -if !@question.closed
             = link_to t('.close'), question_close_requests_path(@question)
-          = link_to t(".ban"), ban_path(:question_ids => [@question.id]), :class => "button", :confirm => "are you sure?"
+          = link_to @question.banned ? t(".unban") : t(".ban"), manage_moderate_questions_path(:question_ids => [@question.id], :commit => @question.banned ? "unban": "ban"), :class => "button", :method => :put, :confirm => "are you sure?"
     .forms
       -# render :partial => "flags/form", :locals => {:flag => @flag, :flaggeable => @question, :source => source, :form_id => "question_flag_form" }
 

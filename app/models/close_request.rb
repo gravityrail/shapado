@@ -16,6 +16,14 @@ class CloseRequest
   validate :should_be_unique
   validate :check_reputation
 
+  def increment_counter
+    self._root_document.increment(:close_requests_count => 1)
+  end
+
+  def decrement_counter
+    self._root_document.decrement(:close_requests_count => 1)
+  end
+
   protected
   def should_be_unique
     request = self._root_document.close_requests.detect{ |rq| rq.user_id == self.user_id }

@@ -1,7 +1,7 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:votes", "fixdb:sync_counts", "fixdb:groups"] do
-end
+task :fixall => [:environment, "fixdb:openid", "fixdb:counters" "fixdb:votes", "fixdb:sync_counts", "fixdb:groups"] do
+
 
 namespace :fixdb do
   task :openid => [:environment] do
@@ -28,6 +28,13 @@ namespace :fixdb do
       votes_average=0
       q.votes.each {|e| votes_average+=e.value }
       q.set("flags_count" => q.flags.size, "votes_count" => q.votes.size, "votes_average" => votes_average)
+    end
+  end
+
+  task :counters => :environment do
+    Question.find_each do |q|
+      q.set(:close_requests_count => q.close_requests.size)
+      q.set(:open_requests_count => q.open_requests.size)
     end
   end
 

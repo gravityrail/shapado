@@ -16,7 +16,8 @@ class OpenRequestsController < ApplicationController
 
     respond_to do |format|
       if @open_request.valid?
-        @question.save
+        @question.save  # FIXME: use modifiers
+        @question.increment(:open_requests_count => 1)
         flash[:notice] = t(:flash_notice, :scope => "open_requests.create")
         format.html { redirect_to(question_path(@question)) }
         format.json { render :json => @open_request.to_json, :status => :created}
@@ -57,7 +58,8 @@ class OpenRequestsController < ApplicationController
     end
     @question.open_requests.delete(@open_request)
 
-    @question.save
+    @question.decrement(:open_requests_count => 1)
+    @question.save # FIXME: use modifiers
     flash[:notice] = t(:flash_notice, :scope => "open_requests.destroy")
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }

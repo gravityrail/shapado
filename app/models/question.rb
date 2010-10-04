@@ -18,6 +18,8 @@ class Question
   key :views_count, Integer, :default => 0
   key :hotness, Integer, :default => 0
   key :flags_count, Integer, :default => 0
+  key :close_requests_count, Integer, :default => 0
+  key :open_requests_count, Integer, :default => 0
   key :favorites_count, Integer, :default => 0
 
   key :adult_content, Boolean, :default => false
@@ -182,20 +184,16 @@ class Question
     self.set(:banned => true)
   end
 
-  def self.ban(ids)
-    # TODO: use mongo_mapper syntax
-    self.collection.update({:_id => {:$in => ids}}, {:$set => {:banned => true}},
-                                                     :multi => true)
+  def self.ban(ids, options = {})
+    self.set({:_id.in => ids}.merge(options), {:banned => true})
   end
 
   def unban
     self.set(:banned => false)
   end
 
-  def self.unban(ids)
-    # TODO: use mongo_mapper syntax
-    self.collection.update({:_id => {:$in => ids}}, {:$set => {:banned => false}},
-                                                     :multi => true)
+  def self.unban(ids, options = {})
+    self.set({:_id.in => ids}.merge(options), {:banned => false})
   end
 
   def favorite_for?(user)

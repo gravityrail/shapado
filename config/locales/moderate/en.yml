@@ -1,4 +1,23 @@
 en:
+  moderate:
+    questions:
+      index:
+       title: "Moderate Questions"
+      flagged:
+        title: "Moderate Questions"
+        filters: "Filters:"
+        unbanned: Unbanned
+        unbanned_tooltip: Show only unbanned questions
+        banned: Banned
+        banned_tooltip: Show only banned questions
+      subtabs:
+        retag: Need tags
+        retag_tooltip: Questions without tags
+        flagged: Flagged
+        flagged_tooltip: Questions flagged by the users
+        to_close: To close
+        to_close_tooltip: Questions with voted to close by the users
+
   admin:
     moderate:
       index:

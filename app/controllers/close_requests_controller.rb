@@ -37,7 +37,8 @@ class CloseRequestsController < ApplicationController
 
     respond_to do |format|
       if @close_request.valid?
-        @question.save
+        @question.save #FIXME: use modifiers
+        @question.increment(:close_requests_count => 1)
         if @question.closed
           flash[:notice] = "question closed successfully"
         else
@@ -107,7 +108,8 @@ class CloseRequestsController < ApplicationController
     end
     @question.close_requests.delete(@close_request)
 
-    @question.save
+    @question.decrement(:close_requests_count => 1)
+    @question.save #FIXME: use modifiers
     flash[:notice] = t(:flash_notice, :scope => "close_requests.destroy")
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }
