@@ -180,7 +180,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.js do
         result = []
-        if q = params[:tag]
+        if q = params[:term]
           result = Question.find_tags(/^#{Regexp.escape(q.downcase)}/i,
                                       :group_id => current_group.id,
                                       :banned => false)
@@ -192,6 +192,7 @@ class QuestionsController < ApplicationController
         # if no results, show default tags
         if results.empty?
           results = current_group.default_tags.map  {|tag|{:value=> tag, :caption => tag}}
+          results = [{ :value => q, :caption => q }] + results
         end
         render :json => results
       end

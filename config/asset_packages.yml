@@ -6,12 +6,11 @@ javascripts:
   - jquery-ui
   - jquery.textarea
   - jHtmlArea
-  - jquery.autocomplete
-  - jquery.autoSuggest
   - jquery.notifyBar
   - showdown
   - highlight/prettify
   - components/search
+  - jqueryui.ricodigoComplete
   - application
   - modules/index_question
   - modules/retag
