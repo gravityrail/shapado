@@ -17,6 +17,8 @@
       tagInput.keydown(function(event){
         var key = event.keyCode;
         var tag = $(this).prev('ul');
+        if($(this).val()==',') //empty the field it if it has a comma
+          $(this).val('');
         if(key==8 && $(this).val()==''){
           if(tag.hasClass('ui-state-hover')){
             $(this).prev('ul').remove();
@@ -26,8 +28,22 @@
           } else {
               tag.addClass('ui-state-hover');
           }
-        } else {
+        } else if(key == 8 && $(this).val()!=''){
           tag.removeClass('ui-state-hover');
+        } else if (key == '32' || key == '188') {
+            var ac = $(this);
+            var tags = $(this).val();
+            var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tags+'">'+tags+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
+            if(!$(this).parent().find('.added-tag[data-caption='+tags+']').length){
+              ac.before(tag);
+              ac.val('');
+              ac.focus();
+              var tags = [];
+              $(this).parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
+              $(this).parent().next('.ac-tags').val(tags.join(','));
+            } else {
+                $(this).val('');
+            }
         }
       });
       var ac = $(this);
