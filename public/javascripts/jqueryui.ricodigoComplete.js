@@ -1,6 +1,22 @@
 (function($) {
   $.fn.ricodigoComplete = function(){
     this.each(function(){
+            function addTag(tag, input, dontempty){
+              var tag = $.trim(tag.replace(',',''));
+              if(!input.parent().find('.added-tag[data-caption='+tag+']').length){
+                if(!dontempty)
+                  input.val('');
+                console.log(tag)
+                var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
+                input.before(tag);
+                input.css({width: '150px'});
+                input.attr({placeholder: ''});
+                var tags = [];
+                input.parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
+                input.parent().next('.ac-tags').val(tags.join(','));
+                input.focus();
+              }
+            }
       $(".remove-tag").live('click',function(){$(this).parents('ul').remove();})
       $(".added-tag").live('mouseenter',function(){$(this).addClass('ui-state-hover')})
       $(".added-tag").live('mouseleave',function(){$(this).removeClass('ui-state-hover')})
@@ -16,6 +32,7 @@
       tagInput.css({outline: 'none', border: 0, padding: '10px', width: '90%'});
       tagInput.keydown(function(event){
         var key = event.keyCode;
+          console.log(key)
         var tag = $(this).prev('ul');
         if($(this).val()==',') //empty the field it if it has a comma
           $(this).val('');
@@ -30,59 +47,43 @@
           }
         } else if(key == 8 && $(this).val()!=''){
           tag.removeClass('ui-state-hover');
-        } else if (key == '32' || key == '188') {
-            var ac = $(this);
-            var tags = $(this).val();
-            var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tags+'">'+tags+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
-            if(!$(this).parent().find('.added-tag[data-caption='+tags+']').length){
-              ac.before(tag);
-              ac.val('');
-              ac.focus();
-              var tags = [];
-              $(this).parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
-              $(this).parent().next('.ac-tags').val(tags.join(','));
-            } else {
-                $(this).val('');
-            }
+        } else if ((key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
+            addTag($(this).val(), $(this));
+            $(this).focus();
+            $(this).autocomplete( "close" );
+            return false;
         }
       });
       var ac = $(this);
       var tags = $(this).val();
       if(tags!=''){
         tags = tags.split(',')
-        $.each(tags,function(){
-          var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+this+'">'+this+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
-          ac.before(tag);
-          ac.val('');
-          ac.focus();
+        $.each(tags,function(i, tag){
+          console.log(tag)
+          addTag(tag, ac, true);
         })
+        $(this).val('');
       }
       var cache = {},
                   lastXhr;
       tagInput.autocomplete({
         select: function(event, ui) {
-          $(this).val('');
-          if(!$(this).parent().find('.added-tag[data-caption='+ui.item.label+']').length){
-            var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+ui.item.label+'">'+ui.item.label+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
-            $(this).before(tag);
-            $(this).css({width: '150px'});
-            $(this).attr({placeholder: ''});
-          }
-          var tags = [];
-          $(this).parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
-          $(this).parent().next('.ac-tags').val(tags.join(','));
+          addTag(ui.item.label, $(this))
           return false;
         },
         minLength: 1,
         source: function( request, response ) {
           var term = request.term;
+            console.log(term)
+          if( $.trim(term.replace(',','')) == '' )
+            return;
           if ( term in cache ) {
             response( cache[ term ] );
             return;
           }
           lastXhr = $.getJSON( "/questions/tags_for_autocomplete.js", request, function( data, status, xhr ) {
             cache[ term ] = data;
-            data.push({label:term,caption:term})
+            data.push({label:term.replace(',',''),caption:term.replace(',','')});
             if ( xhr === lastXhr ) {
               response( data );
             }

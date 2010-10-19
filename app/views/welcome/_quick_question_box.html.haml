@@ -24,8 +24,7 @@
         =f.text_area :title, :class => "text_area", :id => "question_title"
 
       #tags{:style => "width: 100%"}
-        %span#qqsubmit{:style => "width: 20%; float: right"}
-          =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
+
 
         -if lang
           = f.hidden_field :language, :value => lang
@@ -33,8 +32,9 @@
           %span.group{:style => "width: 20%"}
             = language_select(f, @question)
         %span.group.as-inline{:style => "width: 50%"}
-          = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "tags"])
           =f.text_field :tags, :class => "text_field autocomplete_for_tags", :placeholder =>  t("questions.form.tags_tip")
+        %div#qqsubmit{:style => "width: 20%; float: right"}
+          =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
         -if lang
           %span{:style => "width: 20%"}
       .clear

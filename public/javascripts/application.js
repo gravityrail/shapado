@@ -28,7 +28,7 @@ $(document).ready(function() {
   })
 
   $('.autocomplete_for_tags').ricodigoComplete();
-
+  $('#quick_question').find('.tagwrapper').css({'margin-left':'18px','margin-top':'0px',float:'left',width:'70%'})
   $(".quick-vote-button").live("click", function(event) {
     var btn = $(this);
     btn.hide();
