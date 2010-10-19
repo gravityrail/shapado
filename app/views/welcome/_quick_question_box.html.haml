@@ -31,8 +31,9 @@
         -else
           %span.group{:style => "width: 20%"}
             = language_select(f, @question)
-        %span.group.as-inline{:style => "width: 50%"}
-          =f.text_field :tags, :class => "text_field autocomplete_for_tags", :placeholder =>  t("questions.form.tags_tip")
+        %div.hideifplaceholder{:style => "float: left"}
+          = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "tags"])
+        =f.text_field :tags, :class => "text_field autocomplete_for_tags", :placeholder =>  t("questions.form.tags_tip")
         %div#qqsubmit{:style => "width: 20%; float: right"}
           =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
         -if lang
