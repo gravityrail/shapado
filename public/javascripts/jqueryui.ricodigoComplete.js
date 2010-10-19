@@ -1,11 +1,10 @@
 (function($) {
   $.fn.ricodigoComplete = function(){
     this.each(function(){
-            function addTag(tag, input, dontempty){
+            function addTag(tag, input){
               var tag = $.trim(tag.replace(',',''));
               if(!input.parent().find('.added-tag[data-caption='+tag+']').length){
-                if(!dontempty)
-                  input.val('');
+                input.val('');
                 console.log(tag)
                 var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
                 input.before(tag);
@@ -60,7 +59,7 @@
         tags = tags.split(',')
         $.each(tags,function(i, tag){
           console.log(tag)
-          addTag(tag, ac, true);
+          addTag(tag, ac);
         })
         $(this).val('');
       }
