@@ -185,7 +185,7 @@ class GroupsController < ApplicationController
   def autocomplete_for_group_slug
     @groups = Group.all( :limit => params[:limit] || 20,
                          :fields=> 'slug',
-                         :slug =>  /.*#{params[:prefix].downcase.to_s}.*/,
+                         :slug =>  /.*#{params[:term].downcase.to_s}.*/,
                          :order => "slug desc",
                          :state => "active")
 

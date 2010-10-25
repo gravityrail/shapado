@@ -1,20 +1,18 @@
 $(document).ready(function() {
-    $('#member_user_id').autocomplete('/users/autocomplete_for_user_login.json', {
-            multiple: false,
-            dataType: 'json',
-            delay: 200,
-            selectFirst: false,
-            parse: function(data) {
-                return $.map(data, function(item) {
-                    return {
-                        data: item,
-                        value: item.login,
-                        result: item.login
-                    };
-                });
-            },
-            formatItem: function(item) {
-                return item.login;
-            }
-        });
+  if($('#member_user_id').length){
+    $('#member_user_id').autocomplete({
+      source: "/users/autocomplete_for_user_login.json",
+      minLength: 1,
+      select: function( event, ui ) {
+          $( '#member_user_id' ).val(ui.item.login);
+          return false;
+      }
+    })
+    .data("autocomplete")._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+	.append( "<a>" + item.login + "</a>" )
+	.appendTo( ul );
+    };
+  }
 })
