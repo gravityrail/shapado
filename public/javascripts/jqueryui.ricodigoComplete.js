@@ -20,7 +20,7 @@
       $(".added-tag").live('mouseleave',function(){$(this).removeClass('ui-state-hover')})
       tagInput = $(this);
       var name = tagInput.attr('name');
-      tagInput.attr('name','');
+      tagInput.attr('name','tag_input');
       tagInput.after('<input type="hidden" class="ac-tags" name="'+name+'">');
       var tagwrapper=$('<div class="tagwrapper" style="margin-top:15px;background:#FFF;"></div>');
       tagwrapper.css({border:'2px solid #CCCCCC', 'min-height': '40px'});
