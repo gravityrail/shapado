@@ -5,7 +5,6 @@
               var tag = $.trim(tag.replace(',',''));
               if(!input.parent().find('.added-tag[data-caption='+tag+']').length){
                 input.val('');
-                console.log(tag)
                 var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
                 input.before(tag);
                 input.css({width: '150px'});
@@ -31,7 +30,6 @@
       tagInput.css({outline: 'none', border: 0, padding: '10px', width: '90%'});
       tagInput.keydown(function(event){
         var key = event.keyCode;
-          console.log(key)
         var tag = $(this).prev('ul');
         if($(this).val()==',') //empty the field it if it has a comma
           $(this).val('');
@@ -58,7 +56,6 @@
       if(tags!=''){
         tags = tags.split(',')
         $.each(tags,function(i, tag){
-          console.log(tag)
           addTag(tag, ac);
         })
         $(this).val('');
@@ -73,7 +70,6 @@
         minLength: 1,
         source: function( request, response ) {
           var term = request.term;
-            console.log(term)
           if( $.trim(term.replace(',','')) == '' )
             return;
           if ( term in cache ) {
