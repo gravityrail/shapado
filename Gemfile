@@ -13,21 +13,26 @@ if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'magic'
   gem 'nokogiri'
   gem 'mechanize'
-  gem 'bson_ext', '1.0.9', :require => "bson"
 else
   gem "maruku", "0.6.0"
 end
 
-gem "bson", "1.0.9", :require => "bson"
-gem "mongo", "1.0.9"
-
-gem "jnunemaker-validatable", "1.8.4", :require => "validatable"
-gem "mongo_mapper", :git => 'http://github.com/jnunemaker/mongomapper.git'
-gem "mongomapper_ext", "0.4.0"
-
-gem "compass", "0.10.5", :require => "compass"
+# ui
+gem "haml"
+gem 'compass', '0.10.6.pre.1'
 gem "compass-colors", "0.3.1"
 gem "fancy-buttons", "0.5.5"
+
+# mongodb
+gem 'bson', '1.1.1'
+gem 'plucky', '0.3.6'
+
+gem 'mongo', '1.1.1'
+gem 'jnunemaker-validatable', '1.8.4'
+gem 'mongo_mapper', '0.8.6'
+gem 'mongomapper_ext', '0.5.1'
+
+# utils
 
 gem "geoip"
 gem "whatlanguage", "1.0.0"
@@ -36,7 +41,6 @@ gem "magent", "0.4.2"
 
 gem 'goalie'
 gem 'dynamic_form'
-gem 'haml', '~> 3.0.13'
 
 gem "differ", "0.1.1"
 gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
@@ -44,14 +48,10 @@ gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
 
-# devise
-gem 'rack-openid', '~>1.2.0'
-gem 'oauth2', '0.0.13'
-gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
-#gem 'devise-mongo_mapper', :git => 'http://github.com/collectiveidea/devise-mongo_mapper.git'
-gem 'devise_openid_authenticatable', '1.0.0.alpha7', :git => "http://github.com/nbudin/devise_openid_authenticatable.git"
-gem 'devise-twitter', '0.1.1'
-gem 'multiauth', '0.1.3' #, :path => "vendor/gems/multiauth"
+
+# authentication
+gem 'omniauth', '0.1.6'
+gem 'multiauth', '0.2.7'
 
 
 group :development do
