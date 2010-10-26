@@ -45,6 +45,7 @@
         } else if(key == 8 && $(this).val()!=''){
           tag.removeClass('ui-state-hover');
         } else if ((key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
+            tag.removeClass('ui-state-hover');
             addTag($(this).val(), $(this));
             $(this).focus();
             $(this).autocomplete( "close" );
@@ -78,7 +79,7 @@
           }
           lastXhr = $.getJSON( "/questions/tags_for_autocomplete.js", request, function( data, status, xhr ) {
             cache[ term ] = data;
-            data.push({label:term.replace(',',''),caption:term.replace(',','')});
+            $.merge([{label:term.replace(',',''),caption:term.replace(',','')}],data);
             if ( xhr === lastXhr ) {
               response( data );
             }
