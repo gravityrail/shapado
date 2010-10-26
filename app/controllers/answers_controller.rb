@@ -55,7 +55,9 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new
-    @answer.safe_update(%w[body wiki], params[:answer])
+    @answer.safe_update(%w[body wiki anonymous], params[:answer])
+    @answer.anonymous = Boolean.to_mongo(params[:answer][:anonymous])
+
     @question = Question.find_by_slug_or_id(params[:question_id])
     @answer.question = @question
     @answer.group_id = @question.group_id
@@ -98,15 +100,11 @@ class AnswersController < ApplicationController
         format.js do
           render(:json => {:success => true, :message => flash[:notice],
             :html => render_to_string(:partial => "questions/answer",
-                                      :object => @answer,
-                                      :locals => {:question => @question})}.to_json)
+                                      :locals => {:answer => @answer, :question => @question})}.to_json)
         end
       else
         @answer.errors.add(:captcha, "is invalid") if !logged_in? && !recaptcha_valid?
 
-        puts "RECAPTCHA VALID: #{recaptcha_valid?}"
-        puts "User VALID: #{@answer.user.valid?}"
-        puts "Answer VALID: #{@answer.valid?}"
         errors = @answer.errors
         errors.merge!(@answer.user.errors) if @answer.user.anonymous && !@answer.user.valid?
         puts errors.full_messages
@@ -177,7 +175,7 @@ class AnswersController < ApplicationController
   end
 
   def check_update_permissions
-    @answer = Answer.find(params[:id])
+    @answer = Answer.find!(params[:id])
 
     allow_update = true
     unless @answer.nil?
@@ -185,7 +183,7 @@ class AnswersController < ApplicationController
         if @answer.wiki
           if !current_user.can_edit_wiki_post_on?(@answer.group)
             allow_update = false
-            reputation = @question.group.reputation_constrains["edit_wiki_post"]
+            reputation = @answer.group.reputation_constrains["edit_wiki_post"]
             flash[:error] = I18n.t("users.messages.errors.reputation_needed",
                                         :min_reputation => reputation,
                                         :action => I18n.t("users.actions.edit_wiki_post"))
@@ -217,31 +215,34 @@ class AnswersController < ApplicationController
     sweep_question(@question)
 
     Question.update_last_target(@question.id, @answer)
-    @answer.user.stats.add_answer_tags(*@question.tags)
+
     @question.answer_added!
-
     current_group.on_activity(:answer_question)
-    @answer.user.on_activity(:answer_question, current_group)
 
-    search_opts = {"notification_opts.#{current_group.id}.new_answer" => {:$in => ["1", true]},
-                    :_id => {:$ne => @answer.user.id},
-                    :select => ["email"]}
+    unless @answer.anonymous
+      @answer.user.stats.add_answer_tags(*@question.tags)
+      @answer.user.on_activity(:answer_question, current_group)
 
-    users = User.all(search_opts.merge(:_id => @question.watchers))
-    users.push(@question.user) if !@question.user.nil? && @question.user != @answer.user
-    followers = @answer.user.followers(:languages => [@question.language], :group_id => current_group.id)
+      search_opts = {"notification_opts.#{current_group.id}.new_answer" => {:$in => ["1", true]},
+                      :_id => {:$ne => @answer.user.id},
+                      :select => ["email"]}
 
-    users ||= []
-    followers ||= []
-    (users - followers).each do |u|
-      if !u.email.blank? && u.notification_opts.new_answer
-        Notifier.deliver_new_answer(u, current_group, @answer, false)
+      users = User.all(search_opts.merge(:_id => @question.watchers))
+      users.push(@question.user) if !@question.user.nil? && @question.user != @answer.user
+      followers = @answer.user.followers(:languages => [@question.language], :group_id => current_group.id)
+
+      users ||= []
+      followers ||= []
+      (users - followers).each do |u|
+        if !u.email.blank? && u.notification_opts.new_answer
+          Notifier.deliver_new_answer(u, current_group, @answer, false)
+        end
       end
-    end
 
-    followers.each do |u|
-      if !u.email.blank? && u.notification_opts.new_answer
-        Notifier.deliver_new_answer(u, current_group, @answer, true)
+      followers.each do |u|
+        if !u.email.blank? && u.notification_opts.new_answer
+          Notifier.deliver_new_answer(u, current_group, @answer, true)
+        end
       end
     end
   end

@@ -72,11 +72,15 @@
   .post-info
     .author.user_info.vcard
       .gravatar.logo
-        = gravatar(@question.user.email.to_s, :size => 32)
+        -if !@question.anonymous
+          = gravatar(@question.user.email.to_s, :size => 32)
       .user_data
         %span.asked_by
           = t('activerecord.attributes.question.asked_by')
-        =render :partial => "users/user_mini", :locals => {:user => @question.user}
+        -if @question.anonymous
+          =t("global.anonymous")
+        -else
+          =render :partial => "users/user_mini", :locals => {:user => @question.user}
         %span.time_ago.published{:title => @question.created_at, :class => "relativetime"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
           - if @question.wiki
@@ -196,9 +200,13 @@
   -form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "form mainAnswerForm"} do |f|
     = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
     .group.navform
-      .right
-        = f.label :wiki, "Wiki", :class => "radio"
-        = f.check_box :wiki, :class => "checkbox"
+      .controls.right{:style => "width: 50%"}
+        .left{:style => "width: 49.5%"}
+          = f.label :wiki, "Wiki", :class => "radio"
+          = f.check_box :wiki, :class => "checkbox"
+        .left{:style => "width: 49.5%"}
+          = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+          = f.check_box :anonymous, {:class => "checkbox"}, true, false
       = submit_tag t('answers.form.submit'), :class => "button"
     .clear
 

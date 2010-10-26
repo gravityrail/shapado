@@ -13,6 +13,7 @@ mk:
     user: претплати се на кориснички прашања
   global: 
     active: Активирај
+    anonymous: Анонимно
     by: од
     current: тековно
     from: од %{site}
@@ -33,6 +34,9 @@ mk:
       one: "%{count} пат"
       other: "%{count} пати"
       zero: никогаш
+  pagination: 
+    next: Следна &raquo;
+    previous: "&laquo; Претходна"
   scaffold: 
     add: додај
     back: назад
@@ -44,6 +48,7 @@ mk:
     edit: уреди
     more: повеќе ...
     new: додај нов %{model}
+    post_as_anonymous: Објави анонимно
     save: зачувај
     send: испрати
     show: прикажи

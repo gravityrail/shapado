@@ -40,7 +40,14 @@ module Shapado
     config.i18n.default_locale = :en
 
     # middlewares
+    config.middleware.use "MongoMapperMiddleware"
     config.middleware.use "DynamicDomain"
+    config.middleware.use "MongoMapperExt::FileServer"
+    if AppConfig.recaptcha["activate"]
+      config.middleware.use "Rack::Recaptcha", :public_key => AppConfig.recaptcha["public_key"],
+                                               :private_key => AppConfig.recaptcha["private_key"],
+                                               :paths => nil
+    end
 
     # Configure generators values. Many other options are available, be sure to check the documentation.
     config.generators do |g|

@@ -17,7 +17,7 @@ class User
   key :location,                  String, :limit => 200
   key :birthday,                  Time
 
-  key :identity_url,              String
+  key :identity_url,              String, :index => true
   key :role,                      String, :default => "user"
   key :last_logged_at,            Time
 
@@ -25,7 +25,7 @@ class User
 
   key :notification_opts,         NotificationConfig
 
-  key :language,                  String, :default => "en"
+  key :language,                  String, :default => "en", :index => true
   key :timezone,                  String
   key :language_filter,           String, :default => "user", :in => LANGUAGE_FILTERS
 
@@ -51,7 +51,7 @@ class User
 
   key :feed_token,                String
 
-  key :anonymous,                 Boolean, :default => false
+  key :anonymous,                 Boolean, :default => false, :index => true
 
   has_many :questions, :dependent => :destroy
   has_many :answers, :dependent => :destroy
@@ -157,7 +157,7 @@ class User
   end
 
   def preferred_tags_on(group)
-    @group_preferred_tags ||= (config_for(group).preferred_tags || []).to_a
+    @group_preferred_tags ||= (config_for(group, false).preferred_tags || []).to_a
   end
 
   def update_language_filter(filter)
@@ -185,7 +185,7 @@ class User
   end
 
   def is_preferred_tag?(group, *tags)
-    ptags = config_for(group).preferred_tags
+    ptags = config_for(group, false).preferred_tags
     tags.detect { |t| ptags.include?(t) }
   end
 
@@ -296,7 +296,7 @@ Time.zone.now ? 1 : 0)
 
   def activity_on(group, date)
     day = date.utc.at_beginning_of_day
-    last_day = config_for(group).last_activity_at
+    last_day = config_for(group, false).last_activity_at
 
     if last_day != day
       self.set({"membership_list.#{group.id}.last_activity_at" => day})
@@ -328,7 +328,7 @@ Time.zone.now ? 1 : 0)
     value = group.reputation_rewards[key.to_s].to_i
     value = key if key.kind_of?(Integer)
     Rails.logger.info "#{self.login} received #{value} points of karma by #{key} on #{group.name}"
-    current_reputation = config_for(group).reputation
+    current_reputation = config_for(group, false).reputation
 
     if value
       self.increment({"membership_list.#{group.id}.reputation" => value})
@@ -363,7 +363,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def badges_count_on(group)
-    config = config_for(group)
+    config = config_for(group, false)
     [config.bronze_badges_count, config.silver_badges_count, config.gold_badges_count]
   end
 

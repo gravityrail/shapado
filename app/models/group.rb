@@ -15,7 +15,7 @@ class Group
   key :_id, String
   key :name, String, :required => true
   key :subdomain, String
-  key :domain, String
+  key :domain, String, :index => true
   key :legend, String
   key :description, String
   key :default_tags, Array
@@ -28,7 +28,7 @@ class Group
   key :analytics_id, String
   key :analytics_vendor, String
   key :has_custom_analytics, Boolean, :default => true
-  key :language, String
+  key :language, String, :index => true
   key :activity_rate, Float, :default => 0.0
   key :openid_only, Boolean, :default => false
   key :registered_only, Boolean, :default => false
@@ -103,6 +103,11 @@ class Group
     if domain.blank?
       self[:domain] = "#{subdomain}.#{AppConfig.domain}"
     end
+  end
+
+  # TODO: store this variable
+  def has_custom_domain?
+    @has_custom_domain ||= self[:domain].to_s !~ /#{AppConfig.domain}/
   end
 
   def disallow_javascript
@@ -221,6 +226,24 @@ class Group
 
   def self.humanize_reputation_rewards(key)
     I18n.t("groups.shared.reputation_rewards.#{key}", :default => key.humanize)
+  end
+
+  def self.find_file_from_params(params, request)
+    if request.path =~ /\/(logo|css|favicon)\/([^\/\.?]+)/
+      @group = Group.find_by_slug_or_id($2, :select => [:file_list])
+      case $1
+      when "logo"
+        @group.logo
+      when "css"
+        if @group.has_custom_css?
+          css=@group.custom_css
+          css.content_type = "text/css"
+          css
+        end
+      when "favicon"
+        @group.custom_favicon if @group.has_custom_favicon?
+      end
+    end
   end
 
   def check_reputation_configs

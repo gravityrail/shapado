@@ -1,6 +1,7 @@
 # Messages for Russian (Русский)
 # Exported from translatewiki.net
 # Export driver: syck
+# Author: Eleferen
 # Author: Lockal
 ru: 
   activerecord: 
@@ -14,6 +15,7 @@ ru:
     shared: 
       addict: 
         description: Посещал сайт каждый день 20 дней подряд
+        name: Увлечённый
       autobiographer: 
         description: Заполнил все поля пользовательского профиля
         name: Автобиограф
@@ -31,31 +33,40 @@ ru:
         name: Очистка
       commentator: 
         description: Оставил 10 комментариев
+        name: Комментатор
       critic: 
         description: Первый раз проголосовал «против»
+        name: Критик
       disciplined: 
         description: Удалил собственный пост с оценкой 3 или выше
         name: Дисциплинированный
       editor: 
         description: Первый раз отредактировал пост
+        name: Редактор
       effort_medal: 
         description: Получил 100 положительных голосов
+        name: Медаль за стремление
       enlightened: 
         description: Первый ответ был принят хотя бы 10 голосами «за»
         name: Просвещённый
       famous_question: 
         description: Задал вопрос с 10000 просмотров
+        name: Отличный вопрос
       fanatic: 
         description: Посещал сайт каждый день 100 дней подряд
+        name: Фанатик
       favorite_question: 
         description: Вопрос добавили в избранное 25 пользователей
+        name: Любимый вопрос
       friendly: 
         description: Впервые начал за кем-то следить
         name: Дружественный
       good_answer: 
         description: Написал ответ, получивший в среднем больше 25 голосов
+        name: Хороший ответ
       good_question: 
         description: Написал вопрос, получивший в среднем больше 25 голосов
+        name: Хороший вопрос
       great_answer: 
         description: За ответ проголосовали «за» 100 раз
         name: Отличный ответ
@@ -64,13 +75,16 @@ ru:
         name: Отличный вопрос
       guru: 
         description: Дал решение вопроса со средним числом голосов более 40
+        name: Гуру
       inquirer: 
         description: Задал первый вопрос
+        name: Опрашивающий
       interesting_person: 
         description: Число следящих составило более 10
         name: Интересная личность
       merit_medal: 
         description: Получил 200 голосов «за»
+        name: Медаль за заслуги
       necromancer: 
         description: Ответил более чем 60 дней спустя  на вопрос  по крайней мере с 5 голосами
         name: Некромант
@@ -82,6 +96,7 @@ ru:
         name: Хороший вопрос
       notable_question: 
         description: Задал вопрос с 2500 просмотров
+        name: Примечательный вопрос
       organizer: 
         description: Первая смена тегов
         name: Организатор
@@ -90,15 +105,19 @@ ru:
         name: Под давлением со стороны
       pioneer: 
         description: Зарегистрировался одним из первых
+        name: Пионер
       popstar: 
         description: 500 голосов «за» и до 10 голосов «против»
+        name: Звезда эстрады
       popular_person: 
         description: Число следящих составило более 50
         name: Популярная личность
       popular_question: 
         description: Задал вопрос с 1000 просмотров
+        name: Популярные вопросы
       rockstar: 
         description: 1000 голосов «за» и до 10 голосов «против»
+        name: Рок-звезда
       scholar: 
         description: Первый раз принял ответ на собственный вопрос
         name: Эрудит
@@ -107,6 +126,7 @@ ru:
         name: Самообучающийся
       service_medal: 
         description: 300 голосов «за»
+        name: Памятная медаль
       shapado: 
         description: Посещал сайт каждый день 8 дней подряд
       stellar_question: 
@@ -114,12 +134,16 @@ ru:
         name: Звёздный вопрос
       student: 
         description: Задал первый вопрос хотя бы с одним голосом «за»
+        name: Студент
       supporter: 
         description: Первый раз проголосовал «за»
+        name: Помощник
       troubleshooter: 
         description: Ответил первый раз
+        name: Устраняющий проблемы
       tutor: 
         description: Дал решение вопроса со средним числом голосов более 2
+        name: Репетитор
     show: 
       description: "раз(а) бедж вручён пользователям. Недавно награждены:"
       earned: заработано

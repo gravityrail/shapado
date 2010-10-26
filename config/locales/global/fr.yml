@@ -3,6 +3,8 @@
 # Export driver: syck
 # Author: McDutchie
 # Author: Patcito
+# Author: Peter17
+# Author: Verdy p
 fr: 
   feeds: 
     feed: Flux
@@ -14,6 +16,7 @@ fr:
     user: Inscrivez-vous aux questions de l'utilisateur
   global: 
     active: Activer
+    anonymous: Anonyme
     by: par
     current: Actuel
     from: depuis %{site}
@@ -34,6 +37,9 @@ fr:
       one: "%{count} fois"
       other: "%{count} fois"
       zero: Jamais
+  pagination: 
+    next: Suivant »
+    previous: « Précédent
   scaffold: 
     add: Ajouter
     back: Retour
@@ -45,6 +51,7 @@ fr:
     edit: Éditer
     more: Plus...
     new: Ajouter %{model}
+    post_as_anonymous: Publier de manière anonyme
     save: Sauvegarder
     send: Envoyer
     show: Monter

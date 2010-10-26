@@ -253,6 +253,8 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new
     @question.safe_update(%w[title body language tags wiki], params[:question])
+    @question.anonymous = Boolean.to_mongo(params[:question][:anonymous])
+
     @question.group = current_group
     @question.user = current_user
 
@@ -282,33 +284,33 @@ class QuestionsController < ApplicationController
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
         sweep_question_views
 
-        @question.user.stats.add_question_tags(*@question.tags)
         current_group.tag_list.add_tags(*@question.tags)
+        unless @question.anonymous
+          @question.user.stats.add_question_tags(*@question.tags)
+          @question.user.on_activity(:ask_question, current_group)
+          Magent.push("actors.judge", :on_ask_question, @question.id)
 
-        @question.user.on_activity(:ask_question, current_group)
+          # TODO: move to magent
+          users = User.find_experts(@question.tags, [@question.language],
+                                                    :except => [@question.user.id],
+                                                    :group_id => current_group.id)
+          followers = @question.user.followers(:group_id => current_group.id, :languages => [@question.language])
+
+          (users - followers).each do |u|
+            if !u.email.blank?
+              Notifier.deliver_give_advice(u, current_group, @question, false)
+            end
+          end
+
+          followers.each do |u|
+            if !u.email.blank?
+              Notifier.deliver_give_advice(u, current_group, @question, true)
+            end
+          end
+        end
+
         current_group.on_activity(:ask_question)
-
-        Magent.push("actors.judge", :on_ask_question, @question.id)
-
         flash[:notice] = t(:flash_notice, :scope => "questions.create")
-
-        # TODO: move to magent
-        users = User.find_experts(@question.tags, [@question.language],
-                                                  :except => [@question.user.id],
-                                                  :group_id => current_group.id)
-        followers = @question.user.followers(:group_id => current_group.id, :languages => [@question.language])
-
-        (users - followers).each do |u|
-          if !u.email.blank?
-            Notifier.deliver_give_advice(u, current_group, @question, false)
-          end
-        end
-
-        followers.each do |u|
-          if !u.email.blank?
-            Notifier.deliver_give_advice(u, current_group, @question, true)
-          end
-        end
 
         format.html { redirect_to(question_path(@question)) }
         format.json { render :json => @question.to_json(:except => %w[_keywords watchers]), :status => :created}

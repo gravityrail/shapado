@@ -3,6 +3,7 @@
 # Export driver: syck
 # Author: Giro720
 # Author: Luckas Blade
+# Author: Vgeorge
 pt-BR: 
   feeds: 
     feed: Feed
@@ -14,6 +15,7 @@ pt-BR:
     user: Subscrever as perguntas do usuário
   global: 
     active: Ativar
+    anonymous: Anônimo
     by: por
     current: Atual
     from: de %{site}
@@ -34,6 +36,9 @@ pt-BR:
       one: "%{count} vez"
       other: "%{count} vezes"
       zero: Nunca
+  pagination: 
+    next: Seguinte &raquo;
+    previous: "&laquo; Anterior"
   scaffold: 
     add: Adicionar
     back: Voltar
@@ -45,6 +50,7 @@ pt-BR:
     edit: Editar
     more: Mais ...
     new: Adicionar novo %{model}
+    post_as_anonymous: Publicar como anônimo
     save: Salvar
     send: Enviar
     show: Mostrar

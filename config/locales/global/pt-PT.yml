@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Hamilton Abreu
+# Author: Waldir
 pt-PT: 
   feeds: 
     feed: Feed
@@ -13,6 +14,7 @@ pt-PT:
     user: Subscrever as perguntas do utilizador
   global: 
     active: Activar
+    anonymous: Anónimo
     by: por
     current: Actual
     from: de %{site}
@@ -33,6 +35,9 @@ pt-PT:
       one: "%{count} vez"
       other: "%{count} vezes"
       zero: Nunca
+  pagination: 
+    next: Seguinte &raquo;
+    previous: "&laquo; Anterior"
   scaffold: 
     add: Adicionar
     back: Voltar
@@ -44,6 +49,7 @@ pt-PT:
     edit: Editar
     more: Mais ...
     new: Adicionar %{model} novo
+    post_as_anonymous: Publicar como Anónimo
     save: Gravar
     send: Enviar
     show: Mostrar
