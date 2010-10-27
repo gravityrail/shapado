@@ -5,9 +5,10 @@
               var tag = $.trim(tag.replace(',',''));
               if(!input.parent().find('.added-tag[data-caption='+tag+']').length){
                 input.val('');
+                input.removeAttr('data-init')
                 var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
                 input.before(tag);
-                input.css({width: '150px'});
+                input.css({width: '30px'});
                 input.attr({placeholder: ''});
                 var tags = [];
                 input.parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
@@ -19,11 +20,13 @@
       $(".added-tag").live('mouseenter',function(){$(this).addClass('ui-state-hover')})
       $(".added-tag").live('mouseleave',function(){$(this).removeClass('ui-state-hover')})
       tagInput = $(this);
+      tagInput.addClass('ui-menu');
+      tagInput.attr({'data-init': '1'})
       var name = tagInput.attr('name');
       tagInput.attr('name','tag_input');
       tagInput.after('<input type="hidden" class="ac-tags" name="'+name+'">');
-      var tagwrapper=$('<div class="tagwrapper" style="margin-top:15px;background:#FFF;"></div>');
-      tagwrapper.css({border:'2px solid #CCCCCC', 'min-height': '40px'});
+      var tagwrapper=$('<div class="tagwrapper" style="background:#FFF;"></div>');
+      tagwrapper.css({border:'2px solid #CCCCCC', 'min-height': '40px', 'margin-top':'0px',float:'left',width:'99%'});
       tagInput.wrap(tagwrapper);
       var tagwrapper = tagInput.parent('.tagwrapper');
       tagwrapper.click(function (){tagwrapper.children('.autocomplete_for_tags').focus();});
@@ -36,20 +39,28 @@
         if(key==8 && $(this).val()==''){
           if(tag.hasClass('ui-state-hover')){
             $(this).prev('ul').remove();
+            $(this).width(30);
+            $(this).removeAttr('data-init');
             var tags = [];
             $(this).parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
             $(this).parent().next('.ac-tags').val(tags.join(','));
+            $(this).autocomplete( "close" );
           } else {
               tag.addClass('ui-state-hover');
           }
         } else if(key == 8 && $(this).val()!=''){
           tag.removeClass('ui-state-hover');
+          if($(this).width()>38 && !$(this).attr('data-init'))
+            $(this).width($(this).width()-7);
         } else if ((key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
             tag.removeClass('ui-state-hover');
             addTag($(this).val(), $(this));
             $(this).focus();
             $(this).autocomplete( "close" );
             return false;
+        } else {
+            if(!$(this).attr('data-init'))
+              $(this).width($(this).width()+9);
         }
       });
       var ac = $(this);
