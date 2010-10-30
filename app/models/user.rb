@@ -4,6 +4,9 @@ class User
   include MongoMapper::Document
   include MultiauthSupport
 
+  devise :database_authenticatable, :recoverable, :registerable, :rememberable,
+         :lockable, :token_authenticatable, :encryptable, :omniauthable, :encryptor => :restful_authentication_sha1
+
   ROLES = %w[user moderator admin]
   LANGUAGE_FILTERS = %w[any user] + AVAILABLE_LANGUAGES
   LOGGED_OUT_LANGUAGE_FILTERS = %w[any] + AVAILABLE_LANGUAGES
@@ -239,7 +242,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def openid_login?
-    self.openid_identities.first(:select => [:id]).present? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
+    !self.auth_keys.empty? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
   end
 
   def twitter_login?

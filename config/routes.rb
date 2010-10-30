@@ -6,7 +6,7 @@ Shapado::Application.routes.draw do
   match '/twitter/share' => 'twitter#share', :as => :twitter_share
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
-             :controllers => {:registrations => 'users'}) do
+             :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
 

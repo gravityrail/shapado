@@ -1,4 +1,5 @@
 require 'devise-mongo_mapper'
+require 'mongo_mapper_adapter'
 
 Encoding.default_internal = 'utf-8'
 Encoding.default_external = 'utf-8'

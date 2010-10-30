@@ -51,8 +51,9 @@ gem 'sanitize', '1.2.1'
 
 # authentication
 gem 'omniauth', '~> 0.1.6'
-gem 'multiauth', '0.2.7'
+gem 'multiauth', :path => "vendor/gems/multiauth/"
 
+gem 'orm_adapter'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git', :branch => 'omniauth'
 
 
