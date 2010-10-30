@@ -1,3 +1,6 @@
+%h1
+  = link_to "google!", user_omniauth_authorize_path(:open_id, :openid_url => "http://google.com")
+
 .inner
   = t("layouts.application.openid.explaination")
   %br

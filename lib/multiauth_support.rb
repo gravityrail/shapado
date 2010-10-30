@@ -3,7 +3,7 @@ module MultiauthSupport
 
   included do
     devise :database_authenticatable, :recoverable, :registerable, :rememberable,
-           :lockable, :token_authenticatable, :encryptable, :omniauthable
+           :lockable, :token_authenticatable, :encryptable, :omniauthable, :encryptor => :restful_authentication_sha1
 
     key :using_openid, Boolean, :default => false
     key :openid_email
