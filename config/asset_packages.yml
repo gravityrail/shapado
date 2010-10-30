@@ -24,6 +24,7 @@ javascripts:
   - modules/members
   - modules/move_group
   - modules/editor
+  - multiauth
 
 - show:
   - jquery.autovideo
@@ -35,4 +36,5 @@ stylesheets:
   - jquery-ui
   - compiled/application
   - prettify
+  - multiauth
 

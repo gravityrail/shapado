@@ -44,9 +44,9 @@ function openidCarouselEffect() {
 
 
 jQuery(function ($) {
-  var $form = $("form#openid");
-  var $identity_url = $form.find("input#identity_url");
-  var $input_area = $form.find("#openid_inputarea");
+  var $form = $("#openid_btns");
+
+  var $input_area = $("#openid_inputarea");
   var $input_username = $input_area.find("input#openid_username");
 
   $form.find("#nojsopenid").hide();
@@ -58,7 +58,7 @@ jQuery(function ($) {
     return false;
   });
 
-  $form.find(".openid_btn").click(function(e){
+  $(".openid_btn").click(function(e){
     var a = $(this);
 
     if(a.attr("href").match("{user_name}")) {
@@ -70,21 +70,27 @@ jQuery(function ($) {
       return false;
     }
 
-    if(a.attr("data-real") == "false") {
-      $identity_url.val(a.attr("href"));
-      $form.submit();
-      return false;
-    }
-
     return true;
   });
 
-  $form.find("#openid_inputarea_submit").click(function() {
+  $("#openid_inputarea_submit").click(function() {
     var v = $input_username.val();
     if(v) {
-      $identity_url.val($input_username.attr("data-provider").replace("{user_name}",v ));
+      window.location = $input_username.attr("data-provider").replace("{user_name}",v );
     }
   });
 
-//  openidCarouselEffect();
+  openidCarouselEffect();
+
+  var intervalId = null;
+  $("#multiauth-menu").hover(function(){
+    if(intervalId)
+      clearTimeout(intervalId);
+    $(this).addClass("hovering");
+  }, function() {
+    var e = $(this);
+    intervalId = setTimeout(function() {
+      e.removeClass("hovering");
+    }, 1000)
+  })
 });
