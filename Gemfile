@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '3.0.1'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -50,8 +50,10 @@ gem 'sanitize', '1.2.1'
 
 
 # authentication
-gem 'omniauth', '0.1.6'
+gem 'omniauth', '~> 0.1.6'
 gem 'multiauth', '0.2.7'
+
+gem 'devise', :git => 'http://github.com/plataformatec/devise.git', :branch => 'omniauth'
 
 
 group :development do

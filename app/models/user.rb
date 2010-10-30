@@ -41,14 +41,6 @@ class User
 
   key :membership_list,           MembershipList
 
-  key :facebook_id,               String
-  key :facebook_token,            String
-  key :facebook_profile,          String
-
-  key :twitter_token,             String
-  key :twitter_secret,            String
-  key :twitter_login,             String
-
   key :feed_token,                String
 
   key :anonymous,                 Boolean, :default => false, :index => true
