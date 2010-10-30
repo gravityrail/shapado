@@ -1,12 +1,12 @@
 module Support
 module Voteable
-    def self.included(klass)
+  def self.included(klass)
     klass.class_eval do
       extend ClassMethods
       include InstanceMethods
       key :votes_count, Integer, :default => 0
       key :votes_average, Integer, :default => 0
-      has_many :votes, :as => "voteable", :dependent => :destroy
+      has_many :votes
     end
   end
 

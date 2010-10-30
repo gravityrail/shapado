@@ -1,24 +1,21 @@
 class Vote
-  include MongoMapper::Document
+  include MongoMapper::EmbeddedDocument
 
-  timestamps!
+#   timestamps! FIXME
 
   key :_id, String
   key :value, Integer, :required => true
 
-  key :user_id, String, :index => true
+  key :user_id, String
   belongs_to :user
 
   key :user_ip, String
 
-  key :group_id, String, :required => true, :index => true
+  key :group_id, String, :required => true
   belongs_to :group
 
-  key :voteable_id, String
-  key :voteable_type, String
-  belongs_to :voteable, :polymorphic => true
+  alias :voteable :_root_document
 
-  validates_presence_of :user_id, :voteable_id, :voteable_type
   validates_inclusion_of :value, :within => [1,-1]
 
   validate :should_be_unique
@@ -26,16 +23,20 @@ class Vote
   validate :check_owner
   validate :check_voteable
 
+  def voteable_type
+    self.voteable.class
+  end
+
   protected
   def should_be_unique
-    vote = Vote.first( :voteable_type => self.voteable_type,
-                       :voteable_id => self.voteable_id,
-                       :user_id     => self.user_id )
-
+    vote = self._root_document.votes.detect{ |vote| vote.user_id == self.user_id }
     valid = (vote.nil? || vote.id == self.id)
-    if !valid
-      self.errors.add(:voteable, "You already voted this #{self.voteable_type}")
+
+    unless valid
+      self.errors.add(:user, I18n.t("votes.model.messages.already_voted",
+                                    :default => "You already voted this #{self.voteable.class}"))
     end
+    valid
   end
 
   def check_reputation
@@ -62,7 +63,7 @@ class Vote
   def check_owner
     if self.voteable.user == self.user
       error = I18n.t(:flash_error, :scope => "votes.create") + " "
-      error += I18n.t(self.voteable_type.downcase, :scope => "activerecord.models").downcase
+      error += I18n.t(self.voteable.class.downcase, :scope => "activerecord.models").downcase
       self.errors.add(:user, error)
       return false
     end
@@ -72,7 +73,7 @@ class Vote
   def check_voteable
     valid = true
     error_message = ""
-    case self.voteable_type
+    case self.voteable.class
       when "Question"
         valid = !self.voteable.closed
         error_message = I18n.t("votes.model.messages.closed_question")
@@ -95,7 +96,7 @@ class Vote
         end
     end
     if !valid
-      self.errors.add(self.voteable_type.tableize.singularize, error_message)
+      self.errors.add(self.voteable.class.tableize.singularize, error_message)
     end
     return valid
   end

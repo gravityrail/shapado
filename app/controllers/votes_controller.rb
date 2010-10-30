@@ -1,15 +1,15 @@
 class VotesController < ApplicationController
+  before_filter :find_voteable
   before_filter :check_permissions, :except => [:index]
-  
+
+
   def index
     redirect_to(root_path)
   end
 
   # TODO: refactor
   def create
-    vote = Vote.new(:voteable_type => params[:voteable_type],
-                    :voteable_id => params[:voteable_id],
-                    :user => current_user)
+    vote = Vote.new(:user => current_user)
     vote_type = ""
     if params[:vote_up] || params['vote_up.x'] || params['vote_up.y']
       vote_type = "vote_up"
@@ -81,6 +81,18 @@ class VotesController < ApplicationController
   end
 
   protected
+  def find_voteable
+    if params[:answer_id]
+      @voteable = current_group.answers.find(params[:answer_id])
+    elsif params[:question_id]
+      @voteable = current_group.questions.find_by_slug_or_id(params[:question_id])
+    end
+
+    if params[:comment_id]
+      @voteable = @voteable.comments.find(params[:comment_id])
+    end
+  end
+
   def check_permissions
     unless logged_in?
       flash[:error] = t(:unauthenticated, :scope => "votes.create")
