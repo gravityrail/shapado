@@ -32,19 +32,21 @@
 }
 
 #openid_highlight {
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  o-border-radius: 5px;
+  khtml-border-radius: 5px;
+  border-radius: 5px;
   padding: 2px;
   background-color: #FFFCC9;
   float: left;
 }
-
 .openid_btn {
   background: url(/images/openid-icons.png) no-repeat;
   margin: 3px;
   display: block;
-  height: 48px;
-  width: 150px;
+  height: 35px;
+  width: 105px;
 }
 
 .OpenID { background-position: 0 0; }
@@ -132,28 +134,39 @@ a.openid_large_btn:focus {
   -moz-outline-style: none;
 }
 
+
+
+#multiauth-menu #carousel {
+  margin:0 auto;
+  overflow:hidden;
+  width: 337px;
+
+}
 #multiauth-menu {
   display: inline;
   position: relative;
 }
-
 #multiauth-menu div.menu-container {
   display: none;
-  border: 2px solid gray;
+  background-color:#f90;
+  padding:10px;
+  -moz-border-radius:10px;
 }
-
 #multiauth-menu ul {
   list-style-type: none;
 }
-
 #multiauth-menu div.menu-container {
-  width: 56em;
-  position: absolute;
-  top: 1.6em;
-  left: 0em;
+  width: 650px;
+  position:absolute;
+  top: -125px;
+  left: 155px;
   z-index: 1000;
+  -moz-border-radius:10px;
+  -webkit-border-radius: 10px;
+  o-border-radius: 10px;
+  khtml-border-radius: 10px;
+  border-radius: 10px;
 }
-
 #multiauth-menu.hovering div.menu-container {
   display: block;
 }
@@ -161,21 +174,26 @@ a.openid_large_btn:focus {
 #carousel {
   margin:0 auto;
   overflow:hidden;
-  width: 337px;
-
+  width: 375px;
+  height: 240px
 }
-
+#carousel .openid_btn {
+  margin: 10px;
+  display: block;
+  height: 46px;
+  width: 150px;
+}
 #slides {
   overflow:hidden;
   /* fix ie overflow issue */
   position:relative;
-  border:1px solid #ccc;
+  border-top:1px solid #ccc !important;
 }
 
 #slides .list {
   position: relative;
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 20px;
   list-style: none;
   margin: 0;
   padding: 0;

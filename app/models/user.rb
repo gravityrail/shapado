@@ -474,13 +474,6 @@ Time.zone.now ? 1 : 0)
     self.feed_token = UUIDTools::UUID.random_create.hexdigest
   end
 
-  def merge_user(user)
-    [Question, Answer, Comment, Vote, Badge, UserStat].each do |m|
-      m.set({:user_id => user.id}, {:user_id => self.id})
-    end
-    user
-  end
-
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }

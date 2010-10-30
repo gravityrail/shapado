@@ -34,6 +34,7 @@ module MultiauthSupport
       end
 
       auth_key = "#{provider}_#{fields["uid"]}"
+
       user = User.first(:auth_keys => auth_key)
       if user.nil?
         user = User.new(:auth_keys => [auth_key])
@@ -76,14 +77,17 @@ module MultiauthSupport
       if user.present? && user.id != self.id
         self.push(:"user_info.#{fields["provider"]}" => fields["user_info"])
 
-        user.destroy if merge_account(user)
+        user.destroy if merge_user(user)
       end
 
       self.push_uniq(:auth_keys => auth_key)
     end
 
-    def merge_account(other_user)
-      false
+    def merge_user(user)
+      [Question, Answer, Comment, Vote, Badge, UserStat].each do |m|
+        m.set({:user_id => user.id}, {:user_id => self.id})
+      end
+      user
     end
 
     def password_required?

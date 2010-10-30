@@ -1,6 +1,6 @@
 GIT
-  remote: http://github.com/plataformatec/devise.git
-  revision: 94622054de04075dad5da89fb6c04b97c7e47ae0
+  remote: http://github.com/dcu/devise.git
+  revision: a64fdd06cf4d9b4369d34ec18f6b534297dde874
   branch: omniauth
   specs:
     devise (1.2.rc)
@@ -8,8 +8,9 @@ GIT
       orm_adapter (~> 0.0.2)
       warden (~> 1.0.0)
 
-PATH
-  remote: vendor/gems/multiauth
+GIT
+  remote: http://github.com/dcu/multiauth.git
+  revision: b04f7cd6c64f5780261439bec930f6bff0c797da
   specs:
     multiauth (0.2.7)
       omniauth (~> 0.1.3)
