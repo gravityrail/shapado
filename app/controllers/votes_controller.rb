@@ -18,7 +18,6 @@ class VotesController < ApplicationController
       vote_type = "vote_down"
       vote.value = -1
     end
-    vote.group = vote.voteable.group
 
     vote_state = push_vote(vote)
 
@@ -114,15 +113,15 @@ class VotesController < ApplicationController
   end
 
   def push_vote(vote)
-    user_vote = current_user.vote_on(vote.voteable)
-    voteable = vote.voteable
+    user_vote = current_user.vote_on(@voteable)
+    @voteable.votes << vote
 
     state = :error
     if user_vote.nil?
+      @voteable.votes << vote
       if vote.valid?
-        voteable.votes << vote
-        voteable.save # TODO: use modifiers
-        vote.voteable.add_vote!(vote.value, current_user)
+        @voteable.save # TODO: use modifiers
+        @voteable.add_vote!(vote.value, current_user)
         flash[:notice] = t("votes.create.flash_notice")
         state = :created
       else
@@ -130,21 +129,19 @@ class VotesController < ApplicationController
       end
     elsif(user_vote.valid?)
       if(user_vote.value != vote.value)
-        voteable.remove_vote!(user_vote.value, current_user)
-        voteable.add_vote!(vote.value, current_user)
+        @voteable.remove_vote!(user_vote.value, current_user)
+        @voteable.add_vote!(vote.value, current_user)
 
         user_vote.value = vote.value
-        if(vote.valid)
-          voteable.class.collection.update({"votes._id" => user_vote.id},
-                                           {"votes.$.value" => vote.value})
-        end
+        @voteable.class.collection.update({"votes._id" => user_vote.id},
+                                          {"$set" => {:"votes.$.value" => vote.value}})
         flash[:notice] = t("votes.create.flash_notice")
         state = :updated
       else
         value = vote.value
-        voteable.votes.remove(vote);
-        voteable.save # TODO: use modifiers
-        voteable.remove_vote!(value, current_user)
+        @voteable.votes.delete_if { |v| v._id ==  vote.id}
+        @voteable.save # TODO: use modifiers
+        @voteable.remove_vote!(value, current_user)
         flash[:notice] = t("votes.destroy.flash_notice")
         state = :deleted
       end
@@ -153,13 +150,13 @@ class VotesController < ApplicationController
       state = :error
     end
 
-    if vote.voteable.is_a?(Answer)
-      question = voteable.question
+    if @voteable.is_a?(Answer)
+      question = @voteable.question
       sweep_question(question)
 
       if vote.value == 1
-        Question.set(question.id, {:answered_with_id => voteable.id}) if !question.answered
-      elsif question.answered_with_id == voteable.id && voteable.votes_average <= 1
+        Question.set(question.id, {:answered_with_id => @voteable.id}) if !question.answered
+      elsif question.answered_with_id == @voteable.id && @voteable.votes_average <= 1
         Question.set(question.id, {:answered_with_id => nil})
       end
     end

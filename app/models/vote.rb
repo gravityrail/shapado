@@ -11,9 +11,6 @@ class Vote
 
   key :user_ip, String
 
-  key :group_id, String, :required => true
-  belongs_to :group
-
   alias :voteable :_root_document
 
   validates_inclusion_of :value, :within => [1,-1]
