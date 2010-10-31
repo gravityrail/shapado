@@ -2,8 +2,10 @@ class GroupsWidget < Widget
   before_validation_on_create :set_name
   before_validation_on_update :set_name
 
+  key :settings, Hash, :default => { :limit => 5 }
+
   def recent_groups
-    Group.all(:limit => 5, :order => "created_at desc", :state => "active", :private => false, :isolate => false)
+    Group.all(:limit => self[:settings][:limit], :order => "created_at desc", :state => "active", :private => false, :isolate => false)
   end
 
   protected

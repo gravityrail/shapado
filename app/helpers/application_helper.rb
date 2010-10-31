@@ -93,10 +93,10 @@ module ApplicationHelper
     end
   end
 
-  def tag_cloud(tags = [], options = {})
+  def tag_cloud(tags = [], options = {}, limit = nil)
     if tags.empty?
       tags = Question.tag_cloud({:group_id => current_group.id, :banned => false}.
-                        merge(language_conditions.merge(language_conditions)))
+                        merge(language_conditions.merge(language_conditions)), limit)
     end
 
     return '' if tags.size <= 2

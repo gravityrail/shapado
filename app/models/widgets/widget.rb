@@ -4,6 +4,7 @@ class Widget
   key :_id, String
   key :name, String, :required => true
   key :_type, String
+  key :settings, Hash
 
   alias :group :_root_document
 
@@ -47,6 +48,11 @@ class Widget
     widgets[current_pos], widgets[pos] = widgets[pos], widgets[current_pos]
     group.widgets = widgets
     group.save
+  end
+
+  def update_settings(params)
+    ##TODO: check what's going in
+    self.settings = params[:settings]
   end
 
   def description
