@@ -37,7 +37,7 @@ gem 'mongomapper_ext', '0.5.1'
 gem "geoip"
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
-gem "magent", "0.4.2"
+gem "magent", "0.5.2"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'

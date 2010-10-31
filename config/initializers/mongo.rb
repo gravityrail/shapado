@@ -3,6 +3,9 @@ require 'mm-paginate'
 MongoMapper.setup(YAML.load_file(Rails.root.join('config', 'database.yml')),
                   Rails.env, { :logger => Rails.logger, :passenger => false })
 
+Magent.setup(YAML.load_file(Rails.root.join('config', 'magent.yml')),
+                  Rails.env, {})
+
 MongoMapperExt.init
 
 if defined?(PhusionPassenger)
