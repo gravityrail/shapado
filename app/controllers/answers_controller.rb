@@ -235,13 +235,13 @@ class AnswersController < ApplicationController
       followers ||= []
       (users - followers).each do |u|
         if !u.email.blank? && u.notification_opts.new_answer
-          Notifier.deliver_new_answer(u, current_group, @answer, false)
+#           Notifier.deliver_new_answer(u, current_group, @answer, false)
         end
       end
 
       followers.each do |u|
         if !u.email.blank? && u.notification_opts.new_answer
-          Notifier.deliver_new_answer(u, current_group, @answer, true)
+#           Notifier.deliver_new_answer(u, current_group, @answer, true)
         end
       end
     end

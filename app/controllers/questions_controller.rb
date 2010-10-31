@@ -303,13 +303,13 @@ class QuestionsController < ApplicationController
 
           (users - followers).each do |u|
             if !u.email.blank?
-              Notifier.deliver_give_advice(u, current_group, @question, false)
+#               Notifier.give_advice(u, current_group, @question, false).deliver
             end
           end
 
           followers.each do |u|
             if !u.email.blank?
-              Notifier.deliver_give_advice(u, current_group, @question, true)
+#               Notifier.give_advice(u, current_group, @question, true).deliver
             end
           end
         end
@@ -494,7 +494,7 @@ class QuestionsController < ApplicationController
     @question.add_watcher(current_user)
 
     if (@question.user_id != current_user.id) && current_user.notification_opts.activities
-      Notifier.deliver_favorited(current_user, @question.group, @question)
+#       Notifier.deliver_favorited(current_user, @question.group, @question)
     end
 
     respond_to do |format|
