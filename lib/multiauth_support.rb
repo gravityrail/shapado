@@ -27,6 +27,8 @@ module MultiauthSupport
 
   module ClassMethods
     def authenticate(fields)
+      puts "FIELDS #{fields.inspect}"
+
       provider = fields["provider"]
 
       if fields["uid"] =~ %r{google\.com/accounts/o8/} && fields["user_info"]["email"]
@@ -46,6 +48,8 @@ module MultiauthSupport
         if user.email.blank?
           user.email = user.user_info[provider]["email"]
         end
+
+        user.send("handle_#{provider}", fields) if user.respond_to?("handle_#{provider}")
 
         if user.login.blank?
           if user.email.blank?
@@ -94,6 +98,43 @@ module MultiauthSupport
       return false if self[:using_openid] || self[:facebook_id].present? || self[:github_id].present?
 
       (encrypted_password.blank? || !password.blank?)
+    end
+
+    def twitter_client
+      if self.twitter_secret.present && self.twitter_token.present? && (config = Multiauth.providers["Twitter"])
+        TwitterOAuth::Client.new(
+          :consumer_key => config["id"],
+          :consumer_secret => config["token"],
+          :token => self.twitter_token,
+          :secret => self.twitter_secret
+        )
+      end
+    end
+
+    private
+    # {"provider"=>"facebook", "uid"=>"4332432432432", "credentials"=>{"token"=>"432432432432432"},
+    # "user_info"=>{"nickname"=>"profile.php?id=4332432432432", "first_name"=>"My", "last_name"=>"Name", "name"=>"My Name", "urls"=>{"Facebook"=>"http://www.facebook.com/profile.php?id=4332432432432", "Website"=>nil}},
+    # "extra"=>{"user_hash"=>{"id"=>"4332432432432", "name"=>"My Name", "first_name"=>"My", "last_name"=>"Name", "link"=>"http://www.facebook.com/profile.php?id=4332432432432", "birthday"=>"06/15/1980", "gender"=>"male", "email"=>"my email", "timezone"=>-5, "locale"=>"en_US", "updated_time"=>"2010-04-01T07:27:28+0000"}}}
+    def handle_facebook(fields)
+      uinfo = fields["extra"]["user_hash"]
+      self.facebook_id = fields["uid"]
+      self.facebook_token = fields["credentials"]["token"]
+      self.facebook_profile = fields["user_info"]["urls"]["Facebook"]
+
+      if self.email.blank?
+        self.email = uifo["email"]
+      end
+    end
+
+    # {"provider"=>"twitter", "uid"=>"user id", "credentials"=>{"token"=>"token", "secret"=>"secret"},
+    # "extra"=>{"access_token"=>token_object, "user_hash"=>{"description"=>"desc", "screen_name"=>"nick", "geo_enabled"=>false, "profile_sidebar_border_color"=>"87bc44", "status"=>{}}},
+    # "user_info"=>{"nickname"=>"nick", "name"=>"My Name", "location"=>"Here", "image"=>"http://a0.twimg.com/profile_images/path.png", "description"=>"desc", "urls"=>{"Website"=>nil}}}
+    def handle_twitter(fields)
+      self.twitter_token = fields["credentials"]["token"]
+      self.twitter_secret = fields["credentials"]["secret"]
+      self.twitter_login = fields["user_info"]["nickname"]
+
+      self.login.blank? && self.login = fields["user_info"]["nickname"]
     end
   end # InstanceMethods
 end
