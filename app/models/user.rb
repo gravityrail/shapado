@@ -254,7 +254,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def vote_on(voteable)
-    voteable.votes.find(:user_id => self.id)
+    vote = voteable.votes.detect{ |vote| vote.user_id == self.id }
   end
 
   def favorite?(question)
