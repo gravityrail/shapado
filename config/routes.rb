@@ -66,6 +66,9 @@ Shapado::Application.routes.draw do
   get '/questions/:id/:slug' => 'questions#show', :as => :se_url, :id => /\d+/
 
   resources :questions do
+    resources :votes
+    resources :flags
+
     collection do
       get :tags
       get :tags_for_autocomplete
@@ -91,9 +94,13 @@ Shapado::Application.routes.draw do
       post :close
     end
 
-    resources :comments
+    resources :comments do
+      resources :votes
+    end
 
     resources :answers do
+      resources :votes
+      resources :flags
       member do
         get :flag
         get :history
@@ -101,10 +108,13 @@ Shapado::Application.routes.draw do
         get :revert
       end
 
-      resources :comments
+      resources :comments do
+        resources :votes
+      end
     end
 
     resources :close_requests
+    resources :open_requests
   end
 
   match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }
@@ -125,9 +135,6 @@ Shapado::Application.routes.draw do
       get :css
     end
   end
-
-  resources :votes
-  resources :flags
 
   scope '/manage' do
     resources :widgets do

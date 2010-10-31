@@ -254,9 +254,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def vote_on(voteable)
-    Vote.first(:voteable_type => voteable.class.to_s,
-               :voteable_id => voteable.id,
-               :user_id     => self.id )
+    voteable.votes.find(:user_id => self.id)
   end
 
   def favorite?(question)
