@@ -44,7 +44,8 @@ class User
 
   key :membership_list,           MembershipList
 
-  key :feed_token,                String
+  key :feed_token,                String, :default => lambda { BSON::ObjectId.new.to_s }
+  key :socket_key,                String, :default => lambda { BSON::ObjectId.new.to_s }
 
   key :anonymous,                 Boolean, :default => false, :index => true
 

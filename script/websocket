@@ -34,9 +34,9 @@ module Shapado
     end
 
     def validate_channel_id(id)
-      channel = Community.by_slug(id)
+      channel = Group.first(:subdomain => id)
       if channel # FIXME: else?
-        channel.slug
+        channel.subdomain
       end
     end
 

@@ -2,6 +2,7 @@
 javascripts:
 - base:
   - jquery
+  - jquery.json-2.2.min
   - jquery.tools.min
   - jquery-ui
   - jquery.textarea
@@ -24,6 +25,12 @@ javascripts:
   - modules/move_group
   - modules/editor
   - multiauth
+
+- websocket:
+  - web-socket-js/swfobject
+  - web-socket-js/FABridge
+  - web-socket-js/web_socket
+  - websocket
 
 - show:
   - jquery.autovideo
