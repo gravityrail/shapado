@@ -119,7 +119,9 @@ class VotesController < ApplicationController
 
     state = :error
     if user_vote.nil?
-      if vote.save
+      if vote.valid?
+        voteable.votes << vote
+        voteable.save # TODO: use modifiers
         vote.voteable.add_vote!(vote.value, current_user)
         flash[:notice] = t("votes.create.flash_notice")
         state = :created
@@ -132,12 +134,16 @@ class VotesController < ApplicationController
         voteable.add_vote!(vote.value, current_user)
 
         user_vote.value = vote.value
-        user_vote.save
+        if(vote.valid)
+          voteable.class.collection.update({"votes._id" => user_vote.id},
+                                           {"votes.$.value" => vote.value})
+        end
         flash[:notice] = t("votes.create.flash_notice")
         state = :updated
       else
         value = vote.value
-        user_vote.destroy
+        voteable.votes.remove(vote);
+        voteable.save # TODO: use modifiers
         voteable.remove_vote!(value, current_user)
         flash[:notice] = t("votes.destroy.flash_notice")
         state = :deleted
@@ -147,7 +153,7 @@ class VotesController < ApplicationController
       state = :error
     end
 
-    if vote.voteable_type == "Answer"
+    if vote.voteable.is_a?(Answer)
       question = voteable.question
       sweep_question(question)
 
