@@ -34,9 +34,11 @@ module Shapado
     end
 
     def validate_channel_id(id)
-      channel = Group.first(:subdomain => id)
-      if channel # FIXME: else?
-        channel.subdomain
+      channel = Group.by_slug(id)
+      if channel
+        channel.slug
+      else
+        $stderr.puts "channel cannot be validated: #{id}"
       end
     end
 

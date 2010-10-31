@@ -93,6 +93,9 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
         after_create_answer
+        Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,
+                                       owner_id: @answer.user.id, owner_name: @answer.user.login,
+                                       question_id: @question.id, question_title: @question.title})
 
         flash[:notice] = t(:flash_notice, :scope => "answers.create")
         format.html{redirect_to question_path(@question)}

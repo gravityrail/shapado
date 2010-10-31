@@ -15,7 +15,7 @@ var CahumaSocket = {
     };
 
     this.ws.onopen = function() {
-      CahumaSocket.send({id: 'start', key: config.attr("data-key"), channel_id: config.attr("data-community")});
+      CahumaSocket.send({id: 'start', key: config.attr("data-key"), channel_id: config.attr("data-group")});
     };
   },
   add_chat_message: function(from, message) {
@@ -24,9 +24,20 @@ var CahumaSocket = {
   parse: function(data) {
     var data = jQuery.parseJSON(data);
 
+    console.log("received: ");
+    console.log(data);
+
     switch(data.id) {
       case 'chatmessage': {
         CahumaSocket.add_chat_message(data.from, data.message);
+      }
+      break;
+      case 'newquestion': {
+        alert("new question: "+data.name);
+      }
+      break;
+      case 'newanswer': {
+        alert(data.owner_name+" has answered the question "+data.question_title);
       }
       break;
     }

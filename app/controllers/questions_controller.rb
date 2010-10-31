@@ -288,6 +288,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
         sweep_question_views
+        Magent::WebSocketChannel.push({id: "newquestion", object_id: @question.id, name: @question.title, channel_id: current_group.slug})
 
         current_group.tag_list.add_tags(*@question.tags)
         unless @question.anonymous
