@@ -71,8 +71,8 @@ class Question
 
   validates_length_of       :title,    :within => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
   validates_length_of       :body,     :minimum => 5, :allow_blank => true, :allow_nil => true, :if => lambda { |q| !q.disable_limits? }
-  validates_true_for :tags, :logic => lambda { tags.size <= 9},
-                     :message => lambda { I18n.t("questions.model.messages.too_many_tags") if tags.size > 9 }
+  validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
+                     :message => lambda { |q| I18n.t("questions.model.messages.too_many_tags") if q.tags.size > 9 }
 
   versionable_keys :title, :body, :tags
   filterable_keys :title, :body
