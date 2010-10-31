@@ -229,7 +229,7 @@ class QuestionsController < ApplicationController
     add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     respond_to do |format|
-      format.html { Magent.push("actors.judge", :on_view_question, @question.id) }
+      format.html { Jobs::Questions.async.on_view_question(@question.id).commit! }
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
       format.atom
     end
@@ -293,7 +293,7 @@ class QuestionsController < ApplicationController
         unless @question.anonymous
           @question.user.stats.add_question_tags(*@question.tags)
           @question.user.on_activity(:ask_question, current_group)
-          Magent.push("actors.judge", :on_ask_question, @question.id)
+          Jobs::Questions.async.on_ask_question(@question.id).commit!
 
           # TODO: move to magent
           users = User.find_experts(@question.tags, [@question.language],
@@ -366,7 +366,7 @@ class QuestionsController < ApplicationController
     sweep_question_views
     @question.destroy
 
-    Magent.push("actors.judge", :on_destroy_question, current_user.id, @question.attributes)
+    Jobs::Questions.async.on_destroy_question(current_user.id, @question.attributes).commit!
 
     respond_to do |format|
       format.html { redirect_to(questions_url) }
@@ -389,7 +389,7 @@ class QuestionsController < ApplicationController
           @answer.user.update_reputation(:answer_picked_as_solution, current_group)
         end
 
-        Magent.push("actors.judge", :on_question_solved, @question.id, @answer.id)
+        Jobs::Questions.async.on_question_solved(@question.id, @answer.id).commit!
 
         flash[:notice] = t(:flash_notice, :scope => "questions.solve")
         format.html { redirect_to question_path(@question) }
@@ -426,7 +426,7 @@ class QuestionsController < ApplicationController
           @answer_owner.update_reputation(:answer_unpicked_as_solution, current_group)
         end
 
-        Magent.push("actors.judge", :on_question_unsolved, @question.id, @answer_id)
+        Jobs::Questions.async.on_question_unsolved(@question.id, @answer_id).commit!
 
         format.html { redirect_to question_path(@question) }
         format.json  { head :ok }
@@ -607,7 +607,7 @@ class QuestionsController < ApplicationController
         @question.on_activity(true)
       end
 
-      Magent.push("actors.judge", :on_retag_question, @question.id, current_user.id)
+      Jobs::Questions.async.on_retag_question(@question.id, current_user.id).commit!
 
       flash[:notice] = t("questions.retag_to.success", :group => @question.group.name)
       respond_to do |format|
@@ -648,7 +648,7 @@ class QuestionsController < ApplicationController
     url = question_url(@question)
     text = "#{current_group.share.starts_with} #{@question.title} - #{url} #{current_group.share.ends_with}"
 
-    Magent.push("actors.judge", :post_to_twitter, current_user.id, text)
+    Jobs::Users.async.post_to_twitter(current_user.id, text).commit!
 
     respond_to do |format|
       format.html {redirect_to url}

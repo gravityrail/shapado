@@ -25,9 +25,9 @@ class VotesController < ApplicationController
       if vote.voteable_type == "Question"
         sweep_question(vote.voteable)
 
-        Magent.push("actors.judge", :on_vote_question, vote.id)
+        Jobs::Votes.async.on_vote_question(vote.voteable.id, vote.id).commit!
       elsif vote.voteable_type == "Answer"
-        Magent.push("actors.judge", :on_vote_answer, vote.id)
+        Jobs::Votes.async.on_vote_answer(vote.voteable.id, vote.id).commit!
       end
     end
 

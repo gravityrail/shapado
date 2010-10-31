@@ -137,7 +137,7 @@ class UsersController < ApplicationController
       @user.birthday = build_date(params[:user], "birthday")
     end
 
-    Magent.push("actors.judge", :on_update_user, @user.id, current_group.id)
+    Magent::Users.async.on_update_user(@user.id, current_group.id).commit!
 
     preferred_tags = params[:user][:preferred_tags]
     if @user.valid? && @user.save
@@ -184,7 +184,7 @@ class UsersController < ApplicationController
 #       Notifier.deliver_follow(current_user, @user)
     end
 
-    Magent.push("actors.judge", :on_follow, current_user.id, @user.id, current_group.id)
+    Jobs::Activities.async.on_follow(current_user.id, @user.id, current_group.id).commit!
 
     respond_to do |format|
       format.html do
@@ -203,7 +203,7 @@ class UsersController < ApplicationController
 
     flash[:notice] = t("flash_notice", :scope => "users.unfollow", :user => @user.login)
 
-    Magent.push("actors.judge", :on_unfollow, current_user.id, @user.id, current_group.id)
+    Jobs::Activities.async.on_unfollow(current_user.id, @user.id, current_group.id).commit!
 
     respond_to do |format|
       format.html do

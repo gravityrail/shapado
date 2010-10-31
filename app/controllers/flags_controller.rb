@@ -21,7 +21,7 @@ class FlagsController < ApplicationController
         @resource.flagged!
         flash[:notice] = t(:flash_notice, :scope => "flags.create")
 
-        Magent.push("actors.judge", :on_flag, @flag.id)
+        Jobs::Activities.async.on_flag(current_user.id, current_group.id).commit!
       else
         flash[:error] = @flag.errors.full_messages.join(", ")
       end

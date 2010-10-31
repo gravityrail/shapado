@@ -296,7 +296,8 @@ Time.zone.now ? 1 : 0)
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
           self.increment({"membership_list.#{group.id}.activity_days" => 1})
-          Magent.push("actors.judge", :on_activity, group.id, self.id)
+
+          Jobs::Activities.async.on_activity(group.id, self.id).commit!
         elsif !last_day.utc.today? && (last_day.utc != Time.now.utc.yesterday)
           Rails.logger.info ">> Resetting act days!! last known day: #{last_day}"
           reset_activity_days!(group)
