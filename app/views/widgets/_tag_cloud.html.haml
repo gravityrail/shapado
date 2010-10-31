@@ -2,5 +2,5 @@
   %h3
     = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "tags"])
   .content
-    = self.tag_cloud
+    = tag_cloud([], {}, widget[:settings][:limit])
   .clear

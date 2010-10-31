@@ -32,6 +32,24 @@ class WidgetsController < ApplicationController
     end
   end
 
+  # PUT /widgets
+  # PUT /widgets.json
+  def update
+    @widget = @group.widgets.find(params[:id])
+    @widget.update_settings(params)
+
+    respond_to do |format|
+      if @widget.valid? && @group.save
+        flash[:notice] = 'Widget was successfully updated.'
+        format.html { redirect_to widgets_path }
+        format.json  { render :json => @widget.to_json, :status => :updated, :location => widget_path(:id => @widget.id) }
+      else
+        format.html { render :action => "index" }
+        format.json  { render :json => @widget.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
 
   # DELETE /ads/1
   # DELETE /ads/1.json

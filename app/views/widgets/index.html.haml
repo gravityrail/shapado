@@ -10,7 +10,8 @@
     -@widgets.each do |widget|
       %li
         .widget_description
-          =widget.description # do not escape
+          = widget.description # do not escape
+          = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget}
         .widget.block{:id => widget.name}
           .controls
             .action
