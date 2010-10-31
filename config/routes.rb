@@ -1,9 +1,4 @@
 Shapado::Application.routes.draw do
-  match '/oauth/start' => 'oauth#start', :as => :oauth_authorize
-  match '/oauth/callback' => 'oauth#callback', :as => :oauth_callback
-  match '/twitter/start' => 'twitter#start', :as => :twitter_authorize
-  match '/twitter/callback' => 'twitter#callback', :as => :twitter_callback
-  match '/twitter/share' => 'twitter#share', :as => :twitter_share
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
