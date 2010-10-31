@@ -56,6 +56,7 @@ GEM
       haml (>= 3.0.4)
     compass-colors (0.3.1)
       compass (>= 0.8.7)
+    cronedit (0.3.0)
     daemons (1.0.10)
     differ (0.1.1)
     dynamic_form (1.1.3)
@@ -209,9 +210,12 @@ DEPENDENCIES
   bson (= 1.1.1)
   compass (= 0.10.6.pre.1)
   compass-colors (= 0.3.1)
+  cronedit
   devise!
   differ (= 0.1.1)
   dynamic_form
+  em-websocket (~> 0.1.4)
+  eventmachine (~> 0.12.10)
   fancy-buttons (= 0.5.5)
   geoip
   goalie (~> 0.0.4)

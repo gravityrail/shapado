@@ -57,6 +57,12 @@ gem 'orm_adapter'
 gem 'devise', :git => 'http://github.com/dcu/devise.git', :branch => 'omniauth'
 
 
+group :scripts do
+  gem 'eventmachine', '~> 0.12.10'
+  gem 'em-websocket', '~> 0.1.4'
+  gem 'cronedit'
+end
+
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
