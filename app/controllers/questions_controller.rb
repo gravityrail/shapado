@@ -643,6 +643,19 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def twitter_share
+    @question = current_group.questions.by_slug(params[:id], :select => [:title, :slug])
+    url = question_url(@question)
+    text = "#{current_group.share.starts_with} #{@question.title} - #{url} #{current_group.share.ends_with}"
+
+    Magent.push("actors.judge", :post_to_twitter, current_user.id, text)
+
+    respond_to do |format|
+      format.html {redirect_to url}
+      format.js { render :json => { :ok => true }}
+    end
+  end
+
   protected
   def check_permissions
     @question = Question.find_by_slug_or_id(params[:id])

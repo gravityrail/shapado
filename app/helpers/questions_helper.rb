@@ -15,7 +15,7 @@ module QuestionsHelper
     case service
       when :twitter
         if logged_in? && current_user.twitter_token.present?
-          url = twitter_share_url(:question_id => question.id)
+          url = twitter_share_question_url(question)
         else
           url = "http://twitter.com/?status=#{microblogging_message(question)}"
         end
