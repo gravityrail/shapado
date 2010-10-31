@@ -39,7 +39,7 @@ gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
 gem "magent", "0.4.2"
 
-gem 'goalie'
+gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'
 
 gem "differ", "0.1.1"

@@ -209,7 +209,7 @@ DEPENDENCIES
   dynamic_form
   fancy-buttons (= 0.5.5)
   geoip
-  goalie
+  goalie (~> 0.0.4)
   haml
   hpricot
   jnunemaker-validatable (= 1.8.4)
