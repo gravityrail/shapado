@@ -161,11 +161,11 @@ class UsersController < ApplicationController
 
   def change_preferred_tags
     @user = current_user
-    if params[:tags]
+    if tags = params[:tags]
       if params[:opt] == "add"
-        @user.add_preferred_tags(params[:tags], current_group) if params[:tags]
+        @user.add_preferred_tags(tags, current_group) if tags
       elsif params[:opt] == "remove"
-        @user.remove_preferred_tags(params[:tags], current_group)
+        @user.remove_preferred_tags(tags, current_group)
       end
     end
 
@@ -219,7 +219,7 @@ class UsersController < ApplicationController
   def autocomplete_for_user_login
     @users = User.all( :limit => params[:limit] || 20,
                        :fields=> 'login',
-                       :login =>  /^#{Regexp.escape(params[:prefix].to_s.downcase)}.*/,
+                       :login =>  /^#{Regexp.escape(params[:term].to_s.downcase)}.*/,
                        :order => "login desc")
     respond_to do |format|
       format.json {render :json=>@users}

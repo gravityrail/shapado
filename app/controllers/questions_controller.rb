@@ -180,7 +180,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.js do
         result = []
-        if q = params[:tag]
+        if q = params[:term]
           result = Question.find_tags(/^#{Regexp.escape(q.downcase)}/i,
                                       :group_id => current_group.id,
                                       :banned => false)
@@ -192,6 +192,7 @@ class QuestionsController < ApplicationController
         # if no results, show default tags
         if results.empty?
           results = current_group.default_tags.map  {|tag|{:value=> tag, :caption => tag}}
+          results = [{ :value => q, :caption => q }] + results
         end
         render :json => results
       end
@@ -252,7 +253,11 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new
+    if !params[:tag_input].blank? && params[:question][:tags].blank?
+      params[:question][:tags] = params[:tag_input]
+    end
     @question.safe_update(%w[title body language tags wiki], params[:question])
+
     @question.anonymous = Boolean.to_mongo(params[:question][:anonymous])
 
     @question.group = current_group
@@ -326,7 +331,11 @@ class QuestionsController < ApplicationController
   # PUT /questions/1.xml
   def update
     respond_to do |format|
+      if !params[:tag_input].blank? && params[:question][:tags].blank?
+        params[:question][:tags] = params[:tag_input]
+      end
       @question.safe_update(%w[title body language tags wiki adult_content version_message], params[:question])
+
       @question.updated_by = current_user
       @question.last_target = @question
 

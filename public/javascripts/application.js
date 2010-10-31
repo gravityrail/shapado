@@ -27,8 +27,9 @@ $(document).ready(function() {
     return false;
   })
 
-  initAutocomplete();
-
+  $('.autocomplete_for_tags').ricodigoComplete();
+  $('#quick_question').find('.tagwrapper').css({'margin-left':'18px',width:'68%'});
+  if(supports_input_placeholder()){$('.hideifplaceholder').remove();};
   $(".quick-vote-button").live("click", function(event) {
     var btn = $(this);
     btn.hide();
@@ -81,20 +82,6 @@ $(document).ready(function() {
       return false;
   })
 })
-
-function initAutocomplete(){
-  var tagInput = $('.autocomplete_for_tags');
-  tagInput.autoSuggest('/questions/tags_for_autocomplete.js', {
-    queryParam: 'tag',
-    formatList: function(data, elem){
-      return elem.html(data.caption);
-    },
-    preFill: tagInput.val(),
-    startText: '',
-    emptyText: 'No Results',
-    limitText: 'No More Selections Are Allowed'
-  });
-}
 
 function manageAjaxError(XMLHttpRequest, textStatus, errorThrown) {
   showMessage("sorry, something went wrong.", "error");
@@ -205,4 +192,10 @@ function highlightEffect(object) {
       object.fadeIn(400)
     });
   }
+}
+
+
+function supports_input_placeholder() {
+  var i = document.createElement('input');
+  return 'placeholder' in i;
 }
