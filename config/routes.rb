@@ -151,6 +151,7 @@ Shapado::Application.routes.draw do
       match 'stats' => :stats
       match 'reputation' => :reputation
       match 'domain' => :domain
+      match 'content' => :content
     end
   end
 
