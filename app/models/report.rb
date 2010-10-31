@@ -11,7 +11,5 @@ class Report
 
     @users = User.count("membership_list.#{group.id}.reputation" => {:$exists => true})
     @badges = group.badges.count(:created_at => {:$gt => since})
-
-    @votes = group.votes.count(:created_at => {:$gt => since})
   end
 end
