@@ -14,11 +14,12 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new
     @comment.body = params[:body]
-    @comment.commentable = scope
     @comment.user = current_user
-    @comment.group = current_group
     @comment.position = params[:comment][:position]
-    if saved = @comment.save
+
+    scope << @comment
+
+    if @comment.valid? && scope.save
       current_user.on_activity(:comment_question, current_group)
 
       Jobs::Activities.async.on_comment(@comment.id).commit!
@@ -68,9 +69,9 @@ class CommentsController < ApplicationController
 
   def update
     respond_to do |format|
-      @comment = Comment.find(params[:id])
+      @comment = current_scope.find(params[:id])
       @comment.body = params[:body]
-      if @comment.valid? && @comment.save
+      if @comment.valid? && scope.save
         if question_id = @comment.question_id
           Question.update_last_target(question_id, @comment)
         end
@@ -91,8 +92,9 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = scope.comments.find(params[:id])
-    @comment.destroy
+    @scope = scope
+    @scope.comments.delete_if { |f| f._id == params[:id] }
+    @scope.save!
 
     respond_to do |format|
       format.html { redirect_to(params[:source]) }

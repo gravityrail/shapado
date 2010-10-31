@@ -1,6 +1,7 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:counters", "fixdb:votes", "fixdb:sync_counts", "fixdb:groups", "fixdb:relocate"] do
+task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:counters",
+                 "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:relocate"] do
 end
 
 namespace :fixdb do
@@ -31,11 +32,20 @@ namespace :fixdb do
     end
   end
 
+
   task :counters => :environment do
     Question.find_each do |q|
       q.set(:close_requests_count => q.close_requests.size)
       q.set(:open_requests_count => q.open_requests.size)
     end
+  end
+
+  task :comments => [:environment] do
+    answers = MongoMapper.database.collection("answers")
+    MongoMapper.database.collection("comments").find(:_type => "Answer").each do |answer|
+      answers.save(answer)
+    end
+    MongoMapper.database.collection("comments").remove(:_type => "Answer")
   end
 
   task :votes => [:environment] do
@@ -56,7 +66,7 @@ namespace :fixdb do
         collection.update({:_id => id}, "$addToSet" => {:votes => vote})
       end
       if count > 0
-        puts "Updated #{count} #{group["name"]} votes "
+        puts "Updated #{count} #{group["name"]} votes"
       end
     end
     MongoMapper.database.collection("votes").drop

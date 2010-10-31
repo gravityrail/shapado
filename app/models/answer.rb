@@ -1,7 +1,10 @@
-class Answer < Comment
+class Answer
   include MongoMapper::Document
   include MongoMapperExt::Filter
   include Support::Versionable
+  include Support::Voteable
+  timestamps!
+
   key :_id, String
 
   key :body, String, :required => true
@@ -10,8 +13,6 @@ class Answer < Comment
   key :banned, Boolean, :default => false, :index => true
   key :wiki, Boolean, :default => false
   key :anonymous, Boolean, :default => false, :index => true
-
-  timestamps!
 
   key :updated_by_id, String
   belongs_to :updated_by, :class_name => "User"
@@ -33,6 +34,25 @@ class Answer < Comment
   validate :check_unique_answer, :if => lambda { |a| (!a.group.forum && !a.disable_limits?) }
 
   before_destroy :unsolve_question
+
+  def ban
+    self.collection.update({:_id => self.id}, {:$set => {:banned => true}})
+  end
+
+  def self.ban(ids)
+    ids.each do |id|
+      self.collection.update({:_id => id}, {:$set => {:banned => true}})
+    end
+  end
+
+  def can_be_deleted_by?(user)
+    ok = (self.user_id == user.id && user.can_delete_own_comments_on?(self.group)) || user.mod_of?(self.group)
+    if !ok && user.can_delete_comments_on_own_questions_on?(self.group) && (q = self.question)
+      ok = (q.user_id == user.id)
+    end
+
+    ok
+  end
 
   def check_unique_answer
     check_answer = Answer.first(:question_id => self.question_id,
@@ -104,7 +124,7 @@ class Answer < Comment
       valid = (eq_answer.nil? || eq_answer.id == self.id) &&
               ((last_answer.nil?) || (Time.now - last_answer.created_at) > 20)
       if !valid
-        self.errors.add(:body, "Your answer looks like spam.")
+        self.errors.add(:body, "Your answer is duplicate.")
       end
     end
   end
