@@ -3,19 +3,9 @@
     =t(".title")
 
 -content_for :sidebar do
-  -if AppConfig.twitter["activate"] || with_facebook?
-    .block.notice{:style => "padding-bottom: 10px"}
-      %h4
-        =t(".enable_twitter")
-
-      -if with_facebook?
-        =link_to t("sessions.new.with_facebook"), oauth_authorize_path(:merge => true), :title => "Facebook", :id => "facebook_auth"
-
-        %br
-        %br
-
-      -if AppConfig.twitter["activate"]
-        =link_to t("sessions.new.with_twitter"), twitter_authorize_path(:merge => true), :title => "Twitter", :id => "twitter_auth"
+  .block.notice{:style => "padding-bottom: 10px"}
+    %h4
+      =multiauth_menu(t(".enable_twitter"))
   .block
     .inner{:style => "padding-top: 10px"}
       %ul.navigation
