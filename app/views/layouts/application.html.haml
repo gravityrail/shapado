@@ -3,17 +3,17 @@
   %head
     %title
       &= page_title
-    = render :partial => "shared/layout/css"
+    = render "shared/layout/css"
 
     = current_group.head_tag
-    = render :partial => "shared/layout/meta"
+    = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
-    = render :partial => "shared/layout/javascript"
+    = render "shared/layout/javascript"
 
   %body
-    = render :partial => "shared/analytics"
+    = render "shared/analytics"
     #container{:class => @current_class}
-      = render :partial => "shared/topbar"
+      = render "shared/topbar"
       #header
         = current_group.head
         #main-bar{:class => @active_tab}
@@ -22,7 +22,7 @@
               =link_to image_tag(logo_group_path(current_group), :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
             -else
               = link_to image_tag("default_logo.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
-          = render :partial => "shared/user_navigation"
+          = render "shared/user_navigation"
           .clear
 
           -announcements = current_announcements(session[:announcement_hide_time])
@@ -49,7 +49,7 @@
                   =t(".now")
       #wrapper
         #main
-          = render :partial => "shared/ads/header_ads"
+          = render "shared/ads/header_ads"
           #block-text.block
             .secondary-navigation{:class => @active_subtab.to_s}
               = yield :subtabs
@@ -58,14 +58,14 @@
               %p.markdown
                 = show_flash_messages(:class => "flash", :markdown => true)
 
-              = render :partial => "shared/ads/content_ads"
+              = render "shared/ads/content_ads"
               .inner
                 = yield
                 .clear
         #sidebar
           = yield :sidebar
 
-          = render :partial => "shared/ads/context_panel_ads"
+          = render "shared/ads/context_panel_ads"
 
           -unless feed_urls.empty?
             .block
@@ -81,9 +81,9 @@
                         =h(title)
                   .clear
         .clear
-        = render :partial => "shared/ads/footer_ads"
+        = render "shared/ads/footer_ads"
 
       #footer
         = render "shared/layout/websocket"
         .block.content
-          = render :partial => "layouts/footer"
+          = render "shared/layout/footer"
