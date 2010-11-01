@@ -113,7 +113,7 @@ module WillPaginate
       end
       # render HTML for pagination
       renderer.prepare collection, options, self
-      renderer.to_html
+      renderer.to_html.html_safe
     end
 
     # Wrapper for rendering pagination links at both top and bottom of a block

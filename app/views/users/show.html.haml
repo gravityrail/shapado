@@ -54,7 +54,7 @@
     .friend_list
       -@user.following.each do |follower|
         %span
-          = link_to gravatar(follower.email.to_s, :size => 24), user_path(follower)
+          = link_to gravatar(follower.email.to_s, :size => 24).html_safe, user_path(follower)
   -if @user.followers.count > 0
     %h2.title
       .counter
@@ -63,7 +63,7 @@
     .friend_list
       -@user.followers.each do |follower|
         %span
-          =link_to gravatar(follower.email.to_s, :size => 24), user_path(follower)
+          =link_to gravatar(follower.email.to_s, :size => 24).html_safe, user_path(follower)
 
   .secondary-navigation{:class => @q_sort||"votes"}
     .navtitle
