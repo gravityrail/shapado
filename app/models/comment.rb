@@ -10,6 +10,9 @@ class Comment
   key :language, String, :default => "en"
   key :banned, Boolean, :default => false
 
+  key :created_at, Time, :default => Time.now # FIXME
+  key :updated_at, Time, :default => Time.now # FIXME
+
   key :user_id, String
   belongs_to :user
 
@@ -19,6 +22,10 @@ class Comment
 
   def group
     commentable.group
+  end
+
+  def commentable_type
+    commentable.class.to_s
   end
 
   def can_be_deleted_by?(user)
@@ -45,7 +52,7 @@ class Comment
     question_id = nil
 
     if self.commentable.is_a?(Question)
-      question_id = self.commentable_id
+      question_id = self.commentable.id
     elsif self.commentable.is_a?(Answer)
       question_id = self.commentable.question_id
     elsif self.commentable.respond_to?(:question)

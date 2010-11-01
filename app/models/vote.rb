@@ -82,11 +82,11 @@ class Vote
         unless valid
           error_message = I18n.t("votes.model.messages.vote_down_comment")
         else
-          case self.voteable.commentable_type
-            when "Question"
+          case self.voteable.commentable.class
+            when Question
               valid = !self.voteable.commentable.closed
               error_message = I18n.t("votes.model.messages.closed_question")
-            when "Answer"
+            when Answer
               valid = !self.voteable.commentable.question.closed
               error_message = I18n.t("votes.model.messages.closed_question")
           end
