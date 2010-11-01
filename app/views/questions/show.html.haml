@@ -218,18 +218,18 @@
       .content
         %ul.share
           %li
-            = render :partial => "identica"
+            = render :partial => "questions/share/identica"
           - if current_group.domain != AppConfig.domain
             %li
-              = render :partial => "shapado"
+              = render :partial => "questions/share/shapado"
           %li
-            = render :partial => "twitter"
+            = render :partial => "questions/share/twitter"
           %li
-            = render :partial => "linkedin"
+            = render :partial => "questions/share/linkedin"
           %li
-            = render :partial => "think"
+            = render :partial => "questions/share/think"
           %li
-            = render :partial => "facebook"
+            = render :partial => "questions/share/facebook"
       .clear
 
   - if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group))
