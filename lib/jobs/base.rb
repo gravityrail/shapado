@@ -3,6 +3,8 @@ module Jobs
     include Magent::Async
 
     def create_badge(user, group, opts, check_opts = {})
+      return if user.admin?
+
       unique = opts.delete(:unique) || check_opts.delete(:unique)
 
       ok = true
