@@ -35,7 +35,7 @@ module QuestionsHelper
           url = %@#{image_tag('/images/share/facebook_32.png', :class => 'microblogging')} #{link_to("facebook", fb_url, :rel=>"nofollow external")}@
         end
     end
-    url
+    url.html_safe
   end
 
   protected

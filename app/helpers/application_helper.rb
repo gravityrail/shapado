@@ -143,7 +143,7 @@ module ApplicationHelper
     if options[:sanitize] != false
       txt = defined?(Sanitize) ? Sanitize.clean(txt, SANITIZE_CONFIG) : sanitize(txt)
     end
-    txt
+    txt.html_safe
   end
 
   def render_page_links(text, options = {})
@@ -315,6 +315,10 @@ module ApplicationHelper
     top_bar.split("\n").map do |line|
       render_page_links(line.strip)
     end
+  end
+
+  def gravatar(*args)
+    super(*args).html_safe
   end
 end
 

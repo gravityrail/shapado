@@ -43,7 +43,7 @@ module VotesHelper
           </button>
         </div>
       </form>
-      @
+      @.html_safe
     else
       %@
         <div class='vote_box'>
@@ -57,7 +57,7 @@ module VotesHelper
             #{image_tag("to_vote_down.png", :width => 30, :height => 16)}
           </div>
         </div>
-      @
+      @.html_safe
     end
   end
 
