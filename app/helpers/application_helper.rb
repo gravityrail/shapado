@@ -122,7 +122,7 @@ module ApplicationHelper
       cloud << "<span>#{link_to(tag["name"], url, :class => "#{tag_class} #{css[size.round]}")}</span> "
     end
     cloud += "</div>"
-    cloud
+    cloud.html_safe
   end
 
   def country_flag(code, name)
