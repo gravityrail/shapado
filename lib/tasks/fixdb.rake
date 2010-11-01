@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:votes", "fixdb:sync_counts"] do
+task :fixall => [:environment, "fixdb:openid", "fixdb:votes", "fixdb:sync_counts", "fixdb:groups"] do
 end
 
 namespace :fixdb do
@@ -54,5 +54,19 @@ namespace :fixdb do
     end
     MongoMapper.database.collection("votes").drop
   end
-end
 
+  task :groups => [:environment] do
+    Group.find_each(:language => [nil, '', 'none']) do |group|
+      lang = group.description.language
+      puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
+
+      group.language = (lang == :spanish) ? 'es' : 'en'
+      group.languages = DEFAULT_USER_LANGUAGES
+      if group.valid?
+        group.save
+      else
+        puts "Invalid group: #{group.errors.full_messages}"
+      end
+    end
+  end
+end
