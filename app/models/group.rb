@@ -28,7 +28,10 @@ class Group
   key :analytics_id, String
   key :analytics_vendor, String
   key :has_custom_analytics, Boolean, :default => true
-  key :language, String, :index => true
+
+  key :language, String
+  key :languages, Set, :index => true
+
   key :activity_rate, Float, :default => 0.0
   key :openid_only, Boolean, :default => false
   key :registered_only, Boolean, :default => false
@@ -86,7 +89,7 @@ class Group
 
   before_validation_on_create :check_domain
   before_save :disallow_javascript
-  before_save :downcase_domain
+  before_save :modify_attributes
   validate :check_reputation_configs
 
   validates_exclusion_of      :subdomain,
@@ -94,9 +97,10 @@ class Group
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
 
-  def downcase_domain
-    domain.downcase!
-    subdomain.downcase!
+  def modify_attributes
+    self.domain.downcase!
+    self.subdomain.downcase!
+    self.languages << self.language
   end
 
   def check_domain

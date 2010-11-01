@@ -57,7 +57,8 @@ en:
         state: State
         owner: "This group was created by %{login}"
         group_created_by: created by
-        language: Language
+        language: Default Language
+        languages: Extra Languages
         default_tags: "Default tags"
         logo: Logo
         forum: Allow more than one answer by user
