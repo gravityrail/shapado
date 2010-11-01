@@ -84,7 +84,7 @@ class Group
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :within => 3..32
 
-  validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES, :allow_nil => true
+  validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :within => AVAILABLE_THEMES
 
   before_validation_on_create :check_domain
