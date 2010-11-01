@@ -19,24 +19,25 @@
 -form_for @group, :html => {:class => "form"} do |form|
   = form.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "content", :tab=>@active_subtab)
+  - langs = @group.languages.sort
   -case @active_subtab.to_sym
     -when :question_prompt
-      -AVAILABLE_LANGUAGES.sort.each do |lang|
+      -langs.each do |lang|
         .group
           =form.label "_question_prompt[#{lang}]", language_desc(lang), :class => "label"
           =text_field_tag "group[custom_html][question_prompt[#{lang}]]", @group.custom_html.question_prompt[lang], :class => "text_field"
     -when :question_help
-      -AVAILABLE_LANGUAGES.sort.each do |lang|
+      -langs.each do |lang|
         .group
           =form.label "group[custom_html][#{lang}]", language_desc(lang), :class => "label"
           =text_area_tag "group[custom_html][question_help[#{lang}]]", @group.custom_html.question_help[lang], :class => "text_area"
     -when :head
-      -AVAILABLE_LANGUAGES.sort.each do |lang|
+      -langs.each do |lang|
         .group
           =form.label "_head[#{lang}]", language_desc(lang), :class => "label"
           =text_area_tag "group[custom_html][head[#{lang}]]", @group.custom_html.head[lang], :class => "text_area"
     -when :footer
-      -AVAILABLE_LANGUAGES.sort.each do |lang|
+      -langs.each do |lang|
         .group
           = form.label "footer", language_desc(lang), :class => "label"
           = text_area_tag "group[custom_html][footer[#{lang}]]", @group.custom_html.footer[lang], :class => "text_area"

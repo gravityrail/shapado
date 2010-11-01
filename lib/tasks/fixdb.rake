@@ -57,7 +57,7 @@ namespace :fixdb do
 
   task :groups => [:environment] do
     Group.find_each(:language => [nil, '', 'none']) do |group|
-      lang = group.description.language
+      lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
 
       group.language = (lang == :spanish) ? 'es' : 'en'

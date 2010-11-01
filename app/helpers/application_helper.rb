@@ -75,7 +75,7 @@ module ApplicationHelper
     else
       question.language
     end
-    languages = logged_in? ? current_user.preferred_languages : AVAILABLE_LANGUAGES
+    languages = logged_in? ? current_user.preferred_languages : current_group.languages
 
     f.select :language, languages_options(languages), {:selected => selected}, {:class => "select"}.merge(opts)
   end
