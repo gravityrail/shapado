@@ -61,11 +61,12 @@ class Question
   key :last_target_id, String
   key :last_target_date, Time
 
-  belongs_to :last_target, :polymorphic => true
+  key :last_target_user_id, String
+  belongs_to :last_target_user, :class_name => "User"
 
   has_many :answers, :dependent => :destroy
   has_many :badges, :as => "source"
-  has_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
+  has_many :comments, :order => "created_at asc"
 
   has_many :flags
   has_many :close_requests
@@ -261,10 +262,13 @@ class Question
 
   def self.update_last_target(question_id, target)
     # TODO: use mongo_mapper syntax
-    self.collection.update({:_id => question_id},
-                           {:$set => {:last_target_id => target.id,
-                                      :last_target_type => target.class.to_s,
-                                      :last_target_date => target.updated_at.utc}})
+    data = {:last_target_id => target.id,
+            :last_target_user_id => target.user_id,
+            :last_target_type => target.class.to_s}
+    if target.respond_to?(:updated_at) && target.updated_at.present?
+      data[:last_target_date] = target.updated_at.utc
+    end
+    self.set({:_id => question_id}, data)
   end
 
   def can_be_requested_to_close_by?(user)
@@ -284,6 +288,13 @@ class Question
 
   def close_reason
     self.close_requests.detect{ |rq| rq.id == close_reason_id }
+  end
+
+  def last_target=(target)
+    self.last_target_id = target.id
+    self.last_target_type = target.class.to_s
+    self.last_target_date = target.updated_at
+    self.last_target_user_id = target.user_id
   end
 
   protected

@@ -14,6 +14,9 @@ class Answer
   key :wiki, Boolean, :default => false
   key :anonymous, Boolean, :default => false, :index => true
 
+  key :user_id, String, :index => true
+  belongs_to :user
+
   key :updated_by_id, String
   belongs_to :updated_by, :class_name => "User"
 
@@ -22,7 +25,7 @@ class Answer
 
   has_many :flags
 
-  has_many :comments, :foreign_key => "commentable_id", :class_name => "Comment", :order => "created_at asc", :dependent => :destroy
+  has_many :comments, :order => "created_at asc"
 
   validates_presence_of :user_id
   validates_presence_of :question_id

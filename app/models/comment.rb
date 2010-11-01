@@ -10,7 +10,7 @@ class Comment
   key :language, String, :default => "en"
   key :banned, Boolean, :default => false
 
-  key :user_id, String, :index => true
+  key :user_id, String
   belongs_to :user
 
   alias :commentable :_root_document
