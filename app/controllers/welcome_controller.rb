@@ -61,10 +61,10 @@ class WelcomeController < ApplicationController
       redirect_to feedback_path(:feedback => params[:feedback])
     else
       user = current_user || User.new(:email => params[:feedback][:email], :login => "Anonymous")
-#       Notifier.deliver_new_feedback(user, params[:feedback][:title],
-#                                                   params[:feedback][:description],
-#                                                   params[:feedback][:email],
-#                                                   request.remote_ip)
+      Notifier.new_feedback(user, params[:feedback][:title],
+                            params[:feedback][:description],
+                            params[:feedback][:email],
+                            request.remote_ip).deliver
       redirect_to root_path
     end
   end

@@ -239,13 +239,13 @@ class AnswersController < ApplicationController
       followers ||= []
       (users - followers).each do |u|
         if !u.email.blank? && u.notification_opts.new_answer
-#           Notifier.deliver_new_answer(u, current_group, @answer, false)
+          Notifier.new_answer(u, current_group, @answer, false).deliver
         end
       end
 
       followers.each do |u|
         if !u.email.blank? && u.notification_opts.new_answer
-#           Notifier.deliver_new_answer(u, current_group, @answer, true)
+          Notifier.new_answer(u, current_group, @answer, true).deliver
         end
       end
     end

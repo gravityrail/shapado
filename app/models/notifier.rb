@@ -3,116 +3,160 @@ class Notifier < ActionMailer::Base
   layout "notifications"
 
   def give_advice(user, group, question, following = false)
-    template_for user do
+    scope = "mailers.notifications.give_advice"
+    language = language_for(user)
+    set_locale language
+    if following
+      subject I18n.t("friend_subject",
+                     :scope => scope,
+                     :question_title => question.title,
+                     :locale => language)
+    else
+      subject I18n.t("subject",
+                     :scope => scope,
+                     :question_title => question.title,
+                     :locale => language)
+    end
 
-      scope = "mailers.notifications.give_advice"
+    @user = user
+    @question = question
+    @group = group
+    @domain = group.domain
+    @following = following
 
-      from from_email(group)
-      recipients user.email
-
-      if following
-        subject I18n.t("friend_subject", :scope => scope, :question_title => question.title)
-      else
-        subject I18n.t("subject", :scope => scope, :question_title => question.title)
-      end
-      sent_on Time.now
-      body   :user => user, :question => question,
-             :group => group, :domain => group.domain,
-             :following => following
+    mail(:to => user.email, :from => from_email(group),
+         :subject => @subject,
+         :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def new_answer(user, group, answer, following = false)
-    template_for user do
-
-      scope = "mailers.notifications.new_answer"
-      if user == answer.question.user
-        @subject = I18n.t("subject_owner", :scope => scope,
-                                           :title => answer.question.title,
-                                           :login => answer.user.login)
-      elsif following
-        @subject = I18n.t("subject_friend", :scope => scope,
-                                            :title => answer.question.title,
-                                            :login => answer.user.login)
-      else
+    scope = "mailers.notifications.new_answer"
+    language = language_for(user)
+    set_locale language
+    if user == answer.question.user
+      @subject = I18n.t("subject_owner", :scope => scope,
+                        :title => answer.question.title,
+                        :login => answer.user.login,
+                        :locale => language)
+    elsif following
+      @subject = I18n.t("subject_friend", :scope => scope,
+                        :title => answer.question.title,
+                        :login => answer.user.login,
+                        :locale => language)
+    else
         @subject = I18n.t("subject_other", :scope => scope,
-                                           :title => answer.question.title,
-                                           :login => answer.user.login)
-      end
-
-      recipients user.email
-      domain = group ? group.domain : AppConfig.domain
-      from from_email(group)
-      subject @subject
-      sent_on Time.now
-      body   :user => user, :answer => answer, :question => answer.question,
-             :group => group, :domain => domain
-
+                          :title => answer.question.title,
+                          :login => answer.user.login,
+                          :locale => language)
+    end
+    @user = user
+    @answer = answer
+    @question = answer.question
+    @group = group
+    @domain = group ? group.domain : AppConfig.domain
+    mail(:to => user.email, :from => from_email(group),
+         :subject => @subject, :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def new_comment(group, comment, user, question)
-    recipients user.email
-    template_for user do
-      from from_email(group)
-      subject I18n.t("mailers.notifications.new_comment.subject", :login => comment.user.login, :group => group.name)
-      sent_on Time.now
-
-      body :user => user, :comment => comment, :question => question, :group => group
+    @user = user
+    @comment = comment
+    @question = question
+    @group = group
+    language = language_for(user)
+    set_locale language
+    mail(:to => user.email, :from => from_email(group),
+         :subject => I18n.t("mailers.notifications.new_comment.subject",
+                            :login => comment.user.login,
+                            :group => group.name, :locale => language),
+         :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def new_feedback(user, subject, content, email, ip)
-    #self.class.layout ""
-    recipients AppConfig.exception_notification["exception_recipients"]
-    from "Shapado[feedback] <#{AppConfig.notification_email}>"
-    subject "feedback: #{subject}"
-    sent_on Time.now
-    body   :user => user, :subject => subject, :content => content, :email => email, :ip => ip
-    content_type  "text/plain"
+    @user = user
+    @subject = subject
+    @content = content
+    @email = email
+    @ip = ip
+    language = language_for(user)
+    set_locale language
+    mail(:to => AppConfig.exception_notification["exception_recipients"],
+         :from => "Shapado[feedback] <#{AppConfig.notification_email}>",
+         :subject => "feedback: #{subject}",
+         :date => Time.now) do |format|
+      format.text
+    end
   end
 
-  def follow(user, followed)
-    recipients followed.email
-    template_for followed do
-      from from_email(group)
-      subject I18n.t("mailers.notifications.follow.subject", :login => user.login, :app => AppConfig.application_name)
-      sent_on Time.now
-      body :user => user, :followed => followed
+  def follow(user, followed, group)
+    @user = user
+    @followed = followed
+    language = language_for(user)
+    set_locale language
+    mail(:to => followed.email ,
+         :from => from_email(group),
+         :subject => I18n.t("mailers.notifications.follow.subject",
+                            :login => user.login,
+                            :app => group.name, :locale => language),
+         :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def earned_badge(user, group, badge)
-    recipients user.email
-    template_for user do
-
-      from from_email(group)
-      subject I18n.t("mailers.notifications.earned_badge.subject", :group => group.name)
-      sent_on Time.now
-      body :user => user, :group => group, :badge => badge
+    @user = user
+    @group = group
+    @badge = badge
+    language = language_for(user)
+    set_locale language
+    mail(:to => user.email ,
+         :from => from_email(group),
+         :subject => I18n.t("mailers.notifications.earned_badge.subject",
+                            :group => group.name, :locale => language),
+         :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def favorited(user, group, question)
-    recipients question.user.email
-    template_for question.user do
-
-      from from_email(group)
-      subject I18n.t("mailers.notifications.favorited.subject", :login => user.login)
-      sent_on Time.now
-      body :user => user, :group => group, :question => question
+    @user = user
+    @group = group
+    @question = question
+    language = language_for(question.user)
+    set_locale language
+    mail(:to => question.user.email,
+         :from => from_email(group),
+         :subject => I18n.t("mailers.notifications.favorited.subject",
+                            :login => user.login, :locale => language),
+         :date => Time.now) do |format|
+      format.text
+      format.html
     end
   end
 
   def report(user, report)
-    recipients user.email
-    template_for user do
-      from from_email(group)
-      subject I18n.t("mailers.notifications.report.subject", :group => report.group.name, :app => AppConfig.application_name)
-      sent_on Time.now
-
-      content_type    "text/plain"
-      body :user => user, :report => report
+    @user = user
+    @report = report
+    language = language_for(user)
+    set_locale language
+    mail(:to => user.email,
+         :from => from_email(report.group),
+         :subject => I18n.t("mailers.notifications.report.subject",
+                     :group => report.group.name,
+                     :app => AppConfig.application_name, :locale => language),
+         :date => Time.now) do |format|
+      format.text
     end
   end
 
@@ -126,23 +170,11 @@ class Notifier < ActionMailer::Base
     "#{group ? group.name : AppConfig.application_name} <notifications@#{ActionMailer::Base.default_url_options[:host]}>"
   end
 
-  def template_for(user=nil, &block)
-    old_lang = I18n.locale
-    language = old_lang
-
-    if user && user.language
-      language = user.language
-    end
-    I18n.locale = language
-
-    template_name = "#{@method_name}"
-    if Dir.glob(Rails.root + "app/views/notifier/#{template_name}*").size == 0
-      template_name = @method_name
-    end
-
-    @template = template_name
-
-    yield if block
-    I18n.locale = old_lang
+  def language_for(user=nil)
+    language = if user && user.language
+                 language = user.language
+               else
+                 I18n.locale
+               end
   end
 end
