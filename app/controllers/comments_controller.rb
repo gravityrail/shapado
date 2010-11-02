@@ -1,7 +1,15 @@
 class CommentsController < ApplicationController
-  before_filter :login_required
+  before_filter :login_required, :except => [:index]
   before_filter :find_scope
-  before_filter :check_permissions, :except => [:create]
+  before_filter :check_permissions, :except => [:create, :index]
+
+  def index
+    @comments = @answer ? @answer.comments : @question.comments
+
+    respond_to do |format|
+      format.json { render :json => @comments }
+    end
+  end
 
   def create
     @comment = Comment.new
