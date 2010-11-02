@@ -1,12 +1,21 @@
 class AnswersController < ApplicationController
-  before_filter :login_required, :except => [:show, :create]
+  before_filter :login_required, :except => [:show, :create, :index]
   before_filter :check_permissions, :only => [:destroy]
   before_filter :check_update_permissions, :only => [:edit, :update, :revert]
 
   helper :votes
 
+  def index
+    @question = current_group.questions.by_slug(params[:question_id])
+    @answers = @question.answers
+
+    respond_to do |format|
+      format.json { render :json => @answers }
+    end
+  end
+
   def history
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     @question = @answer.question
 
     respond_to do |format|
