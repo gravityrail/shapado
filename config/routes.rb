@@ -152,7 +152,7 @@ Shapado::Application.routes.draw do
     end
   end
 
-  scope '/moderate' do
+  namespace :moderate do
     resources :questions do
       collection do
         get :flagged
