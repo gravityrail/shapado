@@ -1,7 +1,7 @@
 
 desc "Fix all"
 task :fixall => [:environment, "fixdb:openid", "fixdb:counters" "fixdb:votes", "fixdb:sync_counts", "fixdb:groups"] do
-
+end
 
 namespace :fixdb do
   task :openid => [:environment] do
