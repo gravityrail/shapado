@@ -48,6 +48,8 @@ class Question
   belongs_to :group
 
   key :watchers, Array
+  key :followers_count, Integer, :default => 0
+  has_many :followers, :in => :watchers, :class_name => "User"
 
   key :updated_by_id, String
   belongs_to :updated_by, :class_name => "User"
@@ -201,23 +203,21 @@ class Question
   end
 
 
-  def add_watcher(user)
-    # TODO: use mongo_mapper syntax
-    if !watch_for?(user)
-      self.collection.update({:_id => self.id},
-                             {:$push => {:watchers => user.id}});
+  def add_follower(user)
+    if !follower?(user)
+      self.push_uniq(:watchers => user.id)
+      self.increment(:followers_count => 1)
     end
   end
 
-  def remove_watcher(user)
-    # TODO: use mongo_mapper syntax
-    if watch_for?(user)
-      self.collection.update({:_id => self.id},
-                             {:$pull => {:watchers => user._id}});
+  def remove_follower(user)
+    if follower?(user)
+      self.pull(:watchers => user.id)
+      self.decrement(:followers_count => 1)
     end
   end
 
-  def watch_for?(user)
+  def follower?(user)
     watchers.include?(user._id)
   end
 

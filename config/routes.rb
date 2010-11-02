@@ -74,8 +74,8 @@ Shapado::Application.routes.draw do
       get :flag
       get :favorite
       get :unfavorite
-      get :watch
-      get :unwatch
+      get :follow
+      get :unfollow
       get :history
       get :revert
       get :diff

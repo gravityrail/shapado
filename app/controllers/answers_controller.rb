@@ -240,7 +240,7 @@ class AnswersController < ApplicationController
                       :_id => {:$ne => @answer.user.id},
                       :select => ["email"]}
 
-      users = User.all(search_opts.merge(:_id => @question.watchers))
+      users = @question.followers.all(search_opts) # TODO: optimize!!
       users.push(@question.user) if !@question.user.nil? && @question.user != @answer.user
       followers = @answer.user.followers(:languages => [@question.language], :group_id => current_group.id)
 

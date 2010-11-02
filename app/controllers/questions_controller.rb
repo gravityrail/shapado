@@ -492,7 +492,7 @@ class QuestionsController < ApplicationController
     @favorite.user = current_user
     @favorite.group = @question.group
 
-    @question.add_watcher(current_user)
+    @question.add_follower(current_user)
 
     if (@question.user_id != current_user.id) && current_user.notification_opts.activities
       Notifier.deliver_favorited(current_user, @question.group, @question)
@@ -526,7 +526,7 @@ class QuestionsController < ApplicationController
       if current_user.can_modify?(@favorite)
         @question.remove_favorite!(@favorite, current_user)
         @favorite.destroy
-        @question.remove_watcher(current_user)
+        @question.remove_follower(current_user)
       end
     end
     flash[:notice] = t("unfavorites.create.success")
@@ -540,9 +540,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def watch
+  def follow
     @question = Question.find_by_slug_or_id(params[:id])
-    @question.add_watcher(current_user)
+    @question.add_follower(current_user)
     flash[:notice] = t("questions.watch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
@@ -554,9 +554,9 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def unwatch
+  def unfollow
     @question = Question.find_by_slug_or_id(params[:id])
-    @question.remove_watcher(current_user)
+    @question.remove_follower(current_user)
     flash[:notice] = t("questions.unwatch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}

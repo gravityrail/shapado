@@ -38,10 +38,10 @@
 = error_messages_for 'answer'
 
 #question-vote-col
-  - if current_user && @question.watch_for?(current_user)
-    = link_to image_tag("layer-visible-on.png", 'data-src' => "/images/layer-visible-off.png"), unwatch_question_path(@question), :class => 'question-action', "data-undo" =>  watch_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
+  - if current_user && @question.follower?(current_user)
+    = link_to image_tag("layer-visible-on.png", 'data-src' => "/images/layer-visible-off.png"), unfollow_question_path(@question), :class => 'question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
   - else
-    = link_to image_tag("layer-visible-off.png", 'data-src' => "/images/layer-visible-on.png"), watch_question_path(@question), :title => t(".watch_tooltip"), :class => 'question-action', "data-undo" =>  unwatch_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
+    = link_to image_tag("layer-visible-off.png", 'data-src' => "/images/layer-visible-on.png"), follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
 
   =vote_box(@question, question_path(@question), @question.closed)
 
