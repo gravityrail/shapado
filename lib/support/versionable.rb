@@ -49,7 +49,7 @@ module Versionable
       version1 = self.version_at(pos1)
       version2 = self.version_at(pos2)
 
-      Differ.diff_by_word(version1.content(key), version2.content(key)).format_as(format)
+      Differ.diff_by_word(version1.content(key), version2.content(key)).format_as(format).safe_html
     end
 
     def current_version
