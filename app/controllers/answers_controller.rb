@@ -64,9 +64,8 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new
-    @answer.safe_update(%w[body wiki anonymous], params[:answer])
+    @answer.safe_update(%w[body wiki anonymous position], params[:answer])
     @answer.anonymous = Boolean.to_mongo(params[:answer][:anonymous])
-
     @question = Question.find_by_slug_or_id(params[:question_id])
     @answer.question = @question
     @answer.group_id = @question.group_id
@@ -101,6 +100,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
+        Jobs::Activities.async.on_create_answer(@answer.id).commit!
         after_create_answer
         Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,
                                        owner_id: @answer.user.id, owner_name: @answer.user.login,
@@ -226,7 +226,6 @@ class AnswersController < ApplicationController
   # TODO: use magent to do it
   def after_create_answer
     sweep_question(@question)
-
     Question.update_last_target(@question.id, @answer)
 
     @question.answer_added!

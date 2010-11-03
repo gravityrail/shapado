@@ -70,7 +70,7 @@ module Jobs
       question = Question.find!(question_id)
       user = question.user
       group = question.group
-
+      question.set_address
       if group.questions.count(:user_id => user.id) == 1
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
       end

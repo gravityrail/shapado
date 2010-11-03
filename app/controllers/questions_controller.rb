@@ -256,7 +256,7 @@ class QuestionsController < ApplicationController
     if !params[:tag_input].blank? && params[:question][:tags].blank?
       params[:question][:tags] = params[:tag_input]
     end
-    @question.safe_update(%w[title body language tags wiki], params[:question])
+    @question.safe_update(%w[title body language tags wiki position], params[:question])
 
     @question.anonymous = Boolean.to_mongo(params[:question][:anonymous])
 

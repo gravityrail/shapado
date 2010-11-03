@@ -1,4 +1,6 @@
-
+.group
+  = hidden_field_tag "answer[position][lat]", @answer.position.lat, :class => "lat_input"
+  = hidden_field_tag "answer[position][long]", @answer.position.long, :class => "long_input"
 .group
   %label.label
     = t('.answer_label')

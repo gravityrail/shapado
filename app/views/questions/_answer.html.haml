@@ -31,8 +31,8 @@
           -unless answer.updated_by.hide_country
             .adr
               .country-name
-                = t("global.from", :site => answer.updated_by.country_name)
-              = country_flag(answer.updated_by.country_code, answer.updated_by.country_name)
+                = t("global.from", :site => answer.address_name)
+                = country_flag(answer.address["country_code"], answer.address["country"])
 
     .author.user_data.vcard
       .updated{:title => answer.updated_at}
@@ -49,8 +49,8 @@
           -unless answer.user.hide_country
             .adr
               .country-name
-                = t("global.from", :site => answer.user.country_name)
-              = country_flag(answer.user.country_code, answer.user.country_name)
+                = t("global.from", :site => answer.address_name)
+                = country_flag(answer.address["country_code"], answer.address["country"])
         -else
           %b=t("global.anonymous")
     .controls

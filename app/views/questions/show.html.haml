@@ -92,8 +92,8 @@
         %span.adr
           - if !@question.user.hide_country
             %span.country-name
-              = t("global.from", :site => @question.user.country_name)
-              = country_flag(@question.user.country_code, @question.user.country_name)
+              = t("global.from", :site => @question.address_name)
+              = country_flag(@question.address["country_code"], @question.address["country"])
       .clear
     - if @question.updated_by.present?
       .user_info
@@ -108,8 +108,8 @@
           %span.adr
             - if !@question.updated_by.hide_country
               %span.country-name
-                = t("global.from", :site => @question.updated_by.country_name)
-                = country_flag(@question.updated_by.country_code, @question.updated_by.country_name)
+              = t("global.from", :site => @question.address_name)
+              = country_flag(@question.address["country_code"], @question.address["country"])
         .clear
   .controls
     .actions

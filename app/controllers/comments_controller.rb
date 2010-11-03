@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     @comment.commentable = scope
     @comment.user = current_user
     @comment.group = current_group
-
+    @comment.position = params[:comment][:position]
     if saved = @comment.save
       current_user.on_activity(:comment_question, current_group)
 
