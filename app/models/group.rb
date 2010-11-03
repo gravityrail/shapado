@@ -87,6 +87,7 @@ class Group
   validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :within => AVAILABLE_THEMES
 
+  before_validation_on_create :set_subdomain
   before_validation_on_create :check_domain
   before_save :disallow_javascript
   before_save :modify_attributes
@@ -96,6 +97,10 @@ class Group
                               :within => BLACKLIST_GROUP_NAME,
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
+
+  def set_subdomain
+    self["subdomain"] = self["slug"]
+  end
 
   def modify_attributes
     self.domain.downcase!
