@@ -34,7 +34,6 @@ gem 'mongomapper_ext', '0.5.1'
 
 # utils
 
-gem "geoip"
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
 gem "magent", "0.5.2"

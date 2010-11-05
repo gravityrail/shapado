@@ -338,16 +338,6 @@ Time.zone.now ? 1 : 0)
     ReputationStat.collection.update({:_id => stats.id}, {:$addToSet => {:events => event.attributes}})
   end
 
-  def localize(ip)
-    l = Localize.country(ip)
-    self.ip = ip
-    if l
-      self.country_code = l[2]
-      self.country_name = l[4]
-    end
-    save
-  end
-
   def reputation_on(group)
     config_for(group, false).reputation.to_i
   end

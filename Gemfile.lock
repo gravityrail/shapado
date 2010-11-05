@@ -76,7 +76,6 @@ GEM
     ffi (0.6.3)
       rake (>= 0.8.7)
     gem_plugin (0.2.3)
-    geoip (0.8.7)
     goalie (0.0.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -217,7 +216,6 @@ DEPENDENCIES
   em-websocket (~> 0.1.4)
   eventmachine (~> 0.12.10)
   fancy-buttons (= 0.5.5)
-  geoip
   goalie (~> 0.0.4)
   haml
   hpricot
