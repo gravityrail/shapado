@@ -15,14 +15,21 @@ module GeoCommon
     if lat != 0 || long != 0
       self["address"] = Nominatim::Place.new(lat, long).get_address
       self.save
+      if self.user.address != self.address
+        self.user.position = self.position
+        self.user.address = self.address
+        self.user.save
+      end
     end
   end
 
   def address_name
     address = if self.address != { }
-
-                "#{self.address["city"]}, #{self.address["country"]}" unless self.address["city"].blank?
-                self.address["country"]
+                unless self.address["city"].blank?
+                  "#{self.address["city"]}, #{self.address["country"]}"
+                else
+                  self.address["country"]
+                end
               else
                 I18n.t('global.unknown_place')
               end
