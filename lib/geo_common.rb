@@ -20,7 +20,9 @@ module GeoCommon
 
   def address_name
     address = if self.address != { }
-                "#{self.address["city"]}, #{self.address["country"]}"
+
+                "#{self.address["city"]}, #{self.address["country"]}" unless self.address["city"].blank?
+                self.address["country"]
               else
                 I18n.t('global.unknown_place')
               end
