@@ -12,3 +12,7 @@ base_packaged.*
 log/*.log
 tmp/**/*
 vendor/cache/*.gem
+public/javascripts/login_packaged.js
+public/javascripts/show_packaged.js
+
+
