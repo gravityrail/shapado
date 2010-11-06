@@ -7,7 +7,7 @@ class Flag
   field :reason, :type => String, :required => true, :default => "spam"
 
   field :user_id, :type => String
-  belongs_to :user
+  referenced_in :user
 
   validates_presence_of :user
   validates_inclusion_of :reason, :within => REASONS

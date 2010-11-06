@@ -7,7 +7,7 @@ class Version
   field :date, :type => Time
 
   field :user_id, :type => String
-  belongs_to :user
+  referenced_in :user
 
   def content(key)
     cdata = self.data[key]

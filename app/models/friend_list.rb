@@ -7,5 +7,5 @@ class FriendList
   references_many :followers, :stored_as => :array, :inverse_of => :users, :foreign_key => :follower_ids, :class_name => "User" # FIXME mongoid
 
   field :following_ids, :type => Array
-  many :following, :stored_as => :array, :inverse_of => :users, :foreign_key => :follower_ids, :class_name => "User"
+  references_many :following, :stored_as => :array, :inverse_of => :users, :foreign_key => :follower_ids, :class_name => "User"
 end

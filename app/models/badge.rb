@@ -19,10 +19,10 @@ class Badge
 
   identity :type => String
 
-  belongs_to :user
+  referenced_in :user
   validates_presence_of :user
 
-  belongs_to :group
+  referenced_in :group
   validates_presence_of :group
 
   field :token, String, :required => true, :index => true

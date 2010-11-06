@@ -17,8 +17,8 @@ class ReputationStat
   references_many :events, :class_name => "ReputationEvent"
 
   field :user_id, :type => String
-  belongs_to :user
+  referenced_in :user
 
   field :group_id, :type => String
-  belongs_to :group
+  referenced_in :group
 end

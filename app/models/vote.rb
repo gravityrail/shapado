@@ -6,7 +6,7 @@ class Vote
   field :value, :type => Integer, :required => true
 
   field :user_id, :type => String
-  belongs_to :user
+  referenced_in :user
 
   field :user_ip, :type => String
 

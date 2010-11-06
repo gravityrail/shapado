@@ -5,7 +5,7 @@ class OpenRequest
   identity :type => String
 
   field :user_id, :type => String
-  belongs_to :user
+  referenced_in :user
 
   field :comment, :type => String
 
