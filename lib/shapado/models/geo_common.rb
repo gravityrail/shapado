@@ -4,7 +4,6 @@ module Models
     extend ActiveSupport::Concern
 
     included do
-      #before_validation_on_create :set_address
       key :address, Hash
       key :position, GeoPosition, :default => GeoPosition.new(0, 0)
       ensure_index [[:position, Mongo::GEO2D]]
@@ -13,7 +12,6 @@ module Models
 
     module InstanceMethods
       def set_address
-        ## TODO execute with magent
         lat = self["position"].lat
         long = self["position"].long
         if lat != 0 || long != 0
