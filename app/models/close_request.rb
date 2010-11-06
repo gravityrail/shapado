@@ -1,6 +1,6 @@
 
 class CloseRequest
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
   REASONS = %w{dupe ot no_question not_relevant spam}
 
   key :_id, String

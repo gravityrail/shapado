@@ -3,20 +3,8 @@ Magent.setup(YAML.load_file(Rails.root.join('config', 'magent.yml')),
 
 MongoidExt.init
 
-if defined?(PhusionPassenger)
-  PhusionPassenger.on_event(:starting_worker_process) do |forked|
-    Mongoid.connection.connect_to_master if forked
-  end
-end
-
 Dir.glob("#{Rails.root}/app/models/**/*.rb") do |model_path|
   File.basename(model_path, ".rb").classify.constantize
-end
-
-# HACK: do not create indexes on every request
-module Mongoid::Plugins::Indexes::ClassMethods
-  def ensure_index(*args)
-  end
 end
 
 Dir.glob("#{Rails.root}/app/javascripts/**/*.js") do |js_path|

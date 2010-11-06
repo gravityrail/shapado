@@ -1,5 +1,5 @@
 class Widget
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
 
   key :_id, String
   key :name, String, :required => true

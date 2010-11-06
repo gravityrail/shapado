@@ -1,6 +1,6 @@
 # encoding: utf-8
 class CustomHtml
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
 
   key :_id, String
   key :top_bar, String, :default => "[[faq|FAQ]]"

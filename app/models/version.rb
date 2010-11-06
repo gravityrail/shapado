@@ -1,5 +1,5 @@
 class Version
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
 
   key :_id, String
   key :data, Hash

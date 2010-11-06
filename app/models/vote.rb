@@ -1,5 +1,5 @@
 class Vote
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
 
 #   timestamps! FIXME
 

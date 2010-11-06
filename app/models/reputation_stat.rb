@@ -1,6 +1,6 @@
 
 class ReputationEvent
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
   key :_id, String
   key :time, Time
   key :event, String

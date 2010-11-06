@@ -1,5 +1,5 @@
 class Share
-  include Mongoid::EmbeddedDocument
+  include Mongoid::Document
   key :_id, String
   key :fb_app_id, String
   key :fb_secret_key, String
