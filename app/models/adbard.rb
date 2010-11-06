@@ -1,7 +1,7 @@
 class Adbard < Ad
 
-  key :adbard_host_id, String
-  key :adbard_site_key, String
+  field :adbard_host_id, :type => String
+  field :adbard_site_key, :type => String
 
   validates_presence_of     :adbard_host_id
   validates_presence_of     :adbard_site_key

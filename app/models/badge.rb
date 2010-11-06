@@ -1,5 +1,6 @@
 class Badge
   include Mongoid::Document
+  include Mongoid::Timestamps
 
   TYPES = %w[gold silver bronze]
   GOLD = %w[rockstar popstar fanatic service_medal famous_question celebrity
@@ -17,28 +18,26 @@ class Badge
   end
 
   identity :type => String
-  key :user_id, String, :required => true
+
   belongs_to :user
+  validates_presence_of :user
 
-  key :group_id, String, :required => true, :index => true
   belongs_to :group
+  validates_presence_of :group
 
-  key :token, String, :required => true, :index => true
-  key :type, String, :required => true
+  field :token, String, :required => true, :index => true
+  field :type, String, :required => true
 
-  key :for_tag, Boolean
+  field :for_tag, Boolean
 
-  key :source_id, String
-  key :source_type, String
-  belongs_to :source, :polymorphic => true
-
-  key :_type, String
-  timestamps!
+  field :source_id, String
+  field :source_type, String
+#   belongs_to :source, :polymorphic => true # FIXME mongoid
 
   validates_inclusion_of :type,  :within => TYPES
   validates_inclusion_of :token, :within => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
 
-  before_validation_on_create :set_type
+  before_save :set_type
 
   def self.gold_badges
     self.find_all_by_type("gold")

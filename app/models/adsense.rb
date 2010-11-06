@@ -1,9 +1,9 @@
 class Adsense < Ad
 
-  key :google_ad_client, String
-  key :google_ad_slot, Integer
-  key :google_ad_width, Integer
-  key :google_ad_height, Integer
+  field :google_ad_client, :type => String
+  field :google_ad_slot, :type => Integer
+  field :google_ad_width, :type => Integer
+  field :google_ad_height, :type => Integer
 
   validates_presence_of     :google_ad_client
   validates_presence_of     :google_ad_slot

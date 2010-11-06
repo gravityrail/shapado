@@ -1,17 +1,16 @@
 class Announcement
   include Mongoid::Document
+  include Mongoid::Timestamps
 
-  timestamps!
   identity :type => String
 
-  key :message, String, :required => true
-  key :starts_at, Timestamp, :required => true
-  key :ends_at, Timestamp, :required => true
+  field :message, :type => String, :required => true
+  field :starts_at, :type => Timestamp, :required => true
+  field :ends_at, :type => Timestamp, :required => true
 
-  key :only_anonymous, Boolean, :default => false
+  field :only_anonymous, :type => Boolean, :default => false
 
-  key :group_id, String
-  belongs_to :group
+  referenced_in :group
 
   validate :check_dates
 
