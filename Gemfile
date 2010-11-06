@@ -48,7 +48,7 @@ gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
 
 # authentication
-gem 'omniauth', '~> 0.1.6'
+gem 'omniauth', :git => "https://github.com/intridea/omniauth.git"
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 
 gem 'orm_adapter'
