@@ -182,11 +182,8 @@ class UsersController < ApplicationController
 
     flash[:notice] = t("flash_notice", :scope => "users.follow", :user => @user.login)
 
-    if @user.notification_opts.activities
-      Notifier.deliver_follow(current_user, @user, current_group)
-    end
-
     Jobs::Activities.async.on_follow(current_user.id, @user.id, current_group.id).commit!
+    Jobs::Mailer.async.on_follow(current_user.id, @user.id, current_group.id).commit!
 
     respond_to do |format|
       format.html do

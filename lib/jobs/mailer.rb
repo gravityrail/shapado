@@ -1,0 +1,54 @@
+module Jobs
+  class Mailer
+    extend Jobs::Base
+
+    def self.on_ask_question(question_id)
+      question = Question.find!(question_id)
+      group = question.group
+      users = User.find_experts(question.tags, [question.language],
+                                                :except => [question.user.id],
+                                                :group_id => group.id)
+      followers = question.user.followers(:group_id => group.id, :languages => [question.language])
+
+      (users - followers).each do |u|
+        if !u.email.blank?
+          Notifier.give_advice(u, group, question, false).deliver
+        end
+      end
+
+      followers.each do |u|
+        if !u.email.blank?
+          Notifier.give_advice(u, group, question, true).deliver
+        end
+      end
+    end
+
+    def self.on_new_comment(commentable_id, commentable_class, comment_id)
+      commentable = commentable_class.find(commentable_id)
+      comment = commentable_id.comments.find(comment_id)
+      if comment && (recipient = comment.find_recipient)
+        email = recipient.email
+        if !email.blank? && current_user.id != recipient.id && recipient.notification_opts.new_answer
+          Notifier.new_comment(commentable.group, comment, recipient, commentable).deliver
+        end
+      end
+    end
+
+    def self.on_favorite_question(question_id, current_user_id)
+      current_user = User.find(current_user_id)
+      question = Question.find(question_id)
+      if (question.user_id != current_user.id) && current_user.notification_opts.activities
+        Notifier.deliver_favorited(current_user, question.group, question)
+      end
+    end
+
+    def self.on_follow(current_user_id, user_id, current_group_id)
+      current_user = User.find(current_user_id)
+      current_group = Group.find(current_group_id)
+      user = User.find(user_id)
+      if user.notification_opts.activities
+        Notifier.deliver_follow(current_user, user, current_group)
+      end
+    end
+  end
+end

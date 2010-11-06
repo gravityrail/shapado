@@ -32,13 +32,7 @@ class CommentsController < ApplicationController
       flash[:error] = @comment.errors.full_messages.join(", ")
     end
 
-    # TODO: use magent to do it
-    if (question = @comment.find_question) && (recipient = @comment.find_recipient)
-      email = recipient.email
-      if !email.blank? && current_user.id != recipient.id && recipient.notification_opts.new_answer
-        Notifier.new_comment(current_group, @comment, recipient, question).deliver
-      end
-    end
+    Jobs::Activities.async.on_new_comment(scope.id, scope._type, @comment.id)
 
     respond_to do |format|
       if saved

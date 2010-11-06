@@ -8,8 +8,12 @@ GIT
 
 GIT
   remote: http://github.com/plataformatec/devise.git
+<<<<<<< HEAD
   revision: 09a46695f2437ec73e16a7c0d38e934a0e8e6c5a
   ref: 09a46695
+=======
+  revision: 1f44c61d080657d0a13b2ea35d67d050fb24498c
+>>>>>>> origin/next-magent-mailer
   branch: omniauth
   specs:
     devise (1.2.rc)
