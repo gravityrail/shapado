@@ -1,7 +1,7 @@
 require 'digest/sha1'
 
 class User
-  include MongoMapper::Document
+  include Mongoid::Document
   include MultiauthSupport
   include Shapado::Models::GeoCommon
 

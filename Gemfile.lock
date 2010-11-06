@@ -17,6 +17,15 @@ GIT
       orm_adapter (~> 0.0.2)
       warden (~> 1.0.0)
 
+PATH
+  remote: vendor/gems/mongoid_ext
+  specs:
+    mongoid_ext (0.6.0)
+      i18n (~> 0.4.1)
+      mongoid (~> 2.0.0.beta.20)
+      tzinfo (~> 0.3)
+      uuidtools (>= 2.1.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -83,8 +92,6 @@ GEM
     haml (3.0.23)
     hpricot (0.8.3)
     i18n (0.4.2)
-    jnunemaker-validatable (1.8.4)
-      activesupport (>= 2.3.4)
     json (1.4.6)
     magent (0.5.2)
       em-websocket
@@ -102,13 +109,11 @@ GEM
     mime-types (1.16)
     mongo (1.1.1)
       bson (>= 1.1.1)
-    mongo_mapper (0.8.6)
-      activesupport (>= 2.3.4)
-      jnunemaker-validatable (~> 1.8.4)
-      plucky (~> 0.3.6)
-    mongomapper_ext (0.5.1)
-      mongo_mapper (~> 0.8)
-      uuidtools (>= 2.0.0)
+    mongoid (2.0.0.beta.20)
+      activemodel (~> 3.0)
+      mongo (~> 1.1)
+      tzinfo (~> 0.3.22)
+      will_paginate (~> 3.0.pre)
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
@@ -151,8 +156,6 @@ GEM
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
     orm_adapter (0.0.3)
-    plucky (0.3.6)
-      mongo (~> 1.1)
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -202,6 +205,7 @@ GEM
     warden (1.0.1)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -220,20 +224,18 @@ DEPENDENCIES
   goalie (~> 0.0.4)
   haml
   hpricot
-  jnunemaker-validatable (= 1.8.4)
   magent (= 0.5.2)
   magic
   mechanize
   mongo (= 1.1.1)
-  mongo_mapper (= 0.8.6)
-  mongomapper_ext (= 0.5.1)
+  mongoid (= 2.0.0.beta.20)
+  mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
   niftier-generators (= 0.1.2)
   nokogiri
   omniauth (~> 0.1.6)
   orm_adapter
-  plucky (= 0.3.6)
   rack-recaptcha (= 0.2.2)
   rails (= 3.0.1)
   rdiscount (= 1.6.5)

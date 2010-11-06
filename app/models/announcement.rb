@@ -1,5 +1,5 @@
 class Announcement
-  include MongoMapper::Document
+  include Mongoid::Document
 
   timestamps!
   key :_id, String

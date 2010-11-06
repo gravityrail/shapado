@@ -1,8 +1,8 @@
 class Question
-  include MongoMapper::Document
-  include MongoMapperExt::Filter
-  include MongoMapperExt::Slugizer
-  include MongoMapperExt::Tags
+  include Mongoid::Document
+  include MongoidExt::Filter
+  include MongoidExt::Slugizer
+  include MongoidExt::Tags
   include Support::Versionable
   include Support::Voteable
   include Shapado::Models::GeoCommon

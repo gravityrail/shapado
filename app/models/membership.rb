@@ -1,5 +1,5 @@
 class Membership
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
   ROLES = %w[user moderator owner]
 

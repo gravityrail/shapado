@@ -1,5 +1,5 @@
 class TagList
-  include MongoMapper::Document
+  include Mongoid::Document
 
   key :_id, String
   key :group_id, String

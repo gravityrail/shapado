@@ -1,5 +1,5 @@
 class NotificationConfig
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
   key :_id, String
 

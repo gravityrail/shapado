@@ -1,5 +1,5 @@
 class Badge
-  include MongoMapper::Document
+  include Mongoid::Document
 
   TYPES = %w[gold silver bronze]
   GOLD = %w[rockstar popstar fanatic service_medal famous_question celebrity

@@ -5,7 +5,7 @@ coverage
 public/stylesheets/compiled/
 config/shapado.yml
 data/*.dat
-config/database.yml
+config/mongoid.yml
 base_packaged.*
 .directory
 .bundle

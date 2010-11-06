@@ -1,5 +1,5 @@
 class Flag
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
   REASONS = ["spam", "offensive", "attention"]
   key :reason, String, :required => true, :default => "spam"
 

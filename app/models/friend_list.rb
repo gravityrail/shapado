@@ -1,5 +1,5 @@
 class FriendList
-  include MongoMapper::Document
+  include Mongoid::Document
 
   key :_id, String
 

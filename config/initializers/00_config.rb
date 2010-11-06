@@ -1,9 +1,4 @@
-require 'devise-mongo_mapper'
-require 'mongo_mapper_adapter'
 require 'magent/web_socket_channel'
-
-Encoding.default_internal = 'utf-8'
-Encoding.default_external = 'utf-8'
 
 REPUTATION_CONSTRAINS = {"vote_up" => 15, "flag" => 15, "post_images" => 15,
 "comment" => 50, "delete_own_comments" => 50, "vote_down" => 100,

@@ -1,6 +1,6 @@
 class Answer < Comment
-  include MongoMapper::Document
-  include MongoMapperExt::Filter
+  include Mongoid::Document
+  include MongoidExt::Filter
   include Support::Versionable
   key :_id, String
 

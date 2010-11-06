@@ -1,5 +1,5 @@
 class Widget
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
   key :_id, String
   key :name, String, :required => true

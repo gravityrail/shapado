@@ -1,16 +1,11 @@
-require 'mm-paginate'
-
-MongoMapper.setup(YAML.load_file(Rails.root.join('config', 'database.yml')),
-                  Rails.env, { :logger => Rails.logger, :passenger => false })
-
 Magent.setup(YAML.load_file(Rails.root.join('config', 'magent.yml')),
                   Rails.env, {})
 
-MongoMapperExt.init
+MongoidExt.init
 
 if defined?(PhusionPassenger)
   PhusionPassenger.on_event(:starting_worker_process) do |forked|
-    MongoMapper.connection.connect_to_master if forked
+    Mongoid.connection.connect_to_master if forked
   end
 end
 
@@ -19,7 +14,7 @@ Dir.glob("#{Rails.root}/app/models/**/*.rb") do |model_path|
 end
 
 # HACK: do not create indexes on every request
-module MongoMapper::Plugins::Indexes::ClassMethods
+module Mongoid::Plugins::Indexes::ClassMethods
   def ensure_index(*args)
   end
 end
@@ -29,7 +24,7 @@ Dir.glob("#{Rails.root}/app/javascripts/**/*.js") do |js_path|
   name = File.basename(js_path, ".js")
 
   # HACK: looks like ruby driver doesn't support this
-  MongoMapper.database.eval("db.system.js.save({_id: '#{name}', value: #{code}})")
+  Mongoid.database.eval("db.system.js.save({_id: '#{name}', value: #{code}})")
 end
 
 require 'support/versionable'

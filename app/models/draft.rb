@@ -1,5 +1,5 @@
 class Draft
-  include MongoMapper::Document
+  include Mongoid::Document
   timestamps!
   key :_id, String
   key :question, Question

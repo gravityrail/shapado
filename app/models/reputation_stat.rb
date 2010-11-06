@@ -1,6 +1,6 @@
 
 class ReputationEvent
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
   key :_id, String
   key :time, Time
   key :event, String
@@ -9,7 +9,7 @@ class ReputationEvent
 end
 
 class ReputationStat
-  include MongoMapper::Document
+  include Mongoid::Document
   key :_id, String
 
   many :events, :class_name => "ReputationEvent"

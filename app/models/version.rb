@@ -1,5 +1,5 @@
 class Version
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
   key :_id, String
   key :data, Hash

@@ -1,9 +1,9 @@
 class Page
-  include MongoMapper::Document
-  include MongoMapperExt::Filter
-  include MongoMapperExt::Slugizer
-  include MongoMapperExt::Tags
-  include MongoMapperExt::Storage
+  include Mongoid::Document
+  include MongoidExt::Filter
+  include MongoidExt::Slugizer
+  include MongoidExt::Tags
+  include MongoidExt::Storage
   include Support::Versionable
 
   timestamps!

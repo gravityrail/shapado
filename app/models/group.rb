@@ -1,8 +1,8 @@
 class Group
-  include MongoMapper::Document
-  include MongoMapperExt::Slugizer
-  include MongoMapperExt::Storage
-  include MongoMapperExt::Filter
+  include Mongoid::Document
+  include MongoidExt::Slugizer
+  include MongoidExt::Storage
+  include MongoidExt::Filter
 
   timestamps!
 

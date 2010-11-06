@@ -1,5 +1,5 @@
 class Comment
-  include MongoMapper::Document
+  include Mongoid::Document
   include Support::Voteable
   include Shapado::Models::GeoCommon
 

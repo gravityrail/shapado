@@ -1,5 +1,5 @@
 class Share
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
   key :_id, String
   key :fb_app_id, String
   key :fb_secret_key, String

@@ -1,4 +1,4 @@
-class MongoMapperMiddleware
+class MongoidMiddleware
   def initialize(app)
     @app = app
   end
@@ -13,12 +13,12 @@ class MongoMapperMiddleware
 
   def call(env)
     if Rails.configuration.cache_classes
-      MongoMapper::Plugins::IdentityMap.clear
+      Mongoid::Plugins::IdentityMap.clear
     else
-      clear_descendants(MongoMapper::Document)
-      clear_descendants(MongoMapper::EmbeddedDocument)
-      MongoMapper::Plugins::IdentityMap.clear
-      MongoMapper::Plugins::IdentityMap.models.clear
+      clear_descendants(Mongoid::Document)
+      clear_descendants(Mongoid::EmbeddedDocument)
+      Mongoid::Plugins::IdentityMap.clear
+      Mongoid::Plugins::IdentityMap.models.clear
     end
 
     @app.call(env)

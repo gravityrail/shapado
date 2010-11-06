@@ -1,6 +1,6 @@
 # encoding: utf-8
 class CustomHtml
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
   key :_id, String
   key :top_bar, String, :default => "[[faq|FAQ]]"

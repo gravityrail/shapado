@@ -1,5 +1,5 @@
 class Vote
-  include MongoMapper::EmbeddedDocument
+  include Mongoid::EmbeddedDocument
 
 #   timestamps! FIXME
 

@@ -25,12 +25,14 @@ gem "fancy-buttons", "0.5.5"
 
 # mongodb
 gem 'bson', '1.1.1'
-gem 'plucky', '0.3.6'
+# gem 'plucky', '0.3.6'
 
 gem 'mongo', '1.1.1'
-gem 'jnunemaker-validatable', '1.8.4'
-gem 'mongo_mapper', '0.8.6'
-gem 'mongomapper_ext', '0.5.1'
+#gem 'jnunemaker-validatable', '1.8.4'
+#gem 'mongo_mapper', '0.8.6'
+#gem 'mongomapper_ext', '0.5.1'
+gem 'mongoid', '2.0.0.beta.20'
+gem 'mongoid_ext', :path => "vendor/gems/mongoid_ext"
 
 # utils
 

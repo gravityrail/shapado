@@ -1,6 +1,6 @@
 class Ad
-  include MongoMapper::Document
-  include MongoMapperExt::Slugizer
+  include Mongoid::Document
+  include MongoidExt::Slugizer
   POSITIONS=[["context_panel","context_panel"],["header","header"],["footer","footer"],["content","content"]]
   slug_key :name
   key :name
