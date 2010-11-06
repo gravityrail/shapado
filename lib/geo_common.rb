@@ -6,6 +6,7 @@ module GeoCommon
       key :address, Hash
       key :position, GeoPosition, :default => GeoPosition.new(0, 0)
       ensure_index [[:position, Mongo::GEO2D]]
+      scope :near, lambda { |point, opts| {:position => {:$near => point, :$maxDistance => 6}}.merge(opts) }
     end
   end
   def set_address
@@ -34,4 +35,9 @@ module GeoCommon
                 I18n.t('global.unknown_place')
               end
   end
+
+  def point
+    @_point ||= [self.position["lat"], self.position["long"]]
+  end
+
 end
