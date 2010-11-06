@@ -7,77 +7,85 @@ class Question
   include Support::Voteable
   include Shapado::Models::GeoCommon
 
-  ensure_index :tags
+  index :tags
 
   identity :type => String
-  key :title, String, :default => "", :required => true
-  key :body, String
+
+  field :title, :type => String, :default => "", :required => true
+  field :body, :type => String
   slug_key :title, :unique => true, :min_length => 8
-  key :slugs, Array, :index => true
+  field :slugs, :type => Array
+  index :slugs
 
-  key :answers_count, Integer, :default => 0, :required => true
-  key :views_count, Integer, :default => 0
-  key :hotness, Integer, :default => 0
-  key :flags_count, Integer, :default => 0
-  key :close_requests_count, Integer, :default => 0
-  key :open_requests_count, Integer, :default => 0
-  key :favorites_count, Integer, :default => 0
+  field :answers_count, :type => Integer, :default => 0, :required => true
+  field :views_count, :type => Integer, :default => 0
+  field :hotness, :type => Integer, :default => 0
+  field :flags_count, :type => Integer, :default => 0
+  field :close_requests_count, :type => Integer, :default => 0
+  field :open_requests_count, :type => Integer, :default => 0
+  field :favorites_count, :type => Integer, :default => 0
 
-  key :adult_content, Boolean, :default => false
-  key :banned, Boolean, :default => false, :index => true
-  key :accepted, Boolean, :default => false
-  key :closed, Boolean, :default => false
-  key :closed_at, Time
+  field :adult_content, :type => Boolean, :default => false
+  field :banned, :type => Boolean, :default => false
+  index :banned
+  field :accepted, :type => Boolean, :default => false
+  field :closed, :type => Boolean, :default => false
+  field :closed_at, :type => Time
 
-  key :anonymous, Boolean, :default => false, :index => true
+  field :anonymous, :type => Boolean, :default => false
+  index :anonymous
 
-  key :answered_with_id, String
+  field :answered_with_id, :type => String
   belongs_to :answered_with, :class_name => "Answer"
 
-  key :wiki, Boolean, :default => false
-  key :language, String, :default => "en", :index => true
+  field :wiki, :type => Boolean, :default => false
+  field :language, :type => String, :default => "en"
+  index :language
 
-  key :activity_at, Time
+  field :activity_at, :type => Time
 
-  key :user_id, String, :index => true
   belongs_to :user
+  index :user_id
 
-  key :answer_id, String
+  field :answer_id, :type => String
   belongs_to :answer
 
-  key :group_id, String, :index => true
   belongs_to :group
+  index :group_id
 
-  key :watchers, Array
-  key :followers_count, Integer, :default => 0
-  has_many :followers, :in => :watchers, :class_name => "User"
 
-  key :updated_by_id, String
+  # FIXME mongid (ids are currently stored in watchers)
+  field :followers_count, :type => Integer, :default => 0
+  references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"
+
+  field :updated_by_id, :type => String
   belongs_to :updated_by, :class_name => "User"
 
-  key :close_reason_id, String
+  field :close_reason_id, :type => String
 
-  key :last_target_type, String
-  key :last_target_id, String
-  key :last_target_date, Time
+  field :last_target_type, :type => String
+  field :last_target_id, :type => String
+  field :last_target_date, :type => Time
 
   belongs_to :last_target, :polymorphic => true
 
-  has_many :answers, :dependent => :destroy
-  has_many :badges, :as => "source"
-  has_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
+  references_many :answers, :dependent => :destroy
+  references_many :badges, :as => "source"
 
-  has_many :flags
-  has_many :close_requests
-  has_many :open_requests
+  embeds_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
+  embeds_many :flags
+  embeds_many :close_requests
+  embeds_many :open_requests
 
   validates_presence_of :user_id
   validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
 
   validates_length_of       :title,    :within => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
   validates_length_of       :body,     :minimum => 5, :allow_blank => true, :allow_nil => true, :if => lambda { |q| !q.disable_limits? }
-  validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
-                     :message => lambda { |q| I18n.t("questions.model.messages.too_many_tags") if q.tags.size > 9 }
+
+#  FIXME mongoid (create a validator for tags size)
+#   validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
+#                      :message => lambda { |q| I18n.t("questions.model.messages.too_many_tags") if q.tags.size > 9 }
 
   versionable_keys :title, :body, :tags
   filterable_keys :title, :body
@@ -87,8 +95,8 @@ class Question
   before_validation_on_create :update_language
 
   validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
-  validates_true_for :language, :logic => lambda { |q| q.group.language == q.language },
-                                :if => lambda { |q| !q.group.language.nil? }
+
+  validate :group_language
   validate :disallow_spam
   validate :check_useful
 
@@ -300,5 +308,10 @@ class Question
     self.language = self.language.split("-").first
   end
 
+  def group_language
+    if !q.group.language.nil? && q.group.language != q.language
+      self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
+    end
+  end
 end
 
