@@ -2,6 +2,7 @@ require 'digest/sha1'
 
 class User
   include Mongoid::Document
+  include Mongoid::Timestamps
   include MultiauthSupport
   include Shapado::Models::GeoCommon
 
@@ -12,63 +13,61 @@ class User
   LANGUAGE_FILTERS = %w[any user] + AVAILABLE_LANGUAGES
   LOGGED_OUT_LANGUAGE_FILTERS = %w[any] + AVAILABLE_LANGUAGES
 
-  key :_id,                       String
-  key :login,                     String, :limit => 40, :index => true
-  key :name,                      String, :limit => 100, :default => '', :null => true
+  identity :type => String
+  field :login,                     :type => String, :limit => 40, :index => true
+  field :name,                      :type => String, :limit => 100, :default => '', :null => true
 
-  key :bio,                       String, :limit => 200
-  key :website,                   String, :limit => 200
-  key :location,                  String, :limit => 200
-  key :birthday,                  Time
+  field :bio,                       :type => String, :limit => 200
+  field :website,                   :type => String, :limit => 200
+  field :location,                  :type => String, :limit => 200
+  field :birthday,                  :type => Time
 
-  key :identity_url,              String, :index => true
-  key :role,                      String, :default => "user"
-  key :last_logged_at,            Time
+  field :identity_url,              :type => String, :index => true
+  field :role,                      :type => String, :default => "user"
+  field :last_logged_at,            :type => Time
 
-  key :preferred_languages,       Array, :default => []
+  field :preferred_languages,       :type => Array, :default => []
 
-  key :notification_opts,         NotificationConfig
+  field :notification_opts,         :type => NotificationConfig
 
-  key :language,                  String, :default => "en", :index => true
-  key :timezone,                  String
-  key :language_filter,           String, :default => "user", :in => LANGUAGE_FILTERS
+  field :language,                  :type => String, :default => "en", :index => true
+  field :timezone,                  :type => String
+  field :language_filter,           :type => String, :default => "user", :in => LANGUAGE_FILTERS
 
-  key :ip,                        String
-  key :country_code,              String
-  key :country_name,              String, :default => "unknown"
-  key :hide_country,              Boolean, :default => false
+  field :ip,                        :type => String
+  field :country_code,              :type => String
+  field :country_name,              :type => String, :default => "unknown"
+  field :hide_country,              :type => Boolean, :default => false
 
-  key :default_subtab,            Hash
+  field :default_subtab,            :type => Hash
 
-  key :followers_count,           Integer, :default => 0
-  key :following_count,           Integer, :default => 0
+  field :followers_count,           :type => Integer, :default => 0
+  field :following_count,           :type => Integer, :default => 0
 
-  key :membership_list,           MembershipList
+  field :membership_list,           :type => MembershipList
 
-  key :feed_token,                String, :default => lambda { BSON::ObjectId.new.to_s }
-  key :socket_key,                String, :default => lambda { BSON::ObjectId.new.to_s }
+  field :feed_token,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
+  field :socket_key,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
 
-  key :anonymous,                 Boolean, :default => false, :index => true
+  field :anonymous,                 :type => Boolean, :default => false, :index => true
 
-  has_many :questions, :dependent => :destroy
-  has_many :answers, :dependent => :destroy
-  has_many :comments, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
-  has_many :badges, :dependent => :destroy
+  field :friend_list_id, :type => String
+  referenced_in :friend_list
 
-  has_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
+  renferences_many :questions, :dependent => :destroy
+  renferences_many :answers, :dependent => :destroy
+  renferences_many :comments, :dependent => :destroy
+  renferences_many :votes, :dependent => :destroy
+  renferences_many :badges, :dependent => :destroy
 
-  key :friend_list_id, String
-  belongs_to :friend_list, :dependent => :destroy
+  renferences_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
 
   before_create :create_friend_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
-  timestamps!
-
-  validates_inclusion_of :language, :within => AVAILABLE_LOCALES
-  validates_inclusion_of :role,  :within => ROLES
+  validates_inclusion_of :language, :in => AVAILABLE_LOCALES
+  validates_inclusion_of :role,  :in => ROLES
 
   with_options :if => lambda { |e| !e.anonymous } do |v|
     v.validates_presence_of     :login

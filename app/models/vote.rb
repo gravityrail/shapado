@@ -14,7 +14,7 @@ class Vote
   embedded_in :question, :inverse_of => :votes
   embedded_in :comment, :inverse_of => :votes
 
-  validates_inclusion_of :value, :within => [1,-1]
+  validates_inclusion_of :value, :in => [1,-1]
 
   validate :should_be_unique
   validate :check_reputation

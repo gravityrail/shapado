@@ -1,5 +1,7 @@
 class Question
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   include MongoidExt::Filter
   include MongoidExt::Slugizer
   include MongoidExt::Tags
@@ -36,7 +38,7 @@ class Question
   index :anonymous
 
   field :answered_with_id, :type => String
-  belongs_to :answered_with, :class_name => "Answer"
+  referenced_in :answered_with, :class_name => "Answer"
 
   field :wiki, :type => Boolean, :default => false
   field :language, :type => String, :default => "en"
@@ -44,13 +46,13 @@ class Question
 
   field :activity_at, :type => Time
 
-  belongs_to :user
+  referenced_in :user
   index :user_id
 
   field :answer_id, :type => String
-  belongs_to :answer
+  referenced_in :answer
 
-  belongs_to :group
+  referenced_in :group
   index :group_id
 
 
@@ -59,7 +61,7 @@ class Question
   references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"
 
   field :updated_by_id, :type => String
-  belongs_to :updated_by, :class_name => "User"
+  referenced_in :updated_by, :class_name => "User"
 
   field :close_reason_id, :type => String
 
@@ -67,12 +69,12 @@ class Question
   field :last_target_id, :type => String
   field :last_target_date, :type => Time
 
-  belongs_to :last_target, :polymorphic => true
+  referenced_in :last_target, :polymorphic => true
 
   references_many :answers, :dependent => :destroy
   references_many :badges, :as => "source"
 
-  embeds_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
+  embeds_many :comments, :as => "commentable", :order => "created_at asc"
   embeds_many :flags
   embeds_many :close_requests
   embeds_many :open_requests
@@ -92,15 +94,13 @@ class Question
   language :language
 
   before_save :update_activity_at
-  before_validation_on_create :update_language
+#   before_validation_on_create :update_language # FIXME: mongoid
 
-  validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
+  validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
 
   validate :group_language
   validate :disallow_spam
   validate :check_useful
-
-  timestamps!
 
   def first_tags
     tags[0..5]

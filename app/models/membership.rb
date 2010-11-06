@@ -4,30 +4,30 @@ class Membership
   ROLES = %w[user moderator owner]
 
   identity :type => String
-  key :display_name, String
+  field :display_name, :type => String
 
-  key :group_id, String
-  belongs_to :group
+  field :group_id, :type => String
+  referenced_in :group
 
-  key :reputation, Float, :default => 0.0
-  key :profile, Hash # custom user keys
+  field :reputation, :type => Float, :default => 0.0
+  field :profile, :type => Hash # custom user keys
 
-  key :votes_up, Float, :default => 0.0
-  key :votes_down, Float, :default => 0.0
+  field :votes_up, :type => Float, :default => 0.0
+  field :votes_down, :type => Float, :default => 0.0
 
-  key :views_count, Float, :default => 0.0
+  field :views_count, :type => Float, :default => 0.0
 
-  key :preferred_tags, Array
+  field :preferred_tags, :type => Array
 
-  key :last_activity_at, Time
-  key :activity_days, Integer, :default => 0
+  field :last_activity_at, :type => Time
+  field :activity_days, :type => Integer, :default => 0
 
-  key :role, String, :default => "user"
+  field :role, :type => String, :default => "user"
 
-  key :bronze_badges_count,       Integer, :default => 0
-  key :silver_badges_count,       Integer, :default => 0
-  key :gold_badges_count,         Integer, :default => 0
-  key :is_editor,                 Boolean, :default => false
+  field :bronze_badges_count,       :type => Integer, :default => 0
+  field :silver_badges_count,       :type => Integer, :default => 0
+  field :gold_badges_count,         :type => Integer, :default => 0
+  field :is_editor,                 :type => Boolean, :default => false
 
-  validates_inclusion_of :role,  :within => ROLES
+  validates_inclusion_of :role,  :in => ROLES
 end
