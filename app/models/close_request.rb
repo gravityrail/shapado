@@ -4,12 +4,10 @@ class CloseRequest
   REASONS = %w{dupe ot no_question not_relevant spam}
 
   identity :type => String
-  key :reason, String, :in => REASONS
+  field :reason, :type => String, :in => REASONS
+  field :comment, :type => String
 
-  key :user_id, String
-  belongs_to :user
-
-  key :comment, String
+  referenced_in :user
 
   validates_presence_of :user
 

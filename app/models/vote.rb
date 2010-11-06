@@ -1,17 +1,18 @@
 class Vote
   include Mongoid::Document
-
-#   timestamps! FIXME
+  include Mongoid::Timestamps
 
   identity :type => String
-  key :value, Integer, :required => true
+  field :value, :type => Integer, :required => true
 
-  key :user_id, String
+  field :user_id, :type => String
   belongs_to :user
 
-  key :user_ip, String
+  field :user_ip, :type => String
 
-  alias :voteable :_root_document
+  embedded_in :answer, :inverse_of => :votes
+  embedded_in :question, :inverse_of => :votes
+  embedded_in :comment, :inverse_of => :votes
 
   validates_inclusion_of :value, :within => [1,-1]
 

@@ -3,15 +3,15 @@ class CustomHtml
   include Mongoid::Document
 
   identity :type => String
-  key :top_bar, String, :default => "[[faq|FAQ]]"
+  field :top_bar, :type => String, :default => "[[faq|FAQ]]"
 
-  key :question_prompt, Hash, :default => {"en" => "what's your question? be descriptive.",
+  field :question_prompt, :type => Hash, :default => {"en" => "what's your question? be descriptive.",
                                            "el" => "ποια είναι η απορία σας; περιγράψτε την.",
                                            "es" => "¿cual es tu pregunta? por favor se descriptivo.",
                                            "fr" => "quelle est votre question? soyez descriptif.",
                                            "pt" => "qual é a sua pergunta? seja descritivo.",
                                            "ja" => "あなたの質問はなんですか？"}
-  key :question_help, Hash, :default => {
+  field :question_help, :type => Hash, :default => { # FIXME: move this to its own yml
 "en" => "Provide as much details as possible so that it will have more
 chance to be answered instead of being endlessly discussed.
 Try to be clear and simple.",
@@ -29,7 +29,7 @@ d'obtenir une réponse et non une discussion sans fin. Éssayer d'être clair et
 "ja" => "できるだけシンプルに、かつ明確にすることで論点が明確になって議論が発展します。そうすることで詳細な回答が受けられるようになります。"
   }
 
-  key :head, Hash, :default => {}
-  key :footer, Hash, :default => {}
-  key :head_tag, String
+  field :head, :type => Hash, :default => {}
+  field :footer, :type => Hash, :default => {}
+  field :head_tag, :type => String
 end

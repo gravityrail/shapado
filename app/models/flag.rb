@@ -1,10 +1,12 @@
 class Flag
   include Mongoid::Document
   REASONS = ["spam", "offensive", "attention"]
-  key :reason, String, :required => true, :default => "spam"
 
   identity :type => String
-  key :user_id, String
+
+  field :reason, :type => String, :required => true, :default => "spam"
+
+  field :user_id, :type => String
   belongs_to :user
 
   validates_presence_of :user

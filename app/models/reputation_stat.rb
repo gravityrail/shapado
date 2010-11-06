@@ -2,21 +2,23 @@
 class ReputationEvent
   include Mongoid::Document
   identity :type => String
-  key :time, Time
-  key :event, String
-  key :reputation, Float
-  key :delta, Float
+  field :time, :type => Time
+  field :event, :type => String
+  field :reputation, :type => Float
+  field :delta, :type => Float
+
+  referenced_in :reputation_stat, :inverse_of => :events
 end
 
 class ReputationStat
   include Mongoid::Document
   identity :type => String
 
-  many :events, :class_name => "ReputationEvent"
+  references_many :events, :class_name => "ReputationEvent"
 
-  key :user_id, String
+  field :user_id, :type => String
   belongs_to :user
 
-  key :group_id, String
+  field :group_id, :type => String
   belongs_to :group
 end

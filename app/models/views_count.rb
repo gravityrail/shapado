@@ -1,6 +1,6 @@
 class ViewsCount
   include Mongoid::Document
-  timestamps!
+  include Mongoid::Timestamps
 
   identity :type => String
 

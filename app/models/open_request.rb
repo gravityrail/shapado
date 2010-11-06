@@ -1,15 +1,13 @@
 
 class OpenRequest
-  include Mongoid::Document
-#   REASONS = %w{dupe ot no_question not_relevant spam}
+  include Mongoid::Documen
 
   identity :type => String
-#   key :reason, String, :in => REASONS
 
-  key :user_id, String
+  field :user_id, :type => String
   belongs_to :user
 
-  key :comment, String
+  field :comment, :type => String
 
   validates_presence_of :user
 

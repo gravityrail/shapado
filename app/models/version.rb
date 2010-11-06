@@ -2,11 +2,11 @@ class Version
   include Mongoid::Document
 
   identity :type => String
-  key :data, Hash
-  key :message, String
-  key :date, Time
+  field :data, :type => Hash
+  field :message, :type => String
+  field :date, :type => Time
 
-  key :user_id, String
+  field :user_id, :type => String
   belongs_to :user
 
   def content(key)

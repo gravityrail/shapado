@@ -2,14 +2,14 @@ class Favorite
   include Mongoid::Document
 
   identity :type => String
-  key :group_id, String, :index => true
-  belongs_to :group
+  field :group_id, :type => String, :index => true
+  referenced_in :group
 
-  key :user_id, String, :index => true
-  belongs_to :user
+  field :user_id, :type => String, :index => true
+  referenced_in :user
 
-  key :question_id, String
-  belongs_to :question
+  field :question_id, :type => String
+  referenced_in :question
 
   validate :should_be_unique # FIXME
 

@@ -1,7 +1,8 @@
 class Draft
   include Mongoid::Document
-  timestamps!
+  include Mongoid::Timestamps
+
   identity :type => String
-  key :question, Question
-  key :answer, Answer
+  field :question, :type => Question
+  field :answer, :type => Answer
 end
