@@ -90,8 +90,8 @@ class Group
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :in => AVAILABLE_THEMES
 
-#   before_validation_on_create :set_subdomain
-#   before_validation_on_create :check_domain # FIXME mongoid
+  validate :set_subdomain, :on => :create
+  validate :check_domain, :on => :create
 
   before_save :disallow_javascript
   before_save :modify_attributes
