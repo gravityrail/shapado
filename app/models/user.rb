@@ -3,7 +3,7 @@ require 'digest/sha1'
 class User
   include MongoMapper::Document
   include MultiauthSupport
-  include GeoCommon
+  include Shapado::Models::GeoCommon
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
          :lockable, :token_authenticatable, :encryptable, :omniauthable, :encryptor => :restful_authentication_sha1

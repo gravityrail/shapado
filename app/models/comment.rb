@@ -1,7 +1,7 @@
 class Comment
   include MongoMapper::Document
   include Support::Voteable
-  include GeoCommon
+  include Shapado::Models::GeoCommon
 
   key :_id, String
   key :_type, String

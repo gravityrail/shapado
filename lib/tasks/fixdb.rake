@@ -78,7 +78,7 @@ namespace :fixdb do
   end
 
   task :relocate => [:environment] do
-    doc = JSON.parse(File.read('countries/all.json'))
+    doc = JSON.parse(File.read('data/countries.json'))
     i=0
     doc.keys.each do |key|
       User.all({ :country_name => key}).each do |u|
