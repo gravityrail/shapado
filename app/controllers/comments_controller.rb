@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
     if @comment.valid? && saved = scope.save
       current_user.on_activity(:comment_question, current_group)
 
-      Jobs::Activities.async.on_comment(@comment.id).commit!
+      Jobs::Activities.async.on_comment(scope.id, scope.class.to_s, @comment.id).commit!
+      Jobs::Mailer.async.on_new_comment(scope.id, scope.class.to_s, @comment.id).commit!
 
       if question_id = @comment.question_id
         Question.update_last_target(question_id, @comment)
@@ -33,7 +34,6 @@ class CommentsController < ApplicationController
       flash[:error] = @comment.errors.full_messages.join(", ")
     end
 
-    Jobs::Activities.async.on_new_comment(scope.id, scope._type, @comment.id)
 
     respond_to do |format|
       if saved

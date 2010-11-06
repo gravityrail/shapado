@@ -15,6 +15,9 @@ class Answer
   key :wiki, Boolean, :default => false
   key :anonymous, Boolean, :default => false, :index => true
 
+  key :group_id, String, :index => true
+  belongs_to :group
+
   key :user_id, String, :index => true
   belongs_to :user
 
