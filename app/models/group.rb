@@ -110,6 +110,10 @@ class Group
     self.languages << self.language
   end
 
+  def set_subdomain
+    self["subdomain"] = self["slug"]
+  end
+
   def check_domain
     if domain.blank?
       self[:domain] = "#{subdomain}.#{AppConfig.domain}"

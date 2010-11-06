@@ -137,7 +137,7 @@ module ApplicationHelper
     txt = if raw
       (defined?(RDiscount) ? RDiscount.new(body) : Maruku.new(body)).to_html
     else
-      (defined?(RDiscount) ? RDiscount.new(body, :smart) : Maruku.new(sanitize(body))).to_html
+      (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict) : Maruku.new(sanitize(body))).to_html
     end
 
     if options[:sanitize] != false
@@ -319,6 +319,12 @@ module ApplicationHelper
 
   def gravatar(*args)
     super(*args).html_safe
+  end
+
+  def include_latex
+    if current_group.enable_latex
+      require_js domain_url(:custom => current_group.domain)+'/javascripts/jsMath/easy/load.js'
+    end
   end
 end
 
