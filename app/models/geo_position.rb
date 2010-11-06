@@ -4,7 +4,7 @@ class GeoPosition
   def self.to_mongo(value)
     return if value.nil?
     if value.is_a?(self)
-      {'lat' => Float.to_mongo(value.lat), 'long' => Float.to_mongo(value.long)}
+      {'lat' => value.lat.to_F, 'long' => value.long.to_f}
     elsif value.is_a?(Hash)
       value
     end
@@ -17,7 +17,7 @@ class GeoPosition
   end
 
   def initialize(lat, long)
-    @lat, @long = Float.to_mongo(lat), Float.to_mongo(long)
+    @lat, @long = lat.to_f, long.to_f
   end
 
   def [](arg)

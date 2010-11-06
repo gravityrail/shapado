@@ -4,9 +4,9 @@ module Models
     extend ActiveSupport::Concern
 
     included do
-      key :address, Hash
-      key :position, GeoPosition, :default => GeoPosition.new(0, 0)
-      ensure_index [[:position, Mongo::GEO2D]]
+      field :address, :type => Hash
+      field :position, :type => GeoPosition, :default => GeoPosition.new(0, 0)
+      index [[:position, Mongo::GEO2D]]
       scope :near, lambda { |point, opts| {:position => {:$near => point, :$maxDistance => 6}}.merge(opts) }
     end
 
