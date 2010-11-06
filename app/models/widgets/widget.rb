@@ -5,16 +5,19 @@ class Widget
   key :name, String, :required => true
   key :_type, String
   key :settings, Hash
-
   alias :group :_root_document
 
   def self.types
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget]
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget CurrentTagsWidget TagListWidget]
     if AppConfig.enable_groups
       types += %w[GroupsWidget TopGroupsWidget]
     end
 
     types
+  end
+
+  def question_only?
+    false
   end
 
   def partial_name

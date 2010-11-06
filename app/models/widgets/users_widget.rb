@@ -2,7 +2,7 @@ class UsersWidget < Widget
   before_validation_on_create :set_name
   before_validation_on_update :set_name
 
-  key :settings, Hash, :default => { :limit => 5 }
+  key :settings, Hash, :default => { :limit => 5, :on_welcome => true }
 
   def recent_users(group)
     group.users(:order => "created_at desc",

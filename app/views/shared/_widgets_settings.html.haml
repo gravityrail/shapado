@@ -1,0 +1,9 @@
+.group
+  = check_box_tag "settings[on_welcome]", nil, widget.settings["on_welcome"], :class => "checkbox"
+  = label :settings, t('widgets.settings.on_welcome'), :class => "radio"
+.group
+  = check_box_tag "settings[on_questions]", nil, widget.settings["on_questions"], :class => "checkbox"
+  = label :settings, t('widgets.settings.on_questions'), :class => "radio"
+.group
+  = check_box_tag "settings[on_show_question]", nil, widget.settings["on_show_question"], :class => "checkbox"
+  = label :settings, t('widgets.settings.on_show_question'), :class => "radio"

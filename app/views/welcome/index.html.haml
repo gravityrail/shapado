@@ -42,9 +42,7 @@
   .block.notice
     = render :partial => "shared/layout/notice"
 
-  -current_group.widgets.each do |widget|
-    .widget.block{:id => widget.name}
-      = render :partial => widget.partial_name, :locals => {:widget => widget}
+  = render :partial => "shared/widgets", :locals => { :context => 'on_welcome'}
 
   -if logged_in?
     = render :partial => "shared/preferred_tags"
