@@ -1,8 +1,7 @@
 class BadgesWidget < Widget
-  before_validation_on_create :set_name
-  before_validation_on_update :set_name
+  before_save :set_name
 
-  key :settings, Hash, :default => { :limit => 5 }
+  field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_badges(group)
     group.badges.all(:limit => self[:settings][:limit], :order => "created_at desc")

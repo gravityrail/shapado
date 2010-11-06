@@ -4,12 +4,12 @@ class Ad
 
   POSITIONS = [["context_panel","context_panel"],["header","header"],["footer","footer"],["content","content"]]
 
-  key :name
+  field :name, :type => String
   slug_key :name
 
-  key :group_id, String
-  key :position, String
-  key :code, String
+  field :group_id, :type => String
+  field :position, :type => String
+  field :code, :type => String
 
   referenced_in :group
 

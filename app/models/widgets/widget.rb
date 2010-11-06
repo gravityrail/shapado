@@ -1,12 +1,11 @@
 class Widget
   include Mongoid::Document
 
-  key :_id, String
-  key :name, String, :required => true
-  key :_type, String
-  key :settings, Hash
+  identity :type => String
+  field :name, :type => String, :required => true
+  field :settings, :type => Hash
 
-  alias :group :_root_document
+  embedded_in :group, :inverse_of => :widgets
 
   def self.types
     types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget]

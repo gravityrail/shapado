@@ -1,7 +1,7 @@
 class PagesWidget < Widget
-  before_validation_on_create :set_name
-  before_validation_on_update :set_name
-  key :settings, Hash, :default => { :limit => 5 }
+  before_save :set_name
+
+  field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_pages(group)
     group.pages.paginate(:order => "created_at desc",
