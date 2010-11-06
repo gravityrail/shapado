@@ -2,7 +2,7 @@ class Announcement
   include Mongoid::Document
 
   timestamps!
-  key :_id, String
+  identity :type => String
 
   key :message, String, :required => true
   key :starts_at, Timestamp, :required => true

@@ -3,7 +3,7 @@ class Comment
   include Support::Voteable
   include Shapado::Models::GeoCommon
 
-  key :_id, String
+  identity :type => String
   key :_type, String
   key :body, String, :required => true
   key :language, String, :default => "en"

@@ -3,7 +3,7 @@ class CloseRequest
   include Mongoid::Document
   REASONS = %w{dupe ot no_question not_relevant spam}
 
-  key :_id, String
+  identity :type => String
   key :reason, String, :in => REASONS
 
   key :user_id, String

@@ -8,7 +8,7 @@ class Page
 
   timestamps!
 
-  key :_id, String
+  identity :type => String
   key :title, String
   key :body, String
   key :wiki, Boolean, :default => false

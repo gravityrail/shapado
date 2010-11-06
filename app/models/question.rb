@@ -9,7 +9,7 @@ class Question
 
   ensure_index :tags
 
-  key :_id, String
+  identity :type => String
   key :title, String, :default => "", :required => true
   key :body, String
   slug_key :title, :unique => true, :min_length => 8

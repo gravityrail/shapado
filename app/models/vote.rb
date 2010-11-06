@@ -3,7 +3,7 @@ class Vote
 
 #   timestamps! FIXME
 
-  key :_id, String
+  identity :type => String
   key :value, Integer, :required => true
 
   key :user_id, String

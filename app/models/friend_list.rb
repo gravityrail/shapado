@@ -1,7 +1,7 @@
 class FriendList
   include Mongoid::Document
 
-  key :_id, String
+  identity :type => String
 
   key :follower_ids, Array
   many :followers, :in => :follower_ids, :class_name => "User"

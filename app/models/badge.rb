@@ -16,7 +16,7 @@ class Badge
     @tokens ||= GOLD + SILVER + BRONZE
   end
 
-  key :_id, String
+  identity :type => String
   key :user_id, String, :required => true
   belongs_to :user
 

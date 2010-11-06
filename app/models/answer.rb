@@ -2,7 +2,7 @@ class Answer < Comment
   include Mongoid::Document
   include MongoidExt::Filter
   include Support::Versionable
-  key :_id, String
+  identity :type => String
 
   key :body, String, :required => true
   key :language, String, :default => "en", :index => true

@@ -5,8 +5,9 @@ module Versionable
       extend ClassMethods
       include InstanceMethods
       attr_accessor :rolling_back
-      key :version_message
-      many :versions
+      field :version_message
+      embeds_many :versions
+
       before_save :save_version, :if => Proc.new { |d| !d.rolling_back }
 
       alias_method :assign_versions, :versions=

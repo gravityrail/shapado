@@ -1,7 +1,7 @@
 class Version
   include Mongoid::Document
 
-  key :_id, String
+  identity :type => String
   key :data, Hash
   key :message, String
   key :date, Time

@@ -2,7 +2,7 @@
 class CustomHtml
   include Mongoid::Document
 
-  key :_id, String
+  identity :type => String
   key :top_bar, String, :default => "[[faq|FAQ]]"
 
   key :question_prompt, Hash, :default => {"en" => "what's your question? be descriptive.",

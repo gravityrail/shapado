@@ -3,7 +3,7 @@ class Flag
   REASONS = ["spam", "offensive", "attention"]
   key :reason, String, :required => true, :default => "spam"
 
-  key :_id, String
+  identity :type => String
   key :user_id, String
   belongs_to :user
 

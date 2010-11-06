@@ -3,7 +3,7 @@ class Membership
 
   ROLES = %w[user moderator owner]
 
-  key :_id, String
+  identity :type => String
   key :display_name, String
 
   key :group_id, String

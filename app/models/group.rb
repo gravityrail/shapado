@@ -12,7 +12,7 @@ class Group
                  "support", "survey", "download", "downloads", "faqs", "wiki",
                  "assets1", "assets2", "assets3", "assets4", "staging"]
 
-  key :_id, String
+  identity :type => String
   key :name, String, :required => true
   key :subdomain, String
   key :domain, String, :index => true
