@@ -21,7 +21,6 @@ class Notifier < ActionMailer::Base
     @user = user
     @question = question
     @group = group
-    @domain = group.domain
     @following = following
 
     mail(:to => user.email, :from => from_email(group),
@@ -56,7 +55,6 @@ class Notifier < ActionMailer::Base
     @answer = answer
     @question = answer.question
     @group = group
-    @domain = group ? group.domain : AppConfig.domain
     mail(:to => user.email, :from => from_email(group),
          :subject => @subject, :date => Time.now) do |format|
       format.text
@@ -100,6 +98,7 @@ class Notifier < ActionMailer::Base
   def follow(user, followed, group)
     @user = user
     @followed = followed
+    @group = group
     language = language_for(user)
     set_locale language
     mail(:to => followed.email ,
@@ -148,10 +147,11 @@ class Notifier < ActionMailer::Base
   def report(user, report)
     @user = user
     @report = report
+    @group = report.group
     language = language_for(user)
     set_locale language
     mail(:to => user.email,
-         :from => from_email(report.group),
+         :from => from_email(@group),
          :subject => I18n.t("mailers.notifications.report.subject",
                      :group => report.group.name,
                      :app => AppConfig.application_name, :locale => language),

@@ -6,5 +6,6 @@
     =yield
     %br
     %p{:style=>"border-top: 1px solid #999"}
-      = t('.message', :domain => @domain)
-      = url_for(:host => @domain, :controller => "users", :action => "edit", :id => @user, :anchor => "notifications")
+      - domain = @group ? @group.domain : AppConfig.domain
+      = t('.message', :domain => domain)
+      = url_for(:host => domain, :controller => "users", :action => "edit", :id => @user, :anchor => "notifications")
