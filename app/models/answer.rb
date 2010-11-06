@@ -3,6 +3,7 @@ class Answer
   include MongoMapperExt::Filter
   include Support::Versionable
   include Support::Voteable
+  include Shapado::Models::GeoCommon
   timestamps!
 
   key :_id, String

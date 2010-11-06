@@ -1,7 +1,7 @@
 class Comment
   include MongoMapper::EmbeddedDocument
   include Support::Voteable
-  include Shapado::Models::GeoCommon
+#   include Shapado::Models::GeoCommon FIXME
 
 #   timestamps! FIXME
 
@@ -12,6 +12,7 @@ class Comment
 
   key :created_at, Time, :default => Time.now # FIXME
   key :updated_at, Time, :default => Time.now # FIXME
+  key :position, GeoPosition, :default => GeoPosition.new(0, 0) # FIXME
 
   key :user_id, String
   belongs_to :user

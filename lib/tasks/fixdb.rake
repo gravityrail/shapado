@@ -1,7 +1,7 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:counters",
-                 "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:relocate"] do
+task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters",
+                 "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments"] do
 end
 
 namespace :fixdb do
@@ -122,6 +122,7 @@ namespace :fixdb do
         puts "comments collection doesn't exists"
       end
     end
+    puts "updated comments"
   end
 
   task :groups => [:environment] do
@@ -147,17 +148,18 @@ namespace :fixdb do
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
         lat = doc[key]["lat"]
         lon = doc[key]["lon"]
-        User.set({:id => u.id},
-                    {:position => GeoPosition.new(lat, lon),
+        User.set({:_id => u.id},
+                    {:position => GeoPosition.new(lat, lon).to_mongo,
                       :address => doc[key]["address"]})
-        Comment.set({:user_id => u.id},
-                    {:position => GeoPosition.new(lat, lon),
-                      :address => doc[key]["address"]})
+#         FIXME
+#         Comment.set({:user_id => u.id},
+#                     {:position => GeoPosition.new(lat, lon),
+#                       :address => doc[key]["address"]})
         Question.set({:user_id => u.id},
-                    {:position => GeoPosition.new(lat, lon),
+                    {:position => GeoPosition.new(lat, lon).to_mongo,
                       :address => doc[key]["address"]})
         Answer.set({:user_id => u.id},
-                    {:position => GeoPosition.new(lat, lon),
+                    {:position => GeoPosition.new(lat, lon).to_mongo,
                       :address => doc[key]["address"]})
       end
     end

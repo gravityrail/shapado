@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     @comment.body = params[:body]
     @comment.user = current_user
-    @comment.position = params[:comment][:position]
+#     @comment.position = params[:comment][:position] FIXME
 
     current_scope << @comment
 
