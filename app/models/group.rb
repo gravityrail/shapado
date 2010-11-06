@@ -1,59 +1,60 @@
 class Group
   include Mongoid::Document
+  include Mongoid::Timestamps
+
   include MongoidExt::Slugizer
   include MongoidExt::Storage
   include MongoidExt::Filter
-
-  timestamps!
 
   BLACKLIST_GROUP_NAME = ["www", "net", "org", "admin", "ftp", "mail", "test", "blog",
                  "bug", "bugs", "dev", "ftp", "forum", "community", "mail", "email",
                  "webmail", "pop", "pop3", "imap", "smtp", "stage", "stats", "status",
                  "support", "survey", "download", "downloads", "faqs", "wiki",
-                 "assets1", "assets2", "assets3", "assets4", "staging"]
+                 "assets1", "assets2", "assets3", "assets4", "staging", "code"]
 
   identity :type => String
-  key :name, String, :required => true
-  key :subdomain, String
-  key :domain, String, :index => true
-  key :legend, String
-  key :description, String
-  key :default_tags, Array
-  key :has_custom_ads, Boolean, :default => true
-  key :state, String, :default => "pending" #pending, active, closed
-  key :isolate, Boolean, :default => false
-  key :private, Boolean, :default => false
-  key :theme, String, :default => "plain"
-  key :owner_id, String
-  key :analytics_id, String
-  key :analytics_vendor, String
-  key :has_custom_analytics, Boolean, :default => true
 
-  key :language, String
-  key :languages, Set, :index => true
+  field :name, :type => String, :required => true
+  field :subdomain, :type => String
+  field :domain, :type => String, :index => true
+  field :legend, :type => String
+  field :description, :type => String
+  field :default_tags, :type => Array
+  field :has_custom_ads, :type => Boolean, :default => true
+  field :state, :type => String, :default => "pending" #pending, active, closed
+  field :isolate, :type => Boolean, :default => false
+  field :private, :type => Boolean, :default => false
+  field :theme, :type => String, :default => "plain"
+  field :owner_id, :type => String
+  field :analytics_id, :type => String
+  field :analytics_vendor, :type => String
+  field :has_custom_analytics, :type => Boolean, :default => true
 
-  key :activity_rate, Float, :default => 0.0
-  key :openid_only, Boolean, :default => false
-  key :registered_only, Boolean, :default => false
-  key :has_adult_content, Boolean, :default => false
+  field :language, :type => String
+  field :languages, :type => Set, :index => true
 
-  key :wysiwyg_editor, Boolean, :default => false
+  field :activity_rate, :type => Float, :default => 0.0
+  field :openid_only, :type => Boolean, :default => false
+  field :registered_only, :type => Boolean, :default => false
+  field :has_adult_content, :type => Boolean, :default => false
 
-  key :has_reputation_constrains, Boolean, :default => true
-  key :reputation_rewards, Hash, :default => REPUTATION_REWARDS
-  key :reputation_constrains, Hash, :default => REPUTATION_CONSTRAINS
-  key :forum, Boolean, :default => false
+  field :wysiwyg_editor, :type => Boolean, :default => false
 
-  key :custom_html, CustomHtml, :default => CustomHtml.new
-  key :has_custom_html, Boolean, :default => true
-  key :has_custom_js, Boolean, :default => true
-  key :fb_button, Boolean, :default => true
+  field :has_reputation_constrains, :type => Boolean, :default => true
+  field :reputation_rewards, :type => Hash, :default => REPUTATION_REWARDS
+  field :reputation_constrains, :type => Hash, :default => REPUTATION_CONSTRAINS
+  field :forum, :type => Boolean, :default => false
 
-  key :enable_latex, Boolean, :default => false
+  field :custom_html, :type => CustomHtml, :default => CustomHtml.new
+  field :has_custom_html, :type => Boolean, :default => true
+  field :has_custom_js, :type => Boolean, :default => true
+  field :fb_button, :type => Boolean, :default => true
+
+  field :enable_latex, :type => Boolean, :default => false
 
 
-  key :logo_info, Hash, :default => {"width" => 215, "height" => 60}
-  key :share, Share, :default => Share.new
+  field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
+  field :share, :type => Share, :default => Share.new
 
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
@@ -62,18 +63,18 @@ class Group
   slug_key :name, :unique => true
   filterable_keys :name
 
-  has_many :ads, :dependent => :destroy
-  has_many :widgets, :class_name => "Widget"
+  references_many :ads, :dependent => :destroy
+  embeds_many :widgets, :class_name => "Widget"
 
-  has_many :badges, :dependent => :destroy
-  has_many :questions, :dependent => :destroy
-  has_many :answers, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
-  has_many :pages, :dependent => :destroy
-  has_many :announcements, :dependent => :destroy
+  references_many :badges, :dependent => :destroy
+  references_many :questions, :dependent => :destroy
+  references_many :answers, :dependent => :destroy
+  references_many :votes, :dependent => :destroy # FIXME: mongoid, embedded
+  references_many :pages, :dependent => :destroy
+  references_many :announcements, :dependent => :destroy
 
-  belongs_to :owner, :class_name => "User"
-  has_many :comments, :as => "commentable", :order => "created_at asc", :dependent => :destroy
+  referenced_in :owner, :class_name => "User"
+  embeds_many :comments
 
   validates_length_of       :name,           :within => 3..40
   validates_length_of       :description,    :within => 3..10000, :allow_blank => true
@@ -86,17 +87,18 @@ class Group
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :within => 3..32
 
-  validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
-  validates_inclusion_of :theme, :within => AVAILABLE_THEMES
+  validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
+  validates_inclusion_of :theme, :in => AVAILABLE_THEMES
 
-  before_validation_on_create :set_subdomain
-  before_validation_on_create :check_domain
+#   before_validation_on_create :set_subdomain
+#   before_validation_on_create :check_domain # FIXME mongoid
+
   before_save :disallow_javascript
   before_save :modify_attributes
   validate :check_reputation_configs
 
   validates_exclusion_of      :subdomain,
-                              :within => BLACKLIST_GROUP_NAME,
+                              :in => BLACKLIST_GROUP_NAME,
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
 
