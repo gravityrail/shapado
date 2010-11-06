@@ -13,7 +13,8 @@
       = link_to t(".oldest"), users_path(:sort=>"oldest"), :title => t(".oldest_tooltip")
     %li.name
       = link_to t(".name"), users_path(:sort=>"name"), :title => t(".name_tooltip")
-
+    %li.name
+      = link_to t(".near"), users_path(:sort=>"near"), :title => t(".name_tooltip")
 -form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
   = label_tag :q, t(".filter"), :class => "label"
   = text_field_tag "q", params[:q], :class => "text_field filter_field"

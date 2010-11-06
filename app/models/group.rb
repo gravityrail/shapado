@@ -208,7 +208,14 @@ class Group
   end
 
   def users(conditions = {})
-    User.paginate(conditions.merge("membership_list.#{self.id}.reputation" => {:$exists => true}))
+    unless conditions[:near]
+      User.paginate(conditions.merge("membership_list.#{self.id}.reputation" => {:$exists => true}))
+    else
+      #FIXME: make pagination work, near doesn't return more than 100 results
+      point = conditions.delete(:near)
+      conditions.delete(:order)
+      User.near(point, { }).paginate(conditions.merge("membership_list.#{self.id}.reputation" => {:$exists => true}))
+    end
   end
   alias_method :members, :users
 

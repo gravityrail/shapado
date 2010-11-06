@@ -3,6 +3,7 @@ require 'digest/sha1'
 class User
   include MongoMapper::Document
   include MultiauthSupport
+  include GeoCommon
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
          :lockable, :token_authenticatable, :encryptable, :omniauthable, :encryptor => :restful_authentication_sha1
@@ -336,16 +337,6 @@ Time.zone.now ? 1 : 0)
                                 :reputation => current_reputation,
                                 :delta => value )
     ReputationStat.collection.update({:_id => stats.id}, {:$addToSet => {:events => event.attributes}})
-  end
-
-  def localize(ip)
-    l = Localize.country(ip)
-    self.ip = ip
-    if l
-      self.country_code = l[2]
-      self.country_name = l[4]
-    end
-    save
   end
 
   def reputation_on(group)

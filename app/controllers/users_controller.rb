@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   subtabs :index => [[:reputation, "reputation"],
                      [:newest, "created_at desc"],
                      [:oldest, "created_at asc"],
-                     [:name, "login asc"]]
+                     [:name, "login asc"],
+                     [:near, ""]]
 
   def index
     set_page_title(t("users.index.title"))
@@ -17,9 +18,11 @@ class UsersController < ApplicationController
     if options[:order] == "reputation"
       options[:order] = "membership_list.#{current_group.id}.reputation desc"
     end
-
-    @users = current_group.users(options)
-
+    @users = if current_order.blank?
+               current_group.users(options.merge(:near => current_user.point))
+             else
+               current_group.users(options)
+             end
     respond_to do |format|
       format.html
       format.json {
@@ -55,7 +58,6 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       sweep_new_users(current_group)
-      @user.localize(request.remote_ip)
       flash[:notice] = t("flash_notice", :scope => "users.create")
       sign_in_and_redirect(:user, @user) # !! now logged in
     else

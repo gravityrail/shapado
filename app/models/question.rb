@@ -5,6 +5,7 @@ class Question
   include MongoMapperExt::Tags
   include Support::Versionable
   include Support::Voteable
+  include GeoCommon
 
   ensure_index :tags
 

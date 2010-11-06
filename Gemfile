@@ -34,7 +34,6 @@ gem 'mongomapper_ext', '0.5.1'
 
 # utils
 
-gem "geoip"
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
 gem "magent", "0.5.2"
@@ -47,7 +46,6 @@ gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 
 gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
-
 
 # authentication
 gem 'omniauth', '~> 0.1.6'

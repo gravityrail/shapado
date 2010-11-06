@@ -9,6 +9,9 @@
       =current_group.question_prompt || t(".quick_question")
   .columns
     .column_info
+      .group
+        = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
+        = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
       -if logged_in?
         -reputation = current_user.reputation_on(current_group)
         .avatar

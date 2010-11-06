@@ -1,6 +1,9 @@
 = f.error_messages
 = error_messages_for(:user)
 .group
+  = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
+  = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
+.group
   = f.label :title, "#{t(:title, :scope => "activerecord.attributes.question")}*", :class => "label"
   = f.text_field :title, :class => "text_field"
   .description

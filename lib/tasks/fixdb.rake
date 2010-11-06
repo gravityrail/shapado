@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:counters", "fixdb:votes", "fixdb:sync_counts", "fixdb:groups"] do
+task :fixall => [:environment, "fixdb:openid", "fixdb:counters", "fixdb:votes", "fixdb:sync_counts", "fixdb:groups", "fixdb:relocate"] do
 end
 
 namespace :fixdb do
@@ -76,4 +76,29 @@ namespace :fixdb do
       end
     end
   end
+
+  task :relocate => [:environment] do
+    doc = JSON.parse(File.read('countries/all.json'))
+    i=0
+    doc.keys.each do |key|
+      User.all({ :country_name => key}).each do |u|
+        p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
+        lat = doc[key]["lat"]
+        lon = doc[key]["lon"]
+        User.set({:id => u.id},
+                    {:position => GeoPosition.new(lat, lon),
+                      :address => doc[key]["address"]})
+        Comment.set({:user_id => u.id},
+                    {:position => GeoPosition.new(lat, lon),
+                      :address => doc[key]["address"]})
+        Question.set({:user_id => u.id},
+                    {:position => GeoPosition.new(lat, lon),
+                      :address => doc[key]["address"]})
+        Answer.set({:user_id => u.id},
+                    {:position => GeoPosition.new(lat, lon),
+                      :address => doc[key]["address"]})
+      end
+    end
+  end
+
 end

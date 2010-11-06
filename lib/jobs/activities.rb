@@ -23,6 +23,11 @@ module Jobs
       create_badge(user, answer.group, :token => "editor", :unique => true)
     end
 
+    def self.on_create_answer(answer_id)
+      answer = Answer.find(answer_id)
+      answer.set_address
+    end
+
     def self.on_destroy_answer(answer_id, attributes)
       deleter = User.find!(answer_id)
       group = Group.find(attributes["group_id"])
@@ -38,12 +43,12 @@ module Jobs
       end
     end
 
-    def self.on_comment(comment_i)
+    def self.on_comment(comment_id)
       comment = Comment.find!(comment_id)
       commentable = comment.commentable
       group = comment.group
       user = comment.user
-
+      comment.set_address
       if user.comments.count(:group_id => comment.group_id, :_type => {:$ne => "Answer"}) >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end

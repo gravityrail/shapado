@@ -8,6 +8,7 @@ en:
       newest: Newest
       oldest: Oldest
       name: Name
+      near: Near you
       reputation_tooltip: Users sorted by higher reputation
       newest_tooltip: Users who just joined
       oldest_tooltip: Users who were the first to join
