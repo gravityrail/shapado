@@ -101,7 +101,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
-        after_create_answer
+        Jobs::Answers.on_create_answer(@question.id, @answer.id).commit!
         Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,
                                        owner_id: @answer.user.id, owner_name: @answer.user.login,
                                        question_id: @question.id, question_title: @question.title})
@@ -221,41 +221,5 @@ class AnswersController < ApplicationController
     draft = Draft.create(:answer => @answer)
     session[:draft] = draft.id
     login_required
-  end
-
-  # TODO: use magent to do it
-  def after_create_answer
-    sweep_question(@question)
-    Question.update_last_target(@question.id, @answer)
-
-    @question.answer_added!
-    current_group.on_activity(:answer_question)
-
-    unless @answer.anonymous
-      @answer.user.stats.add_answer_tags(*@question.tags)
-      @answer.user.on_activity(:answer_question, current_group)
-
-      search_opts = {"notification_opts.#{current_group.id}.new_answer" => {:$in => ["1", true]},
-                      :_id => {:$ne => @answer.user.id},
-                      :select => ["email"]}
-
-      users = @question.followers.all(search_opts) # TODO: optimize!!
-      users.push(@question.user) if !@question.user.nil? && @question.user != @answer.user
-      followers = @answer.user.followers(:languages => [@question.language], :group_id => current_group.id)
-
-      users ||= []
-      followers ||= []
-      (users - followers).each do |u|
-        if !u.email.blank? && u.notification_opts.new_answer
-          Notifier.new_answer(u, current_group, @answer, false).deliver
-        end
-      end
-
-      followers.each do |u|
-        if !u.email.blank? && u.notification_opts.new_answer
-          Notifier.new_answer(u, current_group, @answer, true).deliver
-        end
-      end
-    end
   end
 end

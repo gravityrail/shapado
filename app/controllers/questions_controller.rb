@@ -295,24 +295,7 @@ class QuestionsController < ApplicationController
           @question.user.stats.add_question_tags(*@question.tags)
           @question.user.on_activity(:ask_question, current_group)
           Jobs::Questions.async.on_ask_question(@question.id).commit!
-
-          # TODO: move to magent
-          users = User.find_experts(@question.tags, [@question.language],
-                                                    :except => [@question.user.id],
-                                                    :group_id => current_group.id)
-          followers = @question.user.followers(:group_id => current_group.id, :languages => [@question.language])
-
-          (users - followers).each do |u|
-            if !u.email.blank?
-              Notifier.give_advice(u, current_group, @question, false).deliver
-            end
-          end
-
-          followers.each do |u|
-            if !u.email.blank?
-              Notifier.give_advice(u, current_group, @question, true).deliver
-            end
-          end
+          Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
 
         current_group.on_activity(:ask_question)
@@ -494,9 +477,8 @@ class QuestionsController < ApplicationController
 
     @question.add_follower(current_user)
 
-    if (@question.user_id != current_user.id) && current_user.notification_opts.activities
-      Notifier.deliver_favorited(current_user, @question.group, @question)
-    end
+
+    Jobs::Mailer.on_favorite_question(@question.id, current_user.id).commit!
 
     respond_to do |format|
       if @favorite.save

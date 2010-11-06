@@ -54,7 +54,7 @@
 #question-body-col.commentable.markdown
   %a{:name => @question.id}
   #body
-    - if @question.closed && @question.close_reason
+    - if @question.closed && @question.close_reason.present?
       #close_reason
         = t(".close_reason")
         = t(@question.close_reason.reason, :scope=>"close_requests.form")

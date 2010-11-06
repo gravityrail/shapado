@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: http://github.com/plataformatec/devise.git
-  revision: ab033ea986897c600658fc6f2245e1e7d7bfa514
+  revision: 1f44c61d080657d0a13b2ea35d67d050fb24498c
   branch: omniauth
   specs:
     devise (1.2.rc)
