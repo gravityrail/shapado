@@ -68,6 +68,7 @@ GEM
       compass (>= 0.8.7)
     cronedit (0.3.0)
     daemons (1.0.10)
+    database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     differ (0.1.1)
     dynamic_form (1.1.3)
@@ -228,6 +229,7 @@ DEPENDENCIES
   compass (= 0.10.6.pre.1)
   compass-colors (= 0.3.1)
   cronedit
+  database_cleaner
   devise!
   differ (= 0.1.1)
   dynamic_form
@@ -252,6 +254,7 @@ DEPENDENCIES
   rack-recaptcha (= 0.2.2)
   rails (= 3.0.1)
   rdiscount (= 1.6.5)
+  rspec (>= 2.0.1)
   rspec-rails (>= 2.0.1)
   ruby-stemmer (~> 0.8.2)
   ruby_parser
