@@ -64,6 +64,8 @@ group :scripts do
 end
 
 group :development do
+  gem "rspec", ">= 2.0.1"
+  gem "rspec-rails", ">= 2.0.1"
   gem 'hpricot'
   gem 'ruby_parser'
   gem 'mongrel', '1.2.0.pre2'
