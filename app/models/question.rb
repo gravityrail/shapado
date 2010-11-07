@@ -58,7 +58,7 @@ class Question
 
   # FIXME mongid (ids are currently stored in watchers)
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"
+  references_many :followers, :stored_as => :array, :foreign_key => :watchers, :inverse_of => :question, :class_name => "User"
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -97,7 +97,7 @@ class Question
   language :language
 
   before_save :update_activity_at
-#   before_validation_on_create :update_language # FIXME: mongoid
+  validate :update_language, :on => :create
 
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
 
