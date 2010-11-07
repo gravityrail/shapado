@@ -280,7 +280,7 @@ Time.zone.now ? 1 : 0)
     if activity == :login
       self.last_logged_at ||= Time.now
       if !self.last_logged_at.today?
-        self.set( {:last_logged_at => Time.zone.now.utc} )
+        self.override( {:last_logged_at => Time.zone.now.utc} )
       end
     else
       self.update_reputation(activity, group) if activity != :login
@@ -293,7 +293,7 @@ Time.zone.now ? 1 : 0)
     last_day = config_for(group, false).last_activity_at
 
     if last_day != day
-      self.set({"membership_list.#{group.id}.last_activity_at" => day})
+      self.override({"membership_list.#{group.id}.last_activity_at" => day})
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
           self.increment({"membership_list.#{group.id}.activity_days" => 1})
@@ -308,7 +308,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def reset_activity_days!(group)
-    self.set({"membership_list.#{group.id}.activity_days" => 0})
+    self.override({"membership_list.#{group.id}.activity_days" => 0})
   end
 
   def upvote!(group, v = 1.0)
