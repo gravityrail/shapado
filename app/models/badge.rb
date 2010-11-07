@@ -38,8 +38,8 @@ class Badge
   field :source_type, :type => String
 #   belongs_to :source, :polymorphic => true # FIXME mongoid
 
-#   validates_inclusion_of :type,  :within => TYPES
-  validates_inclusion_of :token, :within => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
+  validates_inclusion_of :type,  :in => TYPES
+  validates_inclusion_of :token, :in => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
 
   before_save :set_type
 

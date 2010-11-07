@@ -71,7 +71,7 @@ class User
 
   with_options :if => lambda { |e| !e.anonymous } do |v|
     v.validates_presence_of     :login
-    v.validates_length_of       :login,    :within => 3..40
+    v.validates_length_of       :login,    :in => 3..40
     v.validates_uniqueness_of   :login
     v.validates_format_of       :login,    :with => /\w+/
   end
@@ -80,12 +80,12 @@ class User
 
   validates_presence_of     :email,    :if => lambda { |e| !e.openid_login? && !e.twitter_login? }
   validates_uniqueness_of   :email,    :if => lambda { |e| e.anonymous || (!e.openid_login? && !e.twitter_login?) }
-  validates_length_of       :email,    :within => 6..100, :allow_nil => true, :if => lambda { |e| !e.email.blank? }
+  validates_length_of       :email,    :in => 6..100, :allow_nil => true, :if => lambda { |e| !e.email.blank? }
 
   with_options :if => :password_required? do |v|
     v.validates_presence_of     :password
     v.validates_confirmation_of :password
-    v.validates_length_of       :password, :within => 6..20, :allow_blank => true
+    v.validates_length_of       :password, :in => 6..20, :allow_blank => true
   end
 
   before_save :update_languages

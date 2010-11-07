@@ -10,7 +10,7 @@ class Flag
   referenced_in :user
 
   validates_presence_of :user
-  validates_inclusion_of :reason, :within => REASONS
+  validates_inclusion_of :reason, :in => REASONS
 
   validate :should_be_unique
   validate :check_reputation

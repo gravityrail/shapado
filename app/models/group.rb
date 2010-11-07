@@ -76,16 +76,16 @@ class Group
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
 
-  validates_length_of       :name,           :within => 3..40
-  validates_length_of       :description,    :within => 3..10000, :allow_blank => true
+  validates_length_of       :name,           :in => 3..40
+  validates_length_of       :description,    :in => 3..10000, :allow_blank => true
   validates_length_of       :legend,         :maximum => 50
-  validates_length_of       :default_tags,   :within => 0..15,
+  validates_length_of       :default_tags,   :in => 0..15,
       :message =>  I18n.t('activerecord.models.default_tags_message')
   validates_uniqueness_of   :name
   validates_uniqueness_of   :subdomain
   validates_presence_of     :subdomain
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
-  validates_length_of       :subdomain, :within => 3..32
+  validates_length_of       :subdomain, :in => 3..32
 
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :in => AVAILABLE_THEMES

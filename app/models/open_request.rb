@@ -1,6 +1,6 @@
 
 class OpenRequest
-  include Mongoid::Documen
+  include Mongoid::Document
 
   identity :type => String
 
