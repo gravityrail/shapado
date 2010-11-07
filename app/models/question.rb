@@ -69,7 +69,7 @@ class Question
   field :last_target_id, :type => String
   field :last_target_date, :type => Time
 
-  referenced_in :last_target, :polymorphic => true
+#   referenced_in :last_target, :polymorphic => true
 
   key :last_target_user_id, String
   referenced_in :last_target_user, :class_name => "User"

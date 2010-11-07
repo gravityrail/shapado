@@ -25,11 +25,10 @@ class WelcomeController < ApplicationController
     end
     add_feeds_url(url_for({:controller => 'questions', :action => 'index',
                             :format => "atom"}.merge(feed_params)), t("feeds.questions"))
-    @questions = Question.paginate({:per_page => 15,
+    @questions = Question.only({:_keywords => 0, :watchers => 0, :flags => 0,
+                                :close_requests => 0, :open_requests => 0,
+                                :versions => 0}).paginate({:per_page => 15,
                                    :page => params[:page] || 1,
-                                   :fields => {:_keywords => 0, :watchers => 0, :flags => 0,
-                                                :close_requests => 0, :open_requests => 0,
-                                                :versions => 0},
                                    :order => order}.merge(conditions))
   end
 
