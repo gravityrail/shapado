@@ -139,13 +139,10 @@ class QuestionsController < ApplicationController
 
     @tag_cloud = Question.tag_cloud(conditions, 25)
 
-    @questions = Question.paginate({:order => current_order,
+    @questions = Question.minimal.order_by(current_order).where(conditions).paginate({
                                     :per_page => 25,
                                     :page => params[:page] || 1,
-                                    :fields => {:_keywords => 0, :watchers => 0, :flags => 0,
-                                                :close_requests => 0, :open_requests => 0,
-                                                :versions => 0}
-                                   }.merge(conditions))
+                                   })
 
     respond_to do |format|
       format.html # unanswered.html.erb
