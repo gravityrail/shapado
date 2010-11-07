@@ -272,3 +272,4 @@ DEPENDENCIES
   twitter-text (= 1.1.8)
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
+  will_paginate (~> 3.0.pre2)

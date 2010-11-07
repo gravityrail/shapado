@@ -111,7 +111,7 @@
         .clear
   .controls
     .actions
-      - if !@flag.new?
+      - if !@flag.new_record?
         .flagged
           = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"
           = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :class => "flag-link", :id => "edit_question_flag_link", :rel => 'nofollow'
@@ -121,15 +121,15 @@
 
       - if logged_in?
         - if show_close_request_form
-          -if !@close_request.new?
+          -if !@close_request.new_record?
             .flagged
               = "#{t('.requested_close_as')} #{t(@close_request.reason, :scope=>'close_requests.form')}"
               = link_to t(".edit_request"), edit_question_close_request_path(@question,@close_request), :class => "flag-link", :id => "edit_question_close_request_link", :rel => 'nofollow'
               = link_to t(".retract_request"), question_close_request_path(@question,@close_request), :id => "destroy_question_close_request_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
-          = link_to t(".request_closing"), @close_request.new? ? new_question_close_request_path(@question) : edit_question_close_request_path(@question, @close_request), :id => "request-close-link", :rel => 'nofollow', :title => t('.request_closing_details')
+          = link_to t(".request_closing"), @close_request.new_record? ? new_question_close_request_path(@question) : edit_question_close_request_path(@question, @close_request), :id => "request-close-link", :rel => 'nofollow', :title => t('.request_closing_details')
 
         - if show_open_request_form
-          -if !@open_request.new?
+          -if !@open_request.new_record?
             .flagged
               = "#{t('.requested_reopening')} #{@open_request.comment}"
               = link_to t(".edit_request"), edit_question_open_request_path(@question, @open_request), :class => "flag-link", :id => "edit_question_open_request_link", :rel => 'nofollow'

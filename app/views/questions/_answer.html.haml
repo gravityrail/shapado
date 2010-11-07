@@ -56,7 +56,7 @@
     .controls
       .actions
         = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
-        - if logged_in? && @aflag.new? && current_user != answer.user
+        - if logged_in? && @aflag.new_record? && current_user != answer.user
           = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
 
         -if logged_in?
@@ -69,7 +69,7 @@
             = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
           -if current_user.can_modify?(answer)
             = link_to t("scaffold.destroy"), question_answer_path(@question, answer), :confirm => t("scaffold.sure", :model => "answer"), :method => :delete, :class =>"cancel"
-          -if !@aflag.new?
+          -if !@aflag.new_record?
             .flagged
               = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
               =link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'

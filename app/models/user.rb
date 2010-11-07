@@ -273,7 +273,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def favorite(question)
-    self.favorites.first(:question_id => question._id, :user_id => self._id )
+    self.favorites.where(:question_id => question._id, :user_id => self._id ).first
   end
 
   def logged!(group = nil)

@@ -731,7 +731,7 @@ class QuestionsController < ApplicationController
   end
 
   def check_age
-    @question = current_group.questions.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     if @question.nil?
       @question = current_group.questions.first(:slugs => params[:id], :select => [:_id, :slug])
