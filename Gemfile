@@ -64,6 +64,7 @@ group :scripts do
 end
 
 group :development do
+  gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
   gem "rspec-rails", ">= 2.0.1"
   gem 'hpricot'
