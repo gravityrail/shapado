@@ -3,25 +3,28 @@ class UsersController < ApplicationController
   tabs :default => :users
 
   subtabs :index => [[:reputation, "reputation"],
-                     [:newest, "created_at desc"],
-                     [:oldest, "created_at asc"],
-                     [:name, "login asc"],
+                     [:newest, %w(created_at desc)],
+                     [:oldest, %w(created_at asc)],
+                     [:name, %w(login asc)],
                      [:near, ""]]
 
   def index
     set_page_title(t("users.index.title"))
-    options =  {:per_page => params[:per_page]||24,
-               :order => current_order,
-               :page => params[:page] || 1}
-    options[:login] = /^#{Regexp.escape(params[:q])}/ if params[:q]
 
-    if options[:order] == "reputation"
-      options[:order] = "membership_list.#{current_group.id}.reputation desc"
+    order = current_order
+    options =  {:per_page => params[:per_page]||24,
+               :page => params[:page] || 1}
+    conditions = {}
+    conditions = {:login => /^#{Regexp.escape(params[:q])}/} if params[:q]
+
+    if order == "reputation"
+      order = %w(membership_list.#{current_group.id}.reputation desc)
     end
-    @users = if current_order.blank?
-               current_group.users(options.merge(:near => current_user.point))
+
+    @users = if order.blank?
+               current_group.users(conditions.merge(:near => current_user.point)).paginate(options)
              else
-               current_group.users(options)
+               current_group.users(conditions).order_by(order).paginate(options)
              end
     respond_to do |format|
       format.html

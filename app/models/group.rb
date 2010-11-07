@@ -210,14 +210,14 @@ class Group
     user.save
   end
 
-  def users(options = {}, conditions = {})
+  def users(conditions = {})
     conditions.merge!("membership_list.#{self.id}.reputation" => {:$exists => true})
 
-    unless options[:near]
-      User.all(options.merge(:conditions => conditions))
+    unless conditions[:near]
+      User.where(conditions)
     else
       point = options.delete(:near)
-      User.near(point, {}).all(options.merge(:conditions => conditions))
+      User.near(point, {}).where(conditions)
     end
   end
   alias_method :members, :users
