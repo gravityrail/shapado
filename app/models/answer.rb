@@ -1,4 +1,4 @@
-class Answer < Comment
+class Answer
   include Mongoid::Document
   include Mongoid::Timestamps
   include MongoidExt::Filter
@@ -29,7 +29,7 @@ class Answer < Comment
   index :question_id
 
   embeds_many :flags
-  embeds_many :comments, :order => "created_at asc"
+  embeds_many :comments#, :order => "created_at asc"
 
   validates_presence_of :user_id
   validates_presence_of :question_id
@@ -62,8 +62,8 @@ class Answer < Comment
   end
 
   def check_unique_answer
-    check_answer = Answer.first(:question_id => self.question_id,
-                               :user_id => self.user_id)
+    check_answer = Answer.first(:conditions => {:question_id => self.question_id,
+                               :user_id => self.user_id})
 
     if !check_answer.nil? && check_answer.id != self.id
       self.errors.add(:limitation, "Your can only post one answer by question.")
@@ -118,15 +118,14 @@ class Answer < Comment
 
   def disallow_spam
     if new? && !disable_limits?
-      eq_answer = Answer.first({:body => self.body,
+      eq_answer = Answer.first(:conditions => {:body => self.body,
                                   :question_id => self.question_id,
                                   :group_id => self.group_id
-                                })
+                                });
 
-      last_answer  = Answer.first(:user_id => self.user_id,
+      last_answer  = Answer.where(:conditions =>{:user_id => self.user_id,
                                    :question_id => self.question_id,
-                                   :group_id => self.group_id,
-                                   :order => "created_at desc")
+                                   :group_id => self.group_id}).order_by(:created_at.desc).first
 
       valid = (eq_answer.nil? || eq_answer.id == self.id) &&
               ((last_answer.nil?) || (Time.now - last_answer.created_at) > 20)

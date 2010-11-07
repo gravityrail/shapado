@@ -13,8 +13,8 @@ end
 Fabricator(:group) do
   name { Fabricate.sequence(:name) { |i| "group#{i}" } }
   subdomain {|g|g.name}
-  legend { Fabricate.sequence(:name) { "the test group #{i}" }}
-  description { Fabricate.sequence(:name) { "#{name} description" }}
+  legend { Fabricate.sequence(:legend) { |i| "the test group #{i}" }}
+  description {|g|"#{g.name} description" }
   default_tags {["testing"]}
   state "active"
   languages ["en", "es", "fr"]
@@ -28,3 +28,10 @@ Fabricator(:question) do
   user!
 end
 
+Fabricator(:answer) do
+  body { Fabricate.sequence(:body) { |i| "this is the answer number #{i}" } }
+  position {{:lat => 0, :long => 0}}
+  group!
+  user!
+  question!
+end
