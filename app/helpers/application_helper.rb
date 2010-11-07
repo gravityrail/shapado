@@ -36,7 +36,7 @@ module ApplicationHelper
   def header_ads(group)
     if group.has_custom_ads
       ads = []
-      Ad.find_all_by_group_id_and_position(group.id,'header').each do |ad|
+      Ad.where(:group_id => group.id,:position => 'header').each do |ad|
         ads << ad.code
       end
       return ads.join  unless ads.empty?
@@ -46,7 +46,7 @@ module ApplicationHelper
   def content_ads(group)
     if group.has_custom_ads
       ads = []
-      Ad.find_all_by_group_id_and_position(group.id,'content').each do |ad|
+      Ad.where(:group_id => group.id,:position => 'content').each do |ad|
         ads << ad.code
       end
       return ads.join  unless ads.empty?
@@ -56,7 +56,7 @@ module ApplicationHelper
   def footer_ads(group)
     if group.has_custom_ads
       ads = []
-      Ad.find_all_by_group_id_and_position(group.id,'footer').each do |ad|
+      Ad.where(:group_id => group.id,:position => 'footer').each do |ad|
         ads << ad.code
       end
       return ads.join  unless ads.empty?
@@ -153,7 +153,8 @@ module ApplicationHelper
 
     text.gsub!(/\[\[([^\,\[\'\"]+)\]\]/) do |m|
       link = $1.split("|", 2)
-      page = Page.by_title(link.first, {:group_id => group.id, :select => [:title, :slug]})
+      # FIXME mongoid .only(:title, :slug).where()
+      page = Page.by_title(link.first, :group_id => group.id)
 
 
       if page.present?
@@ -299,7 +300,6 @@ module ApplicationHelper
   def current_announcements(hide_time = nil)
     conditions = {:starts_at.lte => Time.zone.now.to_i,
                   :ends_at.gte => Time.zone.now.to_i,
-                  :order => "starts_at desc",
                   :group_id.in => [current_group.id, nil]}
     if hide_time
       conditions[:updated_at] = {:$gt => hide_time}
@@ -309,7 +309,7 @@ module ApplicationHelper
       conditions[:only_anonymous] = false
     end
 
-    Announcement.all(conditions)
+    Announcement.order_by(:starts_at.desc).where(conditions)
   end
 
   def top_bar_links

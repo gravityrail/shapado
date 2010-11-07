@@ -7,10 +7,10 @@ class WelcomeController < ApplicationController
 
     conditions = scoped_conditions({:banned => false})
 
-    order = "activity_at desc"
+    order = [:activity_at, :desc]
     case @active_subtab
       when "activity"
-        order = "activity_at desc"
+        order = [:activity_at, :desc]
       when "hot"
         order = "hotness desc"
         conditions[:updated_at] = {:$gt => 5.days.ago}
@@ -25,11 +25,13 @@ class WelcomeController < ApplicationController
     end
     add_feeds_url(url_for({:controller => 'questions', :action => 'index',
                             :format => "atom"}.merge(feed_params)), t("feeds.questions"))
-    @questions = Question.only({:_keywords => 0, :watchers => 0, :flags => 0,
-                                :close_requests => 0, :open_requests => 0,
-                                :versions => 0}).paginate({:per_page => 15,
-                                   :page => params[:page] || 1,
-                                   :order => order}.merge(:conditions => conditions))
+
+    # TODO: exclude these fields
+#     {:_keywords => 0, :watchers => 0, :flags => 0,
+#                                 :close_requests => 0, :open_requests => 0,
+#                                 :versions => 0}
+    @questions = Question.order_by(order).paginate({:per_page => 15,
+                                                    :page => params[:page] || 1}.merge(:conditions => conditions))
   end
 
   def feedback

@@ -31,8 +31,11 @@ class Page
   validates_uniqueness_of :title, :scope => [:group_id, :language]
   validates_uniqueness_of :slug, :scope => [:group_id, :language], :allow_blank => true
 
-  def self.by_title(title, options)
-    self.first(options.merge(:title => title, :language => current_language)) || self.first(options.merge(:title => title)) || self.by_slug(title, options.merge(:language => current_language)) || self.by_slug(title, options)
+  def self.by_title(title, conditions = {})
+    self.where(conditions.merge({:title => title, :language => current_language})).first ||
+    self.where(conditions.merge(:title => title)).first# ||  # FIXME: mongoid
+#     self.where(conditions.merge(:language => current_language)).by_slug(title) ||
+#     self.by_slug(title, conditions)
   end
 
   private
