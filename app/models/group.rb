@@ -86,6 +86,7 @@ class Group
   validates_presence_of     :subdomain
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :in => 3..32
+  validates_presence_of     :owner
 
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :in => AVAILABLE_THEMES

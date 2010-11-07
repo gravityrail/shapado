@@ -78,6 +78,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
+    fabrication (0.9.0)
     fancy-buttons (0.5.5)
       compass (>= 0.10.0)
       haml (>= 3.0.2)
@@ -242,6 +243,7 @@ DEPENDENCIES
   dynamic_form
   em-websocket (~> 0.1.4)
   eventmachine (~> 0.12.10)
+  fabrication
   fancy-buttons (= 0.5.5)
   goalie (~> 0.0.4)
   haml

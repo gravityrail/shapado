@@ -66,6 +66,7 @@ end
 group :development do
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
+  gem "fabrication"
   gem "rspec-rails", ">= 2.0.1"
   gem "remarkable_mongoid", ">= 0.5.0"
   gem 'hpricot'

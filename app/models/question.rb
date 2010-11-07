@@ -254,10 +254,11 @@ class Question
   end
 
   def disallow_spam
-    if new? && !disable_limits?
-      last_question = Question.first( :user_id => self.user_id,
+    if self.new_record? && !disable_limits?
+      last_question = Question.where(:conditions =>{:user_id => self.user_id,
                                       :group_id => self.group_id,
-                                      :order => "created_at desc")
+                                      }).order_by(:created_at.desc).first
+      p last_question
 
       valid = (last_question.nil? || (Time.now - last_question.created_at) > 20)
       if !valid
@@ -322,7 +323,7 @@ class Question
   end
 
   def group_language
-    if !q.group.language.nil? && q.group.language != q.language
+    if self.group.present? && (!self.group.language.nil? && self.group.language != self.language)
       self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
     end
   end
