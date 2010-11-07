@@ -15,5 +15,11 @@ Dir.glob("#{Rails.root}/app/javascripts/**/*.js") do |js_path|
   Mongoid.database.eval("db.system.js.save({_id: '#{name}', value: #{code}})")
 end
 
+module Mongoid
+  module State
+    alias :new? :new_record?
+  end
+end
+
 require 'support/versionable'
 require 'support/voteable'

@@ -253,7 +253,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def openid_login?
-    !self.auth_keys.empty? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
+    !self.auth_keys.blank? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
   end
 
   def twitter_login?
@@ -279,7 +279,7 @@ Time.zone.now ? 1 : 0)
   def logged!(group = nil)
     now = Time.zone.now
 
-    if new?
+    if new_record?
       self.last_logged_at = now
     elsif group && (member_of?(group) || !group.private)
       on_activity(:login, group)
@@ -497,7 +497,7 @@ Time.zone.now ? 1 : 0)
   def update_anonymous_user
     return if self.anonymous
 
-    user = User.first(:email => self.email, :anonymous => true)
+    user = User.first(:conditions => {:email => self.email, :anonymous => true})
     if user.present?
       Rails.logger.info "Merging #{self.email}(#{self.id}) into #{user.email}(#{user.id})"
       merge_user(user)
