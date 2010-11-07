@@ -1,6 +1,6 @@
 defaults: &defaults
   host: localhost
-  autocreate_indexes: true
+  autocreate_indexes: false
   allow_dynamic_fields: true
   include_root_in_json: false
   parameterize_keys: true

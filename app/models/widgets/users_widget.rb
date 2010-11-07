@@ -4,7 +4,7 @@ class UsersWidget < Widget
   field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_users(group)
-    group.users({:per_page => self[:settings][:limit],
+    group.users({:per_page => self[:settings]['limit'],
                  :page => 1}).order_by(:created_at.desc)
   end
 

@@ -30,8 +30,8 @@ class WelcomeController < ApplicationController
 #     {:_keywords => 0, :watchers => 0, :flags => 0,
 #                                 :close_requests => 0, :open_requests => 0,
 #                                 :versions => 0}
-    @questions = Question.order_by(order).paginate({:per_page => 15,
-                                                    :page => params[:page] || 1}.merge(:conditions => conditions))
+    @questions = Question.where(conditions).order_by(order).paginate({:per_page => 15,
+                                                                      :page => params[:page] || 1})
   end
 
   def feedback
