@@ -2,27 +2,27 @@ module MultiauthSupport
   extend ActiveSupport::Concern
 
   included do
-    key :using_openid, Boolean, :default => false
-    key :openid_email
+    field :using_openid, :type => Boolean, :default => false
+    field :openid_email
 
-    key :twitter_handle, String
-    key :twitter_oauth_token, String
-    key :twitter_oauth_secret, String
+    field :twitter_handle, :type => String
+    field :twitter_oauth_token, :type => String
+    field :twitter_oauth_secret, :type => String
 
-    key :facebook_id,               String
-    key :facebook_token,            String
-    key :facebook_profile,          String
+    field :facebook_id,               :type => String
+    field :facebook_token,            :type => String
+    field :facebook_profile,          :type => String
 
-    key :twitter_token,             String
-    key :twitter_secret,            String
-    key :twitter_login,             String
+    field :twitter_token,             :type => String
+    field :twitter_secret,            :type => String
+    field :twitter_login,             :type => String
 
 
-    key :github_id, String
-    key :github_login, String
+    field :github_id, :type => String
+    field :github_login, :type => String
 
-    key :auth_keys, Array
-    key :user_info, Hash
+    field :auth_keys, :type => Array
+    field :user_info, :type => Hash
   end
 
   module ClassMethods
@@ -37,7 +37,7 @@ module MultiauthSupport
 
       auth_key = "#{provider}_#{fields["uid"]}"
 
-      user = User.first(:auth_keys => auth_key)
+      user = User.first(:conditions => {:auth_keys => auth_key})
       if user.nil?
         user = User.new(:auth_keys => [auth_key])
 
@@ -77,7 +77,7 @@ module MultiauthSupport
       end
 
       auth_key = "#{fields["provider"]}_#{fields["uid"]}"
-      user = User.first(:auth_keys => auth_key, :select => [:id])
+      user = User.only(:id).first(:conditions => {:auth_keys => auth_key})
       if user.present? && user.id != self.id
         self.push(:"user_info.#{fields["provider"]}" => fields["user_info"])
 
