@@ -105,6 +105,10 @@ class Question
   validate :disallow_spam
   validate :check_useful
 
+  def self.minimal
+    without(:_keywords, :watchers, :flags, :close_requests, :open_requests, :versions)
+  end
+
   def first_tags
     tags[0..5]
   end

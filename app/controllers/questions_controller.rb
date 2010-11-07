@@ -12,9 +12,9 @@ class QuestionsController < ApplicationController
   tabs :default => :questions, :tags => :tags,
        :unanswered => :unanswered, :new => :ask_question
 
-  subtabs :index => [[:newest, "created_at desc"], [:hot, "hotness desc, views_count desc"], [:votes, "votes_average desc"], [:activity, "activity_at desc"], [:expert, "created_at desc"]],
-          :unanswered => [[:newest, "created_at desc"], [:votes, "votes_average desc"], [:mytags, "created_at desc"]],
-          :show => [[:votes, "votes_average desc"], [:oldest, "created_at asc"], [:newest, "created_at desc"]]
+  subtabs :index => [[:newest, %w(created_at desc)], [:hot, [%w(hotness desc), %w(views_count desc)]], [:votes, %w(votes_average desc)], [:activity, %w(activity_at desc)], [:expert, %w(created_at desc)]],
+          :unanswered => [[:newest, %w(created_at desc)], [:votes, %w(votes_average desc)], [:mytags, %w(created_at desc)]],
+          :show => [[:votes, %w(votes_average desc)], [:oldest, %w(created_at asc)], [:newest, %w(created_at desc)]]
   helper :votes
 
   # GET /questions
@@ -33,11 +33,7 @@ class QuestionsController < ApplicationController
       conditions[:activity_at] = {"$gt" => 5.days.ago}
     end
 
-    @questions = Question.paginate({:per_page => 25, :page => params[:page] || 1,
-                       :order => current_order,
-                       :fields => {:_keywords => 0, :watchers => 0, :flags => 0,
-                                   :close_requests => 0, :open_requests => 0,
-                                   :versions => 0}}.merge(conditions))
+    @questions = Question.minimal.where(conditions).order_by(current_order).paginate({:per_page => 25, :page => params[:page] || 1})
 
     @langs_conds = scoped_conditions[:language][:$in]
 

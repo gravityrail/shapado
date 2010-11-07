@@ -71,7 +71,7 @@ module ActiveTab
           key = "#{params[:controller]}/#{env['action_dispatch.request.path_parameters'][:action]}"
           (session[:subtab] ||= {})[key] = subtab
           if logged_in?
-            current_user.set({"default_subtab.#{key}" => subtab})
+            current_user.override({"default_subtab.#{key}" => subtab})
           end
         end
       end
