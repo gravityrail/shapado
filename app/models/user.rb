@@ -97,7 +97,10 @@ class User
 
   def membership_list
     m = self[:membership_list]
-    if m && !m.kind_of?(MembershipList)
+
+    if m.nil?
+      m = self[:membership_list] = MembershipList.new
+    elsif !m.kind_of?(MembershipList)
       m = self[:membership_list] = MembershipList[m]
     end
     m
