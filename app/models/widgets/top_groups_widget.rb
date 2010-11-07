@@ -4,7 +4,7 @@ class TopGroupsWidget < Widget
   field :settings, :type => Hash, :default => { :limit => 5 }
 
   def top_groups
-    Group.all(:limit => self[:settings][:limit], :order => "activity_rate desc", :state => "active", :private => false, :isolate => false)
+    Group.order_by(:activity_rate.desc).paginate(:per_page => self[:settings][:limit], :conditions => {:state => "active", :private => false, :isolate => false})
   end
 
   protected

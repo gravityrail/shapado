@@ -4,7 +4,7 @@ class BadgesWidget < Widget
   field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_badges(group)
-    group.badges.all(:limit => self[:settings][:limit], :order => "created_at desc")
+    group.badges.order_by(:created_at.desc).paginate(:per_page => self[:settings][:limit])
   end
 
 

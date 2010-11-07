@@ -4,7 +4,7 @@ class GroupsWidget < Widget
   field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_groups
-    Group.all(:limit => self[:settings][:limit], :order => "created_at desc", :state => "active", :private => false, :isolate => false)
+    Group.order_by(:created_at.desc).paginate(:per_page => self[:settings][:limit], :conditions => {:state => "active", :private => false, :isolate => false})
   end
 
   protected

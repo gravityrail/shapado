@@ -95,6 +95,14 @@ class User
     first(conditions) || first(:login => conditions["email"])
   end
 
+  def membership_list
+    m = self[:membership_list]
+    if m && !m.kind_of?(MembershipList)
+      m = self[:membership_list] = MembershipList[m]
+    end
+    m
+  end
+
   def login=(value)
     write_attribute :login, (value ? value.downcase : nil)
   end
@@ -202,8 +210,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def groups(options = {})
-    options[:order] ||= "activity_rate desc"
-    self.membership_list.groups(options)
+    self.membership_list.groups(options).order_by([:activity_rate, :desc])
   end
 
   def member_of?(group)
@@ -416,12 +423,12 @@ Time.zone.now ? 1 : 0)
     super(method, *args, &block)
   end
 
-  def config_for(group, init = true)
+  def config_for(group, init = false)
     if group.kind_of?(Group)
       group = group.id
     end
 
-    config = self.membership_list[group]
+    config = self.membership_list.get(group)
     if config.nil?
       if init
         config = self.membership_list[group] = Membership.new(:group_id => group)

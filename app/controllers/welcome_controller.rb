@@ -29,7 +29,7 @@ class WelcomeController < ApplicationController
                                 :close_requests => 0, :open_requests => 0,
                                 :versions => 0}).paginate({:per_page => 15,
                                    :page => params[:page] || 1,
-                                   :order => order}.merge(conditions))
+                                   :order => order}.merge(:conditions => conditions))
   end
 
   def feedback

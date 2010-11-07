@@ -61,6 +61,7 @@ class ApplicationController < ActionController::Base
     end
     conditions.deep_merge!({:group_id => current_group.id})
     conditions.deep_merge!(language_conditions)
+    conditions
   end
   helper_method :scoped_conditions
 

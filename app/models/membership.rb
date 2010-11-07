@@ -30,4 +30,10 @@ class Membership
   field :is_editor,                 :type => Boolean, :default => false
 
   validates_inclusion_of :role,  :in => ROLES
+
+  def save(*args); end
+  def save!(*args); end
+  def update_attributes(*args); end
+  def update_attributes!(*args); end
+  def upsert(*args); end
 end

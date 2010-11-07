@@ -189,6 +189,8 @@ module ApplicationHelper
   end
 
   def format_number(number)
+    return if number.nil?
+
     if number < 1000
       number.to_s
     elsif number >= 1000 && number < 1000000
@@ -199,6 +201,8 @@ module ApplicationHelper
   end
 
   def class_for_number(number)
+    return if number.nil?
+
     if number >= 1000 && number < 10000
       "medium_number"
     elsif number >= 10000
