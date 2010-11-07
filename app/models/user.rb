@@ -54,13 +54,13 @@ class User
   field :friend_list_id, :type => String
   referenced_in :friend_list
 
-  renferences_many :questions, :dependent => :destroy
-  renferences_many :answers, :dependent => :destroy
-  renferences_many :comments, :dependent => :destroy
-  renferences_many :votes, :dependent => :destroy
-  renferences_many :badges, :dependent => :destroy
+  references_many :questions, :dependent => :destroy
+  references_many :answers, :dependent => :destroy
+  references_many :comments, :dependent => :destroy
+  references_many :votes, :dependent => :destroy
+  references_many :badges, :dependent => :destroy
 
-  renferences_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
+  references_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
 
   before_create :create_friend_list
   before_create :generate_uuid

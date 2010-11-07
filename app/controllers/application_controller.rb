@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     @current_group ||= begin
       subdomains = request.subdomains
       subdomains.delete("www") if request.host == "www.#{AppConfig.domain}"
-      _current_group = Group.first(:state => "active", :domain => request.host)
+      _current_group = Group.first(:conditions => {:state => "active", :domain => request.host})
       unless _current_group
         if subdomain = subdomains.first
           _current_group = Group.first(:state => "active", :subdomain => subdomain)
