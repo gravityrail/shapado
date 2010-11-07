@@ -17,7 +17,7 @@
         #doc-main-bar
           #logo
             -if current_group.has_logo?
-              =link_to image_tag(logo_group_path(current_group), :class => "group_logo"), domain_url(:custom => current_group.domain)
+              =link_to image_tag(logo_path(current_group), :class => "group_logo"), domain_url(:custom => current_group.domain)
             -else
               = image_tag("default_logo.png", :class => "group_logo")
     #doc-wrapper

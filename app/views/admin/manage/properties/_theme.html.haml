@@ -1,7 +1,7 @@
 .group
   = f.label :logo, t('logo', :scope => "activerecord.attributes.group"), :class => "label"
   -unless @group.new?
-    = image_tag(logo_group_path(@group))
+    = image_tag(logo_path(@group))
   %br
   = f.file_field :logo
   .description

@@ -3,11 +3,11 @@ module Shapado
     module Routes
       def self.included(base)
         base.class_eval do
-          helper_method :logo_group_path, :css_group_path, :favicon_group_path
+          helper_method :logo_path, :css_group_path, :favicon_group_path
         end
       end
 
-      def logo_group_path(group)
+      def logo_path(group)
         "/_files/groups/logo/#{group.id}"
       end
 

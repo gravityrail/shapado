@@ -255,7 +255,7 @@ class Group
 
   def self.find_file_from_params(params, request)
     if request.path =~ /\/(logo|css|favicon)\/([^\/\.?]+)/
-      @group = Group.find_by_slug_or_id($2, :select => [:file_list])
+      @group = Group.find($2)
       case $1
       when "logo"
         @group.logo
