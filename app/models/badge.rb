@@ -25,16 +25,20 @@ class Badge
   referenced_in :group
   validates_presence_of :group
 
-  field :token, String, :required => true, :index => true
-  field :type, String, :required => true
+  field :token, :type => String
+  validates_presence_of :token
+  index :token
 
-  field :for_tag, Boolean
+  field :type, :type => String, :required => true
+  validates_presence_of :type
 
-  field :source_id, String
-  field :source_type, String
+  field :for_tag, :type => Boolean
+
+  field :source_id, :type => String
+  field :source_type, :type => String
 #   belongs_to :source, :polymorphic => true # FIXME mongoid
 
-  validates_inclusion_of :type,  :within => TYPES
+#   validates_inclusion_of :type,  :within => TYPES
   validates_inclusion_of :token, :within => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
 
   before_save :set_type

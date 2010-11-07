@@ -1,24 +1,23 @@
 class Comment
   include Mongoid::Document
   include Support::Voteable
+  include Mongoid::Timestamps
+
 #   include Shapado::Models::GeoCommon FIXME
 
-#   timestamps! FIXME
 
   identity :type => String
 
-  key :body, String, :required => true
-  key :language, String, :default => "en"
-  key :banned, Boolean, :default => false
+  field :body, :type =>  String, :required => true
+  field :language, :type =>  String, :default => "en"
+  field :banned, :type =>  Boolean, :default => false
 
-  key :created_at, Time, :default => Time.now # FIXME
-  key :updated_at, Time, :default => Time.now # FIXME
-  key :position, GeoPosition, :default => GeoPosition.new(0, 0) # FIXME
+  field :position, :type =>  GeoPosition, :default => GeoPosition.new(0, 0) # FIXME
 
-  key :user_id, String
-  belongs_to :user
+  field :user_id, :type => String
+  referenced_in :user
 
-  alias :commentable :_root_document
+  embedded_in :commentable, :inverse_of => :comments
 
   validates_presence_of :user
 

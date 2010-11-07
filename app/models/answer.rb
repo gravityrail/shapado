@@ -7,28 +7,29 @@ class Answer < Comment
   include Shapado::Models::GeoCommon
   identity :type => String
 
-  key :body, String, :required => true
-  key :language, String, :default => "en", :index => true
-  key :flags_count, Integer, :default => 0
-  key :banned, Boolean, :default => false, :index => true
-  key :wiki, Boolean, :default => false
-  key :anonymous, Boolean, :default => false, :index => true
+  field :body, :type => String, :required => true
+  field :language, :type =>  String, :default => "en"
+  index :language
+  field :flags_count, :type =>  Integer, :default => 0
+  field :banned, :type =>  Boolean, :default => false
+  index :banned
+  field :wiki, :type => Boolean, :default => false
+  field :anonymous, :type => Boolean, :default => false
+  index :anonymous
 
-  key :group_id, String, :index => true
-  belongs_to :group
+  referenced_in :group
+  index :group_id
 
-  key :user_id, String, :index => true
-  belongs_to :user
+  referenced_in :user
+  index :user_id
 
-  key :updated_by_id, String
-  belongs_to :updated_by, :class_name => "User"
+  referenced_in :updated_by, :class_name => "User"
 
-  key :question_id, String, :index => true
-  belongs_to :question
+  referenced_in :question
+  index :question_id
 
-  has_many :flags
-
-  has_many :comments, :order => "created_at asc"
+  embeds_many :flags
+  embeds_many :comments, :order => "created_at asc"
 
   validates_presence_of :user_id
   validates_presence_of :question_id

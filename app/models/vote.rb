@@ -10,9 +10,7 @@ class Vote
 
   field :user_ip, :type => String
 
-  embedded_in :answer, :inverse_of => :votes
-  embedded_in :question, :inverse_of => :votes
-  embedded_in :comment, :inverse_of => :votes
+  embedded_in :voteable, :inverse_of => :votes
 
   validates_inclusion_of :value, :in => [1,-1]
 
