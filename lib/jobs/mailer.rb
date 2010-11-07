@@ -24,11 +24,11 @@ module Jobs
     end
 
     def self.on_new_comment(commentable_id, commentable_class, comment_id)
-      commentable = commentable_class.find(commentable_id)
-      comment = commentable_id.comments.find(comment_id)
+      commentable = commentable_class.constantize.find(commentable_id)
+      comment = commentable.comments.detect {|comment| comment.id == comment_id}
       if comment && (recipient = comment.find_recipient)
         email = recipient.email
-        if !email.blank? && current_user.id != recipient.id && recipient.notification_opts.new_answer
+        if !email.blank? && comment.user.id != recipient.id && recipient.notification_opts.new_answer
           Notifier.new_comment(commentable.group, comment, recipient, commentable).deliver
         end
       end

@@ -43,13 +43,13 @@ module Jobs
       end
     end
 
-    def self.on_comment(comment_id)
-      comment = Comment.find!(comment_id)
-      commentable = comment.commentable
-      group = comment.group
+    def self.on_comment(commentable_id, commentable_class, comment_id)
+      commentable = commentable_class.constantize.find(commentable_id)
+      comment = commentable.comments.find(comment_id)
+      group = commentable.group
       user = comment.user
-      comment.set_address
-      if user.comments.count(:group_id => comment.group_id, :_type => {:$ne => "Answer"}) >= 10
+#       comment.set_address FIXME
+      if user.comments.count >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
     end

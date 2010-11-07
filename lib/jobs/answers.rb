@@ -7,7 +7,6 @@ module Jobs
       question = Question.find(question_id)
       group = question.group
       answer = question.answers.find(answer_id)
-      sweep_question(question)
       Question.update_last_target(question.id, answer)
 
       question.answer_added!
