@@ -64,6 +64,11 @@ group :scripts do
   gem 'cronedit'
 end
 
+group :test do
+  gem "fabrication"
+  gem "autotest"
+end
+
 group :development do
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"

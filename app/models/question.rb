@@ -13,13 +13,13 @@ class Question
 
   identity :type => String
 
-  field :title, :type => String, :default => "", :required => true
+  field :title, :type => String, :default => ""
   field :body, :type => String
   slug_key :title, :unique => true, :min_length => 8
   field :slugs, :type => Array
   index :slugs
 
-  field :answers_count, :type => Integer, :default => 0, :required => true
+  field :answers_count, :type => Integer, :default => 0
   field :views_count, :type => Integer, :default => 0
   field :hotness, :type => Integer, :default => 0
   field :flags_count, :type => Integer, :default => 0
@@ -56,9 +56,9 @@ class Question
   index :group_id
 
 
-  # FIXME mongid (ids are currently stored in watchers)
+  field :watchers, :type => Array
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :foreign_key => :watchers, :inverse_of => :question, :class_name => "User"
+  references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"#, :foreign_key => :watchers FIXME mongoid
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -82,7 +82,8 @@ class Question
   embeds_many :close_requests
   embeds_many :open_requests
 
-  validates_presence_of :user_id
+  validates_presence_of :title
+  validates_presence_of :user
   validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
 
   validates_length_of       :title,    :in => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
@@ -127,19 +128,20 @@ class Question
     opts[:group_id] = question.group_id
     opts[:banned] = false
 
-    Question.where(opts.merge(:_keywords => {:$in => question.tags}, :_id => {:$ne => question.id})).paginate(:per_page => page, :page => page)
+    Question.where(opts.merge(:_keywords.in => question.tags,:_id.ne => question.id)).
+                                                    paginate(:per_page => page, :page => page)
   end
 
   def viewed!(ip)
     view_count_id = "#{self.id}-#{ip}"
-    if ViewsCount.find(view_count_id).nil?
+    if ViewsCount.first(:conditions => {:_id => view_count_id}).nil?
       ViewsCount.create(:_id => view_count_id)
-      self.increment(:views_count => 1)
+      self.inc(:views_count => 1)
     end
   end
 
   def answer_added!
-    self.increment(:answers_count => 1)
+    self.inc(:answers_count => 1)
     on_activity
   end
 
@@ -148,7 +150,7 @@ class Question
   end
 
   def flagged!
-    self.increment(:flags_count => 1)
+    self.inc(:flags_count => 1)
   end
 
   def on_add_vote(v, voter)
@@ -174,7 +176,7 @@ class Question
   end
 
   def add_favorite!(fav, user)
-    self.increment(:favorites_count => 1)
+    self.inc(:favorites_count => 1)
     on_activity(false)
   end
 
@@ -186,7 +188,7 @@ class Question
 
   def on_activity(bring_to_front = true)
     update_activity_at if bring_to_front
-    self.increment(:hotness => 1)
+    self.inc(:hotness => 1)
   end
 
   def update_activity_at
@@ -222,7 +224,7 @@ class Question
   def add_follower(user)
     if !follower?(user)
       self.push_uniq(:watchers => user.id)
-      self.increment(:followers_count => 1)
+      self.inc(:followers_count => 1)
     end
   end
 
@@ -262,7 +264,6 @@ class Question
       last_question = Question.where(:conditions =>{:user_id => self.user_id,
                                       :group_id => self.group_id,
                                       }).order_by(:created_at.desc).first
-      p last_question
 
       valid = (last_question.nil? || (Time.now - last_question.created_at) > 20)
       if !valid
