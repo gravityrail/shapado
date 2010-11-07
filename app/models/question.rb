@@ -190,24 +190,24 @@ class Question
     if new?
       self.activity_at = now
     else
-      self.set(:activity_at => now)
+      self.override(:activity_at => now)
     end
   end
 
   def ban
-    self.set(:banned => true)
+    self.override(:banned => true)
   end
 
   def self.ban(ids, options = {})
-    self.set({:_id.in => ids}.merge(options), {:banned => true})
+    self.override({:_id.in => ids}.merge(options), {:banned => true})
   end
 
   def unban
-    self.set(:banned => false)
+    self.override(:banned => false)
   end
 
   def self.unban(ids, options = {})
-    self.set({:_id.in => ids}.merge(options), {:banned => false})
+    self.override({:_id.in => ids}.merge(options), {:banned => false})
   end
 
   def favorite_for?(user)
@@ -278,7 +278,7 @@ class Question
     if target.respond_to?(:updated_at) && target.updated_at.present?
       data[:last_target_date] = target.updated_at.utc
     end
-    self.set({:_id => question_id}, data)
+    self.override({:_id => question_id}, data)
   end
 
   def can_be_requested_to_close_by?(user)

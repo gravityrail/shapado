@@ -99,7 +99,7 @@ class Answer < Comment
   def ban
     self.question.answer_removed!
     unsolve_question
-    self.set({:banned => true})
+    self.overwrite({:banned => true})
   end
 
   def self.ban(ids)
