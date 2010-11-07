@@ -8,7 +8,7 @@ class BadgesController < ApplicationController
     @badges = []
     Badge.TOKENS.each do |token|
      badge = Badge.new(:token => token)
-     badge["count"] = Badge.count(:token => token, :group_id => current_group.id)
+     badge["count"] = Badge.where(:token => token, :group_id => current_group.id).count
      @badges << badge
     end
     respond_to do |format|
