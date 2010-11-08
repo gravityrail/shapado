@@ -182,7 +182,7 @@ class Question
 
 
   def remove_favorite!(fav, user)
-    self.decrement(:favorites_count, 1)
+    self.decrement(:favorites_count => 1)
     on_activity(false)
   end
 
@@ -193,7 +193,7 @@ class Question
 
   def update_activity_at
     now = Time.now
-    if new?
+    if new_record?
       self.activity_at = now
     else
       self.override(:activity_at => now)
@@ -219,7 +219,6 @@ class Question
   def favorite_for?(user)
     user.favorite(self)
   end
-
 
   def add_follower(user)
     if !follower?(user)
