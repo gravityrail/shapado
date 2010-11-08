@@ -1,5 +1,8 @@
 
-Fabricator(:membership_list)
+Fabricator(:favorite) do
+  user!
+end
+
 
 Fabricator(:user) do
   login { Fabricate.sequence(:user) { |i| "user#{i}" } }

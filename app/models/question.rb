@@ -56,7 +56,7 @@ class Question
   index :group_id
 
 
-  field :watchers, :type => Array
+  field :watchers, :type => Array, :default => []
   field :followers_count, :type => Integer, :default => 0
   references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"#, :foreign_key => :watchers FIXME mongoid
 

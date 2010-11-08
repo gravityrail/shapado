@@ -283,12 +283,109 @@ describe Question do
     end
 
     describe "Question#favorite_for?(user)" do
-      it "should unban the question" do
-        @question.ban
-        @question.unban
-        @question.reload
-        @question.banned.should be_false
+      it "should nil for question creator" do
+        @question.favorite_for?(@question.user).should be_nil
       end
+
+      it "should return favorite's user" do
+        @favorite = Fabricate(:favorite, :group => @question.group,
+                                         :question => @question)
+        @question.favorite_for?(@favorite.user).id.should == @favorite.user.id
+      end
+    end
+
+    describe "Question#add_follower" do
+      before(:each) do
+        @follower = Fabricate(:user)
+        @question.stub(:follower?).and_return(false)
+      end
+
+      after(:each) do
+        @follower.destroy
+      end
+
+      it "should add @follower as question's follower" do
+        @question.add_follower(@follower)
+        @question.reload
+        @question.followers_count.should == 1
+        @question.watchers.should include @follower.id
+      end
+
+      it "should not @follower as question's follower" do
+        @question.should_receive(:follower?).and_return(true)
+        @question.add_follower(@follower)
+        @question.reload
+        @question.followers_count.should == 0
+        @question.watchers.should_not include @follower.id
+      end
+    end
+
+
+    describe "Question#remove_follower" do
+      before(:each) do
+        @follower = Fabricate(:user)
+        @question.add_follower(@follower)
+        @question.reload
+        @question.stub(:follower?).and_return(true)
+      end
+
+      it "follower add @follower as question's follower" do
+        @question.remove_follower(@follower)
+        @question.reload
+        @question.followers_count.should == 0
+        @question.watchers.should_not include @follower.id
+      end
+    end
+
+    describe "Question#follower?" do
+      before(:each) do
+        @follower = Fabricate(:user)
+        @question.stub(:follower?).and_return(true)
+        @question.add_follower(@follower)
+        @question.reload
+      end
+
+      after(:each) do
+        @follower.destroy
+      end
+
+      it "should return true for @follower" do
+        @question.follower?(@follower).should be_true
+      end
+
+      it "should return false for question's user" do
+        @question.follower?(@question.user).should be_false
+      end
+    end
+
+    describe "Question#disable_limits?" do
+    end
+
+    describe "Question#check_useful" do
+    end
+
+    describe "Question#disallow_spam" do
+    end
+
+    describe "Question#answered" do
+    end
+
+    describe "Question#update_last_target" do
+    end
+
+    describe "Question#can_be_requested_to_close_by?" do
+    end
+
+    describe "Question#can_be_requested_to_open_by?" do
+    end
+
+    describe "Question#can_be_deleted_by?" do
+    end
+
+    describe "Question#close_reason" do
+    end
+
+    describe "Question#last_target=" do
     end
   end
 end
