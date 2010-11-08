@@ -6,7 +6,7 @@
       - if widget.settings["identica"]
         %li
           = render :partial => "questions/share/identica"
-      - if current_group.domain != AppConfig.domain && @widget.settings["shapado"]
+      - if current_group.domain != AppConfig.domain && widget.settings["shapado"]
         %li
           = render :partial => "questions/share/shapado"
       - if widget.settings["twitter"]
