@@ -1,7 +1,6 @@
 class TagListWidget < Widget
-  before_validation_on_create :set_name
-  before_validation_on_update :set_name
-  key :settings, Hash, :default => { :on_questions => true }
+  validate :set_name, :on => :create
+  field :settings, :type => Hash, :default => { :on_questions => true }
 
   protected
   def set_name

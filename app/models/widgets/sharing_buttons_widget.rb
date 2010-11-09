@@ -1,8 +1,7 @@
 class SharingButtonsWidget < Widget
-  before_validation_on_create :set_name
-  before_validation_on_update :set_name
+  validate :set_name, :on => :create
 
-  key :settings, Hash , :default => { :identica => true,
+  field :settings, :type => Hash , :default => { :identica => true,
     :twitter => true, :linkedin => true, :thinkit => false,
     :facebook => true, :shapado => true,:custom_html => '',
     :on_show_question => true
