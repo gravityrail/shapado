@@ -27,7 +27,7 @@ class CloseRequestsController < ApplicationController
 
     @question.close_requests << @close_request
     if current_user.mod_of?(current_group)
-      @question.closed = Boolean.to_mongo(params[:close]||false)
+      @question.closed = params[:close]||false
       if @question.closed
         @question.close_reason_id = @close_request.id
       else
@@ -73,7 +73,7 @@ class CloseRequestsController < ApplicationController
     @close_request = @question.close_requests.find(params[:id])
     @close_request.reason = params[:close_request][:reason]
 
-    close_question = Boolean.to_mongo(params[:close]||false)
+    close_question = params[:close]||false
     if current_user.mod_of?(current_group)
       @question.closed = close_question
       if @question.closed_changed?
