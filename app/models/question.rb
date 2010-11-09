@@ -223,7 +223,7 @@ class Question
   def add_follower(user)
     if !follower?(user)
       self.push_uniq(:watchers => user.id)
-      self.increment(:followers_count, 1)
+      self.increment(:followers_count => 1)
     end
   end
 
