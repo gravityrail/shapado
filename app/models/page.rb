@@ -34,8 +34,8 @@ class Page
   def self.by_title(title, conditions = {})
     self.where(conditions.merge({:title => title, :language => current_language})).first ||
     self.where(conditions.merge(:title => title)).first# ||  # FIXME: mongoid
-#     self.where(conditions.merge(:language => current_language)).by_slug(title) ||
-#     self.by_slug(title, conditions)
+    self.where(conditions.merge(:language => current_language)).by_slug(title) ||
+    self.where(conditions).by_slug(title)
   end
 
   private
