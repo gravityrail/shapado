@@ -17,3 +17,5 @@ end
 
 require 'support/versionable'
 require 'support/voteable'
+
+Mongoid.config.raise_not_found_error = false
