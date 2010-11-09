@@ -28,7 +28,7 @@
           = gravatar(answer.updated_by.email.to_s, :size => 32)
         .user
           = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
-          -unless answer.updated_by.hide_country
+          -if !answer.updated_by.hide_country && answer.address.present?
             .adr
               .country-name
                 = t("global.from", :site => answer.address_name)
@@ -46,7 +46,7 @@
       .user
         -if !answer.anonymous
           = render :partial => "users/user_mini", :locals => {:user => answer.user}
-          -unless answer.user.hide_country
+          -if !answer.user.hide_country && answer.address.present?
             .adr
               .country-name
                 = t("global.from", :site => answer.address_name)

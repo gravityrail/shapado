@@ -4,7 +4,7 @@ module Models
     extend ActiveSupport::Concern
 
     included do
-      field :address, :type => Hash
+      field :address, :type => Hash, :default => {}
       field :position, :type => GeoPosition, :default => GeoPosition.new(0, 0)
       index [[:position, Mongo::GEO2D]]
       scope :near, lambda { |point, opts| {:position => {:$near => point, :$maxDistance => 6}}.merge(opts) }
@@ -26,7 +26,7 @@ module Models
       end
 
       def address_name
-        address = if self.address != { }
+        address = if self.address.present? && self.address != { }
           unless self.address["city"].blank?
             "#{self.address["city"]}, #{self.address["country"]}"
           else
