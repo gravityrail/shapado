@@ -136,12 +136,12 @@ class Question
     view_count_id = "#{self.id}-#{ip}"
     if ViewsCount.first(:conditions => {:_id => view_count_id}).nil?
       ViewsCount.create(:_id => view_count_id)
-      self.inc(:views_count => 1)
+      self.inc(:views_count, 1)
     end
   end
 
   def answer_added!
-    self.inc(:answers_count => 1)
+    self.inc(:answers_count, 1)
     on_activity
   end
 
@@ -150,7 +150,7 @@ class Question
   end
 
   def flagged!
-    self.inc(:flags_count => 1)
+    self.inc(:flags_count, 1)
   end
 
   def on_add_vote(v, voter)
@@ -176,7 +176,7 @@ class Question
   end
 
   def add_favorite!(fav, user)
-    self.inc(:favorites_count => 1)
+    self.inc(:favorites_count, 1)
     on_activity(false)
   end
 
@@ -188,12 +188,12 @@ class Question
 
   def on_activity(bring_to_front = true)
     update_activity_at if bring_to_front
-    self.inc(:hotness => 1)
+    self.inc(:hotness, 1)
   end
 
   def update_activity_at
     now = Time.now
-    if new?
+    if new_record?
       self.activity_at = now
     else
       self.override(:activity_at => now)
@@ -220,11 +220,10 @@ class Question
     user.favorite(self)
   end
 
-
   def add_follower(user)
     if !follower?(user)
       self.push_uniq(:watchers => user.id)
-      self.inc(:followers_count => 1)
+      self.inc(:followers_count, 1)
     end
   end
 
