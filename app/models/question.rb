@@ -235,7 +235,7 @@ class Question
   end
 
   def follower?(user)
-    watchers.include?(user._id)
+    watchers && watchers.include?(user._id)
   end
 
   def disable_limits?

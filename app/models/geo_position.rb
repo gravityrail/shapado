@@ -1,16 +1,16 @@
 class GeoPosition
   attr_reader :lat, :long
 
-  def self.to_mongo(value)
+  def self.set(value)
     return if value.nil?
     if value.is_a?(self)
       {'lat' => value.lat.to_f, 'long' => value.long.to_f}
     elsif value.is_a?(Hash)
-      value
+      {'lat' => value['lat'].to_f, 'long' => value['long'].to_f}
     end
   end
 
-  def self.from_mongo(value)
+  def self.get(value)
     return if value.nil?
 
     value.is_a?(self) ? value : GeoPosition.new(value['lat'], value['long'])
