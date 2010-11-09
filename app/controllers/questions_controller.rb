@@ -251,7 +251,7 @@ class QuestionsController < ApplicationController
     end
     @question.safe_update(%w[title body language tags wiki position], params[:question])
 
-    @question.anonymous = Boolean.to_mongo(params[:question][:anonymous])
+    @question.anonymous = params[:question][:anonymous]
 
     @question.group = current_group
     @question.user = current_user
