@@ -15,10 +15,10 @@ class Favorite
 
   protected
   def should_be_unique
-    favorite = Favorite.first({:question_id => self.question_id,
+    favorite = Favorite.where({:question_id => self.question_id,
                                 :user_id     => self.user_id,
                                 :group_id    => self.group_id
-                               })
+                               }).first
 
     valid = (favorite.nil? || favorite.id == self.id)
     if !valid

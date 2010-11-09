@@ -471,7 +471,7 @@ class QuestionsController < ApplicationController
     @question.add_follower(current_user)
 
 
-    Jobs::Mailer.on_favorite_question(@question.id, current_user.id).commit!
+    Jobs::Mailer.async.on_favorite_question(@question.id, current_user.id).commit!
 
     respond_to do |format|
       if @favorite.save
