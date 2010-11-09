@@ -25,7 +25,7 @@ class Vote
 
   protected
   def should_be_unique
-    vote = self._root_document.votes.detect{ |vote| vote.user_id == self.user_id }
+    vote = self.voteable.votes.detect{ |vote| vote.user_id == self.user_id }
     valid = (vote.nil? || vote.id == self.id)
 
     unless valid

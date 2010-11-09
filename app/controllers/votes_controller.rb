@@ -118,9 +118,9 @@ class VotesController < ApplicationController
 
     state = :error
     if user_vote.nil?
-      @voteable.votes << vote
+      #@voteable.votes << vote
       if vote.valid?
-        @voteable.save # TODO: use modifiers
+        @voteable.save
         @voteable.add_vote!(vote.value, current_user)
         flash[:notice] = t("votes.create.flash_notice")
         state = :created
