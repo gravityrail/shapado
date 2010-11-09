@@ -1,7 +1,7 @@
 class UsersWidget < Widget
-  before_save :set_name
+  validate :set_name, :on => :create
+  field :settings, :type => Hash, :default => { :limit => 5, :on_welcome => true  }
 
-  field :settings, :type => Hash, :default => { :limit => 5 }
 
   def recent_users(group)
     group.users({:per_page => self[:settings]['limit'],

@@ -8,12 +8,16 @@ class Widget
   embedded_in :group, :inverse_of => :widgets
 
   def self.types
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget]
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget CurrentTagsWidget TagListWidget]
     if AppConfig.enable_groups
       types += %w[GroupsWidget TopGroupsWidget]
     end
 
     types
+  end
+
+  def question_only?
+    false
   end
 
   def partial_name

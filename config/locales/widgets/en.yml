@@ -5,25 +5,46 @@ en:
       description: Use the arrows to move your widgets
     badges:
       title: Recent badges
-      description: "This widget displays recent badges earned by users or questions"
+      description: "This widget displays recent badges earned by users."
     groups:
       title: Recent groups
-      description: "This widget displays the latest groups"
+      description: "This widget displays the latest groups."
     top_groups:
       title: Top 5 groups
-      description: "This widget displays the top five groups"
+      description: "This widget displays the top five groups."
     top_users:
       title: Top 5 users
-      description: "This widget displays the top five users"
+      description: "This widget displays the top five users."
     users:
       title: Recent users
-      description: "This widget displays newly registered members"
+      description: "This widget displays newly registered members."
     tag_cloud:
       title: Tag cloud
-      description: "This widget displays a tag cloud"
+      description: "This widget displays a tag cloud."
     pages:
       title: Wiki pages
-      description: "This widget displays the list of wiki pages"
+      description: "This widget displays the list of wiki pages."
       new: Add new page
     settings:
       limit: "Quantity to display:"
+      custom_html: "Custom html:"
+      on_welcome: "Only show on Welcome page"
+      on_questions: "Only show on Questions index page"
+      on_show_question: "Only show on showing a question"
+    sharing_buttons:
+      title: "Share this on"
+      description: "This widget will display social sharing buttons"
+    mod_info:
+      description: "This widget shows information relevant to moderators such as flags and reporting requests."
+    question_tags:
+      description: "This widget displays tags related to the current page."
+    question_badges:
+      description: "This widget displays badged earned on that question."
+    question_stats:
+      description: "This widget displays stats about a question such as creation date and number of views."
+    related_questions:
+      description: "This widget shows a list of questions related to the current question."
+    current_tags:
+      description: "This widget displays tags followed by the current user."
+    tag_list:
+      description: "This widget displays tags related to the current page."

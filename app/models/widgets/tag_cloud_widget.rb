@@ -1,7 +1,6 @@
 class TagCloudWidget < Widget
-  before_save :set_name
-
-  field :settings, :type => Hash, :default => { :limit => 30 }
+  validate :set_name, :on => :create
+  field :settings, :type => Hash, :default => { :limit => 30, :on_welcome => true }
 
   validate :validate_settings
 

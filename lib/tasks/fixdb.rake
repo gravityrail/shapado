@@ -1,7 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters",
-                 "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments"] do
+task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:update_questions_widgets"] do
 end
 
 namespace :fixdb do
@@ -165,4 +164,18 @@ namespace :fixdb do
     end
   end
 
+  task :update_questions_widgets => [:environment] do
+    c=Group.count
+    i=1
+    Group.all.each do |g|
+      [SharingButtonsWidget.new, ModInfoWidget.new, QuestionBadgesWidget.new,
+       QuestionStatsWidget.new, QuestionTagsWidget.new, RelatedQuestionsWidget.new,
+       TagListWidget.new, CurrentTagsWidget.new].each do |w|
+        g.widgets << w
+      end
+      g.save
+      p "(#{i}/#{c}) Updated widgets for group #{g.name}"
+      i+=1
+    end
+  end
 end
