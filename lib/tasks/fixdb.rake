@@ -1,11 +1,23 @@
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:update_questions_widgets"] do
+task :fixall => [:environment, "fixdb:question_times", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:update_questions_widgets"] do
 end
 
 namespace :fixdb do
+  task :question_times => [:environment] do
+    coll = Mongoid.database.collection("questions")
+    coll.find.each do |q|
+      %w[last_target_date created_at updated_at].each do |key|
+        if q[key].is_a?(String)
+          q[key] = Time.parse(q[key])
+        end
+      end
+      coll.save(q)
+    end
+  end
+
   task :openid => [:environment] do
-    User.find_each do |user|
+    User.all.each do |user|
       next if user.identity_url.blank?
 
       puts "Updating: #{user.login}"
@@ -15,8 +27,8 @@ namespace :fixdb do
   end
 
   task :sync_counts => [:environment] do
-    votes = MongoMapper.database.collection("votes")
-    comments = MongoMapper.database.collection("comments")
+    votes = Mongoid.database.collection("votes")
+    comments = Mongoid.database.collection("comments")
     puts "updating comment's counts"
     comments.find.each do |c|
       print "."
@@ -34,32 +46,32 @@ namespace :fixdb do
     end
 
     puts "updating questions's counts"
-    Question.find_each do |q|
+    Question.all.each do |q|
       print "."
       votes_average=0
       q.votes.each {|e| votes_average+=e.value }
-      q.set("flags_count" => q.flags.size, "votes_count" => q.votes.size, "votes_average" => votes_average)
+      q.override("flags_count" => q.flags.size, "votes_count" => q.votes.size, "votes_average" => votes_average)
     end
   end
 
   task :counters => :environment do
-    Question.find_each do |q|
-      q.set(:close_requests_count => q.close_requests.size)
-      q.set(:open_requests_count => q.open_requests.size)
+    Question.all.each do |q|
+      q.override(:close_requests_count => q.close_requests.size)
+      q.override(:open_requests_count => q.open_requests.size)
     end
   end
 
   task :questions => [:environment] do
     puts "updating questions#last_target_type"
-    Question.find_each(:last_target_type.ne => nil) do |q|
+    Question.all(:conditions => {:last_target_type.ne => nil}).each do |q|
       print "."
       if(q.last_target_type != "Comment")
         last_target = q.last_target_type.constantize.find(q.last_target_id)
       else
-        data = MongoMapper.database.collection("comments").find_one(:_id => q.last_target_id)
+        data = Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
         last_target = Comment.new(data)
 #         p last_target.id
-#         p MongoMapper.database.collection("comments").find_one(:_id => q.last_target_id)
+#         p Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
       end
 
       if(last_target)
@@ -73,12 +85,12 @@ namespace :fixdb do
 
   task :votes => [:environment] do
     puts "updating votes"
-    Group.find_each do |group|
+    Group.all.each do |group|
       count = 0
 
-      comments = MongoMapper.database.collection("comments")
-      questions = MongoMapper.database.collection("questions")
-      MongoMapper.database.collection("votes").find({:group_id => group["_id"]}).each do |vote|
+      comments = Mongoid.database.collection("comments")
+      questions = Mongoid.database.collection("questions")
+      Mongoid.database.collection("votes").find({:group_id => group["_id"]}).each do |vote|
         vote.delete("group_id")
         id = vote.delete("voteable_id")
         klass = vote.delete("voteable_type")
@@ -93,15 +105,15 @@ namespace :fixdb do
         puts "Updated #{count} #{group["name"]} votes"
       end
     end
-    MongoMapper.database.collection("votes").drop
+    Mongoid.database.collection("votes").drop
   end
 
   task :comments => [:environment] do
     puts "updating comments"
-    comments = MongoMapper.database.collection("comments")
-    questions = MongoMapper.database.collection("questions")
+    comments = Mongoid.database.collection("comments")
+    questions = Mongoid.database.collection("questions")
 
-    MongoMapper.database.collection("comments").find(:_type => "Comment").each do |comment|
+    Mongoid.database.collection("comments").find(:_type => "Comment").each do |comment|
         id = comment.delete("commentable_id")
         klass = comment.delete("commentable_type")
         collection = comments
@@ -113,7 +125,7 @@ namespace :fixdb do
         collection.update({:_id => id}, "$addToSet" => {:comments => comment})
     end
     begin
-      MongoMapper.database.collection("answers").drop
+      Mongoid.database.collection("answers").drop
     ensure
       begin
         comments.rename("answers")
@@ -125,7 +137,7 @@ namespace :fixdb do
   end
 
   task :groups => [:environment] do
-    Group.find_each(:language => [nil, '', 'none']) do |group|
+    Group.all(:conditions => {:language.in => [nil, '', 'none']}).each do |group|
       lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
 
@@ -143,22 +155,22 @@ namespace :fixdb do
     doc = JSON.parse(File.read('data/countries.json'))
     i=0
     doc.keys.each do |key|
-      User.all({ :country_name => key}).each do |u|
+      User.all(:conditions => { :country_name => key}).each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
         lat = doc[key]["lat"]
         lon = doc[key]["lon"]
-        User.set({:_id => u.id},
-                    {:position => GeoPosition.new(lat, lon).to_mongo,
+        User.override({:_id => u.id},
+                    {:position => {lat: lat, long: lon},
                       :address => doc[key]["address"]})
 #         FIXME
-#         Comment.set({:user_id => u.id},
+#         Comment.override({:user_id => u.id},
 #                     {:position => GeoPosition.new(lat, lon),
 #                       :address => doc[key]["address"]})
-        Question.set({:user_id => u.id},
-                    {:position => GeoPosition.new(lat, lon).to_mongo,
+        Question.override({:user_id => u.id},
+                    {:position => {lat: lat, long: lon},
                       :address => doc[key]["address"]})
-        Answer.set({:user_id => u.id},
-                    {:position => GeoPosition.new(lat, lon).to_mongo,
+        Answer.override({:user_id => u.id},
+                    {:position => {lat: lat, long: lon},
                       :address => doc[key]["address"]})
       end
     end
