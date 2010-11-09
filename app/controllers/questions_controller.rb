@@ -570,7 +570,7 @@ class QuestionsController < ApplicationController
   end
 
   def retag_to
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = Question.by_slug(params[:id])
 
     @question.tags = params[:question][:tags]
     @question.updated_by = current_user
@@ -609,7 +609,7 @@ class QuestionsController < ApplicationController
 
 
   def retag
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = Question.by_slug(params[:id])
     respond_to do |format|
       format.html {render}
       format.js {
