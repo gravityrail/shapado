@@ -727,14 +727,14 @@ class QuestionsController < ApplicationController
     @question = current_group.questions.by_slug(params[:id])
 
     if @question.nil?
-      @question = current_group.questions.first(:slugs => params[:id], :select => [:_id, :slug])
+      @question = current_group.questions.where(:slugs => params[:id]).only(:_id, :slug).first
       if @question.present?
         head :moved_permanently, :location => question_url(@question)
         return
-      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.first(:se_id => $1, :select => [:_id, :slug]))
+      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1)).only(:_id, :slug).first
         head :moved_permanently, :location => question_url(@question)
       else
-        raise PageNotFound
+        raise Error404
       end
     end
 

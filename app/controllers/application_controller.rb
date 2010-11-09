@@ -27,6 +27,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :recaptcha_tag
 
+  rescue_from Error404, :with => :render_404
+  rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
+
   protected
   def find_group
     @current_group ||= begin
@@ -67,5 +70,14 @@ class ApplicationController < ActionController::Base
 
   def set_layout
     devise_controller? || (action_name == "new" && controller_name == "users") ? 'sessions' : 'application'
+  end
+
+  def render_404
+    Rails.logger.info "ROUTE NOT FOUND (404): #{request.url}"
+
+    respond_to do |format|
+      format.html { render "public_errors/not_found", :status => '404 Not Found' }
+      format.json { render :json => {:success => false, :message => "Not Found"}, :status => '404 Not Found' }
+    end
   end
 end

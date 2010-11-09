@@ -1,3 +1,6 @@
+class Error404 < Exception
+end
+
 if AppConfig.exception_notification['activate']
   Shapado::Application.config.middleware.use ExceptionNotifier,
   :email_prefix => "[Shapado exception] ",

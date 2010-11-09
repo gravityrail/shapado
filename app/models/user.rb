@@ -336,10 +336,10 @@ Time.zone.now ? 1 : 0)
     current_reputation = config_for(group, false).reputation
 
     if value
-      self.increment({"membership_list.#{group.id}.reputation" => value})
+      self.increment(:"membership_list.#{group.id}.reputation" =>  value)
     end
 
-    stats = self.reputation_stats(group, { :select => [:_id] })
+    stats = self.reputation_stats(group)
     stats.save if stats.new?
 
     event = ReputationEvent.new(:time => Time.now, :event => key,
@@ -354,7 +354,8 @@ Time.zone.now ? 1 : 0)
 
   def stats(*extra_fields)
     fields = [:_id]
-    UserStat.find_or_create_by_user_id(self._id, :select => fields+extra_fields)
+
+    UserStat.only(fields+extra_fields).where(:user_id => self.id).first || UserStat.create(:user_id => self.id)
   end
 
   def badges_count_on(group)
@@ -448,7 +449,7 @@ Time.zone.now ? 1 : 0)
     end
     default_options = { :user_id => self.id,
                         :group_id => group}
-    stats = ReputationStat.first(default_options.merge(options)) ||
+    stats = ReputationStat.where(default_options.merge(options)).first ||
             ReputationStat.new(default_options)
   end
 

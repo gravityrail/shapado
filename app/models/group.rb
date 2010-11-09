@@ -185,7 +185,7 @@ class Group
   end
 
   def tag_list
-    TagList.first(:group_id => self.id) || TagList.create(:group_id => self.id)
+    TagList.where(:group_id => self.id).first || TagList.create(:group_id => self.id)
   end
 
   def default_tags=(c)
