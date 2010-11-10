@@ -71,7 +71,7 @@ class Question
 
 #   referenced_in :last_target, :polymorphic => true
 
-  key :last_target_user_id, String
+  field :last_target_user_id, :type => String
   referenced_in :last_target_user, :class_name => "User"
 
   references_many :answers, :dependent => :destroy
