@@ -4,6 +4,16 @@ module Mongoid
   end
 end
 
+module Mongoid
+  module Keys
+    module ClassMethods
+      def key(*args)
+        raise ArgumentError, "Attempt to define a field with #{args.inspect}"
+      end
+    end
+  end
+end
+
 module Mongoid #:nodoc:
   module Contexts #:nodoc:
     class Mongo
@@ -52,5 +62,4 @@ module Mongoid
     end
   end
 end
-
 
