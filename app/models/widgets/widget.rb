@@ -50,7 +50,7 @@ class Widget
 
     widgets[current_pos], widgets[pos] = widgets[pos], widgets[current_pos]
     group.widgets = widgets
-    group.save
+    group.save(:validate => false)
   end
 
   def update_settings(params)
