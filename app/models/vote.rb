@@ -69,7 +69,7 @@ class Vote
   def check_voteable
     valid = true
     error_message = ""
-    case self.voteable.class
+    case self.voteable.class.to_s
       when "Question"
         valid = !self.voteable.closed
         error_message = I18n.t("votes.model.messages.closed_question")

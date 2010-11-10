@@ -19,15 +19,15 @@ class VotesController < ApplicationController
       vote.value = -1
     end
 
-    vote_state = push_vote(vote)
+    vote, vote_state = push_vote(vote)
 
     if vote_state == :created && !vote.new?
       if vote.voteable_type == "Question"
         sweep_question(vote.voteable)
 
-        Jobs::Votes.async.on_vote_question(vote.voteable.id, vote.id).commit!
+        Jobs::Votes.async.on_vote_question(@voteable.id, vote.id).commit!
       elsif vote.voteable_type == "Answer"
-        Jobs::Votes.async.on_vote_answer(vote.voteable.id, vote.id).commit!
+        Jobs::Votes.async.on_vote_answer(@voteable.id, vote.id).commit!
       end
     end
 
@@ -36,7 +36,7 @@ class VotesController < ApplicationController
 
       format.js do
         if vote_state != :error
-          average = vote.voteable.reload.votes_average
+          average = @voteable.reload.votes_average
           render(:json => {:success => true,
                            :message => flash[:notice],
                            :vote_type => vote_type,
@@ -49,7 +49,7 @@ class VotesController < ApplicationController
 
       format.json do
         if vote_state != :error
-          average = vote.voteable.reload.votes_average
+          average = @voteable.reload.votes_average
           render(:json => {:success => true,
                            :message => flash[:notice],
                            :vote_type => vote_type,
@@ -114,11 +114,10 @@ class VotesController < ApplicationController
 
   def push_vote(vote)
     user_vote = current_user.vote_on(@voteable)
-    @voteable.votes << vote
 
     state = :error
     if user_vote.nil?
-      #@voteable.votes << vote
+      @voteable.votes << vote
       if vote.valid?
         @voteable.save
         @voteable.add_vote!(vote.value, current_user)
@@ -145,6 +144,7 @@ class VotesController < ApplicationController
         flash[:notice] = t("votes.destroy.flash_notice")
         state = :deleted
       end
+      vote = user_vote
     else
       flash[:error] = user_vote.errors.full_messages.join(", ")
       state = :error
@@ -155,12 +155,12 @@ class VotesController < ApplicationController
       sweep_question(question)
 
       if vote.value == 1
-        Question.set(question.id, {:answered_with_id => @voteable.id}) if !question.answered
+        Question.override({:_id => question.id}, {:answered_with_id => @voteable.id}) if !question.answered
       elsif question.answered_with_id == @voteable.id && @voteable.votes_average <= 1
-        Question.set(question.id, {:answered_with_id => nil})
+        Question.override({:_id => question.id}, {:answered_with_id => nil})
       end
     end
 
-    state
+    [vote, state]
   end
 end
