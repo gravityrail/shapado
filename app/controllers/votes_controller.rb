@@ -22,11 +22,11 @@ class VotesController < ApplicationController
     vote, vote_state = push_vote(vote)
 
     if vote_state == :created && !vote.new?
-      if vote.voteable_type == "Question"
+      if @voteable.class == Question
         sweep_question(vote.voteable)
 
         Jobs::Votes.async.on_vote_question(@voteable.id, vote.id).commit!
-      elsif vote.voteable_type == "Answer"
+      elsif @voteable.class == Answer
         Jobs::Votes.async.on_vote_answer(@voteable.id, vote.id).commit!
       end
     end
@@ -114,12 +114,12 @@ class VotesController < ApplicationController
 
   def push_vote(vote)
     user_vote = current_user.vote_on(@voteable)
-
+    vote.voteable = @voteable
     state = :error
     if user_vote.nil?
-      @voteable.votes << vote
+
       if vote.valid?
-        @voteable.save
+        vote.save
         @voteable.add_vote!(vote.value, current_user)
         flash[:notice] = t("votes.create.flash_notice")
         state = :created
@@ -132,14 +132,12 @@ class VotesController < ApplicationController
         @voteable.add_vote!(vote.value, current_user)
 
         user_vote.value = vote.value
-        @voteable.class.collection.update({"votes._id" => user_vote.id},
-                                          {"$set" => {:"votes.$.value" => vote.value}})
+        user_vote.save
         flash[:notice] = t("votes.create.flash_notice")
         state = :updated
       else
         value = vote.value
-        @voteable.votes.delete_if { |v| v._id ==  vote.id}
-        @voteable.save # TODO: use modifiers
+        user_vote.destroy
         @voteable.remove_vote!(value, current_user)
         flash[:notice] = t("votes.destroy.flash_notice")
         state = :deleted
@@ -155,9 +153,9 @@ class VotesController < ApplicationController
       sweep_question(question)
 
       if vote.value == 1
-        Question.override({:_id => question.id}, {:answered_with_id => @voteable.id}) if !question.answered
+        question.override(:answered_with_id => @voteable.id) if !question.answered
       elsif question.answered_with_id == @voteable.id && @voteable.votes_average <= 1
-        Question.override({:_id => question.id}, {:answered_with_id => nil})
+        question.override(:answered_with_id => nil)
       end
     end
 

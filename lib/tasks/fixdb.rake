@@ -145,6 +145,8 @@ namespace :fixdb do
         comments.rename("answers")
       rescue
         puts "comments collection doesn't exists"
+      ensure
+        Answer.override({}, {:_type => "Answer"})
       end
     end
     puts "updated comments"
