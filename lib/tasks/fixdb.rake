@@ -128,9 +128,9 @@ namespace :fixdb do
     questions = Mongoid.database.collection("questions")
 
     Mongoid.database.collection("comments").find(:_type => "Comment").each do |comment|
-      id = comment.delete("commentable_id")
-      klass = comment.delete("commentable_type")
-      collection = comments
+        id = comment.delete("commentable_id")
+        klass = comment.delete("commentable_type")
+        collection = comments
 
       %w[created_at updated_at].each do |key|
         if comment[key].is_a?(String)
@@ -142,9 +142,8 @@ namespace :fixdb do
         collection = questions;
       end
 
-      collection.update({:_id => id}, "$addToSet" => {:comments => comment})
+        collection.update({:_id => id}, "$addToSet" => {:comments => comment})
     end
-
     begin
       Mongoid.database.collection("answers").drop
     ensure
@@ -188,6 +187,9 @@ namespace :fixdb do
   task :relocate => [:environment] do
     doc = JSON.parse(File.read('data/countries.json'))
     i=0
+    Question.override({:address => nil}, :address => {})
+    Answer.override({:address => nil}, :address => {})
+    User.override({:address => nil}, :address => {})
     doc.keys.each do |key|
       User.all(:conditions => { :country_name => key}).each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
@@ -195,17 +197,17 @@ namespace :fixdb do
         lon = doc[key]["lon"]
         User.override({:_id => u.id},
                     {:position => {lat: lat, long: lon},
-                      :address => doc[key]["address"]})
+                      :address => doc[key]["address"] || {}})
 #         FIXME
 #         Comment.override({:user_id => u.id},
 #                     {:position => GeoPosition.new(lat, lon),
 #                       :address => doc[key]["address"]})
         Question.override({:user_id => u.id},
                     {:position => {lat: lat, long: lon},
-                      :address => doc[key]["address"]})
+                      :address => doc[key]["address"] || {}})
         Answer.override({:user_id => u.id},
                     {:position => {lat: lat, long: lon},
-                      :address => doc[key]["address"]})
+                      :address => doc[key]["address"] || {}})
       end
     end
   end
