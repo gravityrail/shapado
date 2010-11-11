@@ -1,5 +1,4 @@
 class BadgesWidget < Widget
-  before_save :set_name
   field :settings, :type => Hash, :default => { :limit => 5, :on_welcome => true  }
 
   def recent_badges(group)
@@ -8,7 +7,4 @@ class BadgesWidget < Widget
 
 
   protected
-  def set_name
-    self[:name] ||= "badges"
-  end
 end

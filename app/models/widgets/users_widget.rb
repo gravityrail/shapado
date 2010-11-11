@@ -1,5 +1,4 @@
 class UsersWidget < Widget
-  validate :set_name, :on => :create
   field :settings, :type => Hash, :default => { :limit => 5, :on_welcome => true  }
 
 
@@ -9,7 +8,4 @@ class UsersWidget < Widget
   end
 
   protected
-  def set_name
-    self[:name] ||= "users"
-  end
 end

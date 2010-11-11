@@ -1,6 +1,4 @@
 class SharingButtonsWidget < Widget
-  validate :set_name, :on => :create
-
   field :settings, :type => Hash , :default => { :identica => true,
     :twitter => true, :linkedin => true, :thinkit => false,
     :facebook => true, :shapado => true,:custom_html => '',
@@ -8,7 +6,4 @@ class SharingButtonsWidget < Widget
   }
 
   protected
-  def set_name
-    self[:name] ||= "sharing_buttons"
-  end
 end

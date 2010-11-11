@@ -1,5 +1,4 @@
 class RelatedQuestionsWidget < Widget
-  validate :set_name, :on => :create
   field :settings, :type => Hash, :default => { :on_show_question => true }
 
   def question_only?
@@ -7,7 +6,4 @@ class RelatedQuestionsWidget < Widget
   end
 
   protected
-  def set_name
-    self[:name] ||= "related_questions"
-  end
 end

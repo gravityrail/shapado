@@ -42,7 +42,7 @@
   .block.notice
     = render :partial => "shared/layout/notice"
 
-  = render :partial => "shared/widgets", :locals => { :context => 'on_welcome'}
+  = render "shared/widgets", :context => 'welcome'
 
   -if logged_in?
     = render :partial => "shared/preferred_tags"

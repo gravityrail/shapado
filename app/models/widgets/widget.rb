@@ -5,7 +5,14 @@ class Widget
   field :name, :type => String, :required => true
   field :settings, :type => Hash
 
-  embedded_in :group, :inverse_of => :widgets
+  validate :set_name, :on => :create
+  embedded_in :group, :inverse_of => [:question_widgets, :mainlist_widgets, :welcome_widgets]
+
+  def initialize(*args)
+    super(*args)
+
+    self[:name] ||= self.class.to_s.sub("Widget", "").underscore
+  end
 
   def self.types
     types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget CurrentTagsWidget TagListWidget]
@@ -61,5 +68,7 @@ class Widget
   def description
     @description ||= I18n.t("widgets.#{self.name}.description") if self.name
   end
+
+  protected
 end
 
