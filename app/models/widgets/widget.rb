@@ -40,7 +40,6 @@ class Widget
   end
 
   def move_to(pos, widgets, context)
-    widgets = widgets.to_a
     pos ||= "up"
     current_pos = widgets.index(self)
 
@@ -50,14 +49,15 @@ class Widget
       pos = current_pos+1
     end
 
-    if pos >= widgets.size
+    if pos >= widgets.count
       pos = 0
     elsif pos < 0
-      pos = widgets.size-1
+      pos = widgets.count-1
     end
 
     widgets[current_pos], widgets[pos] = widgets[pos], widgets[current_pos]
-    group.update_attributes!(:"#{context}_widgets" => widgets)
+    self.group.send(:"#{context}_widgets=", widgets)
+    self.group.raw_save(:force => true)
   end
 
   def update_settings(params)

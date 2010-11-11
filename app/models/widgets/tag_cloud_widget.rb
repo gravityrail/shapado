@@ -7,7 +7,7 @@ class TagCloudWidget < Widget
 
   protected
   def validate_settings
-    if w.settings[:limit].to_i > 30
+    if self.settings['limit'].to_i > 30
       self.errors.add :settings, I18n.t("questions.model.messages.too_many_tags")
     end
   end
