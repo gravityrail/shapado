@@ -16,7 +16,8 @@ class Group
 
   field :name, :type => String, :required => true
   field :subdomain, :type => String
-  field :domain, :type => String, :index => true
+  field :domain, :type => String
+  index :domain
   field :legend, :type => String
   field :description, :type => String
   field :default_tags, :type => Array
@@ -31,7 +32,8 @@ class Group
   field :has_custom_analytics, :type => Boolean, :default => true
 
   field :language, :type => String
-  field :languages, :type => Set, :index => true
+  field :languages, :type => Set
+  index :languages
 
   field :activity_rate, :type => Float, :default => 0.0
   field :openid_only, :type => Boolean, :default => false
