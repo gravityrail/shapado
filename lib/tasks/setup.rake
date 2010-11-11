@@ -103,36 +103,36 @@ namespace :setup do
   desc "Reindex data"
   task :reindex => [:environment] do
     class Question
-      def update_timestamps
-      end
+      def set_created_at; end
+      def set_updated_at; end
     end
 
     class Answer
-      def update_timestamps
-      end
+      def set_created_at; end
+      def set_updated_at; end
     end
 
     class Group
-      def update_timestamps
-      end
+      def set_created_at; end
+      def set_updated_at; end
     end
 
     $stderr.puts "Reindexing #{Question.count} questions..."
-    Question.find_each do |question|
+    Question.all.each do |question|
       question._keywords = []
       question.rolling_back = true
       question.save(:validate => false)
     end
 
     $stderr.puts "Reindexing #{Answer.count} answers..."
-    Answer.find_each do |answer|
+    Answer.all.each do |answer|
       answer._keywords = []
       answer.rolling_back = true
       answer.save(:validate => false)
     end
 
     $stderr.puts "Reindexing #{Group.count} groups..."
-    Group.find_each do |group|
+    Group.all.each do |group|
       group._keywords = []
       group.save(:validate => false)
     end
