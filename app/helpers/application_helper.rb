@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def context_panel_ads(group)
     if AppConfig.enable_adbard && request.domain == AppConfig.domain &&
-        !Adbard.where(:group_id => current_group.id)
+        !Adbard.where(:group_id => current_group.id).first
       adbard = "<!--Ad Bard advertisement snippet, begin -->
         <script type='text/javascript'>
         var ab_h = '#{AppConfig.adbard_host_id}';
@@ -29,7 +29,7 @@ module ApplicationHelper
         ads << ad.code
       end
       ads << adbard
-      return ads.join unless ads.empty?
+      return raw(ads.join) unless ads.empty?
     end
   end
 
@@ -39,7 +39,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'header').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return raw(ads.join)  unless ads.empty?
     end
   end
 
@@ -49,7 +49,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'content').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return raw(ads.join)  unless ads.empty?
     end
   end
 
@@ -59,7 +59,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'footer').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return raw(ads.join)  unless ads.empty?
     end
   end
 
