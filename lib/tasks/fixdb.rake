@@ -132,6 +132,12 @@ namespace :fixdb do
       klass = comment.delete("commentable_type")
       collection = comments
 
+      %w[created_at updated_at].each do |key|
+        if comment[key].is_a?(String)
+          comment[key] = Time.parse(comment[key])
+        end
+      end
+
       if klass == "Question"
         collection = questions;
       end
@@ -149,6 +155,16 @@ namespace :fixdb do
       ensure
         Answer.override({}, {:_type => "Answer"})
       end
+    end
+
+    answers_coll = Mongoid.database.collection("answers")
+    answers_coll.find().each do |answer|
+      %w[created_at updated_at].each do |key|
+        if answer[key].is_a?(String)
+          answer[key] = Time.parse(answer[key])
+        end
+      end
+      answers_coll.save(answer)
     end
 
     puts "updated comments"
