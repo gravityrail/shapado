@@ -2,6 +2,8 @@ class Answer
   include Mongoid::Document
   include Mongoid::Timestamps
   include MongoidExt::Filter
+  include MongoidExt::Random
+
   include Support::Versionable
   include Support::Voteable
   include Shapado::Models::GeoCommon
