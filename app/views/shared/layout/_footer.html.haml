@@ -1,6 +1,6 @@
 
 -if !current_group.footer.blank?
-  =current_group.footer
+  = raw(current_group.footer)
 -else
   #cc.center
     = image_tag('/images/ccby.png')

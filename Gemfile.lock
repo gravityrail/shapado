@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/mislav/will_paginate.git
+  revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
+  branch: rails3
+  specs:
+    will_paginate (3.0.pre3)
+
+GIT
   remote: http://github.com/dcu/multiauth.git
   revision: 5a4881ffc19de6e670c19a9320228fa691d1f5af
   specs:
@@ -229,7 +236,6 @@ GEM
     warden (1.0.1)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
-    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -276,4 +282,4 @@ DEPENDENCIES
   twitter-text (= 1.1.8)
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
-  will_paginate (~> 3.0.pre2)
+  will_paginate!
