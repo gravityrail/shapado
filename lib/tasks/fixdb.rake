@@ -128,16 +128,17 @@ namespace :fixdb do
     questions = Mongoid.database.collection("questions")
 
     Mongoid.database.collection("comments").find(:_type => "Comment").each do |comment|
-        id = comment.delete("commentable_id")
-        klass = comment.delete("commentable_type")
-        collection = comments
+      id = comment.delete("commentable_id")
+      klass = comment.delete("commentable_type")
+      collection = comments
 
-        if klass == "Question"
-          collection = questions;
-        end
+      if klass == "Question"
+        collection = questions;
+      end
 
-        collection.update({:_id => id}, "$addToSet" => {:comments => comment})
+      collection.update({:_id => id}, "$addToSet" => {:comments => comment})
     end
+
     begin
       Mongoid.database.collection("answers").drop
     ensure
@@ -149,6 +150,7 @@ namespace :fixdb do
         Answer.override({}, {:_type => "Answer"})
       end
     end
+
     puts "updated comments"
   end
 
