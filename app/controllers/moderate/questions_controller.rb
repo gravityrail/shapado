@@ -10,32 +10,37 @@ class Moderate::QuestionsController < ApplicationController
   def index
     @active_subtab = "retagg"
     options = {:banned => false,
-               :group_id => current_group.id,
-               :per_page => params[:per_page] || 25,
-               :page => params[:questions_page] || 1}
+               :group_id => current_group.id}
 
-    @questions = Question.paginate(options.merge(:tags => {:$size => 0}))
+    @questions = Question.where(options.merge(:tags => {:$size => 0})).
+                                    paginate(:per_page => params[:per_page] || 25,
+                                             :page => params[:questions_page] || 1)
   end
 
   def flagged
-    options = {:group_id => current_group.id,
-               :per_page => params[:per_page] || 25,
-               :page => params[:questions_page] || 1}
+    options = {:group_id => current_group.id}
     options[:banned] = false
 
     if params[:filter] == "banned"
        options[:banned] = true
     end
-    @questions = current_group.questions.paginate(options.merge(:order => "flags_count desc", :flags_count.gt => 0))
+
+    @questions = current_group.questions.
+                            where(options.merge(:flags_count.gt => 0)).
+                            order_by("flags_count desc").
+                            paginate(:per_page => params[:per_page] || 25,
+                                     :page => params[:questions_page] || 1)
   end
 
   def to_close
     options = {:group_id => current_group.id,
-               :per_page => params[:per_page] || 25,
-               :page => params[:questions_page] || 1,
                :closed => true}
 
-    @questions = current_group.questions.paginate(options.merge(:order => "close_requests_count desc", :close_requests_count.gt => 0))
+    @questions = current_group.questions.
+                            where(options.merge(:close_requests_count.gt => 0)).
+                            order_by("close_requests_count desc").
+                            paginate(:per_page => params[:per_page] || 25,
+                                     :page => params[:questions_page] || 1)
   end
 
   def manage
