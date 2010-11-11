@@ -39,10 +39,11 @@ class Widget
     self.move_to("down")
   end
 
-  def move_to(pos)
+  def move_to(pos, widgets, context)
+    widgets = widgets.to_a
     pos ||= "up"
-    widgets = group.widgets
     current_pos = widgets.index(self)
+
     if pos == "up"
       pos = current_pos-1
     elsif pos == "down"
@@ -56,8 +57,7 @@ class Widget
     end
 
     widgets[current_pos], widgets[pos] = widgets[pos], widgets[current_pos]
-    group.widgets = widgets
-    group.save(:validate => false)
+    group.update_attributes!(:"#{context}_widgets" => widgets)
   end
 
   def update_settings(params)

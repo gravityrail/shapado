@@ -1,6 +1,14 @@
 -content_for :subtabs do
   .navtitle
-    =t(".title")
+    = t(".title")
+  %ul
+    %li.welcome_widgets
+      = link_to t(".welcome_widgets"), widgets_path(:tab=>"welcome")
+    %li.mainlist_widgets
+      = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist")
+    %li.question_widgets
+      = link_to t(".question_widgets"), widgets_path(:tab=>"question")
+
 
 %h2.title
   =t(".description")
@@ -16,7 +24,7 @@
           .controls
             .action
               = link_to t("scaffold.destroy"), widget_path(widget), :method => :delete, :confirm => t("scaffold.sure", :model => "widget")
-            -form_tag move_widget_path(widget), :class => "vote_box" do
+            -form_tag move_widget_path(widget, :tab => @active_subtab), :class => "vote_box" do
               = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up")
               = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
             .clear

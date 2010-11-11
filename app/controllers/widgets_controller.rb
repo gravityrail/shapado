@@ -4,11 +4,17 @@ class WidgetsController < ApplicationController
   layout "manage"
   tabs :default => :widgets
 
+  subtabs :widgets => [[:welcome, "welcome"],
+                       [:mainlist, "mainlist"],
+                       [:question, "question"]]
+
   # GET /widgets
   # GET /widgets.json
   def index
+    @active_subtab ||= "welcome"
+
     @widget = Widget.new
-    @widgets = @group.widgets
+    @widgets = @group.send(:"#{@active_subtab}_widgets")
   end
 
   # POST /widgets
@@ -18,12 +24,12 @@ class WidgetsController < ApplicationController
       @widget = params[:widget][:_type].constantize.new
     end
 
-    @group.widgets << @widget
+    @group.send(:"#{params[:tab]}_widgets") << @widget
 
     respond_to do |format|
       if @widget.valid? && @group.save
         flash[:notice] = 'Widget was successfully created.'
-        format.html { redirect_to widgets_path }
+        format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :created, :location => widget_path(:id => @widget.id) }
       else
         format.html { render :action => "index" }
@@ -35,13 +41,13 @@ class WidgetsController < ApplicationController
   # PUT /widgets
   # PUT /widgets.json
   def update
-    @widget = @group.widgets.find(params[:id])
+    @widget = @group.send(:"#{params[:tab]}_widgets").find(params[:id])
     @widget.update_settings(params)
 
     respond_to do |format|
-      if @widget.valid? && @group.save
+      if @widget.valid? && @group.save && @widget.save
         flash[:notice] = 'Widget was successfully updated.'
-        format.html { redirect_to widgets_path }
+        format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :updated, :location => widget_path(:id => @widget.id) }
       else
         format.html { render :action => "index" }
@@ -65,9 +71,10 @@ class WidgetsController < ApplicationController
   end
 
   def move
-    widget = @group.widgets.find(params[:id])
-    widget.move_to(params[:move_to])
-    redirect_to widgets_path
+    widgets = @group.send(:"#{params[:tab]}_widgets")
+    widget = widgets.find(params[:id])
+    widget.move_to(params[:move_to], widgets, params[:tab])
+    redirect_to widgets_path(:tab => params[:tab])
   end
 
   private
