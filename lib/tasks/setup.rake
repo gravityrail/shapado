@@ -18,7 +18,7 @@ namespace :setup do
 
   desc "Reset admin password"
   task :reset_password => :environment do
-    admin = User.find_by_login("admin")
+    admin = User.where(:login => "admin").first
     admin.encrypted_password = nil
     admin.password = "admins"
     admin.password_confirmation = "admins"
@@ -41,7 +41,7 @@ namespace :setup do
                               :state => "active")
 
     default_group.save!
-    if admin = User.find_by_login("admin")
+    if admin = User.where(:login => "admin").first
       default_group.owner = admin
       default_group.add_member(admin, "owner")
     end
@@ -53,7 +53,7 @@ namespace :setup do
 
   desc "Create default widgets"
   task :create_widgets => :environment do
-    default_group = Group.find_by_domain(AppConfig.domain)
+    default_group = Group.where(:domain => AppConfig.domain).first
 
     if AppConfig.enable_groups
       default_group.widgets << GroupsWidget.new

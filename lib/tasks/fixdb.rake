@@ -1,6 +1,20 @@
+class Question
+  def set_created_at; end
+  def set_updated_at; end
+end
+
+class Answer
+  def set_created_at; end
+  def set_updated_at; end
+end
+
+class Group
+  def set_created_at; end
+  def set_updated_at; end
+end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:question_times", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:update_questions_widgets"] do
+task :fixall => [:environment, "fixdb:question_times", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
 end
 
 namespace :fixdb do
@@ -178,18 +192,24 @@ namespace :fixdb do
     end
   end
 
-  task :update_questions_widgets => [:environment] do
+  task :widgets => [:environment] do
     c=Group.count
-    i=1
+    Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true})
+    i=0
     Group.all.each do |g|
-      [SharingButtonsWidget.new, ModInfoWidget.new, QuestionBadgesWidget.new,
-       QuestionStatsWidget.new, QuestionTagsWidget.new, RelatedQuestionsWidget.new,
-       TagListWidget.new, CurrentTagsWidget.new].each do |w|
-        g.widgets << w
+      [SharingButtonsWidget, ModInfoWidget, QuestionBadgesWidget,
+       QuestionStatsWidget, QuestionTagsWidget, RelatedQuestionsWidget,
+       TagListWidget, CurrentTagsWidget].each do |w|
+        g.question_widgets << w.new
       end
+
+      [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
+        g.welcome_widgets << w.new
+        g.mainlist_widgets << w.new
+      end
+
       g.save
-      p "(#{i}/#{c}) Updated widgets for group #{g.name}"
-      i+=1
+      p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
   end
 end

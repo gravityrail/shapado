@@ -1,5 +1,4 @@
 class TopUsersWidget < Widget
-  validate :set_name, :on => :create
   field :settings, :type => Hash, :default => { :limit => 5, :on_welcome => true  }
 
   def top_users(group)
@@ -9,7 +8,4 @@ class TopUsersWidget < Widget
   end
 
   protected
-  def set_name
-    self[:name] ||= "top_users"
-  end
 end
