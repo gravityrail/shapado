@@ -37,14 +37,12 @@ namespace :setup do
                               :default_tags => default_tags,
                               :state => "active")
 
-    default_group.save!
     if admin = User.where(:login => "admin").first
       default_group.owner = admin
       default_group.add_member(admin, "owner")
     end
+    default_group.save!
     default_group.logo = File.open(Rails.root+"public/images/logo.png")
-    default_group.logo.extension = "png"
-    default_group.logo.content_type = "image/png"
     default_group.save
   end
 
@@ -53,10 +51,10 @@ namespace :setup do
     default_group = Group.where(:domain => AppConfig.domain).first
 
     if AppConfig.enable_groups
-      default_group.widgets << GroupsWidget.new
+      default_group.welcome_widgets << GroupsWidget.new
     end
-    default_group.widgets << UsersWidget.new
-    default_group.widgets << BadgesWidget.new
+    default_group.welcome_widgets << UsersWidget.new
+    default_group.welcome_widgets << BadgesWidget.new
     default_group.save!
   end
 
@@ -89,11 +87,11 @@ namespace :setup do
       body = File.read(page_path)
 
       puts "Loading: #{title.inspect} [lang=#{language}]"
-      Group.find_each do |group|
-        if Page.count(:title => title, :language => language, :group_id => group.id) == 0
-          Page.create(:title => title, :language => language, :body => body, :user_id => group.owner, :group_id => group.id)
-        end
-      end
+      #Group.all.each do |group|
+      #  if Page.where(:title => title, :language => language, :group_id => group.id).count == 0
+      #    Page.create(:title => title, :language => language, :body => body, :user_id => group.owner, :group_id => group.id)
+      #  end
+      #end
     end
   end
 
