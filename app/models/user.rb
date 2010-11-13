@@ -120,23 +120,22 @@ class User
 
   def self.find_experts(tags, langs = AVAILABLE_LANGUAGES, options = {})
     opts = {}
-    opts[:limit] = 15
-    opts[:select] = [:user_id]
+
     if except = options[:except]
-      except = [except] unless except.is_a? Array
+      except = [except] unless except.is_a?(Array)
       opts[:user_id] = {:$nin => except}
     end
 
-    user_ids = UserStat.all(opts.merge({:answer_tags => {:$in => tags}})).map(&:user_id)
+    user_ids = UserStat.only(:user_id).where(opts.merge({:answer_tags => {:$in => tags}})).all.map(&:user_id)
 
-    conditions = {"notification_opts.give_advice" => {:$in => ["1", true]},
+    conditions = {:"notification_opts.give_advice" => {:$in => ["1", true]},
                   :preferred_languages => langs}
 
     if group_id = options[:group_id]
-      conditions["membership_list.#{group_id}"] = {:$exists => true}
+      conditions[:"membership_list.#{group_id}"] = {:$exists => true}
     end
 
-    u = User.all(conditions.merge(:_id => user_ids, :select => [:email, :login, :name, :language]))
+    u = User.only([:email, :login, :name, :language]).where(conditions.merge(:_id => user_ids))
     u ? u : []
   end
 
