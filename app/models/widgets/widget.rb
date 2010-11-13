@@ -14,8 +14,11 @@ class Widget
     self[:name] ||= self.class.to_s.sub("Widget", "").underscore
   end
 
-  def self.types
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget CurrentTagsWidget TagListWidget]
+  def self.types(tab)
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget TagListWidget]
+    if tab == 'question'
+      types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget]
+    end
     if AppConfig.enable_groups
       types += %w[GroupsWidget TopGroupsWidget]
     end

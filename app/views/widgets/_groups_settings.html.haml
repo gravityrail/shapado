@@ -2,6 +2,5 @@
   .group
     = label :limit, t('widgets.settings.limit'), :class => "label"
     = text_field_tag "settings[limit]", widget.settings[:limit],:class => "text_field"
-  = render :partial => "shared/widgets_settings", :locals => { :widget => widget }
   .group.navform
     = submit_tag t("scaffold.update"), :class => "button"
