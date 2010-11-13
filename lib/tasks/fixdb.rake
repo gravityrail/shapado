@@ -14,10 +14,17 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:random", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
 end
 
 namespace :fixdb do
+  task :random => [:environment] do
+    Question.all.each do |question|
+      question.override(:_random => rand())
+      question.override(:_random_times => 0.0)
+    end
+  end
+
   task :dates => [:environment] do
     %w[badges questions comments votes].each do |cname|
       coll = Mongoid.master.collection(cname)

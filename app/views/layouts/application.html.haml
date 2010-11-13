@@ -66,6 +66,8 @@
                 = yield
                 .clear
         #sidebar
+          temp links
+          = link_to "Random question", random_questions_path(:unanswered => true)
           = yield :sidebar
 
           = render "shared/ads/context_panel_ads"

@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:new, :create, :index, :show, :tags, :unanswered, :related_questions, :tags_for_autocomplete, :retag, :retag_to]
+  before_filter :login_required, :except => [:new, :create, :index, :show, :tags, :unanswered, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random]
   before_filter :admin_required, :only => [:move, :move_to]
   before_filter :moderator_required, :only => [:close]
   before_filter :check_permissions, :only => [:solve, :unsolve, :destroy]
@@ -629,6 +629,17 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html {redirect_to url}
       format.js { render :json => { :ok => true }}
+    end
+  end
+
+  def random
+    conds = {:group_id => current_group.id}
+    conds[:answered] = false if params[:unanswered] && params[:unanswered] != "0"
+    @question = Question.random(conds)
+
+    respond_to do |format|
+      format.html { redirect_to question_path(@question) }
+      format.json { render :json => @question }
     end
   end
 
