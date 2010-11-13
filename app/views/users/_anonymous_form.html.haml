@@ -13,4 +13,4 @@
 
   -if AppConfig.recaptcha["activate"]
     .group
-      =recaptcha_tag(:challenge, :width => 600, :rows => 5, :display => {:lang => I18n.locale})
+      =recaptcha_tag(:challenge, :width => 600, :rows => 5, :display => {:lang => I18n.locale}).html_safe
