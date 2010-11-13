@@ -6,7 +6,7 @@
 
   %h3
     %label.label
-      =current_group.question_prompt || t(".quick_question")
+      = raw(current_group.question_prompt) || t(".quick_question")
   .columns
     .column_info
       .group

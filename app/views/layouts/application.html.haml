@@ -5,7 +5,7 @@
       &= page_title
     = render "shared/layout/css"
 
-    = current_group.head_tag
+    = raw(current_group.head_tag)
     = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = render "shared/layout/javascript"
@@ -15,7 +15,7 @@
     #container{:class => @current_class}
       = render "shared/topbar"
       #header
-        = current_group.head
+        = raw(current_group.head)
         #main-bar{:class => @active_tab}
           #logo{:style => "min-height: 63px"}
             -if current_group.has_logo?

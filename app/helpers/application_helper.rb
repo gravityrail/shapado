@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def context_panel_ads(group)
     if AppConfig.enable_adbard && request.domain == AppConfig.domain &&
-        !Adbard.where(:group_id => current_group.id)
+        !Adbard.where(:group_id => current_group.id).first
       adbard = "<!--Ad Bard advertisement snippet, begin -->
         <script type='text/javascript'>
         var ab_h = '#{AppConfig.adbard_host_id}';
@@ -29,7 +29,7 @@ module ApplicationHelper
         ads << ad.code
       end
       ads << adbard
-      return ads.join unless ads.empty?
+      return ads.join.html_safe unless ads.empty?
     end
   end
 
@@ -39,7 +39,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'header').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return ads.join.html_safe  unless ads.empty?
     end
   end
 
@@ -49,7 +49,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'content').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return ads.join.html_safe  unless ads.empty?
     end
   end
 
@@ -59,7 +59,7 @@ module ApplicationHelper
       Ad.where(:group_id => group.id,:position => 'footer').each do |ad|
         ads << ad.code
       end
-      return ads.join  unless ads.empty?
+      return ads.join.html_safe  unless ads.empty?
     end
   end
 
@@ -267,7 +267,7 @@ module ApplicationHelper
          ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
        })();
-    </script>"
+    </script>".html_safe
   end
 
   def logged_out_language_filter
@@ -313,7 +313,7 @@ module ApplicationHelper
   end
 
   def top_bar_links
-    top_bar = current_group.custom_html.top_bar
+    top_bar = raw(current_group.custom_html.top_bar)
     return [] if top_bar.blank?
 
     top_bar.split("\n").map do |line|

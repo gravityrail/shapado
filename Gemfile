@@ -22,8 +22,7 @@ gem "haml"
 gem 'compass', '0.10.6.pre.1'
 gem "compass-colors", "0.3.1"
 gem "fancy-buttons", "0.5.5"
-gem "will_paginate", "~> 3.0.pre2"
-
+gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
 # mongodb
 gem 'bson', '1.1.2'
 gem 'bson_ext', '1.1.2'
