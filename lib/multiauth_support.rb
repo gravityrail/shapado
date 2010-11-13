@@ -21,8 +21,8 @@ module MultiauthSupport
     field :github_id, :type => String
     field :github_login, :type => String
 
-    field :auth_keys, :type => Array
-    field :user_info, :type => Hash
+    field :auth_keys, :type => Array, :default => []
+    field :user_info, :type => Hash, :default => {}
   end
 
   module ClassMethods
