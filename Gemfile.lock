@@ -1,4 +1,14 @@
 GIT
+  remote: git://github.com/dcu/mongoid_ext.git
+  revision: 9f96a7900cd0c2469173925a29b87a99c0df01f1
+  specs:
+    mongoid_ext (0.6.0)
+      i18n (~> 0.4.1)
+      mongoid (~> 2.0.0.beta.20)
+      tzinfo (~> 0.3)
+      uuidtools (>= 2.1.1)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   branch: rails3
@@ -23,15 +33,6 @@ GIT
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.2)
       warden (~> 1.0.0)
-
-PATH
-  remote: vendor/gems/mongoid_ext
-  specs:
-    mongoid_ext (0.6.0)
-      i18n (~> 0.4.1)
-      mongoid (~> 2.0.0.beta.20)
-      tzinfo (~> 0.3)
-      uuidtools (>= 2.1.1)
 
 GEM
   remote: http://rubygems.org/
@@ -91,7 +92,7 @@ GEM
     fancy-buttons (0.5.5)
       compass (>= 0.10.0)
       haml (>= 3.0.2)
-    faraday (0.5.2)
+    faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
       rack (>= 1.1.0, < 2)
@@ -204,18 +205,16 @@ GEM
       remarkable_activemodel (>= 4.0.0.alpha2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rspec (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-      rspec-mocks (~> 2.0.1)
-    rspec-core (2.0.1)
-    rspec-expectations (2.0.1)
-      diff-lcs (>= 1.1.2)
-    rspec-mocks (2.0.1)
-      rspec-core (~> 2.0.1)
-      rspec-expectations (~> 2.0.1)
-    rspec-rails (2.0.1)
-      rspec (~> 2.0.0)
+    rspec (2.1.0)
+      rspec-core (~> 2.1.0)
+      rspec-expectations (~> 2.1.0)
+      rspec-mocks (~> 2.1.0)
+    rspec-core (2.1.0)
+    rspec-expectations (2.1.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.1.0)
+    rspec-rails (2.1.0)
+      rspec (~> 2.1.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -233,7 +232,7 @@ GEM
       actionpack
     tzinfo (0.3.23)
     uuidtools (2.1.1)
-    warden (1.0.1)
+    warden (1.0.2)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
 

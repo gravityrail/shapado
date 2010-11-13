@@ -4,9 +4,11 @@ class Export
   end
 
   def export_model(model, io, opts = {})
+    $stderr.puts ">> Exporting model #{model}"
     selector = opts.delete(:selector) || {:group_id => @group.id}
 
-    model.find_each(selector) do |object|
+    puts "selector=#{selector.inspect}"
+    model.where(selector).all.each do |object|
       io.write object.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
     end
   end

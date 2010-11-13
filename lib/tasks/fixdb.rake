@@ -19,9 +19,29 @@ end
 
 namespace :fixdb do
   task :question_times => [:environment] do
-    coll = Mongoid.database.collection("questions")
+    coll = Mongoid.master.collection("questions")
     coll.find.each do |q|
       %w[last_target_date created_at updated_at].each do |key|
+        if q[key].is_a?(String)
+          q[key] = Time.parse(q[key])
+        end
+      end
+      coll.save(q)
+    end
+
+    coll = Mongoid.database.collection("comments")
+    coll.find.each do |q|
+      %w[created_at updated_at].each do |key|
+        if q[key].is_a?(String)
+          q[key] = Time.parse(q[key])
+        end
+      end
+      coll.save(q)
+    end
+
+    coll = Mongoid.database.collection("votes")
+    coll.find.each do |q|
+      %w[created_at updated_at].each do |key|
         if q[key].is_a?(String)
           q[key] = Time.parse(q[key])
         end
