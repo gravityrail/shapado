@@ -54,6 +54,14 @@
 #question-body-col.commentable.markdown
   %a{:name => @question.id}
   #body
+    -if @question.follow_up
+      This Question Is a Follow Up Of
+      = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
+
+    -if @question.followed_up_by.limit(1).count > 0
+      Followed by:
+      -@question.followed_up_by.all.each do |child|
+        = link_to child.title, question_path(child)
     - if @question.closed && @question.close_reason.present?
       #close_reason
         = t(".close_reason")
@@ -111,6 +119,7 @@
         .clear
   .controls
     .actions
+      = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
       - if !@flag.new_record?
         .flagged
           = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"

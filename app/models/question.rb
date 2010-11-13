@@ -84,6 +84,8 @@ class Question
   embeds_many :close_requests
   embeds_many :open_requests
 
+  embeds_one :follow_up
+
   validates_presence_of :title
   validates_presence_of :user
   validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
@@ -109,7 +111,11 @@ class Question
   validate :check_useful
 
   def self.minimal
-    without(:_keywords, :watchers, :flags, :close_requests, :open_requests, :versions)
+    without(:_keywords, :watchers, :votes, :flags, :close_requests, :open_requests, :versions)
+  end
+
+  def followed_up_by
+    Question.minimal.without(:comments).where(:"follow_up.original_question_id" => self.id)
   end
 
   def first_tags

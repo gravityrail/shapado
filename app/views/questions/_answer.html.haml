@@ -55,6 +55,7 @@
           %b=t("global.anonymous")
     .controls
       .actions
+        =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
         = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
         - if logged_in? && @aflag.new_record? && current_user != answer.user
           = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'

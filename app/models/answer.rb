@@ -26,6 +26,7 @@ class Answer
   index :user_id
 
   referenced_in :updated_by, :class_name => "User"
+  referenced_in :original_question, :class_name => "Question"
 
   referenced_in :question
   index :question_id
@@ -46,6 +47,10 @@ class Answer
 
   def ban
     self.collection.update({:_id => self.id}, {:$set => {:banned => true}})
+  end
+
+  def self.minimal
+    without(:_keywords, :flags, :votes, :versions)
   end
 
   def self.ban(ids)

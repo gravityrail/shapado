@@ -230,6 +230,15 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new(params[:question])
+
+    if params[:from_question]
+      @original_question = Question.minimal.without(:comments).where(:_id => params[:from_question]).first
+
+      if params[:at]
+        @original_answer = @original_question.answers.without(:votes, :versions, :flags, :comments).where(:_id => params[:at]).first
+      end
+    end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json  { render :json => @question.to_json }
@@ -248,6 +257,10 @@ class QuestionsController < ApplicationController
       params[:question][:tags] = params[:tag_input]
     end
     @question.safe_update(%w[title body language tags wiki position], params[:question])
+
+    if params[:original_question_id]
+      @question.follow_up = FollowUp.new(:original_question_id => params[:original_question_id], :original_answer_id => params[:original_answer_id])
+    end
 
     @question.anonymous = params[:question][:anonymous]
 
