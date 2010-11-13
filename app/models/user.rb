@@ -115,7 +115,7 @@ class User
   end
 
   def self.find_by_login_or_id(login)
-    find_by_login(login) || find_by_id(login)
+    where(:login => login).first || where(:_id => login).first
   end
 
   def self.find_experts(tags, langs = AVAILABLE_LANGUAGES, options = {})
