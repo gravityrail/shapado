@@ -22,6 +22,7 @@ Fabricator(:group) do
   state "active"
   languages ["en", "es", "fr"]
   owner { Fabricate(:user) }
+  activity_rate 0.0
 end
 
 Fabricator(:question) do
