@@ -4,7 +4,7 @@
     %title
       &= page_title
     = render :partial => "shared/layout/css"
-    = current_group.head_tag
+    = raw(current_group.head_tag)
     = render :partial => "shared/layout/meta"
     = render :partial => "shared/layout/javascript"
 
