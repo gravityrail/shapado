@@ -1,5 +1,5 @@
 desc "Setup application"
-task :bootstrap => [:environment, "setup:reset",
+task :bootstrap => [:environment, "db:drop",
                     "setup:create_admin",
                     "setup:default_group",
                     "setup:create_widgets",
@@ -11,10 +11,6 @@ task :upgrade => [:environment] do
 end
 
 namespace :setup do
-  desc "Reset databases"
-  task :reset => [:environment] do
-    MongoMapper.connection.drop_database(MongoMapper.database.name)
-  end
 
   desc "Reset admin password"
   task :reset_password => :environment do
@@ -34,6 +30,7 @@ namespace :setup do
     default_group = Group.new(:name => AppConfig.application_name,
                               :domain => AppConfig.domain,
                               :subdomain => subdomain,
+                              :language => "en",
                               :domain => AppConfig.domain,
                               :description => "question-and-answer website",
                               :legend => "question and answer website",
