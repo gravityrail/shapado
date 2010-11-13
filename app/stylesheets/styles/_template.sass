@@ -1,0 +1,467 @@
+// template.sass -- project-specific layout #ids
+//MODULES HOME
+// ----- General
+.content
+  width: 1000px
+  margin: 0 auto
+
+hgroup
+  height: 40px
+  margin-bottom: 10px
+  img
+    float: left
+  h2
+    color: $darkGray
+    font-size: 18px
+    font-weight: bold
+    float: left
+    margin: 5px 0 0 7px
+  h3
+    float: right
+    font-size: 12px
+    margin-top: 10px
+    a
+      color: $darkOrange
+      text-decoration: none
+      border: none
+    a:hover
+      color: $darkOrange
+      border-bottom: 1px dotted
+
+// ----- Comunity Module
+.row
+  margin-bottom: 30px
+  height: 90px
+  display: block
+  ul
+    list-style: none
+    display: block
+    li
+      float: left
+      margin: 0 6px 0 5px
+      overflow: hidden
+      width: 60px
+      height: 40px
+      background-color: #dfdfdf
+
+// ----- Groups Module
+.columns
+  background: url(/images/background-columns.png) repeat-x
+  padding: 30px 30px 0 10px
+  margin-bottom: 30px
+  -moz-border-radius: 10px 10px 0 0
+  -webkit-border-radius: 10px 10px 0 0
+  o-border-radius: 10px 10px 0 0
+  khtml-border-radius: 10px 10px 0 0
+  border-radius: 10px 10px 0 0
+.column
+  float: left
+  width: 300px
+  margin: 0 0 30px 20px
+  hgroup
+    border-bottom: 1px solid #c7c7c7
+    margin: 0
+    display: block
+  ul
+    border-top: 1px solid #edeeee
+    list-style: none
+  .item
+    margin-top: 20px
+  h4
+    font-size: 14px
+    margin-bottom: 5px
+    line-height: 18px
+    color: #000
+    a
+      color: #000
+      text-decoration: none
+      border: none
+    a:hover
+      border-bottom: 1px dotted #000
+  p
+    font-size: 12px
+    line-height: 14px
+    margin-bottom: 5px
+    a
+      color: #999
+      text-decoration: none
+      border: none
+  h6
+    font-size: 10px
+    font-weight: normal
+    font-style: italic
+    span
+      color: $darkOrange
+.column:last-child
+  margin: 0
+
+// ------ Users Module
+.users-module
+  margin: 0
+  float: right
+  ul
+    padding-top: 15px
+    li
+      float: left
+      margin: 4px
+  img
+    width: 34px
+// ------ About Module
+.about-module
+  float: left
+  width: 500px
+  margin: 0 0 30px 20px
+  hgroup
+    border-bottom: 1px solid #c7c7c7
+    margin: 0
+    display: block
+    span
+      font-size: 12px
+      font-weight: normal
+  ul
+    padding: 15px 0 0 0
+
+// ------ About Module
+.tags-cloud
+  float: left
+  width: 150px
+  margin: 0 0 30px 20px
+  hgroup
+    border-bottom: 1px solid #c7c7c7
+    margin: 0
+    display: block
+  ol
+    padding: 15px 0 0 0
+    border-top: 1px solid #edeeee
+    list-style: none
+    margin: 0
+    li
+      margin: 0 0 10px 0
+      em
+        color: #666
+        font-size: 11px
+      a
+        color: #fff
+        border: none
+        margin: 0
+        font-size: 11px
+        padding: 3px 10px
+        -moz-border-radius: 20px
+        -webkit-border-radius: 3px
+        o-border-radius: 3px
+        khtml-border-radius: 3px
+        border-radius: 3px
+        background-color: $lightGray
+      a:hover
+        background-color: $darkGray
+        em
+          color: #fff
+
+// ------ User Zone - page
+.avatar
+  width: 140px
+  height: 140px
+  -moz-box-shadow: 0 0 3px #777
+  -webkit-box-shadow: 5px 5px 5px #ccc
+  box-shadow: 5px 5px 5px #ccc
+  background-color: #fff
+  padding: 7px
+  float: right
+  margin-bottom: 20px
+ul.admin-links
+  clear: both
+  li
+    clear: both
+    float: right
+    border-bottom: 1px dotted #ccc
+    width: 160px
+    padding: 5px 0
+    margin: 0
+    text-align: right
+    a
+      font-size: 13px
+      border: none
+      color: #000
+      display: block
+      padding: 5px 10px 7px 10px
+      -moz-border-radius: 20px
+      -webkit-border-radius: 3px
+      o-border-radius: 3px
+      khtml-border-radius: 3px
+      border-radius: 3px
+    a:hover
+      color: #fff
+      background-color: $orange
+  li.delete
+    a:hover
+      background-color: #c00
+.user
+  .header
+    margin-bottom: 40px
+    border-bottom: 1px dotted #ccc
+    padding-bottom: 10px
+    h2
+      color: $darkGray
+      font-size: 30px
+      font-weight: bold
+      border: none
+      margin: 0 0 5px 0
+      span
+        font-weight: normal
+        color: $lightGray
+        font-size: 24px
+    p
+      font-size: 12px
+      line-height: 18px
+      color: #666
+      margin-bottom: 5px
+.networks
+  #flickr_www
+    display: none
+  .one-net
+    border-bottom: 1px dotted #ccc
+    margin: 0 0 10px 0
+    padding: 0 0 5px 0
+    a
+      border: none
+      margin: 0
+      padding: 0
+    h3
+      color: $darkGray
+      font-size: 18px
+      font-weight: bold
+      border: none
+
+// ------ Communities
+.communities,.jobs,.events,.groups,.users,.planet
+  .columns
+    margin-top: 30px
+    padding-top: 20px
+  header
+    .data
+      float: left
+      margin-bottom: 10px
+      h1
+        color: $darkGray
+        font-size: 30px
+        font-weight: bold
+        border: none
+        margin: 0 0 7px 0
+        width: 770px
+        span
+          font-size: 18px
+          color: $lightGray
+          font-weight: normal
+      ul
+        li
+          float: left
+          margin: 0 5px 0 0
+          a
+            border: none
+            display: block
+            border-bottom: 1px dotted transparent
+          a:hover
+            border-bottom: 1px dotted
+            color: $darkOrange
+        li.link-site
+          a
+            width: auto !important
+            overflow: show
+            text-indent: 0
+          a:hover
+            border-bottom: 1px dotted
+      ul.admin
+        clear: both
+        li
+          font-size: 11px
+          background-color: #c00
+          padding: 3px 10px
+          a
+            color: #fff
+    .brand
+      float: left
+      width: 60px
+      height: 60px
+      -moz-box-shadow: 0 0 3px #777
+      -webkit-box-shadow: 0 0 3px #777
+      box-shadow: 0 0 3px #777
+      background-color: #fff
+      padding: 5px
+      margin: 0 10px 10px 0
+      img
+        width: 60px
+        height: 60px
+    .buttons
+      float: right
+      img
+        margin: -7px 0 0 -5px
+      a
+        font-size: 14px
+        padding: 4px 15px 6px 15px
+        -moz-border-radius: 3px
+        -webkit-border-radius: 3px
+        o-border-radius: 3px
+        khtml-border-radius: 3px
+        border-radius: 3px
+        color: #fff
+        text-shadow: 1px 1px 3px #000
+        border: none
+        float: left
+      a.leave
+        border: 1px solid #c00
+        background-color: #c00
+      a.join
+        border: 1px solid $darkGray
+        background-color: $orange
+ul.networks-links
+  li
+    float: left
+    display: inline
+    margin: 0 5px 0 0
+    iframe
+      width: 83px !important
+    iframe.twitter-share-button
+      width: 60px !important
+    a
+      width: 17px
+      height: 17px
+      overflow: hidden
+      display: block
+      text-indent: -1000px
+      border: none
+    a:hover
+      border: none
+    a.twitter
+      background: url(/images/sw-twitter17.png) no-repeat
+    a.facebook
+      background: url(/images/sw-facebook17.png) no-repeat
+    a.linkedin
+      background: url(/images/sw-linkedin17.png) no-repeat
+    a.flickr
+      background: url(/images/sw-flickr17.png) no-repeat
+    a.digg
+      background: url(/images/sw-digg17.png) no-repeat
+    a.lastfm
+      background: url(/images/sw-lastfm17.png) no-repeat
+    a.reddit
+      background: url(/images/sw-reddit17.png) no-repeat
+    a.github
+      background: url(/images/sw-github17.png) no-repeat
+    a.blog
+      background: url(/images/sw-blog17.png) no-repeat
+    a.ohloh
+      background: url(/images/sw-ohloh17.png) no-repeat
+    a.youtube
+      background: url(/images/sw-youtube17.png) no-repeat
+
+
+.twitter-module
+  width: 250px
+  float: right
+  .content-twitter
+    border-top: 1px solid #edeeee
+    padding: 15px 0 0 0
+  hgroup
+  a
+    border: none
+.description-module
+  width: 650px
+  hgroup
+    height: 30px
+    margin-bottom: 15px
+  h2
+    margin: 0
+    padding: 0
+    span
+      font-size: 15px
+      font-weight: normal
+  p
+    margin: 0 0 20px 0
+    font-size: 12px
+    line-height: 16px
+
+.related-data
+  width: 300px
+  hgroup
+    height: 30px
+    margin-bottom: 15px
+  h2
+    margin: 0
+    padding: 0
+  p
+    font-size: 12px
+    line-height: 18px
+    b
+      color: $darkGray
+      width: 70px
+      display: block
+      float: left
+//TOOLTIP - Comunity
+.tooltip
+  width: 200px
+  overflow: hidden
+  margin: 0
+  float: left
+  .logo
+    padding: 3px
+    float: left
+    margin: 0 10px 0 0
+    -moz-box-shadow: 0 0 3px #777
+    -webkit-box-shadow: 0 0 3px #777
+    box-shadow: 0 0 3px #777
+    img
+      width: 25px
+      height: 25px
+      margin: 0
+  .data
+    width: 155px
+    float: left
+    margin: 0
+    h3
+      margin: 0
+      padding: 0
+      a
+        font-size: 12px
+        font-weight: bold
+        border: none
+        color: $darkGray
+    p
+      font-size: 11px
+      font-style: italic
+      font-weight: normal
+      color: #999
+      margin: 0
+      a
+        border: none
+        color: #999
+        margin: 0
+    h6
+      margin: 0
+      a
+        font-size: 11px
+        border: none
+        margin: 0
+      a:hover
+        border: 1px dotted
+        color: $darkOrange
+  //TOOLTIP Users
+  .avatar
+    width: 25px
+    height: 25px
+    padding: 3px
+    float: left
+    margin: 0 10px 0 0
+    -moz-box-shadow: 0 0 3px #777
+    -webkit-box-shadow: 0 0 3px #777
+    box-shadow: 0 0 3px #777
+    img
+      width: 25px
+      height: 25px
+      margin: 0
+//TOOLTIP Events
+.tooltip-events
+  background: url(/images/back-events-tooltip.gif) 0 4px no-repeat
+  padding-left: 35px
+  p
+    line-height: 14px
+
