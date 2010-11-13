@@ -14,39 +14,21 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:question_times", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
 end
 
 namespace :fixdb do
-  task :question_times => [:environment] do
-    coll = Mongoid.master.collection("questions")
-    coll.find.each do |q|
-      %w[last_target_date created_at updated_at].each do |key|
-        if q[key].is_a?(String)
-          q[key] = Time.parse(q[key])
+  task :dates => [:environment] do
+    %w[badges questions comments votes].each do |cname|
+      coll = Mongoid.master.collection(cname)
+      coll.find.each do |q|
+        %w[activity_at last_target_date created_at updated_at].each do |key|
+          if q[key].is_a?(String)
+            q[key] = Time.parse(q[key])
+          end
         end
+        coll.save(q)
       end
-      coll.save(q)
-    end
-
-    coll = Mongoid.database.collection("comments")
-    coll.find.each do |q|
-      %w[created_at updated_at].each do |key|
-        if q[key].is_a?(String)
-          q[key] = Time.parse(q[key])
-        end
-      end
-      coll.save(q)
-    end
-
-    coll = Mongoid.database.collection("votes")
-    coll.find.each do |q|
-      %w[created_at updated_at].each do |key|
-        if q[key].is_a?(String)
-          q[key] = Time.parse(q[key])
-        end
-      end
-      coll.save(q)
     end
   end
 

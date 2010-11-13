@@ -47,13 +47,9 @@ if options[:method] == :zip
 
     exporter.to_zip(Question, zf)
     exporter.to_zip(Answer, zf)
-    exporter.to_zip(Comment, zf)
-    exporter.to_zip(Vote, zf, :except => [:_keywords, :user_ip])
     exporter.to_zip(Badge, zf)
-    exporter.to_zip(Member, zf)
     exporter.to_zip(Ad, zf)
     exporter.to_zip(Favorite, zf)
-    exporter.to_zip(Widget, zf)
     exporter.to_zip(User, zf, :selector => {"reputation.#{group.id}" => {:$exists => true}},
                            :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
   end
@@ -66,12 +62,9 @@ else
   exporter.to_file(Question)
   exporter.to_file(Answer)
   exporter.to_file(Comment)
-  exporter.to_file(Vote, :except => [:_keywords, :user_ip])
   exporter.to_file(Badge)
-  exporter.to_file(Member)
   exporter.to_file(Ad)
   exporter.to_file(Favorite)
-  exporter.to_file(Widget)
   exporter.to_file(User, :selector => {"reputation.#{group.id}" => {:$exists => true}},
                          :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
 end
