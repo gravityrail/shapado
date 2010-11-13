@@ -30,7 +30,7 @@ gem 'bson_ext', '1.1.2'
 
 gem 'mongo', '1.1.2'
 gem 'mongoid', '2.0.0.beta.20'
-gem 'mongoid_ext', :path => "vendor/gems/mongoid_ext"
+gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils
 
