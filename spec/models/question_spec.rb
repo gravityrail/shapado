@@ -27,6 +27,39 @@ describe Question do
       question.group = @question.group
       question.valid?.should be_false
     end
+
+    describe "check useful" do
+      before(:each) do
+        @question.stub!(:disable_limits?).and_return(false)
+      end
+
+      it "should be invalid for a short title" do
+          @question.title = "too short"
+          @question.valid?.should be_false
+          @question.errors[:title].should_not be_nil
+      end
+
+      it "should be invalid for a short body" do
+          @question.body = "too short"
+          @question.valid?.should be_false
+          @question.errors[:body].should_not be_nil
+      end
+    end
+
+    describe "check spam" do
+      before(:each) do
+        @question.stub!(:disable_limits?).and_return(false)
+      end
+
+      it "should be invalid when the have ask a question 20 seconds ago" do
+        new_question = Fabricate.build(:question,
+                                       :user => @question.user,
+                                       :group => @question.group)
+        new_question.stub!(:disable_limits?).and_return(false)
+        new_question.valid?.should be_false
+        new_question.errors[:body].should_not be_nil
+      end
+    end
   end
 
   describe "association" do
@@ -359,33 +392,186 @@ describe Question do
     end
 
     describe "Question#disable_limits?" do
-    end
+      describe "if question's user can post whithout limits should return" do
+        it "true" do
+          @question.user.should_receive(:can_post_whithout_limits_on?).with(anything).and_return(true)
+          @question.disable_limits?.should == true
+        end
 
-    describe "Question#check_useful" do
-    end
-
-    describe "Question#disallow_spam" do
+        it "false" do
+          @question.user.should_receive(:can_post_whithout_limits_on?).with(anything).and_return(false)
+          @question.disable_limits?.should == false
+        end
+      end
     end
 
     describe "Question#answered" do
+      it "should return true if answered_with_id is present" do
+        @question.answered_with =  Fabricate(:answer, :question => @question,
+                                                :group => @question.group)
+        @question.answered.should be_true
+      end
     end
 
     describe "Question#update_last_target" do
+      before(:each) do
+        @target = Fabricate(:answer, :question => @question, :group => @question.group)
+      end
+
+      it "should set the las target propieties" do
+        @question.update_last_target(@target)
+        @question.reload
+        @question.last_target_id.should == @target.id
+        @question.last_target_user_id.should == @target.user_id
+        @question.last_target_type.should == @target.class.to_s
+        @question.last_target_date == @target.updated_at.utc
+      end
     end
 
     describe "Question#can_be_requested_to_close_by?" do
+      it "should return false when the question is closed" do
+        @question.closed = true
+        @question.can_be_requested_to_close_by?(@question.user)
+      end
+
+      describe "should return true when the user " do
+        before(:each) do
+          @user = Fabricate(:user)
+        end
+
+        after(:each) do
+          @user.destroy
+        end
+
+        it "is the question owner and can vote to close his own question" do
+          @question.user.should_receive(:can_vote_to_close_own_question_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_requested_to_close_by?(@question.user)
+        end
+
+        it "can vote to close any question" do
+          @user.should_receive(:can_vote_to_close_any_question_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_requested_to_close_by?(@user)
+        end
+      end
     end
 
     describe "Question#can_be_requested_to_open_by?" do
+      it "should return false when the question is open" do
+        @question.closed = false
+        @question.can_be_requested_to_open_by?(@question.user)
+      end
+
+      describe "should return true when the user " do
+        before(:each) do
+          @user = Fabricate(:user)
+          @question.closed = true
+        end
+
+        after(:each) do
+          @user.destroy
+        end
+
+        it "is the question owner and can vote to open his own question" do
+          @question.user.should_receive(:can_vote_to_open_own_question_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_requested_to_open_by?(@question.user)
+        end
+
+        it "can vote to open any question" do
+          @user.should_receive(:can_vote_to_open_any_question_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_requested_to_open_by?(@user)
+        end
+      end
     end
 
     describe "Question#can_be_deleted_by?" do
+      before(:each) do
+        @user = Fabricate(:user)
+        @question.closed = true
+      end
+
+      after(:each) do
+        @user.destroy
+      end
+
+      describe "should return false when " do
+        it "the user is the question owner and the question have answers" do
+          @target = Fabricate(:answer, :question => @question, :group => @question.group)
+          @question.can_be_deleted_by?(@question.user).should == false
+        end
+
+        it "the question is not closed" do
+          @question.closed = false
+          @user.stub!(:can_delete_closed_questions_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_deleted_by?(@user).should == false
+        end
+
+        it "the question is closed and the can't delete closed questions" do
+          @question.closed = true
+          @user.should_receive(:can_delete_closed_questions_on?).
+                                                            with(anything).
+                                                            and_return(false)
+          @question.can_be_deleted_by?(@user).should == false
+        end
+      end
+
+      describe "should return true when the user " do
+        it "is the question owner and the question doesn't have answers" do
+          @question.can_be_deleted_by?(@question.user).should == true
+        end
+
+        it "the user can delete closed questions and the question is closed" do
+          @question.closed = true
+          @user.should_receive(:can_delete_closed_questions_on?).
+                                                            with(anything).
+                                                            and_return(true)
+          @question.can_be_deleted_by?(@user)
+        end
+      end
     end
 
     describe "Question#close_reason" do
+      it "should return nil" do
+        @question.close_reason.should be_nil
+      end
+
+      it "should return @close_reason" do
+        @question.user.stub!(:can_vote_to_close_any_question_on?).
+                                                            with(anything).
+                                                            and_return(true)
+        @close_request = Fabricate.build(:close_request,
+                                         :user => @question.user,
+                                         :reason => "dupe")
+        @close_request.closeable = @question
+        @close_request.save
+        @question.close_reason_id = @close_request.id
+        @question.save
+        @question.reload
+        @question.close_reason.id.should == @close_request.id
+      end
     end
 
     describe "Question#last_target=" do
+      before(:each) do
+        @target = Fabricate(:answer, :question => @question, :group => @question.group)
+      end
+
+      it "should set the las target propieties" do
+        @question.last_target = @target
+        @question.last_target_id.should == @target.id
+        @question.last_target_user_id.should == @target.user_id
+        @question.last_target_type.should == @target.class.to_s
+        @question.last_target_date == @target.updated_at.utc
+      end
     end
   end
 end

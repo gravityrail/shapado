@@ -4,13 +4,15 @@ class CloseRequest
   REASONS = %w{dupe ot no_question not_relevant spam}
 
   identity :type => String
-  field :reason, :type => String, :in => REASONS
+  field :reason, :type => String
   field :comment, :type => String
 
   referenced_in :user
   embedded_in :closeable, :inverse_of => :close_requests
 
   validates_presence_of :user
+  validates_inclusion_of :reason, :in => REASONS
+
 
   validate :should_be_unique
   validate :check_reputation
@@ -36,6 +38,10 @@ class CloseRequest
   end
 
   def check_reputation
+    if self.closeable.can_be_requested_to_close_by?(self.user)
+      return true
+    end
+
     if ((self.closeable.user_id == self.user_id) && !self.user.can_vote_to_close_own_question_on?(self.closeable.group))
       reputation = self.closeable.group.reputation_constrains["vote_to_close_own_question"]
       self.errors.add(:reputation, I18n.t("users.messages.errors.reputation_needed",
