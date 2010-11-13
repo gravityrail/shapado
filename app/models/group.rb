@@ -6,6 +6,8 @@ class Group
   include MongoidExt::Storage
   include MongoidExt::Filter
 
+  include Shapado::Models::CustomHtmlMethods
+
   BLACKLIST_GROUP_NAME = ["www", "net", "org", "admin", "ftp", "mail", "test", "blog",
                  "bug", "bugs", "dev", "ftp", "forum", "community", "mail", "email",
                  "webmail", "pop", "pop3", "imap", "smtp", "stage", "stats", "status",
@@ -14,7 +16,7 @@ class Group
 
   identity :type => String
 
-  field :name, :type => String, :required => true
+  field :name, :type => String
   field :subdomain, :type => String
   field :domain, :type => String
   index :domain
@@ -71,7 +73,6 @@ class Group
   embeds_many :mainlist_widgets, :class_name => "Widget"
   embeds_many :question_widgets, :class_name => "Widget"
 
-
   references_many :badges, :dependent => :destroy
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
@@ -81,6 +82,9 @@ class Group
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
+
+  validates_presence_of     :owner
+  validates_presence_of     :name
 
   validates_length_of       :name,           :in => 3..40
   validates_length_of       :description,    :in => 3..10000, :allow_blank => true
@@ -92,7 +96,7 @@ class Group
   validates_presence_of     :subdomain
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :in => 3..32
-  validates_presence_of     :owner
+
 
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
   validates_inclusion_of :theme, :in => AVAILABLE_THEMES
@@ -100,8 +104,6 @@ class Group
   validate :set_subdomain, :on => :create
   validate :check_domain, :on => :create
 
-  before_save :disallow_javascript
-  before_save :modify_attributes
   validate :check_reputation_configs
 
   validates_exclusion_of      :subdomain,
@@ -109,85 +111,12 @@ class Group
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
 
-  def set_subdomain
-    self["subdomain"] = self["slug"]
-  end
-
-  def modify_attributes
-    self.domain.downcase!
-    self.subdomain.downcase!
-    self.languages << self.language
-  end
-
-  def set_subdomain
-    self["subdomain"] = self["slug"]
-  end
-
-  def check_domain
-    if domain.blank?
-      self[:domain] = "#{subdomain}.#{AppConfig.domain}"
-    end
-  end
+  before_save :disallow_javascript
+  before_save :modify_attributes
 
   # TODO: store this variable
   def has_custom_domain?
     @has_custom_domain ||= self[:domain].to_s !~ /#{AppConfig.domain}/
-  end
-
-  def disallow_javascript
-    unless self.has_custom_js
-       %w[footer _head _question_help _question_prompt head_tag].each do |key|
-         value = self.custom_html[key]
-         if value.kind_of?(Hash)
-           value.each do |k,v|
-             value[k] = v.gsub(/<*.?script.*?>/, "")
-           end
-         elsif value.kind_of?(String)
-           value = value.gsub(/<*.?script.*?>/, "")
-         end
-         self.custom_html[key] = value
-       end
-    end
-  end
-
-  def question_prompt
-    self.custom_html.question_prompt[I18n.locale.to_s.split("-").first] || ""
-  end
-
-  def question_help
-    self.custom_html.question_help[I18n.locale.to_s.split("-").first] || ""
-  end
-
-  def head
-    self.custom_html.head[I18n.locale.to_s.split("-").first] || ""
-  end
-
-  def head_tag
-    self.custom_html.head_tag
-  end
-
-  def footer
-    self.custom_html.footer[I18n.locale.to_s.split("-").first] || ""
-  end
-
-  def question_prompt=(value)
-    self.custom_html.question_prompt[I18n.locale.to_s.split("-").first] = value
-  end
-
-  def question_help=(value)
-    self.custom_html.question_help[I18n.locale.to_s.split("-").first] = value
-  end
-
-  def head=(value)
-    self.custom_html.head[I18n.locale.to_s.split("-").first] = value
-  end
-
-  def head_tag=(value)
-    self.custom_html.head_tag = value
-  end
-
-  def footer=(value)
-    self.custom_html.footer[I18n.locale.to_s.split("-").first] = value
   end
 
   def tag_list
@@ -202,18 +131,18 @@ class Group
   end
   alias :user :owner
 
-  def is_member?(user)
-    user.member_of?(self)
-  end
-
   def add_member(user, role)
-    membership = user.config_for(self.id)
+    membership = user.config_for(self.id, true)
     if membership.reputation < 5
       membership.reputation = 5
     end
     membership.role = role
 
     user.save
+  end
+
+  def is_member?(user)
+    user.member_of?(self)
   end
 
   def users(conditions = {})
@@ -277,6 +206,18 @@ class Group
     end
   end
 
+  protected
+  #validations
+  def set_subdomain
+    self["subdomain"] = self["slug"]
+  end
+
+  def check_domain
+    if domain.blank?
+      self[:domain] = "#{subdomain}.#{AppConfig.domain}"
+    end
+  end
+
   def check_reputation_configs
     if self.reputation_constrains_changed?
       self.reputation_constrains.each do |k,v|
@@ -316,5 +257,28 @@ class Group
     end
 
     return true
+  end
+
+  #callbacks
+  def modify_attributes
+    self.domain.downcase!
+    self.subdomain.downcase!
+    self.languages << self.language
+  end
+
+  def disallow_javascript
+    unless self.has_custom_js
+       %w[footer _head _question_help _question_prompt head_tag].each do |key|
+         value = self.custom_html[key]
+         if value.kind_of?(Hash)
+           value.each do |k,v|
+             value[k] = v.gsub(/<*.?script.*?>/, "")
+           end
+         elsif value.kind_of?(String)
+           value = value.gsub(/<*.?script.*?>/, "")
+         end
+         self.custom_html[key] = value
+       end
+    end
   end
 end
