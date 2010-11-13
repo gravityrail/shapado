@@ -92,7 +92,7 @@ class User
   before_create :logged!
 
   def self.find_for_authentication(conditions={})
-    first(conditions) || first(:login => conditions["email"])
+    where(conditions).first || where(:login => conditions[:email]).first
   end
 
   def membership_list
