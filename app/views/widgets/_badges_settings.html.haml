@@ -5,8 +5,5 @@
 
   = render :partial => "shared/widgets_settings", :locals => { :widget => widget }
 
-  .group
-    = check_box_tag "settings[twitter]", nil, widget.settings["twitter"], :class => "checkbox"
-    = label :settings, 'Twitter', :class => "radio"
   .group.navform
     = submit_tag t("scaffold.update"), :class => "button"

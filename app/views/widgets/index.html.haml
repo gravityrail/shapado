@@ -3,11 +3,11 @@
     = t(".title")
   %ul
     %li.welcome_widgets
-      = link_to t(".welcome_widgets"), widgets_path(:tab=>"welcome")
+      = link_to t(".welcome_widgets"), widgets_path(:tab=>"welcome"), :title => t(".welcome_widgets_title")
     %li.mainlist_widgets
-      = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist")
+      = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist"), :title => t(".mainlist_widgets_title")
     %li.question_widgets
-      = link_to t(".question_widgets"), widgets_path(:tab=>"question")
+      = link_to t(".question_widgets"), widgets_path(:tab=>"question"), :title => t(".question_widgets_title")
 
 
 %h2.title
