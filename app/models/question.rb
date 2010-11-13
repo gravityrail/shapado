@@ -125,13 +125,10 @@ class Question
   end
 
   def self.related_questions(question, opts = {})
-    per_page = opts.delete(:per_page) || 10
-    page = opts.delete(:page) || 1
     opts[:group_id] = question.group_id
     opts[:banned] = false
 
-    Question.where(opts.merge(:_keywords.in => question.tags,:_id.ne => question.id)).
-                                                    paginate(:per_page => page, :page => page)
+    Question.where(opts.merge(:_keywords.in => question.tags, :_id.ne => question.id))
   end
 
   def viewed!(ip)

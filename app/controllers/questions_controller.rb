@@ -103,12 +103,10 @@ class QuestionsController < ApplicationController
 
     @question.tags += @question.title.downcase.split(",").join(" ").split(" ") if @question.title
 
-    @questions = Question.related_questions(@question, :page => params[:page],
-                                                       :per_page => params[:per_page],
-                                                       :order => "answers_count desc",
-                                                       :fields => {:_keywords => 0, :watchers => 0, :flags => 0,
-                                                                  :close_requests => 0, :open_requests => 0,
-                                                                  :versions => 0})
+    @questions = Question.related_questions(@question).without(:_keywords, :watchers, :flags,
+                                                               :close_requests, :open_requests, :versions).
+                                                       order_by(:answers_count.desc).
+                                                       paginate(:page => params[:page], :per_page => params[:per_page],)
 
     respond_to do |format|
       format.js do
