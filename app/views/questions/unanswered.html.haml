@@ -22,15 +22,10 @@
         = link_to t(".expert"), unanswered_questions_path(:sort=>"expert")
 
 -content_for :sidebar do
-  = render :partial => "shared/current_tags"
-  .block
-    %h3
-      = t('.tags', :default => [:"layout.application.tags", :"activerecord.attributes.user.tags", "tags"])
-    .content
-      = render :partial => "shared/tag_list", :locals => {:tag_list => @tag_cloud}
   -if logged_in?
     = render :partial => "shared/preferred_tags"
     = render :partial => "shared/language_filter"
+  = render "shared/widgets", :context => 'mainlist'
 
 /Questions
 %ul.items#questions

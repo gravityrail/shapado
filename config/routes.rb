@@ -111,7 +111,7 @@ Shapado::Application.routes.draw do
     resources :open_requests
   end
 
-  match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }
+  match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }, :as => :question_tag
   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
 
   resources :groups do

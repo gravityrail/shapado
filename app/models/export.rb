@@ -10,7 +10,6 @@ class Export
       io.write(model.to_json(opts)+"\n")
     elsif model.kind_of?(Mongoid::Criteria)
       model.all.each do |object|
-        puts object.inspect
         io.write object.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
       end
     else

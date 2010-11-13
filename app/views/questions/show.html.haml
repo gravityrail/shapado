@@ -66,7 +66,7 @@
   .tag-list
     - @question.tags.each do |tag|
       %span.tag
-        = link_to h(tag), url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag"
+        = link_to h(tag), question_tag(:tags => tag), :rel => "tag"
     - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
       %span.retag
         = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
