@@ -163,8 +163,8 @@ Shapado::Application.routes.draw do
     resources :answers
     resources :users
   end
+  match '/moderate' => 'moderate/questions#index'
 
-  match '/moderate' => 'moderate#questions'
 
   match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
