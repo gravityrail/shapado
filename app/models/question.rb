@@ -89,7 +89,7 @@ class Question
   validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
 
   validates_length_of       :title,    :in => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
-  validates_length_of       :body,     :minimum => 5, :allow_blank => true, :allow_nil => true, :if => lambda { |q| !q.disable_limits? }
+  validates_length_of       :body,     :minimum => 5, :allow_blank => true, :allow_nil => true#, :if => lambda { |q| !q.disable_limits? }
 
 #  FIXME mongoid (create a validator for tags size)
 #   validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
@@ -204,7 +204,7 @@ class Question
   end
 
   def self.ban(ids, options = {})
-    self.override({:_id.in => ids}.merge(options), {:banned => true})
+    self.override({:_id => {"$in" => ids}}.merge(options), {:banned => true})
   end
 
   def unban
@@ -212,7 +212,7 @@ class Question
   end
 
   def self.unban(ids, options = {})
-    self.override({:_id.in => ids}.merge(options), {:banned => false})
+    self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
   end
 
   def favorite_for?(user)
@@ -241,41 +241,15 @@ class Question
     self.user.present? && self.user.can_post_whithout_limits_on?(self.group)
   end
 
-  def check_useful
-    unless disable_limits?
-      if !self.title.blank? && self.title.gsub(/[^\x00-\x7F]/, "").size < 5
-        return
-      end
-
-      if !self.title.blank? && (self.title.split.count < 4)
-        self.errors.add(:title, I18n.t("questions.model.messages.too_short", :count => 4))
-      end
-
-      if !self.body.blank? && (self.body.split.count < 4)
-        self.errors.add(:body, I18n.t("questions.model.messages.too_short", :count => 3))
-      end
-    end
-  end
-
-  def disallow_spam
-    if self.new_record? && !disable_limits?
-      last_question = Question.where(:conditions =>{:user_id => self.user_id,
-                                      :group_id => self.group_id,
-                                      }).order_by(:created_at.desc).first
-
-      valid = (last_question.nil? || (Time.now - last_question.created_at) > 20)
-      if !valid
-        self.errors.add(:body, "Your question looks like spam. you need to wait 20 senconds before posting another question.")
-      end
-    end
-  end
-
   def answered
     self.answered_with_id.present?
   end
 
+  def update_last_target(target)
+    self.class.update_last_target(self._id, target)
+  end
+
   def self.update_last_target(question_id, target)
-    # TODO: use mongo_mapper syntax
     data = {:last_target_id => target.id,
             :last_target_user_id => target.user_id,
             :last_target_type => target.class.to_s}
@@ -286,6 +260,7 @@ class Question
   end
 
   def can_be_requested_to_close_by?(user)
+    return false if self.closed
     ((self.user_id == user.id) && user.can_vote_to_close_own_question_on?(self.group)) ||
     user.can_vote_to_close_any_question_on?(self.group)
   end
@@ -297,7 +272,8 @@ class Question
   end
 
   def can_be_deleted_by?(user)
-    (self.user_id == user.id) || (self.closed && user.can_delete_closed_questions_on?(self.group))
+    (self.user_id == user.id && self.answers.count < 1) ||
+    (self.closed && user.can_delete_closed_questions_on?(self.group))
   end
 
   def close_reason
@@ -328,6 +304,35 @@ class Question
   def group_language
     if self.group.present? && (!self.group.language.nil? && self.group.language != self.language)
       self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
+    end
+  end
+
+  def check_useful
+    unless disable_limits?
+      if !self.title.blank? && self.title.gsub(/[^\x00-\x7F]/, "").size < 5
+        return
+      end
+
+      if !self.title.blank? && (self.title.split.count < 4)
+        self.errors.add(:title, I18n.t("questions.model.messages.too_short", :count => 4))
+      end
+
+      if !self.body.blank? && (self.body.split.count < 4)
+        self.errors.add(:body, I18n.t("questions.model.messages.too_short", :count => 3))
+      end
+    end
+  end
+
+  def disallow_spam
+    if self.new_record? && !disable_limits?
+      last_question = Question.where(:user_id => self.user_id,
+                                     :group_id => self.group_id).
+                                          order_by(:created_at.desc).first
+
+      valid = (last_question.nil? || (Time.now - last_question.created_at) > 20)
+      if !valid
+        self.errors.add(:body, "you need to wait 20 senconds before posting another question.") # TODO i18n
+      end
     end
   end
 end
