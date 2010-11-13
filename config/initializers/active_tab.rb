@@ -38,7 +38,7 @@ module ActiveTab
 
         if @store_subtab && @active_subtab.nil?
           if logged_in?
-            @active_subtab, @current_order = current_user.default_subtab[key]
+            @active_subtab, @current_order = (current_user.default_subtab || {})[key]
             @store_subtab = false
           end
 

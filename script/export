@@ -45,12 +45,13 @@ if options[:method] == :zip
     zf.dir.mkdir(group.subdomain)
     zf.dir.chdir(group.subdomain)
 
+    exporter.to_zip(group, zf)
     exporter.to_zip(Question, zf)
     exporter.to_zip(Answer, zf)
     exporter.to_zip(Badge, zf)
     exporter.to_zip(Ad, zf)
     exporter.to_zip(Favorite, zf)
-    exporter.to_zip(User, zf, :selector => {"reputation.#{group.id}" => {:$exists => true}},
+    exporter.to_zip(User, zf, :selector => {:"membership_list.#{group.id}" => {:$exists => true}},
                            :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
   end
 else
@@ -59,13 +60,14 @@ else
 
   $stderr.puts "Created #{File.expand_path(Dir.getwd)}"
 
+  exporter.to_file(group)
   exporter.to_file(Question)
   exporter.to_file(Answer)
   exporter.to_file(Comment)
   exporter.to_file(Badge)
   exporter.to_file(Ad)
   exporter.to_file(Favorite)
-  exporter.to_file(User, :selector => {"reputation.#{group.id}" => {:$exists => true}},
+  exporter.to_file(User, :selector => {"membership_list.#{group.id}" => {:$exists => true}},
                          :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
 end
 

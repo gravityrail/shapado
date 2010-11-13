@@ -39,7 +39,7 @@ class User
   field :country_name,              :type => String, :default => "unknown"
   field :hide_country,              :type => Boolean, :default => false
 
-  field :default_subtab,            :type => Hash
+  field :default_subtab,            :type => Hash, :default => {}
 
   field :followers_count,           :type => Integer, :default => 0
   field :following_count,           :type => Integer, :default => 0
