@@ -74,6 +74,14 @@ module Jobs
       if group.questions.count(:user_id => user.id) == 1
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
       end
+      if user.notification_opts.questions_to_twitter
+        link =  url_for(:host => group.domain, :controller => "questions", :action => "show", :id => question.slug)
+        link = open("http://bit.ly/api?url=#{CGI.encode(link)}").read rescue link
+        question.shorten_link = link
+        question.save
+        title = question.title[0..138-link.size]
+        user.twitter_client.update(I18n.t('jobs.questions.on_ask_question.send_twitter', :link => link, :title => title))
+      end
     end
 
     def self.on_destroy_question(question_id, attributes)

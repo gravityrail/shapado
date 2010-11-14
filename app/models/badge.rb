@@ -51,8 +51,8 @@ class Badge
     self.token
   end
 
-  def name
-    @name ||= I18n.t("badges.shared.#{self.token}.name", :default => self.token.titleize.downcase) if self.token
+  def name(locale=I18n.locale)
+    @name ||= I18n.t("badges.shared.#{self.token}.name", :default => self.token.titleize.downcase, :locale => locale) if self.token
   end
 
   def description

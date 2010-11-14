@@ -48,6 +48,8 @@ class Question
 
   field :activity_at, :type => Time
 
+  field :shorten_url, :type => String
+
   referenced_in :user
   index :user_id
 
