@@ -101,7 +101,7 @@ module MultiauthSupport
     end
 
     def twitter_client
-      if self.twitter_secret.present && self.twitter_token.present? && (config = Multiauth.providers["Twitter"])
+      if self.twitter_secret.present? && self.twitter_token.present? && (config = Multiauth.providers["Twitter"])
         TwitterOAuth::Client.new(
           :consumer_key => config["id"],
           :consumer_secret => config["token"],
