@@ -110,5 +110,12 @@ module Jobs
 
       create_badge(user, question.group, {:token => "organizer", :source => question, :unique => true})
     end
+
+    def self.close_bounty(question_id)
+      question = Question.find(question_id)
+      if question.bounty && question.bounty.ends_at < Time.now
+        question.bounty.reward(question.group)
+      end
+    end
   end
 end

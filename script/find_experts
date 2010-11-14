@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-ENV['Rails.env'] ||= 'development'
+ENV['RAILS_ENV'] ||= 'development'
 require File.dirname(__FILE__)+"/../config/environment"
 
 group = Group.find_by_subdomain(ARGV.first) || Group.find_by_id(ARGV.first)

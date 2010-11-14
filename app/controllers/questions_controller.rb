@@ -199,6 +199,10 @@ class QuestionsController < ApplicationController
       return
     end
 
+    if @question.bounty && @question.bounty.ends_at < Time.now
+      Jobs::Questions.async.close_bounty(@question.id).commit!(1)
+    end
+
     @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:per_page => 25, :page => params[:page] || 1,
                :order => current_order, :banned => false}
