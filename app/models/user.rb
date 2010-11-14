@@ -405,8 +405,8 @@ Time.zone.now ? 1 : 0)
   def followers(scope = {})
     conditions = {}
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
-    conditions["membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
-    self.friend_list.followers.all(conditions)
+    conditions[:"membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
+    self.friend_list.followers.where(conditions)
   end
 
   def following
