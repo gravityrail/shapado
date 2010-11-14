@@ -1,4 +1,4 @@
-class Membership
+class Membership < Hash
   include Mongoid::Document
 
   ROLES = %w[user moderator owner]
