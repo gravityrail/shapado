@@ -85,6 +85,7 @@ class Question
   embeds_many :open_requests
 
   embeds_one :follow_up
+  embeds_one :bounty
 
   validates_presence_of :title
   validates_presence_of :user

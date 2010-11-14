@@ -1,0 +1,5 @@
+-if @question.bounty.nil? || !@question.bounty.active
+  = form_tag start_bounty_path(@question) do
+    bounty:
+    = text_field_tag "bounty[reputation]"
+    = submit_tag "create"

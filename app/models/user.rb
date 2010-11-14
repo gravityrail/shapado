@@ -211,6 +211,10 @@ Time.zone.now ? 1 : 0)
     self.admin? || self == model.user
   end
 
+  def can_create_bounty?(question)
+    (Time.now - question.created_at) >= 2.days && config_for(question.group_id).reputation >= 65
+  end
+
   def groups(options = {})
     self.membership_list.groups(options).order_by([:activity_rate, :desc])
   end
