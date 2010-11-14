@@ -219,10 +219,12 @@ class UsersController < ApplicationController
   end
 
   def autocomplete_for_user_login
-    @users = User.all( :limit => params[:limit] || 20,
-                       :fields=> 'login',
-                       :login =>  /^#{Regexp.escape(params[:term].to_s.downcase)}.*/,
-                       :order => "login desc")
+    @users = User.only(:login).
+                  where(:login =>  /^#{Regexp.escape(params[:term].to_s.downcase)}.*/).
+                  limit(20).
+                  order_by(:login.desc).
+                  all
+
     respond_to do |format|
       format.json {render :json=>@users}
     end
