@@ -36,10 +36,23 @@ class BountyController < ApplicationController
 
     @question.override(:bounty => @question.bounty.raw_attributes) # FIXME: buggy mongoid assocs
 
+    current_user.update_reputation(:start_bounty, current_group, -@question.bounty.reputation)
+
     redirect_to question_path(@question)
   end
 
   def close
+    @answer = @question.answers.where(:_id => params[:answer_id]).first
+
+    if @answer.user_id != @question.bounty.created_by_id
+      @answer.override(:rewarded => true)
+
+      u = @answer.user
+      u.update_reputation(:reward_bounty, current_group, @question.bounty.reputation)
+    end
+
+    @question.unset(:bounty => true)
+
     redirect_to question_path(@question)
   end
 

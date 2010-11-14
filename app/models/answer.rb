@@ -19,6 +19,8 @@ class Answer
   field :anonymous, :type => Boolean, :default => false
   index :anonymous
 
+  field :rewarded, :type => Boolean, :default => false
+
   referenced_in :group
   index :group_id
 

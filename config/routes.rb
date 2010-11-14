@@ -57,7 +57,7 @@ Shapado::Application.routes.draw do
 
   get '/questions/:id/:slug' => 'questions#show', :as => :se_url, :id => /\d+/
   post '/questions/:id/start_bounty' => "bounty#start", :as => :start_bounty
-  post '/questions/:id/close_bounty' => "bounty#stop", :as => :stop_bounty
+  get '/questions/:id/close_bounty' => "bounty#close", :as => :close_bounty
 
   resources :questions do
     resources :votes

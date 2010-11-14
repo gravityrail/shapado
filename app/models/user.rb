@@ -333,9 +333,14 @@ Time.zone.now ? 1 : 0)
     self.increment({"membership_list.#{group.id}.votes_down" => v.to_f})
   end
 
-  def update_reputation(key, group)
-    value = group.reputation_rewards[key.to_s].to_i
-    value = key if key.kind_of?(Integer)
+  def update_reputation(key, group, v = nil)
+    if v.nil?
+      value = group.reputation_rewards[key.to_s].to_i
+      value = key if key.kind_of?(Integer)
+    else
+      value = v
+    end
+
     Rails.logger.info "#{self.login} received #{value} points of karma by #{key} on #{group.name}"
     current_reputation = config_for(group, false).reputation
 

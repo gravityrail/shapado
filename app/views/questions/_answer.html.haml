@@ -8,6 +8,9 @@
 .answer.commentable{:class => "post-#{answer.id} #{solution ? "solution" : ""}" }
   %a{:name=>answer.id}
   .vote-col
+    -if question.bounty && question.bounty.active
+      = link_to "+#{question.bounty.reputation}", close_bounty_path(question, :answer_id => answer.id)
+
     =vote_box(answer, question_path(question), question.closed)
     -if solution
       =image_tag "correct.png", :width => 48, :alt => "correct_answer", :title => "chose as answer by the author"
