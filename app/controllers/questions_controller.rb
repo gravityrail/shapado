@@ -439,9 +439,13 @@ class QuestionsController < ApplicationController
   def close
     @question = Question.find_by_slug_or_id(params[:id])
 
-    @question.closed = true
-    @question.closed_at = Time.zone.now
-    @question.close_reason_id = params[:close_request_id]
+    if @question.bounty && @question.bounty.active
+      flash[:error] = "this question has an active bounty and cannot be closed" # FIXME: i18n
+    else
+      @question.closed = true
+      @question.closed_at = Time.zone.now
+      @question.close_reason_id = params[:close_request_id]
+    end
 
     respond_to do |format|
       if @question.save
