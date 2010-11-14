@@ -142,7 +142,7 @@ class UsersController < ApplicationController
       @user.birthday = build_date(params[:user], "birthday")
     end
 
-    Magent::Users.async.on_update_user(@user.id, current_group.id).commit!
+    Jobs::Users.async.on_update_user(@user.id, current_group.id).commit!
 
     preferred_tags = params[:user][:preferred_tags]
     if @user.valid? && @user.save
