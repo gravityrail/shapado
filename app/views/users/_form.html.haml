@@ -53,7 +53,7 @@
 -unless @user.new_record?
   .group
     = f.label :hide_country, t(:hide_country, :scope => "activerecord.attributes.user"), :class => "label"
-pub    = f.check_box :hide_country, :class => "checkbox"
+    = f.check_box :hide_country, :class => "checkbox"
 
 -if AppConfig.enable_i18n
   .group
