@@ -9,8 +9,11 @@ class Bounty
   field :active, :type => Boolean, :default => true
   field :reputation, :type => Integer
 
+  referenced_in :created_by, :class_name => "User"
+
   validates_presence_of :reputation
   validates_presence_of :started_at
+  validates_presence_of :created_by
   validates_inclusion_of :reputation, :in => (50..500)
 
   protected

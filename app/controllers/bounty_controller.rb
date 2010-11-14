@@ -23,19 +23,18 @@ class BountyController < ApplicationController
       return
     end
 
-    bounty = Bounty.new(params[:bounty])
+    @question.build_bounty(params[:bounty])
+    @question.bounty.created_by = current_user
+    @question.bounty.started_at = Time.now
+    @question.bounty.ends_at = Time.now + 1.week
 
-    if !bounty.valid?
-      flash[:notice] = bounty.errors.full_messages.join(" ")
+    if !@question.bounty.valid?
+      flash[:notice] = @question.bounty.errors.full_messages.join(" ")
       redirect_to question_path(@question)
       return
     end
 
-    bounty.started_at = Time.now
-    bounty.ends_at = Time.now + 1.week
-
-    @question.bounty = bounty
-    @question.save
+    @question.override(:bounty => @question.bounty.raw_attributes) # FIXME: buggy mongoid assocs
 
     redirect_to question_path(@question)
   end

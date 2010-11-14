@@ -71,6 +71,8 @@
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
     .post-text.entry-content
       = question_body
+
+      = render "bounty_form"
   .tag-list
     - @question.tags.each do |tag|
       %span.tag
@@ -120,7 +122,6 @@
   .controls
     .actions
       = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
-      = render "bounty_form"
 
       - if !@flag.new_record?
         .flagged

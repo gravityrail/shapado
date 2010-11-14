@@ -1,4 +1,11 @@
--if @question.bounty.nil? || !@question.bounty.active
+-if @question.bounty.present? && @question.bounty.active
+  This question has an open bounty worth
+  = "+#{@question.bounty.reputation}"
+  reputation from
+  = link_to @question.bounty.created_by.name, user_path(@question.bounty.created_by)
+  ending in
+  = distance_of_time_in_words(Time.now, @question.bounty.ends_at)
+-elsif @question.bounty.nil? && logged_in? && current_user.can_create_bounty?(@question)
   = form_tag start_bounty_path(@question) do
     bounty:
     = text_field_tag "bounty[reputation]"
