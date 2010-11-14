@@ -28,8 +28,6 @@ class User
 
   field :preferred_languages,       :type => Array, :default => []
 
-  field :notification_opts,         :type => NotificationConfig
-
   field :language,                  :type => String, :default => "en", :index => true
   field :timezone,                  :type => String
   field :language_filter,           :type => String, :default => "user", :in => LANGUAGE_FILTERS
@@ -61,6 +59,8 @@ class User
   references_many :badges, :dependent => :destroy
 
   references_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
+
+  embeds_one :notification_opts, :class_name => "NotificationConfig"
 
   before_create :create_friend_list
   before_create :generate_uuid
