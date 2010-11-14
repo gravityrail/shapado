@@ -14,14 +14,20 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:random", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets"] do
 end
 
 namespace :fixdb do
-  task :random => [:environment] do
+  task :questions => [:environment] do
     Question.all.each do |question|
       question.override(:_random => rand())
       question.override(:_random_times => 0.0)
+
+      watchers = question["watchers"]
+      question.unset(:watchers => true)
+      if !watchers.blank?
+        question.override(:follower_ids => watchers)
+      end
     end
   end
 
@@ -84,7 +90,7 @@ namespace :fixdb do
     end
   end
 
-  task :questions => [:environment] do
+  task :last_target_type => [:environment] do
     puts "updating questions#last_target_type"
     Question.all(:conditions => {:last_target_type.ne => nil}).each do |q|
       print "."

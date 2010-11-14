@@ -57,10 +57,8 @@ class Question
   referenced_in :group
   index :group_id
 
-
-  field :watchers, :type => Array, :default => []
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"#, :foreign_key => :watchers FIXME mongoid
+  references_many :followers, :stored_as => :array, :class_name => "User"
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -112,7 +110,7 @@ class Question
   validate :check_useful
 
   def self.minimal
-    without(:_keywords, :watchers, :votes, :flags, :close_requests, :open_requests, :versions)
+    without(:_keywords, :followers, :votes, :flags, :close_requests, :open_requests, :versions)
   end
 
   def followed_up_by
@@ -228,20 +226,20 @@ class Question
 
   def add_follower(user)
     if !follower?(user)
-      self.push_uniq(:watchers => user.id)
+      self.push_uniq(:follower_ids => user.id)
       self.increment(:followers_count => 1)
     end
   end
 
   def remove_follower(user)
     if follower?(user)
-      self.pull(:watchers => user.id)
+      self.pull(:follower_ids => user.id)
       self.decrement(:followers_count => 1)
     end
   end
 
   def follower?(user)
-    self.watchers && self.watchers.include?(user._id)
+    self.follower_ids && self.follower_ids.include?(user._id)
   end
 
   def disable_limits?
