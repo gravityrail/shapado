@@ -89,7 +89,7 @@ module MultiauthSupport
 
     def merge_user(user)
       [Question, Answer, Comment, Vote, Badge, UserStat].each do |m|
-        m.set({:user_id => user.id}, {:user_id => self.id})
+        m.override({:user_id => user.id}, {:user_id => self.id})
       end
       user
     end
