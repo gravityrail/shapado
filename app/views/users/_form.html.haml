@@ -91,9 +91,9 @@
     = t(".social_interaction")
   - if @user.twitter_login?
     .group
-      = f.check_box "questions_to_twitter", :checked => @user.questions_to_twitter
+      = f.check_box "notification_opts[questions_to_twitter]", :checked => @user.notification_opts.questions_to_twitter
       = t(".send_questions_to_twitter")
     .group
-      = f.check_box "badges_to_twitter", :checked => @user.badges_to_twitter
+      = f.check_box "notification_opts[badges_to_twitter]", :checked => @user.notification_opts.badges_to_twitter
       = t(".send_badges_to_twitter")
 

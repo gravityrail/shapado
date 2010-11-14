@@ -49,9 +49,6 @@ class User
 
   field :anonymous,                 :type => Boolean, :default => false, :index => true
 
-  field :questions_to_twitter,      :type => Boolean, :default => false
-  field :badges_to_twitter,         :type => Boolean, :default => false
-
   field :friend_list_id, :type => String
   referenced_in :friend_list
 
