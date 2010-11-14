@@ -4,13 +4,13 @@ class BountyController < ApplicationController
 
   def start
     if @question.bounty && @question.bounty.active
-      flash[:notice] = "this question has an active bounty"
+      flash[:notice] = "this question has an active bounty" # TODO: i18n
       redirect_to question_path(@question)
       return
     end
 
     if Time.now - @question.created_at < 2.days
-      flash[:notice] = "you should wait 2 days before offering a bounty on this question"
+      flash[:notice] = "you should wait 2 days before offering a bounty on this question" # TODO: i18n
       redirect_to question_path(@question)
       return
     end
@@ -18,7 +18,7 @@ class BountyController < ApplicationController
     config = current_user.config_for(current_group)
 
     if config.reputation < 75
-      flash[:notice] = "you don't have enough reputation to create a bounty on this question"
+      flash[:notice] = "you don't have enough reputation to create a bounty on this question" # TODO: i18n
       redirect_to question_path(@question)
       return
     end
@@ -45,6 +45,12 @@ class BountyController < ApplicationController
     if @question.bounty.ends_at < Time.now
       flash[:notice] = "the bounty has expired"
       @question.bounty.reward(current_group)
+      redirect_to question_path(@question)
+      return
+    end
+
+    if (Time.now - @question.bounty.started_at) < 1.day
+      flash[:error] = "you must wait #{distance_of_time_in_words(Time.now, @question.bounty.started_at)} before awarding this bounty." # TODO: i18n
       redirect_to question_path(@question)
       return
     end
