@@ -1,25 +1,235 @@
+// ========================================================================
+//    Document   	:   _application.sass
+//    Created on 	:   Nov14 - 2010, 20:29 pm
+//    Author      	:   @dgfrancisco
+//    Client     		:   Shapado
+//    Description	:   Estilos de la aplicacion y los llamados a reset y el setup basico del portal
+//======================================================================== 
+
+// BASIC STYLES
+//======================================================================== 
+@import "setup" 				
+@import "lib/reset" 	
+
+
+// Basic layout
+//======================================================================== 
+body
+  background: $background url("/images/back-site.gif") 0 0
+  
+#container
+  width: 100%
+  
+section
+  float: left
+
+.left-panel
+  width: 17%
+  display: inline
+  padding: 0 1%
+  border-right: 6px solid $orange
+  background: #fff  url("/images/back-left-panel.gif") right 0 repeat-y
+
+.module
+  +normal-radius
+  background-color: $lightGray
+  padding: 5% 4px 5% 10px
+  margin-bottom: 15px   
+  header
+    font-size: 14px
+    font-weight: bold
+    margin-bottom: 10px
+    padding-bottom: 7px
+    border-bottom: 1px solid #ddd
+    
+.content-panel
+  width: 50%
+  display: inline
+  background-color: #0c0
+
+.right-panel
+  width: 30%
+  display: inline
+  background-color: #00c
+  
+// Brand
+//========================================================================
+.brand
+  text-align: right
+  padding: 10px 0 
+  position: relative
+  small
+    font-size: 12px
+    position: absolute
+    color: $gray
+    top: 52px
+    right: 25px
+
+// Ask
+//========================================================================
+.ask
+  h2
+    text-align: center
+    font-size: 16px
+    a
+      color: #fff
+      display: block
+      +normal-radius
+      background-color: $lightOrange
+      padding: 6px 0 
+      margin-bottom: 15px   
+    a:hover
+      background-color: $orange
+
+
+// User zone
+//========================================================================
+.user-zone
+  .avatar
+    float: left
+    a
+      border: none
+      img
+        border: 1px solid #aaa
+  .greeting
+    float: right
+    width: 78%
+    small
+      display: block
+      font-size: 10px
+      text-transform: italic
+      color: $gray
+      margin: 2px 0
+    b
+      font-size: 12px
+  // USer Nav
+  nav
+    ul
+      margin-top: 5px
+      text-align: right
+      border: 1px solid $lightOrange
+      padding: 10px 10% 3px 0
+      background-color: #fff
+      width: 86%
+      li
+        padding: 0
+        margin-bottom: 8px
+        font-size: 12px
+        a       
+          color: $dark
+        a:hover
+          border-bottom: 1px dotted $darkOrange
+          color: $darkOrange
+      .log-out
+        a, a:hover
+          font-weight: bold
+          color: #c00
+          
+// WIDGETS
+//======================================================================== 
+// Custom Links 
+.widget-links
+  ul
+    list-style: disc inside
+    margin-left: 5px 
+    li
+      margin-bottom: 5px
+      a
+        color: $dark
+      a:hover
+        border-bottom: 1px dotted
+
+// Tags
+.widget-tags
+  hgroup
+    height: 30px
+    ul
+      li
+        float: left
+        display: inline
+        margin: 0 10px 0 0
+        font-size: 12px
+        a
+          color: $gray
+        a:hover
+          color: $dark
+          border-bottom: 1px dotted 
+      li.active
+        a
+          color: $dark
+          font-weight: bold
+  ul.tags-list
+    li
+      font-size: 11px
+      display: block
+      margin-bottom: 12px
+      a
+        background-color: #ddd
+        +big-radius
+        padding: 3px 7px
+        color: $gray
+      a:hover
+        background-color: $gray
+        color: $dark
+  
+// Networks
+.widget-networks
+  p
+    font-size: 11px
+    margin-bottom: 3px
+  ul
+    li
+      margin: 0 2px
+      float: left
+      display: inline
+      a
+        display: block 
+        text-indent: -1000000px
+        height: 18px
+        width: 18px
+      .facebook
+        background: url("/images/sw-facebook17.png") 0 0  no-repeat
+      .twitter
+        background: url("/images/sw-twitter17.png") 0 0 no-repeat
+      .digg
+        background: url("/images/sw-digg17.png") 0 0 no-repeat
+      .delicious
+        background: url("/images/sw-delicious17.png") 0 0 no-repeat
+      
+
+        
 // DEFAULT LIBRARIES
-@import "lib/mixins"
-@import "lib/variables"
-@import "styles/variables"
-@import "setup"
-@import "lib/reset"
-@import "lib/extend"
-
+//@import "lib/mixins"
+//@import "lib/variables"
+//@import "styles/variables"
+//@import "setup"
+//@import "lib/reset"
+//@import "lib/extend"
+//@import "compass/utilities/tables"
+//@import "compass/utilities/lists/horizontal-list"
+//@import "compass/utilities/general/tag-cloud"
+//@import "fancy-buttons"
+ 
 // COMPONENTS
-@import "markdown"
-@import "markdown_editor"
-@import "jhtmlarea"
-
+//@import "markdown"
+//@import "markdown_editor"
+//@import "jhtmlarea"
+//@import mixins
+ 
 // DEFAULT BASE STYLES
-@import "styles/extend"
-@import "styles/mixins"
-@import "styles/common"
-@import "styles/template"
-
+//@import "styles/extend"
+//@import "styles/mixins"
+//@import "styles/common"
+//@import "styles/template"
+//@import nav_menu
+ 
 // APP STYLES
-@import "app/networks"
-
-@import "base"
-
+//@import "app/networks"
+//@import base
+//@import basic
+//@import navigation
+ 
+//@import "base"
+//@import autocomplete
+//@import feeds
 

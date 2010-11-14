@@ -1,9 +1,22 @@
-// reset.sass | LIBRARY HTML TAG RESET
-
+// ========================================================================
+//    Document   	:   _reset.sass
+//    Created on 	:   Nov13 - 2010, 20:29 pm
+//    Author      	:   @dgfrancisco
+//    Client     		:   Shapado
+//    Description	:   CleanUp of all html tags + Print basics and devices
+//======================================================================== 
 // Hard Tag Reset
-a, article, aside, blockquote, body, button, dd, dl, dt, fieldset, figure, footer,
-h1, h2, h3, h4, h5, h6, header, hgroup, html, img, input, label, legend, li, menu,
-nav, ol, p, section, select, small, table, textarea, td, th, tr, ul
+html, body, div, span, object, iframe, 
+h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, 
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, textarea, select, input, button, 
+table, caption, tbody, tfoot, thead, tr, th, td, 
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary, figure,
+time, mark, audio, video
   font:
     size: 100%
     style: normal
@@ -15,46 +28,46 @@ nav, ol, p, section, select, small, table, textarea, td, th, tr, ul
 
 // Setting Blocks
 article, aside, figure, footer, header, hgroup, img, label, menu, nav, section
-  @extend .block
+  display: block
 
 // Typography
-h1, h2, h3, h4, h5, h6, p, table, li, fieldset
-  margin-bottom: $font-size
-
 p
   line-height: $font-size * 1.55
 
+b
+  font-weight: bold
+  
 // <body> Reset
 body, textarea, input, option, select, button
   font-family: $font-family
 
 body
   -webkit-text-stroke: 1px transparent
-  //background: $background
+  background: $background
   font-size: $font-size
   text-rendering: optimizeLegibility
 
 body, legend
-  color: $colour
-
-// Links
-a, abbr[title]
-  padding-bottom: 1px
+  color: $color
 
 a
-  border-bottom: 1px solid
-  color: $link_colour
+  color: $link_color
   outline: 0
   text-decoration: none
   &:hover
-    color: $hover_colour
+    color: $hover_color
   &:hover, &:focus
     border-bottom: 0
   &:active
-    color: $active_colour
+    color: $active_color
   img
     border: 0
-
+.clear 
+  float: none
+  clear: both
+  display: block
+  font-size: 0px
+  
 // Tables + Forms
 table
   border:

@@ -39,8 +39,5 @@ javascripts:
 
 stylesheets:
 - base:
-  - jquery-ui
   - compiled/application
-  - prettify
-  - multiauth
 
