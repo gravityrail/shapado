@@ -26,10 +26,10 @@ namespace :fixdb do
   end
 
   task :dates => [:environment] do
-    %w[badges questions comments votes users announcements groups memberships pages reputation_events user_stats versions].each do |cname|
+    %w[badges questions comments votes users announcements groups memberships pages reputation_events user_stats versions views_counts].each do |cname|
       coll = Mongoid.master.collection(cname)
       coll.find.each do |q|
-        %w[activity_at last_target_date created_at updated_at birthday last_logged_at starts_at ends_at last_activity_at time date views_counts].each do |key|
+        %w[activity_at last_target_date created_at updated_at birthday last_logged_at starts_at ends_at last_activity_at time date].each do |key|
           if q[key].is_a?(String)
             q[key] = Time.parse(q[key])
           end
