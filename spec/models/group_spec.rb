@@ -25,7 +25,7 @@ describe Group do
       it "should be invalid when a reputation rewards for an acction is less than your undo action" do
         @group.reputation_rewards = { "vote_up_question" => 0, "undo_vote_up_question" => 1}
         @group.valid?.should be_false
-        @group.errors[:reputation_rewards].should_not be_nil
+        @group.errors[:undo_vote_up_question].should_not be_nil
       end
     end
   end
