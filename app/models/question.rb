@@ -221,8 +221,8 @@ class Question
     self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
   end
 
-  def favorite_for?(user)
-    user.favorite(self)
+  def favorite_for?(_user)
+    _user.favorite(self)
   end
 
   def add_follower(user)
@@ -240,7 +240,7 @@ class Question
   end
 
   def follower?(user)
-    watchers && watchers.include?(user._id)
+    self.watchers && self.watchers.include?(user._id)
   end
 
   def disable_limits?

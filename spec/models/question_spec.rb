@@ -321,9 +321,12 @@ describe Question do
       end
 
       it "should return favorite's user" do
-        @favorite = Fabricate(:favorite, :group => @question.group,
-                                         :question => @question)
-        @question.favorite_for?(@favorite.user).id.should == @favorite.user.id
+        @user = Fabricate(:user)
+        @favorite = Fabricate.build(:favorite, :group => @question.group,
+                                               :user => @user)
+        @favorite.question = @question
+        @favorite.save
+        @question.favorite_for?(@user).id.should == @user.id
       end
     end
 
@@ -373,7 +376,6 @@ describe Question do
     describe "Question#follower?" do
       before(:each) do
         @follower = Fabricate(:user)
-        @question.stub(:follower?).and_return(true)
         @question.add_follower(@follower)
         @question.reload
       end
@@ -386,8 +388,8 @@ describe Question do
         @question.follower?(@follower).should be_true
       end
 
-      it "should return false for question's user" do
-        @question.follower?(@question.user).should be_false
+      it "should return false for a new user" do
+        @question.follower?(Fabricate(:user)).should be_false
       end
     end
 
