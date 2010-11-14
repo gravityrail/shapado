@@ -42,16 +42,15 @@ class BountyController < ApplicationController
   end
 
   def close
-    @answer = @question.answers.where(:_id => params[:answer_id]).first
-
-    if @answer.user_id != @question.bounty.created_by_id
-      @answer.override(:rewarded => true)
-
-      u = @answer.user
-      u.update_reputation(:reward_bounty, current_group, @question.bounty.reputation)
+    if @question.bounty.ends_at < Time.now
+      flash[:notice] = "the bounty has expired"
+      @question.bounty.reward(current_group)
+      redirect_to question_path(@question)
+      return
     end
 
-    @question.unset(:bounty => true)
+    @answer = @question.answers.where(:_id => params[:answer_id]).first
+    @question.bounty.reward(current_group, @answer)
 
     redirect_to question_path(@question)
   end
