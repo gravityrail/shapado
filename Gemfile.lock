@@ -17,7 +17,8 @@ GIT
 
 GIT
   remote: http://github.com/dcu/multiauth.git
-  revision: 5a4881ffc19de6e670c19a9320228fa691d1f5af
+  revision: fb04b6742faa2443aa8a81164c2da5ddd19e6ab5
+  ref: fb04b6742
   specs:
     multiauth (0.2.7)
       omniauth

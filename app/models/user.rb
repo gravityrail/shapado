@@ -192,7 +192,7 @@ class User
 
   def is_preferred_tag?(group, *tags)
     ptags = config_for(group, false).preferred_tags
-    tags.detect { |t| ptags.include?(t) }
+    tags.detect { |t| ptags.include?(t) } if ptags
   end
 
   def admin?

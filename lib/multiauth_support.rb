@@ -77,7 +77,7 @@ module MultiauthSupport
       end
 
       auth_key = "#{fields["provider"]}_#{fields["uid"]}"
-      user = User.only(:id).first(:conditions => {:auth_keys => auth_key})
+      user = User.only(:id).where({:auth_keys => auth_key}).first
       if user.present? && user.id != self.id
         self.push(:"user_info.#{fields["provider"]}" => fields["user_info"])
 
