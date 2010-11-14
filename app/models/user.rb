@@ -50,6 +50,8 @@ class User
   field :anonymous,                 :type => Boolean, :default => false, :index => true
 
   field :friend_list_id, :type => String
+  field :notification_opts, :type => NotificationConfig
+
   referenced_in :friend_list
 
   references_many :questions, :dependent => :destroy
@@ -59,8 +61,6 @@ class User
   references_many :badges, :dependent => :destroy
 
   references_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
-
-  embeds_one :notification_opts, :class_name => "NotificationConfig"
 
   before_create :create_friend_list
   before_create :generate_uuid
@@ -487,12 +487,8 @@ Time.zone.now ? 1 : 0)
   end
 
   def create_friend_list
-    if !self.friend_list.present?
-      self.friend_list = FriendList.new
-    end
-    if !self.notification_opts
-      self.notification_opts = NotificationConfig.new
-    end
+    self.friend_list = FriendList.new if !self.friend_list.present?
+    self.notification_opts = NotificationConfig.new if self.notification_opts.nil?
   end
 
   def update_anonymous_user
