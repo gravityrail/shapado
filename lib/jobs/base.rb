@@ -36,6 +36,10 @@ module Jobs
         end
       end
     end
+
+    def shorten_url(url)
+      open("http://bit.ly/api?url=#{CGI.encode(url)}").read rescue url
+    end
   end
 end
 
