@@ -10,14 +10,14 @@ class Membership
   referenced_in :group
 
   field :reputation, :type => Float, :default => 0.0
-  field :profile, :type => Hash # custom user keys
+  field :profile, :type => Hash, :default => {} # custom user keys
 
   field :votes_up, :type => Float, :default => 0.0
   field :votes_down, :type => Float, :default => 0.0
 
   field :views_count, :type => Float, :default => 0.0
 
-  field :preferred_tags, :type => Array
+  field :preferred_tags, :type => Array, :default => []
 
   field :last_activity_at, :type => Time
   field :activity_days, :type => Integer, :default => 0
