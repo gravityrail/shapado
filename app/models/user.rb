@@ -414,7 +414,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def following?(user)
-    FriendList.first(:_id => self.friend_list_id, :select => [:following_ids]).following_ids.include?(user.id)
+    FriendList.only(:following_ids).where(:_id => self.friend_list_id).first.following_ids.include?(user.id)
   end
 
   def viewed_on!(group)
