@@ -260,7 +260,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def twitter_login?
-    !twitter_token.blank? && !twitter_secret.blank?
+    !user_info["twitter"].blank?
   end
 
   def has_voted?(voteable)
