@@ -92,15 +92,13 @@ namespace :fixdb do
 
   task :last_target_type => [:environment] do
     puts "updating questions#last_target_type"
-    Question.all({:last_target_type.ne => nil}).each do |q|
+    Question.where({:last_target_type.ne => nil}).all.each do |q|
       print "."
       if(q.last_target_type != "Comment")
         last_target = q.last_target_type.constantize.find(q.last_target_id)
       else
         data = Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
         last_target = Comment.new(data)
-#         p last_target.id
-#         p Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
       end
 
       if(last_target)
