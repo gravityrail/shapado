@@ -71,7 +71,7 @@ class Answer
   end
 
   def check_unique_answer
-    check_answer = Answer.where(:conditions => {:question_id => self.question_id,
+    check_answer = Answer.where({:question_id => self.question_id,
                                :user_id => self.user_id}).first
 
     if !check_answer.nil? && check_answer.id != self.id
@@ -127,12 +127,12 @@ class Answer
 
   def disallow_spam
     if new? && !disable_limits?
-      eq_answer = Answer.where(:conditions => {:body => self.body,
+      eq_answer = Answer.where({:body => self.body,
                                   :question_id => self.question_id,
                                   :group_id => self.group_id
                                 }).first
 
-      last_answer  = Answer.where(:conditions =>{:user_id => self.user_id,
+      last_answer  = Answer.where({:user_id => self.user_id,
                                    :question_id => self.question_id,
                                    :group_id => self.group_id}).order_by(:created_at.desc).first
 

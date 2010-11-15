@@ -92,7 +92,7 @@ namespace :fixdb do
 
   task :last_target_type => [:environment] do
     puts "updating questions#last_target_type"
-    Question.all(:conditions => {:last_target_type.ne => nil}).each do |q|
+    Question.all({:last_target_type.ne => nil}).each do |q|
       print "."
       if(q.last_target_type != "Comment")
         last_target = q.last_target_type.constantize.find(q.last_target_id)
@@ -185,7 +185,7 @@ namespace :fixdb do
   end
 
   task :groups => [:environment] do
-    Group.all(:conditions => {:language.in => [nil, '', 'none']}).each do |group|
+    Group.where({:language.in => [nil, '', 'none']}).all.each do |group|
       lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
 
@@ -206,7 +206,7 @@ namespace :fixdb do
     Answer.override({:address => nil}, :address => {})
     User.override({:address => nil}, :address => {})
     doc.keys.each do |key|
-      User.all(:conditions => { :country_name => key}).each do |u|
+      User.where({:country_name => key}).all.each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
         lat = doc[key]["lat"]
         lon = doc[key]["lon"]

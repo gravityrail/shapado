@@ -507,7 +507,7 @@ Time.zone.now ? 1 : 0)
   def update_anonymous_user
     return if self.anonymous
 
-    user = User.where(:conditions => {:email => self.email, :anonymous => true}).first
+    user = User.where({:email => self.email, :anonymous => true}).first
     if user.present?
       Rails.logger.info "Merging #{self.email}(#{self.id}) into #{user.email}(#{user.id})"
       merge_user(user)
