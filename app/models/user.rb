@@ -260,7 +260,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def twitter_login?
-    !twitter_token.blank? && !twitter_secret.blank?
+    user_info && !user_info["twitter"].blank?
   end
 
   def has_voted?(voteable)
@@ -377,7 +377,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def find_badge_on(group, token, opts = {})
-    self.badges.first(opts.merge(:token => token, :group_id => group.id))
+    self.badges.where(opts.merge(:token => token, :group_id => group.id)).first
   end
 
   # self follows user
@@ -496,7 +496,11 @@ Time.zone.now ? 1 : 0)
   end
 
   def create_friend_list
-    self.friend_list = FriendList.new if !self.friend_list.present?
+    if !self.friend_list.present?
+      f = FriendList.new
+      f.save
+      self.friend_list_id = f.id
+    end
     self.notification_opts = NotificationConfig.new if self.notification_opts.nil?
   end
 

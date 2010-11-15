@@ -66,13 +66,20 @@ module Jobs
       end
     end
 
-    def self.on_ask_question(question_id)
+    def self.on_ask_question(question_id,link)
       question = Question.find!(question_id)
       user = question.user
       group = question.group
       question.set_address
-      if group.questions.count(:user_id => user.id) == 1
+      if group.questions.where(:user_id => user.id).count == 1
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
+      end
+      if user.notification_opts.questions_to_twitter
+        link = shorten_url(link)
+        question.short_url = link
+        question.save
+        title = question.title[0..138-link.size]
+        user.twitter_client.update(I18n.t('jobs.questions.on_ask_question.send_twitter', :link => link, :title => title))
       end
     end
 

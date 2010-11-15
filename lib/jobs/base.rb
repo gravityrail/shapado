@@ -1,3 +1,4 @@
+require 'open-uri'
 module Jobs
   module Base
     include Magent::Async
@@ -24,9 +25,21 @@ module Jobs
         end
       end
 
-      if !badge.new? && !user.email.blank? && user.notification_opts.activities
-        Notifier.deliver_earned_badge(user, group, badge)
+      if !badge.new?
+        if !user.email.blank? && user.notification_opts.activities
+          Notifier.deliver_earned_badge(user, group, badge)
+        end
+        if user.notification_opts.badges_to_twitter
+          token = badge.name(user.language)
+          group_name = group.name
+          link = group.domain
+          user.twitter_client.update(I18n.t('jobs.base.create_badge.send_twitter', :link => link, :token => token, :group_name => group_name))
+        end
       end
+    end
+
+    def shorten_url(url)
+      open("http://bit.ly/api?url=#{CGI.escape(url)}").read rescue url
     end
   end
 end

@@ -1,0 +1,8 @@
+en:
+  jobs:
+    base:
+      create_badge:
+        send_twitter: "I just won the badge %{token} on %{group_name} %{link}"
+    questions:
+      on_ask_question:
+        send_twitter: "%{title} %{link}"
