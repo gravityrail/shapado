@@ -7,7 +7,7 @@ module Jobs
       answer = Answer.find(answer_id)
       group = question.group
 
-      if question.answer == answer && group.answers.count(:user_id => answer.user.id) == 1
+      if question.answer == answer && group.answers.where(:user_id => answer.user.id).count == 1
         create_badge(answer.user, group, :token => "troubleshooter", :source => answer, :unique => true)
       end
 
@@ -36,16 +36,16 @@ module Jobs
 
       if answer && question.answer.nil?
         user_badges = answer.user.badges
-        badge = user_badges.first(:token => "troubleshooter", :group_id => group.id, :source_id => answer.id)
+        badge = user_badges.where(:token => "troubleshooter", :group_id => group.id, :source_id => answer.id).first
         badge.destroy if badge
 
-        badge = user_badges.first(:token => "guru", :group_id => group.id, :source_id => answer.id)
+        badge = user_badges.where(:token => "guru", :group_id => group.id, :source_id => answer.id).first
         badge.destroy if badge
       end
 
       if answer && question.answer.nil?
         user_badges = answer.user.badges
-        tutor = user_badges.first(:token => "tutor", :group_id => group.id, :source_id => answer.id)
+        tutor = user_badges.where(:token => "tutor", :group_id => group.id, :source_id => answer.id).first
         tutor.destroy if tutor
       end
     end
@@ -66,13 +66,20 @@ module Jobs
       end
     end
 
-    def self.on_ask_question(question_id)
+    def self.on_ask_question(question_id,link)
       question = Question.find!(question_id)
       user = question.user
       group = question.group
       question.set_address
-      if group.questions.count(:user_id => user.id) == 1
+      if group.questions.where(:user_id => user.id).count == 1
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
+      end
+      if user.notification_opts.questions_to_twitter
+        link = shorten_url(link)
+        question.short_url = link
+        question.save
+        title = question.title[0..138-link.size]
+        user.twitter_client.update(I18n.t('jobs.questions.on_ask_question.send_twitter', :link => link, :title => title))
       end
     end
 
@@ -109,6 +116,44 @@ module Jobs
       user = User.find(user_id)
 
       create_badge(user, question.group, {:token => "organizer", :source => question, :unique => true})
+    end
+
+    def self.close_reward(question_id)
+      question = Question.find(question_id)
+      if question.reward && question.reward.ends_at < Time.now
+        question.reward.reward(question.group)
+      end
+    end
+
+    def self.on_start_reward(question_id)
+      question = Question.find(question_id)
+      if question.reward && question.reward.ends_at > Time.now
+        user = question.reward.created_by
+        group = question.group
+
+        if question.user_id != question.reward.created_by_id
+          create_badge(user, group, {:token => "investor", :source => question}, {:unique => true, :source_id => question.id})
+        elsif question.user_id == question.reward.created_by_id
+          create_badge(user, group, {:token => "promoter", :source => question}, {:unique => true, :source_id => question.id})
+        end
+      end
+    end
+
+    def self.on_close_reward(question_id, answer_id, user_id)
+      question = Question.find(question_id)
+      user = User.find(user_id)
+      receiver = Answer.only(:user_id).where(:_id => answer_id).first.user_id
+
+      group = question.group
+
+      if receiver != user_id
+        if question.user_id != user_id
+          create_badge(user, group, {:token => "altruist", :source => question}, {:unique => true, :source_id => question.id})
+        elsif question.user_id == user_id
+          create_badge(user, group, {:token => "benefactor", :source => question}, {:unique => true, :source_id => question.id})
+        end
+      end
+
     end
   end
 end

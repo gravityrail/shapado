@@ -38,7 +38,7 @@ module Jobs
     end
 
     def self.on_vote_answer(answer_id, vote_id)
-      answer = Question.find(answer_id)
+      answer = Answer.find(answer_id)
       vote = nil
       answer.votes.each do |v|
         if v.id == vote_id
@@ -118,7 +118,7 @@ module Jobs
         create_badge(user, group, :token => "popular_person", :unique => true)
       end
 
-      if user.votes.count(:group_id => group.id) >= 300
+      if user.votes.where(:group_id => group.id).count >= 300
         create_badge(user, group, :token => "civic_duty", :unique => true)
       end
     end

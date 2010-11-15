@@ -8,6 +8,9 @@
 .answer.commentable{:class => "post-#{answer.id} #{solution ? "solution" : ""}" }
   %a{:name=>answer.id}
   .vote-col
+    -if logged_in? && question.reward && question.reward.active && question.reward.created_by_id == current_user.id
+      = link_to "+#{question.reward.reputation}", close_reward_path(question, :answer_id => answer.id)
+
     =vote_box(answer, question_path(question), question.closed)
     -if solution
       =image_tag "correct.png", :width => 48, :alt => "correct_answer", :title => "chose as answer by the author"

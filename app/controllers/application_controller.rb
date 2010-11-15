@@ -35,10 +35,10 @@ class ApplicationController < ActionController::Base
     @current_group ||= begin
       subdomains = request.subdomains
       subdomains.delete("www") if request.host == "www.#{AppConfig.domain}"
-      _current_group = Group.first(:conditions => {:state => "active", :domain => request.host})
+      _current_group = Group.where({:state => "active", :domain => request.host}).first
       unless _current_group
         if subdomain = subdomains.first
-          _current_group = Group.first(:state => "active", :subdomain => subdomain)
+          _current_group = Group.where(:state => "active", :subdomain => subdomain).first
           unless _current_group.nil?
             redirect_to domain_url(:custom => _current_group.domain)
             return

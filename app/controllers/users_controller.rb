@@ -142,7 +142,7 @@ class UsersController < ApplicationController
       @user.birthday = build_date(params[:user], "birthday")
     end
 
-    Magent::Users.async.on_update_user(@user.id, current_group.id).commit!
+    Jobs::Users.async.on_update_user(@user.id, current_group.id).commit!
 
     preferred_tags = params[:user][:preferred_tags]
     if @user.valid? && @user.save
@@ -219,10 +219,12 @@ class UsersController < ApplicationController
   end
 
   def autocomplete_for_user_login
-    @users = User.all( :limit => params[:limit] || 20,
-                       :fields=> 'login',
-                       :login =>  /^#{Regexp.escape(params[:term].to_s.downcase)}.*/,
-                       :order => "login desc")
+    @users = User.only(:login).
+                  where(:login =>  /^#{Regexp.escape(params[:term].to_s.downcase)}.*/).
+                  limit(20).
+                  order_by(:login.desc).
+                  all
+
     respond_to do |format|
       format.json {render :json=>@users}
     end

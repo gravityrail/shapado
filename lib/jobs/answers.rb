@@ -16,13 +16,12 @@ module Jobs
         answer.user.stats.add_answer_tags(*question.tags)
         answer.user.on_activity(:answer_question, group)
 
-        search_opts = {"notification_opts.#{group.id}.new_answer" => {:$in => ["1", true]},
-                        :_id => {:$ne => answer.user.id},
-                        :select => ["email"]}
+        search_opts = {:"notification_opts.#{group.id}.new_answer" => {:$in => ["1", true]},
+                        :_id => {:$ne => answer.user.id}}
 
-        users = question.followers.all(search_opts) # TODO: optimize!!
+        users = question.followers.only(:email, :name).where(search_opts).all.to_a # TODO: optimize!!
         users.push(question.user) if !question.user.nil? && question.user != answer.user
-        followers = answer.user.followers(:languages => [question.language], :group_id => group.id)
+        followers = answer.user.followers.where(:languages => [question.language], :group_id => group.id).only(:email, :name).to_a
 
         users ||= []
         followers ||= []

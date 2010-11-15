@@ -145,6 +145,18 @@ en:
       organizer:
         name: Organizer
         description: Made first retag
+      altruist:
+        name: Altruist
+        description: First reward you manually awarded on another person's question
+      benefactor:
+        name: Benefactor
+        description: First reward you manually awarded on your own question
+      investor:
+        name: Investor
+        description: First reward you offered on another person's question
+      promoter:
+        name: Promoter
+        description: First reward you offered on your own question
   activerecord:
     models:
       badge: Badge

@@ -9,6 +9,25 @@ describe Group do
   end
 
   describe "validations" do
+    describe " for reputation configs" do
+      it "should be invalid for a undefined reputation constrains" do
+        @group.reputation_constrains = {"foo" => 10}
+        @group.valid?.should be_false
+        @group.errors[:reputation_constrains].should_not be_nil
+      end
+
+      it "should be invalid for a undefined reputation rewards" do
+        @group.reputation_rewards = {"foo" => 10}
+        @group.valid?.should be_false
+        @group.errors[:reputation_rewards].should_not be_nil
+      end
+
+      it "should be invalid when a reputation rewards for an acction is less than your undo action" do
+        @group.reputation_rewards = { "vote_up_question" => 0, "undo_vote_up_question" => 1}
+        @group.valid?.should be_false
+        @group.errors[:undo_vote_up_question].should_not be_nil
+      end
+    end
   end
 
   describe "association" do
@@ -28,6 +47,37 @@ describe Group do
     end
 
     describe "Group#find_field_from_params" do
+      before(:each) do
+        @params = {}
+        @request = mock("request")
+        Group.stub!(:find).and_return(@group)
+        @pattern = "/_files/groups/%1/#{@group.id}"
+      end
+
+      it "should return the @group logo" do
+        @pattern.gsub!("%1", "logo")
+        @group.should_receive(:logo).and_return("logo")
+        @request.should_receive(:path).and_return(@pattern)
+        Group.find_file_from_params(@param, @request).should == "logo"
+      end
+
+      it "should return the @group css" do
+        @pattern.gsub!("%1", "css")
+        @group.should_receive(:has_custom_css?).and_return(true)
+        css = "custom_css"
+        css.stub!(:content_type=)
+        @group.should_receive(:custom_css).and_return(css)
+        @request.should_receive(:path).and_return(@pattern)
+        Group.find_file_from_params(@param, @request).should == "custom_css"
+      end
+
+      it "should return the @group favicon" do
+        @pattern.gsub!("%1", "favicon")
+        @group.should_receive(:has_custom_favicon?).and_return(true)
+        @group.should_receive(:custom_favicon).and_return("custom_favicon")
+        @request.should_receive(:path).and_return(@pattern)
+        Group.find_file_from_params(@param, @request).should == "custom_favicon"
+      end
     end
   end
 
@@ -107,12 +157,43 @@ describe Group do
     end
 
     describe "Group#pending?" do
+      it "should return true for a pending group" do
+        @group.state = "pending"
+        @group.pending?.should == true
+      end
     end
 
     describe "Group#on_activity" do
+      describe "should increment the group activity_rate" do
+        it "in 0.1 when a new question is create" do
+          current_rate = @group.activity_rate || 0.0
+          @group.on_activity(:ask_question)
+          @group.reload
+          (@group.activity_rate-current_rate).should == 0.1
+        end
+
+        it "in 0.3 when a new answer is create" do
+          current_rate = @group.activity_rate || 0.0
+          @group.on_activity(:answer_question)
+          @group.reload
+          (@group.activity_rate-current_rate).should == 0.3
+        end
+      end
     end
 
     describe "Group#language=" do
+      it "should set group language as es" do
+        @group.language.should == nil
+        @group.language = "es"
+        @group.language.should == "es"
+      end
+
+      it "should set group language as nil" do
+        @group.language = "es"
+        @group.language.should == "es"
+        @group.language = "none"
+        @group.language.should be_nil
+      end
     end
   end
 end

@@ -7,17 +7,18 @@ class MembersController < ApplicationController
 
   def index
     @group = current_group
-    @members = @group.users.order_by([%W[membership_list.#{@group.id}.reputation desc], %W[membership_list.#{@group.id}.role asc]]).paginate(:page => params[:page] || 1,
+    @members = @group.users.order_by([%W[membership_list.#{@group.id}.role asc], %W[membership_list.#{@group.id}.reputation desc]]).paginate(:page => params[:page] || 1,
                             :per_page => params[:per_page] || 25)
     @member = User.new
     @membership = Membership.new
   end
 
   def create
-    @member = User.find_by_login(params[:user_id])
+    @member = User.where(:login => params[:user_id]).first
     unless @member.nil?
       ok = @group.add_member(@member, params[:role])
       if ok
+        flash[:notice] = "#{@member.login} was successfully added as #{params[:role]}"
         return redirect_to(members_path)
       end
     else
@@ -25,8 +26,8 @@ class MembersController < ApplicationController
       @member = User.new(:login => params[:user_id])
     end
 
-    @members = @group.users(:page => params[:page] || 1,
-                            :per_page => params[:per_page] || 25)
+    @members = @group.users.paginate(:page => params[:page] || 1,
+                                     :per_page => params[:per_page] || 25)
     render :index
   end
 

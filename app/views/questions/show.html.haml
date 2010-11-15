@@ -71,6 +71,8 @@
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
     .post-text.entry-content
       = question_body
+
+      = render "reward_form"
   .tag-list
     - @question.tags.each do |tag|
       %span.tag
@@ -120,6 +122,7 @@
   .controls
     .actions
       = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
+
       - if !@flag.new_record?
         .flagged
           = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"

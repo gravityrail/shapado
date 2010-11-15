@@ -179,7 +179,7 @@ module ApplicationHelper
             "anonymous"
           end
         when 'hottest_today'
-          question = Question.first(:activity_at.gt => Time.zone.now.yesterday, :order => "hotness desc, views_count asc", :group_id => group.id, :select => [:slug, :title])
+          question = Question.where(:activity_at.gt => Time.zone.now.yesterday, :order => "hotness desc, views_count asc", :group_id => group.id, :select => [:slug, :title]).first
           if question.present?
             link_to(question.title, question_path(question))
           end

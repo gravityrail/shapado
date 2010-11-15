@@ -53,6 +53,8 @@ if options[:method] == :zip
     exporter.to_zip(Favorite, zf)
     exporter.to_zip(User, zf, :selector => {:"membership_list.#{group.id}" => {:$exists => true}},
                            :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
+    friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
+    exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
   end
 else
   FileUtils.mkpath(group.subdomain)
@@ -69,6 +71,8 @@ else
   exporter.to_file(Favorite)
   exporter.to_file(User, :selector => {"membership_list.#{group.id}" => {:$exists => true}},
                          :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
+  friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
+  exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
 end
 
 time = Time.now - time

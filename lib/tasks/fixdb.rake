@@ -14,22 +14,28 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:random", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:questions", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets"] do
 end
 
 namespace :fixdb do
-  task :random => [:environment] do
+  task :questions => [:environment] do
     Question.all.each do |question|
       question.override(:_random => rand())
       question.override(:_random_times => 0.0)
+
+      watchers = question.raw_attributes["watchers"]
+      question.unset(:watchers => true)
+      if watchers.kind_of?(Array)
+        question.override(:follower_ids => watchers)
+      end
     end
   end
 
   task :dates => [:environment] do
-    %w[badges questions comments votes].each do |cname|
+    %w[badges questions comments votes users announcements groups memberships pages reputation_events user_stats versions views_counts].each do |cname|
       coll = Mongoid.master.collection(cname)
       coll.find.each do |q|
-        %w[activity_at last_target_date created_at updated_at].each do |key|
+        %w[activity_at last_target_date created_at updated_at birthday last_logged_at starts_at ends_at last_activity_at time date].each do |key|
           if q[key].is_a?(String)
             q[key] = Time.parse(q[key])
           end
@@ -84,17 +90,15 @@ namespace :fixdb do
     end
   end
 
-  task :questions => [:environment] do
+  task :last_target_type => [:environment] do
     puts "updating questions#last_target_type"
-    Question.all(:conditions => {:last_target_type.ne => nil}).each do |q|
+    Question.where({:last_target_type.ne => nil}).all.each do |q|
       print "."
       if(q.last_target_type != "Comment")
         last_target = q.last_target_type.constantize.find(q.last_target_id)
       else
         data = Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
         last_target = Comment.new(data)
-#         p last_target.id
-#         p Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
       end
 
       if(last_target)
@@ -179,7 +183,7 @@ namespace :fixdb do
   end
 
   task :groups => [:environment] do
-    Group.all(:conditions => {:language.in => [nil, '', 'none']}).each do |group|
+    Group.where({:language.in => [nil, '', 'none']}).all.each do |group|
       lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
 
@@ -200,7 +204,7 @@ namespace :fixdb do
     Answer.override({:address => nil}, :address => {})
     User.override({:address => nil}, :address => {})
     doc.keys.each do |key|
-      User.all(:conditions => { :country_name => key}).each do |u|
+      User.where({:country_name => key}).all.each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
         lat = doc[key]["lat"]
         lon = doc[key]["lon"]

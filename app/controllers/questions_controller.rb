@@ -199,6 +199,10 @@ class QuestionsController < ApplicationController
       return
     end
 
+    if @question.reward && @question.reward.ends_at < Time.now
+      Jobs::Questions.async.close_reward(@question.id).commit!(1)
+    end
+
     @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:per_page => 25, :page => params[:page] || 1,
                :order => current_order, :banned => false}
@@ -269,7 +273,7 @@ class QuestionsController < ApplicationController
 
     if !logged_in?
       if recaptcha_valid? && params[:user]
-        @user = User.first(:email => params[:user][:email])
+        @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
             flash[:notice] = "The user is already registered, please log in"
@@ -298,7 +302,8 @@ class QuestionsController < ApplicationController
         unless @question.anonymous
           @question.user.stats.add_question_tags(*@question.tags)
           @question.user.on_activity(:ask_question, current_group)
-          Jobs::Questions.async.on_ask_question(@question.id).commit!
+          link = question_url(@question)
+          Jobs::Questions.async.on_ask_question(@question.id, link).commit!
           Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
 
@@ -435,9 +440,13 @@ class QuestionsController < ApplicationController
   def close
     @question = Question.find_by_slug_or_id(params[:id])
 
-    @question.closed = true
-    @question.closed_at = Time.zone.now
-    @question.close_reason_id = params[:close_request_id]
+    if @question.reward && @question.reward.active
+      flash[:error] = "this question has an active reward and cannot be closed" # FIXME: i18n
+    else
+      @question.closed = true
+      @question.closed_at = Time.zone.now
+      @question.close_reason_id = params[:close_request_id]
+    end
 
     respond_to do |format|
       if @question.save

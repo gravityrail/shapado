@@ -11,7 +11,7 @@ class Badge
               merit_medal effort_medal student shapado editor popular_question
               friendly interesting_person citizen_patrol cleanup disciplined
               nice_answer nice_question peer_pressure self-learner scholar autobiographer
-              organizer tutor]
+              organizer tutor altruist benefactor investor promoter]
 
   def self.TOKENS
     @tokens ||= GOLD + SILVER + BRONZE
@@ -36,7 +36,6 @@ class Badge
 
   field :source_id, :type => String
   field :source_type, :type => String
-#   belongs_to :source, :polymorphic => true # FIXME mongoid
 
   validates_inclusion_of :type,  :in => TYPES
   validates_inclusion_of :token, :in => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
@@ -45,18 +44,6 @@ class Badge
 
   def self.gold_badges
     self.find_all_by_type("gold")
-  end
-
-  def to_param
-    self.token
-  end
-
-  def name
-    @name ||= I18n.t("badges.shared.#{self.token}.name", :default => self.token.titleize.downcase) if self.token
-  end
-
-  def description
-    @description ||= I18n.t("badges.shared.#{self.token}.description") if self.token
   end
 
   def self.type_of(token)
@@ -69,8 +56,36 @@ class Badge
     end
   end
 
+  def to_param
+    self.token
+  end
+
+  def name(locale=I18n.locale)
+    @name ||= I18n.t("badges.shared.#{self.token}.name", :default => self.token.titleize.downcase, :locale => locale) if self.token
+  end
+
+  def description
+    @description ||= I18n.t("badges.shared.#{self.token}.description") if self.token
+  end
+
   def type
     self[:type] ||= Badge.type_of(self.token)
+  end
+
+  def source=(s)
+    if s
+      self[:source_id] = s.id
+      self[:source_type] = s.class.to_s
+    else
+      self[:source_id] = nil
+      self[:source_type] = nil
+    end
+  end
+
+  def source
+    if self[:source_type]
+      self[:source_type].constantize.find(self[:source_id])
+    end
   end
 
   protected

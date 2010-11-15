@@ -45,6 +45,7 @@ gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 
 gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
+gem "twitter_oauth"
 
 # authentication
 gem 'omniauth', '~> 0.1.6'

@@ -1,13 +1,9 @@
-class Membership
-  include Mongoid::Document
-
+class Membership < EmbeddedHash
   ROLES = %w[user moderator owner]
 
-  identity :type => String
   field :display_name, :type => String
 
   field :group_id, :type => String
-  referenced_in :group
 
   field :reputation, :type => Float, :default => 0.0
   field :profile, :type => Hash, :default => {} # custom user keys
@@ -30,10 +26,4 @@ class Membership
   field :is_editor,                 :type => Boolean, :default => false
 
   validates_inclusion_of :role,  :in => ROLES
-
-  def save(*args); end
-  def save!(*args); end
-  def update_attributes(*args); end
-  def update_attributes!(*args); end
-  def upsert(*args); end
 end

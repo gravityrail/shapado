@@ -73,7 +73,6 @@
   %a{:name => "notifications"}
   %h2.title
     = t(".notifications")
-
   .group
     = f.check_box "notification_opts[new_answer]", :checked => @user.notification_opts.new_answer
     = t(".new_answer_notification")
@@ -86,4 +85,15 @@
   .group
     = f.check_box "notification_opts[reports]", :checked => @user.notification_opts.reports
     = t(".reports_notification")
+
+  %a{:name => "social"}
+  %h2.title
+    = t(".social_interaction")
+  - if @user.twitter_login?
+    .group
+      = f.check_box "notification_opts[questions_to_twitter]", :checked => @user.notification_opts.questions_to_twitter
+      = t(".send_questions_to_twitter")
+    .group
+      = f.check_box "notification_opts[badges_to_twitter]", :checked => @user.notification_opts.badges_to_twitter
+      = t(".send_badges_to_twitter")
 

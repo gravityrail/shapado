@@ -48,6 +48,8 @@ class Question
 
   field :activity_at, :type => Time
 
+  field :short_url, :type => String
+
   referenced_in :user
   index :user_id
 
@@ -57,10 +59,8 @@ class Question
   referenced_in :group
   index :group_id
 
-
-  field :watchers, :type => Array, :default => []
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :inverse_of => :question, :class_name => "User"#, :foreign_key => :watchers FIXME mongoid
+  references_many :followers, :stored_as => :array, :class_name => "User"
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -85,6 +85,7 @@ class Question
   embeds_many :open_requests
 
   embeds_one :follow_up
+  embeds_one :reward
 
   validates_presence_of :title
   validates_presence_of :user
@@ -111,7 +112,7 @@ class Question
   validate :check_useful
 
   def self.minimal
-    without(:_keywords, :watchers, :votes, :flags, :close_requests, :open_requests, :versions)
+    without(:_keywords, :followers, :votes, :flags, :close_requests, :open_requests, :versions)
   end
 
   def followed_up_by
@@ -139,7 +140,7 @@ class Question
 
   def viewed!(ip)
     view_count_id = "#{self.id}-#{ip}"
-    if ViewsCount.first(:conditions => {:_id => view_count_id}).nil?
+    if ViewsCount.where({:_id => view_count_id}).first.nil?
       ViewsCount.create(:_id => view_count_id)
       self.inc(:views_count, 1)
     end
@@ -221,26 +222,26 @@ class Question
     self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
   end
 
-  def favorite_for?(user)
-    user.favorite(self)
+  def favorite_for?(_user)
+    _user.favorite(self)
   end
 
   def add_follower(user)
     if !follower?(user)
-      self.push_uniq(:watchers => user.id)
+      self.push_uniq(:follower_ids => user.id)
       self.increment(:followers_count => 1)
     end
   end
 
   def remove_follower(user)
     if follower?(user)
-      self.pull(:watchers => user.id)
+      self.pull(:follower_ids => user.id)
       self.decrement(:followers_count => 1)
     end
   end
 
   def follower?(user)
-    watchers && watchers.include?(user._id)
+    self.follower_ids && self.follower_ids.include?(user._id)
   end
 
   def disable_limits?

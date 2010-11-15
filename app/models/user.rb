@@ -28,8 +28,6 @@ class User
 
   field :preferred_languages,       :type => Array, :default => []
 
-  field :notification_opts,         :type => NotificationConfig
-
   field :language,                  :type => String, :default => "en", :index => true
   field :timezone,                  :type => String
   field :language_filter,           :type => String, :default => "user", :in => LANGUAGE_FILTERS
@@ -52,6 +50,8 @@ class User
   field :anonymous,                 :type => Boolean, :default => false, :index => true
 
   field :friend_list_id, :type => String
+  field :notification_opts, :type => NotificationConfig
+
   referenced_in :friend_list
 
   references_many :questions, :dependent => :destroy
@@ -211,6 +211,10 @@ Time.zone.now ? 1 : 0)
     self.admin? || self == model.user
   end
 
+  def can_create_reward?(question)
+    (Time.now - question.created_at) >= 2.days && config_for(question.group_id).reputation >= 75 && (question.reward.nil? || !question.reward.active)
+  end
+
   def groups(options = {})
     self.membership_list.groups(options).order_by([:activity_rate, :desc])
   end
@@ -256,7 +260,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def twitter_login?
-    !twitter_token.blank? && !twitter_secret.blank?
+    user_info && !user_info["twitter"].blank?
   end
 
   def has_voted?(voteable)
@@ -272,7 +276,8 @@ Time.zone.now ? 1 : 0)
   end
 
   def favorite(question)
-    self.favorites.where(:question_id => question._id, :user_id => self._id ).first
+    self.favorites.where(:question_id => question._id,
+                         :user_id => self._id ).first
   end
 
   def logged!(group = nil)
@@ -328,9 +333,14 @@ Time.zone.now ? 1 : 0)
     self.increment({"membership_list.#{group.id}.votes_down" => v.to_f})
   end
 
-  def update_reputation(key, group)
-    value = group.reputation_rewards[key.to_s].to_i
-    value = key if key.kind_of?(Integer)
+  def update_reputation(key, group, v = nil)
+    if v.nil?
+      value = group.reputation_rewards[key.to_s].to_i
+      value = key if key.kind_of?(Integer)
+    else
+      value = v
+    end
+
     Rails.logger.info "#{self.login} received #{value} points of karma by #{key} on #{group.name}"
     current_reputation = config_for(group, false).reputation
 
@@ -367,7 +377,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def find_badge_on(group, token, opts = {})
-    self.badges.first(opts.merge(:token => token, :group_id => group.id))
+    self.badges.where(opts.merge(:token => token, :group_id => group.id)).first
   end
 
   # self follows user
@@ -395,8 +405,8 @@ Time.zone.now ? 1 : 0)
   def followers(scope = {})
     conditions = {}
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
-    conditions["membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
-    self.friend_list.followers.all(conditions)
+    conditions[:"membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
+    self.friend_list.followers.where(conditions)
   end
 
   def following
@@ -404,7 +414,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def following?(user)
-    FriendList.first(:_id => self.friend_list_id, :select => [:following_ids]).following_ids.include?(user.id)
+    FriendList.only(:following_ids).where(:_id => self.friend_list_id).first.following_ids.include?(user.id)
   end
 
   def viewed_on!(group)
@@ -487,17 +497,17 @@ Time.zone.now ? 1 : 0)
 
   def create_friend_list
     if !self.friend_list.present?
-      self.friend_list = FriendList.new
+      f = FriendList.new
+      f.save
+      self.friend_list_id = f.id
     end
-    if !self.notification_opts
-      self.notification_opts = NotificationConfig.new
-    end
+    self.notification_opts = NotificationConfig.new if self.notification_opts.nil?
   end
 
   def update_anonymous_user
     return if self.anonymous
 
-    user = User.first(:conditions => {:email => self.email, :anonymous => true})
+    user = User.where({:email => self.email, :anonymous => true}).first
     if user.present?
       Rails.logger.info "Merging #{self.email}(#{self.id}) into #{user.email}(#{user.id})"
       merge_user(user)

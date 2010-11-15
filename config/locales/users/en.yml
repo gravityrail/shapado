@@ -39,6 +39,9 @@ en:
       avatar_tip: "Change your profile image using Gravatar"
       show_more_lang: "Show more languages"
       language: Language used for the interface of the site
+      send_questions_to_twitter: Send my questions to my Twitter
+      send_badges_to_twitter: Send my newly won badges to my Twitter
+      social_interaction: Social media interaction
     create:
       flash_notice: "Thanks for signing up!"
       flash_error:  "Sorry, we could not set up that account. Please try again, or contact an administrator (link is above)."
@@ -87,3 +90,4 @@ en:
         website: Website
         birthday: Birthday
         age: Age
+
