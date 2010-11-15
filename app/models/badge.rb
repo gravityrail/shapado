@@ -36,7 +36,6 @@ class Badge
 
   field :source_id, :type => String
   field :source_type, :type => String
-#   belongs_to :source, :polymorphic => true # FIXME mongoid
 
   validates_inclusion_of :type,  :in => TYPES
   validates_inclusion_of :token, :in => self.TOKENS, :if => Proc.new { |b| !b.for_tag }
@@ -45,6 +44,16 @@ class Badge
 
   def self.gold_badges
     self.find_all_by_type("gold")
+  end
+
+  def self.type_of(token)
+    if BRONZE.include?(token)
+      "bronze"
+    elsif SILVER.include?(token)
+      "silver"
+    elsif GOLD.include?(token)
+      "gold"
+    end
   end
 
   def to_param
@@ -59,18 +68,24 @@ class Badge
     @description ||= I18n.t("badges.shared.#{self.token}.description") if self.token
   end
 
-  def self.type_of(token)
-    if BRONZE.include?(token)
-      "bronze"
-    elsif SILVER.include?(token)
-      "silver"
-    elsif GOLD.include?(token)
-      "gold"
+  def type
+    self[:type] ||= Badge.type_of(self.token)
+  end
+
+  def source=(s)
+    if s
+      self[:source_id] = s.id
+      self[:source_type] = s.class.to_s
+    else
+      self[:source_id] = nil
+      self[:source_type] = nil
     end
   end
 
-  def type
-    self[:type] ||= Badge.type_of(self.token)
+  def source
+    if self[:source_type]
+      self[:source_type].constantize.find(self[:source_id])
+    end
   end
 
   protected

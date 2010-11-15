@@ -25,7 +25,8 @@ module Jobs
         end
       end
 
-      if !badge.new?
+      if !badge.new_record?
+        puts ">> Created badge: #{badge.inspect}"
         if !user.email.blank? && user.notification_opts.activities
           Notifier.earned_badge(user, group, badge).deliver
         end
@@ -33,7 +34,9 @@ module Jobs
           token = badge.name(user.language)
           group_name = group.name
           link = group.domain
-          user.twitter_client.update(I18n.t('jobs.base.create_badge.send_twitter', :link => link, :token => token, :group_name => group_name))
+
+          txt = I18n.t('jobs.base.create_badge.send_twitter', :link => link, :token => token, :group_name => group_name)
+          puts user.twitter_client.update(txt).inspect
         end
       end
     end
