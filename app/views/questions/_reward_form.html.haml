@@ -1,0 +1,15 @@
+-if @question.reward.present? && @question.reward.active
+  This question has an open reward worth
+  = "+#{@question.reward.reputation}"
+  reputation from
+  = link_to @question.reward.created_by.name, user_path(@question.reward.created_by)
+  ending in
+  = distance_of_time_in_words(Time.now, @question.reward.ends_at)
+-elsif @question.reward.nil? && logged_in? && current_user.can_create_reward?(@question)
+  = form_tag start_reward_path(@question) do
+    reward:
+    -rep = current_user.reputation_on(current_group)
+    #reward_slider{:"data-max" => rep < 500 ? rep - 25 : 500}
+    #reward_value
+    = text_field_tag "reward[reputation]", "", :id => "reward_reputation"
+    = submit_tag "create"

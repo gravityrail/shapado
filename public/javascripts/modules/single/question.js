@@ -14,16 +14,16 @@ $(document).ready(function() {
     }
   });
 
-  $("#bounty_reputation" ).hide();
-  var slider_div = $("#bounty_slider");
+  $("#reward_reputation" ).hide();
+  var slider_div = $("#reward_slider");
   slider_div.slider({
     value:50,
     min: 50,
     max: slider_div.attr("data-max"),
     step: 50,
     slide: function( event, ui ) {
-      $("#bounty_value").text(ui.value);
-      $("#bounty_reputation").val( ui.value );
+      $("#reward_value").text(ui.value);
+      $("#reward_reputation").val( ui.value );
     }
   });
 })

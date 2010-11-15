@@ -199,8 +199,8 @@ class QuestionsController < ApplicationController
       return
     end
 
-    if @question.bounty && @question.bounty.ends_at < Time.now
-      Jobs::Questions.async.close_bounty(@question.id).commit!(1)
+    if @question.reward && @question.reward.ends_at < Time.now
+      Jobs::Questions.async.close_reward(@question.id).commit!(1)
     end
 
     @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
@@ -440,8 +440,8 @@ class QuestionsController < ApplicationController
   def close
     @question = Question.find_by_slug_or_id(params[:id])
 
-    if @question.bounty && @question.bounty.active
-      flash[:error] = "this question has an active bounty and cannot be closed" # FIXME: i18n
+    if @question.reward && @question.reward.active
+      flash[:error] = "this question has an active reward and cannot be closed" # FIXME: i18n
     else
       @question.closed = true
       @question.closed_at = Time.zone.now
