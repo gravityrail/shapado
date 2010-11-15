@@ -8,8 +8,8 @@ class Favorite
   field :user_id, :type => String
   referenced_in :user
 
-  field :question_id, :type => String
-  referenced_in :question
+  field :answer_id, :type => String
+  referenced_in :answer
 
   validate :should_be_unique # FIXME
   index :user_id
@@ -17,7 +17,7 @@ class Favorite
 
   protected
   def should_be_unique
-    favorite = Favorite.where({:question_id => self.question_id,
+    favorite = Favorite.where({:answer_id => self.answer_id,
                                 :user_id     => self.user_id,
                                 :group_id    => self.group_id
                                }).first

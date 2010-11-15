@@ -98,15 +98,15 @@ module Jobs
       end
     end
 
-    def self.on_question_favorite(question_id)
+    def self.on_question_followed(question_id)
       question = Question.find(question_id)
       user = question.user
       group = question.group
-      if question.favorites_count >= 25
+      if question.followers_count >= 25
         create_badge(user, group, {:token => "favorite_question", :source => question}, {:unique => true, :source_id => question.id})
       end
 
-      if question.favorites_count >= 100
+      if question.followers_count >= 100
         create_badge(user, group, {:token => "stellar_question", :source => question}, {:unique => true, :source_id => question.id})
       end
     end

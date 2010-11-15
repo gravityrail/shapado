@@ -128,10 +128,11 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def favorited(user, group, question)
+  def favorited(user, group, answer)
     @user = user
     @group = group
-    @question = question
+    @question = answer.question
+    @answer = answer
     language = language_for(question.user)
     set_locale language
     mail(:to => question.user.email,

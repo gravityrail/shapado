@@ -20,6 +20,7 @@ class Answer
   index :anonymous
 
   field :rewarded, :type => Boolean, :default => false
+  field :favorites_count, :type => Integer, :default => 0
 
   referenced_in :group
   index :group_id
@@ -142,6 +143,18 @@ class Answer
         self.errors.add(:body, "Your answer is duplicate.")
       end
     end
+  end
+
+  def add_favorite!(fav, user)
+    self.inc(:favorites_count, 1)
+  end
+
+  def remove_favorite!(fav, user)
+    self.decrement(:favorites_count => 1)
+  end
+
+  def favorite_for?(_user)
+    _user.favorite(self)
   end
 
   protected

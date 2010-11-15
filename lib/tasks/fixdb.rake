@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "update_answers_favorite"] do
 end
 
 namespace :fixdb do
@@ -53,6 +53,15 @@ namespace :fixdb do
       user.push_uniq(:auth_keys => "open_id_#{user[:identity_url]}")
       user.unset(:identity_url => 1)
     end
+  end
+
+  task :update_answers_favorite => [:environment] do
+    favorites = Favorite.not_in(:question_id => nil)
+    favorites.each do |f|
+      f.destroy
+    end if favorites.count > 0
+    answers = Mongoid.database.collection("answers")
+    answers.update({ }, {"$set" => {"favorite_counts" => 0}})
   end
 
   task :sync_counts => [:environment] do

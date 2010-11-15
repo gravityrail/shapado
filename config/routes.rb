@@ -75,8 +75,6 @@ Shapado::Application.routes.draw do
       get :solve
       get :unsolve
       get :flag
-      get :favorite
-      get :unfavorite
       get :follow
       get :unfollow
       get :history
@@ -99,6 +97,8 @@ Shapado::Application.routes.draw do
       resources :votes
       resources :flags
       member do
+        get :favorite
+        get :unfavorite
         get :flag
         get :history
         get :diff

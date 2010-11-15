@@ -3,6 +3,20 @@ module Jobs
   class Answers
     extend Jobs::Base
 
+    def self.on_favorite_answer(question_id)
+      answer = Answer.find(answer_id)
+      user = answer.user
+      question = answer.question
+      group = question.group
+      if answer.favorites_count >= 25
+        create_badge(user, group, {:token => "favorite_answer", :source => answer}, {:unique => true, :source_id => answer.id})
+      end
+
+      if answer.favorites_count >= 100
+        create_badge(user, group, {:token => "stellar_answer", :source => answer}, {:unique => true, :source_id => answer.id})
+      end
+    end
+
     def self.on_create_answer(question_id, answer_id)
       question = Question.find(question_id)
       group = question.group
