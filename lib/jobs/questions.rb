@@ -7,7 +7,7 @@ module Jobs
       answer = Answer.find(answer_id)
       group = question.group
 
-      if question.answer == answer && group.answers.count(:user_id => answer.user.id) == 1
+      if question.answer == answer && group.answers.where(:user_id => answer.user.id).count == 1
         create_badge(answer.user, group, :token => "troubleshooter", :source => answer, :unique => true)
       end
 
@@ -36,16 +36,16 @@ module Jobs
 
       if answer && question.answer.nil?
         user_badges = answer.user.badges
-        badge = user_badges.first(:token => "troubleshooter", :group_id => group.id, :source_id => answer.id)
+        badge = user_badges.where(:token => "troubleshooter", :group_id => group.id, :source_id => answer.id).first
         badge.destroy if badge
 
-        badge = user_badges.first(:token => "guru", :group_id => group.id, :source_id => answer.id)
+        badge = user_badges.where(:token => "guru", :group_id => group.id, :source_id => answer.id).first
         badge.destroy if badge
       end
 
       if answer && question.answer.nil?
         user_badges = answer.user.badges
-        tutor = user_badges.first(:token => "tutor", :group_id => group.id, :source_id => answer.id)
+        tutor = user_badges.where(:token => "tutor", :group_id => group.id, :source_id => answer.id).first
         tutor.destroy if tutor
       end
     end

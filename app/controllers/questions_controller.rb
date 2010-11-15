@@ -273,7 +273,7 @@ class QuestionsController < ApplicationController
 
     if !logged_in?
       if recaptcha_valid? && params[:user]
-        @user = User.first(:email => params[:user][:email])
+        @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
             flash[:notice] = "The user is already registered, please log in"

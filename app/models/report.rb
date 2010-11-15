@@ -6,10 +6,10 @@ class Report
     @group = group
     @since = since
 
-    @questions = group.questions.count(:created_at => {:$gt => since})
-    @answers = group.answers.count(:created_at => {:$gt => since})
+    @questions = group.questions.where(:created_at => {:$gt => since}).count
+    @answers = group.answers.where(:created_at => {:$gt => since}).count
 
     @users = User.count("membership_list.#{group.id}.reputation" => {:$exists => true})
-    @badges = group.badges.count(:created_at => {:$gt => since})
+    @badges = group.badges.where(:created_at => {:$gt => since}).count
   end
 end

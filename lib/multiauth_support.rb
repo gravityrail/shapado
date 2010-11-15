@@ -37,7 +37,7 @@ module MultiauthSupport
 
       auth_key = "#{provider}_#{fields["uid"]}"
 
-      user = User.first(:conditions => {:auth_keys => auth_key})
+      user = User.where(:conditions => {:auth_keys => auth_key}).first
       if user.nil?
         user = User.new(:auth_keys => [auth_key])
 
