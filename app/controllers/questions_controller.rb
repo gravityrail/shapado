@@ -302,7 +302,7 @@ class QuestionsController < ApplicationController
         unless @question.anonymous
           @question.user.stats.add_question_tags(*@question.tags)
           @question.user.on_activity(:ask_question, current_group)
-          link =  url_for(:host => @question.group.domain, :controller => "questions", :action => "show", :id => @question.slug)
+          link = question_url(@question)
           Jobs::Questions.async.on_ask_question(@question.id, link).commit!
           Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
