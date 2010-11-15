@@ -128,6 +128,9 @@ module Jobs
     def self.on_start_reward(question_id)
       question = Question.find(question_id)
       if question.reward && question.reward.ends_at > Time.now
+        user = question.reward.created_by
+        group = question.group
+
         if question.user_id != question.reward.created_by_id
           create_badge(user, group, {:token => "investor", :source => question}, {:unique => true, :source_id => question.id})
         elsif question.user_id == question.reward.created_by_id
@@ -136,17 +139,21 @@ module Jobs
       end
     end
 
-    def self.on_close_reward(question_id)
+    def self.on_close_reward(question_id, answer_id, user_id)
       question = Question.find(question_id)
+      user = User.find(user_id)
+      receiver = Answer.only(:user_id).where(:_id => answer_id).first.user_id
+
       group = question.group
 
-      if question.reward && question.reward.ends_at > Time.now
-        if question.user_id != question.reward.created_by_id
+      if receiver != user_id
+        if question.user_id != user_id
           create_badge(user, group, {:token => "altruist", :source => question}, {:unique => true, :source_id => question.id})
-        elsif question.user_id == question.reward.created_by_id
+        elsif question.user_id == user_id
           create_badge(user, group, {:token => "benefactor", :source => question}, {:unique => true, :source_id => question.id})
         end
       end
+
     end
   end
 end

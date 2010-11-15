@@ -39,7 +39,7 @@ class RewardController < ApplicationController
 
     current_user.update_reputation(:start_reward, current_group, -@question.reward.reputation)
 
-    Jobs::Question.async.on_start_reward(@question.id).commit!
+    Jobs::Questions.async.on_start_reward(@question.id).commit!
 
     redirect_to question_path(@question)
   end
@@ -53,15 +53,17 @@ class RewardController < ApplicationController
     end
 
     if (Time.now - @question.reward.started_at) < 1.day
-      flash[:error] = "you must wait #{distance_of_time_in_words(Time.now, @question.reward.started_at)} before awarding this reward." # TODO: i18n
+      flash[:error] = "you must wait #{distance_of_time_in_words(Time.now, @question.reward.started_at+1.day)} before awarding this reward." # TODO: i18n
       redirect_to question_path(@question)
       return
     end
 
+    user_id = @question.reward.created_by_id
+
     @answer = @question.answers.where(:_id => params[:answer_id]).first
     @question.reward.reward(current_group, @answer)
 
-    Jobs::Question.async.on_close_reward(@question.id).commit!
+    Jobs::Questions.async.on_close_reward(@question.id, @answer.id, user_id).commit!
 
     redirect_to question_path(@question)
   end
@@ -70,4 +72,7 @@ class RewardController < ApplicationController
   def find_question
     @question = Question.minimal.by_slug(params[:id])
   end
+
+  private
+  include ActionView::Helpers::DateHelper
 end
