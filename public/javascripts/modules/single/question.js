@@ -13,4 +13,17 @@ $(document).ready(function() {
       }
     }
   });
+
+  $("#bounty_reputation" ).hide();
+  var slider_div = $("#bounty_slider");
+  slider_div.slider({
+    value:50,
+    min: 50,
+    max: slider_div.attr("data-max"),
+    step: 50,
+    slide: function( event, ui ) {
+      $("#bounty_value").text(ui.value);
+      $("#bounty_reputation").val( ui.value );
+    }
+  });
 })

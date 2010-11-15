@@ -8,7 +8,7 @@
 .answer.commentable{:class => "post-#{answer.id} #{solution ? "solution" : ""}" }
   %a{:name=>answer.id}
   .vote-col
-    -if logged_in? && question.bounty && question.bounty.active && question.bounty.user_id == current_user.id
+    -if logged_in? && question.bounty && question.bounty.active && question.bounty.created_by_id == current_user.id
       = link_to "+#{question.bounty.reputation}", close_bounty_path(question, :answer_id => answer.id)
 
     =vote_box(answer, question_path(question), question.closed)

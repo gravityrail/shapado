@@ -8,5 +8,8 @@
 -elsif @question.bounty.nil? && logged_in? && current_user.can_create_bounty?(@question)
   = form_tag start_bounty_path(@question) do
     bounty:
-    = text_field_tag "bounty[reputation]"
+    -rep = current_user.reputation_on(current_group)
+    #bounty_slider{:"data-max" => rep < 500 ? rep - 25 : 500}
+    #bounty_value
+    = text_field_tag "bounty[reputation]", "", :id => "bounty_reputation"
     = submit_tag "create"
