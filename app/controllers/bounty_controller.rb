@@ -15,15 +15,16 @@ class BountyController < ApplicationController
       return
     end
 
+    @question.build_bounty(params[:bounty])
+
     config = current_user.config_for(current_group)
 
-    if config.reputation < 75
+    if config.reputation < 75 || config.reputation-25 < @question.bounty.reputation
       flash[:notice] = "you don't have enough reputation to create a bounty on this question" # TODO: i18n
       redirect_to question_path(@question)
       return
     end
 
-    @question.build_bounty(params[:bounty])
     @question.bounty.created_by = current_user
     @question.bounty.started_at = Time.now
     @question.bounty.ends_at = Time.now + 1.week
