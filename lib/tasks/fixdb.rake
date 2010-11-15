@@ -23,9 +23,9 @@ namespace :fixdb do
       question.override(:_random => rand())
       question.override(:_random_times => 0.0)
 
-      watchers = question["watchers"]
+      watchers = question.raw_attributes["watchers"]
       question.unset(:watchers => true)
-      if !watchers.blank?
+      if watchers.kind_of?(Array)
         question.override(:follower_ids => watchers)
       end
     end
