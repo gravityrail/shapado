@@ -19,7 +19,7 @@ class ImportsController < ApplicationController
     @users = if params[:all]
       current_group.users(:needs_confirmation => true, :select => [:email, :login, :name])
     else
-      [User.first(:_id => params[:user_id], :select => [:email, :login, :name])]
+      [User.where(:_id => params[:user_id], :select => [:email, :login, :name]).first]
     end
 
     @users.each do |user|
