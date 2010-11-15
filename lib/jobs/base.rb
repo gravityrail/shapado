@@ -27,7 +27,7 @@ module Jobs
 
       if !badge.new?
         if !user.email.blank? && user.notification_opts.activities
-          Notifier.deliver_earned_badge(user, group, badge)
+          Notifier.earned_badge(user, group, badge).deliver
         end
         if user.notification_opts.badges_to_twitter
           token = badge.name(user.language)

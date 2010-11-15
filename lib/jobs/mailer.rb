@@ -38,7 +38,7 @@ module Jobs
       current_user = User.find(current_user_id)
       question = Question.find(question_id)
       if (question.user_id != current_user.id) && current_user.notification_opts.activities
-        Notifier.deliver_favorited(current_user, question.group, question)
+        Notifier.favorited(current_user, question.group, question).deliver
       end
     end
 
