@@ -68,6 +68,7 @@ class Group
   filterable_keys :name
 
   references_many :ads, :dependent => :destroy
+  references_many :tags, :dependent => :destroy
 
   embeds_many :welcome_widgets, :class_name => "Widget"
   embeds_many :mainlist_widgets, :class_name => "Widget"

@@ -1,0 +1,29 @@
+
+-feed_url = url_for(:format => "atom", :tags => [@tag.name])
+
+-content_for :rss do
+  %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> feed_url}
+
+-content_for :subtabs do
+  .navtitle
+    = t(".title")
+    -if @questions
+      == (#{@questions.total_entries})
+
+
+-content_for :sidebar do
+  = render "shared/widgets", :context => 'mainlist'
+
+= @tag.description
+
+/Questions
+%ul.items#questions
+  -if @questions.empty?
+    %li.highlight
+      = t(".empty")
+  -@questions.each do |question|
+    = render :partial => "questions/question", :object => question
+
+#additional_info
+  =will_paginate @questions
+  .clear

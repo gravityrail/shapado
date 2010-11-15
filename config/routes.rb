@@ -59,12 +59,15 @@ Shapado::Application.routes.draw do
   post '/questions/:id/start_bounty' => "bounty#start", :as => :start_bounty
   get '/questions/:id/close_bounty' => "bounty#close", :as => :close_bounty
 
+  scope("questions") do
+    resources :tags, :constraints => { :id => /\S|[^+]/ }
+  end
+
   resources :questions do
     resources :votes
     resources :flags
 
     collection do
-      get :tags
       get :tags_for_autocomplete
       get :unanswered
       get :related_questions

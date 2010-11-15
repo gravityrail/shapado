@@ -101,6 +101,7 @@ describe Question do
   describe "instance methods" do
     describe "Question#first_tags" do
       it "should get the first_tags(6)" do
+        @question.user.stub(:can_create_new_tags_on?).with(anything).and_return(true)
         @question.tags = %w[a b c d e f g]
         @question.first_tags.should == %w[a b c d e f]
         @question.first_tags.size == 6
@@ -108,14 +109,18 @@ describe Question do
     end
 
     describe "Question#tags=" do
+      before(:each) do
+        @question.user.stub(:can_create_new_tags_on?).with(anything).and_return(true)
+      end
+
       it "should convert the string separted by comas in an array" do
         @question.tags = "apples,oranges"
         @question.tags.should == %w[apples oranges]
       end
 
-      it "should convert the string separted by comas and spaces in an array" do
-        @question.tags = "apples,oranges mango"
-        @question.tags.should == %w[apples oranges mango]
+      it "should convert the string separted by comas,spaces and + in an array" do
+        @question.tags = "apples,oranges mango+passion-fruit"
+        @question.tags.should == %w[apples oranges mango passion-fruit]
       end
     end
 
@@ -344,7 +349,7 @@ describe Question do
         @question.add_follower(@follower)
         @question.reload
         @question.followers_count.should == 1
-        @question.watchers.should include @follower.id
+        @question.followers.map(&:id).should include @follower.id
       end
 
       it "should not @follower as question's follower" do
@@ -352,7 +357,7 @@ describe Question do
         @question.add_follower(@follower)
         @question.reload
         @question.followers_count.should == 0
-        @question.watchers.should_not include @follower.id
+        @question.followers.should_not include @follower.id
       end
     end
 
@@ -369,7 +374,7 @@ describe Question do
         @question.remove_follower(@follower)
         @question.reload
         @question.followers_count.should == 0
-        @question.watchers.should_not include @follower.id
+        @question.followers.should_not include @follower.id
       end
     end
 
