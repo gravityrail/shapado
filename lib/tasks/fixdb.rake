@@ -251,7 +251,10 @@ namespace :fixdb do
   task :tags => [:environment] do
     Group.all.each do |g|
       Question.tag_cloud({:group_id => g.id} , 1000).each do |tag|
-        tag = Tag.new(:name => tag["name"], :group => g, :count => tag["count"])
+        tag = Tag.new(:name => tag["name"], :count => tag["count"])
+        tag.group = g
+        tag.user = g.owner
+        tag.used_at = tag.created_at = tag.updated_at = g.questions.where(:tags.in => [tag["name"]]).first.created_at
         tag.save
       end
     end

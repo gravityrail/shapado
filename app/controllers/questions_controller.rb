@@ -283,8 +283,10 @@ class QuestionsController < ApplicationController
           Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
 
+        Jobs::Tags.async.question_retagged(@question.id, @question.tags, [], Time.now).commit!
+
         current_group.on_activity(:ask_question)
-        if @question.removed_tags.blank?
+        if !@question.removed_tags.blank?
           flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
                                    :tags => @question.removed_tags.join(", "),
                                    :reputation_required => @question.group.reputation_constrains["create_new_tags"])
@@ -314,6 +316,8 @@ class QuestionsController < ApplicationController
       @question.updated_by = current_user
       @question.last_target = @question
 
+      tags_changes = @question.changes["tags"]
+
       if @question.slug_changed?
         @question.slugs = [] if @question.slugs.nil?
         @question.slugs << @question.slug
@@ -323,6 +327,10 @@ class QuestionsController < ApplicationController
       if @question.valid? && @question.save
         sweep_question_views
         sweep_question(@question)
+
+        if tags_changes
+          Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
+        end
 
         if !@question.removed_tags.blank?
           flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
@@ -583,6 +591,8 @@ class QuestionsController < ApplicationController
     @question.updated_by = current_user
     @question.last_target = @question
 
+    tags_changes = @question.changes["tags"]
+
     if @question.save
       sweep_question(@question)
 
@@ -591,13 +601,23 @@ class QuestionsController < ApplicationController
       end
 
       Jobs::Questions.async.on_retag_question(@question.id, current_user.id).commit!
+      if tags_changes
+        Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
+      end
 
-      flash[:notice] = t("questions.retag_to.success", :group => @question.group.name)
+      if !@question.removed_tags.blank?
+        flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
+                                 :tags => @question.removed_tags.join(", "),
+                                 :reputation_required => @question.group.reputation_constrains["create_new_tags"])
+      else
+        flash[:notice] = t("questions.retag_to.success", :group => @question.group.name)
+      end
+
       respond_to do |format|
         format.html {redirect_to question_path(@question)}
         format.js {
           render(:json => {:success => true,
-                   :message => flash[:notice], :tags => @question.tags }.to_json)
+                   :message => flash[:warning] || flash[:notice], :tags => @question.tags }.to_json)
         }
       end
     else
