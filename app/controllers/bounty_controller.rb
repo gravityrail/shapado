@@ -39,6 +39,8 @@ class BountyController < ApplicationController
 
     current_user.update_reputation(:start_bounty, current_group, -@question.bounty.reputation)
 
+    Jobs::Question.async.on_start_reward(@question.id).commit!
+
     redirect_to question_path(@question)
   end
 
@@ -58,6 +60,8 @@ class BountyController < ApplicationController
 
     @answer = @question.answers.where(:_id => params[:answer_id]).first
     @question.bounty.reward(current_group, @answer)
+
+    Jobs::Question.async.on_close_reward(@question.id).commit!
 
     redirect_to question_path(@question)
   end

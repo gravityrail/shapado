@@ -124,5 +124,29 @@ module Jobs
         question.bounty.reward(question.group)
       end
     end
+
+    def self.on_start_reward(question_id)
+      question = Question.find(question_id)
+      if question.bounty && question.bounty.ends_at > Time.now
+        if question.user_id != question.bounty.created_by_id
+          create_badge(user, group, {:token => "investor", :source => question}, {:unique => true, :source_id => question.id})
+        elsif question.user_id == question.bounty.created_by_id
+          create_badge(user, group, {:token => "promoter", :source => question}, {:unique => true, :source_id => question.id})
+        end
+      end
+    end
+
+    def self.on_close_reward(question_id)
+      question = Question.find(question_id)
+      group = question.group
+
+      if question.bounty && question.bounty.ends_at > Time.now
+        if question.user_id != question.bounty.created_by_id
+          create_badge(user, group, {:token => "altruist", :source => question}, {:unique => true, :source_id => question.id})
+        elsif question.user_id == question.bounty.created_by_id
+          create_badge(user, group, {:token => "benefactor", :source => question}, {:unique => true, :source_id => question.id})
+        end
+      end
+    end
   end
 end
