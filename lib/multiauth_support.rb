@@ -49,7 +49,7 @@ module MultiauthSupport
           user.email = user.user_info[provider]["email"]
         end
 
-        user.send("handle_#{provider}", fields) if user.respond_to?("handle_#{provider}")
+        user.send("handle_#{provider}", fields) if user.respond_to?("handle_#{provider}", true)
 
         if user.login.blank?
           if user.email.blank?

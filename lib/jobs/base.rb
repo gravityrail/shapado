@@ -1,3 +1,4 @@
+require 'open-uri'
 module Jobs
   module Base
     include Magent::Async
@@ -38,7 +39,7 @@ module Jobs
     end
 
     def shorten_url(url)
-      open("http://bit.ly/api?url=#{CGI.encode(url)}").read rescue url
+      open("http://bit.ly/api?url=#{CGI.escape(url)}").read rescue url
     end
   end
 end
