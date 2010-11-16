@@ -1,5 +1,5 @@
 
--feed_url = url_for(:format => "atom", :tags => [@tag.name])
+-feed_url = url_for(:format => "atom", :tags => @tag_names.join("+"))
 
 -content_for :rss do
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> feed_url}
@@ -14,7 +14,8 @@
 -content_for :sidebar do
   = render "shared/widgets", :context => 'mainlist'
 
-= @tag.description
+-@tags.each do |tag|
+  = render "tag", :tag => tag
 
 /Questions
 %ul.items#questions
@@ -22,7 +23,7 @@
     %li.highlight
       = t(".empty")
   -@questions.each do |question|
-    = render :partial => "questions/question", :object => question
+    = render "questions/question", :question => question
 
 #additional_info
   =will_paginate @questions

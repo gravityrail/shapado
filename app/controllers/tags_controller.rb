@@ -17,18 +17,25 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag = current_scope.where(:name => params[:id]).first
-    @questions = current_group.questions.where( :tags.in => [@tag.name] ).
+    @tag_names = params[:id].split("+")
+    @tags =  current_scope.where(:name.in => @tag_names)
+    @questions = current_group.questions.where( :tags.in => @tag_names ).
                           paginate(:page => params[:page], :per_page => params[:per_page]||50)
   end
 
   def new
   end
 
+  def edit
+    @tag = current_scope.find(params[:id])
+  end
+
   def create
   end
 
   def update
+    @tag = current_scope.find(params[:id])
+    redirect_to tag_url(@tag)
   end
 
   def destroy

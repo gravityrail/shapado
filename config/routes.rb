@@ -59,8 +59,9 @@ Shapado::Application.routes.draw do
   post '/questions/:id/start_bounty' => "bounty#start", :as => :start_bounty
   get '/questions/:id/close_bounty' => "bounty#close", :as => :close_bounty
 
-  scope("questions") do
-    resources :tags, :constraints => { :id => /\S|[^+]/ }
+
+  scope('questions') do
+    resources :tags, :constraints => { :id => /\S+/ }
   end
 
   resources :questions do
@@ -117,8 +118,10 @@ Shapado::Application.routes.draw do
     resources :open_requests
   end
 
-  match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }, :as => :question_tag
-  match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
+
+
+#   match 'questions/tags/:tags' => 'questions#index', :as => :question_tag
+#   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
 
   resources :groups do
     collection do

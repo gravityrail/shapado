@@ -1,0 +1,6 @@
+
+.tag-info
+  = tag.name
+  = tag.description
+  = link_to t("scaffold.edit"), edit_tag_path(tag)
+  = link_to t("scaffold.destroy"), tag_path(tag), :method => :delete, :sure => t("scaffold.sure", :model => "tag")

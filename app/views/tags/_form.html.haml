@@ -1,0 +1,17 @@
+
+
+= form_for(@tag, :html => {:class => "form", :multipart => true}) do |form|
+  .group
+    = form.label :name
+    = form.text_field :name, :class => "textfield"
+
+  .group
+    = form.label :icon
+    = form.file_field :icon
+
+  .group
+    = form.label :description
+  = form.text_area :description, :class => "textarea"
+
+  .group.navform
+    = form.submit

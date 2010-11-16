@@ -19,4 +19,8 @@ class Tag
 
   index :name
   index :group_id
+
+  def to_param
+    self.name
+  end
 end
