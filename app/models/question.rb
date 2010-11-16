@@ -43,6 +43,7 @@ class Question
   referenced_in :answered_with, :class_name => "Answer"
 
   field :wiki, :type => Boolean, :default => false
+  field :subjective, :type => Boolean, :default => false
   field :language, :type => String, :default => "en"
   index :language
 
@@ -198,6 +199,9 @@ class Question
   end
 
   def update_activity_at
+    self[:subjetive] = self.tags.include?(I18n.t("global.subjetive", :default =>
+"subjetive"))
+
     now = Time.now
     if new_record?
       self.activity_at = now
