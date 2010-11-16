@@ -374,7 +374,7 @@ class QuestionsController < ApplicationController
     @question.answered_with = @answer if @question.answered_with.nil?
 
     respond_to do |format|
-      if @question.save
+      if !@question.subjetive && @question.save
         sweep_question(@question)
 
         current_user.on_activity(:close_question, current_group)

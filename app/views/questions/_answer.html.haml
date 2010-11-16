@@ -65,7 +65,7 @@
 
         -if logged_in?
           -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
-            -unless @question.accepted
+            -unless @question.accepted && !@question.subjetive
               = link_to t(".pick_answer"), solve_question_path(@question, :answer_id => answer)
             -if solution
               = link_to t(".unset_answer"),  unsolve_question_path(@question)
