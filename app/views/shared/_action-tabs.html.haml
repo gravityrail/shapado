@@ -1,0 +1,17 @@
+#action-tabs
+  %ul
+    %li.active
+      =link_to "PREGUNTAR", "#tab1"
+    %li
+      =link_to "RESPONDER", "#tabs2"
+    %li  
+      =link_to "BUSCAR", "#tabs3"
+          
+  %section#tab1
+    =image_tag("pregunta-icon-big.png")
+    = form_tag search_path, :method => :get, do
+      = text_field_tag :q, params[:q], :id => "search-field"
+      %button Preguntar
+    %p Escribe aquí tu pregunta - Una ves la escribas, podrás complementarla
+  .clear            
+//=link_to t("layouts.application.ask_question"), new_question_path, :rel => 'nofollow'      

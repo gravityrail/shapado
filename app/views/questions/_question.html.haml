@@ -13,71 +13,66 @@
     - last_target_date = question.updated_at
     - owner = question.user unless question.anonymous
 
-  %li.entry.item{:class => class_for_question(question)}
-    / Question Stats
-    .stats
-      .box.votes
-        .counter{:class => class_for_number(question.votes_average) }
-          =format_number(question.votes_average)
-        .text
-          =t(:votes, :scope => "activerecord.attributes.question")
-      .box.answers{:class => class_for_question(question), :title => question.accepted ? t(".accepted_tooltip") : "" }
-        .counter
-          =format_number(question.answers_count)
-        .text
+  %article{:class => class_for_question(question)}    
+    -cache("question_on_index_#{question.id}_#{I18n.locale}") do
+      %h2
+        = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+    %p.user-data
+      -if owner
+        =render :partial => "users/user_data", :locals => {:user => owner}
+      -else
+        Por: 
+        =t("global.anonymous")
+      = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
+      -if question.wiki
+        Wiki
+      
+    .tags
+      -if question.tags.empty? && logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))      
+      %ul
+        %li
+          Tags:
+        -question.first_tags.each do |tag|   
+          %li{:class => "tag_#{h(tag)}"}
+            = link_to h(tag), question_tag_path(:tags => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
+        %li
+          = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag', :class => "important"
+      .clear
+
+    .toolbar
+      %ul
+        %li.answers
+          = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}"
+        %li.votes
+          -unless question.closed
+            -if logged_in? && (vote = current_user.vote_on(question))
+              -if vote.value < 0
+                = image_tag "edit-delete.png"
+              -else
+                = image_tag "dialog-ok-apply.png"
+            -elsif current_user != question.user
+              = form_tag question_votes_path(question), :class => "vote-up-form" do
+                .fields
+                  = hidden_field_tag "source", questions_path, :id =>  "source_#{question.id}"
+                  = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "quick-vote-button")
+          = link_to "#{format_number(question.votes_average)} #{t(:votes, :scope => "activerecord.attributes.question")}"
+        %li
+          =link_to "Reportar", "#" 
+        %li
+          =link_to "Seguir", "#"                                 
+        %li
           =t(:answers, :scope => "activerecord.attributes.question")
-      .box.views
-        .counter{:class => class_for_number(question.views_count) }
-          =format_number(question.views_count)
-        .text
-          =t(:views, :scope => "activerecord.attributes.question")
-    / Question Summary
-    .summary
-      .left.vote-icon
-        -unless question.closed
-          -if logged_in? && (vote = current_user.vote_on(question))
-            -if vote.value < 0
-              = image_tag "edit-delete.png"
-            -else
-              = image_tag "dialog-ok-apply.png"
-          -elsif current_user != question.user
-            = form_tag question_votes_path(question), :class => "vote-up-form" do
-              .fields
-                = hidden_field_tag "source", questions_path, :id =>  "source_#{question.id}"
-                = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "quick-vote-button")
 
-      -cache("question_on_index_#{question.id}_#{I18n.locale}") do
-        %h3= link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-        .tag-list
-          -if question.tags.empty? && logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
-            %span.retag
-              = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag', :class => "important"
-          -question.first_tags.each do |tag|
-            %span.tag{:class => "tag_#{h(tag)}"}
-              = link_to h(tag), question_tag_path(:tags => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
-
-      .owner-data
-        -if owner
-          =render :partial => "users/user_mini", :locals => {:user => owner}
-        -else
-          =t("global.anonymous")
-        %strong.time_ago
-          = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
-        -if question.wiki
-          %span.wiki_flag
-            wiki
     .clear
+    
 -else
   -cache("mini_question_on_index_#{question.id}_#{I18n.locale}") do
-    %li.item{:class => "#{class_for_question(question)} #{local_assigns[:lite] ? 'lite' : ''}"}
-      .stats
-        .box.answers{:class => question.accepted ? "accepted" : "" }
-          .counter
-            =format_number(question.answers_count)
-          -if !local_assigns[:lite]
-            .text
-              =t(:answers, :scope => "activerecord.attributes.question")
-      .summary
-        %h3
-          = link_to title, question_path(question)
-      .clear
+    %article{:class => "#{class_for_question(question)} #{local_assigns[:lite] ? 'lite' : ''}"}
+
+      %h3
+        = link_to title, question_path(question)      
+
+      .toolbar
+        %ul
+          %li.answers
+            = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}"      

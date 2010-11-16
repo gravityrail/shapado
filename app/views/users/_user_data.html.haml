@@ -1,0 +1,16 @@
+Por:   
+-bronze, silver, gold = user.badges_count_on(current_group)
+%span.nickname
+  -unless user.nil?
+    =link_to h(user.login), user_path(user), :class => "user-link"
+-if user.owner_of?(current_group)
+  %i.ownerflair{:title => "admin"}
+    [ Admin ]
+-elsif user.mod_of?(current_group)
+  %span.modflair{:title => "moderator"}
+    [ Moderator ]
+-elsif user.editor_of?(current_group)
+  %span.editorflair{:title => "editor"}
+    [ Editor ]
+-else
+  = t('users.deleted')

@@ -1,0 +1,24 @@
+.user-zone.module
+  
+  .avatar
+    = link_to image_tag("avatar-25.png")
+  
+  .greeting
+    %small Bienvenido
+    %b dgfrancisco
+  .clear 
+  
+  %nav
+    %ul
+      %li.active
+        =link_to "Mi perfil"
+      %li
+        =link_to "Mi Karma: 200"
+      %li
+        =link_to "Mis preguntas: [ 20 ]"
+      %li
+        =link_to "Mis respuestas: [ 5 ]"
+      %li
+        =link_to "Mis Badges"
+      %li.log-out
+        =link_to "Salir"

@@ -35,6 +35,9 @@ $xx-large: 55px
 $huge: 72px
 $x-huge: 89px
 
+// Text shadow
+$text-shadow: 0 1px 1px #000
+
 //  COLORS
 //======================================================================== 
 // General site colors
@@ -43,12 +46,15 @@ $gray: #aaa
 $lightGray: #f2f2f2
 
 $orange: #ee681f
-$lightOrange: #ffd3b5
+$lightOrange: #ffebdd
 $darkOrange: #d05800
 
 $blue: #00a9b2
 $lightBlue: #caedef
 $darkBlue: #019199
+
+$red: #f00
+$darkRed: #c00
 
 // Link colors
 $link_color: $orange
@@ -115,10 +121,14 @@ $color: $dark
 
 // Cross browser box shadow
 // If you want to have multiple box shadows, you must enclose the values in quotes (" ").
+$shadow: 0 0 10px #000
+
 =box-shadow($shadow)
   $shadow: unquote($shadow)
   -moz-box-shadow: $shadow
   -webkit-box-shadow: $shadow
+  o-box-shadow: $shadow
+  khtml-box-shadow: $shadow
   box-shadow: $shadow
 
 // Cross browser rounded corners
@@ -146,3 +156,18 @@ $bigRadius: 20px
   o-border-radius: $bigRadius
   khtml-border-radius: $bigRadius
   border-radius: $bigRadius
+
+// Cross browser gradients
+=orange-gradient
+  background-image: -moz-linear-gradient(top, $orange, $darkOrange) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $orange),color-stop(1, $darkOrange)) !important 
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange')" !important
+  background-color: $orange
+
+=error-gradient
+  background-image: -moz-linear-gradient(top, $red, $darkRed) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $red),color-stop(1, $darkRed)) !important 
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed')" !important
+  background-color: $red  

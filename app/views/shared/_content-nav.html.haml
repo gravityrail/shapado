@@ -1,0 +1,22 @@
+%nav
+  %ul.content-tabs
+    %li.questions.active
+      =link_to t("layouts.application.questions"), questions_path
+    %li.answers
+      =link_to "Respuestas"
+    %li.unanswered
+      =link_to t("layouts.application.unanswered"), unanswered_questions_path
+    %li.activity
+      =link_to "Activity"
+    
+  %section.filters
+    %ul
+      %header Filtrar por:
+      %li
+        = link_to t("questions.index.newest"), questions_path(:sort=>"newest"), :title => t("questions.index.newest_tooltip")
+      %li.active
+        = link_to t("questions.index.hot"), questions_path(:sort=>"hot"), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
+      %li
+        = link_to t("questions.index.votes"), questions_path(:sort=>"votes"), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
+    
+    
