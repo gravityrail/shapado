@@ -213,3 +213,13 @@ function init_geolocal(){
       //error('not supported');
   }
 }
+
+// Script for HTML5 tags, so IE will see it and use it
+document.createElement('header');
+document.createElement('footer');
+document.createElement('section');
+document.createElement('aside');
+document.createElement('nav');
+document.createElement('article');
+document.createElement('hgroup');
+      

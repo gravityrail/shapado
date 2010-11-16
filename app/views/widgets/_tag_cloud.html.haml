@@ -1,6 +1,12 @@
 -cache("tag_cloud_#{current_group.id}_#{Date.today.to_s}") do
-  %h3
-    = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "tags"])
-  .content
+  .widget-tags.module
+    %header
+      = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "Tags"])
+    %hgroup
+      %ul
+        %li.active
+          =link_to "Size"
+        %li
+          =link_to "Alphabetically"
     = tag_cloud([], {}, widget[:settings][:limit])
   .clear

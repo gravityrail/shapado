@@ -9,18 +9,7 @@
     = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = render "shared/layout/javascript"
-    
-    %script{:type => "text/javascript", :charset => "utf-8"}
-      document.createElement('header');
-      document.createElement('footer');
-      document.createElement('section');
-      document.createElement('aside');
-      document.createElement('nav');
-      document.createElement('article');
-      document.createElement('hgroup');
-    
-    %script{:type => "text/javascript", :charset => "utf-8"}
-      $(function() {$( "#action-tabs" ).tabs();});
+    <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
 	
   %body
     = render "shared/analytics"
@@ -37,43 +26,16 @@
         
         = render "shared/user-zone"      
         
+        .widget-lang.module
+          = render :partial => "shared/language_filter"
+          
         .widget-links.module
           %nav
             %ul
               %li
-                =link_to "Registration form"
-              %li
-                =link_to "Blog"
-              %li
-                =link_to "About us"
+                = link_to "Random question", random_questions_path(:unanswered => true)
         
-        .widget-tags.module
-          %header Popular Tags
-          %hgroup
-            %ul
-              %li
-                =link_to "Size"
-              %li.active
-                =link_to "Alphabetically"
-          %ul.tags-list
-            %li
-              =link_to "Alphabetically"
-            %li
-              =link_to "Alphabetically"                
-            %li
-              =link_to "Alphabetically"
-            %li
-              =link_to "Alphabetically"
-            %li
-              =link_to "Alphabetically"                
-            %li
-              =link_to "Alphabetically"              
-            %li
-              =link_to "Alphabetically"
-            %li
-              =link_to "Alphabetically"                
-            %li
-              =link_to "Alphabetically"              
+        = render "widgets/tag_cloud", :widget => TagCloudWidget.new            
 
         .widget-networks.module
           %p  Siguenos y comparte:
@@ -86,6 +48,10 @@
               =link_to "Digg", "#", :class => "digg", :rel => "nofollow"
             %li
               =link_to "Delicious", "#", :class => "delicious", :rel => "nofollow"
+            %li
+              -feed_urls.each do |title, url|
+                %a{:href => url}
+                  =image_tag "atom.png", :width => 20
           .clear
                                                            
       %section.content-panel
@@ -98,24 +64,99 @@
           .clear
      
       %section.right-panel  
-        temp links
-        = link_to "Random question", random_questions_path(:unanswered => true)
+        
+        .add
+          %h6 Publicidad
+          =link_to image_tag "banner-250x250.jpg"        
+        
+        .module
+          %h3 Grupos Más Activos
+          
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"              
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+          %footer
+            =link_to "Ver todos los grupos", "#"
+          .clear
+
+        .module
+          %h3 Top Users
+          
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"              
+
+          %section
+            =link_to image_tag "group-avatar.gif"
+            %p 
+              %b 
+                =link_to "Business on Rails", "#" 
+              %i 300 Miembros
+              %br
+              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
+          %footer
+            =link_to "Ver todos los grupos", "#"
+          .clear
+        
         = yield :sidebar
         
         = render "shared/ads/context_panel_ads"
-        
-        .block
-          %h3
-            = t("subscribe")
-          .sidebar-block
-            .feeds
-              -feed_urls.each do |title, url|
-                .feed_entry
-                  %a{:href => url}
-                    %span
-                      =image_tag "atom.png", :width => 20
-                      =h(title)
-              .clear
+
         .clear
         = render "shared/ads/footer_ads"    
         

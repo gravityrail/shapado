@@ -27,15 +27,14 @@
 
   = render "shared/widgets", :context => 'mainlist'
 
-= render :partial => "searches/search_box"
+
 
 /Questions
-%ul.items#questions
-  -if @questions.empty?
-    %li.highlight
-      = t(".empty")
-  -@questions.each do |question|
-    = render :partial => "question", :object => question
+-if @questions.empty?
+  %li.highlight
+    = t(".empty")
+-@questions.each do |question|
+  = render :partial => "question", :object => question
 
 #additional_info
   =will_paginate @questions

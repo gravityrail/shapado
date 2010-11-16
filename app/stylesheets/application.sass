@@ -42,14 +42,57 @@ section
     margin-bottom: 10px
     padding-bottom: 7px
     border-bottom: 1px solid #ddd
-    
+section.right-panel  
+  .module
+    border: 1px solid #ccc
+    background-color: #fff
+    padding: 0
+    h3
+      font-size: 15px
+      font-style: italic
+      font-weight: bold
+      padding: 10px
+      border-bottom: 1px solid #ccc     
+  section
+    padding: 10px
+    border-bottom: 1px dotted #ccc
+    img
+      float: left
+      margin: 0 10px 5px 0
+    p
+      font-size: 9px
+      line-height: 10px
+      a
+        color: #999
+      b
+        font-size: 11px
+        color: #000
+        a
+          color: #000
+          font-weight: bold
+      i 
+        font-size: 11px
+        font-style: italic
+  footer
+    padding: 10px
+    text-align: right
+    background-color: #fff
+    border-top: 2px solid #ccc
+    +normal-radius
+    a
+      font-style: italic
+      color: #000
+    a:hover
+      border-bottom: 1px dotted
+
+
 .content-panel
-  width: 50%
+  width: 53%
   padding: 20px 1%
   display: inline
 
 .right-panel
-  width: 28%
+  width: 25%
   display: inline
 
 footer
@@ -125,6 +168,17 @@ footer
     color: #fff
     padding: 1px 5px
     +small-radius
+
+// Adds
+//========================================================================
+.add
+  margin: 10px 0
+  h6
+    font-size: 11px
+    color: #aaa
+    margin: 0 0 5px 0
+    text-align: center    
+
 // Brand
 //========================================================================
 .brand
@@ -153,7 +207,6 @@ footer
       margin-bottom: 15px   
     a:hover
       background-color: $orange
-
 
 // User zone
 //========================================================================
@@ -215,7 +268,7 @@ footer
 // Tags
 .widget-tags
   hgroup
-    height: 30px
+    height: 25px
     ul
       li
         float: left
@@ -231,19 +284,39 @@ footer
         a
           color: $dark
           font-weight: bold
-  ul.tags-list
-    li
+  .tag_cloud
+    span
       font-size: 11px
-      display: block
-      margin-bottom: 12px
+      display: block          
       a
         background-color: #ddd
         +big-radius
         padding: 3px 7px
+        display: block
         color: $gray
+        margin-bottom: 3px
+        width: 88%
+        overflow: hidden
+      a:first-letter
+        text-transform: uppercase 
+      a.xxl
+        width: 88%
+      a.xl
+        width: 78% 
+      a.l
+        width: 68%
+      a.s
+        width: 58%
+      a.xxs 
+        width: 48%
+      a.xs
+        width: 3	8%
       a:hover
         background-color: $gray
         color: $dark
+        width: 88%
+        display: block
+        text-align: right
   
 // Networks
 .widget-networks
@@ -272,7 +345,7 @@ footer
 
 // ACTION TABS
 //======================================================================== 
-#action-tabs
+#mainTabs
   margin-bottom: 15px
   ul
     z-index: 9999
@@ -340,13 +413,29 @@ footer
   background-color: #fff
   border: 1px solid #e5e5e5
   overflow: hidden
-  ul.content-tabs
-    border-bottom: 1px solid $orange
-    height: 35px
-    li.active
+  nav.questions
+    li.questions
       a
         border-bottom: 2px solid $orange
         color: #000
+  nav.unanswered
+    ul.content-tabs
+      border-bottom: 1px solid $blue
+      li.unanswered
+        a
+          border-bottom: 2px solid $blue
+          color: #000
+    .filters
+      ul
+        background-color: $lightBlue
+        border-bottom: 3px solid #a3e7eb
+        li.active
+          a
+            color: #000
+            border-bottom: 3px solid $blue
+  ul.content-tabs
+    border-bottom: 1px solid $orange
+    height: 35px
     li
       float: left
       display: inline
@@ -404,6 +493,7 @@ footer
 //========================================================================      
 #main-content-wrap
   section
+    width: 100%
     article
       border-bottom: 1px solid #ccc
       padding: 15px

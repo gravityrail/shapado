@@ -1,6 +1,6 @@
-%nav
+%nav{:class => @active_tab}
   %ul.content-tabs
-    %li.questions.active
+    %li.questions
       =link_to t("layouts.application.questions"), questions_path
     %li.answers
       =link_to "Respuestas"
