@@ -35,7 +35,7 @@
               %li
                 = link_to "Random question", random_questions_path(:unanswered => true)
         
-        = render "widgets/tag_cloud", :widget => TagCloudWidget.new            
+        = tag_cloud([], {}, 50)       
 
         .widget-networks.module
           %p  Siguenos y comparte:
@@ -53,6 +53,11 @@
                 %a{:href => url}
                   =image_tag "atom.png", :width => 20
           .clear
+          
+        .add
+          %h6 Publicidad
+          =link_to image_tag "http://www.bipbanners.co.uk/assets/images/WebConveyancing_Animated_SkyScraper_Banner_Sample_1A.gif"
+        
                                                            
       %section.content-panel
         = render "shared/action-tabs"
@@ -67,91 +72,7 @@
         
         .add
           %h6 Publicidad
-          =link_to image_tag "banner-250x250.jpg"        
-        
-        .module
-          %h3 Grupos Más Activos
-          
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"              
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-          %footer
-            =link_to "Ver todos los grupos", "#"
-          .clear
-
-        .module
-          %h3 Top Users
-          
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"              
-
-          %section
-            =link_to image_tag "group-avatar.gif"
-            %p 
-              %b 
-                =link_to "Business on Rails", "#" 
-              %i 300 Miembros
-              %br
-              =link_to "A group for those who want to discuss the business side of Ruby on Rails. How do you sell it to potential clients?", "#"
-          %footer
-            =link_to "Ver todos los grupos", "#"
-          .clear
+          =link_to image_tag "banner-250x250.jpg"       
         
         = yield :sidebar
         

@@ -1,13 +1,17 @@
-%h3
-  =t(".title")
-
-.content
-  %ul.list
-    -widget.top_groups.each do |group|
-      %li
-        = link_to h(group.name), domain_url(:custom => group.domain)
+.module
+  %h3 
+    =t(".title")
+  -widget.top_groups.each do |group|    
+    %section
+      =link_to image_tag "group-avatar.gif"
+      %p 
+        %b
+          = link_to h(group.name), domain_url(:custom => group.domain)
+        %i 300 Miembros
+        %br
         &= truncate(strip_tags(group.description), :length => 35)
-  .more
-    =link_to t("scaffold.more"), groups_path
+        =link_to t("scaffold.more"), groups_path
+  %footer
+    =link_to "Ver todos los grupos", "#"
   .clear
-.clear
+

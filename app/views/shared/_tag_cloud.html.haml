@@ -1,6 +1,24 @@
-.tag_cloud
-  -tags.each do |tag|
-    -size = min_size + (tag["count"] - lowest_value["count"]) * ratio
-    -url = url_for(:controller => "questions", :action => "index", :tags => tag["name"])
-    %span
-      =link_to tag["name"], url, :class => "#{tag_class} #{css[size.round]}"
+.widget-tags.module
+
+  %header
+    = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "Tags"])
+
+  %hgroup
+    %ul
+      %li.active
+        =link_to "Size"
+      %li
+        =link_to "Alphabetically"
+  .tag_cloud
+    -tags.each do |tag|
+      -size = min_size + (tag["count"] - lowest_value["count"]) * ratio
+      -url = url_for(:controller => "questions", :action => "index", :tags => tag["name"])
+      %span
+        =link_to tag["name"], url, :class => "#{tag_class} #{css[size.round]}"   
+  .clear        
+  
+    
+    
+    
+      
+
