@@ -1,17 +1,1 @@
--content_for :sidebar do
-  -if logged_in?
-    = render :partial => "shared/language_filter"
-
-  = render "shared/widgets", :context => 'mainlist'
-
-/Questions
--if @questions.empty?
-  %li.highlight
-    = t(".empty")
--@questions.each do |question|
-  = render "questions/question", :question => question
-
-#additional_info
-  =will_paginate @questions
-
-  .clear
+= render 'shared/posts'

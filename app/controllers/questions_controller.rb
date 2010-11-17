@@ -121,6 +121,7 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # TODO: remove me
   def unanswered
     if params[:language] || request.query_string =~ /tags=/
       params.delete(:language)
