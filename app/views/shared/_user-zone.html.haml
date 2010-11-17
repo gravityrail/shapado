@@ -1,11 +1,15 @@
 .user-zone.module
 
   .avatar
-    = link_to image_tag("avatar-25.png")
+    -if logged_in?
+      = gravatar(current_user.email.to_s, :size => 25)
+    -else
+      = link_to image_tag("avatar-25.png")
 
   .greeting
     %small Bienvenido
-    %b dgfrancisco
+    -if logged_in?
+      %b=current_user.login
   .clear
 
   %nav
