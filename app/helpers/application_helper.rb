@@ -325,5 +325,13 @@ module ApplicationHelper
       require_js domain_url(:custom => current_group.domain)+'/javascripts/jsMath/easy/load.js'
     end
   end
+
+  def find_answer(question)
+    if question.accepted
+      question.answer
+    else
+      question.answers.order_by(:votes_average.asc).first
+    end
+  end
 end
 

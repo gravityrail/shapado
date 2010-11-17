@@ -1,4 +1,3 @@
--question = answer.question
 -title = h(question.title)
 
 %li.item
@@ -12,5 +11,5 @@
   / Question Summary
   .summary
     %h3
-      = link_to title, question_path(question), :title => truncate(h(answer.body), :length => 200)
+      = link_to truncate(h(answer.body), :length => 200), question_path(question), :title => title
   .clear

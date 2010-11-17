@@ -3,7 +3,7 @@
     %li.questions
       =link_to t("layouts.application.questions"), questions_path
     %li.answers
-      =link_to "Respuestas", answers_path
+      =link_to "Respuestas", questions_path(:answers => 1)
     %li.unanswered
       =link_to t("layouts.application.unanswered"), unanswered_questions_path
     %li.activity
@@ -11,7 +11,7 @@
 
   %section.filters
     %ul
-      %header Ordenar por:
+      %header Sort By:
       %li
         = link_to t("questions.index.newest"), questions_path(:sort=>"newest"), :title => t("questions.index.newest_tooltip")
       %li.active
