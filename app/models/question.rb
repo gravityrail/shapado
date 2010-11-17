@@ -43,7 +43,7 @@ class Question
   referenced_in :answered_with, :class_name => "Answer"
 
   field :wiki, :type => Boolean, :default => false
-  field :subjective, :type => Boolean, :default => false
+  field :subjetive, :type => Boolean, :default => false
   field :language, :type => String, :default => "en"
   index :language
 

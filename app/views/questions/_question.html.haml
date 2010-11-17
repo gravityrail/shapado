@@ -42,7 +42,10 @@
     .toolbar
       %ul
         %li.answers
-          = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}"
+          = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}", question_path(question)
+        -if question.followers_count.to_i > 0
+          %li.followers
+            = "#{format_number(question.followers_count)} followers"
         %li.votes
           -unless question.closed
             -if logged_in? && (vote = current_user.vote_on(question))
