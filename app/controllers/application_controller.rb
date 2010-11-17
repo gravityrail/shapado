@@ -67,9 +67,14 @@ class ApplicationController < ActionController::Base
       conditions[:activity_at] = {"$gt" => 5.days.ago}
     end
 
+    @active_tab = "questions"
     if params[:unanswered]
       conditions[:answered_with_id] = nil
+      @active_tab = "unanswered"
+    elsif params[:answers]
+      @active_tab = "answers"
     end
+    @active_subtab ||= params[:sort] || "newest"
 
     @questions = Question.minimal.where(conditions.merge(extra_conditions)).order_by(current_order).paginate({:per_page => 25, :page => params[:page] || 1})
 

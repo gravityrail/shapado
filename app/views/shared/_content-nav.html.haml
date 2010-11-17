@@ -9,12 +9,12 @@
     %li.activity
       =link_to "Activity", "#"
 
-  %section.filters
+  %section.filters{:class => @active_subtab }
     %ul
       %header Sort By:
-      %li
+      %li.newest
         = link_to t("questions.index.newest"), url_for(params.merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip")
-      %li.active
+      %li.hot
         = link_to t("questions.index.hot"), url_for(params.merge(:sort=>"hot")), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
-      %li
+      %li.votes
         = link_to t("questions.index.votes"), url_for(params.merge(:sort=>"votes")), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
