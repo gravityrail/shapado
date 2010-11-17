@@ -92,7 +92,6 @@ section.right-panel
     a:hover
       border-bottom: 1px dotted
 
-
 .content-panel
   width: 53%
   padding: 20px 1%
@@ -396,14 +395,14 @@ footer
     input
       border: 1px solid #ccc
       border-right: none
-      padding: 5px 10px
+      padding: 6px 10px
       font-size: 14px
       margin: 0
-      width: 71%
+      width: 69%
       float: left
     :hover
       background-color: #c00
-    button
+    input.ask_question
       +orange-gradient 
       border: none
       font-size: 14px
@@ -411,6 +410,7 @@ footer
       padding: 6px 11px
       float: left
       color: #fff
+      width: auto
     p
       float: left
       font-style: italic
@@ -576,6 +576,37 @@ footer
             a:hover
               background-color: #ccc
               color: #000
+
+// Questions Tab
+#tags
+  .tagwrapper
+    border: 1px solid #ccc !important
+    min-height: 20px !important
+    padding: 0 !important
+    font-size: 11px
+    line-height: 11px
+  p
+    margin-top: 5px 
+  ul
+    margin: 2px !important
+    +big-radius
+    padding: 0
+    li
+      a
+        padding: 0 5px 1px 5px
+        font-family: $helvetica
+        font-size: 11px
+        +big-radius
+      a:hover
+        cursor: pointer
+      span
+  input.autocomplete_for_tags
+    padding: 3px 0 !important
+    font-size: 11px
+    line-height: 11px
+    
+
+
   
 // DEFAULT LIBRARIES
 //@import "lib/mixins"

@@ -9,10 +9,6 @@
           
   %section#tab1
     =image_tag("pregunta-icon-big.png")
-    = form_tag search_path, :method => :get, do
-      = text_field_tag :q, params[:q], :id => "search-field"
-      %button Preguntar
-    %p Escribe aquí tu pregunta - Una ves la escribas, podrás complementarla
+    =render :partial => "welcome/quick_question_box"
   .clear            
 //= render :partial => "searches/search_box"  
-//=link_to t("layouts.application.ask_question"), new_question_path, :rel => 'nofollow'      
