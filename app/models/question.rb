@@ -245,7 +245,7 @@ class Question
   end
 
   def follower?(user)
-    self.follower_ids && self.follower_ids.include?(user._id)
+    self.follower_ids && self.follower_ids.include?(user.id)
   end
 
   def disable_limits?
