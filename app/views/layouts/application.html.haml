@@ -34,6 +34,10 @@
             %ul
               %li
                 = link_to "Random question", random_questions_path(:unanswered => true)
+              %li
+                = link_to "Badges", badges_path
+              %li
+                = link_to "Pages", pages_path
 
         = tag_cloud([], {}, 50)
 
