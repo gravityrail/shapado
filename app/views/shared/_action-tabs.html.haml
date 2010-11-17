@@ -1,18 +1,14 @@
 #mainTabs
   %ul
     %li.active
-      =link_to "PREGUNTAR", "#tab1"
+      =link_to "PREGUNTAR", "#questions"
     %li
-      =link_to "RESPONDER", "#tab2"
+      =link_to "RESPONDER", "#answers"
     %li  
-      =link_to "BUSCAR", "#tab3"
+      =link_to "BUSCAR", "#search"
           
-  %section#tab1
+  %section#questions
     =image_tag("pregunta-icon-big.png")
-    = form_tag search_path, :method => :get, do
-      = text_field_tag :q, params[:q], :id => "search-field"
-      %button Preguntar
-    %p Escribe aquí tu pregunta - Una ves la escribas, podrás complementarla
+    =render :partial => "welcome/quick_question_box"
   .clear            
 //= render :partial => "searches/search_box"  
-//=link_to t("layouts.application.ask_question"), new_question_path, :rel => 'nofollow'      
