@@ -156,47 +156,26 @@ class UsersController < ApplicationController
   def feed
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
 
-    @questions = Question.minimal.where(scoped_conditions(:follower_ids => @user.id)).paginate(:per_page => params[:per_page]||25, :page => params[:page])
-    respond_to do |format|
-      format.json { render :json => @questions}
-      format.html
-    end
+    find_questions(:follower_ids => @user.id)
   end
 
   def by_me
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
-
-    @questions = Question.minimal.where(scoped_conditions(:user_id => @user.id)).paginate(:per_page => params[:per_page]||25, :page => params[:page])
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @questions}
-    end
+    find_questions(:user_id => @user.id)
   end
 
   def preferred
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
     tags = @user.config_for(current_group).preferred_tags
 
-    @questions = Question.minimal.where(scoped_conditions(:tags.in => tags)).paginate(:per_page => params[:per_page]||25, :page => params[:page])
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @questions}
-    end
+    find_questions(:tags.in => tags)
   end
 
   def expertise
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
     tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
 
-    @questions = Question.minimal.where(scoped_conditions(:group_id => current_group.id,
-                                        :tags.in => tags)).paginate(:per_page => params[:per_page]||25, :page => params[:page])
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @questions}
-    end
+    find_questions(:tags.in => tags)
   end
 
   def connect

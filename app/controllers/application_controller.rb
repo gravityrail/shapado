@@ -53,6 +53,48 @@ class ApplicationController < ActionController::Base
     @current_group
   end
 
+  def find_questions(extra_conditions = {})
+    if params[:language] || request.query_string =~ /tags=/
+      params.delete(:language)
+      head :moved_permanently, :location => url_for(params)
+      return
+    end
+
+    set_page_title(t("questions.index.title"))
+    conditions = scoped_conditions(:banned => false)
+
+    if params[:sort] == "hot"
+      conditions[:activity_at] = {"$gt" => 5.days.ago}
+    end
+
+    if params[:unanswered]
+      conditions[:answered_with_id] = nil
+    end
+
+    @questions = Question.minimal.where(conditions.merge(extra_conditions)).order_by(current_order).paginate({:per_page => 25, :page => params[:page] || 1})
+
+    @langs_conds = scoped_conditions[:language][:$in]
+
+    if logged_in?
+      feed_params = { :feed_token => current_user.feed_token }
+    else
+      feed_params = {  :lang => I18n.locale,
+                          :mylangs => current_languages }
+    end
+    add_feeds_url(url_for({:format => "atom"}.merge(feed_params)), t("feeds.questions"))
+    if params[:tags]
+      add_feeds_url(url_for({:format => "atom", :tags => params[:tags]}.merge(feed_params)),
+                    "#{t("feeds.tag")} #{params[:tags].inspect}")
+    end
+    @tag_cloud = Question.tag_cloud(scoped_conditions, 25)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
+      format.atom
+    end
+  end
+
   def current_group
     @current_group
   end
