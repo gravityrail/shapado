@@ -46,7 +46,11 @@ class TagsController < ApplicationController
   def update
     @tag = current_scope.where(:name => params[:id]).first
     @tag.safe_update(%w[name icon description], params[:tag])
+    name_changes = @tag.changes["name"]
     if @tag.save
+      if name_changes
+        Question.override({group_id: @tag.group_id, :tags => name_changes.first}, {"tags.$" => name_changes.last})
+      end
       redirect_to tag_url(@tag)
     else
       render :action => "edit"
