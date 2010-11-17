@@ -171,6 +171,6 @@ Shapado::Application.routes.draw do
 
   match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
-  root :to => 'welcome#index'
+  root :to => 'questions#index'
   match '/:controller(/:action(/:id))'
 end
