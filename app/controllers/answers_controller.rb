@@ -178,45 +178,25 @@ class AnswersController < ApplicationController
 
   def favorite
     @answer = Answer.find(params[:id])
-    @favorite = Favorite.new
-    @favorite.answer = @answer
-    @favorite.user = current_user
-    @favorite.group = @answer.question.group
-
+    @answer.add_favorite!(current_user)
     Jobs::Mailer.async.on_favorite_answer(@answer.id, current_user.id).commit!
     Jobs::Answers.async.on_favorite_answer(@answer.id).commit!
 
     respond_to do |format|
-      if @favorite.save
-        @answer.add_favorite!(@favorite, current_user)
-        flash[:notice] = t("favorites.create.success")
-        format.html { redirect_to(question_path(@answer.question)) }
-        format.json { head :ok }
-        format.js {
-          render(:json => {:success => true,
-                   :message => flash[:notice], :increment => 1 }.to_json)
-        }
-      else
-        flash[:error] = @favorite.errors.full_messages.join("**")
-        format.html { redirect_to(question_path(@answer.question)) }
-        format.js {
-          render(:json => {:success => false,
-                   :message => flash[:error], :increment => 0 }.to_json)
-        }
-        format.json { render :json => @favorite.errors, :status => :unprocessable_entity }
-      end
+      flash[:notice] = t("favorites.create.success")
+      format.html { redirect_to(question_path(@answer.question)) }
+      format.json { head :ok }
+      format.js {
+        render(:json => {:success => true,
+                 :message => flash[:notice], :increment => 1 }.to_json)
+      }
     end
   end
 
   def unfavorite
     @answer = Answer.find(params[:id])
-    @favorite = current_user.favorite(@answer)
-    if @favorite
-      if current_user.can_modify?(@favorite)
-        @answer.remove_favorite!(@favorite, current_user)
-        @favorite.destroy
-      end
-    end
+    @answer.remove_favorite!(current_user)
+
     flash[:notice] = t("unfavorites.create.success")
     respond_to do |format|
       format.html { redirect_to(question_path(@answer.question)) }

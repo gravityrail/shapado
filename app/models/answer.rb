@@ -20,7 +20,9 @@ class Answer
   index :anonymous
 
   field :rewarded, :type => Boolean, :default => false
-  field :favorites_count, :type => Integer, :default => 0
+
+  field :favoriters_count, :type => Integer, :default => 0
+  references_many :favoriters, :stored_as => :array, :class_name => "User"
 
   referenced_in :group
   index :group_id
@@ -145,16 +147,20 @@ class Answer
     end
   end
 
-  def add_favorite!(fav, user)
-    self.inc(:favorites_count, 1)
+  def add_favorite!(user)
+    self.push_uniq(:favoriter_ids => user.id)
+    self.increment(:favorites_count => 1)
   end
 
-  def remove_favorite!(fav, user)
-    self.decrement(:favorites_count => 1)
+  def remove_favorite!(user)
+    if favorite_for?(user)
+      self.pull(:favoriter_ids => user.id)
+      self.decrement(:favorites_count => 1)
+    end
   end
 
-  def favorite_for?(_user)
-    _user.favorite(self)
+  def favorite_for?(user)
+    self.favoriter_ids && self.favoriter_ids.include?(user.id)
   end
 
   protected
