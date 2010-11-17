@@ -22,12 +22,20 @@ Shapado::Application.routes.draw do
     collection do
       get :autocomplete_for_user_login
       post :connect
+      get :feed
+      get :expertise
+      get :preferred
+      get :by_me
     end
 
     member do
       post :unfollow
       post :change_preferred_tags
       post :follow
+      get :feed
+      get :expertise
+      get :preferred
+      get :by_me
     end
   end
 
