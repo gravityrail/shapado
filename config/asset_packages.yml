@@ -41,4 +41,7 @@ stylesheets:
 - base:
   - ui-lightness/jquery-ui
   - compiled/application
+  - multiauth
+  - prettify
+
 

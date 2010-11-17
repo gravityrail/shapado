@@ -1,30 +1,23 @@
 .user-zone.module
 
-  .avatar
-    -if logged_in?
+  -if !logged_in?
+    =multiauth_menu("Sign In")
+  -else
+    .avatar
       = gravatar(current_user.email.to_s, :size => 25)
-    -else
-      = link_to image_tag("avatar-25.png")
 
-  .greeting
-    %small Bienvenido
-    -if logged_in?
-      %b=current_user.login
-  .clear
-
-  %nav
-    %ul
-      %li.active
-        =link_to "Mi perfil"
-      %li
-        =link_to "Mi Karma: 200"
-      %li
-        =link_to "Mis preguntas: [ 20 ]"
-      %li
-        =link_to "Mis respuestas: [ 5 ]"
-      %li
-        =link_to "Mis Badges"
+    .greeting
+      %small Welcome
       -if logged_in?
+        %b=current_user.login
+    .clear
+
+    %nav
+      %ul
+        %li.active
+          =link_to "Mi perfil", user_path(current_user)
+        %li
+          =link_to "Mi Karma: #{current_user.reputation_on(current_group)}"
         %li
           =link_to "My feed", feed_user_path(current_user)
         %li
@@ -33,5 +26,5 @@
           =link_to "Preferred", preferred_user_path(current_user)
         %li
           =link_to "Collaborate!", expertise_user_path(current_user)
-      %li.log-out
-        =link_to "Salir"
+        %li.log-out
+          =link_to t("layouts.application.logout"), destroy_user_session_path
