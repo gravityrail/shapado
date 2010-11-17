@@ -1,1 +1,3 @@
-= render 'shared/posts'
+= render "shared/content-nav", :questions_link => questions_path
+%section
+  = render 'shared/posts'

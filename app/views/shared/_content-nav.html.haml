@@ -1,7 +1,7 @@
 %nav{:class => @active_tab}
   %ul.content-tabs
     %li.questions
-      =link_to t("layouts.application.questions"), questions_path
+      =link_to t("layouts.application.questions"), questions_link
     %li.answers
       =link_to "Respuestas", url_for(:answers => 1)
     %li.unanswered
@@ -13,10 +13,8 @@
     %ul
       %header Sort By:
       %li
-        = link_to t("questions.index.newest"), questions_path(:sort=>"newest"), :title => t("questions.index.newest_tooltip")
+        = link_to t("questions.index.newest"), url_for(params.merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip")
       %li.active
-        = link_to t("questions.index.hot"), questions_path(:sort=>"hot"), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
+        = link_to t("questions.index.hot"), url_for(params.merge(:sort=>"hot")), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
       %li
-        = link_to t("questions.index.votes"), questions_path(:sort=>"votes"), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
-
-
+        = link_to t("questions.index.votes"), url_for(params.merge(:sort=>"votes")), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"

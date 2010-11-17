@@ -10,32 +10,32 @@
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = render "shared/layout/javascript"
     <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
-	
+
   %body
     = render "shared/analytics"
     #container{:class => @current_class}
-     
+
       %section.left-panel
         .brand
           %h1
             -if current_group.has_logo?
               =link_to image_tag(logo_path(current_group), :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
             -else
-              = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)    
-              %small Simplemente &nbsp;&nbsp;&nbsp; &nbsp; Pregunta     
-        
-        = render "shared/user-zone"      
-        
+              = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
+              %small Simplemente &nbsp;&nbsp;&nbsp; &nbsp; Pregunta
+
+        = render "shared/user-zone"
+
         .widget-lang.module
           = render :partial => "shared/language_filter"
-          
+
         .widget-links.module
           %nav
             %ul
               %li
                 = link_to "Random question", random_questions_path(:unanswered => true)
-        
-        = tag_cloud([], {}, 50)       
+
+        = tag_cloud([], {}, 50)
 
         .widget-networks.module
           %p  Siguenos y comparte:
@@ -53,32 +53,30 @@
                 %a{:href => url}
                   =image_tag "atom.png", :width => 20
           .clear
-          
+
         .add
           %h6 Publicidad
           =link_to image_tag "http://www.bipbanners.co.uk/assets/images/WebConveyancing_Animated_SkyScraper_Banner_Sample_1A.gif"
-        
-                                                           
+
+
       %section.content-panel
         = render "shared/action-tabs"
 
         #main-content-wrap
-          = render "shared/content-nav"
-          %section
-            = yield
+          = yield
           .clear
-     
-      %section.right-panel  
-        
+
+      %section.right-panel
+
         .add
           %h6 Publicidad
-          =link_to image_tag "banner-250x250.jpg"       
-        
+          =link_to image_tag "banner-250x250.jpg"
+
         = yield :sidebar
-        
+
         = render "shared/ads/context_panel_ads"
 
         .clear
-        = render "shared/ads/footer_ads"    
-        
+        = render "shared/ads/footer_ads"
+
       = render "shared/layout/footer"
