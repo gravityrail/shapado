@@ -1,13 +1,13 @@
 #mainTabs
   %ul
     %li.active
-      =link_to "PREGUNTAR", "#tab1"
+      =link_to "PREGUNTAR", "#questions"
     %li
-      =link_to "RESPONDER", "#tab2"
+      =link_to "RESPONDER", "#answers"
     %li  
-      =link_to "BUSCAR", "#tab3"
+      =link_to "BUSCAR", "#search"
           
-  %section#tab1
+  %section#questions
     =image_tag("pregunta-icon-big.png")
     =render :partial => "welcome/quick_question_box"
   .clear            

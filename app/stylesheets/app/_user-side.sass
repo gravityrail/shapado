@@ -1,0 +1,52 @@
+// ========================================================================
+//    Document   	:   _user-side.sass
+//    Created on 	:   Nov16 - 2010, 21:57 pm
+//    Author      	:   @dgfrancisco
+//    Client     		:   Shapado
+//    Description	:   Estilos para las zonas de ususario y los modulos nuevos al logearce
+//======================================================================== 
+
+// Zona de ususario en la columna lateral
+//========================================================================
+.user-zone
+  .avatar
+    float: left
+    a
+      border: none
+      img
+        border: 1px solid #aaa
+  .greeting
+    float: right
+    width: 78%
+    small
+      display: block
+      font-size: 10px
+      text-transform: italic
+      color: $gray
+      margin: 2px 0
+    b
+      font-size: 12px
+
+  // User Nav
+  //======================================================================
+  nav
+    ul
+      margin-top: 5px
+      text-align: right
+      border: 1px solid $lightOrange
+      padding: 10px 10% 3px 0
+      background-color: #fff
+      width: 86%
+      li
+        padding: 0
+        margin-bottom: 8px
+        font-size: 12px
+        a       
+          color: $dark
+        a:hover
+          border-bottom: 1px dotted $darkOrange
+          color: $darkOrange
+      .log-out
+        a, a:hover
+          font-weight: bold
+          color: #c00

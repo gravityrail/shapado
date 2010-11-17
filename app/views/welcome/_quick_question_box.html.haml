@@ -14,12 +14,13 @@
     = f.hidden_field :language, :value => lang
   -else
     = language_select(f, @question)
+  %p
+    = raw(current_group.question_prompt) || t(".quick_question")
   .clear 
   #tags
     %p
       = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "Add Tags to your question"])
     =f.text_field :tags, :class => "text_field autocomplete_for_tags", :placeholder =>  t("questions.form.tags_tip")
     
-%p
-  = raw(current_group.question_prompt) || t(".quick_question")
+
 .clear   
