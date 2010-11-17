@@ -1,13 +1,13 @@
 .user-zone.module
-  
+
   .avatar
     = link_to image_tag("avatar-25.png")
-  
+
   .greeting
     %small Bienvenido
     %b dgfrancisco
-  .clear 
-  
+  .clear
+
   %nav
     %ul
       %li.active
@@ -20,5 +20,14 @@
         =link_to "Mis respuestas: [ 5 ]"
       %li
         =link_to "Mis Badges"
+      -if logged_in?
+        %li
+          =link_to "My feed", feed_user_path(current_user)
+        %li
+          =link_to "By Me", by_me_user_path(current_user)
+        %li
+          =link_to "Preferred", preferred_user_path(current_user)
+        %li
+          =link_to "Collaborate!", expertise_user_path(current_user)
       %li.log-out
         =link_to "Salir"
