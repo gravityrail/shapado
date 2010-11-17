@@ -56,10 +56,7 @@ namespace :fixdb do
   end
 
   task :update_answers_favorite => [:environment] do
-    favorites = Favorite.not_in(:question_id => nil)
-    favorites.each do |f|
-      f.destroy
-    end if favorites.count > 0
+    Mongoid.database.collection("favorites").remove
     answers = Mongoid.database.collection("answers")
     answers.update({ }, {"$set" => {"favorite_counts" => 0}})
   end
