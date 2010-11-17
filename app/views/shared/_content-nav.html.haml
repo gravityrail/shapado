@@ -3,9 +3,9 @@
     %li.questions
       =link_to t("layouts.application.questions"), questions_path
     %li.answers
-      =link_to "Respuestas", questions_path(:answers => 1)
+      =link_to "Respuestas", url_for(:answers => 1)
     %li.unanswered
-      =link_to t("layouts.application.unanswered"), unanswered_questions_path
+      =link_to t("layouts.application.unanswered"), url_for(:unanswered => 1)
     %li.activity
       =link_to "Activity"
 

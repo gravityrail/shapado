@@ -33,6 +33,10 @@ class QuestionsController < ApplicationController
       conditions[:activity_at] = {"$gt" => 5.days.ago}
     end
 
+    if params[:unanswered]
+      conditions[:answered_with_id] = nil
+    end
+
     @questions = Question.minimal.where(conditions).order_by(current_order).paginate({:per_page => 25, :page => params[:page] || 1})
 
     @langs_conds = scoped_conditions[:language][:$in]
