@@ -45,24 +45,4 @@ module Subdomains
 
     domain
   end
-
-  def tag_url(tag, use_ssl = request.ssl?)
-    (use_ssl ? "https://" : "http://") + tag_host(tag)
-  end
-
-  def tag_host(tag)
-    account_host = ""
-    account_host << tag + "."
-    account_host << tag_domain
-  end
-
-  def tag_domain
-    tag_domain = ""
-    tag_domain << request.subdomains[1..-1].join(".") + "." if request.subdomains.size > 1
-    tag_domain << request.domain + request.port_string
-  end
-
-  def current_tag
-    request.subdomains.first
-  end
 end

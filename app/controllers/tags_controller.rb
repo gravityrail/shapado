@@ -24,18 +24,33 @@ class TagsController < ApplicationController
   end
 
   def new
+    @tag = Tag.new
   end
 
   def edit
-    @tag = current_scope.find(params[:id])
+    @tag = current_scope.where(:name => params[:id]).first
   end
 
   def create
+    @tag = Tag.new
+    @tag.group = current_group
+    @tag.user = current_user
+    @tag.safe_update(%w[name icon description], params[:tag])
+    if @tag.save
+      redirect_to tag_url(@tag)
+    else
+      render :action => :new
+    end
   end
 
   def update
-    @tag = current_scope.find(params[:id])
-    redirect_to tag_url(@tag)
+    @tag = current_scope.where(:name => params[:id]).first
+    @tag.safe_update(%w[name icon description], params[:tag])
+    if @tag.save
+      redirect_to tag_url(@tag)
+    else
+      render :action => "edit"
+    end
   end
 
   def destroy
