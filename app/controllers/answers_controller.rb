@@ -6,10 +6,16 @@ class AnswersController < ApplicationController
   helper :votes
 
   def index
-    @question = current_group.questions.by_slug(params[:question_id])
-    @answers = @question.answers
+    exclude = [:votes, :_keywords]
+    if params[:question_id]
+      @question = current_group.questions.by_slug(params[:question_id])
+      @answers = @question.answers.without(exclude)
+    else
+      @answers = current_group.answers.without(exclude).paginate(:per_page => params[:per_page]||25, :page => params[:page]||1)
+    end
 
     respond_to do |format|
+      format.html
       format.json { render :json => @answers }
     end
   end

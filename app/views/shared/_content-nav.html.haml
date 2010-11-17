@@ -3,12 +3,12 @@
     %li.questions
       =link_to t("layouts.application.questions"), questions_path
     %li.answers
-      =link_to "Respuestas"
+      =link_to "Respuestas", answers_path
     %li.unanswered
       =link_to t("layouts.application.unanswered"), unanswered_questions_path
     %li.activity
       =link_to "Activity"
-    
+
   %section.filters
     %ul
       %header Ordenar por:
@@ -18,5 +18,5 @@
         = link_to t("questions.index.hot"), questions_path(:sort=>"hot"), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
       %li
         = link_to t("questions.index.votes"), questions_path(:sort=>"votes"), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
-    
-    
+
+

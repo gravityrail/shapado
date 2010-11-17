@@ -59,6 +59,7 @@ Shapado::Application.routes.draw do
   post '/questions/:id/start_reward' => "reward#start", :as => :start_reward
   get '/questions/:id/close_reward' => "reward#close", :as => :close_reward
 
+  match '/answers(.format)' => 'answers#index', :as => :answers
   resources :questions do
     resources :votes
     resources :flags
