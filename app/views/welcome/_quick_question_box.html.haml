@@ -7,20 +7,14 @@
   =f.text_field :title, :class => "text_area", :id => "question_title"
   = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
   = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
-  
+
   =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
-  
+
   -if lang
     = f.hidden_field :language, :value => lang
   -else
     = language_select(f, @question)
   %p
     = raw(current_group.question_prompt) || t(".quick_question")
-  .clear 
-  #tags
-    %p
-      = t('.tags', :default => [:"layouts.applications.tags", :"activerecord.attributes.user.tags", "Add Tags to your question"])
-    =f.text_field :tags, :class => "text_field autocomplete_for_tags", :placeholder =>  t("questions.form.tags_tip")
-    
-
-.clear   
+  .clear
+.clear
