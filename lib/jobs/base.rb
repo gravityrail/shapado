@@ -42,8 +42,22 @@ module Jobs
       end
     end
 
-    def shorten_url(url)
-      open("http://bit.ly/api?url=#{CGI.escape(url)}").read rescue url
+    def shorten_url(url, entry)
+      if entry.short_url.blank?
+        begin
+          link = open("http://bit.ly/api?url=#{CGI.escape(url)}").read
+          entry.override(:short_url => link)
+        rescue
+          link = url
+        end
+      else
+        link = entry.short_url
+      end
+      link
+    end
+
+    def make_status(text, link, limit)
+      "#{text[0..limit-link.size]} #{link}"
     end
   end
 end

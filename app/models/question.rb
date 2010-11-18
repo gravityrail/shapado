@@ -27,7 +27,6 @@ class Question
   field :flags_count, :type => Integer, :default => 0
   field :close_requests_count, :type => Integer, :default => 0
   field :open_requests_count, :type => Integer, :default => 0
-  field :favorites_count, :type => Integer, :default => 0
 
   field :adult_content, :type => Boolean, :default => false
   field :banned, :type => Boolean, :default => false
@@ -182,17 +181,6 @@ class Question
     on_activity(false)
   end
 
-  def add_favorite!(fav, user)
-    self.inc(:favorites_count, 1)
-    on_activity(false)
-  end
-
-
-  def remove_favorite!(fav, user)
-    self.decrement(:favorites_count => 1)
-    on_activity(false)
-  end
-
   def on_activity(bring_to_front = true)
     update_activity_at if bring_to_front
     self.inc(:hotness, 1)
@@ -224,10 +212,6 @@ class Question
 
   def self.unban(ids, options = {})
     self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
-  end
-
-  def favorite_for?(_user)
-    _user.favorite(self)
   end
 
   def add_follower(user)

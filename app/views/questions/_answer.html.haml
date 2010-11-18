@@ -86,6 +86,12 @@
             = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
           -if current_user.mod_of?(@question.group)
             =# link_to "ban", ban_path(:answer_ids => [answer.id]), :confirm => "are you sure?"
+          - if answer.favorite_for?(current_user)
+            = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
+          - else
+            = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
+
+
       .clear
       .forms
 

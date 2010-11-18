@@ -30,8 +30,6 @@ en:
       watch_tooltip: "Watch this question"
       accepted_tooltip: "One of the answers was accepted as the correct answer."
       unwatch_tooltip: "Stop watching this question"
-      favorite_tooltip: "Add this question to your favorites"
-      unfavorite_tooltip: "Remove this question from your favorites"
       asked_on: "asked on"
       last_activity: Latest activity
       retag: Retag
@@ -59,6 +57,10 @@ en:
       unset_answer: Unset solution?
       flag: Flag
       add_comment: Add comment...
+      favorite: save to favorites
+      unfavorite: un-save
+      favorite_tooltip: "Add this answer to your favorites"
+      unfavorite_tooltip: "Remove this answer from your favorites"
     question:
       accepted_tooltip: This question has an answer that has been accepted
     form:
