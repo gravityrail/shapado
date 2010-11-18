@@ -149,8 +149,10 @@ class Answer
   end
 
   def add_favorite!(user)
-    self.push_uniq(:favoriter_ids => user.id)
-    self.increment(:favorites_count => 1)
+    unless favorite_for?(user)
+      self.push_uniq(:favoriter_ids => user.id)
+      self.increment(:favorites_count => 1)
+    end
   end
 
   def remove_favorite!(user)
