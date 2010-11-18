@@ -22,9 +22,9 @@ class Tag
 
   validates_uniqueness_of :name, :scope => :group_id, :allow_blank => false
 
-  def to_param
-    self.name
-  end
+#   def to_param
+#     self.name
+#   end
 
   def self.find_file_from_params(params, request)
     if request.path =~ /\/(icon)\/([^\/\.?]+)\/([^\/\.?]+)/

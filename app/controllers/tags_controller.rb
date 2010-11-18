@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+#   before_filter :login_required, :except => [:index, :show]
+#   before_filter :moderator_required, :except => [:index, :show]
 
   def index
     @tags = current_scope.paginate(:page => params[:page],
@@ -28,7 +30,7 @@ class TagsController < ApplicationController
   end
 
   def edit
-    @tag = current_scope.where(:name => params[:id]).first
+    @tag = current_scope.where(:$or => [{:name => params[:id]}, {:_id => params[:id]}]).first
   end
 
   def create
@@ -44,20 +46,33 @@ class TagsController < ApplicationController
   end
 
   def update
-    @tag = current_scope.where(:name => params[:id]).first
+    @tag = current_scope.find(params[:id])
     @tag.safe_update(%w[name icon description], params[:tag])
-    name_changes = @tag.changes["name"]
-    if @tag.save
-      if name_changes
-        Question.override({group_id: @tag.group_id, :tags => name_changes.first}, {"tags.$" => name_changes.last})
+    @name_changes = @tag.changes["name"]
+
+    saved = @tag.save
+    merge = (params[:merge] == "1" && !@tag.errors[:name].blank?)
+
+    if saved || merge
+      if @name_changes
+        if(merge)
+          Question.pull({group_id: @tag.group_id, :tags => {:$all => [@name_changes.first, @name_changes.last]}},
+                        "tags" => @name_changes.first)
+        end
+        Question.override({group_id: @tag.group_id, :tags => @name_changes.first}, {"tags.$" => @name_changes.last})
       end
-      redirect_to tag_url(@tag)
+      redirect_to tag_url(:id => @name_changes.last)
     else
       render :action => "edit"
     end
   end
 
   def destroy
+    @tag = current_scope.find(params[:id])
+    tag_name = @tag.name
+    @tag.destroy
+    Question.pull({group_id: @tag.group_id, :tags => {:$in => [tag_name]}}, "tags" => tag_name)
+    redirect_to tags_url
   end
 
   protected

@@ -120,7 +120,7 @@ Shapado::Application.routes.draw do
 
 
 
-#   match 'questions/tags/:tags' => 'questions#index', :as => :question_tag
+  match 'questions/tags/:id' => 'tags#show', :as => :question_tag
 #   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
 
   resources :groups do
