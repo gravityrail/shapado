@@ -482,62 +482,10 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def favorite
-    @favorite = Favorite.new
-    @favorite.question = @question
-    @favorite.user = current_user
-    @favorite.group = @question.group
-
-    @question.add_follower(current_user)
-
-
-    Jobs::Mailer.async.on_favorite_question(@question.id, current_user.id).commit!
-
-    respond_to do |format|
-      if @favorite.save
-        @question.add_favorite!(@favorite, current_user)
-        flash[:notice] = t("favorites.create.success")
-        format.html { redirect_to(question_path(@question)) }
-        format.json { head :ok }
-        format.js {
-          render(:json => {:success => true,
-                   :message => flash[:notice], :increment => 1 }.to_json)
-        }
-      else
-        flash[:error] = @favorite.errors.full_messages.join("**")
-        format.html { redirect_to(question_path(@question)) }
-        format.js {
-          render(:json => {:success => false,
-                   :message => flash[:error], :increment => 0 }.to_json)
-        }
-        format.json { render :json => @favorite.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def unfavorite
-    @favorite = current_user.favorite(@question)
-    if @favorite
-      if current_user.can_modify?(@favorite)
-        @question.remove_favorite!(@favorite, current_user)
-        @favorite.destroy
-        @question.remove_follower(current_user)
-      end
-    end
-    flash[:notice] = t("unfavorites.create.success")
-    respond_to do |format|
-      format.html { redirect_to(question_path(@question)) }
-      format.js {
-        render(:json => {:success => true,
-                 :message => flash[:notice], :increment => -1 }.to_json)
-      }
-      format.json  { head :ok }
-    end
-  end
-
   def follow
     @question = Question.find_by_slug_or_id(params[:id])
     @question.add_follower(current_user)
+    Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}

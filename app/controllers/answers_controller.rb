@@ -176,6 +176,39 @@ class AnswersController < ApplicationController
     end
   end
 
+  def favorite
+    @answer = Answer.find(params[:id])
+    @answer.add_favorite!(current_user)
+    link = question_answer_url(@answer.question, @answer)
+    Jobs::Mailer.async.on_favorite_answer(@answer.id, current_user.id).commit!
+    Jobs::Answers.async.on_favorite_answer(@answer.id, current_user.id, link).commit!
+
+    respond_to do |format|
+      flash[:notice] = t("favorites.create.success")
+      format.html { redirect_to(question_path(@answer.question)) }
+      format.json { head :ok }
+      format.js {
+        render(:json => {:success => true,
+                 :message => flash[:notice], :increment => 1 }.to_json)
+      }
+    end
+  end
+
+  def unfavorite
+    @answer = Answer.find(params[:id])
+    @answer.remove_favorite!(current_user)
+
+    flash[:notice] = t("unfavorites.create.success")
+    respond_to do |format|
+      format.html { redirect_to(question_path(@answer.question)) }
+      format.js {
+        render(:json => {:success => true,
+                 :message => flash[:notice], :increment => -1 }.to_json)
+      }
+      format.json  { head :ok }
+    end
+  end
+
   protected
   def check_permissions
     @answer = Answer.find(params[:id])

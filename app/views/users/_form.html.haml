@@ -96,4 +96,7 @@
     .group
       = f.check_box "notification_opts[badges_to_twitter]", :checked => @user.notification_opts.badges_to_twitter
       = t(".send_badges_to_twitter")
+    .group
+      = f.check_box "notification_opts[favorites_to_twitter]", :checked => @user.notification_opts.favorites_to_twitter
+      = t(".send_favorites_to_twitter")
 

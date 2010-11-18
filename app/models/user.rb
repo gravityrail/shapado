@@ -60,8 +60,6 @@ class User
   references_many :votes, :dependent => :destroy
   references_many :badges, :dependent => :destroy
 
-  references_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
-
   before_create :create_friend_list
   before_create :generate_uuid
   after_create :update_anonymous_user
@@ -271,12 +269,12 @@ Time.zone.now ? 1 : 0)
     vote = voteable.votes.detect{ |vote| vote.user_id == self.id }
   end
 
-  def favorite?(question)
-    !favorite(question).nil?
+  def favorite?(answer)
+    !favorite(answer).nil?
   end
 
-  def favorite(question)
-    self.favorites.where(:question_id => question._id,
+  def favorite(answer)
+    self.favorites.where(:answer_id => answer._id,
                          :user_id => self._id ).first
   end
 

@@ -18,8 +18,12 @@ class Answer
   field :wiki, :type => Boolean, :default => false
   field :anonymous, :type => Boolean, :default => false
   index :anonymous
+  field :short_url, :type => String
 
   field :rewarded, :type => Boolean, :default => false
+
+  field :favoriters_count, :type => Integer, :default => 0
+  references_many :favoriters, :stored_as => :array, :class_name => "User"
 
   referenced_in :group
   index :group_id
@@ -142,6 +146,24 @@ class Answer
         self.errors.add(:body, "Your answer is duplicate.")
       end
     end
+  end
+
+  def add_favorite!(user)
+    unless favorite_for?(user)
+      self.push_uniq(:favoriter_ids => user.id)
+      self.increment(:favorites_count => 1)
+    end
+  end
+
+  def remove_favorite!(user)
+    if favorite_for?(user)
+      self.pull(:favoriter_ids => user.id)
+      self.decrement(:favorites_count => 1)
+    end
+  end
+
+  def favorite_for?(user)
+    self.favoriter_ids && self.favoriter_ids.include?(user.id)
   end
 
   protected

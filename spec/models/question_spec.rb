@@ -232,35 +232,6 @@ describe Question do
       end
     end
 
-    describe "Question#add_favorite!" do
-      before(:each) do
-        @question.stub!(:on_activity)
-        @user = Fabricate.build(:user)
-        @fav = Favorite.new
-      end
-
-      it "should increment the question's favorite counter" do
-        @question.favorites_count.should == 0
-        @question.add_favorite!(@fav, @user)
-        @question.favorites_count.should == 1
-      end
-    end
-
-    describe "Question#remove_favorite!" do
-      before(:each) do
-        @question.stub!(:on_activity)
-        @user = Fabricate.build(:user)
-      end
-
-      it "should decrement the question's favorite counter" do
-        @question.add_favorite!(Favorite.new, @user)
-        @question.favorites_count.should == 1
-        @question.remove_favorite!(Favorite.new, @user)
-        @question.reload
-        @question.favorites_count.should == 0
-      end
-    end
-
     describe "Question#on_activity" do
       it "should increment the question hotness" do
         @question.hotness.should == 0
@@ -312,21 +283,6 @@ describe Question do
         @question.unban
         @question.reload
         @question.banned.should be_false
-      end
-    end
-
-    describe "Question#favorite_for?(user)" do
-      it "should nil for question creator" do
-        @question.favorite_for?(@question.user).should be_nil
-      end
-
-      it "should return favorite's user" do
-        @user = Fabricate(:user)
-        @favorite = Fabricate.build(:favorite, :group => @question.group,
-                                               :user => @user)
-        @favorite.question = @question
-        @favorite.save
-        @question.favorite_for?(@user).id.should == @user.id
       end
     end
 
