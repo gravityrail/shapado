@@ -78,7 +78,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     if !logged_in?
       if recaptcha_valid? && params[:user]
-        @user = User.first(:email => params[:user][:email])
+        @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
             flash[:notice] = "The user is already registered, please log in"
@@ -173,6 +173,39 @@ class AnswersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }
       format.json { head :ok }
+    end
+  end
+
+  def favorite
+    @answer = Answer.find(params[:id])
+    @answer.add_favorite!(current_user)
+    link = question_answer_url(@answer.question, @answer)
+    Jobs::Mailer.async.on_favorite_answer(@answer.id, current_user.id).commit!
+    Jobs::Answers.async.on_favorite_answer(@answer.id, current_user.id, link).commit!
+
+    respond_to do |format|
+      flash[:notice] = t("favorites.create.success")
+      format.html { redirect_to(question_path(@answer.question)) }
+      format.json { head :ok }
+      format.js {
+        render(:json => {:success => true,
+                 :message => flash[:notice], :increment => 1 }.to_json)
+      }
+    end
+  end
+
+  def unfavorite
+    @answer = Answer.find(params[:id])
+    @answer.remove_favorite!(current_user)
+
+    flash[:notice] = t("unfavorites.create.success")
+    respond_to do |format|
+      format.html { redirect_to(question_path(@answer.question)) }
+      format.js {
+        render(:json => {:success => true,
+                 :message => flash[:notice], :increment => -1 }.to_json)
+      }
+      format.json  { head :ok }
     end
   end
 

@@ -43,14 +43,6 @@
 
   =vote_box(@question, question_path(@question), @question.closed)
 
-  - if logged_in? && favorite = current_user.favorite(@question)
-    = link_to image_tag("favorites.png", 'data-src' => "/images/unfavorites.png"), unfavorite_question_path(@question), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'question-action', "data-undo" =>  favorite_question_path(@question), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
-  - else
-    = link_to image_tag("unfavorites.png", 'data-src' => "/images/favorites.png"), favorite_question_path(@question), :id => "favorite-link", :title => t(".favorite_tooltip"), :class => 'question-action', "data-undo" =>  unfavorite_question_path(@question), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
-  .favorites_count
-    &= @question.favorites_count
-
-
 #question-body-col.commentable.markdown
   %a{:name => @question.id}
   #body
@@ -72,7 +64,7 @@
     .post-text.entry-content
       = question_body
 
-      = render "bounty_form"
+      = render "reward_form"
   .tag-list
     - @question.tags.each do |tag|
       %span.tag
@@ -189,7 +181,7 @@
 #answers
   .secondary-navigation{:class => @active_subtab.to_s}
     .navtitle
-      = t(".answers_title", :count => @answers.total_entries + (@question.accepted ? 1 : 0))
+      = t(".answers_title", :count => @answers.total_entries)
 
     %ul
       %li.newest
@@ -205,6 +197,7 @@
       =render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
     .hentry
       -@answers.each do |answer|
+        -next if answer.id == @question.answer_id
         =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
     =will_paginate(@answers)
 

@@ -56,8 +56,8 @@ Shapado::Application.routes.draw do
   end
 
   get '/questions/:id/:slug' => 'questions#show', :as => :se_url, :id => /\d+/
-  post '/questions/:id/start_bounty' => "bounty#start", :as => :start_bounty
-  get '/questions/:id/close_bounty' => "bounty#close", :as => :close_bounty
+  post '/questions/:id/start_reward' => "reward#start", :as => :start_reward
+  get '/questions/:id/close_reward' => "reward#close", :as => :close_reward
 
 
   scope('questions') do
@@ -79,8 +79,6 @@ Shapado::Application.routes.draw do
       get :solve
       get :unsolve
       get :flag
-      get :favorite
-      get :unfavorite
       get :follow
       get :unfollow
       get :history
@@ -103,6 +101,8 @@ Shapado::Application.routes.draw do
       resources :votes
       resources :flags
       member do
+        get :favorite
+        get :unfavorite
         get :flag
         get :history
         get :diff

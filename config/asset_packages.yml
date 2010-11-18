@@ -39,7 +39,7 @@ javascripts:
 
 stylesheets:
 - base:
-  - jquery-ui
+  - ui-lightness/jquery-ui
   - compiled/application
   - prettify
   - multiauth

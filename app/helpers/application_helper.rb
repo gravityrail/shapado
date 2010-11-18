@@ -115,14 +115,9 @@ module ApplicationHelper
     spread = 1 if spread == 0
     ratio = (max_size - min_size) / spread
 
-    cloud = '<div class="tag_cloud">'
-    tags.each do |tag|
-      size = min_size + (tag["count"] - lowest_value["count"]) * ratio
-      url = url_for(:controller => "questions", :action => "index", :tags => tag["name"])
-      cloud << "<span>#{link_to(tag["name"], url, :class => "#{tag_class} #{css[size.round]}")}</span> "
-    end
-    cloud += "</div>"
-    cloud.html_safe
+    render 'shared/tag_cloud', :tags => tags, :css => css,
+                               :lowest_value => lowest_value, :ratio => ratio,
+                               :min_size => min_size, :tag_class => tag_class
   end
 
   def country_flag(code, name)
@@ -179,7 +174,7 @@ module ApplicationHelper
             "anonymous"
           end
         when 'hottest_today'
-          question = Question.first(:activity_at.gt => Time.zone.now.yesterday, :order => "hotness desc, views_count asc", :group_id => group.id, :select => [:slug, :title])
+          question = Question.where(:activity_at.gt => Time.zone.now.yesterday, :order => "hotness desc, views_count asc", :group_id => group.id, :select => [:slug, :title]).first
           if question.present?
             link_to(question.title, question_path(question))
           end

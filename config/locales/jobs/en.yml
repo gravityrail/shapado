@@ -1,0 +1,8 @@
+en:
+  jobs:
+    base:
+      create_badge:
+        send_twitter: "I just won the badge %{token} on %{group_name} %{link}"
+    answers:
+      on_favorite_answer:
+        send_twitter:  "I liked an answer by %{author} on: %{question}"

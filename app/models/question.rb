@@ -27,7 +27,6 @@ class Question
   field :flags_count, :type => Integer, :default => 0
   field :close_requests_count, :type => Integer, :default => 0
   field :open_requests_count, :type => Integer, :default => 0
-  field :favorites_count, :type => Integer, :default => 0
 
   field :adult_content, :type => Boolean, :default => false
   field :banned, :type => Boolean, :default => false
@@ -43,10 +42,13 @@ class Question
   referenced_in :answered_with, :class_name => "Answer"
 
   field :wiki, :type => Boolean, :default => false
+  field :subjetive, :type => Boolean, :default => false
   field :language, :type => String, :default => "en"
   index :language
 
   field :activity_at, :type => Time
+
+  field :short_url, :type => String
 
   referenced_in :user
   index :user_id
@@ -85,7 +87,7 @@ class Question
   embeds_many :open_requests
 
   embeds_one :follow_up
-  embeds_one :bounty
+  embeds_one :reward
 
   validates_presence_of :title
   validates_presence_of :user
@@ -146,7 +148,7 @@ class Question
 
   def viewed!(ip)
     view_count_id = "#{self.id}-#{ip}"
-    if ViewsCount.first(:conditions => {:_id => view_count_id}).nil?
+    if ViewsCount.where({:_id => view_count_id}).first.nil?
       ViewsCount.create(:_id => view_count_id)
       self.inc(:views_count, 1)
     end
@@ -187,23 +189,15 @@ class Question
     on_activity(false)
   end
 
-  def add_favorite!(fav, user)
-    self.inc(:favorites_count, 1)
-    on_activity(false)
-  end
-
-
-  def remove_favorite!(fav, user)
-    self.decrement(:favorites_count => 1)
-    on_activity(false)
-  end
-
   def on_activity(bring_to_front = true)
     update_activity_at if bring_to_front
     self.inc(:hotness, 1)
   end
 
   def update_activity_at
+    self[:subjetive] = self.tags.include?(I18n.t("global.subjetive", :default =>
+"subjetive"))
+
     now = Time.now
     if new_record?
       self.activity_at = now
@@ -226,10 +220,6 @@ class Question
 
   def self.unban(ids, options = {})
     self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
-  end
-
-  def favorite_for?(_user)
-    _user.favorite(self)
   end
 
   def add_follower(user)

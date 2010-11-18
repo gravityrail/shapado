@@ -180,6 +180,10 @@ class QuestionsController < ApplicationController
       return
     end
 
+    if @question.reward && @question.reward.ends_at < Time.now
+      Jobs::Questions.async.close_reward(@question.id).commit!(1)
+    end
+
     @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:per_page => 25, :page => params[:page] || 1,
                :order => current_order, :banned => false}
@@ -250,7 +254,7 @@ class QuestionsController < ApplicationController
 
     if !logged_in?
       if recaptcha_valid? && params[:user]
-        @user = User.first(:email => params[:user][:email])
+        @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
             flash[:notice] = "The user is already registered, please log in"
@@ -279,7 +283,8 @@ class QuestionsController < ApplicationController
         unless @question.anonymous
           @question.user.stats.add_question_tags(*@question.tags)
           @question.user.on_activity(:ask_question, current_group)
-          Jobs::Questions.async.on_ask_question(@question.id).commit!
+          link = question_url(@question)
+          Jobs::Questions.async.on_ask_question(@question.id, link).commit!
           Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
 
@@ -373,7 +378,7 @@ class QuestionsController < ApplicationController
     @question.answered_with = @answer if @question.answered_with.nil?
 
     respond_to do |format|
-      if @question.save
+      if !@question.subjetive && @question.save
         sweep_question(@question)
 
         current_user.on_activity(:close_question, current_group)
@@ -439,9 +444,13 @@ class QuestionsController < ApplicationController
   def close
     @question = Question.find_by_slug_or_id(params[:id])
 
-    @question.closed = true
-    @question.closed_at = Time.zone.now
-    @question.close_reason_id = params[:close_request_id]
+    if @question.reward && @question.reward.active
+      flash[:error] = "this question has an active reward and cannot be closed" # FIXME: i18n
+    else
+      @question.closed = true
+      @question.closed_at = Time.zone.now
+      @question.close_reason_id = params[:close_request_id]
+    end
 
     respond_to do |format|
       if @question.save
@@ -477,62 +486,10 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def favorite
-    @favorite = Favorite.new
-    @favorite.question = @question
-    @favorite.user = current_user
-    @favorite.group = @question.group
-
-    @question.add_follower(current_user)
-
-
-    Jobs::Mailer.async.on_favorite_question(@question.id, current_user.id).commit!
-
-    respond_to do |format|
-      if @favorite.save
-        @question.add_favorite!(@favorite, current_user)
-        flash[:notice] = t("favorites.create.success")
-        format.html { redirect_to(question_path(@question)) }
-        format.json { head :ok }
-        format.js {
-          render(:json => {:success => true,
-                   :message => flash[:notice], :increment => 1 }.to_json)
-        }
-      else
-        flash[:error] = @favorite.errors.full_messages.join("**")
-        format.html { redirect_to(question_path(@question)) }
-        format.js {
-          render(:json => {:success => false,
-                   :message => flash[:error], :increment => 0 }.to_json)
-        }
-        format.json { render :json => @favorite.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def unfavorite
-    @favorite = current_user.favorite(@question)
-    if @favorite
-      if current_user.can_modify?(@favorite)
-        @question.remove_favorite!(@favorite, current_user)
-        @favorite.destroy
-        @question.remove_follower(current_user)
-      end
-    end
-    flash[:notice] = t("unfavorites.create.success")
-    respond_to do |format|
-      format.html { redirect_to(question_path(@question)) }
-      format.js {
-        render(:json => {:success => true,
-                 :message => flash[:notice], :increment => -1 }.to_json)
-      }
-      format.json  { head :ok }
-    end
-  end
-
   def follow
     @question = Question.find_by_slug_or_id(params[:id])
     @question.add_follower(current_user)
+    Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}

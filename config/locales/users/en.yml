@@ -41,6 +41,7 @@ en:
       language: Language used for the interface of the site
       send_questions_to_twitter: Send my questions to my Twitter
       send_badges_to_twitter: Send my newly won badges to my Twitter
+      send_favorites_to_twitter: Send my favorite answers to my Twitter
       social_interaction: Social media interaction
     create:
       flash_notice: "Thanks for signing up!"

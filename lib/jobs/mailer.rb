@@ -34,11 +34,11 @@ module Jobs
       end
     end
 
-    def self.on_favorite_question(question_id, current_user_id)
+    def self.on_favorite_answer(answer_id, current_user_id)
       current_user = User.find(current_user_id)
-      question = Question.find(question_id)
-      if (question.user_id != current_user.id) && current_user.notification_opts.activities
-        Notifier.deliver_favorited(current_user, question.group, question)
+      answer = Answer.find(answer_id)
+      if (answer.user_id != current_user.id) && current_user.notification_opts.activities
+        Notifier.favorited(current_user, answer.group, answer).deliver
       end
     end
 

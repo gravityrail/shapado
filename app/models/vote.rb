@@ -19,6 +19,10 @@ class Vote
   validate :check_owner
   validate :check_voteable
 
+  def group
+    voteable.group
+  end
+
   def voteable_type
     self.voteable.class
   end

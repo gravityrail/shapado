@@ -8,8 +8,8 @@
 .answer.commentable{:class => "post-#{answer.id} #{solution ? "solution" : ""}" }
   %a{:name=>answer.id}
   .vote-col
-    -if question.bounty && question.bounty.active
-      = link_to "+#{question.bounty.reputation}", close_bounty_path(question, :answer_id => answer.id)
+    -if logged_in? && question.reward && question.reward.active && question.reward.created_by_id == current_user.id
+      = link_to "+#{question.reward.reputation}", close_reward_path(question, :answer_id => answer.id)
 
     =vote_box(answer, question_path(question), question.closed)
     -if solution
@@ -65,7 +65,7 @@
 
         -if logged_in?
           -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
-            -unless @question.accepted
+            -unless @question.accepted && !@question.subjetive
               = link_to t(".pick_answer"), solve_question_path(@question, :answer_id => answer)
             -if solution
               = link_to t(".unset_answer"),  unsolve_question_path(@question)
@@ -86,6 +86,12 @@
             = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
           -if current_user.mod_of?(@question.group)
             =# link_to "ban", ban_path(:answer_ids => [answer.id]), :confirm => "are you sure?"
+          - if answer.favorite_for?(current_user)
+            = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
+          - else
+            = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
+
+
       .clear
       .forms
 

@@ -3,8 +3,8 @@ module Jobs
     extend Jobs::Base
 
     def self.on_activity(group_id, user_id)
-      user = User.first(:_id => user_id, :select => [:_id])
-      group = Group.first(:_id => group_id, :select => [:_id])
+      user = User.where(:_id => user_id, :select => [:_id]).first
+      group = Group.where(:_id => group_id, :select => [:_id]).first
 
       days = user.config_for(group).activity_days
       if days > 100

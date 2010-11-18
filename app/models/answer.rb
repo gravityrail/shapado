@@ -18,8 +18,12 @@ class Answer
   field :wiki, :type => Boolean, :default => false
   field :anonymous, :type => Boolean, :default => false
   index :anonymous
+  field :short_url, :type => String
 
   field :rewarded, :type => Boolean, :default => false
+
+  field :favoriters_count, :type => Integer, :default => 0
+  references_many :favoriters, :stored_as => :array, :class_name => "User"
 
   referenced_in :group
   index :group_id
@@ -71,8 +75,8 @@ class Answer
   end
 
   def check_unique_answer
-    check_answer = Answer.first(:conditions => {:question_id => self.question_id,
-                               :user_id => self.user_id})
+    check_answer = Answer.where({:question_id => self.question_id,
+                               :user_id => self.user_id}).first
 
     if !check_answer.nil? && check_answer.id != self.id
       self.errors.add(:limitation, "Your can only post one answer by question.")
@@ -127,12 +131,12 @@ class Answer
 
   def disallow_spam
     if new? && !disable_limits?
-      eq_answer = Answer.first(:conditions => {:body => self.body,
+      eq_answer = Answer.where({:body => self.body,
                                   :question_id => self.question_id,
                                   :group_id => self.group_id
-                                });
+                                }).first
 
-      last_answer  = Answer.where(:conditions =>{:user_id => self.user_id,
+      last_answer  = Answer.where({:user_id => self.user_id,
                                    :question_id => self.question_id,
                                    :group_id => self.group_id}).order_by(:created_at.desc).first
 
@@ -142,6 +146,24 @@ class Answer
         self.errors.add(:body, "Your answer is duplicate.")
       end
     end
+  end
+
+  def add_favorite!(user)
+    unless favorite_for?(user)
+      self.push_uniq(:favoriter_ids => user.id)
+      self.increment(:favorites_count => 1)
+    end
+  end
+
+  def remove_favorite!(user)
+    if favorite_for?(user)
+      self.pull(:favoriter_ids => user.id)
+      self.decrement(:favorites_count => 1)
+    end
+  end
+
+  def favorite_for?(user)
+    self.favoriter_ids && self.favoriter_ids.include?(user.id)
   end
 
   protected

@@ -231,6 +231,10 @@ GEM
       polyglot (>= 0.3.1)
     twitter-text (1.1.8)
       actionpack
+    twitter_oauth (0.4.3)
+      json (>= 1.1.9)
+      mime-types (>= 1.16)
+      oauth (>= 0.4.1)
     tzinfo (0.3.23)
     uuidtools (2.1.1)
     warden (1.0.2)
@@ -280,6 +284,10 @@ DEPENDENCIES
   ruby_parser
   sanitize (= 1.2.1)
   twitter-text (= 1.1.8)
+  twitter_oauth
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
   will_paginate!
+
+METADATA
+  version: 1.0.6

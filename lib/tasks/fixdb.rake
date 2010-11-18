@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "update_answers_favorite"] do
 end
 
 namespace :fixdb do
@@ -23,9 +23,9 @@ namespace :fixdb do
       question.override(:_random => rand())
       question.override(:_random_times => 0.0)
 
-      watchers = question["watchers"]
+      watchers = question.raw_attributes["watchers"]
       question.unset(:watchers => true)
-      if !watchers.blank?
+      if watchers.kind_of?(Array)
         question.override(:follower_ids => watchers)
       end
     end
@@ -53,6 +53,12 @@ namespace :fixdb do
       user.push_uniq(:auth_keys => "open_id_#{user[:identity_url]}")
       user.unset(:identity_url => 1)
     end
+  end
+
+  task :update_answers_favorite => [:environment] do
+    Mongoid.database.collection("favorites").remove
+    answers = Mongoid.database.collection("answers")
+    answers.update({ }, {"$set" => {"favorite_counts" => 0}})
   end
 
   task :sync_counts => [:environment] do
@@ -92,15 +98,13 @@ namespace :fixdb do
 
   task :last_target_type => [:environment] do
     puts "updating questions#last_target_type"
-    Question.all(:conditions => {:last_target_type.ne => nil}).each do |q|
+    Question.where({:last_target_type.ne => nil}).all.each do |q|
       print "."
       if(q.last_target_type != "Comment")
         last_target = q.last_target_type.constantize.find(q.last_target_id)
       else
         data = Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
         last_target = Comment.new(data)
-#         p last_target.id
-#         p Mongoid.database.collection("comments").find_one(:_id => q.last_target_id)
       end
 
       if(last_target)
@@ -185,7 +189,7 @@ namespace :fixdb do
   end
 
   task :groups => [:environment] do
-    Group.all(:conditions => {:language.in => [nil, '', 'none']}).each do |group|
+    Group.where({:language.in => [nil, '', 'none']}).all.each do |group|
       lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
 
@@ -206,7 +210,7 @@ namespace :fixdb do
     Answer.override({:address => nil}, :address => {})
     User.override({:address => nil}, :address => {})
     doc.keys.each do |key|
-      User.all(:conditions => { :country_name => key}).each do |u|
+      User.where({:country_name => key}).all.each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
         lat = doc[key]["lat"]
         lon = doc[key]["lon"]

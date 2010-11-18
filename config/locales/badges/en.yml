@@ -38,9 +38,15 @@ en:
       guru:
         name: Guru
         description: Gave a solution to a question with an average of more than 40 votes
+      favorite_answer:
+        name: Favorite answer
+        description: Has an answer favorited by 25 users
+      stellar_answer:
+        name: Stellar answer
+        description: Has an answer favorited by 100 users
       favorite_question:
         name: Favorite question
-        description: Asked a question favorited by 25 users
+        description: Asked a question followed by 25 users
       tutor:
         name: Tutor
         description: Gave a solution to a question with an average of more than 2 votes
@@ -102,7 +108,7 @@ en:
         description: Answered a question after more than 60 days later at least 5 votes
       stellar_question:
         name: Stellar question
-        description: Asked a question added to favorites by 100 users
+        description: Asked a question followed by 100 users
       nice_question:
         name: Nice question
         description: Asked a question voted up 10 times
@@ -145,6 +151,18 @@ en:
       organizer:
         name: Organizer
         description: Made first retag
+      altruist:
+        name: Altruist
+        description: First reward you manually awarded on another person's question
+      benefactor:
+        name: Benefactor
+        description: First reward you manually awarded on your own question
+      investor:
+        name: Investor
+        description: First reward you offered on another person's question
+      promoter:
+        name: Promoter
+        description: First reward you offered on your own question
   activerecord:
     models:
       badge: Badge

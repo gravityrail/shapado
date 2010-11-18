@@ -1,9 +1,3 @@
-
-Fabricator(:favorite) do
-  user!
-end
-
-
 Fabricator(:user) do
   login { Fabricate.sequence(:user) { |i| "user#{i}" } }
   email { Fabricate.sequence(:email) { |i| "user#{i}@example.com" } }
