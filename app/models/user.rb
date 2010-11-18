@@ -60,8 +60,6 @@ class User
   references_many :votes, :dependent => :destroy
   references_many :badges, :dependent => :destroy
 
-  references_many :favorites, :class_name => "Favorite", :foreign_key => "user_id"
-
   before_create :create_friend_list
   before_create :generate_uuid
   after_create :update_anonymous_user

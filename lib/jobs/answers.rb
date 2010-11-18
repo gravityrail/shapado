@@ -3,17 +3,27 @@ module Jobs
   class Answers
     extend Jobs::Base
 
-    def self.on_favorite_answer(question_id)
+    def self.on_favorite_answer(answer_id, favoriter_id, link)
       answer = Answer.find(answer_id)
       user = answer.user
       question = answer.question
       group = question.group
+      favoriter = User.find(favoriter_id)
       if answer.favorites_count >= 25
         create_badge(user, group, {:token => "favorite_answer", :source => answer}, {:unique => true, :source_id => answer.id})
       end
 
       if answer.favorites_count >= 100
         create_badge(user, group, {:token => "stellar_answer", :source => answer}, {:unique => true, :source_id => answer.id})
+      end
+
+      if favoriter.notification_opts.favorites_to_twitter
+        link = shorten_url(link, answer)
+        author = answer.user
+        title = question.title
+        message = I18n.t('jobs.answers.on_favorite_answer.send_twitter', :question => title, :author => author.login, :locale => user.language)
+        status = make_status(message, link, 138)
+        favoriter.twitter_client.update(status)
       end
     end
 

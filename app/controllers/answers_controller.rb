@@ -179,8 +179,9 @@ class AnswersController < ApplicationController
   def favorite
     @answer = Answer.find(params[:id])
     @answer.add_favorite!(current_user)
+    link = question_answer_url(@answer.question, @answer)
     Jobs::Mailer.async.on_favorite_answer(@answer.id, current_user.id).commit!
-    Jobs::Answers.async.on_favorite_answer(@answer.id).commit!
+    Jobs::Answers.async.on_favorite_answer(@answer.id, current_user.id, link).commit!
 
     respond_to do |format|
       flash[:notice] = t("favorites.create.success")

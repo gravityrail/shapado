@@ -133,9 +133,9 @@ class Notifier < ActionMailer::Base
     @group = group
     @question = answer.question
     @answer = answer
-    language = language_for(question.user)
+    language = language_for(@question.user)
     set_locale language
-    mail(:to => question.user.email,
+    mail(:to => @question.user.email,
          :from => from_email(group),
          :subject => I18n.t("mailers.notifications.favorited.subject",
                             :login => user.login, :locale => language),

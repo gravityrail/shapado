@@ -75,11 +75,9 @@ module Jobs
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
       end
       if user.notification_opts.questions_to_twitter
-        link = shorten_url(link)
-        question.short_url = link
-        question.save
-        title = question.title[0..138-link.size]
-        user.twitter_client.update(I18n.t('jobs.questions.on_ask_question.send_twitter', :link => link, :title => title))
+        link = shorten_url(link, question)
+        status = make_status(question.title, link, 138)
+        user.twitter_client.update(status)
       end
     end
 

@@ -18,6 +18,7 @@ class Answer
   field :wiki, :type => Boolean, :default => false
   field :anonymous, :type => Boolean, :default => false
   index :anonymous
+  field :short_url, :type => String
 
   field :rewarded, :type => Boolean, :default => false
 
