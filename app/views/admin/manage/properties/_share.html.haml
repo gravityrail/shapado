@@ -1,8 +1,3 @@
--content_for :after_form do
-  %h1
-    =t(".title_on_dlvr")
-  = render :partial => "shared/dlvr_link", :locals => {:url => questions_url(:format => :atom)}
-
 %h1
   =t(".facebook_app")
 .field

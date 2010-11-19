@@ -27,7 +27,6 @@ en:
           ends_with_example: "e.g. #shapado"
           question_must_include_example: "e.g. #iAsk"
           add_tags: Add tags to your tweets
-          title_on_dlvr: Share on dlvr.it
         constrains:
           title: Requirements
           reputation_constrains_subtitle: List of reputation requirements for each action

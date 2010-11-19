@@ -294,3 +294,6 @@ DEPENDENCIES
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
   will_paginate!
+
+METADATA
+  version: 1.0.6
