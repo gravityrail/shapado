@@ -71,6 +71,8 @@ class Question
   field :last_target_id, :type => String
   field :last_target_date, :type => Time
 
+  attr_accessor :removed_tags
+
 #   referenced_in :last_target, :polymorphic => true
 
   field :last_target_user_id, :type => String
@@ -92,7 +94,7 @@ class Question
   validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
 
   validates_length_of       :title,    :in => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
-  validates_length_of       :body,     :minimum => 5, :allow_blank => true, :allow_nil => true#, :if => lambda { |q| !q.disable_limits? }
+  validates_length_of       :body,     :minimum => 5, :allow_blank => true #, :if => lambda { |q| !q.disable_limits? }
 
 #  FIXME mongoid (create a validator for tags size)
 #   validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
@@ -125,7 +127,13 @@ class Question
 
   def tags=(t)
     if t.kind_of?(String)
-      t = t.downcase.split(",").join(" ").split(" ").uniq
+      t = t.downcase.split(/[,\+\s]+/).uniq
+    end
+
+    if !self.user.can_create_new_tags_on?(self.group)
+      tmp_tags = self.group.tags.where(:name.in => t).only(:name).map(&:name)
+      self.removed_tags = t-tmp_tags
+      t = tmp_tags
     end
 
     self[:tags] = t

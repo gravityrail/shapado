@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:new, :create, :index, :show, :tags, :unanswered, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random]
+  before_filter :login_required, :except => [:new, :create, :index, :show, :unanswered, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random]
   before_filter :admin_required, :only => [:move, :move_to]
   before_filter :moderator_required, :only => [:close]
   before_filter :check_permissions, :only => [:solve, :unsolve, :destroy]
@@ -115,25 +115,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def tags
-    conditions = scoped_conditions({:answered_with_id => nil, :banned => false})
-    if params[:q].blank?
-      @tag_cloud = Question.tag_cloud(conditions)
-    else
-      @tag_cloud = Question.find_tags(/^#{Regexp.escape(params[:q])}/, conditions)
-    end
-    respond_to do |format|
-      format.html do
-        set_page_title(t("layouts.application.tags"))
-      end
-      format.js do
-        html = render_to_string(:partial => "tag_table", :object => @tag_cloud)
-        render :json => {:html => html}
-      end
-      format.json  { render :json => @tag_cloud.to_json }
-    end
-  end
-
   def tags_for_autocomplete
     respond_to do |format|
       format.js do
@@ -227,6 +208,9 @@ class QuestionsController < ApplicationController
     if !params[:tag_input].blank? && params[:question][:tags].blank?
       params[:question][:tags] = params[:tag_input]
     end
+
+    @question.group = current_group
+    @question.user = current_user
     @question.safe_update(%w[title body language tags wiki position], params[:question])
 
     if params[:original_question_id]
@@ -234,9 +218,6 @@ class QuestionsController < ApplicationController
     end
 
     @question.anonymous = params[:question][:anonymous]
-
-    @question.group = current_group
-    @question.user = current_user
 
     if !logged_in?
       if recaptcha_valid? && params[:user]
@@ -274,8 +255,16 @@ class QuestionsController < ApplicationController
           Jobs::Mailer.async.on_ask_question(@question.id).commit!
         end
 
+        Jobs::Tags.async.question_retagged(@question.id, @question.tags, [], Time.now).commit!
+
         current_group.on_activity(:ask_question)
-        flash[:notice] = t(:flash_notice, :scope => "questions.create")
+        if !@question.removed_tags.blank?
+          flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
+                                   :tags => @question.removed_tags.join(", "),
+                                   :reputation_required => @question.group.reputation_constrains["create_new_tags"])
+        else
+          flash[:notice] = t(:flash_notice, :scope => "questions.create")
+        end
 
         format.html { redirect_to(question_path(@question)) }
         format.json { render :json => @question.to_json(:except => %w[_keywords watchers]), :status => :created}
@@ -299,14 +288,29 @@ class QuestionsController < ApplicationController
       @question.updated_by = current_user
       @question.last_target = @question
 
-      @question.slugs << @question.slug
+      tags_changes = @question.changes["tags"]
+
+      if @question.slug_changed?
+        @question.slugs = [] if @question.slugs.nil?
+        @question.slugs << @question.slug
+      end
       @question.send(:generate_slug)
 
       if @question.valid? && @question.save
         sweep_question_views
         sweep_question(@question)
 
-        flash[:notice] = t(:flash_notice, :scope => "questions.update")
+        if tags_changes
+          Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
+        end
+
+        if !@question.removed_tags.blank?
+          flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
+                                   :tags => @question.removed_tags.join(", "),
+                                   :reputation_required => @question.group.reputation_constrains["create_new_tags"])
+        else
+          flash[:notice] = t(:flash_notice, :scope => "questions.update")
+        end
         format.html { redirect_to(question_path(@question)) }
         format.json  { head :ok }
       else
@@ -511,6 +515,8 @@ class QuestionsController < ApplicationController
     @question.updated_by = current_user
     @question.last_target = @question
 
+    tags_changes = @question.changes["tags"]
+
     if @question.save
       sweep_question(@question)
 
@@ -519,13 +525,23 @@ class QuestionsController < ApplicationController
       end
 
       Jobs::Questions.async.on_retag_question(@question.id, current_user.id).commit!
+      if tags_changes
+        Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
+      end
 
-      flash[:notice] = t("questions.retag_to.success", :group => @question.group.name)
+      if !@question.removed_tags.blank?
+        flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
+                                 :tags => @question.removed_tags.join(", "),
+                                 :reputation_required => @question.group.reputation_constrains["create_new_tags"])
+      else
+        flash[:notice] = t("questions.retag_to.success", :group => @question.group.name)
+      end
+
       respond_to do |format|
         format.html {redirect_to question_path(@question)}
         format.js {
           render(:json => {:success => true,
-                   :message => flash[:notice], :tags => @question.tags }.to_json)
+                   :message => flash[:warning] || flash[:notice], :tags => @question.tags }.to_json)
         }
       end
     else

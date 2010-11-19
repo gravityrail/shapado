@@ -1,0 +1,9 @@
+
+.tag-info
+  - if tag.has_icon?
+    = image_tag(tag_icon_path(current_group, tag))
+  = tag.name
+  = tag.description
+  -if current_user.mod_of?(current_group)
+    = link_to t("scaffold.edit"), edit_tag_path(tag)
+    = link_to t("scaffold.destroy"), tag_path(tag), :method => :delete, :sure => t("scaffold.sure", :model => "tag")

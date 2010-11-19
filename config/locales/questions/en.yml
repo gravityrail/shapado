@@ -121,6 +121,7 @@ en:
         too_many_tags: Sorry, you can only enter 9 tags maximum.
         empty_tags: Sorry, you need to use at least one tag.
         title_too_long: "The title is too long. It should not contain more than 100 characters."
+        tags_not_added: "The tags '%{tags}' could not be added. You need a reputation of %{reputation_required} to create new tags"
 
   activerecord:
     models:

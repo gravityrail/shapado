@@ -64,12 +64,16 @@ Shapado::Application.routes.draw do
   get '/questions/:id/close_reward' => "reward#close", :as => :close_reward
 
   match '/answers(.format)' => 'answers#index', :as => :answers
+
+  scope('questions') do
+    resources :tags, :constraints => { :id => /\S+/ }
+  end
+
   resources :questions do
     resources :votes
     resources :flags
 
     collection do
-      get :tags
       get :tags_for_autocomplete
       get :unanswered
       get :related_questions
@@ -119,8 +123,10 @@ Shapado::Application.routes.draw do
     resources :open_requests
   end
 
-  match 'questions/tags/:tags' => 'questions#index', :constraints => { :tags => /\S+/ }, :as => :question_tag
-  match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
+
+
+  match 'questions/tags/:tags' => 'tags#show', :as => :question_tag
+#   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
 
   resources :groups do
     collection do
