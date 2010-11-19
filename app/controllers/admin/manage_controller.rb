@@ -27,6 +27,12 @@ class Admin::ManageController < ApplicationController
 
   def properties
     @active_subtab ||= "general"
+    if @active_subtab == "constrains" && params[:mode].present?
+      mode = ConstrainsConfig.find(params[:mode])
+      if mode
+        @group.reputation_constrains = mode.content
+      end
+    end
   end
 
   def actions
@@ -42,7 +48,7 @@ class Admin::ManageController < ApplicationController
     unless @group.has_custom_html
       flash[:error] = t("global.permission_denied")
       redirect_to domain_url(:custom => @group.domain, :controller => "manage",
-                             :action => "properties")
+                             :action => "properties", :tab => "constrains")
     end
   end
 

@@ -2,6 +2,7 @@ desc "Setup application"
 task :bootstrap => [:environment, "db:drop",
                     "setup:create_admin",
                     "setup:default_group",
+                    "setup:create_reputation_constrains_modes",
                     "setup:create_widgets",
                     "setup:create_pages"] do
 end
@@ -93,6 +94,35 @@ namespace :setup do
       #  end
       #end
     end
+  end
+
+  desc "Create reputation constrains modes"
+  task :create_reputation_constrains_modes => [:environment] do
+    ConstrainsConfig.destroy_all
+    ConstrainsConfig.create(:name => "default", :content => REPUTATION_CONSTRAINS)
+    bootstrap_content = {
+      vote_up: 0,
+      flag: 0,
+      post_images: 0,
+      comment: 0,
+      delete_own_comments: 50,
+      vote_down: 10,
+      create_new_tags: 0,
+      post_whithout_limits: 0,
+      edit_wiki_post: 100,
+      remove_advertising: 200,
+      vote_to_open_own_question: 250,
+      vote_to_close_own_question: 250,
+      retag_others_questions: 100,
+      delete_comments_on_own_questions: 750,
+      edit_others_posts: 2000,
+      view_offensive_counts: 2000,
+      vote_to_close_any_question: 3000,
+      vote_to_open_any_question: 3000,
+      delete_closed_questions: 10000,
+      moderate: 10000
+    }
+    ConstrainsConfig.create(:name => "bootstrap", :content => bootstrap_content)
   end
 
   desc "Reindex data"
