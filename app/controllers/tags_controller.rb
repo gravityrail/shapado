@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-#   before_filter :login_required, :except => [:index, :show]
-#   before_filter :moderator_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :moderator_required, :except => [:index, :show]
 
   def index
     @tags = current_scope.paginate(:page => params[:page],
@@ -35,9 +35,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new
+    @tag.safe_update(%w[name icon description], params[:tag])
+
     @tag.group = current_group
     @tag.user = current_user
-    @tag.safe_update(%w[name icon description], params[:tag])
+
     if @tag.save
       redirect_to tag_url(@tag)
     else
@@ -85,3 +87,4 @@ class TagsController < ApplicationController
   end
 
 end
+

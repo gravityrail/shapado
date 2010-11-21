@@ -23,9 +23,9 @@ class Tag
   validates_uniqueness_of :name, :scope => :group_id, :allow_blank => false
 
   def self.find_file_from_params(params, request)
-    if request.path =~ /\/(icon)\/([^\/\.?]+)\/([^\/\.?]+)/
+    if request.path =~ %r{/(icon)/([^/\.\?]+)/([^\/\.\?]+)}
       @group = Group.find($2)
-      @tag = Tag.where(:name => $3).first
+      @tag = @group.tags.where(:name => $3).first
       case $1
       when "icon"
         @tag.icon
