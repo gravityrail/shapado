@@ -55,13 +55,13 @@ class TagsController < ApplicationController
 
     if saved || merge
       if @name_changes
-        if(merge)
+        if merge
           Question.pull({group_id: @tag.group_id, :tags => {:$all => [@name_changes.first, @name_changes.last]}},
                         "tags" => @name_changes.first)
         end
         Question.override({group_id: @tag.group_id, :tags => @name_changes.first}, {"tags.$" => @name_changes.last})
       end
-      redirect_to tag_url(:id => @name_changes.last)
+      redirect_to tag_url(:id => @tag.name)
     else
       render :action => "edit"
     end
