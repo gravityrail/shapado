@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
-#   before_filter :login_required, :except => [:index, :show]
-#   before_filter :moderator_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show]
+  before_filter :moderator_required, :except => [:index, :show]
 
   def index
     @tags = current_scope.paginate(:page => params[:page],
@@ -35,9 +35,11 @@ class TagsController < ApplicationController
 
   def create
     @tag = Tag.new
+    @tag.safe_update(%w[name icon description], params[:tag])
+
     @tag.group = current_group
     @tag.user = current_user
-    @tag.safe_update(%w[name icon description], params[:tag])
+
     if @tag.save
       redirect_to tag_url(@tag)
     else
@@ -55,13 +57,13 @@ class TagsController < ApplicationController
 
     if saved || merge
       if @name_changes
-        if(merge)
+        if merge
           Question.pull({group_id: @tag.group_id, :tags => {:$all => [@name_changes.first, @name_changes.last]}},
                         "tags" => @name_changes.first)
         end
         Question.override({group_id: @tag.group_id, :tags => @name_changes.first}, {"tags.$" => @name_changes.last})
       end
-      redirect_to tag_url(:id => @name_changes.last)
+      redirect_to tag_url(:id => @tag.name)
     else
       render :action => "edit"
     end
@@ -85,3 +87,4 @@ class TagsController < ApplicationController
   end
 
 end
+

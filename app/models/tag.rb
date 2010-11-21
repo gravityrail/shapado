@@ -12,7 +12,7 @@ class Tag
   field :color, :type => String
   field :used_at, :type => Time
 
-  file_key :icon, :max_length => 1.megabytes
+  file_key :icon, :max_length => 256.kilobytes
 
   referenced_in :group
   referenced_in :user
@@ -22,14 +22,10 @@ class Tag
 
   validates_uniqueness_of :name, :scope => :group_id, :allow_blank => false
 
-#   def to_param
-#     self.name
-#   end
-
   def self.find_file_from_params(params, request)
-    if request.path =~ /\/(icon)\/([^\/\.?]+)\/([^\/\.?]+)/
+    if request.path =~ %r{/(icon)/([^/\.\?]+)/([^\/\.\?]+)}
       @group = Group.find($2)
-      @tag = Tag.where(:name => $3).first
+      @tag = @group.tags.where(:name => $3).first
       case $1
       when "icon"
         @tag.icon
