@@ -27,12 +27,6 @@ class Admin::ManageController < ApplicationController
 
   def properties
     @active_subtab ||= "general"
-    if @active_subtab == "constrains" && params[:mode].present?
-      mode = ConstrainsConfig.find(params[:mode])
-      if mode
-        @group.reputation_constrains = mode.content
-      end
-    end
   end
 
   def actions

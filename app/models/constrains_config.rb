@@ -2,6 +2,7 @@
 class ConstrainsConfig
   include Mongoid::Document
   include Mongoid::Timestamps
+  include MongoidExt::Slugizer
 
   CONSTRAINS = %w[vote_up vote_down flag post_images comment delete_own_comments
                   create_new_tags post_whithout_limits edit_wiki_post
@@ -11,8 +12,15 @@ class ConstrainsConfig
                   vote_to_open_any_question delete_closed_questions moderate]
 
   identity :type => String
-  field :content, :type => Hash
+  field :content, :type => Hash, :default => {}
   field :name, :type => String
+  slug_key :name, :unique => true
+
+  referenced_in :user
+  referenced_in :group
+
+  validates_uniqueness_of   :name
+  validates_presence_of     :name
 
   def check_reputation_configs
     if self.content_changed?
