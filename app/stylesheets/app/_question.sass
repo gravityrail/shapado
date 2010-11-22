@@ -1,0 +1,150 @@
+// ========================================================================
+//    Document   	:   _question.sass
+//    Created on 	:   Nov14 - 2010, 20:29 pm
+//    Author      	:   @dgfrancisco
+//    Client     		:   Shapado
+//    Description	:   Estilos para los despliegues de las preguntas
+//========================================================================
+.question
+  #main-content-wrap
+    border: none
+    background: transparent
+    
+/* Main Question */    
+//========================================================================
+section.main-question
+  +normal-radius
+  border: 1px solid #e5e5e5
+  background: #fff url("/images/q-icon-medium.gif") 15px 15px  no-repeat   
+  margin-bottom: 15px
+  position: relative
+  h1
+    font-size: 26px
+    line-height: 28px
+    font-weight: bold
+    margin: 10px 20px 5px 45px
+  .description
+    margin: 10px 20px 5px 45px
+  p
+    font-size: 12px
+    line-height: 16px
+    margin: 0 0 10px 0
+    color: #606060
+  .follow
+    position: absolute
+    top: 40px
+    left: 10px
+    
+    
+  /* Main Question - toolbar */    
+  //======================================================================
+  .toolbar
+    border-top: 1px solid #e5e5e5
+    ul
+      +normal-radius
+      li
+        float: left
+        display: inline
+        a
+          display: block
+          padding: 5px 7px 7px 23px
+          color: #aaa
+          border-right: 1px solid #e5e5e5
+          background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat 
+        a:hover
+          color: #000
+          background-color: $lightOrange !important
+        &.answer
+          a
+            background-position: 5px 5px
+        &.comment
+          a
+            background-position: 5px -49px
+          a:hover
+            background-position: 5px -25px  
+        &.edit
+          a
+            background-position: 6px -106px  
+          a:hover
+            background-position: 6px -82px
+        &.spam
+          a
+            background-position: 5px -162px  
+          a:hover
+            background-position: 5px -138px
+        &.share
+          a
+            background-position: 5px -219px 
+          a:hover
+            background-position: 5px -195px
+        &.activity
+          a
+            background-position: 5px -275px 
+          a:hover
+            background-position: 5px -251px
+
+/* Main Question - Tags */    
+//========================================================================
+ul.tag-list
+  margin: 0 0 10px 0
+  float: left
+  li
+    float: left
+    display: inline
+    margin: 0 0 7px 0
+    a
+      background: url("/images/tag-back-lt.png") 0 0  no-repeat 
+      margin: 0 0 0 8px  
+      font-size: 11px   
+      padding: 1px 5px 2px 13px    
+      color: #666
+    a:hover
+      background: url("/images/tag-back-hover.png") 0 0  no-repeat 
+      color: #000
+    &.title
+      font-weight: bolder
+      font-size: 12px
+      margin-top: 1px 
+/* Main Question - Answers*/    
+//========================================================================
+#answers-content-wrap
+  +normal-radius
+  border: 1px solid #e5e5e5
+  background-color: #fff
+  clear: both
+  display: block
+  padding: 0 0 20px 0
+  header
+    h3
+      background: url("/images/ans-icon-medium.gif") 10px 10px  no-repeat 
+      font-size: 18px
+      padding: 11px 0 10px 40px
+  section.filters
+    margin: 0 0 15px 0
+    ul
+      border-top: 1px solid $blue
+      background-color: $lightBlue
+      border-bottom-color: #bee5e7
+      header
+      li.active
+        a
+          border-color: $blue
+          
+/* Main Question - Each Answer */    
+//========================================================================
+article
+  ul.toolbar
+    float: right
+    li
+      float: left
+      display: inline
+      &.votes
+        background-color: #c00
+      a
+        &:hover
+        img
+      
+
+
+
+

@@ -26,22 +26,84 @@
   %meta{:name => "description", :content => question_body.gsub(/<\/?[^>]*>/, "")[0, 255] }
   %link{:rel => "canonical", :href => question_url(@question) }
 
-- content_for :subtabs do
-  %h1.navtitle.title.entry-title
+%section.main-question
+  %h1
     &= @question.title
     - if @question.closed
       =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
+  .follow
+    - if current_user && @question.follower?(current_user)
+      = link_to image_tag("layer-visible-on.png", 'data-src' => "/images/layer-visible-off.png"), unfollow_question_path(@question), :class => 'question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
+    - else
+      = link_to image_tag("layer-visible-off.png", 'data-src' => "/images/layer-visible-on.png"), follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
+          
+      
+  .description
+    = question_body
+     
+  .toolbar
+    %ul
+      %li.answer
+        = link_to "Responder"
+      %li.comment
+        = link_to "Comentar"
+      %li.edit
+        = link_to "Editar"
+      %li.spam
+        = link_to "Reportar"
+      %li.share
+        = link_to "Compartir"
+      %li.activity
+        = link_to "Actividad"           
 
-- source = question_path(@question)
-= error_messages_for 'answer'
+%ul.tag-list
+  %li.title
+    Topics:  
+  - @question.tags.each do |tag|
+    %li
+      = link_to h(tag), tag_path(:id => tag), :rel => "tag"
+  - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
+    %li.retag
+    = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
+
+#answers-content-wrap
+  %header
+    %h3 200 Respuestas        
+  %section.filters
+    %ul
+      %header Sort By:
+      %li.active
+        = link_to "Últimas preguntas"
+      %li
+        = link_to "Las más votadas"
+      %li
+        = link_to "Las más antiguas"
+      %li
+        = link_to "Respuesta elegida" 
+
+  - source = question_path(@question)
+  = error_messages_for 'answer'
+
+  - content_for :subtabs do
+    %h1.navtitle.title.entry-title
+      &= @question.title
+      - if @question.closed
+        =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"        
+        
+  
+  %article
+  
+    %ul.toolbar
+      %li.votes
+
+
+  .clear  
+        
+
+
+
 
 #question-vote-col
-  - if current_user && @question.follower?(current_user)
-    = link_to image_tag("layer-visible-on.png", 'data-src' => "/images/layer-visible-off.png"), unfollow_question_path(@question), :class => 'question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
-  - else
-    = link_to image_tag("layer-visible-off.png", 'data-src' => "/images/layer-visible-on.png"), follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
-
-  =vote_box(@question, question_path(@question), @question.closed)
 
 #question-body-col.commentable.markdown
   %a{:name => @question.id}
@@ -62,17 +124,11 @@
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
     .post-text.entry-content
-      = question_body
+      
 
       = render "reward_form"
-  .tag-list
-    - @question.tags.each do |tag|
-      %span.tag
-        = link_to h(tag), tag_path(:id => tag), :rel => "tag"
-    - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
-      %span.retag
-        = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
-  .post-info
+    
+    .post-info
     .author.user_info.vcard
       .gravatar.logo
         -if !@question.anonymous
@@ -95,6 +151,9 @@
               = t("global.from", :site => @question.address_name)
               = country_flag(@question.address["country_code"], @question.address["country"])
       .clear
+      
+      
+      
     - if @question.updated_by.present?
       .user_info
         .gravatar.logo
