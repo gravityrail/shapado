@@ -60,6 +60,8 @@ class Group
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
   field :share, :type => Share, :default => Share.new
 
+  field :social_notifications, :type => Hash, :default => { }
+
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
   file_key :custom_favicon, :max_length => 256.kilobytes

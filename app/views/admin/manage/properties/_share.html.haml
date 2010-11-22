@@ -28,28 +28,5 @@
   .description
     = t(".ends_with_example")
 
-%h1
-  =t(".asking_from_twitter")
-
-.field
-  %label.label
-    =t(".question_asked_to")
-  @
-  = text_field_tag 'group[share][twitter_user]', @group.share.twitter_user, :class => "text_field", :style => "width: 10%"
-  .description
-    =t(".twitter_account")
-
-.field
-  %label.label
-    = t(".question_must_include")
-  =text_field_tag 'group[share][twitter_pattern]', @group.share.twitter_pattern, :class => "text_field"
-  .description
-    = t(".question_must_include_example")
-
-.field
-  = check_box_tag 'group[share][enable_twitter]', true, @group.share.enable_twitter, :class => "checkbox"
-  %label.radio
-    =t("global.active")
-
 .buttons
   = f.submit t('scaffold.update')

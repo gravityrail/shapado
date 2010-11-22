@@ -1,0 +1,18 @@
+-content_for :subtabs do
+  .navtitle
+    = t(".title")
+  %ul
+    %li.post_to_twitter
+      = link_to t(".post_to_twitter"), manage_social_path(:tab=>"post_to_twitter"), :title => t(".post_to_twitter_title")
+    %li.ask_from_twitter
+      = link_to t(".ask_from_twitter"), manage_social_path(:tab=>"ask_from_twitter"), :title => t(".ask_from_twitter_title")
+    %li.facebook_app
+      = link_to t(".facebook_app"), manage_social_path(:tab=>"facebook_app"), :title => t(".facebook_app_title")
+-form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
+  = f.error_messages
+  =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "social", :tab => @active_subtab)
+  =render :partial => "admin/manage/properties/#{@active_subtab}", :locals => {:f => f}
+  .group.navform
+    = f.submit t('scaffold.update')
+
+= yield :after_form

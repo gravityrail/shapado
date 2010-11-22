@@ -1,6 +1,14 @@
 en:
   admin:
     manage:
+      social:
+        title: Social media interaction
+        post_to_twitter: Post to Twitter
+        ask_from_twitter: Ask from Twitter
+        facebook_app: Facebook
+        post_to_twitter_title: Post all questions and answers to Twitter automatically
+        ask_from_twitter_title: Allow your users to ask questions from Twitter
+        facebook_app_title: Configure your Facebook app
       content:
         title: Custom content
         question_prompt: Question prompt
@@ -10,23 +18,26 @@ en:
         top_bar: Top bar
         top_bar_tip: Enter one link per line
       properties:
-        general:
-          title: Group properties
-        share:
-          title: Share
-          application_id: Application ID
-          secret_key: Secret Key
-          question_asked_to: Question Asked To
-          question_must_include: Question must include the following tag to be tweeted
-          twitter_account: The Twitter account your users will ask questions to.
-          facebook_app: Facebook app settings
-          asking_from_twitter: Asking questions from Twitter
+        post_to_twitter:
           tweet_starts_with: Prepend a tag to your tweets
           tweet_ends_with: Append a tag to your tweets
           starts_with_example: "e.g. #qa"
           ends_with_example: "e.g. #shapado"
-          question_must_include_example: "e.g. #iAsk"
           add_tags: Add tags to your tweets
+        ask_from_twitter:
+          asking_from_twitter: Asking questions from Twitter
+          question_must_include: Question must include the following tag to be tweeted.
+          twitter_account: The Twitter account your users will ask questions to.
+          question_asked_to: Question Asked To
+          question_must_include_example: "e.g. #iAsk"
+        facebook_app:
+          application_id: Application ID
+          secret_key: Secret Key
+          facebook_app: Facebook app settings
+        general:
+          title: Group properties
+        share:
+          title: Share
         constrains:
           title: Requirements
           reputation_constrains_subtitle: List of reputation requirements for each action
