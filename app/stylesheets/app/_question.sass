@@ -30,11 +30,18 @@ section.main-question
     line-height: 16px
     margin: 0 0 10px 0
     color: #606060
-  .follow
+  .edit
     position: absolute
-    top: 40px
-    left: 10px
-    
+    top: 43px
+    left: 14px
+    a
+      width: 24px
+      height: 24px
+      background: url("/images/edit-icon-big.png") 0 0  no-repeat
+      display: block
+      text-indent: -1000px
+      &:hover
+        background-position: 0 -40px
     
   /* Main Question - toolbar */    
   //======================================================================
@@ -62,11 +69,15 @@ section.main-question
             background-position: 5px -49px
           a:hover
             background-position: 5px -25px  
-        &.edit
-          a
-            background-position: 6px -106px  
-          a:hover
-            background-position: 6px -82px
+        &.follow
+          a.follow-q
+            background-position: 6px -330px
+          a.follow-q:hover
+            background-position: 6px -306px
+          a.unfollow-q
+            background-position: 6px -378px
+          a.unfollow-q:hover
+            background-position: 6px -354px
         &.spam
           a
             background-position: 5px -162px  

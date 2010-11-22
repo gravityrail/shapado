@@ -31,11 +31,8 @@
     &= @question.title
     - if @question.closed
       =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
-  .follow
-    - if current_user && @question.follower?(current_user)
-      = link_to image_tag("layer-visible-on.png", 'data-src' => "/images/layer-visible-off.png"), unfollow_question_path(@question), :class => 'question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
-    - else
-      = link_to image_tag("layer-visible-off.png", 'data-src' => "/images/layer-visible-on.png"), follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
+  .edit
+    = link_to "Editar"
           
       
   .description
@@ -47,8 +44,11 @@
         = link_to "Responder"
       %li.comment
         = link_to "Comentar"
-      %li.edit
-        = link_to "Editar"
+      %li.follow
+        - if current_user && @question.follower?(current_user)
+          = link_to "Unfollow", unfollow_question_path(@question), :class => 'unfollow-q', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
+        - else
+          = link_to "Follow", follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'follow-q', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
       %li.spam
         = link_to "Reportar"
       %li.share
