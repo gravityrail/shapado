@@ -22,7 +22,8 @@ class Admin::ManageController < ApplicationController
                        [:top_bar, "top_bar"]]
   subtabs :social => [[:post_to_twitter, "post_to_twitter"],
                      [:ask_from_twitter, "ask_from_twitter"],
-                     [:facebook_app, "facebook_app"]]
+                     [:facebook_app, "facebook_app"],
+                     [:twitter_account, "twitter_account"]]
 
   def dashboard
   end

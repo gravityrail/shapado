@@ -5,10 +5,12 @@ en:
         title: Social media interaction
         post_to_twitter: Post to Twitter
         ask_from_twitter: Ask from Twitter
-        facebook_app: Facebook
+        facebook_app: Facebook App
+        twitter_account: Twitter Account
         post_to_twitter_title: Post all questions and answers to Twitter automatically
         ask_from_twitter_title: Allow your users to ask questions from Twitter
-        facebook_app_title: Configure your Facebook app
+        facebook_app_title: Configure your Facebook app that will be used to allow your users to login with their facebook account
+        twitter_account_title: Configure your Twitter account that will be used to post twitter
       content:
         title: Custom content
         question_prompt: Question prompt
