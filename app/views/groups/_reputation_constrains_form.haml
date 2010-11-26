@@ -1,5 +1,6 @@
 
--@group.reputation_constrains.sort.each do |key, value|
+-ConstrainsConfig::CONSTRAINS.each do |key, value|
+  - value = @group.reputation_constrains[key]
   .group
     -name = "group[reputation_constrains[#{key}]]"
     =label_tag name, Group.humanize_reputation_constrain(key), :class => "label"

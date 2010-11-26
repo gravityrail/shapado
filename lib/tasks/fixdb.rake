@@ -263,4 +263,8 @@ namespace :fixdb do
       end
     end
   end
+
+  task :remove_retag_other_tag => [:environment] do
+    Group.unset({}, "reputation_constrains.retag_others_tags" => 1 )
+  end
 end

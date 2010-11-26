@@ -80,6 +80,7 @@ class Group
   references_many :votes, :dependent => :destroy # FIXME: mongoid, embedded
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
+  references_many :constrains_configs, :dependent => :destroy
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
