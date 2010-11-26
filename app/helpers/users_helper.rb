@@ -90,4 +90,12 @@ module UsersHelper
     end
   end
 
+  def avatar_img(user, options)
+    if user.use_gravatar || !user.has_avatar?
+      gravatar(user.email.to_s, options)
+    else
+      image_tag(avatar_user_path(user), :style => "width:#{options[:size]}px")
+    end
+  end
+
 end
