@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
 end
 
 namespace :fixdb do
