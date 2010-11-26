@@ -26,8 +26,7 @@ module Jobs
 
     def self.tag_renamed(tag_id, new_name, old_name, merge)
       tag = Tag.find(tag_id)
-        Question.override({group_id: @tag.group_id, :tags => old_name}, {"tags.$" => new_name})
-      end
+      Question.override({group_id: @tag.group_id, :tags => old_name}, {"tags.$" => new_name})
     end
   end
 end

@@ -54,4 +54,3 @@ en:
       description: "This widget displays tags followed by the current user."
     tag_list:
       description: "This widget displays tags related to the current page."
-
