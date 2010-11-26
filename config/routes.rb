@@ -151,6 +151,7 @@ Shapado::Application.routes.draw do
       end
     end
 
+    resources :constrains_configs
     resources :members
   end
 

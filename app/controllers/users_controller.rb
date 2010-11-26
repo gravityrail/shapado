@@ -136,7 +136,7 @@ class UsersController < ApplicationController
     end
 
     @user.safe_update(%w[login email name language timezone preferred_languages
-                         notification_opts bio hide_country website], params[:user])
+                         notification_opts bio hide_country website avatar use_gravatar], params[:user])
 
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
