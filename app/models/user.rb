@@ -4,6 +4,7 @@ class User
   include Mongoid::Document
   include Mongoid::Timestamps
   include MultiauthSupport
+  include MongoidExt::Storage
   include Shapado::Models::GeoCommon
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
@@ -22,13 +23,16 @@ class User
   field :location,                  :type => String, :limit => 200
   field :birthday,                  :type => Time
 
-  field :identity_url,              :type => String, :index => true
+  field :identity_url,              :type => String
+  index :identity_url
+
   field :role,                      :type => String, :default => "user"
   field :last_logged_at,            :type => Time
 
   field :preferred_languages,       :type => Array, :default => []
 
-  field :language,                  :type => String, :default => "en", :index => true
+  field :language,                  :type => String, :default => "en"
+  index :language
   field :timezone,                  :type => String
   field :language_filter,           :type => String, :default => "user", :in => LANGUAGE_FILTERS
 
@@ -47,10 +51,14 @@ class User
   field :feed_token,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
   field :socket_key,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
 
-  field :anonymous,                 :type => Boolean, :default => false, :index => true
+  field :anonymous,                 :type => Boolean, :default => false
+  index :anonymous
 
   field :friend_list_id, :type => String
   field :notification_opts, :type => NotificationConfig
+
+  file_key :avatar, :max_length => 1.megabytes
+  field :use_gravatar, :type => Boolean, :default => true
 
   referenced_in :friend_list
 
@@ -480,6 +488,16 @@ Time.zone.now ? 1 : 0)
 
   def generate_uuid
     self.feed_token = UUIDTools::UUID.random_create.hexdigest
+  end
+
+  def self.find_file_from_params(params, request)
+    if request.path =~ %r{/(avatar)/([^/\.\?]+)}
+      @user = User.find($2)
+      case $1
+      when "avatar"
+        @user.avatar
+      end
+    end
   end
 
   protected

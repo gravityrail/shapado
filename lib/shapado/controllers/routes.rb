@@ -3,7 +3,7 @@ module Shapado
     module Routes
       def self.included(base)
         base.class_eval do
-          helper_method :logo_path, :css_group_path, :favicon_group_path, :tag_icon_path
+          helper_method :logo_path, :css_group_path, :favicon_group_path, :tag_icon_path, :avatar_user_path
         end
       end
 
@@ -24,6 +24,10 @@ module Shapado
           tag_name = tag_name.name
         end
         "/_files/tags/icon/#{group.id}/#{tag_name}"
+      end
+
+      def avatar_user_path(user)
+        "/_files/users/avatar/#{user.id}"
       end
     end
   end
