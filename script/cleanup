@@ -4,3 +4,4 @@ ENV['Rails.env'] ||= (ARGV.first || 'development')
 require File.dirname(__FILE__)+"/../config/environment"
 
 ViewsCount.cleanup!
+Draft.cleanup!
