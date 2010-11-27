@@ -194,6 +194,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.mobile
       format.json  { render :json => @question.to_json }
     end
   end

@@ -1,0 +1,23 @@
+%div{:data => {:role => "page"}}
+  %div{:"data-role" => "header"}
+    %h1
+      New Question
+    = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+
+
+  %div{:"data-role" => "content"}
+    - form_for(@question, :html=>{:class => "form", :id => "ask_question"}) do |f|
+      =render "form.html.haml", {:f => f}
+
+      .group.navform
+        .controls.right{:style => "width: 50%"}
+          .left{:style => "width: 49.5%"}
+            = f.label :wiki, "Wiki", :class => "radio"
+            = f.check_box :wiki, :class => "checkbox"
+          .left{:style => "width: 49.5%"}
+            = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+            = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+        = f.submit t('scaffold.create')
+        = t("global.or")
+        = link_to t('scaffold.cancel'), questions_path, :class => "button cancel"
