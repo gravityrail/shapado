@@ -10,3 +10,6 @@
         %li
           = link_to question.title, question_path(question, :format => "mobile")
           = link_to 'edit question', edit_question_path(question, :format => "mobile"), "data-icon" => "gear"
+          %span{:class=>"ui-li-count"}
+            =question.answers_count
+            answers
