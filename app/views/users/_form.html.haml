@@ -94,6 +94,10 @@
   .group
     = f.check_box "notification_opts[reports]", :checked => @user.notification_opts.reports
     = t(".reports_notification")
+  -if request.user_agent =~ /webkit/i
+    .group
+      = check_box_tag "notification_opts[desktop_notifs]", true, false, {:id => "desktop_notifs"}
+      = t(".desktop_notification")
 
   %a{:name => "social"}
   %h2.title
