@@ -1,0 +1,14 @@
+!!! Mobile
+
+%html{"xml:lang" => I18n.locale, :lang => I18n.locale, :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title
+      &= page_title
+
+    %link{:rel=>"stylesheet", :href=>"http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css"}
+    = javascript_include_merged(:mobile).html_safe
+    %script{:src=>"http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js", :type => "text/javascript"}
+
+    = csrf_meta_tag
+  %body
+    =yield

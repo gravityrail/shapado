@@ -28,6 +28,11 @@ javascripts:
   - modules/notifier
   - multiauth
 
+- mobile:
+  - jquery
+  - rails
+
+
 - websocket:
   - web-socket-js/swfobject
   - web-socket-js/FABridge

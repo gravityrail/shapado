@@ -18,6 +18,8 @@ Shapado::Application.routes.draw do
   match '/tos' => 'doc#tos', :as => :tos
   match '/privacy' => 'doc#privacy', :as => :privacy
 
+  get "mobile/index"
+
   resources :users do
     collection do
       get :autocomplete_for_user_login

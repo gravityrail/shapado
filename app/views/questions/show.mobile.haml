@@ -1,0 +1,21 @@
+- question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
+
+%div{:data => {:role => "page"}}
+  %div{:"data-role" => "header"}
+    %h1
+      = @question.title
+    = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+
+
+  %div{:"data-role" => "content"}
+    = question_body
+
+  %ul{:"data-role" => "listview"}
+    %li{:"data-role"=>"list-divider"}
+      Answers
+      %span{:class=>"ui-li-count"}
+        =@answers.total_entries
+    -@answers.each do |answer|
+      %li
+        %p
+          = markdown(answer.body)

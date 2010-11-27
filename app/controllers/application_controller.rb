@@ -116,7 +116,13 @@ class ApplicationController < ActionController::Base
   helper_method :scoped_conditions
 
   def set_layout
-    devise_controller? || (action_name == "new" && controller_name == "users") ? 'sessions' : 'application'
+    if devise_controller? || (action_name == "new" && controller_name == "users")
+      'sessions'
+    elsif params[:format] == "mobile"
+      'mobile'
+    else
+      'application'
+    end
   end
 
   def render_404

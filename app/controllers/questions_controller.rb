@@ -173,6 +173,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html { Jobs::Questions.async.on_view_question(@question.id).commit! }
+      format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
       format.atom
     end
