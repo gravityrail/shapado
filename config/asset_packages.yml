@@ -25,6 +25,7 @@ javascripts:
   - modules/members
   - modules/move_group
   - modules/editor
+  - modules/notifier
   - multiauth
 
 - websocket:
