@@ -95,6 +95,7 @@ class ApplicationController < ActionController::Base
 
     respond_to do |format|
       format.html # index.html.erb
+      format.mobile
       format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
       format.atom
     end
@@ -118,7 +119,7 @@ class ApplicationController < ActionController::Base
   def set_layout
     if devise_controller? || (action_name == "new" && controller_name == "users")
       'sessions'
-    elsif params[:format] == "mobile"
+    elsif params["format"] == "mobile"
       'mobile'
     else
       'application'
