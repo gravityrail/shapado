@@ -14,6 +14,7 @@ javascripts:
   - components/search
   - jqueryui.ricodigoComplete
   - application
+  - modules/effects
   - modules/index_question
   - modules/retag
   - modules/new_question
