@@ -33,7 +33,7 @@ module Shapado
       end
 
       def question_attachment_path(group,question, file, attach_id)
-        "/_files/questions/attachment/#{group.slug}/#{question.id}/#{attach_id}/#{file.name}"
+        "/_files/questions/attachment/#{group.slug}/#{question.id}/#{attach_id}"
       end
     end
   end

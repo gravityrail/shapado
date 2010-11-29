@@ -42,7 +42,15 @@
       =markdown(@question.body)
 
 .group
-  = f.file_field "attachments[0]"
+  -if !@question.new_record?
+    = render "attachments", :question => @question, :attachments => @question.attachments
+  #attachments
+    #fields
+      .attachment_field.template
+        = f.file_field "attachments[0]"
+        = link_to "-", "#", :class => "remove_attachment"
+
+    = link_to "+", "#", :class => "add_attachment"
 
 -if current_group.language.nil? && AppConfig.enable_i18n
   .group

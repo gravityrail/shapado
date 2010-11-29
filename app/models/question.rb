@@ -295,20 +295,18 @@ class Question
 
   def attachments=(files)
     files.each do |k,v|
-      self.attachments.put(k,v)
+      if(v.size > 0)
+        self.attachments.put(k,v)
+      end
     end
   end
 
   def self.find_file_from_params(params, request)
-#     /#{group.slug}/#{question.id}/#{attach_id}
     if request.path =~ /\/(attachment)\/([^\/\.?]+)\/([^\/\.?]+)\/([^\/\.?]+)/
       @group = Group.by_slug($2)
       @question = @group.questions.find($3)
       case $1
       when "attachment"
-        p "#"*160
-        p $4
-        p @question.attachments
         @question.attachments.get($4)
       end
     end
