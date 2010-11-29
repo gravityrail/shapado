@@ -38,6 +38,9 @@
   .description
     = question_body
 
+  .attachments
+    = render "attachments", :question => @question, :attachments => @question.attachments
+
   .toolbar
     %ul
       %li.answer

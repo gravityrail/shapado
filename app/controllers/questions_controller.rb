@@ -213,7 +213,7 @@ class QuestionsController < ApplicationController
 
     @question.group = current_group
     @question.user = current_user
-    @question.safe_update(%w[title body language tags wiki position], params[:question])
+    @question.safe_update(%w[title body language tags wiki position attachments], params[:question])
 
     if params[:original_question_id]
       @question.follow_up = FollowUp.new(:original_question_id => params[:original_question_id], :original_answer_id => params[:original_answer_id])
@@ -285,7 +285,7 @@ class QuestionsController < ApplicationController
       if !params[:tag_input].blank? && params[:question][:tags].blank?
         params[:question][:tags] = params[:tag_input]
       end
-      @question.safe_update(%w[title body language tags wiki adult_content version_message], params[:question])
+      @question.safe_update(%w[title body language tags wiki adult_content version_message attachments], params[:question])
 
       @question.updated_by = current_user
       @question.last_target = @question
