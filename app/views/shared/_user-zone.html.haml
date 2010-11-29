@@ -1,7 +1,8 @@
 .user-zone.module
 
   -if !logged_in?
-    =multiauth_menu("Sign In")
+    /=multiauth_menu("Sign In")
+    = multiauth_dropdown("Sign In")
   -else
     .avatar
       = gravatar(current_user.email.to_s, :size => 25)

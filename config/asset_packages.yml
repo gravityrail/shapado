@@ -28,6 +28,7 @@ javascripts:
   - modules/editor
   - modules/notifier
   - multiauth
+  - superfish
 
 - mobile:
   - jquery

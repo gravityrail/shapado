@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $('ul.sf-menu').superfish();
+
   init_geolocal();
   $("form.nestedAnswerForm").hide();
   $("#add_comment_form").hide();
@@ -222,4 +224,4 @@ document.createElement('aside');
 document.createElement('nav');
 document.createElement('article');
 document.createElement('hgroup');
-      
+
