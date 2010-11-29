@@ -130,7 +130,7 @@ class Question
       t = t.downcase.split(/[,\+\s]+/).uniq
     end
 
-    if !self.user.can_create_new_tags_on?(self.group)
+    if self.user && !self.user.can_create_new_tags_on?(self.group)
       tmp_tags = self.group.tags.where(:name.in => t).only(:name).map(&:name)
       self.removed_tags = t-tmp_tags
       t = tmp_tags

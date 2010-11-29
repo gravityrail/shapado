@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: e87bbf511d5360e536549eb894d3dc74427ab657
+  revision: fbd8d999a22dedc9974b4234ce6749c975cbecae
   specs:
     mongoid_ext (0.6.0)
       i18n (~> 0.4.1)
@@ -206,16 +206,17 @@ GEM
       remarkable_activemodel (>= 4.0.0.alpha2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rspec (2.1.0)
-      rspec-core (~> 2.1.0)
-      rspec-expectations (~> 2.1.0)
-      rspec-mocks (~> 2.1.0)
-    rspec-core (2.1.0)
-    rspec-expectations (2.1.0)
+    rspec (2.2.0)
+      rspec-core (~> 2.2)
+      rspec-expectations (~> 2.2)
+      rspec-mocks (~> 2.2)
+    rspec-core (2.2.1)
+    rspec-expectations (2.2.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.1.0)
-    rspec-rails (2.1.0)
-      rspec (~> 2.1.0)
+    rspec-mocks (2.2.0)
+    rspec-rails (2.2.0)
+      rails (~> 3.0.0)
+      rspec (~> 2.2)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
