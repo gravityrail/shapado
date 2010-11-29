@@ -33,11 +33,11 @@
       =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
   .edit
     = link_to "Editar"
-          
-      
+
+
   .description
     = question_body
-     
+
   .toolbar
     %ul
       %li.answer
@@ -53,22 +53,23 @@
         = link_to "Reportar"
       %li.share
         = link_to "Compartir"
-      
+
       - if @question.versions.count > 0
         %li.activity
           = link_to t(".history", :default => "history"), history_question_path(@question)
-      - if (current_user.can_modify?(@question) || current_user.owner_of?(@question.group))
-        %li.activity
-          = link_to t("scaffold.destroy"), question_path(@question.id), :confirm => "are you sure?", :method => :delete
-      - if current_user.mod_of?(@question.group)
-        %li.activity
-          -if !@question.closed
-            = link_to t('.close'), question_close_requests_path(@question)
-          = link_to @question.banned ? t(".unban") : t(".ban"), manage_moderate_questions_path(:question_ids => [@question.id], :commit => @question.banned ? "unban": "ban"), :class => "button", :method => :put, :confirm => "are you sure?"
+      - if logged_in?
+        - if (current_user.can_modify?(@question) || current_user.owner_of?(@question.group))
+          %li.activity
+            = link_to t("scaffold.destroy"), question_path(@question.id), :confirm => "are you sure?", :method => :delete
+        - if current_user.mod_of?(@question.group)
+          %li.activity
+            -if !@question.closed
+              = link_to t('.close'), question_close_requests_path(@question)
+            = link_to @question.banned ? t(".unban") : t(".ban"), manage_moderate_questions_path(:question_ids => [@question.id], :commit => @question.banned ? "unban": "ban"), :class => "button", :method => :put, :confirm => "are you sure?"
 
       %li.followUp
-        = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"  
-      
+        = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
+
       - if !@flag.new_record?
         %li.flag
           = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"
@@ -118,7 +119,7 @@
 
 %ul.tag-list
   %li.title
-    Topics:  
+    Topics:
   - @question.tags.each do |tag|
     %li
       = link_to h(tag), tag_path(:id => tag), :rel => "tag"
@@ -128,7 +129,7 @@
 
 #answers-content-wrap
   %header
-    %h3 
+    %h3
       = t(".answers_title", :count => @answers.total_entries)
 
   %section.filters
@@ -141,7 +142,7 @@
       %li.oldest-active
         = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow"
       %li
-        = link_to "Respuesta elegida" 
+        = link_to "Respuesta elegida"
 
   .error
     - source = question_path(@question)
@@ -156,7 +157,7 @@
       %h1 Followed by:
       -@question.followed_up_by.all.each do |child|
         = link_to child.title, question_path(child)
-        
+
     - if @question.closed && @question.close_reason.present?
       #close_reason
         = t(".close_reason")
@@ -164,9 +165,9 @@
         - if !@question.close_reason.comment.empty?
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
-    
-    .followUp-reason      
-      = render "reward_form"    
+
+    .followUp-reason
+      = render "reward_form"
 
   - if @question.accepted
     -solution = @question.answer
