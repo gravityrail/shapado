@@ -41,6 +41,9 @@
     #markdown_preview.markdown
       =markdown(@question.body)
 
+.group
+  = f.file_field "attachments[0]"
+
 -if current_group.language.nil? && AppConfig.enable_i18n
   .group
     = f.label :language, t(:language, :scope => "activerecord.attributes.question"), :class => "label"

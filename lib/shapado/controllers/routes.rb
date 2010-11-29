@@ -3,7 +3,9 @@ module Shapado
     module Routes
       def self.included(base)
         base.class_eval do
-          helper_method :logo_path, :css_group_path, :favicon_group_path, :tag_icon_path, :avatar_user_path
+          helper_method :logo_path, :css_group_path,
+                        :favicon_group_path, :tag_icon_path, :avatar_user_path,
+                        :question_attachment_path
         end
       end
 
@@ -28,6 +30,10 @@ module Shapado
 
       def avatar_user_path(user)
         "/_files/users/avatar/#{user.id}"
+      end
+
+      def question_attachment_path(group,question, file, attach_id)
+        "/_files/questions/attachment/#{group.slug}/#{question.id}/#{attach_id}/#{file.name}"
       end
     end
   end

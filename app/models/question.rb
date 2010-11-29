@@ -6,6 +6,7 @@ class Question
   include MongoidExt::Slugizer
   include MongoidExt::Tags
   include MongoidExt::Random
+  include MongoidExt::Storage
 
   include Support::Versionable
   include Support::Voteable
@@ -70,6 +71,8 @@ class Question
   field :last_target_type, :type => String
   field :last_target_id, :type => String
   field :last_target_date, :type => Time
+
+  file_list :attachments
 
   attr_accessor :removed_tags
 
@@ -288,6 +291,27 @@ class Question
     self.last_target_type = target.class.to_s
     self.last_target_date = target.updated_at
     self.last_target_user_id = target.user_id
+  end
+
+  def attachments=(files)
+    files.each do |k,v|
+      self.attachments.put(k,v)
+    end
+  end
+
+  def self.find_file_from_params(params, request)
+#     /#{group.slug}/#{question.id}/#{attach_id}
+    if request.path =~ /\/(attachment)\/([^\/\.?]+)\/([^\/\.?]+)\/([^\/\.?]+)/
+      @group = Group.by_slug($2)
+      @question = @group.questions.find($3)
+      case $1
+      when "attachment"
+        p "#"*160
+        p $4
+        p @question.attachments
+        @question.attachments.get($4)
+      end
+    end
   end
 
   protected
