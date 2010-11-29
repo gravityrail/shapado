@@ -19,3 +19,4 @@ public/javascripts/show_packaged.js
 public/javascripts/jsMath/fonts/
 .sass-cache
 *.kdev4
+.redcar
