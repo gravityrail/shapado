@@ -62,6 +62,8 @@ class Group
 
   field :social_notifications, :type => Hash, :default => { }
 
+  field :twitter_account, :type => Hash, :default => { }
+
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
   file_key :custom_favicon, :max_length => 256.kilobytes
@@ -207,6 +209,23 @@ class Group
         @group.custom_favicon if @group.has_custom_favicon?
       end
     end
+  end
+
+  def reset_twitter_account
+    self.twitter_account = { }
+    self.save!
+  end
+
+  def update_twitter_account_with_oauth_token(token, secret, screen_name)
+    self.twitter_account = self.twitter_account ? self.twitter_account : { }
+    self.twitter_account["token"] = token
+    self.twitter_account["secret"] = secret
+    self.twitter_account["screen_name"] = screen_name
+    self.save!
+  end
+
+  def has_twitter_oauth?
+    self.twitter_account && self.twitter_account["token"] && self.twitter_account["secret"]
   end
 
   protected

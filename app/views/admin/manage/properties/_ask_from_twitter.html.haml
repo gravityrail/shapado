@@ -20,3 +20,5 @@
   = check_box_tag 'group[share][enable_twitter]', true, @group.share.enable_twitter, :class => "checkbox"
   %label.radio
     =t("global.active")
+.group.navform
+  = f.submit t('scaffold.update')
