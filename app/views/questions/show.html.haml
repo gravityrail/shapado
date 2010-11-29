@@ -111,13 +111,21 @@
 
     #panel.add-answer
       -unless @question.closed
-        -form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "form mainAnswerForm"} do |f|
-          = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
-          = f.label :wiki, "Wiki", :class => "radio"
-          = f.check_box :wiki, :class => "checkbox"
-          = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-          = f.check_box :anonymous, {:class => "checkbox"}, true, false
-          = submit_tag t('answers.form.submit'), :class => "button"
+        -form_for @answer, :url => question_answers_path(@question.id) do |f|
+          %fieldset
+            %leyend
+              = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
+            
+            .form-options
+              .option
+                = f.label :wiki, "Wiki"
+                = f.check_box :wiki, :class => "checkbox"
+              .option
+                = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+                = f.check_box :anonymous, {:class => "checkbox"}, true, false
+                
+            .buttons
+              = submit_tag t('answers.form.submit'), :class => "button"
       .clear
 
 %ul.tag-list
