@@ -6,31 +6,32 @@
 - @aflag ||= Flag.new
 
 %article
-  %h4 
+  %h4
     = gravatar(answer.user.email.to_s, :size => 20) unless answer.anonymous
-    %b.user-data 
-      = t('activerecord.attributes.answer.created_at') 
-      
+    %b.user-data
+      = t('activerecord.attributes.answer.created_at')
+
       -if !answer.anonymous
         = render :partial => "users/user_mini", :locals => {:user => answer.user}
         -if !answer.user.hide_country && answer.address.present?
           = t("global.from", :site => answer.address_name)
           = country_flag(answer.address["country_code"], answer.address["country"])
       -else
-        =t("global.anonymous") 
+        =t("global.anonymous")
       = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
-      
+
     %ul.toolbar
       %li.votes
-        %p 
+        %p
           %button.negative
           %span  20 Votes
           %button.positive
     .clear
     .content
-      =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+      .markdown
+        =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
       -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
-      
+
         %h3
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
@@ -50,42 +51,42 @@
                   = t("global.from", :site => answer.address_name)
                   = country_flag(answer.address["country_code"], answer.address["country"])
 
-      %ul.article-actions    
+      %ul.article-actions
         -if logged_in?
           = link_to t(".add_comment"), new_question_comment_path(@question, answer)
-        
+
           -if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
-          
+
             -if logged_in?
 
               -if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
                 %li
                   = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
-            
+
               -if current_user.mod_of?(@question.group)
                 %li
                   =# link_to "ban", ban_path(:answer_ids => [answer.id]), :confirm => "are you sure?"
-              
+
               - if answer.favorite_for?(current_user)
                 %li.unfavorite
                   = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
               - else
                 %li.favorite
                   = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
-              
- 
+
+
         -if answer.versions.count > 0
           %li
             = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
         %li
           =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
-      
+
         - if logged_in? && @aflag.new_record? && current_user != answer.user
           %li
             = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-        
+
         -if logged_in?
-          
+
           -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
             %li
               -unless @question.accepted && !@question.subjetive
@@ -107,8 +108,8 @@
 
       -answer.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
-  
-  .clear  
+
+  .clear
   -answer.comments.each do |comment|
     = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 

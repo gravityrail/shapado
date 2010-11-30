@@ -35,7 +35,7 @@
     = link_to "Editar"
 
 
-  .description
+  .description.markdown
     = question_body
 
   .attachments
@@ -115,7 +115,7 @@
           %fieldset
             %leyend
               = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
-            
+
             .form-options
               .option
                 = f.label :wiki, "Wiki"
@@ -123,7 +123,7 @@
               .option
                 = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
-                
+
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
       .clear
@@ -187,7 +187,7 @@
   -@answers.each do |answer|
     -next if answer.id == @question.answer_id
     =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
-  
+
   =will_paginate(@answers)
 
 

@@ -11,7 +11,8 @@
 
   = hidden_field_tag :original_question_id, @original_question.id
 
-.group
+
+-if @question.position
   = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
   = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
 .group
