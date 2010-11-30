@@ -165,6 +165,13 @@ $bigRadius: 20px
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange')" !important
   background-color: $orange
 
+=blue-gradient
+  background-image: -moz-linear-gradient(top, $blue, $darkBlue) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $blue),color-stop(1, $darkBlue)) !important 
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue')" !important
+  background-color: $blue
+  
 =error-gradient
   background-image: -moz-linear-gradient(top, $red, $darkRed) !important
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $red),color-stop(1, $darkRed)) !important 

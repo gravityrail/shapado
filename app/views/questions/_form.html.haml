@@ -11,7 +11,8 @@
 
   = hidden_field_tag :original_question_id, @original_question.id
 
-.group
+
+-if @question.position
   = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
   = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
 .group
@@ -40,17 +41,6 @@
 
     #markdown_preview.markdown
       =markdown(@question.body)
-
-.group
-  -if !@question.new_record?
-    = render "attachments", :question => @question, :attachments => @question.attachments
-  #attachments
-    #fields
-      .attachment_field.template
-        = f.file_field "attachments[0]"
-        = link_to "-", "#", :class => "remove_attachment"
-
-    = link_to "+", "#", :class => "add_attachment"
 
 -if current_group.language.nil? && AppConfig.enable_i18n
   .group
