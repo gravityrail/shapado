@@ -42,6 +42,17 @@
     #markdown_preview.markdown
       =markdown(@question.body)
 
+.group
+  -if !@question.new_record?
+    = render "attachments", :question => @question, :attachments => @question.attachments
+  #attachments
+    #fields
+      .attachment_field.template
+        = f.file_field "attachments[0]"
+        = link_to "Remove", "#", :class => "remove_attachment"
+    = link_to "Add attachment", "#", :class => "add_attachment"
+
+
 -if current_group.language.nil? && AppConfig.enable_i18n
   .group
     = f.label :language, t(:language, :scope => "activerecord.attributes.question"), :class => "label"

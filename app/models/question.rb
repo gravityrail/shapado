@@ -317,7 +317,7 @@ class Question
   def attachments=(files)
     files.each do |k,v|
       if(v.size > 0)
-        self.attachments.put(k,v)
+        self.attachments.put(BSON::ObjectId.new.to_s, v)
       end
     end
   end
