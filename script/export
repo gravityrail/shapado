@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
-gem 'rubyzip'
+require 'zip/zipfilesystem'
+require 'fileutils'
 
 options = {}
 optparser = OptionParser.new do |opts|
@@ -36,9 +37,6 @@ exporter = Export.new(group)
 time = Time.now
 
 if options[:method] == :zip
-  require 'zip/zipfilesystem'
-  require 'ftools'
-
   filename = "#{group.subdomain}.zip"
   File.unlink(filename) if File.exist?(filename)
   Zip::ZipFile.open(filename, Zip::ZipFile::CREATE) do |zf|
