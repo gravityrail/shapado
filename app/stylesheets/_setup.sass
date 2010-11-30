@@ -135,7 +135,15 @@ $shadow: 0 0 10px #000
 $smallRadius: 3px
 $normalRadius: 5px
 $bigRadius: 20px
+$noneRadius: 0
 
+=none-radius($noneRadius)
+  -moz-border-radius: $noneRadius
+  -webkit-border-radius: $noneRadius
+  o-border-radius: $noneRadius
+  khtml-border-radius: $noneRadius
+  border-radius: $noneRadius
+  
 =small-radius($smallRadius)
   -moz-border-radius: $smallRadius
   -webkit-border-radius: $smallRadius

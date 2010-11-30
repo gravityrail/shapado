@@ -24,12 +24,12 @@ section.main-question
     font-weight: bold
     margin: 10px 20px 5px 45px
   .description
-    margin: 10px 20px 5px 45px
-  p
-    font-size: 12px
-    line-height: 16px
-    margin: 0 0 10px 0
-    color: #606060
+    margin: 0 20px 0 45px
+    p
+      font-size: 12px
+      line-height: 16px
+      margin: 0 0 10px 0
+      color: #606060
   .edit
     position: absolute
     top: 43px
@@ -52,12 +52,20 @@ section.main-question
       li
         float: left
         display: inline
+        position: relative
+        &:hover
+          visibility: inherit
+        &:hover ul, &.sfHover ul
+          right: -5px
+          top: 25px
+          z-index: 99
         a
           display: block
+          position: relative
           padding: 5px 7px 7px 23px
           color: #aaa
           border-right: 1px solid #e5e5e5
-          background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat 
+          background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat          
         a:hover
           color: #000
           background-color: $lightOrange !important
@@ -66,6 +74,14 @@ section.main-question
           color: #000
         a.active:hover
           background-color: $lightBlue !important
+        &.more
+          a
+            background-position: 5px -402px
+          a:hover
+            background-color: #e5e5e5 !important
+            color: #000
+        &.more:hover
+          background-color: #e5e5e5 !important        
         &.answer
           a
             background-position: 5px 5px
@@ -95,9 +111,44 @@ section.main-question
             background-position: 5px -195px
         &.activity
           a
-            background-position: 5px -275px 
+            background-position: 5px -275px
           a:hover
-            background-position: 5px -251px
+            background-position: 5px -251px            
+        &.followUp
+          a
+            background-position: 5px -275px
+        &.flag
+          a
+            background-position: 5px -275px
+        &.close
+          a
+            background-position: 5px -275px
+        &.delete
+          a
+            background-position: 5px -275px
+        &.ban
+          a
+            background-position: 5px -275px
+        &.open
+          a
+            background-position: 5px -275px
+        &.edit-q
+          a
+            background-position: 5px -275px
+        ul
+          position: absolute
+          top: -999em
+          width: 130px
+          +none-radius          
+          li:first-child
+            border-top: 1px solid #ddd
+          li
+            width: 100%
+            border-left: 1px solid #ddd
+            border-bottom: 1px solid #ddd
+            background-color: #fff
+            a:first-letter
+              text-transform: uppercase
 
 /* Main Question - Tags */    
 //========================================================================
@@ -308,65 +359,13 @@ article.comment
     
 /* Editors form output     
 //========================================================================
-.content
-  display: block
-  clear: both
-  padding: 5px 10px 0 10px
-  div, ul, ol, p, h1, h2, h3, h4, h5, h6
-    margin-top: 7px !important 
-    margin-bottom: 7px !important
-  sub, sup
-    font-size: 10px
-    font-style: italic
-    margin: 0 3px 0 0
-  b, strong
-    font-weight: bold
-  p, p span, div, li
-    font: 12px/16px $helvetica !important 
-    color: #000
-  ul
-    list-style: disc 
-    margin-left: 20px
-    font: 12px/16px $helvetica !important 
-  ol
-    list-style: decimal
-    margin-left: 20px
-    font: 12px/16px $helvetica !important 
+ul.article-actions  
+  list-style: none
+  margin: 0 0 0 -5px !important    
   li
-    margin: 0 0 3px 0
-  a
-    color: $orange
-  a:hover
-    border-bottom: 1px dotted  
-  img
-    width: 30%
-    float: left
-    border: 1px solid #e5e5e5
-    margin: 0 10px 5px 0
-  hr
-    border: 0px
-    border-top: 1px dashed
-  h1
-    font: 20px/23px $helvetica !important 
-  h2
-    font: 18px/20px $helvetica !important 
-  h3
-    font: 16px/19px $helvetica !important 
-  h4
-    font: 14px/17px $helvetica !important 
-    padding: none
-    background: none
-  h5
-    font: 12px/15px $helvetica !important 
-  h6
-    font: 10px/13px $helvetica !important 
-  ul.article-actions  
-    list-style: none
-    margin: 0 0 0 -7px !important    
-    li
-      float: left !important
-      display: inline !important
-      padding: 0 7px
-      a:hover
-        border-bottom: 1px dotted   
+    float: left !important
+    display: inline !important
+    padding: 0 7px
+    a:hover
+      border-bottom: 1px dotted   
 

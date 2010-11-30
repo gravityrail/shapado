@@ -43,9 +43,11 @@
       %ul
         %li.answers
           = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}", question_path(question)
+        
         -if question.followers_count.to_i > 0
           %li.followers
             = "#{format_number(question.followers_count)} followers"
+        
         %li.votes
           -unless question.closed
             -if logged_in? && (vote = current_user.vote_on(question))
@@ -59,10 +61,13 @@
                   = hidden_field_tag "source", questions_path, :id =>  "source_#{question.id}"
                   = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "quick-vote-button")
           = link_to "#{format_number(question.votes_average)} #{t(:votes, :scope => "activerecord.attributes.question")}"
+        
         %li
           =link_to "Reportar", "#"
+        
         %li
           =link_to "Seguir", follow_question_path(question)
+        
         %li
           =link_to "Responder", question_path(question)+"#to_answer"
 
