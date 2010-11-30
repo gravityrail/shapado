@@ -1,10 +1,7 @@
-.group
-  = hidden_field_tag "source", source, :id => "source_#{commentable.id}"
-.group
-  = hidden_field_tag "comment[position][lat]", @comment.position.lat, :class => "lat_input"
-  = hidden_field_tag "comment[position][long]", @comment.position.long, :class => "long_input"
-  -if current_group.wysiwyg_editor
-    = text_area_tag "body", @comment.body, :class => "comment_text_area wysiwyg_editor", :id => "comment_#{commentable.id}", :rows => 'auto', :cols => 'auto', :value => markdown(@comment.body)
-  -else
-    = text_area_tag "body", @comment.body, :class => "comment_text_area markdown_editor", :id => "comment_#{commentable.id}", :rows => 'auto', :cols => 'auto'
-  %br.clear
+= hidden_field_tag "source", source, :id => "source_#{commentable.id}"
+= hidden_field_tag "comment[position][lat]", @comment.position.lat, :class => "lat_input"
+= hidden_field_tag "comment[position][long]", @comment.position.long, :class => "long_input"
+-if current_group.wysiwyg_editor
+  = text_area_tag "body", @comment.body, :class => "wysiwyg_editor", :id => "comment_#{commentable.id}", :rows => 'auto', :cols => 'auto', :value => markdown(@comment.body)
+-else
+  = text_area_tag "body", @comment.body, :class => "markdown_editor", :id => "comment_#{commentable.id}", :rows => 'auto', :cols => 'auto'

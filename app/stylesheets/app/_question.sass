@@ -139,6 +139,7 @@ section.main-question
           position: absolute
           top: -999em
           width: 130px
+          left: -1px
           +none-radius          
           li:first-child
             border-top: 1px solid #ddd
@@ -215,9 +216,14 @@ ul.tag-list
 //========================================================================
 article
   border-bottom: 1px solid #e5e5e5
-  padding: 10px
+  padding: 5px 10px 0 10px
   clear: both
   display: block
+  .content
+    clear: both
+    float: none
+    display: block
+    padding: 0 10px
   .winner
     float: left
     margin-right: 10px
@@ -228,9 +234,9 @@ article
   h4
     font-size: 12px
     background: url("/images/ans-icon-small.gif") 0 4px  no-repeat 
-    padding: 15px 10px 5px 8px
+    padding: 15px 10px 0 8px
     float: left
-    margin: 0 0 13px 0
+    margin: 0 0 10px 0
     img.gravatar
       float: left
       margin: -5px 3px 0 0
@@ -240,78 +246,29 @@ article
     i
       font-size: 10px
       font-style: italic
-      color: #999
+      color: #999      
       
-  ul.toolbar 
-    float: right 
-    position: relative
-    z-index: 0
-    li
-      float: left
-      display: inline
-      margin: 0 0 0 4px
-      a
-        display: block
-        color: #000
-        padding: 3px 10px 5px 10px
-        background-color: #f1f1f1
-        &:hover
-          background-color: #e5e5e5
-    li.votes
-      background-color: #f1f1f1
-      p
-        text-align: center
-        padding: 3px 0 0 0
-        button
-          height: 21px
-          width: 22px     
-          border: none   
-          margin-top: -3px
-          &.negative
-            float: left
-            margin-right: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat 
-            border-right: 1px solid #ddd
-            &:hover
-              background-color: #f00
-              background-position: 5px -418px
-          &.positive
-            float: right
-            margin-left: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat 
-            border-left: 1px solid #ddd
-            &:hover
-              background-color: #0a0
-              background-position: 5px -435px
-              
-      
-    
 /* Main Question - Each comment inside of each answare */    
 //========================================================================    
 article.comment
   border-bottom: none
-  padding: 20px 10px 0 40px
+  padding: 20px 10px 0 50px
   h4
-    background: url("/images/question-toolbar-icons-small.png") 0 -49px  no-repeat 
+    background: url("/images/question-toolbar-icons-small.png") 0 -53px  no-repeat 
+    float: left
+    padding: 3px 0 3px 20px 
     a
-      &:hover
-  ul.toolbar 
-    li.votes
-      background-color: #fff
-      p
-        button
-          &.negative
-            border-right: 1px solid #fff
-          &.positive
-          border-left: 1px solid #fff            
+      &:hover  
+  .toolbar
+    margin: 0 0 0 10px !important
 
 /* Answer Form     
 //========================================================================       
-#panel
+#panel-answer, #panel-comment
   height: 100%
   display: none  
 
-.add-answer
+#panel-answer
   background-color: $lightBlue
   clear: both
   padding: 15px  
@@ -359,13 +316,110 @@ article.comment
     
 /* Editors form output     
 //========================================================================
-ul.article-actions  
-  list-style: none
-  margin: 0 0 0 -5px !important    
-  li
-    float: left !important
-    display: inline !important
-    padding: 0 7px
-    a:hover
-      border-bottom: 1px dotted   
+.article-actions   
+  float: right
+  margin: 10px 5px 0 0
+  ul      
+    li.current
+    li
+      float: left
+      display: inline
+      position: relative
+      background-color: #f1f1f1
+      margin: 0 0 0 3px
+      &:hover
+        visibility: inherit
+      &:hover ul, &.sfHover ul
+        left: -3px
+        top: 21px
+        z-index: 99
+      a
+        display: block
+        position: relative
+        padding: 4px 7px
+        color: #aaa        
+      a:hover
+        color: #000
+        background-color: #ddd
+        border: none
+      a.active
+        background-color: $lightBlue
+        color: #000
+      a.active:hover
+        background-color: $lightBlue !important
+      ul
+        position: absolute
+        top: -999em
+        width: 130px
+        left: -1px
+        +none-radius          
+        li:first-child
+          border-top: 1px solid #ddd
+        li
+          width: 100%
+          border-left: 1px solid #ddd
+          border-right: 1px solid #ddd
+          border-bottom: 1px solid #ddd
+          background-color: #fff
+          a:first-letter
+            text-transform: uppercase
+    li.votes
+      p
+        text-align: center
+        padding: 3px 0 0 0
+        button
+          height: 21px
+          width: 22px     
+          border: none   
+          margin-top: -3px
+          &.negative
+            float: left
+            margin-right: 7px
+            background: url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat 
+            border-right: 1px solid #ddd
+            &:hover
+              background-color: #f00
+              background-position: 5px -418px
+          &.positive
+            float: right
+            margin-left: 7px
+            background: url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat 
+            border-left: 1px solid #ddd
+            &:hover
+              background-color: #0a0
+              background-position: 5px -435px
 
+/* Comments
+#panel-comments
+  background-color: #f1f1f1
+  clear: both
+  padding: 15px
+  margin: 0 0 10px 0 
+  form
+    fieldset
+    leyend
+      font-size: 16px
+      clear: both
+      float: none
+      margin: 0 0 10px 0
+    textarea
+      min-height: 100px
+      width: 100%
+      margin: 10px 0 0 0
+      padding: 10px
+      boder: 1px solid #ccc
+    input    
+      +blue-gradient 
+      border: none
+      font-size: 14px
+      margin: 3px 1px 0 5px
+      padding: 6px 11px
+      color: #fff
+      width: auto
+    .cancel
+      color: #c00        
+      &:hover
+        border-bottom: 1px dotted 
+  .buttons
+    float: right
+        

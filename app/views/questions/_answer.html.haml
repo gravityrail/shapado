@@ -20,104 +20,105 @@
         =t("global.anonymous")
       = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
 
-    %ul.toolbar
-      %li.votes
-        %p
-          %button.negative
-          %span  20 Votes
-          %button.positive
-    .clear
-    .content
-      .markdown
-        =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
-      -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
-
-        %h3
-          = t(:flags, :scope => "activerecord.models")
-          = render :partial => "flags/list", :locals => {:flaggeable => answer}
-          -if !answer.updated_by.nil?
-        .author.vcard.user_data
-          .time_ago
-            = t('activerecord.attributes.answer.updated_at', :default => "updated")
-          %strong.updated{:title => answer.updated_at, :class => "relativetime"}
-            = t("time.ago", :time => time_ago_in_words(answer.updated_at))
-          .avatar.logo
-            = gravatar(answer.updated_by.email.to_s, :size => 32)
-          .user
-            = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
-            -if !answer.updated_by.hide_country && answer.address.present?
-              .adr
-                .country-name
-                  = t("global.from", :site => answer.address_name)
-                  = country_flag(answer.address["country_code"], answer.address["country"])
-
-      %ul.article-actions
-        -if logged_in?
-          = link_to t(".add_comment"), new_question_comment_path(@question, answer)
-
-          -if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
-
+  .article-actions    
+    %ul
+      %li.current
+        = link_to "Actions", "#"
+        %ul.drop-menu
+          %li.current
             -if logged_in?
+              = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "add_answer_comment_link addNestedAnswer"
 
               -if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
-                %li
-                  = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
-
-              -if current_user.mod_of?(@question.group)
-                %li
-                  =# link_to "ban", ban_path(:answer_ids => [answer.id]), :confirm => "are you sure?"
-
-              - if answer.favorite_for?(current_user)
-                %li.unfavorite
-                  = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
-              - else
-                %li.favorite
-                  = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
-
-
-        -if answer.versions.count > 0
-          %li
-            = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
-        %li
-          =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
-
-        - if logged_in? && @aflag.new_record? && current_user != answer.user
-          %li
-            = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-
-        -if logged_in?
-
-          -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
+                -if logged_in?
+                  %li.delete
+                    = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
+                  
+                  - if answer.favorite_for?(current_user)
+                    %li.unfavorite
+                      = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
+                  - else
+                    %li.favorite
+                      = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
+          
+          -if answer.versions.count > 0
             %li
-              -unless @question.accepted && !@question.subjetive
-                = link_to t(".pick_answer"), solve_question_path(@question, :answer_id => answer)
-            -if solution
+              = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
+            %li
+              =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
+
+          - if logged_in? && @aflag.new_record? && current_user != answer.user
+            %li
+              = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
+              
+          -if logged_in?
+
+            -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
               %li
-                = link_to t(".unset_answer"),  unsolve_question_path(@question)
-          -if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
-            %li
-              = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
-          -if current_user.can_modify?(answer)
-            %li
-              = link_to t("scaffold.destroy"), question_answer_path(@question, answer), :confirm => t("scaffold.sure", :model => "answer"), :method => :delete, :class =>"cancel"
-          -if !@aflag.new_record?
-            %li.flagged
-              = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
-              =link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
-              =link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+                -unless @question.accepted && !@question.subjetive
+                  = link_to t(".pick_answer"), solve_question_path(@question, :answer_id => answer)
+              -if solution
+                %li
+                  = link_to t(".unset_answer"),  unsolve_question_path(@question)
+            -if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
+              %li
+                = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
+            -if current_user.can_modify?(answer)
+              %li
+                = link_to t("scaffold.destroy"), question_answer_path(@question, answer), :confirm => t("scaffold.sure", :model => "answer"), :method => :delete, :class =>"cancel"
+            -if !@aflag.new_record?
+              %li.flagged
+                = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
+                =link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
+                =link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
 
-      -answer.comments.each do |comment|
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
+        %li.votes
+          %p
+            %button.negative
+            %span  20 Votes
+            %button.positive
+
+    .clear
+  .content
+    .markdown
+      =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+    -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
+
+      %h3
+        = t(:flags, :scope => "activerecord.models")
+        = render :partial => "flags/list", :locals => {:flaggeable => answer}
+        -if !answer.updated_by.nil?
+      .author.vcard.user_data
+        .time_ago
+          = t('activerecord.attributes.answer.updated_at', :default => "updated")
+        %strong.updated{:title => answer.updated_at, :class => "relativetime"}
+          = t("time.ago", :time => time_ago_in_words(answer.updated_at))
+        .avatar.logo
+          = gravatar(answer.updated_by.email.to_s, :size => 32)
+        .user
+          = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
+          -if !answer.updated_by.hide_country && answer.address.present?
+            .adr
+              .country-name
+                = t("global.from", :site => answer.address_name)
+                = country_flag(answer.address["country_code"], answer.address["country"])
+
 
   .clear
+  
   -answer.comments.each do |comment|
     = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
+  
+  #panel-comments
+    -form_tag question_answer_comments_path(@question, answer), :class => "add_answer_comment_link addNestedAnswer" do
+      %fieldset
+        %leyend Add comment
+        -@comment = Comment.new
+        = render :partial => "comments/form", :locals => {:source => source, :commentable => answer}
+        .buttons
+          = link_to t('scaffold.cancel'), '', :class => 'cancel'
+          = t("global.or")
+          = submit_tag t("comments.shared.comment_submit") 
 
-  .forms.comment-form
-    -form_tag question_answer_comments_path(@question, answer), :class => "form commentForm nestedAnswerForm" do
-      -@comment = Comment.new
-      = render :partial => "comments/form", :locals => {:source => source, :commentable => answer}
-      .group.navform
-        = submit_tag t("comments.shared.comment_submit"), :class => "button"
-        = t("global.or")
-        = link_to t('scaffold.cancel'), '', :class => 'cancel_comment'
+
+

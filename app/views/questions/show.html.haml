@@ -44,10 +44,10 @@
   .toolbar
     %ul.drop-menu
       %li.answer
-        = link_to "Responder", "#", :class => "btn-slide"
+        = link_to "Responder", "#", :class => "btn-answer"
         
       %li.comment
-        = link_to "Comentar"
+        = link_to "comentar", "#", :class => "btn-comment"
 
       %li.follow
         - if current_user && @question.follower?(current_user)
@@ -121,9 +121,7 @@
               %li.open
                 = link_to t(".request_opening"), new_question_open_request_path(@question), :id => "request-open-link", :rel => 'nofollow', :title => t('.request_opening_details')
     
-
-
-    #panel.add-answer
+    #panel-answer
       -unless @question.closed
         -form_for @answer, :url => question_answers_path(@question.id) do |f|
           %fieldset
@@ -141,6 +139,25 @@
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
       .clear
+      
+    #panel-comment
+      -unless @question.closed
+        -form_for @answer, :url => question_answers_path(@question.id) do |f|
+          %fieldset
+            %leyend
+              = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
+
+            .form-options
+              .option
+                = f.label :wiki, "Wiki"
+                = f.check_box :wiki, :class => "checkbox"
+              .option
+                = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+                = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+            .buttons
+              = submit_tag t('answers.form.submit'), :class => "save"
+      .clear     
 
 %ul.tag-list
   %li.title
@@ -150,7 +167,7 @@
       = link_to h(tag), tag_path(:id => tag), :rel => "tag"
   - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
     %li.retag
-    = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
+      = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
 #answers-content-wrap
   %header

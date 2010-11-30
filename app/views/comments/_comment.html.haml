@@ -4,11 +4,12 @@
       = gravatar(comment.user.email.to_s, :size => 20)
       = link_to h(comment.user.login), user_path(comment.user), :class => "clear"
       %b
-        .comment-content.markdown
-          = shapado_auto_link(markdown(comment.body), :link_users => true)
         = t("time.ago", :time => time_ago_in_words(comment.created_at))
         = t("global.from", :site => comment.user.country_name)
         = country_flag(comment.user.country_code, comment.user.country_name)
+        
+    .comment-content.markdown
+      = shapado_auto_link(markdown(comment.body), :link_users => true)
     %ul.comment-actions
       - if logged_in? && current_user != comment.user
         %li
@@ -28,11 +29,11 @@
       == #{t("comments.shared.said")}:
     %ul.toolbar
       %li.drop
-        %p
-          -if comment.votes_average > 0
+        -if comment.votes_average > 0
+          %p
             &= comment.votes_average
-          -else
-            -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
+        -else
+          -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
 
         -if logged_in?
           -url = ""
@@ -47,6 +48,7 @@
                 = image_submit_tag("dialog-ok-apply.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "comment-voteup-button")
               -else
                 = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "comment-voteup-button")
+
     .comment-content.markdown
       = shapado_auto_link(markdown(comment.body), :link_users => true)
 

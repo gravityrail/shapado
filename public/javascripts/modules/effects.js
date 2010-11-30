@@ -2,10 +2,14 @@
 
 // Open and show a panel
 $(document).ready(function(){
-	$(".btn-slide").click(function(){
-		$("#panel").slideToggle("slow");
+	$(".btn-answer").click(function(){
+		$("#panel-answer").slideToggle("slow");
 		$(this).toggleClass("active"); return false;
   });	 
+	$(".btn-comment").click(function(){
+		$("#panel-comment").slideToggle("slow");
+		$(this).toggleClass("active"); return false;
+  });	   
 });
 
 // Navs, drop down menus
