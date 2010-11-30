@@ -63,6 +63,9 @@ class Question
   field :followers_count, :type => Integer, :default => 0
   references_many :followers, :stored_as => :array, :class_name => "User"
 
+  field :contributors_count, :type => Integer, :default => 0
+  references_many :contributors, :stored_as => :array, :class_name => "User"
+
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
 
@@ -241,6 +244,24 @@ class Question
 
   def follower?(user)
     self.follower_ids && self.follower_ids.include?(user.id)
+  end
+
+  def add_contributor(user)
+    if !contributor?(user)
+      self.push_uniq(:contributor_ids => user.id)
+      self.increment(:contributors_count => 1)
+    end
+  end
+
+  def remove_contributor(user)
+    if contributor?(user)
+      self.pull(:contributor_ids => user.id)
+      self.decrement(:contributors_count => 1)
+    end
+  end
+
+  def contributor?(user)
+    self.contributor_ids && self.contributor_ids.include?(user.id)
   end
 
   def disable_limits?

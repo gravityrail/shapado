@@ -245,6 +245,8 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
+        @question.add_contributor(current_user)
+
         sweep_question_views
         Magent::WebSocketChannel.push({id: "newquestion", object_id: @question.id, name: @question.title, channel_id: current_group.slug})
 
@@ -299,6 +301,8 @@ class QuestionsController < ApplicationController
       @question.send(:generate_slug)
 
       if @question.valid? && @question.save
+        @question.add_contributor(current_user)
+
         sweep_question_views
         sweep_question(@question)
 
