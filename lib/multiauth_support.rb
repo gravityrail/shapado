@@ -74,7 +74,7 @@ module MultiauthSupport
     def connect(fields)
       provider = fields["provider"]
       if fields["uid"] =~ %r{google\.com/accounts/o8/} && fields["user_info"]["email"]
-        fields["uid"] = "google_openid_#{fields["user_info"]["email"]}"
+        fields["uid"] = "http://google_id_#{fields["user_info"]["email"]}" # normalize for subdomains
       end
 
       auth_key = "#{provider}_#{fields["uid"]}"

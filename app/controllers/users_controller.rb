@@ -178,6 +178,12 @@ class UsersController < ApplicationController
     find_questions(:tags.in => tags)
   end
 
+  def contributed
+    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+
+    find_questions(:contributor_ids => @user.id)
+  end
+
   def connect
     authenticate_user!
     warden.authenticate!(:scope => :openid_identity, :recall => "show")

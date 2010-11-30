@@ -34,6 +34,7 @@ Shapado::Application.routes.draw do
       get :expertise
       get :preferred
       get :by_me
+      get :contributed
     end
   end
 

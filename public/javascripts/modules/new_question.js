@@ -25,8 +25,8 @@ $(document).ready(function() {
 
   var fields = $("#attachments #fields");
   var template = fields.find(".template");
+  template.find("input").attr("name", "question[attachments[id]]");
   template.hide();
-  template.attr("name", "attachments[id]");
 
   $("#attachments #fields .attachment_field .remove_attachment").live("click", function(e) {
     $(this).parent().remove();

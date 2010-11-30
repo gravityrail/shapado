@@ -106,6 +106,8 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
+        @question.add_contributor(current_user)
+
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
         Jobs::Answers.async.on_create_answer(@question.id, @answer.id).commit!
 
@@ -148,6 +150,8 @@ class AnswersController < ApplicationController
       @answer.updated_by = current_user
 
       if @answer.valid? && @answer.save
+        @question.add_contributor(current_user)
+
         sweep_question(@question)
 
         Question.update_last_target(@question.id, @answer)

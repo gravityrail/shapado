@@ -63,6 +63,9 @@ class Question
   field :followers_count, :type => Integer, :default => 0
   references_many :followers, :stored_as => :array, :class_name => "User"
 
+  field :contributors_count, :type => Integer, :default => 0
+  references_many :contributors, :stored_as => :array, :class_name => "User"
+
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
 
@@ -243,6 +246,24 @@ class Question
     self.follower_ids && self.follower_ids.include?(user.id)
   end
 
+  def add_contributor(user)
+    if !contributor?(user)
+      self.push_uniq(:contributor_ids => user.id)
+      self.increment(:contributors_count => 1)
+    end
+  end
+
+  def remove_contributor(user)
+    if contributor?(user)
+      self.pull(:contributor_ids => user.id)
+      self.decrement(:contributors_count => 1)
+    end
+  end
+
+  def contributor?(user)
+    self.contributor_ids && self.contributor_ids.include?(user.id)
+  end
+
   def disable_limits?
     self.user.present? && self.user.can_post_whithout_limits_on?(self.group)
   end
@@ -296,7 +317,7 @@ class Question
   def attachments=(files)
     files.each do |k,v|
       if(v.size > 0)
-        self.attachments.put(k,v)
+        self.attachments.put(BSON::ObjectId.new.to_s, v)
       end
     end
   end

@@ -2,4 +2,4 @@
 %ul
   -attachments.each_file do |key, file|
     %li
-      = link_to "[#{key}] #{file.name}", question_attachment_path(question.group, question, file, key)
+      = link_to file.name, question_attachment_path(question.group, question, file, key)
