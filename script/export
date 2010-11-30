@@ -36,6 +36,8 @@ group = Group.find(args.first) || Group.where(:subdomain => args.first).first
 exporter = Export.new(group)
 time = Time.now
 
+exclude = [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :encrypted_password, :ip, :identity_url, :email, :default_subtab, :admin]
+
 if options[:method] == :zip
   filename = "#{group.subdomain}.zip"
   File.unlink(filename) if File.exist?(filename)
@@ -49,7 +51,7 @@ if options[:method] == :zip
     exporter.to_zip(Badge, zf)
     exporter.to_zip(Ad, zf)
     exporter.to_zip(User, zf, :selector => {:"membership_list.#{group.id}" => {:$exists => true}},
-                           :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
+                           :except => exclude)
     friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
     exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
   end
@@ -62,11 +64,10 @@ else
   exporter.to_file(group)
   exporter.to_file(Question)
   exporter.to_file(Answer)
-  exporter.to_file(Comment)
   exporter.to_file(Badge)
   exporter.to_file(Ad)
   exporter.to_file(User, :selector => {"membership_list.#{group.id}" => {:$exists => true}},
-                         :except => [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :ip, :identity_url, :email, :default_subtab, :admin])
+                         :except => exclude)
   friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
   exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
 end
