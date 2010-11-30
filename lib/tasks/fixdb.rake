@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
 end
 
 namespace :fixdb do
@@ -27,6 +27,15 @@ namespace :fixdb do
       question.unset(:watchers => true)
       if watchers.kind_of?(Array)
         question.override(:follower_ids => watchers)
+      end
+    end
+  end
+
+  task :contributions => [:environment] do
+    Question.only(:user_id, :contributor_ids).all.each do |question|
+      question.add_contributor(question.user) if question.user
+      question.answers.only(:user_id).all.each do |answer|
+        question.add_contributor(answer.user) if answer.user
       end
     end
   end

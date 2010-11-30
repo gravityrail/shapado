@@ -20,13 +20,15 @@
         %li
           =link_to "Mi Karma: #{current_user.reputation_on(current_group)}"
         %li
-          =link_to "My feed", feed_user_path(current_user)
+          =link_to "Followed", feed_user_path(current_user)
         %li
           =link_to "All", questions_path
         %li
           =link_to "By Me", by_me_user_path(current_user)
         %li
           =link_to "Preferred", preferred_user_path(current_user)
+        %li
+          =link_to "Contributed", contributed_user_path(current_user)
         %li
           =link_to "Collaborate!", expertise_user_path(current_user)
         %li.log-out
