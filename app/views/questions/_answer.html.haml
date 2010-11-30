@@ -5,12 +5,12 @@
 - @aflag = current_user.has_flagged?(answer) if logged_in?
 - @aflag ||= Flag.new
 
-
 %article
   %h4 
     = gravatar(answer.user.email.to_s, :size => 20) unless answer.anonymous
-    %b 
-      = t('activerecord.attributes.answer.created_at')
+    %b.user-data 
+      = t('activerecord.attributes.answer.created_at') 
+      
       -if !answer.anonymous
         = render :partial => "users/user_mini", :locals => {:user => answer.user}
         -if !answer.user.hide_country && answer.address.present?
@@ -21,8 +21,6 @@
       = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
       
     %ul.toolbar
-      %li.drop
-        = link_to "Actions"
       %li.votes
         %p 
           %button.negative
@@ -52,9 +50,9 @@
                   = t("global.from", :site => answer.address_name)
                   = country_flag(answer.address["country_code"], answer.address["country"])
 
-      %ul.comment-actions      
+      %ul.article-actions    
         -if logged_in?
-          = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "addNestedAnswer add_answer_comment_link"
+          = link_to t(".add_comment"), new_question_comment_path(@question, answer)
         
           -if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
           
@@ -81,8 +79,9 @@
             = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
         %li
           =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
-        %li
-          - if logged_in? && @aflag.new_record? && current_user != answer.user
+      
+        - if logged_in? && @aflag.new_record? && current_user != answer.user
+          %li
             = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
         
         -if logged_in?
