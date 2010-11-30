@@ -3,3 +3,4 @@
   -attachments.each_file do |key, file|
     %li
       = link_to file.name, question_attachment_path(question.group, question, file, key)
+      = link_to t("scaffold.destroy"), remove_attachment_question_path(question, :attach_id => key)#, :method => :delete
