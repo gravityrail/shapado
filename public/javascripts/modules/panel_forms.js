@@ -14,5 +14,11 @@ $(document).ready(function() {
 
     return false;
   });
+
+  $("#panel-forms form a.cancel").click(function(event) {
+    $(this).parents('form').slideUp();
+    $(".toolbar ul li a").removeClass("active");
+    return false;
+  });
 });
 
