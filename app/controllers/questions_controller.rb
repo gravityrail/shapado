@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_filter :admin_required, :only => [:move, :move_to]
   before_filter :moderator_required, :only => [:close]
   before_filter :check_permissions, :only => [:solve, :unsolve, :destroy]
-  before_filter :check_update_permissions, :only => [:edit, :update, :revert]
+  before_filter :check_update_permissions, :only => [:edit, :update, :revert, :remove_attachment]
   before_filter :check_favorite_permissions, :only => [:favorite, :unfavorite] #TODO remove this
   before_filter :set_active_tag
   before_filter :check_age, :only => [:show]
@@ -597,6 +597,15 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to question_path(@question) }
       format.json { render :json => @question }
+    end
+  end
+
+  def remove_attachment
+    @question.attachments.delete(params[:attach_id])
+    @question.save
+    respond_to do |format|
+      format.html { redirect_to edit_question_path(@question) }
+      format.json { render :json => {:ok => true} }
     end
   end
 
