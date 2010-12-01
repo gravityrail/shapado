@@ -15,9 +15,9 @@ module VotesHelper
       end
     end
 
-    render 'shared/vote_box', :url => url, :voteable => voteable,
-                              :class_name => class_name, :source => source,
-                              :closed => closed
+    render 'shared/vote_box.html.haml', :url => url, :voteable => voteable,
+                                        :class_name => class_name, :source => source,
+                                        :closed => closed
   end
 
   def calculate_votes_average(voteable)

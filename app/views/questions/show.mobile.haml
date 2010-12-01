@@ -8,14 +8,35 @@
 
 
   %div{:"data-role" => "content"}
-    = question_body
+    .markdown
+      = question_body
 
-  %ul{:"data-role" => "listview"}
-    %li{:"data-role"=>"list-divider"}
+  %div{:"data-role" => "collapsible", :"data-theme" => "e"}
+    %h3
       Answers
       %span{:class=>"ui-li-count"}
         =@answers.total_entries
+
     -@answers.each do |answer|
-      %li
-        %p
+      %div{:"data-role" => "content"}
+        .markdown
           = markdown(answer.body)
+
+  -unless @question.closed
+    =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
+      %fieldset
+        %leyend
+          = render :partial => "answers/form.html.haml", :locals => {:f => f, :markdown => true}
+
+        .form-options
+          .option
+            = f.label :wiki, "Wiki"
+            = f.check_box :wiki, :class => "checkbox"
+          .option
+            = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+            = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+        .buttons
+          = link_to t('scaffold.cancel'), '', :class => 'cancel'
+          = t("global.or")
+          = submit_tag t('answers.form.submit'), :class => "save"
