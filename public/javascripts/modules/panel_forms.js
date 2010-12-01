@@ -1,11 +1,16 @@
 $(document).ready(function() {
   $("a#add_reward, a#add_question_comment, a#add_answer").click(function(event) {
     var link = $(this);
-    var toolbar = link.parents("ul");
     var id = link.attr("id");
-
     var form = $("#panel-forms form."+id);
 
+    if(link.hasClass("active")){
+      link.removeClass("active");
+      form.slideUp();
+      return false;
+    }
+
+    var toolbar = link.parents("ul");
     $("#panel-forms form").slideUp();
 
     form.slideToggle("slow");//
