@@ -45,6 +45,7 @@ javascripts:
   - jquery.autovideo
   - modules/single/question
   - modules/show_question
+  - modules/panel_forms
 
 stylesheets:
 - base:

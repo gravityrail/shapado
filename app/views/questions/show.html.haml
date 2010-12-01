@@ -37,6 +37,7 @@
 
   .description.markdown
     = question_body
+    = render "reward_info"
 
   .attachments
     = render "attachments", :question => @question, :attachments => @question.attachments
@@ -44,10 +45,10 @@
   .toolbar
     %ul.drop-menu
       %li.answer
-        = link_to "Responder", "#", :class => "btn-answer"
+        = link_to "Responder", "#", :class => "btn-answer", :id => "add_answer"
 
       %li.comment
-        = link_to "comentar", "#", :class => "btn-comment"
+        = link_to "Comentar", "#", :class => "btn-comment", :id => "add_question_comment"
 
       %li.follow
         - if current_user && @question.follower?(current_user)
@@ -71,6 +72,10 @@
 
           %li.followUp
             = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
+
+          -if logged_in?
+            %li
+              = link_to "Create Reward", "#", :rel => "nofollow", :id => "add_reward"
 
           - if !@flag.new_record?
             %li.flag
@@ -120,9 +125,11 @@
               %li.open
                 = link_to t(".request_opening"), new_question_open_request_path(@question), :id => "request-open-link", :rel => 'nofollow', :title => t('.request_opening_details')
 
-    #panel-answer
+    #panel-forms
+      = render "reward_form"
+
       -unless @question.closed
-        -form_for @answer, :url => question_answers_path(@question.id) do |f|
+        =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_answer"} do |f|
           %fieldset
             %leyend
               = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
@@ -137,11 +144,9 @@
 
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
-      .clear
 
-    #panel-comment
       -unless @question.closed
-        -form_for @answer, :url => question_answers_path(@question.id) do |f|
+        =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_question_comment"} do |f|
           %fieldset
             %leyend
               = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
@@ -206,9 +211,6 @@
         - if !@question.close_reason.comment.empty?
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
-
-    .followUp-reason
-      = render "reward_form"
 
   - if @question.accepted
     -solution = @question.answer
