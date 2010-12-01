@@ -73,10 +73,7 @@
                 =link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
 
         %li.votes
-          %p
-            %button.negative
-            %span  20 Votes
-            %button.positive
+          =vote_box(answer, question_path(@question), @question.closed)
 
     .clear
   .content

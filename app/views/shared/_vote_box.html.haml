@@ -2,27 +2,18 @@
   -vote = current_user.vote_on(voteable) if logged_in?
 
   %form{:action=> url, :method=>'post', :class=>'vote_form'}
-    %div
-      = token_tag
-    .vote_box
+    = token_tag
+    %p.vote_box
       =hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-      %button{:type=>"submit", :name=>"vote_up", :value=>"1", :class=>"arrow vote_up"}
-        -if vote && vote.value > 0
-          =image_tag("vote_up.png", :width => 30, :height => 16, :title => I18n.t("votes.control.have_voted_up"))
-        -else
-          =image_tag("to_vote_up.png", :width => 30, :height => 16, :title => I18n.t("votes.control.to_vote_up"))
-      .votes_average
+      %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
+      %span
         =calculate_votes_average(voteable)
-      %button{:type=>"submit", :name=>"vote_down", :value=>"-1", :class=>"arrow vote_down"}
-        -if vote && vote.value < 0
-          =image_tag("vote_down.png", :width => 30, :height => 16, :title => I18n.t("votes.control.have_voted_down"))
-        -else
-          =image_tag("to_vote_down.png", :width => 30, :height => 16, :title => I18n.t("votes.control.to_vote_down"))
+        votes
+      %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1"}
 -else
-  .vote_box
-    .arrow.vote_up
-      =image_tag("to_vote_up.png", :width => 30, :height => 16)
-    .votes_average
+  %p.vote_box
+    %button.negative
+    %span
       =calculate_votes_average(voteable)
-    .arrow.vote_down
-      =image_tag("to_vote_down.png", :width => 30, :height => 16)
+      votes
+    %button.positive
