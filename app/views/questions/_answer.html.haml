@@ -5,7 +5,7 @@
 - @aflag = current_user.has_flagged?(answer) if logged_in?
 - @aflag ||= Flag.new
 
-%article
+%article.answer
   %h4
     = gravatar(answer.user.email.to_s, :size => 20) unless answer.anonymous
     %b.user-data
@@ -20,7 +20,7 @@
         =t("global.anonymous")
       = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"
 
-  .article-actions    
+  .article-actions
     %ul
       %li.current
         = link_to "Actions", "#"
@@ -33,14 +33,14 @@
                 -if logged_in?
                   %li.delete
                     = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
-                  
+
                   - if answer.favorite_for?(current_user)
                     %li.unfavorite
                       = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
                   - else
                     %li.favorite
                       = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
-          
+
           -if answer.versions.count > 0
             %li
               = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
@@ -50,7 +50,7 @@
           - if logged_in? && @aflag.new_record? && current_user != answer.user
             %li
               = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-              
+
           -if logged_in?
 
             -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
@@ -105,20 +105,20 @@
 
 
   .clear
-  
+
   -answer.comments.each do |comment|
     = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
-  
+
   #panel-comments
-    -form_tag question_answer_comments_path(@question, answer), :class => "add_answer_comment_link addNestedAnswer" do
+    -form_tag question_answer_comments_path(@question, answer), :class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer" do
       %fieldset
         %leyend Add comment
         -@comment = Comment.new
         = render :partial => "comments/form", :locals => {:source => source, :commentable => answer}
         .buttons
-          = link_to t('scaffold.cancel'), '', :class => 'cancel'
+          = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
           = t("global.or")
-          = submit_tag t("comments.shared.comment_submit") 
+          = submit_tag t("comments.shared.comment_submit")
 
 
 

@@ -237,10 +237,10 @@ $(document).ready(function() {
     var link = $(this);
     var user = link.attr('data-author');
     var isreply = link.hasClass('reply');
-    var controls = link.parents(".body-col");
+    var controls = link.parents(".article-actions");
     var form = controls.parents(".answer").find("form.nestedAnswerForm");
     if(form.length == 0) // if comment is child of a question
-      form = link.parents("#question-body-col").find("form.commentForm");
+      form = link.parents("#question").find("form.commentForm");
     var textarea = form.find('textarea');
     var isHidden = !form.is(':visible');
     controls.find(".forms form.flag_form").slideUp();
