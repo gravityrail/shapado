@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: fbd8d999a22dedc9974b4234ce6749c975cbecae
+  revision: 23ee5a9eba602af43eb0d2ab48527516a2edda3d
   specs:
     mongoid_ext (0.6.0)
       i18n (~> 0.4.1)
@@ -97,7 +97,7 @@ GEM
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
       rack (>= 1.1.0, < 2)
-    ffi (0.6.3)
+    ffi (1.0.0)
       rake (>= 0.8.7)
     gem_plugin (0.2.3)
     goalie (0.0.4)
