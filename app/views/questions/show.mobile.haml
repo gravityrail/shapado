@@ -38,7 +38,7 @@
           .markdown
             = markdown(answer.body)
 
-    -unless @question.closed
+    -if !@question.closed && logged_in?
       =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
         %fieldset
           %leyend
