@@ -96,12 +96,11 @@ class UsersController < ApplicationController
                                     :per_page => 25)
 
     @f_sort, order = active_subtab(:f_sort)
-    @favorites = @user.favorites.paginate(:page => params[:favorites_page],
-                                          :per_page => 25,
-                                          :order => order,
-                                          :group_id => current_group.id)
-
-    @favorite_questions = Question.find(@favorites.map{|f| f.question_id })
+    @favorites = @user.favorites(:group_id => current_group.id).
+      paginate(:page => params[:favorites_page],
+               :per_page => 25,
+               :order => order
+               )
 
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
 

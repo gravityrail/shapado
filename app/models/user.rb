@@ -277,13 +277,8 @@ Time.zone.now ? 1 : 0)
     vote = voteable.votes.detect{ |vote| vote.user_id == self.id }
   end
 
-  def favorite?(answer)
-    !favorite(answer).nil?
-  end
-
-  def favorite(answer)
-    self.favorites.where(:answer_id => answer._id,
-                         :user_id => self._id ).first
+  def favorites(opts = {})
+    Answer.where(opts.merge(:favoriter_ids => id))
   end
 
   def logged!(group = nil)

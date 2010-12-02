@@ -107,9 +107,9 @@
     .clear
   .block
 
-  %ul.items#questions
-    -@favorite_questions.each do |question|
-      = render :partial => "questions/question", :object => question
+  %ul.items#favorites
+    -@favorites.each do |answer|
+      = render :partial => "answers/answer", :object => answer
   .additional_info
     = will_paginate @favorites, :param_name => "favorites_page"
     .clear

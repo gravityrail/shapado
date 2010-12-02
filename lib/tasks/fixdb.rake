@@ -171,6 +171,7 @@ namespace :fixdb do
       end
 
         collection.update({:_id => id}, "$addToSet" => {:comments => comment})
+        comments.remove({:_id => comment["_id"]})
     end
     begin
       Mongoid.database.collection("answers").drop
