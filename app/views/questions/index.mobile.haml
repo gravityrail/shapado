@@ -5,6 +5,17 @@
 
     = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus", "class" => "ui-btn-right"
 
+    %div{:"data-role" => "navbar"}
+      %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
+        %a{:href => questions_path(:format => :mobile, :sort => "newest"), :"data-role" => "button", :"data-transition"=>"slideup"}
+          Newest
+        %a{:href => questions_path(:format => :mobile, :sort => "hot"), :"data-role" => "button", :"data-transition"=>"slideup"}
+          Hot
+        %a{:href => questions_path(:format => :mobile, :sort => "votes"), :"data-role" => "button", :"data-transition"=>"slideup"}
+          Votes
+        %a{:href => questions_path(:format => :mobile, :sort => "activity"), :"data-role" => "button", :"data-transition"=>"slideup"}
+          Active
+
   %div{:data => {:role => "content"}}
     %ul{:data => {:role => "listview", :filter => "true"}}
       -@questions.each do |question|
