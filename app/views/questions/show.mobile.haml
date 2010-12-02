@@ -1,42 +1,58 @@
-- question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
+-if params[:actions]
+  %div{:data => {:role => "page"}}
+    %div{:"data-role"=>"header", :"data-theme"=>"d", :"data-position"=>"inline"}
+      %h1
+        Actions
 
-%div{:data => {:role => "page"}}
-  %div{:"data-role" => "header"}
-    %h1
-      = @question.title
-    = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+    %div{:"data-role" => "content", :"data-theme" => "c"}
+      %p
+        What do you want to do?
+      =link_to "View", question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "e"
+      =link_to "Edit", edit_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+      =link_to "Vote Up", "#", :"data-role" => "button", :"data-theme" => "c"
+      =link_to "Vote Down", "#", :"data-role" => "button", :"data-theme" => "c"
+      =link_to "Follow", "#", :"data-role" => "button", :"data-theme" => "c"
+      =link_to "Report", "#", :"data-role" => "button", :"data-theme" => "c"
+      =link_to "Cancel", "#", :"data-role" => "button", :"data-theme" => "b"
+-else
+  - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
+  %div{:data => {:role => "page"}}
+    %div{:"data-role" => "header"}
+      %h1
+        = @question.title
+      = link_to 'Home', '/mobile', "class" => "ui-btn-right"
 
 
-  %div{:"data-role" => "content"}
-    .markdown
-      = question_body
+    %div{:"data-role" => "content"}
+      .markdown
+        = question_body
 
-  %div{:"data-role" => "collapsible", :"data-theme" => "e"}
-    %h3
-      Answers
-      %span{:class=>"ui-li-count"}
-        =@answers.total_entries
+    %div{:"data-role" => "collapsible", :"data-theme" => "e"}
+      %h3
+        Answers
+        %span{:class=>"ui-li-count"}
+          =@answers.total_entries
 
-    -@answers.each do |answer|
-      %div{:"data-role" => "content"}
-        .markdown
-          = markdown(answer.body)
+      -@answers.each do |answer|
+        %div{:"data-role" => "content"}
+          .markdown
+            = markdown(answer.body)
 
-  -unless @question.closed
-    =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
-      %fieldset
-        %leyend
-          = render :partial => "answers/form.html.haml", :locals => {:f => f, :markdown => true}
+    -unless @question.closed
+      =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
+        %fieldset
+          %leyend
+            = render :partial => "answers/form.html.haml", :locals => {:f => f, :markdown => true}
 
-        .form-options
-          .option
-            = f.label :wiki, "Wiki"
-            = f.check_box :wiki, :class => "checkbox"
-          .option
-            = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-            = f.check_box :anonymous, {:class => "checkbox"}, true, false
+          .form-options
+            .option
+              = f.label :wiki, "Wiki"
+              = f.check_box :wiki, :class => "checkbox"
+            .option
+              = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+              = f.check_box :anonymous, {:class => "checkbox"}, true, false
 
-        .buttons
-          = link_to t('scaffold.cancel'), '', :class => 'cancel'
-          = t("global.or")
-          = submit_tag t('answers.form.submit'), :class => "save"
+          .buttons
+            = link_to t('scaffold.cancel'), '', :class => 'cancel'
+            = t("global.or")
+            = submit_tag t('answers.form.submit'), :class => "save"
