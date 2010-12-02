@@ -3,7 +3,8 @@
     %h1
       Listing questions
 
-    = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus", "class" => "ui-btn-right"
+    -if logged_in?
+      = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus", "class" => "ui-btn-right"
 
     %div{:"data-role" => "navbar"}
       %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}

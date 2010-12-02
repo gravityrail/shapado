@@ -8,11 +8,14 @@
       %p
         What do you want to do?
       =link_to "View", question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "e"
-      =link_to "Edit", edit_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
-      =link_to "Vote Up", "#", :"data-role" => "button", :"data-theme" => "c"
-      =link_to "Vote Down", "#", :"data-role" => "button", :"data-theme" => "c"
-      =link_to "Follow", "#", :"data-role" => "button", :"data-theme" => "c"
-      =link_to "Report", "#", :"data-role" => "button", :"data-theme" => "c"
+      -if logged_in?
+        -if current_user.can_modify?(@question)
+          =link_to "Edit", edit_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+
+        =link_to "Vote Up", "#", :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Vote Down", "#", :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Follow", "#", :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Report", "#", :"data-role" => "button", :"data-theme" => "c"
       =link_to "Cancel", "#", :"data-role" => "button", :"data-theme" => "b"
 -else
   - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
