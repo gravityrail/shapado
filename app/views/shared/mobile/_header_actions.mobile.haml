@@ -1,4 +1,4 @@
-%div{:"data-role" => "controlgroup", :"data-type" => "horizontal", "class" => "ui-btn-right"}
+%div{:"data-inline" => "true", "class" => "ui-btn-right"}
   -if @question
     %a{:href=>question_path(@question, :format => "mobile", :actions => true), :"data-rel" => "dialog", :"data-transition" => "flip", "data-icon" => "gear"}
       actions

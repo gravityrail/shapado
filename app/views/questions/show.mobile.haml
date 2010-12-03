@@ -24,7 +24,7 @@
   %div{:data => {:role => "page"}}
     %div{:"data-role" => "header"}
       %h1
-        = @question.title
+        = @question.title[0,20]+"..."
 
       =render "shared/mobile/header_actions"
 
@@ -38,43 +38,45 @@
             Oldest
           %a{:href => question_path(@question,:format => :mobile, :sort => "votes"), :"data-role" => "button", :"data-transition"=>"slideup"}
             Votes
-
-
     %div{:"data-role" => "content"}
-      .markdown
-        = question_body
+      %h1
+        = @question.title
 
-    %div{:"data-role" => "collapsible", :"data-theme" => "e"}
-      %h3
-        Answers
-        %span{:class=>"ui-li-count"}
-          =@answers.total_entries
-
-      -@answers.each do |answer|
-        %div{:"data-role" => "content"}
-          = render "answered_by.html.haml", :answer => answer, :question => @question
+      %div{:"data-role" => "content"}
         .markdown
-          =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+          = question_body
 
-    -if !@question.closed
-      =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
+      %div{:"data-role" => "collapsible", :"data-theme" => "e"}
         %h3
-          Answer the question
-        %div{:"data-role"=>"fieldcontain"}
-          = render "answers/editor.html.haml", {:f => f, :markdown => true}
+          Answers
+          %span{:class=>"ui-li-count"}
+            =@answers.total_entries
 
-        %div{:"data-role"=>"fieldcontain"}
-          %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
-            = f.label :wiki, "Wiki"
-            = f.check_box :wiki, :class => "checkbox"
+        -@answers.each do |answer|
+          %div{:"data-role" => "content"}
+            = render "answered_by.html.haml", :answer => answer, :question => @question
+          .markdown
+            =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
 
-            = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-            = f.check_box :anonymous, {:class => "checkbox"}, true, false
+      -if !@question.closed
+        =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
+          %h3
+            Answer the question
+          %div{:"data-role"=>"fieldcontain"}
+            = render "answers/editor.html.haml", {:f => f, :markdown => true}
 
-        %div{:"data-role"=>"fieldcontain", :"data-inline" => "true"}
-          %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
-            = link_to t('scaffold.cancel'), '', :class => 'cancel', :"data-role" => "button", :"data-theme" => "b"
-            = submit_tag t('answers.form.submit'), :class => "save"
+          %div{:"data-role"=>"fieldcontain"}
+            %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
+              = f.label :wiki, "Wiki"
+              = f.check_box :wiki, :class => "checkbox"
+
+              = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+              = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+          %div{:"data-role"=>"fieldcontain", :"data-inline" => "true"}
+            %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
+              = link_to t('scaffold.cancel'), '', :class => 'cancel', :"data-role" => "button", :"data-theme" => "b"
+              = submit_tag t('answers.form.submit'), :class => "save"
 
     %div{:"data-role" => "footer"}
       =will_paginate(@answers)
