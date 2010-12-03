@@ -3,11 +3,18 @@
     %h1
       Listing questions
 
-    -if logged_in?
-      = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus", "class" => "ui-btn-right"
+    %div{:"data-role" => "controlgroup", :"data-type" => "horizontal", "class" => "ui-btn-right"}
+      -if logged_in?
+        = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus"
+        = link_to "Profile", "#", "data-icon" => "arrow-d"
+      -else
+        %a{:href=>"#", :"data-rel" => "dialog", :"data-transition" => "flip"}
+          login
 
     %div{:"data-role" => "navbar"}
       %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
+        %span{:"data-inline" => true, :style => "margin-left: 15px"}
+          sort questions by
         %a{:href => questions_path(:format => :mobile, :sort => "newest"), :"data-role" => "button", :"data-transition"=>"slideup"}
           Newest
         %a{:href => questions_path(:format => :mobile, :sort => "hot"), :"data-role" => "button", :"data-transition"=>"slideup"}
@@ -16,6 +23,7 @@
           Votes
         %a{:href => questions_path(:format => :mobile, :sort => "activity"), :"data-role" => "button", :"data-transition"=>"slideup"}
           Active
+
 
   %div{:data => {:role => "content"}}
     %ul{:data => {:role => "listview", :filter => "true"}}

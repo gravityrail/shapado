@@ -25,10 +25,10 @@
     %div{:"data-role" => "header"}
       %h1
         = @question.title
-      = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+      = link_to 'Home', questions_path(:format => :mobile), "class" => "ui-btn-right"
       %div{:"data-role" => "navbar"}
         %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
-          %span{:"data-inline" => true}
+          %span{:"data-inline" => true, :style => "margin-left: 15px"}
             sort answers by
           %a{:href => question_path(@question, :format => :mobile, :sort => "newest"), :"data-role" => "button", :"data-transition"=>"slideup"}
             Newest
