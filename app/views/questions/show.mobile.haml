@@ -1,3 +1,5 @@
+=javascript_include_tag "modules/editor"
+
 -if params[:actions]
   %div{:data => {:role => "page"}}
     %div{:"data-role"=>"header", :"data-theme"=>"d", :"data-position"=>"inline"}
@@ -41,21 +43,22 @@
           .markdown
             = markdown(answer.body)
 
-    -if !@question.closed && logged_in?
+    -if !@question.closed
       =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
-        %fieldset
-          %leyend
-            = render :partial => "answers/form.html.haml", :locals => {:f => f, :markdown => true}
+        %h3
+          Answer the question
+        %div{:"data-role"=>"fieldcontain"}
+          = render "answers/editor.html.haml", {:f => f, :markdown => true}
 
-          .form-options
-            .option
-              = f.label :wiki, "Wiki"
-              = f.check_box :wiki, :class => "checkbox"
-            .option
-              = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-              = f.check_box :anonymous, {:class => "checkbox"}, true, false
+        %div{:"data-role"=>"fieldcontain"}
+          %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
+            = f.label :wiki, "Wiki"
+            = f.check_box :wiki, :class => "checkbox"
 
-          .buttons
-            = link_to t('scaffold.cancel'), '', :class => 'cancel'
-            = t("global.or")
+            = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+            = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+        %div{:"data-role"=>"fieldcontain", :"data-inline" => "true"}
+          %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
+            = link_to t('scaffold.cancel'), '', :class => 'cancel', :"data-role" => "button", :"data-theme" => "b"
             = submit_tag t('answers.form.submit'), :class => "save"

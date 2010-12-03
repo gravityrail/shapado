@@ -35,6 +35,7 @@ javascripts:
   - rails
 
 
+
 - websocket:
   - web-socket-js/swfobject
   - web-socket-js/FABridge
@@ -54,4 +55,6 @@ stylesheets:
   - multiauth
   - prettify
 
+- mobile:
+  - compiled/mobile
 
