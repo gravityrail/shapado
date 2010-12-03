@@ -1,0 +1,12 @@
+= gravatar(answer.user.email.to_s, :size => 20) unless answer.anonymous
+%b.user-data
+  = t('activerecord.attributes.answer.created_at')
+
+  -if !answer.anonymous
+    = render :partial => "users/user_mini.html.haml", :locals => {:user => answer.user}
+    -if !answer.user.hide_country && answer.address.present?
+      = t("global.from", :site => answer.address_name)
+      = country_flag(answer.address["country_code"], answer.address["country"])
+  -else
+    =t("global.anonymous")
+  = link_to t('activerecord.attributes.answer.link'), question_answer_path(@question.id, answer.id), :class => "bookmark"

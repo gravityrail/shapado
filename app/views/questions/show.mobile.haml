@@ -26,6 +26,16 @@
       %h1
         = @question.title
       = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+      %div{:"data-role" => "navbar"}
+        %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}
+          %span{:"data-inline" => true}
+            Sort Answers By
+          %a{:href => question_path(@question, :format => :mobile, :sort => "newest"), :"data-role" => "button", :"data-transition"=>"slideup"}
+            Newest
+          %a{:href => question_path(@question, :format => :mobile, :sort => "oldest"), :"data-role" => "button", :"data-transition"=>"slideup"}
+            Oldest
+          %a{:href => question_path(@question,:format => :mobile, :sort => "votes"), :"data-role" => "button", :"data-transition"=>"slideup"}
+            Votes
 
 
     %div{:"data-role" => "content"}
@@ -40,8 +50,9 @@
 
       -@answers.each do |answer|
         %div{:"data-role" => "content"}
-          .markdown
-            = markdown(answer.body)
+          = render "answered_by.html.haml", :answer => answer, :question => @question
+        .markdown
+          =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
 
     -if !@question.closed
       =form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
@@ -62,3 +73,6 @@
           %fieldset{:"data-role"=>"controlgroup", :"data-type"=>"horizontal"}
             = link_to t('scaffold.cancel'), '', :class => 'cancel', :"data-role" => "button", :"data-theme" => "b"
             = submit_tag t('answers.form.submit'), :class => "save"
+
+    %div{:"data-role" => "footer"}
+      =will_paginate(@answers)
