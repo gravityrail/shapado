@@ -3,13 +3,7 @@
     %h1
       Listing questions
 
-    %div{:"data-role" => "controlgroup", :"data-type" => "horizontal", "class" => "ui-btn-right"}
-      -if logged_in?
-        = link_to 'Ask Question', new_question_path(:format => "mobile"), "data-icon" => "plus"
-        = link_to "Profile", "#", "data-icon" => "arrow-d"
-      -else
-        %a{:href=>"#", :"data-rel" => "dialog", :"data-transition" => "flip"}
-          login
+    =render "shared/mobile/header_actions"
 
     %div{:"data-role" => "navbar"}
       %div{:"data-role" => "controlgroup", :"data-type" => "horizontal"}

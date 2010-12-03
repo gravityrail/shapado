@@ -33,6 +33,7 @@ javascripts:
 - mobile:
   - jquery
   - rails
+  - mobile
 
 - websocket:
   - web-socket-js/swfobject
