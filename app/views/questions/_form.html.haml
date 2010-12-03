@@ -1,15 +1,7 @@
 = f.error_messages
 = error_messages_for(:user)
 
--if @original_question
-  This is a follow up of
-  =link_to @original_question.title, question_path(@original_question), :target => "_blank"
-  -if @original_answer
-    %em
-      =@original_answer.body
-    = hidden_field_tag :original_answer_id, @original_answer.id
-
-  = hidden_field_tag :original_question_id, @original_question.id
+=render "followup_form.html.haml", local_assigns
 
 
 -if @question.position
@@ -33,14 +25,7 @@
   %ul.items#related_questions
 
 .group
-  = f.label :body, t(:body, :scope => "activerecord.attributes.question"), :class => "label"
-  -if current_group.wysiwyg_editor
-    = f.text_area :body, :class => "text_area", :id => "wysiwyg_editor", :value => markdown(@question.body)
-  -else
-    = f.text_area :body, :class => "text_area", :id => "markdown_editor"
-
-    #markdown_preview.markdown
-      =markdown(@question.body)
+  =render "editor.html.haml", local_assigns
 
 .group
   -if !@question.new_record?
@@ -53,7 +38,7 @@
     = link_to "Add attachment", "#", :class => "add_attachment"
 
 
--if current_group.language.nil? && AppConfig.enable_i18n
+-if current_group.languages.size>1 && AppConfig.enable_i18n
   .group
     = f.label :language, t(:language, :scope => "activerecord.attributes.question"), :class => "label"
     = language_select(f, @question)
