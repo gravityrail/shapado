@@ -32,7 +32,7 @@
     - if @question.closed
       =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
   .edit
-    = link_to "Editar"
+    = link_to t("scaffold.edit"), edit_question_path(@question)
 
 
   .description.markdown
@@ -40,7 +40,7 @@
     = render "reward_info"
 
   .attachments
-    = render "attachments", :question => @question, :attachments => @question.attachments
+    = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
 
   .toolbar
     %ul.drop-menu

@@ -33,6 +33,17 @@ $(document).ready(function() {
     return false;
   });
 
+  $(".remove_attachment_link").live("click", function(e) {
+    var url = $(this).attr("href");
+    var remove = confirm("are you sure?"); //TODO; i18n
+    if (remove) {
+      $.ajax({url: url, dataType: 'json', context: $(this), success: function(data, textStatus, XMLHttpRequest){
+        $(this).parent().remove();
+      }});
+    }
+    return false;
+  });
+
   var count = -1;
   $("#attachments .add_attachment").live("click", function(e) {
     var template = fields.find(".template");
@@ -49,4 +60,5 @@ $(document).ready(function() {
     return false;
   });
 
+  
 });
