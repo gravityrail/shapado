@@ -466,6 +466,7 @@ class QuestionsController < ApplicationController
     flash[:notice] = t("questions.watch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
+      format.mobile { redirect_to question_path(@question, :format => :mobile) }
       format.js {
         render(:json => {:success => true,
                  :message => flash[:notice] }.to_json)
@@ -480,6 +481,7 @@ class QuestionsController < ApplicationController
     flash[:notice] = t("questions.unwatch.success")
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
+      format.mobile { redirect_to question_path(@question, :format => :mobile) }
       format.js {
         render(:json => {:success => true,
                  :message => flash[:notice] }.to_json)

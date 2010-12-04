@@ -1,4 +1,5 @@
 =javascript_include_tag "modules/editor"
+-qpath = question_path(@question, :format => :mobile)
 
 -if params[:actions]
   %div{:data => {:role => "page"}}
@@ -9,16 +10,15 @@
     %div{:"data-role" => "content", :"data-theme" => "c"}
       %p
         What do you want to do?
-      =link_to "View", question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "e"
+      =link_to "View", qpath, :"data-role" => "button", :"data-theme" => "e"
       -if logged_in?
         -if current_user.can_modify?(@question)
           =link_to "Edit", edit_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
 
-        =link_to "Vote Up", "#", :"data-role" => "button", :"data-theme" => "c"
-        =link_to "Vote Down", "#", :"data-role" => "button", :"data-theme" => "c"
-        =link_to "Follow", "#", :"data-role" => "button", :"data-theme" => "c"
-        =link_to "Report", "#", :"data-role" => "button", :"data-theme" => "c"
-      =link_to "Cancel", "#", :"data-role" => "button", :"data-theme" => "b"
+        =link_to "Vote Up", question_votes_path(@question, :vote_up => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Vote Down", question_votes_path(@question, :vote_down => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Follow", follow_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+      =link_to "All Questions", questions_path(:format => :mobile), :"data-role" => "button", :"data-theme" => "b"
 -else
   - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
   %div{:data => {:role => "page"}}
