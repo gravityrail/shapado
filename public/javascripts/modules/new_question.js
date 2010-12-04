@@ -35,9 +35,12 @@ $(document).ready(function() {
 
   $(".remove_attachment_link").live("click", function(e) {
     var url = $(this).attr("href");
-    $.ajax({url: url, dataType: 'json', context: $(this), success: function(data, textStatus, XMLHttpRequest){
-      $(this).parent().remove();
-    }});
+    var remove = confirm("are you sure?"); //TODO; i18n
+    if (remove) {
+      $.ajax({url: url, dataType: 'json', context: $(this), success: function(data, textStatus, XMLHttpRequest){
+        $(this).parent().remove();
+      }});
+    }
     return false;
   });
 
