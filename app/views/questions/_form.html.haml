@@ -29,7 +29,7 @@
 
 .group
   -if !@question.new_record?
-    = render "attachments", :question => @question, :attachments => @question.attachments
+    = render "attachments", :question => @question, :attachments => @question.attachments, :editing => true
   #attachments
     #fields
       .attachment_field.template
