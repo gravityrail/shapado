@@ -1,0 +1,49 @@
+-qpath = question_path(@question, :format => :mobile)
+-apath = question_answer_path(@question, @answer, :format => :mobile)
+
+-if params[:actions]
+  %div{:data => {:role => "page"}}
+    %div{:"data-role"=>"header", :"data-theme"=>"d", :"data-position"=>"inline"}
+      %h1
+        Actions
+
+    %div{:"data-role" => "content", :"data-theme" => "c"}
+      %p
+        What do you want to do?
+      =link_to "View", apath, :"data-role" => "button", :"data-theme" => "e"
+      -if logged_in?
+        -if current_user.can_modify?(@question)
+          =link_to "Edit", edit_question_answer_path(@question, @answer, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+
+        =link_to "Vote Up", question_answer_votes_path(@question, @answer, :vote_up => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
+        =link_to "Vote Down", question_answer_votes_path(@question, @answer, :vote_down => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
+        -if favorite_for?(current_user)
+          =link_to "Unfavorite", unfavorite_question_answer_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+        -else
+          =link_to "Favorite", favorite_question_answer_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
+      =link_to "View Question", qpath, :"data-role" => "button", :"data-theme" => "b"
+-else
+  = include_latex
+  - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
+
+  %div{:data => {:role => "page"}}
+    %div{:"data-role" => "header"}
+      %h1
+        = @question.title[0,20]+"..."
+
+      =render "shared/mobile/header_actions"
+
+    %div{:"data-role" => "content"}
+      %h1
+        = link_to h(@question.title), qpath, :"data-role" => "none"
+
+      %div{:"data-role" => "content"}
+        .markdown
+          = question_body
+
+      %h2
+        = t('activerecord.models.answer')
+
+      %div{:"data-role" => "content"}
+        .markdown
+          =find_and_preserve(shapado_auto_link(markdown(@answer.body), :link_users => true))

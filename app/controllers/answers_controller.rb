@@ -64,6 +64,7 @@ class AnswersController < ApplicationController
     @question = @answer.question
     respond_to do |format|
       format.html
+      format.mobile
       format.json  { render :json => @answer.to_json }
     end
   end
@@ -197,6 +198,7 @@ class AnswersController < ApplicationController
     respond_to do |format|
       flash[:notice] = t("favorites.create.success")
       format.html { redirect_to(question_path(@answer.question)) }
+      format.mobile { redirect_to(question_path(@answer.question, :format => :mobile)) }
       format.json { head :ok }
       format.js {
         render(:json => {:success => true,
@@ -212,6 +214,7 @@ class AnswersController < ApplicationController
     flash[:notice] = t("unfavorites.create.success")
     respond_to do |format|
       format.html { redirect_to(question_path(@answer.question)) }
+      format.mobile { redirect_to(question_path(@answer.question, :format => :mobile)) }
       format.js {
         render(:json => {:success => true,
                  :message => flash[:notice], :increment => -1 }.to_json)
