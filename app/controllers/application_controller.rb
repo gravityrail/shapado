@@ -134,4 +134,9 @@ class ApplicationController < ActionController::Base
       format.json { render :json => {:success => false, :message => "Not Found"}, :status => '404 Not Found' }
     end
   end
+
+  # override from devise
+  def after_sign_out_path_for(resource)
+    params[:format] == "mobile" ? "/mobile" : root_path
+  end
 end
