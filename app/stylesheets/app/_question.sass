@@ -88,7 +88,7 @@ section.main-question
         &.comment
           a
             background-position: 5px -49px
-          a:hover
+          a:hover, a.active
             background-position: 5px -25px
         &.follow
           a.follow-q
@@ -266,53 +266,77 @@ article.comment
 //========================================================================
 #panel-forms
   height: 100%
+  clear: both
+  .jHtmlArea
+    width: 100% !important 
+    float: left
+    .ToolBar
+      width: 100% !important    
+      float: left
+    iframe
+      min-height: 200px !important
+      width: 99% !important
+      background-color: #fff
+      border: 1px solid #ccc
   form
     display: none
-
-  background-color: $lightBlue
-  clear: both
-  padding: 15px
-  form
-    fieldset
-    leyend
-    .form-options
-      .option
-        float: left
-        margin: 5px 20px 0 0
-        label
-          float: left
-          font-weight: bold
-          font-size: 11px
-          margin: 2px 5px 0 0
-        input
-          float: left
-          &:checkbox
-          &:radio
-    .buttons
-      float: right
+    padding: 15px
+    background-color: $lightBlue
+    width: 96% !important
+    small
+      font-size: 11px
+      font-style: italic
     input
+      width: 90%
+      border: 1px solid #ccc
+      font-size: 13px
+      padding: 3px 5px
+      &:checkbox
+      &:radio
       &.save
         +blue-gradient
         border: none
         font-size: 14px
-        margin: -2px 5px 0 0
-        padding: 6px 11px
-        float: left
+        padding: 5px 10px
+        float: right
         color: #fff
         width: auto
-
-.jHtmlArea
-  width: 100% !important
-  .ToolBar
-    float: left
-  .label
-    font-size: 18px
-    margin: 0 0 7px 0
-  iframe
-    min-height: 200px !important
-    width: 99%
-    background-color: #fff
-    border: 1px solid #ccc
+    label
+      font-weight: bold
+      font-size: 11px
+      margin-top: 10px
+      margin-bottom: 2px
+    textarea
+      height: 200px !important
+      width: 99%
+      font-size: 12px
+      line-height: 17px
+      padding: 15px
+      background-color: #fff
+      border: 1px solid #ccc
+    .field
+      float: left
+      width: 50%
+    .form-options
+      float: left
+      width: 99%
+      margin-top: 10px
+      padding: 8px 0 0 5px
+      .option
+        float: left
+        margin: 5px 20px 0 0
+        label
+          margin-top: 3px
+          margin-left: 3px
+          float: right
+        input
+          width: 10px 
+    .buttons
+      float: right
+      padding-top: 6px
+      input.save
+        margin-top: -8px
+        margin-left: 5px      
 
 /* Editors form output
 //========================================================================
@@ -368,6 +392,8 @@ article.comment
         width: 130px
         text-align: center
         padding: 3px 0 0 0
+        span
+        width: auto !important
         button
           height: 21px
           width: 22px

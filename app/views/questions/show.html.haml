@@ -31,9 +31,6 @@
     &= @question.title
     - if @question.closed
       =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
-  .edit
-    = link_to t("scaffold.edit"), edit_question_path(@question)
-
 
   .description.markdown
     = question_body
@@ -142,10 +139,11 @@
                 = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
 
-            .buttons
-              = link_to t('scaffold.cancel'), '', :class => 'cancel'
-              = t("global.or")
-              = submit_tag t('answers.form.submit'), :class => "save"
+              .buttons
+                = submit_tag t('answers.form.submit'), :class => "save"
+                = link_to t('scaffold.cancel'), '', :class => 'cancel'
+                = t("global.or")
+                
 
       -unless @question.closed
         =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_question_comment"} do |f|
