@@ -119,6 +119,10 @@ class VotesController < ApplicationController
       return false
     end
 
+    if value < 0 && @voteable.is_a?(Comment)
+      return false
+    end
+
     valid = true
     error_message = ""
     case @voteable.class.to_s
