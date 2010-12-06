@@ -16,17 +16,20 @@ module Support
       def vote(value, voter)
         old_vote = self.votes[voter.id]
         if old_vote.nil?
-          self.override({"votes.#{voter.id}" => value})
+          self.votes[voter.id] = value
+          self.save
           add_vote!(value, voter)
           return :created
         else
           if(old_vote != value)
-            self.override({"votes.#{voter.id}" => value})
+            self.votes[voter.id] = value
+            self.save
             self.remove_vote!(old_vote, voter)
             self.add_vote!(value, voter)
             return :updated
           else
-            self.unset({"votes.#{voter.id}" => true})
+            self.votes.delete(voter.id)
+            self.save
             remove_vote!(value, voter)
             return :destroyed
           end
@@ -34,7 +37,12 @@ module Support
       end
 
       def add_vote!(value, voter)
-        self.increment({:votes_count => 1, :votes_average => value.to_i})
+        if embedded?
+          self._parent.increment({self._position+".votes_count" => 1,
+                                  self._position+".votes_average" => value.to_i})
+        else
+          self.increment({:votes_count => 1, :votes_average => value.to_i})
+        end
         if value > 0
           self.user.upvote!(self.group)
         else
@@ -44,7 +52,12 @@ module Support
       end
 
       def remove_vote!(value, voter)
-        self.increment({:votes_count => -1, :votes_average => (-value)})
+        if embedded?
+          self._parent.increment({self._position+".votes_count" => -1,
+                                  self._position+".votes_average" => -value.to_i})
+        else
+          self.increment({:votes_count => -1, :votes_average => -value})
+        end
         if value > 0
           self.user.upvote!(self.group, -1)
         else
