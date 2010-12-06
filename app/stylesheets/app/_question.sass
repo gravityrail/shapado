@@ -102,12 +102,12 @@ section.main-question
         &.spam
           a
             background-position: 5px -162px
-          a:hover
+          a:hover, a.active
             background-position: 5px -138px
         &.share
           a
             background-position: 5px -219px
-          a:hover
+          a:hover, a.active
             background-position: 5px -195px
         &.activity
           a
@@ -278,7 +278,7 @@ article.comment
       width: 99% !important
       background-color: #fff
       border: 1px solid #ccc
-  form
+  form, .share
     display: none
     padding: 15px
     background-color: $lightBlue
@@ -337,6 +337,51 @@ article.comment
       input.save
         margin-top: -8px
         margin-left: 5px      
+        
+/* Share Panel */
+//========================================================================        
+#share-panel
+  height: 100%
+  clear: both
+  width: 100% !important 
+  padding: 15px
+  background-color: $lightBlue
+  h1 
+    font-size: 14px
+    margin: 0
+  ul
+    li
+      a      
+        width: 24px
+        height: 24px
+        text-indent: -9999px
+        overflow: hidden
+        padding: 0
+        margin-right: 7px
+        border: none
+  li.facebook a
+    background: url("/images/share/facebook.png") 0 0 no-repeat
+  li.twitter a
+    background: url("/images/share/twitter.png") 0 0 no-repeat
+  li.identica a
+    background: url("/images/share/identi.png") 0 0 no-repeat
+  li.digg a
+    background: url("/images/share/digg.png") 0 0 no-repeat
+  li.blogger a
+    background: url("/images/share/blogger.png") 0 0 no-repeat
+  li.delicious a
+    background: url("/images/share/delicious.png") 0 0 no-repeat
+  li.linkedin a
+    background: url("/images/share/linkedin.png") 0 0 no-repeat
+  li.misterwong a
+    background: url("/images/share/mister-wong.png") 0 0 no-repeat
+  li.stumbleupon a
+    background: url("/images/share/stumbleupon.png") 0 0 no-repeat
+  li.googlebuzz a
+    background: url("/images/share/google-buzz.png") 0 0 no-repeat
+  li.friendster a
+    background: url("/images/share/frinedster.png") 0 0 no-repeat
+
 
 /* Editors form output
 //========================================================================
@@ -420,9 +465,9 @@ article.comment
 #panel-comments
   background-color: #f1f1f1
   clear: both
-  padding: 15px
   margin: 0 0 10px 0
   form
+    padding: 15px
     fieldset
     leyend
       font-size: 16px
