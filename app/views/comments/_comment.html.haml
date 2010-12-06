@@ -7,7 +7,7 @@
         = t("time.ago", :time => time_ago_in_words(comment.created_at))
         = t("global.from", :site => comment.user.country_name)
         = country_flag(comment.user.country_code, comment.user.country_name)
-        
+
     .comment-content.markdown
       = shapado_auto_link(markdown(comment.body), :link_users => true)
     %ul.comment-actions
@@ -23,31 +23,15 @@
 
 -else
   %article.comment
+    .article-actions
+      -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
+        %ul
+          %li.votes
+            = vote_box(comment, request.path, comment.find_question.closed)
     %h4
       = t("time.ago", :time => time_ago_in_words(comment.created_at))
       =link_to comment.user.login, user_path(comment.user)
       == #{t("comments.shared.said")}:
-    %ul.toolbar
-      %li.drop
-        -if comment.votes_average > 0
-          %p
-            &= comment.votes_average
-        -else
-          -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
-
-        -if logged_in?
-          -url = ""
-          -if comment.commentable.is_a?(Answer)
-            -url = question_answer_comment_votes_path(comment.commentable.question, comment.commentable,comment)
-          -elsif comment.commentable.is_a?(Question)
-            -url = question_comment_votes_path(comment.commentable, comment)
-          -form_tag url, :class => "vote-up-comment-form" do
-            .fields
-              = hidden_field_tag "source", request.path, :id =>  "source_#{comment.id}"
-              -if vote = current_user.vote_on(comment)
-                = image_submit_tag("dialog-ok-apply.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "comment-voteup-button")
-              -else
-                = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "comment-voteup-button")
 
     .comment-content.markdown
       = shapado_auto_link(markdown(comment.body), :link_users => true)

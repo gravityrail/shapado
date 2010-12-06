@@ -5,7 +5,8 @@
     = token_tag
     %p.vote_box
       =hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-      %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
+      -if !voteable.is_a?(Comment)
+        %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
       %span.votes_average
         =I18n.t("votes.create.average", :count => calculate_votes_average(voteable))
       %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1"}
