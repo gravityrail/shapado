@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:counters", "fixdb:sync_counts", "fixdb:votes", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
 end
 
 namespace :fixdb do
@@ -93,7 +93,9 @@ namespace :fixdb do
     Question.all.each do |q|
       print "."
       votes_average=0
-      q.votes.each {|e| votes_average+=e.value }
+      votes.find(:voteable_id =>  q.id).each do |v|
+        votes_average+=v["value"]
+      end
       q.override("flags_count" => q.flags.size, "votes_count" => q.votes.size, "votes_average" => votes_average)
     end
   end
@@ -127,11 +129,12 @@ namespace :fixdb do
 
   task :votes => [:environment] do
     puts "updating votes"
+    comments = Mongoid.database.collection("comments")
+    comments.update({:votes => nil}, {"$set" => {"votes" =>  {}}}, :multi => true)
+    questions = Mongoid.database.collection("questions")
+    questions.update({:votes => nil}, {"$set" => {"votes" => {}}}, :multi => true)
     Group.all.each do |group|
       count = 0
-
-      comments = Mongoid.database.collection("comments")
-      questions = Mongoid.database.collection("questions")
       Mongoid.database.collection("votes").find({:group_id => group["_id"]}).each do |vote|
         vote.delete("group_id")
         id = vote.delete("voteable_id")
@@ -141,7 +144,7 @@ namespace :fixdb do
           collection = questions;
         end
         count += 1
-        collection.update({:_id => id}, "$addToSet" => {:votes => vote})
+        collection.update({:_id => id}, "$set" => {"votes.#{vote["user_id"]}" => vote["value"]})
       end
       if count > 0
         puts "Updated #{count} #{group["name"]} votes"

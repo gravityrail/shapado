@@ -51,7 +51,7 @@
         %li.votes
           -unless question.closed
             -if logged_in? && (vote = current_user.vote_on(question))
-              -if vote.value < 0
+              -if vote < 0
                 = image_tag "edit-delete.png"
               -else
                 = image_tag "dialog-ok-apply.png"

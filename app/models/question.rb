@@ -120,7 +120,7 @@ class Question
   validate :check_useful
 
   def self.minimal
-    without(:_keywords, :followers, :votes, :flags, :close_requests, :open_requests, :versions)
+    without(:_keywords, :followers, :flags, :close_requests, :open_requests, :versions)
   end
 
   def followed_up_by

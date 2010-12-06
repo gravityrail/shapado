@@ -274,7 +274,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def vote_on(voteable)
-    vote = voteable.votes.detect{ |vote| vote.user_id == self.id }
+    voteable.votes[self.id]
   end
 
   def favorites(opts = {})
