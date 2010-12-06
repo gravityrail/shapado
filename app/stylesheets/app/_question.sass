@@ -17,12 +17,44 @@ section.main-question
   border: 1px solid #e5e5e5
   background: #fff url("/images/q-icon-medium.gif") 15px 15px  no-repeat
   margin-bottom: 15px
-  position: relative
+  position: relative  
+  ul.tag-list
+    margin-left: 45px
   h1
     font-size: 26px
     line-height: 28px
     font-weight: bold
     margin: 10px 20px 5px 45px
+    &.version
+      font-size: 18px
+      line-height: 20 px
+      margin: 5px 20px 5px 45px
+    br
+      margin-bottom: 10px
+    small
+      a
+        font-size: 12px
+        color: #000
+        font-style: italic !important        
+        &:hover
+          border-bottom: 1px dotted
+    small.version
+      font-size: 15px      
+      font-style: italic !important
+    small.current
+      color: #c00
+      font-weight: bold
+    small.verion-nav
+      float: right
+      font-size: 12px
+      color: #666
+      a
+        margin: 0 3px
+        color: $orange
+        &:hover
+          border-bottom: 1px dotted
+        &.revert
+          color: #c00
   .description
     margin: 0 20px 0 45px
     p
@@ -149,8 +181,9 @@ section.main-question
             border-bottom: 1px solid #ddd
             background-color: #fff
             a:first-letter
-              text-transform: uppercase
-
+              text-transform: uppercase              
+      
+      
 /* Main Question - Tags */
 //========================================================================
 ul.tag-list
@@ -173,6 +206,8 @@ ul.tag-list
       font-weight: bolder
       font-size: 12px
       margin-top: 1px
+  form
+    background: #ccc
 
 /* Main Question - Answers*/
 //========================================================================
@@ -494,3 +529,20 @@ article.comment
         border-bottom: 1px dotted
   .buttons
     float: right
+
+    
+/* History question */
+/* ------------------------------------------------------------ */
+.buttons-history
+  border-top: 1px solid #ccc
+  text-align: right
+  clear: both  
+  margin: 15px 0 0 0
+  padding: 10px 
+  input
+    +blue-gradient
+    border: none
+    font-size: 14px
+    padding: 5px 10px
+    color: #fff
+    width: auto
