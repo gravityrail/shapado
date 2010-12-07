@@ -185,11 +185,12 @@ section.main-question
       
       
 /* Main Question - Tags */
-//========================================================================
+//======================================================================== 
 ul.tag-list
   margin: 0 0 10px 0
   float: left
-  li
+  width: 100% !important  
+  li, span.tag
     float: left
     display: inline
     margin: 0 0 7px 0
@@ -206,9 +207,56 @@ ul.tag-list
       font-weight: bolder
       font-size: 12px
       margin-top: 1px
-  form
-    background: #ccc
-
+  .retag-form
+    background-color: #e5e5e5
+    padding: 15px
+    width: 100% !important
+    margin-bottom: 20px
+    label
+      font-size: 15px
+      font-weight: bold
+      margin-bottom: 5px   
+    .tagwrapper
+      border: 1px solid #ccc !important
+      min-height: 20px !important
+      padding: 5px 5px 3px 5px !important
+      font-size: 11px
+      margin-bottom: 10px
+      line-height: 11px
+      width: 93.5% !important
+      ul
+        margin: 0 2px !important
+        padding: 0 !important
+        border: 0px !important
+        border: none
+        li, li:hover
+          margin: 0 !important
+          padding: 0 !important          
+        a, a.ui-state-hover, a:hover, span:hover 
+          padding: 0px 5px 2px 13px !important
+          margin: 0 !important
+          background: url("/images/tag-back-lt.png") 0 50% no-repeat !important  
+          border: none !important
+          .remove-tag
+            padding: 0 !important
+            margin: 0 !important
+      input.autocomplete_for_tags
+        padding: 2px 5px 1px 5px !important
+        font-size: 11px
+        line-height: 11px
+    .buttons
+      text-align: right
+      clear: both  
+      margin: 15px 0 0 0
+      padding: 0px 40px 0 0 
+      input
+        +orange-gradient
+        border: none
+        font-size: 14px
+        padding: 5px 10px
+        color: #fff
+        width: auto
+ 
 /* Main Question - Answers*/
 //========================================================================
 #answers-content-wrap
@@ -540,7 +588,7 @@ article.comment
   margin: 15px 0 0 0
   padding: 10px 
   input
-    +blue-gradient
+    +orange-gradient
     border: none
     font-size: 14px
     padding: 5px 10px
