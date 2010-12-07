@@ -65,7 +65,6 @@ class User
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
   references_many :comments, :dependent => :destroy
-  references_many :votes, :dependent => :destroy
   references_many :badges, :dependent => :destroy
 
   before_create :create_friend_list

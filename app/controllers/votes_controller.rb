@@ -26,9 +26,9 @@ class VotesController < ApplicationController
     if state == :created
       if @voteable.class == Question
         sweep_question(vote.voteable)
-        Jobs::Votes.async.on_vote_question(@voteable.id, value).commit!
+        Jobs::Votes.async.on_vote_question(@voteable.id, value, current_user.id, current_group.id).commit!
       elsif @voteable.class == Answer
-        Jobs::Votes.async.on_vote_answer(@voteable.id, value).commit!
+        Jobs::Votes.async.on_vote_answer(@voteable.id, value, current_user.id, current_group.id).commit!
       end
     end
 

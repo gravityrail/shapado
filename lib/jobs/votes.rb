@@ -2,21 +2,14 @@ module Jobs
   class Votes
     extend Jobs::Base
 
-    def self.on_vote_question(question_id, vote_id)
+    def self.on_vote_question(question_id, value, user_id, group_id)
       question = Question.find(question_id)
-      vote = nil
-      question.votes.each do |v|
-        if v.id == vote_id
-          vote = v
-          break
-        end
-      end
 
-      user = vote.user
-      group = vote.group
+      group = Group.find(group_id)
+      user = User.find(user_id)
 
       if vuser = question.user
-        if vote.value == 1
+        if value == 1
           create_badge(vuser, group, :token => "student", :source => question, :unique => true)
         end
 
@@ -33,22 +26,15 @@ module Jobs
         end
       end
 
-      on_vote(vote)
-      on_vote_user(vote)
+      on_vote(question, value, user, group)
+      on_vote_user(question, value, user, group)
     end
 
-    def self.on_vote_answer(answer_id, vote_id)
+    def self.on_vote_answer(answer_id, value, user_id, group_id)
       answer = Answer.find(answer_id)
-      vote = nil
-      answer.votes.each do |v|
-        if v.id == vote_id
-          vote = v
-          break
-        end
-      end
 
-      user = vote.user
-      group = vote.group
+      group = Group.find(group_id)
+      user = User.find(user_id)
 
       if vuser = answer.user
         if answer.votes_average >= 10
@@ -70,8 +56,7 @@ module Jobs
         if vuser.id == answer.question.user_id && answer.votes_average >= 3
           create_badge(vuser, group, {:token => "self-learner", :source => answer, :unique => true})
         end
-
-        if vote.value == 1
+        if value == 1
           stats = vuser.stats(:tag_votes)
           tags = answer.question.tags
           tokens = Set.new(Badge.TOKENS)
@@ -99,57 +84,53 @@ module Jobs
         end
       end
 
-      on_vote(vote)
-      on_vote_user(vote)
+      on_vote(answer, value, user, group)
+      on_vote_user(answer, value, user, group)
     end
 
     private
-    def self.on_vote(vote)
-      group = vote.group
-      user = vote.user
-
-      if vote.value == -1
-        create_badge(user,  group,  :token => "critic", :source => vote, :unique => true)
+    def self.on_vote(voteable, value, user, group)
+      if value == -1
+        create_badge(user,  group,  :token => "critic", :source => voteable, :unique => true)
       else
-        create_badge(user, group, :token => "supporter", :source => vote, :unique => true)
+        create_badge(user, group, :token => "supporter", :source => voteable, :unique => true)
       end
 
-      if user.config_for(group).views_count >= 10000
+      membership = user.config_for(group)
+      if membership.views_count >= 10000
         create_badge(user, group, :token => "popular_person", :unique => true)
       end
 
-      if user.votes.where(:group_id => group.id).count >= 300
+      if (Answer.where("votes.#{user.id}" => {:$exists => true}).count +
+         Question.where("votes.#{user.id}" => {:$exists => true}).count) >= 300
         create_badge(user, group, :token => "civic_duty", :unique => true)
       end
     end
 
-    def self.on_vote_user(vote)
-      group = vote.group
-      user = vote.user
-
-      vuser = vote.voteable.user
+    def self.on_vote_user(voteable, value, user, group)
+      vuser = voteable.user
       return if vuser.nil?
 
       vote_value = vuser.config_for(group).votes_up
 
       if vote_value >= 100
-        create_badge(vuser, group, :token => "effort_medal",  :source => vote, :unique => true)
+        create_badge(vuser, group, :token => "effort_medal",  :source => voteable, :unique => true)
       end
 
       if vote_value >= 200
-        create_badge(vuser, group, :token => "merit_medal", :source => vote, :unique => true)
+        create_badge(vuser, group, :token => "merit_medal", :source => voteable, :unique => true)
       end
 
       if vote_value >= 300
-        create_badge(vuser,  group, :token => "service_medal", :source => vote, :unique => true)
+        create_badge(vuser,  group, :token => "service_medal", :source => voteable, :unique => true)
       end
 
       if vote_value >= 500 && vuser.config_for(group).votes_down <= 10
-        create_badge(vuser, group, :token => "popstar", :source => vote, :unique => true)
+        create_badge(vuser, group, :token => "popstar", :source => voteable, :unique => true)
       end
 
       if vote_value >= 1000 && vuser.config_for(group).votes_down <= 10
-        create_badge(vuser, group, :token => "rockstar",  :source => vote, :unique => true)
+        create_badge(vuser, group, :token => "rockstar",  :source => voteable, :unique => true)
       end
     end
   end
