@@ -17,12 +17,44 @@ section.main-question
   border: 1px solid #e5e5e5
   background: #fff url("/images/q-icon-medium.gif") 15px 15px  no-repeat
   margin-bottom: 15px
-  position: relative
+  position: relative  
+  ul.tag-list
+    margin-left: 45px
   h1
     font-size: 26px
     line-height: 28px
     font-weight: bold
     margin: 10px 20px 5px 45px
+    &.version
+      font-size: 18px
+      line-height: 20 px
+      margin: 5px 20px 5px 45px
+    br
+      margin-bottom: 10px
+    small
+      a
+        font-size: 12px
+        color: #000
+        font-style: italic !important        
+        &:hover
+          border-bottom: 1px dotted
+    small.version
+      font-size: 15px      
+      font-style: italic !important
+    small.current
+      color: #c00
+      font-weight: bold
+    small.verion-nav
+      float: right
+      font-size: 12px
+      color: #666
+      a
+        margin: 0 3px
+        color: $orange
+        &:hover
+          border-bottom: 1px dotted
+        &.revert
+          color: #c00
   .description
     margin: 0 20px 0 45px
     p
@@ -88,7 +120,7 @@ section.main-question
         &.comment
           a
             background-position: 5px -49px
-          a:hover
+          a:hover, a.active
             background-position: 5px -25px
         &.follow
           a.follow-q
@@ -102,12 +134,12 @@ section.main-question
         &.spam
           a
             background-position: 5px -162px
-          a:hover
+          a:hover, a.active
             background-position: 5px -138px
         &.share
           a
             background-position: 5px -219px
-          a:hover
+          a:hover, a.active
             background-position: 5px -195px
         &.activity
           a
@@ -149,14 +181,16 @@ section.main-question
             border-bottom: 1px solid #ddd
             background-color: #fff
             a:first-letter
-              text-transform: uppercase
-
+              text-transform: uppercase              
+      
+      
 /* Main Question - Tags */
-//========================================================================
+//======================================================================== 
 ul.tag-list
   margin: 0 0 10px 0
   float: left
-  li
+  width: 100% !important  
+  li, span.tag
     float: left
     display: inline
     margin: 0 0 7px 0
@@ -173,7 +207,56 @@ ul.tag-list
       font-weight: bolder
       font-size: 12px
       margin-top: 1px
-
+  .retag-form
+    background-color: #e5e5e5
+    padding: 15px
+    width: 100% !important
+    margin-bottom: 20px
+    label
+      font-size: 15px
+      font-weight: bold
+      margin-bottom: 5px   
+    .tagwrapper
+      border: 1px solid #ccc !important
+      min-height: 20px !important
+      padding: 5px 5px 3px 5px !important
+      font-size: 11px
+      margin-bottom: 10px
+      line-height: 11px
+      width: 93.5% !important
+      ul
+        margin: 0 2px !important
+        padding: 0 !important
+        border: 0px !important
+        border: none
+        li, li:hover
+          margin: 0 !important
+          padding: 0 !important          
+        a, a.ui-state-hover, a:hover, span:hover 
+          padding: 0px 5px 2px 13px !important
+          margin: 0 !important
+          background: url("/images/tag-back-lt.png") 0 50% no-repeat !important  
+          border: none !important
+          .remove-tag
+            padding: 0 !important
+            margin: 0 !important
+      input.autocomplete_for_tags
+        padding: 2px 5px 1px 5px !important
+        font-size: 11px
+        line-height: 11px
+    .buttons
+      text-align: right
+      clear: both  
+      margin: 15px 0 0 0
+      padding: 0px 40px 0 0 
+      input
+        +orange-gradient
+        border: none
+        font-size: 14px
+        padding: 5px 10px
+        color: #fff
+        width: auto
+ 
 /* Main Question - Answers*/
 //========================================================================
 #answers-content-wrap
@@ -266,53 +349,122 @@ article.comment
 //========================================================================
 #panel-forms
   height: 100%
-  form
-    display: none
-
-  background-color: $lightBlue
   clear: both
-  padding: 15px
-  form
-    fieldset
-    leyend
-    .form-options
-      .option
-        float: left
-        margin: 5px 20px 0 0
-        label
-          float: left
-          font-weight: bold
-          font-size: 11px
-          margin: 2px 5px 0 0
-        input
-          float: left
-          &:checkbox
-          &:radio
-    .buttons
-      float: right
+  .jHtmlArea
+    width: 100% !important 
+    float: left
+    .ToolBar
+      width: 100% !important    
+      float: left
+    iframe
+      min-height: 200px !important
+      width: 99% !important
+      background-color: #fff
+      border: 1px solid #ccc
+  form, .share
+    display: none
+    padding: 15px
+    background-color: $lightBlue
+    width: 96% !important
+    small
+      font-size: 11px
+      font-style: italic
     input
+      width: 90%
+      border: 1px solid #ccc
+      font-size: 13px
+      padding: 3px 5px
+      &:checkbox
+      &:radio
       &.save
         +blue-gradient
         border: none
         font-size: 14px
-        margin: -2px 5px 0 0
-        padding: 6px 11px
-        float: left
+        padding: 5px 10px
+        float: right
         color: #fff
         width: auto
+    label
+      font-weight: bold
+      font-size: 11px
+      margin-top: 10px
+      margin-bottom: 2px
+    textarea
+      height: 200px !important
+      width: 99%
+      font-size: 12px
+      line-height: 17px
+      padding: 15px
+      background-color: #fff
+      border: 1px solid #ccc
+    .field
+      float: left
+      width: 50%
+    .form-options
+      float: left
+      width: 99%
+      margin-top: 10px
+      padding: 8px 0 0 5px
+      .option
+        float: left
+        margin: 5px 20px 0 0
+        label
+          margin-top: 3px
+          margin-left: 3px
+          float: right
+        input
+          width: 10px 
+    .buttons
+      float: right
+      padding-top: 6px
+      input.save
+        margin-top: -8px
+        margin-left: 5px      
+        
+/* Share Panel */
+//========================================================================        
+#share-panel
+  height: 100%
+  clear: both
+  width: 100% !important 
+  padding: 15px
+  background-color: $lightBlue
+  h1 
+    font-size: 14px
+    margin: 0
+  ul
+    li
+      a      
+        width: 24px
+        height: 24px
+        text-indent: -9999px
+        overflow: hidden
+        padding: 0
+        margin-right: 7px
+        border: none
+  li.facebook a
+    background: url("/images/share/facebook.png") 0 0 no-repeat
+  li.twitter a
+    background: url("/images/share/twitter.png") 0 0 no-repeat
+  li.identica a
+    background: url("/images/share/identi.png") 0 0 no-repeat
+  li.digg a
+    background: url("/images/share/digg.png") 0 0 no-repeat
+  li.blogger a
+    background: url("/images/share/blogger.png") 0 0 no-repeat
+  li.delicious a
+    background: url("/images/share/delicious.png") 0 0 no-repeat
+  li.linkedin a
+    background: url("/images/share/linkedin.png") 0 0 no-repeat
+  li.misterwong a
+    background: url("/images/share/mister-wong.png") 0 0 no-repeat
+  li.stumbleupon a
+    background: url("/images/share/stumbleupon.png") 0 0 no-repeat
+  li.googlebuzz a
+    background: url("/images/share/google-buzz.png") 0 0 no-repeat
+  li.friendster a
+    background: url("/images/share/frinedster.png") 0 0 no-repeat
 
-.jHtmlArea
-  width: 100% !important
-  .ToolBar
-    float: left
-  .label
-    font-size: 18px
-    margin: 0 0 7px 0
-  iframe
-    min-height: 200px !important
-    width: 99%
-    background-color: #fff
-    border: 1px solid #ccc
 
 /* Editors form output
 //========================================================================
@@ -368,6 +520,8 @@ article.comment
         width: 130px
         text-align: center
         padding: 3px 0 0 0
+        span
+        width: auto !important
         button
           height: 21px
           width: 22px
@@ -394,9 +548,9 @@ article.comment
 #panel-comments
   background-color: #f1f1f1
   clear: both
-  padding: 15px
   margin: 0 0 10px 0
   form
+    padding: 15px
     fieldset
     leyend
       font-size: 16px
@@ -423,3 +577,20 @@ article.comment
         border-bottom: 1px dotted
   .buttons
     float: right
+
+    
+/* History question */
+/* ------------------------------------------------------------ */
+.buttons-history
+  border-top: 1px solid #ccc
+  text-align: right
+  clear: both  
+  margin: 15px 0 0 0
+  padding: 10px 
+  input
+    +orange-gradient
+    border: none
+    font-size: 14px
+    padding: 5px 10px
+    color: #fff
+    width: auto

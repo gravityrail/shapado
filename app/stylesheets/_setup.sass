@@ -122,6 +122,7 @@ $color: $dark
 // Cross browser box shadow
 // If you want to have multiple box shadows, you must enclose the values in quotes (" ").
 $shadow: 0 0 10px #000
+$menu: 0 0 3px #999
 
 =box-shadow($shadow)
   $shadow: unquote($shadow)
@@ -131,6 +132,13 @@ $shadow: 0 0 10px #000
   khtml-box-shadow: $shadow
   box-shadow: $shadow
 
+=menu-shadow($shadow)
+  $shadow: unquote($menu)
+  -moz-box-shadow: $menu
+  -webkit-box-shadow: $menu
+  o-box-shadow: $menu
+  khtml-box-shadow: $menu
+  box-shadow: $menu  
 // Cross browser rounded corners
 $smallRadius: 3px
 $normalRadius: 5px
