@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  $("a#add_reward, a#add_question_comment, a#add_answer, a#share").click(function(event) {
+  $("a#add_reward, a#add_question_comment, a#add_answer, a#share_question").click(function(event) {
     var link = $(this);
     var id = link.attr("id");
-    var form = $("#panel-forms form."+id);
+    var form = $("#panel-forms ."+id);
 
     if(link.hasClass("active")){
       link.removeClass("active");

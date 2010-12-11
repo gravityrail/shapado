@@ -60,10 +60,10 @@
           = link_to t("scaffold.destroy"), question_flag_path(@question,@flag), :id => "destroy_question_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
       - elsif logged_in? && current_user != @question.user
         %li.spam
-          = link_to t(".flag"), new_question_flag_path(@question), :id => "question_flag_link", :rel => 'nofollow'            
+          = link_to t(".flag"), new_question_flag_path(@question), :id => "question_flag_link", :rel => 'nofollow'
 
-      %li.share
-        = link_to "Compartir", "#", :id => "share_question" 
+      %li.share_on
+        = link_to "Compartir", "#", :id => "share_question"
 
       %li.more.current
         = link_to "More actions"
@@ -84,7 +84,7 @@
             %li.close
               -if !@question.closed
                 = link_to t('.close'), question_close_requests_path(@question)
-          - if logged_in?    
+          - if logged_in?
             - if show_close_request_form
               %li.spam
                 -if !@close_request.new_record?
@@ -118,35 +118,7 @@
             -else
               %li.open
                 = link_to t(".request_opening"), new_question_open_request_path(@question), :id => "request-open-link", :rel => 'nofollow', :title => t('.request_opening_details')
-    
-    #share-panel
-      %h1 
-        Share this on:
-      %ul
-        %li.facebook
-          =link_to "Facebook"
-        %li.twitter
-          =link_to "Twitter"
-        %li.identica
-          =link_to "Identi.ca"
-        %li.digg
-          =link_to "Digg"
-        %li.blogger
-          =link_to "Blogger"
-        %li.delicious
-          =link_to "Delicious"          
-        %li.linkedin
-          =link_to "LinkedIn"
-        %li.misterwong
-          =link_to "Mister Wong"
-        %li.stumbleupon
-          =link_to "StumbleUpon"
-        %li.googlebuzz
-          =link_to "Google Buzz"
-        %li.friendster
-          =link_to "Friendster"        
-      .clear
-      
+
     #panel-forms
       = render "reward_form"
 
@@ -168,7 +140,7 @@
                 = submit_tag t('answers.form.submit'), :class => "save"
                 = link_to t('scaffold.cancel'), '', :class => 'cancel'
                 = t("global.or")
-                
+
 
       -unless @question.closed
         =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_question_comment"} do |f|
@@ -188,6 +160,35 @@
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
               = submit_tag t('answers.form.submit'), :class => "save"
+
+      =form_tag "", :class => "share_question" do
+        %h1
+          Share this on:
+        %ul
+          %li.facebook
+            =link_to "Facebook"
+          %li.twitter
+            =link_to "Twitter"
+          %li.identica
+            =link_to "Identi.ca"
+          %li.digg
+            =link_to "Digg"
+          %li.blogger
+            =link_to "Blogger"
+          %li.delicious
+            =link_to "Delicious"
+          %li.linkedin
+            =link_to "LinkedIn"
+          %li.misterwong
+            =link_to "Mister Wong"
+          %li.stumbleupon
+            =link_to "StumbleUpon"
+          %li.googlebuzz
+            =link_to "Google Buzz"
+          %li.friendster
+            =link_to "Friendster"
+        .clear
+
       .clear
 
 %ul.tag-list
