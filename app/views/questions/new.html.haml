@@ -9,18 +9,20 @@
         = t(".how_to_ask")
       = raw(current_group.question_help)
 
-- form_for(@question, :html=>{:class => "form", :id => "ask_question", :multipart => true}) do |f|
+- form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
   =render :partial => "form", :locals => {:f => f}
 
-  .group.navform
-    .controls.right{:style => "width: 50%"}
-      .left{:style => "width: 49.5%"}
-        = f.label :wiki, "Wiki", :class => "radio"
-        = f.check_box :wiki, :class => "checkbox"
-      .left{:style => "width: 49.5%"}
-        = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-        = f.check_box :anonymous, {:class => "checkbox"}, true, false
+  .form-options
+    .option
+      = f.label :wiki, "Wiki"
+      = f.check_box :wiki
+    .option
+      = f.label :anonymous, t("scaffold.post_as_anonymous")
+      = f.check_box :anonymous, {:class => "checkbox"}, true, false
+    
+    .buttons
+      = link_to t('scaffold.cancel'), questions_path
+      = t("global.or")
+      = f.submit t('scaffold.create'), :class => "save"
+      
 
-    = f.submit t('scaffold.create')
-    = t("global.or")
-    = link_to t('scaffold.cancel'), questions_path, :class => "button cancel"

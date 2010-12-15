@@ -1,4 +1,3 @@
-= f.label :body, t(:body, :scope => "activerecord.attributes.question"), :class => "label", :for =>"editor"
 -if current_group.wysiwyg_editor
   = f.text_area :body, :class => "text_area", :id => "wysiwyg_editor", :value => markdown(@question.body), :name => "editor"
 -else
