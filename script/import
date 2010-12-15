@@ -20,22 +20,13 @@ group = Group.where(:subdomain => group_info["subdomain"]).first
 group.domain = AppConfig.domain
 group.save!
 
+puts "Updating objects..."
 %w[groups users badges answers questions].each do |cname|
   coll = Mongoid.master.collection(cname)
   coll.find.each do |q|
     %w[activity_at last_target_date created_at updated_at].each do |key|
       if q[key].is_a?(String)
         q[key] = Time.parse(q[key])
-      end
-    end
-
-    if q["votes"]
-      q["votes"].each do |vote|
-        %w[created_at updated_at].each do |key|
-          if vote[key].is_a?(String)
-            vote[key] = Time.parse(vote[key])
-          end
-        end
       end
     end
 
