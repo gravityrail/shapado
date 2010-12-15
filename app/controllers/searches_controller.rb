@@ -11,10 +11,6 @@ class SearchesController < ApplicationController
       options[:banned] = false
 
       if !@search_text.blank?
-        q = @search_text.split.map do |k|
-          Regexp.escape(k)
-        end.join("|")
-        @query_regexp = /(#{q})/i
         @questions = Question.filter(@search_text, options)
       else
         @questions = Question.paginate(options)

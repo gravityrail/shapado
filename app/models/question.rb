@@ -334,6 +334,42 @@ class Question
   end
 
   protected
+  def self.map_filter_operators(quotes, ops)
+    mongoquery = {}
+    if !quotes.empty?
+      q = {:$in => quotes.map { |quote| /#{Regexp.escape(quote)}/i }}
+      mongoquery[:$or] = [{:title => q}, {:body => q}]
+    end
+
+    if ops["is"]
+      ops["is"].each do |d|
+        case d
+        when "answered"
+          mongoquery[:answered] = true
+        when "accepted"
+          mongoquery[:accepted] = true
+        end
+      end
+    end
+
+    if ops["not"]
+      ops["not"].each do |d|
+        case d
+        when "answered"
+          mongoquery[:answered] = false
+        when "accepted"
+          mongoquery[:accepted] = false
+        end
+      end
+    end
+
+    if ops["lang"]
+      mongoquery["language"] = {:$in => ops["lang"].map{|l| /#{l}/ }}
+    end
+
+    mongoquery
+  end
+
   def update_answer_count
     self.answers_count = self.answers.count
     votes_average = 0
