@@ -119,8 +119,8 @@ class User
     write_attribute :email, (value ? value.downcase : nil)
   end
 
-  def self.find_by_login_or_id(login)
-    where(:login => login).first || where(:_id => login).first
+  def self.find_by_login_or_id(login, conds = {})
+    where(conds.merge(:login => login)).first || where(conds.merge(:_id => login)).first
   end
 
   def self.find_experts(tags, langs = AVAILABLE_LANGUAGES, options = {})
