@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
 
       if !@search_text.blank?
         @questions = Question.filter(@search_text, options)
-        @highlight = [params[:q]]
+        @highlight = @questions.parsed_query[:tokens].to_a
       else
         @questions = Question.paginate(options)
       end
