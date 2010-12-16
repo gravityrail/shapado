@@ -12,13 +12,15 @@
 - form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
   =render :partial => "form", :locals => {:f => f}
 
-  .form-options
-    .option
-      = f.label :wiki, "Wiki"
-      = f.check_box :wiki
-    .option
-      = f.label :anonymous, t("scaffold.post_as_anonymous")
-      = f.check_box :anonymous, {:class => "checkbox"}, true, false
+  .field.form-options
+    .column
+      .checkbox
+        = f.label :wiki, "Wiki"
+        = f.check_box :wiki
+    .column
+      .checkbox
+        = f.label :anonymous, t("scaffold.post_as_anonymous")
+        = f.check_box :anonymous, {:class => "checkbox"}, true, false
     
     .buttons
       = link_to t('scaffold.cancel'), questions_path

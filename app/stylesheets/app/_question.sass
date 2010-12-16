@@ -136,7 +136,7 @@ section.main-question
             background-position: 5px -162px
           a:hover, a.active
             background-position: 5px -138px
-        &.share
+        &.share_on
           a
             background-position: 5px -219px
           a:hover, a.active
@@ -395,12 +395,15 @@ article.comment
           a:first-letter
             text-transform: uppercase
     li.votes
+      form
+        margin: 0
+        width: auto
       p
-        width: 130px
+        width: auto !important
         text-align: center
         padding: 3px 0 0 0
         span
-        width: auto !important
+          width: auto !important
         button
           height: 21px
           width: 22px
@@ -473,102 +476,4 @@ article.comment
     padding: 5px 10px
     color: #fff
     width: auto
-        
-/* Actions panels
-//========================================================================
-#panel-forms
-  height: 100%
-  clear: both
-  background-color: $lightBlue
-  form
-    padding: 15px
-    display: none
-    small
-      font-size: 11px
-      font-style: italic    
-    input
-      border: 1px solid #ccc
-      font-size: 13px
-      padding: 3px 5px      
-      &.save
-        +blue-gradient
-        border: none
-        font-size: 14px
-        padding: 5px 10px
-        float: right
-        color: #fff
-        width: auto  
-    label
-      font-weight: bold
-      font-size: 12px
-      margin-top: 10px
-      margin-bottom: 2px
-    textarea
-      font-size: 14px
-      width: 100% 
-      line-height: 18px
-      padding: 10px
-      background-color: #fff
-      border: 1px solid #ccc
-      height: 100px !important
-      margin: 0 !important      
-    .form-options
-      clear: both
-      padding: 8px 0 0 0      
-      .option
-        float: left
-        margin: 5px 20px 0 0        
-        label
-          margin-top: 3px
-          margin-left: 3px
-          float: right
-        input
-          width: 10px 
-    .buttons
-      float: right
-      input.save
-        margin-top: -8px
-        margin-left: 5px       
-      
-  //Special cases - Answer editor  
-  .add_answer 
-    input.save
-      margin-top: -10px !important
-
-  //Special cases - Compartir
-  .share_question
-    h1
-      font-size: 14px
-      margin: 0
-    ul
-      li
-        a      
-          width: 24px
-          height: 24px
-          text-indent: -9999px
-          overflow: hidden
-          padding: 0
-          margin-right: 7px
-          border: none
-      li.facebook a
-        background: url("/images/share/facebook.png") 0 0 no-repeat
-      li.twitter a
-        background: url("/images/share/twitter.png") 0 0 no-repeat
-      li.identica a
-        background: url("/images/share/identi.png") 0 0 no-repeat
-      li.digg a
-        background: url("/images/share/digg.png") 0 0 no-repeat
-      li.blogger a
-        background: url("/images/share/blogger.png") 0 0 no-repeat
-      li.delicious a
-        background: url("/images/share/delicious.png") 0 0 no-repeat
-      li.linkedin a
-        background: url("/images/share/linkedin.png") 0 0 no-repeat
-      li.misterwong a
-        background: url("/images/share/mister-wong.png") 0 0 no-repeat
-      li.stumbleupon a
-        background: url("/images/share/stumbleupon.png") 0 0 no-repeat
-      li.googlebuzz a
-        background: url("/images/share/google-buzz.png") 0 0 no-repeat
-      li.friendster a
-        background: url("/images/share/frinedster.png") 0 0 no-repeat
+     
