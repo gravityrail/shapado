@@ -12,6 +12,7 @@ class SearchesController < ApplicationController
 
       if !@search_text.blank?
         @questions = Question.filter(@search_text, options)
+        @highlight = [params[:q]]
       else
         @questions = Question.paginate(options)
       end

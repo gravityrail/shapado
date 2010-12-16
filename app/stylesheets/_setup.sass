@@ -3,12 +3,12 @@
 //    Created on 	:   Nov14 - 2010, 20:29 pm
 //    Author      	:   @dgfrancisco
 //    Client     		:   Shapado
-//    Description	:   Variables y set up basico del portal, estas variables podran ser 
+//    Description	:   Variables y set up basico del portal, estas variables podran ser
 //    						cambiadas en pro de modificar colores, fuentes etc
-//======================================================================== 
+//========================================================================
 
 //  FONTS
-//======================================================================== 
+//========================================================================
 // Sans Serif
 $geneva: geneva, tahoma, "dejavu sans condensed", sans-serif
 $helvetica: "helvetica neue", helvetica, arial, freesans, "liberation sans", "numbus sans l", sans-serif
@@ -24,7 +24,7 @@ $times: times, "times new roman", "nimbus roman no9 l", freeserif, "liberation s
 $courier: "courier new", courier, freemono, "nimbus mono l", "liberation mono", monospace
 $monaco: monaco, "lucida console", "dejavu sans mono", "bitstream vera sans mono", "liberation mono", monospace
 
-// Font sizes 
+// Font sizes
 $x-small: 9px
 $small: 11px
 $medium: 13px
@@ -39,7 +39,7 @@ $x-huge: 89px
 $text-shadow: 0 1px 1px #000
 
 //  COLORS
-//======================================================================== 
+//========================================================================
 // General site colors
 $dark: #404040
 $gray: #aaa
@@ -61,8 +61,11 @@ $link_color: $orange
 $hover_color: $darkOrange
 $active_color: $orange
 
+$highlightBg: #FFFF51
+$highlightFg: #000000
+
 //  DEFAULT BODY STYLES
-//======================================================================== 
+//========================================================================
 $background: white
 $font-family: $helvetica
 $font-size: $medium
@@ -138,7 +141,7 @@ $menu: 0 0 3px #999
   -webkit-box-shadow: $menu
   o-box-shadow: $menu
   khtml-box-shadow: $menu
-  box-shadow: $menu  
+  box-shadow: $menu
 // Cross browser rounded corners
 $smallRadius: 3px
 $normalRadius: 5px
@@ -151,21 +154,21 @@ $noneRadius: 0
   o-border-radius: $noneRadius
   khtml-border-radius: $noneRadius
   border-radius: $noneRadius
-  
+
 =small-radius($smallRadius)
   -moz-border-radius: $smallRadius
   -webkit-border-radius: $smallRadius
   o-border-radius: $smallRadius
   khtml-border-radius: $smallRadius
   border-radius: $smallRadius
-  
+
 =normal-radius($normalRadius)
   -moz-border-radius: $normalRadius
   -webkit-border-radius: $normalRadius
   o-border-radius: $normalRadius
   khtml-border-radius: $normalRadius
   border-radius: $normalRadius
-      
+
 =big-radius($bigRadius)
   -moz-border-radius: $bigRadius
   -webkit-border-radius: $bigRadius
@@ -176,21 +179,21 @@ $noneRadius: 0
 // Cross browser gradients
 =orange-gradient
   background-image: -moz-linear-gradient(top, $orange, $darkOrange) !important
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $orange),color-stop(1, $darkOrange)) !important 
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $orange),color-stop(1, $darkOrange)) !important
   filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange') !important
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange')" !important
   background-color: $orange
 
 =blue-gradient
   background-image: -moz-linear-gradient(top, $blue, $darkBlue) !important
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $blue),color-stop(1, $darkBlue)) !important 
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $blue),color-stop(1, $darkBlue)) !important
   filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue') !important
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue')" !important
   background-color: $blue
-  
+
 =error-gradient
   background-image: -moz-linear-gradient(top, $red, $darkRed) !important
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $red),color-stop(1, $darkRed)) !important 
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $red),color-stop(1, $darkRed)) !important
   filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed') !important
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed')" !important
-  background-color: $red  
+  background-color: $red
