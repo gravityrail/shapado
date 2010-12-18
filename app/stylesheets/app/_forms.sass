@@ -21,6 +21,22 @@ form
     border-bottom: 1px solid #ccc
     padding: 0 0 5px 0
     margin: 0 0 30px 0  
+  .column
+    width: 50%
+    float: left  
+  .capcha
+    clear: both
+    float: none
+    display: block
+  textarea
+    border: 1px solid #ccc
+    font-size: 13px
+    padding: 10px  
+    width: 100%
+    margin-bottom: 5px
+    height: 100px  
+    &:active, &:focus, &:hover
+      border-color: $orange    
   .field
     margin: 0 0 20px 0
     small
@@ -44,7 +60,7 @@ form
       font-size: 13px
       padding: 5px 5px  
       width: 100%
-      margin-bottom: 5px
+      margin-bottom: 5px      
     .radio, .checkbox
       float: left
       width: 100%
@@ -55,7 +71,7 @@ form
         font-weight: normal
       input
         float: right
-        width: 20px
+        width: 15px
         margin-right: 5px
     .column
       width: 50%
@@ -64,16 +80,10 @@ form
         width: 90%
   .form-options
     clear: both
-    padding: 8px 0 0 0   
-    .option
-      float: left
-      margin: 5px 20px 0 0        
+    .column
+      width: 33%
       label
-        margin-top: 3px
-        margin-left: 3px
-        float: right
-      input
-        width: 10px 
+        width: 80%
   .buttons
     float: right
     input.save
@@ -154,7 +164,7 @@ form
     font-size: 11px
     line-height: 11px
     margin: 0
-//Listado de autocomplete
+//Listado de autocomplete - Menu desplegable
 .ui-autocomplete
   width: auto !important
   background-color: #f4f4f4
@@ -178,6 +188,8 @@ form
 
 // Editor feature
 //========================================================================
+.jHtmlArea 
+  margin-bottom: 20px
 .jHtmlArea, .ToolBar
   width: 100% !important  
   float: left 
@@ -208,13 +220,75 @@ form
       width: 290px !important      
     .remove_attachment 
       float: left
-      width: 20px
-      height: 24px      
-      background: url("/images/edit-delete.png") 50% 50% no-repeat !important   
+      width: 15px
+      height: 15px      
+      background: url("/images/edit-delete.png") 0 0 no-repeat !important   
       display: block
       overflow: hidden
-      text-indent: -99999px !important      
-      margin-left: -5px
+      text-indent: -99999px !important            
   .add_attachment
     clear: both !important 
     display: block
+
+// Forms for acions on questiosn
+//========================================================================     
+#panel-forms
+  height: 100%
+  clear: both
+  background-color: $lightBlue
+  form
+    display: none
+    margin: 0 auto
+    padding: 20px
+    width: 90%
+    .column
+      width: 48%
+      margin: 0 5px
+    .field
+      .column
+        width: 33%
+    textarea
+      margin-bottom: 20px
+         
+/* Actions panels
+//========================================================================
+#panel-forms
+  //Special cases - Compartir
+  .share_question
+    h1
+      font-size: 14px
+      margin: 0
+      padding: 0
+      border: none
+    ul
+      li
+        a      
+          width: 24px
+          height: 24px
+          text-indent: -9999px
+          overflow: hidden
+          padding: 0
+          margin-right: 7px
+          border: none
+      li.facebook a
+        background: url("/images/share/facebook.png") 0 0 no-repeat
+      li.twitter a
+        background: url("/images/share/twitter.png") 0 0 no-repeat
+      li.identica a
+        background: url("/images/share/identi.png") 0 0 no-repeat
+      li.digg a
+        background: url("/images/share/digg.png") 0 0 no-repeat
+      li.blogger a
+        background: url("/images/share/blogger.png") 0 0 no-repeat
+      li.delicious a
+        background: url("/images/share/delicious.png") 0 0 no-repeat
+      li.linkedin a
+        background: url("/images/share/linkedin.png") 0 0 no-repeat
+      li.misterwong a
+        background: url("/images/share/mister-wong.png") 0 0 no-repeat
+      li.stumbleupon a
+        background: url("/images/share/stumbleupon.png") 0 0 no-repeat
+      li.googlebuzz a
+        background: url("/images/share/google-buzz.png") 0 0 no-repeat
+      li.friendster a
+        background: url("/images/share/frinedster.png") 0 0 no-repeat

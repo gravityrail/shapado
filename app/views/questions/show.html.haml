@@ -124,42 +124,43 @@
 
       -unless @question.closed
         =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_answer"} do |f|
-          %fieldset
-            %leyend
-              = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
 
-            .form-options
-              .option
+          = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
+
+          .field.form-options
+            .column
+              .checkbox
                 = f.label :wiki, "Wiki"
                 = f.check_box :wiki, :class => "checkbox"
-              .option
+            .column
+              .checkbox
                 = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
-
-              .buttons
-                = submit_tag t('answers.form.submit'), :class => "save"
-                = link_to t('scaffold.cancel'), '', :class => 'cancel'
-                = t("global.or")
+            .buttons
+              = submit_tag t('answers.form.submit'), :class => "save"
+              = link_to t('scaffold.cancel'), '', :class => 'cancel'  
+              = t("global.or")
 
 
       -unless @question.closed
         =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_question_comment"} do |f|
-          %fieldset
-            %leyend
-              = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
+          
+          = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
 
-            .form-options
-              .option
+          .field.form-options
+            .column
+              .checkbox
                 = f.label :wiki, "Wiki"
-                = f.check_box :wiki, :class => "checkbox"
-              .option
-                = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
+                = f.check_box :wiki
+            .column
+              .checkbox
+                = f.label :anonymous, t("scaffold.post_as_anonymous")
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
-
             .buttons
+              = submit_tag t('answers.form.submit'), :class => "save"
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
-              = submit_tag t('answers.form.submit'), :class => "save"
+              
 
       =form_tag "", :class => "share_question" do
         %h1
