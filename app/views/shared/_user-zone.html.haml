@@ -35,6 +35,14 @@
           =link_to t("layouts.application.logout"), destroy_user_session_path
 
       %ul
+        -if current_user.mod_of?(current_group)
+          %li
+            = link_to "moderate", moderate_path
+        -if current_user.admin_of?(current_group)
+          %li
+            = link_to "admin", manage_properties_path
+
+      %ul
         -current_user.searches.where(:group_id => current_group.id).each do |search|
           %li
             =link_to search.name, search_path(search)
