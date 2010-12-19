@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
     @tag_cloud = Question.tag_cloud(scoped_conditions, 25)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.mobile
       format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
       format.atom

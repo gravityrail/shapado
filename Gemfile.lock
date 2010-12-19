@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: f236ca34f0d1d4529659dac81b0b5d1f539b04b6
+  revision: eec18a399e93131e84ab14650555d39512285da6
   specs:
     mongoid_ext (0.6.0)
       i18n (~> 0.4.1)
@@ -99,13 +99,13 @@ GEM
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
       rack (>= 1.1.0, < 2)
-    ffi (1.0.1)
+    ffi (1.0.2)
       rake (>= 0.8.7)
     gem_plugin (0.2.3)
     goalie (0.0.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    haml (3.0.24)
+    haml (3.0.25)
     hpricot (0.8.3)
     i18n (0.4.2)
     json (1.4.6)
@@ -212,11 +212,11 @@ GEM
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
       rspec-mocks (~> 2.3.0)
-    rspec-core (2.3.0)
+    rspec-core (2.3.1)
     rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.3.0)
-    rspec-rails (2.3.0)
+    rspec-rails (2.3.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)

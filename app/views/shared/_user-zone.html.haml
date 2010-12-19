@@ -33,3 +33,8 @@
           =link_to "Collaborate!", expertise_user_path(current_user)
         %li.log-out
           =link_to t("layouts.application.logout"), destroy_user_session_path
+
+      %ul
+        -current_user.searches.where(:group_id => current_group.id).each do |search|
+          %li
+            =link_to search.name, search_path(search)

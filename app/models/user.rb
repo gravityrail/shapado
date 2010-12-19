@@ -66,6 +66,7 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :comments, :dependent => :destroy
   references_many :badges, :dependent => :destroy
+  references_many :searches, :dependent => :destroy
 
   before_create :create_friend_list
   before_create :generate_uuid

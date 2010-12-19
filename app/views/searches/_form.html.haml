@@ -1,5 +1,5 @@
 
-- form_tag search_path, :class => "form", :method => :get do
+- form_tag search_index_path, :class => "form", :method => :get do
   .field
     = text_field_tag :q, params[:q], :class => "text_field title"
     %small
@@ -26,4 +26,4 @@
   .buttons
     = submit_tag t("layouts.application.search"), :class => "button"
     = t("global.or")
-    = link_to t(".clear"), search_path
+    = link_to t(".clear"), search_index_path

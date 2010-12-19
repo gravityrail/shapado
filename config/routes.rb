@@ -43,6 +43,8 @@ Shapado::Application.routes.draw do
   resources :adbards
   resources :badges
 
+  resources :searches, :path => "search", :as => "search"
+
   resources :pages do
     member do
       get :js
@@ -182,10 +184,9 @@ Shapado::Application.routes.draw do
     resources :answers
     resources :users
   end
+
   match '/moderate' => 'moderate/questions#index'
-
-
-  match '/search' => 'searches#index', :as => :search
+#   match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
   root :to => 'questions#index'
   match '/:controller(/:action(/:id))'
