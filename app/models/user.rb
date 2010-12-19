@@ -135,14 +135,14 @@ class User
     user_ids = UserStat.only(:user_id).where(opts.merge({:answer_tags => {:$in => tags}})).all.map(&:user_id)
 
     conditions = {:"notification_opts.give_advice" => {:$in => ["1", true]},
-                  :preferred_languages => langs}
+                  :preferred_languages.in => langs,
+                  :_id.in => user_ids}
 
     if group_id = options[:group_id]
       conditions[:"membership_list.#{group_id}"] = {:$exists => true}
     end
 
-    u = User.only([:email, :login, :name, :language]).where(conditions.merge(:_id => user_ids))
-    u ? u : []
+    User.only([:email, :login, :name, :language]).where(conditions)
   end
 
   def to_param
@@ -155,10 +155,11 @@ class User
 
   def add_preferred_tags(t, group)
     if t.kind_of?(String)
-      t = t.split(",").join(" ").split(" ")
+      t = t.split(",").map{|e| e.strip}
     end
-    self.collection.update({:_id => self._id, "membership_list.#{group.id}.preferred_tags" =>  {:$nin => t}},
-                    {:$pushAll => {"membership_list.#{group.id}.preferred_tags" => t}})
+
+    self.collection.update({:_id => self._id},
+                           {:$addToSet => {"membership_list.#{group.id}.preferred_tags" => {:$each => t.uniq}}})
   end
 
   def remove_preferred_tags(t, group)
