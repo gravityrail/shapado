@@ -26,14 +26,12 @@ GIT
 
 GIT
   remote: http://github.com/plataformatec/devise.git
-  revision: 09a46695f2437ec73e16a7c0d38e934a0e8e6c5a
-  ref: 09a46695
-  branch: omniauth
+  revision: c27bc21af9462ecd92e1d107fb9e5a2abee4b7cc
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
-      orm_adapter (~> 0.0.2)
-      warden (~> 1.0.0)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
 
 GEM
   remote: http://rubygems.org/

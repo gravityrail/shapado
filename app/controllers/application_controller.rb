@@ -139,4 +139,9 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     params[:format] == "mobile" ? "/mobile" : root_path
   end
+
+  def after_sign_in_path_for(resource_or_scope)
+    self.current_user = resource_or_scope
+    super(resource_or_scope)
+  end
 end

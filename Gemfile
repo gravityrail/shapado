@@ -52,7 +52,7 @@ gem 'omniauth', '~> 0.1.6'
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git", :ref => "fb04b6742"
 
 gem 'orm_adapter'
-gem 'devise', :git => 'http://github.com/plataformatec/devise.git', :branch => 'omniauth', :ref => "09a46695"
+gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
 
 
 group :scripts do
