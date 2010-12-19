@@ -161,7 +161,7 @@ Shapado::Application.routes.draw do
     resources :members
   end
 
-  scope '/manage', :name_prefix => 'manage' do
+  scope '/manage', :as => 'manage' do
     controller 'admin/manage' do
       match 'properties' => :properties
       match 'theme' => :theme
