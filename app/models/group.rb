@@ -77,7 +77,7 @@ class Group
   references_many :badges, :dependent => :destroy
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
-  references_many :votes, :dependent => :destroy # FIXME: mongoid, embedded
+#   references_many :votes, :dependent => :destroy # FIXME:
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy

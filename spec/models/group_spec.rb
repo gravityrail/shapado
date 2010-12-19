@@ -115,6 +115,7 @@ describe Group do
     describe "Group#add_member" do
       before(:each) do
         @user = Fabricate(:user)
+        @user.file_list.stub!(:destroy_files)
       end
 
       after(:each) do
