@@ -1,11 +1,16 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 53cdfe5d4fb9305e127fde279ea4f1be0e1b93bd
+  revision: 143922d53b2189a77d63c3d9fa1510d52f166960
   specs:
     mongoid_ext (0.6.0)
       i18n (~> 0.4.1)
+      i18n (~> 0.4.1)
       mongoid (~> 2.0.0.beta.20)
+      mongoid (~> 2.0.0.beta.20)
+      mongoid_ext
       tzinfo (~> 0.3)
+      tzinfo (~> 0.3)
+      uuidtools (>= 2.1.1)
       uuidtools (>= 2.1.1)
 
 GIT
@@ -17,8 +22,7 @@ GIT
 
 GIT
   remote: http://github.com/dcu/multiauth.git
-  revision: fb04b6742faa2443aa8a81164c2da5ddd19e6ab5
-  ref: fb04b6742
+  revision: 94f512aaeb8cf9b9dc1d592e5a38e0b8349ea0b7
   specs:
     multiauth (0.2.7)
       omniauth
