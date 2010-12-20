@@ -228,6 +228,16 @@ class Group
     self.twitter_account && self.twitter_account["token"] && self.twitter_account["secret"]
   end
 
+  def twitter_client
+      if self.has_twitter_oauth? && (config = Multiauth.providers["Twitter"])
+        TwitterOAuth::Client.new(
+          :consumer_key => config["id"],
+          :consumer_secret => config["token"],
+          :token => self.twitter_account["token"],
+          :secret => self.twitter_account["secret"]
+        )
+      end
+  end
   protected
   #validations
   def set_subdomain
