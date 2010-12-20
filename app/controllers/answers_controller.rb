@@ -108,9 +108,10 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
         @question.add_contributor(current_user)
+        link = question_answer_url(@question, @answer)
 
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
-        Jobs::Answers.async.on_create_answer(@question.id, @answer.id).commit!
+        Jobs::Answers.async.on_create_answer(@question.id, @answer.id, link).commit!
 
         sweep_question(@question) # TODO move to magent
         Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,

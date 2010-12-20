@@ -27,7 +27,7 @@ module Jobs
       end
     end
 
-    def self.on_create_answer(question_id, answer_id)
+    def self.on_create_answer(question_id, answer_id, link)
       question = Question.find(question_id)
       group = question.group
       answer = question.answers.find(answer_id)
@@ -59,6 +59,15 @@ module Jobs
           if !u.email.blank? && u.notification_opts.new_answer
             Notifier.new_answer(u, group, answer, true).deliver
           end
+        end
+        if answer.user.notification_opts.answers_to_twitter
+          link = shorten_url(link, answer)
+          author = answer.user
+          title = question.title
+          message = I18n.t('jobs.answers.on_create_answer.send_twitter',
+                           :question => title, :locale => author.language)
+          status = make_status(message, link, 138)
+          author.twitter_client.update(status)
         end
       end
     end

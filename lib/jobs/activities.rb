@@ -52,6 +52,15 @@ module Jobs
       if user.comments.count >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
+      if user.notification_opts.comments_to_twitter
+        link = shorten_url(link, answer)
+        author = user
+        title = comment.question.title
+        message = I18n.t('jobs.comments.on_comment.send_twitter',
+                         :question => title, :locale => author.language)
+        status = make_status(message, link, 138)
+        author.twitter_client.update(status)
+      end
     end
 
     def self.on_follow(follower_id, followed_id, group_id)

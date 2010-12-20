@@ -6,3 +6,7 @@ en:
     answers:
       on_favorite_answer:
         send_twitter:  "I liked an answer by %{author} on: %{question}"
+      on_create_answer:
+        send_twitter:  "I answered to: %{question}"
+    comments:
+      on_comment: "I commented on: %{question}"
