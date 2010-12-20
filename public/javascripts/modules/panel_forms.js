@@ -1,7 +1,9 @@
 $(document).ready(function() {
-  $("a#add_reward, a#add_question_comment, a#add_answer, a#share_question").click(function(event) {
+  $("a#add_reward, a#add_question_comment, a#add_answer, a#share_question, a#flag_question").click(function(event) {
     var link = $(this);
     var id = link.attr("id");
+    var lazy = link.attr("data-lazy") == "1";
+
     var form = $("#panel-forms ."+id);
 
     if(link.hasClass("active")){
@@ -13,9 +15,24 @@ $(document).ready(function() {
     var toolbar = link.parents("ul");
     $("#panel-forms form").slideUp();
 
-    form.slideToggle("slow");//
-    toolbar.find("li a").removeClass("active");
-    link.addClass("active");
+    if(lazy && form.length < 1) {
+      var href = link.attr('href');
+      if(!link.hasClass('busy')){
+        link.addClass('busy');
+        $.getJSON(href+'.js', function(data){
+          var nform = $(data.html);
+          $("#panel-forms").prepend(nform);
+          nform.slideDown("slow");
+          link.removeClass('busy');
+          toolbar.find("li a").removeClass("active");
+          link.addClass("active");
+        });
+      }
+    } else {
+      form.slideDown("slow");
+      toolbar.find("li a").removeClass("active");
+      link.addClass("active");
+    }
 
     return false;
   });
