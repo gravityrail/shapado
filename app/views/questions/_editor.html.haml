@@ -1,7 +1,0 @@
--if current_group.wysiwyg_editor
-  = f.text_area :body, :class => "text_area", :id => "wysiwyg_editor", :value => markdown(@question.body), :name => "editor"
--else
-  = f.text_area :body, :class => "text_area", :id => "markdown_editor"
-
-  #markdown_preview.markdown
-    =markdown(@question.body)
