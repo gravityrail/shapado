@@ -1,7 +1,20 @@
 = hidden_field_tag "source", source, :id => "source_#{commentable.id}"
-= hidden_field_tag "comment[position][lat]", @comment.position.lat, :class => "lat_input"
-= hidden_field_tag "comment[position][long]", @comment.position.long, :class => "long_input"
--if current_group.wysiwyg_editor
-  = text_area_tag "body", @comment.body, :class => "wysiwyg_editor", :id => "comment_#{commentable.id}", :value => markdown(@comment.body)
--else
-  = text_area_tag "body", @comment.body, :class => "markdown_editor", :id => "comment_#{commentable.id}"
+
+-opts = {:class => "text_area", :rows => 'auto', :cols => 'auto'}
+-if local_assigns[:markdown]
+  -if current_group.wysiwyg_editor
+    -opts[:id] = "wysiwyg_editor"
+    -opts[:value] = markdown(@comment.body)
+  -else
+    -opts[:id] = "markdown_editor"
+
+= f.text_area :body, opts
+
+-if local_assigns[:markdown] && !current_group.wysiwyg_editor
+  =markdown(@comment.body)
+
+-elsif !logged_in?
+  = render :partial => "users/anonymous_form"
+
+#markdown_preview.markdown.reply_to
+  =markdown(commentable.body)

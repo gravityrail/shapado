@@ -96,11 +96,10 @@
     = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 
   #panel-comments
-    -form_tag question_answer_comments_path(@question, answer), :class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer" do
+    -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer"} do |f|
       %fieldset
         %leyend Add comment
-        -@comment = Comment.new
-        = render :partial => "comments/form", :locals => {:source => source, :commentable => answer}
+        = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
         .buttons
           = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
           = t("global.or")

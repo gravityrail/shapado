@@ -1,7 +1,10 @@
-=render 'editor', local_assigns
+= render 'answers/editor', local_assigns
 
 -if !@answer.new?
   = f.label :version_message, t("wiki.model.attributes.message"), :class => "label"
   = f.text_field :version_message, :class => "text_field"
 -elsif !logged_in?
   = render :partial => "users/anonymous_form"
+
+#markdown_preview.markdown.reply_to
+  =markdown(question.body || question.title)

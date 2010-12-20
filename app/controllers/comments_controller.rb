@@ -13,9 +13,8 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment.body = params[:body]
+    @comment.body = params[:comment][:body]
     @comment.user = current_user
-    @comment.position = params[:comment][:position]
 
     current_scope << @comment
 
