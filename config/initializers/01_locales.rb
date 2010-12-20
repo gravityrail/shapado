@@ -39,3 +39,21 @@ Rails.logger.debug "* Loaded locales: #{AVAILABLE_LOCALES.inspect}"
 require "i18n/backend/fallbacks"
 I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
 I18n.default_locale = :"en"
+
+
+extract_keys = lambda do |hash, str, keys|
+  hash.each do |k,v|
+    s = str.empty? ? k.to_s : str+".#{k}"
+    if v.kind_of?(Hash)
+      extract_keys.call(v, s, keys)
+    else
+      keys << s if s =~ /badge|layout/
+    end
+  end
+
+  keys
+end
+
+CUSTOMIZABLE_I18N_KEYWORDS = Set.new
+extract_keys.call(I18n.backend.send(:translations)[:en], "", CUSTOMIZABLE_I18N_KEYWORDS)
+
