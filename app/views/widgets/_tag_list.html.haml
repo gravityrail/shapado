@@ -1,6 +1,6 @@
-- if @tag_cloud
-  .block
-    %h3
+-cache("tag_list_#{current_group.id}_#{Date.today.to_s}") do
+  .widget-tags.module
+    %header
       = t('.tags', :default => [:"layout.application.tags", :"activerecord.attributes.user.tags", "tags"])
-    .content
-      = render :partial => "shared/tag_list", :locals => {:tag_list => @tag_cloud}
+    = render :partial => "shared/tag_list", :locals => {:tag_list => @tag_cloud}
+  .clear

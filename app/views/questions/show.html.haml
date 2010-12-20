@@ -138,13 +138,13 @@
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
-              = link_to t('scaffold.cancel'), '', :class => 'cancel'  
+              = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
 
 
       -unless @question.closed
         =form_for @answer, :url => question_answers_path(@question.id), :html => {:class => "add_question_comment"} do |f|
-          
+
           = render :partial => "answers/form", :locals => {:f => f, :markdown => true}
 
           .field.form-options
@@ -160,7 +160,7 @@
               = submit_tag t('answers.form.submit'), :class => "save"
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
-              
+
 
       =form_tag "", :class => "share_question" do
         %h1
