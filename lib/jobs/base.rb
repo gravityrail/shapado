@@ -37,7 +37,17 @@ module Jobs
           link = "http://" + group.domain # TODO: ssl
 
           txt = I18n.t('jobs.base.create_badge.send_twitter', :link => link, :token => "##{token}", :group_name => "##{group_name}") # TODO: link the twitter account
-          puts user.twitter_client.update(txt).inspect
+          user.twitter_client.update(txt)
+        end
+        if group.notification_opts.badges_to_twitter
+          token = badge.name(user.language)
+          group_name = group.name
+          link ||= "http://" + group.domain # TODO: ssl
+
+          txt = I18n.t('jobs.base.create_badge.group_send_twitter', :link => link,
+                       :token => "##{token}", :user => user.login,
+                       :group_name => "##{group_name}") # TODO: link the twitter account
+          group.twitter_client.update(txt)
         end
       end
     end

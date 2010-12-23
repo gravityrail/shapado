@@ -18,12 +18,22 @@ module Jobs
       end
 
       if favoriter.notification_opts.favorites_to_twitter
-        link = shorten_url(link, answer)
+        shortlink = shorten_url(link, answer)
         author = answer.user
         title = question.title
         message = I18n.t('jobs.answers.on_favorite_answer.send_twitter', :question => title, :author => author.login, :locale => user.language)
-        status = make_status(message, link, 138)
+        status = make_status(message, shortlink, 138)
         favoriter.twitter_client.update(status)
+      end
+      if group.notification_opts.favorites_to_twitter
+        shortlink ||= shorten_url(link, answer)
+        author ||= answer.user
+        title ||= question.title
+        message = I18n.t('jobs.answers.on_favorite_answer.group_send_twitter',
+                         :question => title, :user => favoriter.login ,
+                         :author => author.login, :locale => user.language)
+        status = make_status(message, shortlink, 138)
+        group.twitter_client.update(status)
       end
     end
 
@@ -61,13 +71,23 @@ module Jobs
           end
         end
         if answer.user.notification_opts.answers_to_twitter
-          link = shorten_url(link, answer)
+          shortlink = shorten_url(link, answer)
           author = answer.user
           title = question.title
           message = I18n.t('jobs.answers.on_create_answer.send_twitter',
                            :question => title, :locale => author.language)
-          status = make_status(message, link, 138)
+          status = make_status(message, shortlink, 138)
           author.twitter_client.update(status)
+        end
+        if group.notification_opts.answers_to_twitter
+          shortlink ||= shorten_url(link, answer)
+          author ||= answer.user
+          title ||= question.title
+          message = I18n.t('jobs.answers.on_create_answer.group_send_twitter',
+                           :question => title, :user => author.login,
+                           :locale => author.language)
+          status = make_status(message, shortlink, 138)
+          group.twitter_client.update(status)
         end
       end
     end

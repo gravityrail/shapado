@@ -53,13 +53,23 @@ module Jobs
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
       if user.notification_opts.comments_to_twitter
-        link = shorten_url(link, answer)
+        shortlink = shorten_url(link, answer)
         author = user
         title = comment.question.title
         message = I18n.t('jobs.comments.on_comment.send_twitter',
                          :question => title, :locale => author.language)
-        status = make_status(message, link, 138)
+        status = make_status(message, shortlink, 138)
         author.twitter_client.update(status)
+      end
+      if group.notification_opts.comments_to_twitter
+        shortlink ||= shorten_url(link, answer)
+        author ||= user
+        title ||= comment.question.title
+        message = I18n.t('jobs.comments.on_comment.group_send_twitter',
+                         :question => title, :user => author.login,
+                         :locale => author.language)
+        status = make_status(message, shortlink, 138)
+        group.twitter_client.update(status)
       end
     end
 
