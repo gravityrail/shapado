@@ -60,7 +60,7 @@ class Group
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
   field :share, :type => Share, :default => Share.new
 
-  field :social_notifications, :type => Hash, :default => { }
+  field :notification_opts, :type => GroupNotificationConfig
 
   field :twitter_account, :type => Hash, :default => { }
 
