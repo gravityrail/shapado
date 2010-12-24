@@ -1,6 +1,6 @@
 
 
--form_for [question, close_request], :html => {:class => "close_form form  #{local_assigns[:hide] ? "hide": ""}"} do |form|
+= form_for [question, close_request], :html => {:class => "close_form form  #{local_assigns[:hide] ? "hide": ""}"} do |form|
   .group
     = form.label :reason, t(:reason, :scope=>"activerecord.attributes.flag"), :class => "label"
     -CloseRequest::REASONS.each do |reason|

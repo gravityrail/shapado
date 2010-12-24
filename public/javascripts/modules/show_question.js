@@ -333,20 +333,20 @@ $(document).ready(function() {
 //     return false;
 //   });
 
-  $("#request-close-link").click(function() {
-    $("#add_comment_form").slideUp();
-    var link = $(this);
-    var href = link.attr('href');
-    if(!link.hasClass('busy')){
-      link.addClass('busy');
-      $.getJSON(href+'.js', function(data){
-        var controls = link.parents('.controls');
-        controls.find(".forms").html(data.html);
-        link.removeClass('busy');
-      })
-    }
-    return false;
-  });
+//   $("#request-close-link").click(function() {
+//     $("#add_comment_form").slideUp();
+//     var link = $(this);
+//     var href = link.attr('href');
+//     if(!link.hasClass('busy')){
+//       link.addClass('busy');
+//       $.getJSON(href+'.js', function(data){
+//         var controls = link.parents('.controls');
+//         controls.find(".forms").html(data.html);
+//         link.removeClass('busy');
+//       })
+//     }
+//     return false;
+//   });
 
   $(".question-action").live("click", function(event) {
     var link = $(this);

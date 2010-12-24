@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("a#add_reward, a#add_question_comment, a#add_answer, a#share_question, a#flag_question").click(function(event) {
+  $("a#add_reward, a#add_question_comment, a#add_answer, a#share_question, a#flag_question, a#request-close-link").click(function(event) {
     var link = $(this);
     var id = link.attr("id");
     var lazy = link.attr("data-lazy") == "1";
