@@ -245,10 +245,10 @@ class GroupsController < ApplicationController
       current_group.update_twitter_account_with_oauth_token(access_token.token,
                                                             access_token.secret,
                                                             access_token.params[:screen_name])
-      flash[:notice] = "Authorize complete"
+      flash[:notice] = t("groups.connect_group_to_twitter.success_twitter_connection")
       redirect_to manage_social_path
     else
-      flash[:notice] = "Authorize failed"
+      flash[:notice] = t("groups.connect_group_to_twitter.failed_twitter_connection")
       redirect_to manage_social_path
     end
   end
