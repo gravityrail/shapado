@@ -13,9 +13,6 @@
           = gravatar @user.email.to_s, :size => 128
           =link_to t("users.form.avatar_tip"), "http://gravatar.com", :target => "_blank"
 
-  .block{:style => "font-weight: bold"}
-    =render :partial => "shared/dlvr_link", :locals => {:url => user_url(@user, :format => :atom)}
-
 - @user.password = @user.password_confirmation = nil
 = error_messages_for :user
 - form_for @user, :html => {:class => "form", :multipart => true} do |f|

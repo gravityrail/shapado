@@ -1,8 +1,3 @@
--content_for :after_form do
-  %h1
-    =t(".title_on_dlvr")
-  = render :partial => "shared/dlvr_link", :locals => {:url => questions_url(:format => :atom)}
-
 %h1
   =t(".facebook_app")
 .field
@@ -32,29 +27,6 @@
   = text_field_tag 'group[share][ends_with]', @group.share.ends_with, :class => "text_field"
   .description
     = t(".ends_with_example")
-
-%h1
-  =t(".asking_from_twitter")
-
-.field
-  %label.label
-    =t(".question_asked_to")
-  @
-  = text_field_tag 'group[share][twitter_user]', @group.share.twitter_user, :class => "text_field", :style => "width: 10%"
-  .description
-    =t(".twitter_account")
-
-.field
-  %label.label
-    = t(".question_must_include")
-  =text_field_tag 'group[share][twitter_pattern]', @group.share.twitter_pattern, :class => "text_field"
-  .description
-    = t(".question_must_include_example")
-
-.field
-  = check_box_tag 'group[share][enable_twitter]', true, @group.share.enable_twitter, :class => "checkbox"
-  %label.radio
-    =t("global.active")
 
 .buttons
   = f.submit t('scaffold.update')

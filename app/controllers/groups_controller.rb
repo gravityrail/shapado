@@ -1,7 +1,9 @@
 class GroupsController < ApplicationController
   skip_before_filter :check_group_access, :only => [:logo, :css, :favicon]
   before_filter :login_required, :except => [:index, :show, :logo, :css, :favicon]
-  before_filter :check_permissions, :only => [:edit, :update, :close]
+  before_filter :check_permissions, :only => [:edit, :update, :close,
+                                              :connect_group_to_twitter,
+                                              :disconnect_twitter_group]
   before_filter :moderator_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, "activity_rate desc"], [:newest, "created_at desc"],
                       [:oldest, "created_at asc"], [:name, "name asc"]]
@@ -111,7 +113,7 @@ class GroupsController < ApplicationController
   def update
     @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex
                           custom_favicon language languages theme reputation_rewards reputation_constrains
-                          has_adult_content registered_only openid_only custom_css wysiwyg_editor fb_button share], params[:group])
+                          has_adult_content registered_only openid_only custom_css wysiwyg_editor fb_button share notification_opts], params[:group])
 
     @group.safe_update(%w[isolate domain private has_custom_analytics has_custom_html has_custom_js], params[:group]) #if current_user.admin?
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
@@ -212,9 +214,53 @@ class GroupsController < ApplicationController
     redirect_to groups_path
   end
 
+  def group_twitter_request_token
+    config = Multiauth.providers["Twitter"]
+    if !params[:oauth_verifier] && config
+      client = TwitterOAuth::Client.new(:consumer_key => config["id"],
+                                        :consumer_secret => config["token"])
+      request_token = client.request_token(:oauth_callback => group_twitter_request_token_url)
+
+      session[:twitter_token] = request_token.token
+      session[:twitter_secret] = request_token.secret
+      redirect_to request_token.authorize_url
+     else
+      connect_group_to_twitter
+    end
+  end
+
+  def connect_group_to_twitter
+    token = session[:twitter_token]
+    secret = session[:twitter_secret]
+    config = Multiauth.providers["Twitter"]
+    client = TwitterOAuth::Client.new(:consumer_key =>  config["id"],
+                                      :consumer_secret => config["token"] )
+    @oauth_verifier = params[:oauth_verifier]
+    access_token = client.authorize(token,
+                                    secret,
+                                    :oauth_verifier => @oauth_verifier)
+    session[:twitter_secret] = nil
+    session[:twitter_token] = nil
+    if (client.authorized?)
+      current_group.update_twitter_account_with_oauth_token(access_token.token,
+                                                            access_token.secret,
+                                                            access_token.params[:screen_name])
+      flash[:notice] = "Authorize complete"
+      redirect_to manage_social_path
+    else
+      flash[:notice] = "Authorize failed"
+      redirect_to manage_social_path
+    end
+  end
+
+  def disconnect_twitter_group
+    current_group.reset_twitter_account
+    redirect_to manage_social_path
+  end
+
   protected
   def check_permissions
-    @group = Group.find_by_slug_or_id(params[:id])
+    @group = Group.find_by_slug_or_id(params[:id]) || current_group
 
     if @group.nil?
       redirect_to groups_path

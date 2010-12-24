@@ -4,7 +4,8 @@ Shapado::Application.routes.draw do
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
-
+  match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get
+  match '/group_twitter_request_token' => 'groups#group_twitter_request_token', :method => :get
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
@@ -163,6 +164,7 @@ Shapado::Application.routes.draw do
 
   scope '/manage', :as => 'manage' do
     controller 'admin/manage' do
+      match 'social' => :social
       match 'properties' => :properties
       match 'theme' => :theme
       match 'actions' => :actions
