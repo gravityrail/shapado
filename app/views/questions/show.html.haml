@@ -49,9 +49,9 @@
 
       %li.follow
         - if current_user && @question.follower?(current_user)
-          = link_to "Unfollow", unfollow_question_path(@question), :class => 'unfollow-q', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
+          = link_to "Unfollow", unfollow_question_path(@question), :class => 'unfollow-q question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t(".watch_tooltip"), :title => t(".unwatch_tooltip"), :id => "watch-question"
         - else
-          = link_to "Follow", follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'follow-q', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
+          = link_to "Follow", follow_question_path(@question), :title => t(".watch_tooltip"), :class => 'follow-q question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t(".unwatch_tooltip"), :id => "watch-question"
 
       - if !@flag.new_record?
         %li.spam
