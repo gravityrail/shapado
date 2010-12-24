@@ -100,6 +100,7 @@ Shapado::Application.routes.draw do
       get :retag
       put :retag_to
       post :close
+      put  :open
       get :remove_attachment
 
       get :twitter_share
