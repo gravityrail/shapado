@@ -17,7 +17,7 @@
 
         =link_to "Vote Up", question_votes_path(@question, :vote_up => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
         =link_to "Vote Down", question_votes_path(@question, :vote_down => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
-        -if follower?(current_user)
+        -if @question.follower?(current_user)
           =link_to "Unfollow", unfollow_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
         -else
           =link_to "Follow", follow_question_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
