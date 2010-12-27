@@ -1,13 +1,10 @@
 -@question = Question.new
-=form_for(@question, :url => questions_url, :html=>{:class => "form", :id => "ask_question"}) do |f|
+=form_for(@question, :url => new_question_url, :html=>{:method => :get, :class => "form", :id => "ask_question"}) do |f|
   -# TODO: refactor this
   -lang = logged_in? ? current_user.main_language : nil
   -lang = current_group.language ? current_group.language : lang
 
   =f.text_field :title, :class => "text_area", :id => "question_title"
-  = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
-  = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
-
   =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
 
   -if lang

@@ -6,7 +6,8 @@
       url: "",
       target: $("body"),
       behaviour : "live",
-      success: function(data) {}
+      success: function(data) {},
+      before_query: function() {}
     }
 
     var options =  $.extend(defaults, options);
@@ -28,6 +29,7 @@
        }
 
        var query = function() {
+         settings.before_query.call(self, settings.target);
          $.ajax({
            url: settings.url,
            dataType: "json",
@@ -40,6 +42,13 @@
            }
          });
        }
+
+      $.each(settings.fields, function(){
+        if(this.value) {
+          query();
+          return false;
+        }
+      });
 
        live = function() {
          $.each(settings.fields, function(){
@@ -60,7 +69,7 @@
         $.each(settings.fields, function(){
           $(this).blur(function() {
             if(this.value != last) {
-              query
+              query();
             }
           });
         });
@@ -68,7 +77,7 @@
 
       switch(settings.behaviour) {
         case "live":
-          live()
+          live();
           break;
         case "focusout":
           focusout();
