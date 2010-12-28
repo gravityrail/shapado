@@ -128,6 +128,22 @@ class Notifier < ActionMailer::Base
     end
   end
 
+  def created_flag(user, group, reason)
+    @user = user
+    @group = group
+    language = language_for(user)
+    set_locale language
+    @reason = I18n.t(reason, :scope=>"flags.form", :locale => language)
+    mail(:to => user.email ,
+         :from => from_email(group),
+         :subject => I18n.t("mailers.notifications.created_flag.subject",
+                            :group => group.name, :locale => language),
+         :date => Time.now) do |format|
+      format.text
+      format.html
+    end
+  end
+
   def favorited(user, group, answer)
     @user = user
     @group = group

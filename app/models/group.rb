@@ -162,6 +162,19 @@ class Group
   end
   alias_method :members, :users
 
+  def owners
+    users({ "membership_list.#{self.id}.role" => 'owner' })
+  end
+
+  def mods
+    users({ "membership_list.#{self.id}.role" => 'moderator' })
+  end
+  alias_method :moderators, :mods
+
+  def mods_owners
+    users({ "membership_list.#{self.id}.role" => {:$in => ['moderator', 'owner']} })
+  end
+
   def pending?
     state == "pending"
   end
