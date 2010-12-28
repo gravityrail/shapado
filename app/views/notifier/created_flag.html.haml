@@ -1,4 +1,4 @@
--link = url_for(:host => @group.domain, :controller => "admin", :action => "moderate")
+-link = url_for(:host => @group.domain, :action=>"flagged", :controller=>"moderate/questions")
 
 = t("notifier.global.hi", :user => @user.login)
 %br
