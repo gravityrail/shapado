@@ -14,7 +14,7 @@ class Group
 end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes"] do
+task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config"] do
 end
 
 namespace :fixdb do
@@ -263,6 +263,15 @@ namespace :fixdb do
       g.save
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
+  end
+
+  task :update_group_notification_config => [:environment] do
+    puts "updating groups notification config"
+    Group.all.each do |g|
+      g.notification_opts = GroupNotificationConfig.new
+      g.save
+    end
+    puts "done"
   end
 
   task :tags => [:environment] do
