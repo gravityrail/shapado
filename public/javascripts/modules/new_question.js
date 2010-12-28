@@ -6,13 +6,22 @@ $(document).ready(function() {
     highlightEffect($("#sidebar .help"))
   });
 
-  $("#ask_question").searcher({ url : "/questions/related_questions.js",
+  $("#related_questions").hide();
+
+  $("#ask_question").searcher({url : "/questions/related_questions.js",
                               target : $("#related_questions"),
-                              fields : $("input[type=text][name*=question]"),
+                              fields : $("form#ask_question input[type=text][name*=question]"),
                               behaviour : "focusout",
                               timeout : 2500,
                               extraParams : { 'format' : 'js', 'per_page' : 5 },
+                              before_query: function(target) {
+                                target.show();
+                              },
                               success: function(data) {
+                                if(!data.html) {
+                                  $("#related_questions").hide();
+                                  // TODO: show a message
+                                }
                                 $("label#rqlabel").show();
                               }
   });

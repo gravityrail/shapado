@@ -76,9 +76,13 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.js do
-        render :json => {:html => render_to_string(:partial => "questions/question",
-                                                   :collection  => @questions,
-                                                   :locals => {:mini => true, :lite => true})}.to_json
+        content = ''
+        if !@questions.empty?
+          content = render_to_string(:partial => "questions/question",
+                           :collection  => @questions,
+                          :locals => {:mini => true, :lite => true});
+        end
+        render :json => {:html => content}.to_json
       end
     end
   end
