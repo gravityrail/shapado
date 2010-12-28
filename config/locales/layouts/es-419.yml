@@ -49,4 +49,4 @@ es-419:
       theme: Tema
       widgets: Widgets
     notifications: 
-      message: Si no deseas recibir notificaciones automáticas de %{domain} otra vez, cambia tus preferencias en la pantalla de notificaciones.
+      message: Si no deseas recibir notificaciones automáticas de %{group} otra vez, cambia tus preferencias en la pantalla de notificaciones.

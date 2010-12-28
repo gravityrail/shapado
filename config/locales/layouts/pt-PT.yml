@@ -49,4 +49,4 @@ pt-PT:
       theme: Tema
       widgets: Widgets
     notifications: 
-      message: Se não pretende voltar a receber notificações automáticas de %{domain}, altere as suas preferências na página das notificações.
+      message: Se não pretende voltar a receber notificações automáticas de %{group}, altere as suas preferências na página das notificações.

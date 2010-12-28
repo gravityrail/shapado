@@ -48,4 +48,4 @@ ca:
       theme: Tema
       widgets: Ginys
     notifications: 
-      message: Si no voleu rebre més les notificacions automàtiques de %{domain}, canvieu les vostres preferències a la pantalla de notificacions.
+      message: Si no voleu rebre més les notificacions automàtiques de %{group}, canvieu les vostres preferències a la pantalla de notificacions.

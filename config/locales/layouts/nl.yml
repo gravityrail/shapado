@@ -48,4 +48,4 @@ nl:
       theme: Thema
       widgets: Widgets
     notifications: 
-      message: Als u geen automatische meldingen van %{domain} meer wilt ontvangen, wijzig dan uw voorkeuren in het scherm voor meldingen.
+      message: Als u geen automatische meldingen van %{group} meer wilt ontvangen, wijzig dan uw voorkeuren in het scherm voor meldingen.

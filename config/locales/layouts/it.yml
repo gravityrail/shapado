@@ -48,4 +48,4 @@ it:
       theme: Tema
       widgets: Widget
     notifications: 
-      message: Per non ricevere più notifiche da %{domain}, cambiare le preferenze nella pagina Notifiche.
+      message: Per non ricevere più notifiche da %{group}, cambiare le preferenze nella pagina Notifiche.

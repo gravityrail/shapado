@@ -48,4 +48,4 @@ ia:
       theme: Thema
       widgets: Widgets
     notifications: 
-      message: Si tu non vole plus reciper notificationes automatic de %{domain}, cambia tu preferentias in le scheda pro notificationes.
+      message: Si tu non vole plus reciper notificationes automatic de %{group}, cambia tu preferentias in le scheda pro notificationes.

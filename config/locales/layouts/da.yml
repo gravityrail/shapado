@@ -48,4 +48,4 @@ da:
       theme: Tema
       widgets: Widgets
     notifications: 
-      message: Hvis du ikke ønsker at modtage automatiske meddelelser fra %{domain} længere, ændre dine indstillingere.
+      message: Hvis du ikke ønsker at modtage automatiske meddelelser fra %{group} længere, ændre dine indstillingere.

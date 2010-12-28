@@ -48,4 +48,4 @@ ja:
       theme: テーマ
       widgets: ウィジェット
     notifications: 
-      message: これ以上%{domain}からの自動通知を受け取りたくない場合、通知画面の設定を変更してください。
+      message: これ以上%{group}からの自動通知を受け取りたくない場合、通知画面の設定を変更してください。

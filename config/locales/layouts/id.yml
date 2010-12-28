@@ -48,4 +48,4 @@ id:
       theme: Tema
       widgets: Widget
     notifications: 
-      message: Jika Anda tidak ingin lagi menerima pemberitahuan otomatis dari %{domain}, ubah preferensi Anda di layar notifikasi.
+      message: Jika Anda tidak ingin lagi menerima pemberitahuan otomatis dari %{group}, ubah preferensi Anda di layar notifikasi.

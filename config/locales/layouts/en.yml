@@ -45,4 +45,4 @@ en:
       announcements: Announcements
       social: Social
     notifications:
-      message: "If you do not want to receive automatic notifications from %{domain} anymore, change your preferences in the notifications screen."
+      message: "If you do not want to receive automatic notifications from %{group} anymore, change your preferences in the notifications screen."

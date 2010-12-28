@@ -47,4 +47,4 @@ eo:
       stats: Statistikoj
       theme: Aspekto
     notifications: 
-      message: Se vi ne plu volas ricevi aŭtomatajn sciigojn de %{domain}, ŝanĝu viajn preferojn en la ekrano de sciigoj
+      message: Se vi ne plu volas ricevi aŭtomatajn sciigojn de %{group}, ŝanĝu viajn preferojn en la ekrano de sciigoj
