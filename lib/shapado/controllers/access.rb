@@ -60,6 +60,9 @@ module Shapado
       end
 
       def after_sign_in_path_for(resource)
+        if current_user.admin?
+          Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
+        end
         if return_to = session.delete("return_to")
           return_to
         else

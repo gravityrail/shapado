@@ -42,3 +42,6 @@ en:
       message6: "%{badges} badges were awarded"
       message7: "The account has %{users} users."
       message8: "Visit your group at %{link}"
+    admin_login:
+      subject: "Alert: admin connection"
+      message1: "User %{user} has connected as admin at %{time} with the ip %{ip}."

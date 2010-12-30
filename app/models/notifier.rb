@@ -95,6 +95,21 @@ class Notifier < ActionMailer::Base
     end
   end
 
+  def admin_login(ip, user_id)
+    @admin = User.find(user_id)
+    @language = language_for
+    set_locale @language
+    @subject =  I18n.t("mailers.notifications.admin_login.subject",
+                       :locale => @language)
+    @ip = ip
+    mail(:to => AppConfig.exception_notification["exception_recipients"],
+         :from => "Shapado[feedback] <#{AppConfig.notification_email}>",
+         :subject => @subject,
+         :date => Time.now) do |format|
+      format.text
+    end
+  end
+
   def follow(user, followed, group)
     @user = user
     @followed = followed

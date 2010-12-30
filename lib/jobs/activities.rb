@@ -108,5 +108,9 @@ module Jobs
       question = Question.find(question_id)
       create_badge(question.updated_by, question.group, :token => "cleanup", :source => question, :unique => true)
     end
+
+    def self.on_admin_connect(ip, user_id)
+      Notifier.admin_login(ip, user_id).deliver
+    end
   end
 end

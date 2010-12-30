@@ -189,7 +189,6 @@ class UsersController < ApplicationController
   def connect
     authenticate_user!
     warden.authenticate!(:scope => :openid_identity, :recall => "show")
-
     current_openid_identity.user = current_user
     current_openid_identity.save!
     sign_out :openid_identity
