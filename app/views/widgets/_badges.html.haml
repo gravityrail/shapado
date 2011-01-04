@@ -1,11 +1,11 @@
 .widget-badges.module
-  %h3 
-    =t(".title")      
+  %h3
+    =t(".title")
   %section
     %ul
-      -widget.recent_badges(current_group).each do |badge|  
+      -widget.recent_badges(current_group).each do |badge|
         %li
           = render :partial => "badges/badge", :object => badge
   %footer
-    =link_to "Ver todos los badges", "#"
+    =link_to "See all badges", badges_path
   .clear

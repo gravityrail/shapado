@@ -6,9 +6,11 @@ en:
       welcome_widgets: Welcome
       mainlist_widgets: Main list
       question_widgets: Question
+      external_widgets: External
       welcome_widgets_title: Widgets that will appear on the welcome page /
       mainlist_widgets_title: Widgets that will appear on the main list of questions
       question_widgets_title: Widgets that will appear on each question page
+      external_widgets_title: Widgets that you will be able to embed on your own site
     badges:
       title: Recent badges
       description: "This widget displays recent badges earned by users."
@@ -37,6 +39,9 @@ en:
       on_welcome: "Show on Welcome page"
       on_questions: "Show on Questions main list page"
       on_show_question: "Show on showing a question"
+      exclude_css_on_external: "Exclude your shapado site CSS from your widget"
+      custom_external_css: "Include custom CSS to your widget (advised if you are not including the Shapado CSS):"
+      code: "Copy and paste this code to your site or blog, such as a text widget in your Wordpress:"
     sharing_buttons:
       title: "Share this on"
       description: "This widget will display social sharing buttons"

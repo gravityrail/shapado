@@ -77,6 +77,7 @@ class Group
   embeds_many :welcome_widgets, :class_name => "Widget"
   embeds_many :mainlist_widgets, :class_name => "Widget"
   embeds_many :question_widgets, :class_name => "Widget"
+  embeds_many :external_widgets, :class_name => "Widget"
 
   references_many :badges, :dependent => :destroy
   references_many :questions, :dependent => :destroy

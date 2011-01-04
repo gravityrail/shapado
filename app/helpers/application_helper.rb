@@ -342,5 +342,15 @@ module ApplicationHelper
       question.answers.order_by(:votes_average.asc).first
     end
   end
+
+  def widget_css(widget)
+    "<style type='text/css'>#{widget.settings["custom_external_css"]}</style>"
+  end
+
+  def widget_code(widget)
+    path = embedded_widget_path(:id => widget.id)
+    url = domain_url(:custom => current_group.domain) + path
+    %@<iframe src="#{url}" height="200px"></iframe>@
+  end
 end
 

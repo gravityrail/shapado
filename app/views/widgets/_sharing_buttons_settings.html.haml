@@ -21,5 +21,6 @@
   .group
     = label :settings, t('widgets.settings.custom_html')
     = text_area_tag "settings[custom_html]", widget.settings["custom_html"]
+  = render :partial => "shared/external_widget_settings", :locals => {:widget => widget}
   .group.navform
     = submit_tag t("scaffold.update"), :class => "button"

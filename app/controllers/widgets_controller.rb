@@ -6,7 +6,8 @@ class WidgetsController < ApplicationController
 
   subtabs :widgets => [[:welcome, "welcome"],
                        [:mainlist, "mainlist"],
-                       [:question, "question"]]
+                       [:question, "question"],
+                       [:external, "external"]]
 
   # GET /widgets
   # GET /widgets.json
@@ -75,6 +76,12 @@ class WidgetsController < ApplicationController
     widget = widgets.find(params[:id])
     widget.move_to(params[:move_to], widgets, params[:tab])
     redirect_to widgets_path(:tab => params[:tab])
+  end
+
+  def embedded
+    @widget = current_group.external_widgets.
+      detect {|f| f["_id"] == params[:id] }
+    render :layout => false
   end
 
   private

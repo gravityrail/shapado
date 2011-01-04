@@ -18,7 +18,7 @@ Shapado::Application.routes.draw do
   match '/settings' => 'users#edit', :as => :settings
   match '/tos' => 'doc#tos', :as => :tos
   match '/privacy' => 'doc#privacy', :as => :privacy
-
+  match '/widgets/embedded/:id' => 'widgets#embedded', :as => :embedded_widget
   get "mobile/index"
 
   resources :users do
