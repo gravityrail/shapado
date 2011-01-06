@@ -6,5 +6,8 @@
     = label :custom_external_css, t('widgets.settings.custom_external_css')
     = text_area_tag "settings[custom_external_css]", widget.settings["custom_external_css"], :placeholder => "section a {font-size:18px;}"
   .group
+    = label :preview, t('widgets.settings.preview')
+    = raw widget_code(widget)
+  .group
     = label :settings, t('widgets.settings.code')
     = widget_code(widget)

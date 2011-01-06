@@ -42,6 +42,7 @@ en:
       exclude_css_on_external: "Exclude your shapado site CSS from your widget"
       custom_external_css: "Include custom CSS to your widget (advised if you are not including the Shapado CSS):"
       code: "Copy and paste this code to your site or blog, such as a text widget in your Wordpress:"
+      preview: "Widget preview:"
     sharing_buttons:
       title: "Share this on"
       description: "This widget will display social sharing buttons"

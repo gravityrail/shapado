@@ -1,6 +1,6 @@
 class WidgetsController < ApplicationController
-  before_filter :login_required
-  before_filter :check_permissions
+  before_filter :login_required, :except => :embedded
+  before_filter :check_permissions, :except => :embedded
   layout "manage"
   tabs :default => :widgets
 
