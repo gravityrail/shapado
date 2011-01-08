@@ -60,3 +60,9 @@ en:
       description: "This widget displays tags followed by the current user."
     tag_list:
       description: "This widget displays tags related to the current page."
+    ask_question:
+      description: "This widget allows users to ask questions from anywhere."
+      title: "Ask a question:"
+      footer: "See all questions on %{group}"
+      ask: "Ask"
+      view_question: "<p>You can view it <a href=\"%{question}\">here</a> or ask another one below.</p>"

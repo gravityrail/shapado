@@ -29,7 +29,7 @@
               = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up")
               = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
             .clear
-          - unless widget.question_only?
+          - unless widget.question_only? || params[:tab] == 'external'
             .widget_content
               = render :partial => widget.partial_name, :locals => {:widget => widget}
         .clear

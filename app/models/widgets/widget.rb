@@ -18,6 +18,9 @@ class Widget
     if tab == 'question'
       types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end
+    if tab == 'external'
+      types += ["AskQuestionWidget"]
+    end
     if AppConfig.enable_groups
       types += %w[GroupsWidget TopGroupsWidget]
     end

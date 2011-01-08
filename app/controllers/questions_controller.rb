@@ -249,7 +249,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
-        @question.add_contributor(current_user)
+        @question.add_contributor(@question.user)
 
         sweep_question_views
         Magent::WebSocketChannel.push({id: "newquestion", object_id: @question.id, name: @question.title, channel_id: current_group.slug})
@@ -274,7 +274,14 @@ class QuestionsController < ApplicationController
           flash[:notice] = t(:flash_notice, :scope => "questions.create")
         end
 
-        format.html { redirect_to(question_path(@question)) }
+        format.html {
+          if widget = params[:question][:external_widget]
+            flash[:notice] += I18n.t('widgets.ask_question.view_question', :question => question_path(@question))
+            redirect_to embedded_widget_path(:id => widget)
+          else
+            redirect_to(question_path(@question))
+          end
+        }
         format.json { render :json => @question.to_json(:except => %w[_keywords watchers]), :status => :created}
       else
         @question.errors.add(:captcha, "is invalid") unless recaptcha_valid?
