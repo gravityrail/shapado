@@ -35,6 +35,7 @@
   .description.markdown
     = question_body
     = render "reward_info"
+    .clear
 
   .attachments
     = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
