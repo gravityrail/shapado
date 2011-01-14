@@ -24,7 +24,7 @@ section.main-question
     font-size: 26px
     line-height: 28px
     font-weight: bold
-    margin: 10px 20px 5px 45px
+    margin: 10px 20px 10px 45px
     &.version
       font-size: 18px
       line-height: 20 px
@@ -56,12 +56,15 @@ section.main-question
         &.revert
           color: #c00
   .description
-    margin: 0 20px 0 45px
+    margin: 0 20px 20px 45px
     p
       font-size: 12px
       line-height: 16px
       margin: 0 0 10px 0
       color: #606060
+    img
+      float: left
+      border: 1px solid #e5e5e5
   .edit
     position: absolute
     top: 43px
@@ -100,7 +103,7 @@ section.main-question
           background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
         a:hover
           color: #000
-          background-color: $lightOrange !important
+          background-color: #f9f9f9 !important
         a.active
           background-color: $lightBlue
           color: #000
@@ -330,23 +333,47 @@ article
       font-size: 10px
       font-style: italic
       color: #999
+  .thumb
+    width: 190px
+    height: 140px
+    position: relative
+    float: left
+    margin: 0 10px 10px 0
+    img.video_thumbnail
+      width: 100%
+      height: 100%
+      cursor: pointer
+    img.play_button
+      border: none
+      width: 38px
+      height: 33px
+      position: absolute
+      bottom: 5px
+      right: 5px
+      cursor: pointer
 
 /* Main Question - Each comment inside of each answare */
 //========================================================================
 article.comment
   border-bottom: none
-  padding: 20px 10px 0 50px
+  margin: 0
+  border-top: 1px dotted #f1f1f1
+  padding: 10px 10px 0 60px
+  p
+    color: #666
   h4
     background: url("/images/question-toolbar-icons-small.png") 0 -53px  no-repeat
     float: left
     padding: 3px 0 3px 20px
+    margin: 0 0 5px -20px
+    font-weight: bold
     a
       &:hover
   .toolbar
     margin: 0 0 0 10px !important
 
-/* Editors form output
-//========================================================================
+/* Editors form output */
+//======================================================================== 
 .article-actions
   float: right
   margin: 10px 5px 0 0
@@ -426,7 +453,7 @@ article.comment
               background-color: #0a0
               background-position: 5px -435px
 
-/* Comments
+/*
 #panel-comments
   background-color: #f1f1f1
   clear: both
@@ -460,6 +487,19 @@ article.comment
   .buttons
     float: right
 
+/* Closed reasons */
+//========================================================================
+#close_reason
+  display: block
+  clear: both
+  text-align: center
+  font-size: 14px
+  font-weight: bold
+  padding: 10px 0 !important
+  margin-bottom: 10px
+  text-shadow: $text-shadow
+  color: #fff
+  +error-gradient
     
 /* History question */
 /* ------------------------------------------------------------ */
