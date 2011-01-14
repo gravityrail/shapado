@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: LaPingvino
+# Author: Mihxil
 eo: 
   activerecord: 
     models: 
@@ -14,11 +15,12 @@ eo:
     shared: 
       addict: 
         description: Vizitis la retejon ĉiutage 20 tagojn sinsekve
+        name: Sklavigito
       autobiographer: 
         description: Kompletis ĉiujn uzantprofilajn kampojn
         name: Aŭtobiografiisto
       celebrity: 
-        description: Ekhavi pli ol 100 sekvantojn
+        description: Ekhavis pli ol 100 sekvantojn
         name: Famulo
       citizen_patrol: 
         description: Unua markita afiŝo
@@ -27,99 +29,121 @@ eo:
         description: Voĉdonis 300-foje
         name: Civitana devo
       cleanup: 
-        description: Unua remeto
+        description: Unuafoje remetis
         name: Purigado
       commentator: 
         description: Lasis 10 komentojn
+        name: Raportisto
       critic: 
         description: Voĉdonis negative unuafoje
+        name: Kritikanto
       disciplined: 
         description: Forviŝi propran afiŝon kun 3 poentoj aŭ pli
         name: Disciplinita
       editor: 
         description: Unua redaktita afiŝo
+        name: Redaktisto
       effort_medal: 
         description: Ekhavis 100 pozitivajn voĉojn
+        name: Medalo por penado.
       enlightened: 
-        description: Unua respondo akceptiĝis per almenaŭ 10 voĉoj
+        description: Havas respondon kiu akceptiĝis per almenaŭ 10 voĉoj
         name: Lumiĝinta
       famous_question: 
         description: Demandis demandon kun 10000 vidoj
+        name: Fama demando
       fanatic: 
         description: Vizitis la retejon ĉiutage 100 tagojn sinsekve
+        name: Fanatikulo
       favorite_question: 
-        description: Demando favorata de 25 uzantoj
+        description: Demandis demandon plejŝatatan de 25 uzantoj
+        name: Plejŝatata demando
       friendly: 
         description: Unuafoje sekvas iun
         name: Amika
       good_answer: 
-        description: Havi respondon kiu meznombre atingas pli ol 25 voĉoj
+        description: Respondis respondon kiu meznombre atingas pli ol 25 voĉoj
+        name: Bona respondo
       good_question: 
-        description: Havi demandon kiu meznombre atingas pli ol 25 voĉoj
+        description: Demandisdemandon kiu meznombre atingas pli ol 25 voĉojn
+        name: Bona demando
       great_answer: 
-        description: Respondo suprenvoĉdonita 100-foje
+        description: Havas respondon suprenvoĉdonitan 100-foje
         name: Bonega respondo
       great_question: 
         description: Demando voĉdoniĝis supren 100-foje
         name: Bonega demando
       guru: 
         description: Donis solvon al demando kun meznombre pli ol 40 voĉoj
+        name: Guruo
       inquirer: 
-        description: Demandis unuafoje
+        description: Demandis demandon unuafoje
+        name: Informpetanto
       interesting_person: 
-        description: Ekhavi pli ol 10 sekvantojn
+        description: Ekhavis pli ol 10 sekvantojn
         name: Interesulo
       merit_medal: 
         description: Ekhavis 200 pozitivajn voĉojn
+        name: Medalo pri merito
       necromancer: 
         description: Respondis demandon pli ol 60 tagojn poste kun almenaŭ 5 voĉoj.
         name: Viviganto
       nice_answer: 
-        description: Respondo suprenvoĉdonita 10-foje
+        description: Respondis respondon suprenvoĉdonitan 10-foje
         name: Bela respondo
       nice_question: 
-        description: Demando voĉdoniĝis supren 10-foje
+        description: Demandis demandon kiu voĉdoniĝis supren 10-foje
         name: Bela demando
       notable_question: 
         description: Demandis demandon kun 2500 vidoj
+        name: Rimarkinda demando
       organizer: 
-        description: Unua ŝanĝo de etikedoj
+        description: Unuafoje ŝanĝis etikedon
         name: Organizanto
       peer_pressure: 
         description: Forviŝis propran afiŝon kun -3 aŭ malpli da poentoj
         name: Kunula premo
       pioneer: 
         description: Esti unu el la unuaj registritaj uzantoj
+        name: Pioniro
       popstar: 
-        description: 500 pozitivaj voĉdonoj, maksimume 10 negativaj
+        description: Havas 500 pozitivajn voĉdonojn, kaj maksimume 10 negativajn
+        name: Popidolo
       popular_person: 
-        description: Ekhavi pli ol 50 sekvantojn
+        description: Ekhavis pli ol 50 sekvantojn
         name: Popularulo
       popular_question: 
         description: Demandis demandon kun 1000 vidoj
+        name: Populara demando
       rockstar: 
-        description: 1000 pozitivaj voĉdonoj, maksimume 10 negativaj
+        description: Havas 1000 pozitivajn voĉdonojn, kaj maksimume 10 negativajn
+        name: Rokstelulo
       scholar: 
-        description: Unua akceptita respondo al propra demando
+        description: Unuafoje respondis memdemanditan demandon per akceptita
         name: Lernanto
       self-learner: 
         description: Respondis propran demandon kun almenaŭ 3 suprenvoĉoj
         name: Aŭtodidakto
       service_medal: 
-        description: 300 pozitivaj voĉoj
+        description: Havas 300 pozitivajn voĉojn
+        name: Medalo pri servado
       shapado: 
         description: Vizitis la retejon ĉiutage 8 tagojn sinsekve
       stellar_question: 
-        description: Demando aldoniĝis al favorataj de 100 uzantoj
+        description: Demandis demandon kiun favoras 100 uzantoj
         name: Mojosega demando
       student: 
         description: Demandis unuan demandon kun almenaŭ unu suprenvoĉo
+        name: Studento
       supporter: 
         description: Voĉdonis pozitive unuafoje
+        name: Subtenanto
       troubleshooter: 
         description: Respondis unuafoje
+        name: Problemsolvanto
       tutor: 
         description: Donis solvon al demando kun meznombre pli ol 2 voĉoj
+        name: Instruanto
     show: 
       description: "Uzantoj kiuj gajnis ĉi tiun insignon. Laste donita al:"
       earned: gajnis

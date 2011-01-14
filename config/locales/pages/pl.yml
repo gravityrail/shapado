@@ -1,0 +1,28 @@
+# Messages for Polish (Polski)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Byulent
+pl: 
+  activerecord: 
+    attributes: 
+      page: 
+        js: JavaScript
+    models: 
+      page: Strona
+      pages: Strony
+  pages: 
+    actions: 
+      create_page: Utwórz nową stronę
+      edit_page: Edytuj stronę
+      title: Operacje
+    edit: 
+      title: Edytuj stronę
+    form: 
+      language_tip: Język strony
+      title_tip: "Tytuł strony. Służy do odniesienia stronie. Naprzykład: [[FAQ | sprawdź faq]]"
+    index: 
+      create_page: Utwórz nową stronę
+      title: Spis stron
+      written_in: Językiem strony jest %{language}
+    new: 
+      title: Nowa strona

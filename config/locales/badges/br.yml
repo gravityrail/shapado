@@ -29,7 +29,7 @@ br:
         description: En deus votet 300 gwech
         name: Dever keodedel
       cleanup: 
-        description: Drouziwezh gentañ
+        description: en deus graet e zistaoladenn gentañ
         name: Naetaerezh
       commentator: 
         description: Bez skrivet 10 evezhiadenn
@@ -47,7 +47,7 @@ br:
         description: Kaout 100 mouezh pozitivel
         name: Medalenn ar striv
       enlightened: 
-        description: Respont gentañ bet degemeret gant d'an nebeutañ 10 vot a-du
+        description: en deus ur respont bet degemeret gant 10 vot a-du d'an nebeutañ
         name: Goulaouiñ
       famous_question: 
         description: Goulenn gant 10 000 gweladenn
@@ -56,16 +56,16 @@ br:
         description: Gweladenniñ al lec'hienn bemdez e-pad 100 devezh da-heul
         name: Klañv-mik
       favorite_question: 
-        description: Goulenn bet lakaet da sined gant muioc'h eget 25 implijer
+        description: en deus savet ur goulenn sinedet gant ouzhpenn 25 implijer
         name: Goulenn a blij ar muiañ
       friendly: 
         description: Heuliañ unan bennak evit ar wech gentañ
         name: Mignoniel
       good_answer: 
-        description: Kaout ur respont gant ur geidenn uheloc'h eget 25 mouezh
+        description: En deus kaset ur respont en deus paket ar geidenn a 25 mouezh pe uheloc'h
         name: Respont vat
       good_question: 
-        description: Kaout ur goulenn gant ur geidenn uheloc'h eget 25 mouezh
+        description: En deus kaset ur respont en deus paket ar geidenn a 25 mouezh pe uheloc'h
         name: Goulenn vat
       great_answer: 
         description: En deus ur respont bet votet a-du 100 gwech
@@ -80,7 +80,7 @@ br:
         description: Sevel ur goulenn evit ar wech gentañ
         name: Enklasker
       interesting_person: 
-        description: Kaout muioc'h eget 10 heulier
+        description: En deus ouzhpenn 10 heulier
         name: Den dedennus
       merit_medal: 
         description: Kaout 200 mouezh pozitivel
@@ -89,7 +89,7 @@ br:
         description: En deus respontet d'ur goulenn bet savet muioc'h eget 60 devezh zo ha gant 5 mouezh da nebeutañ
         name: Igromañser
       nice_answer: 
-        description: Respont bet votet a-du 10 gwech
+        description: En deus ur respont zo bet votet 10 gwezh a-du evitañ
         name: Respont vat
       nice_question: 
         description: En deus savet ur goulenn bet votet a-du 10 gwech
@@ -98,7 +98,7 @@ br:
         description: Goulenn gant 2 500 gweladenn
         name: Goulenn talvoudus
       organizer: 
-        description: Kentañ adrummatadenn
+        description: en deus adtikedennet ur wezh
         name: Aozer
       peer_pressure: 
         description: Diverket en deus ur bostadenn dezhi ur skor a -3 pe nebeutoc'h
@@ -107,10 +107,10 @@ br:
         description: Bezañ er re gentañ o vezañ en em enskrivet
         name: Gwastadour
       popstar: 
-        description: 500 vot pozitivel, 10 negativel d'ar muiañ
+        description: En deus 500 vot a-du ha 10 a-enep d'ar muiañ
         name: Popstar
       popular_person: 
-        description: Kaout muioc'h eget 50 heulier
+        description: en deus muioc'h eget 50 heulier
         name: Den poblel
       popular_question: 
         description: Goulenn gant 1 000 gweladenn
@@ -119,18 +119,18 @@ br:
         description: En deus 1 000 vot pozitivel, 10 negativel d'ar muiañ
         name: Rockstar
       scholar: 
-        description: Respont gentañ bet degemeret evit ho koulenn
+        description: En deus respontet da gentañ d'ur goulenn savet gantañ e-unan, gant ur respont degemeret
         name: helenneg
       self-learner: 
-        description: En deus respontet d'e c'houlenn gant ur skor a 3 pe muioc'h
+        description: En deus respontet d'e c'houlenn gant 3 vot a-du d'an nebeutañ
         name: Emzeskad
       service_medal: 
-        description: 300 mouezh pozitivel
+        description: En deus 300 vot a-du
         name: Medalenn ar servij
       shapado: 
         description: Gweladenniñ al lec'hienn bemdez e-pad  8 devezh da-heul
       stellar_question: 
-        description: Goulenn sined evit 100 implijer d'an nebeutañ
+        description: En deus savet ur goulenn sinedet gant 100 implijer
         name: Goulenn steredel
       student: 
         description: Resevout ur vouezh a-du evit e c'houlenn gentañ

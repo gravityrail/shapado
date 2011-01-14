@@ -3,6 +3,7 @@
 # Export driver: syck
 # Author: Giro720
 # Author: Luckas Blade
+# Author: Nighto
 # Author: Vgeorge
 pt-BR: 
   activerecord: 
@@ -86,6 +87,8 @@ pt-BR:
       title: Registrar como um novo usuário
     show: 
       follow: Seguir
+      followers: Seguidores
+      following: Seguindo
       title: Usuário %{user}
       unfollow: Deixar de seguir
       views: visitas

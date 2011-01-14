@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Nike
 fi: 
   activerecord: 
     models: 
@@ -100,7 +101,7 @@ fi:
         description: Teki ensimmäisen uudelleenmerkinnän
         name: Järjestäjä
       peer_pressure: 
-        description: Poista omat lähetyksesi, joiden pisteet ovat -3 tai alhaisempia
+        description: Poisti oman kirjoituksen, jolla oli -3 pistettä tai vähemmän
         name: Vertaispaine
       pioneer: 
         description: Oli yksi ensimmäisiä rekisteröityneitä
@@ -142,7 +143,7 @@ fi:
         name: Vianjäljittäjä
       tutor: 
         description: Antoi kysymykseen ratkaisun, joka sai keskimäärin 2 ääntä tai enemmän
-        name: Tutori
+        name: Tuutori
     show: 
       description: "Käyttäjät, jotka ansaitsivat tämän rintanapin. Äskettäin myönnetty henkilöille:"
       earned: ansainnut

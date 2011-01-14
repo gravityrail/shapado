@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Nike
 fi: 
   notifier: 
     earned_badge: 
@@ -14,10 +15,10 @@ fi:
       message3: "Näet sen täältä:"
     follow: 
       message1: "%{user} seuraa nyt kysymyksiäsi ja vastauksiasi sovelluksella %{app}"
-      message2: Voit seurata häntä takaisin näpsäyttämällä painiketta "Seuraa" hänen käyttäjäsivullaan %{user_page}
+      message2: Voit seurata häntä napsauttamalla painiketta "Seuraa" hänen käyttäjäsivullaan %{user_page}
     give_advice: 
       message1: "%{user} kysyi juuri kysymyksen, johon saatat kyetä vastaamaan:"
-      message2: "Vastataksesi vastaa vain tähän viestiin täällä:"
+      message2: "Jos haluta vastata, vastaa tähän viestiin:"
       message3: "Tai, jos tiedät jonkun, joka kykenee vastaamaan, lähetä hänelle tämä viitelinkki:"
       message4: Jos emme saa vastausta sinulta pian, kysymme joltain muulta. Voit silti vastata milloin haluat.
     global: 
