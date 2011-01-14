@@ -2,12 +2,15 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: LaPingvino
+# Author: Mihxil
 eo: 
   close_requests: 
     create: 
       flash_notice: Fermpeto sukcese kreiĝis
     destroy: 
       flash_notice: Fermpetoj sukcese forviŝiĝis
+    edit: 
+      title: Ŝanĝi fermpeton
     form: 
       close_with_reason: Fermi ĉi tiun demandon per ĉi tiu kialo
       dupe: Duoblaĵo

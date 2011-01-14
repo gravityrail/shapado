@@ -2,19 +2,20 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Nike
 fi: 
   devise: 
     confirmations: 
       confirmed: Tilisi vahvistettiin. Olet nyt kirjautunut sisään.
-      link: Etkö ole vastaanottanut vahvistusohjeita?
-      send_instructions: Vastaanotat muutaman minuutin kuluttua sähköpostiviestin, jossa on ohjeet, kuinka tilisi vahvistetaan.
+      link: Etkö ole saanut vahvistusohjeita?
+      send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet tilin varmistamiseen.
     mailer: 
       confirmation_instructions: Vahvistusohjeet
-      reset_password_instructions: Nollaa salasanaohjeet
+      reset_password_instructions: Ohjeet salasanan alustamiseen
       unlock_instructions: Poista ohjeiden lukitus
     passwords: 
       link: Unohtuiko salasana?
-      send_instructions: Vastaanotat muutaman minuutin kuluttua sähköpostiviestin, jossa on ohjeet salasanan nollaamisesta.
+      send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet salasanan alustamisesta.
       updated: Salasanasi on vaihdettu. Olet nyt kirjautunut sisään.
     registrations: 
       destroyed: Heippa! Tilisi on peruutettu. Toivomme näkevämme sinut pian uudelleen.
@@ -35,10 +36,10 @@ fi:
       locked: Tilisi on lukittu.
       signed_in: Kirjautunut sisään
       signed_out: Kirjautunut ulos.
-      timeout: Istuntosi on vanhentunut. Kirjaudu sisään jatkaaksesi.
+      timeout: Istuntosi on vanhentunut. Jatka kirjautumalla sisään.
       unauthenticated: Sinun täytyy kirjautua sisään tai rekisteröityä ennen kuin jatkat.
       unconfirmed: Sinun on vahvistettava tilisi ennen kuin jatkat.
     unlocks: 
       link: Etkö vastaanottanut lukituksenpoisto-ohjeita?
-      send_instructions: Vastaanotat muutaman minuutin kuluttua sähköpostiviestin, jossa on ohjeet, kuinka tilisi lukitus poistetaan.
+      send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet tilin lukituksen poistamisesta.
       unlocked: Tilisi on avattu. Olet nyt kirjautunut sisään

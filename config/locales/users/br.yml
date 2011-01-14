@@ -85,6 +85,7 @@ br:
       title: Kevreañ evel implijer nevez
     show: 
       follow: Heuliañ
+      followers: Heulierien
       following: O Heuliañ
       title: Implijer %{user}
       unfollow: chom hep heuliañ

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Crt
 # Author: Str4nd
 fi: 
   feeds: 
@@ -41,7 +42,7 @@ fi:
   scaffold: 
     add: Lisää
     back: Takaisin
-    cancel: Peru
+    cancel: Peruuta
     close: Sulje
     create: Luo
     destroy: Poista
