@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
   end
 
   def diff
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     @question = @answer.question
     @prev = params[:prev]
     @curr = params[:curr]
@@ -59,7 +59,7 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     raise PageNotFound if @answer.nil?
     @question = @answer.question
     respond_to do |format|
@@ -73,7 +73,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     @answer.safe_update(%w[body wiki anonymous position], params[:answer])
     @answer.anonymous = params[:answer][:anonymous]
-    @question = Question.find_by_slug_or_id(params[:question_id])
+    @question = current_group.questions.by_slug(params[:question_id])
+
     @answer.question = @question
     @answer.group_id = @question.group_id
 
@@ -226,7 +227,7 @@ class AnswersController < ApplicationController
 
   protected
   def check_permissions
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     if !@answer.nil?
       unless (current_user.can_modify?(@answer) || current_user.mod_of?(@answer.group))
         flash[:error] = t("global.permission_denied")
@@ -238,7 +239,7 @@ class AnswersController < ApplicationController
   end
 
   def check_update_permissions
-    @answer = Answer.find!(params[:id])
+    @answer = current_group.answers.find!(params[:id])
 
     allow_update = true
     unless @answer.nil?

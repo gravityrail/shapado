@@ -98,6 +98,7 @@ class UsersController < ApplicationController
                                     :per_page => 25)
 
     @f_sort, order = active_subtab(:f_sort)
+
     @favorites = @user.favorites(:group_id => current_group.id).
       paginate(:page => params[:favorites_page],
                :per_page => 25,
