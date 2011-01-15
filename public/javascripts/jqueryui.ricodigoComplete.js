@@ -26,7 +26,11 @@
       tagInput.attr('name','tag_input');
       tagInput.after('<input type="hidden" class="ac-tags" name="'+name+'">');
       var tagwrapper=$('<div class="tagwrapper" style="background:#FFF;"></div>');
-      tagwrapper.css({border:'2px solid #CCCCCC', 'min-height': '40px', 'margin-top':'0px',float:'left',width:'99%'});
+      tagwrapper.css({border: '2px solid #CCCCCC', width: '99%'});
+      tagwrapper.css('float', 'left');
+      tagwrapper.css('min-height', '40px');
+      tagwrapper.css('margin-top', '0px');
+
       tagInput.wrap(tagwrapper);
       var tagwrapper = tagInput.parent('.tagwrapper');
       tagwrapper.click(function (){tagwrapper.children('.autocomplete_for_tags').focus();});

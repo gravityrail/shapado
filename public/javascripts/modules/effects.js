@@ -12,7 +12,7 @@ $(document).ready(function(){
 jQuery(function(){
   jQuery('ul.drop-menu').superfish({
     hoverClass:    'dropHover',
-    autoArrows:    false,
+    autoArrows:    false
   });
 });
 
