@@ -61,10 +61,10 @@ class Question
   index :group_id
 
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :class_name => "User"
+  references_and_referenced_in_many :followers, :class_name => "User"
 
   field :contributors_count, :type => Integer, :default => 0
-  references_many :contributors, :stored_as => :array, :class_name => "User"
+  references_and_referenced_in_many :contributors, :class_name => "User"
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -84,8 +84,8 @@ class Question
   field :last_target_user_id, :type => String
   referenced_in :last_target_user, :class_name => "User"
 
-  references_many :answers, :dependent => :destroy
-  references_many :badges, :as => "source"
+  references_and_referenced_in_many :answers, :dependent => :destroy
+  references_and_referenced_in_many :badges, :as => "source"
 
   embeds_many :comments, :as => "commentable", :order => "created_at asc"
   embeds_many :flags

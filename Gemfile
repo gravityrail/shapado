@@ -24,11 +24,11 @@ gem "compass-colors", "0.3.1"
 gem "fancy-buttons", "0.5.5"
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
 # mongodb
-gem 'bson', '1.1.2'
-gem 'bson_ext', '1.1.2'
+gem 'bson', '1.1.5'
+gem 'bson_ext', '1.1.5'
 
-gem 'mongo', '1.1.2'
-gem 'mongoid', '2.0.0.beta.20'
+gem 'mongo', '1.1.5'
+gem 'mongoid', '2.0.0.rc.4'
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils
