@@ -17,6 +17,8 @@ vendor/cache/*.gem
 public/javascripts/login_packaged.js
 public/javascripts/show_packaged.js
 public/javascripts/jsMath/fonts/
+public/javascripts/packaged/
+public/stylesheets/packaged/
 .sass-cache
 *.kdev4
 .redcar
