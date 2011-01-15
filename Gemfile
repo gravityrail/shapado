@@ -56,11 +56,12 @@ gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 gem 'orm_adapter'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
 
+gem 'whenever', :require => false
+
 
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
   gem 'em-websocket', '~> 0.1.4'
-  gem 'cronedit'
 end
 
 group :test do

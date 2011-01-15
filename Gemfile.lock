@@ -41,6 +41,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.4.2)
+    aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -80,7 +81,6 @@ GEM
       haml (>= 3.0.4)
     compass-colors (0.3.1)
       compass (>= 0.8.7)
-    cronedit (0.3.0)
     daemons (1.0.10)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
@@ -247,6 +247,9 @@ GEM
     warden (1.0.3)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
+    whenever (0.6.2)
+      aaronh-chronic (>= 0.3.9)
+      activesupport (>= 2.3.4)
 
 PLATFORMS
   ruby
@@ -257,7 +260,6 @@ DEPENDENCIES
   bson_ext (= 1.1.5)
   compass (= 0.10.6.pre.1)
   compass-colors (= 0.3.1)
-  cronedit
   database_cleaner
   devise!
   differ (= 0.1.1)
@@ -295,4 +297,5 @@ DEPENDENCIES
   twitter_oauth
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
+  whenever
   will_paginate!
