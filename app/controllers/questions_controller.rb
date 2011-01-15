@@ -99,7 +99,7 @@ class QuestionsController < ApplicationController
 
   def related_questions
     if params[:id]
-      @question = Question.find(params[:id])
+      @question = current_group.questions.find(params[:id])
     elsif params[:question]
       @question = Question.new(params[:question])
       @question.group_id = current_group.id
@@ -162,7 +162,7 @@ class QuestionsController < ApplicationController
     if params[:q].blank?
       @tag_cloud = Question.tag_cloud(conditions)
     else
-      @tag_cloud = Question.find_tags(/^#{Regexp.escape(params[:q])}/, conditions)
+      @tag_cloud = current_group.questions.find_tags(/^#{Regexp.escape(params[:q])}/, conditions)
     end
     respond_to do |format|
       format.html do
@@ -181,7 +181,7 @@ class QuestionsController < ApplicationController
       format.js do
         result = []
         if q = params[:tag]
-          result = Question.find_tags(/^#{Regexp.escape(q.downcase)}/i,
+          result = current_group.questions.find_tags(/^#{Regexp.escape(q.downcase)}/i,
                                       :group_id => current_group.id,
                                       :banned => false)
         end
@@ -436,7 +436,7 @@ class QuestionsController < ApplicationController
   end
 
   def close
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
 
     @question.closed = true
     @question.closed_at = Time.zone.now
@@ -457,7 +457,7 @@ class QuestionsController < ApplicationController
   end
 
   def open
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
 
     @question.closed = false
     @question.close_reason_id = nil
@@ -531,7 +531,7 @@ class QuestionsController < ApplicationController
   end
 
   def watch
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
     @question.add_watcher(current_user)
     flash[:notice] = t("questions.watch.success")
     respond_to do |format|
@@ -545,7 +545,7 @@ class QuestionsController < ApplicationController
   end
 
   def unwatch
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
     @question.remove_watcher(current_user)
     flash[:notice] = t("questions.unwatch.success")
     respond_to do |format|
@@ -559,13 +559,13 @@ class QuestionsController < ApplicationController
   end
 
   def move
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
     render
   end
 
   def move_to
     @group = Group.find_by_slug_or_id(params[:question][:group])
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
 
     if @group
       @question.group = @group
@@ -585,7 +585,7 @@ class QuestionsController < ApplicationController
   end
 
   def retag_to
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
 
     @question.tags = params[:question][:tags]
     @question.updated_by = current_user
@@ -624,7 +624,7 @@ class QuestionsController < ApplicationController
 
 
   def retag
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
     respond_to do |format|
       format.html {render}
       format.js {
@@ -636,7 +636,7 @@ class QuestionsController < ApplicationController
 
   protected
   def check_permissions
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
 
     if @question.nil?
       redirect_to questions_path
@@ -700,7 +700,7 @@ class QuestionsController < ApplicationController
 
 
   def check_retag_permissions
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.find_by_slug_or_id(params[:id])
     unless logged_in? && (current_user.can_retag_others_questions_on?(current_group) ||  current_user.can_modify?(@question))
       reputation = @question.group.reputation_constrains["retag_others_questions"]
       if !logged_in?

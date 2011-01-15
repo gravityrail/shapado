@@ -98,7 +98,7 @@ class UsersController < ApplicationController
                                           :order => order,
                                           :group_id => current_group.id)
 
-    @favorite_questions = Question.find(@favorites.map{|f| f.question_id })
+    @favorite_questions = current_group.questions.find(@favorites.map{|f| f.question_id })
 
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
 
