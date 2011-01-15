@@ -23,7 +23,7 @@ class Answer
   field :rewarded, :type => Boolean, :default => false
 
   field :favoriters_count, :type => Integer, :default => 0
-  references_many :favoriters, :stored_as => :array, :class_name => "User"
+  references_and_referenced_in_many :favoriters, :class_name => "User"
 
   referenced_in :group
   index :group_id
