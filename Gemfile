@@ -29,7 +29,7 @@ gem 'bson', '1.1.5'
 gem 'bson_ext', '1.1.5'
 
 gem 'mongo', '1.1.5'
-gem 'mongoid', '2.0.0.rc.4'
+gem 'mongoid', '2.0.0.rc.5'
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils

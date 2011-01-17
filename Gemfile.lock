@@ -126,7 +126,7 @@ GEM
     mime-types (1.16)
     mongo (1.1.5)
       bson (>= 1.1.5)
-    mongoid (2.0.0.rc.4)
+    mongoid (2.0.0.rc.5)
       activemodel (~> 3.0)
       mongo (~> 1.1.5)
       tzinfo (~> 0.3.22)
@@ -275,7 +275,7 @@ DEPENDENCIES
   magic
   mechanize
   mongo (= 1.1.5)
-  mongoid (= 2.0.0.rc.4)
+  mongoid (= 2.0.0.rc.5)
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
