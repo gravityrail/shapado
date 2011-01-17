@@ -84,6 +84,8 @@ gl:
       title: Rexístrese como novo usuario
     show: 
       follow: Vixiar
+      followers: Seguidores
+      following: Seguindo
       title: Usuario %{user}
       unfollow: Deixar de vixiar
       views: visitas

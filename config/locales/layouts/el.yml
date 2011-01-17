@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Discon
+# Author: Evropi
 el: 
   layouts: 
     application: 
@@ -12,7 +13,7 @@ el:
       languages: Γλώσσες
       log_in: Σύνδεση
       logged: Συνδεδεμένοι ως %{login}
-      logout: Αποσύνδεση
+      logout: Έξοδος
       manage_ads: Διαχείριση διαφημίσεων
       moderate: Συντονισμός
       now: τώρα!

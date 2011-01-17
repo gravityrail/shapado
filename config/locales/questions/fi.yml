@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Nike
 fi: 
   activerecord: 
     attributes: 
@@ -37,13 +38,13 @@ fi:
       adult_content: Tämä kysymys sisältää aikuisille tarkoitettua aineistoa.
       body_tip: Mikä on kysymys? Ole kuvaileva.
       language_tip: Valitse kieli, jolla kysymys esitetään.
-      tags_tip: Käytä tunnisteita lisätäksesi lisää tietoja kysymyksestäsi.
+      tags_tip: Tarkenna kysymyksesi alaa lisäämällä siihen tunnisteita.
     index: 
       active: Käytössä
       active_tooltip: Kysymykset, jotka on päivitetty äskettäin
       ask_question: Kysy kysymys
       empty: Kukaan ei ole vielä kysynyt yhtään kysymystä. Ole ensimmäinen!
-      help_to_answer: Opasta meitä vastaamaan kohteeseen
+      help_to_answer: Auta vastaamalla kysymyksiin
       hot: Suosittu
       hot_tooltip: Kysymykset, joissa on ollut eniten toimintaa viimeisen viiden päivän aikana
       newest: Uusin
@@ -119,7 +120,7 @@ fi:
       unfavorite_tooltip: Poista tämä kysymys suosikeistasi
       unwatch_tooltip: Lopeta tämän kysymyksen katsominen
       viewed: katsottu
-      watch_tooltip: Katso tätä kysymystä
+      watch_tooltip: Tarkkaile tätä kysymystä
     solve: 
       flash_notice: Kysymys oli ratkaistu.
     tags: 

@@ -6,6 +6,7 @@ lb:
   activerecord: 
     attributes: 
       answer: 
+        created_at: Beäntwert
         link: Link
     models: 
       answer: Äntwert

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Centerlink
+# Author: Nike
 fi: 
   activerecord: 
     attributes: 
@@ -29,20 +30,20 @@ fi:
         reputation: Maine
         timezone: Aikavyöhyke
         updated_at: päivitetty
-        website: Web-sivusto
+        website: Verkkosivu
     models: 
       user: Käyttäjä
       users: Käyttäjät
   users: 
     actions: 
-      edit_others_posts: Muokka toisten kirjoituksia
-      edit_wiki_post: Muokkaa wiki-kirjoituksia
+      edit_others_posts: muokata toisten kirjoituksia
+      edit_wiki_post: muokata wiki-kirjoituksia
       flag: Merkintä
-      retag_others_questions: Uudelleenmerkitse muiden kysymyksiä
-      vote_down: Hylkäämisääni
-      vote_to_close_any_question: Pyyntö sulkea mikä tahansa kysymys
-      vote_to_close_own_question: Pyyntö sulkea oma kysymys
-      vote_up: Hyväksymisääni
+      retag_others_questions: uudelleenmerkitä toisten kysymyksiä
+      vote_down: antaa vastustusäänen
+      vote_to_close_any_question: pyytää minkä tahansa kysymyksen sulkemista
+      vote_to_close_own_question: pyytää oman kysymyksen sulkemista
+      vote_up: antaa kannatusäänen
     anonymous_form: 
       never_shown: ei koskaan näytetty
     create: 
@@ -55,20 +56,20 @@ fi:
     follow: 
       flash_notice: Käyttäjä %{user} lisättiin ystäviisi
     form: 
-      activities_notification: Vastaanota sähköposti-ilmoituksia järjestelmän toiminnasta, kuten ansaituista rintanapeista, uusista seuraajista, jne.
+      activities_notification: Lähetä sähköposti-ilmoituksia järjestelmän toiminnasta, kuten ansaituista rintanapeista, uusista seuraajista, jne.
       avatar_tip: Muuta profiilikuvaasi käyttäen Gravatar-ohjelmaa
-      give_advice_notification: Vastaanota sähköposti-ilmoitukset kysymyksistä asiantuntija-alueeltasi
+      give_advice_notification: Lähetä sähköposti-ilmoitukset kysymyksistä omalta erikoisalaltani
       information: Tiedot
       language: Sivuston käyttöliittymän kieli
-      new_answer_notification: Hae sähköposti-ilmoitukset uusille vastauksille
+      new_answer_notification: Lähetä sähköposti-ilmoitukset uusille vastauksille
       notifications: Ilmoitukset
-      reports_notification: Vastaanota ilmoitus viimeisimmistä ryhmätoimista (vain ryhmän ylläpitäjille)
+      reports_notification: Lähetä ilmoitus viimeisimmistä tapahtumista ryhmässä (vain ryhmän ylläpitäjille)
       show_more_lang: Näytä lisää kieliä
     index: 
       empty: Tässä ryhmässä ei ole jäseniä. Osallistu liittymällä tähän ryhmään.
       filter: Etsi käyttäjiä
       name: Nimi
-      name_tooltip: Käyttäjät aakkosjarjestyksessa
+      name_tooltip: Käyttäjät aakkosjärjestyksessä
       newest: Uusin
       newest_tooltip: Käyttäjät, jotka juuri liittyivät
       oldest: Vanhin
@@ -78,7 +79,7 @@ fi:
       title: Kaikki käyttäjät
     messages: 
       errors: 
-        reputation_needed: Tarvitset %{min_reputation} mainepistettä toimintoon %{action}
+        reputation_needed: Tarvitset %{min_reputation} mainepistettä, jotta voisit %{action}.
     new: 
       submit: Rekisteröidy
       title: Rekisteröidy uutena käyttäjänä
@@ -86,6 +87,6 @@ fi:
       follow: Seuraa
       title: Käyttäjä %{user}
       unfollow: Älä seuraa
-      views: katsottu
+      views: näyttökertaa
     unfollow: 
       flash_notice: Käyttäjä %{user} poistettiin ystävistäsi

@@ -29,6 +29,8 @@ lb:
   users: 
     actions: 
       vote_up: Méi héich bewäerten
+    anonymous_form: 
+      never_shown: ni gewisen
     edit: 
       submit: Späicheren
       title: Astellungen
@@ -37,6 +39,7 @@ lb:
     form: 
       avatar_tip: Ännert d'Bild an Ärem Profil mat 'Gravatar'
       information: Informatioun
+      language: Sprooch, déi fir den Interface vum Site benotzt gëtt
       notifications: Benoriichtegungen
       show_more_lang: Méi Sprooche weisen
     index: 
