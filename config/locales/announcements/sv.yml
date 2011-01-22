@@ -1,0 +1,20 @@
+# Messages for Swedish (Svenska)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Tobulos1
+sv: 
+  activerecord: 
+    attributes: 
+      announcement: 
+        ends_at: Slutar på
+        message: Meddelande
+        only_anonymous: Endast för anonyma användare
+        starts_at: Börjar på
+  announcements: 
+    actions: 
+      delete: Ta bort
+      title: Åtgärder
+    create: 
+      success: Meddelandet har skapats.
+    index: 
+      title: Meddelanden

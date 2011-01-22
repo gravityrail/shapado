@@ -3,11 +3,12 @@
 # Export driver: syck
 # Author: Jopparn
 # Author: McDutchie
+# Author: Tobulos1
 sv: 
   sessions: 
     create: 
       flash_error: Kunde inte logga in dig som '%{login}'
-      flash_notice: Du har framgångsrikt loggat in
+      flash_notice: Du har loggat in
     destroy: 
       flash_notice: Du har blivit utloggad.
     new: 

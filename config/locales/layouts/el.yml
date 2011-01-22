@@ -11,7 +11,7 @@ el:
       forgot: Ξεχάσατε;
       home: Κεντρική
       languages: Γλώσσες
-      log_in: Σύνδεση
+      log_in: Είσοδος
       logged: Συνδεδεμένοι ως %{login}
       logout: Έξοδος
       manage_ads: Διαχείριση διαφημίσεων

@@ -1,0 +1,44 @@
+# Messages for Swedish (Svenska)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Tobulos1
+sv: 
+  devise: 
+    confirmations: 
+      confirmed: Ditt konto har bekräftats. Du är nu inloggad.
+      link: Har du inte fått bekräftelseinstuktioner?
+      send_instructions: Du kommer att få ett mail med instruktioner om hur du bekräftar ditt konto inom några minuter.
+    mailer: 
+      confirmation_instructions: Bekräftelseinstruktioner
+      reset_password_instructions: Instruktioner om att återställa lösenord
+      unlock_instructions: Lås instruktioner
+    passwords: 
+      link: Glömt lösenordet?
+      send_instructions: Du kommer att få ett e-mail med instruktioner om hur du återställer ditt lösenord inom ett par minuter.
+      updated: Ditt lösenord har ändrats. Du är nu inloggad.
+    registrations: 
+      destroyed: Hej då! Ditt konto har nu avslutats. Vi hoppas att få se dig snart igen.
+      link: Skapa ett användarkonto
+      signed_up: Du har registrerat dig.
+      updated: Du uppdaterade ditt konto.
+    sessions: 
+      facebook_actions: 
+        sign_in: Logga in
+        sign_out: Logga ut
+      facebook_authenticity_token: Något gick fel. Av säkerhetsskäl måste du logga in igen.
+      facebook_invalid: Kunde inte logga in. Ogiltigt konto.
+      facebook_timeout: Facebook session upphört. Du måste logga in igen för att fortsätta.
+      inactive: Ditt konto har inte bekräftats ännu.
+      invalid: Ogiltig e-postadress eller lösenord.
+      invalid_token: Ogiltig verifieringstoken.
+      link: Logga in
+      locked: Ditt konto är låst.
+      signed_in: Inloggad.
+      signed_out: Loggat ut.
+      timeout: Din session har upphört. Du måste logga in igen för att fortsätta.
+      unauthenticated: Du måste logga in eller registrera dig innan du fortsätter.
+      unconfirmed: Du måste bekräfta ditt konto innan du fortsätter.
+    unlocks: 
+      link: Fick du inte instruktioner om att låsa upp?
+      send_instructions: Du kommer att få ett mail med instruktioner om hur du låser upp ditt konto inom några minuter.
+      unlocked: Ditt konto är nu olåst. Du är nu inloggad.
