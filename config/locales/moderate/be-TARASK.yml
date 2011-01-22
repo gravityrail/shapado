@@ -1,0 +1,17 @@
+# Messages for Belarusian (Taraškievica orthography) (‪Беларуская (тарашкевіца)‬)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: EugeneZelenko
+# Author: Jim-by
+be-TARASK: 
+  admin: 
+    moderate: 
+      index: 
+        all: Усе
+        ban: Заблякаваць
+        banned: Забароненыя пытаньні
+        content: Зьмест
+        flagged: Пазначаныя пытаньні
+        item_title: Назва
+        need_tags: Зьмяніць тэг
+        title: Мадэрацыя
