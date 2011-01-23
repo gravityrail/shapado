@@ -19,17 +19,17 @@ end
 
 # ui
 gem "haml"
-gem 'compass', '0.10.6.pre.1'
+gem 'compass', '0.10.6'
 gem "compass-colors", "0.3.1"
-gem "fancy-buttons", "0.5.5"
+gem "fancy-buttons", "1.0.6"
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
 
 # mongodb
-gem 'bson', '1.1.5'
-gem 'bson_ext', '1.1.5'
+gem 'bson', '1.2.0'
+gem 'bson_ext', '1.2.0'
 
-gem 'mongo', '1.1.5'
-gem 'mongoid', '2.0.0.rc.5'
+gem 'mongo', '1.2.0'
+gem 'mongoid', '2.0.0.rc.6'
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils

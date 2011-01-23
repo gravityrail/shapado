@@ -30,7 +30,7 @@ GIT
 
 GIT
   remote: http://github.com/plataformatec/devise.git
-  revision: 971f68f97d472d4b3b9244594b85759ddf76d1ca
+  revision: 68f699bfd4d027e77fd8b8f8969cf951d9f3f550
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
@@ -69,15 +69,15 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
-    addressable (2.2.2)
+    addressable (2.2.3)
     arel (2.0.7)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
-    bson (1.1.5)
-    bson_ext (1.1.5)
+    bson (1.2.0)
+    bson_ext (1.2.0)
     builder (2.1.2)
-    compass (0.10.6.pre.1)
+    compass (0.10.6)
       haml (>= 3.0.4)
     compass-colors (0.3.1)
       compass (>= 0.8.7)
@@ -92,10 +92,9 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
-    fabrication (0.9.4)
-    fancy-buttons (0.5.5)
-      compass (>= 0.10.0)
-      haml (>= 3.0.2)
+    fabrication (0.9.5)
+    fancy-buttons (1.0.6)
+      compass (= 0.10.6)
     faraday (0.5.4)
       addressable (~> 2.2.2)
       multipart-post (~> 1.1.0)
@@ -109,7 +108,7 @@ GEM
     haml (3.0.25)
     hpricot (0.8.3)
     i18n (0.4.2)
-    json (1.4.6)
+    json (1.5.0)
     magent (0.5.2)
       em-websocket
       mongo
@@ -124,11 +123,11 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
-    mongo (1.1.5)
-      bson (>= 1.1.5)
-    mongoid (2.0.0.rc.5)
+    mongo (1.2.0)
+      bson (>= 1.2.0)
+    mongoid (2.0.0.rc.6)
       activemodel (~> 3.0)
-      mongo (~> 1.1.5)
+      mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     mongrel (1.2.0.pre2)
@@ -232,7 +231,7 @@ GEM
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
     sexp_processor (3.0.5)
-    smart_asset (0.5.3)
+    smart_asset (0.5.4)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -256,9 +255,9 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  bson (= 1.1.5)
-  bson_ext (= 1.1.5)
-  compass (= 0.10.6.pre.1)
+  bson (= 1.2.0)
+  bson_ext (= 1.2.0)
+  compass (= 0.10.6)
   compass-colors (= 0.3.1)
   database_cleaner
   devise!
@@ -267,15 +266,15 @@ DEPENDENCIES
   em-websocket (~> 0.1.4)
   eventmachine (~> 0.12.10)
   fabrication
-  fancy-buttons (= 0.5.5)
+  fancy-buttons (= 1.0.6)
   goalie (~> 0.0.4)
   haml
   hpricot
   magent (= 0.5.2)
   magic
   mechanize
-  mongo (= 1.1.5)
-  mongoid (= 2.0.0.rc.5)
+  mongo (= 1.2.0)
+  mongoid (= 2.0.0.rc.6)
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
