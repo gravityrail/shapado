@@ -84,7 +84,7 @@ describe Question do
       end
     end
 
-    describe "Question#ban" do
+    describe "Question#unban" do
       it "should unban the question" do
         @question.ban
         @question.reload

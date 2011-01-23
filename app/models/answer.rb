@@ -66,6 +66,7 @@ class Answer
 
   def check_unique_answer
     check_answer = Answer.where({:question_id => self.question_id,
+                                 :group_id => self.group_id,
                                :user_id => self.user_id}).first
 
     if !check_answer.nil? && check_answer.id != self.id
@@ -102,13 +103,21 @@ class Answer
   def ban
     self.question.answer_removed!
     unsolve_question
-    self.overwrite({:banned => true})
+    self.override({:banned => true})
   end
 
   def self.ban(ids)
-    self.find_each(:_id.in => ids, :select => [:question_id]) do |answer|
+    self.where(:_id.in => ids).only(:question_id).each do |answer|
       answer.ban
     end
+  end
+
+  def unban
+    self.override(:banned => false)
+  end
+
+  def self.unban(ids, options = {})
+    self.override({:_id => {"$in" => ids}}.merge(options), {:banned => false})
   end
 
   def to_html
@@ -135,6 +144,7 @@ class Answer
       if !valid
         self.errors.add(:body, "Your answer is duplicate.")
       end
+      return valid
     end
   end
 
@@ -159,7 +169,7 @@ class Answer
   protected
   def unsolve_question
     if !self.question.nil? && self.question.answer_id == self.id
-      self.question.set({:answer_id => nil, :accepted => false})
+      self.question.override({:answer_id => nil, :accepted => false})
     end
   end
 end
