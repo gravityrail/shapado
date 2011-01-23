@@ -51,18 +51,8 @@ class Answer
 
   before_destroy :unsolve_question
 
-  def ban
-    self.collection.update({:_id => self.id}, {:$set => {:banned => true}})
-  end
-
   def self.minimal
     without(:_keywords, :flags, :votes, :versions)
-  end
-
-  def self.ban(ids)
-    ids.each do |id|
-      self.collection.update({:_id => id}, {:$set => {:banned => true}})
-    end
   end
 
   def can_be_deleted_by?(user)
