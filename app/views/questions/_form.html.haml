@@ -25,7 +25,7 @@
   = f.text_field :tags, :value => @question.tags.join(", "), :class => "text_field autocomplete_for_tags"
   %small
     = t(".tags_tip")
-    
+
 .field
   =render "editor.html.haml", local_assigns
   .clear

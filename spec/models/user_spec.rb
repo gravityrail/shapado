@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @user = Fabricate(:user)
+    @user = User.make
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -42,14 +42,14 @@ describe User do
       it("should return @user") do
         @user.preferred_languages = ["en", "es", "fr"]
         @user.save
-        @stat =Fabricate(:user_stat, :user => @user, :answer_tags => ["tag1"] )
+        @stat = UserStat.make(:user => @user, :answer_tags => ["tag1"] )
         User.find_experts(["tag1"]).first.should == @user
       end
 
       it("should not return @user") do
         @user.preferred_languages = ["en", "es", "fr"]
         @user.save
-        @stat =Fabricate(:user_stat, :user => @user, :answer_tags => ["tag1"] )
+        @stat = UserStat.make( :user => @user, :answer_tags => ["tag1"] )
         User.find_experts(["tag1"], ["en"], {:except => @user.id}).first.should_not == @user
       end
     end
@@ -95,7 +95,7 @@ describe User do
 
     describe "User#add_preferred_tags" do
       it "should add unique tags" do
-        @group = Fabricate(:group, :owner => @user)
+        @group = Group.make( :owner => @user)
         @user.add_preferred_tags(["a", "a", "b", "c"], @group)
         @user = User.find(@user.id)
         @user.config_for(@group).preferred_tags.should == ["a", "b", "c"]

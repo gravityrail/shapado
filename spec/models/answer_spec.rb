@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Answer do
   before(:each) do
-    @answer = Fabricate(:answer, :votes => {})
+    @answer = Answer.make(:votes => {})
   end
 
   describe "module/plugin inclusions (optional)" do
