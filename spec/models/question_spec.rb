@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Question do
   before(:each) do
-    @question = Fabricate(:question, :votes => {})
+    @question = Question.make(:votes => {})
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -11,7 +11,7 @@ describe Question do
   describe "validations" do
     it "should have a title" do
       @question.title = ""
-      @question.valid?.should be_false
+      @question.valid?.should == false
     end
 
     it "should have a creator(user)" do
@@ -20,12 +20,10 @@ describe Question do
     end
 
     it "question slug should unique" do
-      question = Fabricate.build(:question,
-                           :slug => @question.slug,
-                           :group => @question.group)
+      question = Question.make_unsaved(:title => @question.title)
       question.slug = @question.slug
       question.group = @question.group
-      question.valid?.should be_false
+      question.valid?.should == false
     end
 
     describe "check useful" do
@@ -52,9 +50,8 @@ describe Question do
       end
 
       it "should be invalid when the have ask a question 20 seconds ago" do
-        new_question = Fabricate.build(:question,
-                                       :user => @question.user,
-                                       :group => @question.group)
+        new_question = Question.make_unsaved( :user => @question.user,
+                                              :group => @question.group)
         new_question.stub!(:disable_limits?).and_return(false)
         new_question.valid?.should be_false
         new_question.errors[:body].should_not be_nil
@@ -74,7 +71,7 @@ describe Question do
   describe "class methods" do
     describe "Question#related_questions" do
       it "should get the related questions with for a question with tag generate" do
-        Question.related_questions(Fabricate(:question, :tags => ["generate"]))
+        Question.related_questions(Question.make(:tags => ["generate"]))
       end
     end
 
@@ -87,13 +84,13 @@ describe Question do
       end
     end
 
-    describe "Question#ban" do
+    describe "Question#unban" do
       it "should unban the question" do
         @question.ban
         @question.reload
         Question.unban([@question.id])
         @question.reload
-        @question.banned.should be_true
+        @question.banned.should be_false
       end
     end
   end
@@ -170,7 +167,7 @@ describe Question do
     describe "Question#on_add_vote" do
       before(:each) do
         @question.stub!(:on_activity)
-        @voter = Fabricate.build(:user)
+        @voter = User.make_unsaved
         @voter.stub!(:on_activity)
         @question.user.stub!(:update_reputation)
       end
@@ -205,7 +202,7 @@ describe Question do
     describe "Question#on_remove_vote" do
       before(:each) do
         @question.stub!(:on_activity)
-        @voter = Fabricate.build(:user)
+        @voter = User.make_unsaved
         @voter.stub!(:on_activity)
         @question.user.stub!(:update_reputation)
       end
@@ -293,7 +290,7 @@ describe Question do
 
     describe "Question#add_follower" do
       before(:each) do
-        @follower = Fabricate(:user)
+        @follower = User.make
         @question.stub(:follower?).and_return(false)
       end
 
@@ -320,7 +317,7 @@ describe Question do
 
     describe "Question#remove_follower" do
       before(:each) do
-        @follower = Fabricate(:user)
+        @follower = User.make
         @question.add_follower(@follower)
         @question.reload
         @question.stub(:follower?).and_return(true)
@@ -336,7 +333,7 @@ describe Question do
 
     describe "Question#follower?" do
       before(:each) do
-        @follower = Fabricate(:user)
+        @follower = User.make
         @question.add_follower(@follower)
         @question.reload
       end
@@ -350,7 +347,7 @@ describe Question do
       end
 
       it "should return false for a new user" do
-        @question.follower?(Fabricate(:user)).should be_false
+        @question.follower?(User.make).should be_false
       end
     end
 
@@ -370,15 +367,15 @@ describe Question do
 
     describe "Question#answered" do
       it "should return true if answered_with_id is present" do
-        @question.answered_with =  Fabricate(:answer, :question => @question,
-                                                :group => @question.group)
+        @question.answered_with = Answer.make( :question => @question,
+                                               :group => @question.group)
         @question.answered.should be_true
       end
     end
 
     describe "Question#update_last_target" do
       before(:each) do
-        @target = Fabricate(:answer, :question => @question, :group => @question.group)
+        @target = Answer.make(:question => @question, :group => @question.group)
       end
 
       it "should set the las target propieties" do
@@ -399,7 +396,7 @@ describe Question do
 
       describe "should return true when the user " do
         before(:each) do
-          @user = Fabricate(:user)
+          @user = User.make
         end
 
         after(:each) do
@@ -430,7 +427,7 @@ describe Question do
 
       describe "should return true when the user " do
         before(:each) do
-          @user = Fabricate(:user)
+          @user = User.make
           @question.closed = true
         end
 
@@ -456,7 +453,7 @@ describe Question do
 
     describe "Question#can_be_deleted_by?" do
       before(:each) do
-        @user = Fabricate(:user)
+        @user = User.make
         @question.closed = true
       end
 
@@ -466,7 +463,7 @@ describe Question do
 
       describe "should return false when " do
         it "the user is the question owner and the question have answers" do
-          @target = Fabricate(:answer, :question => @question, :group => @question.group)
+          @target = Answer.make(:question => @question, :group => @question.group)
           @question.can_be_deleted_by?(@question.user).should == false
         end
 
@@ -511,9 +508,8 @@ describe Question do
         @question.user.stub!(:can_vote_to_close_any_question_on?).
                                                             with(anything).
                                                             and_return(true)
-        @close_request = Fabricate.build(:close_request,
-                                         :user => @question.user,
-                                         :reason => "dupe")
+        @close_request = CloseRequest.make( :user => @question.user,
+                                            :reason => "dupe")
         @close_request.closeable = @question
         @close_request.save
         @question.close_reason_id = @close_request.id
@@ -525,7 +521,7 @@ describe Question do
 
     describe "Question#last_target=" do
       before(:each) do
-        @target = Fabricate(:answer, :question => @question, :group => @question.group)
+        @target = Answer.make(:question => @question, :group => @question.group)
       end
 
       it "should set the las target propieties" do
