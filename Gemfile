@@ -71,6 +71,8 @@ group :test do
 end
 
 group :development do
+  gem 'machinist_mongo', :require => 'machinist/mongoid'
+  gem 'faker'
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
   gem "rspec-rails", ">= 2.0.1"

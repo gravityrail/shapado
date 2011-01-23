@@ -11,7 +11,7 @@ describe Question do
   describe "validations" do
     it "should have a title" do
       @question.title = ""
-      @question.valid?.should be_false
+      @question.valid?.should == false
     end
 
     it "should have a creator(user)" do
@@ -20,11 +20,10 @@ describe Question do
     end
 
     it "question slug should unique" do
-      question = Question.make_unsaved( :slug => @question.slug,
-                                        :group => @question.group)
+      question = Question.make_unsaved(:title => @question.title)
       question.slug = @question.slug
       question.group = @question.group
-      question.valid?.should be_false
+      question.valid?.should == false
     end
 
     describe "check useful" do
@@ -91,7 +90,7 @@ describe Question do
         @question.reload
         Question.unban([@question.id])
         @question.reload
-        @question.banned.should be_true
+        @question.banned.should be_false
       end
     end
   end
