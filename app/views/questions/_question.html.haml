@@ -6,7 +6,7 @@
   -owner = nil
   - if question.last_target_id.present?
     - last_target_id = question.last_target_id
-    - last_target_date = question.last_target_date
+    - last_target_date = question.last_target_date || question.updated_at
     - owner = question.last_target_user
   -else
     - last_target = question
