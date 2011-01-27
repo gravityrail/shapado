@@ -56,7 +56,6 @@
 //======================================================================
 .user-zone
   background-color: none
-  height: 30px
   .sf-menu 
     width: 70%
     background-color: none
@@ -138,130 +137,98 @@
           background: url("http://cdn1.iconfinder.com/data/icons/WPZOOM_Social_Networking_Icon_Set/32/openid.png") no-repeat 50% 50%        
           
         
+// Profile page
+//======================================================================
+.userData
+  float: left !important
+  width: 25% !important
+  background-color: #fafafa
+  padding: 0 0 10px 0
+  h3
+    font-size: 14px
+    font-weight: bold
+    border-bottom: 1px dotted #ccc
+    margin: 0 10px 10px 10px
+    padding: 0 10px 5px 10px  
+  .avatar
+    padding: 10px
+    background-color: #fff
+    border: 1px solid #e5e5e5
+    +normal-radius
+    margin: 10px
+    img
+      margin: 0 auto
+    p
+      font-size: 11px
+      line-height: 13px
+      margin-top: 10px
+      a
+        color: #999
+        &:hover
+          color: #000
+  ul.badges      
+    margin: 0 10px 0 0
+    text-align: right
 
-/*
-.sf-menu
-  margin: 0
-  padding: 0
-  list-style: none
-  *
-    margin: 0
-    padding: 0
-    list-style: none
-  line-height: 1.0
-  ul
-    position: absolute
-    top: -999em
-    width: 10em
+.userHistory
+  float: right !important
+  width: 74.8% !important
+  border-left: 1px solid #e5e5e5
+  height: 2000px
+  .userDescription
+    padding: 20px 20px 10px 20px
+    border-bottom: 1px solid #f1f1f1
+    small
+      font-size: 11px
+      font-style: italic
+      color: #999
+      margin: 0 0 3px 0
+    .basicInfo  
+      width: 67%
+      float: left
+    h2
+      font-size: 30px
+      font-weight: bold
+    p
+      font-size: 11px
+      line-height: 11px
+      a:hover
+        border-bottom: 1px dotted
+    .description
+      padding: 8px 0
+      border-bottom: 1px solid #fafafa
+      margin: 0 0 5px 0
+      p
+        font-size: 13px
+      
+  ul.profile-stats
+    margin-bottom: 20px
+    float: right
+    width: 30%
+    border: 1px solid #f1f1f1 
     li
-      width: 100%
-  li
-    &:hover
-      visibility: inherit
-      /* fixes IE7 'sticky bug' 
-    float: left
-    position: relative
-  a
-    display: block
-    position: relative
-  li
-    &:hover ul, &.sfHover ul
-      left: 0
-      top: 2.5em
-      /* match top ul list item height 
-      z-index: 99
-
-ul.sf-menu li
-  &:hover li ul, &.sfHover li ul
-    top: -999em
-  li
-    &:hover ul, &.sfHover ul
-      left: 10em
-      /* match ul width 
-      top: 0
-    &:hover li ul, &.sfHover li ul
-      top: -999em
-    li
-      &:hover ul, &.sfHover ul
-        left: 10em
-        /* match ul width 
-        top: 0
-
-.sf-menu
-  float: left
-  margin-bottom: 1em
-  a
-    border-left: 1px solid #fff
-    border-top: 1px solid #CFDEFF
-    padding: .75em 1em
-    text-decoration: none
-    /* visited pseudo selector so IE6 applies text colour 
-    color: #13a
-    &:visited
-      /* visited pseudo selector so IE6 applies text colour 
-      color: #13a
-  li
-    background: #BDD2FF
-    li
-      background: #AABDE6
-      li
-        background: #9AAEDB
-    &:hover, &.sfHover
-      background: #CFDEFF
-      outline: 0
-  a
-    &:focus, &:hover, &:active
-      background: #CFDEFF
-      outline: 0
-    &.sf-with-ul
-      padding-right: 2.25em
-      min-width: 1px
-      /* trigger IE7 hasLayout so spans position accurately 
-
-.sf-sub-indicator
-  position: absolute
-  display: block
-  right: .75em
-  top: 1.05em
-  /* IE6 only 
-  width: 10px
-  height: 10px
-  text-indent: -999em
-  overflow: hidden
-  background: url('/images/superfish/arrows-ffffff.png') no-repeat -10px -100px
-  /* 8-bit indexed alpha png. IE6 gets solid image only 
-
-a
-  > .sf-sub-indicator
-    top: .8em
-    background-position: 0 -100px
-  &:focus > .sf-sub-indicator, &:hover > .sf-sub-indicator, &:active > .sf-sub-indicator
-    background-position: -10px -100px
-
-li
-  &:hover > a > .sf-sub-indicator, &.sfHover > a > .sf-sub-indicator
-    background-position: -10px -100px
-
-.sf-menu ul
-  .sf-sub-indicator
-    background-position: -10px 0
-  a
-    > .sf-sub-indicator
-      background-position: 0 0
-    &:focus > .sf-sub-indicator, &:hover > .sf-sub-indicator, &:active > .sf-sub-indicator
-      background-position: -10px 0
-  li
-    &:hover > a > .sf-sub-indicator, &.sfHover > a > .sf-sub-indicator
-      background-position: -10px 0
-
-/*** shadows for all but IE6 *
-
-.sf-shadow ul
-  background: url('/images/superfish/shadow.png') no-repeat bottom right
-  padding: 0 8px 9px 0
-  -moz-border-radius-bottomleft: 17px
-  -moz-border-radius-topright: 17px
-  -webkit-border-top-right-radius: 17px
-  -webkit-border-bottom-left-radius: 17px
-  &.sf-shadow-off
-    background: transparent
+      border-bottom: 1px dotted #e5e5e5 
+      padding: 5px
+      background-color: #fff
+      text-align: center
+      float: left
+      width: 42%
+      small
+        font-size: 10px
+        display: block 
+      strong
+        font-size: 20px
+        font-weight: bold 
+        display: block
+    li.follow
+      border: none
+      +orange-gradient
+      color: #fff
+      width: 93%
+      a
+        color: #fff
+    img
+      margin: 0 auto
+    p 
+      margin-top: 10px  
+  
