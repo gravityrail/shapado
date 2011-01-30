@@ -279,7 +279,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def vote_on(voteable)
-    voteable.votes[self.id]
+    voteable.votes[self.id] if voteable.votes
   end
 
   def favorites(opts = {})
