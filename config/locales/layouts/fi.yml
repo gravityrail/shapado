@@ -48,4 +48,4 @@ fi:
       theme: Teema
       widgets: Ikkunaoliot
     notifications: 
-      message: Jos et halua enää vastaanottaa automaattisia ilmoituksia kohteesta %{domain}, muuta asetuksiasi ilmoitusnäytöllä.
+      message: Jos et halua enää vastaanottaa automaattisia ilmoituksia kohteesta %{group}, muuta asetuksiasi ilmoitusnäytöllä.

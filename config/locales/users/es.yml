@@ -3,6 +3,7 @@
 # Export driver: syck
 # Author: Crazymadlover
 # Author: Danke7
+# Author: Ovruni
 # Author: Patcito
 es: 
   activerecord: 
@@ -86,6 +87,8 @@ es:
       title: Registrar un nuevo usuario
     show: 
       follow: Seguir
+      followers: Seguidores
+      following: Siguiendo
       title: Usuario %{user}
       unfollow: Dejar de seguir
       views: vistas

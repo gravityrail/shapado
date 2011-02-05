@@ -4,7 +4,8 @@ Shapado::Application.routes.draw do
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
-
+  match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get
+  match '/group_twitter_request_token' => 'groups#group_twitter_request_token', :method => :get
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
@@ -17,7 +18,7 @@ Shapado::Application.routes.draw do
   match '/settings' => 'users#edit', :as => :settings
   match '/tos' => 'doc#tos', :as => :tos
   match '/privacy' => 'doc#privacy', :as => :privacy
-
+  match '/widgets/embedded/:id' => 'widgets#embedded', :as => :embedded_widget
   get "mobile/index"
 
   resources :users do
@@ -42,6 +43,8 @@ Shapado::Application.routes.draw do
   resources :adsenses
   resources :adbards
   resources :badges
+
+  resources :searches, :path => "search", :as => "search"
 
   resources :pages do
     member do
@@ -97,6 +100,7 @@ Shapado::Application.routes.draw do
       get :retag
       put :retag_to
       post :close
+      put  :open
       get :remove_attachment
 
       get :twitter_share
@@ -159,8 +163,9 @@ Shapado::Application.routes.draw do
     resources :members
   end
 
-  scope '/manage', :name_prefix => 'manage' do
+  scope '/manage', :as => 'manage' do
     controller 'admin/manage' do
+      match 'social' => :social
       match 'properties' => :properties
       match 'theme' => :theme
       match 'actions' => :actions
@@ -182,10 +187,9 @@ Shapado::Application.routes.draw do
     resources :answers
     resources :users
   end
+
   match '/moderate' => 'moderate/questions#index'
-
-
-  match '/search' => 'searches#index', :as => :search
+#   match '/search' => 'searches#index', :as => :search
   match '/about' => 'groups#show', :as => :about
   root :to => 'questions#index'
   match '/:controller(/:action(/:id))'

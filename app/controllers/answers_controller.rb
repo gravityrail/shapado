@@ -31,7 +31,7 @@ class AnswersController < ApplicationController
   end
 
   def diff
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     @question = @answer.question
     @prev = params[:prev]
     @curr = params[:curr]
@@ -59,7 +59,7 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     raise PageNotFound if @answer.nil?
     @question = @answer.question
     respond_to do |format|
@@ -73,7 +73,8 @@ class AnswersController < ApplicationController
     @answer = Answer.new
     @answer.safe_update(%w[body wiki anonymous position], params[:answer])
     @answer.anonymous = params[:answer][:anonymous]
-    @question = Question.find_by_slug_or_id(params[:question_id])
+    @question = current_group.questions.by_slug(params[:question_id])
+
     @answer.question = @question
     @answer.group_id = @question.group_id
 
@@ -108,9 +109,10 @@ class AnswersController < ApplicationController
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
         @question.add_contributor(current_user)
+        link = question_answer_url(@question, @answer)
 
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
-        Jobs::Answers.async.on_create_answer(@question.id, @answer.id).commit!
+        Jobs::Answers.async.on_create_answer(@question.id, @answer.id, link).commit!
 
         sweep_question(@question) # TODO move to magent
         Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,
@@ -225,7 +227,7 @@ class AnswersController < ApplicationController
 
   protected
   def check_permissions
-    @answer = Answer.find(params[:id])
+    @answer = current_group.answers.find(params[:id])
     if !@answer.nil?
       unless (current_user.can_modify?(@answer) || current_user.mod_of?(@answer.group))
         flash[:error] = t("global.permission_denied")
@@ -237,7 +239,7 @@ class AnswersController < ApplicationController
   end
 
   def check_update_permissions
-    @answer = Answer.find!(params[:id])
+    @answer = current_group.answers.find!(params[:id])
 
     allow_update = true
     unless @answer.nil?

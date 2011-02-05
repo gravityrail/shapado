@@ -1,17 +1,15 @@
 .module
-  %h3 
+  %h3
     =t(".title")
-  -widget.top_users(current_group).each do |user| 
+  -widget.top_users(current_group).each do |user|
     %section
       =gravatar(user.email.to_s, :size => 22)
-      %p 
+      %p
         %b
           =link_to h(user.login), user_path(user)
         %i
           ==(#{user.reputation_on(current_group)})
-        %br
-        =link_to t("scaffold.more"), users_path
   %footer
-    =link_to "Ver todos los usuarios", "#"
+    =link_to t("scaffold.more"), users_path
   .clear
 

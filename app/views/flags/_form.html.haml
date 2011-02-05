@@ -1,10 +1,13 @@
 -object_form = flag
+-klass = "form flag_form"
 -if flaggeable.is_a?(Answer)
   -object_form = [flaggeable.question, flaggeable, flag]
+  -klass << " flag_answer"
 -elsif flaggeable.is_a?(Question)
   -object_form = [flaggeable, flag]
+  -klass << " flag_question"
 
--form_for object_form, :html => {:class=>"form flag_form", :id => local_assigns[:form_id]} do |f|
+-form_for object_form, :html => {:class=>klass, :id => local_assigns[:form_id]} do |f|
   .fields
     =hidden_field_tag "return_to", source, :id => "flaggeable_source_#{flaggeable.class.name}_#{flaggeable.id}"
   .group
@@ -16,9 +19,10 @@
     = select "flag", "reason", Flag::REASONS.collect{|type| [t(type, :scope=>"flags.form"), type]}, :selected => flag.reason, :id => "flaggeable_typeselect_#{flaggeable.class.name}_#{flaggeable.id}"
 
   .group.navform
+    = link_to t("scaffold.cancel"), source, :class => "button cancel"
+    = t("global.or")
     -if flag.new?
       = f.submit t("scaffold.create"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}"
     -else
       = f.submit t("scaffold.update"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}"
-    = t("global.or")
-    = link_to t("scaffold.cancel"), source, :class => "button cancel"
+

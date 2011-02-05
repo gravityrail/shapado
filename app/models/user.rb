@@ -8,7 +8,7 @@ class User
   include Shapado::Models::GeoCommon
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
-         :lockable, :token_authenticatable, :encryptable, :omniauthable, :encryptor => :restful_authentication_sha1
+         :lockable, :token_authenticatable, :encryptable, :trackable, :omniauthable, :encryptor => :restful_authentication_sha1
 
   ROLES = %w[user moderator admin]
   LANGUAGE_FILTERS = %w[any user] + AVAILABLE_LANGUAGES
@@ -66,6 +66,7 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :comments, :dependent => :destroy
   references_many :badges, :dependent => :destroy
+  references_many :searches, :dependent => :destroy
 
   before_create :create_friend_list
   before_create :generate_uuid
@@ -134,14 +135,14 @@ class User
     user_ids = UserStat.only(:user_id).where(opts.merge({:answer_tags => {:$in => tags}})).all.map(&:user_id)
 
     conditions = {:"notification_opts.give_advice" => {:$in => ["1", true]},
-                  :preferred_languages => langs}
+                  :preferred_languages.in => langs,
+                  :_id.in => user_ids}
 
     if group_id = options[:group_id]
       conditions[:"membership_list.#{group_id}"] = {:$exists => true}
     end
 
-    u = User.only([:email, :login, :name, :language]).where(conditions.merge(:_id => user_ids))
-    u ? u : []
+    User.only([:email, :login, :name, :language]).where(conditions)
   end
 
   def to_param
@@ -154,10 +155,11 @@ class User
 
   def add_preferred_tags(t, group)
     if t.kind_of?(String)
-      t = t.split(",").join(" ").split(" ")
+      t = t.split(",").map{|e| e.strip}
     end
-    self.collection.update({:_id => self._id, "membership_list.#{group.id}.preferred_tags" =>  {:$nin => t}},
-                    {:$pushAll => {"membership_list.#{group.id}.preferred_tags" => t}})
+
+    self.collection.update({:_id => self._id},
+                           {:$addToSet => {"membership_list.#{group.id}.preferred_tags" => {:$each => t.uniq}}})
   end
 
   def remove_preferred_tags(t, group)
@@ -240,6 +242,10 @@ Time.zone.now ? 1 : 0)
     admin? || group.owner_id == self.id || role_on(group) == "owner"
   end
 
+  def admin_of?(group)
+    role_on(group) == "admin" || owner_of?(group)
+  end
+
   def mod_of?(group)
     owner_of?(group) || role_on(group) == "moderator" || self.reputation_on(group) >= group.reputation_constrains["moderate"].to_i
   end
@@ -273,7 +279,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def vote_on(voteable)
-    voteable.votes[self.id]
+    voteable.votes[self.id] if voteable.votes
   end
 
   def favorites(opts = {})

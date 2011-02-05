@@ -1,16 +1,13 @@
 .module
-  %h3 
+  %h3
     =t(".title")
+
   -widget.recent_pages(current_group).each do |page|
-    %ul
-      %li 
-        =link_to h(page.title), page_path(page)
-      -if logged_in? && current_user.mod_of?(current_group)
-        %li
-          -if logged_in? && current_user.mod_of?(current_group) 
-            =link_to t(".new"), new_page_path
-            %br
-            =link_to t("scaffold.more"), pages_path
+    %section
+      =link_to h(page.title), page_path(page)
   %footer
-    =link_to "Ver todos los usuarios", "#"
+    -if logged_in? && current_user.mod_of?(current_group)
+      =link_to t(".new"), new_page_path
+      %br
+      =link_to t("scaffold.more"), pages_path
   .clear

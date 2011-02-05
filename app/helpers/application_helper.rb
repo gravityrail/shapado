@@ -84,6 +84,11 @@ module ApplicationHelper
     f.select :language, languages_options(languages), {:selected => selected}, {:class => "select"}.merge(opts)
   end
 
+  def language_select_tag(name = "language", value = nil, opts = {})
+    languages = logged_in? ? current_user.preferred_languages : current_group.languages
+    select_tag name, options_for_select(languages_options(languages)), {:value => value, :class => "select"}.merge(opts)
+  end
+
   def languages_options(languages=nil, current_languages = [])
     languages = AVAILABLE_LANGUAGES-current_languages if languages.blank?
     locales_options(languages)
@@ -336,6 +341,16 @@ module ApplicationHelper
     else
       question.answers.order_by(:votes_average.asc).first
     end
+  end
+
+  def widget_css(widget)
+    "<style type='text/css'>#{widget.settings["custom_external_css"]}</style>"
+  end
+
+  def widget_code(widget)
+    path = embedded_widget_path(:id => widget.id)
+    url = domain_url(:custom => current_group.domain) + path
+    %@<iframe src="#{url}" height="200px"></iframe>@
   end
 end
 

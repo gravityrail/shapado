@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Group do
   before(:each) do
-    @group = Fabricate(:group)
+    @group = Group.make
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -114,7 +114,8 @@ describe Group do
 
     describe "Group#add_member" do
       before(:each) do
-        @user = Fabricate(:user)
+        @user = User.make
+        @user.file_list.stub!(:destroy_files)
       end
 
       after(:each) do
@@ -130,7 +131,7 @@ describe Group do
 
     describe "Group#is_member?" do
       before(:each) do
-        @user = Fabricate(:user)
+        @user = User.make
       end
 
       after(:each) do
@@ -144,7 +145,7 @@ describe Group do
 
     describe "Group#users" do
       before(:each) do
-        @user = Fabricate(:user)
+        @user = User.make
       end
 
       after(:each) do

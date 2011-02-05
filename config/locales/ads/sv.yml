@@ -1,0 +1,16 @@
+# Messages for Swedish (Svenska)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Tobulos1
+sv: 
+  ads: 
+    ad_links: Lägg till en ny %{type} annons
+    create: 
+      success: Annonsen skapades utan problem.
+    index: 
+      add_adbard: Lägg till en ny Ad Bard annons
+      add_adsense: Lägg till en ny Google AdSense annons
+      title: Annonser
+    name: "Namn:"
+    position: "Position:"
+    title: Lägg till en ny %{type} annons

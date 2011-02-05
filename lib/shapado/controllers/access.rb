@@ -3,9 +3,12 @@ module Shapado
     module Access
       def self.included(base)
         base.class_eval do
-          alias_method :logged_in?, :user_signed_in?
           helper_method :logged_in?
         end
+      end
+
+      def logged_in?
+        user_signed_in?
       end
 
       def check_group_access
@@ -57,6 +60,9 @@ module Shapado
       end
 
       def after_sign_in_path_for(resource)
+        if current_user.admin?
+          Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
+        end
         if return_to = session.delete("return_to")
           return_to
         else

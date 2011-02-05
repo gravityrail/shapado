@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Discon
+# Author: Evropi
 el: 
   sessions: 
     create: 
@@ -10,7 +11,7 @@ el:
     destroy: 
       flash_notice: Έχετε αποσυνδεθεί.
     new: 
-      log_in: Σύνδεση
+      log_in: Είσοδος
       not_registered: Δεν έχετε εγγραφεί ακόμα;
       registered: Ήδη εγγεγραμμένοι;
       remember_me: Αποθήκευση

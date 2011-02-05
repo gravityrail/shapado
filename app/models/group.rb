@@ -60,6 +60,10 @@ class Group
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
   field :share, :type => Share, :default => Share.new
 
+  field :notification_opts, :type => GroupNotificationConfig
+
+  field :twitter_account, :type => Hash, :default => { }
+
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
   file_key :custom_favicon, :max_length => 256.kilobytes
@@ -73,11 +77,12 @@ class Group
   embeds_many :welcome_widgets, :class_name => "Widget"
   embeds_many :mainlist_widgets, :class_name => "Widget"
   embeds_many :question_widgets, :class_name => "Widget"
+  embeds_many :external_widgets, :class_name => "Widget"
 
   references_many :badges, :dependent => :destroy
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
-  references_many :votes, :dependent => :destroy # FIXME: mongoid, embedded
+#   references_many :votes, :dependent => :destroy # FIXME:
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
@@ -158,6 +163,19 @@ class Group
   end
   alias_method :members, :users
 
+  def owners
+    users({ "membership_list.#{self.id}.role" => 'owner' })
+  end
+
+  def mods
+    users({ "membership_list.#{self.id}.role" => 'moderator' })
+  end
+  alias_method :moderators, :mods
+
+  def mods_owners
+    users({ "membership_list.#{self.id}.role" => {:$in => ['moderator', 'owner']} })
+  end
+
   def pending?
     state == "pending"
   end
@@ -207,6 +225,33 @@ class Group
     end
   end
 
+  def reset_twitter_account
+    self.twitter_account = { }
+    self.save!
+  end
+
+  def update_twitter_account_with_oauth_token(token, secret, screen_name)
+    self.twitter_account = self.twitter_account ? self.twitter_account : { }
+    self.twitter_account["token"] = token
+    self.twitter_account["secret"] = secret
+    self.twitter_account["screen_name"] = screen_name
+    self.save!
+  end
+
+  def has_twitter_oauth?
+    self.twitter_account && self.twitter_account["token"] && self.twitter_account["secret"]
+  end
+
+  def twitter_client
+      if self.has_twitter_oauth? && (config = Multiauth.providers["Twitter"])
+        TwitterOAuth::Client.new(
+          :consumer_key => config["id"],
+          :consumer_secret => config["token"],
+          :token => self.twitter_account["token"],
+          :secret => self.twitter_account["secret"]
+        )
+      end
+  end
   protected
   #validations
   def set_subdomain
@@ -273,7 +318,7 @@ class Group
          value = self.custom_html[key]
          if value.kind_of?(Hash)
            value.each do |k,v|
-             value[k] = v.gsub(/<*.?script.*?>/, "")
+             value[k] = v.to_s.gsub(/<*.?script.*?>/, "")
            end
          elsif value.kind_of?(String)
            value = value.gsub(/<*.?script.*?>/, "")

@@ -94,7 +94,7 @@ class ApplicationController < ActionController::Base
     @tag_cloud = Question.tag_cloud(scoped_conditions, 25)
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.mobile
       format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
       format.atom
@@ -138,5 +138,10 @@ class ApplicationController < ActionController::Base
   # override from devise
   def after_sign_out_path_for(resource)
     params[:format] == "mobile" ? "/mobile" : root_path
+  end
+
+  def after_sign_in_path_for(resource_or_scope)
+    self.current_user = resource_or_scope
+    super(resource_or_scope)
   end
 end

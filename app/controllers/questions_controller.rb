@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
 
 
   def history
-    @question = current_group.questions.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     respond_to do |format|
       format.html
@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def diff
-    @question = current_group.questions.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     @prev = params[:prev]
     @curr = params[:curr]
     if @prev.blank? || @curr.blank? || @prev == @curr
@@ -61,7 +61,7 @@ class QuestionsController < ApplicationController
 
   def related_questions
     if params[:id]
-      @question = Question.find(params[:id])
+      @question = current_group.questions.by_slug(params[:id])
     elsif params[:question]
       @question = Question.new(params[:question])
       @question.group_id = current_group.id
@@ -76,9 +76,13 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.js do
-        render :json => {:html => render_to_string(:partial => "questions/question",
-                                                   :collection  => @questions,
-                                                   :locals => {:mini => true, :lite => true})}.to_json
+        content = ''
+        if !@questions.empty?
+          content = render_to_string(:partial => "questions/question",
+                           :collection  => @questions,
+                          :locals => {:mini => true, :lite => true});
+        end
+        render :json => {:html => content}.to_json
       end
     end
   end
@@ -245,7 +249,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
-        @question.add_contributor(current_user)
+        @question.add_contributor(@question.user)
 
         sweep_question_views
         Magent::WebSocketChannel.push({id: "newquestion", object_id: @question.id, name: @question.title, channel_id: current_group.slug})
@@ -270,7 +274,14 @@ class QuestionsController < ApplicationController
           flash[:notice] = t(:flash_notice, :scope => "questions.create")
         end
 
-        format.html { redirect_to(question_path(@question)) }
+        format.html {
+          if widget = params[:question][:external_widget]
+            flash[:notice] += I18n.t('widgets.ask_question.view_question', :question => question_path(@question))
+            redirect_to embedded_widget_path(:id => widget)
+          else
+            redirect_to(question_path(@question))
+          end
+        }
         format.json { render :json => @question.to_json(:except => %w[_keywords watchers]), :status => :created}
       else
         @question.errors.add(:captcha, "is invalid") unless recaptcha_valid?
@@ -415,7 +426,7 @@ class QuestionsController < ApplicationController
   end
 
   def close
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = Question.by_slug(params[:id])
 
     if @question.reward && @question.reward.active
       flash[:error] = "this question has an active reward and cannot be closed" # FIXME: i18n
@@ -440,7 +451,7 @@ class QuestionsController < ApplicationController
   end
 
   def open
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     @question.closed = false
     @question.close_reason_id = nil
@@ -460,7 +471,7 @@ class QuestionsController < ApplicationController
   end
 
   def follow
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     @question.add_follower(current_user)
     Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
@@ -476,7 +487,7 @@ class QuestionsController < ApplicationController
   end
 
   def unfollow
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     @question.remove_follower(current_user)
     flash[:notice] = t("questions.unwatch.success")
     respond_to do |format|
@@ -491,13 +502,13 @@ class QuestionsController < ApplicationController
   end
 
   def move
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     render
   end
 
   def move_to
-    @group = Group.find_by_slug_or_id(params[:question][:group])
-    @question = Question.find_by_slug_or_id(params[:id])
+    @group = Group.by_slug(params[:question][:group])
+    @question = @group.questions.by_slug(params[:id])
 
     if @group
       @question.group = @group
@@ -517,7 +528,7 @@ class QuestionsController < ApplicationController
   end
 
   def retag_to
-    @question = Question.by_slug(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     @question.tags = params[:question][:tags]
     @question.updated_by = current_user
@@ -568,7 +579,7 @@ class QuestionsController < ApplicationController
 
 
   def retag
-    @question = Question.by_slug(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     respond_to do |format|
       format.html {render}
       format.js {
@@ -613,7 +624,7 @@ class QuestionsController < ApplicationController
 
   protected
   def check_permissions
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     if @question.nil?
       redirect_to questions_path
@@ -626,7 +637,7 @@ class QuestionsController < ApplicationController
   end
 
   def check_update_permissions
-    @question = current_group.questions.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     allow_update = true
     unless @question.nil?
       if !current_user.can_modify?(@question)
@@ -655,7 +666,7 @@ class QuestionsController < ApplicationController
   end
 
   def check_favorite_permissions
-    @question = current_group.questions.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     unless logged_in?
       flash[:error] = t(:unauthenticated, :scope => "favorites.create")
       respond_to do |format|
@@ -677,7 +688,7 @@ class QuestionsController < ApplicationController
 
 
   def check_retag_permissions
-    @question = Question.find_by_slug_or_id(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
     unless logged_in? && (current_user.can_retag_others_questions_on?(current_group) ||  current_user.can_modify?(@question))
       reputation = @question.group.reputation_constrains["retag_others_questions"]
       if !logged_in?

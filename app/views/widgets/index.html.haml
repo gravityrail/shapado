@@ -8,7 +8,8 @@
       = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist"), :title => t(".mainlist_widgets_title")
     %li.question_widgets
       = link_to t(".question_widgets"), widgets_path(:tab=>"question"), :title => t(".question_widgets_title")
-
+    %li.question_widgets
+      = link_to t(".external_widgets"), widgets_path(:tab=>"external"), :title => t(".external_widgets_title")
 
 %h2.title
   =t(".description")
@@ -28,7 +29,7 @@
               = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up")
               = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
             .clear
-          - unless widget.question_only?
+          - unless widget.question_only? || params[:tab] == 'external'
             .widget_content
               = render :partial => widget.partial_name, :locals => {:widget => widget}
         .clear
@@ -36,7 +37,7 @@
 %h2.title
   =t(".new_widget", :default => "Add new widget")
 
--form_tag widgets_path, :class => "form" do
+-form_tag widgets_path(:tab => params[:tab]), :class => "form" do
   .group
     = select :widget, "_type", Widget.types(params[:tab]).map {|w| [w.sub("Widget", "").titleize, w]}
   .group.navform

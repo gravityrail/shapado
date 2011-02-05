@@ -50,4 +50,4 @@ pt-BR:
       theme: Tema
       widgets: Widgets
     notifications: 
-      message: Se você não quer mais receber as notificações automáticas de %{domain}, altere as suas preferências na página das notificações.
+      message: Se você não quer mais receber as notificações automáticas de %{group}, altere as suas preferências na página das notificações.

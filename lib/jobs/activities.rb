@@ -52,6 +52,25 @@ module Jobs
       if user.comments.count >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
+      if user.notification_opts.comments_to_twitter
+        shortlink = shorten_url(link, answer)
+        author = user
+        title = comment.question.title
+        message = I18n.t('jobs.comments.on_comment.send_twitter',
+                         :question => title, :locale => author.language)
+        status = make_status(message, shortlink, 138)
+        author.twitter_client.update(status)
+      end
+      if group.notification_opts.comments_to_twitter
+        shortlink ||= shorten_url(link, answer)
+        author ||= user
+        title ||= comment.question.title
+        message = I18n.t('jobs.comments.on_comment.group_send_twitter',
+                         :question => title, :user => author.login,
+                         :locale => author.language)
+        status = make_status(message, shortlink, 138)
+        group.twitter_client.update(status)
+      end
     end
 
     def self.on_follow(follower_id, followed_id, group_id)
@@ -75,13 +94,23 @@ module Jobs
     def self.on_unfollow(follower_id, followed_id, group_id)
     end
 
-    def self.on_flag(user_id, group_id)
-      create_badge(User.find(user_id), Group.find(group_id), :token => "citizen_patrol", :unique => true)
+    def self.on_flag(user_id, group_id, reason)
+      group = Group.find(group_id)
+      create_badge(User.find(user_id), group, :token => "citizen_patrol", :unique => true)
+      group.mods_owners.each do |user|
+        if !user.email.blank? && user.notification_opts.activities
+          Notifier.created_flag(user, group, reason).deliver
+        end
+      end
     end
 
     def self.on_rollback(question_id)
       question = Question.find(question_id)
       create_badge(question.updated_by, question.group, :token => "cleanup", :source => question, :unique => true)
+    end
+
+    def self.on_admin_connect(ip, user_id)
+      Notifier.admin_login(ip, user_id).deliver
     end
   end
 end

@@ -48,4 +48,4 @@ gl:
       theme: Tema visual
       widgets: Widgets
     notifications: 
-      message: Se non quere recibir máis notificacións automáticas de %{domain}, cambie as súas preferencias de notificación.
+      message: Se non quere recibir máis notificacións automáticas de %{group}, cambie as súas preferencias de notificación.

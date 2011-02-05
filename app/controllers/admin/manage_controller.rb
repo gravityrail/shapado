@@ -11,7 +11,6 @@ class Admin::ManageController < ApplicationController
        :widgets => :widgets
 
   subtabs :properties => [[:general, "general"],
-                          [:share, "share"],
                           [:rewards, "rewards"],
                           [:constrains, "constrains"],
                           [:theme, "theme"],
@@ -21,6 +20,10 @@ class Admin::ManageController < ApplicationController
                        [:head_tag, "head_tag"],
                        [:head, "head"], [:footer, "footer"],
                        [:top_bar, "top_bar"]]
+  subtabs :social => [[:post_to_twitter, "post_to_twitter"],
+                     [:ask_from_twitter, "ask_from_twitter"],
+                     [:facebook_app, "facebook_app"],
+                     [:twitter_account, "twitter_account"]]
 
   def dashboard
   end
@@ -46,6 +49,9 @@ class Admin::ManageController < ApplicationController
     end
   end
 
+  def social
+    @active_subtab ||= "post_to_twitter"
+  end
   protected
   def check_permissions
     @group = current_group

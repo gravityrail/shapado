@@ -75,9 +75,14 @@ module Jobs
         create_badge(user, group, :token => "inquirer", :source => question, :unique => true)
       end
       if user.notification_opts.questions_to_twitter
-        link = shorten_url(link, question)
-        status = make_status(question.title, link, 138)
+        shortlink = shorten_url(link, question)
+        status = make_status(question.title, shortlink, 138)
         user.twitter_client.update(status)
+      end
+      if group.notification_opts.questions_to_twitter
+        shortlink ||= shorten_url(link, question)
+        status ||= make_status(question.title, shortlink, 138)
+        group.twitter_client.update(status)
       end
     end
 

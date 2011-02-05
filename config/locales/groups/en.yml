@@ -42,6 +42,9 @@ en:
       analytics_engine: Analytics engine
       website_analytics_id: Website Analytics ID
       analytics_legend: The group will be able to use its own tracking code
+    connect_group_to_twitter:
+      success_twitter_connection: Congratulation, you connected your Twitter account successfully!
+      failed_twitter_connection: Sorry, something went wrong. Try again please.
   activerecord:
     models:
       groups: Groups

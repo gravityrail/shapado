@@ -1,33 +1,42 @@
--content_for :subtabs do
-  .navtitle
-    = t(".title", :default => "Search")
+%section
+  = render :partial => "form"
 
-= render :partial => "form"
+  -if params[:q]
+    %h1
+      =@questions.total_entries
+      results where found
+    =form_for :search, @search, :url => search_index_path, :html => {:class => "form"} do |f|
+      =f.hidden_field :query
+      .field
+        =f.label :name, t(".name")
+        =f.text_field :name
+      .buttons
+        =f.submit "Save with this name"
 
-%ul.items#questions
-  -if @questions.empty?
-    %li.box.highlight
-      = t(".empty")
-  -else
-    -@questions.each do |question|
-      = render :partial => "questions/question", :object => question, :locals => {:query_regexp => @query_regexp}
+  %ul.items#questions
+    -if @questions.blank?
+      %li.box.highlight
+        = t(".empty")
+    -else
+      -@questions.each do |question|
+        = render :partial => "searches/question", :object => question, :locals => {:query_regexp => @query_regexp}
 
-= will_paginate @questions unless @questions.empty?
+  = will_paginate @questions unless @questions.blank?
 
--content_for :sidebar do
-  -if @search_text
-    .block
-      %h3
-        = t('.search_text')
-      .content
-        =h @search_text
-  -if @search_tags
-    .block
-      %h3
-        = t('.tags', :default => [:"layout.application.tags", :"activerecord.attributes.user.tags", "tags"])
-      .tag-list
-        %ul
-          -@search_tags.each do |tag|
-            %li
-              %span.tag{:class => "tag_#{h(tag)}"}
-                =link_to h(tag), url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag"
+  -content_for :sidebar do
+    -if @search_text
+      .block
+        %h3
+          = t('.search_text')
+        .content
+          =h @search_text
+    -if @search_tags
+      .block
+        %h3
+          = t('.tags', :default => [:"layout.application.tags", :"activerecord.attributes.user.tags", "tags"])
+        .tag-list
+          %ul
+            -@search_tags.each do |tag|
+              %li
+                %span.tag{:class => "tag_#{h(tag)}"}
+                  =link_to h(tag), url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag"

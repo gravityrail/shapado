@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck
 # Author: Discon
+# Author: Evropi
 el: 
   layouts: 
     application: 
@@ -10,9 +11,9 @@ el:
       forgot: Ξεχάσατε;
       home: Κεντρική
       languages: Γλώσσες
-      log_in: Σύνδεση
+      log_in: Είσοδος
       logged: Συνδεδεμένοι ως %{login}
-      logout: Αποσύνδεση
+      logout: Έξοδος
       manage_ads: Διαχείριση διαφημίσεων
       moderate: Συντονισμός
       now: τώρα!
@@ -48,4 +49,4 @@ el:
       theme: Θέμα
       widgets: Widgets
     notifications: 
-      message: Εάν δεν θέλετε να λαμβάνετε αυτόματες ειδοποιήσεις από το %{domain} πια, αλλάξτε τις προτιμήσεις σας στην σελίδα ειδοποιήσεων.
+      message: Εάν δεν θέλετε να λαμβάνετε αυτόματες ειδοποιήσεις από το %{group} πια, αλλάξτε τις προτιμήσεις σας στην σελίδα ειδοποιήσεων.

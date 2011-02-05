@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @user = Fabricate(:user)
+    @user = User.make
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -22,29 +22,85 @@ describe User do
 
   describe "class methods" do
     describe "User#find_for_authentication" do
+      it "should get the user with his login" do
+        User.find_for_authentication(:email => @user.login).should == @user
+      end
     end
 
     describe "User#find_by_login_or_id" do
+
+      it "should return the user with his login" do
+        User.find_by_login_or_id(@user.login).should == @user
+      end
+
+      it "should return the user with his id" do
+        User.find_by_login_or_id(@user.login).should == @user
+      end
     end
 
     describe "User#find_experts" do
+      it("should return @user") do
+        @user.preferred_languages = ["en", "es", "fr"]
+        @user.save
+        @stat = UserStat.make(:user => @user, :answer_tags => ["tag1"] )
+        User.find_experts(["tag1"]).first.should == @user
+      end
+
+      it("should not return @user") do
+        @user.preferred_languages = ["en", "es", "fr"]
+        @user.save
+        @stat = UserStat.make( :user => @user, :answer_tags => ["tag1"] )
+        User.find_experts(["tag1"], ["en"], {:except => @user.id}).first.should_not == @user
+      end
     end
   end
 
   describe "instance methods" do
     describe "User#membership_list" do
+      it "should" do
+        @user.membership_list
+      end
     end
 
     describe "User#login=" do
+      it "should downcase the login" do
+        @user.login = "MEE"
+        @user.login.should == "mee"
+      end
     end
 
     describe "User#email=" do
+      it "should downcase the email" do
+        @user.email = "ME@example.com"
+        @user.email.should == "me@example.com"
+      end
     end
 
     describe "User#to_param" do
+      it "should return the user id when the login is blank" do
+        @user.login = ""
+        @user.to_param.should == @user.id
+      end
+
+      it "should return the user id when the login have special charts" do
+        @user.login = "jhon@doe"
+        @user.to_param.should == @user.id
+      end
+
+      it "should return the user login if this have wight spaces" do
+        @user.login = "jhon doe"
+        @user.to_param.should == @user.login
+      end
     end
 
     describe "User#add_preferred_tags" do
+      it "should add unique tags" do
+        @group = Group.make( :owner => @user)
+        @user.add_preferred_tags(["a", "a", "b", "c"], @group)
+        @user = User.find(@user.id)
+        @user.config_for(@group).preferred_tags.should == ["a", "b", "c"]
+        @group.destroy
+      end
     end
 
     describe "User#remove_preferred_tags" do

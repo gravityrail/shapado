@@ -18,3 +18,5 @@ en:
         subject: "%{login} added your question as a favorite!"
       report:
         subject: "Report for the group %{group} of %{app}"
+      created_flag:
+        subject: "New post flagged on %{group}"

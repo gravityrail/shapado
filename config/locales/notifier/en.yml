@@ -11,6 +11,11 @@ en:
       message1: "You have earned a %{badge} badge on %{app}"
       message2: "Badge description:"
       message3: "You can see all your badges on your %{user_page}"
+    created_flag:
+      message1: "You are receiving this message because you are a moderator of %{group}."
+      message2: "A post has been reported for the following reason:"
+      message3: "Go to the moderation page to see it:"
+      message4: "Visit the moderation to read about it."
     follow:
       message1: "%{user} is now following your questions and answers on %{app}"
       message2: 'You may follow him back by clicking on the button "Follow" on his %{user_page}'
@@ -37,3 +42,6 @@ en:
       message6: "%{badges} badges were awarded"
       message7: "The account has %{users} users."
       message8: "Visit your group at %{link}"
+    admin_login:
+      subject: "Alert: admin connection"
+      message1: "User %{user} has connected as admin at %{time} with the ip %{ip}."

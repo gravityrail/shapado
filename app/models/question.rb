@@ -61,10 +61,10 @@ class Question
   index :group_id
 
   field :followers_count, :type => Integer, :default => 0
-  references_many :followers, :stored_as => :array, :class_name => "User"
+  references_and_referenced_in_many :followers, :class_name => "User"
 
   field :contributors_count, :type => Integer, :default => 0
-  references_many :contributors, :stored_as => :array, :class_name => "User"
+  references_and_referenced_in_many :contributors, :class_name => "User"
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -97,7 +97,7 @@ class Question
 
   validates_presence_of :title
   validates_presence_of :user
-  validates_uniqueness_of :slug, :scope => :group_id, :allow_blank => true
+  validates_uniqueness_of :slug, :scope => "group_id", :allow_blank => true
 
   validates_length_of       :title,    :in => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
   validates_length_of       :body,     :minimum => 5, :allow_blank => true #, :if => lambda { |q| !q.disable_limits? }

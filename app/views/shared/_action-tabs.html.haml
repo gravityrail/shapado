@@ -5,9 +5,9 @@
     %li
       =link_to "RESPONDER", random_questions_path
     %li
-      =link_to "BUSCAR", search_path
+      =link_to "BUSCAR", search_index_path
 
   %section#questions
     =image_tag("pregunta-icon-big.png")
-    =render :partial => "shared/quick_question_box"
+    =render "shared/quick_question_box"
   .clear

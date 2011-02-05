@@ -4,9 +4,8 @@ class Widget
   identity :type => String
   field :name, :type => String, :required => true
   field :settings, :type => Hash
-
   validate :set_name, :on => :create
-  embedded_in :group, :inverse_of => [:question_widgets, :mainlist_widgets, :welcome_widgets]
+  embedded_in :group, :inverse_of => [:question_widgets, :mainlist_widgets, :welcome_widgets, :external_widgets]
 
   def initialize(*args)
     super(*args)
@@ -14,10 +13,13 @@ class Widget
     self[:name] ||= self.class.to_s.sub("Widget", "").underscore
   end
 
-  def self.types(tab)
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget TagListWidget]
+  def self.types(tab="")
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget]
     if tab == 'question'
-      types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget]
+      types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
+    end
+    if tab == 'external'
+      types += ["AskQuestionWidget"]
     end
     if AppConfig.enable_groups
       types += %w[GroupsWidget TopGroupsWidget]

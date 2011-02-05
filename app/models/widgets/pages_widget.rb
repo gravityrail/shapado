@@ -1,5 +1,5 @@
 class PagesWidget < Widget
-  field :settings, :type => Hash, :default => { :limit => 5}
+  field :settings, :type => Hash, :default => { :limit => 5 }
 
 
   def recent_pages(group)

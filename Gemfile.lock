@@ -1,11 +1,16 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: e75eb247a688d2a5ddb8e1b8f39828ffc5afed45
+  revision: 143922d53b2189a77d63c3d9fa1510d52f166960
   specs:
     mongoid_ext (0.6.0)
       i18n (~> 0.4.1)
+      i18n (~> 0.4.1)
       mongoid (~> 2.0.0.beta.20)
+      mongoid (~> 2.0.0.beta.20)
+      mongoid_ext
       tzinfo (~> 0.3)
+      tzinfo (~> 0.3)
+      uuidtools (>= 2.1.1)
       uuidtools (>= 2.1.1)
 
 GIT
@@ -17,8 +22,7 @@ GIT
 
 GIT
   remote: http://github.com/dcu/multiauth.git
-  revision: fb04b6742faa2443aa8a81164c2da5ddd19e6ab5
-  ref: fb04b6742
+  revision: 94f512aaeb8cf9b9dc1d592e5a38e0b8349ea0b7
   specs:
     multiauth (0.2.7)
       omniauth
@@ -26,60 +30,57 @@ GIT
 
 GIT
   remote: http://github.com/plataformatec/devise.git
-  revision: 09a46695f2437ec73e16a7c0d38e934a0e8e6c5a
-  ref: 09a46695
-  branch: omniauth
+  revision: 68f699bfd4d027e77fd8b8f8969cf951d9f3f550
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
-      orm_adapter (~> 0.0.2)
-      warden (~> 1.0.0)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
 
 GEM
   remote: http://rubygems.org/
   specs:
     ZenTest (4.4.2)
+    aaronh-chronic (0.3.9)
     abstract (1.0.0)
-    actionmailer (3.0.1)
-      actionpack (= 3.0.1)
-      mail (~> 2.2.5)
-    actionpack (3.0.1)
-      activemodel (= 3.0.1)
-      activesupport (= 3.0.1)
+    actionmailer (3.0.3)
+      actionpack (= 3.0.3)
+      mail (~> 2.2.9)
+    actionpack (3.0.3)
+      activemodel (= 3.0.3)
+      activesupport (= 3.0.3)
       builder (~> 2.1.2)
       erubis (~> 2.6.6)
-      i18n (~> 0.4.1)
+      i18n (~> 0.4)
       rack (~> 1.2.1)
-      rack-mount (~> 0.6.12)
-      rack-test (~> 0.5.4)
+      rack-mount (~> 0.6.13)
+      rack-test (~> 0.5.6)
       tzinfo (~> 0.3.23)
-    activemodel (3.0.1)
-      activesupport (= 3.0.1)
+    activemodel (3.0.3)
+      activesupport (= 3.0.3)
       builder (~> 2.1.2)
-      i18n (~> 0.4.1)
-    activerecord (3.0.1)
-      activemodel (= 3.0.1)
-      activesupport (= 3.0.1)
-      arel (~> 1.0.0)
+      i18n (~> 0.4)
+    activerecord (3.0.3)
+      activemodel (= 3.0.3)
+      activesupport (= 3.0.3)
+      arel (~> 2.0.2)
       tzinfo (~> 0.3.23)
-    activeresource (3.0.1)
-      activemodel (= 3.0.1)
-      activesupport (= 3.0.1)
-    activesupport (3.0.1)
-    addressable (2.2.2)
-    arel (1.0.1)
-      activesupport (~> 3.0.0)
+    activeresource (3.0.3)
+      activemodel (= 3.0.3)
+      activesupport (= 3.0.3)
+    activesupport (3.0.3)
+    addressable (2.2.3)
+    arel (2.0.7)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
-    bcrypt-ruby (2.1.2)
-    bson (1.1.2)
-    bson_ext (1.1.2)
+    bcrypt-ruby (2.1.4)
+    bson (1.2.0)
+    bson_ext (1.2.0)
     builder (2.1.2)
-    compass (0.10.6.pre.1)
+    compass (0.10.6)
       haml (>= 3.0.4)
     compass-colors (0.3.1)
       compass (>= 0.8.7)
-    cronedit (0.3.0)
     daemons (1.0.10)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
@@ -91,31 +92,34 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
-    fabrication (0.9.4)
-    fancy-buttons (0.5.5)
-      compass (>= 0.10.0)
-      haml (>= 3.0.2)
-    faraday (0.5.3)
+    faker (0.9.4)
+      i18n (~> 0.4)
+    fancy-buttons (1.0.6)
+      compass (= 0.10.6)
+    faraday (0.5.4)
       addressable (~> 2.2.2)
-      multipart-post (~> 1.0.1)
+      multipart-post (~> 1.1.0)
       rack (>= 1.1.0, < 2)
-    ffi (1.0.1)
+    ffi (1.0.5)
       rake (>= 0.8.7)
     gem_plugin (0.2.3)
     goalie (0.0.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
-    haml (3.0.24)
+    haml (3.0.25)
     hpricot (0.8.3)
     i18n (0.4.2)
-    json (1.4.6)
+    json (1.5.0)
+    machinist (1.0.6)
+    machinist_mongo (1.2.0)
+      machinist (~> 1.0.6)
     magent (0.5.2)
       em-websocket
       mongo
       uuidtools
     magic (0.2.6)
       ffi (>= 0.6.3)
-    mail (2.2.12)
+    mail (2.2.14)
       activesupport (>= 2.3.6)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -123,18 +127,18 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
-    mongo (1.1.2)
-      bson (>= 1.1.1)
-    mongoid (2.0.0.beta.20)
+    mongo (1.2.0)
+      bson (>= 1.2.0)
+    mongoid (2.0.0.rc.6)
       activemodel (~> 3.0)
-      mongo (~> 1.1)
+      mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
     multi_json (0.0.5)
-    multipart-post (1.0.1)
+    multipart-post (1.1.0)
     net-ldap (0.1.1)
     niftier-generators (0.1.2)
     nokogiri (1.4.4)
@@ -162,7 +166,7 @@ GEM
       rack-openid (~> 1.2.0)
       ruby-openid-apps-discovery
     oauth (0.4.4)
-    oauth2 (0.1.0)
+    oauth2 (0.1.1)
       faraday (~> 0.5.0)
       multi_json (~> 0.0.4)
     omniauth (0.1.6)
@@ -171,7 +175,7 @@ GEM
       oa-enterprise (= 0.1.6)
       oa-oauth (= 0.1.6)
       oa-openid (= 0.1.6)
-    orm_adapter (0.0.3)
+    orm_adapter (0.0.4)
     polyglot (0.3.1)
     pyu-ruby-sasl (0.0.3.2)
     rack (1.2.1)
@@ -182,22 +186,23 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-recaptcha (0.2.2)
       json
-    rack-test (0.5.6)
+    rack-test (0.5.7)
       rack (>= 1.0)
-    rails (3.0.1)
-      actionmailer (= 3.0.1)
-      actionpack (= 3.0.1)
-      activerecord (= 3.0.1)
-      activeresource (= 3.0.1)
-      activesupport (= 3.0.1)
-      bundler (~> 1.0.0)
-      railties (= 3.0.1)
-    railties (3.0.1)
-      actionpack (= 3.0.1)
-      activesupport (= 3.0.1)
-      rake (>= 0.8.4)
-      thor (~> 0.14.0)
+    rails (3.0.3)
+      actionmailer (= 3.0.3)
+      actionpack (= 3.0.3)
+      activerecord (= 3.0.3)
+      activeresource (= 3.0.3)
+      activesupport (= 3.0.3)
+      bundler (~> 1.0)
+      railties (= 3.0.3)
+    railties (3.0.3)
+      actionpack (= 3.0.3)
+      activesupport (= 3.0.3)
+      rake (>= 0.8.7)
+      thor (~> 0.14.4)
     rake (0.8.7)
+    rcov (0.9.9)
     rdiscount (1.6.5)
     remarkable (4.0.0.alpha4)
       rspec (>= 2.0.0.alpha11)
@@ -208,19 +213,19 @@ GEM
       remarkable_activemodel (>= 4.0.0.alpha2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rspec (2.3.0)
-      rspec-core (~> 2.3.0)
-      rspec-expectations (~> 2.3.0)
-      rspec-mocks (~> 2.3.0)
-    rspec-core (2.3.0)
-    rspec-expectations (2.3.0)
+    rspec (2.4.0)
+      rspec-core (~> 2.4.0)
+      rspec-expectations (~> 2.4.0)
+      rspec-mocks (~> 2.4.0)
+    rspec-core (2.4.0)
+    rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.3.0)
-    rspec-rails (2.3.0)
+    rspec-mocks (2.4.0)
+    rspec-rails (2.4.1)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
-      rspec (~> 2.3.0)
+      rspec (~> 2.4.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
@@ -231,6 +236,7 @@ GEM
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
     sexp_processor (3.0.5)
+    smart_asset (0.5.4)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -240,38 +246,41 @@ GEM
       json (>= 1.1.9)
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
-    tzinfo (0.3.23)
+    tzinfo (0.3.24)
     uuidtools (2.1.1)
     warden (1.0.3)
       rack (>= 1.0.0)
     whatlanguage (1.0.0)
+    whenever (0.6.2)
+      aaronh-chronic (>= 0.3.9)
+      activesupport (>= 2.3.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   autotest
-  bson (= 1.1.2)
-  bson_ext (= 1.1.2)
-  compass (= 0.10.6.pre.1)
+  bson (= 1.2.0)
+  bson_ext (= 1.2.0)
+  compass (= 0.10.6)
   compass-colors (= 0.3.1)
-  cronedit
   database_cleaner
   devise!
   differ (= 0.1.1)
   dynamic_form
   em-websocket (~> 0.1.4)
   eventmachine (~> 0.12.10)
-  fabrication
-  fancy-buttons (= 0.5.5)
+  faker
+  fancy-buttons (= 1.0.6)
   goalie (~> 0.0.4)
   haml
   hpricot
+  machinist_mongo
   magent (= 0.5.2)
   magic
   mechanize
-  mongo (= 1.1.2)
-  mongoid (= 2.0.0.beta.20)
+  mongo (= 1.2.0)
+  mongoid (= 2.0.0.rc.6)
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
@@ -280,7 +289,8 @@ DEPENDENCIES
   omniauth (~> 0.1.6)
   orm_adapter
   rack-recaptcha (= 0.2.2)
-  rails (= 3.0.1)
+  rails (= 3.0.3)
+  rcov
   rdiscount (= 1.6.5)
   remarkable_mongoid (>= 0.5.0)
   rspec (>= 2.0.1)
@@ -288,8 +298,10 @@ DEPENDENCIES
   ruby-stemmer (~> 0.8.2)
   ruby_parser
   sanitize (= 1.2.1)
+  smart_asset
   twitter-text (= 1.1.8)
   twitter_oauth
   uuidtools (= 2.1.1)
   whatlanguage (= 1.0.0)
+  whenever
   will_paginate!

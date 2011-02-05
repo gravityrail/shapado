@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.3'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -19,20 +19,22 @@ end
 
 # ui
 gem "haml"
-gem 'compass', '0.10.6.pre.1'
+gem 'compass', '0.10.6'
 gem "compass-colors", "0.3.1"
-gem "fancy-buttons", "0.5.5"
+gem "fancy-buttons", "1.0.6"
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
-# mongodb
-gem 'bson', '1.1.2'
-gem 'bson_ext', '1.1.2'
 
-gem 'mongo', '1.1.2'
-gem 'mongoid', '2.0.0.beta.20'
+# mongodb
+gem 'bson', '1.2.0'
+gem 'bson_ext', '1.2.0'
+
+gem 'mongo', '1.2.0'
+gem 'mongoid', '2.0.0.rc.6'
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils
 
+gem 'smart_asset'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "2.1.1"
 gem "magent", "0.5.2"
@@ -49,27 +51,29 @@ gem "twitter_oauth"
 
 # authentication
 gem 'omniauth', '~> 0.1.6'
-gem 'multiauth', :git => "http://github.com/dcu/multiauth.git", :ref => "fb04b6742"
+gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 
 gem 'orm_adapter'
-gem 'devise', :git => 'http://github.com/plataformatec/devise.git', :branch => 'omniauth', :ref => "09a46695"
+gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
+
+gem 'whenever', :require => false
 
 
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
   gem 'em-websocket', '~> 0.1.4'
-  gem 'cronedit'
 end
 
 group :test do
-  gem "fabrication"
+  gem 'machinist_mongo', :require => 'machinist/mongoid'
+  gem 'faker'
+  gem 'rcov'
   gem "autotest"
 end
 
 group :development do
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
-  gem "fabrication"
   gem "rspec-rails", ">= 2.0.1"
   gem "remarkable_mongoid", ">= 0.5.0"
   gem 'hpricot'

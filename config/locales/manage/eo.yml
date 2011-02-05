@@ -3,10 +3,17 @@
 # Export driver: syck
 # Author: Darkweasel
 # Author: McDutchie
+# Author: Mihxil
 eo: 
   admin: 
     manage: 
       content: 
+        footer: Paĝopiedo
+        head: kapo
+        question_help: Helpo pri demandado
+        question_prompt: Invito pri demando
+        title: Propra enhavo
+        top_bar: Supra breto
         top_bar_tip: Enigu po unu ligilon en linion
       properties: 
         constrains: 
@@ -14,6 +21,7 @@ eo:
           reputation_constrains_subtitle: Listo de reputaci-necesaĵoj por ĉiu ago
           title: Necesaĵoj
         domain: 
+          description: "Estas eble mapigi vian retejon tiel ke ĝi alireblas per via propra domajno. Tion vi aranĝas jene:"
           instruction1: Por fari tion, vi unue ensalutu ĉe via domajnprovizisto. Tio estas la paĝaro, kie vi aĉetis vian domajnon, ekzemple %{subdomain}.com.
           instruction2: Tie vi iru al la DNS-parto kaj kreu CNAME-on.
           instruction3: Elektu 'www' aŭ ion alian kiel nomon de via CNAME.
@@ -30,15 +38,20 @@ eo:
           title: Rekompencoj
         share: 
           add_tags: Aldoni etikedojn al viaj pepaĵoj
+          application_id: Aplikaĵa identigilo
           asking_from_twitter: Demandi per Twitter
           ends_with_example: "ekz. #shapado"
           facebook_app: Facebook-programagordoj
+          question_asked_to: Demando demandita al
           question_must_include: La demando devas enhavi la jenan etikedon por esti sendata al Twitter
           question_must_include_example: "ekz. #miDemandas"
           secret_key: Sekreta ŝlosilo
           starts_with_example: "ekz. #qa"
           title: Disvastigi
           title_on_dlvr: Disvastigi ĉe dlvr.it
+          tweet_ends_with: Almeti etikedon al viaj pepoj
+          tweet_starts_with: Antaŭmetu etikedon antaŭ viajn pepojn.
           twitter_account: La Twitter-konto, al kiu uzantoj demandos.
         theme: 
+          logo_legend: Alŝuti emblemon por via grupo. Ĝi estu malpli granda ol 2MB.
           title: Agordi la aspekton de la grupo

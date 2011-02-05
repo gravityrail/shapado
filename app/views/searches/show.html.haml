@@ -1,0 +1,9 @@
+= render "shared/content-nav", :questions_link => search_path(@search)
+
+Searching:
+= @search.query
+
+=link_to "delete", search_path(@search), :method => :delete
+
+%section
+  = render 'shared/posts'

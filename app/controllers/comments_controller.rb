@@ -13,16 +13,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new
-    @comment.body = params[:body]
+    @comment.body = params[:comment][:body]
     @comment.user = current_user
-    @comment.position = params[:comment][:position]
 
     current_scope << @comment
 
     if @comment.valid? && saved = (@comment.save && scope.save)
       current_user.on_activity(:comment_question, current_group)
+      link = question_url(@question)
 
-      Jobs::Activities.async.on_comment(scope.id, scope.class.to_s, @comment.id).commit!
+      Jobs::Activities.async.on_comment(scope.id, scope.class.to_s, @comment.id, link).commit!
       Jobs::Mailer.async.on_new_comment(scope.id, scope.class.to_s, @comment.id).commit!
 
       if question_id = @comment.question_id
@@ -129,7 +129,7 @@ class CommentsController < ApplicationController
   end
 
   def find_scope
-    @question = Question.by_slug(params[:question_id])
+    @question = current_group.questions.by_slug(params[:question_id])
     @answer = @question.answers.find(params[:answer_id]) unless params[:answer_id].blank?
   end
 

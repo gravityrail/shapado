@@ -41,7 +41,7 @@
               %li
                 = link_to "Pages", pages_path
 
-        = tag_cloud([], {}, 50)
+        =render "widgets/tag_cloud", :widget => TagCloudWidget.new
 
         .widget-networks.module
           %p  Siguenos y comparte:
