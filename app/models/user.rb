@@ -64,7 +64,6 @@ class User
 
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
-  references_many :comments, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
 
