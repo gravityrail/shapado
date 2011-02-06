@@ -68,7 +68,7 @@
       %section.content-panel
         = render "shared/action-tabs"
 
-        #main-content-wrap
+        #main-content-wrap{:class => @active_tab}
           = yield
           .clear
 
