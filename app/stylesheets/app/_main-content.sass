@@ -2,12 +2,12 @@
 //    Document   	:   _action-tabs.sass
 //    Created on 	:   Nov16 - 2010, 21:06 pm
 //    Author      	:   @dgfrancisco
-//    Client     		:   Shapado
+//    Client     	:   Shapado
 //    Description	:   Estilos para los tabs de contenido con sus filtros
 //======================================================================== 
-
 // MAIN CONTENT - Questions
 //========================================================================      
+
 #main-content-wrap, .users-main-content
   section
     width: 100%
@@ -27,7 +27,6 @@
       h2
         font-size: 15px
         padding-left: 20px 
-        background: url("/images/q-icon-small.gif") 0 2px  no-repeat 
         margin: 0 0 5px 0
         a
           color: $dark
@@ -68,6 +67,10 @@
               background-color: #fff
               color: #000
           li.votes
+            width: 130px
+            .vote-up-form
+              width: auto !important
+              float: left
             a
               background: none
               padding: 0
@@ -84,17 +87,30 @@
             a:hover
               background-color: #ccc
               color: #000
-              
+.questions
+  section 
+    article 
+      h2
+        background: url("/images/q-icon-small.gif") 0 2px  no-repeat !important
+
+.answers 
+  section 
+    article 
+      h2
+        background: url("/images/ans-icon-small.gif") 0 1px  no-repeat !important
+      p
+        padding-left: 20px
+        margin-bottom: 5px
+        background: url("/images/q-icon-small.gif") 0 2px  no-repeat !important
+
+.unanswered 
+  section 
+    article 
+      h2
+        background: url("/images/q-icon-small.gif") 0 2px  no-repeat !important
+
+
 // MAIN CONTENT - Users zone
 //========================================================================           
-.users-main-content
+.users
   border: 0px !important
-  h2
-    background: url("/images/ans-icon-small.gif") 0 1px  no-repeat !important 
-  p
-    margin: 0 0 10px 0
-    padding: 0 0 0 20px
-    background: url("/images/q-icon-small.gif") 0 2px  no-repeat 
-    a
-      color: #000
-      font-weight: bold

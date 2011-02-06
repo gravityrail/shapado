@@ -69,8 +69,8 @@
               =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user) 
       .clear 
 
-    #main-content-wrap{:class => @active_tab}
-      %nav.answers
+    #main-content-wrap.answers{:class => @active_tab}
+      %nav{:class => @active_subtab }
         %ul.content-tabs
           %li.questions
             = link_to "Preguntas", user_path(@user, params.merge(:a_sort=>"newest")), :rel => "nofollow"
