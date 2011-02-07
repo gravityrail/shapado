@@ -64,17 +64,6 @@ class Answer
     ok
   end
 
-  def check_unique_answer
-    check_answer = Answer.where({:question_id => self.question_id,
-                                 :group_id => self.group_id,
-                               :user_id => self.user_id}).first
-
-    if !check_answer.nil? && check_answer.id != self.id
-      self.errors.add(:limitation, "Your can only post one answer by question.")
-      return false
-    end
-  end
-
   def on_add_vote(v, voter)
     if v > 0
       self.user.update_reputation(:answer_receives_up_vote, self.group)
@@ -98,7 +87,6 @@ class Answer
   def flagged!
     self.increment(:flags_count => 1)
   end
-
 
   def ban
     self.question.answer_removed!
@@ -126,6 +114,16 @@ class Answer
 
   def disable_limits?
     self.user.present? && self.user.can_post_whithout_limits_on?(self.group)
+  end
+
+  def check_unique_answer
+    if Answer.where(:question_id => self.question_id,
+                    :user_id => self.user_id,
+                    :_id.ne => self.id).count > 0
+      self.errors.add(:limitation, "Your can only post one answer by question.")
+      return false
+    end
+    return true
   end
 
   def disallow_spam
