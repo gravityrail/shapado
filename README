@@ -41,6 +41,15 @@ sudo gem install bundler
 
     rails server -e development
 
+== Postfix config
+
+add the following text to /etc/aliases
+    shapado: "|/usr/local/bin/rvm 1.9.2 exec PATH/to/shapado/script/handle_email"
+
+then type
+    sudo newaliases
+
+
 
 Follow us on:
 

@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+
+ENV["RAILS_ENV"] ||= (ARGV[0] || "development")
+
+require File.expand_path("../../config/environment", __FILE__)
+require 'mail'
+
+emails_dir = "#{Rails.root}/tmp/emails"
+
+Dir.glob(emails_dir+"/*") do |path|
+  subdomain = File.basename(path)
+  group = Group.where(:subdomain => subdomain).first
+  if group.nil?
+    next
+  end
+
+  Dir.glob(path+"/*") do |email_info|
+    info = JSON.load(File.read(email_info))
+    user = User.where(:email => info["user_email"]).first
+
+    if user.nil?
+      puts "user with email #{info["user_email"]} was not found"
+      next
+    end
+
+    if info["question_id"] # Answer
+      question = group.questions.find(info["question_id"])
+      puts "Creating answer on #{group.name}: #{question.title.inspect}"
+
+      question.answers.create!(:body => info["body"], :user => user,
+                               :group => group, :created_at => info["created_at"])
+    else # Question
+      puts "Creating question on #{group.name}: #{info["title"].inspect}"
+
+      Question.create!(:body => info["body"], :title => info["title"],
+                       :created_at => info["created_at"], :user => user,
+                       :group => group)
+    end
+
+#     File.unlink(email_info)
+  end
+end
