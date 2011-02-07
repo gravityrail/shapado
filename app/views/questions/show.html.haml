@@ -35,7 +35,8 @@
   .description.markdown
     = question_body
     -if AppConfig.mailing && AppConfig.mailing["activate"]
-      = mail_to "#{AppConfig.mailing["user"]}+#{current_group.id}-#{@question.id}@#{current_group.domain}"
+      answer by email:
+      = mail_to @question.email
     = render "reward_info"
     .clear
 

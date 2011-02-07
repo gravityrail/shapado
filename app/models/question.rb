@@ -127,6 +127,10 @@ class Question
     Question.minimal.without(:comments).where(:"follow_up.original_question_id" => self.id)
   end
 
+  def email
+    "#{AppConfig.mailing["user"]}+#{self.group.subdomain}-#{self.id}@#{self.group.domain}"
+  end
+
   def first_tags
     tags[0..5]
   end
