@@ -25,7 +25,8 @@ class Notifier < ActionMailer::Base
 
     mail(:to => user.email, :from => from_email(group),
          :subject => @subject,
-         :date => Time.now) do |format|
+         :date => Time.now,
+         :reply_to => question_email(@group, @question)) do |format|
       format.text
       format.html
     end
@@ -208,5 +209,9 @@ class Notifier < ActionMailer::Base
                else
                  I18n.locale
                end
+  end
+
+  def question_email(group, question)
+    #{AppConfig.mailing["user"]}+#{group.id}-#{question.id}@#{group.domain}
   end
 end
