@@ -2,7 +2,7 @@
 //    Document   	:   _action-tabs.sass
 //    Created on 	:   Nov16 - 2010, 21:06 pm
 //    Author      	:   @dgfrancisco
-//    Client     		:   Shapado
+//    Client     	:   Shapado
 //    Description	:   Estilos para los tabs de contenido con sus filtros
 //======================================================================== 
 
@@ -12,28 +12,7 @@
   background-color: #fff
   border: 1px solid #e5e5e5
   overflow: hidden
-  nav.questions
-    li.questions
-      a
-        border-bottom: 2px solid $orange
-        color: #000
-  nav.unanswered
-    ul.content-tabs
-      border-bottom: 1px solid $blue
-      li.unanswered
-        a
-          border-bottom: 2px solid $blue
-          color: #000
-    .filters
-      ul
-        background-color: $lightBlue
-        border-bottom: 3px solid #a3e7eb
-        li.active
-          a
-            color: #000
-            border-bottom: 3px solid $blue
   ul.content-tabs
-    border-bottom: 1px solid $orange
     height: 35px
     li
       float: left
@@ -47,39 +26,28 @@
         color: #999
       a:hover
         color: #000
-    li.answers
-      a
-        background: url("/images/ans-icon-medium.gif") 7px 50%  no-repeat
-    li.unanswered
-      a
-        background: url("/images/noans-icon-medium.gif") 7px 50%  no-repeat
-    li.activity
-      a
-        background: url("/images/activity-iacon.gif") 7px 50%  no-repeat 
-  
-  //Filter
-  //======================================================================
+    li.answers a
+      background: url("/images/ans-icon-medium.gif") 7px 50%  no-repeat
+    li.unanswered a
+      background: url("/images/noans-icon-medium.gif") 7px 50%  no-repeat
+    li.activity a
+      background: url("/images/activity-iacon.gif") 7px 50%  no-repeat 
+        
   .filters
     width: 100%
     ul
-      background-color: $lightOrange
       height: 28px
-      border-bottom: 3px solid #ffd3b5
       width: 100%
       display: block
       header
         float: left
         display: inline     
-        padding: 8px
+        padding: 8px 10px
         font-weight: bold 
-      li.active
-        a
-          color: #000
-          border-bottom: 3px solid $orange
       li
         float: left
         display: inline
-        border: none
+        border: none       
         a
           display: block
           padding: 9px 6px 7px 6px
@@ -87,5 +55,76 @@
           color: #999
           font-size: 12px
           border-bottom: 2px solid transparent
-        a:hover
-          color: #000
+          &:hover
+            color: #000
+    
+.questions
+  ul.content-tabs
+    border-bottom: 1px solid $orange
+    a:hover
+      border-bottom: 2px solid $orange !important
+    li.questions a
+      border-bottom: 2px solid $orange !important    
+      background-color: $lightOrange !important
+      color: #000 !important
+  .filters ul
+    border-bottom: 3px solid #ffd3b5
+    background-color: $lightOrange
+    a:hover
+      border-bottom: 3px solid $orange !important
+  .newest li.newest a, .hot li.hot a, .votes li.votes a
+    border-bottom: 3px solid $orange !important
+    color: #000 !important
+      
+.answers    
+  ul.content-tabs
+    border-bottom: 1px solid $blue
+    a:hover
+      border-bottom: 2px solid $blue !important    
+    li.answers a
+      border-bottom: 2px solid $blue !important 
+      background-color: $lightBlue !important
+      color: #000 !important
+  .filters ul
+    border-bottom: 3px solid #caedef
+    background-color: $lightBlue
+    a:hover
+      border-bottom: 3px solid $blue !important    
+  .newest li.newest a, .hot li.hot a, .votes li.votes a
+    border-bottom: 3px solid $blue !important
+    color: #000 !important    
+    
+.unanswered    
+  ul.content-tabs
+    border-bottom: 1px solid $blue
+    a:hover
+      border-bottom: 2px solid $blue !important
+    li.unanswered a
+      border-bottom: 2px solid $blue !important
+      background-color: $lightBlue !important
+      color: #000 !important
+  .filters ul
+    border-bottom: 3px solid #caedef
+    background-color: $lightBlue
+    a:hover
+      border-bottom: 3px solid $blue !important        
+  .newest li.newest a, .hot li.hot a, .votes li.votes a
+    border-bottom: 3px solid $blue !important
+    color: #000 !important    
+    
+.activity
+  ul.content-tabs
+    border-bottom: 1px solid $dark
+    li.activity a
+      border-bottom: 2px solid $dark !important
+      background-color: $lightGray !important
+      color: #000 !important
+  .filters ul
+    border-bottom: 3px solid #ccc
+    background-color: $lightGray
+    a:hover
+      border-bottom: 3px solid $dark !important        
+  .newest li.newest a, .hot li.hot a, .votes li.votes a
+    border-bottom: 3px solid $dark !important
+    color: #000 !important    
+        

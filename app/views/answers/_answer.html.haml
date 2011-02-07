@@ -1,15 +1,11 @@
 -title = answer.question.title
 
-%li.item
-  / Question Stats
-  .stats
-    .box.votes
-      .counter{:class => class_for_number(answer.votes_average) }
-        =format_number(answer.votes_average)
-      .text
-        =t(:votes, :scope => "activerecord.attributes.question")
-  / Question Summary
-  .summary
-    %h3
-      = link_to truncate(answer.body, :length => 200), question_path(answer.question), :title => title
+%article.answer
+  %h2
+    = link_to truncate(answer.body, :length => 200), question_path(answer.question), :title => title
+  %p
+    Esta es deberia ser la pregunta a la cual la respuesta pertenece  
+    
+  =format_number(answer.votes_average)
+  =t(:votes, :scope => "activerecord.attributes.question")
   .clear

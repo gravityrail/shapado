@@ -20,11 +20,11 @@
       %section.left-panel
         .brand
           %h1
-            -if current_group.has_logo?
-              =link_to image_tag(logo_path(current_group), :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
-            -else
-              = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
-              %small Simplemente &nbsp;&nbsp;&nbsp; &nbsp; Pregunta
+            // Im comment this just to not see the app broken :) you can uncomment without problem	
+            //-if current_group.has_logo?
+            //=link_to image_tag(logo_path(current_group), :class => "group_logo", :width => current_group.logo_info["width"], :height => current_group.logo_info["height"]), domain_url(:custom => current_group.domain)
+            //-else
+            = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
 
         = render "shared/user-zone"
 
@@ -68,7 +68,7 @@
       %section.content-panel
         = render "shared/action-tabs"
 
-        #main-content-wrap
+        #main-content-wrap{:class => @active_tab}
           = yield
           .clear
 

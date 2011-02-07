@@ -1,4 +1,4 @@
-%nav
+%nav{:class => @active_tab}
   %ul.content-tabs
     %li.questions
       =link_to t("layouts.application.questions"), questions_link
@@ -6,8 +6,7 @@
       =link_to "Respuestas", url_for(:answers => 1)
     %li.unanswered
       =link_to t("layouts.application.unanswered"), url_for(:unanswered => 1)
-    %li.activity
-      =link_to "Activity", "#"
+
 
   %section.filters{:class => @active_subtab }
     %ul

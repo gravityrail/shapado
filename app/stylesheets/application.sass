@@ -6,12 +6,17 @@
 //    Description	:   Estilos de la aplicacion y los llamados a reset y el setup basico del portal
 //========================================================================
 
+// BASIC SETUP
+//========================================================================
+//    Description	:   Definiciones globales de variables, colore, degradados, sombras, transformaciones, etc
+@import "setup"
+
+
 // BASIC STYLES
 //========================================================================
-@import "setup"
+//    Description	:   Limpieza de Etiquetas html
 @import "lib/reset"
 
-@import "app/badges"
 
 // BASIC LAYOUT
 //========================================================================
@@ -23,6 +28,7 @@
 //========================================================================
 //    Description	:   Estilos para las zonas de ususario y los modulos nuevos al logearce
 @import "app/user-side"
+//@import "superfish"
 
 
 // WIDGETS
@@ -39,14 +45,16 @@
 
 // MAIN CONTENT TABS
 //========================================================================
-//    Description	:   Estilos para los tabs de contenido con sus filtros
+//    Description	:   Estilos para los tabs de contenido con sus filtros, no su contenido
 @import "app/main-tabs"
+
 
 // MAIN CONTENT
 //========================================================================
 //    Description	:   Estilos para los contenidos del home
 @import "app/main-content"
 
+	
 // QUESTION CONTENT
 //========================================================================
 //    Description	:   Estilos para los despliegues de preguntas
@@ -65,5 +73,15 @@
 @import "markdown_editor"
 
 
-@import "navigation"
-@import "superfish"
+// BADGES
+//========================================================================
+//    Description	:   Estilos para cada badge
+@import "app/badges"
+	
+	
+	
+	
+	
+	
+//@import "navigation"
+

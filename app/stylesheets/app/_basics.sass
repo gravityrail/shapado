@@ -2,10 +2,10 @@
 //    Document   	:   _basic.sass
 //    Created on 	:   Nov16 - 2010, 20:57 pm
 //    Author      	:   @dgfrancisco
-//    Client     		:   Shapado
-//    Description	:   Todos los estilos muy generales de la app, diagramacion, modulos laterales, mensajes, paginacion, publicidad, brand
+//    Client            :   Shapado
+//    Description	:   Todos los estilos muy generales de la app, diagramacion, 
+//                          modulos laterales, mensajes, paginacion, publicidad, brand
 //========================================================================
-
 body
   background: $background url("/images/back-site.gif") 0 0
 
@@ -17,12 +17,13 @@ strong.highlight
   color: $highlightFg
   padding: 2px
 
-
 // Diagramacion
 //========================================================================
 section
   float: left
 
+
+//Each column in the app
 section.left-panel
   width: 17%
   display: inline
@@ -39,6 +40,7 @@ section.right-panel
   width: 25%
   display: inline
   overflow: hidden
+
 
 footer
   clear: both
@@ -76,7 +78,8 @@ footer
       color: #000
       border-bottom: 1px dotted
 
-// Panels para las columnas laterales
+
+// Panels - General panel for widgets or modules
 //========================================================================
 .module
   +normal-radius
@@ -90,6 +93,7 @@ footer
     padding-bottom: 7px
     border-bottom: 1px solid #ddd
 
+//Clean ups depending the column where the module is
 section.right-panel
   .module
     border: 1px solid #ccc
@@ -140,7 +144,8 @@ section.right-panel
     a:hover
       border-bottom: 1px dotted
 
-// Messages
+
+// App Messages
 //========================================================================
 .message
   text-align: center
@@ -148,10 +153,19 @@ section.right-panel
   font-weight: bold
   padding: 10px 0 0 0 !important
   text-shadow: $text-shadow
+
+// Error Message
 .error
   color: #fff
   +error-gradient
   +box-shadow
+
+//Any notice type message
+.notice
+  color: #fff
+  +blue-gradient
+  +box-shadow
+
 
 //Pagination
 //========================================================================
@@ -178,6 +192,7 @@ section.right-panel
     padding: 1px 5px
     +small-radius
 
+
 // Adds
 //========================================================================
 .add
@@ -191,16 +206,13 @@ section.right-panel
   img
     margin: 0 auto
 
+
 // Brand
 //========================================================================
 .brand
-  text-align: right
-  padding: 10px 0
-  position: relative
-  small
-    font-size: 12px
-    position: absolute
-    color: $gray
-    top: 52px
-    right: 25px
-
+  h1
+    a
+      display: block
+      padding: 10px 0 5px 0
+      img
+        margin: 0 auto
