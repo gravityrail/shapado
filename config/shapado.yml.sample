@@ -37,6 +37,10 @@ base: &common
     key: twitter api key
     secret: twitter secret key
 
+  mailing:
+    activate: false
+    user: app
+
   recaptcha:
     activate: true
     public_key: your public key
