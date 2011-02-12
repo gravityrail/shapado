@@ -22,7 +22,7 @@ class Group
   index :domain
   field :legend, :type => String
   field :description, :type => String
-  field :default_tags, :type => Array
+  field :default_tags, :type => Array, :default => []
   field :has_custom_ads, :type => Boolean, :default => true
   field :state, :type => String, :default => "pending" #pending, active, closed
   field :isolate, :type => Boolean, :default => false
