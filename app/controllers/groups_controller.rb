@@ -16,16 +16,16 @@ class GroupsController < ApplicationController
         @state = "pending"
     end
 
-    options = {:per_page => params[:per_page] || 15,
-               :page => params[:page],
-               :state => @state,
-               :order => current_order,
-               :private => false}
+    conds = {:state => @state, :private => false}
 
     if params[:q].blank?
-      @groups = Group.paginate(options)
+      @groups = Group.where(conds).order_by(current_order).
+                                   paginate(:per_page => params[:per_page] || 15,
+                                            :page => params[:page])
     else
-      @groups = Group.filter(params[:q], options)
+      @groups = Group.filter(params[:q], options).order_by(current_order).
+                                                  paginate(:per_page => params[:per_page] || 15,
+                                                           :page => params[:page])
     end
 
     respond_to do |format|
