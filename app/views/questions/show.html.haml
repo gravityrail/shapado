@@ -93,7 +93,7 @@
           %li.followUp
             = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow"
 
-          -if logged_in?
+          -if logged_in? && current_user.can_create_reward?(@question)
             %li
               = link_to "Create Reward", "#", :rel => "nofollow", :id => "add_reward"
 
