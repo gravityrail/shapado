@@ -29,8 +29,8 @@
             = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
         
         = render "shared/user-zone"
-        .module
-          = render :partial => "shared/manage_navigation"
+        = render :partial => "shared/manage_navigation"
+
         .module{:class => @active_subtab.to_s}
           = yield :subtabs
 
