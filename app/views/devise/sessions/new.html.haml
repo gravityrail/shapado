@@ -2,12 +2,13 @@
 
 -session["return_to"] = request.referrer unless request.referrer.blank?
 
--if current_group.registered_only
-  %h1
-    IMPORTANT: You must be logged in to see this site
+%div.login-box
+  -if current_group.registered_only
+    %h1
+      IMPORTANT: You must be logged in to see this site
 
-%h2
-  = t(".with_openid")
+  %h2
+    = t(".with_openid")
 
 = render :partial => "openid"
 

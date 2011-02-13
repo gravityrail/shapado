@@ -3,8 +3,8 @@
     .avatar
       = gravatar @user.email.to_s, :size => 128
       -if current_user == @user
-      %p 
-        =link_to t("users.form.avatar_tip"), "http://gravatar.com", :target => "_blank"
+      %P
+        =link_to "Editar perfil", settings_path
     
     %h3 Badges
     %ul.badges
