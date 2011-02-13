@@ -294,4 +294,9 @@ namespace :fixdb do
   task :remove_retag_other_tag => [:init] do
     Group.unset({}, "reputation_constrains.retag_others_tags" => 1 )
   end
+
+  task :cleanup => [:init] do
+    p "removing #{Question.where(:group_id => nil).destroy_all} orphan questions"
+    p "removing #{Answer.where(:group_id => nil).destroy_all} orphan answers"
+  end
 end
