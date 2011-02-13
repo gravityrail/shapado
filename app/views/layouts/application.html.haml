@@ -28,9 +28,7 @@
 
         = render "shared/user-zone"
 
-        .widget-lang.module
-          = render :partial => "shared/language_filter"
-
+        = render :partial => "shared/language_filter"
         .widget-links.module
           %nav
             %ul
@@ -63,7 +61,9 @@
         .add
           %h6 Publicidad
           =link_to image_tag "http://www.bipbanners.co.uk/assets/images/WebConveyancing_Animated_SkyScraper_Banner_Sample_1A.gif"
-
+        .module
+          = form_tag search_index_path, :method => :get, do
+            = text_field_tag :q, params[:q], :id => "search-field"
 
       %section.content-panel
         = render "shared/action-tabs"

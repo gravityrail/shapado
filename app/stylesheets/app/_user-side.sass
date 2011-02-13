@@ -31,27 +31,35 @@
   // User Nav
   //======================================================================
   nav
+    margin: 0 5px 5px 0
     ul
-      margin-top: 5px
-      text-align: right
+      margin-top: 10px
       border: 1px solid $lightOrange
-      padding: 10px 10% 3px 0
       background-color: #fff
-      width: 86%
+      width: 100%
+      float: left
       li
         padding: 0
-        margin-bottom: 8px
         font-size: 12px
+        float: left
+        width: 50%
+        border-bottom: 1px dotted #e5e5e5
         a       
           color: $dark
+          display: block
+          padding: 5px 10px
+        a:first-letter
+          text-transform: capitalize
         a:hover
-          border-bottom: 1px dotted $darkOrange
-          color: $darkOrange
+          +orange-gradient
+          color: #fff
       .log-out
-        a, a:hover
-          font-weight: bold
+        a
           color: #c00
-
+        a:hover
+          +error-gradient
+          font-weight: bold
+          color: #fff
 
 // Login Box
 //======================================================================
