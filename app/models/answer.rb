@@ -37,8 +37,8 @@ class Answer
   referenced_in :question
   index :question_id
 
-  embeds_many :flags
-  embeds_many :comments#, :order => "created_at asc"
+  embeds_many :flags, :as => "flaggable"
+  embeds_many :comments, :as => "commentable", :order => "created_at asc"
 
   validates_presence_of :user_id
   validates_presence_of :question_id

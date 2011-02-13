@@ -19,7 +19,7 @@ class Flag
 
   protected
   def should_be_unique
-    request = self.flaggable.flags.detect{ |rq| rq.user_id == self.user_id }
+    request = self._parent.flags.detect{ |rq| rq.user_id == self.user_id }
     valid = (request.nil? || request.id == self.id)
 
     if !valid
@@ -30,8 +30,8 @@ class Flag
   end
 
   def check_reputation
-    if ((self.flaggable.user_id == self.user_id) && !self.user.can_flag_on?(self.flaggable.group))
-      reputation = self.flaggable.group.reputation_constrains["flag"]
+    if ((self._parent.user_id == self.user_id) && !self.user.can_flag_on?(self.flaggable.group))
+      reputation = self._parent.group.reputation_constrains["flag"]
       self.errors.add(:reputation, I18n.t("users.messages.errors.reputation_needed",
                                           :min_reputation => reputation,
                                           :action => I18n.t("users.actions.flag")))

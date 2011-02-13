@@ -2,10 +2,23 @@ class Widget
   include Mongoid::Document
 
   identity :type => String
-  field :name, :type => String, :required => true
+  field :name, :type => String
   field :settings, :type => Hash
-  validate :set_name, :on => :create
-  embedded_in :group, :inverse_of => [:question_widgets, :mainlist_widgets, :welcome_widgets, :external_widgets]
+
+#   validate :set_name, :on => :create
+  validates_presence_of :name
+
+  embedded_in :group_questions, :inverse_of => :question_widgets
+  embedded_in :group_welcome, :inverse_of => :welcome_widgets
+  embedded_in :group_external, :inverse_of => :external_widgets
+  embedded_in :group_mainlist, :inverse_of => :mainlist_widgets
+
+  def group
+    self.group_questions ||
+    self.group_welcome ||
+    self.group_external ||
+    self.group_mainlist
+  end
 
   def initialize(*args)
     super(*args)
