@@ -8,21 +8,19 @@
   -klass << " flag_question"
 
 -form_for object_form, :html => {:class=>klass, :id => local_assigns[:form_id]} do |f|
-  .fields
-    =hidden_field_tag "return_to", source, :id => "flaggeable_source_#{flaggeable.class.name}_#{flaggeable.id}"
-  .group
-    %label.label
-      =t(".label")
+  = hidden_field_tag "return_to", source, :id => "flaggeable_source_#{flaggeable.class.name}_#{flaggeable.id}"
+  %h1=t(".label")
 
-  .group
+  .field
     = label_tag "flag[reason]", t(:reason, :scope=>"activerecord.attributes.flag"), :class => "label"
     = select "flag", "reason", Flag::REASONS.collect{|type| [t(type, :scope=>"flags.form"), type]}, :selected => flag.reason, :id => "flaggeable_typeselect_#{flaggeable.class.name}_#{flaggeable.id}"
 
-  .group.navform
-    = link_to t("scaffold.cancel"), source, :class => "button cancel"
-    = t("global.or")
-    -if flag.new?
-      = f.submit t("scaffold.create"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}"
-    -else
-      = f.submit t("scaffold.update"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}"
 
+  .field.form-options
+    .buttons
+      -if flag.new?
+        = f.submit t("scaffold.create"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}",  :class => "save"
+      -else
+        = f.submit t("scaffold.update"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}",  :class => "save"
+      = link_to t("scaffold.cancel"), source, :class => "button cancel"
+      = t("global.or")
