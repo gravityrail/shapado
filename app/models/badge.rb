@@ -29,7 +29,7 @@ class Badge
   validates_presence_of :token
   index :token
 
-  field :type, :type => String, :required => true
+  field :type, :type => String
   validates_presence_of :type
 
   field :for_tag, :type => Boolean

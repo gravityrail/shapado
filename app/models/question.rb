@@ -85,12 +85,12 @@ class Question
   referenced_in :last_target_user, :class_name => "User"
 
   references_many :answers, :dependent => :destroy
-  references_many :badges, :as => "source"
+  references_many :badges, :as => "source", :validate => false
 
-  embeds_many :comments, :as => "commentable", :order => "created_at asc"
-  embeds_many :flags
-  embeds_many :close_requests
-  embeds_many :open_requests
+  embeds_many :comments, :as => "commentable"#, :order => "created_at asc"
+  embeds_many :flags, :as => "flaggable"
+  embeds_many :close_requests, :as => "closeable"
+  embeds_many :open_requests, :as => "openable"
 
   embeds_one :follow_up
   embeds_one :reward

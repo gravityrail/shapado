@@ -1,24 +1,28 @@
-class Question
-  def set_created_at; end
-  def set_updated_at; end
-end
-
-class Answer
-  def set_created_at; end
-  def set_updated_at; end
-end
-
-class Group
-  def set_created_at; end
-  def set_updated_at; end
-end
 
 desc "Fix all"
-task :fixall => [:environment, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:groups", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config"] do
+end
+
+
+task :init => [:environment] do
+  class Question
+    def set_created_at; end
+    def set_updated_at; end
+  end
+
+  class Answer
+    def set_created_at; end
+    def set_updated_at; end
+  end
+
+  class Group
+    def set_created_at; end
+    def set_updated_at; end
+  end
 end
 
 namespace :fixdb do
-  task :questions => [:environment] do
+  task :questions => [:init] do
     Question.all.each do |question|
       question.override(:_random => rand())
       question.override(:_random_times => 0.0)
@@ -31,7 +35,7 @@ namespace :fixdb do
     end
   end
 
-  task :contributions => [:environment] do
+  task :contributions => [:init] do
     Question.only(:user_id, :contributor_ids).all.each do |question|
       question.add_contributor(question.user) if question.user
       question.answers.only(:user_id).all.each do |answer|
@@ -40,7 +44,7 @@ namespace :fixdb do
     end
   end
 
-  task :dates => [:environment] do
+  task :dates => [:init] do
     %w[badges questions comments votes users announcements groups memberships pages reputation_events user_stats versions views_counts].each do |cname|
       coll = Mongoid.master.collection(cname)
       coll.find.each do |q|
@@ -54,7 +58,7 @@ namespace :fixdb do
     end
   end
 
-  task :openid => [:environment] do
+  task :openid => [:init] do
     User.all.each do |user|
       next if user.identity_url.blank?
 
@@ -64,13 +68,13 @@ namespace :fixdb do
     end
   end
 
-  task :update_answers_favorite => [:environment] do
+  task :update_answers_favorite => [:init] do
     Mongoid.database.collection("favorites").remove
     answers = Mongoid.database.collection("answers")
     answers.update({ }, {"$set" => {"favorite_counts" => 0}})
   end
 
-  task :sync_counts => [:environment] do
+  task :sync_counts => [:init] do
     votes = Mongoid.database.collection("votes")
     comments = Mongoid.database.collection("comments")
     puts "updating comment's counts"
@@ -100,14 +104,14 @@ namespace :fixdb do
     end
   end
 
-  task :counters => :environment do
+  task :counters => :init do
     Question.all.each do |q|
       q.override(:close_requests_count => q.close_requests.size)
       q.override(:open_requests_count => q.open_requests.size)
     end
   end
 
-  task :last_target_type => [:environment] do
+  task :last_target_type => [:init] do
     puts "updating questions#last_target_type"
     Question.where({:last_target_type.ne => nil}).all.each do |q|
       print "."
@@ -127,7 +131,7 @@ namespace :fixdb do
     end
   end
 
-  task :votes => [:environment] do
+  task :votes => [:init] do
     puts "updating votes"
     comments = Mongoid.database.collection("comments")
     comments.update({:votes => nil}, {"$set" => {"votes" =>  {}}}, :multi => true)
@@ -153,7 +157,7 @@ namespace :fixdb do
     Mongoid.database.collection("votes").drop
   end
 
-  task :comments => [:environment] do
+  task :comments => [:init] do
     puts "updating comments"
     comments = Mongoid.database.collection("comments")
     questions = Mongoid.database.collection("questions")
@@ -201,7 +205,7 @@ namespace :fixdb do
     puts "updated comments"
   end
 
-  task :groups => [:environment] do
+  task :groups => [:init] do
     Group.where({:language.in => [nil, '', 'none']}).all.each do |group|
       lang = group.description.to_s.language
       puts "Updating #{group.name} subdomain='#{group.subdomain}' detected as: #{lang}"
@@ -216,7 +220,7 @@ namespace :fixdb do
     end
   end
 
-  task :relocate => [:environment] do
+  task :relocate => [:init] do
     doc = JSON.parse(File.read('data/countries.json'))
     i=0
     Question.override({:address => nil}, :address => {})
@@ -244,7 +248,7 @@ namespace :fixdb do
     end
   end
 
-  task :widgets => [:environment] do
+  task :widgets => [:init] do
     c=Group.count
     Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true})
     i=0
@@ -252,7 +256,8 @@ namespace :fixdb do
       [SharingButtonsWidget, ModInfoWidget, QuestionBadgesWidget,
        QuestionStatsWidget, QuestionTagsWidget, RelatedQuestionsWidget,
        TagListWidget, CurrentTagsWidget].each do |w|
-        g.question_widgets << w.new
+        widget = w.new
+        g.question_widgets << widget
       end
 
       [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
@@ -265,7 +270,7 @@ namespace :fixdb do
     end
   end
 
-  task :update_group_notification_config => [:environment] do
+  task :update_group_notification_config => [:init] do
     puts "updating groups notification config"
     Group.all.each do |g|
       g.notification_opts = GroupNotificationConfig.new
@@ -274,7 +279,7 @@ namespace :fixdb do
     puts "done"
   end
 
-  task :tags => [:environment] do
+  task :tags => [:init] do
     Group.all.each do |g|
       Question.tag_cloud({:group_id => g.id} , 1000).each do |tag|
         tag = Tag.new(:name => tag["name"], :count => tag["count"])
@@ -286,7 +291,12 @@ namespace :fixdb do
     end
   end
 
-  task :remove_retag_other_tag => [:environment] do
+  task :remove_retag_other_tag => [:init] do
     Group.unset({}, "reputation_constrains.retag_others_tags" => 1 )
+  end
+
+  task :cleanup => [:init] do
+    p "removing #{Question.where(:group_id => nil).destroy_all} orphan questions"
+    p "removing #{Answer.where(:group_id => nil).destroy_all} orphan answers"
   end
 end

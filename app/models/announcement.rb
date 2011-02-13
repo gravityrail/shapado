@@ -16,12 +16,14 @@ class Announcement
 
   protected
   def check_dates
-    if self.starts_at < Time.now.yesterday
-      self.errors.add(:starts_at, "Starting date should be setted to a future date")
-    end
+    if self.ends_at > Time.now.yesterday
+      if self.starts_at < Time.now.yesterday
+        self.errors.add(:starts_at, "Starting date should be setted to a future date")
+      end
 
-    if self.ends_at <= self.starts_at
-      self.errors.add(:ends_at, "Ending date should be greater than starting date")
+      if self.ends_at <= self.starts_at
+        self.errors.add(:ends_at, "Ending date should be greater than starting date")
+      end
     end
   end
 end
