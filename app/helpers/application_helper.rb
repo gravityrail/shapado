@@ -352,5 +352,17 @@ module ApplicationHelper
     url = domain_url(:custom => current_group.domain) + path
     %@<iframe src="#{url}" height="200px"></iframe>@
   end
+
+  def facebook_avatar(facebook_id)
+    image_tag("http://graph.facebook.com/#{facebook_id}/picture")
+  end
+
+  def common_follower(user, suggested_friend)
+    friend = user.common_follower(suggested_friend)
+    if friend
+      raw(t('widgets.facebook_friends.followed_by', :user => "#{link_to friend.login, user_path(friend)}"))
+    end
+  end
+
 end
 

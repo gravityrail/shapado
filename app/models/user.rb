@@ -55,6 +55,7 @@ class User
   index :anonymous
 
   field :friend_list_id, :type => String
+  field :facebook_friends, :type => Hash, :default => { }
   field :notification_opts, :type => NotificationConfig
 
   file_key :avatar, :max_length => 1.megabytes
@@ -271,6 +272,10 @@ Time.zone.now ? 1 : 0)
 
   def twitter_login?
     user_info && !user_info["twitter"].blank?
+  end
+
+  def facebook_login?
+    !facebook_id.blank?
   end
 
   def has_voted?(voteable)
@@ -499,6 +504,30 @@ Time.zone.now ? 1 : 0)
     end
   end
 
+  def fb_friends_ids
+    self.facebook_friends.map do |friend| friend["id"] end
+  end
+
+  # returns user's facebook friends that have an account
+  # on shapado but that user is not following
+  def suggested_fb_friends(limit = 5)
+    User.where(:facebook_id => {:$in => self.fb_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns all user's facebook friends on shapado
+  def all_fb_friends
+    User.where(:facebook_id => {:$in => self.fb_friends_ids})
+  end
+
+  # returns a follower that is someone self follows
+  # if @user follows bob and bob follows bill
+  # @user.common_follower(bill) will return bob
+  def common_follower(user)
+    User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
+  end
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }

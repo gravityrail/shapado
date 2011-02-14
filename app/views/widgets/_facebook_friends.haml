@@ -1,0 +1,19 @@
+- if logged_in?
+  %h3
+    =t(".title")
+  .content
+    %ul.list
+      -current_user.suggested_fb_friends.each do |suggested_friend|
+        %li
+          .gravatar
+            = facebook_avatar(suggested_friend.facebook_id)
+          .item
+            = link_to h(suggested_friend.login), user_path(suggested_friend)
+          .item
+            = link_to "+ #{t("users.show.follow")}", follow_user_path(suggested_friend), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggested_friend)
+        %li
+          = common_follower(current_user, suggested_friend)
+    .more
+      = link_to t("scaffold.more"), users_path
+      .clear
+  .clear

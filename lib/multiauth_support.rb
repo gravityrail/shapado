@@ -114,6 +114,11 @@ module MultiauthSupport
       end
     end
 
+    def facebook_client(property = 'friends')
+      response = open(URI.encode("https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}")).read
+      JSON.parse(response)
+    end
+
     private
     # {"provider"=>"facebook", "uid"=>"4332432432432", "credentials"=>{"token"=>"432432432432432"},
     # "user_info"=>{"nickname"=>"profile.php?id=4332432432432", "first_name"=>"My", "last_name"=>"Name", "name"=>"My Name", "urls"=>{"Facebook"=>"http://www.facebook.com/profile.php?id=4332432432432", "Website"=>nil}},
@@ -125,7 +130,7 @@ module MultiauthSupport
       self.facebook_profile = fields["user_info"]["urls"]["Facebook"]
 
       if self.email.blank?
-        self.email = uifo["email"]
+        self.email = uinfo["email"]
       end
     end
 

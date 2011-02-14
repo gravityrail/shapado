@@ -27,7 +27,7 @@ class Widget
   end
 
   def self.types(tab="")
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget]
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget FacebookFriendsWidget]
     if tab == 'question'
       types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end
@@ -88,5 +88,8 @@ class Widget
   end
 
   protected
+  def set_name
+    self[:name] ||= self.class.to_s.sub("Widget", "").underscore
+  end
 end
 
