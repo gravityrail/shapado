@@ -57,7 +57,7 @@ gem 'orm_adapter'
 gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
 
 gem 'whenever', :require => false
-
+gem 'rack-ssl', :require => false
 
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'

@@ -18,6 +18,7 @@ base: &common
   default_language: en
   enable_i18n: false
   default_timezone: "Tokyo"
+  ssl: false
 
   smtp:
     activate: false

@@ -48,6 +48,11 @@ module Shapado
                                                :paths => nil
     end
 
+    if AppConfig.ssl
+      require 'rack/ssl'
+      config.middleware.use Rack::SSL
+    end
+
     # Configure generators values. Many other options are available, be sure to check the documentation.
     config.generators do |g|
       g.orm             :mongoid

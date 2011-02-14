@@ -186,6 +186,8 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-recaptcha (0.2.2)
       json
+    rack-ssl (1.2.0)
+      rack
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (3.0.3)
@@ -289,6 +291,7 @@ DEPENDENCIES
   omniauth (~> 0.1.6)
   orm_adapter
   rack-recaptcha (= 0.2.2)
+  rack-ssl
   rails (= 3.0.3)
   rcov
   rdiscount (= 1.6.5)
