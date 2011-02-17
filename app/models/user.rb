@@ -393,22 +393,21 @@ Time.zone.now ? 1 : 0)
   # self follows user
   def add_friend(user)
     return false if user == self
-    FriendList.push_uniq(self.friend_list_id, :following_ids => user.id)
-    FriendList.push_uniq(user.friend_list_id, :follower_ids => self.id)
+    FriendList.collection.update({ "_id" => self.friend_list_id}, { "$addToSet" => { :following_ids => user.id } })
+    FriendList.collection.update({ "_id" => user.friend_list_id}, { "$addToSet" => { :follower_ids => self.id } })
 
-    User.increment(self.id, :following_count => 1)
-    User.increment(user.id, :followers_count => 1)
+    self.inc(:following_count, 1)
+    user.inc(:followers_count, 1)
     true
   end
 
   def remove_friend(user)
     return false if user == self
-    FriendList.pull(self.friend_list_id, :following_ids => user.id)
-    FriendList.pull(user.friend_list_id, :follower_ids => self.id)
+    FriendList.collection.update({ "_id" => self.friend_list_id}, { "$pull" => { :following_ids => user.id } })
+    FriendList.collection.update({ "_id" => user.friend_list_id}, { "$pull" => { :follower_ids => self.id } })
 
-    User.decrement(self.id, :following_count => 1)
-    User.decrement(user.id, :followers_count => 1)
-
+    self.inc(:following_count, -1)
+    user.inc(:followers_count, -1)
     true
   end
 

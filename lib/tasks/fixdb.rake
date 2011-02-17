@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_idsx"] do
 end
 
 
@@ -298,5 +298,13 @@ namespace :fixdb do
   task :cleanup => [:init] do
     p "removing #{Question.where(:group_id => nil).destroy_all} orphan questions"
     p "removing #{Answer.where(:group_id => nil).destroy_all} orphan answers"
+  end
+
+  task :set_follow_ids => [:init] do
+    p "setting nil following_ids to []"
+    FriendList.collection.update({:following_ids => nil}, {:following_ids => []})
+    p "setting nil follower_ids to []"
+    FriendList.collection.update({:follower_ids => nil}, {:follower_ids => []})
+    p "done"
   end
 end
