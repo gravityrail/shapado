@@ -507,6 +507,11 @@ Time.zone.now ? 1 : 0)
     self.facebook_friends.map do |friend| friend["id"] end
   end
 
+  ## TODO: add twitter followers,  google contacts and tags
+  def suggestions(limit = 5)
+    suggested_fb_friends(limit)
+  end
+
   # returns user's facebook friends that have an account
   # on shapado but that user is not following
   def suggested_fb_friends(limit = 5)

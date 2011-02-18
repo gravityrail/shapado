@@ -27,7 +27,7 @@ class Widget
   end
 
   def self.types(tab="")
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget FacebookFriendsWidget]
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget SuggestionsWidget]
     if tab == 'question'
       types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end

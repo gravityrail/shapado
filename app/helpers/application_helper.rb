@@ -360,7 +360,7 @@ module ApplicationHelper
   def common_follower(user, suggested_friend)
     friend = user.common_follower(suggested_friend)
     if friend
-      raw(t('widgets.facebook_friends.followed_by', :user => "#{link_to friend.login, user_path(friend)}"))
+      raw(t('widgets.suggestions.followed_by', :user => "#{link_to friend.login, user_path(friend)}"))
     end
   end
 
