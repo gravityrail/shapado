@@ -1,44 +1,35 @@
--content_for :subtabs do
-  .navtitle
-    = t(".title")
+.widgets-admin
+  %h1
+    =t(".description")
+
   %ul
-    %li.welcome_widgets
-      = link_to t(".welcome_widgets"), widgets_path(:tab=>"welcome"), :title => t(".welcome_widgets_title")
-    %li.mainlist_widgets
-      = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist"), :title => t(".mainlist_widgets_title")
-    %li.question_widgets
-      = link_to t(".question_widgets"), widgets_path(:tab=>"question"), :title => t(".question_widgets_title")
-    %li.question_widgets
-      = link_to t(".external_widgets"), widgets_path(:tab=>"external"), :title => t(".external_widgets_title")
-
-%h2.title
-  =t(".description")
-
-#manage_widgets
-  %ul.list#widgets
+    %li
+      -form_tag widgets_path(:tab => params[:tab]), :class => "add-widget" do
+        .field
+          = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
+          = select :widget, "_type", Widget.types(params[:tab]).map {|w| [w.sub("Widget", "").titleize, w]}
+        .buttons
+          =submit_tag t("scaffold.add"), :class => "save"
+        .clear
     -@widgets.each do |widget|
-      %li
+      %li{:id => widget.name}
         .widget_description
-          = widget.description # do not escape
-          = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget}
-        .widget.block{:id => widget.name}
-          .controls
-            .action
+          %h2
+            = widget.name
+            %small
               = link_to t("scaffold.destroy"), widget_path(widget), :method => :delete, :confirm => t("scaffold.sure", :model => "widget")
+          %p
+            = widget.description # do not escape
+
+          .display 
+            = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget}
+          .controls
             -form_tag move_widget_path(widget, :tab => @active_subtab), :class => "vote_box" do
               = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up")
               = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
             .clear
-          - unless widget.question_only? || params[:tab] == 'external'
-            .widget_content
-              = render :partial => widget.partial_name, :locals => {:widget => widget}
+        - unless widget.question_only? || params[:tab] == 'external'
+          .widget_show
+            = render :partial => widget.partial_name, :locals => {:widget => widget}
         .clear
 
-%h2.title
-  =t(".new_widget", :default => "Add new widget")
-
--form_tag widgets_path(:tab => params[:tab]), :class => "form" do
-  .group
-    = select :widget, "_type", Widget.types(params[:tab]).map {|w| [w.sub("Widget", "").titleize, w]}
-  .group.navform
-    =submit_tag t("scaffold.add"), :class => "button"

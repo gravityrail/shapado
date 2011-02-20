@@ -1,12 +1,8 @@
--content_for :subtabs do
-  .navtitle
-    = t(".title")
-
-#badges
-  %h2.title
+.badges
+  %h1
     = t(".description")
-  .inner
-    %ul.list
+  .container
+    %ul
       - @badges.each do |badge|
         %li
           .badge_item

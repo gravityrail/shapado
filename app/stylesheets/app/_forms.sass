@@ -36,7 +36,7 @@ form
     margin-bottom: 5px
     height: 100px  
     &:active, &:focus, &:hover
-      border-color: $orange    
+      border-color: $orange 
   .field
     margin: 0 0 20px 0
     small
@@ -60,6 +60,7 @@ form
       font-size: 13px
       padding: 5px 5px  
       width: 100%
+      background-color: #fff
       margin-bottom: 5px      
     .radio, .checkbox
       float: left
@@ -78,6 +79,15 @@ form
       float: left
       label
         width: 90%
+  .birthday
+    select
+      width: 30%
+    select:nth-child(2)
+      width: 68px
+    select:nth-child(3)
+      width: 150px    
+    select:nth-child(4)
+      width: 60px          
   .form-options
     clear: both
     .column
@@ -132,7 +142,21 @@ form
               a
                 font-style: italic
                 color: #999
-  
+// Form Errors
+.errorExplanation 
+  padding: 30px
+  margin: 30px 30px -30px 30px
+  border: 1px solid #c00
+  background-color: $lightRed
+  h2
+    font-size: 18px
+    font-weight: bold
+  ul
+    margin: 10px 0 0 20px
+    li
+      list-style: disc
+      color: #000
+    
 // Tags feature
 //========================================================================
 .tagwrapper

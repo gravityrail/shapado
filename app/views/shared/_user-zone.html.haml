@@ -1,5 +1,4 @@
-.user-zone.module
-
+.user-zone.module{:class => @current_class}
   -if !logged_in?
     /=multiauth_menu("Sign In")
     = multiauth_dropdown("Sign In")
@@ -14,6 +13,14 @@
     .clear
 
     %nav
+      -if current_user.mod_of?(current_group)
+        %ul
+          %li
+            = link_to "moderate: 10", moderate_path
+          %li
+            = link_to "admin", manage_properties_path
+      .clear
+
       %ul
         %li.active
           =link_to "Mi perfil", user_path(current_user)
@@ -31,18 +38,14 @@
           =link_to "Contributed", contributed_user_path(current_user)
         %li
           =link_to "Collaborate!", expertise_user_path(current_user)
+        %li
+          =link_to "FAQ"
         %li.log-out
           =link_to t("layouts.application.logout"), destroy_user_session_path
+      .clear 
 
-      %ul
-        -if current_user.mod_of?(current_group)
-          %li
-            = link_to "moderate", moderate_path
-        -if current_user.admin_of?(current_group)
-          %li
-            = link_to "admin", manage_properties_path
-
-      %ul
-        -current_user.searches.where(:group_id => current_group.id).each do |search|
+      -current_user.searches.where(:group_id => current_group.id).each do |search|
+        %ul
           %li
             =link_to search.name, search_path(search)
+      .clear
