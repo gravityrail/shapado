@@ -65,6 +65,7 @@ namespace :setup do
                                         :password_confirmation => "admins",
                                         :email => "shapado@example.com",
                                         :role => "admin")
+    admin.preferred_languages = AVAILABLE_LANGUAGES
 
     admin.save!
   end

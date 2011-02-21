@@ -99,7 +99,7 @@ class Question
   validates_presence_of :user
   validates_uniqueness_of :slug, :scope => "group_id", :allow_blank => true
 
-  validates_length_of       :title,    :in => 5..100, :message => lambda { I18n.t("questions.model.messages.title_too_long") }
+  validates_length_of       :title,    :in => 5..100, :wrong_length => lambda { I18n.t("questions.model.messages.title_too_long") }
   validates_length_of       :body,     :minimum => 5, :allow_blank => true #, :if => lambda { |q| !q.disable_limits? }
 
 #  FIXME mongoid (create a validator for tags size)
@@ -113,7 +113,7 @@ class Question
   before_save :update_activity_at
   validate :update_language, :on => :create
 
-  validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES
+  validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES, :if => lambda {AppConfig.enable_i18n}
 
   validate :group_language
   validate :disallow_spam
