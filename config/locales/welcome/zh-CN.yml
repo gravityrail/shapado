@@ -1,0 +1,59 @@
+# Messages for Simplified Chinese (‪中文(简体)‬)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Hydra
+zh-CN: 
+  welcome: 
+    confirm_age: 
+      notice: 你只可能会进入此页面，如果您是年满 18 岁的年龄，或在大多数在司法管辖区在您所在或从中您访问此页面的最小年龄。
+      over_18: 我是年满 18 岁
+      under_18: 我 18 岁以下
+      warning: 警告：此页可能包含成人内容明显。
+    facts: 
+      features: 
+        cols: 
+          adaptable: 适应性强
+          foss: 自由/开放
+          joel: 我会使乔尔更丰富吗？
+          multilanguage: 多种语言
+          multitopic: 多种主题
+        shapado: 
+          adaptable: 是的！
+          foss: 是的！
+          joel: 不 :/
+          multilanguage: 是的！
+          multitopic: 是的！
+        stackexchange: 
+          adaptable: 不
+          foss: 不
+          joel: 是的！
+          multilanguage: 不
+          multitopic: 不
+      prices: 
+        cols: 
+          onsite: 在网站上
+        shapado: 
+          large: 可能像 500 元
+          medium: <=== 同上
+          onsite: 在您自己的服务器上可能为 0 元
+          small: 可能像大多数虚拟主机提供 50 元至 100 元/月
+        stackexchange: 
+          large: 1299 元/月
+          medium: 999 元/月
+          onsite: 2500 元/月
+          small: 129 元/月
+    feedback: 
+      captcha_error: 请解决简单的数学操作
+      email_description: 请提供您的电子邮件地址，以便我们可以回答您的消息
+      feedback_description: 说明
+      feedback_title: 标题
+      title: 发送您的反馈意见
+    index: 
+      active: 活动
+      browse_all_or_by_tags: 请参阅 %{full_list_of_questions} 或 %{browse_by_tags}
+      browse_by_tags: 按标签浏览
+      create_own_site: 在 8 秒内免费创建您自己问答网站
+      full_list_of_questions: 问题的完整列表
+      hot: 热
+      quick_question: 问一个的问题，我们会发现有人回答
+      recent_questions: 最新问题

@@ -1,13 +1,17 @@
 # Messages for Simplified Chinese (‪中文(简体)‬)
 # Exported from translatewiki.net
 # Export driver: syck
+# Author: Hydra
 # Author: ZhengYiFeng
 zh-CN: 
   ads: 
+    ad_links: 添加一个新的 %{type} 广告
     create: 
       success: 广告创建成功。
     index: 
+      add_adbard: 添加一个新的广告吟游诗人广告
       add_adsense: 添加一个新的 Google AdSense 广告
       title: 广告
     name: 名称：
     position: 位置：
+    title: 添加一个新的 %{type} 广告
