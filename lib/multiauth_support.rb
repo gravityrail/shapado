@@ -91,6 +91,7 @@ module MultiauthSupport
     end
 
     def merge_user(user)
+      #TODO merge friendlist, facebook friend lists and maybe more
       [Question, Answer, Badge, UserStat].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
       end

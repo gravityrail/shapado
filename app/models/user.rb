@@ -55,7 +55,6 @@ class User
   index :anonymous
 
   field :friend_list_id, :type => String
-  field :facebook_friends, :type => Hash, :default => { }
   field :notification_opts, :type => NotificationConfig
 
   file_key :avatar, :max_length => 1.megabytes
@@ -67,8 +66,10 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
+  references_one :facebook_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
+  before_create :create_facebook_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -503,6 +504,10 @@ Time.zone.now ? 1 : 0)
     end
   end
 
+  def facebook_friends
+    self.facebook_friends_list.friends
+  end
+
   def fb_friends_ids
     self.facebook_friends.map do |friend| friend["id"] end
   end
@@ -564,5 +569,10 @@ Time.zone.now ? 1 : 0)
       user.destroy
     end
   end
-end
 
+  def create_facebook_friends_list
+    facebook_friend_list = FacebookFriendsList.create
+    self.facebook_friends_list = facebook_friend_list
+    self.save
+  end
+end

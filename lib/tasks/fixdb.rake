@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_idsx"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids"] do
 end
 
 
@@ -305,6 +305,19 @@ namespace :fixdb do
     FriendList.collection.update({:following_ids => nil}, {:following_ids => []})
     p "setting nil follower_ids to []"
     FriendList.collection.update({:follower_ids => nil}, {:follower_ids => []})
+    p "done"
+  end
+
+  task :set_facebook_friends_list => [:init] do
+    total = User.count
+    i = 1
+    p "updating #{total} users facebook friends list"
+    User.all.each do |u|
+      u["facebook_friends_id"] = FacebookFriendsList.create.id
+      u.save
+      p "#{i}/#{total} #{u.login}"
+      i += 1
+    end
     p "done"
   end
 end
