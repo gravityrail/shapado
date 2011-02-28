@@ -69,7 +69,7 @@ class User
   references_one :facebook_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
-  before_create :create_facebook_friends_list
+  after_create :create_facebook_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -573,6 +573,5 @@ Time.zone.now ? 1 : 0)
   def create_facebook_friends_list
     facebook_friend_list = FacebookFriendsList.create
     self.facebook_friends_list = facebook_friend_list
-    self.save
   end
 end
