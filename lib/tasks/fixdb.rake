@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_facebook_friends_list"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_list"] do
 end
 
 
@@ -308,13 +308,15 @@ namespace :fixdb do
     p "done"
   end
 
-  task :set_facebook_friends_list => [:init] do
+  task :set_friends_lists => [:init] do
     total = User.count
     i = 1
     p "updating #{total} users facebook friends list"
     User.all.each do |u|
-      u["facebook_friends_id"] = FacebookFriendsList.create.id
-      u.save
+      u.facebook_friends_list = FacebookFriendsList.create
+      u.twitter_friends_list = TwitterFriendsList.create
+      u.identica_friends_list = IdenticaFriendsList.create
+
       p "#{i}/#{total} #{u.login}"
       i += 1
     end
