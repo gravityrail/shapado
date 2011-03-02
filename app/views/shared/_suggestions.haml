@@ -6,7 +6,7 @@
       -current_user.suggestions(limit).each do |suggestion|
         %li
           .gravatar
-            = facebook_avatar(suggestion.facebook_id)
+            = suggestion_avatar(suggestion)
           .item
             = link_to h(suggestion.login), user_path(suggestion)
           .item

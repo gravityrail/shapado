@@ -26,5 +26,13 @@ module Jobs
       user.facebook_friends_list.save
       user.save
     end
+
+    def self.get_twitter_friends(user_id)
+      user = User.find(user_id)
+      friends = user.twitter_client.friends_ids
+      user.twitter_friends_list.friends = friends
+      user.twitter_friends_list.save
+      user.save
+    end
   end
 end

@@ -16,7 +16,7 @@ module MultiauthSupport
     field :twitter_token,             :type => String
     field :twitter_secret,            :type => String
     field :twitter_login,             :type => String
-
+    field :twitter_id,                :type => String
 
     field :github_id, :type => String
     field :github_login, :type => String
@@ -92,8 +92,20 @@ module MultiauthSupport
 
     def merge_user(user)
       #TODO merge friendlist, facebook friend lists and maybe more
+      #TODO merging is broken
       [Question, Answer, Badge, UserStat].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
+      end
+      if !self.facebook_login? && user.facebook_login?
+        self.facebook_friend_list.destroy &&
+        FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
+      end
+      if !self.twitter_login? && user.twitter_login?
+        self.twitter_friend_list.destroy &&
+        TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
       end
       user
     end
@@ -142,6 +154,7 @@ module MultiauthSupport
       self.twitter_token = fields["credentials"]["token"]
       self.twitter_secret = fields["credentials"]["secret"]
       self.twitter_login = fields["user_info"]["nickname"]
+      self.twitter_id = fields["uid"]
 
       self.login.blank? && self.login = fields["user_info"]["nickname"]
     end

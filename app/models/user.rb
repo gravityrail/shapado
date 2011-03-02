@@ -67,9 +67,11 @@ class User
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
   references_one :facebook_friends_list, :dependent => :destroy
+  references_one :twitter_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
   after_create :create_facebook_friends_list
+  after_create :create_twitter_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -512,15 +514,29 @@ Time.zone.now ? 1 : 0)
     self.facebook_friends.map do |friend| friend["id"] end
   end
 
+  def twitter_friends
+    self.twitter_friends_list.friends
+  end
+  alias :twitter_friends_ids :twitter_friends
+
   ## TODO: add twitter followers,  google contacts and tags
   def suggestions(limit = 5)
-    suggested_fb_friends(limit)
+    (suggested_fb_friends(limit) | suggested_twitter_friends(limit)).sample(limit)
   end
 
   # returns user's facebook friends that have an account
   # on shapado but that user is not following
   def suggested_fb_friends(limit = 5)
     User.where(:facebook_id => {:$in => self.fb_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns user's twitter friends that have an account
+  # on shapado but that user is not following
+  def suggested_twitter_friends(limit = 5)
+    User.where(:twitter_id => {:$in => self.twitter_friends_ids},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -573,5 +589,10 @@ Time.zone.now ? 1 : 0)
   def create_facebook_friends_list
     facebook_friend_list = FacebookFriendsList.create
     self.facebook_friends_list = facebook_friend_list
+  end
+
+  def create_twitter_friends_list
+    twitter_friend_list = TwitterFriendsList.create
+    self.twitter_friends_list = twitter_friend_list
   end
 end
