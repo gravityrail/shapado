@@ -34,5 +34,13 @@ module Jobs
       user.twitter_friends_list.save
       user.save
     end
+
+    def self.get_identica_friends(user_id)
+      user = User.find(user_id)
+      friends = user.get_identica_friends
+      user.identica_friends_list.friends = friends
+      user.identica_friends_list.save
+      user.save
+    end
   end
 end

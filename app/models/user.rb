@@ -68,10 +68,12 @@ class User
   references_many :searches, :dependent => :destroy
   references_one :facebook_friends_list, :dependent => :destroy
   references_one :twitter_friends_list, :dependent => :destroy
+  references_one :identica_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
   after_create :create_facebook_friends_list
   after_create :create_twitter_friends_list
+  after_create :create_identica_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -271,6 +273,10 @@ Time.zone.now ? 1 : 0)
 
   def openid_login?
     !self.auth_keys.blank? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
+  end
+
+  def identica_login?
+    user_info && !user_info["identica"].blank?
   end
 
   def twitter_login?
@@ -519,9 +525,14 @@ Time.zone.now ? 1 : 0)
   end
   alias :twitter_friends_ids :twitter_friends
 
+  def identica_friends
+    self.identica_friends_list.friends
+  end
+  alias :identica_friends_ids :identica_friends
+
   ## TODO: add twitter followers,  google contacts and tags
   def suggestions(limit = 5)
-    (suggested_fb_friends(limit) | suggested_twitter_friends(limit)).sample(limit)
+    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) | suggested_identica_friends(limit)).sample(limit)
   end
 
   # returns user's facebook friends that have an account
@@ -537,6 +548,15 @@ Time.zone.now ? 1 : 0)
   # on shapado but that user is not following
   def suggested_twitter_friends(limit = 5)
     User.where(:twitter_id => {:$in => self.twitter_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns user's identica friends that have an account
+  # on shapado but that user is not following
+  def suggested_identica_friends(limit = 5)
+    User.where(:identica_id => {:$in => self.identica_friends_ids},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -594,5 +614,10 @@ Time.zone.now ? 1 : 0)
   def create_twitter_friends_list
     twitter_friend_list = TwitterFriendsList.create
     self.twitter_friends_list = twitter_friend_list
+  end
+
+  def create_identica_friends_list
+    identica_friend_list = IdenticaFriendsList.create
+    self.identica_friends_list = identica_friend_list
   end
 end

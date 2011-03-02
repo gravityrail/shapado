@@ -361,11 +361,15 @@ module ApplicationHelper
     image_tag(user.user_info["twitter"]["image"])
   end
 
+  def identica_avatar(user)
+    image_tag(user.user_info["identica"]["image"])
+  end
+
   def suggestion_avatar(suggestion)
-    avatar_tag = if suggestion.facebook_login?
-                   facebook_avatar(suggestion)
-                 elsif suggestion.twitter_login?
+    avatar_tag = if  suggestion.twitter_login?
                    twitter_avatar(suggestion)
+                 elsif suggestion.identica_login?
+                   identica_avatar(suggestion)
                  else
                    gravatar(suggestion.email.to_s, :size => 32)
                  end

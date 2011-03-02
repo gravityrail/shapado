@@ -18,6 +18,11 @@ module MultiauthSupport
     field :twitter_login,             :type => String
     field :twitter_id,                :type => String
 
+    field :identica_token,             :type => String
+    field :identica_secret,            :type => String
+    field :identica_login,             :type => String
+    field :identica_id,                :type => String
+
     field :github_id, :type => String
     field :github_login, :type => String
 
@@ -35,7 +40,8 @@ module MultiauthSupport
         fields["uid"] = "http://google_id_#{fields["user_info"]["email"]}" # normalize for subdomains
       end
 
-      auth_key = "#{provider}_#{fields["uid"]}"
+      uid = fields["uid"] || fields["extra"]["user_hash"]["id"]
+      auth_key = "#{provider}_#{uid}"
 
       user = User.where({:auth_keys => auth_key}).first
       if user.nil?
@@ -107,6 +113,12 @@ module MultiauthSupport
         #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
         #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
       end
+      if !self.identica_login? && user.identica_login?
+        self.identica_friend_list.destroy &&
+        IdenticaFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+      end
       user
     end
 
@@ -132,6 +144,16 @@ module MultiauthSupport
       JSON.parse(response)
     end
 
+    def identica_client
+      config = Multiauth.providers["Identica"]
+      @consumer = OAuth::Consumer.new(config["id"], config["token"], {:site=>'http://identi.ca'})
+      @accesstoken = OAuth::AccessToken.new(@consumer, self.identica_token, self.identica_secret)
+    end
+
+    def get_identica_friends
+      JSON.parse(identica_client.get('/api/friends/ids.json').body)
+    end
+
     private
     # {"provider"=>"facebook", "uid"=>"4332432432432", "credentials"=>{"token"=>"432432432432432"},
     # "user_info"=>{"nickname"=>"profile.php?id=4332432432432", "first_name"=>"My", "last_name"=>"Name", "name"=>"My Name", "urls"=>{"Facebook"=>"http://www.facebook.com/profile.php?id=4332432432432", "Website"=>nil}},
@@ -155,6 +177,15 @@ module MultiauthSupport
       self.twitter_secret = fields["credentials"]["secret"]
       self.twitter_login = fields["user_info"]["nickname"]
       self.twitter_id = fields["uid"]
+
+      self.login.blank? && self.login = fields["user_info"]["nickname"]
+    end
+
+    def handle_identica(fields)
+      self.identica_token = fields["credentials"]["token"]
+      self.identica_secret = fields["credentials"]["secret"]
+      self.identica_login = fields["user_info"]["nickname"]
+      self.identica_id = fields["extra"]["user_hash"]["id"]
 
       self.login.blank? && self.login = fields["user_info"]["nickname"]
     end
