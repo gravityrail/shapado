@@ -9,13 +9,11 @@ class Widget
   validates_presence_of :name
 
   embedded_in :group_questions, :inverse_of => :question_widgets
-  embedded_in :group_welcome, :inverse_of => :welcome_widgets
   embedded_in :group_external, :inverse_of => :external_widgets
   embedded_in :group_mainlist, :inverse_of => :mainlist_widgets
 
   def group
     self.group_questions ||
-    self.group_welcome ||
     self.group_external ||
     self.group_mainlist
   end

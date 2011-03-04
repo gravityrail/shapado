@@ -250,7 +250,8 @@ namespace :fixdb do
 
   task :widgets => [:init] do
     c=Group.count
-    Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true})
+    Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true,
+                :external_widgets => true})
     i=0
     Group.all.each do |g|
       [SharingButtonsWidget, ModInfoWidget, QuestionBadgesWidget,
@@ -261,10 +262,9 @@ namespace :fixdb do
       end
 
       [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-        g.welcome_widgets << w.new
         g.mainlist_widgets << w.new
       end
-
+      g.external_widgets << AskQuestionWidget.new
       g.save
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
