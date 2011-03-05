@@ -147,6 +147,7 @@ class UsersController < ApplicationController
     Jobs::Users.async.on_update_user(@user.id, current_group.id).commit!
 
     preferred_tags = params[:user][:preferred_tags]
+
     if @user.valid? && @user.save
       @user.add_preferred_tags(preferred_tags, current_group) if preferred_tags
       redirect_to root_path

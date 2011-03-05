@@ -1,0 +1,124 @@
+ul.tag-list
+  margin: 0 0 10px 0
+  float: left
+  width: 100% !important
+  li, span.tag
+    float: left
+    display: inline
+    margin: 0 0 7px 0
+    a
+      background: url("/images/tag-back-lt.png") 0 0  no-repeat
+      margin: 0 0 0 8px
+      font-size: 11px
+      padding: 1px 5px 2px 13px
+      color: #666
+    a:hover
+      background: url("/images/tag-back-hover.png") 0 0  no-repeat
+      color: #000
+    &.title
+      font-weight: bolder
+      font-size: 12px
+      margin-top: 1px
+  .retag-form
+    background-color: #e5e5e5
+    padding: 15px
+    width: 100% !important
+    margin-bottom: 20px
+    label
+      font-size: 15px
+      font-weight: bold
+      margin-bottom: 5px
+    .tagwrapper
+      border: 1px solid #ccc !important
+      min-height: 20px !important
+      padding: 5px 5px 3px 5px !important
+      font-size: 11px
+      margin-bottom: 10px
+      line-height: 11px
+      width: 93.5% !important
+      ul
+        margin: 0 2px !important
+        padding: 0 !important
+        border: 0px !important
+        border: none
+        li, li:hover
+          margin: 0 !important
+          padding: 0 !important
+        a, a.ui-state-hover, a:hover, span:hover
+          padding: 0px 5px 2px 13px !important
+          margin: 0 !important
+          background: url("/images/tag-back-lt.png") 0 50% no-repeat !important
+          border: none !important
+          .remove-tag
+            padding: 0 !important
+            margin: 0 !important
+      input.autocomplete_for_tags
+        padding: 2px 5px 1px 5px !important
+        font-size: 11px
+        line-height: 11px
+    .buttons
+      text-align: right
+      clear: both
+      margin: 15px 0 0 0
+      padding: 0px 40px 0 0
+      input
+        +orange-gradient
+        border: none
+        font-size: 14px
+        padding: 5px 10px
+        color: #fff
+        width: auto
+
+
+// Tags feature
+//========================================================================
+.tagwrapper
+  border: 1px solid #ccc !important
+  padding: 3px !important
+  font-size: 11px
+  margin-bottom: 5px
+  width: 98.5% !important
+  min-height: 18px !important
+  ul
+    margin: 0 2px !important
+    padding: 0 !important
+    border: 0px !important
+    border: none
+    background: none
+    li, li:hover
+      margin: 0 !important
+      padding: 0 !important
+      a, a.ui-state-hover, a:hover, span:hover
+        padding: 0px 5px 2px 13px !important
+        margin: 0 !important
+        background: url("/images/tag-back-lt.png") 0 50% no-repeat !important
+        border: none !important
+        .remove-tag
+          padding: 0 !important
+          margin: 0 !important
+  input.autocomplete_for_tags
+    padding: 2px 5px 1px 5px !important
+    font-size: 11px
+    line-height: 11px
+    margin: 0
+//Listado de autocomplete - Menu desplegable
+.ui-autocomplete
+  width: auto !important
+  background-color: #f4f4f4
+  +none-radius
+  padding: 0 !important
+  .ui-menu-item
+    padding: 0 !important
+    border-bottom: 1px solid #e5e5e5
+    +none-radius
+    background-color: #fff !important
+    a
+      margin: 0
+      font-size: 12px
+      +none-radius
+      &:hover
+        background: $orange !important
+        color: #fff !important
+        border-color: $orange
+        cursor: pointer
+

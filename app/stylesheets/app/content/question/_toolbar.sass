@@ -1,0 +1,106 @@
+.toolbar
+  border-top: 1px solid #e5e5e5
+  ul
+    margin: 0
+    +normal-radius
+    li
+      float: left
+      display: inline
+      position: relative
+      &:hover
+        visibility: inherit
+      &:hover ul, &.sfHover ul
+        right: -5px
+        top: 25px
+        z-index: 99
+      a
+        display: block
+        position: relative
+        padding: 5px 7px 7px 23px
+        color: #aaa
+        border-right: 1px solid #e5e5e5
+        background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
+      a:hover
+        color: #000
+        background-color: #f9f9f9 !important
+      a.active
+        background-color: $lightBlue
+        color: #000
+      a.active:hover
+        background-color: $lightBlue !important
+      &.more
+        a
+          background-position: 5px -402px
+        a:hover
+          background-color: #e5e5e5 !important
+          color: #000
+      &.more:hover
+        background-color: #e5e5e5 !important
+      &.answer
+        a
+          background-position: 5px 5px
+      &.comment
+        a
+          background-position: 5px -49px
+        a:hover, a.active
+          background-position: 5px -25px
+      &.follow
+        a.follow-q
+          background-position: 6px -330px
+        a.follow-q:hover
+          background-position: 6px -306px
+        a.unfollow-q
+          background-position: 6px -378px
+        a.unfollow-q:hover
+          background-position: 6px -354px
+      &.spam
+        a
+          background-position: 5px -162px
+        a:hover, a.active
+          background-position: 5px -138px
+      &.share_on
+        a
+          background-position: 5px -219px
+        a:hover, a.active
+          background-position: 5px -195px
+      &.activity
+        a
+          background-position: 5px -275px
+        a:hover
+          background-position: 5px -251px
+      &.followUp
+        a
+          background-position: 5px -275px
+      &.flag
+        a
+          background-position: 5px -275px
+      &.close
+        a
+          background-position: 5px -275px
+      &.delete
+        a
+          background-position: 5px -275px
+      &.ban
+        a
+          background-position: 5px -275px
+      &.open
+        a
+          background-position: 5px -275px
+      &.edit-q
+        a
+          background-position: 5px -275px
+      ul
+        position: absolute
+        top: -999em
+        width: 130px
+        left: -1px
+        +none-radius
+        li:first-child
+          border-top: 1px solid #ddd
+        li
+          width: 100%
+          border-left: 1px solid #ddd
+          border-bottom: 1px solid #ddd
+          background-color: #fff
+          a:first-letter
+            text-transform: uppercase

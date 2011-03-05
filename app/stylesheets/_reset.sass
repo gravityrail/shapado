@@ -4,23 +4,20 @@
 //    Author      	:   @dgfrancisco
 //    Client     		:   Shapado
 //    Description	:   CleanUp of all html tags + Print basics and devices
-//======================================================================== 
+//========================================================================
 // Hard Tag Reset
-html, body, div, span, object, iframe, 
-h1, h2, h3, h4, h5, h6, p, a, blockquote, pre, 
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, a, blockquote, pre,
 abbr, address, cite, code,
 del, dfn, em, img, ins, kbd, q, samp,
 small, strong, var,
 b, i, dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend, textarea, select, input, button, 
-table, caption, tbody, tfoot, thead, tr, th, td, 
-article, aside, canvas, details, figcaption, figure, 
+fieldset, form, label, legend, textarea, select, input, button,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary, figure,
 time, mark, audio, video
-  font:
-    size: 100%
-    style: normal
-    weight: normal
+  font: normal $medium normal $Arial
   line-height: 1
   margin: 0
   padding: 0
@@ -31,24 +28,11 @@ article, aside, figure, footer, header, hgroup, img, label, menu, nav, section
   display: block
 
 // Typography
-p
-  line-height: $font-size * 1.55
-
 b
   font-weight: bold
-  
-// <body> Reset
-body, textarea, input, option, select, button
-  font-family: $font-family
 
 body
-  -webkit-text-stroke: 1px transparent
-  background: $background
-  font-size: $font-size
   text-rendering: optimizeLegibility
-
-body, legend
-  color: $color
 
 a
   color: $link_color
@@ -62,12 +46,13 @@ a
     color: $active_color
   img
     border: 0
-.clear 
+
+.clear
   float: none
   clear: both
   display: block
   font-size: 0px
-  
+
 // Tables + Forms
 table
   border:
@@ -105,7 +90,6 @@ legend
   .margin-left: -6px
 
 textarea
-  +box-sizing(border-box)
   overflow: auto
   resize: none
 
