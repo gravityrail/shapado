@@ -66,8 +66,14 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
+  references_one :facebook_friends_list, :dependent => :destroy
+  references_one :twitter_friends_list, :dependent => :destroy
+  references_one :identica_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
+  after_create :create_facebook_friends_list
+  after_create :create_twitter_friends_list
+  after_create :create_identica_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -269,8 +275,16 @@ Time.zone.now ? 1 : 0)
     !self.auth_keys.blank? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
   end
 
+  def identica_login?
+    user_info && !user_info["identica"].blank?
+  end
+
   def twitter_login?
     user_info && !user_info["twitter"].blank?
+  end
+
+  def facebook_login?
+    !facebook_id.blank?
   end
 
   def has_voted?(voteable)
@@ -388,22 +402,21 @@ Time.zone.now ? 1 : 0)
   # self follows user
   def add_friend(user)
     return false if user == self
-    FriendList.push_uniq(self.friend_list_id, :following_ids => user.id)
-    FriendList.push_uniq(user.friend_list_id, :follower_ids => self.id)
+    FriendList.collection.update({ "_id" => self.friend_list_id}, { "$addToSet" => { :following_ids => user.id } })
+    FriendList.collection.update({ "_id" => user.friend_list_id}, { "$addToSet" => { :follower_ids => self.id } })
 
-    User.increment(self.id, :following_count => 1)
-    User.increment(user.id, :followers_count => 1)
+    self.inc(:following_count, 1)
+    user.inc(:followers_count, 1)
     true
   end
 
   def remove_friend(user)
     return false if user == self
-    FriendList.pull(self.friend_list_id, :following_ids => user.id)
-    FriendList.pull(user.friend_list_id, :follower_ids => self.id)
+    FriendList.collection.update({ "_id" => self.friend_list_id}, { "$pull" => { :following_ids => user.id } })
+    FriendList.collection.update({ "_id" => user.friend_list_id}, { "$pull" => { :follower_ids => self.id } })
 
-    User.decrement(self.id, :following_count => 1)
-    User.decrement(user.id, :followers_count => 1)
-
+    self.inc(:following_count, -1)
+    user.inc(:followers_count, -1)
     true
   end
 
@@ -499,6 +512,67 @@ Time.zone.now ? 1 : 0)
     end
   end
 
+  def facebook_friends
+    self.facebook_friends_list.friends
+  end
+
+  def fb_friends_ids
+    self.facebook_friends.map do |friend| friend["id"] end
+  end
+
+  def twitter_friends
+    self.twitter_friends_list.friends
+  end
+  alias :twitter_friends_ids :twitter_friends
+
+  def identica_friends
+    self.identica_friends_list.friends
+  end
+  alias :identica_friends_ids :identica_friends
+
+  ## TODO: add twitter followers,  google contacts and tags
+  def suggestions(limit = 5)
+    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) | suggested_identica_friends(limit)).sample(limit)
+  end
+
+  # returns user's facebook friends that have an account
+  # on shapado but that user is not following
+  def suggested_fb_friends(limit = 5)
+    User.where(:facebook_id => {:$in => self.fb_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns user's twitter friends that have an account
+  # on shapado but that user is not following
+  def suggested_twitter_friends(limit = 5)
+    User.where(:twitter_id => {:$in => self.twitter_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns user's identica friends that have an account
+  # on shapado but that user is not following
+  def suggested_identica_friends(limit = 5)
+    User.where(:identica_id => {:$in => self.identica_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns all user's facebook friends on shapado
+  def all_fb_friends
+    User.where(:facebook_id => {:$in => self.fb_friends_ids})
+  end
+
+  # returns a follower that is someone self follows
+  # if @user follows bob and bob follows bill
+  # @user.common_follower(bill) will return bob
+  def common_follower(user)
+    User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
+  end
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }
@@ -531,5 +605,19 @@ Time.zone.now ? 1 : 0)
       user.destroy
     end
   end
-end
 
+  def create_facebook_friends_list
+    facebook_friend_list = FacebookFriendsList.create
+    self.facebook_friends_list = facebook_friend_list
+  end
+
+  def create_twitter_friends_list
+    twitter_friend_list = TwitterFriendsList.create
+    self.twitter_friends_list = twitter_friend_list
+  end
+
+  def create_identica_friends_list
+    identica_friend_list = IdenticaFriendsList.create
+    self.identica_friends_list = identica_friend_list
+  end
+end

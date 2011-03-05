@@ -1,0 +1,19 @@
+# Messages for Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Rancher
+sr: 
+  comments: 
+    create: 
+      flash_notice: Хвала вам на коментару.
+    edit: 
+      title: Уређивање коментара
+    shared: 
+      add_comment: Додај коментар...
+      reply: Одговори
+      said: рече
+    update: 
+      flash_notice: Коментар је ажуриран.
+  models: 
+    comment: Коментар
+    comments: Коментари

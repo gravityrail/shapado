@@ -74,10 +74,9 @@ class Group
   references_many :ads, :dependent => :destroy
   references_many :tags, :dependent => :destroy
 
-  embeds_many :welcome_widgets, :class_name => "Widget", :as => "group_questions"
-  embeds_many :mainlist_widgets, :class_name => "Widget", :as => "group_welcome"
-  embeds_many :question_widgets, :class_name => "Widget", :as => "group_external"
-  embeds_many :external_widgets, :class_name => "Widget", :as => "group_mainlist"
+  embeds_many :mainlist_widgets, :class_name => "Widget", :as => "group_mainlist"
+  embeds_many :question_widgets, :class_name => "Widget", :as => "group_questions"
+  embeds_many :external_widgets, :class_name => "Widget", :as => "group_external"
 
   references_many :badges, :dependent => :destroy, :validate => false
   references_many :questions, :dependent => :destroy, :validate => false

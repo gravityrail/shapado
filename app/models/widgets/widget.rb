@@ -9,13 +9,11 @@ class Widget
   validates_presence_of :name
 
   embedded_in :group_questions, :inverse_of => :question_widgets
-  embedded_in :group_welcome, :inverse_of => :welcome_widgets
   embedded_in :group_external, :inverse_of => :external_widgets
   embedded_in :group_mainlist, :inverse_of => :mainlist_widgets
 
   def group
     self.group_questions ||
-    self.group_welcome ||
     self.group_external ||
     self.group_mainlist
   end
@@ -27,7 +25,7 @@ class Widget
   end
 
   def self.types(tab="")
-    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget]
+    types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget SharingButtonsWidget CurrentTagsWidget SuggestionsWidget]
     if tab == 'question'
       types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end
@@ -88,5 +86,8 @@ class Widget
   end
 
   protected
+  def set_name
+    self[:name] ||= self.class.to_s.sub("Widget", "").underscore
+  end
 end
 

@@ -272,6 +272,8 @@ class UsersController < ApplicationController
     return redirect_to(:root)
   end
 
+  def suggestions
+  end
   protected
   def active_subtab(param)
     key = params.fetch(param, "votes")

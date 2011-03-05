@@ -16,7 +16,12 @@ module MultiauthSupport
     field :twitter_token,             :type => String
     field :twitter_secret,            :type => String
     field :twitter_login,             :type => String
+    field :twitter_id,                :type => String
 
+    field :identica_token,             :type => String
+    field :identica_secret,            :type => String
+    field :identica_login,             :type => String
+    field :identica_id,                :type => String
 
     field :github_id, :type => String
     field :github_login, :type => String
@@ -35,7 +40,8 @@ module MultiauthSupport
         fields["uid"] = "http://google_id_#{fields["user_info"]["email"]}" # normalize for subdomains
       end
 
-      auth_key = "#{provider}_#{fields["uid"]}"
+      uid = fields["uid"] || fields["extra"]["user_hash"]["id"]
+      auth_key = "#{provider}_#{uid}"
 
       user = User.where({:auth_keys => auth_key}).first
       if user.nil?
@@ -91,8 +97,27 @@ module MultiauthSupport
     end
 
     def merge_user(user)
+      #TODO merge friendlist, facebook friend lists and maybe more
+      #TODO merging is broken
       [Question, Answer, Badge, UserStat].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
+      end
+      if !self.facebook_login? && user.facebook_login?
+        self.facebook_friend_list.destroy &&
+        FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
+      end
+      if !self.twitter_login? && user.twitter_login?
+        self.twitter_friend_list.destroy &&
+        TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+      end
+      if !self.identica_login? && user.identica_login?
+        self.identica_friend_list.destroy &&
+        IdenticaFriendList.override({:user_id => user.id}, {:user_id => self.id})
+        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
       end
       user
     end
@@ -114,6 +139,21 @@ module MultiauthSupport
       end
     end
 
+    def facebook_client(property = 'friends')
+      response = open(URI.encode("https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}")).read
+      JSON.parse(response)
+    end
+
+    def identica_client
+      config = Multiauth.providers["Identica"]
+      @consumer = OAuth::Consumer.new(config["id"], config["token"], {:site=>'http://identi.ca'})
+      @accesstoken = OAuth::AccessToken.new(@consumer, self.identica_token, self.identica_secret)
+    end
+
+    def get_identica_friends
+      JSON.parse(identica_client.get('/api/friends/ids.json').body)
+    end
+
     private
     # {"provider"=>"facebook", "uid"=>"4332432432432", "credentials"=>{"token"=>"432432432432432"},
     # "user_info"=>{"nickname"=>"profile.php?id=4332432432432", "first_name"=>"My", "last_name"=>"Name", "name"=>"My Name", "urls"=>{"Facebook"=>"http://www.facebook.com/profile.php?id=4332432432432", "Website"=>nil}},
@@ -125,7 +165,7 @@ module MultiauthSupport
       self.facebook_profile = fields["user_info"]["urls"]["Facebook"]
 
       if self.email.blank?
-        self.email = uifo["email"]
+        self.email = uinfo["email"]
       end
     end
 
@@ -136,6 +176,16 @@ module MultiauthSupport
       self.twitter_token = fields["credentials"]["token"]
       self.twitter_secret = fields["credentials"]["secret"]
       self.twitter_login = fields["user_info"]["nickname"]
+      self.twitter_id = fields["uid"]
+
+      self.login.blank? && self.login = fields["user_info"]["nickname"]
+    end
+
+    def handle_identica(fields)
+      self.identica_token = fields["credentials"]["token"]
+      self.identica_secret = fields["credentials"]["secret"]
+      self.identica_login = fields["user_info"]["nickname"]
+      self.identica_id = fields["extra"]["user_hash"]["id"]
 
       self.login.blank? && self.login = fields["user_info"]["nickname"]
     end

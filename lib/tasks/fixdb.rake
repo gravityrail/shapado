@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_list"] do
 end
 
 
@@ -250,7 +250,8 @@ namespace :fixdb do
 
   task :widgets => [:init] do
     c=Group.count
-    Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true})
+    Group.unset({}, {:widgets => true, :question_widgets => true, :welcome_widgets => true, :mainlist_widgets => true,
+                :external_widgets => true})
     i=0
     Group.all.each do |g|
       [SharingButtonsWidget, ModInfoWidget, QuestionBadgesWidget,
@@ -261,10 +262,9 @@ namespace :fixdb do
       end
 
       [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-        g.welcome_widgets << w.new
         g.mainlist_widgets << w.new
       end
-
+      g.external_widgets << AskQuestionWidget.new
       g.save
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
@@ -298,5 +298,28 @@ namespace :fixdb do
   task :cleanup => [:init] do
     p "removing #{Question.where(:group_id => nil).destroy_all} orphan questions"
     p "removing #{Answer.where(:group_id => nil).destroy_all} orphan answers"
+  end
+
+  task :set_follow_ids => [:init] do
+    p "setting nil following_ids to []"
+    FriendList.collection.update({:following_ids => nil}, {:following_ids => []})
+    p "setting nil follower_ids to []"
+    FriendList.collection.update({:follower_ids => nil}, {:follower_ids => []})
+    p "done"
+  end
+
+  task :set_friends_lists => [:init] do
+    total = User.count
+    i = 1
+    p "updating #{total} users facebook friends list"
+    User.all.each do |u|
+      u.facebook_friends_list = FacebookFriendsList.create
+      u.twitter_friends_list = TwitterFriendsList.create
+      u.identica_friends_list = IdenticaFriendsList.create
+
+      p "#{i}/#{total} #{u.login}"
+      i += 1
+    end
+    p "done"
   end
 end

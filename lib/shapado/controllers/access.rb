@@ -63,6 +63,15 @@ module Shapado
         if current_user.admin?
           Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
         end
+        if current_user.facebook_login? && current_user.facebook_friends.empty?
+          Jobs::Users.async.get_facebook_friends(current_user.id).commit!
+        end
+        if current_user.twitter_login? && current_user.twitter_friends.empty?
+          Jobs::Users.async.get_twitter_friends(current_user.id).commit!
+        end
+        if current_user.identica_login? && current_user.identica_friends.empty?
+          Jobs::Users.async.get_identica_friends(current_user.id).commit!
+        end
         if return_to = session.delete("return_to")
           return_to
         else

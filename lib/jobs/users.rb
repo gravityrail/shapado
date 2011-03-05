@@ -18,5 +18,29 @@ module Jobs
         create_badge(user, group, :token => "autobiographer", :unique => true)
       end
     end
+
+    def self.get_facebook_friends(user_id)
+      user = User.find(user_id)
+      friends = user.facebook_client
+      user.facebook_friends_list.friends = friends["data"]
+      user.facebook_friends_list.save
+      user.save
+    end
+
+    def self.get_twitter_friends(user_id)
+      user = User.find(user_id)
+      friends = user.twitter_client.friends_ids
+      user.twitter_friends_list.friends = friends
+      user.twitter_friends_list.save
+      user.save
+    end
+
+    def self.get_identica_friends(user_id)
+      user = User.find(user_id)
+      friends = user.get_identica_friends
+      user.identica_friends_list.friends = friends
+      user.identica_friends_list.save
+      user.save
+    end
   end
 end

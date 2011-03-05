@@ -66,3 +66,7 @@ en:
       footer: "See all questions on %{group}"
       ask: "Ask"
       view_question: "<p>You can view it <a href=\"%{question}\">here</a> or ask another one below.</p>"
+    suggestions:
+      title: "People And Tags To Follow"
+      description: "Suggestion of friends and tags for the user to follow"
+      followed_by: "Followed by %{user}"

@@ -1,0 +1,22 @@
+# Messages for Serbian Cyrillic ekavian (‪Српски (ћирилица)‬)
+# Exported from translatewiki.net
+# Export driver: syck
+# Author: Rancher
+sr: 
+  close_requests: 
+    form: 
+      dupe: Дупликат
+      no_question: Није питање
+      not_relevant: Није релевантно
+      ot: Ван теме
+      request_closing_details: Затражи затварање овог питања
+      spam: непожељно
+    index: 
+      title: Списак захтева за затварање
+    model: 
+      attributes: 
+        comment: Коментар
+        reason: Разлог
+        user: Корисник
+      name: Захтев за затварање
+      prural_name: Захтеви за затварање

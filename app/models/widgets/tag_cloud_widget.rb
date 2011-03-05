@@ -1,5 +1,5 @@
 class TagCloudWidget < Widget
-  field :settings, :type => Hash, :default => { :limit => 30, :on_welcome => true }
+  field :settings, :type => Hash, :default => { :limit => 30, :on_mainlist => true }
 
   validate :validate_settings
 
