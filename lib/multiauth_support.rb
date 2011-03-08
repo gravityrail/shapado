@@ -75,6 +75,11 @@ module MultiauthSupport
         user.user_info["twitter"] = fields["user_info"]
         user.save(:validate => false)
       end
+      if provider == 'facebook' && user.user_info["facebook"] && user.user_info["facebook"]["old"]
+        user.user_info["facebook"] = fields["user_info"]
+        user["facebook_token"] = fields["credentials"]["token"]
+        user.save(:validate => false)
+      end
       user
     end
   end # ClassMethods
