@@ -358,7 +358,11 @@ module ApplicationHelper
   end
 
   def twitter_avatar(user)
-    image_tag(user.user_info["twitter"]["image"])
+    if user.user_info["twitter"]["image"]
+      image_tag(user.user_info["twitter"]["image"])
+    else
+      gravatar(user.email.to_s, :size => 32)
+    end
   end
 
   def identica_avatar(user)

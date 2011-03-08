@@ -71,7 +71,10 @@ module MultiauthSupport
 
         return false if !user.save
       end
-
+      if provider == 'twitter' && user.user_info["twitter"] && user.user_info["twitter"]["old"]
+        user.user_info["twitter"] = fields["user_info"]
+        user.save(:validate => false)
+      end
       user
     end
   end # ClassMethods

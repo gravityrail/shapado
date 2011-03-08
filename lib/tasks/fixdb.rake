@@ -322,4 +322,19 @@ namespace :fixdb do
     end
     p "done"
   end
+
+  task :fix_twitter_users => [:init] do
+    users = User.where({:twitter_token => {:$ne => nil}})
+    users.each do |u|
+      twitter_id = u.twitter_token.split('-').first
+      p "fixing #{u.login} with twitter id #{twitter_id}"
+      u["auth_keys"] = [] if u["auth_keys"].nil?
+      u["auth_keys"] << "twitter_#{twitter_id}"
+      u["auth_keys"].uniq!
+      u["twitter_id"] = twitter_id
+      u["user_info"] = { } if u["user_info"].nil?
+      u["user_info"]["twitter"] = { "old" => 1}
+      u.save(:validate => false)
+    end
+  end
 end
