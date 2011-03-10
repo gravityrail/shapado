@@ -157,10 +157,20 @@ class UsersController < ApplicationController
     end
   end
 
+  # My feed, this returns:
+  # - all the questions I asked
+  # - all the questions I follow
+  # - all the questions followed by people I follow
+  #   (questions followed by people I find interesting must be interesting to me)
+  # - all the questions tagged with one of the tag I follow
   def feed
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
-
-    find_questions(:follower_ids => @user.id)
+    tags = @user.config_for(current_group).preferred_tags
+    user_ids = @user.friend_list.following_ids
+    user_ids << @user.id
+    find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
+                                    {:tags.in => tags},
+                                    {:user_id => user_ids}])
   end
 
   def by_me
