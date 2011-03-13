@@ -530,9 +530,26 @@ Time.zone.now ? 1 : 0)
   end
   alias :identica_friends_ids :identica_friends
 
-  ## TODO: add twitter followers,  google contacts and tags
-  def suggestions(limit = 5)
-    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) | suggested_identica_friends(limit)).sample(limit)
+  ## TODO: add google contacts and linkedin contacts
+  def suggestions(group, limit = 5)
+    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) | suggested_identica_friends(limit) | suggested_tags(group)).sample(limit)
+  end
+
+  # returns tags followed by my friends but not by self
+  # TODO: optimize
+  def suggested_tags(group)
+    friends = User.where("membership_list.#{group.id}.preferred_tags" => {"$ne" => []},
+                         "_id" => { "$in" => self.friend_list.following_ids}).
+                         only("membership_list.#{group.id}.preferred_tags", "login")
+    friends_tags = { }
+    friends.each do |friend|
+      (friend.membership_list[group.id]["preferred_tags"]-self.preferred_tags_on(group)).each do |tag|
+        friends_tags["#{tag}"] ||= { }
+        friends_tags["#{tag}"]["followed_by"] ||= []
+        friends_tags["#{tag}"]["followed_by"] << friend.login
+      end
+    end
+     friends_tags.to_a
   end
 
   # returns user's facebook friends that have an account
