@@ -1,6 +1,5 @@
 .tag-info
-  - if tag.has_icon?
-    = image_tag(tag_icon_path(current_group, tag))
+  = tag_icon_image_link(tag)
   = tag.name
   = tag.description
   -if logged_in? && current_user.mod_of?(current_group)

@@ -370,20 +370,50 @@ module ApplicationHelper
   end
 
   def suggestion_avatar(suggestion)
-    avatar_tag = if  suggestion.twitter_login?
-                   twitter_avatar(suggestion)
-                 elsif suggestion.identica_login?
-                   identica_avatar(suggestion)
-                 else
-                   gravatar(suggestion.email.to_s, :size => 32)
-                 end
+    if suggestion.class == User
+      avatar_tag = if  suggestion.twitter_login?
+                     twitter_avatar(suggestion)
+                   elsif suggestion.identica_login?
+                     identica_avatar(suggestion)
+                   else
+                     gravatar(suggestion.email.to_s, :size => 32)
+                   end
+    else
+      tag = Tag.where(:name => suggestion[0], :group_id => current_group.id).first
+      avatar_tag = tag_icon_image_link(tag)
+    end
     avatar_tag
   end
 
-  def common_follower(user, suggested_friend)
-    friend = user.common_follower(suggested_friend)
+  def tag_icon_image_link(tag)
+    image_tag(tag_icon_path(current_group, tag)) if tag.has_icon?
+  end
+
+  def common_follower(user, suggestion)
+    if suggestion.class == User
+      suggested_friend = suggestion
+      friend = user.common_follower(suggested_friend)
+    else
+      friend = suggestion[1]["followed_by"].sample
+    end
     if friend
       raw(t('widgets.suggestions.followed_by', :user => "#{link_to friend.login, user_path(friend)}"))
+    end
+  end
+
+  def suggestion_link(suggestion)
+    if suggestion.class == User
+      link_to(suggestion.login, user_path(suggestion))
+    else
+      tag_link(suggestion[0])
+    end
+  end
+
+  def follow_suggestion_link(suggestion)
+    if suggestion.class == User
+      link_to "+ #{t("users.show.follow")}", follow_user_path(suggestion), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion)
+    else
+      follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
   end
 
@@ -407,6 +437,10 @@ module ApplicationHelper
       end
       link_to title, path, :class => follow_class, 'data-tag' => tag.name, 'data-class' => follow_data, 'data-title' => data_title, 'data-undo' => data_undo
     end
+  end
+
+  def tag_link(tag)
+    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
   end
 end
 

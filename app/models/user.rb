@@ -538,15 +538,15 @@ Time.zone.now ? 1 : 0)
   # returns tags followed by my friends but not by self
   # TODO: optimize
   def suggested_tags(group)
-    friends = User.where("membership_list.#{group.id}.preferred_tags" => {"$ne" => []},
+    friends = User.where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
                          "_id" => { "$in" => self.friend_list.following_ids}).
-                         only("membership_list.#{group.id}.preferred_tags", "login")
+                         only("membership_list.#{group.id}.preferred_tags", "login", "name")
     friends_tags = { }
     friends.each do |friend|
       (friend.membership_list[group.id]["preferred_tags"]-self.preferred_tags_on(group)).each do |tag|
         friends_tags["#{tag}"] ||= { }
         friends_tags["#{tag}"]["followed_by"] ||= []
-        friends_tags["#{tag}"]["followed_by"] << friend.login
+        friends_tags["#{tag}"]["followed_by"] << friend
       end
     end
      friends_tags.to_a
