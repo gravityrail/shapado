@@ -541,10 +541,17 @@ Time.zone.now ? 1 : 0)
   end
   alias :linked_in_friends_ids :linked_in_friends
 
-  ## TODO: add google contacts and linkedin contacts
+  ## TODO: add google contacts
   def suggestions(group, limit = 5)
-    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) |
-     suggested_identica_friends(limit) | suggested_linked_in_friends(limit) | suggested_tags(group) ).sample(limit)
+    sample = (suggested_fb_friends(limit) | suggested_twitter_friends(limit) |
+              suggested_identica_friends(limit) | suggested_linked_in_friends(limit) |
+              suggested_tags(group) ).sample(limit)
+
+    # if we find less suggestions than requested, complete with
+    # most popular users and tags
+    (sample.size < limit) ? sample |
+      (group.top_tags_strings(limit+15) + group.top_users(limit+5)).
+      sample(limit-sample.size) : sample
   end
 
   # returns tags followed by my friends but not by self

@@ -400,7 +400,7 @@ module ApplicationHelper
     if suggestion.class == User
       suggested_friend = suggestion
       friend = user.common_follower(suggested_friend)
-    else
+    elsif (suggestion[1] && suggestion[1]["followed_by"])
       friend = suggestion[1]["followed_by"].sample
     end
     if friend
