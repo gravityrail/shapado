@@ -369,12 +369,19 @@ module ApplicationHelper
     image_tag(user.user_info["identica"]["image"])
   end
 
+  #TODO css for image tag size
+  def linked_in_avatar(user)
+    image_tag(user.user_info["linked_in"]["image"])
+  end
+
   def suggestion_avatar(suggestion)
     if suggestion.class == User
       avatar_tag = if  suggestion.twitter_login?
                      twitter_avatar(suggestion)
                    elsif suggestion.identica_login?
                      identica_avatar(suggestion)
+                   elsif suggestion.linked_in_login?
+                     linked_in_avatar(suggestion)
                    else
                      gravatar(suggestion.email.to_s, :size => 32)
                    end

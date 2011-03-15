@@ -316,6 +316,7 @@ namespace :fixdb do
       u.facebook_friends_list = FacebookFriendsList.create
       u.twitter_friends_list = TwitterFriendsList.create
       u.identica_friends_list = IdenticaFriendsList.create
+      u.linked_in_friends_list = LinkedInFriendsList.create
 
       p "#{i}/#{total} #{u.login}"
       i += 1

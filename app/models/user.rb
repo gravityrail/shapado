@@ -69,11 +69,13 @@ class User
   references_one :facebook_friends_list, :dependent => :destroy
   references_one :twitter_friends_list, :dependent => :destroy
   references_one :identica_friends_list, :dependent => :destroy
+  references_one :linked_in_friends_list, :dependent => :destroy
 
   before_create :create_friend_list
   after_create :create_facebook_friends_list
   after_create :create_twitter_friends_list
   after_create :create_identica_friends_list
+  after_create :create_linked_in_friends_list
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -273,6 +275,10 @@ Time.zone.now ? 1 : 0)
 
   def openid_login?
     !self.auth_keys.blank? || (AppConfig.enable_facebook_auth && !facebook_id.blank?)
+  end
+
+  def linked_in_login?
+    user_info && !user_info["linked_in"].blank?
   end
 
   def identica_login?
@@ -530,9 +536,15 @@ Time.zone.now ? 1 : 0)
   end
   alias :identica_friends_ids :identica_friends
 
+  def linked_in_friends
+    self.linked_in_friends_list.friends
+  end
+  alias :linked_in_friends_ids :linked_in_friends
+
   ## TODO: add google contacts and linkedin contacts
   def suggestions(group, limit = 5)
-    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) | suggested_identica_friends(limit) | suggested_tags(group)).sample(limit)
+    (suggested_fb_friends(limit) | suggested_twitter_friends(limit) |
+     suggested_identica_friends(limit) | suggested_linked_in_friends(limit) | suggested_tags(group) ).sample(limit)
   end
 
   # returns tags followed by my friends but not by self
@@ -574,6 +586,15 @@ Time.zone.now ? 1 : 0)
   # on shapado but that user is not following
   def suggested_identica_friends(limit = 5)
     User.where(:identica_id => {:$in => self.identica_friends_ids},
+               :_id => {:$not =>
+                 {:$in => self.friend_list.following_ids}}).
+      limit(limit)
+  end
+
+  # returns user's linked_in friends that have an account
+  # on shapado but that user is not following
+  def suggested_linked_in_friends(limit = 5)
+    User.where(:linked_in_id => {:$in => self.linked_in_friends_ids},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -636,5 +657,10 @@ Time.zone.now ? 1 : 0)
   def create_identica_friends_list
     identica_friend_list = IdenticaFriendsList.create
     self.identica_friends_list = identica_friend_list
+  end
+
+  def create_linked_in_friends_list
+    linked_in_friend_list = LinkedInFriendsList.create
+    self.linked_in_friends_list = linked_in_friend_list
   end
 end
