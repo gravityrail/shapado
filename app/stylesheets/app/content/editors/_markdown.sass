@@ -1,81 +1,66 @@
 .markdown
-  font-size: 12px
-  color: #000
-  display: block
-  clear: both
-  margin-bottom: 10px
-  div, ul, ol, p, h1, h2, h3, h4, h5, h6
-    margin-top: 7px !important
-    margin-bottom: 7px !important
-  p, p span, div, li
-    font: 12px/15px $Arial !important
-    color: #000
-  a
-    color: $orange
-  a:hover
-    border-bottom: 1px dotted
-  b, strong
-    font-weight: bold
-  sub, sup
-    font-size: 10px
-    font-style: italic
-    margin: 0 3px 0 0
-  em
-    font-style: italic
-  ul
-    list-style: disc outside
-    margin-left: 20px
-
-  ol
-    list-style: decimal outside
-    margin-left: 20px
-
-  li
-    margin: 0 0 3px 0
-    font-weight: normal
-    font-size: 12px
-  hr
-    border: 0px
-    border-top: 1px dashed
-  h1,h2,h3,h4,h5,h6
-    color: #000
-    font-weight: bold
-  h1
-    font: 20px/23px $Arial !important
-  h2
-    font: 18px/20px $Arial !important
-  h3
-    font: 16px/19px $Arial !important
-  h4
-    font: 14px/17px $Arial !important
-    padding: none
-    background: none
-  h5
-    font: 12px/15px $Arial !important
-  h6
-    font: 10px/13px $Arial !important
-  code
-    background-color: #EEE
+  width: 93% !important
+  textarea
+    border: 1px solid #cccccc
+    font-size: 13px
+    padding: 10px
+    width: 96.5%
     margin-bottom: 10px
-    max-height: 600px
-    overflow: auto
-    padding: 5px
-    width: auto
-    display: inline-block
-  pre
-    code
-      display: block
-  blockquote
-    width: 80%
-    padding: 5px
-    margin: 0.5em
-    background-color: #ddd
-    display: block
-    word-wrap: break-word
-    quotes: none
-    vertical-align: baseline
-  img
-    width: 30%
-    float: left
-    border: 1px solid #e5e5e5
-    margin: 0 10px 5px 0
+    height: 100px
+
+.markdown_toolbar
+  list-style: none
+  border: 1px solid #d7d7d7
+  background-color: #F6F6F6
+  overflow: hidden
+  margin-bottom: 5px !important
+  li
+    a
+      width: 24px
+      height: 16px
+      padding: 0 !important
+      background-image: url(/images/markdown_icons.gif) !important
+      span
+        display: none
+
+  #markdown_italics_button
+    background-position: 0 -119px
+  #markdown_bold_button
+    background-position: 0 -102px
+  #markdown_link_button
+    background-position: 0 0
+  #markdown_image_button
+    background-position: 0 -170px
+  #markdown_unordered_list_button
+    background-position: 0 -34px
+  #markdown_ordered_list_button
+    background-position: 0 -51px
+  #markdown_quote_button
+    background-position: 0 -68px
+  #markdown_code_button
+    background-position: 0 -136px
+  #markdown_help_button
+    background-position: 0 -153px
+  #markdown_heading_button
+    background-position: 0 -85px
+  #markdown_latex_button
+    background-position: 0 -306px
+
+.resizeHandle
+  overflow: hidden
+  width: 22px
+  height: 5px
+  margin-left: auto
+  margin-right: auto
+  background-image: url(/images/handle.png)
+  cursor: n-resize
+
+#markdown_preview
+  width: 96.5%
+  p
+    font-size: 13px
+    line-height: 18px
+    margin-bottom: 20px
+    color: $dark
+    strong
+      font-weight: bold

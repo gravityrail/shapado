@@ -50,6 +50,7 @@ javascripts:
 stylesheets:
   base:
     - compiled/application
+    - ui-lightness/jquery-ui
 
   mobile:
     - compiled/mobile
