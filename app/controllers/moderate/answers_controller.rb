@@ -9,11 +9,17 @@ class Moderate::AnswersController < ApplicationController
   def index
     options = {:group_id => current_group.id}
     options[:banned] = false
+    if params[:filter] == "banned"
+      options[:banned] = true
+    else
+      options[:flags_count] = {:$gt => 0}
+    end
+
     @answers = current_group.answers.
-                                  where(options.merge(:flags_count.gt => 0)).
+                                  where(options).
                                   order_by("flags_count desc").
                                   paginate(:per_page => params[:per_page] || 25,
-                                           :page => params[:questions_page] || 1)
+                                           :page => params[:page] || 1)
   end
 
 
