@@ -16,7 +16,7 @@
       -if current_user.mod_of?(current_group)
         %ul
           %li
-            = link_to "moderate: 10", moderate_path
+            = link_to "moderate", moderate_path
           %li
             = link_to "admin", manage_properties_path
       .clear
@@ -42,7 +42,7 @@
           =link_to "FAQ"
         %li.log-out
           =link_to t("layouts.application.logout"), destroy_user_session_path
-      .clear 
+      .clear
 
       -current_user.searches.where(:group_id => current_group.id).each do |search|
         %ul

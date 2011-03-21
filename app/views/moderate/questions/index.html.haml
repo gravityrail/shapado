@@ -1,17 +1,21 @@
 
-.admin-content.manage
-  =t("activerecord.attributes.question.title")
-  =t("activerecord.attributes.question.body")
+%table.table
+  %tr
+    %th
+      =t("activerecord.attributes.question.title")
+    %th
+      =t("activerecord.attributes.question.body")
 
   -@questions.each do |question|
-    .item
-      %h2
+    %tr
+      %td
         = link_to h(question.title), question_path(question)
-      %p
+      %td
         = truncate(h(question.body), :length => 100)
 
-      .tag-list
-        %span.retag
-          = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag'
+      %td
+        .tag-list
+          %span.retag
+            = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag'
 
 = will_paginate @questions

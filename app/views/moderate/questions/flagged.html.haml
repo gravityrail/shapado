@@ -1,16 +1,3 @@
--content_for :subtabs do
-  .navtitle
-    = t(".title", :default => :"moderate.questions.index.title")
-    -if @questions
-      == (#{@questions.total_entries})
-
-  =render :partial => "subtabs"
-
-%p
-  = t(".filters")
-  = link_to t(".unbanned"), flagged_moderate_questions_path, :title => t(".unbanned_tooltip")
-  |
-  = link_to t(".banned"), flagged_moderate_questions_path(:filter => "banned"), :title => t(".unbanned_tooltip")
 
 -form_tag manage_moderate_questions_path do
   %table.table
