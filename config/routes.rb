@@ -183,6 +183,7 @@ Shapado::Application.routes.draw do
       collection do
         get :flagged
         get :to_close
+        get :to_open
         put :manage
       end
     end

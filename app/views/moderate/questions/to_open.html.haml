@@ -1,14 +1,13 @@
-
 -form_tag manage_moderate_questions_path do
   %table.table
     %tr
       %th
       %th
-        =t(:flags, :scope => "activerecord.models")
+        =t(:prural_name, :scope => "open_requests.model")
       %th
         =t(:title, :scope => "activerecord.attributes.question")
       %th
-        =t(:banned, :scope => "activerecord.attributes.question")
+        =t(:closed, :scope => "activerecord.attributes.question")
       %th
         =t(:body, :scope => "activerecord.attributes.question")
     -@questions.each do |question|
@@ -16,13 +15,14 @@
         %th
           = check_box_tag "question_ids[]", question.id
         %td
-          = render :partial => "flags/list", :locals=> {:flaggeable => question}
+          = render :partial => "open_requests/list", :locals=> {:question => question}
         %td
           = link_to h(question.title), question_path(question)
         %td
-          &= question.banned
+          &= question.closed
         %td
           = truncate(h(question.body), :length => 100)
+
   = will_paginate @questions
   = submit_tag "ban"
   = t("global.or")
