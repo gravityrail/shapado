@@ -29,7 +29,9 @@ module Jobs
 
     def self.get_twitter_friends(user_id)
       user = User.find(user_id)
-      friends = user.twitter_client.friends_ids
+      friends = user.twitter_client.friends_ids.map do |friend|
+        friend.to_s
+      end
       user.twitter_friends_list.friends = friends
       user.twitter_friends_list.save
       user.save
