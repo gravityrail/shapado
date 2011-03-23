@@ -6,17 +6,14 @@
 //    Description  :   Estilospara los tabs del top
 //========================================================================
 #mainTabs
-  margin-bottom: 15px
+  margin-bottom: 20px
+  width: 100%
+
   ul
     z-index: 9999
     margin-bottom: -1px
-    li.active
-      border-bottom: 0
-      background-color: #fff
-      a
-        color: #000
-      a:hover
-        background-color: #fff
+
+
     li
       float: left
       display: inline
@@ -28,41 +25,56 @@
       a:hover
         background-color: #e5e5e5
         color: #000
+    li.active
+      border-bottom: 0
+      background-color: #fff
+      a
+        color: #000
+      a:hover
+        background-color: #fff
 
   section
     z-index: 0
     background-color: #fff
-    width: 97.5%
-    padding: 10px 0 10px 10px
+    width: 96.1%
+    padding: 15px
     +small-radius
+    position: relative
+
     img
+      position: absolute
       float: left
-      margin-right: 10px
       width: 60px
+
     form
       float: left
-      width: 83%
-      margin: 0
+      width: 100%
+      margin: 0 0 0 75px
       padding: 0
+
     input
       border: 1px solid #ccc
       border-right: none
       padding: 6px 10px
       font-size: 14px
-      margin: 0
-      width: 69%
+      margin: 0 0 5px 0
+      width: 72%
+      height: 18px
       float: left
-    :hover
-      background-color: #c00
+      &:hover
+        border-color: #666
+
     input.ask_question
       +orange-gradient
       border: none
       font-size: 14px
-      margin: 0
+      margin: 0 0 5px 0
       padding: 6px 11px
+      height: 32px
       float: left
       color: #fff
       width: auto
+
     p
       float: left
       font-style: italic

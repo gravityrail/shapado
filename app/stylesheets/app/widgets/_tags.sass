@@ -2,8 +2,9 @@
 //========================================================================
 .widget-tags
   hgroup
-    margin-top: 10px
+    margin: 5px 0 0 0
     height: 25px
+
     ul
       li
         float: left
@@ -15,23 +16,23 @@
         a:hover
           color: $dark
           border-bottom: 1px dotted
-      li.active
-        a
-          color: $dark
-          font-weight: bold
+      li.active a
+        color: $dark
+        font-weight: bold
+
   .tag_cloud
     span
       font-size: 11px
       display: block
       a
-        background-color: #ddd
+        background-color: #f1f1f1
         +big-radius
-        padding: 3px 7px
+        padding: 5px 10px
         display: block
         color: $gray
         margin-bottom: 3px
-        width: 88%
         overflow: hidden
+
       a:first-letter
         text-transform: uppercase
       a.xxl
@@ -47,7 +48,7 @@
       a.xs
         width: 38%
       a:hover
-        background-color: $gray
+        background-color: #ccc
         color: $dark
         width: 88%
         display: block

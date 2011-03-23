@@ -38,6 +38,7 @@
       answer by email:
       = mail_to @question.email
     = render "reward_info"
+    = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
     .clear
 
   .stats
@@ -52,8 +53,7 @@
         = t("questions.show.last_activity")
       = t("time.ago", :time => time_ago_in_words(@question.activity_at))
 
-  .attachments
-    = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
+
 
   .toolbar
     %ul.drop-menu

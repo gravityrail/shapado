@@ -1,8 +1,11 @@
 .toolbar
   border-top: 1px solid #e5e5e5
-  ul
+
+  ul.drop-menu
     margin: 0
-    +normal-radius
+    +none-radius
+    height: 25px
+
     li
       float: left
       display: inline
@@ -13,90 +16,33 @@
         right: -5px
         top: 25px
         z-index: 99
+
       a
         display: block
         position: relative
-        padding: 5px 7px 7px 23px
-        color: #aaa
+        padding: 5px 7px 7px 25px
+        color: #999
         border-right: 1px solid #e5e5e5
         background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
-      a:hover
-        color: #000
-        background-color: #f9f9f9 !important
+        &:hover
+          color: #000
+          background-color: #f9f9f9 !important
       a.active
         background-color: $lightBlue
         color: #000
-      a.active:hover
-        background-color: $lightBlue !important
-      &.more
-        a
-          background-position: 5px -402px
-        a:hover
-          background-color: #e5e5e5 !important
-          color: #000
-      &.more:hover
-        background-color: #e5e5e5 !important
-      &.answer
-        a
-          background-position: 5px 5px
-      &.comment
-        a
-          background-position: 5px -49px
-        a:hover, a.active
-          background-position: 5px -25px
-      &.follow
-        a.follow-q
-          background-position: 6px -330px
-        a.follow-q:hover
-          background-position: 6px -306px
-        a.unfollow-q
-          background-position: 6px -378px
-        a.unfollow-q:hover
-          background-position: 6px -354px
-      &.spam
-        a
-          background-position: 5px -162px
-        a:hover, a.active
-          background-position: 5px -138px
-      &.share_on
-        a
-          background-position: 5px -219px
-        a:hover, a.active
-          background-position: 5px -195px
-      &.activity
-        a
-          background-position: 5px -275px
-        a:hover
-          background-position: 5px -251px
-      &.followUp
-        a
-          background-position: 5px -275px
-      &.flag
-        a
-          background-position: 5px -275px
-      &.close
-        a
-          background-position: 5px -275px
-      &.delete
-        a
-          background-position: 5px -275px
-      &.ban
-        a
-          background-position: 5px -275px
-      &.open
-        a
-          background-position: 5px -275px
-      &.edit-q
-        a
-          background-position: 5px -275px
+        &:hover
+          background-color: $lightBlue !important
+
       ul
         position: absolute
         top: -999em
         width: 130px
         left: -1px
         +none-radius
+
         li:first-child
           border-top: 1px solid #ddd
+
         li
           width: 100%
           border-left: 1px solid #ddd
@@ -104,3 +50,69 @@
           background-color: #fff
           a:first-letter
             text-transform: uppercase
+
+// Icons for each
+
+ul.drop-menu
+  .answer #add_answer
+    background-position: 5px 5px
+    &:hover, &.active
+      background-position: 5px -25px
+
+  .comment #add_question_comment
+    background-position: 5px -699px
+    &:hover, &.active
+      background-position: 5px -679px
+
+  .follow
+    .follow-q
+      background-position: 6px -262px
+    .follow-q:hover
+      background-position: 6px -242px
+    .unfollow-q
+      background-position: 6px -218px
+    .unfollow-q:hover
+      background-position: 6px -194px
+
+  .share_on #share_question
+    background-position: 5px -123px
+    &:hover, &.active
+      background-position: 5px -99px
+
+  .more a
+    background-position: 5px -382px !important
+
+  .activity a
+    background-position: 5px -75px !important
+    &:hover, &.active
+      background-position: 5px -51px !important
+
+  .followUp a
+    background-position: 6px -607px !important
+    &:hover, &:active
+      background-position: 6px -581px !important
+
+  .close a
+    background-position: 5px -358px !important
+    &:hover, &.active
+      background-position: 5px -330px !important
+
+  #request-close-link
+    background-position: 5px -657px !important
+    &:hover
+      background-position: 5px -634px !important
+
+  .delete a
+    background-position: 5px -547px !important
+    &:hover, &.active
+      background-position: 5px -519px !important
+
+  .edit-q a
+    background-position: 5px -306px !important
+    &:hover, &.active
+      background-position: 5px -283px !important
+
+  .ban a
+    background-position: 5px -170px !important
+    &:hover, &.active
+      background-position: 5px -146px !important
