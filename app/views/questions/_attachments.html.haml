@@ -1,7 +1,7 @@
-#attachments_list
-  .header Attached files:
-  %ul
-    -attachments.each_file do |key, file|
+-attachments.each_file do |key, file|
+  #attachments_list
+    .header Attached files:
+    %ul
       %li
         = link_to file.name, question_attachment_path(question.group, question, file, key)
         -if editing

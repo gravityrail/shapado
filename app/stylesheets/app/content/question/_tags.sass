@@ -2,105 +2,64 @@ ul.tag-list
   margin: 0 0 10px 0
   float: left
   width: 100% !important
+
   li, span.tag
     float: left
     display: inline
-    margin: 0 0 7px 0
+    height: 18px
     a
-      background: url("/images/tag-back-lt.png") 0 0  no-repeat
-      margin: 0 0 0 8px
+      background: url("/images/tag-back-lt.png") left 0 no-repeat
+      margin: 0 0 0 7px
       font-size: 11px
-      padding: 1px 5px 2px 13px
-      color: #666
-    a:hover
-      background: url("/images/tag-back-hover.png") 0 0  no-repeat
-      color: #000
+      padding: 3px 7px 4px 18px
+      color: #666666
+      display: block
+      &:hover
+        background: url("/images/tag-back-lt-hover.png") left 0 no-repeat
+        color: #000
     &.title
       font-weight: bolder
       font-size: 12px
-      margin-top: 1px
-  .retag-form
-    background-color: #e5e5e5
-    padding: 15px
-    width: 100% !important
-    margin-bottom: 20px
-    label
-      font-size: 15px
-      font-weight: bold
-      margin-bottom: 5px
-    .tagwrapper
-      border: 1px solid #ccc !important
-      min-height: 20px !important
-      padding: 5px 5px 3px 5px !important
-      font-size: 11px
-      margin-bottom: 10px
-      line-height: 11px
-      width: 93.5% !important
-      ul
-        margin: 0 2px !important
-        padding: 0 !important
-        border: 0px !important
-        border: none
-        li, li:hover
-          margin: 0 !important
-          padding: 0 !important
-        a, a.ui-state-hover, a:hover, span:hover
-          padding: 0px 5px 2px 13px !important
-          margin: 0 !important
-          background: url("/images/tag-back-lt.png") 0 50% no-repeat !important
-          border: none !important
-          .remove-tag
-            padding: 0 !important
-            margin: 0 !important
-      input.autocomplete_for_tags
-        padding: 2px 5px 1px 5px !important
-        font-size: 11px
-        line-height: 11px
-    .buttons
-      text-align: right
-      clear: both
-      margin: 15px 0 0 0
-      padding: 0px 40px 0 0
-      input
-        +orange-gradient
-        border: none
-        font-size: 14px
-        padding: 5px 10px
-        color: #fff
-        width: auto
+      padding: 2px 0 0 0
+    &.retag a
+      background: url("/images/tag-back-lt-retag.png") left 0 no-repeat
+      color: #fff
 
 
 // Tags feature
 //========================================================================
 .tagwrapper
-  border: 1px solid #ccc !important
-  padding: 3px !important
+  border: 1px solid #cccccc !important
+  padding: 4px !important
   font-size: 11px
-  margin-bottom: 5px
+  margin: 5px 0 10px 0 !important
   width: 98.5% !important
-  min-height: 18px !important
+  min-height: 22px !important
+
   ul
     margin: 0 2px !important
     padding: 0 !important
     border: 0px !important
-    border: none
     background: none
-    li, li:hover
+
+    li a
+      padding: 0 7px 0 18px !important
       margin: 0 !important
-      padding: 0 !important
-      a, a.ui-state-hover, a:hover, span:hover
-        padding: 0px 5px 2px 13px !important
-        margin: 0 !important
-        background: url("/images/tag-back-lt.png") 0 50% no-repeat !important
-        border: none !important
-        .remove-tag
-          padding: 0 !important
-          margin: 0 !important
+      background: url("/images/tag-back-lt.png") left 1px no-repeat !important
+      border: none !important
+      color: #000
+      cursor: pointer
+
+    li a:hover, li:hover a, li a.ui-state-hover, li span:hover
+      background: url("/images/tag-back-lt-hover.png") left 1px no-repeat !important
+      color: #000
+
   input.autocomplete_for_tags
     padding: 2px 5px 1px 5px !important
     font-size: 11px
     line-height: 11px
     margin: 0
+
 //Listado de autocomplete - Menu desplegable
 .ui-autocomplete
   width: auto !important
@@ -116,7 +75,7 @@ ul.tag-list
       margin: 0
       font-size: 12px
       +none-radius
-      &:hover
+      &:hover, &:active, &:focus
         background: $orange !important
         color: #fff !important
         border-color: $orange
