@@ -7,32 +7,35 @@
   clear: both
   display: block
   padding: 0 0 20px 0
+  min-height: 1000px
+
   header
     h3
       background: url("/images/ans-icon-medium.gif") 10px 10px  no-repeat
       font-size: 18px
       padding: 11px 0 10px 40px
+
   section.filters
     ul
       border-top: 1px solid $blue
-      background-color: $lightBlue
       border-bottom-color: #bee5e7
+
     ul.newest
       li.newest-active
         a
-          border-color: $blue
+          border-bottom: 2px solid $blue
           color: #000
           font-weight: bold
     ul.votes
       li.votes-active
         a
-          border-color: $blue
+          border-bottom: 2px solid $blue
           color: #000
           font-weight: bold
     ul.oldest
       li.oldest-active
         a
-          border-color: $blue
+          border-bottom: 2px solid $blue
           color: #000
           font-weight: bold
 
