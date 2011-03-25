@@ -67,6 +67,7 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
+  references_many :invitations, :dependent => :destroy
   references_one :facebook_friends_list, :dependent => :destroy
   references_one :twitter_friends_list, :dependent => :destroy
   references_one :identica_friends_list, :dependent => :destroy
@@ -643,6 +644,27 @@ Time.zone.now ? 1 : 0)
   def common_follower(user)
     User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
   end
+
+  def invite(email, group)
+    if self.can_invite_on?(group)
+      Invitation.create(:user_id => self.id,
+                        :email => email,
+                        :group_id => group.id)
+    end
+  end
+
+  def revoke_invite(invite)
+    invite.destroy if self.can_modify?(invite)
+  end
+
+  def can_invite_on?(group)
+    return true if self.admin_of?(group) || self.role == 'admin' ||
+      group.invitations_perms == 'user' ||
+      (group.invitations_perms == 'moderator' &&
+       self.mod_of?(group))
+    return false
+  end
+
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }

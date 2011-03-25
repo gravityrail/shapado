@@ -64,6 +64,8 @@ class Group
 
   field :twitter_account, :type => Hash, :default => { }
 
+  field :invitations_perms, :type => String, :default => 'user' # can be "moderator", "owner"
+
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
   file_key :custom_favicon, :max_length => 256.kilobytes
@@ -86,6 +88,7 @@ class Group
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
+  references_many :invitations, :dependent => :destroy
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
