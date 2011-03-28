@@ -18,6 +18,9 @@ module Shapado
 
         if logged_in?
           if !current_user.user_of?(@current_group)
+            if cookie = cookie[:accept_invitation]
+              current_user.accept_invitation(cookie)
+            end
             raise Goalie::Forbidden
           end
         else
@@ -75,11 +78,13 @@ module Shapado
         if current_user.linked_in_login? && current_user.linked_in_friends.empty?
           Jobs::Users.async.get_linked_in_friends(current_user.id).commit!
         end
-        if return_to = session.delete("return_to")
-          return_to
-        else
-          super
-        end
+        '/close_popup'
+        #return
+        #if return_to = session.delete("return_to")
+        #  return_to
+        #else
+        #  super
+        #end
       end
     end
   end
