@@ -99,7 +99,7 @@ GEM
     faraday (0.5.4)
       addressable (~> 2.2.2)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     ffi (1.0.5)
       rake (>= 0.8.7)
     gem_plugin (0.2.3)
@@ -129,7 +129,7 @@ GEM
     mime-types (1.16)
     mongo (1.2.0)
       bson (>= 1.2.0)
-    mongoid (2.0.0.rc.7)
+    mongoid (2.0.0.rc.8)
       activemodel (~> 3.0)
       mongo (~> 1.2)
       tzinfo (~> 0.3.22)
@@ -248,7 +248,7 @@ GEM
       json (>= 1.1.9)
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
-    tzinfo (0.3.24)
+    tzinfo (0.3.25)
     uuidtools (2.1.1)
     warden (1.0.3)
       rack (>= 1.0.0)
@@ -282,7 +282,7 @@ DEPENDENCIES
   magic
   mechanize
   mongo (= 1.2.0)
-  mongoid (= 2.0.0.rc.7)
+  mongoid (= 2.0.0.rc.8)
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
