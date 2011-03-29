@@ -545,7 +545,7 @@ Time.zone.now ? 1 : 0)
   def suggestions(group, limit = 5)
     sample = (suggested_fb_friends(limit) | suggested_twitter_friends(limit) |
               suggested_identica_friends(limit) | suggested_linked_in_friends(limit) |
-              suggested_tags(group) ).sample(limit)
+              suggested_tags(group, limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
 
     # if we find less suggestions than requested, complete with
     # most popular users and tags
@@ -556,7 +556,7 @@ Time.zone.now ? 1 : 0)
 
   # returns tags followed by my friends but not by self
   # TODO: optimize
-  def suggested_tags(group)
+  def suggested_tags(group, limit = 5)
     friends = User.where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
                          "_id" => { "$in" => self.friend_list.following_ids}).
                          only("membership_list.#{group.id}.preferred_tags", "login", "name")
@@ -568,7 +568,27 @@ Time.zone.now ? 1 : 0)
         friends_tags["#{tag}"]["followed_by"] << friend
       end
     end
-     friends_tags.to_a
+     friends_tags.to_a.sample(limit)
+  end
+
+  #returns tags followed by self suggested friends that I may not follow
+  def suggested_tags_by_suggested_friends(group, limit = 5)
+    friends = User.any_of({ :facebook_id => {:$in => self.fb_friends_ids}},
+                          { :identica_id => {:$in => self.identica_friends_ids}},
+                          { :twitter_id => {:$in => self.twitter_friends_ids}},
+                          { :linked_in_id => {:$in => self.linked_in_friends_ids}}).
+      where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
+            :_id => {:$not =>
+              {:$in => self.friend_list.following_ids}})
+    friends_tags = { }
+    friends.each do |friend|
+      (friend.membership_list[group.id]["preferred_tags"]-self.preferred_tags_on(group)).each do |tag|
+        friends_tags["#{tag}"] ||= { }
+        friends_tags["#{tag}"]["followed_by"] ||= []
+        friends_tags["#{tag}"]["followed_by"] << friend
+      end
+    end
+     friends_tags.to_a.sample(limit)
   end
 
   # returns user's facebook friends that have an account
