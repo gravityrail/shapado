@@ -12,26 +12,22 @@
 
 section.main-question
   +normal-radius
-  border: 1px solid #e5e5e5
   background: #fff url("/images/q-icon-medium.gif") 15px 15px  no-repeat
   margin-bottom: 15px
   position: relative
-  padding: 0
-
-  ul.tag-list
-    margin-left: 45px
 
   h1
     font-size: 28px
-    line-height: 30px
+    line-height: 32px
     font-weight: bold
-    margin: 10px 20px 10px 45px
+    margin: 10px 20px 10px 50px
     letter-spacing: -0.5px
     text-shadow: 1px 1px 2px #e5e5e5
+
     &.version
       font-size: 18px
       line-height: 20 px
-      margin: 5px 20px 5px 45px
+      margin: 10px 20px 10px 50px
     br
       margin-bottom: 10px
     small
@@ -41,12 +37,15 @@ section.main-question
         font-style: italic !important
         &:hover
           border-bottom: 1px dotted
+
     small.version
       font-size: 15px
       font-style: italic !important
+
     small.current
       color: #c00
       font-weight: bold
+
     small.verion-nav
       float: right
       font-size: 12px
@@ -60,14 +59,30 @@ section.main-question
           color: #c00
 
   .description
-    margin: 0 20px 15px 45px !important
+    margin: 0 20px 10px 50px !important
     p
       font-size: 13px
       line-height: 16px
       color: #606060
+
     img
       float: left
       border: 1px solid #e5e5e5
+
+    #attachments_list
+      margin: 10px 0 10px 10px
+      .header
+        font-weight: bold
+        margin-bottom: 5px
+      li
+        list-style: disc
+        list-style-position: inside
+        margin: 3px 10px
+        a
+          color: #000
+          &:hover
+            color: $orange
+            border-bottom: 1px dotted
 
   .stats
     margin: 0 20px 20px 35px
@@ -80,16 +95,3 @@ section.main-question
         font-weight: bold
         margin: 0 0 0 10px
         font-style: italic
-
-  .edit
-    position: absolute
-    top: 43px
-    left: 14px
-    a
-      width: 24px
-      height: 24px
-      background: url("/images/edit-icon-big.png") 0 0  no-repeat
-      display: block
-      text-indent: -1000px
-      &:hover
-        background-position: 0 -40px

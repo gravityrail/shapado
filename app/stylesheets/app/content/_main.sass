@@ -1,10 +1,20 @@
+// ========================================================================
+//    Document     :   _main.sass
+//    Created on   :   MAR 21 - 2011, 6:17 pm
+//    Author       :   @dgfrancisco
+//    Client       :   Shapado
+//    Description  :
+//========================================================================
 #main-content-wrap, .users-main-content
+
   section
     width: 100%
+
     article
-      border-bottom: 1px solid #ccc
-      padding: 15px
+      border-bottom: 1px solid #f1f1f1
+      padding: 30px 20px
       color: #666
+
       .user-data
         font-size: 12px
         margin: 0 0 10px 20px
@@ -14,32 +24,35 @@
           font-size: 10px
           font-style: italic
           margin: 0 5px 0 0
+
       h2
-        font-size: 15px
         padding-left: 20px
         margin: 0 0 5px 0
         a
+          font-size: 20px
+          line-height: 22px
           color: $dark
-          font-weight: bold
           display: block
-        a:hover
-          color: #000
+          &:hover
+            color: #000
+
       .tags
+        display: none
         clear: both
-        display: block
         margin: 0 0 13px 20px
-        ul
-          li
-            float: left
-            display: inline
-            font-size: 11px
-            a
-              margin: 0 0 0 7px
-            a:hover
+        ul li
+          float: left
+          display: inline
+          font-size: 11px
+          a
+            margin: 0 0 0 7px
+            &:hover
               border-bottom: 1px dotted
+
       .toolbar
         clear: both
         display: block
+        border: 0px !important
         ul
           li.answers, li.votes, li.followers
             float: left
@@ -73,10 +86,11 @@
               color: #666
               padding: 3px 7px
               font-size: 11px
-              background-color: #e5e5e5
+              background-color: #f1f1f1
             a:hover
-              background-color: #ccc
+              background-color: #e5e5e5
               color: #000
+
 .questions
   section
     article

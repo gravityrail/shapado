@@ -12,7 +12,7 @@
         %b=current_user.login
     .clear
 
-    %nav
+    %nav.user-nav
       -if current_user.mod_of?(current_group)
         %ul
           %li
@@ -49,3 +49,5 @@
           %li
             =link_to search.name, search_path(search)
       .clear
+    .open
+      =link_to "View all"

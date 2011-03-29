@@ -8,54 +8,46 @@
 // Zona de ususario en la columna lateral
 //========================================================================
 .user-zone
-  padding-bottom: 5px
   .avatar
+    padding: 0 5px 5px 0
     float: left
     a
       border: none
       img
         border: 1px solid #aaa
+
   .greeting
-    float: right
-    width: 78%
+    float: left
+    width: 72%
+    overflow: hidden
+    margin-bottom: 5px
+
     small
       display: block
       font-size: 10px
-      text-transform: italic
       color: $gray
       margin: 2px 0
     b
       font-size: 12px
 
-  // User Nav
-  //======================================================================
-  nav
-    margin: 0 5px 5px 0
+  .open
+    display: none
+
+  nav.user-nav
+    //height: 138px
+    //overflow: hidden
     ul
-      margin-top: 10px
-      border: 1px solid $lightOrange
-      background-color: #fff
-      width: 100%
-      float: left
       li
-        padding: 0
-        font-size: 12px
-        float: left
-        width: 50%
-        border-bottom: 1px dotted #e5e5e5
         a
-          color: $dark
+          padding: 5px
           display: block
-          padding: 5px 10px
-        a:first-letter
-          text-transform: capitalize
-        a:hover
-          +orange-gradient
-          color: #fff
-      .log-out
-        a
-          color: #c00
-        a:hover
-          +error-gradient
-          font-weight: bold
-          color: #fff
+          color: $dark
+          &:first-letter
+            text-transform: capitalize
+          &:hover
+            +orange-gradient
+            color: #fff
+      li.active a, li.active a:hover
+        background-color: #f0f0f0
+        background-image: none
+        color: #000

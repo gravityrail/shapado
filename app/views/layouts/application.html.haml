@@ -31,6 +31,7 @@
         = render :partial => "shared/language_filter"
 
         .widget-links.module
+          %h3 Group Links
           %nav
             %ul
               %li
@@ -43,7 +44,7 @@
         =render "widgets/tag_cloud", :widget => TagCloudWidget.new
 
         .widget-networks.module
-          %p  Siguenos y comparte:
+          %h3  Siguenos y comparte:
           %ul
             %li
               =link_to "Facebook", "#", :class => "facebook", :rel => "nofollow"

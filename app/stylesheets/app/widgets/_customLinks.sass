@@ -2,11 +2,17 @@
 //========================================================================
 .widget-links
   ul
-    list-style: disc inside
-    margin-left: 5px
     li
-      margin-bottom: 5px
       a
+        padding: 5px
+        display: block
         color: $dark
-      a:hover
-        border-bottom: 1px dotted
+        &:first-letter
+          text-transform: capitalize
+        &:hover
+          +orange-gradient
+          color: #fff
+    li.active a, li.active a:hover
+      background-color: #f0f0f0
+      background-image: none
+      color: #000
