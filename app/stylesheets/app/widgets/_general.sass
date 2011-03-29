@@ -1,0 +1,73 @@
+// ========================================================================
+//    Document     :   _general.sass
+//    Created on   :   MAR 03 - 2010, 11:59 pm
+//    Author       :   @dgfrancisco
+//    Client       :   Shapado
+//    Description  :   Widgets basics
+//========================================================================
+section
+  .module
+    +normal-radius
+    border: 1px solid #ccc
+    background-color: #fff
+    padding: 0
+    margin-bottom: 15px
+    h3
+      font-size: 15px
+      font-style: italic
+      font-weight: bold
+      padding: 10px
+      border-bottom: 1px solid #ccc
+  section
+    padding: 10px
+    border-bottom: 1px dotted #ccc
+    width: 90%
+    img
+      float: left
+      margin: 0 10px 5px 0
+    p
+      font-size: 9px
+      line-height: 10px
+      a
+        color: $orange
+      a:hover
+        border-bottom: 1px dotted
+      b
+        font-size: 11px
+        color: #000
+        a:first-letter
+          text-transform: uppercase
+        a
+          color: #000
+          font-weight: bold
+        a:hover
+          border: none
+      i
+        font-size: 11px
+        font-style: italic
+  footer
+    padding: 10px
+    text-align: right
+    background-color: #fff
+    a
+      font-style: italic
+      color: #000
+    a:hover
+      border-bottom: 1px dotted
+
+//Clean up for left column
+section.left-panel
+  .module
+    background-color: $lightGray
+    padding: 5% 4px 5% 10px
+    h3
+      margin: 0
+      padding: 0
+      border: 0px
+      font-size: 13px
+    header
+      font-size: 14px
+      font-weight: bold
+      margin-bottom: 10px
+      padding-bottom: 7px
+      border-bottom: 1px solid #ddd

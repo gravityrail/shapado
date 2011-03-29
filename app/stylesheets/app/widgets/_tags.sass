@@ -1,0 +1,54 @@
+// WIDGET - Tags
+//========================================================================
+.widget-tags
+  hgroup
+    margin-top: 10px
+    height: 25px
+    ul
+      li
+        float: left
+        display: inline
+        margin: 0 10px 0 0
+        font-size: 12px
+        a
+          color: $gray
+        a:hover
+          color: $dark
+          border-bottom: 1px dotted
+      li.active
+        a
+          color: $dark
+          font-weight: bold
+  .tag_cloud
+    span
+      font-size: 11px
+      display: block
+      a
+        background-color: #ddd
+        +big-radius
+        padding: 3px 7px
+        display: block
+        color: $gray
+        margin-bottom: 3px
+        width: 88%
+        overflow: hidden
+      a:first-letter
+        text-transform: uppercase
+      a.xxl
+        width: 48%
+      a.xl
+        width: 46%
+      a.l
+        width: 44%
+      a.s
+        width: 42%
+      a.xxs
+        width: 40%
+      a.xs
+        width: 38%
+      a:hover
+        background-color: $gray
+        color: $dark
+        width: 88%
+        display: block
+        text-align: right

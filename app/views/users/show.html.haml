@@ -5,7 +5,7 @@
       -if current_user == @user
       %P
         =link_to "Editar perfil", settings_path
-    
+
     %h3 Badges
     %ul.badges
       -@badges.each do |badge|
@@ -27,7 +27,7 @@
           = t(:last_logged_at, :scope => "activerecord.attributes.user")
           hace 5 min
 
-        -if @user.website      
+        -if @user.website
           %p
             =t(:website, :scope => "activerecord.attributes.user")
             =link_to h(@user.website), h(@user.website), :rel => "nofollow"
@@ -37,14 +37,14 @@
             = markdown(@user.bio)
 
 
-          
+
       %ul.profile-stats
         %li
           %strong
             =format_number(@user.reputation_on(current_group))
           %small
             = t(:reputation, :scope => "activerecord.attributes.user")
-       
+
         %li
           %strong
             =format_number(@user.config_for(current_group).views_count.to_i)
@@ -66,8 +66,8 @@
               =link_to "- #{t(".unfollow")}", unfollow_user_path(@user), :class => "unfollow_link", 'data-class' => "follow_link", 'data-title' => t(".follow"), 'data-undo' => follow_user_path(@user)
           -else
             %li.follow
-              =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user) 
-      .clear 
+              =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user)
+      .clear
 
     #main-content-wrap.answers{:class => @active_tab}
       %nav{:class => @active_subtab }
@@ -82,9 +82,9 @@
             =link_to "Activity", "#"
       %section.filters{:class => @active_subtab }
         %ul
-          %header 
+          %header
             = number_with_delimiter(@answers.total_entries)
-            =t(:answers, :scope => "activerecord.models")  
+            =t(:answers, :scope => "activerecord.models")
             = "- Sort By:"
           %li.newest
             = link_to t("questions.index.newest"), user_path(@user, params.merge(:a_sort=>"newest")), :rel => "nofollow"
@@ -92,13 +92,14 @@
             = link_to t("questions.index.oldest"), user_path(@user, params.merge(:a_sort=>"oldest")), :rel => "nofollow"
           %li.votes
             = link_to t("questions.index.votes"), user_path(@user, params.merge(:a_sort=>"votes")), :rel => "nofollow"
-
+          %li.fav
+            = link_to "Favorites", "#"
 
       -@answers.each do |answer|
       -next if answer.question.banned
         = render :partial => "answers/answer", :object => answer
     .additional_info
       = will_paginate @answers, :param_name => "answers_page"
-        
 
-    
+
+

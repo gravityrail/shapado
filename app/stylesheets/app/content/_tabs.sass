@@ -4,50 +4,55 @@
 //    Author      	:   @dgfrancisco
 //    Client     	:   Shapado
 //    Description	:   Estilos para los tabs de contenido con sus filtros
-//======================================================================== 
-
-//Main tabs
 //========================================================================
 #main-content-wrap
   background-color: #fff
   border: 1px solid #e5e5e5
   overflow: hidden
+
   ul.content-tabs
-    height: 35px
+    overflow: hidden
+
     li
       float: left
       display: inline
       border-right: 1px solid #e5e5e5
+
       a
         padding: 10px 13px 10px 36px
-        display: block 
+        display: block
         background: url("/images/q-icon-medium.gif") 7px 50%  no-repeat
         border-bottom: 2px solid transparent
         color: #999
-      a:hover
-        color: #000
+        &:hover
+          color: #000
+
     li.answers a
       background: url("/images/ans-icon-medium.gif") 7px 50%  no-repeat
+
     li.unanswered a
       background: url("/images/noans-icon-medium.gif") 7px 50%  no-repeat
+
     li.activity a
-      background: url("/images/activity-iacon.gif") 7px 50%  no-repeat 
-        
+      background: url("/images/activity-iacon.gif") 7px 50%  no-repeat
+
+
   .filters
     width: 100%
+    padding: 0
     ul
       height: 28px
       width: 100%
       display: block
       header
         float: left
-        display: inline     
+        display: inline
         padding: 8px 10px
-        font-weight: bold 
+        font-weight: bold
       li
         float: left
         display: inline
-        border: none       
+        border: none
         a
           display: block
           padding: 9px 6px 7px 6px
@@ -57,14 +62,14 @@
           border-bottom: 2px solid transparent
           &:hover
             color: #000
-    
+
 .questions
   ul.content-tabs
     border-bottom: 1px solid $orange
     a:hover
       border-bottom: 2px solid $orange !important
     li.questions a
-      border-bottom: 2px solid $orange !important    
+      border-bottom: 2px solid $orange !important
       background-color: $lightOrange !important
       color: #000 !important
   .filters ul
@@ -75,26 +80,26 @@
   .newest li.newest a, .hot li.hot a, .votes li.votes a
     border-bottom: 3px solid $orange !important
     color: #000 !important
-      
-.answers    
+
+.answers
   ul.content-tabs
     border-bottom: 1px solid $blue
     a:hover
-      border-bottom: 2px solid $blue !important    
+      border-bottom: 2px solid $blue !important
     li.answers a
-      border-bottom: 2px solid $blue !important 
+      border-bottom: 2px solid $blue !important
       background-color: $lightBlue !important
       color: #000 !important
   .filters ul
     border-bottom: 3px solid #caedef
     background-color: $lightBlue
     a:hover
-      border-bottom: 3px solid $blue !important    
+      border-bottom: 3px solid $blue !important
   .newest li.newest a, .hot li.hot a, .votes li.votes a
     border-bottom: 3px solid $blue !important
-    color: #000 !important    
-    
-.unanswered    
+    color: #000 !important
+
+.unanswered
   ul.content-tabs
     border-bottom: 1px solid $blue
     a:hover
@@ -107,11 +112,11 @@
     border-bottom: 3px solid #caedef
     background-color: $lightBlue
     a:hover
-      border-bottom: 3px solid $blue !important        
+      border-bottom: 3px solid $blue !important
   .newest li.newest a, .hot li.hot a, .votes li.votes a
     border-bottom: 3px solid $blue !important
-    color: #000 !important    
-    
+    color: #000 !important
+
 .activity
   ul.content-tabs
     border-bottom: 1px solid $dark
@@ -123,8 +128,65 @@
     border-bottom: 3px solid #ccc
     background-color: $lightGray
     a:hover
-      border-bottom: 3px solid $dark !important        
+      border-bottom: 3px solid $dark !important
   .newest li.newest a, .hot li.hot a, .votes li.votes a
     border-bottom: 3px solid $dark !important
-    color: #000 !important    
-        
+    color: #000 !important
+
+
+=active_tab
+  color: #000 !important
+  border-bottom: 3px solid $orange !important
+
+=active_subtab
+  color: #000 !important
+  border-bottom: 3px solid $orange !important
+
+nav.questions ul li.questions a,
+nav.answers ul li.answers a,
+nav.users ul li.users a,
+nav.badges ul li.badges a,
+nav.tags ul li.tags a,
+nav.unanswered ul li.unanswered a,
+nav.dashboard ul li.dashboard a,
+nav.widgets ul li.widgets a,
+nav.ads ul li.ads a,
+nav.members ul li.members a,
+nav.properties ul li.properties a,
+nav.stats ul li.stats a,
+nav.actions ul li.actions a,
+nav.content ul li.content a,
+nav.pages ul li.pages a,
+nav.announcements ul li.announcements a
+  background: black
+  +active_tab
+
+.filters.votes ul li.votes a,
+.filters.newest ul li.newest a,
+.filters.oldest ul li.oldest a,
+.filters.most_active ul li.most_active a,
+.filters.activity ul li.activity a,
+.filters.hot ul li.hot a,
+.filters.mytags ul li.mytags a,
+.filters.questions ul li.questions a,
+.filters.expert ul li.expert a,
+.filters.answers ul li.answers a,
+.filters.question_help ul li.question_help a,
+.filters.question_prompt ul li.question_prompt a,
+.filters.head_tag ul li.head_tag a,
+.filters.head ul li.head a,
+.filters.constrains ul li.constrains a,
+.filters.rewards ul li.rewards a,
+.filters.general ul li.general a,
+.filters.theme ul li.theme a,
+.filters.domain ul li.domain a,
+.filters.name ul li.name a
+  +active_subtab
+
+
+
+
+
+
+
+

@@ -42,16 +42,15 @@
 
   .stats
     %p
-      %strong 
+      %strong
         = t('activerecord.attributes.question.created_at')
       = t("time.ago", :time => time_ago_in_words(@question.created_at))
-      %strong 
+      %strong
         = t('questions.show.viewed')
       = t('number.x_time', :count => number_with_delimiter(@question.views_count))
-      %strong 
+      %strong
         = t("questions.show.last_activity")
       = t("time.ago", :time => time_ago_in_words(@question.activity_at))
-      
 
   .attachments
     = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
@@ -140,7 +139,7 @@
       = render "reward_form"
 
       -unless @question.closed
-        =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer"} do |f|
+        =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer markdown"} do |f|
 
           = render :partial => "answers/form", :locals => {:f => f, :markdown => true, :question => @question}
 
@@ -158,7 +157,7 @@
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
 
-        =form_for [@question, @comment ||= Comment.new], :html => {:class => "add_question_comment"} do |f|
+        =form_for [@question, @comment ||= Comment.new], :html => {:class => "add_question_comment markdown"} do |f|
           = render :partial => "comments/form", :locals => {:f => f, :markdown => true, :commentable => @question, :source => question_url(@question)}
 
           .field.form-options

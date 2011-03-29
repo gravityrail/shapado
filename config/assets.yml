@@ -49,10 +49,8 @@ javascripts:
 
 stylesheets:
   base:
-    - ui-lightness/jquery-ui
     - compiled/application
-    - multiauth
-    - prettify
+    - ui-lightness/jquery-ui
 
   mobile:
     - compiled/mobile
