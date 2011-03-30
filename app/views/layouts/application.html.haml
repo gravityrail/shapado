@@ -17,6 +17,83 @@
     = render "shared/analytics"
     #container{:class => @current_class}
 
+      %nav.top-bar
+
+        %ul.group-list.sf-menu
+          %li.group
+            %small
+              Active group:
+            = link_to "West Coast Group"
+            %ul
+              %li
+                = link_to "East coast Group of financial money bookers"
+              %li
+                = link_to "South Group"
+              %li
+                = link_to "North Group"
+
+          -if !logged_in?
+          - else
+            //-if current_user.mod_of?(current_group)
+            %li
+              = link_to "Admin", manage_properties_path
+              %ul
+                %li
+                  = link_to "Option"
+                %li
+                  = link_to "Option"
+                %li
+                  = link_to "Option"
+            %li
+              = link_to "Moderate", moderate_path
+              %ul
+                %li
+                  = link_to "Option"
+                %li
+                  = link_to "Option"
+                %li
+                  = link_to "Option"
+
+        .buscador
+          %form#search
+            .field
+              %input
+
+
+        -if !logged_in?
+          /=multiauth_menu("Sign In")
+          = multiauth_dropdown("Sign In")
+        -else
+          %ul.user-list.sf-menu
+            %li.user
+              //= link_to "#{avatar_img(current_user, {:size =>24})} #{current_user.login}", user_path(current_user)
+              = link_to current_user.login, user_path(current_user)
+              = avatar_img(current_user, {:size =>24})
+              %ul
+                %li
+                  =link_to "Mi Karma: #{current_user.reputation_on(current_group)}"
+                %li
+                  =link_to "My badges", badges_path
+                %li
+                  =link_to "Followed", feed_user_path(current_user)
+                %li
+                  =link_to "All", questions_path
+                %li
+                  =link_to "By Me", by_me_user_path(current_user)
+                %li
+                  =link_to "Preferred", preferred_user_path(current_user)
+                %li
+                  =link_to "Contributed", contributed_user_path(current_user)
+                %li
+                  =link_to "Collaborate!", expertise_user_path(current_user)
+
+            %li.logout
+              =link_to t("layouts.application.logout"), destroy_user_session_path
+
+
+
+
+
       %section.left-panel
         .brand
           %h1
@@ -26,7 +103,7 @@
             //-else
             = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
 
-        = render "shared/user-zone"
+        //= render "shared/user-zone"
 
         = render :partial => "shared/language_filter"
 
