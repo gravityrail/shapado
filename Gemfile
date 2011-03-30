@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.3'
+gem 'rails', '3.0.5'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -50,11 +50,14 @@ gem 'sanitize', '1.2.1'
 gem "twitter_oauth"
 
 # authentication
-gem 'omniauth', '~> 0.1.6'
+gem 'omniauth', '~> 0.2.0'
+gem 'oa-openid', '~> 0.2.0', :require => 'omniauth/openid'
+gem "oa-oauth", '~> 0.2.0', :require => "omniauth/oauth"
+
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 
 gem 'orm_adapter'
-gem 'devise', :git => 'http://github.com/plataformatec/devise.git'
+gem 'devise', "~> 1.2.1"
 
 gem 'whenever', :require => false
 gem 'rack-ssl', :require => false
