@@ -36,35 +36,7 @@
           /=multiauth_menu("Sign In")
           = multiauth_dropdown("Sign In")
         -else
-          %ul.user-list.sf-menu
-            %li.user
-              //= link_to "#{avatar_img(current_user, {:size =>24})} #{current_user.login}", user_path(current_user)
-              = link_to current_user.login, user_path(current_user)
-              = avatar_img(current_user, {:size =>24})
-              %ul
-                %li
-                  =link_to "Mi Karma: #{current_user.reputation_on(current_group)}"
-                %li
-                  =link_to "My badges", badges_path
-                %li
-                  =link_to "Followed", feed_user_path(current_user)
-                %li
-                  =link_to "All", questions_path
-                %li
-                  =link_to "By Me", by_me_user_path(current_user)
-                %li
-                  =link_to "Preferred", preferred_user_path(current_user)
-                %li
-                  =link_to "Contributed", contributed_user_path(current_user)
-                %li
-                  =link_to "Collaborate!", expertise_user_path(current_user)
-
-            %li.logout
-              =link_to t("layouts.application.logout"), destroy_user_session_path
-
-
-
-
+          = render "users/top_user"
 
       %section.left-panel
         .brand
