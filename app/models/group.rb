@@ -49,7 +49,7 @@ class Group
   field :reputation_constrains, :type => Hash, :default => REPUTATION_CONSTRAINS
   field :forum, :type => Boolean, :default => false
 
-  field :custom_html, :type => CustomHtml, :default => CustomHtml.new
+  embeds_one :custom_html
   field :has_custom_html, :type => Boolean, :default => true
   field :has_custom_js, :type => Boolean, :default => true
   field :fb_button, :type => Boolean, :default => true
