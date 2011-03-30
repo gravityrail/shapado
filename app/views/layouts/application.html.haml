@@ -17,6 +17,27 @@
     = render "shared/analytics"
     #container{:class => @current_class}
 
+      %nav.top-bar
+        %ul.group-list.sf-menu
+          = render "groups/top_grouplist"
+          -if !logged_in?
+          - else
+            //-if current_user.mod_of?(current_group)
+            = render "admin/manage/top_admin"
+            = render "admin/moderate/top_moderate"
+
+        .buscador
+          %form#search
+            .field
+              %input
+
+
+        -if !logged_in?
+          /=multiauth_menu("Sign In")
+          = multiauth_dropdown("Sign In")
+        -else
+          = render "users/top_user"
+
       %section.left-panel
         .brand
           %h1
@@ -26,12 +47,11 @@
             //-else
             = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
 
-        = render "shared/user-zone"
+        //= render "shared/user-zone"
 
         = render :partial => "shared/language_filter"
 
         .widget-links.module
-          %h3 Group Links
           %nav
             %ul
               %li
