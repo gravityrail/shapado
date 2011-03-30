@@ -18,41 +18,13 @@
     #container{:class => @current_class}
 
       %nav.top-bar
-
         %ul.group-list.sf-menu
-          %li.group
-            %small
-              Active group:
-            = link_to "West Coast Group"
-            %ul
-              %li
-                = link_to "East coast Group of financial money bookers"
-              %li
-                = link_to "South Group"
-              %li
-                = link_to "North Group"
-
+          = render "groups/top_grouplist"
           -if !logged_in?
           - else
             //-if current_user.mod_of?(current_group)
-            %li
-              = link_to "Admin", manage_properties_path
-              %ul
-                %li
-                  = link_to "Option"
-                %li
-                  = link_to "Option"
-                %li
-                  = link_to "Option"
-            %li
-              = link_to "Moderate", moderate_path
-              %ul
-                %li
-                  = link_to "Option"
-                %li
-                  = link_to "Option"
-                %li
-                  = link_to "Option"
+            = render "admin/manage/top_admin"
+            = render "admin/moderate/top_moderate"
 
         .buscador
           %form#search
@@ -108,7 +80,6 @@
         = render :partial => "shared/language_filter"
 
         .widget-links.module
-          %h3 Group Links
           %nav
             %ul
               %li

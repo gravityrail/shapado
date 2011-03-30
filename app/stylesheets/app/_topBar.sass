@@ -1,9 +1,9 @@
 .top-bar
-  margin: 0 0 15px 0
+  margin: 0 0 8px 0
   padding: 0
   background-color: #5E5E5E
   border-bottom: 4px solid #ddd
-  height: 53px
+  height: 40px
 
 
   .buscador
@@ -11,13 +11,13 @@
 
     form#search
       padding: 0
-      margin: 5px 0 0 20px
+      margin: 0px 0 0 10px
       overflow: hidden
       width: auto
 
       .field
         float: left
-        margin: 10px 0 0 0
+        margin: 8px 0 0 0
         width: 250px
 
         input
@@ -53,14 +53,17 @@
       small
         position: absolute
         font-size: 10px
-        color: #999
-        top: 7px
+        color: #bbb
+        top: 2px
         left: 20px
+      &:hover
+        small
+          color: #000
 
       a
         display: block
         color: #fff
-        padding: 20px
+        padding: 14px 20px 13px 20px
         background-image: none
         border-right: 1px solid #777
         border-left: 1px solid #333
@@ -68,6 +71,8 @@
         &:hover
           background-color: #ddd
           color: #000
+          small
+            color: #000
 
     li.group
       position: relative
@@ -81,12 +86,12 @@
       position: relative
       img
         position: absolute
-        top: 12px
-        left: 20px
+        top: 5px
+        left: 13px
         border: 3px solid #666
         +small-radius
       a
-        padding-left: 60px
+        padding-left: 50px
 
     li.logout
       a:hover
