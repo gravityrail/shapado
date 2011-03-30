@@ -26,10 +26,10 @@
             = render "admin/manage/top_admin"
             = render "admin/moderate/top_moderate"
 
-        .buscador
-          %form#search
+        .searcher
+          = form_tag search_index_path, :method => :get, :id => "search" do
             .field
-              %input
+              = text_field_tag :q, params[:q]
 
 
         -if !logged_in?
@@ -83,9 +83,6 @@
         .add
           %h6 Publicidad
           =link_to image_tag "http://www.bipbanners.co.uk/assets/images/WebConveyancing_Animated_SkyScraper_Banner_Sample_1A.gif"
-        .module
-          = form_tag search_index_path, :method => :get, do
-            = text_field_tag :q, params[:q], :id => "search-field"
 
       %section.content-panel
         - unless params[:controller] =~ /moderate\//
