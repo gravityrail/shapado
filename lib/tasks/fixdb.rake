@@ -212,6 +212,7 @@ namespace :fixdb do
 
       group.language = (lang == :spanish) ? 'es' : 'en'
       group.languages = DEFAULT_USER_LANGUAGES
+
       if group.valid?
         group.save
       else
@@ -250,12 +251,11 @@ namespace :fixdb do
 
   task :widgets => [:init] do
     c=Group.count
-    Group.unset({}, {:widgets => true, :question_widgets => true, :mainlist_widgets => true,
-                :external_widgets => true})
+    Group.override({}, {:widgets => [], :question_widgets => [], :mainlist_widgets => [],
+                        :external_widgets => []})
     i=0
     Group.all.each do |g|
-      [SharingButtonsWidget, ModInfoWidget, QuestionBadgesWidget,
-       QuestionStatsWidget, QuestionTagsWidget, RelatedQuestionsWidget,
+      [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
        TagListWidget, CurrentTagsWidget].each do |w|
         widget = w.new
         g.question_widgets << widget

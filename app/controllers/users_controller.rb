@@ -303,6 +303,11 @@ class UsersController < ApplicationController
 
   def suggestions
   end
+
+  def auth
+    head :status => 404
+  end
+
   protected
   def active_subtab(param)
     key = params.fetch(param, "votes")

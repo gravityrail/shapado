@@ -19,7 +19,7 @@ class Group
   field :name, :type => String
   field :subdomain, :type => String
   field :domain, :type => String
-  index :domain
+  index :domain, :unique => true
   field :legend, :type => String
   field :description, :type => String
   field :default_tags, :type => Array, :default => []
@@ -34,7 +34,7 @@ class Group
   field :has_custom_analytics, :type => Boolean, :default => true
 
   field :language, :type => String
-  field :languages, :type => Set
+  field :languages, :type => Set, :default => Set.new
   index :languages
 
   field :activity_rate, :type => Float, :default => 0.0
@@ -49,7 +49,7 @@ class Group
   field :reputation_constrains, :type => Hash, :default => REPUTATION_CONSTRAINS
   field :forum, :type => Boolean, :default => false
 
-  field :custom_html, :type => CustomHtml, :default => CustomHtml.new
+  embeds_one :custom_html
   field :has_custom_html, :type => Boolean, :default => true
   field :has_custom_js, :type => Boolean, :default => true
   field :fb_button, :type => Boolean, :default => true
