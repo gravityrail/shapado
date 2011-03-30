@@ -58,9 +58,9 @@ class Group
 
 
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
-  field :share, :type => Share, :default => Share.new
+  embeds_one :share
 
-  field :notification_opts, :type => GroupNotificationConfig
+  embeds_on notification_opts, :class_name => "GroupNotificationConfig"
 
   field :twitter_account, :type => Hash, :default => { }
 
