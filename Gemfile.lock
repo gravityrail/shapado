@@ -65,8 +65,8 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
-    bson (1.2.0)
-    bson_ext (1.2.0)
+    bson (1.2.4)
+    bson_ext (1.2.4)
     builder (2.1.2)
     compass (0.10.6)
       haml (>= 3.0.4)
@@ -122,9 +122,9 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
-    mongo (1.2.0)
-      bson (>= 1.2.0)
-    mongoid (2.0.0.rc.8)
+    mongo (1.2.4)
+      bson (>= 1.2.4)
+    mongoid (2.0.0)
       activemodel (~> 3.0)
       mongo (~> 1.2)
       tzinfo (~> 0.3.22)
@@ -262,8 +262,8 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  bson (= 1.2.0)
-  bson_ext (= 1.2.0)
+  bson (= 1.2.4)
+  bson_ext (= 1.2.4)
   compass (= 0.10.6)
   compass-colors (= 0.3.1)
   database_cleaner
@@ -281,8 +281,8 @@ DEPENDENCIES
   magent (= 0.5.2)
   magic
   mechanize
-  mongo (= 1.2.0)
-  mongoid (= 2.0.0.rc.8)
+  mongo (= 1.2.4)
+  mongoid (= 2.0.0)
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
