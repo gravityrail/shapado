@@ -97,7 +97,8 @@
 
       %section.content-panel
         - unless params[:controller] =~ /moderate\//
-          = render "shared/action-tabs"
+          //= render "shared/action-tabs"
+          =render "shared/quick_question_box"
 
         #main-content-wrap{:class => @active_tab}
           - if params[:controller] =~ /moderate\//

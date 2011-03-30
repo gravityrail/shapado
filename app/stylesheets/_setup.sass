@@ -105,6 +105,8 @@ $active_color: $orange
 // If you want to have multiple box shadows, you must enclose the values in quotes (" ").
 $shadow: 0 0 10px #000
 $menu: 0 2px 3px #999
+$inner: inset 2px 2px 2px #e5e5e5
+$none: 0 0 0 transparent
 
 =box-shadow($shadow)
   $shadow: unquote($shadow)
@@ -121,6 +123,22 @@ $menu: 0 2px 3px #999
   o-box-shadow: $menu
   khtml-box-shadow: $menu
   box-shadow: $menu
+
+=inner-shadow($inner)
+  $shadow: unquote($inner)
+  -moz-box-shadow: $inner
+  -webkit-box-shadow: $inner
+  o-box-shadow: $inner
+  khtml-box-shadow: $inner
+  box-shadow: $inner
+
+=none-shadow($none)
+  $shadow: unquote($none)
+  -moz-box-shadow: $none
+  -webkit-box-shadow: $none
+  o-box-shadow: $none
+  khtml-box-shadow: $none
+  box-shadow: $none
 
 // Cross browser rounded corners
 $smallRadius: 3px
