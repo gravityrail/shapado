@@ -48,6 +48,23 @@
             = link_to image_tag("shapado-brand.png", :class => "group_logo"), domain_url(:custom => current_group.domain)
 
         //= render "shared/user-zone"
+        .widget-links.module
+          %nav
+            %ul
+              %li
+                =link_to "Followed", feed_user_path(current_user)
+              %li
+                =link_to "All", questions_path
+              %li
+                =link_to "By Me", by_me_user_path(current_user)
+              %li
+                =link_to "Preferred", preferred_user_path(current_user)
+              %li
+                =link_to "Contributed", contributed_user_path(current_user)
+              %li
+                =link_to "Collaborate!", expertise_user_path(current_user)
+              %li
+                =link_to "FAQ"
 
         = render :partial => "shared/language_filter"
 
