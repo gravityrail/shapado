@@ -2,12 +2,14 @@
   = link_to "Admin", manage_properties_path
   %ul
     %li
-      = link_to "Groups"
+      = link_to "Site", manage_properties_path
     %li
-      = link_to "Users"
+      = link_to "Share", manage_properties_path(:tab => "share")
     %li
-      = link_to "widgets"
+      = link_to "Theme", manage_properties_path(:tab => "theme")
     %li
-      = link_to "Adds"
+      = link_to "Requirements", constrains_configs_path
     %li
-      = link_to "Badges"
+      = link_to "Rewards", manage_properties_path(:tab => "rewards")
+    %li
+      = link_to "Domain", manage_properties_path(:tab => "domain")

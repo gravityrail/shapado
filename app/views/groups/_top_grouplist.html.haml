@@ -1,11 +1,14 @@
 %li.group
   %small
-    Active group:
-  = link_to "West Coast Group"
-  %ul
-    %li
-      = link_to "East coast Group of financial money bookers"
-    %li
-      = link_to "South Group"
-    %li
-      = link_to "North Group"
+    Active site:
+  = link_to current_group.name
+  -if logged_in?
+    %ul
+      -current_user.groups.only(:name).limit(10).all.each do |group|
+        %li
+          = link_to group.name, group_path(group)
+  -else
+    %ul
+      -Group.where(:state => "active", :private => false).order_by([:activity_rate, :desc]).limit(10).all.each do |group|
+        %li
+          = link_to group.name, group_path(group)
