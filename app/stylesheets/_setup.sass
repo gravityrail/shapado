@@ -144,6 +144,7 @@ $none: 0 0 0 transparent
 $smallRadius: 3px
 $normalRadius: 5px
 $bigRadius: 20px
+$hugeRadius: 50px
 $noneRadius: 0
 
 =none-radius($noneRadius)
@@ -174,6 +175,13 @@ $noneRadius: 0
   khtml-border-radius: $bigRadius
   border-radius: $bigRadius
 
+=huge-radius($bigRadius)
+  -moz-border-radius: $hugeRadius
+  -webkit-border-radius: $hugeRadius
+  o-border-radius: $hugeRadius
+  khtml-border-radius: $hugeRadius
+  border-radius: $hugeRadius
+
 // Cross browser gradients
 =orange-gradient
   background-image: -moz-linear-gradient(top, $orange, $darkOrange) !important
@@ -195,3 +203,24 @@ $noneRadius: 0
   filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed') !important
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$red', endColorstr='$darkRed')" !important
   background-color: $red
+
+// Gradiants for badges
+=gold-gradient
+  background-image: -moz-linear-gradient(top, #fbd65f, #ffff7c) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #fbd65f),color-stop(1, #ffff7c)) !important
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fbd65f', endColorstr='#ffff7c') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#fbd65f', endColorstr='#ffff7c')" !important
+
+=silver-gradient
+  background-image: -moz-linear-gradient(top, #c6c6c6, #e5e5e5) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #c6c6c6),color-stop(1, #e5e5e5)) !important
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#c6c6c6', endColorstr='#e5e5e5') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#c6c6c6', endColorstr='#e5e5e5')" !important
+  background-color: #c6c6c6
+
+=bronze-gradient
+  background-image: -moz-linear-gradient(top, #e67347, #f3a273) !important
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273)) !important
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e67347', endColorstr='#f3a273') !important
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e67347', endColorstr='#f3a273')" !important
+  background-color: #e67347
