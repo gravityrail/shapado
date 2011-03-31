@@ -51,9 +51,9 @@
         .widget-links.module
           %nav
             %ul
+              = tab_entry "li", "All", questions_path, :selected => "active"
               -if logged_in?
-                = tab_entry "li", "Followed", feed_user_path, :selected => "active"
-                = tab_entry "li", "All", questions_path, :selected => "active"
+                = tab_entry "li", "Followed", feed_user_path(current_user), :selected => "active"
                 = tab_entry "li", "By Me", by_me_user_path(current_user), :selected => "active"
                 = tab_entry "li", "Preferred", preferred_user_path(current_user), :selected => "active"
                 = tab_entry "li", "Contributed", contributed_user_path(current_user), :selected => "active"
