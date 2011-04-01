@@ -255,16 +255,7 @@ namespace :fixdb do
                         :external_widgets => []})
     i=0
     Group.all.each do |g|
-      [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
-       TagListWidget, CurrentTagsWidget].each do |w|
-        widget = w.new
-        g.question_widgets << widget
-      end
-
-      [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-        g.mainlist_widgets << w.new
-      end
-      g.external_widgets << AskQuestionWidget.new
+      g.reset_widgets!
       g.save
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
