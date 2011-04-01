@@ -106,7 +106,7 @@ class Group
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES, :allow_blank => true
   #validates_inclusion_of :theme, :in => AVAILABLE_THEMES
 
-  validate :set_subdomain, :on => :create
+  validate :initialize_fields, :on => :create
   validate :check_domain, :on => :create
 
   validate :check_reputation_configs
@@ -287,8 +287,11 @@ class Group
 
   protected
   #validations
-  def set_subdomain
+  def initialize_fields
     self["subdomain"] ||= self["slug"]
+    self.custom_html = CustomHtml.new
+    self.share = Share.new
+    self.notification_opts = NotificationConfig.new
   end
 
   def check_domain
