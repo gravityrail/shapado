@@ -91,9 +91,7 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     @group.state = "active"
 
-    @group.widgets << TagCloudWidget.new
-    @group.widgets << TopUsersWidget.new
-    @group.widgets << BadgesWidget.new
+    @group.reset_widgets!
 
     respond_to do |format|
       if @group.save

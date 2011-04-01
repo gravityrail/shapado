@@ -267,15 +267,33 @@ class Group
         )
       end
   end
+
+  def reset_widgets!
+    self.question_widgets = []
+    self.mainlist_widgets = []
+    self.external_widgets = []
+
+    [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
+     TagListWidget, CurrentTagsWidget].each do |w|
+      self.question_widgets << w.new
+    end
+
+    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
+      self.mainlist_widgets << w.new
+    end
+
+    self.external_widgets << AskQuestionWidget.new
+  end
+
   protected
   #validations
   def set_subdomain
-    self["subdomain"] = self["slug"]
+    self["subdomain"] ||= self["slug"]
   end
 
   def check_domain
     if domain.blank?
-      self[:domain] = "#{subdomain}.#{AppConfig.domain}"
+      self[:domain] = "#{self[:subdomain]}.#{AppConfig.domain}"
     end
   end
 
