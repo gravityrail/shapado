@@ -172,7 +172,7 @@ class Group
     unless conditions[:near]
       User.where(conditions)
     else
-      point = options.delete(:near)
+      _point = options.delete(:near)
       User.near(point, {}).where(conditions)
     end
   end
