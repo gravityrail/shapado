@@ -1,31 +1,33 @@
 .top_users
 
-  section
-    border-bottom: 1px solid #fafafa
-    overflow: hidden
-    display: block
-    padding: 10px !important
+  ul
+    padding: 10px 10px 5px 10px
+    li
+      overflow: hidden
+      display: block
+      margin-bottom: 5px
 
-    .avatar
-      float: left
-      margin-right: 5px
-      a
-      img
-        border: 1px solid #f1f1f1
-
-    .data
-      float: left
-      h5
-        font-size: 14px
-        margin: 0 0 5px 0
+      .avatar
+        float: left
+        margin-right: 5px
         a
-          color: #000
-          font-weight: bold !important
-        small
-          font-size: 9px
-          font-weight: normal !important
-          font-style: italic
-          color: #000
-          background-color: #e5e5e5
-          +big-radius
-          padding: 2px 6px
+        img
+          border: 1px solid #f1f1f1
+
+      .data
+        float: left
+        h5
+          margin: 1px 0 0 0
+          a
+            color: #666
+            font-size: 12px
+            &:hover
+              color: #000
+          small
+            font-size: 9px
+            font-weight: normal !important
+            font-style: italic
+            color: black
+            background-color: #f1f1f1
+            +big-radius
+            padding: 2px 6px
