@@ -58,10 +58,10 @@
   .toolbar
     %ul.drop-menu
       %li.answer
-        = link_to "Responder", "#", :id => "add_answer"
+        = link_to t(".answer", :default => "Answer"), "#", :id => "add_answer"
 
       %li.comment
-        = link_to "Comentar", "#", :id => "add_question_comment"
+        = link_to t(".comment", :default => "Comment"), "#", :id => "add_question_comment"
 
       %li.follow
         - if current_user && @question.follower?(current_user)

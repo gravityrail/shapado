@@ -63,15 +63,16 @@
                   = hidden_field_tag "source", questions_path, :id =>  "source_#{question.id}"
                   = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "quick-vote-button")
           = link_to "#{format_number(question.votes_average)} #{t(:votes, :scope => "activerecord.attributes.question")}"
+        -if !logged_in? || current_user.has_flagged?(question).nil?
+          %li.spam
+            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
 
         %li
-          =link_to "Reportar", "#"
+          -if !logged_in? || !question.follower?(current_user)
+            =link_to "Seguir", follow_question_path(question)
 
         %li
-          =link_to "Seguir", follow_question_path(question)
-
-        %li
-          =link_to "Responder", question_path(question)+"#to_answer"
+          =link_to "Responder", question_path(question, :anchor => "to_answer")
 
     .clear
 
