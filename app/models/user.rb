@@ -72,11 +72,9 @@ class User
   references_one :identica_friends_list, :dependent => :destroy
   references_one :linked_in_friends_list, :dependent => :destroy
 
-  before_create :create_friend_list
-  after_create :create_facebook_friends_list
-  after_create :create_twitter_friends_list
-  after_create :create_identica_friends_list
-  after_create :create_linked_in_friends_list
+  before_create :initialize_fields
+  after_create :create_friends_lists
+
   before_create :generate_uuid
   after_create :update_anonymous_user
 
@@ -656,13 +654,9 @@ Time.zone.now ? 1 : 0)
     (encrypted_password.blank? || !password.blank?)
   end
 
-  def create_friend_list
-    if !self.friend_list.present?
-      f = FriendList.new
-      f.save
-      self.friend_list_id = f.id
-    end
-    self.notification_opts = NotificationConfig.new if self.notification_opts.nil?
+  def initialize_fields
+    self.friend_list = FriendList.create if self.friend_list.nil?
+    self.notification_opts = NotificationConfig.create if self.notification_opts.nil?
   end
 
   def update_anonymous_user
@@ -678,22 +672,16 @@ Time.zone.now ? 1 : 0)
     end
   end
 
-  def create_facebook_friends_list
+  def create_friends_lists
     facebook_friend_list = FacebookFriendsList.create
     self.facebook_friends_list = facebook_friend_list
-  end
 
-  def create_twitter_friends_list
     twitter_friend_list = TwitterFriendsList.create
     self.twitter_friends_list = twitter_friend_list
-  end
 
-  def create_identica_friends_list
     identica_friend_list = IdenticaFriendsList.create
     self.identica_friends_list = identica_friend_list
-  end
 
-  def create_linked_in_friends_list
     linked_in_friend_list = LinkedInFriendsList.create
     self.linked_in_friends_list = linked_in_friend_list
   end

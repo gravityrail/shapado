@@ -1,19 +1,18 @@
 .top_users.module
   %h3
     =t(".title")
-  -widget.top_users(current_group).each do |user|
 
-    %section
-
-      .avatar
-        =gravatar(user.email.to_s, :size => 15)
-
-      .data
-        %h5
-          %b
-            =link_to h(user.login), user_path(user)
-          %small
-            ==#{user.reputation_on(current_group)}
+  %ul
+    -widget.top_users(current_group).each do |user|
+      %li
+        .avatar
+          =gravatar(user.email.to_s, :size => 15)
+        .data
+          %h5
+            %b
+              =link_to h(user.login), user_path(user)
+            %small
+              ==#{user.reputation_on(current_group)}
 
   %footer
     =link_to t("scaffold.more"), users_path

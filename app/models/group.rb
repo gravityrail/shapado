@@ -107,7 +107,7 @@ class Group
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES, :allow_blank => true
   #validates_inclusion_of :theme, :in => AVAILABLE_THEMES
 
-  validate :set_subdomain, :on => :create
+  validate :initialize_fields, :on => :create
   validate :check_domain, :on => :create
 
   validate :check_reputation_configs
@@ -173,7 +173,7 @@ class Group
     unless conditions[:near]
       User.where(conditions)
     else
-      point = options.delete(:near)
+      _point = options.delete(:near)
       User.near(point, {}).where(conditions)
     end
   end
@@ -268,15 +268,36 @@ class Group
         )
       end
   end
+
+  def reset_widgets!
+    self.question_widgets = []
+    self.mainlist_widgets = []
+    self.external_widgets = []
+
+    [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
+     TagListWidget, CurrentTagsWidget].each do |w|
+      self.question_widgets << w.new
+    end
+
+    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
+      self.mainlist_widgets << w.new
+    end
+
+    self.external_widgets << AskQuestionWidget.new
+  end
+
   protected
   #validations
-  def set_subdomain
-    self["subdomain"] = self["slug"]
+  def initialize_fields
+    self["subdomain"] ||= self["slug"]
+    self.custom_html = CustomHtml.new
+    self.share = Share.new
+    self.notification_opts = NotificationConfig.new
   end
 
   def check_domain
     if domain.blank?
-      self[:domain] = "#{subdomain}.#{AppConfig.domain}"
+      self[:domain] = "#{self[:subdomain]}.#{AppConfig.domain}"
     end
   end
 

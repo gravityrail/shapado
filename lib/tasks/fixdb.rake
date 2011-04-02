@@ -255,16 +255,7 @@ namespace :fixdb do
                         :external_widgets => []})
     i=0
     Group.all.each do |g|
-      [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
-       TagListWidget, CurrentTagsWidget].each do |w|
-        widget = w.new
-        g.question_widgets << widget
-      end
-
-      [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-        g.mainlist_widgets << w.new
-      end
-      g.external_widgets << AskQuestionWidget.new
+      g.reset_widgets!
       g.save
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
@@ -313,10 +304,8 @@ namespace :fixdb do
     i = 1
     p "updating #{total} users facebook friends list"
     User.all.each do |u|
-      u.facebook_friends_list = FacebookFriendsList.create
-      u.twitter_friends_list = TwitterFriendsList.create
-      u.identica_friends_list = IdenticaFriendsList.create
-      u.linked_in_friends_list = LinkedInFriendsList.create
+      u.send(:initialize_fields)
+      u.send(:create_friends_lists)
 
       p "#{i}/#{total} #{u.login}"
       i += 1
