@@ -122,6 +122,8 @@ GEM
     mechanize (1.0.0)
       nokogiri (>= 1.2.1)
     mime-types (1.16)
+    mini_magick (2.3)
+      subexec (~> 0.0.4)
     mongo (1.2.4)
       bson (>= 1.2.4)
     mongoid (2.0.0)
@@ -239,6 +241,7 @@ GEM
       nokogiri (~> 1.4.1)
     sexp_processor (3.0.5)
     smart_asset (0.5.4)
+    subexec (0.0.4)
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
@@ -281,6 +284,7 @@ DEPENDENCIES
   magent (= 0.5.2)
   magic
   mechanize
+  mini_magick (~> 2.3)
   mongo (= 1.2.4)
   mongoid (= 2.0.0)
   mongoid_ext!

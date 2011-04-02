@@ -1,10 +1,10 @@
 #users_show
   %section.userData
     .avatar
-      = gravatar @user.email.to_s, :size => 128
+      = avatar_img @user, :size => "big"
       -if current_user == @user
-      %P
-        =link_to "Editar perfil", settings_path
+        %p
+          =link_to "Edit profile", settings_path
 
     %h3 Badges
     %ul.badges
@@ -21,11 +21,13 @@
 
         %small
           = t(:created_at, :scope => "activerecord.attributes.user")
-          = t("time.ago", :time => time_ago_in_words(@user.created_at))
+          %time{:datetime => @user.created_at.iso8601}
+            = t("time.ago", :time => time_ago_in_words(@user.created_at))
         |
         %small
           = t(:last_logged_at, :scope => "activerecord.attributes.user")
-          hace 5 min
+          %time{:datetime => @user.last_logged_at.iso8601}
+            = t("time.ago", :time => time_ago_in_words(@user.last_logged_at))
 
         -if @user.website
           %p
@@ -52,12 +54,12 @@
             = t(".views")
         %li
           %strong
-            500
+            = @user.following_count
           %small
             = t('.following')
         %li
           %strong
-            100
+            = @user.followers_count
           %small
             = t('.followers')
         -if current_user != @user
