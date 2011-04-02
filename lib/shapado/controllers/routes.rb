@@ -28,8 +28,12 @@ module Shapado
         "/_files/tags/icon/#{group.id}/#{tag_name}"
       end
 
-      def avatar_user_path(user)
-        "/_files/users/avatar/#{user.id}"
+      def avatar_user_path(user, size = nil)
+        prefix = "avatar"
+        if !size.nil? && ["big", "medium", "small"].include?(size)
+          prefix = size
+        end
+        "/_files/users/#{prefix}/#{user.id}"
       end
 
       def question_attachment_path(group,question, file, attach_id)

@@ -97,6 +97,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
+        Jobs::Images.async.generate_group_thumbnails(@group.id)
         @group.add_member(current_user, "owner")
         flash[:notice] = I18n.t("groups.create.flash_notice")
         format.html { redirect_to(domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "properties")) }

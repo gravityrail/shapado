@@ -67,6 +67,7 @@ class Group
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
   file_key :custom_favicon, :max_length => 256.kilobytes
+  file_list :thumbnails
 
   slug_key :name, :unique => true
   filterable_keys :name

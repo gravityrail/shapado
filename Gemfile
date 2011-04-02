@@ -11,6 +11,7 @@ if RUBY_PLATFORM !~ /mswin|mingw/
   gem "sanitize", "1.2.1"
 
   gem 'magic'
+  gem 'mini_magick', '~> 2.3'
   gem 'nokogiri'
   gem 'mechanize'
 else

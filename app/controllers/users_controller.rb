@@ -151,6 +151,9 @@ class UsersController < ApplicationController
     preferred_tags = params[:user][:preferred_tags]
 
     if @user.valid? && @user.save
+      if params[:user][:avatar]
+        Jobs::Images.async.generate_user_thumbnails(@user.id).commit!
+      end
       @user.add_preferred_tags(preferred_tags, current_group) if preferred_tags
       redirect_to root_path
     else

@@ -92,10 +92,25 @@ module UsersHelper
 
   def avatar_img(user, options)
     if user.use_gravatar || !user.has_avatar?
+      # TODO: convert size's name to pixels
+      if size = options[:size]
+        options[:size] = size_for_string(size)
+      end
       gravatar(user.email.to_s, options)
     else
-      image_tag(avatar_user_path(user), :style => "width:#{options[:size]}px")
+      image_tag(avatar_user_path(user, options[:size]))
     end
   end
 
+  private
+  def size_for_string(str)
+    case str.to_s
+    when "big"
+      "140"
+    when "medium"
+      "60"
+    else
+      "25"
+    end
+  end
 end

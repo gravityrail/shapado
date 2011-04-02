@@ -59,6 +59,7 @@ class User
 
   file_key :avatar, :max_length => 1.megabytes
   field :use_gravatar, :type => Boolean, :default => true
+  file_list :thumbnails
 
   referenced_in :friend_list
 
@@ -509,11 +510,17 @@ Time.zone.now ? 1 : 0)
   end
 
   def self.find_file_from_params(params, request)
-    if request.path =~ %r{/(avatar)/([^/\.\?]+)}
+    if request.path =~ %r{/(avatar|big|medium|small)/([^/\.\?]+)}
       @user = User.find($2)
       case $1
       when "avatar"
         @user.avatar
+      when "big"
+        @user.thumbnails["big"] ? @user.thumbnails.get("big") : @user.avatar
+      when "medium"
+        @user.thumbnails["medium"] ? @user.thumbnails.get("medium") : @user.avatar
+      when "small"
+        @user.thumbnails["small"] ? @user.thumbnails.get("small") : @user.avatar
       end
     end
   end
