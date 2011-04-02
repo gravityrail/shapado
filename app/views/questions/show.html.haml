@@ -238,7 +238,7 @@
         = link_to child.title, question_path(child)
 
     - if @question.closed && @question.close_reason.present?
-      #close_reason
+      #close_reason.pacho
         = t(".close_reason")
         = t(@question.close_reason.reason, :scope=>"close_requests.form")
         - if !@question.close_reason.comment.empty?
