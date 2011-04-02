@@ -304,10 +304,8 @@ namespace :fixdb do
     i = 1
     p "updating #{total} users facebook friends list"
     User.all.each do |u|
-      u.facebook_friends_list = FacebookFriendsList.create
-      u.twitter_friends_list = TwitterFriendsList.create
-      u.identica_friends_list = IdenticaFriendsList.create
-      u.linked_in_friends_list = LinkedInFriendsList.create
+      u.send(:initialize_fields)
+      u.send(:create_friends_lists)
 
       p "#{i}/#{total} #{u.login}"
       i += 1
