@@ -5,10 +5,16 @@ module Models
 
     included do
       field :address, :type => Hash, :default => {}
-      field :position, :type => Hash, :default => {}
+      field :position, :type => Hash, :default => {"lat" => 0, "long" => 0}
       index [[:position, Mongo::GEO2D]]
-    end
 
+      before_save :float_position
+
+      def float_position
+        position["lat"] = Float(position["lat"])
+        position["long"] = Float(position["long"])
+      end
+    end
 
     module InstanceMethods
 
