@@ -230,8 +230,8 @@ namespace :fixdb do
     doc.keys.each do |key|
       User.where({:country_name => key}).all.each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
-        lat = doc[key]["lat"]
-        lon = doc[key]["lon"]
+        lat = Float(doc[key]["lat"])
+        lon = Float(doc[key]["lon"])
         User.override({:_id => u.id},
                     {:position => {lat: lat, long: lon},
                       :address => doc[key]["address"] || {}})

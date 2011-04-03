@@ -173,8 +173,8 @@ class Group
     unless conditions[:near]
       User.where(conditions)
     else
-      _point = options.delete(:near)
-      User.near(point, {}).where(conditions)
+      user_point = conditions.delete(:near)
+      User.near(:position => user_point).where(conditions)
     end
   end
   alias_method :members, :users
