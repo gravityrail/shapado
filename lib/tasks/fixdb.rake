@@ -341,4 +341,10 @@ namespace :fixdb do
       u.save(:validate => false)
     end
   end
+
+  task :create_thumbnails => [:init]  do
+    Group.where.each do |g|
+      Jobs::Images.generate_group_thumbnails(g.id)
+    end
+  end
 end

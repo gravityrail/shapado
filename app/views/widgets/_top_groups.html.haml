@@ -6,7 +6,7 @@
     %section
 
       .avatar
-        =link_to image_tag(logo_path(group), :width => 40, :height => 40), domain_url(:custom => group.domain)
+        =link_to image_tag(logo_path(group, "medium")), domain_url(:custom => group.domain)
 
       .data
         %h5

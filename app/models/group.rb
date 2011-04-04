@@ -224,11 +224,17 @@ class Group
   end
 
   def self.find_file_from_params(params, request)
-    if request.path =~ /\/(logo|css|favicon)\/([^\/\.?]+)/
+    if request.path =~ /\/(logo|big|medium|small|css|favicon)\/([^\/\.?]+)/
       @group = Group.find($2)
       case $1
       when "logo"
         @group.logo
+      when "big"
+        @group.thumbnails["big"] ? @group.thumbnails.get("big") : @group.logo
+      when "medium"
+        @group.thumbnails["medium"] ? @group.thumbnails.get("medium") : @group.logo
+      when "small"
+        @group.thumbnails["small"] ? @group.thumbnails.get("small") : @group.logo
       when "css"
         if @group.has_custom_css?
           css=@group.custom_css
