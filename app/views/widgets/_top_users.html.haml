@@ -6,7 +6,7 @@
     -widget.top_users(current_group).each do |user|
       %li
         .avatar
-          =gravatar(user.email.to_s, :size => 15)
+          = avatar_img(user, :size => "small")
         .data
           %h5
             %b
