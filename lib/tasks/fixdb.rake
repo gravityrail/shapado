@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails", "fixdb:set_signup_type"] do
 end
 
 
@@ -357,6 +357,13 @@ namespace :fixdb do
     Group.override({:private => false}, {:invitations_perms => "owner"})
     p "anyone can invite people on private group by default"
     Group.override({:private => false}, {:invitations_perms => "user"})
+    p "done"
+  end
+
+  task :set_signup_type => [:init] do
+    p "setting signup type for groups"
+    Group.override({:openid_only => true}, {:signup_type => "noemail"})
+    Group.override({:openid_only => false}, {:signup_type => "all"})
     p "done"
   end
 end

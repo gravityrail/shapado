@@ -96,9 +96,8 @@
 
   .field
     .checkbox
-      = form.label :openid_only, t('openid_only', :scope => "activerecord.attributes.group"), :class => "radio"
-      = form.check_box :openid_only, :class => "checkbox"
-
+      = form.label :signup_type, t('signup_type', :scope => "activerecord.attributes.group"), :class => "label"
+      = form.select :signup_type, [[t('.signup_all'),'all'],[t('.signup_noemail'), 'noemail'],[t('.signup_social'), 'social'],[t('.signup_email'),'email only']], :selected => 'all', :class => "select"
   .field
     .checkbox
       = form.label :registered_only, t('registered_only', :scope => "activerecord.attributes.group"), :class => "radio"

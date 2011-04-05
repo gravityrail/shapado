@@ -56,6 +56,12 @@ class Group
 
   field :enable_latex, :type => Boolean, :default => false
 
+  # can be:
+  # * 'all': email, openid, oauth
+  # * 'noemail': openid and oauth only
+  # * 'social': only facebook, twitter, linkedin and identica
+  # * 'email': only email/password
+  field :signup_type, :type => String, :default => 'all'
 
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
   embeds_one :share
@@ -293,6 +299,22 @@ class Group
     end
 
     self.external_widgets << AskQuestionWidget.new
+  end
+
+  def is_all_signup?
+    signup_type == 'all'
+  end
+
+  def is_social_only_signup?
+    signup_type == 'social'
+  end
+
+  def is_email_only_signup?
+    signup_type == 'email'
+  end
+
+  def is_noemail_signup?
+    signup_type == 'noemail'
   end
 
   protected
