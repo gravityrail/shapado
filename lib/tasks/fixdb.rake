@@ -230,8 +230,8 @@ namespace :fixdb do
     doc.keys.each do |key|
       User.where({:country_name => key}).all.each do |u|
         p "#{u.login}: before: #{u.country_name}, after: #{doc[key]["address"]["country"]}"
-        lat = doc[key]["lat"]
-        lon = doc[key]["lon"]
+        lat = Float(doc[key]["lat"])
+        lon = Float(doc[key]["lon"])
         User.override({:_id => u.id},
                     {:position => {lat: lat, long: lon},
                       :address => doc[key]["address"] || {}})
@@ -339,6 +339,12 @@ namespace :fixdb do
       u["user_info"] = { } if u["user_info"].nil?
       u["user_info"]["facebook"] = { "old" => 1}
       u.save(:validate => false)
+    end
+  end
+
+  task :create_thumbnails => [:init]  do
+    Group.where.each do |g|
+      Jobs::Images.generate_group_thumbnails(g.id)
     end
   end
 end

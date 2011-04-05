@@ -4,7 +4,7 @@
     = multiauth_dropdown("Sign In")
   -else
     .avatar
-      = gravatar(current_user.email.to_s, :size => 25)
+      = avatar_img(current_user, :size => "small")
 
     .greeting
       %small Welcome

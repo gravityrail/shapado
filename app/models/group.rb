@@ -173,8 +173,8 @@ class Group
     unless conditions[:near]
       User.where(conditions)
     else
-      _point = options.delete(:near)
-      User.near(point, {}).where(conditions)
+      user_point = conditions.delete(:near)
+      User.near(:position => user_point).where(conditions)
     end
   end
   alias_method :members, :users
@@ -224,11 +224,17 @@ class Group
   end
 
   def self.find_file_from_params(params, request)
-    if request.path =~ /\/(logo|css|favicon)\/([^\/\.?]+)/
+    if request.path =~ /\/(logo|big|medium|small|css|favicon)\/([^\/\.?]+)/
       @group = Group.find($2)
       case $1
       when "logo"
         @group.logo
+      when "big"
+        @group.thumbnails["big"] ? @group.thumbnails.get("big") : @group.logo
+      when "medium"
+        @group.thumbnails["medium"] ? @group.thumbnails.get("medium") : @group.logo
+      when "small"
+        @group.thumbnails["small"] ? @group.thumbnails.get("small") : @group.logo
       when "css"
         if @group.has_custom_css?
           css=@group.custom_css

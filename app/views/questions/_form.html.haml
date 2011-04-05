@@ -6,8 +6,8 @@
 %h1 Editing this question
 
 -if @question.position
-  = hidden_field_tag "question[position][lat]", @question.position.lat, :class => "lat_input"
-  = hidden_field_tag "question[position][long]", @question.position.long, :class => "long_input"
+  = hidden_field_tag "question[position][lat]", @question.position["lat"], :class => "lat_input"
+  = hidden_field_tag "question[position][long]", @question.position["long"], :class => "long_input"
 .field
   = f.label :title, "#{t(:title, :scope => "activerecord.attributes.question")}*"
   = f.text_field :title
@@ -34,9 +34,10 @@
   -if !@question.new_record?
     = render "attachments", :question => @question, :attachments => @question.attachments, :editing => true
   #attachments
-    .attachment_field
-      = f.file_field "attachments[0]"
-      = link_to "Remove", "#", :class => "remove_attachment"
+    #fields
+      .attachment_field.template
+        = f.file_field "attachments[0]"
+        = link_to "Remove", "#", :class => "remove_attachment"
     = link_to "Add attachment", "#", :class => "add_attachment"
 
 
