@@ -55,7 +55,7 @@ class User
   index :anonymous
 
   field :friend_list_id, :type => String
-  field :notification_opts, :type => NotificationConfig
+  embeds_one :notification_opts, :class_name => "NotificationConfig"
 
   file_key :avatar, :max_length => 1.megabytes
   field :use_gravatar, :type => Boolean, :default => true
