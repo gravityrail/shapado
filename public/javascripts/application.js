@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('ul.sf-menu').superfish();
-  $('ul.sf-menu ul li a').click(function(){
+  $('.auth-provider').click(function(){
       var authUrl = $(this).attr('href');
       window.open(authUrl, 'openid_popup', 'width=790,height=580');
       return false;

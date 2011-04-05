@@ -4,6 +4,7 @@ Shapado::Application.routes.draw do
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
+  match '/invitations/accept' => 'invitations#accept', :method => :get, :as => :accept_invitation
   match '/close_popup' => 'users#close_popup', :method => :get
   match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get
   match '/group_twitter_request_token' => 'groups#group_twitter_request_token', :method => :get
@@ -154,6 +155,12 @@ Shapado::Application.routes.draw do
     end
   end
 
+  resources :invitations do
+    member do
+      post :revoke
+    end
+  end
+
   scope '/manage' do
     resources :widgets do
       member do
@@ -175,6 +182,7 @@ Shapado::Application.routes.draw do
       match 'reputation' => :reputation
       match 'domain' => :domain
       match 'content' => :content
+      match 'invitations' => :invitations
     end
   end
 

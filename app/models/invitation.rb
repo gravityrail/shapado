@@ -7,6 +7,7 @@ class Invitation
   index :token
   field :email, :type => String
   index :email
+  field :accepted, :type => Boolean, :default => false
 
   referenced_in :group
   referenced_in :user

@@ -556,7 +556,7 @@ Time.zone.now ? 1 : 0)
     # if we find less suggestions than requested, complete with
     # most popular users and tags
     (sample.size < limit) ? sample |
-      (group.top_tags_strings(limit+15) + group.top_users(limit+5)).
+      (group.top_tags_strings(limit+15)-self.preferred_tags_on(group) + group.top_users(limit+5)-[self]).
       sample(limit-sample.size) : sample
   end
 
@@ -653,8 +653,8 @@ Time.zone.now ? 1 : 0)
     end
   end
 
-  def revoke_invite(invite)
-    invite.destroy if self.can_modify?(invite)
+  def revoke_invite(invitation)
+    invite.destroy if self.can_modify?(invitation)
   end
 
   def can_invite_on?(group)
@@ -663,6 +663,13 @@ Time.zone.now ? 1 : 0)
       (group.invitations_perms == 'moderator' &&
        self.mod_of?(group))
     return false
+  end
+
+  def accept_invitation(invitation_id)
+    invitation = Invitation.find(invitation_id)
+    group = invitation.group
+    invitation.update(:accepted => true) &&
+      group.add_member(self, 'user')
   end
 
   protected

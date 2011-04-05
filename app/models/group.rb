@@ -125,7 +125,7 @@ class Group
                               :in => BLACKLIST_GROUP_NAME,
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
-
+  validates_inclusion_of :invitations_perms, :in => %w[user moderator owner]
   before_save :disallow_javascript
   before_save :modify_attributes
 

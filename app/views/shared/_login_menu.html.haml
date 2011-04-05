@@ -1,14 +1,8 @@
-- count = 0
 %ul.auth-list.sf-menu
   %li
     %a
       LogIn
-    %ul
-      - entries = multiauth_providers.keys
-      -first_section = entries[0, 20]
-      -first_section.each do |provider|
-        -config = multiauth_providers[provider]
-        %li
-          =link_to(provider, "/users/auth/#{config["openid"] ? "open_id?openid_url=#{config["openid"]}" : "#{provider.underscore}"}", :class => "#{provider} #{config["class"]}", :id => "btn_#{count+=1}" )
+    = render "shared/login_drop_down"
   %li
-    =link_to "Join to Shapado"
+    =link_to "Join Shapado"
+
