@@ -1,6 +1,7 @@
 -title = answer.question.title
 
 %article.answer
+  %a{:name => "answer#{answer.id}"}
   %h2
     = link_to truncate(answer.body, :length => 200), question_path(answer.question), :title => title
   %p

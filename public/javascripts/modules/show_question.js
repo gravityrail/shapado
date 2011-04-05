@@ -1,5 +1,6 @@
 
 $(document).ready(function() {
+
 //  $(".forms form.flag_form").hide();
 //  $("#close_question_form").hide();
   $('.auto-link').autoVideo();
@@ -382,5 +383,10 @@ $(document).ready(function() {
 });
 
 $(window).load(function() {
+  if(document.location.hash === "#to_answer") {
+    var add_answer = $("a#add_answer")
+    $('html,body').animate({scrollTop: add_answer.offset().top-100}, 1000);
+    add_answer.trigger('click');
+  }
   prettyPrint();
 });
