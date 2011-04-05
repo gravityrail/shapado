@@ -27,9 +27,9 @@
 
   = render "shared/widgets", :context => 'mainlist'
 
--if @questions.empty? # TODO: blankslate
-  %li.highlight
-    = t(".empty")
+-if @questions.empty?
+  = render "shared/empty"
+
 
 
 -if params[:answers]
