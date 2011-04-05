@@ -164,7 +164,7 @@ class AnswersController < ApplicationController
 
         Jobs::Activities.async.on_update_answer(@answer.id).commit!
 
-        format.html { redirect_to(question_path(@answer.question)) }
+        format.html { redirect_to(question_path(@answer.question, :anchor => "answer#{@answer.id}")) }
         format.json { head :ok }
       else
         format.html { render :action => "edit" }

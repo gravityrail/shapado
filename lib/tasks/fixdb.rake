@@ -344,7 +344,11 @@ namespace :fixdb do
 
   task :create_thumbnails => [:init]  do
     Group.where.each do |g|
-      Jobs::Images.generate_group_thumbnails(g.id)
+      begin
+        Jobs::Images.generate_group_thumbnails(g.id)
+      rescue Mongo::GridFileNotFound => e
+        puts "error getting #{g.name}'s logo"
+      end
     end
   end
 end

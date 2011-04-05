@@ -6,6 +6,7 @@
 - @aflag ||= Flag.new
 
 %article.answer
+  %a{:name => "answer#{answer.id}"}
   %h4
     =render "answered_by", local_assigns
 
