@@ -11,6 +11,8 @@
     margin: 0 auto
     padding: 20px
     width: 90%
+    .field input.text_field
+      width: 94%
 
 // Answare panel
 .add_answer
@@ -22,6 +24,12 @@
       width: 60px
       label
         width: 40px
+
+  .by_mail a
+    padding: 0 0 0 20px
+    margin: 0 0 0 20px
+    background: url("/images/question-toolbar-icons-small.png") 0 -475px no-repeat
+    color: #000
 
 // Add Comment
 .add_question_comment
@@ -44,6 +52,10 @@
     display: none
 
   ul
+    overflow: hidden
+    width: 345px
+    margin: 0 auto
+
     li
       a
         width: 24px
@@ -53,6 +65,7 @@
         padding: 0
         margin-right: 7px
         border: none
+        float: left
 
     li.facebook a
       background: url("/images/share/facebook.png") 0 0 no-repeat

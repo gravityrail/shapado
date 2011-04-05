@@ -34,9 +34,6 @@
 
   .description.markdown
     = question_body
-    -if AppConfig.mailing && AppConfig.mailing["activate"]
-      answer by email:
-      = mail_to @question.email
     = render "reward_info"
     = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
     .clear
@@ -153,6 +150,12 @@
               .checkbox
                 = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
                 = f.check_box :anonymous, {:class => "checkbox"}, true, false
+
+            -if AppConfig.mailing && AppConfig.mailing["activate"]
+              .column.by_mail
+                %a{:href => "mailto:#{@question.email}"}
+                  Answer by email
+
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
