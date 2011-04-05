@@ -45,7 +45,8 @@
     %p
       %strong
         = t('activerecord.attributes.question.created_at')
-      = t("time.ago", :time => time_ago_in_words(@question.created_at))
+      %time{:datetime => @question.created_at.iso8601}
+        = t("time.ago", :time => time_ago_in_words(@question.created_at))
       %strong
         = t('questions.show.viewed')
       = t('number.x_time', :count => number_with_delimiter(@question.views_count))
@@ -58,10 +59,10 @@
   .toolbar
     %ul.drop-menu
       %li.answer
-        = link_to "Responder", "#", :id => "add_answer"
+        = link_to t(".answer", :default => "Answer"), "#", :id => "add_answer"
 
       %li.comment
-        = link_to "Comentar", "#", :id => "add_question_comment"
+        = link_to t(".comment", :default => "Comment"), "#", :id => "add_question_comment"
 
       %li.follow
         - if current_user && @question.follower?(current_user)
@@ -201,7 +202,7 @@
     Topics:
   - @question.tags.each do |tag|
     %li
-      = link_to h(tag), tag_path(:id => tag), :rel => "tag"
+      = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
   - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
     %li.retag
       = link_to t('.retag'), retag_question_path(@question), :id => 'retag'

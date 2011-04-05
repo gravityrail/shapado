@@ -5,9 +5,11 @@
     = avatar_img(current_user, {:size =>"small"})
     %ul
       %li
-        =link_to "Profile"
+        =link_to "Profile", user_path(current_user)
       %li
-        =link_to "Mi Karma: #{current_user.reputation_on(current_group)}"
+        =link_to "Settings", settings_path
+      %li
+        =link_to "My Karma: #{current_user.reputation_on(current_group)}"
       %li
         =link_to "My badges", badges_path
 

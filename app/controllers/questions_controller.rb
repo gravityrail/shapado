@@ -124,13 +124,12 @@ class QuestionsController < ApplicationController
       format.js do
         result = []
         if q = params[:term]
-          result = Question.find_tags(/^#{Regexp.escape(q.downcase)}/i,
-                                      :group_id => current_group.id,
-                                      :banned => false)
+          result = Tag.where(:name => /^#{Regexp.escape(q.downcase)}/i,
+                    :group_id => current_group.id).order(:count => :desc)
         end
 
         results = result.map do |t|
-          {:caption => "#{t["name"]} (#{t["count"].to_i})", :value => t["name"]}
+          {:caption => "#{t.name} (#{t.count.to_i})", :value => t.name}
         end
         # if no results, show default tags
         if results.empty?
