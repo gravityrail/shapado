@@ -29,6 +29,14 @@ $(document).ready(function() {
     return false;
   });
 
+  $(".flag-link-index").live("click", function(event) {
+    var link = $(this).parents("article.unanswered").find("h2 a");
+    if(link) {
+      window.location= link.attr("href")+"#to_flag"
+    }
+    return false;
+  });
+
 
   $(".question form.vote-up-form input[name=vote_up]").live("click", function(event) {
     var btn_name = $(this).attr("name");
