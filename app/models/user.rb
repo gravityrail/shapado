@@ -656,7 +656,7 @@ Time.zone.now ? 1 : 0)
 
   def initialize_fields
     self.friend_list = FriendList.create if self.friend_list.nil?
-    self.notification_opts = NotificationConfig.create if self.notification_opts.nil?
+    self.notification_opts = NotificationConfig.new if self.notification_opts.nil?
   end
 
   def update_anonymous_user
