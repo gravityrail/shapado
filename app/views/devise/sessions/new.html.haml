@@ -1,35 +1,33 @@
+%h1 Login to (Group Name)
+%p.description
+  We help you discover and share opinions that is the most relevant to you and those in your group.
+
 = multiauth_assets
 
 -session["return_to"] = request.referrer unless request.referrer.blank?
 
-%div.login-box
-  -if current_group.registered_only
-    %h1
-      IMPORTANT: You must be logged in to see this site
-
-  %h2
-    = t(".with_openid")
-
-= render :partial => "openid"
+-if current_group.registered_only
+  .error
+    IMPORTANT: You must be logged in to see this site
 
 -unless current_group.openid_only
-  %h2
-    = t(".sign_in")
 
   -form_for :user, resource, :url => session_path(resource_name), :html => {:class => "form"} do |f|
-    .group
-      =f.label :email, t("email", :scope => "activerecord.attributes.user"), :class => "label"
+    .field
+      =f.label :email, t("email", :scope => "activerecord.attributes.user")
       =f.text_field :email, :class => "text_field"
-    .group
-      =f.label :password, t("password", :scope => "activerecord.attributes.user"), :class => "label"
-      =f.password_field :password, :class => "password text_field"
+    .field
+      =f.label :password, t("password", :scope => "activerecord.attributes.user")
+      =f.password_field :password, :class => "password"
 
     -if devise_mapping.rememberable?
-      .group
-        =f.label :remember_me, t(".remember_me")
+      .checkbox
         =f.check_box :remember_me
+        =f.label :remember_me, t(".remember_me")
 
-    .group.navform
-      =f.submit "Sign in"
+
+    .buttons
+      =f.submit "Sign in", :class => "save"
+
 
   = render :partial => "shared/devise_links"
