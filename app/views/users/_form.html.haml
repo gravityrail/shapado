@@ -20,7 +20,6 @@
     = f.label :password_confirmation, t(:password_confirmation, :scope => "activerecord.attributes.user"), :class => "label"
     = f.password_field :password_confirmation, :class => "text_field"
 
-%hr
 
 -unless @user.new?
   .field
@@ -53,7 +52,6 @@
     = f.label :website, t(:website, :scope => "activerecord.attributes.user"), :class => "label"
     = f.text_field :website, :class => "text_field"
 
-%hr
 
 -if AppConfig.enable_i18n
   .field
@@ -87,7 +85,6 @@
 -else
   = hidden_field_tag "user[preferred_languages][]", (current_group.language || AppConfig.default_language)
 
-%hr
 
 -unless @user.new_record?
   %h1
