@@ -4,7 +4,7 @@ require 'faker'
 Sham.email { Faker::Internet.email }
 Sham.name  { Faker::Name.name }
 Sham.login  { Faker::Name.name }
-Sham.position(:unique => false)  { {:lat => 0, :long => 0} }
+Sham.position(:unique => false)  { {"lat" => 0, "long" => 0} }
 Sham.title { Faker::Lorem.sentence }
 Sham.body { Faker::Lorem.paragraph }
 Sham.domain { Faker::Company.name }
@@ -47,6 +47,12 @@ Answer.blueprint do
   group {Group.make}
   user {User.make}
   question {Question.make}
+end
+
+Comment.blueprint do
+  body { Sham.body }
+  votes {{}}
+  user {User.make}
 end
 
 UserStat.blueprint do

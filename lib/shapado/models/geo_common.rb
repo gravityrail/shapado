@@ -11,8 +11,8 @@ module Models
       before_save :float_position
 
       def float_position
-        position["lat"] = Float(position["lat"])
-        position["long"] = Float(position["long"])
+        position["lat"] = Float(position["lat"]||0)
+        position["long"] = Float(position["long"]||0)
       end
     end
 

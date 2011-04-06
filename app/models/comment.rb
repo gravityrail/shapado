@@ -8,7 +8,7 @@ class Comment
 
   identity :type => String
 
-  field :body, :type =>  String, :required => true
+  field :body, :type =>  String
   field :language, :type =>  String, :default => "en"
   field :banned, :type =>  Boolean, :default => false
 
@@ -19,6 +19,7 @@ class Comment
 
   embedded_in :commentable, :inverse_of => :comments
 
+  validates_presence_of :body
   validates_presence_of :user
 
   def group
