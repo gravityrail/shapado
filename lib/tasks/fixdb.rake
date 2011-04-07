@@ -350,6 +350,7 @@ namespace :fixdb do
         puts "error getting #{g.name}'s logo"
       end
     end
+  end
 
   task :set_invitations_perms => [:init] do
     p "setting invitations permissions on groups"
