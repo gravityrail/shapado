@@ -56,6 +56,12 @@ class Group
 
   field :enable_latex, :type => Boolean, :default => false
 
+  # can be:
+  # * 'all': email, openid, oauth
+  # * 'noemail': openid and oauth only
+  # * 'social': only facebook, twitter, linkedin and identica
+  # * 'email': only email/password
+  field :signup_type, :type => String, :default => 'all'
 
   field :logo_info, :type => Hash, :default => {"width" => 215, "height" => 60}
   embeds_one :share
@@ -63,6 +69,8 @@ class Group
   embeds_one :notification_opts, :class_name => "GroupNotificationConfig"
 
   field :twitter_account, :type => Hash, :default => { }
+
+  field :invitations_perms, :type => String, :default => 'user' # can be "moderator", "owner"
 
   file_key :logo, :max_length => 2.megabytes
   file_key :custom_css, :max_length => 256.kilobytes
@@ -86,6 +94,7 @@ class Group
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
+  references_many :invitations, :dependent => :destroy
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
@@ -116,7 +125,7 @@ class Group
                               :in => BLACKLIST_GROUP_NAME,
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
-
+  validates_inclusion_of :invitations_perms, :in => %w[user moderator owner]
   before_save :disallow_javascript
   before_save :modify_attributes
 
@@ -290,6 +299,22 @@ class Group
     end
 
     self.external_widgets << AskQuestionWidget.new
+  end
+
+  def is_all_signup?
+    signup_type == 'all'
+  end
+
+  def is_social_only_signup?
+    signup_type == 'social'
+  end
+
+  def is_email_only_signup?
+    signup_type == 'email'
+  end
+
+  def is_noemail_signup?
+    signup_type == 'noemail'
   end
 
   protected

@@ -5,6 +5,8 @@
 //    Client       :   Shapado
 //    Description  :   Layout front side
 //========================================================================
+@import "fancy-buttons"
+
 body
   background: url("/images/back-site.gif") 0 0
 
@@ -33,6 +35,72 @@ section.content-panel
   padding: 0 0.4%
   display: inline
 
+section.invitations-panel
+  margin: auto
+  width: 100%
+  background-color: #fff
+
+  h1
+    font-size: 16px
+    font-weight: bold
+    margin-bottom: 10px
+  .invitation-container
+    padding: 10px
+    margin: auto
+    margin-top: 50px
+    margin-bottom: 50px
+    width: 500px
+    border: 1px solid black
+    +small-radius
+
+    #invitations-points
+      margin: auto
+      margin-top: 10px
+      margin-bottom: 10px
+      width: 100%
+      text-align: center
+      div
+        padding: 2px
+        margin: auto
+        width: 109px
+        background: #E5E5E5
+        display: inline-block
+        vertical-align: middle
+        +small-radius
+        img
+          background-color: #fff
+          margin: auto
+
+#twitter-and-facebook
+  text-align: center
+  .find_friends
+    margin-top: 14px
+
+a#twitter_auth
+a#facebook_auth
+  @include fancy-button
+  +fancy-button-structure
+  +fancy-button-colors-matte(#4C6EA9)
+  +fancy-button-size(12px, 6px, 1px)
+  white-space: nowrap
+
+a#twitter_auth
+  +fancy-button-structure
+  +fancy-button-colors-matte(#A0E8EB)
+  +fancy-button-size(12px, 6px, 1px)
+  white-space: nowrap
+
+a#identica_auth
+  +fancy-button-structure
+  +fancy-button-colors-matte(#8F0000)
+  +fancy-button-size(12px, 6px, 1px)
+  white-space: nowrap
+
+a#linked_in_auth
+  +fancy-button-structure
+  +fancy-button-colors-matte(#378AB3)
+  +fancy-button-size(12px, 6px, 1px)
+  white-space: nowrap
 
 //RIGHT
 section.right-panel

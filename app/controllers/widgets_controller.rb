@@ -4,8 +4,7 @@ class WidgetsController < ApplicationController
   layout "manage"
   tabs :default => :widgets
 
-  subtabs :widgets => [[:welcome, "welcome"],
-                       [:mainlist, "mainlist"],
+  subtabs :widgets => [[:mainlist, "mainlist"],
                        [:question, "question"],
                        [:external, "external"]]
 

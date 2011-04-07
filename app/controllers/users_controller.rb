@@ -63,6 +63,7 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       sweep_new_users(current_group)
+      @user.accept_invitation(params[:invitation_id]) if params[:invitation_id]
       flash[:notice] = t("flash_notice", :scope => "users.create")
       sign_in_and_redirect(:user, @user) # !! now logged in
     else
@@ -155,7 +156,12 @@ class UsersController < ApplicationController
         Jobs::Images.async.generate_user_thumbnails(@user.id).commit!
       end
       @user.add_preferred_tags(preferred_tags, current_group) if preferred_tags
-      redirect_to root_path
+      if params[:next_step]
+        current_user.accept_invitation(params[:invitation_id])
+        redirect_to accept_invitation_path(:step => params[:next_step], :id => params[:invitation_id])
+      else
+        redirect_to root_path
+      end
     else
       render :action => "edit"
     end
@@ -309,6 +315,10 @@ class UsersController < ApplicationController
 
   def auth
     head :status => 404
+  end
+
+  def close_popup
+    render :inline => '<script type="text/javascript">window.onload=function(){window.onunload=function(){window.opener.location.reload()};window.close()};</script>', :layout => false
   end
 
   protected

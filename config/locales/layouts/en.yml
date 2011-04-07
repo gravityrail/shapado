@@ -44,5 +44,6 @@ en:
       general: General
       announcements: Announcements
       social: Social
+      invitations: Invitations
     notifications:
       message: "If you do not want to receive automatic notifications from %{group} anymore, change your preferences in the notifications screen."

@@ -45,3 +45,7 @@ en:
     admin_login:
       subject: "Alert: admin connection"
       message1: "User %{user} has connected as admin at %{time} with the ip %{ip}."
+    new_invitation:
+      message1: "%{user} has invited you to %{group}"
+      message2: "Click here to accept the invitation %{link}"
+      message3: "The %{group} team."

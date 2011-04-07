@@ -1,0 +1,8 @@
+%ul
+  - count = 0
+  - entries = multiauth_providers.keys
+  - first_section = entries[0, 20]
+  - first_section.each do |provider|
+    - config = multiauth_providers[provider]
+    %li
+      =link_to(provider, "/users/auth/#{config["openid"] ? "open_id?openid_url=#{config["openid"]}" : "#{provider.underscore}"}", :class => "#{provider} #{config["class"]} auth-provider", :id => "btn_#{count+=1}" )

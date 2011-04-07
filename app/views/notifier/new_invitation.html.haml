@@ -1,0 +1,8 @@
+= t("notifier.global.hi", :user => ''),
+
+%p= t("notifier.new_invitation.message1", :user => h(@user.login), :group => @group.name)
+
+%p= t("notifier.new_invitation.message2", :link => url_for(:host => @group.domain, :controller => "invitations", :action => "accept", :id => @invitation.id))
+
+%p= t("notifier.new_invitation.message3", :group => @group.name)
+

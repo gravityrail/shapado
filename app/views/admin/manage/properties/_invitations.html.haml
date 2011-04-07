@@ -1,0 +1,7 @@
+%ul
+  - current_user.invitations.each do |invitation|
+    %li
+      = invitation.email
+      = form_tag revoke_invitation_path(invitation), :class => "form", :multipart => true, :method => :post do
+        = hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "invitations", :tab => @active_subtab)
+        = submit_tag 'revoke'
