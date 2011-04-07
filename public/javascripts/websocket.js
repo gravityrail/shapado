@@ -3,15 +3,23 @@ var CahumaSocket = {
     WEB_SOCKET_SWF_LOCATION = "/javascripts/web-socket-js/WebSocketMain.swf";
 
     var config = $("#websocket");
+    this.error_count = 0;
     this.ws = new WebSocket("ws://"+config.attr("data-host")+":34567/");
     this.socket_key = null;
+
 
     this.ws.onmessage = function(evt) {
       CahumaSocket.parse(evt.data);
     };
 
+    window.webSocketError = function(message) {
+      console.error(decodeURIComponent(message));
+      CahumaSocket.error_count += 1;
+    }
+
     this.ws.onclose = function() {
-      setTimeout(CahumaSocket.initialize, 5000)
+      if(CahumaSocket.error_count < 3)
+        setTimeout(CahumaSocket.initialize, 5000)
     };
 
     this.ws.onopen = function() {
@@ -24,8 +32,8 @@ var CahumaSocket = {
   parse: function(data) {
     var data = jQuery.parseJSON(data);
 
-    console.log("received: ");
-    console.log(data);
+    window.console && console.log("received: ");
+    window.console && console.log(data);
 
     switch(data.id) {
       case 'chatmessage': {
