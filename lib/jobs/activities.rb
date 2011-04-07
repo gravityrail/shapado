@@ -49,9 +49,9 @@ module Jobs
       group = commentable.group
       user = comment.user
 #       comment.set_address FIXME
-#       if user.comments.count >= 10
-#         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
-#       end
+      if user.config_for(group).comments_count >= 10
+        create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
+      end
       if user.notification_opts.comments_to_twitter
         shortlink = shorten_url(link, answer)
         author = user

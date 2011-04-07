@@ -25,5 +25,7 @@ class Membership < EmbeddedHash
   field :gold_badges_count,         :type => Integer, :default => 0
   field :is_editor,                 :type => Boolean, :default => false
 
+  field :comments_count,            :type => Integer, :default => 0
+
   validates_inclusion_of :role,  :in => ROLES
 end
