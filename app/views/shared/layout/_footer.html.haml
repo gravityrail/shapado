@@ -24,6 +24,7 @@
     == All Shapado.com content and data are available under the #{link_to 'Creative Commons Attribution 3.0 license', 'http://creativecommons.org/licenses/by/3.0/'}
   %p
     == Powered by #{link_to 'Shapado', 'http://gitorious.org/shapado'} #{AppConfig.version} under the #{link_to 'GNU Affero General Public License','http://www.fsf.org/licensing/licenses/agpl-3.0.html'}
-      
+
   .feedback{:style => "display:none"}
     = render :partial => "welcome/feedback"
+  = render "shared/layout/websocket"
