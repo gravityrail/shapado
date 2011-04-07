@@ -78,7 +78,7 @@ module Shapado
         if current_user.linked_in_login? && current_user.linked_in_friends.empty?
           Jobs::Users.async.get_linked_in_friends(current_user.id).commit!
         end
-        '/close_popup'
+        '/close_popup.html'
         #return
         #if return_to = session.delete("return_to")
         #  return_to

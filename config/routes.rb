@@ -5,7 +5,6 @@ Shapado::Application.routes.draw do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
   match '/invitations/accept' => 'invitations#accept', :method => :get, :as => :accept_invitation
-  match '/close_popup' => 'users#close_popup', :method => :get
   match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get
   match '/group_twitter_request_token' => 'groups#group_twitter_request_token', :method => :get
   match 'confirm_age_welcome' => 'welcome#confirm_age', :as => :confirm_age_welcome
