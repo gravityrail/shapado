@@ -8,8 +8,8 @@
   .field
     = f.label :email
     = f.text_field :email
-  .buttoms
-    = f.submit "Send me reset password instructions"
+  .buttons
+    = f.submit "Send me reset password instructions", :class => "save"
 
 
 = render :partial => "shared/devise_links"
