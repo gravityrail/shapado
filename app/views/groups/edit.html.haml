@@ -1,7 +1,9 @@
--form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
-  %h1
-    Editing group
+%h1
+  //needsi18n
+  Editing group
+%p.description
 
+-form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
   = f.error_messages
   = render :partial => "form", :object => f
 
