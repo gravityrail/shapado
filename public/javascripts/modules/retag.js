@@ -36,9 +36,9 @@ $(document).ready(function() {
             success: function(data, textStatus) {
                 if(data.success) {
                     var tags = $.map(data.tags, function(n){
-                        return '<span class="tag"><a rel="tag" href="/questions/tags/'+n+'">'+n+'</a></span>'
+                        return '<li><a class="tag" rel="tag" href="/questions/tags/'+n+'">'+n+'</a></li>'
                     })
-                    form.parents('.tag-list').find('li a.tag').remove();
+                    form.parents('.tag-list').find('li a.tag').parents('li:first').remove();
                     form.before(tags.join(''));
                     form.remove();
                     $('.retag').show();
