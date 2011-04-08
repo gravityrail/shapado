@@ -71,7 +71,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       @comment = current_scope.find(params[:id])
-      @comment.body = params[:body]
+      @comment.body = params[:comment][:body]
       if @comment.valid? && scope.save
         if question_id = @comment.question_id
           Question.update_last_target(question_id, @comment)
