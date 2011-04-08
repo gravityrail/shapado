@@ -19,7 +19,8 @@
 
       %nav.top-bar
         %ul.group-list.sf-menu
-          = render "groups/top_grouplist"
+          -if !current_group.isolate
+            = render "groups/top_grouplist"
           -if !logged_in?
           - else
             -if current_user.admin_of?(current_group)
