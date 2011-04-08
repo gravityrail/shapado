@@ -38,6 +38,9 @@ Shapado::Application.routes.draw do
       get :preferred
       get :by_me
       get :contributed
+      get :answers
+      get :follows
+      get :activity
     end
   end
 

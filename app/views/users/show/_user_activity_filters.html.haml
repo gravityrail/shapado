@@ -1,0 +1,12 @@
+%header
+  =# number_with_delimiter(@answers.total_entries)
+  =t(:answers, :scope => "activerecord.models")
+  = "- Sort By:" #i18n
+%li.newest
+  = link_to t("questions.index.newest"), activity_user_path(@user, params.merge(:a_sort=>"newest")), :rel => "nofollow"
+%li.hot
+  = link_to t("questions.index.oldest"), activity_user_path(@user, params.merge(:a_sort=>"oldest")), :rel => "nofollow"
+%li.votes
+  = link_to t("questions.index.votes"), activity_user_path(@user, params.merge(:a_sort=>"votes")), :rel => "nofollow"
+%li.fav
+  = link_to "Favorites", "#"

@@ -6,6 +6,7 @@
         %p
           =link_to "Edit profile", settings_path
 
+    // TODO i18n
     %h3 Badges
     %ul.badges
       -@badges.each do |badge|
@@ -71,37 +72,21 @@
               =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user)
       .clear
 
-    #main-content-wrap.answers{:class => @active_tab}
+    #main-content-wrap{:class => @active_tab}
       %nav{:class => @active_subtab }
         %ul.content-tabs
-          %li.questions
-            = link_to "Preguntas", user_path(@user, params.merge(:a_sort=>"newest")), :rel => "nofollow"
-          %li.answers
-            =link_to "Respuestas", url_for(:answers => 1)
-          %li.follow
-            =link_to "Follow", "#"
-          %li.activity
-            =link_to "Activity", "#"
+          = tab_entry "li", "Questions", user_path(@user), {:selected => "active"}, {:class => "questions"} #i18n
+          = tab_entry "li", "Answers", answers_user_path(@user), {:selected => "active"}, {:class => "answers"} #i18n
+          = tab_entry "li", "Follow", follows_user_path(@user), {:selected => "active"}, {:class => "follow"} #i18n
+          = tab_entry "li", "Activity", activity_user_path(@user), {:selected => "active"}, {:class => "activity"} #i18n
       %section.filters{:class => @active_subtab }
         %ul
-          %header
-            = number_with_delimiter(@answers.total_entries)
-            =t(:answers, :scope => "activerecord.models")
-            = "- Sort By:"
-          %li.newest
-            = link_to t("questions.index.newest"), user_path(@user, params.merge(:a_sort=>"newest")), :rel => "nofollow"
-          %li.hot
-            = link_to t("questions.index.oldest"), user_path(@user, params.merge(:a_sort=>"oldest")), :rel => "nofollow"
-          %li.votes
-            = link_to t("questions.index.votes"), user_path(@user, params.merge(:a_sort=>"votes")), :rel => "nofollow"
-          %li.fav
-            = link_to "Favorites", "#"
+          = render "users/show/user_#{params[:action]}_filters"
 
-      -@answers.each do |answer|
-      -next if answer.question.banned
-        = render :partial => "answers/answer", :object => answer
+      = render "users/show/user_#{params[:action]}_content"
+
     .additional_info
-      = will_paginate @answers, :param_name => "answers_page"
+      = will_paginate @resources
 
 
 

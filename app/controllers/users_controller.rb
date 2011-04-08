@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :login_required, :only => [:edit, :update,
                                            :follow, :follow_tags,
                                            :unfollow_tags]
+  before_filter :find_user, :only => [:show, :answers, :follows, :activity]
   tabs :default => :users
 
   subtabs :index => [[:reputation, "reputation"],
@@ -72,44 +73,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    conds = {}
-    conds[:se_id] = params[:se_id] if params[:se_id]
-    @user = User.find_by_login_or_id(params[:id], conds)
-    raise Goalie::NotFound unless @user
-
-    set_page_title(t("users.show.title", :user => @user.login))
-
-    @q_sort, order = active_subtab(:q_sort)
-    @questions = @user.questions.paginate(:page=>params[:questions_page],
-                                          :order => order,
-                                          :per_page => 10,
-                                          :group_id => current_group.id,
-                                          :banned => false,
-                                          :anonymous => false)
-
-    @a_sort, order = active_subtab(:a_sort)
-    @answers = @user.answers.paginate(:page=>params[:answers_page],
-                                      :order => order,
-                                      :group_id => current_group.id,
-                                      :per_page => 10,
-                                      :banned => false,
-                                      :anonymous => false)
-
-    @badges = @user.badges.paginate(:page => params[:badges_page],
-                                    :group_id => current_group.id,
-                                    :per_page => 25)
-
-    @f_sort, order = active_subtab(:f_sort)
-
-    @favorites = @user.favorites(:group_id => current_group.id).
-      paginate(:page => params[:favorites_page],
-               :per_page => 25,
-               :order => order
-               )
-
-    add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
-
-    @user.viewed_on!(current_group) if @user != current_user && !is_bot?
+    @resources = @user.questions.where(:group_id => current_group.id,
+                                       :banned => false,
+                                       :anonymous => false).
+                       paginate(:page=>params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html
@@ -117,6 +84,34 @@ class UsersController < ApplicationController
       format.json {
         render :json => @user.to_json(:only => %w[name login membership_list bio website location language])
       }
+    end
+  end
+
+  def answers
+    @resources = @user.answers.where(:group_id => current_group.id,
+                                     :banned => false,
+                                     :anonymous => false).
+                              paginate(:page=>params[:page], :per_page => 10)
+    respond_to do |format|
+      format.html{render :show}
+    end
+  end
+
+  def follows
+    @resources = Question.where(:follower_ids.in => [@user.id],
+                                :banned => false,
+                                :group_id => current_group.id,
+                                :anonymous => false).
+                          paginate(:page=>params[:page], :per_page => 10)
+    respond_to do |format|
+      format.html{render :show}
+    end
+  end
+
+  def activity
+#     @resources = []
+    respond_to do |format|
+      format.html{render :show}
     end
   end
 
@@ -326,6 +321,18 @@ class UsersController < ApplicationController
         order = "created_at asc"
     end
     [key, order]
+  end
+
+  def find_user
+    conds = {}
+    conds[:se_id] = params[:se_id] if params[:se_id]
+    @user = User.find_by_login_or_id(params[:id], conds)
+    raise Goalie::NotFound unless @user
+    set_page_title(t("users.show.title", :user => @user.login))
+    @badges = @user.badges.where(:group_id => current_group.id).
+                            paginate(:page => params[:badges_page], :per_page => 25)
+    add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
+    @user.viewed_on!(current_group) if @user != current_user && !is_bot?
   end
 end
 
