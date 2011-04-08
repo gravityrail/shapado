@@ -9,7 +9,15 @@ class UsersController < ApplicationController
                      [:newest, %w(created_at desc)],
                      [:oldest, %w(created_at asc)],
                      [:name, %w(login asc)],
-                     [:near, ""]]
+                     [:near, ""]],
+          :show => [[:votes, [[:votes_average, :desc], [:created_at, :desc]]],
+                    [:views, [:views, :desc]],
+                    [:newest, [:created_at, :desc]],
+                    [:oldest, [:created_at, :asc]]],
+        :answers => [[:votes, [[:votes_average, :desc], [:created_at, :desc]]],
+                    [:views,  [:views, :desc]],
+                    [:newest, [:created_at, :desc]],
+                    [:oldest, [:created_at, :asc]]]
 
   def index
     set_page_title(t("users.index.title"))
@@ -76,6 +84,7 @@ class UsersController < ApplicationController
     @resources = @user.questions.where(:group_id => current_group.id,
                                        :banned => false,
                                        :anonymous => false).
+                       order_by(current_order).
                        paginate(:page=>params[:page], :per_page => 10)
 
     respond_to do |format|
@@ -91,6 +100,7 @@ class UsersController < ApplicationController
     @resources = @user.answers.where(:group_id => current_group.id,
                                      :banned => false,
                                      :anonymous => false).
+                              order_by(current_order).
                               paginate(:page=>params[:page], :per_page => 10)
     respond_to do |format|
       format.html{render :show}
@@ -102,6 +112,7 @@ class UsersController < ApplicationController
                                 :banned => false,
                                 :group_id => current_group.id,
                                 :anonymous => false).
+                          order_by(current_order).
                           paginate(:page=>params[:page], :per_page => 10)
     respond_to do |format|
       format.html{render :show}
