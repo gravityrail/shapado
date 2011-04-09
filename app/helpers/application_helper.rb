@@ -287,8 +287,7 @@ module ApplicationHelper
 
   def clean_seo_keywords(tags, text = "")
     if tags.size < 5
-
-      text.scan(/(\S+)/) do |s|
+      text.scan(/\S+/) do |s|
         word = s.to_s.downcase
         if word.length > 3 && !tags.include?(word)
           tags << word
