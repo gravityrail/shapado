@@ -2,6 +2,8 @@ class Ad
   include Mongoid::Document
   include MongoidExt::Slugizer
 
+  identity :type => String
+
   POSITIONS = [["context_panel","context_panel"],["header","header"],["footer","footer"],["content","content"]]
 
   field :name, :type => String
