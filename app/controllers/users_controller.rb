@@ -323,10 +323,6 @@ class UsersController < ApplicationController
     head :status => 404
   end
 
-  def close_popup
-    render :inline => '<script type="text/javascript">window.onload=function(){window.onunload=function(){window.opener.location.reload()};window.close()};</script>', :layout => false
-  end
-
   protected
   def active_subtab(param)
     key = params.fetch(param, "votes")
