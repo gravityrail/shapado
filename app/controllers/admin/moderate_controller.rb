@@ -6,20 +6,28 @@ class Admin::ModerateController < ApplicationController
     @active_subtab = params.fetch(:tab, "retag")
 
     options = {:banned => false,
-               :group_id => current_group.id,
-               :per_page => params[:per_page] || 25,
-               :page => params[:questions_page] || 1}
+               :group_id => current_group.id,}
 
 
     case @active_subtab
       when "flagged_questions"
-        @questions = Question.paginate(options.merge(:order => "flags_count desc", :flags_count.gt => 0))
+        @questions = Question.where(options.merge(:flags_count.gt => 0)).
+                              order_by("flags_count desc").
+                              paginate(:per_page => params[:per_page] || 25,
+                                                     :page => params[:questions_page] || 1)
       when "flagged_answers"
-        @answers = Answer.paginate(options.merge(:order => "flags_count desc", :flags_count.gt => 0))
+        @answers = Answer.where(options.merge(:flags_count.gt => 0)).
+                          order_by("flags_count desc").
+                          paginate(:per_page => params[:per_page] || 25,
+                                   :page => params[:questions_page] || 1)
       when "banned"
-        @banned = Question.paginate(options.merge(:banned => true))
+        @banned = Question.where(options.merge(:banned => true)).
+                           paginate(:per_page => params[:per_page] || 25,
+                                    :page => params[:questions_page] || 1)
       when "retag"
-        @questions = Question.paginate(options.merge(:tags => {:$size => 0}))
+        @questions = Question.where(options.merge(:tags => {:$size => 0})).
+                              paginate(:per_page => params[:per_page] || 25,
+                                       :page => params[:questions_page] || 1)
     end
   end
 
