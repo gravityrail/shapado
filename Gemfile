@@ -84,5 +84,6 @@ group :development do
   gem 'ruby_parser'
   gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
+  gem 'ruby-prof'
 end
 

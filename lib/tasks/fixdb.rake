@@ -374,36 +374,31 @@ namespace :fixdb do
       u.membership_list.each do |group_id, vals|
         count = 0
         group = Group.where(:_id => group_id).only([:_id, :name]).first
-        if group
-          group.questions.only([:_id, :comments]).each do |q|
-            q.comments.each do |c|
-              if c.user_id == u.id
-                count =  count + 1
-              end
+        next if group.nil?
+
+        group.questions.only([:_id, :"comments.user_id"]).each do |q|
+          q.comments.each do |c|
+            if c.user_id == u.id
+              count =  count + 1
             end
           end
+          q.comments = []
+        end
 
-          group.answers.only([:_id, :"comments.user_id"]).each do |a|
-
-            puts "#{a.id} #{a.question.try(:title).inspect} #{a.comments.count}"
-            RubyProf.start
-            a.comments.each do |c|
-#               puts c.body.inspect
-#               if c.user_id == u.id
-#                 count = count + 1
-#               end
+        group.answers.only([:_id, :"comments.user_id"]).each do |a|
+          a.comments.each do |c|
+            puts c.body.inspect
+            if c.user_id == u.id
+              count = count + 1
             end
-            result = RubyProf.stop
-            printer = RubyProf::FlatPrinter.new(result)
-            printer.print(STDOUT, 0)
           end
+          a.comments = []
         end
 
         u.override({"membership_list.#{group.id}.comments_count" => count})
         if count > 0
           p "#{u.login}: #{count} in #{group.name}"
         end
-        GC.start
       end
     end
   end
