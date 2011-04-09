@@ -16,7 +16,7 @@
                 input.focus();
               }
             }
-      $(".remove-tag").live('click',function(){$(this).parents('ul').remove();})
+      $(".remove-tag").live('click',function(){$(this).parents('ul:first').remove();})
       $(".added-tag").live('mouseenter',function(){$(this).addClass('ui-state-hover')})
       $(".added-tag").live('mouseleave',function(){$(this).removeClass('ui-state-hover')})
       tagInput = $(this);
@@ -38,10 +38,11 @@
       tagInput.keydown(function(event){
         var key = event.keyCode;
         var tag = $(this).prev('ul');
+        var tagLink = tag.find('a')
         if($(this).val()==',') //empty the field it if it has a comma
           $(this).val('');
         if(key==8 && $(this).val()==''){
-          if(tag.hasClass('ui-state-hover')){
+          if(tagLink.hasClass('ui-state-hover')){
             $(this).prev('ul').remove();
             $(this).width(30);
             $(this).removeAttr('data-init');
@@ -50,14 +51,14 @@
             $(this).parent().next('.ac-tags').val(tags.join(','));
             $(this).autocomplete( "close" );
           } else {
-              tag.addClass('ui-state-hover');
+              tagLink.addClass('ui-state-hover');
           }
         } else if(key == 8 && $(this).val()!=''){
-          tag.removeClass('ui-state-hover');
+          tagLink.removeClass('ui-state-hover');
           if($(this).width()>38 && !$(this).attr('data-init'))
             $(this).width($(this).width()-7);
         } else if ((key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
-            tag.removeClass('ui-state-hover');
+            tagLink.removeClass('ui-state-hover');
             addTag($(this).val(), $(this));
             $(this).focus();
             $(this).autocomplete( "close" );
