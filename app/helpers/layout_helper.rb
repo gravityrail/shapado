@@ -1,11 +1,14 @@
 module LayoutHelper
-  def tab_entry(element, text, path, options = {})
+  def tab_entry(element, text, path, options = {}, html_opts = {})
     options[:selected] ||= "selected"
     options[:link_opts] ||= {}
 
-    html_opts = {}
     if request.path == path
-      html_opts[:class] = options[:selected]
+      if html_opts[:class]
+        html_opts[:class] = "#{html_opts[:class]} #{options[:selected]}"
+      else
+        html_opts[:class] = options[:selected]
+      end
     end
 
     if element != "a"

@@ -1,0 +1,6 @@
+%li.newest
+  = link_to t("questions.index.newest"), follows_user_path(@user, params.merge(:sort=>"newest")), :rel => "nofollow"
+%li.hot
+  = link_to t("questions.index.oldest"), follows_user_path(@user, params.merge(:sort=>"oldest")), :rel => "nofollow"
+%li.votes
+  = link_to t("questions.index.votes"), follows_user_path(@user, params.merge(:sort=>"votes")), :rel => "nofollow"

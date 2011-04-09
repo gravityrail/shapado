@@ -19,12 +19,14 @@
 
       %nav.top-bar
         %ul.group-list.sf-menu
-          = render "groups/top_grouplist"
+          -if !current_group.isolate
+            = render "groups/top_grouplist"
           -if !logged_in?
           - else
-            //-if current_user.mod_of?(current_group)
-            = render "admin/manage/top_admin"
-            = render "admin/moderate/top_moderate"
+            -if current_user.admin_of?(current_group)
+              = render "admin/manage/top_admin"
+            -if current_user.mod_of?(current_group)
+              = render "admin/moderate/top_moderate"
 
         .searcher
           = form_tag search_index_path, :method => :get, :id => "search" do

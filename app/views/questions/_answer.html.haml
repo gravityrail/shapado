@@ -93,8 +93,9 @@
 
   .clear
 
-  -answer.comments.each do |comment|
-    = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
+  .comments
+    -answer.comments.each do |comment|
+      = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 
   #panel-comments
     -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "add_answer_comment_link commentForm nestedAnswerForm addNestedAnswer"} do |f|
