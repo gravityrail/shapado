@@ -47,7 +47,7 @@ class Moderate::QuestionsController < ApplicationController
     @questions = current_group.questions.
                         where(options.merge(:open_requests_count.gt => 0)).
                         order_by("open_requests_count desc").
-                                 paginate(:per_page => params[:per_page] || 25,
+                        paginate(:per_page => params[:per_page] || 25,
                                  :page => params[:page] || 1)
   end
 
