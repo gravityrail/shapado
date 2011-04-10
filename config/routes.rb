@@ -30,8 +30,8 @@ Shapado::Application.routes.draw do
     end
 
     member do
-      post :unfollow
-      post :follow
+      get :unfollow
+      get :follow
       post :follow_tags
       post :unfollow_tags
       get :feed
