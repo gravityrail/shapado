@@ -17,7 +17,10 @@ class UsersController < ApplicationController
         :answers => [[:votes, [[:votes_average, :desc], [:created_at, :desc]]],
                     [:views,  [:views, :desc]],
                     [:newest, [:created_at, :desc]],
-                    [:oldest, [:created_at, :asc]]]
+                    [:oldest, [:created_at, :asc]]],
+        :follows => [[:questions, []],
+                     [:following, []],
+                     [:followers, []]]
 
   def index
     set_page_title(t("users.index.title"))
@@ -109,12 +112,19 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @resources = Question.where(:follower_ids.in => [@user.id],
+    case @active_subtab.to_s
+    when "following"
+      @resources = @user.following.paginate(:page => params[:page], :per_page => 10)
+    when "followers"
+      @resources = @user.followers.paginate(:page => params[:page], :per_page => 10)
+    else
+      @resources = Question.where(:follower_ids.in => [@user.id],
                                 :banned => false,
                                 :group_id => current_group.id,
                                 :anonymous => false).
                           order_by(current_order).
                           paginate(:page=>params[:page], :per_page => 10)
+    end
     respond_to do |format|
       format.html{render :show}
     end
