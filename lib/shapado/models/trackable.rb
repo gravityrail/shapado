@@ -73,7 +73,6 @@ module Shapado
       module ClassMethods
         def track_activities(*args)
           options = args.extract_options!
-          puts "args=#{args.inspect} options=#{options.inspect}"
 
           trackeable_info[:fields] = args
           trackeable_info[:scope] = options[:scope]
