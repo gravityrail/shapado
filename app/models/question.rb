@@ -13,7 +13,7 @@ class Question
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 
-  track_activities :user, :title, :scope => [:group_id]
+  track_activities :user, :title, :language, :scope => [:group_id]
 
   index :tags
 

@@ -6,6 +6,9 @@ class User
   include MultiauthSupport
   include MongoidExt::Storage
   include Shapado::Models::GeoCommon
+  include Shapado::Models::Trackable
+
+  track_activities :name, :login, :scope => [:group_id]
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
          :lockable, :token_authenticatable, :encryptable, :trackable, :omniauthable, :encryptor => :restful_authentication_sha1
