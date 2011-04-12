@@ -11,6 +11,9 @@ class Question
   include Support::Versionable
   include Support::Voteable
   include Shapado::Models::GeoCommon
+  include Shapado::Models::Trackable
+
+  track_activities :user, :title, :scope => [:group_id]
 
   index :tags
 

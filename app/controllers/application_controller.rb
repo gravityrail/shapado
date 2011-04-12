@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_group_access
   before_filter :set_locale
   before_filter :find_languages
+  before_filter :share_variables
   layout :set_layout
 
   helper_method :recaptcha_tag
@@ -149,5 +150,10 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     self.current_user = resource_or_scope
     super(resource_or_scope)
+  end
+
+  def share_variables
+    Thread.current[:current_group] = current_group
+    Thread.current[:current_user] = current_user
   end
 end
