@@ -155,5 +155,6 @@ class ApplicationController < ActionController::Base
   def share_variables
     Thread.current[:current_group] = current_group
     Thread.current[:current_user] = current_user
+    Thread.current[:current_ip] = request.remote_ip
   end
 end

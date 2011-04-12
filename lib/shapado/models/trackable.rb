@@ -64,7 +64,8 @@ module Shapado
             :scope => __resolve_trackable_scope,
             :group_id => self[:group_id] || Thread.current[:current_group].try(:id),
             :user_id => Thread.current[:current_user].try(:id) || self[:user_id],
-            :trackable => self
+            :trackable => self,
+            :user_ip => Thread.current[:current_ip]
           }))
         end
       end
