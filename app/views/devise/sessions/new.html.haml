@@ -1,6 +1,9 @@
-%h1 Login to (Group Name)
+%h1
+  Login to (Group Name)
+  //i18n
 %p.description
   We help you discover and share opinions that is the most relevant to you and those in your group.
+  //i18n
 
 = multiauth_assets
 
@@ -9,6 +12,7 @@
 -if current_group.registered_only
   .error
     IMPORTANT: You must be logged in to see this site
+    //i18n
 
 -unless current_group.is_noemail_signup?
   -form_for :user, resource, :url => session_path(resource_name), :html => {:class => "form"} do |f|
@@ -23,7 +27,6 @@
       .checkbox
         =f.check_box :remember_me
         =f.label :remember_me, t(".remember_me")
-
 
     .buttons
       =f.submit "Sign in", :class => "save"
