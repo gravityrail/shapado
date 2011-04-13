@@ -67,6 +67,7 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
+  references_many :activities, :dependent => :destroy
   references_many :invitations, :dependent => :destroy
   references_one :facebook_friends_list, :dependent => :destroy
   references_one :twitter_friends_list, :dependent => :destroy
@@ -430,11 +431,11 @@ Time.zone.now ? 1 : 0)
     conditions = {}
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
     conditions[:"membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
-    self.friend_list.followers.where(conditions)
+    User.where(conditions.merge(:_id.in => self.friend_list.follower_ids)) # FIXME mongoid
   end
 
   def following
-    self.friend_list.following
+    User.where(:_id.in => self.friend_list.following_ids)
   end
 
   def following?(user)

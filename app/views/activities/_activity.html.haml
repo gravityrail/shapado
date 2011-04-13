@@ -1,0 +1,8 @@
+%article
+  %h2
+    =link_to activity.login, user_path(activity.login||activity.user_id)
+    %b
+      = activity.action # FIXME: in past tense
+    = link_to activity.trackable_name, activity.url_for_trackable(request.host)
+    %em
+      = t("time.ago", :time => time_ago_in_words(activity.created_at, true))

@@ -82,6 +82,7 @@ class Group
 
   references_many :ads, :dependent => :destroy
   references_many :tags, :dependent => :destroy
+  references_many :activities, :dependent => :destroy
 
   embeds_many :mainlist_widgets, :class_name => "Widget", :as => "group_mainlist"
   embeds_many :question_widgets, :class_name => "Widget", :as => "group_questions"
