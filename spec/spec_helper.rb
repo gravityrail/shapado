@@ -27,10 +27,26 @@ RSpec.configure do |config|
   # instead of true.
 #   config.use_transactional_fixtures = false
 
+  class ActionController::TestCase
+    include Devise::TestHelpers
+  end
+
   config.after :suite do
     Mongoid.master.collections.select do |collection|
       collection.name !~ /system/
     end.each(&:drop)
+  end
+
+  def stub_authentication(user = nil)
+    @user = user || User.make(:user)
+    sign_in @user
+    controller.stub!(:current_user).and_return(@user)
+    @user
+  end
+
+  def stub_group(group = nil)
+    @controller.stub!(:find_group)
+    @controller.stub!(:current_group).and_return(group|| Group.make(:group))
   end
 
   require 'database_cleaner'
