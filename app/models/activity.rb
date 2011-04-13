@@ -8,6 +8,7 @@ class Activity
 
   field :action, :type => String
   field :scope, :type => Hash
+  field :login, :type => String
 
   field :group_id, :type => String
   referenced_in :group
@@ -16,6 +17,7 @@ class Activity
   referenced_in :user
 
   field :trackable_info, :type => Hash
+  field :trackable_param, :type => String
   belongs_to :trackable, :polymorphic => true
 
   index :action
@@ -23,6 +25,23 @@ class Activity
   before_create :store_user_name
 
   validates_inclusion_of :action, :in => ACTIONS, :allow_blank => false
+
+  def url_for_trackable(domain)
+    url_helper = Rails.application.routes.url_helpers
+
+    case self.trackable_type.to_s
+    when "Question"
+      url_helper.question_path(self.trackable_param, :host => domain)
+    when "Answer"
+      url_helper.question_answer_path(self.trackable_info["question_param"], self.trackable_param, :host => domain)
+    when "Page"
+      url_helper.page_path(self.trackable_param, :host => domain)
+    when "User"
+      url_helper.user_path(self.trackable_param, :host => domain)
+    else
+      raise ArgumentError, "#{self.trackable_type} is not handled yet"
+    end
+  end
 
   def to_activity_stream
     url_helper = Rails.application.routes.url_helpers
@@ -55,26 +74,19 @@ class Activity
     }
   end
 
+  def trackable_name
+    trackable_info["name"] || trackable_info["title"] || trackable_info["body"]
+  end
+
+  def trackable_param
+    self[:trackable_param] || self[:trackable_id]
+  end
+
   private
   def store_user_name
     u = User.only(:login, :name).where(:_id => self.user_id).first
     self[:login] = u[:login] || u[:name] if u
-  end
 
-  def url_for_trackable(domain)
-    url_helper = Rails.application.routes.url_helpers
-
-    case self.trackable_type.to_s
-    when "Question"
-      url_helper.question_path(self.trackable, :host => domain)
-    when "Answer"
-      url_helper.question_answer_path(self.trackable.question, self.trackable, :host => domain)
-    when "Page"
-      url_helper.page_path(self.trackable, :host => domain)
-    when "User"
-      url_helper.user_path(self.trackable, :host => domain)
-    else
-      raise ArgumentError, "#{self.trackable_type} is not handled yet"
-    end
+    self[:trackable_param] = self.trackable.to_param if self.trackable.to_param != self.trackable.id
   end
 end

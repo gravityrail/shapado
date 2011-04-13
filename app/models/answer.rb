@@ -9,7 +9,7 @@ class Answer
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 
-  track_activities :user, :body, :language, :scope => [:group_id]
+  track_activities :user, :question, :body, :language, :scope => [:group_id]
 
   identity :type => String
 

@@ -70,6 +70,7 @@ class User
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
   references_many :searches, :dependent => :destroy
+  references_many :activities, :dependent => :destroy
   references_many :invitations, :dependent => :destroy
   references_one :facebook_friends_list, :dependent => :destroy
   references_one :twitter_friends_list, :dependent => :destroy

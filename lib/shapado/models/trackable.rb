@@ -24,6 +24,7 @@ module Shapado
               end
 
               info["#{f}_id"] = lookup.id
+              info["#{f}_param"] = lookup.to_param
             else
               info[f] = self[f]
             end

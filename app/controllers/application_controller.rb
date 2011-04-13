@@ -108,6 +108,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def find_activities(conds = {})
+    #add_feeds_url(url_for({:format => "atom"}.merge(feed_params)), t("feeds.questions"))
+
+    @activities = current_group.activities.where(conds).order(:created_at.desc).
+                                paginate(:page => params[:page],
+                                         :per_page => params[:per_page]||25)
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @activities}
+    end
+  end
+
   def current_group
     @current_group
   end
