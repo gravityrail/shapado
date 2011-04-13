@@ -71,7 +71,7 @@ end
 group :test do
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'ffaker'
-  gem 'rcov'
+  gem 'simplecov'
   gem "autotest"
 end
 
