@@ -3,8 +3,6 @@
 
 =render "followup_form.html.haml", local_assigns
 
-%h1 Editing this question
-
 -if @question.position
   = hidden_field_tag "question[position][lat]", @question.position["lat"], :class => "lat_input"
   = hidden_field_tag "question[position][long]", @question.position["long"], :class => "long_input"

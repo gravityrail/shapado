@@ -10,22 +10,31 @@ form
   margin: 40px auto
   overflow: hidden
 
-  h1
+  h1, h1 span
     font-size: 18px !important
     padding: 20px 0 5px 0 !important
     display: block !important
     float: left !important
     width: 100%
+  h2
+    font-size: 20px
+    padding: 10px 0
+    border-bottom: 1px solid $orange
+    margin-bottom: 30px
 
   .field
     margin: 0 0 20px 0
 
-    small
+    img
+      border: 1px solid #e5e5e5
+      margin: 0 0 10px 0
+
+    small, small span
       display: block
       font-size: 11px
       color: #666
 
-    label
+    label, label span
       font-size: 13px
       font-weight: bold
       margin: 0 0 3px 0
@@ -126,6 +135,24 @@ form
     border: 1px solid $orange
     text-align: center
 
+  .group-logo
+    .img-up
+      float: left !important
+      margin: 0 10px 0 0
+    .size
+      width: 160px
+      margin-top: 39px
+      float: left
+      input
+        float: left !important
+        width: 50px !important
+      span
+        float: left
+        padding: 7px
+        display: block
+    small
+      display: block
+      clear: both
 
 // Special cases - Related Questions
 .related_questions
