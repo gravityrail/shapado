@@ -24,6 +24,10 @@ class Activity
 
   before_create :store_user_name
 
+  validates_presence_of :user
+  validates_presence_of :trackable
+  validates_presence_of :login
+
   validates_inclusion_of :action, :in => ACTIONS, :allow_blank => false
 
   def url_for_trackable(domain)
