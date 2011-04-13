@@ -10,6 +10,7 @@ class InvitationsController < ApplicationController
       invitation = current_user.invite(email, current_group)
       Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
     end
+    redirect_to :back
   end
 
   def accept
@@ -27,6 +28,6 @@ class InvitationsController < ApplicationController
   def revoke
     invitation = Invitation.find(params[:id])
     current_user.revoke_invite(invitation)
-    return_to :back
+    redirect_to :back
   end
 end

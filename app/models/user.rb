@@ -655,7 +655,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def revoke_invite(invitation)
-    invite.destroy if self.can_modify?(invitation)
+    invitation.destroy if self.can_modify?(invitation)
   end
 
   def can_invite_on?(group)
