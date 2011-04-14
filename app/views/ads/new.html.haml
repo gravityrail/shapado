@@ -3,6 +3,7 @@
 %p.description
   = t("ads.ad_links", :type => h(params[:type]))
   //i18n
+
 %ul.admin-nav
   %li
     = link_to t("ads.ad_links", :type => "Adsense"), new_ad_path(:type => "Adsense"), :class => "button"
