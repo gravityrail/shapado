@@ -25,5 +25,5 @@
 
   = render :partial => "groups/reputation_constrains_form", :object => f
 
-  .group.navform
-    = f.submit t('scaffold.update')
+  .buttons
+    = f.submit t('scaffold.update'), :class => "save"

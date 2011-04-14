@@ -1,5 +1,5 @@
 .field
   = label :invitations_emails, t('.emails_instructions')
   = text_area :invitations, :emails
-.group.navform
-  = f.submit t('scaffold.create')
+.buttons
+  = f.submit t('scaffold.create'), :class => "save"
