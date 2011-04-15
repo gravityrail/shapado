@@ -19,12 +19,10 @@ class GroupsController < ApplicationController
 
     if params[:q].blank?
       @groups = Group.where(conds).order_by(current_order).
-                                   paginate(:per_page => params[:per_page] || 15,
-                                            :page => params[:page])
+                                   paginate(paginate_opts(params))
     else
       @groups = Group.filter(params[:q], options).order_by(current_order).
-                                                  paginate(:per_page => params[:per_page] || 15,
-                                                           :page => params[:page])
+                                                  paginate(paginate_opts(params))
     end
 
     respond_to do |format|

@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
     end
 
     @activities = current_group.activities.where(conds).order(:created_at.desc).
-                  paginate(:page => params[:page], :per_page => params[:per_page]||25)
+                                           paginate(paginate_opts(params))
 
     respond_to do |format|
       format.html
