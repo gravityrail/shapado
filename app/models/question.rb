@@ -340,6 +340,17 @@ class Question
     end
   end
 
+  def self.humanize_action(action)
+    case action
+    when "create"
+      "asked"
+    when "update"
+      "changed"
+    when "destroy"
+      "deleted"
+    end
+  end
+
   protected
   def self.map_filter_operators(quotes, ops)
     mongoquery = {}

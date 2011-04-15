@@ -157,9 +157,9 @@ class QuestionsController < ApplicationController
     @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:banned => false}
     options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
-    options[:fields] = {:_keywords => 0}
     @answers = @question.answers.where(options).
                                 order_by(current_order).
+                                without(:_keywords).
                                 paginate(:per_page => 25, :page => params[:page] || 1)
 
     @answer = Answer.new(params[:answer])
