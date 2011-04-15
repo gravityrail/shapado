@@ -8,10 +8,7 @@
   %li.invitations
     = link_to t(".invitations"), manage_invitations_path(:tab=>"invitations"), :title => t(".invitations_title")
 
--form_for(@invitation, :html => {:class => "form", :multipart => true}) do |f|
-  = f.error_messages
-  =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "social", :tab => @active_subtab)
-  =render :partial => "admin/manage/properties/#{@active_subtab}", :locals => {:f => f}
+= render :partial => "admin/manage/properties/#{@active_subtab}"
 
 
 = yield :after_form

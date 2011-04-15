@@ -127,6 +127,8 @@ class Group
                               :message => "Sorry, this group subdomain is reserved by"+
                                           " our system, please choose another one"
   validates_inclusion_of :invitations_perms, :in => %w[user moderator owner]
+  validates_inclusion_of :signup_type,  :in => %w[all noemail social email]
+
   before_save :disallow_javascript
   before_save :modify_attributes
 
