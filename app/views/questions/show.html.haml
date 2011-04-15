@@ -51,7 +51,9 @@
         = t("questions.show.last_activity")
       = t("time.ago", :time => time_ago_in_words(@question.activity_at))
 
-
+  .comments
+    -@question.comments.each do |comment|
+      = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
 
   .toolbar
     %ul.drop-menu
