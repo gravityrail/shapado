@@ -670,7 +670,9 @@ Time.zone.now ? 1 : 0)
   def accept_invitation(invitation_id)
     invitation = Invitation.find(invitation_id)
     group = invitation.group
-    invitation.update(:accepted => true) &&
+    invitation.update_attributes(:accepted => true,
+                                 :accepted_by => self.id,
+                                 :accepted_at => Time.now) &&
       group.add_member(self, invitation.user_role)
   end
 
