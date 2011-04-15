@@ -673,6 +673,12 @@ Time.zone.now ? 1 : 0)
       group.add_member(self, 'user')
   end
 
+  def pending_invitations(group)
+      Invitation.where(:accepted => false,
+                       :group_id => group.id,
+                       :user_id => self.id)
+  end
+
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }
