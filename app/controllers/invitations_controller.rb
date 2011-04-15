@@ -6,10 +6,13 @@ class InvitationsController < ApplicationController
 
   def create
     emails = params[:invitations][:emails].split(',')
+    user_role = params[:invitations][:user_role]
     emails.each do |email|
-      invitation = current_user.invite(email, current_group)
+      invitation = current_user.invite(email, user_role,
+                                       current_group)
       Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
     end
+    flash[:notice] = t("flash_notice", :scope => "invitations.create")
     redirect_to :back
   end
 

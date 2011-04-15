@@ -646,11 +646,12 @@ Time.zone.now ? 1 : 0)
     User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
   end
 
-  def invite(email, group)
+  def invite(email, user_role, group)
     if self.can_invite_on?(group)
       Invitation.create(:user_id => self.id,
                         :email => email,
-                        :group_id => group.id)
+                        :group_id => group.id,
+                        :user_role => user_role)
     end
   end
 
@@ -670,7 +671,7 @@ Time.zone.now ? 1 : 0)
     invitation = Invitation.find(invitation_id)
     group = invitation.group
     invitation.update(:accepted => true) &&
-      group.add_member(self, 'user')
+      group.add_member(self, invitation.user_role)
   end
 
   def pending_invitations(group)
