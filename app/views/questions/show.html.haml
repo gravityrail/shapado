@@ -85,7 +85,7 @@
         = link_to "More actions" #i18n
         %ul
           %li.activity
-            = link_to t(".history", :default => "history"), history_question_path(@question)
+            = link_to t(".history", :default => "history")+" (#{@question.versions_count})", history_question_path(@question)
 
           %li.followUp
             = link_to "Follow Up", new_question_path(:from_question => @question.id), :rel => "nofollow" #i18n
