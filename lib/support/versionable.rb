@@ -47,20 +47,20 @@ module Versionable
       version1 = self.version_at(pos1)
       version2 = self.version_at(pos2)
 
-      Differ.diff_by_word(version1.content(key), version2.content(key)).format_as(format).safe_html
+      Differ.diff_by_word(version1.content(key), version2.content(key)).format_as(format).html_safe
     end
 
     def current_version
-      Version.new(:data => self.attributes, :user_id => (self.updated_by_id_was || self.updated_by_id), :date => Time.now)
+      version_klass.new(:data => self.attributes, :user_id => (self.updated_by_id_was || self.updated_by_id), :created_at => Time.now)
     end
 
     def version_at(pos)
-      case pos
-      when :current
+      case pos.to_s
+      when "current"
         current_version
-      when :first
+      when "first"
         version_klass.find(self.version_ids.first)
-      when :last
+      when "last"
         version_klass.find(self.version_ids.last)
       else
         version_klass.find(self.version_ids[pos])
@@ -90,7 +90,7 @@ module Versionable
 
         identity :type => String
         field :message, :type => String
-        field :data, :type => String
+        field :data, :type => Hash
         field :user_id, :type => String
         referenced_in :user
 
