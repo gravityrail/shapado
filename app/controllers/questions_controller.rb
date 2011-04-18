@@ -589,7 +589,7 @@ class QuestionsController < ApplicationController
   end
 
   def twitter_share
-    @question = current_group.questions.by_slug(params[:id], :select => [:title, :slug])
+    @question = current_group.questions.only([:title, :slug]).by_slug(params[:id])
     url = question_url(@question)
     text = "#{current_group.share.starts_with} #{@question.title} - #{url} #{current_group.share.ends_with}"
 
