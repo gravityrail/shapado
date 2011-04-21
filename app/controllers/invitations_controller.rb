@@ -8,9 +8,11 @@ class InvitationsController < ApplicationController
     emails = params[:invitations][:emails].split(',')
     user_role = params[:invitations][:user_role]
     emails.each do |email|
-      invitation = current_user.invite(email, user_role,
+      unless email.blank?
+        invitation = current_user.invite(email, user_role,
                                        current_group)
-      Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
+        Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
+      end
     end
     flash[:notice] = t("flash_notice", :scope => "invitations.create")
     redirect_to :back
