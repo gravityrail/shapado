@@ -18,23 +18,15 @@ class InvitationsController < ApplicationController
 
   def accept
     @invitation = Invitation.find(params[:id])
-    unless @invitation.nil? ||
-        @invitation.accepted_by_other?(current_user)
-      @group = @invitation.group
-      @inviter = @invitation.user
-      if @group.is_email_only_signup?
-        redirect_to new_user_path(:invitations_id => params[:id])
-      elsif logged_in? && !params[:step]
-        current_user.accept_invitation(@invitation.id)
-        if current_user.created_at < 1.day.ago && current_group.is_noemail_signup?
-          # don't make user confirm his email/pass if it's an old user
-          # or if group doesn't require email/pass
-          redirect_to accept_invitation_path(:id => @invitation.id, :step => 3)
-        else
-          redirect_to accept_invitation_path(:id => @invitation.id, :step => 2)
-        end
-      end
-    else
+    @group = @invitation.group
+    if @invitation.group.is_email_only_signup? && @invitation.state?(:pending) &&
+        !logged_in?
+      redirect_to new_user_path(:invitation_id => params[:id])
+    elsif @invitation.state?(:pending) && logged_in?
+      @invitation.connect!
+    end
+    @invitation.send(params[:step]) if params[:step]
+    if @invitation.state?(:follow_suggestions)
       redirect_to '/'
     end
   end

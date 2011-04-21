@@ -677,7 +677,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def pending_invitations(group)
-      Invitation.where(:accepted => false,
+      Invitation.where(:state => 'pending',
                        :group_id => group.id,
                        :user_id => self.id)
   end

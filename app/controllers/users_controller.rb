@@ -74,6 +74,8 @@ class UsersController < ApplicationController
       # reset session
       sweep_new_users(current_group)
       @user.accept_invitation(params[:invitation_id]) if params[:invitation_id]
+      @invitation = Invitation.find(params[:invitation_id])
+      @invitation.confirm if @invitation
       flash[:notice] = t("flash_notice", :scope => "users.create")
       sign_in_and_redirect(:user, @user) # !! now logged in
     else
@@ -173,6 +175,8 @@ class UsersController < ApplicationController
       @user.add_preferred_tags(preferred_tags, current_group) if preferred_tags
       if params[:next_step]
         current_user.accept_invitation(params[:invitation_id])
+        @invitation = Invitation.find(params[:invitation_id])
+        @invitation.confirm if @invitation
         redirect_to accept_invitation_path(:step => params[:next_step], :id => params[:invitation_id])
       else
         redirect_to root_path
