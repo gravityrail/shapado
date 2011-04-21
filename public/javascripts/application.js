@@ -2,6 +2,7 @@ $(document).ready(function() {
   $('ul.sf-menu').superfish();
   $('.auth-provider').click(function(){
       var authUrl = $(this).attr('href');
+      $.cookie('pp', '1'); //set cookie popup to 1
       window.open(authUrl, 'openid_popup', 'width=790,height=580');
       return false;
   })
