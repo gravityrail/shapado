@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :answers, :follows, :activity]
   tabs :default => :users
 
+  before_filter :check_signup_type, :only => [:new]
+
   subtabs :index => [[:reputation, "reputation"],
                      [:newest, %w(created_at desc)],
                      [:oldest, %w(created_at asc)],
@@ -336,7 +338,17 @@ class UsersController < ApplicationController
     head :status => 404
   end
 
+  def social_connect
+  end
+
   protected
+  def check_signup_type
+    if current_group.is_social_only_signup? ||
+        current_group.is_email_only_signup?
+      redirect_to '/'
+    end
+  end
+
   def active_subtab(param)
     key = params.fetch(param, "votes")
     order = "votes_average desc, created_at desc"

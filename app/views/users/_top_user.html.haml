@@ -12,6 +12,8 @@
         =link_to "My Karma: #{current_user.reputation_on(current_group)}"
       %li
         =link_to "My badges", badges_path
+      %li
+        =link_to "Connect", social_connect_path
 
   %li.logout
     =link_to t("layouts.application.logout"), destroy_user_session_path
