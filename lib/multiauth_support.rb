@@ -163,8 +163,9 @@ module MultiauthSupport
       end
     end
 
-    def facebook_client(property = 'friends')
-      response = open(URI.encode("https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}")).read
+    def facebook_client(property = 'friends', params = 'fields[]=name&fields[]=picture&fields[]=locale')
+      p "https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}&#{params}"
+      response = open(URI.encode("https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}&#{params}")).read
       JSON.parse(response)
     end
 
@@ -181,15 +182,17 @@ module MultiauthSupport
     end
 
     def get_identica_friends
-      JSON.parse(identica_client.get('/api/friends/ids.json').body)
+      JSON.parse(identica_client.get('/api/statuses/friends.json').body)
     end
 
     def get_linked_in_friends
-      friends_ids = []
+      friends = []
       JSON.parse(linked_in_client.
-                 get("/v1/people/~/connections:(id)", 'x-li-format' => 'json').
-                 body)["values"].map do |x| friends_ids << x["id"] end
-      friends_ids
+                 get("/v1/people/~/connections:(id,first-name,last-name,picture-url,location)", 'x-li-format' => 'json').
+        body)["values"].map do |friend| friends << { "id" => friend["id"],
+          "name" => "#{friend["firstName"]} #{friend["lastName"]}",
+          "profile_image_url" => friend["pictureUrl"], "country-code" => friend["location"]["country"]["code"]} end
+      friends
     end
 
     private
