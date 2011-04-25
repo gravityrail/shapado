@@ -507,7 +507,7 @@ class QuestionsController < ApplicationController
 
   def move_to
     @group = Group.by_slug(params[:question][:group])
-    @question = @group.questions.by_slug(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     if @group
       @question.group = @group
@@ -515,7 +515,8 @@ class QuestionsController < ApplicationController
       if @question.save
         sweep_question(@question)
 
-        Answer.set({"question_id" => @question.id}, {"group_id" => @group.id})
+        Answer.override({"question_id" => @question.id},
+                        {"group_id" => @group.id})
       end
       flash[:notice] = t("questions.move_to.success", :group => @group.name)
       redirect_to question_path(@question)
@@ -575,7 +576,6 @@ class QuestionsController < ApplicationController
       end
     end
   end
-
 
   def retag
     @question = current_group.questions.by_slug(params[:id])

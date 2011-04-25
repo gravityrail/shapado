@@ -270,11 +270,65 @@ describe QuestionsController do
 
     it "should be successful" do
       cmd = mock("cmd")
-#       cmd.should_receive(:commit!)
-#       Jobs::Users.async.should_receive(:post_to_twitter).and_return(cmd)
       get 'twitter_share', :id => @question.id
       response.should redirect_to question_path(@question)
       assigns[:question].id.should == @question.id
+    end
+  end
+
+  describe "GET 'random'" do
+    before (:each) do
+      @question = Question.make(:question)
+      stub_group(@question.group)
+    end
+
+    it "should be successful" do
+      get 'random'
+      response.should redirect_to question_path(@question)
+      assigns[:question].id.should == @question.id
+    end
+  end
+
+  describe "GET 'remove_attachment'" do
+    before (:each) do
+      @question = Question.make(:question, :user => @user)
+      stub_group(@question.group)
+    end
+
+    it "should be successful" do
+      @question.group.questions.should_receive(:by_slug).and_return(@question)
+      @question.attachments.should_receive(:delete).with("attach_id")
+      get 'remove_attachment', :id => @question.id, :attach_id => "attach_id"
+      response.should redirect_to edit_question_path(@question)
+    end
+  end
+
+  describe "GET 'move'" do
+    before (:each) do
+      @question = Question.make(:question, :user => @user)
+      @user.stub!(:admin?).and_return(true)
+      stub_group(@question.group)
+    end
+
+    it "should be successful" do
+      get 'move', :id => @question.id
+      response.should be_success
+    end
+  end
+
+  describe "GET 'move_to'" do
+    before (:each) do
+      @question = Question.make(:question, :user => @user)
+      @user.stub!(:admin?).and_return(true)
+      @new_group = Group.make(:group)
+
+      Group.stub!(:by_slug).with(@new_group.id).and_return(@new_group)
+      stub_group(@question.group)
+    end
+
+    it "should be successful" do
+      get 'move_to', :id => @question.id, :question => {:group => @new_group.id}
+      response.should redirect_to question_path(@question)
     end
   end
 end
