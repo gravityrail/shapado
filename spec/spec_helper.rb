@@ -38,6 +38,7 @@ RSpec.configure do |config|
 
   def stub_authentication(user = nil)
     @user = user || User.make(:user)
+    Thread.current[:current_user] = @user
     sign_in @user
     controller.stub!(:current_user).and_return(@user)
     @user

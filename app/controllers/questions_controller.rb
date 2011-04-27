@@ -72,7 +72,7 @@ class QuestionsController < ApplicationController
     @questions = Question.related_questions(@question).without(:_keywords, :watchers, :flags,
                                                                :close_requests, :open_requests, :versions).
                                                        order_by(:answers_count.desc).
-                                                       paginate(:page => params[:page], :per_page => params[:per_page],)
+                                                       paginate(paginate_opts(params))
 
     respond_to do |format|
       format.js do
@@ -108,10 +108,7 @@ class QuestionsController < ApplicationController
 
     @tag_cloud = Question.tag_cloud(conditions, 25)
 
-    @questions = Question.minimal.order_by(current_order).where(conditions).paginate({
-                                    :per_page => 25,
-                                    :page => params[:page] || 1,
-                                   })
+    @questions = Question.minimal.order_by(current_order).where(conditions).paginate(paginate_opts(params))
 
     respond_to do |format|
       format.html # unanswered.html.erb
@@ -160,7 +157,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.where(options).
                                 order_by(current_order).
                                 without(:_keywords).
-                                paginate(:per_page => 25, :page => params[:page] || 1)
+                                paginate(paginate_opts(params))
 
     @answer = Answer.new(params[:answer])
 
@@ -380,7 +377,7 @@ class QuestionsController < ApplicationController
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
-                                    paginate(:per_page => 25, :page => params[:page] || 1).
+                                    paginate(paginate_opts(params)).
                                     order_by(current_order)
         @answer = Answer.new
 
@@ -418,7 +415,7 @@ class QuestionsController < ApplicationController
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
                             order_by(current_order).
-                            paginate(:per_page => 25, :page => params[:page] || 1)
+                            paginate(paginate_opts(params))
         @answer = Answer.new
 
         format.html { render :action => "show" }
@@ -510,7 +507,7 @@ class QuestionsController < ApplicationController
 
   def move_to
     @group = Group.by_slug(params[:question][:group])
-    @question = @group.questions.by_slug(params[:id])
+    @question = current_group.questions.by_slug(params[:id])
 
     if @group
       @question.group = @group
@@ -518,7 +515,8 @@ class QuestionsController < ApplicationController
       if @question.save
         sweep_question(@question)
 
-        Answer.set({"question_id" => @question.id}, {"group_id" => @group.id})
+        Answer.override({"question_id" => @question.id},
+                        {"group_id" => @group.id})
       end
       flash[:notice] = t("questions.move_to.success", :group => @group.name)
       redirect_to question_path(@question)
@@ -579,7 +577,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-
   def retag
     @question = current_group.questions.by_slug(params[:id])
     respond_to do |format|
@@ -592,7 +589,7 @@ class QuestionsController < ApplicationController
   end
 
   def twitter_share
-    @question = current_group.questions.by_slug(params[:id], :select => [:title, :slug])
+    @question = current_group.questions.only([:title, :slug]).by_slug(params[:id])
     url = question_url(@question)
     text = "#{current_group.share.starts_with} #{@question.title} - #{url} #{current_group.share.ends_with}"
 

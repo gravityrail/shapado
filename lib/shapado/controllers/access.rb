@@ -78,13 +78,20 @@ module Shapado
         if current_user.linked_in_login? && current_user.linked_in_friends.empty?
           Jobs::Users.async.get_linked_in_friends(current_user.id).commit!
         end
-        '/close_popup.html'
-        #return
-        #if return_to = session.delete("return_to")
-        #  return_to
-        #else
-        #  super
-        #end
+
+        # check if cookie pp is set
+        # if true this means user logged in through popup
+        if cookies["pp"]
+          cookies.delete :pp
+          '/close_popup.html'
+        else
+          cookies.delete :pp
+          if return_to = session.delete("return_to")
+            return_to
+          else
+            super
+          end
+        end
       end
     end
   end

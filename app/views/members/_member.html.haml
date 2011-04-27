@@ -29,7 +29,7 @@
     -if can_modify_member
       -form_tag(member_path(member.id), :class => "form", :method => :put) do |f|
         .field
-          = select_tag :role, options_for_select(Membership::ROLES, membership.role)
+          = select_tag :role, options_for_select(locales_roles, membership.role)
         .buttons
           = submit_tag t("scaffold.update"), :class => "save"
     -else

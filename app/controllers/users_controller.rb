@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   before_filter :find_user, :only => [:show, :answers, :follows, :activity]
   tabs :default => :users
 
+  before_filter :check_signup_type, :only => [:new]
+
   subtabs :index => [[:reputation, "reputation"],
                      [:newest, %w(created_at desc)],
                      [:oldest, %w(created_at asc)],
@@ -26,8 +28,6 @@ class UsersController < ApplicationController
     set_page_title(t("users.index.title"))
 
     order = current_order
-    options =  {:per_page => params[:per_page]||24,
-               :page => params[:page] || 1}
     conditions = {}
     conditions = {:login => /^#{Regexp.escape(params[:q])}/} if params[:q]
 
@@ -36,9 +36,9 @@ class UsersController < ApplicationController
     end
 
     @users = if order.blank?
-               current_group.users(conditions.merge(:near => current_user.point)).paginate(options)
+               current_group.users(conditions.merge(:near => current_user.point)).paginate(paginate_opts(params))
              else
-               current_group.users(conditions).order_by(order).paginate(options)
+               current_group.users(conditions).order_by(order).paginate(paginate_opts(params))
              end
     respond_to do |format|
       format.html
@@ -76,6 +76,8 @@ class UsersController < ApplicationController
       # reset session
       sweep_new_users(current_group)
       @user.accept_invitation(params[:invitation_id]) if params[:invitation_id]
+      @invitation = Invitation.find(params[:invitation_id])
+      @invitation.confirm if @invitation
       flash[:notice] = t("flash_notice", :scope => "users.create")
       sign_in_and_redirect(:user, @user) # !! now logged in
     else
@@ -85,11 +87,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    params[:per_page] ||= "s"
     @resources = @user.questions.where(:group_id => current_group.id,
                                        :banned => false,
                                        :anonymous => false).
                        order_by(current_order).
-                       paginate(:page=>params[:page], :per_page => 10)
+                       paginate(paginate_opts(params))
 
     respond_to do |format|
       format.html
@@ -105,7 +108,7 @@ class UsersController < ApplicationController
                                      :banned => false,
                                      :anonymous => false).
                               order_by(current_order).
-                              paginate(:page=>params[:page], :per_page => 10)
+                              paginate(paginate_opts(params))
     respond_to do |format|
       format.html{render :show}
     end
@@ -114,16 +117,16 @@ class UsersController < ApplicationController
   def follows
     case @active_subtab.to_s
     when "following"
-      @resources = @user.following.paginate(:page => params[:page], :per_page => 10)
+      @resources = @user.following.paginate(paginate_opts(params))
     when "followers"
-      @resources = @user.followers.paginate(:page => params[:page], :per_page => 10)
+      @resources = @user.followers.paginate(paginate_opts(params))
     else
       @resources = Question.where(:follower_ids.in => [@user.id],
                                 :banned => false,
                                 :group_id => current_group.id,
                                 :anonymous => false).
                           order_by(current_order).
-                          paginate(:page=>params[:page], :per_page => 10)
+                          paginate(paginate_opts(params))
     end
     respond_to do |format|
       format.html{render :show}
@@ -174,6 +177,8 @@ class UsersController < ApplicationController
       @user.add_preferred_tags(preferred_tags, current_group) if preferred_tags
       if params[:next_step]
         current_user.accept_invitation(params[:invitation_id])
+        @invitation = Invitation.find(params[:invitation_id])
+        @invitation.confirm if @invitation
         redirect_to accept_invitation_path(:step => params[:next_step], :id => params[:invitation_id])
       else
         redirect_to root_path
@@ -333,7 +338,17 @@ class UsersController < ApplicationController
     head :status => 404
   end
 
+  def social_connect
+  end
+
   protected
+  def check_signup_type
+    if current_group.is_social_only_signup? ||
+        current_group.is_email_only_signup?
+      redirect_to '/'
+    end
+  end
+
   def active_subtab(param)
     key = params.fetch(param, "votes")
     order = "votes_average desc, created_at desc"
@@ -357,7 +372,7 @@ class UsersController < ApplicationController
     raise Goalie::NotFound unless @user
     set_page_title(t("users.show.title", :user => @user.login))
     @badges = @user.badges.where(:group_id => current_group.id).
-                            paginate(:page => params[:badges_page], :per_page => 25)
+                           paginate(paginate_opts(params))
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
     @user.viewed_on!(current_group) if @user != current_user && !is_bot?
   end

@@ -294,6 +294,11 @@ Time.zone.now ? 1 : 0)
     !facebook_id.blank?
   end
 
+  def is_socially_connected?
+    linked_in_login? || identica_login? || twitter_login? ||
+      facebook_login?
+  end
+
   def has_voted?(voteable)
     !vote_on(voteable).nil?
   end
@@ -646,16 +651,17 @@ Time.zone.now ? 1 : 0)
     User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
   end
 
-  def invite(email, group)
+  def invite(email, user_role, group)
     if self.can_invite_on?(group)
       Invitation.create(:user_id => self.id,
                         :email => email,
-                        :group_id => group.id)
+                        :group_id => group.id,
+                        :user_role => user_role)
     end
   end
 
   def revoke_invite(invitation)
-    invite.destroy if self.can_modify?(invitation)
+    invitation.destroy if self.can_modify?(invitation)
   end
 
   def can_invite_on?(group)
@@ -669,8 +675,16 @@ Time.zone.now ? 1 : 0)
   def accept_invitation(invitation_id)
     invitation = Invitation.find(invitation_id)
     group = invitation.group
-    invitation.update(:accepted => true) &&
-      group.add_member(self, 'user')
+    invitation.update_attributes(:accepted => true,
+                                 :accepted_by => self.id,
+                                 :accepted_at => Time.now) &&
+      group.add_member(self, invitation.user_role)
+  end
+
+  def pending_invitations(group)
+      Invitation.where(:state => 'pending',
+                       :group_id => group.id,
+                       :user_id => self.id)
   end
 
   protected
