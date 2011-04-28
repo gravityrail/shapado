@@ -1,17 +1,15 @@
 %section
+  %h1
+    =@questions.total_entries
+    results where found
+  %p.description
+    Use the
+    %a{:href => "#", :class => "advanced-search"} advanced search
+    options in order to find a better results for your search.
+  //i18n
+
   = render :partial => "form"
 
-  -if params[:q]
-    %h1
-      =@questions.total_entries
-      results where found
-    =form_for :search, @search, :url => search_index_path, :html => {:class => "form"} do |f|
-      =f.hidden_field :query
-      .field
-        =f.label :name, t(".name")
-        =f.text_field :name
-      .buttons
-        =f.submit "Save with this name"
 
   %ul.items#questions
     -if @questions.blank?
@@ -40,3 +38,17 @@
               %li
                 %span.tag{:class => "tag_#{h(tag)}"}
                   =link_to h(tag), url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag"
+
+
+  -if params[:q]
+    .save-search
+      =form_for :search, @search, :url => search_index_path, :html => {:class => "form"} do |f|
+        =f.hidden_field :query
+        .field
+          =f.label :name, "Save this search:"
+          =f.text_field :name
+          %small
+            You can be checking your seraches, in order to see changes.
+            //il8n
+        .buttons
+          =f.submit "Save with this name", :class => "save"
