@@ -31,7 +31,7 @@
 
 
     .tags
-      -if question.tags.empty? && logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
+      -if !question.tags.empty? && logged_in? && (current_user.can_modify?(question) || current_user.can_retag_others_questions_on?(current_group))
         %ul
           %li
             Tags:
