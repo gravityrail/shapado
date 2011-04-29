@@ -27,7 +27,7 @@ class Activity
 
   index :action
 
-  before_validation_on_create :store_user_name
+#  before_validation_on_create :store_user_name
 
   validates_presence_of :user
   validates_presence_of :trackable

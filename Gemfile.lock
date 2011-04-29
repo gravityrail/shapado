@@ -63,9 +63,12 @@ GEM
     bson (1.2.4)
     bson_ext (1.2.4)
     builder (2.1.2)
-    compass (0.10.6)
-      haml (>= 3.0.4)
-    compass-colors (0.3.1)
+    chunky_png (1.1.1)
+    compass (0.11.1)
+      chunky_png (~> 1.1)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    compass-colors (0.9.0)
       compass (>= 0.8.7)
     daemons (1.0.10)
     database_cleaner (0.6.7)
@@ -82,8 +85,8 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
-    fancy-buttons (1.0.6)
-      compass (= 0.10.6)
+    fancy-buttons (1.1.1)
+      compass (>= 0.11)
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
@@ -91,6 +94,7 @@ GEM
     ffaker (1.5.0)
     ffi (1.0.7)
       rake (>= 0.8.7)
+    fssm (0.2.7)
     gem_plugin (0.2.3)
     goalie (0.0.4)
       actionpack (>= 3.0.0)
@@ -232,6 +236,7 @@ GEM
     rubyntlm (0.1.1)
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
+    sass (3.1.1)
     sexp_processor (3.0.5)
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
@@ -264,15 +269,15 @@ DEPENDENCIES
   autotest
   bson (= 1.2.4)
   bson_ext (= 1.2.4)
-  compass (= 0.10.6)
-  compass-colors (= 0.3.1)
+  compass (= 0.11.1)
+  compass-colors (= 0.9.0)
   database_cleaner
   devise (~> 1.2.1)
   differ (= 0.1.1)
   dynamic_form
   em-websocket (~> 0.1.4)
   eventmachine (~> 0.12.10)
-  fancy-buttons (= 1.0.6)
+  fancy-buttons (= 1.1.1)
   ffaker
   goalie (~> 0.0.4)
   haml
@@ -304,6 +309,7 @@ DEPENDENCIES
   ruby-stemmer (~> 0.8.2)
   ruby_parser
   sanitize (= 1.2.1)
+  sass
   simplecov
   smart_asset
   state_machine (= 0.10.4)
