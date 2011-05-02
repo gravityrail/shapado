@@ -54,7 +54,7 @@ describe UsersController do
 
     it "should be successful" do
       post 'create', :user => User.plan
-      response.should redirect_to "http://test.host/close_popup.html"
+      response.should redirect_to "http://test.host/"
     end
   end
 
