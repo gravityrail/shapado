@@ -199,10 +199,10 @@ module MultiauthSupport
     # "extra"=>{"access_token"=>token_object, "user_hash"=>{"description"=>"desc", "screen_name"=>"nick", "geo_enabled"=>false, "profile_sidebar_border_color"=>"87bc44", "status"=>{}}},
     # "user_info"=>{"nickname"=>"nick", "name"=>"My Name", "location"=>"Here", "image"=>"http://a0.twimg.com/profile_images/path.png", "description"=>"desc", "urls"=>{"Website"=>nil}}}
     def handle_twitter(fields)
-      self.twitter_token = fields["credentials"]["token"]
-      self.twitter_secret = fields["credentials"]["secret"]
-      self.twitter_login = fields["user_info"]["nickname"]
-      self.twitter_id = fields["uid"]
+      self.twitter_token = fields["credentials"]["token"].to_s
+      self.twitter_secret = fields["credentials"]["secret"].to_s
+      self.twitter_login = fields["user_info"]["nickname"].to_s
+      self.twitter_id = fields["uid"].to_s
 
       self.login.blank? && self.login = fields["user_info"]["nickname"]
     end
