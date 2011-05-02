@@ -8,7 +8,7 @@
 
   -unless current_group.default_tags.empty?
     %li
-      = link_to "tags", questions_url
+      = link_to t('questions.tags.title'), questions_url
       ▼
       %ul
         -current_group.default_tags.each do |tag|

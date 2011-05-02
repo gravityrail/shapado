@@ -1,11 +1,11 @@
 .module.user-zone
   %nav
-    %h3 Group options
+    %h3= t('.title_options')
     %ul
       %li.properties
         =link_to t("layouts.manage.general"), manage_properties_path
       %li.share
-        =link_to "Share", manage_properties_path(:tab => "share")
+        =link_to t("global.share"), manage_properties_path(:tab => "share")
       %li.theme
         = link_to t("layouts.manage.theme"), manage_properties_path(:tab => "theme")
       %li.constrains
@@ -19,7 +19,7 @@
 
 .module.user-zone
   %nav
-    %h3 Group content
+    %h3= t('.title_content')
     %ul
       -if current_group.has_custom_html
         %li.content
@@ -34,10 +34,10 @@
 
 .module.user-zone
   %nav
-    %h3 Group features
+    %h3= t('.title_features')
     %ul
       %li.widgets
-        =link_to t("layouts.manage.widgets"), widgets_path
+        = link_to t("layouts.manage.widgets"), widgets_path
       -if current_group.has_custom_html
       %li.announcements
         = link_to t("layouts.manage.announcements"), announcements_path

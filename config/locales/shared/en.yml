@@ -6,3 +6,11 @@ en:
       user_page: My page
     current_tags:
       title: Selected tags
+    manage_navigation:
+      title_options: Group options
+      title_content: Group content
+      title_features: Group features
+    empty:
+      title: Sorry! There's not much to see here.
+      description: Be the first to %{ask_a_question_link}!
+      ask_a_question: ask a question

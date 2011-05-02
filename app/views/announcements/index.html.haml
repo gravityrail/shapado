@@ -1,8 +1,7 @@
 %h1
-  All Announcemts
+  = t('.title')
 %p.description
-  These are the announcements for the app
-  //i18n
+  = t('.description')
 
 .list-announcements
   %ul
@@ -11,7 +10,7 @@
         %h2
           = markdown(announcement.message)
         .date
-          = "#{announcement.starts_at.strftime("<b>%x</b> %X")} - #{announcement.ends_at.strftime("<b>%x</b> %X")}".html_safe
+          = "#{Time.at(announcement.starts_at).strftime("<b>%x</b> %X")} - #{Time.at(announcement.ends_at).strftime("<b>%x</b> %X")}".html_safe
         -if announcement.only_anonymous
           %strong
             = "[#{t("activerecord.attributes.announcement.only_anonymous")}]"

@@ -1,12 +1,9 @@
 %section
   %h1
-    =@questions.total_entries
-    results where found
+    = t('.found_results', :quantity => @questions.total_entries)
   %p.description
-    Use the
-    %a{:href => "#", :class => "advanced-search"} advanced search
-    options in order to find a better results for your search.
-  //i18n
+    - link = link_to t('.advanced_search'), '#', :class => "advanced-search"
+    =raw t('.description', :link => link)
 
   = render :partial => "form"
 

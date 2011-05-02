@@ -1,9 +1,3 @@
-%h1
-  Manage Ads
-%p.description
-  Manage Ads
-  //i18n
-
 .ad.left{:style => "margin: 10px"}
   = image_tag("ads_position_#{ad.position}.png", :class => "left")
   %span.left{:style => "margin-left: 5px"}
@@ -12,5 +6,6 @@
     = ad.class.to_s
     .buttons
       = link_to t('scaffold.destroy'), ad_path(ad), :confirm => 'Are you sure?', :method => :delete, :class => "button cancel"
+      /FIXME
   .clear
 

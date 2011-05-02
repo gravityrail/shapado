@@ -1,9 +1,6 @@
 %h1
-  Login to (Group Name)
-  //i18n
+  = t('devise.sessions.signin_group', :group => current_group.name)
 %p.description
-  We help you discover and share opinions that is the most relevant to you and those in your group.
-  //i18n
 
 = multiauth_assets
 
@@ -11,8 +8,7 @@
 
 -if current_group.registered_only
   .error
-    IMPORTANT: You must be logged in to see this site
-    //i18n
+    = t('devise.sessions.registered_only')
 
 -unless current_group.is_noemail_signup?
   -form_for :user, resource, :url => session_path(resource_name), :html => {:class => "form"} do |f|

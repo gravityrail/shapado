@@ -16,10 +16,15 @@ en:
     new:
       title: Sign up as a new user
       submit: Sign up
+      join_group: Join %{group}
+      description: Become a part of this community to ask, answer and learn!
     edit:
       title: Settings
       submit: Save
       enable_twitter: Enable your Facebook or Twitter accounts
+    change_password:
+      title: Change password
+      submit: Change my password
     show:
       title: "User %{user}"
       follow: Follow
@@ -27,6 +32,7 @@ en:
       views: views
       followers: Followers
       following: Following
+      sort_by: 'Sort By:'
     follow:
       flash_notice: "The user %{user} was added to your friends"
     unfollow:

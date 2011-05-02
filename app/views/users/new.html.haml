@@ -1,7 +1,7 @@
 %h1
-  Join (Group Name)
+  = t('.join_group', :group => current_group.name)
 %p.description
-  be part of this group and see their data
+  = t('.description')
 
 - @user.password = @user.password_confirmation = nil
 = error_messages_for :user
