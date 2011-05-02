@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:edit, :update,
                                            :follow, :follow_tags,
-                                           :unfollow_tags, :connect]
+                                           :unfollow_tags, :connect, :social_connect]
   before_filter :find_user, :only => [:show, :answers, :follows, :activity]
   tabs :default => :users
 
