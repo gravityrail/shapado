@@ -75,7 +75,7 @@ class UsersController < ApplicationController
       # button. Uncomment if you understand the tradeoffs.
       # reset session
       sweep_new_users(current_group)
-      if params[:invitation_id]
+      if !params[:invitation_id].blank?
         @user.accept_invitation(params[:invitation_id])
         @invitation = Invitation.find(params[:invitation_id])
         @invitation.confirm if @invitation
