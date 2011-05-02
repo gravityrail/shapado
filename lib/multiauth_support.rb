@@ -185,10 +185,10 @@ module MultiauthSupport
     # "user_info"=>{"nickname"=>"profile.php?id=4332432432432", "first_name"=>"My", "last_name"=>"Name", "name"=>"My Name", "urls"=>{"Facebook"=>"http://www.facebook.com/profile.php?id=4332432432432", "Website"=>nil}},
     # "extra"=>{"user_hash"=>{"id"=>"4332432432432", "name"=>"My Name", "first_name"=>"My", "last_name"=>"Name", "link"=>"http://www.facebook.com/profile.php?id=4332432432432", "birthday"=>"06/15/1980", "gender"=>"male", "email"=>"my email", "timezone"=>-5, "locale"=>"en_US", "updated_time"=>"2010-04-01T07:27:28+0000"}}}
     def handle_facebook(fields)
-      uinfo = fields["extra"]["user_hash"]
-      self.facebook_id = fields["uid"]
-      self.facebook_token = fields["credentials"]["token"]
-      self.facebook_profile = fields["user_info"]["urls"]["Facebook"]
+      uinfo = fields["extra"]["user_hash"].clone
+      self.facebook_id = fields["uid"].to_s
+      self.facebook_token = fields["credentials"]["token"].to_s
+      self.facebook_profile = fields["user_info"]["urls"]["Facebook"].to_s
 
       if self.email.blank?
         self.email = uinfo["email"]
@@ -208,21 +208,21 @@ module MultiauthSupport
     end
 
     def handle_identica(fields)
-      self.identica_token = fields["credentials"]["token"]
-      self.identica_secret = fields["credentials"]["secret"]
-      self.identica_login = fields["user_info"]["nickname"]
-      self.identica_id = fields["extra"]["user_hash"]["id"]
+      self.identica_token = fields["credentials"]["token"].to_s
+      self.identica_secret = fields["credentials"]["secret"].to_s
+      self.identica_login = fields["user_info"]["nickname"].to_s
+      self.identica_id = fields["extra"]["user_hash"]["id"].to_s
 
-      self.login.blank? && self.login = fields["user_info"]["nickname"]
+      self.login.blank? && self.login = fields["user_info"]["nickname"].to_s
     end
 
     def handle_linked_in(fields)
-      self.linked_in_token = fields["credentials"]["token"]
-      self.linked_in_secret = fields["credentials"]["secret"]
-      self.linked_in_id = fields["uid"]
-      self.bio.blank? && self.bio = fields["user_info"]["description"]
+      self.linked_in_token = fields["credentials"]["token"].to_s
+      self.linked_in_secret = fields["credentials"]["secret"].to_s
+      self.linked_in_id = fields["uid"].to_s
+      self.bio.blank? && self.bio = fields["user_info"]["description"].to_s
 
-      self.login.blank? && self.login = fields["user_info"]["first_name"]+fields["user_info"]["last_name"]
+      self.login.blank? && self.login = fields["user_info"]["first_name"].to_s+fields["user_info"]["last_name"].to_s
     end
   end # InstanceMethods
 end
