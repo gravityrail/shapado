@@ -1,10 +1,9 @@
 .groups_container
   %h1
-    Groups
-  -# i18n
+    = t('.title')
   %p.description
-    You will find all the aviable groups for this site, please use the input to filter your search; or you can
-    = link_to t(".request_group"), new_group_path, :class => "request_group"
+    - link = link_to t(".create_your_own"), new_group_path, :class => "request_group"
+    =raw t('.description', :link => link)
 
   -form_tag groups_path, :id => "filter_groups", :method => "get" do
     .field

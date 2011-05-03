@@ -25,6 +25,15 @@ en:
       subscribe: Subscribe
       welcome_from: Welcome! You can
       now: now!
+      faq: FAQ
+      all: All
+      followed: Followed
+      by_me: By Me
+      preferred: Preferred
+      contributed: Contributed
+      collaborate: Collaborate
+      random_question: Random question
+      follow_us_and_share: Follow us and share
       openid:
         explaination: "If you would like to register or just log in, please select your OpenID provider:"
     manage:

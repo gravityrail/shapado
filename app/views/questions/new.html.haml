@@ -9,11 +9,10 @@
         = t(".how_to_ask")
       = raw(current_group.question_help)
 %h1
-  Asking new question
-  //i18n
+  = t(".title")
 %p.description
-  Please be descriptive with your question, an be sure your are adding good tags for the searchers
-  //i18n
+  = t(".description")
+
 
 - form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
   =render :partial => "form", :locals => {:f => f}

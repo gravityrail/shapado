@@ -1,15 +1,15 @@
 %li
-  = link_to "Admin", manage_properties_path
+  = link_to t('.title'), manage_properties_path
   %ul
     %li
-      = link_to "Site", manage_properties_path
+      = link_to t('.site'), manage_properties_path
     %li
-      = link_to "Share", manage_properties_path(:tab => "share")
+      = link_to t('global.share'), manage_properties_path(:tab => "share")
     %li
-      = link_to "Theme", manage_properties_path(:tab => "theme")
+      = link_to t('layouts.manage.theme'), manage_properties_path(:tab => "theme")
     %li
-      = link_to "Requirements", constrains_configs_path
+      = link_to t('layouts.manage.constrains'), constrains_configs_path
     %li
-      = link_to "Rewards", manage_properties_path(:tab => "rewards")
+      = link_to t('layouts.manage.rewards'), manage_properties_path(:tab => "rewards")
     %li
-      = link_to "Domain", manage_properties_path(:tab => "domain")
+      = link_to t('layouts.manage.domain'), manage_properties_path(:tab => "domain")

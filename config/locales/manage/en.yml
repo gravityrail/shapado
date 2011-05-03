@@ -1,6 +1,10 @@
 en:
   admin:
     manage:
+      top_admin:
+        title: Admin
+        site: Site
+
       invitations:
         title: Invitations
         invite: Invite people
@@ -9,6 +13,7 @@ en:
         invitations_title: List of all the invitations you've sent
       social:
         title: Social media interaction
+        description: Connect your group to your social networks
         post_to_twitter: Post to Twitter
         ask_from_twitter: Ask from Twitter
         facebook_app: Facebook App
@@ -21,6 +26,7 @@ en:
         twitter_account_title: Configure your Twitter account that will be used to post to Twitter
       content:
         title: Custom content
+        description: Configure your group with custom text and styling
         question_prompt: Question prompt
         question_help: Question help
         head: header
@@ -28,6 +34,7 @@ en:
         top_bar: Top bar
         top_bar_tip: Enter one link per line
       properties:
+        title: Group properties
         invite:
           title: Invite people by email
           emails_instructions: "Enter emails separated by coma"
@@ -85,7 +92,7 @@ en:
           reputation_rewards_subtitle: List of reputations rewards
           reputation_rewards_description: This form allows you to configure how users can win and lose reputation points for a given action
         theme:
-          title: Set the group's theme
+          title: Pick and customize your theme
           logo_legend: Upload a logo for your group. It must be smaller than 2MB.
         domain:
           title: Set your domain

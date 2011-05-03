@@ -75,10 +75,10 @@
     #main-content-wrap{:class => @active_tab}
       %nav{:class => @active_subtab }
         %ul.content-tabs
-          = tab_entry "li", "Questions", user_path(@user), {:selected => "active"}, {:class => "questions"} #i18n
-          = tab_entry "li", "Answers", answers_user_path(@user), {:selected => "active"}, {:class => "answers"} #i18n
-          = tab_entry "li", "Follow", follows_user_path(@user), {:selected => "active"}, {:class => "follow"} #i18n
-          = tab_entry "li", "Activity", activity_user_path(@user), {:selected => "active"}, {:class => "activity"} #i18n
+          = tab_entry "li", t(:questions, :scope => "activerecord.models"), user_path(@user), {:selected => "active"}, {:class => "questions"}
+          = tab_entry "li", t(:answers, :scope => "activerecord.models"), answers_user_path(@user), {:selected => "active"}, {:class => "answers"}
+          = tab_entry "li", t('global.following'), follows_user_path(@user), {:selected => "active"}, {:class => "follow"}
+          = tab_entry "li", t(:activity, :scope => "activerecord.models"), activity_user_path(@user), {:selected => "active"}, {:class => "activity"} #i18n
       %section.filters{:class => @active_subtab }
         %ul
           = render "users/show/user_#{params[:action]}_filters"

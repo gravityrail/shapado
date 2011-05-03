@@ -1,6 +1,5 @@
 %h1
-  Change your password
-  //i18n
+  = t('users.change_password.title')
 %p.description
 
 -form_for resource_name, resource, :url => password_path(resource_name), :html => { :method => :put } do |f|
@@ -15,7 +14,7 @@
   %p
     = f.password_field :password_confirmation
   %p
-    = f.submit "Change my password"
+    = f.submit = t('users.change_password.submit')
 
 %h2
   = t("sessions.new.with_openid")
