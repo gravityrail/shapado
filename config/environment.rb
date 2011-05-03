@@ -21,6 +21,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+  config.gem "haml", :version => "~> 3.0.25"
   config.gem "bson", :version => "1.1.4", :lib => "bson"
   config.gem "mongo", :version => "1.1.4"
   config.gem "plucky", :version => "0.3.6"
