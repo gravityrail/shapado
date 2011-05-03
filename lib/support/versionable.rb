@@ -9,7 +9,7 @@ module Versionable
       field :version_message
 
       field :versions_count, :type => Integer, :default => 0
-      field :version_ids, :type => Array
+      field :version_ids, :type => Array, :default => []
 
       before_save :save_version, :if => Proc.new { |d| !d.rolling_back }
     end
@@ -63,7 +63,9 @@ module Versionable
       when "last"
         version_klass.find(self.version_ids.last)
       else
-        version_klass.find(self.version_ids[pos])
+        if version_id = self.version_ids[pos]
+          version_klass.find(self.version_ids[pos])
+        end
       end
     end
 
