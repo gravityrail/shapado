@@ -181,9 +181,9 @@ class User
     @group_preferred_tags ||= (config_for(group, false).preferred_tags || []).to_a
   end
 
-  def update_language_filter(filter)
+  def language_filter=(filter)
     if LANGUAGE_FILTERS.include? filter
-      User.set({:_id => self.id}, {:language_filter => filter})
+      self[:language_filter] = filter
       true
     else
       false

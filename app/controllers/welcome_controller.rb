@@ -71,7 +71,8 @@ class WelcomeController < ApplicationController
 
   def change_language_filter
     if logged_in? && params[:language][:filter]
-      current_user.update_language_filter(params[:language][:filter])
+      current_user.language_filter = params[:language][:filter]
+      current_user.save
     elsif params[:language][:filter]
       session["user.language_filter"] =  params[:language][:filter]
     end
