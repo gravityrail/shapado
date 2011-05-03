@@ -29,7 +29,7 @@ module Shapado
     end
 
     def generate_unique_key(default = nil)
-      user = User.first(:socket_key => default) if default.present?
+      user = User.where(:socket_key => default).first if default.present?
       key = (user ? user.socket_key : UUIDTools::UUID.random_create.hexdigest)
     end
 
@@ -43,7 +43,7 @@ module Shapado
     end
 
     def user_name(socket_key, sid)
-      user = User.first(:socket_key => socket_key)
+      user = User.where(:socket_key => socket_key).first
       user ? user.name||user.nickname : "Guest #{sid}" # FIXME :/
     end
   end
