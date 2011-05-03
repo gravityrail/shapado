@@ -1,4 +1,4 @@
-var CahumaSocket = {
+var ShapadoSocket = {
   initialize: function() {
     WEB_SOCKET_SWF_LOCATION = "/javascripts/web-socket-js/WebSocketMain.swf";
 
@@ -9,21 +9,21 @@ var CahumaSocket = {
 
 
     this.ws.onmessage = function(evt) {
-      CahumaSocket.parse(evt.data);
+      ShapadoSocket.parse(evt.data);
     };
 
     window.webSocketError = function(message) {
       console.error(decodeURIComponent(message));
-      CahumaSocket.error_count += 1;
+      ShapadoSocket.error_count += 1;
     }
 
     this.ws.onclose = function() {
-      if(CahumaSocket.error_count < 3)
-        setTimeout(CahumaSocket.initialize, 5000)
+      if(ShapadoSocket.error_count < 3)
+        setTimeout(ShapadoSocket.initialize, 5000)
     };
 
     this.ws.onopen = function() {
-      CahumaSocket.send({id: 'start', key: config.attr("data-key"), channel_id: config.attr("data-group")});
+      ShapadoSocket.send({id: 'start', key: config.attr("data-key"), channel_id: config.attr("data-group")});
     };
   },
   add_chat_message: function(from, message) {
@@ -37,7 +37,7 @@ var CahumaSocket = {
 
     switch(data.id) {
       case 'chatmessage': {
-        CahumaSocket.add_chat_message(data.from, data.message);
+        ShapadoSocket.add_chat_message(data.from, data.message);
       }
       break;
       case 'newquestion': {
@@ -56,6 +56,6 @@ var CahumaSocket = {
 };
 
 $(document).ready(function() {
-  CahumaSocket.initialize();
+  ShapadoSocket.initialize();
 });
 
