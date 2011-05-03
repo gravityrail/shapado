@@ -92,7 +92,7 @@
 
           - if logged_in?
             -if current_user.can_create_reward?(@question)
-              %li
+              %li.add_reward
                 = link_to "Create Reward", "#", :rel => "nofollow", :id => "add_reward" #i18n
 
 
