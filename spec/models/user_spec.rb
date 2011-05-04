@@ -188,8 +188,19 @@ describe User do
 
     describe "User#can_modify?" do
       it "should can modify the question" do
+        Activity.stub!(:create!)
         @question = Question.make(:user => @user)
         @user.can_modify?(@question)
+      end
+    end
+
+    describe "User#can_create_reward?" do
+      it "return true when the question was created more than 2 days ago" do
+        Activity.stub!(:create!)
+        @question = Question.make(:user => @user, :created_at => 3.days.ago)
+        @user.update_reputation(76, @question.group)
+        @user.reload
+        @user.can_create_reward?(@question).should == true
       end
     end
 
@@ -200,6 +211,7 @@ describe User do
     end
 
     describe "User#role_on" do
+
     end
 
     describe "User#owner_of?" do

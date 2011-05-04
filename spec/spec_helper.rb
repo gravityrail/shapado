@@ -45,8 +45,10 @@ RSpec.configure do |config|
   end
 
   def stub_group(group = nil)
+    group ||= Group.make(:group)
     @controller.stub!(:find_group)
-    @controller.stub!(:current_group).and_return(group|| Group.make(:group))
+    @controller.stub!(:current_group).and_return(group)
+    group
   end
 
   require 'database_cleaner'

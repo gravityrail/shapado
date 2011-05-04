@@ -227,7 +227,9 @@ Time.zone.now ? 1 : 0)
   end
 
   def can_create_reward?(question)
-    (Time.now - question.created_at) >= 2.days && config_for(question.group_id).reputation >= 75 && (question.reward.nil? || !question.reward.active)
+    (Time.now - question.created_at) >= 2.days &&
+    config_for(question.group_id).reputation >= 75 &&
+    (question.reward.nil? || !question.reward.active)
   end
 
   def groups(options = {})
