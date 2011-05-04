@@ -66,3 +66,10 @@ end
 CloseRequest.blueprint do
   reason { CloseRequest::REASONS[rand()*CloseRequest::REASONS.size]}
 end
+
+Search.blueprint do
+  name { Sham.name }
+  query {Faker::Lorem.sentence}
+  group {Group.make}
+  user {User.make}
+end
