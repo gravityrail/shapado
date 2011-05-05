@@ -48,6 +48,7 @@ ms:
           title: Kongsi
           title_on_dlvr: Kongsikan di dlvr.it
           tweet_ends_with: Tambahkan tag pada tweet anda
+          tweet_starts_with: Tambahkan tag pada tweet anda
           twitter_account: Akaun Twitter yang ditujui oleh soalan pengguna anda.
         theme: 
           logo_legend: Muat naik logo kumpulan anda, asalkan tidak melebihi 2MB.
