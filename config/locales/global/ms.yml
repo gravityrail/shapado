@@ -16,7 +16,7 @@ ms:
     anonymous: Tanpa nama
     by: oleh
     current: Kini
-    from: dari% {site}
+    from: dari %{site}
     group_not_found: Laman %{url} tak wujud
     or: atau
     permission_denied: Kebenaran ditolak

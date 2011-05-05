@@ -14,7 +14,7 @@ ms:
     history: 
       current_version: Versi sekarang
       previous_versions: Versi dahulu
-      title: Sejarah (% {count})
+      title: Sejarah (%{count})
       version: Versi
       version_summary: Ringkasan versi
     model: 
