@@ -1,7 +1,7 @@
 WD = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
 
 # Use at least one worker per core
-worker_processes 4
+worker_processes 1
 
 # Help ensure your application will always spawn in the symlinked "current" directory that Capistrano sets up
 working_directory WD
