@@ -27,3 +27,8 @@ ms:
       create_page: Cipta laman baru
       title: Senarai laman
       written_in: Ditulis dalam %{language}
+    new: 
+      title: Laman baru
+    title: Fixme
+    update: 
+      success: Laman berjaya dikemas kini.

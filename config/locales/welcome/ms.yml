@@ -32,6 +32,11 @@ ms:
       prices: 
         cols: 
           onsite: di tapak
+        shapado: 
+          large: mungkin lebih kurang $500
+          medium: <=== sama
+          onsite: mungkin $0 di pelayan anda sendiri
+          small: mungkin lebih kurang $50 hingga $100 sebulan di kebanyakan pembekal pengehosan
         stackexchange: 
           large: $1299/bulan
           medium: $999/bulan
