@@ -38,6 +38,8 @@ class Group
   index :languages
 
   field :activity_rate, :type => Float, :default => 0.0
+  index :activity_rate
+
   field :openid_only, :type => Boolean, :default => false
   field :registered_only, :type => Boolean, :default => false
   field :has_adult_content, :type => Boolean, :default => false

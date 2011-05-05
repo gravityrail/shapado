@@ -6,6 +6,7 @@ class Membership < EmbeddedHash
   field :group_id, :type => String
 
   field :reputation, :type => Float, :default => 0.0
+
   field :profile, :type => Hash, :default => {} # custom user keys
 
   field :votes_up, :type => Float, :default => 0.0

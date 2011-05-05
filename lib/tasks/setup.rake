@@ -12,7 +12,6 @@ task :upgrade => [:environment] do
 end
 
 namespace :setup do
-
   desc "Reset admin password"
   task :reset_password => :environment do
     admin = User.where(:login => "admin").first
