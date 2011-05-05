@@ -27,11 +27,11 @@ gem "fancy-buttons", "1.1.1"
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
 
 # mongodb
-gem 'bson', '1.2.4'
-gem 'bson_ext', '1.2.4'
+gem 'bson', '1.3.0'
+gem 'bson_ext', '1.3.0'
 
-gem 'mongo', '1.2.4'
-gem 'mongoid', '2.0.0'
+gem 'mongo', '1.3.0'
+gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git'
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils

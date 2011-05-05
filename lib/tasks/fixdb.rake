@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:set_comment_count", "fixdb:versions"] do
+task :fixall => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:create_thumbnails", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:set_comment_count"] do
 end
 
 
@@ -19,6 +19,8 @@ task :init => [:environment] do
     def set_created_at; end
     def set_updated_at; end
   end
+
+  GC.start
 end
 
 namespace :fixdb do
@@ -345,6 +347,7 @@ namespace :fixdb do
   task :create_thumbnails => [:init]  do
     Group.all.each do |g|
       begin
+        puts "Creating thumbnails for #{g.name} #{g.id}"
         Jobs::Images.generate_group_thumbnails(g.id)
       rescue Mongo::GridFileNotFound => e
         puts "error getting #{g.name}'s logo"
@@ -370,7 +373,7 @@ namespace :fixdb do
   end
 
   task :set_comment_count => [:init] do
-    User.where.only([:_id,:membership_list, :login]).each do |u|
+    User.only([:_id,:membership_list, :login]).all.each do |u|
       u.membership_list.each do |group_id, vals|
         count = 0
         group = Group.where(:_id => group_id).only([:_id, :name]).first

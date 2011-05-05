@@ -129,8 +129,8 @@ class Group
   validates_inclusion_of :invitations_perms, :in => %w[user moderator owner]
   validates_inclusion_of :signup_type,  :in => %w[all noemail social email]
 
-  before_save :disallow_javascript
-  before_save :modify_attributes
+  before_create :disallow_javascript
+  before_create :modify_attributes
 
   # TODO: store this variable
   def has_custom_domain?
@@ -325,7 +325,7 @@ class Group
   def initialize_fields
     self["subdomain"] ||= self["slug"]
     self.custom_html = CustomHtml.new
-    self.share = Share.new
+    self.share = Share.new if self.share.nil?
     self.notification_opts = NotificationConfig.new
   end
 
@@ -380,7 +380,7 @@ class Group
   def modify_attributes
     self.domain.downcase!
     self.subdomain.downcase!
-    self.languages << self.language
+    self.languages << self.language if self.language
   end
 
   def disallow_javascript

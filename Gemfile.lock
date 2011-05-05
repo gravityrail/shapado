@@ -16,6 +16,15 @@ GIT
     will_paginate (3.0.pre3)
 
 GIT
+  remote: git://github.com/mongoid/mongoid.git
+  revision: 8f61f5b58c109cda398bf5b2bfc639fb7989a57b
+  specs:
+    mongoid (2.0.1)
+      activemodel (~> 3.0)
+      mongo (~> 1.3)
+      tzinfo (~> 0.3.22)
+
+GIT
   remote: http://github.com/dcu/multiauth.git
   revision: ff7cca336f8bbe8455c86a937f90d75548074dfd
   specs:
@@ -60,8 +69,8 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
-    bson (1.2.4)
-    bson_ext (1.2.4)
+    bson (1.3.0)
+    bson_ext (1.3.0)
     builder (2.1.2)
     chunky_png (1.1.1)
     compass (0.11.1)
@@ -122,13 +131,8 @@ GEM
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)
-    mongo (1.2.4)
-      bson (>= 1.2.4)
-    mongoid (2.0.0)
-      activemodel (~> 3.0)
-      mongo (~> 1.2)
-      tzinfo (~> 0.3.22)
-      will_paginate (~> 3.0.pre)
+    mongo (1.3.0)
+      bson (>= 1.3.0)
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
@@ -267,8 +271,8 @@ PLATFORMS
 
 DEPENDENCIES
   autotest
-  bson (= 1.2.4)
-  bson_ext (= 1.2.4)
+  bson (= 1.3.0)
+  bson_ext (= 1.3.0)
   compass (= 0.11.1)
   compass-colors (= 0.9.0)
   database_cleaner
@@ -287,8 +291,8 @@ DEPENDENCIES
   magic
   mechanize
   mini_magick (~> 2.3)
-  mongo (= 1.2.4)
-  mongoid (= 2.0.0)
+  mongo (= 1.3.0)
+  mongoid!
   mongoid_ext!
   mongrel (= 1.2.0.pre2)
   multiauth!
