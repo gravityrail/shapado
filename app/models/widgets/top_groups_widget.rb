@@ -4,6 +4,7 @@ class TopGroupsWidget < Widget
   def top_groups
     Group.where({:state => "active", :private => false, :isolate => false}).
           order_by(:activity_rate.desc).
+          limit(self[:settings]['limit']).
           paginate(:per_page => self[:settings]['limit'], :page => 1)
   end
 
