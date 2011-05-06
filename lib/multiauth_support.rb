@@ -47,7 +47,7 @@ module MultiauthSupport
       uid = fields["uid"] || fields["extra"]["user_hash"]["id"]
       auth_key = "#{provider}_#{uid}"
 
-      user = User.where({:auth_keys => auth_key}).first
+      user = User.where({:auth_keys.in => [auth_key]}).first
       if user.nil?
         user = User.new(:auth_keys => [auth_key])
 
@@ -96,14 +96,21 @@ module MultiauthSupport
       end
 
       auth_key = "#{provider}_#{fields["uid"]}"
-      user = User.only(:id).where({:auth_keys => auth_key}).first
+      user = User.where({:auth_keys.in => [auth_key]}).first
+
       if user.present? && user.id != self.id
         self.push(:"user_info.#{provider}" => fields["user_info"])
 
-        user.destroy if merge_user(user)
+        if merge_user(user)
+          user.destroy
+          user = self
+        end
       end
 
-      user.send("handle_#{provider}", fields) if user.respond_to?("handle_#{provider}", true)
+      if user.respond_to?("handle_#{provider}", true)
+        user.send("handle_#{provider}", fields)
+        user.save!
+      end
 
       self.push_uniq(:auth_keys => auth_key)
     end
@@ -114,28 +121,33 @@ module MultiauthSupport
       [Question, Answer, Badge, UserStat].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
       end
-      if !self.facebook_login? && user.facebook_login?
-        self.facebook_friend_list.destroy &&
-        FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
-        #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
-      end
-      if !self.twitter_login? && user.twitter_login?
-        self.twitter_friend_list.destroy &&
-        TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
-        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
-        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
-      end
-      if !self.identica_login? && user.identica_login?
-        self.identica_friend_list.destroy &&
-        IdenticaFriendList.override({:user_id => user.id}, {:user_id => self.id})
-        #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
-        #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+      begin
+        if !self.facebook_login? && user.facebook_login?
+          self.facebook_friend_list.destroy &&
+          FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
+          #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
+        end
+        if !self.twitter_login? && user.twitter_login?
+          self.twitter_friend_list.destroy &&
+          TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
+          #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+          #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+        end
+        if !self.identica_login? && user.identica_login?
+          self.identica_friend_list.destroy &&
+          IdenticaFriendList.override({:user_id => user.id}, {:user_id => self.id})
+          #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+          #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+        end
+      rescue Exception => e
+        Rails.logger.info e.message
+        return nil
       end
       user
     end
 
     def password_required?
-      return false if self[:using_openid] || self[:facebook_id].present? || self[:github_id].present?
+      return false if self[:using_openid] || self[:facebook_id].present? || self[:twitter_id].present? || self[:github_id].present?
 
       (encrypted_password.blank? || !password.blank?)
     end
