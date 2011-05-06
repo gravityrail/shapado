@@ -37,7 +37,7 @@ group = Group.find(args.first) || Group.where(:subdomain => args.first).first
 exporter = Export.new(group)
 time = Time.now
 
-exclude = [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :encrypted_password, :ip, :identity_url, :email, :default_subtab, :admin]
+exclude = [:_keywords, :salt, :remember_token_expires_at, :crypted_password, :encrypted_password, :ip, :email, :default_subtab, :admin]
 
 if options[:method] == :zip
   filename = "#{group.subdomain}.zip"
