@@ -4,7 +4,7 @@ en:
       signed_as: Signed in as
       not_logged_in: 'Not logged in'
       create_account: Create an account
-    top_bar:
+    top_user:
       profile: Profile
       my_karma: 'My karma: %{karma}'
       connect: Connect
