@@ -88,5 +88,6 @@ group :development do
   gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
+  gem 'unicorn', :require => false
 end
 

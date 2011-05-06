@@ -12,6 +12,8 @@ sender_email = ENV["SENDER"]
 recipient_email = ENV["RECIPIENT"]
 
 to, question_id = recipient_email.split("@").first.split("+", 2)
+exit if question_id.nil?
+
 group_slug, question_id = question_id.split("-", 2)
 
 mail = Mail.read_from_string(STDIN.read)
