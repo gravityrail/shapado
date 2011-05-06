@@ -15,11 +15,6 @@
           %li
             = link_to(tag, url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag")
 
-  -if !logged_in?
-    %li
-      = link_to 'Get the facts!', "/facts#facts"
-
-
 %span#user-actions.right
   #user-nav
     %ul#action_menu

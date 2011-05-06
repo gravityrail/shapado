@@ -5,15 +5,13 @@
     = avatar_img(current_user, {:size =>"small"})
     %ul
       %li
-        =link_to "Profile", user_path(current_user)
+        =link_to t('.profile'), user_path(current_user)
       %li
-        =link_to "Settings", settings_path
+        =link_to t('users.edit.settings'), settings_path
       %li
-        =link_to "My Karma: #{current_user.reputation_on(current_group)}"
+        =link_to t('.my_karma', :karma =>current_user.reputation_on(current_group))
       %li
-        =link_to "My badges", badges_path
-      %li
-        =link_to "Connect", social_connect_path
+        =link_to t('.connect'), social_connect_path
 
   %li.logout
     =link_to t("layouts.application.logout"), destroy_user_session_path

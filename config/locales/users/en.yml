@@ -1,5 +1,13 @@
 en:
   users:
+    user_bar:
+      signed_as: Signed in as
+      not_logged_in: 'Not logged in'
+      create_account: Create an account
+    top_bar:
+      profile: Profile
+      my_karma: 'My karma: %{karma}'
+      connect: Connect
     index:
       title: All users
       empty: "This group does not have any members. Participate by joining this group."
@@ -32,7 +40,8 @@ en:
       views: views
       followers: Followers
       following: Following
-      sort_by: 'Sort By:'
+      sort_by: 'Sort by:'
+      edit_profile: Edit profile
     follow:
       flash_notice: "The user %{user} was added to your friends"
     unfollow:
@@ -65,8 +74,8 @@ en:
       errors:
         reputation_needed: "You need a reputation of %{min_reputation} to %{action}"
     actions:
-      vote_up: Vote up
-      vote_down: Vote down
+      vote_up: Upvote
+      vote_down: Downvote
       flag: Flag
       edit_others_posts: "Edit other's posts"
       edit_wiki_post: "Edit wiki posts"

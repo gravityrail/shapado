@@ -17,7 +17,7 @@
     -cache("question_on_index_#{question.id}_#{I18n.locale}") do
       %h2
         -if question.wiki
-          = link_to "Wiki: #{title}", question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+          = link_to t('.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
         -else
           = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
     .user-data
@@ -45,27 +45,11 @@
     .toolbar
       %ul
         %li.answers
-          = link_to "#{format_number(question.answers_count)} #{t(:answers, :scope => "activerecord.attributes.question")}", question_path(question)
+          = link_to t('.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers
-            = "#{format_number(question.followers_count)} followers"
-
-        %li.votes
-          -unless question.closed
-            -if logged_in? && (vote = current_user.vote_on(question))
-              -if vote < 0
-                = image_tag "edit-delete.png"
-              -else
-                = image_tag "dialog-ok-apply.png"
-
-            -elsif current_user != question.user
-              = form_tag question_votes_path(question), :class => "vote-up-form" do
-                .fields
-                  = hidden_field_tag "source", questions_path, :id =>  "source_#{question.id}"
-                  = image_submit_tag("dialog-ok.png", :name=>"vote_up", :value=>"1", :title => t("votes.control.to_vote_up"), :class => "quick-vote-button")
-
-            = link_to "#{format_number(question.votes_average)} #{t(:votes, :scope => "activerecord.attributes.question")}"
+            = t('.followers_number', :quantity => format_number(question.followers_count))
 
         -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
           %li.spam
@@ -73,10 +57,10 @@
 
         %li
           -if !logged_in? || !question.follower?(current_user)
-            =link_to "Seguir", follow_question_path(question)
+            =link_to t('global.follow'), follow_question_path(question)
 
         %li
-          =link_to "Responder", question_path(question, :anchor => "to_answer")
+          =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
 
     .clear
 

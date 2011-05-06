@@ -29,6 +29,8 @@ en:
   models:
     question: The question
   global:
+    size: Size
+    alphabetically: Alphabetically
     from: "from %{site}"
     permission_denied: Permission denied
     please_login: Please log in
@@ -47,6 +49,17 @@ en:
     following: Following
     unfollow: Unfollow
     next_button: Next
+    view: View
+    view_question: View question
+    what_to_do: What do you want to do?
+    actions: Actions
+    sign_up: Sign up
+    feedback: Feedback
+    chat: Chat
+    tos: TOS
+    privacy: Privacy
+    blog: Blog
+    home: Home
   feeds:
     question: Subscribe to this question
     questions: Subscribe to all questions

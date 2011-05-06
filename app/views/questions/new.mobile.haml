@@ -1,8 +1,8 @@
 %div{:data => {:role => "page"}}
   %div{:"data-role" => "header"}
     %h1
-      New Question
-    = link_to 'Home', '/mobile', "class" => "ui-btn-right"
+      = t('.title')
+    = link_to t('global.home'), '/mobile', "class" => "ui-btn-right"
 
 
   %div{:"data-role" => "content"}
