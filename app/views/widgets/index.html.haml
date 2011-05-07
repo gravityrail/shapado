@@ -18,29 +18,34 @@
         .field
           = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
           = select :widget, "_type", Widget.types(params[:tab]).map {|w| [w.sub("Widget", "").titleize, w]}
-          = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
+          -if @active_subtab != "external"
+            = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
+          -else
+            = hidden_field_tag "widget[position]", "sidebar"
         .buttons
           =submit_tag t("scaffold.add"), :class => "save"
         .clear
 
-    %li
-      Header
-    -@widget_list.header.each do |widget|
-      =render "widget", :widget => widget, :position => "header"
+    -if @active_subtab != "external"
+      %li
+        Header
+      -@widget_list.header.each do |widget|
+        =render "widget", :widget => widget, :position => "header"
 
-    %li
-      Sidebar
-    -@widget_list.sidebar.each do |widget|
-      =render "widget", :widget => widget, :position => "sidebar"
+      %li
+        Sidebar
+      -@widget_list.sidebar.each do |widget|
+        =render "widget", :widget => widget, :position => "sidebar"
 
-    %li
-      Navbar
-    -@widget_list.navbar.each do |widget|
-      =render "widget", :widget => widget, :position => "navbar"
+      %li
+        Navbar
+      -@widget_list.navbar.each do |widget|
+        =render "widget", :widget => widget, :position => "navbar"
 
-    %li
-      Footer
-    -@widget_list.footer.each do |widget|
-      =render "widget", :widget => widget, :position => "footer"
-
-
+      %li
+        Footer
+      -@widget_list.footer.each do |widget|
+        =render "widget", :widget => widget, :position => "footer"
+    -else
+      -@widget_list.sidebar.each do |widget|
+        =render "widget", :widget => widget, :position => "sidebar"

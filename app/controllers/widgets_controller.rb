@@ -66,9 +66,12 @@ class WidgetsController < ApplicationController
   # DELETE /ads/1
   # DELETE /ads/1.json
   def destroy
-    @widget = @group.widgets.find(params[:id])
-    @group.widgets.delete(@widget)
-    @group.save
+    widget_list = @group.send(:"#{params[:tab]}_widgets")
+
+  if WidgetList::POSITIONS.include? params[:position]
+    @widget = widget_list.send(params[:position]).find(params[:id])
+    @widget.destroy
+  end
 
     respond_to do |format|
       format.html { redirect_to(widgets_url) }
@@ -87,8 +90,7 @@ class WidgetsController < ApplicationController
   end
 
   def embedded
-    @widget = current_group.external_widgets.
-      detect {|f| f["_id"] == params[:id] }
+    @widget = current_group.external_widgets.sidebar.find(params[:id])
     render :layout => false
   end
 

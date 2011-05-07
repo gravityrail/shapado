@@ -3,7 +3,7 @@
     %h2
       = widget.name
       %small
-        = link_to t("scaffold.destroy"), widget_path(widget), :method => :delete, :confirm => t("scaffold.sure", :model => "widget")
+        = link_to t("scaffold.destroy"), widget_path(widget, :tab => @active_subtab, :position => position), :method => :delete, :confirm => t("scaffold.sure", :model => "widget")
     %p
       = widget.description # do not escape
 
