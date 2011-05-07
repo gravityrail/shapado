@@ -51,10 +51,13 @@ namespace :setup do
     default_group = Group.where(:domain => AppConfig.domain).first
 
     if AppConfig.enable_groups
-      default_group.mainlist_widgets << GroupsWidget.new
+      default_group.mainlist_widgets.sidebar << GroupsWidget.new
     end
-    default_group.mainlist_widgets << UsersWidget.new
-    default_group.mainlist_widgets << BadgesWidget.new
+    default_group.mainlist_widgets.sidebar << UsersWidget.new
+    default_group.mainlist_widgets.navbar << TagCloudWidget.new
+    default_group.question_widgets.sidebar << TagCloudWidget.new
+    default_group.question_widgets.sidebar << BadgesWidget.new
+
     default_group.save!
   end
 

@@ -7,7 +7,7 @@
     %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
   -content_for :sidebar do
-    = render "shared/widgets", :context => 'mainlist'
+    = render "shared/widgets", :context => 'mainlist', :position => 'sidebar'
 
   -if @activities.empty?
     = render "activities/empty"
