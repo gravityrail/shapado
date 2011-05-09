@@ -163,11 +163,13 @@ namespace :fixdb do
     puts "updating comments"
     comments = Mongoid.database.collection("comments")
     questions = Mongoid.database.collection("questions")
+    questions.update({}, {"$set" => {:comments => []}})
+    comments.update({}, {"$set" => {:comments => []}})
 
     Mongoid.database.collection("comments").find(:_type => "Comment").each do |comment|
-        id = comment.delete("commentable_id")
-        klass = comment.delete("commentable_type")
-        collection = comments
+      id = comment.delete("commentable_id")
+      klass = comment.delete("commentable_type")
+      collection = comments
 
       %w[created_at updated_at].each do |key|
         if comment[key].is_a?(String)
@@ -179,8 +181,9 @@ namespace :fixdb do
         collection = questions;
       end
 
-        collection.update({:_id => id}, "$addToSet" => {:comments => comment})
-        comments.remove({:_id => comment["_id"]})
+      comment.delete("comments")
+      collection.update({:_id => id}, "$addToSet" => {:comments => comment})
+      comments.remove({:_id => comment["_id"]})
     end
     begin
       Mongoid.database.collection("answers").drop
@@ -253,8 +256,7 @@ namespace :fixdb do
 
   task :widgets => [:init] do
     c=Group.count
-    Group.override({}, {:widgets => [], :question_widgets => [], :mainlist_widgets => [],
-                        :external_widgets => []})
+    Group.unset({}, [:widgets, :question_widgets, :mainlist_widgets, :external_widgets])
     i=0
     Group.all.each do |g|
       g.reset_widgets!
@@ -373,29 +375,33 @@ namespace :fixdb do
   end
 
   task :set_comment_count => [:init] do
+    questions = Mongoid.database.collection("questions")
+    answers = Mongoid.database.collection("answers")
+
     User.only([:_id,:membership_list, :login]).all.each do |u|
       u.membership_list.each do |group_id, vals|
         count = 0
         group = Group.where(:_id => group_id).only([:_id, :name]).first
         next if group.nil?
 
-        group.questions.only([:_id, :"comments.user_id"]).each do |q|
-          q.comments.each do |c|
-            if c.user_id == u.id
-              count =  count + 1
+        questions.find({:group_id => group.id}, {:fields => {:user_id => 1, :"comments.user_id" => 1}}).each do |q|
+          if q["comments"]
+            q["comments"].each do |c|
+              if c["user_id"] == u.id
+                count = count + 1
+              end
             end
           end
-          q.comments = []
         end
 
-        group.answers.only([:_id, :"comments.user_id"]).each do |a|
-          a.comments.each do |c|
-            puts c.body.inspect
-            if c.user_id == u.id
-              count = count + 1
+        answers.find({:group_id => group.id}, {:fields => {:user_id => 1, :"comments.user_id" => 1}}).each do |a|
+          if a["comments"]
+            a["comments"].each do |c|
+              if c["user_id"] == u.id
+                count = count + 1
+              end
             end
           end
-          a.comments = []
         end
 
         u.override({"membership_list.#{group.id}.comments_count" => count})

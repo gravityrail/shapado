@@ -14,7 +14,7 @@ class Widget
   embedded_in :widget_list_mainlist, :inverse_of => :mainlist_widgets
 
   def group
-    self._parent.group
+    self._parent._parent
   end
 
   def initialize(*args)
@@ -23,8 +23,12 @@ class Widget
     self[:name] ||= self.class.to_s.sub("Widget", "").underscore
   end
 
-  def self.types(tab="")
+  def self.types(tab="",ads=false)
     types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget PagesWidget CurrentTagsWidget SuggestionsWidget]
+    if ads
+      types += %w[AdbardWidget AdsenseWidget]
+    end
+
     if tab == 'question'
       types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end
