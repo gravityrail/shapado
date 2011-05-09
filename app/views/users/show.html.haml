@@ -4,10 +4,9 @@
       = avatar_img @user, :size => "big"
       -if current_user == @user
         %p
-          =link_to "Edit profile", settings_path
+          = link_to t('.edit_profile'), settings_path
 
-    // TODO i18n
-    %h3 Badges
+    %h3= t("activerecord.models.badges")
     %ul.badges
       -@badges.each do |badge|
         %li

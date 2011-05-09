@@ -56,9 +56,13 @@ ms:
       flash_notice: Pengguna %{user} disenaraikan sebagai rakan anda
     form: 
       activities_notification: Terima pemberitahuan e-mel mengenai kegiatan sistem seperti lencana yang diraih, pengikut baru, dsb.
+      avatar_tip: Tukar gambar profil anda dengan menggunakan Gravatar
+      give_advice_notification: Terima pemberitahuan e-mel mengenai soalan-soalan dalam bidang anda
       information: Maklumat
       language: Bahasa yang digunakan untuk antara muka laman
+      new_answer_notification: Dapatkan pemberitahuan e-mel untuk jawapan baru
       notifications: Pemberitahuan
+      reports_notification: Terima laporan kegiatan kumpulan terkini (untuk pentadbir kumpulan sahaja)
       show_more_lang: Tunjukkan banyak lagi bahasa
     index: 
       empty: Kumpulan ini tiada ahli baru. Ambil bahagian dengan menyertai kumpulan ini.
@@ -85,3 +89,5 @@ ms:
       title: Pengguna %{user}
       unfollow: Berhenti mengikut
       views: kunjungan
+    unfollow: 
+      flash_notice: Pengguna %{user} telah digugurkan daripada rakan-rakan anda

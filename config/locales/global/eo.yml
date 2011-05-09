@@ -4,6 +4,7 @@
 # Author: Darkweasel
 # Author: Gufulo
 # Author: LaPingvino
+# Author: Yekrats
 eo: 
   feeds: 
     feed: RSS-fonto
@@ -36,7 +37,7 @@ eo:
       other: "%{count} fojojn"
       zero: Neniam
   scaffold: 
-    add: Aldonu
+    add: Aldoni
     back: Reen
     cancel: Nuligu
     close: Fermu

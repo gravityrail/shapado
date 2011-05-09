@@ -17,9 +17,6 @@ en:
       final_step: Final step (2 of 2)
       create_account_step2: Create Account
       find_friends: "Find friends and connect:"
-      find_friends_facebook: Find friends on Facebook
-      find_friends_twitter: Find friends on Twitter
-      find_friends_linked_in: Find friends on LinkedIn
-      find_friends_identica: Find friends on Identi.ca
       follow_things: Follow Tags and People
       follow_things_description: Questions related to these will appear on your feed.
+      done: 'Done!'

@@ -1,6 +1,7 @@
 en:
   layouts:
     application:
+      join_group: "Join %{group}"
       title: "Questions & Answers"
       questions: Questions
       questions_in: Questions in

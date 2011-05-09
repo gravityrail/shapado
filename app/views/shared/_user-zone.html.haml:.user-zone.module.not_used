@@ -1,7 +1,7 @@
 .user-zone.module{:class => @current_class}
   -if !logged_in?
     /=multiauth_menu("Sign In")
-    = multiauth_dropdown("Sign In")
+    = multiauth_dropdown("Sign Inooo")
   -else
     .avatar
       = avatar_img(current_user, :size => "small")

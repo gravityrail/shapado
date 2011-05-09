@@ -13,7 +13,7 @@
   .article-actions
     %ul
       %li.current
-        = link_to "Actions", "#"
+        = link_to t('layouts.manage.actions'), "#"
         %ul.drop-menu
           %li.current
             -if logged_in?
@@ -35,7 +35,7 @@
             %li
               = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
             %li
-              =link_to "Follow Up", new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
+              =link_to t('questions.show.follow_up'), new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
 
           - if logged_in? && @aflag.new_record? && current_user != answer.user
             %li

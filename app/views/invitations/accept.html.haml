@@ -60,5 +60,5 @@
       = t('.follow_things')
     = t('.follow_things_description')
     = render :partial => "shared/suggestions", :locals => {:limit => 10, :no_title => true}
-    = link_to 'Done!', "?step=follow_suggestions&id=#{params[:id]}"
+    = link_to t('.done'), "?step=follow_suggestions&id=#{params[:id]}"
 
