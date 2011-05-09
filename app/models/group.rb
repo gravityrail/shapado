@@ -86,9 +86,9 @@ class Group
   references_many :tags, :dependent => :destroy
   references_many :activities, :dependent => :destroy
 
-  embeds_many :mainlist_widgets, :class_name => "Widget", :as => "group_mainlist"
-  embeds_many :question_widgets, :class_name => "Widget", :as => "group_questions"
-  embeds_many :external_widgets, :class_name => "Widget", :as => "group_external"
+  embeds_one :mainlist_widgets, :class_name => "WidgetList", :as => "group_mainlist_widgets"
+  embeds_one :question_widgets, :class_name => "WidgetList", :as => "group_questions"
+  embeds_one :external_widgets, :class_name => "WidgetList", :as => "group_external"
 
   references_many :badges, :dependent => :destroy, :validate => false
   references_many :questions, :dependent => :destroy, :validate => false
@@ -133,6 +133,7 @@ class Group
 
   before_create :disallow_javascript
   before_create :modify_attributes
+  before_create :create_widget_lists
 
   # TODO: store this variable
   def has_custom_domain?
@@ -290,20 +291,20 @@ class Group
   end
 
   def reset_widgets!
-    self.question_widgets = []
-    self.mainlist_widgets = []
-    self.external_widgets = []
+    self.question_widgets = WidgetList.new
+    self.mainlist_widgets = WidgetList.new
+    self.external_widgets = WidgetList.new
 
     [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
      TagListWidget, CurrentTagsWidget].each do |w|
-      self.question_widgets << w.new
+      self.question_widgets.sidebar << w.new
     end
 
     [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-      self.mainlist_widgets << w.new
+      self.mainlist_widgets.sidebar << w.new
     end
 
-    self.external_widgets << AskQuestionWidget.new
+    self.external_widgets.sidebar << AskQuestionWidget.new
   end
 
   def is_all_signup?
@@ -399,5 +400,11 @@ class Group
          self.custom_html[key] = value
        end
     end
+  end
+
+  def create_widget_lists
+    self.mainlist_widgets = WidgetList.new
+    self.question_widgets = WidgetList.new
+    self.external_widgets = WidgetList.new
   end
 end

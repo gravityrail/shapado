@@ -72,7 +72,7 @@
               %li
                 = link_to link_to t('layouts.application.pages'), pages_path
 
-        =render "widgets/tag_cloud", :widget => TagCloudWidget.new
+        =#render "widgets/tag_cloud", :widget => TagCloudWidget.new
 
         .widget-networks.module
           %h3= t('layouts.application.follow_us_and_share')
@@ -91,14 +91,14 @@
                   =image_tag "atom.png", :width => 20
           .clear
 
-        .add
-          %h6= t('ads.index.title')
-          =link_to image_tag "http://www.bipbanners.co.uk/assets/images/WebConveyancing_Animated_SkyScraper_Banner_Sample_1A.gif"
+        = render "shared/widgets", :context => 'mainlist', :position => 'navbar'
+
 
       %section.content-panel
         - unless params[:controller] =~ /moderate\//
           //= render "shared/action-tabs"
           =render "shared/quick_question_box"
+        = render "shared/widgets", :context => 'mainlist', :position => 'header'
 
         #main-content-wrap{:class => @active_tab}
           - if params[:controller] =~ /moderate\//
@@ -107,16 +107,10 @@
           .clear
 
       %section.right-panel
-
-        .add
-          %h6= t('ads.index.title')
-          =link_to image_tag "banner-250x250.jpg"
-
         = yield :sidebar
 
-        = render "shared/ads/context_panel_ads"
-
         .clear
-        = render "shared/ads/footer_ads"
+
+      = render "shared/widgets", :context => 'mainlist', :position => 'footer'
 
       = render "shared/layout/footer"

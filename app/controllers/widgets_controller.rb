@@ -14,7 +14,7 @@ class WidgetsController < ApplicationController
     @active_subtab ||= "mainlist"
 
     @widget = Widget.new
-    @widgets = @group.send(:"#{@active_subtab}_widgets")
+    @widget_list = @group.send(:"#{@active_subtab}_widgets")
   end
 
   # POST /widgets
@@ -24,10 +24,11 @@ class WidgetsController < ApplicationController
       @widget = params[:widget][:_type].constantize.new
     end
 
-    @group.send(:"#{params[:tab]}_widgets") << @widget
+    widget_list = @group.send(:"#{params[:tab]}_widgets")
+    widget_list.send(:"#{params[:widget][:position]}") << @widget
 
     respond_to do |format|
-      if @widget.valid? && @group.save
+      if @widget.save
         flash[:notice] = 'Widget was successfully created.'
         format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :created, :location => widget_path(:id => @widget.id) }
@@ -41,8 +42,13 @@ class WidgetsController < ApplicationController
   # PUT /widgets
   # PUT /widgets.json
   def update
-    @widget = @group.send(:"#{params[:tab]}_widgets").find(params[:id])
-    @widget.update_settings(params)
+    widget_list = @group.send(:"#{params[:tab]}_widgets")
+
+    @widget = nil
+    if WidgetList::POSITIONS.include? params[:position]
+      @widget = widget_list.send(params[:position]).find(params[:id])
+      @widget.update_settings(params)
+    end
 
     respond_to do |format|
       if @widget.valid? && @group.save && @widget.save
@@ -60,9 +66,12 @@ class WidgetsController < ApplicationController
   # DELETE /ads/1
   # DELETE /ads/1.json
   def destroy
-    @widget = @group.widgets.find(params[:id])
-    @group.widgets.delete(@widget)
-    @group.save
+    widget_list = @group.send(:"#{params[:tab]}_widgets")
+
+  if WidgetList::POSITIONS.include? params[:position]
+    @widget = widget_list.send(params[:position]).find(params[:id])
+    @widget.destroy
+  end
 
     respond_to do |format|
       format.html { redirect_to(widgets_url) }
@@ -71,15 +80,17 @@ class WidgetsController < ApplicationController
   end
 
   def move
-    widgets = @group.send(:"#{params[:tab]}_widgets")
-    widget = widgets.find(params[:id])
-    widget.move_to(params[:move_to], widgets, params[:tab])
+    widget_list = @group.send(:"#{params[:tab]}_widgets")
+
+    if WidgetList::POSITIONS.include? params[:position]
+      widget_list.move_to(params[:move_to], params[:id], params[:position])
+    end
+
     redirect_to widgets_path(:tab => params[:tab])
   end
 
   def embedded
-    @widget = current_group.external_widgets.
-      detect {|f| f["_id"] == params[:id] }
+    @widget = current_group.external_widgets.sidebar.find(params[:id])
     render :layout => false
   end
 
