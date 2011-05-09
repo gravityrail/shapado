@@ -88,7 +88,7 @@ GEM
     diff-lcs (1.1.2)
     differ (0.1.1)
     dynamic_form (1.1.4)
-    em-websocket (0.1.4)
+    em-websocket (0.3.0)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     erubis (2.6.6)
@@ -283,7 +283,7 @@ DEPENDENCIES
   devise (~> 1.2.1)
   differ (= 0.1.1)
   dynamic_form
-  em-websocket (~> 0.1.4)
+  em-websocket (~> 0.3.0)
   eventmachine (~> 0.12.10)
   fancy-buttons (= 1.1.1)
   ffaker
@@ -324,7 +324,7 @@ DEPENDENCIES
   twitter-text (= 1.1.8)
   twitter_oauth
   unicorn
-  uuidtools (= 2.1.1)
+  uuidtools (~> 2.1.1)
   whatlanguage (= 1.0.0)
   whenever
   will_paginate!

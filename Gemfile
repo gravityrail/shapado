@@ -38,7 +38,7 @@ gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 gem 'smart_asset'
 gem "whatlanguage", "1.0.0"
-gem "uuidtools", "2.1.1"
+gem "uuidtools", "~> 2.1.1"
 gem "magent", "0.5.2"
 
 gem 'goalie', '~> 0.0.4'
@@ -68,7 +68,7 @@ gem 'state_machine', "0.10.4"
 
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
-  gem 'em-websocket', '~> 0.1.4'
+  gem 'em-websocket', '~> 0.3.0'
 end
 
 group :test do
