@@ -14,59 +14,6 @@ module ApplicationHelper
     end
   end
 
-  def context_panel_ads(group)
-    if AppConfig.enable_adbard && request.domain == AppConfig.domain &&
-        !Adbard.where(:group_id => current_group.id).first
-      adbard = "<!--Ad Bard advertisement snippet, begin -->
-        <script type='text/javascript'>
-        var ab_h = '#{AppConfig.adbard_host_id}';
-        var ab_s = '#{AppConfig.adbard_site_key}';
-        </script>
-        <script type='text/javascript' src='http://cdn1.adbard.net/js/ab1.js'></script>
-        <!--Ad Bard, end -->"
-    else
-      adbard = ""
-    end
-    if group.has_custom_ads == true
-      ads = []
-      Ad.where(:group_id => group.id,:position =>'context_panel').each do |ad|
-        ads << ad.code
-      end
-      ads << adbard
-      return ads.join.html_safe unless ads.empty?
-    end
-  end
-
-  def header_ads(group)
-    if group.has_custom_ads
-      ads = []
-      Ad.where(:group_id => group.id,:position => 'header').each do |ad|
-        ads << ad.code
-      end
-      return ads.join.html_safe  unless ads.empty?
-    end
-  end
-
-  def content_ads(group)
-    if group.has_custom_ads
-      ads = []
-      Ad.where(:group_id => group.id,:position => 'content').each do |ad|
-        ads << ad.code
-      end
-      return ads.join.html_safe  unless ads.empty?
-    end
-  end
-
-  def footer_ads(group)
-    if group.has_custom_ads
-      ads = []
-      Ad.where(:group_id => group.id,:position => 'footer').each do |ad|
-        ads << ad.code
-      end
-      return ads.join.html_safe  unless ads.empty?
-    end
-  end
-
   def language_desc(langs)
     (langs.kind_of?(Array) ? langs : [langs]).map do |lang|
       I18n.t("languages.#{lang}", :default => lang).capitalize
