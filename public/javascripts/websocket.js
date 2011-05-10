@@ -41,7 +41,8 @@ var ShapadoSocket = {
       }
       break;
       case 'newquestion': {
-        alert("new question: "+data.name);
+        var section = $("section.questions-index");
+        section.prepend(data.html).hide().slideToggle();
       }
       break;
       case 'updatequestion': {

@@ -249,7 +249,11 @@ class QuestionsController < ApplicationController
         @question.add_contributor(@question.user)
 
         sweep_question_views
-        Magent::WebSocketChannel.push({id: "newquestion", object_id: @question.id, name: @question.title, channel_id: current_group.slug})
+        Magent::WebSocketChannel.push({id: "newquestion",
+                                       object_id: @question.id,
+                                       name: @question.title,
+                                       html: render_to_string(:partial => "questions/question", :object => @question),
+                                       channel_id: current_group.slug})
 
         current_group.tag_list.add_tags(*@question.tags)
         unless @question.anonymous
