@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:set_comment_count"] do
+task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:set_comment_count"] do
 end
 
 
@@ -438,6 +438,32 @@ namespace :fixdb do
 
       post.unset({:versions => true})
     end
+  end
+
+  task :ads => [:init]  do
+    collection = Mongoid.database.collection("ads")
+    collection.find.each do |ad|
+      group = Group.find(ad["group_id"])
+      positions = {'context_panel' => "sidebar",
+                   'header' => "header",
+                   'footer' => "footer",
+                   'content' => "navbar"}
+      widget = nil
+      case ad['_type']
+      when "Adsense"
+        widget = AdsenseWidget.new(:settings =>{:client => ad['google_ad_client'],
+                          :slot => ad['google_ad_slot'],
+                          :width => ad['google_ad_width'],
+                          :height => ad['google_ad_height']})
+      when "Adbard"
+        widget = AdbardWidget.new(:settings =>{:host_id => ad['adbard_host_id'],
+                                  :site_key => ad['adbard_site_key']})
+      end
+      widget_list = group.mainlist_widgets
+      widget_list.send(:"#{positions[ad['position']]}") << widget
+      widget.save
+    end
+    collection.remove
   end
 
 end
