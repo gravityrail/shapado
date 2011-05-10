@@ -41,7 +41,22 @@ var ShapadoSocket = {
       }
       break;
       case 'newquestion': {
-        alert("new question: "+data.name);
+        var section = $("section.questions-index");
+        section.prepend(data.html).hide().slideToggle();
+      }
+      break;
+      case 'updatequestion': {
+        var key = "article.Question#"+data.object_id;
+        for(var prop in data.changes) {
+          if(prop == "title") {
+            var n = data.changes[prop].pop();
+            $(key+" h2 a").text(n);
+          }
+        }
+      }
+      break;
+      case 'destroyquestion': {
+        $("article.Question#"+data.object_id).fadeOut();
       }
       break;
       case 'newanswer': {
