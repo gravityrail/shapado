@@ -13,7 +13,7 @@
     - last_target_date = question.updated_at
     - owner = question.user unless question.anonymous
 
-  %article{:class => class_for_question(question)}
+  %article{:class => class_for_question(question), :id => question.id}
     -cache("question_on_index_#{question.id}_#{I18n.locale}") do
       %h2
         -if question.wiki

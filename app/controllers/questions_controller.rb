@@ -227,7 +227,7 @@ class QuestionsController < ApplicationController
         @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
-            flash[:notice] = "The user is already registered, please log in"
+            flash[:notice] = "The user is already registered, please log in" # TODO: i18n
             return create_draft!
           else
             @question.user = @user
@@ -300,7 +300,8 @@ class QuestionsController < ApplicationController
       @question.updated_by = current_user
       @question.last_target = @question
 
-      tags_changes = @question.changes["tags"]
+      changes = @question.changes
+      tags_changes = changes["tags"]
 
       if @question.slug_changed?
         @question.slugs = [] if @question.slugs.nil?
@@ -317,6 +318,13 @@ class QuestionsController < ApplicationController
         if tags_changes
           Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
         end
+
+        puts ">>>>>>>>>>>>>>>> #{changes.inspect}"
+        Magent::WebSocketChannel.push({id: "updatequestion",
+                                       object_id: @question.id,
+                                       name: @question.title,
+                                       changes: changes,
+                                       channel_id: current_group.slug})
 
         if !@question.removed_tags.blank?
           flash[:warning] = I18n.t("questions.model.messages.tags_not_added",
@@ -345,6 +353,10 @@ class QuestionsController < ApplicationController
     @question.destroy
 
     Jobs::Questions.async.on_destroy_question(current_user.id, @question.attributes).commit!
+    Magent::WebSocketChannel.push({id: "destroyquestion",
+                                   object_id: @question.id,
+                                   name: @question.title,
+                                   channel_id: current_group.slug});
 
     respond_to do |format|
       format.html { redirect_to(questions_url) }

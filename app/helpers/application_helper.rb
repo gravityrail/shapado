@@ -194,7 +194,7 @@ module ApplicationHelper
   end
 
   def class_for_question(question)
-    klass = ""
+    klass = "Question "
 
     if question.accepted
       klass << "accepted"
