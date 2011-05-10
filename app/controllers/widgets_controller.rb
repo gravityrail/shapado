@@ -20,7 +20,7 @@ class WidgetsController < ApplicationController
   # POST /widgets
   # POST /widgets.json
   def create
-    if Widget.types(params[:tab]).include?(params[:widget][:_type])
+    if Widget.types(params[:tab],current_group.has_custom_ads).include?(params[:widget][:_type])
       @widget = params[:widget][:_type].constantize.new
     end
 
