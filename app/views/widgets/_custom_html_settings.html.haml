@@ -1,0 +1,13 @@
+.field
+  = label :title, t('widgets.settings.title'), :class => "label"
+  = text_field_tag "settings[title]", widget.settings["title"],:class => "text_field"
+
+.field
+  = label :content, t('widgets.settings.content'), :class => "label"
+  = text_area_tag "settings[content]", widget.settings["content"],:class => "text_field"
+
+.field
+  = label :footer, t('widgets.settings.footer'), :class => "label"
+  = text_field_tag "settings[footer]", widget.settings["footer"],:class => "textarea_field"
+
+= render :partial => "shared/external_widget_settings", :locals => {:widget => widget}

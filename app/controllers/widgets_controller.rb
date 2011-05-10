@@ -102,7 +102,7 @@ class WidgetsController < ApplicationController
       redirect_to groups_path
     elsif !current_user.owner_of?(@group)
       flash[:error] = t("global.permission_denied")
-      redirect_to ads_path
+      redirect_to widgets_path
     end
   end
 end

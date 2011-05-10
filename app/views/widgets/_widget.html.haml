@@ -1,7 +1,7 @@
 %li{:id => widget.name}
   .widget_description
     %h2
-      = widget.name
+      = widget.name.titleize
       %small
         = link_to t("scaffold.destroy"), widget_path(widget, :tab => @active_subtab||"mainlist", :position => position), :method => :delete, :confirm => t("scaffold.sure", :model => "widget")
     %p
