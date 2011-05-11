@@ -4,7 +4,7 @@ class Answer
   include MongoidExt::Filter
   include MongoidExt::Random
 
-  include Support::Versionable
+  include MongoidExt::Versioning
   include Support::Voteable
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
@@ -47,7 +47,7 @@ class Answer
   validates_presence_of :user_id
   validates_presence_of :question_id
 
-  versionable_keys :body
+  versionable_keys :body, :user_field => "updated_by_id"
   filterable_keys :body
 
   validate :disallow_spam
