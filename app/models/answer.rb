@@ -47,7 +47,7 @@ class Answer
   validates_presence_of :user_id
   validates_presence_of :question_id
 
-  versionable_keys :body, :user_field => "updated_by_id"
+  versionable_keys :body, :owner_field => "updated_by_id"
   filterable_keys :body
 
   validate :disallow_spam

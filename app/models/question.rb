@@ -109,7 +109,7 @@ class Question
 #   validates_true_for :tags, :logic => lambda { |q| q.tags.size <= 9},
 #                      :message => lambda { |q| I18n.t("questions.model.messages.too_many_tags") if q.tags.size > 9 }
 
-  versionable_keys :title, :body, :tags, :user_field => "updated_by_id"
+  versionable_keys :title, :body, :tags, :owner_field => "updated_by_id"
   filterable_keys :title, :body
   language :language
 

@@ -44,7 +44,6 @@ gem "magent", "0.5.2"
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'
 
-gem "differ", "0.1.1"
 gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 
 gem "twitter-text", "1.1.8"

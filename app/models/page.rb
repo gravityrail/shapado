@@ -29,7 +29,7 @@ class Page
   file_key :js
   file_key :css
 
-  versionable_keys :title, :body, :tags, :user_field => "updated_by_id"
+  versionable_keys :title, :body, :tags, :owner_field => "updated_by_id"
 
   validates_presence_of :group
   validates_uniqueness_of :title, :scope => [:group_id, :language]
