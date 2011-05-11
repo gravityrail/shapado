@@ -22,42 +22,23 @@
   = form.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "content", :tab=>@active_subtab)
   - langs = @group.languages.sort
-  -case @active_subtab.to_sym
-    -when :question_prompt
+  - default_lang = langs.delete(@group.language)
+
+  -if @active_subtab == "head_tag"
+    =text_field_tag "group[custom_html][#{@active_subtab}]", @group.custom_html.send(@active_subtab)[default_lang], :class => "text_field"
+  -elsif %w[question_help question_prompt head top_bar footer]
+    .field
+      =form.label "_#{@active_subtab}[#{default_lang}]", language_desc(default_lang), :class => "label"
+      =text_field_tag "group[custom_html][#{@active_subtab}[#{default_lang}]]", @group.custom_html.send(@active_subtab)[default_lang], :class => "text_field"
+    .lang-fields
+      %ul
+        -langs.each do |lang|
+          %li
+            = link_to language_desc(lang), "##{@active_subtab}-#{lang}"
       -langs.each do |lang|
-        .field
-          =form.label "_question_prompt[#{lang}]", language_desc(lang), :class => "label"
-          =text_field_tag "group[custom_html][question_prompt[#{lang}]]", @group.custom_html.question_prompt[lang], :class => "text_field"
+        .field{:id => "#{@active_subtab}-#{lang}"}
+          =text_field_tag "group[custom_html][#{@active_subtab}[#{lang}]]", @group.custom_html.send(@active_subtab)[lang], :class => "text_field"
 
-    -when :question_help
-      -langs.each do |lang|
-        .field
-          =form.label "group[custom_html][#{lang}]", language_desc(lang), :class => "label"
-          =text_area_tag "group[custom_html][question_help[#{lang}]]", @group.custom_html.question_help[lang], :class => "text_area"
-
-    -when :head
-      -langs.each do |lang|
-        .field
-          =form.label "_head[#{lang}]", language_desc(lang), :class => "label"
-          =text_area_tag "group[custom_html][head[#{lang}]]", @group.custom_html.head[lang], :class => "text_area"
-
-    -when :footer
-      -langs.each do |lang|
-        .field
-          = form.label "footer", language_desc(lang), :class => "label"
-          = text_area_tag "group[custom_html][footer[#{lang}]]", @group.custom_html.footer[lang], :class => "text_area"
-
-    -when :head_tag
-      .field
-        = form.label "head_tag", h("<head>"), :class => "label"
-        = text_area_tag "group[custom_html][head_tag]", @group.custom_html.head_tag, :class => "text_area"
-
-    -when :top_bar
-      .field
-        =form.label "top_bar", t(".top_bar"), :class => "label"
-        =text_area_tag "group[custom_html][top_bar]", @group.custom_html.top_bar, :class => "text_area"
-        %small
-          =t(".top_bar_tip")
 
   .buttons
     = form.submit t("scaffold.update"), :class => "save"

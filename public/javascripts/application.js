@@ -6,6 +6,9 @@ $(document).ready(function() {
       window.open(authUrl, 'openid_popup', 'width=790,height=580');
       return false;
   })
+
+  $('.lang-fields').tabs();
+
   init_geolocal();
   $("form.nestedAnswerForm").hide();
   $("#add_comment_form").hide();
