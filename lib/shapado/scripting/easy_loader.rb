@@ -1,3 +1,5 @@
+ENV["SHAPADO_NO_CHECK_CONFIG"] = "1"
+
 Dir.chdir(File.dirname(__FILE__)) do
   require 'bundler/setup'
   Bundler.setup
@@ -19,7 +21,7 @@ Rails.logger = Logger.new("#{Rails.root}/log/#{File.basename($0).parameterize.to
 require 'mongoid'
 require 'mongoid_ext'
 require 'devise'
-require 'action_mailer'
+require 'action_mailer/railtie'
 require 'action_controller'
 require 'action_view'
 require 'state_machine'
@@ -28,11 +30,13 @@ require 'haml'
 require 'haml/template'
 require 'sass'
 
-require './vendor/plugins/i18n_action_mailer/lib/i18n_action_mailer'
-
-ActionController::Base.prepend_view_path "#{Rails.root}/app/views"
 
 Dir.chdir(Rails.root.to_s) do
+  $:.unshift ::File.expand_path("app/helpers")
+  $:.unshift ::File.expand_path("lib")
+
+  require 'shapado/scripting/application'
+
   Mongoid.load!("./config/mongoid.yml")
   Magent.setup(YAML.load_file(Rails.root.join('config', 'magent.yml')),
                   Rails.env, {})
@@ -40,15 +44,14 @@ Dir.chdir(Rails.root.to_s) do
   MongoidExt.init
 
   # initializers
-  require './config/load_config'
+  require './vendor/plugins/i18n_action_mailer/lib/i18n_action_mailer'
+  require './config/initializers/00_config'
   require './config/initializers/01_locales'
   require './config/initializers/constants'
   require './config/initializers/devise'
 
   ActiveSupport::Dependencies.mechanism = :require
   ActiveSupport::Dependencies.autoload_paths << ::File.expand_path("lib")
-  $:.unshift ::File.expand_path("app/helpers")
-  $:.unshift ::File.expand_path("lib")
 
   Dir.glob("app/models/**/*.rb") do |model_path|
     dirname = ::File.dirname(::File.expand_path(model_path))

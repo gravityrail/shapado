@@ -30,7 +30,12 @@ module Shapado
     # Activate observers that should always be running
     # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
-    config.action_mailer.delivery_method = :sendmail
+    if AppConfig.smtp["activate"]
+      config.action_mailer.delivery_method = :smtp
+    else
+      config.action_mailer.delivery_method = :sendmail
+    end
+    config.action_mailer.default_url_options = {:host => AppConfig.domain}
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

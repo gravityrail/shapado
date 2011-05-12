@@ -117,7 +117,7 @@ GEM
     machinist (1.0.6)
     machinist_mongo (1.2.0)
       machinist (~> 1.0.6)
-    magent (0.5.3)
+    magent (0.5.4)
       em-websocket
       em-websocket
       mongo
@@ -293,7 +293,7 @@ DEPENDENCIES
   haml
   hpricot
   machinist_mongo
-  magent (= 0.5.3)
+  magent (= 0.5.4)
   magic
   mechanize
   mini_magick (~> 2.3)
