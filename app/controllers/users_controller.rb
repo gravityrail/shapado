@@ -22,7 +22,22 @@ class UsersController < ApplicationController
                     [:oldest, [:created_at, :asc]]],
         :follows => [[:questions, []],
                      [:following, []],
-                     [:followers, []]]
+                     [:followers, []]],
+        :by_me => [[:newest, %w(created_at desc)],
+                   [:hot, %w(hotness desc)],
+                   [:votes, %w(votes_count desc)]],
+        :preferred => [[:newest, %w(created_at desc)],
+                   [:hot, %w(hotness desc)],
+                   [:votes, %w(votes_count desc)]],
+        :expertise => [[:newest, %w(created_at desc)],
+                   [:hot, %w(hotness desc)],
+                   [:votes, %w(votes_count desc)]],
+        :feed => [[:newest, %w(created_at desc)],
+                   [:hot, %w(hotness desc)],
+                   [:votes, %w(votes_count desc)]],
+        :contributed => [[:newest, %w(created_at desc)],
+                   [:hot, %w(hotness desc)],
+                   [:votes, %w(votes_count desc)]]
 
   def index
     set_page_title(t("users.index.title"))

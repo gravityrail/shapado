@@ -8,7 +8,7 @@ class Moderate::QuestionsController < ApplicationController
 
 
   def index
-    @active_subtab = "retagg"
+    @active_subtab = "retag"
     options = {:banned => false}
 
     @questions = current_group.questions.where(options.merge(:tags => {:$size => 0})).
