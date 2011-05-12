@@ -122,28 +122,32 @@ module MultiauthSupport
         m.override({:user_id => user.id}, {:user_id => self.id})
       end
       begin
-        if !self.facebook_login? && user.facebook_login?
-          self.facebook_friend_list.destroy &&
-          FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
-          #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
+        if user.facebook_login?
+          self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
+          self.facebook_friends_list.destroy &&
+          FacebookFriendsList.override({:user_id => user.id}, {:user_id => self.id})
+          self.push(:"user_info.facebook" => user.user_info["facebook"]) if user_info["facebook"].blank?
         end
         if user.twitter_login?
           User.override({ :_id => self.id }, { :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
                         :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
-          self.twitter_friend_list.destroy &&
-          TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
+          self.twitter_friends_list.destroy &&
+          TwitterFriendsList.override({:user_id => user.id}, {:user_id => self.id})
+          self.push(:"user_info.twitter" => user.user_info["twitter"]) if user_info["twitter"].blank?
         end
         if user.identica_login?
           User.override({ :_id => self.id }, { :identica_id => user.identica_id,
                           :identica_secret => user.identica_secret,
                           :identica_token => user.identica_token})
           IdenticaFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.identica_friends_list.destroy
+          self.push(:"user_info.identica" => user.user_info["identica"]) if user_info["identica"].blank?
         end
         if user.linked_in_login?
           User.override({ :_id => self.id }, { :linked_in_id => user.linked_in_id,
                           :identica_secret => user.identica_secret,
                           :identica_token => user.identica_token})
           LinkedInFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.linked_in_friends_list.destroy
+          self.push(:"user_info.linked_in" => user.user_info["linked_in"]) if user_info["linked_in"].blank?
         end
       rescue Exception => e
         Rails.logger.info e.message
@@ -170,7 +174,6 @@ module MultiauthSupport
     end
 
     def facebook_client(property = 'friends', params = 'fields[]=name&fields[]=picture&fields[]=locale')
-      p "https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}&#{params}"
       response = open(URI.encode("https://graph.facebook.com/#{self.facebook_id}/#{property}?access_token=#{self.facebook_token}&#{params}")).read
       JSON.parse(response)
     end
