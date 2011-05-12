@@ -40,7 +40,7 @@ class Invitation
   end
 
   def check_confirm
-    !state?(:pending) && !state?(:connected)
+    !state?(:pending) && !state?(:connect)
   end
 
   def check_connection

@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
     emails = params[:invitations][:emails].split(',')
     user_role = params[:invitations][:user_role]
     emails.each do |email|
-      invited_user = User.where(:email => email)
+      invited_user = User.where(:email => email).first
       unless email.blank? ||
           (invited_user && current_group.is_member?(invited_user))
         invitation = current_user.invite(email, user_role,
