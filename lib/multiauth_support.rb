@@ -127,17 +127,23 @@ module MultiauthSupport
           FacebookFriendList.override({:user_id => user.id}, {:user_id => self.id})
           #self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
         end
-        if !self.twitter_login? && user.twitter_login?
+        if user.twitter_login?
+          User.override({ :_id => self.id }, { :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
+                        :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
           self.twitter_friend_list.destroy &&
           TwitterFriendList.override({:user_id => user.id}, {:user_id => self.id})
-          #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
-          #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
         end
-        if !self.identica_login? && user.identica_login?
-          self.identica_friend_list.destroy &&
-          IdenticaFriendList.override({:user_id => user.id}, {:user_id => self.id})
-          #self.update({ :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
-          #              :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
+        if user.identica_login?
+          User.override({ :_id => self.id }, { :identica_id => user.identica_id,
+                          :identica_secret => user.identica_secret,
+                          :identica_token => user.identica_token})
+          IdenticaFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.identica_friends_list.destroy
+        end
+        if user.linked_in_login?
+          User.override({ :_id => self.id }, { :linked_in_id => user.linked_in_id,
+                          :identica_secret => user.identica_secret,
+                          :identica_token => user.identica_token})
+          LinkedInFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.linked_in_friends_list.destroy
         end
       rescue Exception => e
         Rails.logger.info e.message
