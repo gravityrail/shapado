@@ -30,7 +30,7 @@
 -if @questions.empty?
   = render "shared/empty"
 
-
+= render "shared/post", {questions: @questions, for_answers: params[:answers]}
 
 -if params[:answers]
   /Answers

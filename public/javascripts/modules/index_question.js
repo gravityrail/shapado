@@ -1,32 +1,16 @@
 $(document).ready(function() {
-
-  $("#search_box .description, #search_box .button").hide()
-
-  $("#search_box input[type=text]").focus(function(event){
-    $("#search_box .description, #search_box .button").show()
-  });
-
-  $("#search_box .search").click(function(event) {
-    var questions = $(".items#questions")
-    var form = $(this).parents("form")
-    var button = $(this)
-    button.attr('disabled', true)
-    $.ajax({
-        url: "/search.js",
-        dataType: "json",
-        type: "GET",
-        data: form.serialize()+"&format=js",
-        success: function(data) {
-          questions.empty();
-          highlightEffect(questions)
-          questions.append(data.html);
-        },
-        error: manageAjaxError,
-        complete: function(XMLHttpRequest, textStatus) {
-           button.attr('disabled', false)
-        }
-    });
-    return false;
+  var extraParams = getUrlVars();
+  extraParams['format'] = 'js';
+  $(".quick_question #ask_question").searcher({
+    url : "/questions/related_questions.js",
+    target : $(".questions-index"),
+    fields : $(".quick_question #ask_question input#question_title"),
+    behaviour : "live",
+    timeout : 500,
+    extraParams : extraParams,
+    success: function(data) {
+      $('#additional_info .pagination').html(data.pagination);
+    }
   });
 
   $(".flag-link-index").live("click", function(event) {

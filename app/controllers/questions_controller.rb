@@ -67,20 +67,34 @@ class QuestionsController < ApplicationController
       @question.group_id = current_group.id
     end
 
-    @question.tags += @question.title.downcase.split(",").join(" ").split(" ") if @question.title
+    text_search = @question.title || ""
+    text_search << (@question.body || "")
+    text_search << @question.tags.join
+    conditions = {group_id: @question.group_id, banned: false}
+    if params[:unanswers]
+      conditions[:answered_with_id] = nil
+    end
 
-    @questions = Question.related_questions(@question).without(:_keywords, :watchers, :flags,
-                                                               :close_requests, :open_requests, :versions).
-                                                       order_by(:answers_count.desc).
-                                                       paginate(paginate_opts(params))
+    if params[:per_page]
+      conditions[:per_page] = params[:per_page]
+    end
+
+    @questions = Question.filter(text_search, conditions)
 
     respond_to do |format|
       format.js do
         content = ''
+        settings = {}
         if !@questions.empty?
-          content = render_to_string(:partial => "questions/question",
-                           :collection  => @questions,
-                          :locals => {:mini => true, :lite => true});
+          if params[:mini]
+            content = render_to_string(:partial => "questions/question",
+                                     :collection  => @questions,
+                                     :locals => {:mini => true, :lite => true});
+          else
+            content = render_to_string(:partial => "shared/post",
+                                       :locals => {:questions => @questions,
+                                       :for_answers => params[:answers]})
+          end
         end
         render :json => {:html => content}.to_json
       end
