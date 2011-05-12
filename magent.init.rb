@@ -1,0 +1,1 @@
+require './lib/shapado/scripting/easy_loader'

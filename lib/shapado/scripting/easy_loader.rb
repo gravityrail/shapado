@@ -20,10 +20,24 @@ require 'mongoid'
 require 'mongoid_ext'
 require 'devise'
 require 'action_mailer'
+require 'action_controller'
+require 'action_view'
 require 'state_machine'
+require 'magent'
+require 'haml'
+require 'haml/template'
+require 'sass'
+
+require './vendor/plugins/i18n_action_mailer/lib/i18n_action_mailer'
+
+ActionController::Base.prepend_view_path "#{Rails.root}/app/views"
 
 Dir.chdir(Rails.root.to_s) do
   Mongoid.load!("./config/mongoid.yml")
+  Magent.setup(YAML.load_file(Rails.root.join('config', 'magent.yml')),
+                  Rails.env, {})
+
+  MongoidExt.init
 
   # initializers
   require './config/load_config'

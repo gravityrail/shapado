@@ -117,9 +117,12 @@ GEM
     machinist (1.0.6)
     machinist_mongo (1.2.0)
       machinist (~> 1.0.6)
-    magent (0.5.2)
+    magent (0.5.3)
+      em-websocket
       em-websocket
       mongo
+      mongo (~> 1.0)
+      uuidtools
       uuidtools
     magic (0.2.6)
       ffi (>= 0.6.3)
@@ -290,7 +293,7 @@ DEPENDENCIES
   haml
   hpricot
   machinist_mongo
-  magent (= 0.5.2)
+  magent (= 0.5.3)
   magic
   mechanize
   mini_magick (~> 2.3)
