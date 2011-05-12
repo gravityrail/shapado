@@ -51,8 +51,10 @@ Dir.chdir(Rails.root.to_s) do
   end
 
   if ENV["SHAPADO_LOAD_ROUTES"]
+    puts ">> Loading routes..."
     Devise.warden_config = Warden::Config.new
     Rails.application.routes_reloader.paths << Rails.root+"config/routes.rb"
     Rails.application.routes_reloader.execute_if_updated
+    Rails.application.reload_routes!
   end
 end
