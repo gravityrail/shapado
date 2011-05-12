@@ -32,12 +32,20 @@ data["created_at"] = mail.date
 if mail.multipart?
   mail.parts.each do |part|
     if !part.attachment? && part.content_type =~ /text/
-      data["body"] = part.body.decoded
+      data["body"] = ""
+      part.body.decoded.each_line do |line|
+        break if line =~ /^%%.+%%$/
+        data["body"] << line
+      end
       break
     end
   end
 else
-  data["body"] = mail.body.decoded
+  data["body"] = ""
+  mail.body.decoded.each_line do |line|
+    break if line =~ /^%%.+%%$/
+    data["body"] << line
+  end
 end
 
 path = "#{EMAIL_DIR}/#{group_slug}"
