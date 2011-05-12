@@ -8,7 +8,9 @@ class InvitationsController < ApplicationController
     emails = params[:invitations][:emails].split(',')
     user_role = params[:invitations][:user_role]
     emails.each do |email|
-      unless email.blank?
+      invited_user = User.where(:email => email).first
+      unless email.blank? ||
+          (invited_user && current_group.is_member?(invited_user))
         invitation = current_user.invite(email, user_role,
                                        current_group)
         Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
@@ -25,7 +27,8 @@ class InvitationsController < ApplicationController
         !logged_in?
       redirect_to new_user_path(:invitation_id => params[:id])
     elsif @invitation.state?(:pending) && logged_in?
-      @invitation.connect!
+      current_user.accept_invitation(params[:id]) &&
+        @invitation.connect!
     end
     @invitation.send(params[:step]) if params[:step]
     if @invitation.state?(:follow_suggestions)
