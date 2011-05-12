@@ -88,7 +88,7 @@ class Notifier < ActionMailer::Base
     set_locale @language
     mail(:to => @invitation.email, :from => from_email(@group),
          :subject => I18n.t("mailers.notifications.new_invitation.subject",
-                            :login => @user.login,
+                            :user => @user.login,
                             :group => @group.name, :locale => @language),
          :date => Time.now) do |format|
       format.text
