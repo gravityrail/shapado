@@ -87,7 +87,7 @@ class ApplicationController < ActionController::Base
     end
     @active_subtab ||= params[:sort] || "newest"
 
-    @questions = Question.minimal.where(conditions.merge(extra_conditions)).order_by(current_order)
+    @questions = Question.minimal.where(conditions.merge(extra_conditions)).order_by(current_order.split)
 
     extra_scope.keys.each do |key|
       @questions = @questions.send(key, extra_scope[key])
@@ -100,8 +100,7 @@ class ApplicationController < ActionController::Base
     if logged_in?
       feed_params = { :feed_token => current_user.feed_token }
     else
-      feed_params = {  :lang => I18n.locale,
-                          :mylangs => current_languages }
+      feed_params = {  :lang => I18n.locale, :mylangs => current_languages }
     end
     add_feeds_url(url_for({:format => "atom"}.merge(feed_params)), t("feeds.questions"))
     if params[:tags]
