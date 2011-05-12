@@ -1,4 +1,5 @@
-APP_ROOT = File.expand_path("../../", __FILE__)
+require 'bundler'
+APP_ROOT = Bundler.root.to_s
 
 daily_report = "#{APP_ROOT}/script/daily_report production"
 cleanup = "#{APP_ROOT}/script/cleanup production"
