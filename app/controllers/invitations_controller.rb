@@ -8,7 +8,9 @@ class InvitationsController < ApplicationController
     emails = params[:invitations][:emails].split(',')
     user_role = params[:invitations][:user_role]
     emails.each do |email|
-      unless email.blank?
+      invited_user = User.where(:email => email)
+      unless email.blank? ||
+          (invited_user && current_group.is_member?(invited_user))
         invitation = current_user.invite(email, user_role,
                                        current_group)
         Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
