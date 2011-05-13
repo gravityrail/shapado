@@ -28,11 +28,17 @@ preload_app true
 before_fork do |server, worker|
   old_pid = WD+'/tmp/unicorn.pid.oldbin'
   if File.exists?(old_pid) && server.pid != old_pid
+    pid = File.read(old_pid).to_i
+
     begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH
-      puts ">>>>>>>> Error killing previous instance"
-    # someone else did our job for us
+      Process.kill("QUIT", pid)
+      Process.kill(0, pid)
+      Process.wait
+    rescue Errno::ECHILD, Errno::ESRCH => e
+      $stderr.puts ">> Process #{pid} has stopped"
+    rescue Errno::ENOENT => e
+      $stderr.puts ">> Error killing previous instance. #{e.message}"
+      # someone else did our job for us
     end
   end
 end
