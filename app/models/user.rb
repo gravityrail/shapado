@@ -47,6 +47,7 @@ class User
   field :following_count,           :type => Integer, :default => 0
 
   field :membership_list,           :type => MembershipList
+  field :inactive_membership_list,  :type => MembershipList
 
   field :feed_token,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
   field :socket_key,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
@@ -113,6 +114,17 @@ class User
       m = self[:membership_list] = MembershipList.new
     elsif !m.kind_of?(MembershipList)
       m = self[:membership_list] = MembershipList[m]
+    end
+    m
+  end
+
+  def inactive_membership_list
+    m = self[:inactive_membership_list]
+
+    if m.nil?
+      m = self[:inactive_membership_list] = MembershipList.new
+    elsif !m.kind_of?(MembershipList)
+      m = self[:inactive_membership_list] = MembershipList[m]
     end
     m
   end
@@ -488,6 +500,19 @@ Time.zone.now ? 1 : 0)
       end
     end
     config
+  end
+
+  def leave(group)
+    if group.kind_of?(Group)
+      group = group.id
+    end
+
+    config = self.membership_list[group]
+    if !config.nil?
+      self.membership_list.delete(group)
+      self.inactive_membership_list[group] = config
+      self.save!
+    end
   end
 
   def reputation_stats(group, options = {})

@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       post :connect
       get :follow_tags
       get :unfollow_tags
+      get :leave
     end
 
     member do
