@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 0976d3c8af3218a681645374f992583c23a5e292
+  revision: a68e9fff5195b69a6fc811bb90a565299925aaa5
   specs:
     mongoid_ext (0.6.1)
       differ (>= 0.1.2)
@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: c7c3e49609464b967e343cdfdf611476a5156c0c
+  revision: b760004d5bc473cba63dacaec5c1be49202f3e4f
   specs:
     mongoid (2.0.1)
       activemodel (~> 3.0)
@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: http://github.com/dcu/multiauth.git
-  revision: ff7cca336f8bbe8455c86a937f90d75548074dfd
+  revision: 9b7776cf8840dc14fbad05f462c6b9bbdce54557
   specs:
     multiauth (0.2.7)
       omniauth
@@ -100,7 +100,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
+      rack (>= 1.1.0, < 2)
     ffaker (1.5.0)
     ffi (1.0.7)
       rake (>= 0.8.7)
@@ -141,7 +141,7 @@ GEM
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
-    multi_json (1.0.1)
+    multi_json (1.0.2)
     multi_xml (0.2.2)
     multipart-post (1.1.0)
     net-ldap (0.2.2)
@@ -223,17 +223,19 @@ GEM
       remarkable_activemodel (~> 4.0.0.alpha4)
     rest-client (1.6.1)
       mime-types (>= 1.16)
-    rspec (2.6.0.rc6)
-      rspec-core (= 2.6.0.rc6)
-      rspec-expectations (= 2.6.0.rc6)
-      rspec-mocks (= 2.6.0.rc6)
-    rspec-core (2.6.0.rc6)
-    rspec-expectations (2.6.0.rc6)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.0)
+    rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.6.0.rc6)
-    rspec-rails (2.2.0)
-      rails (~> 3.0.0)
-      rspec (~> 2.2)
+    rspec-mocks (2.6.0)
+    rspec-rails (2.6.0)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.6.0)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
