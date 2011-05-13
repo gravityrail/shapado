@@ -29,13 +29,13 @@ end
 data["subdomain"] = group_slug
 data["created_at"] = mail.date
 
+body_lines = []
 if mail.multipart?
   mail.parts.each do |part|
     if !part.attachment? && part.content_type =~ /text/
-      data["body"] = ""
       part.body.decoded.each_line do |line|
         break if line =~ /^>  %%.+%%$/
-        data["body"] << line
+        body_lines << line
       end
       break
     end
@@ -44,9 +44,15 @@ else
   data["body"] = ""
   mail.body.decoded.each_line do |line|
     break if line =~ /^>  %%.+%%$/
-    data["body"] << line
+    body_lines << line
   end
 end
+
+if body_lines.size > 2
+  body_lines.pop
+  body_lines.pop
+end
+data["body"] = body_lines.join("\n")
 
 path = "#{EMAIL_DIR}/#{group_slug}"
 FileUtils.mkpath(path)
