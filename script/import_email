@@ -37,6 +37,6 @@ Dir.glob(emails_dir+"/*") do |path|
                        :group => group)
     end
 
-#     File.unlink(email_info)
+    FileUtils.rm_rf(email_info)
   end
 end

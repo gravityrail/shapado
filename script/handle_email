@@ -34,7 +34,7 @@ if mail.multipart?
     if !part.attachment? && part.content_type =~ /text/
       data["body"] = ""
       part.body.decoded.each_line do |line|
-        break if line =~ /^%%.+%%$/
+        break if line =~ /^>  %%.+%%$/
         data["body"] << line
       end
       break
@@ -43,7 +43,7 @@ if mail.multipart?
 else
   data["body"] = ""
   mail.body.decoded.each_line do |line|
-    break if line =~ /^%%.+%%$/
+    break if line =~ /^>  %%.+%%$/
     data["body"] << line
   end
 end
