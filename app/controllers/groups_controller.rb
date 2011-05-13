@@ -82,10 +82,10 @@ class GroupsController < ApplicationController
     @group.owner = current_user
     @group.state = "active"
 
-    @group.reset_widgets!
-
     respond_to do |format|
       if @group.save
+        @group.create_default_widgets
+
         Jobs::Images.async.generate_group_thumbnails(@group.id)
         @group.add_member(current_user, "owner")
         flash[:notice] = I18n.t("groups.create.flash_notice")

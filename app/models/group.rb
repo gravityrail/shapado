@@ -294,7 +294,11 @@ class Group
     self.question_widgets = WidgetList.new
     self.mainlist_widgets = WidgetList.new
     self.external_widgets = WidgetList.new
+    self.create_default_widgets
 
+  end
+
+  def create_default_widgets
     [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
      TagListWidget, CurrentTagsWidget].each do |w|
       self.question_widgets.sidebar << w.new
