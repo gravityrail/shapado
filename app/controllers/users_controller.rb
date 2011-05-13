@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 
   before_filter :check_signup_type, :only => [:new]
 
+  tab_config = [[:newest, [:created_at, Mongo::DESCENDING]],
+                [:hot, [:hotness, Mongo::DESCENDING]],
+                [:votes, [:votes_average, Mongo::DESCENDING], [:created_at, Mongo::DESCENDING]],
+                [:oldest, [:created_at, Mongo::ASCENDING]]]
+
   subtabs :index => [[:reputation, "reputation"],
                      [:newest, %w(created_at desc)],
                      [:oldest, %w(created_at asc)],
@@ -23,21 +28,11 @@ class UsersController < ApplicationController
         :follows => [[:questions, []],
                      [:following, []],
                      [:followers, []]],
-        :by_me => [[:newest, %w(created_at desc)],
-                   [:hot, %w(hotness desc)],
-                   [:votes, %w(votes_count desc)]],
-        :preferred => [[:newest, %w(created_at desc)],
-                   [:hot, %w(hotness desc)],
-                   [:votes, %w(votes_count desc)]],
-        :expertise => [[:newest, %w(created_at desc)],
-                   [:hot, %w(hotness desc)],
-                   [:votes, %w(votes_count desc)]],
-        :feed => [[:newest, %w(created_at desc)],
-                   [:hot, %w(hotness desc)],
-                   [:votes, %w(votes_count desc)]],
-        :contributed => [[:newest, %w(created_at desc)],
-                   [:hot, %w(hotness desc)],
-                   [:votes, %w(votes_count desc)]]
+        :by_me => tab_config,
+        :preferred => tab_config,
+        :expertise => tab_config,
+        :feed => tab_config,
+        :contributed => tab_config
 
   def index
     set_page_title(t("users.index.title"))

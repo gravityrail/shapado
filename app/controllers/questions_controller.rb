@@ -12,9 +12,10 @@ class QuestionsController < ApplicationController
   tabs :default => :questions, :tags => :tags,
        :unanswered => :unanswered, :new => :ask_question
 
-  subtabs :index => [[:newest, %w(created_at desc)], [:hot, [%w(hotness desc), %w(views_count desc)]], [:votes, %w(votes_average desc)], [:activity, %w(activity_at desc)], [:expert, %w(created_at desc)]],
-          :unanswered => [[:newest, %w(created_at desc)], [:votes, %w(votes_average desc)], [:mytags, %w(created_at desc)]],
-          :show => [[:votes, %w(votes_average desc)], [:oldest, %w(created_at asc)], [:newest, %w(created_at desc)]]
+  subtabs :index => [[:newest, [:created_at, Mongo::DESCENDING]],
+                     [:hot, [[:hotness, Mongo::DESCENDING], [:views_count, Mongo::DESCENDING]]], [:votes, [:votes_average, Mongo::DESCENDING]], [:activity, [:activity_at, Mongo::DESCENDING]], [:expert, [:created_at, Mongo::DESCENDING]]],
+          :unanswered => [[:newest, [:created_at, Mongo::DESCENDING]], [:votes, [:votes_average, Mongo::DESCENDING]], [:mytags, [:created_at, Mongo::DESCENDING]]],
+          :show => [[:votes, [:votes_average, Mongo::DESCENDING]], [:oldest, [:created_at, Mongo::ASCENDING]], [:newest, [:created_at, Mongo::DESCENDING]]]
   helper :votes
 
   # GET /questions
