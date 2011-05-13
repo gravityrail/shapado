@@ -26,7 +26,7 @@ preload_app true
 #   GC.copy_on_write_friendly = true
 
 before_fork do |server, worker|
-  old_pid = WD+'/tmp/unicorn.pid.oldbin'
+  old_pid = WD+'/tmp/pids/unicorn.pid.oldbin'
   if File.exists?(old_pid) && server.pid != old_pid
     pid = File.read(old_pid).to_i
 
