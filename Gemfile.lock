@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: a68e9fff5195b69a6fc811bb90a565299925aaa5
+  revision: 97697c0b4324a9522beb16460e4aa61682721142
   specs:
     mongoid_ext (0.6.1)
       differ (>= 0.1.2)
