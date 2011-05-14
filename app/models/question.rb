@@ -116,8 +116,6 @@ class Question
   before_save :update_activity_at
   validate :update_language, :on => :create
 
-  validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES, :if => lambda {AppConfig.enable_i18n}
-
   validate :group_language
   validate :disallow_spam
   validate :check_useful
@@ -402,8 +400,10 @@ class Question
   end
 
   def group_language
-    if self.group.present? && !self.group.languages.include?(self.language)
-      self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
+    if AppConfig.enable_i18n && self.group.present?
+      unless self.group.languages.include? self.language || self.language
+        self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
+      end
     end
   end
 

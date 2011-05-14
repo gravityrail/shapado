@@ -21,12 +21,9 @@ module ApplicationHelper
   end
 
   def language_select(f, question, opts = {})
-    selected = if question.new?
-      logged_in? ? current_user.main_language : question.language
-    else
-      question.language
-    end
-    languages = logged_in? ? current_user.preferred_languages : current_group.languages
+
+
+    languages = current_group.languages
 
     f.select :language, languages_options(languages), {:selected => selected}, {:class => "select"}.merge(opts)
   end
