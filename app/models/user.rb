@@ -536,24 +536,21 @@ Time.zone.now ? 1 : 0)
     self.facebook_friends_list.friends
   end
 
-  def fb_friends_ids
-    self.facebook_friends.map do |friend| friend["id"] end
+  def social_friends_ids(provider)
+    self.send(provider+'_friends').map do |friend| friend["id"].to_s end
   end
 
   def twitter_friends
     self.twitter_friends_list.friends
   end
-  alias :twitter_friends_ids :twitter_friends
 
   def identica_friends
     self.identica_friends_list.friends
   end
-  alias :identica_friends_ids :identica_friends
 
   def linked_in_friends
     self.linked_in_friends_list.friends
   end
-  alias :linked_in_friends_ids :linked_in_friends
 
   ## TODO: add google contacts
   def suggestions(group, limit = 5)
@@ -587,10 +584,10 @@ Time.zone.now ? 1 : 0)
 
   #returns tags followed by self suggested friends that I may not follow
   def suggested_tags_by_suggested_friends(group, limit = 5)
-    friends = User.any_of({ :facebook_id => {:$in => self.fb_friends_ids}},
-                          { :identica_id => {:$in => self.identica_friends_ids}},
-                          { :twitter_id => {:$in => self.twitter_friends_ids}},
-                          { :linked_in_id => {:$in => self.linked_in_friends_ids}}).
+    friends = User.any_of({ :facebook_id => {:$in => self.facebook_friends_ids}},
+                          { :identica_id => {:$in => self.social_friends_ids('identica')}},
+                          { :twitter_id => {:$in => self.social_friends_ids('twitter')}},
+                          { :linked_in_id => {:$in => self.social_friends_ids('linked_in')}}).
       where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
             :_id => {:$not =>
               {:$in => self.friend_list.following_ids}})
@@ -608,7 +605,7 @@ Time.zone.now ? 1 : 0)
   # returns user's facebook friends that have an account
   # on shapado but that user is not following
   def suggested_fb_friends(limit = 5)
-    User.where(:facebook_id => {:$in => self.fb_friends_ids},
+    User.where(:facebook_id => {:$in => self.social_friends_ids('facebook')},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -617,7 +614,7 @@ Time.zone.now ? 1 : 0)
   # returns user's twitter friends that have an account
   # on shapado but that user is not following
   def suggested_twitter_friends(limit = 5)
-    User.where(:twitter_id => {:$in => self.twitter_friends_ids},
+    User.where(:twitter_id => {:$in => self.social_friends_ids('twitter')},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -626,7 +623,7 @@ Time.zone.now ? 1 : 0)
   # returns user's identica friends that have an account
   # on shapado but that user is not following
   def suggested_identica_friends(limit = 5)
-    User.where(:identica_id => {:$in => self.identica_friends_ids},
+    User.where(:identica_id => {:$in => self.social_friends_ids('identica')},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -635,7 +632,7 @@ Time.zone.now ? 1 : 0)
   # returns user's linked_in friends that have an account
   # on shapado but that user is not following
   def suggested_linked_in_friends(limit = 5)
-    User.where(:linked_in_id => {:$in => self.linked_in_friends_ids},
+    User.where(:linked_in_id => {:$in => self.social_friends_ids('linked_in')},
                :_id => {:$not =>
                  {:$in => self.friend_list.following_ids}}).
       limit(limit)
@@ -643,7 +640,7 @@ Time.zone.now ? 1 : 0)
 
   # returns all user's facebook friends on shapado
   def all_fb_friends
-    User.where(:facebook_id => {:$in => self.fb_friends_ids})
+    User.where(:facebook_id => {:$in => self.social_friends_ids('facebook')})
   end
 
   # returns a follower that is someone self follows
