@@ -1,4 +1,5 @@
 set :application, "shapado"
+set :asset_packager, "smart_asset"
 
 task :staging do |t|
   set :repository, "git://github.com/ricodigo/shapado.git"
@@ -16,11 +17,10 @@ namespace :deploy do
 
     run "echo '#{`git describe`}' > #{current_path}/public/version.txt"
 
-    run "cd #{current_path} && bundle exec compass compile; wait; true"
-    run <<-EOF
-      cd #{current_path} && mkdir -p '#{current_path}/tmp' && bundle exec smart_asset; true
-    EOF
+    assets.compass
+    assets.package
 
+    magent.restart
     bluepill.restart
   end
 end
