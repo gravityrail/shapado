@@ -132,7 +132,7 @@ class Group
   validates_inclusion_of :signup_type,  :in => %w[all noemail social email]
 
   before_create :disallow_javascript
-  before_create :modify_attributes
+  before_save :modify_attributes
   before_create :create_widget_lists
 
   # TODO: store this variable
