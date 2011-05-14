@@ -65,6 +65,12 @@ gem 'rack-ssl', :require => false
 
 gem 'state_machine', "0.10.4"
 
+group :deploy do
+  gem 'capistrano', :require => false
+  gem 'ricodigo-capistrano-recipes', :require => false
+  gem 'unicorn', :require => false
+end
+
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
   gem 'em-websocket', '~> 0.3.0'
@@ -87,6 +93,5 @@ group :development do
   gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
-  gem 'unicorn', :require => false
 end
 
