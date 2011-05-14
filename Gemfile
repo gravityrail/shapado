@@ -36,7 +36,7 @@ gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils
 
-gem 'smart_asset'
+gem 'jammit'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "~> 2.1.1"
 gem "magent", "0.5.4"
@@ -67,7 +67,7 @@ gem 'state_machine', "0.10.4"
 
 group :deploy do
   gem 'capistrano', :require => false
-  gem 'ricodigo-capistrano-recipes', "~> 0.1.2", :require => false
+  gem 'ricodigo-capistrano-recipes', "~> 0.1.3", :require => false
   gem 'unicorn', :require => false
 end
 

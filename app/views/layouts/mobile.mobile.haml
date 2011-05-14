@@ -6,10 +6,10 @@
       &= page_title
 
     %link{:rel=>"stylesheet", :href=>"/stylesheets/jm/jquery.mobile.css"}
-    = javascript_include_merged(:mobile).html_safe
+    = include_javascripts(:mobile)
     %script{:src=>"/javascripts/jquery.mobile.js", :type => "text/javascript"}
 
-    =stylesheet_link_merged(:mobile).html_safe
+    =include_stylesheets(:mobile)
 
     = csrf_meta_tag
   %body
