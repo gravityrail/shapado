@@ -348,6 +348,9 @@ class UsersController < ApplicationController
   end
 
   def auth
+    if params["pp"]
+      cookies["pp"] = 1
+    end
     head :status => 404
   end
 
