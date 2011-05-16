@@ -47,7 +47,14 @@
     %small
       = t(".language_tip")
 -else
-  = f.hidden_field :language, :value => (current_group.language || AppConfig.default_language)
+  -language = ""
+  -if !AppConfig.enable_i18n
+    -language = AppConfig.default_language
+  -elsif current_group.language.blank?
+    -language = current_group.languages.first
+  -else
+    -language = current_group.language
+  = f.hidden_field :language, :value => language
 
 -if current_group.has_adult_content
   .field

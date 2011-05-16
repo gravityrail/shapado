@@ -18,9 +18,9 @@ module Shapado
 
         if logged_in?
           if !current_user.user_of?(@current_group)
-            if cookie = cookie[:accept_invitation]
-              current_user.accept_invitation(cookie)
-            end
+#             if cookie = cookie[:accept_invitation] FIXME
+#               current_user.accept_invitation(cookie)
+#             end
             raise Goalie::Forbidden
           end
         else

@@ -387,7 +387,9 @@ class Group
   def modify_attributes
     self.domain.downcase!
     self.subdomain.downcase!
-    self.languages << self.language if self.language
+    if self.language && !self.languages.include?(self.language)
+      self.languages << self.language
+    end
   end
 
   def disallow_javascript
