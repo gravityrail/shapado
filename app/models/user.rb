@@ -69,10 +69,7 @@ class User
   references_many :searches, :dependent => :destroy
   references_many :activities, :dependent => :destroy
   references_many :invitations, :dependent => :destroy
-  references_one :facebook_friends_list, :dependent => :destroy
-  references_one :twitter_friends_list, :dependent => :destroy
-  references_one :identica_friends_list, :dependent => :destroy
-  references_one :linked_in_friends_list, :dependent => :destroy
+  references_one :external_friends_list, :dependent => :destroy
 
   before_create :initialize_fields
   after_create :create_friends_lists
@@ -281,19 +278,28 @@ Time.zone.now ? 1 : 0)
   end
 
   def linked_in_login?
-    user_info && !user_info["linked_in"].blank?
+    user_info && !user_info["linked_in"].blank? && linked_in_id
   end
 
   def identica_login?
-    user_info && !user_info["identica"].blank?
+    user_info && !user_info["identica"].blank? && identica_id
   end
 
   def twitter_login?
-    user_info && !user_info["twitter"].blank?
+    user_info && !user_info["twitter"].blank? && twitter_id
   end
 
   def facebook_login?
-    !facebook_id.blank?
+    user_info && !user_info["facebook"].blank? && facebook_id
+  end
+
+  def social_connections
+    connections = []
+    connections << "linked_in" if linked_in_login?
+    connections << "identica" if identica_login?
+    connections << "twitter" if twitter_login?
+    connections << "facebook" if facebook_login?
+    return connections
   end
 
   def is_socially_connected?
@@ -533,7 +539,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def facebook_friends
-    self.facebook_friends_list.friends
+    self.external_friends_list.friends["facebook"]
   end
 
   def social_friends_ids(provider)
@@ -541,22 +547,20 @@ Time.zone.now ? 1 : 0)
   end
 
   def twitter_friends
-    self.twitter_friends_list.friends
+    self.external_friends_list.friends["twitter"]
   end
 
   def identica_friends
-    self.identica_friends_list.friends
+    self.external_friends_list.friends["identica"]
   end
 
   def linked_in_friends
-    self.linked_in_friends_list.friends
+    self.external_friends_list.friends["linked_in"]
   end
 
   ## TODO: add google contacts
   def suggestions(group, limit = 5)
-    sample = (suggested_fb_friends(limit) | suggested_twitter_friends(limit) |
-              suggested_identica_friends(limit) | suggested_linked_in_friends(limit) |
-              suggested_tags(group, limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
+    sample = (suggested_social_friends(limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
 
     # if we find less suggestions than requested, complete with
     # most popular users and tags
@@ -584,63 +588,53 @@ Time.zone.now ? 1 : 0)
 
   #returns tags followed by self suggested friends that I may not follow
   def suggested_tags_by_suggested_friends(group, limit = 5)
-    friends = User.any_of({ :facebook_id => {:$in => self.facebook_friends_ids}},
-                          { :identica_id => {:$in => self.social_friends_ids('identica')}},
-                          { :twitter_id => {:$in => self.social_friends_ids('twitter')}},
-                          { :linked_in_id => {:$in => self.social_friends_ids('linked_in')}}).
-      where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
-            :_id => {:$not =>
-              {:$in => self.friend_list.following_ids}})
-    friends_tags = { }
-    friends.each do |friend|
-      (friend.membership_list[group.id]["preferred_tags"]-self.preferred_tags_on(group)).each do |tag|
-        friends_tags["#{tag}"] ||= { }
-        friends_tags["#{tag}"]["followed_by"] ||= []
-        friends_tags["#{tag}"]["followed_by"] << friend
+    friends = suggested_social_friends(limit)
+    unless friends.blank?
+      friends.
+        where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
+              :_id => {:$not =>
+                {:$in => self.friend_list.following_ids}})
+      friends_tags = { }
+      friends.each do |friend|
+        friend_preferred_tags = []
+        (friend.membership_list[group.id].nil?)? friend_preferred_tags = [] :
+          friend_preferred_tags = friend.membership_list[group.id]["preferred_tags"]
+        (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
+          friends_tags["#{tag}"] ||= { }
+          friends_tags["#{tag}"]["followed_by"] ||= []
+          friends_tags["#{tag}"]["followed_by"] << friend
+        end
+      end
+      friends_tags.to_a.sample(limit)
+    end
+    []
+  end
+
+  # returns user's providers friends that have an account
+  # on shapado but that user is not following
+  def suggested_social_friends(limit = 5)
+    array_hash = []
+    social_connections.to_a.each do |provider|
+      unless external_friends_list.friends[provider].blank?
+        array_hash << { "#{provider}_id".to_sym => {:$in => self.social_friends_ids(provider)}}
       end
     end
-     friends_tags.to_a.sample(limit)
-  end
-
-  # returns user's facebook friends that have an account
-  # on shapado but that user is not following
-  def suggested_fb_friends(limit = 5)
-    User.where(:facebook_id => {:$in => self.social_friends_ids('facebook')},
-               :_id => {:$not =>
-                 {:$in => self.friend_list.following_ids}}).
+    (array_hash.blank?)? [] : User.any_of(array_hash).
+      where({:_id => {:$not =>
+                {:$in => self.friend_list.following_ids}}}).
       limit(limit)
   end
 
-  # returns user's twitter friends that have an account
-  # on shapado but that user is not following
-  def suggested_twitter_friends(limit = 5)
-    User.where(:twitter_id => {:$in => self.social_friends_ids('twitter')},
-               :_id => {:$not =>
-                 {:$in => self.friend_list.following_ids}}).
-      limit(limit)
-  end
-
-  # returns user's identica friends that have an account
-  # on shapado but that user is not following
-  def suggested_identica_friends(limit = 5)
-    User.where(:identica_id => {:$in => self.social_friends_ids('identica')},
-               :_id => {:$not =>
-                 {:$in => self.friend_list.following_ids}}).
-      limit(limit)
-  end
-
-  # returns user's linked_in friends that have an account
-  # on shapado but that user is not following
-  def suggested_linked_in_friends(limit = 5)
-    User.where(:linked_in_id => {:$in => self.social_friends_ids('linked_in')},
-               :_id => {:$not =>
-                 {:$in => self.friend_list.following_ids}}).
-      limit(limit)
-  end
-
-  # returns all user's facebook friends on shapado
-  def all_fb_friends
-    User.where(:facebook_id => {:$in => self.social_friends_ids('facebook')})
+  # returns user's friends on other social networks that already have an account on shapado
+  def social_external_friends
+    array_hash = []
+    provider_ids = []
+    social_connections.to_a.each do |provider|
+      array_hash << { "#{provider}_id".to_sym => {:$in => self.social_friends_ids(provider)}}
+      provider_ids << "#{provider}_id"
+    end
+    User.any_of(array_hash).
+      only(provider_ids)
   end
 
   # returns a follower that is someone self follows
@@ -716,16 +710,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def create_friends_lists
-    facebook_friend_list = FacebookFriendsList.create
-    self.facebook_friends_list = facebook_friend_list
-
-    twitter_friend_list = TwitterFriendsList.create
-    self.twitter_friends_list = twitter_friend_list
-
-    identica_friend_list = IdenticaFriendsList.create
-    self.identica_friends_list = identica_friend_list
-
-    linked_in_friend_list = LinkedInFriendsList.create
-    self.linked_in_friends_list = linked_in_friend_list
+    external_friends_list = ExternalFriendsList.create
+    self.external_friends_list = external_friends_list
   end
 end

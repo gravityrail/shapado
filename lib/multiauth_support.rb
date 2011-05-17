@@ -75,15 +75,7 @@ module MultiauthSupport
 
         return false if !user.save
       end
-      if provider == 'twitter' && user.user_info["twitter"] && user.user_info["twitter"]["old"]
-        user.user_info["twitter"] = fields["user_info"]
-        user.save(:validate => false)
-      end
-      if provider == 'facebook' && user.user_info["facebook"] && user.user_info["facebook"]["old"]
-        user.user_info["facebook"] = fields["user_info"]
-        user["facebook_token"] = fields["credentials"]["token"]
-        user.save(:validate => false)
-      end
+      user.check_user_info(fields)
       user
     end
   end # ClassMethods
@@ -91,6 +83,7 @@ module MultiauthSupport
   module InstanceMethods
     def connect(fields)
       provider = fields["provider"]
+      self.check_user_info(fields, provider)
       if fields["uid"] =~ %r{google\.com/accounts/o8/} && fields["user_info"]["email"]
         fields["uid"] = "http://google_id_#{fields["user_info"]["email"]}" # normalize for subdomains
       end
@@ -124,29 +117,31 @@ module MultiauthSupport
       begin
         if user.facebook_login?
           self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })
-          self.facebook_friends_list.destroy &&
-          FacebookFriendsList.override({:user_id => user.id}, {:user_id => self.id})
+          self.external_friends_list.friends["facebook"] = user.external_friends_list.friends["facebook"]
+          self.external_friends_list.save
           self.override(:"user_info.facebook" => user.user_info["facebook"]) if user_info["facebook"].blank?
         end
         if user.twitter_login?
           User.override({ :_id => self.id }, { :twitter_id => user.twitter_id, :twitter_token => user.twitter_token,
                         :twitter_secret => user.twitter_secret, :twitter_login => user.twitter_login})
-          self.twitter_friends_list.destroy &&
-          TwitterFriendsList.override({:user_id => user.id}, {:user_id => self.id})
+          self.external_friends_list.friends["twitter"] = user.external_friends_list.friends["twitter"]
+          self.external_friends_list.save
           self.override(:"user_info.twitter" => user.user_info["twitter"]) if user_info["twitter"].blank?
         end
         if user.identica_login?
           User.override({ :_id => self.id }, { :identica_id => user.identica_id,
                           :identica_secret => user.identica_secret,
                           :identica_token => user.identica_token})
-          IdenticaFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.identica_friends_list.destroy
+          self.external_friends_list.friends["identica"] = user.external_friends_list.friends["identica"]
+          self.external_friends_list.save
           self.override(:"user_info.identica" => user.user_info["identica"]) if user_info["identica"].blank?
         end
         if user.linked_in_login?
           User.override({ :_id => self.id }, { :linked_in_id => user.linked_in_id,
-                          :identica_secret => user.identica_secret,
-                          :identica_token => user.identica_token})
-          LinkedInFriendsList.override({:user_id => user.id}, {:user_id => self.id}) if self.linked_in_friends_list.destroy
+                          :linked_in_secret => user.linked_in_secret,
+                          :linked_in_token => user.linked_in_token})
+          self.external_friends_list.friends["linked_in"] = user.external_friends_list.friends["linked_in"]
+          self.external_friends_list.save
           self.override(:"user_info.linked_in" => user.user_info["linked_in"]) if user_info["linked_in"].blank?
         end
       rescue Exception => e
@@ -202,6 +197,42 @@ module MultiauthSupport
           "name" => "#{friend["firstName"]} #{friend["lastName"]}",
           "profile_image_url" => friend["pictureUrl"], "country-code" => friend["location"]["country"]["code"]} end
       friends
+    end
+
+    def check_social_friends
+      if self.facebook_login? && self.facebook_friends.blank?
+        Jobs::Users.async.get_facebook_friends(self.id).commit!
+      end
+      if self.twitter_login? && self.twitter_friends.blank?
+        Jobs::Users.async.get_twitter_friends(self.id).commit!
+      end
+      if self.identica_login? && self.identica_friends.blank?
+        Jobs::Users.async.get_identica_friends(self.id).commit!
+      end
+      if self.linked_in_login? && self.linked_in_friends.blank?
+        Jobs::Users.async.get_linked_in_friends(self.id).commit!
+      end
+    end
+
+    def check_user_info(fields, provider)
+      user = self
+      if provider == 'linked_in' && user.user_info["linked_in"].blank?
+        user.user_info["linked_in"] = fields["user_info"]
+        user.save(:validate => false)
+      end
+      if provider == 'identica' && user.user_info["identica"].blank?
+        user.user_info["identica"] = fields["user_info"]
+        user.save(:validate => false)
+      end
+      if provider == 'twitter' && user.user_info["twitter"] && (user.user_info["twitter"]["old"] || user.user_info["twitter"].blank?)
+        user.user_info["twitter"] = fields["user_info"]
+        user.save(:validate => false)
+      end
+      if provider == 'facebook' && user.user_info["facebook"] && (user.user_info["facebook"]["old"] || user.user_info["facebook"].blank?)
+        user.user_info["facebook"] = fields["user_info"]
+        user["facebook_token"] = fields["credentials"]["token"]
+        user.save(:validate => false)
+      end
     end
 
     private
