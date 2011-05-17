@@ -12,6 +12,8 @@
   %section.filters{:class => @active_subtab }
     %ul
       %header= t('users.show.sort_by')
+      %li.activity
+        = link_to t("questions.index.active"), questions_path(:sort=>"activity"), :title => t("questions.index.active_tooltip"), :rel => "nofollow"
       %li.newest
         = link_to t("questions.index.newest"), url_for(params.merge(questions_link).merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip")
       %li.hot
