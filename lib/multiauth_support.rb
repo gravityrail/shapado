@@ -75,7 +75,7 @@ module MultiauthSupport
 
         return false if !user.save
       end
-      user.check_user_info(fields)
+      user.check_user_info(fields,provider)
       user
     end
   end # ClassMethods
