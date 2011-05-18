@@ -355,7 +355,6 @@ class UsersController < ApplicationController
   end
 
   def social_connect
-    current_user.check_social_friends
   end
 
   protected

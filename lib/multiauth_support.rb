@@ -46,13 +46,11 @@ module MultiauthSupport
 
       uid = fields["uid"] || fields["extra"]["user_hash"]["id"]
       auth_key = "#{provider}_#{uid}"
-
       user = User.where({:auth_keys.in => [auth_key]}).first
       if user.nil?
         user = User.new(:auth_keys => [auth_key])
 
         puts ">>>>>>> #{provider} #{fields["user_info"].inspect}"
-
         user.user_info[provider] = fields["user_info"]
 
         if user.email.blank?
@@ -90,19 +88,19 @@ module MultiauthSupport
 
       auth_key = "#{provider}_#{fields["uid"]}"
       user = User.where({:auth_keys.in => [auth_key]}).first
+      self.push(:"user_info.#{provider}" => fields["user_info"])
 
       if user.present? && user.id != self.id
-        self.push(:"user_info.#{provider}" => fields["user_info"])
-
         if merge_user(user)
           user.destroy
           user = self
         end
       end
-
+      user = self if user.nil?
       if user.respond_to?("handle_#{provider}", true)
         user.send("handle_#{provider}", fields)
         user.save!
+        user.check_user_info(fields, provider)
       end
 
       self.push_uniq(:auth_keys => auth_key)
@@ -224,13 +222,12 @@ module MultiauthSupport
         user.user_info["identica"] = fields["user_info"]
         user.save(:validate => false)
       end
-      if provider == 'twitter' && user.user_info["twitter"] && (user.user_info["twitter"]["old"] || user.user_info["twitter"].blank?)
+      if provider == 'twitter' && ((user.user_info["twitter"] && user.user_info["twitter"]["old"]) || (user.user_info["twitter"].blank?))
         user.user_info["twitter"] = fields["user_info"]
         user.save(:validate => false)
       end
-      if provider == 'facebook' && user.user_info["facebook"] && (user.user_info["facebook"]["old"] || user.user_info["facebook"].blank?)
+      if provider == 'facebook' && ((user.user_info["facebook"] && user.user_info["facebook"]["old"]) || (user.user_info["facebook"].blank?))
         user.user_info["facebook"] = fields["user_info"]
-        user["facebook_token"] = fields["credentials"]["token"]
         user.save(:validate => false)
       end
     end
@@ -266,7 +263,7 @@ module MultiauthSupport
       self.identica_token = fields["credentials"]["token"].to_s
       self.identica_secret = fields["credentials"]["secret"].to_s
       self.identica_login = fields["user_info"]["nickname"].to_s
-      self.identica_id = fields["extra"]["user_hash"]["id"].to_s
+      self.identica_id = fields["uid"].to_s
 
       self.login.blank? && self.login = fields["user_info"]["nickname"].to_s
     end
