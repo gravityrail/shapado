@@ -22,9 +22,9 @@ module Jobs
     def self.get_facebook_friends(user_id)
       user = User.find(user_id)
       friends = user.facebook_client
-      user.external_friends_list.friends["facebook"] = friends["data"]
-      user.external_friends_list.save
-      user.save
+      external_friends_list = user.external_friends_list
+      external_friends_list.friends["facebook"] = friends["data"]
+      external_friends_list.save
     end
 
     def self.get_twitter_friends(user_id)
@@ -42,7 +42,7 @@ module Jobs
     def self.get_identica_friends(user_id)
       user = User.find(user_id)
       friends = user.get_identica_friends
-      unless friends["error"]
+      unless friends[0]["error"]
         user.external_friends_list.friends["identica"] = friends
         user.external_friends_list.save
         user.save
