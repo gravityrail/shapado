@@ -1,4 +1,5 @@
 set :application, "shapado"
+set :asset_packager, "jammit"
 
 task :staging do |t|
   set :repository, "git://github.com/ricodigo/shapado.git"
@@ -16,10 +17,12 @@ namespace :deploy do
 
     run "echo '#{`git describe`}' > #{current_path}/public/version.txt"
 
-    Jammit.package!
+    assets.compass
+    assets.package
+
     magent.restart
     bluepill.restart
   end
 end
-require 'jammit'
+
 require 'ricodigo_capistrano_recipes'
