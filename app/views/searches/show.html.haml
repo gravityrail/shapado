@@ -1,4 +1,4 @@
-= render "shared/content-nav", :questions_link => search_path(@search)
+= render "shared/content-nav", :questions_link => {"controller" => "questions", "action" => "index"}
 
 Searching:
 = @search.query
