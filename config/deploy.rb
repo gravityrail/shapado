@@ -12,8 +12,6 @@ end
 
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "cp #{current_path}/config/auth_providers.yml.sample #{current_path}/config/auth_providers.yml"
-
     run "echo '#{`git describe`}' > #{current_path}/public/version.txt"
 
     Jammit.package!
