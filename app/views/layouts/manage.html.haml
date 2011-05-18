@@ -74,9 +74,6 @@
               -if current_group.has_custom_html
                 %li
                   = link_to t("layouts.manage.announcements"), announcements_path
-              -if current_group.has_custom_ads
-                %li
-                  =link_to t("layouts.application.manage_ads"), ads_path
 
       %section.content-panel
         #main-content-wrap{:class => @active_tab}

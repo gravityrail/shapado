@@ -47,8 +47,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :ads
-  resources :adsenses
   resources :adbards
   resources :badges
 

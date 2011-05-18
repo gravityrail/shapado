@@ -100,7 +100,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    params[:per_page] ||= "s"
     @resources = @user.questions.where(:group_id => current_group.id,
                                        :banned => false,
                                        :anonymous => false).
@@ -109,7 +108,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.atom
+      format.atom { @questions = @resources }
       format.json {
         render :json => @user.to_json(:only => %w[name login membership_list bio website location language])
       }
@@ -147,7 +146,7 @@ class UsersController < ApplicationController
   end
 
   def activity
-#     @resources = []
+    @resources = @user.activities.paginate(paginate_opts(params))
     respond_to do |format|
       format.html{render :show}
     end
