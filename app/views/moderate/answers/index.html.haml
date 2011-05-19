@@ -1,26 +1,19 @@
-
--form_tag moderate_answers_path do
-  %table.table
-    %tr
-      %th
-      %th
-        =t(:flags, :scope => "activerecord.models")
-      %th
-        =t(:banned, :scope => "activerecord.attributes.answer")
-      %th
-        =t(:body, :scope => "activerecord.attributes.answer")
+%section.questions-index.moderate-answers
+  -form_tag moderate_answers_path do
     -@answers.each do |answer|
-      %tr
-        %th
+      %article
+        %h2
           = check_box_tag "answer_ids[]", answer.id
-        %td
+        %p
           = render :partial => "flags/list", :locals=> {:flaggeable => answer}
-        %td
+        %p
           &= answer.banned
-        %td
-          = link_to truncate(answer.body, :length => 100), question_answer_path(answer.question, answer)
+        %p
+          = link_to answer.body, question_answer_path(answer.question, answer)
 
   = will_paginate @answers
-  = submit_tag "ban"
-  = t("global.or")
-  = submit_tag "unban"
+  
+  .buttons
+    = submit_tag "ban"
+    = t("global.or")
+    = submit_tag "unban"
