@@ -5,6 +5,6 @@
     %b
       = activity.humanize_action
     = link_to activity.target_name, activity.url_for_trackable(request.host)
-    %em
-      = t("time.ago", :time => time_ago_in_words(activity.created_at, true))
-      = activity.created_at
+  %time{:pubdate => "pubdate", :datetime => activity.created_at.iso8601}
+    = t("time.ago", :time => time_ago_in_words(activity.created_at, true))
+    = activity.created_at
