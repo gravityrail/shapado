@@ -52,26 +52,28 @@
             text-transform: uppercase
 
 // Icons for each
-
 ul.drop-menu
   li.spam
-    color: #c00
-    font-size: 12px
-    padding: 6px 0 0 10px
+    padding-top: 5px
+    padding-left: 7px
     background-color: $lightRed
+    span
+      float: left
+      color: $red
     a
       float: right
-      margin: -5px 0 0 0
+      margin: -5px 0 0 0 !important
       background: none
       padding-left: 7px
       color: #eb9696
+      margin: 0
       &:hover
         background-color: $red !important
         color: #fff
       	      
     a#destroy_question_flag_link
       border-left: 1px solid #e5e5e5
-      margin-left: 10px
+      margin-left: 10px !important
       border-color: #f4b6b6
 
   .answer #add_answer

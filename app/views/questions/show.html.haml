@@ -71,11 +71,13 @@
 
       - if !@flag.new_record?
         %li.spam
-          = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"
+          %span
+            = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"
           = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :id => "edit_question_flag_link", :class => "flag-link", :rel => 'nofollow'
           = link_to t("scaffold.destroy"), question_flag_path(@question,@flag), :id => "destroy_question_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+      
       - elsif logged_in? && current_user != @question.user
-        %li.spam
+        %li.no-spam
           = link_to t(".flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow'
 
       %li.share_on
