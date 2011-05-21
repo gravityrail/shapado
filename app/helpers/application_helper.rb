@@ -14,6 +14,19 @@ module ApplicationHelper
     end
   end
 
+  def language_json
+    languages = []
+    I18n.t('languages').keys.each do |k| languages << {:caption => I18n.t("languages.#{k}"),
+        :value=>I18n.t("languages.#{k}"), :code => k} end
+    languages.to_json
+  end
+
+  def preferred_languages_code(entity, language_method)
+    entity.send(language_method).map do |code|
+      I18n.t("languages.#{code}")+":#{code}"
+    end
+  end
+
   def language_desc(langs)
     (langs.kind_of?(Array) ? langs : [langs]).map do |lang|
       I18n.t("languages.#{lang}", :default => lang).capitalize
