@@ -1,5 +1,10 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def known_languages(user, group)
+    return group.languages unless logged_in?
+    user.preferred_languages & group.languages
+  end
+
   def multiauth_dropdown(title)
     render 'shared/login_menu', :title => title
   end
