@@ -43,9 +43,9 @@ en:
       sort_by: 'Sort by:'
       edit_profile: Edit profile
     follow:
-      flash_notice: "The user %{user} was added to your friends"
+      flash_notice: "You are now following %{user}."
     unfollow:
-      flash_notice: "The user %{user} was removed from your friends"
+      flash_notice: "You are not following %{user} anymore."
     update_followed_tags:
       followed:
         flash_notice: "You are now following the tag %{tag}."
