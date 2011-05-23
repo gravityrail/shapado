@@ -68,9 +68,9 @@
               %li
                 = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true)
               %li
-                = link_to link_to t('layouts.application.badges'), badges_path
+                = link_to t('layouts.application.badges'), badges_path
               %li
-                = link_to link_to t('layouts.application.pages'), pages_path
+                = link_to t('layouts.application.pages'), pages_path
 
         =#render "widgets/tag_cloud", :widget => TagCloudWidget.new
 

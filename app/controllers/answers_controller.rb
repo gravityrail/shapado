@@ -59,8 +59,7 @@ class AnswersController < ApplicationController
   end
 
   def show
-    @answer = current_group.answers.find(params[:id])
-    raise PageNotFound if @answer.nil?
+    @answer = current_group.answers.find!(params[:id])
     @question = @answer.question
     respond_to do |format|
       format.html
