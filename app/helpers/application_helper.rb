@@ -2,7 +2,8 @@
 module ApplicationHelper
   def known_languages(user, group)
     return group.languages unless logged_in?
-    user.preferred_languages & group.languages
+    languages = user.preferred_languages & group.languages
+    (languages.empty?)? group.languages : languages
   end
 
   def multiauth_dropdown(title)
