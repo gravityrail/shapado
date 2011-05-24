@@ -599,10 +599,12 @@ Time.zone.now ? 1 : 0)
         friend_preferred_tags = []
         (friend.membership_list[group.id].nil?)? friend_preferred_tags = [] :
           friend_preferred_tags = friend.membership_list[group.id]["preferred_tags"]
-        (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
-          friends_tags["#{tag}"] ||= { }
-          friends_tags["#{tag}"]["followed_by"] ||= []
-          friends_tags["#{tag}"]["followed_by"] << friend
+        if friend_preferred_tags
+          (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
+            friends_tags["#{tag}"] ||= { }
+            friends_tags["#{tag}"]["followed_by"] ||= []
+            friends_tags["#{tag}"]["followed_by"] << friend
+          end
         end
       end
       friends_tags.to_a.sample(limit)
