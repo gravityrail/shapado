@@ -82,7 +82,6 @@ class Group
   slug_key :name, :unique => true
   filterable_keys :name
 
-  references_many :ads, :dependent => :destroy
   references_many :tags, :dependent => :destroy
   references_many :activities, :dependent => :destroy
 

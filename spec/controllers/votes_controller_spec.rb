@@ -7,6 +7,8 @@ describe VotesController do
     stub_group
     @group = Group.make(:group)
     @user = User.make(:user)
+    @user.update_reputation(50, @group)
+    @user.reload
     stub_authentication @user
     @voteable = Question.make(:question, :group => @group)
   end
@@ -19,9 +21,9 @@ describe VotesController do
   end
 
   describe "POST 'create'" do
-    before (:each) do
+    before(:each) do
       stub_group(@voteable.group)
-      @vote_attrs = {:vote_up => 1}
+      @vote_attrs = {"vote_up" => 1}
     end
 
     it "should be successful" do
@@ -33,7 +35,31 @@ describe VotesController do
     it "should be successful for js format" do
       @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
       post 'create', @vote_attrs
+      body = JSON.load(response.body)
+      body["average"].should == "vote 1"
       response.should be_success
+    end
+
+    it "should revoke the vote" do
+      @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
+      post 'create', @vote_attrs
+
+      @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
+      post 'create', @vote_attrs
+      body = JSON.load(response.body)
+      body["average"].should == "votes 0"
+    end
+
+    it "should change the vote" do
+      @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
+      post 'create', @vote_attrs
+
+      @vote_attrs.delete("vote_up")
+      @vote_attrs["vote_down"] = 1
+      @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
+      post 'create', @vote_attrs
+      body = JSON.load(response.body)
+      body["average"].should == "votes -1"
     end
   end
 end
