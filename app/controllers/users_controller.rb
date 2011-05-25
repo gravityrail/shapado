@@ -223,14 +223,14 @@ class UsersController < ApplicationController
 
   def preferred
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
-    tags = @user.config_for(current_group).preferred_tags
+    @current_tags = tags = @user.config_for(current_group).preferred_tags
 
     find_questions(:tags.in => tags)
   end
 
   def expertise
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
-    tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
+    @current_tags = tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
 
     find_questions(:tags.in => tags)
   end
@@ -238,7 +238,7 @@ class UsersController < ApplicationController
   def contributed
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
 
-    find_questions(:contributor_ids => @user.id)
+    find_questions(:contributor_ids.in => @user.id)
   end
 
   def connect
