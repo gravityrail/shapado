@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: b760004d5bc473cba63dacaec5c1be49202f3e4f
+  revision: 3607496b0a98ac62edd27cfe63f4b054130deb72
   specs:
     mongoid (2.0.1)
       activemodel (~> 3.0)
@@ -70,7 +70,7 @@ GEM
       activesupport (= 3.0.6)
     activesupport (3.0.6)
     addressable (2.2.4)
-    arel (2.0.9)
+    arel (2.0.10)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
@@ -113,10 +113,9 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
-    ffaker (1.5.0)
-    ffi (1.0.7)
-      rake (>= 0.8.7)
+      rack (>= 1.1.0, < 2)
+    ffaker (1.6.0)
+    ffi (1.0.8)
     fssm (0.2.7)
     gem_plugin (0.2.3)
     goalie (0.0.4)

@@ -18,7 +18,7 @@ namespace :deploy do
     assets.compass
     assets.package
 
-    magent.restart
+    #magent.restart
     bluepill.restart
   end
 end
