@@ -74,7 +74,7 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new
-    @group.languages = params[:languages].split(',')
+    @group.languages = params[:languages].split(',') if params[:languages]
     @group.safe_update(%w[name legend description default_tags subdomain logo forum enable_latex
                           custom_favicon language theme signup_type custom_css wysiwyg_editor], params[:group])
 
@@ -102,7 +102,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group.languages = params[:languages].split(',')
+    @group.languages = params[:languages].split(',') if params[:languages]
     @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex
                           custom_favicon language languages theme reputation_rewards reputation_constrains
                           has_adult_content registered_only signup_type custom_css wysiwyg_editor fb_button notification_opts], params[:group])
