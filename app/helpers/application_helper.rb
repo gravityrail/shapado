@@ -1,5 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def known_languages(user, group)
+    return group.languages unless logged_in?
+    languages = user.preferred_languages & group.languages
+    (languages.empty?)? group.languages : languages
+  end
+
   def multiauth_dropdown(title)
     render 'shared/login_menu', :title => title
   end
@@ -11,6 +17,19 @@ module ApplicationHelper
       AppConfig.facebook["activate"]
     else
       false
+    end
+  end
+
+  def language_json
+    languages = []
+    I18n.t('languages').keys.each do |k| languages << {:caption => I18n.t("languages.#{k}"),
+        :value=>I18n.t("languages.#{k}"), :code => k} end
+    languages.to_json
+  end
+
+  def preferred_languages_code(entity, language_method)
+    entity.send(language_method).map do |code|
+      I18n.t("languages.#{code}")+":#{code}"
     end
   end
 

@@ -36,9 +36,17 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def resend
+    invitation = Invitation.find(params[:id])
+    Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
+    flash[:notice] = t("flash_notice", :scope => "invitations.create")
+    redirect_to :back
+  end
+
   def revoke
     invitation = Invitation.find(params[:id])
     current_user.revoke_invite(invitation)
+    flash[:notice] = t("flash_notice", :scope => "invitations.create")
     redirect_to :back
   end
 end

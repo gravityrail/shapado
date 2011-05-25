@@ -560,7 +560,7 @@ Time.zone.now ? 1 : 0)
 
   ## TODO: add google contacts
   def suggestions(group, limit = 5)
-    sample = (suggested_social_friends(limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
+    sample = (suggested_social_friends(group, limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
 
     # if we find less suggestions than requested, complete with
     # most popular users and tags
@@ -588,7 +588,7 @@ Time.zone.now ? 1 : 0)
 
   #returns tags followed by self suggested friends that I may not follow
   def suggested_tags_by_suggested_friends(group, limit = 5)
-    friends = suggested_social_friends(limit)
+    friends = suggested_social_friends(group, limit)
     unless friends.blank?
       friends.
         where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
@@ -599,10 +599,12 @@ Time.zone.now ? 1 : 0)
         friend_preferred_tags = []
         (friend.membership_list[group.id].nil?)? friend_preferred_tags = [] :
           friend_preferred_tags = friend.membership_list[group.id]["preferred_tags"]
-        (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
-          friends_tags["#{tag}"] ||= { }
-          friends_tags["#{tag}"]["followed_by"] ||= []
-          friends_tags["#{tag}"]["followed_by"] << friend
+        if friend_preferred_tags
+          (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
+            friends_tags["#{tag}"] ||= { }
+            friends_tags["#{tag}"]["followed_by"] ||= []
+            friends_tags["#{tag}"]["followed_by"] << friend
+          end
         end
       end
       friends_tags.to_a.sample(limit)
@@ -612,7 +614,7 @@ Time.zone.now ? 1 : 0)
 
   # returns user's providers friends that have an account
   # on shapado but that user is not following
-  def suggested_social_friends(limit = 5)
+  def suggested_social_friends(group, limit = 5)
     array_hash = []
     social_connections.to_a.each do |provider|
       unless external_friends_list.friends[provider].blank?
@@ -620,7 +622,8 @@ Time.zone.now ? 1 : 0)
       end
     end
     (array_hash.blank?)? [] : User.any_of(array_hash).
-      where({:_id => {:$not =>
+      where({"membership_list.#{group.id}" => {"$ne" => [], "$ne" => nil},
+              :_id => {:$not =>
                 {:$in => self.friend_list.following_ids}}}).
       limit(limit)
   end

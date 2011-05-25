@@ -1,5 +1,7 @@
 en:
   groups:
+    top_grouplist:
+      active_site: "Active site:"
     index:
       title: Groups
       description: This is the list of public groups that have been created. Use the search input below to filter groups. You can also %{link}.
