@@ -158,6 +158,7 @@ Rails.application.routes.draw do
   resources :invitations do
     member do
       post :revoke
+      post :resend
     end
   end
 

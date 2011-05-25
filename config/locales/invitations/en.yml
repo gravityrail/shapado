@@ -1,7 +1,11 @@
 en:
   invitations:
+    resend:
+      flash_notice: "Your invitation has been resent successfully."
+    revoke:
+      flash_notice: "Your invitation has been revoked successfully."
     create:
-      flash_notice: Your invitations were sent successfully
+      flash_notice: "Your invitations were sent successfully."
     accept:
       welcome: Welcome
       description: %{group} is an ever improving collection of questions and answers about any topic.
@@ -20,3 +24,4 @@ en:
       follow_things: Follow Tags and People
       follow_things_description: Questions related to these will appear on your feed.
       done: 'Done!'
+

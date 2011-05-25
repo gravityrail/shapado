@@ -41,6 +41,9 @@ en:
           user_role: "Invite users as"
           invite: Invite people
           invitations: Sent invitations
+        invitations:
+          revoke_button: "Revoke"
+          resend_button: "Resend"
         post_to_twitter:
           post_to_twitter: Post activities to Twitter
           send_questions_to_twitter: Send all questions to Twitter
