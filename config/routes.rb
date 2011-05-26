@@ -29,13 +29,13 @@ Rails.application.routes.draw do
     collection do
       get :autocomplete_for_user_login
       post :connect
+      get :follow_tags
+      get :unfollow_tags
     end
 
     member do
       get :unfollow
       get :follow
-      post :follow_tags
-      post :unfollow_tags
       get :feed
       get :expertise
       get :preferred

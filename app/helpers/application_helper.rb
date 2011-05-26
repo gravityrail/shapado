@@ -403,16 +403,16 @@ module ApplicationHelper
         follow_data = 'follow-tag'
         data_title = t("global.follow")
         title = t("global.unfollow")
-        path = unfollow_tags_user_path(current_user)
-        data_undo = follow_tags_user_path(current_user)
+        path = unfollow_tags_users_path(:tags => tag.name)
+        data_undo = follow_tags_users_path(:tags => tag.name)
       else
         follow_data = 'unfollow-tag'
         follow_class = 'follow-tag'
         data_title = t("global.unfollow")
         title = t("global.follow")
         opt = 'add'
-        path = follow_tags_user_path(current_user)
-        data_undo = unfollow_tags_user_path(current_user)
+        path = follow_tags_users_path(:tags => tag.name)
+        data_undo = unfollow_tags_users_path(:tags => tag.name)
       end
       link_to title, path, :class => follow_class, 'data-tag' => tag.name, 'data-class' => follow_data, 'data-title' => data_title, 'data-undo' => data_undo
     end

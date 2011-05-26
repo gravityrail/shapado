@@ -19,7 +19,7 @@ class TagsController < ApplicationController
   end
 
   def show
-    @tag_names = params[:id].split("+")
+    @current_tags = @tag_names = params[:id].split("+")
     @tags =  current_scope.where(:name.in => @tag_names)
     @questions = current_group.questions.where( :tags.in => @tag_names ).
                                          paginate(paginate_opts(params))
