@@ -24,3 +24,39 @@ namespace :deploy do
 end
 
 require 'ricodigo_capistrano_recipes'
+
+set(:websocket_remote_config) { "#{shared_path}/config/pills/websocket.pill"}
+namespace :websocket do
+  desc "Init websocket with bluepill"
+  task :init do
+    rvmsudo "bluepill load #{websocket_remote_config}"
+  end
+
+  desc "Start websocket with bluepill"
+  task :start do
+    rvmsudo "bluepill websocket start"
+  end
+
+  desc "Restart websocket with bluepill"
+  task :restart do
+    websocket.stop
+    websocket.start
+  end
+
+  desc "Stop websocket with bluepill"
+  task :stop do
+    rvmsudo "bluepill websocket stop"
+  end
+
+  desc "Display the bluepill status"
+  task :status do
+    rvmsudo "bluepill websocket status"
+  end
+
+  desc "Stop websocket and quit bluepill"
+  task :quit do
+    rvmsudo "bluepill websocket stop"
+    rvmsudo "bluepill websocket quit"
+  end
+end
+

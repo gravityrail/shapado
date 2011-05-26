@@ -5,7 +5,7 @@ Dir.chdir(File.dirname(__FILE__)) do
   Bundler.setup
 end
 
-Dir.chdir(Bundle.root.to_s)
+Dir.chdir(Bundler.root.to_s)
 
 require 'rails'
 require 'action_mailer/railtie'
