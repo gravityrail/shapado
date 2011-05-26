@@ -132,6 +132,13 @@ class UsersController < ApplicationController
       @resources = @user.following.paginate(paginate_opts(params))
     when "followers"
       @resources = @user.followers.paginate(paginate_opts(params))
+    when "answers"
+      @resources = Answer.where(:favoriter_ids.in => [@user.id],
+                                :banned => false,
+                                :group_id => current_group.id,
+                                :anonymous => false).
+      order_by(current_order).
+      paginate(paginate_opts(params))
     else
       @resources = Question.where(:follower_ids.in => [@user.id],
                                 :banned => false,
