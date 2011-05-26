@@ -248,6 +248,7 @@
         = t(".close_reason")
         = t(@question.close_reason.reason, :scope=>"close_requests.form")
         - if !@question.close_reason.comment.empty?
+        
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
