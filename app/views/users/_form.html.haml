@@ -74,14 +74,8 @@
 -if AppConfig.enable_i18n
   .field
     = f.label :preferred_languages, t(:preferred_languages, :scope => "activerecord.attributes.user"), :class => "label"
-    = link_to t('.show_more_lang'), nil, :class => 'show-more-lang'
-    -AVAILABLE_LANGUAGES.sort.each do |lang|
-      - (DEFAULT_USER_LANGUAGES.include? lang)? jsclass = '' : jsclass = 'jshide'
-      #lang_opts
-        .radio_option{:id=>language_desc(lang)}
-          = check_box_tag "user[preferred_languages][]", lang, @user.preferred_languages.include?(lang), :class => "langbox checkbox #{jsclass}"
-          %label.radio.langbox{:class=>jsclass}
-            = language_desc(lang)
+    = text_field_tag :preferred_languages, preferred_languages_code(@user, 'preferred_languages').join(','), :class => "text_field autocomplete_for_tags", 'data-opts'=> "{\"allowNewTags\": false, \"source\":#{language_json}}"
+
 -else
   = hidden_field_tag "user[preferred_languages][]", (current_group.language || AppConfig.default_language)
 

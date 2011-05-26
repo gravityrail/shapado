@@ -1,12 +1,13 @@
 (function($) {
-  $.fn.ricodigoComplete = function(){
+  $.fn.ricodigoComplete = function(opts){
     this.each(function(){
-            function addTag(tag, input){
+            function addTag(tag, input, code){
+              if(code) {hiddenTag = code;} else {hiddenTag=tag;}
               var tag = $.trim(tag.replace(',',''));
-              if(!input.parent().find('.added-tag[data-caption='+tag+']').length){
+              if(!input.parent().find('.added-tag[data-caption="'+hiddenTag+'"]').length){
                 input.val('');
                 input.removeAttr('data-init')
-                var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+tag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
+                var tag =  $('<ul style="margin-left:4px;margin-right:4px;margin-top:6px;" class="ui-menu ui-widget ui-widget-content ui-corner-all" role="listbox" aria-activedescendant="ui-active-menuitem"><li class="ui-menu-item" role="menuitem"><a class="ui-corner-all added-tag" tabindex="-1" id="ui-active-menuitem" data-caption="'+hiddenTag+'">'+tag+'&nbsp;<span style="font-weight:bold;cursor:pointer;" class="remove-tag">x</span></a></li></ul>');
                 input.before(tag);
                 input.css({width: '30px'});
                 input.attr({placeholder: ''});
@@ -30,6 +31,9 @@
       tagwrapper.css('float', 'left');
       tagwrapper.css('min-height', '40px');
       tagwrapper.css('margin-top', '0px');
+
+      dataOpts = tagInput.attr('data-opts');
+      if(dataOpts){opts = $.evalJSON(dataOpts)}else{opts={allowNewTags: true}};
 
       tagInput.wrap(tagwrapper);
       var tagwrapper = tagInput.parent('.tagwrapper');
@@ -57,7 +61,7 @@
           tagLink.removeClass('ui-state-hover');
           if($(this).width()>38 && !$(this).attr('data-init'))
             $(this).width($(this).width()-7);
-        } else if ((key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
+        } else if (opts.allowNewTags && (key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
             tagLink.removeClass('ui-state-hover');
             addTag($(this).val(), $(this));
             $(this).focus();
@@ -73,19 +77,25 @@
       if(tags!=''){
         tags = tags.split(',')
         $.each(tags,function(i, tag){
-          addTag(tag, ac);
+          if(tag.indexOf(':')!=-1){
+            addTag(tag.split(':')[0], ac, tag.split(':')[1]);
+          } else {
+              addTag(tag, ac);
+          }
         })
         $(this).val('');
       }
       var cache = {},
                   lastXhr;
       tagInput.autocomplete({
+        autoFocus: true,
         select: function(event, ui) {
-          addTag(ui.item.label, $(this))
+          addTag(ui.item.label, $(this), ui.item.code)
           return false;
         },
         minLength: 1,
-        source: function( request, response ) {
+        source:  (opts.source)?  opts.source : function( request, response ) {
+          //if(!opts.source){
           var term = request.term;
           if( $.trim(term.replace(',','')) == '' )
             return;
@@ -99,10 +109,12 @@
             if ( xhr === lastXhr ) {
               response( data );
             }
-          });
+          });/*} else {
+            opts.source
+              }*/
         }
       }).data( "autocomplete" )._renderItem = function( ul, item ) {
-          return $( "<li></li>" )
+          return $( '<li></li>' )
               .data( "item.autocomplete", item )
               .append( "<a>" + item.caption + "</a>" )
               .appendTo( ul );

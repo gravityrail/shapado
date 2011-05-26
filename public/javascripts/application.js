@@ -228,7 +228,6 @@ function init_geolocal(){
 }
 
 function initFollowTags(){
-  console.log('beep')
   $(".follow-tag, .unfollow-tag").live("click", function(event) {
     var link = $(this);
     if(!link.hasClass('busy')){

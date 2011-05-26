@@ -69,12 +69,14 @@ class UsersController < ApplicationController
   # render new.rhtml
   def new
     @user = User.new
+    @user.preferred_languages = current_languages.to_a
     @user.timezone = AppConfig.default_timezone
   end
 
   def create
     @user = User.new
-    @user.safe_update(%w[login email name password_confirmation password preferred_languages website
+    @user.preferred_languages = params[:preferred_languages].split(',') if params[:languages]
+    @user.safe_update(%w[login email name password_confirmation password  website
                          language timezone identity_url bio hide_country], params[:user])
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
@@ -178,8 +180,8 @@ class UsersController < ApplicationController
       @user.password_confirmation = params[:user][:password_confirmation]
     end
 
-    @user.safe_update(%w[login email name language timezone preferred_languages
-                         notification_opts bio hide_country website avatar use_gravatar], params[:user])
+    @user.preferred_languages = params[:preferred_languages].split(',') if params[:languages]
+    @user.safe_update(%w[login email name language timezone notification_opts bio hide_country website avatar use_gravatar], params[:user])
 
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")

@@ -43,7 +43,7 @@
   .field
     = f.label :language, t(:language, :scope => "activerecord.attributes.question"), :class => "label"
     - selected = @question.new? ? current_group.language : @question.language
-    = f.select :language, languages_options(current_group.languages), {:selected => selected}, {:class => "select"}
+    = f.select :language, languages_options(known_languages(current_user, current_group)), {:selected => selected}, {:class => "select"}
     %small
       = t(".language_tip")
 -else

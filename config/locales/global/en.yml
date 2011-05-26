@@ -68,7 +68,7 @@ en:
     feed: Feed
     post_new_questions: Post new questions to
     share_on_twitter: "Twitter, Facebook and more..."
-  languages:
+  preferred_languages:
     any:     Any
     user:    My preferred languages
   number:
