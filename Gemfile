@@ -39,7 +39,7 @@ gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 gem 'jammit'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "~> 2.1.1"
-gem "magent", "0.6.1"
+gem "magent", "0.6.2"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'

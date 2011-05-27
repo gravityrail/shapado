@@ -1,3 +1,6 @@
+ENV["MAGENT_WEB_PATH"] = "/magent"
+require 'magent_web'
+
 Rails.application.routes.draw do
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
@@ -24,6 +27,8 @@ Rails.application.routes.draw do
   match '/suggestions' => 'users#suggestions', :as => :suggestions
   match '/activities' => 'activities#index', :as => :activities
   get "mobile/index"
+
+  mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
 
   resources :users do
     collection do
