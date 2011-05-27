@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  $.mobile.page.prototype.options.addBackBtn = true;
+
   $('div[data-role*="page"]').live('pageshow',function(event, ui){
     var internal = $("a").filter(function() {
       return (this.hostname == location.hostname && !this.href.match("mobile"));
