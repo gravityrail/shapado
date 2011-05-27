@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#retag').live('click',function(){
     var link = $(this);
-    $('.retag').hide();
+    link.parent('.retag').hide();
 
     $.ajax({
       dataType: "json",

@@ -24,7 +24,7 @@ class Moderate::QuestionsController < ApplicationController
       options[:flags_count] = {:$gt => 0}
     end
 
-    @questions = current_group.questions. where(options).
+    @questions = current_group.questions.where(options).
                             order_by("flags_count desc").
                             paginate(paginate_opts(params))
   end

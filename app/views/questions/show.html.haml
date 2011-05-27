@@ -75,7 +75,7 @@
             = "#{t('.flagged_as')} #{t(@flag.reason, :scope=>'flags.form')}"
           = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :id => "edit_question_flag_link", :class => "flag-link", :rel => 'nofollow'
           = link_to t("scaffold.destroy"), question_flag_path(@question,@flag), :id => "destroy_question_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
-      
+
       - elsif logged_in? && current_user != @question.user
         %li.no-spam
           = link_to t(".flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow'
@@ -109,6 +109,9 @@
             - if (@question.wiki && current_user.can_edit_wiki_post_on?(@question.group)) || current_user.can_edit_others_posts_on?(@question.group) || current_user.can_modify?(@question)
               %li.edit-q
                 = link_to t('scaffold.edit'), edit_question_path(@question)
+            - if (current_user.can_modify?(@question) || current_user.owner_of?(@question.group))
+              %li.delete-q
+                = link_to t("scaffold.destroy"), question_path(@question), :confirm => "are you sure?", :method => :delete
 
             -if current_user.mod_of?(@question.group) && !@question.closed
               %li.close
@@ -204,7 +207,7 @@
 
 %ul.tag-list
   %li.title
-    Topics:
+    = t('global.tags_label')
   - @question.tags.each do |tag|
     %li
       = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
@@ -219,7 +222,7 @@
 
   %section.filters
     %ul{:class => @active_subtab.to_s}
-      %header Sort By:
+      %header= t('global.sort_by')
       %li.newest-active
         = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow"
       %li.votes-active
@@ -239,7 +242,7 @@
       = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
 
     -if @question.followed_up_by.limit(1).count > 0
-      %h1 Followed by:
+      %h1= t('global.followed_by')
       -@question.followed_up_by.all.each do |child|
         = link_to child.title, question_path(child)
 
