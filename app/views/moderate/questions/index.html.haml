@@ -1,12 +1,12 @@
-%section.questions-index.moderate-questions 
+%section.questions-index.moderate-questions
   -@questions.each do |question|
     %article
       %h2
         = link_to h(question.title), question_path(question)
-        
+
       %ul.tag-list
         %li.title
-          Topics:
+          = t('global.tags_label')
         %li.retag
           = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag'
 

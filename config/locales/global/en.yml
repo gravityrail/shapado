@@ -60,6 +60,9 @@ en:
     privacy: Privacy
     blog: Blog
     home: Home
+    sort_by: 'Sort by:'
+    tags_label: 'Tags:'
+    followed_by: 'Followed by:'
   feeds:
     question: Subscribe to this question
     questions: Subscribe to all questions

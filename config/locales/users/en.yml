@@ -40,7 +40,6 @@ en:
       views: views
       followers: Followers
       following: Following
-      sort_by: 'Sort by:'
       edit_profile: Edit profile
     follow:
       flash_notice: "You are now following %{user}."

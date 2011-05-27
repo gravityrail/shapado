@@ -11,7 +11,7 @@
 
   %section.filters{:class => @active_subtab }
     %ul
-      %header= t('users.show.sort_by')
+      %header= t('global.sort_by')
       %li.activity
         = link_to t("questions.index.active"), questions_path(:sort=>"activity"), :title => t("questions.index.active_tooltip"), :rel => "nofollow"
       %li.newest
