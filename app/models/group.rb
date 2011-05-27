@@ -326,6 +326,10 @@ class Group
     signup_type == 'noemail'
   end
 
+  def has_facebook_login?(providers_keys)
+    (providers_keys && self.domain.index(AppConfig.domain)) || self.fb_active
+  end
+
   protected
   #validations
   def initialize_fields

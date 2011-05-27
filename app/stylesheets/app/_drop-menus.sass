@@ -54,7 +54,7 @@ ul.sf-menu
 
 // THEME FOR TOP BAR MENUS
 // ***************************************************************************************************************
-.top-bar .user-list, .top-bar .group-list
+.top-bar .user-list, .top-bar .group-list, .top-bar .auth-list
   a
   li // 1th level
     li // 2th level
@@ -90,92 +90,9 @@ ul.sf-menu
   .sf-sub-indicator
     background: url("/images/question-toolbar-icons-small.png") 0 -387px no-repeat !important
 
-.top-bar  .user-list
+.top-bar .user-list
   &:hover ul, &.sfhover ul
     width: 120px
 
-
-// THEME FOR TOP LOGIN MENU
-// ***************************************************************************************************************
 .top-bar .auth-list
-  a
-  li // 1th level
-    li // 2th level
-      background:  #fff
-      li // 3th
-    &.sfHover:hover
-      background-color: #fff
-      a
-        color: #000
-
-    &:hover ul, &.sfhover ul
-      top: 39px !important
-      right: 0 !important
-      width: 175px
-
-  ul
-    +menu-shadow
-    li
-      float: left !important
-      width: 35px
-    a
-      padding: 8px !important
-      border: 0 !important
-      color: #000 !important
-      font-weight: normal !important
-      background-color: #fff !important
-      width: 18px
-      height: 15px
-      overflow: hidden !important
-      text-indent: -10000px
-
-      &:hover
-        background-color: $orange !important
-        color: #fff !important
-
-      &.Google, &.Google:hover
-        background: url("/images/social_google_buzz_box.png") no-repeat 50% 50%
-      &.Twitter, &.Twitter:hover
-        background: url("/images/social_twitter_box_blue.png") no-repeat 50% 50%
-      &.Facebook, &.Facebook:hover
-        background: url("/images/social_facebook_box_blue.png") no-repeat 50% 50%
-      &.Yahoo, &.Yahoo:hover
-        background: url("/images/social_yahoo_box_lilac.png") no-repeat 50% 50%
-      &.AOL, &.AOL:hover
-        background: url("/images/aol.png") no-repeat 50% 50%
-      &.MyOpenID, &.MyOpenID:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.Wordpress, &.Wordpress:hover
-        background: url("/images/wordpress.png") no-repeat 50% 50%
-      &.Blogger, &.Blogger:hover
-        background: url("/images/blogger.png") no-repeat 50% 50%
-      &.Flickr, &.Flickr:hover
-        background: url("/images/social_flickr_box.png") no-repeat 50% 50%
-      &.Launchpad, &.Launchpad:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.Identica, &.Identica:hover
-        background: url("/images/identica.png") no-repeat 50% 50%
-      &.Github, &.Github:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.LinkedIn, &.LinkedIn:hover
-        background: url("/images/linkedin.png") no-repeat 50% 50%
-      &.Vidoop, &.Vidoop:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.ClaimID, &.ClaimID:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.Technorati, &.Technorati:hover
-        background: url("/images/social_technorati_box_green.png") no-repeat 50% 50%
-      &.Verisign, &.Verisign:hover
-        background: url("/images/button-white.png") no-repeat 50% 50%
-      &.LiveJournal, &.LiveJournal:hover
-        background: url("/images/livejournal.png") no-repeat 50% 50%
-      &.MySpace, &.MySpace:hover
-        background: url("/images/myspace.png") no-repeat 50% 50%
-      &.OpenId, &.OpenId:hover
-        background: url("/images/openid.png") no-repeat 50% 50%
-
-  a.sf-with-ul
-    padding-right:  30px !important // padding for the arrow icon
-
-  .sf-sub-indicator
-    background: url("/images/question-toolbar-icons-small.png") 0 -387px no-repeat !important
+  &:hover ul, &.sfhover ul

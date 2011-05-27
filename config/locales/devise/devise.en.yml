@@ -23,6 +23,7 @@ en:
       registered_only: You must be signed in to see the content.
       new:
         remember_me: 'Keep me logged in'
+        openid_url: 'Your OpenID URL'
     passwords:
       send_button: Send me the reset password instructions
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
