@@ -1,6 +1,9 @@
 ENV["MAGENT_WEB_PATH"] = "/magent"
 require 'magent_web'
 
+ENV["BUGHUNTER_PATH"] = "/errors"
+require 'bug_hunter'
+
 Rails.application.routes.draw do
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
@@ -29,6 +32,7 @@ Rails.application.routes.draw do
   get "mobile/index"
 
   mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
+  mount BugHunter.app => ENV["BUGHUNTER_PATH"]
 
   resources :users do
     collection do
