@@ -95,7 +95,7 @@ class ApplicationController < ActionController::Base
 
     @questions = @questions.paginate(paginate_opts(params))
 
-    @langs_conds = scoped_conditions[:language][:$in]
+    @langs_conds = @languages
 
     if logged_in?
       feed_params = { :feed_token => current_user.feed_token }

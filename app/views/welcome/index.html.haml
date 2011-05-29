@@ -18,7 +18,7 @@
 %div
   -if logged_in?
     #quick_question
-      
+
     %ul.items#related_questions
       %li
 %ul.items#questions
@@ -43,11 +43,6 @@
     = render :partial => "shared/layout/notice"
 
   = render "shared/widgets", :context => 'welcome'
-
-  -if logged_in?
-    = render :partial => "shared/preferred_tags"
-  -if AppConfig.enable_i18n
-    = render :partial => "shared/language_filter"
 
   -if !current_group.isolate && AppConfig.enable_groups
     .block{:style => "background: transparent"}

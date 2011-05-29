@@ -22,9 +22,6 @@
 
 
 -content_for :sidebar do
-  -if logged_in?
-    = render :partial => "shared/language_filter"
-
   = render "shared/widgets", :context => 'mainlist', :position => 'sidebar'
 
 -if @questions.empty?
@@ -42,6 +39,6 @@
     = render "questions/question", :question => question
 
 #additional_info
-  =will_paginate @questions
+  = will_paginate @questions
 
   .clear
