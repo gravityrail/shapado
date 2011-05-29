@@ -40,7 +40,7 @@ gem 'jammit'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "~> 2.1.1"
 gem "magent", "0.6.2"
-gem "bug_hunter", "0.0.2"
+gem "bug_hunter", "0.0.5"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'
