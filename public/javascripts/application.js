@@ -85,7 +85,7 @@ $(document).ready(function() {
   initFollowTags();
   $(".highlight_for_user").effect("highlight", {}, 2000);
   sortValues('#group_language', 'option', ':last', 'text', null);
-  sortValues('#language_filter', 'option',  ':lt(2)', 'text', null);
+//   sortValues('#language_filter', 'option',  ':lt(2)', 'text', null);
   sortValues('#user_language', 'option',  false, 'text', null);
   sortValues('#lang_opts', '.radio_option', false, 'attr', 'id');
   sortValues('select#question_language', 'option', false, 'text', null);

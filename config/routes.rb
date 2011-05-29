@@ -114,7 +114,7 @@ Rails.application.routes.draw do
       put :move_to
       get :retag
       put :retag_to
-      post :close
+      get :close
       put  :open
       get :remove_attachment
 

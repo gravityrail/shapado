@@ -40,8 +40,6 @@ module ApplicationHelper
   end
 
   def language_select(f, question, opts = {})
-
-
     languages = current_group.languages
 
     f.select :language, languages_options(languages), {:selected => selected}, {:class => "select"}.merge(opts)

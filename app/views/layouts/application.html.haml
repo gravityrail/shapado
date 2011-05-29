@@ -33,7 +33,12 @@
           = form_tag search_index_path, :method => :get, :id => "search" do
             .field
               = text_field_tag :q, params[:q]
-
+        -if current_group.languages.count > 1
+          .languages_filter
+            %span
+              See questions in
+            - #i18n
+            = render "shared/language_filter"
 
         -if !logged_in?
           /=multiauth_menu("Sign In")
@@ -59,8 +64,6 @@
                 = tab_entry "li", t('layouts.application.collaborate'), expertise_user_path(current_user), :selected => "active"
               %li
                 = link_to t('layouts.application.faq')
-
-        = render :partial => "shared/language_filter"
 
         .widget-links.module
           %nav

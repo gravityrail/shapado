@@ -14,24 +14,18 @@ module Shapado
       def find_languages
         @languages ||= begin
           if AppConfig.enable_i18n
-            if languages = current_group.language
-              languages = [languages]
-            else
-              if logged_in?
-                languages = current_user.languages_to_filter
-              elsif session["user.language_filter"]
-                if session["user.language_filter"] == 'any'
-                  languages = AVAILABLE_LANGUAGES
-                else
-                  languages = [session["user.language_filter"]]
-                end
-              elsif params[:mylangs]
-                languages = params[:mylangs].split(' ')
-              elsif params[:feed_token] && (feed_user = User.find_by_feed_token(params[:feed_token]))
-                languages = feed_user.languages_to_filter
-              else
-                languages = [I18n.locale.to_s.split("-").first]
+            languages = current_group.languages
+
+            if logged_in?
+              languages = current_user.languages_to_filter(current_group)
+            elsif session["user.language_filter"]
+              unless session["user.language_filter"] == 'any'
+                languages = [session["user.language_filter"]]
               end
+            elsif params[:mylangs]
+              languages = params[:mylangs].split(' ')
+            elsif params[:feed_token] && (feed_user = User.find_by_feed_token(params[:feed_token]))
+              languages = feed_user.languages_to_filter(current_group)
             end
             languages
           else
@@ -42,7 +36,14 @@ module Shapado
 
       def language_conditions
         conditions = {}
-        conditions[:language] = { :$in => find_languages}
+        find_languages
+        unless @languages.blank?
+          if @languages.count > 1
+            conditions[:language] = { :$in => @languages}
+          else
+            conditions[:language] = @languages.first
+          end
+        end
         conditions
       end
 

@@ -187,14 +187,14 @@ class User
     end
   end
 
-  def languages_to_filter
+  def languages_to_filter(group)
     @languages_to_filter ||= begin
       languages = nil
       case self.language_filter
       when "any"
-        languages = AVAILABLE_LANGUAGES
+        languages = group.languages
       when "user"
-        languages = (self.preferred_languages.empty?) ? AVAILABLE_LANGUAGES : self.preferred_languages
+        languages = (self.preferred_languages.empty?) ? group.languages : self.preferred_languages
       else
         languages = [self.language_filter]
       end

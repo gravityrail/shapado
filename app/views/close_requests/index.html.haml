@@ -26,7 +26,7 @@
 
 
 - if logged_in? && current_user.mod_of?(current_group)
-  - form_for @question, :url => close_question_url(@question), :method => :post, :html => {:class => "form"} do |form|
+  - form_for @question, :url => close_question_url(@question), :html => {:class => "form", :method => :get} do |form|
     = yield :close_requests_table
     .group.navform
       = form.submit t("scaffold.update"), :id => "close_question_submit_#{@question.id}"
