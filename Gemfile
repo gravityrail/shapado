@@ -40,7 +40,7 @@ gem 'jammit'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "~> 2.1.1"
 gem "magent", "0.6.2"
-gem "bug_hunter", "0.0.6"
+gem "bug_hunter", "0.0.7"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'
@@ -75,6 +75,7 @@ end
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
   gem 'em-websocket', '~> 0.3.0'
+  gem 'twitter', '1.5.0'
 end
 
 group :test do

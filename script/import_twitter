@@ -2,12 +2,11 @@
 
 ENV["RAILS_ENV"] ||= (ARGV[0] || "development")
 
-require File.expand_path("../../config/environment", __FILE__)
-
-gem 'twitter', '0.9.12'
-gem 'crack', '0.1.8'
+# require File.expand_path("../../config/environment", __FILE__)
+require "#{File.expand_path("../..", __FILE__)}/lib/shapado/scripting/easy_loader"
 
 require 'twitter'
+require 'twitter-text'
 require 'whatlanguage'
 
 class TwitterBot
@@ -18,7 +17,8 @@ class TwitterBot
 
   def search(keyword, &block)
     begin
-      Twitter::Search.new(keyword).each do |status|
+      @searcher = Twitter::Search.new
+      @searcher.containing(keyword).result_type("recent").each do |status|
         block.call(status)
       end
     rescue Crack::ParseError
@@ -27,7 +27,7 @@ class TwitterBot
 
   def run!
     Timeout.timeout(4.minutes.to_i) do
-      Group.find_each("share.enable_twitter" => true) do |group|
+      Group.where("share.enable_twitter" => true).all.each do |group|
         begin
           process_group(group)
         rescue Exception => e

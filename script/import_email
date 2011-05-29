@@ -2,7 +2,8 @@
 
 ENV["RAILS_ENV"] ||= (ARGV[0] || "development")
 
-require File.expand_path("../../config/environment", __FILE__)
+require "#{File.expand_path("../..", __FILE__)}/lib/shapado/scripting/easy_loader"
+# require File.expand_path("../../config/environment", __FILE__)
 require 'mail'
 
 emails_dir = "#{Rails.root}/tmp/emails"
