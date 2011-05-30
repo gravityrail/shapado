@@ -240,15 +240,17 @@ class Group
   def self.find_file_from_params(params, request)
     if request.path =~ /\/(logo|big|medium|small|css|favicon)\/([^\/\.?]+)/
       @group = Group.find($2)
+
+      logo = @group.has_logo? ? @group.logo : Shapado::FileWrapper.new("#{Rails.root}/public/images/logo.png", "image/png")
       case $1
       when "logo"
-        @group.logo
+        logo
       when "big"
-        @group.thumbnails["big"] ? @group.thumbnails.get("big") : @group.logo
+        @group.thumbnails["big"] ? @group.thumbnails.get("big") : logo
       when "medium"
-        @group.thumbnails["medium"] ? @group.thumbnails.get("medium") : @group.logo
+        @group.thumbnails["medium"] ? @group.thumbnails.get("medium") : logo
       when "small"
-        @group.thumbnails["small"] ? @group.thumbnails.get("small") : @group.logo
+        @group.thumbnails["small"] ? @group.thumbnails.get("small") : logo
       when "css"
         if @group.has_custom_css?
           css=@group.custom_css

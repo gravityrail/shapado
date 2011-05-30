@@ -525,15 +525,16 @@ Time.zone.now ? 1 : 0)
   def self.find_file_from_params(params, request)
     if request.path =~ %r{/(avatar|big|medium|small)/([^/\.\?]+)}
       @user = User.find($2)
+      avatar = @user.has_avatar? ? @user.avatar : Shapado::FileWrapper.new("#{Rails.root}/public/images/avatar-25.png", "image/png")
       case $1
       when "avatar"
         @user.avatar
       when "big"
-        @user.thumbnails["big"] ? @user.thumbnails.get("big") : @user.avatar
+        @user.thumbnails["big"] ? @user.thumbnails.get("big") : avatar
       when "medium"
-        @user.thumbnails["medium"] ? @user.thumbnails.get("medium") : @user.avatar
+        @user.thumbnails["medium"] ? @user.thumbnails.get("medium") : avatar
       when "small"
-        @user.thumbnails["small"] ? @user.thumbnails.get("small") : @user.avatar
+        @user.thumbnails["small"] ? @user.thumbnails.get("small") : avatar
       end
     end
   end
