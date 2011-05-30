@@ -6,9 +6,9 @@ en:
       unauthenticated: "Anonymous users cannot vote"
       average:
         one:
-          "vote %{count}"
+          "%{count} vote"
         other:
-          "votes %{count}"
+          "%{count} votes"
     destroy:
       flash_notice: "Your vote has been revoked successfully."
     control:
