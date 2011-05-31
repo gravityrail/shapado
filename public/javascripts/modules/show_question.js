@@ -10,7 +10,6 @@ $(document).ready(function() {
     var form = $(this).parents("form");
     $.post(form.attr("action")+'.js', form.serialize()+"&"+btn_name+"=1", function(data){
       if(data.success){
-        alert(data.average);
         form.find(".votes_average").text(data.average);
         if(data.vote_state == "deleted") {
         }
