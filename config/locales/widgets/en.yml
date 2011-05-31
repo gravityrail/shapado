@@ -71,3 +71,5 @@ en:
       title: "People And Tags To Follow"
       description: "Suggestion of friends and tags for the user to follow"
       followed_by: "Followed by %{user}"
+    contributors:
+      title: "Question's Contributors"

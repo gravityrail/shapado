@@ -30,7 +30,7 @@ class Widget
     end
 
     if tab == 'question'
-      types += %w[ModInfoWidget QuestionTagsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
+      types += %w[ModInfoWidget QuestionTagsWidget ContributorsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
     end
     if tab == 'external'
       types += ["AskQuestionWidget"]
