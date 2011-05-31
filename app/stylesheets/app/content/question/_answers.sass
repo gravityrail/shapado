@@ -41,11 +41,36 @@
 
 /* Main Question - Each Answer */
 //========================================================================
+.answer
+  padding-left: 0px
+  float: left
+  width: 93%
+.answer_vote_box
+  float: left
+  padding-top: 20px
+  form
+    margin: 0
+    width: auto
+  .votes_average
+    text-align: center
+    width: auto
+    background-color: #F1F1F1
+    margin: 0
+  button
+    height: 21px
+    width: 22px
+    border: none
+    &.negative
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat
+      &:hover
+        background-color: #f00
+    &.positive
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat
+      &:hover
+        background-color: #0a0
 article
   border-bottom: 1px solid #e5e5e5
   padding: 20px
-  clear: both
-  display: block
   .content
     clear: both
     float: none
@@ -55,9 +80,9 @@ article
     float: left
     margin-right: 10px
   p
-    font-size: 12px
+    font-size: 14px
     line-height: 15px
-    color: #888
+    color: #333333
   h4
     font-size: 12px
     padding: 10px 10px 0 8px
@@ -91,11 +116,19 @@ article
       bottom: 5px
       right: 5px
       cursor: pointer
-
+  .answer-avatar
+    float: right
+    margin-right: 50px
+  .actions_list
+    margin-left: 20px
+    .links
+      float: left
+      a
+        margin-right: 10px
 /* Editors form output */
 //========================================================================
 .article-actions
-  float: right
+  float: left
   margin: 0 5px 0 0
   ul
     li.current
@@ -141,42 +174,6 @@ article
           background-color: #fff
           a:first-letter
             text-transform: uppercase
-    li.votes
-      form
-        margin: 0
-        width: auto
-      p
-        width: auto !important
-        text-align: center
-        padding: 3px 0 0 0 !important
-
-        span
-          width: auto !important
-          float: left
-
-        button
-          height: 21px
-          width: 22px
-          border: none
-          margin-top: -3px
-          float: left
-
-          &.negative
-            float: left
-            margin-right: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat
-            border-right: 1px solid #ddd
-            &:hover
-              background-color: #f00
-              background-position: 5px -418px
-          &.positive
-            float: right
-            margin-left: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat
-            border-left: 1px solid #ddd
-            &:hover
-              background-color: #0a0
-              background-position: 5px -435px
 
 /* Closed reasons */
 //========================================================================
@@ -192,5 +189,3 @@ article
   color: #fff
   +error-gradient
 
-p.vote_box
-  margin: 0

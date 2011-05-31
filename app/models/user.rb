@@ -102,6 +102,11 @@ class User
   before_save :update_languages
   before_create :logged!
 
+  def display_name
+    return name unless name.blank?
+    return login
+  end
+
   def self.find_for_authentication(conditions={})
     where(conditions).first || where(:login => conditions[:email]).first
   end

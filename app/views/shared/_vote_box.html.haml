@@ -1,16 +1,21 @@
--if !closed && (logged_in? && (voteable.user != current_user)) || !logged_in?
-  %form{:action=> url, :method=>'post', :class=>'vote_form'}
-    = token_tag
-    %p.vote_box
-      =hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-      -if !voteable.is_a?(Comment)
-        %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
-      %span.votes_average
-        =I18n.t("votes.create.average", :count => calculate_votes_average(voteable))
-      %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1"}
--else
-  %p.vote_box
-    %button.negative
-    %span.votes_average
-      =I18n.t("votes.create.average", :count => calculate_votes_average(voteable))
-    %button.positive
+.answer_vote_box
+  -if !closed && (logged_in? && (voteable.user != current_user)) || !logged_in?
+    %form{:action=> url, :method=>'post', :class=>'vote_form'}
+      = token_tag
+      %ul.vote_box
+        %li
+          %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1"}
+        %li.votes_average
+          = calculate_votes_average(voteable)
+        %li
+          = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
+          -if !voteable.is_a?(Comment)
+            %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
+  -else
+    %ul.vote_box
+      %li
+        %button.positive
+      %li.votes_average
+        = calculate_votes_average(voteable)
+      %li
+        %button.negative
