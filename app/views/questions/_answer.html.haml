@@ -40,18 +40,19 @@
 
   .actions_list
     .links
-      = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "add_answer_comment_link", "data-commentable"=>answer.id
-      - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
-        = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
-      - if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
-        = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
-      - if answer.favorite_for?(current_user)
-        = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
-      - else
-        = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
+      -if logged_in?
+        = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "add_answer_comment_link", "data-commentable"=>answer.id
+        - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
+          = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
+        - if(current_user.can_modify?(@question) || current_user.mod_of?(@question.group))
+          = link_to t("scaffold.destroy"), question_answer_path(@question.id, answer.id), :confirm => "are you sure?", :method => :delete
+        - if answer.favorite_for?(current_user)
+          = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
+        - else
+          = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
       - if logged_in? && @aflag.new_record? && current_user != answer.user
         = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-      -
+
       %time{:datetime => answer.created_at.iso8601}
         = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)
     .article-actions
@@ -70,14 +71,15 @@
             - if answer.versions.count > 0
               %li
                 = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
-            %li
-              =link_to t('questions.show.follow_up'), new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
-            - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
-              -if !@aflag.new_record?
-                %li.flagged
-                  = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
-                  = link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
-                  = link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+            -if logged_in?
+              %li
+                =link_to t('questions.show.follow_up'), new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
+              - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
+                -if !@aflag.new_record?
+                  %li.flagged
+                    = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
+                    = link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
+                    = link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
   .clear
 
   .comments
