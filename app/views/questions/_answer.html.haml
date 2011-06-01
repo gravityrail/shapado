@@ -50,17 +50,16 @@
           = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".unfavorite_tooltip"), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(@question, answer), "data-title" => t(".favorite_tooltip"), 'data-counter' => '.favorites_count'
         - else
           = link_to t(".favorite"), favorite_question_answer_path(@question, answer), :id => "unfavorite-link", :title => t(".favorite_tooltip"), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(@question, answer), "data-title" => t(".unfavorite_tooltip"), 'data-counter' => '.favorites_count'
-      - if logged_in? && @aflag.new_record? && current_user != answer.user
-        = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-
+        - if @aflag.new_record? && current_user != answer.user
+          = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
       %time{:datetime => answer.created_at.iso8601}
         = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)
-    .article-actions
-      %ul
-        %li.current
-          = link_to t('layouts.manage.actions'), "#"
-          %ul.drop-menu
-            -if logged_in?
+    -if logged_in?
+      .article-actions
+        %ul
+          %li.current
+            = link_to t('layouts.manage.actions'), "#"
+            %ul.drop-menu
               -if (current_user.mod_of?(@question.group) || current_user.can_modify?(@question))
                 %li
                   -unless @question.accepted && !@question.subjetive
@@ -68,10 +67,9 @@
                 -if solution
                   %li
                     = link_to t(".unset_answer"),  unsolve_question_path(@question)
-            - if answer.versions.count > 0
-              %li
-                = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
-            -if logged_in?
+              - if answer.versions.count > 0
+                %li
+                  = link_to t(".history", :default => "history"), history_question_answer_path(@question, answer)
               %li
                 =link_to t('questions.show.follow_up'), new_question_path(:from_question => @question.id, :at => answer.id), :rel => "nofollow"
               - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
