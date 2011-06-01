@@ -419,7 +419,9 @@ Time.zone.now ? 1 : 0)
   end
 
   def viewed_on!(group)
-    self.increment("membership_list.#{group.id}.views_count" => 1.0)
+    if member_of? group
+      self.increment("membership_list.#{group.id}.views_count" => 1.0)
+    end
   end
 
   def method_missing(method, *args, &block)
