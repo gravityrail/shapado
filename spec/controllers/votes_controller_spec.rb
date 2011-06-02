@@ -36,7 +36,7 @@ describe VotesController do
       @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
       post 'create', @vote_attrs
       body = JSON.load(response.body)
-      body["average"].should == "vote 1"
+      body["average"].should == "1 vote"
       response.should be_success
     end
 
@@ -47,7 +47,7 @@ describe VotesController do
       @vote_attrs.merge!(:question_id => @voteable.id, :format => "js")
       post 'create', @vote_attrs
       body = JSON.load(response.body)
-      body["average"].should == "votes 0"
+      body["average"].should == "0 votes"
     end
 
     it "should change the vote" do

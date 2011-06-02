@@ -214,8 +214,12 @@ class User
   end
 
   def is_preferred_tag?(group, *tags)
-    ptags = config_for(group, false).preferred_tags
-    tags.detect { |t| ptags.include?(t) } if ptags
+    if config = config_for(group, false)
+      ptags = config.preferred_tags
+      tags.detect { |t| ptags.include?(t) } if ptags
+    else
+      false
+    end
   end
 
   def admin?
@@ -253,7 +257,9 @@ Time.zone.now ? 1 : 0)
   end
 
   def role_on(group)
-    config_for(group, false).role
+    if config = config_for(group, false)
+      config.role
+    end
   end
 
   def owner_of?(group)
@@ -265,7 +271,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def mod_of?(group)
-    owner_of?(group) || role_on(group) == "moderator" || self.reputation_on(group) >= group.reputation_constrains["moderate"].to_i
+    owner_of?(group) || role_on(group) == "moderator" || self.reputation_on(group).to_i >= group.reputation_constrains["moderate"].to_i
   end
 
   def editor_of?(group)
@@ -334,10 +340,12 @@ Time.zone.now ? 1 : 0)
     now = Time.zone.now
 
     if group
-      if member_of?(group) || !group.private
-        on_activity(:login, group)
-      else
+      unless member_of? group
         join(group)
+      end
+
+      if member_of?(group)
+        on_activity(:login, group)
       end
     end
   end
@@ -379,6 +387,10 @@ Time.zone.now ? 1 : 0)
   end
 
   def update_reputation(key, group, v = nil)
+    unless member_of? group
+      join(group)
+    end
+
     if v.nil?
       value = group.reputation_rewards[key.to_s].to_i
       value = key if key.kind_of?(Integer)
@@ -403,7 +415,15 @@ Time.zone.now ? 1 : 0)
   end
 
   def reputation_on(group)
-    config_for(group, false).reputation.to_i
+    if config = config_for(group, false)
+      config.reputation.to_i
+    end
+  end
+
+  def views_on(group)
+    if config = config_for(group, false)
+      config.views_count.to_i
+    end
   end
 
   def stats(*extra_fields)
@@ -414,7 +434,11 @@ Time.zone.now ? 1 : 0)
 
   def badges_count_on(group)
     config = config_for(group, false)
-    [config.bronze_badges_count, config.silver_badges_count, config.gold_badges_count]
+    if config
+      [config.bronze_badges_count, config.silver_badges_count, config.gold_badges_count]
+    else
+      [0,0,0]
+    end
   end
 
   def badges_on(group, opts = {})
@@ -473,7 +497,11 @@ Time.zone.now ? 1 : 0)
       group = args.first
       if group.reputation_constrains.include?(key.to_s)
         if group.has_reputation_constrains
-          return self.owner_of?(group) || self.mod_of?(group) || (self.reputation_on(group) >= group.reputation_constrains[key].to_i)
+          if self.member_of? group
+            return self.owner_of?(group) || self.mod_of?(group) || (self.reputation_on(group) >= group.reputation_constrains[key].to_i)
+          else
+            return false
+          end
         else
           return true
         end
@@ -494,8 +522,6 @@ Time.zone.now ? 1 : 0)
         if config.nil?
           config = self.membership_list[group] = Membership.new(:group_id => group)
         end
-      else
-        config = Membership.new(:group_id => group)
       end
     end
     config
