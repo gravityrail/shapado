@@ -12,6 +12,10 @@
         %li{:style => "text-align: center"}
           = avatar_img(@user, :size => "big")
           =link_to t("users.form.avatar_tip"), "http://gravatar.com", :target => "_blank"
+  .block
+    .inner
+      -if @user.member_of? current_group
+        =link_to "leave #{current_group.domain}", leave_users_path
 
 - @user.password = @user.password_confirmation = nil
 

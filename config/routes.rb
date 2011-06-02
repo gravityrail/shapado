@@ -41,6 +41,7 @@ Rails.application.routes.draw do
       get :follow_tags
       get :unfollow_tags
       get :leave
+      get :join
     end
 
     member do

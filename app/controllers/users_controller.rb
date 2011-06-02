@@ -360,6 +360,11 @@ class UsersController < ApplicationController
     return redirect_to :root
   end
 
+  def join
+    current_user.join(current_group)
+    return redirect_to :root
+  end
+
   def auth
     if params["pp"]
       cookies["pp"] = 1

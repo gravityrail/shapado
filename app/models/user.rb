@@ -101,7 +101,6 @@ class User
   end
 
   before_save :update_languages
-  before_create :logged!
 
   def self.find_for_authentication(conditions={})
     where(conditions).first || where(:login => conditions[:email]).first
@@ -334,22 +333,17 @@ Time.zone.now ? 1 : 0)
   def logged!(group = nil)
     now = Time.zone.now
 
-    if new_record?
-      self.last_logged_at = now
-    elsif group && (member_of?(group) || !group.private)
-      on_activity(:login, group)
+    if group
+      if member_of?(group) || !group.private
+        on_activity(:login, group)
+      else
+        join(group)
+      end
     end
   end
 
   def on_activity(activity, group)
-    if activity == :login
-      self.last_logged_at ||= Time.now
-      if !self.last_logged_at.today?
-        self.override( {:last_logged_at => Time.zone.now.utc} )
-      end
-    else
-      self.update_reputation(activity, group) if activity != :login
-    end
+    self.update_reputation(activity, group) if activity != :login
     activity_on(group, Time.zone.now)
   end
 
@@ -468,7 +462,9 @@ Time.zone.now ? 1 : 0)
   end
 
   def viewed_on!(group)
-    self.increment("membership_list.#{group.id}.views_count" => 1.0)
+    if member_of? group
+      self.increment("membership_list.#{group.id}.views_count" => 1.0)
+    end
   end
 
   def method_missing(method, *args, &block)
@@ -494,7 +490,10 @@ Time.zone.now ? 1 : 0)
     config = self.membership_list.get(group)
     if config.nil?
       if init
-        config = self.membership_list[group] = Membership.new(:group_id => group)
+        config = self.inactive_membership_list[group]
+        if config.nil?
+          config = self.membership_list[group] = Membership.new(:group_id => group)
+        end
       else
         config = Membership.new(:group_id => group)
       end
@@ -513,6 +512,23 @@ Time.zone.now ? 1 : 0)
       self.inactive_membership_list[group] = config
       self.save!
     end
+  end
+
+  def join(group)
+    if group.kind_of?(Group)
+      group = group.id
+    end
+
+    config = self.membership_list.get(group)
+    if config.nil?
+      if config = self.inactive_membership_list[group]
+        self.membership_list[group] = config
+      else
+        self.membership_list[group] = Membership.new(:group_id => group)
+      end
+      save
+    end
+    false
   end
 
   def reputation_stats(group, options = {})

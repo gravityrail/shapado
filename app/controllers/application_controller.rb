@@ -170,6 +170,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource_or_scope)
     self.current_user = resource_or_scope
+    self.current_user.logged!(self.current_group)
     super(resource_or_scope)
   end
 
