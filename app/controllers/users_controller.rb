@@ -39,7 +39,7 @@ class UsersController < ApplicationController
     set_page_title(t("users.index.title"))
 
     order = current_order
-    conditions = {}
+    conditions = {:anonymous => false}
     conditions = {:login => /^#{Regexp.escape(params[:q])}/} if params[:q]
 
     if order == "reputation"
