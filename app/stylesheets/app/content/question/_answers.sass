@@ -44,10 +44,14 @@
 .answer
   padding-left: 0px
   float: left
-  width: 93%
+  position: relative
+  
 .answer_vote_box
   float: left
-  padding-top: 20px
+  overflow: hidden
+  background-color: #f1f1f1
+  li 
+    float: left
   form
     margin: 0
     width: auto
@@ -56,21 +60,23 @@
     width: auto
     background-color: #F1F1F1
     margin: 0
+    padding: 6px
   button
-    height: 21px
-    width: 22px
+    height: 27px
+    width: 27px
     border: none
     &.negative
-      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
       &:hover
         background-color: #f00
     &.positive
-      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
       &:hover
         background-color: #0a0
+        
 article
   border-bottom: 1px solid #e5e5e5
-  padding: 20px
+  padding: 20px !important
   .content
     clear: both
     float: none
@@ -125,55 +131,71 @@ article
       float: left
       a
         margin-right: 10px
+
+
 /* Editors form output */
 //========================================================================
 .article-actions
-  float: left
-  margin: 0 5px 0 0
-  ul
-    li.current
+  position: absolute
+  right: 20px
+  
+  ul.drop-menu
+    margin: 0
+    float: left
+    -moz-border-radius: 0
+    -webkit-border-radius: 0
+    +none-radius
+    background-color: #f1f1f1
     li
       float: left
       display: inline
       position: relative
-      background-color: #f1f1f1
-      margin: 0 0 0 3px
       &:hover
         visibility: inherit
+        background-color: #f1f1f1
       &:hover ul, &.sfHover ul
-        left: -3px
-        top: 21px
-        z-index: 99
+        left: 0
+        top: 25px
+        z-index: 1000
       a
         display: block
         position: relative
-        padding: 4px 7px
-        color: #aaa
-      a:hover
-        color: #000
-        background-color: #ddd
-        border: none
+        padding: 7px
+        color: #999
+        border-right: 1px solid #e5e5e5
+        cursor: pointer
+          
+        &:hover
+          color: #000 !important
+          background-color: #f9f9f9 !important
       a.active
         background-color: $lightBlue
         color: #000
-      a.active:hover
-        background-color: $lightBlue !important
+        
+        &:hover
+          background-color: $lightBlue !important
+
       ul
         position: absolute
         top: -999em
-        width: 130px
-        left: -1px
+        width: 90px
+        left: -33px !important
         +none-radius
+  
         li:first-child
           border-top: 1px solid #ddd
+
         li
           width: 100%
           border-left: 1px solid #ddd
-          border-right: 1px solid #ddd
           border-bottom: 1px solid #ddd
           background-color: #fff
+          a
+            padding: 4px
+            font-size: 11px          
           a:first-letter
             text-transform: uppercase
+
 
 /* Closed reasons */
 //========================================================================
