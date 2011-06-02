@@ -94,9 +94,12 @@ class CommentsController < ApplicationController
 
   def destroy
     @scope = scope
-    @scope.comments.delete_if { |f| f._id == params[:id] }
-    current_user.decrement({"membership_list.#{group.id}.comments_count" => 1})
-    @scope.save!
+    @comment = @scope.comments.find(params[:id])
+    @comment.destroy
+
+    if current_user.member_of?
+      current_user.decrement({"membership_list.#{group.id}.comments_count" => 1})
+    end
 
     respond_to do |format|
       format.html { redirect_to(params[:source]) }

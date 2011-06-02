@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :login_required, :only => [:edit, :update,
-                                           :follow, :follow_tags,
+                                           :follow, :follow_tags, :leave,
                                            :unfollow_tags, :connect, :social_connect]
   skip_before_filter :check_group_access, :only => :auth
   before_filter :find_user, :only => [:show, :answers, :follows, :activity]
@@ -353,6 +353,16 @@ class UsersController < ApplicationController
   end
 
   def suggestions
+  end
+
+  def leave
+    current_user.leave(current_group)
+    return redirect_to :root
+  end
+
+  def join
+    current_user.join(current_group)
+    return redirect_to :root
   end
 
   def auth
