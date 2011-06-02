@@ -237,7 +237,7 @@ class QuestionsController < ApplicationController
       @question.follow_up = FollowUp.new(:original_question_id => params[:original_question_id], :original_answer_id => params[:original_answer_id])
     end
 
-    @question.anonymous = params[:question][:anonymous]
+    @question.anonymous = params[:question][:anonymous] if current_group.enable_anonymous
 
     if !logged_in?
       if recaptcha_valid? && params[:user]
@@ -249,7 +249,7 @@ class QuestionsController < ApplicationController
           else
             @question.user = @user
           end
-        else
+        elsif current_group.enable_anonymous
           @user = User.new(:anonymous => true, :login => "Anonymous")
           @user.safe_update(%w[name email website], params[:user])
           @user.login = @user.name if @user.name.present?

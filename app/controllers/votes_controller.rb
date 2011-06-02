@@ -44,7 +44,7 @@ class VotesController < ApplicationController
                            :message => flash[:notice],
                            :vote_type => vote_type,
                            :vote_state => state,
-                           :average => I18n.t("votes.create.average", :count => average)}.to_json)
+                           :average => average}.to_json)
         else
           render(:json => {:success => false, :message => flash[:error] }.to_json)
         end

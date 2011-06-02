@@ -29,6 +29,7 @@
 
     %ul.tag-list
       %li.title
+        -#i18n
         Topics:
         =@question.tags.join(", ")
     .owner
@@ -45,6 +46,4 @@
     = link_to(t("scaffold.back"), question_path(@question))
     = t("global.or")
     = submit_tag t("wiki.actions.show_diff"), :value => "diff", :name => "show"
-
-
 
