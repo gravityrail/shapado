@@ -102,6 +102,10 @@
     .checkbox
       = form.label :registered_only, t('registered_only', :scope => "activerecord.attributes.group"), :class => "radio"
       = form.check_box :registered_only, :class => "checkbox"
+  .field
+    .checkbox
+      = form.label :enable_anonymous, t('enable_anonymous', :scope => "activerecord.attributes.group"), :class => "radio"
+      = form.check_box :enable_anonymous, :class => "checkbox"
 
   .field
     .checkbox

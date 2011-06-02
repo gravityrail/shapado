@@ -46,6 +46,8 @@ class Group
 
   field :wysiwyg_editor, :type => Boolean, :default => false
 
+  field :enable_anonymous, :type => Boolean, :default => false
+
   field :has_reputation_constrains, :type => Boolean, :default => true
   field :reputation_rewards, :type => Hash, :default => REPUTATION_REWARDS
   field :reputation_constrains, :type => Hash, :default => REPUTATION_CONSTRAINS
