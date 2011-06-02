@@ -71,7 +71,7 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new
     @answer.safe_update(%w[body wiki anonymous position], params[:answer])
-    @answer.anonymous = params[:answer][:anonymous]
+    @answer.anonymous = params[:answer][:anonymous] if current_group.enable_anonymous
     @question = current_group.questions.by_slug(params[:question_id])
 
     @answer.question = @question
@@ -93,7 +93,7 @@ class AnswersController < ApplicationController
           else
             @answer.user = @user
           end
-        else
+        elsif current_group.enable_anonymous
           @user = User.new(:anonymous => true, :login => "Anonymous")
           @user.safe_update(%w[name email website], params[:user])
           @user.login = @user.name if @user.name.present?
