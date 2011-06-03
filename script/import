@@ -9,20 +9,24 @@ require File.expand_path('../../config/environment', __FILE__)
 
 group_info = JSON.parse(File.read(ARGV[0]+"/groups.json"))
 
+puts "Importing group #{group_info["name"].inspect}..."
+
 Dir.glob(ARGV[0]+"/*.json").each do |filepath|
   coll_name = File.basename(filepath, ".json")
 
-  cmd = "mongoimport -d '#{Mongoid.master.name}' -c '#{coll_name}' --file '#{filepath}'"
+  cmd = "mongoimport -d '#{MongoMapper.database.name}' -c '#{coll_name}' --file '#{filepath}'"
   system(cmd)
 end
 
-group = Group.where(:subdomain => group_info["subdomain"]).first
+puts Group.count
+
+group = Group.first(:subdomain => group_info["subdomain"])
 group.domain = AppConfig.domain
 group.save!
 
 puts "Updating objects..."
 %w[groups users badges answers questions].each do |cname|
-  coll = Mongoid.master.collection(cname)
+  coll = MongoMapper.database.collection(cname)
   coll.find.each do |q|
     %w[activity_at last_target_date created_at updated_at].each do |key|
       if q[key].is_a?(String)
@@ -39,7 +43,8 @@ puts "Updating objects..."
         end
       end
     end
-    coll.save(q)
+
+    coll.update({:_id => q["_id"]}, q, {:safe => true})
   end
 end
 

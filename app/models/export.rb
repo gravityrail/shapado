@@ -7,17 +7,17 @@ class Export
     $stderr.puts ">> Exporting model #{model}"
 
     if model.kind_of?(MongoMapper::Document)
-      io.write(model.to_json(opts)+"\n")
+      io.write(model.attributes.to_json(opts)+"\n")
     elsif model.respond_to?(:klass)
       model.all.each do |object|
-        io.write object.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
+        io.write object.attributes.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
       end
     else
       selector = opts.delete(:selector) || {:group_id => @group.id}
 
       puts "selector=#{selector.inspect}"
       model.where(selector).all.each do |object|
-        io.write object.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
+        io.write object.attributes.to_json({:except => [:_keywords]}.merge(opts)) + "\n"
       end
     end
   end
