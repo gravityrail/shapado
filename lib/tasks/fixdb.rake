@@ -8,7 +8,7 @@ namespace :fixdb do
     Answer.set({:anonymous => nil}, {:anonymous => false})
   end
 
-  task :clean_memberhips => [:environment] do
+  task :clean_memberships => [:environment] do
     User.find_each do |u|
       count = 0
       new_memberhip_list = u.membership_list
