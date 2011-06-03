@@ -15,6 +15,9 @@ db_config = MongoMapper.config[Rails.env]
 
 Dir.glob(ARGV[0]+"/*.json").each do |filepath|
   coll_name = File.basename(filepath, ".json")
+  if coll_name == "answers"
+    coll_name = "comments"
+  end
 
   opts = "-d '#{db_config["database"]}' -c '#{coll_name}' --file '#{filepath}'"
   if db_config["username"]
@@ -40,7 +43,7 @@ group.domain = AppConfig.domain
 group.save!
 
 puts "Updating objects..."
-%w[groups users badges answers questions].each do |cname|
+%w[groups users badges comments questions].each do |cname|
   coll = MongoMapper.database.collection(cname)
   coll.find.each do |q|
     %w[activity_at last_target_date created_at updated_at].each do |key|
