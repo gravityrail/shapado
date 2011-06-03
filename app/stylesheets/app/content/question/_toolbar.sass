@@ -10,7 +10,6 @@
       float: left
       display: inline
       position: relative
-      width: auto !important
       &:hover
         visibility: inherit
       &:hover ul, &.sfHover ul
@@ -22,11 +21,11 @@
         display: block
         position: relative
         padding: 5px 7px 7px 25px
-        color: #999
+        color: #999 !important
         border-right: 1px solid #e5e5e5
         background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
         &:hover
-          color: #000
+          color: #000 !important
           background-color: #f9f9f9 !important
       a.active
         background-color: $lightBlue

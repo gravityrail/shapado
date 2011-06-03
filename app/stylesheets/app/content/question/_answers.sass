@@ -47,9 +47,12 @@
   position: relative
   
 .answer_vote_box
-  float: left
   overflow: hidden
   background-color: #f1f1f1
+  width: 27px
+  position: absolute
+  left: 17px
+  top: 25px  
   li 
     float: left
   form
@@ -60,7 +63,7 @@
     width: auto
     background-color: #F1F1F1
     margin: 0
-    padding: 6px
+    padding: 3px 10px
   button
     height: 27px
     width: 27px
@@ -76,7 +79,7 @@
         
 article
   border-bottom: 1px solid #e5e5e5
-  padding: 20px !important
+  padding: 20px 20px 20px 50px !important
   .content
     clear: both
     float: none
@@ -125,76 +128,28 @@ article
   .answer-avatar
     float: right
     margin-right: 50px
-  .actions_list
-    margin-left: 20px
-    .links
-      float: left
-      a
-        margin-right: 10px
 
 
 /* Editors form output */
 //========================================================================
 .article-actions
-  position: absolute
-  right: 20px
-  
-  ul.drop-menu
-    margin: 0
-    float: left
-    -moz-border-radius: 0
-    -webkit-border-radius: 0
-    +none-radius
-    background-color: #f1f1f1
+  margin-top: 20px
+  margin-left: 10px
+  ul
     li
       float: left
       display: inline
-      position: relative
-      &:hover
-        visibility: inherit
-        background-color: #f1f1f1
-      &:hover ul, &.sfHover ul
-        left: 0
-        top: 25px
-        z-index: 1000
       a
         display: block
         position: relative
-        padding: 7px
+        padding: 7px 14px
         color: #999
-        border-right: 1px solid #e5e5e5
+        border-right: 1px solid #f1f1f1
         cursor: pointer
           
         &:hover
-          color: #000 !important
-          background-color: #f9f9f9 !important
-      a.active
-        background-color: $lightBlue
-        color: #000
-        
-        &:hover
-          background-color: $lightBlue !important
-
-      ul
-        position: absolute
-        top: -999em
-        width: 90px
-        left: -33px !important
-        +none-radius
-  
-        li:first-child
-          border-top: 1px solid #ddd
-
-        li
-          width: 100%
-          border-left: 1px solid #ddd
-          border-bottom: 1px solid #ddd
-          background-color: #fff
-          a
-            padding: 4px
-            font-size: 11px          
-          a:first-letter
-            text-transform: uppercase
+          color: #fff
+          +orange-gradient
 
 
 /* Closed reasons */
