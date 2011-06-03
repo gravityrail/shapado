@@ -11,10 +11,25 @@ group_info = JSON.parse(File.read(ARGV[0]+"/groups.json"))
 
 puts "Importing group #{group_info["name"].inspect}..."
 
+db_config = MongoMapper.config[Rails.env]
+
 Dir.glob(ARGV[0]+"/*.json").each do |filepath|
   coll_name = File.basename(filepath, ".json")
 
-  cmd = "mongoimport -d '#{MongoMapper.database.name}' -c '#{coll_name}' --file '#{filepath}'"
+  opts = "-d '#{db_config["database"]}' -c '#{coll_name}' --file '#{filepath}'"
+  if db_config["username"]
+    opts << " -u #{db_config["username"]} -p #{db_config["password"]}"
+  end
+
+  if db_config["host"]
+    opts << " -h #{db_config["host"]}"
+  end
+
+  if db_config["port"]
+    opts << " --port #{db_config["port"]}"
+  end
+
+  cmd = "mongoimport #{opts}"
   system(cmd)
 end
 
