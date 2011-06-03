@@ -33,7 +33,7 @@
         Topics:
         =@question.tags.join(", ")
     .owner
-      = render "users/user_data", :user => @question.updated_by
+      = render "users/user_data", :user => @question.updated_by || @question.user
 
 
   #questions
