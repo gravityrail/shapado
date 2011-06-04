@@ -11,5 +11,8 @@ var AnswerUI = {
   update_on_show: function(data) {
     $("article.answer."+data.object_id).html(data.html);
     $("article.answer."+data.object_id).effect("highlight", {}, 3000);
+  },
+  vote: function(data) {
+    $("article.answer."+data.object_id+" li.votes_average").text(data.average);
   }
 }

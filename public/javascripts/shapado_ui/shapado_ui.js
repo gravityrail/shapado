@@ -34,6 +34,17 @@ var ShapadoUI = {
       AnswerUI.update_on_show(data);
     }
   },
+  vote: function(data) {
+    switch(data.on) {
+      case 'Question': {
+      }
+      break;
+      case 'Answer': {
+        AnswerUI.vote(data);
+      }
+      break;
+    }
+  },
   is_on_question_index: function() {
     return $("section.questions-index")[0] != null;
   },

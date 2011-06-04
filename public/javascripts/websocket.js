@@ -60,6 +60,10 @@ var ShapadoSocket = {
         ShapadoUI.update_answer(data);
       }
       break;
+      case 'vote': {
+        ShapadoUI.vote(data);
+      }
+      break;
     }
   },
   send: function(data) {

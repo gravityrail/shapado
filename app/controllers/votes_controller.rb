@@ -34,6 +34,11 @@ class VotesController < ApplicationController
       value = value * -1
     end
 
+    if state != :error
+      Magent::WebSocketChannel.push({id: "vote", object_id: @voteable.id, channel_id: current_group.slug,
+                                     value: value, average: @voteable.votes_average+value, on: @voteable.class.to_s})
+    end
+
     respond_to do |format|
       format.html{redirect_to params[:source]||root_path}
 

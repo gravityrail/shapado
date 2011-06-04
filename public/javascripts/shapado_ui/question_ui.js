@@ -16,7 +16,6 @@ var QuestionUI = {
   },
   update_on_show: function(data) {
     var key = "section#question.main-question."+data.object_id;
-    console.log($(key)[0])
     for(var prop in data.changes) {
       switch(prop) {
         case "title": {
@@ -25,7 +24,6 @@ var QuestionUI = {
         }
         break;
         case "body": {
-          console.log("updating description!!")
           var n = data.changes[prop].pop();
           $(key+" .description").html(n);
         }
