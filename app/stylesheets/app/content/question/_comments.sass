@@ -2,8 +2,7 @@
 //========================================================================
 article.comment
   border-bottom: none
-  margin: 20px 0 10px 60px
-  padding: 0px 0 10px 40px
+
   background: url("/images/comments-icon.gif") 10px 5px no-repeat
   p
     color: #333333
@@ -34,32 +33,32 @@ article.comment
 
 // Form for comment respond into question views
 //========================================================================
-.add_answer_comment_link, .add_comment_for_question 
-  width: 90%
-  background-color: $lightBlue
-  padding: 50px 30px 0 30px 
-  leyend
-    font-weight: bold
-    display: block
-    margin: 0 0 5px 0 !important
+form.answer_comment_form
+  padding-left: 30px !important
+  margin: 0
   .text_area
     border: 1px solid #ccc  !important
     font-size: 13px !important
-    padding: 10px !important
-    width: 95.5% !important
-    margin-bottom: 20px !important
-    height: 100px !important
+    padding: 5px !important
+    margin-left: 20px !important
+    height: 60px !important
+    width: 70%
   .reply_to
     background-color: #fff
     padding: 20px
+  .buttons
+    margin-top: 5px !important
+    margin-left: 20px !important
+    float: left
+    padding-top: 1px
 
 .article-actions .add_answer_comment_link
   background-color: #fff
-  border-right: 1px solid #e5e5e5  
+  border-right: 1px solid #e5e5e5
 
-.add_comment_for_question 
+.add_comment_for_question
   padding: 30px
   width: 80%
   margin: 20px 0 0 0
   .reply_to
-    margin: 0 0 20px 0  
+    margin: 0 0 20px 0
