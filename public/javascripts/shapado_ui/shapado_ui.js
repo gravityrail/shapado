@@ -17,6 +17,9 @@ var ShapadoUI = {
       // update widgets?
     }
   },
+  delete_question: function(data) {
+    $("article.Question#"+data.object_id).fadeOut();
+  },
   is_on_question_index: function() {
     return $("section.questions-index")[0] != null;
   },

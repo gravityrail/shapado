@@ -49,11 +49,11 @@ var ShapadoSocket = {
       }
       break;
       case 'destroyquestion': {
-        $("article.Question#"+data.object_id).fadeOut();
+        ShapadoUI.delete_question(data);
       }
       break;
       case 'newanswer': {
-        alert(data.owner_name+" has answered the question "+data.question_title);
+
       }
       break;
     }
