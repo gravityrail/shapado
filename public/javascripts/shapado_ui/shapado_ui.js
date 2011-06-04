@@ -21,7 +21,7 @@ var ShapadoUI = {
     return $("section.questions-index")[0] != null;
   },
   is_on_question_show: function() {
-    return $("section#question")[0] != null;
+    return $("section.main-question#question")[0] != null;
   }
 };
 

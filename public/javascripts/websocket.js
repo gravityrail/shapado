@@ -45,13 +45,7 @@ var ShapadoSocket = {
       }
       break;
       case 'updatequestion': {
-        var key = "article.Question#"+data.object_id;
-        for(var prop in data.changes) {
-          if(prop == "title") {
-            var n = data.changes[prop].pop();
-            $(key+" h2 a").text(n);
-          }
-        }
+        ShapadoUI.update_question(data);
       }
       break;
       case 'destroyquestion': {

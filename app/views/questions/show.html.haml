@@ -26,7 +26,7 @@
   %meta{:name => "description", :content => question_body.gsub(/<\/?[^>]*>/, "")[0, 255] }
   %link{:rel => "canonical", :href => question_url(@question) }
 
-%section.main-question#question
+%section#question{:class => "main-question #{@question.id}"}
   %h1
     &= @question.title
     - if @question.closed
