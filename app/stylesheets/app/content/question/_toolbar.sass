@@ -20,7 +20,7 @@
       a
         display: block
         position: relative
-        padding: 5px 7px 7px 25px
+        padding: 5px 7px 7px 25px !important
         color: #999 !important
         border-right: 1px solid #e5e5e5
         background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
@@ -68,14 +68,23 @@ ul.drop-menu
       color: #eb9696
       margin: 0
       &:hover
-        background-color: $red !important
+        background-color: $red
         color: #fff
       	      
     a#destroy_question_flag_link
       border-left: 1px solid #e5e5e5
       margin-left: 10px !important
       border-color: #f4b6b6
-
+      
+  li.dropHover
+    ul li.spam
+      margin: 0 !important
+      padding-left: 0 !important
+      a
+        background: #fff url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
+        &:hover, &.active
+          background: #f9f9f9 url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
+  
   .answer
     padding: 0 
     #add_answer
@@ -116,7 +125,7 @@ ul.drop-menu
     &:hover, &:active
       background-position: 6px -581px !important
 
-  .close a
+  .close a 
     background-position: 5px -358px !important
     &:hover, &.active
       background-position: 5px -330px !important
