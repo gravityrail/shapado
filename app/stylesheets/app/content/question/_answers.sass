@@ -45,15 +45,15 @@
   padding-left: 0px
   float: left
   position: relative
-  
+
 .answer_vote_box
   overflow: hidden
   background-color: #f1f1f1
   width: 27px
   position: absolute
   left: 17px
-  top: 25px  
-  li 
+  top: 25px
+  li
     float: left
   form
     margin: 0
@@ -76,10 +76,11 @@
       background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
       &:hover
         background-color: #0a0
-        
+
 article
   border-bottom: 1px solid #e5e5e5
   padding: 20px 20px 20px 50px !important
+  width: 90%
   .content
     clear: both
     float: none
@@ -146,10 +147,32 @@ article
         color: #999
         border-right: 1px solid #f1f1f1
         cursor: pointer
-          
+
         &:hover
           color: #fff
           +orange-gradient
+          visibility: inherit
+        &:hover ul, &.sfHover ul
+          right: -5px
+          top: 25px
+          z-index: 99
+      ul
+        position: absolute
+        top: -999em
+        width: 130px
+        left: -1px
+        +none-radius
+
+        li:first-child
+          border-top: 1px solid #ddd
+
+        li
+          width: 100%
+          border-left: 1px solid #ddd
+          border-bottom: 1px solid #ddd
+          background-color: #fff
+          a:first-letter
+            text-transform: uppercase
 
 
 /* Closed reasons */

@@ -10,11 +10,11 @@
 
     .comment-content.markdown
       = shapado_auto_link(markdown(comment.body), :link_users => true)
-      
+
     .controls
       .actions
         - if logged_in? && current_user != comment.user
-          = link_to t("comments.shared.reply"), "#", :class => "addNestedAnswer reply", 'data-author' => comment.user.login
+          = link_to t("comments.shared.reply"), "#", :class => "add_answer_comment_link addNestedAnswer reply", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable_id
         -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
           -case comment.commentable
             -when Question
@@ -47,7 +47,8 @@
     .controls
       .actions
         - if logged_in? && current_user != comment.user
-          = link_to t("comments.shared.reply"), "#", :class => "addNestedAnswer reply", 'data-author' => comment.user.login
+          = link_to t("comments.shared.reply"), "#", :class => "add_answer_comment_link addNestedAnswer reply", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable_id
+
         -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
           -case comment.commentable
             -when Question

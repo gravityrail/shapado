@@ -51,6 +51,12 @@ class Comment
     question
   end
 
+   # when comment is new, comment.commentable is nil so this is needed
+   # to get the parent id
+   def commentable_id
+     self._parent.id
+   end
+
   def question_id
     question_id = nil
 
