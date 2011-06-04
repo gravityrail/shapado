@@ -340,7 +340,7 @@ Time.zone.now ? 1 : 0)
     now = Time.zone.now
 
     if group
-      unless member_of? group
+      unless member_of?(group)
         join(group)
       end
 
@@ -387,7 +387,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def update_reputation(key, group, v = nil)
-    unless member_of? group
+    unless member_of?(group)
       join(group)
     end
 
@@ -417,12 +417,16 @@ Time.zone.now ? 1 : 0)
   def reputation_on(group)
     if config = config_for(group, false)
       config.reputation.to_i
+    else
+      0
     end
   end
 
   def views_on(group)
     if config = config_for(group, false)
       config.views_count.to_i
+    else
+      0
     end
   end
 
@@ -486,7 +490,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def viewed_on!(group)
-    if member_of? group
+    if member_of?(group)
       self.increment("membership_list.#{group.id}.views_count" => 1.0)
     end
   end
