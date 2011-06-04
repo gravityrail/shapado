@@ -324,13 +324,7 @@ class QuestionsController < ApplicationController
       changes = @question.changes
       tags_changes = changes["tags"]
 
-      if @question.slug_changed?
-        @question.slugs = [] if @question.slugs.nil?
-        @question.slugs << @question.slug
-      end
-      @question.send(:generate_slug)
-
-      if @question.valid? && @question.save
+      if @question.save
         @question.add_contributor(current_user)
 
         sweep_question_views
@@ -340,7 +334,7 @@ class QuestionsController < ApplicationController
           Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
         end
 
-        puts ">>>>>>>>>>>>>>>> #{changes.inspect}"
+        Rails.logger.info ">>>>>>>>>>>>>>>> #{changes.inspect}"
         Magent::WebSocketChannel.push({id: "updatequestion",
                                        object_id: @question.id,
                                        name: @question.title,
