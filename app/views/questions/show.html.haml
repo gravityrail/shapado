@@ -255,13 +255,14 @@
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
-  - if @question.accepted
-    -solution = @question.answer
-    =render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
+  .answers-list
+    - if @question.accepted
+      -solution = @question.answer
+      =render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
 
-  -@answers.each do |answer|
-    -next if answer.id == @question.answer_id
-    =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
+    -@answers.each do |answer|
+      -next if answer.id == @question.answer_id
+      =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
 
   =will_paginate(@answers)
 

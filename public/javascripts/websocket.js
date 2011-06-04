@@ -53,7 +53,11 @@ var ShapadoSocket = {
       }
       break;
       case 'newanswer': {
-
+        ShapadoUI.new_answer(data);
+      }
+      break;
+      case 'updateanswer': {
+        ShapadoUI.update_answer(data);
       }
       break;
     }

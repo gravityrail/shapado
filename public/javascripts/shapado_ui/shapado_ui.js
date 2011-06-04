@@ -20,6 +20,20 @@ var ShapadoUI = {
   delete_question: function(data) {
     $("article.Question#"+data.object_id).fadeOut();
   },
+  new_answer: function(data) {
+    if(ShapadoUI.is_on_question_index()){
+      AnswerUI.create_on_index(data);
+    } else if(ShapadoUI.is_on_question_show()) {
+      AnswerUI.create_on_show(data);
+    }
+  },
+  update_answer: function(data) {
+    if(ShapadoUI.is_on_question_index()){
+      AnswerUI.update_on_index(data);
+    } else if(ShapadoUI.is_on_question_show()) {
+      AnswerUI.update_on_show(data);
+    }
+  },
   is_on_question_index: function() {
     return $("section.questions-index")[0] != null;
   },
