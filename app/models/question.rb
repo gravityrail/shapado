@@ -9,7 +9,8 @@ class Question
   include MongoidExt::Storage
 
   include MongoidExt::Versioning
-  include Support::Voteable
+  include MongoidExt::Voteable
+
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 

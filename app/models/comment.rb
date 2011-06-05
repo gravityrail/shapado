@@ -1,6 +1,6 @@
 class Comment
   include Mongoid::Document
-  include Support::Voteable
+  include MongoidExt::Voteable
   include Mongoid::Timestamps
 
 #   include Shapado::Models::GeoCommon FIXME

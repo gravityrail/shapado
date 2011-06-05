@@ -19,7 +19,23 @@ class VotesController < ApplicationController
 
     state = :error
     if validate_vote(value, current_user)
-      state = @voteable.vote(value, current_user)
+      state = @voteable.vote!(value, current_user) do |v, type|
+        case type
+        when :add
+         if v > 0
+           @voteable.user.upvote!(current_group)
+         else
+           @voteable.user.downvote!(current_group)
+         end
+        when :remove
+          if v > 0
+            @voteable.user.upvote!(current_group, -1)
+          else
+            @voteable.user.downvote!(current_group, -1)
+          end
+        end
+      end
+
       flash[:notice] = generate_notice(state)
     end
 
