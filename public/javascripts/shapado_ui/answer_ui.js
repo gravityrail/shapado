@@ -4,6 +4,7 @@ var AnswerUI = {
   create_on_show: function(data) {
     $(".answers-list").prepend(data.html);
     $("article.answer."+data.object_id).effect("highlight", {}, 3000);
+    hideCommentsForm();
   },
   update_on_index: function(data) {
 

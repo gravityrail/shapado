@@ -12,8 +12,7 @@ $(document).ready(function() {
   $('.lang-fields').tabs();
 
   init_geolocal();
-  $("form.nestedAnswerForm").hide();
-  $("#add_comment_form").hide();
+  hideCommentsForm();
   $("form").live('submit', function() {
     var textarea = $(this).find('textarea');
     removeFromLocalStorage(location.href, textarea.attr('id'));
@@ -275,6 +274,10 @@ function getUrlVars() {
     vars[hash[0]] = hash[1];
   }
   return vars;
+}
+
+function hideCommentsForm(){
+  $("form.nestedAnswerForm").hide();
 }
 
 // Script for HTML5 tags, so IE will see it and use it
