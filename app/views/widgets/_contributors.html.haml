@@ -1,0 +1,17 @@
+.contributors.module
+  %h3
+    = t(".title")
+
+  %ul
+    - @question.contributors.each do |user|
+      %li
+        .avatar
+          = avatar_img(user, :size => "small")
+        .data
+          %h5
+            %b
+              =link_to h(user.login), user_path(user)
+            %small
+              ==#{user.reputation_on(current_group)}
+  .clear
+

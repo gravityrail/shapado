@@ -228,40 +228,13 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".addNestedAnswer").live("click", function() {
+  $(".add_answer_comment_link").live("click", function() {
     var link = $(this);
-    var user = link.attr('data-author');
-    var isreply = link.hasClass('reply');
-    var controls = link.parents(".article-actions");
-    var form = controls.parents(".answer").find("form.nestedAnswerForm");
-    if(form.length == 0) // if comment is child of a question
-      form = link.parents("#question").find("form.commentForm");
+    var answer_id = link.attr('data-commentable');
+    var form = $('form[data-commentable='+answer_id+']')
     var textarea = form.find('textarea');
-    var isHidden = !form.is(':visible');
-    controls.find(".forms form.flag_form").slideUp();
-    form.slideDown();
-    if(isreply){
-      textarea.focus();
-      textarea.text('@'+user+' ')
-    } else { textarea.text('').focus();  }
-
-    var viewportHeight = window.innerHeight ? window.innerHeight : $(window).height();
-    var top = form.offset().top - viewportHeight/2;
-
-    $('html,body').animate({scrollTop: top}, 1000);
-    return false;
-  });
-
-  $("#add_comment_link").live('click', function() {
-    var link = $(this);
-    var isreply = link.hasClass('reply');
-    var form = $("#add_comment_form");
-    var textarea = form.find('textarea');
-    $("#request_close_question_form").slideUp();
-    $("#question_flag_form").slideUp();
-    $("#close_question_form").slideUp();
-    $("#add_comment_form").slideDown();
-    textarea.text('').focus();
+    form.slideToggle();
+    textarea.focus();
     var viewportHeight = window.innerHeight ? window.innerHeight : $(window).height();
     var top = form.offset().top - viewportHeight/2;
 

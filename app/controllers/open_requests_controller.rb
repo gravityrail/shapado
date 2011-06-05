@@ -12,11 +12,11 @@ class OpenRequestsController < ApplicationController
     @open_request = OpenRequest.new(:comment => params[:open_request][:comment])
     @open_request.user = current_user
 
-    @question.open_requests << @open_request
+    @open_request.openable = @question
 
     respond_to do |format|
       if @open_request.valid?
-        @question.save  # FIXME: use modifiers
+        @question.save
         @question.increment(:open_requests_count => 1)
         flash[:notice] = t(:flash_notice, :scope => "open_requests.create")
         format.html { redirect_to(question_path(@question)) }

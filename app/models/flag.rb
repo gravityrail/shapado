@@ -16,6 +16,7 @@ class Flag
   embedded_in :flaggable, :inverse_of => :flags
 
   validates_presence_of :user
+  validates_presence_of :flaggable
   validates_inclusion_of :reason, :in => REASONS
 
   validate :should_be_unique

@@ -20,12 +20,12 @@
       a
         display: block
         position: relative
-        padding: 5px 7px 7px 25px
-        color: #999
+        padding: 5px 7px 7px 25px !important
+        color: #999 !important
         border-right: 1px solid #e5e5e5
         background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
         &:hover
-          color: #000
+          color: #000 !important
           background-color: #f9f9f9 !important
       a.active
         background-color: $lightBlue
@@ -68,18 +68,29 @@ ul.drop-menu
       color: #eb9696
       margin: 0
       &:hover
-        background-color: $red !important
+        background-color: $red
         color: #fff
       	      
     a#destroy_question_flag_link
       border-left: 1px solid #e5e5e5
       margin-left: 10px !important
       border-color: #f4b6b6
-
-  .answer #add_answer
-    background-position: 5px 5px
-    &:hover, &.active
-      background-position: 5px -25px
+      
+  li.dropHover
+    ul li.spam
+      margin: 0 !important
+      padding-left: 0 !important
+      a
+        background: #fff url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
+        &:hover, &.active
+          background: #f9f9f9 url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
+  
+  .answer
+    padding: 0 
+    #add_answer
+      background-position: 5px 5px
+      &:hover, &.active
+        background-position: 5px -25px !important
 
   .comment #add_question_comment
     background-position: 5px -699px
@@ -114,7 +125,7 @@ ul.drop-menu
     &:hover, &:active
       background-position: 6px -581px !important
 
-  .close a
+  .close a 
     background-position: 5px -358px !important
     &:hover, &.active
       background-position: 5px -330px !important
@@ -124,7 +135,7 @@ ul.drop-menu
     &:hover
       background-position: 5px -634px !important
 
-  .delete a
+  .delete a, .delete-q a
     background-position: 5px -547px !important
     &:hover, &.active
       background-position: 5px -519px !important
@@ -148,3 +159,14 @@ ul.drop-menu
     background-position: 5px -767px !important
     &:hover
       background-position: 5px -787px !important
+      
+      
+li.dropHover 
+  li.spam
+    padding-left: 0 !important
+    a
+      padding: 5px 7px 7px 25px !important
+      background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat !important
+      &:hover
+        color: #000 !important
+        background: #f9f9f9 url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat !important

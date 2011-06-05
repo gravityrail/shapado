@@ -15,6 +15,7 @@ class OpenRequest
   embedded_in :openable, :inverse_of => :open_requests
 
   validates_presence_of :user
+  validates_presence_of :openable
 
   validate :should_be_unique
   validate :check_reputation

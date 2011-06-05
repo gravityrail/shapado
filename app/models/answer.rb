@@ -5,7 +5,7 @@ class Answer
   include MongoidExt::Random
 
   include MongoidExt::Versioning
-  include Support::Voteable
+  include MongoidExt::Voteable
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 

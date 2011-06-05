@@ -9,7 +9,8 @@ class Question
   include MongoidExt::Storage
 
   include MongoidExt::Versioning
-  include Support::Voteable
+  include MongoidExt::Voteable
+
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 
@@ -22,7 +23,7 @@ class Question
   field :title, :type => String, :default => ""
   field :body, :type => String
   slug_key :title, :unique => true, :min_length => 8
-  field :slugs, :type => Array
+  field :slugs, :type => Array, :default  => []
   index :slugs
 
   field :answers_count, :type => Integer, :default => 0
@@ -114,6 +115,7 @@ class Question
   language :language
 
   before_save :update_activity_at
+  before_save :save_slug
   validate :update_language, :on => :create
 
   validate :group_language
@@ -433,6 +435,12 @@ class Question
       if !valid
         self.errors.add(:body, "you need to wait 20 senconds before posting another question.") # TODO i18n
       end
+    end
+  end
+
+  def save_slug
+    if self.slug_changed?
+      self.push_uniq(:slugs => self.slug_was)
     end
   end
 end

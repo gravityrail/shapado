@@ -41,11 +41,46 @@
 
 /* Main Question - Each Answer */
 //========================================================================
+.answer
+  padding-left: 0px
+  float: left
+  position: relative
+
+.answer_vote_box
+  overflow: hidden
+  background-color: #f1f1f1
+  width: 27px
+  position: absolute
+  left: 17px
+  top: 25px
+  li
+    float: left
+  form
+    margin: 0
+    width: auto
+  .votes_average
+    text-align: center
+    width: auto
+    background-color: #F1F1F1
+    margin: 0
+    padding: 3px 10px
+  button
+    height: 27px
+    width: 27px
+    border: none
+    &.negative
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
+      &:hover
+        background-color: #f00
+    &.positive
+      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
+      &:hover
+        background-color: #0a0
+
 article
   border-bottom: 1px solid #e5e5e5
-  padding: 20px
-  clear: both
-  display: block
+  padding: 20px 20px 20px 50px !important
+  width: 90%
   .content
     clear: both
     float: none
@@ -55,9 +90,9 @@ article
     float: left
     margin-right: 10px
   p
-    font-size: 12px
+    font-size: 14px
     line-height: 15px
-    color: #888
+    color: #333333
   h4
     font-size: 12px
     padding: 10px 10px 0 8px
@@ -91,92 +126,54 @@ article
       bottom: 5px
       right: 5px
       cursor: pointer
+  .answer-avatar
+    float: right
+    margin-right: 50px
+
 
 /* Editors form output */
 //========================================================================
 .article-actions
-  float: right
-  margin: 0 5px 0 0
+  margin-top: 20px
+  margin-left: 10px
   ul
-    li.current
     li
       float: left
       display: inline
-      position: relative
-      background-color: #f1f1f1
-      margin: 0 0 0 3px
-      &:hover
-        visibility: inherit
-      &:hover ul, &.sfHover ul
-        left: -3px
-        top: 21px
-        z-index: 99
       a
         display: block
         position: relative
-        padding: 4px 7px
-        color: #aaa
-      a:hover
-        color: #000
-        background-color: #ddd
-        border: none
-      a.active
-        background-color: $lightBlue
-        color: #000
-      a.active:hover
-        background-color: $lightBlue !important
+        padding: 7px 14px
+        color: #999
+        border-right: 1px solid #f1f1f1
+        cursor: pointer
+
+        &:hover
+          color: #fff
+          +orange-gradient
+          visibility: inherit
+        &:hover ul, &.sfHover ul
+          right: -5px
+          top: 25px
+          z-index: 99
       ul
         position: absolute
         top: -999em
         width: 130px
         left: -1px
         +none-radius
+
         li:first-child
           border-top: 1px solid #ddd
+
         li
           width: 100%
           border-left: 1px solid #ddd
-          border-right: 1px solid #ddd
           border-bottom: 1px solid #ddd
           background-color: #fff
           a:first-letter
             text-transform: uppercase
-    li.votes
-      form
-        margin: 0
-        width: auto
-      p
-        width: auto !important
-        text-align: center
-        padding: 3px 0 0 0 !important
 
-        span
-          width: auto !important
-          float: left
-
-        button
-          height: 21px
-          width: 22px
-          border: none
-          margin-top: -3px
-          float: left
-
-          &.negative
-            float: left
-            margin-right: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -403px  no-repeat
-            border-right: 1px solid #ddd
-            &:hover
-              background-color: #f00
-              background-position: 5px -418px
-          &.positive
-            float: right
-            margin-left: 7px
-            background: url("/images/question-toolbar-icons-small.png") 5px -450px  no-repeat
-            border-left: 1px solid #ddd
-            &:hover
-              background-color: #0a0
-              background-position: 5px -435px
 
 /* Closed reasons */
 //========================================================================
@@ -192,5 +189,3 @@ article
   color: #fff
   +error-gradient
 
-p.vote_box
-  margin: 0

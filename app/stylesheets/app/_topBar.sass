@@ -7,6 +7,8 @@
 
   .searcher
     float: left
+    border-right: 1px solid #333
+    height: 40px
 
     form#search
       padding: 0
@@ -41,18 +43,29 @@
   .languages_filter
     float: left
     padding: 6px 6px 6px 10px
-    border-right: 1px solid #777
-    border-left: 1px solid #333
+    border-left: 1px solid #777
+    height: 28px        
     span
       color: #fff
       background-image: none
-      font-weight: bold
+      font-size: 12px
+      float: left
+      margin: 6px 10px 0 0      
     form
       display: inline
       padding: 0
       margin: 0px 0 0 10px
       overflow: hidden
-      width: auto
+      width: 300px !important    
+      .field
+        background-color: #c00
+        overflow: hidden
+        height: 27px
+        float: left
+        select
+          width: auto !important
+          padding: 5px 4px 4px 4px !important
+        
 
   ul.group-list, ul.user-list, ul.drop-menu, ul.auth-list
     float: left

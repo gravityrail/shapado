@@ -15,6 +15,4 @@ Dir.glob("#{Rails.root}/app/javascripts/**/*.js") do |js_path|
   Mongoid.database.eval("db.system.js.save({_id: '#{name}', value: #{code}})")
 end
 
-require 'support/voteable'
-
 Mongoid.config.raise_not_found_error = false

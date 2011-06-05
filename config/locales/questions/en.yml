@@ -63,9 +63,9 @@ en:
       pick_answer: Pick as solution
       unset_answer: Unset solution?
       flag: Flag
-      add_comment: Add comment...
-      favorite: save to favorites
-      unfavorite: un-save
+      add_comment: Add comment
+      favorite: Save
+      unfavorite: Un-save
       favorite_tooltip: "Add this answer to your favorites"
       unfavorite_tooltip: "Remove this answer from your favorites"
     question:

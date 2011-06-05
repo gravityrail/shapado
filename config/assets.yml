@@ -8,6 +8,7 @@ javascript_compressor:  closure     # (yui, closure)
 
 javascripts:
   base:
+    - public/javascripts/shapado_ui/*.js
     - public/javascripts/jquery.js
     - public/javascripts/rails.js
     - public/javascripts/jquery.json-2.2.min.js

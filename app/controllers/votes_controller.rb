@@ -19,7 +19,23 @@ class VotesController < ApplicationController
 
     state = :error
     if validate_vote(value, current_user)
-      state = @voteable.vote(value, current_user)
+      state = @voteable.vote!(value, current_user) do |v, type|
+        case type
+        when :add
+         if v > 0
+           @voteable.user.upvote!(current_group)
+         else
+           @voteable.user.downvote!(current_group)
+         end
+        when :remove
+          if v > 0
+            @voteable.user.upvote!(current_group, -1)
+          else
+            @voteable.user.downvote!(current_group, -1)
+          end
+        end
+      end
+
       flash[:notice] = generate_notice(state)
     end
 
@@ -34,6 +50,11 @@ class VotesController < ApplicationController
       value = value * -1
     end
 
+    if state != :error
+      Magent::WebSocketChannel.push({id: "vote", object_id: @voteable.id, channel_id: current_group.slug,
+                                     value: value, average: @voteable.votes_average+value, on: @voteable.class.to_s})
+    end
+
     respond_to do |format|
       format.html{redirect_to params[:source]||root_path}
 
@@ -44,7 +65,7 @@ class VotesController < ApplicationController
                            :message => flash[:notice],
                            :vote_type => vote_type,
                            :vote_state => state,
-                           :average => I18n.t("votes.create.average", :count => average)}.to_json)
+                           :average => average}.to_json)
         else
           render(:json => {:success => false, :message => flash[:error] }.to_json)
         end

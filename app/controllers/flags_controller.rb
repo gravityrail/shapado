@@ -13,7 +13,8 @@ class FlagsController < ApplicationController
     flagged = false
 
     if @resource.user != current_user
-      @resource.flags << @flag
+      @flag.flaggable = @resource
+
       @flag.user = current_user
       if @flag.valid?
         @resource.save

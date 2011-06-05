@@ -41,26 +41,31 @@ var ShapadoSocket = {
       }
       break;
       case 'newquestion': {
-        var section = $("section.questions-index");
-        section.prepend(data.html).hide().slideToggle();
+        ShapadoUI.new_question(data);
       }
       break;
       case 'updatequestion': {
-        var key = "article.Question#"+data.object_id;
-        for(var prop in data.changes) {
-          if(prop == "title") {
-            var n = data.changes[prop].pop();
-            $(key+" h2 a").text(n);
-          }
-        }
+        ShapadoUI.update_question(data);
       }
       break;
       case 'destroyquestion': {
-        $("article.Question#"+data.object_id).fadeOut();
+        ShapadoUI.delete_question(data);
       }
       break;
       case 'newanswer': {
-        alert(data.owner_name+" has answered the question "+data.question_title);
+        ShapadoUI.new_answer(data);
+      }
+      break;
+      case 'updateanswer': {
+        ShapadoUI.update_answer(data);
+      }
+      break;
+      case 'vote': {
+        ShapadoUI.vote(data);
+      }
+      break;
+      case 'newcomment': {
+        ShapadoUI.new_comment(data);
       }
       break;
     }
