@@ -74,13 +74,13 @@ $(document).ready(function() {
                     var answer = $(data.html)
                     answer.find("form.commentForm").hide();
                     answers.append(answer)
-                    highlightEffect(answer)
+                    Effects.fade(answer)
                     Messages.show(data.message, "notice")
                     form.find("textarea").val("");
                     form.find("#markdown_preview").html("");
                     if($("#wysiwyg_editor").length > 0 )
                       $("#wysiwyg_editor").htmlarea('updateHtmlArea');
-                    removeFromLocalStorage(location.href, "markdown_editor");
+                    LocalStorage.remove(location.href, "markdown_editor");
                   } else {
                     Messages.show(data.message, "error")
                     if(data.status == "unauthenticate") {
@@ -116,11 +116,11 @@ $(document).ready(function() {
                             window.onbeforeunload = null;
                             var comment = $(data.html)
                             comments.append(comment)
-                            highlightEffect(comment)
+                            Effects.fade(comment)
                             Messages.show(data.message, "notice")
                             form.hide();
                             textarea.val("");
-                            removeFromLocalStorage(location.href, textarea.attr('id'));
+                            LocalStorage.remove(location.href, textarea.attr('id'));
                           } else {
                             Messages.show(data.message, "error")
                             if(data.status == "unauthenticate") {
@@ -204,9 +204,9 @@ $(document).ready(function() {
                                 comment.find(".markdown").html('<p>'+data.body+'</p>');
                                 form.remove();
                                 link.show();
-                                highlightEffect(comment);
+                                Effects.fade(comment);
                                 Messages.show(data.message, "notice");
-                                removeFromLocalStorage(location.href, textarea.attr('id'));
+                                LocalStorage.remove(location.href, textarea.attr('id'));
                                 window.onbeforeunload = null;
                               } else {
                                 Messages.show(data.message, "error")

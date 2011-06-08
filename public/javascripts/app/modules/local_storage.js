@@ -13,7 +13,7 @@ var LocalStorage = {
     LocalStorage.load_textareas();
     LocalStorage.initialize_text_areas();
   },
-  remove: function removeFromLocalStorage(key, id) {
+  remove: function(key, id) {
     if(LocalStorage.hasStorage()){
       var ls = localStorage[key];
       if(typeof(ls)=='string'){
@@ -80,7 +80,7 @@ var LocalStorage = {
           storageArr = $.merge(storageArr, [{id: id, value: value}]);
         localStorage.setObject(key, storageArr);
       }
-      } else {removeFromLocalStorage(key, id);}
+      } else {LocalStorage.remove(key, id);}
     }
   }
 
