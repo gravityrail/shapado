@@ -2,16 +2,16 @@ require 'spec_helper'
 
 describe Jobs::Activities do
   before(:each) do
-    @current_user = User.make
     Thread.current[:current_user] = @current_user
     @question = Question.make(:votes => {})
-    @answer = Answer.make(:votes => {}, :question => @question)
+    @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
+    @current_user = User.make
     @current_user.join(@question.group)
   end
 
   describe "on_activity" do
     it "should be successful" do
-      lambda {Jobs::Activities.on_activity(@question.group.id, @question.user.id)}.should_not raise_error
+      lambda {Jobs::Activities.on_activity(@question.group.id, @current_user.id)}.should_not raise_error
     end
   end
 
@@ -37,7 +37,7 @@ describe Jobs::Activities do
 
   describe "on_comment" do
     it "should be successful" do
-      @comment = Comment.make(:commentable => @answer)
+      @comment = Comment.make(:commentable => @answer, :user => @current_user)
       @answer.comments << @comment
       @answer.save
       lambda {Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id)}.should_not raise_error

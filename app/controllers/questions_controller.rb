@@ -255,6 +255,8 @@ class QuestionsController < ApplicationController
           @user.login = @user.name if @user.name.present?
           @user.save!
           @question.user = @user
+        else
+          return login_required
         end
       elsif !AppConfig.recaptcha["activate"]
         return create_draft!

@@ -68,7 +68,8 @@ class Answer
     ok
   end
 
-  def on_add_vote(v, voter)
+  def on_add_vote(v, voter_id)
+    voter = User.find(voter_id)
     if v > 0
       self.user.update_reputation(:answer_receives_up_vote, self.group)
       voter.on_activity(:vote_up_answer, self.group)
@@ -78,7 +79,8 @@ class Answer
     end
   end
 
-  def on_remove_vote(v, voter)
+  def on_remove_vote(v, voter_id)
+    voter = User.find(voter_id)
     if v > 0
       self.user.update_reputation(:answer_undo_up_vote, self.group)
       voter.on_activity(:undo_vote_up_answer, self.group)

@@ -559,9 +559,9 @@ Time.zone.now ? 1 : 0)
       if config = self.inactive_membership_list[group]
         self.membership_list[group] = config
       else
-        self.membership_list[group] = Membership.new(:group_id => group)
+        self.membership_list[group] = Membership.new(:group_id => group, :last_activity_at => Time.now)
       end
-      save
+      return save!
     end
     false
   end
