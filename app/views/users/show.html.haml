@@ -17,7 +17,7 @@
     .userDescription
       .basicInfo
         %h2
-          =h(@user.name)
+          = @user.name
 
         %small
           = t(:created_at, :scope => "activerecord.attributes.user")

@@ -4,7 +4,11 @@ $(document).ready(function() {
 //  $(".forms form.flag_form").hide();
 //  $("#close_question_form").hide();
   $('.auto-link').autoVideo();
-
+  var answers = $('article.answer').length;
+  if(answers == 0){
+    $('#new_answer').slideDown('slow');
+    $('a#add_answer').addClass('active');
+  }
   $("form.vote_form button").live("click", function(event) {
     var btn_name = $(this).attr("name");
     var form = $(this).parents("form");
@@ -30,16 +34,16 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".comment .comment-votes form.vote-up-comment-form input[name=vote_up]").live("click", function(event) {
-    var btn = $(this)
-    var form = $(this).parents("form");
+  $(".comment-form").live("submit", function(event) {
+    var form = $(this);
+    var btn = form.find('button')
     btn.hide();
     $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
       if(data.success){
         if(data.vote_state == "deleted") {
-          btn.attr("src", "/images/dialog-ok.png" )
         } else {
-          btn.attr("src", "/images/dialog-ok-apply.png" )
+          btn.after('<span class="upvoted-comment">✓</span>');
+          btn.remove();
         }
         btn.parents(".comment-votes").children(".votes_average").html(data.average);
         showMessage(data.message, "notice")
@@ -228,7 +232,7 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".add_answer_comment_link").live("click", function() {
+  $(".Answer-commentable, .Question-commentable, .Comment-commentable").live("click", function() {
     var link = $(this);
     var answer_id = link.attr('data-commentable');
     var form = $('form[data-commentable='+answer_id+']')

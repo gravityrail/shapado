@@ -26,8 +26,9 @@ class Comment
     self._parent.group
   end
 
-  def commentable_type
-    self._parent.class.to_s
+  ## FIXME quick fix for mongoid bug returning nil
+  def commentable
+    self._parent
   end
 
   def can_be_deleted_by?(user)
@@ -41,39 +42,33 @@ class Comment
 
   def find_question
     question = nil
-    commentable = self._parent
-    if commentable.kind_of?(Question)
-      question = commentable
-    elsif commentable.respond_to?(:question)
-      question = commentable.question
+    _parent = self._parent
+    if _parent.kind_of?(Question)
+      question = _parent
+    elsif _parent.respond_to?(:question)
+      question = _parent.question
     end
 
     question
   end
 
-   # when comment is new, comment.commentable is nil so this is needed
-   # to get the parent id
-   def commentable_id
-     self._parent.id
-   end
-
   def question_id
     question_id = nil
 
-    if self.commentable.is_a?(Question)
-      question_id = self.commentable.id
-    elsif self.commentable.is_a?(Answer)
-      question_id = self.commentable.question_id
-    elsif self.commentable.respond_to?(:question)
-      question_id = self.commentable.question_id
+    if self._parent.is_a?(Question)
+      question_id = self._parent.id
+    elsif self._parent.is_a?(Answer)
+      question_id = self._parent.question_id
+    elsif self._parent.respond_to?(:question)
+      question_id = self._parent.question_id
     end
 
     question_id
   end
 
   def find_recipient
-    if self.commentable.respond_to?(:user)
-      self.commentable.user
+    if self._parent.respond_to?(:user)
+      self._parent.user
     end
   end
 end

@@ -29,4 +29,26 @@ module VotesHelper
       t
     end
   end
+
+  def comment_vote_title(user_voted, voteable)
+    votes = voteable.votes.count
+    if user_voted
+      if votes == 1
+        I18n.t('votes.comments.title.one_vote_user')
+      elsif votes == 2
+        I18n.t('votes.comments.title.one_vote_two_users')
+      else
+        I18n.t('votes.comments.title.more_votes_user', :votes => votes-1)
+      end
+    else
+      if votes == 0
+        I18n.t('votes.comments.title.no_user_no_vote')
+      elsif votes == 1
+        I18n.t('votes.comments.title.no_user_one_vote')
+      else
+        I18n.t('votes.comments.title.no_user_more_votes', :votes => votes-1)
+      end
+    end
+  end
+
 end

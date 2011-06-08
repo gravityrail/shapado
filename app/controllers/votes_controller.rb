@@ -72,7 +72,7 @@ class VotesController < ApplicationController
       end
 
       format.json do
-        if vote_state != :error
+        if state != :error
           average = @voteable.votes_average + value
           render(:json => {:success => true,
                            :message => flash[:notice],

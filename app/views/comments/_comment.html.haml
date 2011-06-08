@@ -14,7 +14,7 @@
     .controls
       .actions
         - if logged_in? && current_user != comment.user
-          = link_to t("comments.shared.reply"), "#", :class => "add_answer_comment_link addNestedAnswer reply", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable_id
+          = link_to t("comments.shared.reply"), "#", :class => "reply #{comment.commentable.class}-commentable", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable.id
         -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
           -case comment.commentable
             -when Question
@@ -31,26 +31,23 @@
 
 -else
   %article.comment
-    .article-actions
-      -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
-        %ul
-          %li.votes
-            = vote_box(comment, request.path, comment.find_question.closed)
     %h4
       = t("time.ago", :time => time_ago_in_words(comment.created_at))
       =link_to comment.user.login, user_path(comment.user)
       == #{t("comments.shared.said")}:
-
+    .comment-votes
+      -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
+        = vote_box(comment, request.path, comment.find_question.closed)
     .comment-content.markdown
       = shapado_auto_link(markdown(comment.body), :link_users => true)
 
     .controls
       .actions
         - if logged_in? && current_user != comment.user
-          = link_to t("comments.shared.reply"), "#", :class => "add_answer_comment_link addNestedAnswer reply", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable_id
+          = link_to t("comments.shared.reply"), "#", :class => "reply #{comment.commentable.class}-commentable", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable.id
 
         -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
-          -case comment.commentable
+          -case comment.commentable.class
             -when Question
               = link_to t("scaffold.edit"), edit_question_comment_path(:question_id => comment.commentable.id, :id => comment.id, :source => source), :class => "edit_comment"
             -when Answer

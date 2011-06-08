@@ -43,8 +43,7 @@
     %ul.drop-menu
       -if logged_in?
         %li
-          = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "add_answer_comment_link", "data-commentable"=>answer.id
-
+          = link_to t(".add_comment"), new_question_comment_path(@question, answer), :class => "Answer-commentable", "data-commentable"=>answer.id
         - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
           %li
             = link_to t("scaffold.edit"), edit_question_answer_path(@question, answer)
