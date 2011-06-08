@@ -26,7 +26,7 @@ $(document).ready(function() {
             }
         }
         },
-        error: manageAjaxError,
+        error: Messages.ajax_error_handler,
         complete: function(XMLHttpRequest, textStatus) {
             link.removeClass('busy');
             link.text(dataTitle);
