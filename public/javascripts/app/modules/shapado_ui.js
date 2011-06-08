@@ -1,18 +1,18 @@
 var ShapadoUI = {
   new_question: function(data) {
     if(ShapadoUI.is_on_question_index()){
-      QuestionUI.create_on_index(data);
+      Questions.create_on_index(data);
     } else if(ShapadoUI.is_on_question_show()) {
-      QuestionUI.create_on_show(data);
+      Questions.create_on_show(data);
     } else {
       // update widgets?
     }
   },
   update_question: function(data) {
     if(ShapadoUI.is_on_question_index()){
-      QuestionUI.update_on_index(data);
+      Questions.update_on_index(data);
     } else if(ShapadoUI.is_on_question_show()) {
-      QuestionUI.update_on_show(data);
+      Questions.update_on_show(data);
     } else {
       // update widgets?
     }
@@ -22,16 +22,16 @@ var ShapadoUI = {
   },
   new_answer: function(data) {
     if(ShapadoUI.is_on_question_index()){
-      AnswerUI.create_on_index(data);
+      Answers.create_on_index(data);
     } else if(ShapadoUI.is_on_question_show()) {
-      AnswerUI.create_on_show(data);
+      Answers.create_on_show(data);
     }
   },
   update_answer: function(data) {
     if(ShapadoUI.is_on_question_index()){
-      AnswerUI.update_on_index(data);
+      Answers.update_on_index(data);
     } else if(ShapadoUI.is_on_question_show()) {
-      AnswerUI.update_on_show(data);
+      Answers.update_on_show(data);
     }
   },
   new_comment: function(data) {
@@ -45,7 +45,7 @@ var ShapadoUI = {
       }
       break;
       case 'Answer': {
-        AnswerUI.vote(data);
+        Answers.vote(data);
       }
       break;
     }

@@ -17,7 +17,7 @@
     .userDescription
       .basicInfo
         %h2
-          =h(@user.name)
+          = @user.name
         - config = @user.config_for(current_group)
         - if config
           %small
@@ -85,6 +85,4 @@
 
     .additional_info
       = will_paginate @resources
-
-
 

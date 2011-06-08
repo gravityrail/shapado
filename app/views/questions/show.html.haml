@@ -41,6 +41,8 @@
   .stats
     %p
       %strong
+        = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
+      %strong
         = t('activerecord.attributes.question.created_at')
       %time{:datetime => @question.created_at.iso8601}
         = t("time.ago", :time => time_ago_in_words(@question.created_at))
@@ -54,14 +56,18 @@
   .comments
     -@question.comments.each do |comment|
       = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
-
+  .panel-comments
+    = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
+      %fieldset
+        = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question)}
+        .buttons
+          = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
+          = t("global.or")
+          = submit_tag t("comments.shared.comment_submit")
   .toolbar
     %ul.drop-menu
       %li.answer
-        = link_to t(".answer", :default => "Answer"), "#", :id => "add_answer"
-
-      %li.comment
-        = link_to t(".comment", :default => "Comment"), "#", :id => "add_question_comment"
+        = link_to t("questions.question.answer_verb"), "#", :id => "add_answer"
 
       %li.follow
         - if current_user && @question.follower?(current_user)
@@ -163,15 +169,6 @@
 
             .buttons
               = submit_tag t('answers.form.submit'), :class => "save"
-              = link_to t('scaffold.cancel'), '', :class => 'cancel'
-              = t("global.or")
-
-        =form_for [@question, @comment ||= Comment.new], :html => {:class => "add_question_comment markdown"} do |f|
-          = render :partial => "comments/form", :locals => {:f => f, :markdown => true, :commentable => @question, :source => question_url(@question)}
-
-          .field.form-options
-            .buttons
-              = f.submit :class => "save"
               = link_to t('scaffold.cancel'), '', :class => 'cancel'
               = t("global.or")
 

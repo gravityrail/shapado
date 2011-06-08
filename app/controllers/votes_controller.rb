@@ -19,7 +19,7 @@ class VotesController < ApplicationController
 
     state = :error
     if validate_vote(value, current_user)
-      state = @voteable.vote!(value, current_user) do |v, type|
+      state = @voteable.vote!(value, current_user.id) do |v, type|
         case type
         when :add
          if v > 0
@@ -72,7 +72,7 @@ class VotesController < ApplicationController
       end
 
       format.json do
-        if vote_state != :error
+        if state != :error
           average = @voteable.votes_average + value
           render(:json => {:success => true,
                            :message => flash[:notice],

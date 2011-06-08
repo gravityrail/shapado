@@ -1,4 +1,4 @@
-var QuestionUI = {
+var Questions = {
   create_on_index: function(data) {
     var section = $("section.questions-index");
     section.prepend(data.html).hide().slideToggle();

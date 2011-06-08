@@ -7,7 +7,7 @@ $(document).ready(function() {
     submit.trigger("click");
   });
 
-  var extraParams = getUrlVars();
+  var extraParams = Utils.url_vars();
   extraParams['format'] = 'js';
 
   $(".quick_question #ask_question").searcher({
@@ -41,9 +41,9 @@ $(document).ready(function() {
         } else {
           form.html("<img src='/images/dialog-ok-apply.png'/>")
         }
-        showMessage(data.message, "notice")
+        Messages.show(data.message, "notice")
       } else {
-        showMessage(data.message, "error")
+        Messages.show(data.message, "error")
       }
     }, "json");
     return false;

@@ -15,7 +15,7 @@ $(document).ready(function() {
           link.parents(".tag-list").find('.title').after(data.html);
           link.parents(".tag-list").find('.autocomplete_for_tags').ricodigoComplete();
         } else {
-            showMessage(data.message, "error");
+            Messages.show(data.message, "error");
             if(data.status == "unauthenticate") {
               window.location="/users/login"
             }
@@ -42,15 +42,15 @@ $(document).ready(function() {
                     form.before(tags.join(''));
                     form.remove();
                     $('.retag').show();
-                    showMessage(data.message, "notice");
+                    Messages.show(data.message, "notice");
                 } else {
-                    showMessage(data.message, "error")
+                    Messages.show(data.message, "error")
                     if(data.status == "unauthenticate") {
                         window.location="/users/login";
                     }
                 }
             },
-            error: manageAjaxError,
+            error: Messages.ajax_error_handler,
             complete: function(XMLHttpRequest, textStatus) {
                 button.attr('disabled', false);
             }

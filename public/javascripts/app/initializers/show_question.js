@@ -4,7 +4,11 @@ $(document).ready(function() {
 //  $(".forms form.flag_form").hide();
 //  $("#close_question_form").hide();
   $('.auto-link').autoVideo();
-
+  var answers = $('article.answer').length;
+  if(answers == 0){
+    $('#new_answer').slideDown('slow');
+    $('a#add_answer').addClass('active');
+  }
   $("form.vote_form button").live("click", function(event) {
     var btn_name = $(this).attr("name");
     var form = $(this).parents("form");
@@ -18,9 +22,9 @@ $(document).ready(function() {
           } else {
           }
         }
-        showMessage(data.message, "notice")
+        Messages.show(data.message, "notice")
       } else {
-        showMessage(data.message, "error")
+        Messages.show(data.message, "error")
         if(data.status == "unauthenticate") {
           window.onbeforeunload = null;
           window.location="/users/login"
@@ -30,21 +34,21 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".comment .comment-votes form.vote-up-comment-form input[name=vote_up]").live("click", function(event) {
-    var btn = $(this)
-    var form = $(this).parents("form");
+  $(".comment-form").live("submit", function(event) {
+    var form = $(this);
+    var btn = form.find('button')
     btn.hide();
     $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
       if(data.success){
         if(data.vote_state == "deleted") {
-          btn.attr("src", "/images/dialog-ok.png" )
         } else {
-          btn.attr("src", "/images/dialog-ok-apply.png" )
+          btn.after('<span class="upvoted-comment">✓</span>');
+          btn.remove();
         }
         btn.parents(".comment-votes").children(".votes_average").html(data.average);
-        showMessage(data.message, "notice")
+        Messages.show(data.message, "notice")
       } else {
-        showMessage(data.message, "error")
+        Messages.show(data.message, "error")
       }
       btn.show();
     }, "json");
@@ -70,22 +74,22 @@ $(document).ready(function() {
                     var answer = $(data.html)
                     answer.find("form.commentForm").hide();
                     answers.append(answer)
-                    highlightEffect(answer)
-                    showMessage(data.message, "notice")
+                    Effects.fade(answer)
+                    Messages.show(data.message, "notice")
                     form.find("textarea").val("");
                     form.find("#markdown_preview").html("");
                     if($("#wysiwyg_editor").length > 0 )
                       $("#wysiwyg_editor").htmlarea('updateHtmlArea');
-                    removeFromLocalStorage(location.href, "markdown_editor");
+                    LocalStorage.remove(location.href, "markdown_editor");
                   } else {
-                    showMessage(data.message, "error")
+                    Messages.show(data.message, "error")
                     if(data.status == "unauthenticate") {
                       window.onbeforeunload = null;
                       window.location="/users/login"
                     }
                   }
                 },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
          button.attr('disabled', false)
       }
@@ -112,20 +116,20 @@ $(document).ready(function() {
                             window.onbeforeunload = null;
                             var comment = $(data.html)
                             comments.append(comment)
-                            highlightEffect(comment)
-                            showMessage(data.message, "notice")
+                            Effects.fade(comment)
+                            Messages.show(data.message, "notice")
                             form.hide();
                             textarea.val("");
-                            removeFromLocalStorage(location.href, textarea.attr('id'));
+                            LocalStorage.remove(location.href, textarea.attr('id'));
                           } else {
-                            showMessage(data.message, "error")
+                            Messages.show(data.message, "error")
                             if(data.status == "unauthenticate") {
                               window.onbeforeunload = null;
                               window.location="/users/login"
                             }
                           }
                       },
-             error: manageAjaxError,
+             error: Messages.ajax_error_handler,
              complete: function(XMLHttpRequest, textStatus) {
                button.attr('disabled', false)
              }
@@ -134,11 +138,11 @@ $(document).ready(function() {
   });
 
   $("#request_close_question_form").submit(function() {
-    var request_button = $(this).find("input.button")
-    request_button.attr('disabled', true)
-    var close_button = $(this).find("button")
-    close_button.attr('disabled', true)
-    form = $(this)
+    var request_button = $(this).find("input.button");
+    request_button.attr('disabled', true);
+    var close_button = $(this).find("button");
+    close_button.attr('disabled', true);
+    var form = $(this);
 
     $.ajax({
       url: $(this).attr("action"),
@@ -148,16 +152,16 @@ $(document).ready(function() {
       success: function(data, textStatus, XMLHttpRequest) {
         if(data.success) {
           form.slideUp()
-          showMessage(data.message, "notice")
+          Messages.show(data.message, "notice")
         } else {
-          showMessage(data.message, "error")
+          Messages.show(data.message, "error")
           if(data.status == "unauthenticate") {
             window.onbeforeunload = null;
             window.location="/users/login"
           }
         }
       },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
         request_button.attr('disabled', false)
         close_button.attr('disabled', false)
@@ -200,19 +204,19 @@ $(document).ready(function() {
                                 comment.find(".markdown").html('<p>'+data.body+'</p>');
                                 form.remove();
                                 link.show();
-                                highlightEffect(comment);
-                                showMessage(data.message, "notice");
-                                removeFromLocalStorage(location.href, textarea.attr('id'));
+                                Effects.fade(comment);
+                                Messages.show(data.message, "notice");
+                                LocalStorage.remove(location.href, textarea.attr('id'));
                                 window.onbeforeunload = null;
                               } else {
-                                showMessage(data.message, "error")
+                                Messages.show(data.message, "error")
                                 if(data.status == "unauthenticate") {
                                   window.onbeforeunload = null;
                                   window.location="/users/login"
                                 }
                               }
                             },
-                  error: manageAjaxError,
+                  error: Messages.ajax_error_handler,
                   complete: function(XMLHttpRequest, textStatus) {
                     button.attr('disabled', false)
                   }
@@ -220,7 +224,7 @@ $(document).ready(function() {
            return false
         });
       },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
         link.show()
       }
@@ -228,7 +232,7 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".add_answer_comment_link").live("click", function() {
+  $(".Answer-commentable, .Question-commentable, .Comment-commentable").live("click", function() {
     var link = $(this);
     var answer_id = link.attr('data-commentable');
     var form = $('form[data-commentable='+answer_id+']')
@@ -286,36 +290,6 @@ $(document).ready(function() {
     return false;
   });
 
-//   $("#question_flag_link.flag-link, #edit_question_flag_link.flag-link").click(function() {
-//     $("#add_comment_form").slideUp();
-//     var link = $(this);
-//     var href = link.attr('href');
-//     if(!link.hasClass('busy')){
-//       link.addClass('busy');
-//       $.getJSON(href+'.js', function(data){
-//         var controls = link.parents('.controls');
-//         controls.find(".forms").html(data.html);
-//         link.removeClass('busy');
-//       })
-//     }
-//     return false;
-//   });
-
-//   $("#request-close-link").click(function() {
-//     $("#add_comment_form").slideUp();
-//     var link = $(this);
-//     var href = link.attr('href');
-//     if(!link.hasClass('busy')){
-//       link.addClass('busy');
-//       $.getJSON(href+'.js', function(data){
-//         var controls = link.parents('.controls');
-//         controls.find(".forms").html(data.html);
-//         link.removeClass('busy');
-//       })
-//     }
-//     return false;
-//   });
-
   $(".question-action").live("click", function(event) {
     var link = $(this);
     if(!link.hasClass('busy')){
@@ -333,9 +307,9 @@ $(document).ready(function() {
           if(typeof(data.increment)!='undefined'){
             counter.text(parseFloat($.trim(counter.text()))+data.increment);
           }
-          showMessage(data.message, "notice");
+          Messages.show(data.message, "notice");
         } else {
-          showMessage(data.message, "error");
+          Messages.show(data.message, "error");
 
           if(data.status == "unauthenticate") {
             window.onbeforeunload = null;

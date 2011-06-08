@@ -2,7 +2,7 @@
 //========================================================================
 article.comment
   border-bottom: none
-
+  padding: 2px 0px 0px 35px !important
   background: url("/images/comments-icon.gif") 10px 5px no-repeat
   p
     color: #333333
@@ -30,12 +30,22 @@ article.comment
       padding: 0 !important
       margin: 0 0 5px 0 !important
 
+.upvote-comment
+  background-color: transparent
+  border: 0px
+
+span.upvoted-comment
+  color: #EE681F
 
 // Form for comment respond into question views
 //========================================================================
-form.answer_comment_form
+form.question_comment_form
   padding-left: 30px !important
+form.answer_comment_form
+  padding-left: 4px !important
+form.answer_comment_form, form.question_comment_form
   margin: 0
+  clear: both
   .text_area
     border: 1px solid #ccc  !important
     font-size: 13px !important
@@ -62,3 +72,14 @@ form.answer_comment_form
   margin: 20px 0 0 0
   .reply_to
     margin: 0 0 20px 0
+
+.panel-comments
+  padding: 10px
+
+.comment-votes
+  float: left
+  width: 15px
+  margin-left: -20px
+  form
+    padding: 0px
+    margin: 0px

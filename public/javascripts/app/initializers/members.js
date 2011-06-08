@@ -11,8 +11,8 @@ $(document).ready(function() {
     .data("autocomplete")._renderItem = function( ul, item ) {
       return $( "<li></li>" )
         .data( "item.autocomplete", item )
-	.append( "<a>" + item.login + "</a>" )
-	.appendTo( ul );
+        .append( "<a>" + item.login + "</a>" )
+        .appendTo( ul );
     };
   }
 })
