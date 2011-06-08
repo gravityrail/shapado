@@ -9,6 +9,7 @@ javascript_compressor:  closure     # (yui, closure)
 javascripts:
   base:
     - public/javascripts/app/shapado_ui/*.js
+    - public/javascripts/app/modules/*.js
     - public/javascripts/vendor/jquery.js
     - public/javascripts/rails.js
     - public/javascripts/vendor/jquery.json-2.2.min.js
@@ -19,23 +20,23 @@ javascripts:
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/vendor/showdown.js
     - public/javascripts/vendor/highlight/prettify.js
-    - public/javascripts/app/modules/search.js
+    - public/javascripts/app/initializers/search.js
     - public/javascripts/vendor/jqueryui.ricodigoComplete.js
     - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/application.js
-    - public/javascripts/app/modules/effects.js
-    - public/javascripts/app/modules/index_question.js
-    - public/javascripts/app/modules/retag.js
-    - public/javascripts/app/modules/new_question.js
-    - public/javascripts/app/modules/index_welcome.js
-    - public/javascripts/app/modules/show_user.js
-    - public/javascripts/app/modules/index_group.js
-    - public/javascripts/app/modules/index_user.js
-    - public/javascripts/app/modules/tags_question.js
-    - public/javascripts/app/modules/members.js
-    - public/javascripts/app/modules/move_group.js
-    - public/javascripts/app/modules/editor.js
-    - public/javascripts/app/modules/notifier.js
+
+    - public/javascripts/app/initializers/index_question.js
+    - public/javascripts/app/initializers/retag.js
+    - public/javascripts/app/initializers/new_question.js
+    - public/javascripts/app/initializers/index_welcome.js
+    - public/javascripts/app/initializers/show_user.js
+    - public/javascripts/app/initializers/index_group.js
+    - public/javascripts/app/initializers/index_user.js
+    - public/javascripts/app/initializers/tags_question.js
+    - public/javascripts/app/initializers/members.js
+    - public/javascripts/app/initializers/move_group.js
+    - public/javascripts/app/initializers/editor.js
+
     - public/javascripts/app/initializers/multiauth.js
     - public/javascripts/vendor/superfish.js
 
@@ -52,9 +53,9 @@ javascripts:
 
   show:
     - public/javascripts/vendor/jquery.autovideo.js
-    - public/javascripts/app/modules/single/question.js
-    - public/javascripts/app/modules/show_question.js
-    - public/javascripts/app/modules/panel_forms.js
+    - public/javascripts/app/initializers/single/question.js
+    - public/javascripts/app/initializers/show_question.js
+    - public/javascripts/app/initializers/panel_forms.js
 
 stylesheets:
   base:
