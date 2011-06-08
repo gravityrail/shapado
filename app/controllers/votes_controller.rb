@@ -19,7 +19,7 @@ class VotesController < ApplicationController
 
     state = :error
     if validate_vote(value, current_user)
-      state = @voteable.vote!(value, current_user) do |v, type|
+      state = @voteable.vote!(value, current_user.id) do |v, type|
         case type
         when :add
          if v > 0
