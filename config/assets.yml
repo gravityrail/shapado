@@ -34,7 +34,6 @@ javascripts:
     - public/javascripts/app/initializers/tags_question.js
     - public/javascripts/app/initializers/members.js
     - public/javascripts/app/initializers/move_group.js
-    - public/javascripts/app/initializers/editor.js
 
     - public/javascripts/app/initializers/multiauth.js
     - public/javascripts/vendor/superfish.js
@@ -48,7 +47,6 @@ javascripts:
     - public/javascripts/vendor/web-socket-js/swfobject.js
     - public/javascripts/vendor/web-socket-js/FABridge.js
     - public/javascripts/vendor/web-socket-js/web_socket.js
-    - public/javascripts/app/initializers/websocket.js
 
   show:
     - public/javascripts/vendor/jquery.autovideo.js

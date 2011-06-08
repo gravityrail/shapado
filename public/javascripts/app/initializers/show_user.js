@@ -24,14 +24,14 @@ $(document).ready(function() {
             if(data.status == "unauthenticate") {
                 window.location="/users/login";
             }
-        }
+          }
         },
         error: Messages.ajax_error_handler,
         complete: function(XMLHttpRequest, textStatus) {
             link.removeClass('busy');
             link.text(dataTitle);
         }
-        })
+      });
     }
     return false;
   })

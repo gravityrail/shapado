@@ -7,7 +7,7 @@ $(document).ready(function() {
     submit.trigger("click");
   });
 
-  var extraParams = getUrlVars();
+  var extraParams = Utils.url_vars();
   extraParams['format'] = 'js';
 
   $(".quick_question #ask_question").searcher({
