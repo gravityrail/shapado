@@ -9,4 +9,4 @@ var Widgets = {
   update_on_show: function(data) {
 
   }
-}
+};
