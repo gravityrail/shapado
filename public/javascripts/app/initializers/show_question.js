@@ -89,7 +89,7 @@ $(document).ready(function() {
                     }
                   }
                 },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
          button.attr('disabled', false)
       }
@@ -129,7 +129,7 @@ $(document).ready(function() {
                             }
                           }
                       },
-             error: manageAjaxError,
+             error: Messages.ajax_error_handler,
              complete: function(XMLHttpRequest, textStatus) {
                button.attr('disabled', false)
              }
@@ -138,11 +138,11 @@ $(document).ready(function() {
   });
 
   $("#request_close_question_form").submit(function() {
-    var request_button = $(this).find("input.button")
-    request_button.attr('disabled', true)
-    var close_button = $(this).find("button")
-    close_button.attr('disabled', true)
-    form = $(this)
+    var request_button = $(this).find("input.button");
+    request_button.attr('disabled', true);
+    var close_button = $(this).find("button");
+    close_button.attr('disabled', true);
+    var form = $(this);
 
     $.ajax({
       url: $(this).attr("action"),
@@ -161,7 +161,7 @@ $(document).ready(function() {
           }
         }
       },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
         request_button.attr('disabled', false)
         close_button.attr('disabled', false)
@@ -216,7 +216,7 @@ $(document).ready(function() {
                                 }
                               }
                             },
-                  error: manageAjaxError,
+                  error: Messages.ajax_error_handler,
                   complete: function(XMLHttpRequest, textStatus) {
                     button.attr('disabled', false)
                   }
@@ -224,7 +224,7 @@ $(document).ready(function() {
            return false
         });
       },
-      error: manageAjaxError,
+      error: Messages.ajax_error_handler,
       complete: function(XMLHttpRequest, textStatus) {
         link.show()
       }
