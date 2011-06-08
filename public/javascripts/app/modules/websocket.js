@@ -74,8 +74,3 @@ var ShapadoSocket = {
     this.ws.send($.toJSON(data))
   }
 };
-
-$(document).ready(function() {
-  ShapadoSocket.initialize();
-});
-

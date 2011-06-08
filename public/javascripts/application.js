@@ -9,4 +9,5 @@ $(document).ready(function() {
   Effects.initialize();
   Votes.initialize();
   Notifier.initialize();
+  Editor.initialize();
 });
