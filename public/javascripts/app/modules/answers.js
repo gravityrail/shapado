@@ -1,4 +1,4 @@
-var AnswerUI = {
+var Answers = {
   create_on_index: function(data) {
   },
   create_on_show: function(data) {

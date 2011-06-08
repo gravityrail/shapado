@@ -1,4 +1,4 @@
-var VotesUI = {
+var Votes = {
   initialize: function() {
     $(".quick-vote-button").live("click", function(event) {
       var btn = $(this);

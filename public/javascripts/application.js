@@ -7,6 +7,6 @@ $(document).ready(function() {
   Tags.initialize();
   Messages.initialize();
   Effects.initialize();
-  VotesUi.initialize();
+  Votes.initialize();
   Notifier.initialize();
 });
