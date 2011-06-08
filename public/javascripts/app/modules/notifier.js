@@ -33,6 +33,3 @@ var Notifier = {
   }
 };
 
-$(document).ready(function() {
-  Notifier.initialize();
-});

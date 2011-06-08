@@ -1,18 +1,23 @@
 // Efects
+var Effects = {
+  initialize: function() {
+    $(".highlight_for_user").effect("highlight", {}, 2000);
 
-// Open and show a panel
-$(document).ready(function(){
-  $(".btn-answer").click(function(){
-    $("#panel-answer").slideToggle("slow");
-    $(this).toggleClass("active"); return false;
-  });
-});
+    $(".btn-answer").click(function() {
+      $("#panel-answer").slideToggle("slow");
+      $(this).toggleClass("active"); return false;
+    });
 
-// Navs, drop down menus
-jQuery(function(){
-  jQuery('ul.drop-menu').superfish({
-    hoverClass:    'dropHover',
-    autoArrows:    false
-  });
-});
-
+    jQuery('ul.drop-menu').superfish({
+      hoverClass:    'dropHover',
+      autoArrows:    false
+    });
+  },
+  fade: function(object) {
+    if(typeof object != "undefined") {
+      object.fadeOut(400, function() {
+        object.fadeIn(400)
+      });
+    }
+  }
+};
