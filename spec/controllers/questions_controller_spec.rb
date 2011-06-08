@@ -121,6 +121,7 @@ describe QuestionsController do
 
     it "should be successful unlogged" do
       sign_out(@user)
+      @group.enable_anonymous = true
       controller.stub!(:current_user).and_return(nil)
       controller.should_receive(:recaptcha_valid?).twice.and_return(true)
       post 'create', :question => Question.plan(:question),

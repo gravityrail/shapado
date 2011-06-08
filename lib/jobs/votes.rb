@@ -97,7 +97,7 @@ module Jobs
       end
 
       membership = user.config_for(group)
-      if membership.views_count >= 10000
+      if membership && membership.views_count >= 10000
         create_badge(user, group, :token => "popular_person", :unique => true)
       end
 
@@ -111,7 +111,8 @@ module Jobs
       vuser = voteable.user
       return if vuser.nil?
 
-      vote_value = vuser.config_for(group).votes_up
+      membership = vuser.config_for(group)
+      vote_value = membership ? membership.votes_up : 0
 
       if vote_value >= 100
         create_badge(vuser, group, :token => "effort_medal",  :source => voteable, :unique => true)

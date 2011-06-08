@@ -140,20 +140,24 @@ describe User do
     end
 
     describe "User#languages_to_filter" do
+      before(:each) do
+        @group = Group.make(:languages => ["en","es","fr"])
+      end
+
       it "should return the AVAILABLE_LANGUAGES" do
         @user.language_filter="any"
-        @user.languages_to_filter.should == AVAILABLE_LANGUAGES
+        @user.languages_to_filter(@group).should == @group.languages
       end
 
       it "should return the user's preferred languages" do
         @user.language_filter="user"
         @user.preferred_languages = ["en", "es"]
-        @user.languages_to_filter.should == @user.preferred_languages
+        @user.languages_to_filter(@group).should == @user.preferred_languages
       end
 
       it "should return the user's language filter" do
         @user.language_filter="es"
-        @user.languages_to_filter.should == ["es"]
+        @user.languages_to_filter(@group).should == ["es"]
       end
     end
 

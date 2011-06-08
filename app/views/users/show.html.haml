@@ -18,16 +18,17 @@
       .basicInfo
         %h2
           = @user.name
-
-        %small
-          = t(:created_at, :scope => "activerecord.attributes.user")
-          %time{:datetime => @user.created_at.iso8601}
-            = t("time.ago", :time => time_ago_in_words(@user.created_at))
-        |
-        %small
-          = t(:last_logged_at, :scope => "activerecord.attributes.user")
-          %time{:datetime => @user.last_logged_at.iso8601}
-            = t("time.ago", :time => time_ago_in_words(@user.last_logged_at))
+        - config = @user.config_for(current_group)
+        - if config
+          %small
+            = t(:created_at, :scope => "activerecord.attributes.user")
+            %time{:datetime => @user.created_at.iso8601}
+              = t("time.ago", :time => time_ago_in_words(@user.created_at))
+          |
+          %small
+            = t(:last_logged_at, :scope => "activerecord.attributes.user")
+            %time{:datetime => @user.last_logged_at.iso8601}
+              = t("time.ago", :time => time_ago_in_words(@user.last_logged_at))
 
         -if @user.website
           %p
@@ -47,7 +48,7 @@
 
         %li
           %strong
-            =format_number(@user.config_for(current_group).views_count.to_i)
+            =format_number(@user.views_on(current_group))
           %small
             = t(".views")
         %li
@@ -84,6 +85,4 @@
 
     .additional_info
       = will_paginate @resources
-
-
 
