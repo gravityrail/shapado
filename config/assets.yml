@@ -1,5 +1,5 @@
 package_assets:         on          # (on, off, always)
-embed_assets:           on          # (on, off, datauri)
+embed_assets:           datauri          # (on, off, datauri)
 compress_assets:        on          # (on, off)
 gzip_assets:            on          # (on, off)
 template_function:      _.template  # (defaults to the built-in micro-templating)
@@ -8,53 +8,53 @@ javascript_compressor:  closure     # (yui, closure)
 
 javascripts:
   base:
-    - public/javascripts/shapado_ui/*.js
-    - public/javascripts/jquery.js
+    - public/javascripts/app/shapado_ui/*.js
+    - public/javascripts/vendor/jquery.js
     - public/javascripts/rails.js
-    - public/javascripts/jquery.json-2.2.min.js
-    - public/javascripts/jquery.tools.min.js
-    - public/javascripts/jquery-ui.js
-    - public/javascripts/jquery.textarea.js
-    - public/javascripts/jHtmlArea.js
-    - public/javascripts/jquery.notifyBar.js
-    - public/javascripts/showdown.js
-    - public/javascripts/highlight/prettify.js
-    - public/javascripts/components/search.js
-    - public/javascripts/jqueryui.ricodigoComplete.js
-    - public/javascripts/jquery.cookie.js
+    - public/javascripts/vendor/jquery.json-2.2.min.js
+    - public/javascripts/vendor/jquery.tools.min.js
+    - public/javascripts/vendor/jquery-ui.js
+    - public/javascripts/vendor/jquery.textarea.js
+    - public/javascripts/vendor/jHtmlArea.js
+    - public/javascripts/vendor/jquery.notifyBar.js
+    - public/javascripts/vendor/showdown.js
+    - public/javascripts/vendor/highlight/prettify.js
+    - public/javascripts/app/modules/search.js
+    - public/javascripts/vendor/jqueryui.ricodigoComplete.js
+    - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/application.js
-    - public/javascripts/modules/effects.js
-    - public/javascripts/modules/index_question.js
-    - public/javascripts/modules/retag.js
-    - public/javascripts/modules/new_question.js
-    - public/javascripts/modules/index_welcome.js
-    - public/javascripts/modules/show_user.js
-    - public/javascripts/modules/index_group.js
-    - public/javascripts/modules/index_user.js
-    - public/javascripts/modules/tags_question.js
-    - public/javascripts/modules/members.js
-    - public/javascripts/modules/move_group.js
-    - public/javascripts/modules/editor.js
-    - public/javascripts/modules/notifier.js
-    - public/javascripts/multiauth.js
-    - public/javascripts/superfish.js
+    - public/javascripts/app/modules/effects.js
+    - public/javascripts/app/modules/index_question.js
+    - public/javascripts/app/modules/retag.js
+    - public/javascripts/app/modules/new_question.js
+    - public/javascripts/app/modules/index_welcome.js
+    - public/javascripts/app/modules/show_user.js
+    - public/javascripts/app/modules/index_group.js
+    - public/javascripts/app/modules/index_user.js
+    - public/javascripts/app/modules/tags_question.js
+    - public/javascripts/app/modules/members.js
+    - public/javascripts/app/modules/move_group.js
+    - public/javascripts/app/modules/editor.js
+    - public/javascripts/app/modules/notifier.js
+    - public/javascripts/app/initializers/multiauth.js
+    - public/javascripts/vendor/superfish.js
 
   mobile:
-    - public/javascripts/jquery.js
+    - public/javascripts/vendor/jquery.js
     - public/javascripts/rails.js
-    - public/javascripts/mobile.js
+    - public/javascripts/app/initializers/mobile.js
 
   websocket:
-    - public/javascripts/web-socket-js/swfobject.js
-    - public/javascripts/web-socket-js/FABridge.js
-    - public/javascripts/web-socket-js/web_socket.js
-    - public/javascripts/websocket.js
+    - public/javascripts/vendor/web-socket-js/swfobject.js
+    - public/javascripts/vendor/web-socket-js/FABridge.js
+    - public/javascripts/vendor/web-socket-js/web_socket.js
+    - public/javascripts/app/initializers/websocket.js
 
   show:
-    - public/javascripts/jquery.autovideo.js
-    - public/javascripts/modules/single/question.js
-    - public/javascripts/modules/show_question.js
-    - public/javascripts/modules/panel_forms.js
+    - public/javascripts/vendor/jquery.autovideo.js
+    - public/javascripts/app/modules/single/question.js
+    - public/javascripts/app/modules/show_question.js
+    - public/javascripts/app/modules/panel_forms.js
 
 stylesheets:
   base:
