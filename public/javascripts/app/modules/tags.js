@@ -19,9 +19,9 @@ var Tags = {
           success: function(data){
             if(data.success){
               link.attr({href: dataUndo, 'data-undo': href, 'data-title': title, 'class': dataClass, 'data-class': linkClass });
-              showMessage(data.message, "notice");
+              Messages.show(data.message, "notice");
             } else {
-              showMessage(data.message, "error");
+              Messages.show(data.message, "error");
 
               if(data.status == "unauthenticate") {
                   window.location="/users/login";

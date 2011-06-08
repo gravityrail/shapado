@@ -11,9 +11,9 @@ var Votes = {
           if(data.success){
             btn.parents('.item').find('.votes .counter').text(data.average);
             btn.attr('src', '/images/dialog-ok-apply.png');
-            showMessage(data.message, "notice")
+            Messages.show(data.message, "notice")
           } else {
-            showMessage(data.message, "error")
+            Messages.show(data.message, "error")
             if(data.status == "unauthenticate") {
               window.onbeforeunload = null;
               window.location="/users/login"

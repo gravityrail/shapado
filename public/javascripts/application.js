@@ -10,4 +10,5 @@ $(document).ready(function() {
   Votes.initialize();
   Notifier.initialize();
   Editor.initialize();
+  ShapadoSocket.initialize();
 });

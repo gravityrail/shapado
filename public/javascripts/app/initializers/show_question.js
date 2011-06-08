@@ -22,9 +22,9 @@ $(document).ready(function() {
           } else {
           }
         }
-        showMessage(data.message, "notice")
+        Messages.show(data.message, "notice")
       } else {
-        showMessage(data.message, "error")
+        Messages.show(data.message, "error")
         if(data.status == "unauthenticate") {
           window.onbeforeunload = null;
           window.location="/users/login"
@@ -46,9 +46,9 @@ $(document).ready(function() {
           btn.remove();
         }
         btn.parents(".comment-votes").children(".votes_average").html(data.average);
-        showMessage(data.message, "notice")
+        Messages.show(data.message, "notice")
       } else {
-        showMessage(data.message, "error")
+        Messages.show(data.message, "error")
       }
       btn.show();
     }, "json");
@@ -75,14 +75,14 @@ $(document).ready(function() {
                     answer.find("form.commentForm").hide();
                     answers.append(answer)
                     highlightEffect(answer)
-                    showMessage(data.message, "notice")
+                    Messages.show(data.message, "notice")
                     form.find("textarea").val("");
                     form.find("#markdown_preview").html("");
                     if($("#wysiwyg_editor").length > 0 )
                       $("#wysiwyg_editor").htmlarea('updateHtmlArea');
                     removeFromLocalStorage(location.href, "markdown_editor");
                   } else {
-                    showMessage(data.message, "error")
+                    Messages.show(data.message, "error")
                     if(data.status == "unauthenticate") {
                       window.onbeforeunload = null;
                       window.location="/users/login"
@@ -117,12 +117,12 @@ $(document).ready(function() {
                             var comment = $(data.html)
                             comments.append(comment)
                             highlightEffect(comment)
-                            showMessage(data.message, "notice")
+                            Messages.show(data.message, "notice")
                             form.hide();
                             textarea.val("");
                             removeFromLocalStorage(location.href, textarea.attr('id'));
                           } else {
-                            showMessage(data.message, "error")
+                            Messages.show(data.message, "error")
                             if(data.status == "unauthenticate") {
                               window.onbeforeunload = null;
                               window.location="/users/login"
@@ -152,9 +152,9 @@ $(document).ready(function() {
       success: function(data, textStatus, XMLHttpRequest) {
         if(data.success) {
           form.slideUp()
-          showMessage(data.message, "notice")
+          Messages.show(data.message, "notice")
         } else {
-          showMessage(data.message, "error")
+          Messages.show(data.message, "error")
           if(data.status == "unauthenticate") {
             window.onbeforeunload = null;
             window.location="/users/login"
@@ -205,11 +205,11 @@ $(document).ready(function() {
                                 form.remove();
                                 link.show();
                                 highlightEffect(comment);
-                                showMessage(data.message, "notice");
+                                Messages.show(data.message, "notice");
                                 removeFromLocalStorage(location.href, textarea.attr('id'));
                                 window.onbeforeunload = null;
                               } else {
-                                showMessage(data.message, "error")
+                                Messages.show(data.message, "error")
                                 if(data.status == "unauthenticate") {
                                   window.onbeforeunload = null;
                                   window.location="/users/login"
@@ -337,9 +337,9 @@ $(document).ready(function() {
           if(typeof(data.increment)!='undefined'){
             counter.text(parseFloat($.trim(counter.text()))+data.increment);
           }
-          showMessage(data.message, "notice");
+          Messages.show(data.message, "notice");
         } else {
-          showMessage(data.message, "error");
+          Messages.show(data.message, "error");
 
           if(data.status == "unauthenticate") {
             window.onbeforeunload = null;
