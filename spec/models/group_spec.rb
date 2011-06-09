@@ -51,6 +51,7 @@ describe Group do
         @params = {}
         @request = mock("request")
         Group.stub!(:find).and_return(@group)
+        @group.stub!(:has_logo?).and_return(true)
         @pattern = "/_files/groups/%1/#{@group.id}"
       end
 

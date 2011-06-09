@@ -63,10 +63,15 @@ describe VotesController do
 
       @vote_attrs.delete("vote_up")
       @vote_attrs["vote_down"] = 1
-      @vote_attrs.merge!(:answer_id => @voteable.id, :format => "js")
       post 'create', @vote_attrs
       body = JSON.load(response.body)
       body["average"].should == -1
+
+      @vote_attrs.delete("vote_down")
+      @vote_attrs["vote_up"] = 1
+      post 'create', @vote_attrs
+      body = JSON.load(response.body)
+      body["average"].should == 1
     end
   end
 end

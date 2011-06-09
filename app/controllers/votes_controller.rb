@@ -39,20 +39,28 @@ class VotesController < ApplicationController
       flash[:notice] = generate_notice(state)
     end
 
-    if state == :created
+    average = @voteable.votes_average
+
+    case state
+    when :created
+      average+=1
       if @voteable.class == Question
         sweep_question(@voteable)
         Jobs::Votes.async.on_vote_question(@voteable.id, value, current_user.id, current_group.id).commit!
       elsif @voteable.class == Answer
         Jobs::Votes.async.on_vote_answer(@voteable.id, value, current_user.id, current_group.id).commit!
       end
-    elsif state == :destroyed
+    when :destroyed
+      average-=1
       value = value * -1
+    when :updated
+      average+= value *2
     end
+
 
     if state != :error
       Magent::WebSocketChannel.push({id: "vote", object_id: @voteable.id, channel_id: current_group.slug,
-                                     value: value, average: @voteable.votes_average+value, on: @voteable.class.to_s})
+                                     value: value, average: average, on: @voteable.class.to_s})
     end
 
     respond_to do |format|
@@ -60,7 +68,6 @@ class VotesController < ApplicationController
 
       format.js do
         if state != :error
-          average = @voteable.votes_average + value
           render(:json => {:success => true,
                            :message => flash[:notice],
                            :vote_type => vote_type,
@@ -73,7 +80,6 @@ class VotesController < ApplicationController
 
       format.json do
         if state != :error
-          average = @voteable.votes_average + value
           render(:json => {:success => true,
                            :message => flash[:notice],
                            :vote_type => vote_type,

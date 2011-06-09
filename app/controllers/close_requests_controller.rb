@@ -25,7 +25,7 @@ class CloseRequestsController < ApplicationController
                                       :comment => params[:close_request][:comment])
     @close_request.user = current_user
 
-    @close_request.closeable << @question
+    @close_request.closeable = @question
     if current_user.mod_of?(current_group)
       @question.closed = params[:close]||false
       if @question.closed
