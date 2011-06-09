@@ -20,15 +20,17 @@
           = @user.name
         - config = @user.config_for(current_group)
         - if config
-          %small
-            = t(:created_at, :scope => "activerecord.attributes.user")
-            %time{:datetime => @user.created_at.iso8601}
-              = t("time.ago", :time => time_ago_in_words(@user.created_at))
-          |
-          %small
-            = t(:last_logged_at, :scope => "activerecord.attributes.user")
-            %time{:datetime => @user.last_logged_at.iso8601}
-              = t("time.ago", :time => time_ago_in_words(@user.last_logged_at))
+          -if config.joined_at
+            %small
+              = t(:created_at, :scope => "activerecord.attributes.user")
+              %time{:datetime => config.joined_at.iso8601}
+                = t("time.ago", :time => time_ago_in_words(config.joined_at))
+            |
+          -if config.last_activity_at
+            %small
+              = t(:last_logged_at, :scope => "activerecord.attributes.user")
+              %time{:datetime => config.last_activity_at.iso8601}
+                = t("time.ago", :time => time_ago_in_words(config.last_activity_at))
 
         -if @user.website
           %p

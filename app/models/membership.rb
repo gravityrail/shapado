@@ -17,6 +17,8 @@ class Membership < EmbeddedHash
   field :preferred_tags, :type => Array, :default => []
 
   field :last_activity_at, :type => Time
+  field :joined_at, :type => Time
+
   field :activity_days, :type => Integer, :default => 0
 
   field :role, :type => String, :default => "user"

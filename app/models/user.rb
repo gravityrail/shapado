@@ -346,7 +346,7 @@ Time.zone.now ? 1 : 0)
 
     if group
       unless member_of?(group)
-        join(group)
+        join!(group)
       end
 
       if member_of?(group)
@@ -361,11 +361,14 @@ Time.zone.now ? 1 : 0)
   end
 
   def activity_on(group, date)
+    self.override({"membership_list.#{group.id}.last_activity_at" => date})
     day = date.utc.at_beginning_of_day
-    last_day = config_for(group, false).last_activity_at
+    last_day = nil
+    if last_activity_at = config_for(group, false).last_activity_at
+      last_day = last_activity_at.at_beginning_of_day
+    end
 
     if last_day != day
-      self.override({"membership_list.#{group.id}.last_activity_at" => day})
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
           self.increment({"membership_list.#{group.id}.activity_days" => 1})
@@ -393,7 +396,7 @@ Time.zone.now ? 1 : 0)
 
   def update_reputation(key, group, v = nil)
     unless member_of?(group)
-      join(group)
+      join!(group)
     end
 
     if v.nil?
@@ -549,7 +552,7 @@ Time.zone.now ? 1 : 0)
     end
   end
 
-  def join(group)
+  def join(group, &block)
     if group.kind_of?(Group)
       group = group.id
     end
@@ -559,11 +562,20 @@ Time.zone.now ? 1 : 0)
       if config = self.inactive_membership_list[group]
         self.membership_list[group] = config
       else
-        self.membership_list[group] = Membership.new(:group_id => group, :last_activity_at => Time.now)
+        self.membership_list[group] = Membership.new(:group_id => group,
+                                                     :last_activity_at => Time.now,
+                                                     :joined_at => Time.now)
       end
-      return save!
+      block.call(self.membership_list[group]) if block
+      return true
     end
     false
+  end
+
+  def join!(group, &block)
+    if join(group, &block)
+      save!
+    end
   end
 
   def reputation_stats(group, options = {})

@@ -170,12 +170,12 @@ class Group
   alias :user :owner
 
   def add_member(user, role)
-    membership = user.config_for(self.id, true)
-    if membership.reputation < 5
-      membership.reputation = 5
+    user.join(self) do |membership|
+      if membership.reputation < 5
+        membership.reputation = 5
+      end
+      membership.role = role
     end
-    membership.role = role
-
     user.save
   end
 
