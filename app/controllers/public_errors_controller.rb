@@ -31,4 +31,8 @@ class PublicErrorsController < ApplicationController
     render :action => 'internal_server_error'
   end
 
+  def routing
+    render_404
+  end
+
 end
