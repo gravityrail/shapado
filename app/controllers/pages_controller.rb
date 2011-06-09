@@ -32,13 +32,17 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       format.html do
-        if @page.nil? && params[:create]
-          if self.check_page_permissions == false
-            return
-          end
+        if @page.nil?
+          if params[:create]
+            if self.check_page_permissions == false
+              return
+            end
 
-          @page = Page.new(:title => params[:title], :slug => params[:id])
-          render :action => "new"
+            @page = Page.new(:title => params[:title], :slug => params[:id])
+            render :action => "new"
+          else
+            raise Error404
+          end
         else
           set_page_title(@page.title) if @page
           render

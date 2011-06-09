@@ -204,7 +204,7 @@ Rails.application.routes.draw do
         get :flagged
         get :to_close
         get :to_open
-        put :manage
+        post :manage
       end
     end
     resources :answers
