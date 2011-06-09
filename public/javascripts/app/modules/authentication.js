@@ -5,7 +5,7 @@ var Auth = {
       $.cookie('pp', 1);
       var pparg;
       (authUrl.indexOf('?')==-1)? pparg = '?pp=1' : pparg = '&pp=1'
-      window.open(authUrl+pparg, 'openid_popup', 'width=900,height=680');
+      window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
       return false;
     });
   }
