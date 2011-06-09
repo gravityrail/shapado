@@ -6,7 +6,7 @@ describe Jobs::Activities do
     @question = Question.make(:votes => {})
     @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
     @current_user = User.make
-    @current_user.join(@question.group)
+    @current_user.join!(@question.group)
   end
 
   describe "on_activity" do
