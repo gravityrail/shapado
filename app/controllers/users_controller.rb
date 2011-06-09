@@ -75,7 +75,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:languages]
+    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
     @user.safe_update(%w[login email name password_confirmation password  website
                          language timezone identity_url bio hide_country], params[:user])
     if params[:user]["birthday(1i)"]
@@ -180,7 +180,7 @@ class UsersController < ApplicationController
       @user.password_confirmation = params[:user][:password_confirmation]
     end
 
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:languages]
+    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
     @user.safe_update(%w[login email name language timezone notification_opts bio hide_country website avatar use_gravatar], params[:user])
 
     if params[:user]["birthday(1i)"]
