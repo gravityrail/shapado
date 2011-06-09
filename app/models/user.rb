@@ -361,7 +361,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def activity_on(group, date)
-    self.override({"membership_list.#{group.id}.last_activity_at" => date})
+    self.override({"membership_list.#{group.id}.last_activity_at" => date.utc})
     day = date.utc.at_beginning_of_day
     last_day = nil
     if last_activity_at = config_for(group, false).last_activity_at

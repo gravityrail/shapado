@@ -258,6 +258,33 @@ describe User do
     end
 
     describe "User#activity_on" do
+      it "should increment activity days for @user on @group" do
+        @group = Group.make
+        @user.join!(@group)
+        date = Time.now
+        21.times do |i|
+          @user.reload
+          date += 1.day
+          @user.activity_on(@group, date)
+          @user.config_for(@group, false).activity_days.should == i
+        end
+      end
+
+      it "should reset activity days for @user on @group" do
+        @group = Group.make
+        @user.join!(@group)
+        date = Time.now
+        21.times do |i|
+          @user.reload
+          date += 1.day
+          @user.activity_on(@group, date)
+          @user.config_for(@group, false).activity_days.should == i
+        end
+        date += 2.days
+        @user.activity_on(@group, date)
+        @user.reload
+        @user.config_for(@group, false).activity_days.should == 0
+      end
     end
 
     describe "User#reset_activity_days!" do

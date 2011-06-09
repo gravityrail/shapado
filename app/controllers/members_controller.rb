@@ -51,6 +51,7 @@ class MembersController < ApplicationController
     redirect_to members_path
   end
 
+  protected
   def check_permissions
     @group = current_group
 
