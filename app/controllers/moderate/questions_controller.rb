@@ -58,7 +58,9 @@ class Moderate::QuestionsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html{redirect_to :action => "flagged"}
+      format.html do
+        redirect_to flagged_moderate_questions_path
+      end
     end
   end
 
