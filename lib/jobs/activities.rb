@@ -48,7 +48,6 @@ module Jobs
       comment = commentable.comments.find(comment_id)
       group = commentable.group
       user = comment.user
-      p user.id
 #       comment.set_address FIXME
 
       if user.config_for(group).comments_count >= 10
