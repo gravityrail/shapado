@@ -18,3 +18,7 @@
 
 .buttons
   = f.submit t('scaffold.update'), :class => "save"
+
+
+-if !@group.share.fb_app_id.blank?
+  =link_to "Add to Facebook", add_to_facebook_groups_path

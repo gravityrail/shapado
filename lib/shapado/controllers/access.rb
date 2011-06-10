@@ -74,7 +74,7 @@ module Shapado
           '/close_popup.html'
         else
           cookies.delete :pp
-          if return_to = session.delete("return_to")
+          if return_to = stored_location_for(:user)
             return_to
           else
             super

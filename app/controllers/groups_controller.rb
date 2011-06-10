@@ -224,6 +224,17 @@ class GroupsController < ApplicationController
     redirect_to manage_social_path
   end
 
+  def add_to_facebook
+    url = "http://www.facebook.com/add.php?api_key=#{current_group.share.fb_app_id}&pages"
+
+    if !user_signed_in? || !current_user.facebook_login?
+      session[:user_return_to] = url
+      redirect_to user_omniauth_authorize_path(:facebook) and return
+    end
+
+    redirect_to url
+  end
+
   protected
   def check_permissions
     @group = Group.find_by_slug_or_id(params[:id]) || current_group

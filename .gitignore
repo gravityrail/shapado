@@ -25,3 +25,4 @@ public/packages/
 *.kdev4
 .redcar
 .idea
+tunnlr.yml

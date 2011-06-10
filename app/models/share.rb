@@ -5,6 +5,7 @@ class Share
   field :fb_app_id, :type => String
   field :fb_secret_key, :type => String
   field :fb_active, :type => Boolean, :default => false
+  field :fb_page_id, :type => String
 
   field :starts_with, :type => String
   field :ends_with, :type => String

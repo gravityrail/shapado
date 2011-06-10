@@ -10,6 +10,15 @@ GIT
       uuidtools (>= 2.1.1)
 
 GIT
+  remote: git://github.com/dcu/tunnlr_connector.git
+  revision: cfb983ddb9a28b655e27ffa8c779498df34ded3a
+  branch: patch-1
+  specs:
+    tunnlr_connector (1.0.2)
+      highline (>= 1.5.0)
+      net-ssh (>= 2.0.15)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   branch: rails3
@@ -390,6 +399,7 @@ DEPENDENCIES
   sass
   simplecov
   state_machine (= 0.10.4)
+  tunnlr_connector!
   twitter (= 1.5.0)
   twitter-text (= 1.1.8)
   twitter_oauth

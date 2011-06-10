@@ -64,6 +64,7 @@ class User
 
   referenced_in :friend_list
 
+  references_many :owned_groups, :inverse_of => :user, :class_name => "Group"
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
   references_many :badges, :dependent => :destroy
