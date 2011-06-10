@@ -45,8 +45,8 @@ class ApplicationController < ActionController::Base
 
   def find_group
     @current_group ||= begin
-      if params[:signed_request]
-        return find_group_on_facebook
+      if sr = (params[:signed_request] || session[:shapado_signed_request])
+        return find_group_on_facebook(sr)
       end
 
       subdomains = request.subdomains
@@ -154,6 +154,8 @@ class ApplicationController < ActionController::Base
       'sessions'
     elsif params["format"] == "mobile"
       'mobile'
+    elsif params[:signed_request]||session[:shapado_signed_request]
+      'facebook'
     else
       'application'
     end

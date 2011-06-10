@@ -2,13 +2,17 @@ module Shapado
   module Controllers
     module Facebook
       protected
-      def find_group_on_facebook
+      def find_group_on_facebook(sr)
         if params[:group_id]
           @current_group ||= Group.find(params[:group_id])
           return
         end
 
-        @signed_request = parse_signed_request(params[:signed_request])
+        if sr.kind_of?(String)
+          @signed_request = parse_signed_request(sr)
+        else
+          @signed_request = sr
+        end
 
         if !@signed_request
           render :text => "sorry facebook is not working well today" and return
@@ -30,6 +34,8 @@ module Shapado
           render :partial => "facebook/enable_page" and return
         end
 
+        @signed_request.delete("oauth_token")
+        session[:shapado_signed_request] = @signed_request
         @current_group
       end
 
