@@ -299,9 +299,10 @@ module ApplicationHelper
 
   def include_latex
     if current_group.enable_latex
-      require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
-      require_css domain_url(:custom => current_group.domain)+'/javascripts/vendor/mathscribe/jqmath-0.1.1.css'
-      require_js domain_url(:custom => current_group.domain)+'/javascripts/vendor/mathscribe/jqmath-etc-0.1.1.min.js'
+      jqmath_css = domain_url(:custom => current_group.domain)+'/javascripts/vendor/mathscribe/jqmath-0.1.1.css'
+      jqmath_js = domain_url(:custom => current_group.domain)+'/javascripts/vendor/mathscribe/jqmath-etc-0.1.1.min.js'
+      jqmath_tags = %{<meta data-jqmath data-jqmath-assets"['http://fonts.googleapis.com/css?family=UnifrakturMaguntia','#{jqmath_css}','#{jqmath_js}']">}
+      raw(jqmath_tags)
     end
   end
 

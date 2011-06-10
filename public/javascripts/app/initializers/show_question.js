@@ -3,7 +3,6 @@ $(document).ready(function() {
 
 //  $(".forms form.flag_form").hide();
 //  $("#close_question_form").hide();
-  $('.auto-link').autoVideo();
   var answers = $('article.answer').length;
   if(answers == 0){
     $('#new_answer').slideDown('slow');

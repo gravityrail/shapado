@@ -9,7 +9,6 @@
     = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = render "shared/layout/javascript"
-    <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
 
     = csrf_meta_tag
 
@@ -33,7 +32,7 @@
           = form_tag search_index_path, :method => :get, :id => "search" do
             .field
               = text_field_tag :q, params[:q]
-              
+
         -if current_group.languages.count > 1
           .languages_filter
             %span
