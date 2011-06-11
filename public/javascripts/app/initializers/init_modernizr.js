@@ -38,7 +38,8 @@ Modernizr.load([{
       test: window.JSON,
       nope: jsassets.json
     }, {
-      load: jsassets.websocket,
+      test: Modernizr.websockets,
+      nope: jsassets.websocket,
       complete: function() {
         ShapadoSocket.initialize();
       }
