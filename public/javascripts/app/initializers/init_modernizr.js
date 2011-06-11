@@ -1,3 +1,4 @@
+jqueryui_assets =
 Modernizr.load([
   {
     load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
@@ -9,25 +10,28 @@ Modernizr.load([
     complete: function(){
       Modernizr.load([
   {
-    load: '/packages/offline_bare_minimum_questions.js'
+    load: jsassets.offline_bare_minimum_questions
   },
   {
     test: $('meta[data-js=show]').length>0,
-    yep: '/packages/offline_bare_minimum_show.js',
+    yep: jsassets.offline_bare_minimum_show,
     callback: function(){
       Editor.initialize();
     }
   },
   {
-    load: ['/packages/jqueryui.js', '/packages/jqueryui.css'],
-    callback:  function(){
+    load: cssassets.jqueryui
+  },
+  {
+    load: jsassets.jqueryui,
+    complete:  function(){
       $('.lang-fields').tabs();
       Effects.initialize();
     }
   },
   {
     test: ($('.offline').length==0 || (location.pathname!='/' && location.pathname.indexOf('/questions'!=0))),
-    yep: '/packages/base.js'
+    yep: jsassets.base
   },
   {
     test: $('meta[data-jqmath]').length > 0,
@@ -35,24 +39,24 @@ Modernizr.load([
   },
   {
     test: $('meta[data-js=show]').length>0 && $('.auto-link').length>0,
-    yep: '/packages/jqueryautovideo.js',
+    yep: jsassets.jqueryautovideo,
     callback: function(){
       $('.auto-link').autoVideo();
     }
   },
   {
     test: window.JSON,
-    nope: '/packages/json.js'
+    nope: jsassets.json
   },
   {
-    load: '/packages/websocket.js',
+    load: jsassets.websocket,
     complete: function(){
       ShapadoSocket.initialize();
     }
   },
   {
     test: $('.autocomplete_for_tags').length > 0,
-    yep: '/packages/jqautocomplete.js',
+    yep: jsassets.jqautocomplete,
     callback: function(){
       $('.autocomplete_for_tags').ricodigoComplete();
     }

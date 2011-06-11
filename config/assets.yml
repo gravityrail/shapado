@@ -7,8 +7,14 @@ package_path:           packages    # (defaults to assets)
 javascript_compressor:  closure     # (yui, closure)
 
 javascripts:
+  modernizrdev:
+    - public/javascripts/vendor/modernizr.custom.geo.load.js
+    - public/javascripts/app/initializers/assets_dev.js
+    - public/javascripts/app/initializers/init_modernizr.js
+
   modernizr:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
+    - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/initializers/init_modernizr.js
 
   websocket:
