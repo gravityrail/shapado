@@ -23,7 +23,7 @@ class FlagsController < ApplicationController
         flash[:notice] = t(:flash_notice, :scope => "flags.create")
 
         Jobs::Activities.async.on_flag(current_user.id, current_group.id,
-                                       @flag.reason).commit!
+                                       @flag, resource_url).commit!
       else
         flash[:error] = @flag.errors.full_messages.join(", ")
       end

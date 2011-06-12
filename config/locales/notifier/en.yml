@@ -15,8 +15,10 @@ en:
     created_flag:
       message1: "You are receiving this message because you are a moderator of %{group}."
       message2: "A post has been reported for the following reason:"
-      message3: "Go to the moderation page to see it:"
-      message4: "Visit the moderation to read about it."
+      message2bis: "You can read the flagged post here."
+      message2bistext: "You can read the flagged post by clicking on the following link:"
+      message3: "Go to the moderation page to see the list of flagged items:"
+      message4: "Visit the moderation page to see the list of flagged items."
     follow:
       message1: "%{user} is now following your questions and answers on %{app}"
       message2: 'You may follow him back by clicking on the button "Follow" on his %{user_page}'
