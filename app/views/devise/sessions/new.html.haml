@@ -2,8 +2,6 @@
   = t('devise.sessions.signin_group', :group => current_group.name)
 %p.description
 
-= multiauth_assets
-
 -session["return_to"] = request.referrer unless request.referrer.blank?
 
 -if current_group.registered_only

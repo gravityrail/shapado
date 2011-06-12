@@ -9,10 +9,11 @@ Modernizr.load([{
     Modernizr.load([{
       load: jsassets.offline_bare_minimum_questions
     }, {
-      test: $('meta[data-js=show]').length > 0,
+      test: $('meta[data-js=show]').length > 0 || location.pathname == '/questions/new',
       yep: jsassets.offline_bare_minimum_show,
-      callback: function() {
-        Editor.initialize();
+      complete: function() {
+        if(window.Editor)
+          Editor.initialize();
       }
     }, {
       load: cssassets.jqueryui
@@ -31,8 +32,9 @@ Modernizr.load([{
     }, {
       test: $('meta[data-js=show]').length > 0 && $('.auto-link').length > 0,
       yep: jsassets.jqueryautovideo,
-      callback: function() {
-        $('.auto-link').autoVideo();
+      complete: function(){
+        if($.fn.autoVideo)
+          $('.auto-link').autoVideo();
       }
     }, {
       test: window.JSON,

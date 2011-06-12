@@ -1,10 +1,7 @@
-desc "Setting js assets"
-task :jsassets => [:environment, "compress:dev"] do
-end
 
-namespace :compress do
+
   desc "generating js dev assets"
-  task :dev => [:environment]  do
+  task :jsassets do
     assets = YAML::load( File.open( 'config/assets.yml' ) )
 
     assets["javascripts"].keys.each do |k|
@@ -27,4 +24,3 @@ namespace :compress do
     end
     puts "done."
   end
-end
