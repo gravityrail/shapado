@@ -30,7 +30,7 @@ var ShapadoSocket = {
     $("#chat_div").chatbox("option", "boxManager").addMsg(from, message);
   },
   parse: function(data) {
-    var data = jQuery.parseJSON(data);
+    var data = JSON.parse(data);
 
     window.console && console.log("received: ");
     window.console && console.log(data);
@@ -71,6 +71,6 @@ var ShapadoSocket = {
     }
   },
   send: function(data) {
-    this.ws.send($.toJSON(data))
+    this.ws.send(JSON.stringify(data))
   }
 };

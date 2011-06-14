@@ -19,4 +19,8 @@ if AppConfig.smtp["activate"]
   }
 end
 
-
+if Rails.env == "development"
+  MODERNIZR = :modernizrdev
+else
+  MODERNIZR = :modernizr
+end

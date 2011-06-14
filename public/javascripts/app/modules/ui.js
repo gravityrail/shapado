@@ -1,12 +1,13 @@
 var Ui = {
   initialize: function() {
     $('ul.sf-menu').superfish();
-    $('.lang-fields').tabs();
+
+    //$('.lang-fields').tabs();
 
     Ui.hide_comments_form();
-    Ui.initialize_feedback();
+    //Ui.initialize_feedback();
 
-    $('.autocomplete_for_tags').ricodigoComplete();
+    //$('.autocomplete_for_tags').ricodigoComplete();
     $('#quick_question').find('.tagwrapper').css({'margin-left':'18px',width:'68%'});
 
     if(Ui.supports_input_placeholder()) {
