@@ -82,8 +82,10 @@ class Question
   before_validation_on_create :update_language
 
   validates_inclusion_of :language, :within => AVAILABLE_LANGUAGES
-  validates_true_for :language, :logic => lambda { |q| q.group.language == q.language },
-                                :if => lambda { |q| !q.group.language.nil? }
+  validates_true_for :language, :logic => lambda { |q|
+    q.group.language.split('-').first == q.language.split('-').first },
+    :if => lambda { |q| !q.group.language.nil?
+  }
   validate :disallow_spam
   validate :check_useful
 

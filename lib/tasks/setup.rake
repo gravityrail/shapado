@@ -38,7 +38,8 @@ namespace :setup do
                               :description => "question-and-answer website",
                               :legend => "question and answer website",
                               :default_tags => default_tags,
-                              :state => "active")
+                              :state => "active",
+                              :language => AppConfig.default_language)
 
     default_group.save!
     if admin = User.find_by_login("admin")
