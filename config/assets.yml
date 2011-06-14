@@ -80,6 +80,11 @@ javascripts:
     - public/javascripts/rails.js
     - public/javascripts/app/initializers/mobile.js
 
+  facebook:
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/rails.js
+    - public/javascripts/facebook_app/init.js
+
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css

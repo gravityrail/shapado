@@ -1,2 +1,6 @@
--current_group.questions.each do |question|
-  =render "questions/question", :question => question
+%section.content-panel
+  =render "shared/quick_question_box"
+
+%section.questions-index
+  -@questions.each do |question|
+    =render "facebook/question", :question => question

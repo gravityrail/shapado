@@ -1,0 +1,30 @@
+-title = h(question.title)
+-owner = nil
+- if question.last_target_id.present?
+  - last_target_id = question.last_target_id
+  - last_target_date = question.last_target_date || question.updated_at
+  - owner = question.last_target_user
+-else
+  - last_target = question
+  - last_target_date = question.updated_at
+  - owner = question.user unless question.anonymous
+
+-if question.closed
+  -title += " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
+
+%article{:class => class_for_question(question), :id => question.id}
+  -cache("question_on_fb_index_#{question.id}_#{I18n.locale}") do
+    %h3
+      -if question.wiki
+        = link_to t('questions.question.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+      -else
+        = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+  .user-data
+    -if owner
+      =render :partial => "users/user_data", :locals => {:user => owner}
+    -else
+      =# i18n
+      By:
+      =t("global.anonymous")
+    %time{:pubdate => "pubdate", :datetime => last_target_date.iso8601}
+      = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question, :anchor => last_target_id)

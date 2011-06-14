@@ -1,13 +1,13 @@
 %html
   %head
-    = render "shared/layout/css"
+    =stylesheet_link_tag "compiled/facebook_app.css"
 
-    = raw(current_group.head_tag)
     = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
-    = render "shared/layout/javascript"
+    =include_javascripts :facebook
     <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
 
     = csrf_meta_tag
   %body
-    =yield
+    .main-wrapper
+      =yield
