@@ -68,6 +68,26 @@ var FbQuestions = {
   }
 };
 
+var FbUsers = {
+  initialize: function() {
+    $('a[href^="/users/"]').click(function(e) {
+      var href = $(this).attr("href");
+      href = Utils.append_params(href, "format=js&facebook=1");
+
+      $.facebox(function() {
+        $.get(href, function(data, status, jqXHR) {
+          Utils.log(data);
+          $.facebox(data.html);
+        }, "JSON");
+      });
+      return false;
+    });
+  }
+};
+
 $(document).ready(function() {
+  $current_group = $("body").attr("data-group");
+
   FbQuestions.initialize();
+  FbUsers.initialize();
 });
