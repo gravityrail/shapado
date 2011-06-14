@@ -26,13 +26,7 @@
 
 .field
   = f.label :theme, t(:theme, :scope => "activerecord.attributes.group", :default => "Theme" ), :class => "label"
-  = f.select :theme, AVAILABLE_THEMES, {}, :class => "choose_theme"
-
-.field
-  = f.label :custom_css, "Custom css", :class => "label"
-  -custom_css = ""
-  -@group.has_custom_css? ? custom_css = @group.custom_css.read : custom_css = ""
-  = f.text_area :custom_css, :value => custom_css, :class => "text_area"
+  = f.select :current_theme_id, Theme.all.map{ |t| [t.name, t.id] }, {}, :class => "choose_theme"
 
 .buttons
   = f.submit t('scaffold.update'), :class => "save"

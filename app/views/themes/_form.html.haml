@@ -1,0 +1,36 @@
+.field
+  = form.label :name
+  = form.text_field :name
+
+.field
+  = form.label :bg_color
+  = form.text_field :bg_color, :type => "color"
+
+.field
+  = form.label :fg_color
+  = form.text_field :fg_color, :type => "color"
+
+.field
+  = form.label :button_bg_color
+  = form.text_field :button_bg_color, :type => "color"
+
+.field
+  = form.label :button_fg_color
+  = form.text_field :button_fg_color, :type => "color"
+
+.field
+  = form.label :link_bg_color
+  = form.text_field :link_bg_color, :type => "color"
+
+.field
+  = form.label :link_fg_color
+  = form.text_field :link_fg_color, :type => "color"
+
+.field
+  = form.label :custom_css
+  = form.text_area :custom_css
+
+
+.form-options
+  .buttons
+    = form.submit :class => "save"

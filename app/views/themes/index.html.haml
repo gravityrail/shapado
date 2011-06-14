@@ -1,0 +1,10 @@
+%h1
+  = t(".title", :default => "Themes")
+%p.description
+  = t(".description")
+
+.themes
+  -@themes.each do |theme|
+    = render "theme", :theme => theme
+
+=link_to "new", new_theme_path

@@ -184,6 +184,7 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :themes
     resources :constrains_configs
     resources :members
   end
