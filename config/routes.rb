@@ -220,4 +220,5 @@ Rails.application.routes.draw do
   match '/about' => 'groups#show', :as => :about
   root :to => 'questions#index'
   match '/:controller(/:action(/:id))'
+  match '*a', :to => 'public_errors#routing'
 end

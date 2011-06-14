@@ -1,6 +1,9 @@
 %section
   %h1
-    = t('.found_results', :quantity => @questions.total_entries)
+    -unless @questions.blank?
+      = t('.found_results', :quantity => @questions.total_entries)
+    -else
+      = t('.advanced_search')
   %p.description
     - link = link_to t('.advanced_search'), '#', :class => "advanced-search"
     =raw t('.description', :link => link)
@@ -9,7 +12,7 @@
 
 
   %ul.items#questions
-    -if @questions.blank?
+    -if @questions.blank? && params[:q]
       %li.box.highlight
         = t(".empty")
     -else

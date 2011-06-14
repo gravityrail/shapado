@@ -160,10 +160,11 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def created_flag(user, group, reason)
+  def created_flag(user, group, reason, path)
+    @path = path
     @user = user
     @group = group
-    @@language = language_for(user)
+    @language = language_for(user)
     set_locale @language
     @reason = I18n.t(reason, :scope=>"flags.form", :locale => @language)
     mail(:to => user.email ,

@@ -247,7 +247,7 @@ class UsersController < ApplicationController
   def contributed
     @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
 
-    find_questions(:contributor_ids.in => @user.id)
+    find_questions(:contributor_ids.in => [@user.id])
   end
 
   def connect
