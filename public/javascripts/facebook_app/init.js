@@ -3,6 +3,8 @@ var FbQuestions = {
     if($(".unauthenticated").length > 0) {
       $("input, textarea").focus(function() {
         Auth.open_popup('/users/auth/facebook');
+        $(this).blur();
+        return false;
       });
 
       $(".require_login").click(function() {
