@@ -131,7 +131,11 @@ class ApplicationController < ActionController::Base
         end
         languages
       else
-        [current_group.language.split("-").first || AppConfig.default_language.split("-").first]
+        if current_group.language
+          [current_group.language.split("-").first]
+        else
+          [AppConfig.default_language.to_s.split("-").first]
+        end
       end
     end
   end
