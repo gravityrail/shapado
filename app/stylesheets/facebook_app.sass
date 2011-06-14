@@ -4,6 +4,8 @@ body
   margin: 0
   padding: 0
   height: 100%
+  font-family: 'lucida grande', tahoma, verdana, arial, sans-serif
+  font-size: 12px
 
 .clear
   clear: both
@@ -23,21 +25,42 @@ input[type=submit]
   padding: 4px 8px 4px 8px
   float: right
 
-input[type=text]
+input[type=text], textarea
   border: 1px solid #333
   padding: 4px
   color: #333
   width: 100%
 
+textarea
+  height: 70px
+
+.small-info
+  color: #999
+  font-size: 11px
+
+.internal-form-wrapper
+  background: #EDEFF4
+  padding: 10px 10px 5px 10px
 
 section.questions-index
   article.Question
     border-top: 1px solid #E9E9E9
     padding: 0px 10px 14px 10px
 
+    h3
+      padding: 2px 0px 2px 0px
+
+    .question-body
+      display: none
+      padding: 2px 12px 5px 12px
+
+    .answer-body
+      padding: 10px 10px 5px 10px
+      background: #EDEFF4
+      margin: 3px 0px 3px 0px
+
     .user-data
-      color: #999
-      font-size: 11px
+
 
 
 

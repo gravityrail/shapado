@@ -154,8 +154,6 @@ class ApplicationController < ActionController::Base
       'sessions'
     elsif params["format"] == "mobile"
       'mobile'
-    elsif params[:signed_request]||session[:shapado_signed_request]
-      'facebook'
     else
       'application'
     end
