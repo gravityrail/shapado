@@ -30,8 +30,8 @@
             %time{:pubdate => "pubdate", :datetime => answer.created_at.iso8601}
               =t("time.ago", :time => time_ago_in_words(answer.created_at))
             ·
-            =link_to "+", "#", :class => "vote_answer_up"
-            =link_to "-", "#", :class => "vote_answer_down"
+            =link_to "+", "#", :class => "vote_answer_up require_login"
+            =link_to "-", "#", :class => "vote_answer_down require_login"
             ==#{answer.votes_average}/#{answer.votes_count} votes
             ·
             =link_to "view more...", question_answer_url(question, answer), :target => "_blank", :rel => "external"
@@ -39,7 +39,7 @@
       .internal-form-wrapper
         =form_for [question, Answer.new] do |f|
           =f.text_area :body
-          =f.submit "Answer"
+          =f.submit "Answer", :class => "require_login"
         .clear
 
   .user-data.small-info
@@ -53,6 +53,6 @@
       =t("time.ago", :time => time_ago_in_words(last_target_date))
     ·
     ==[#{question.followers_count}]
-    =link_to "follow", follow_question_url(question), :class => "follow_question"
+    =link_to "follow", follow_question_url(question), :class => "follow_question require_login"
     ·
     =link_to "view more...", question_url(question), :target => "_blank", :rel => "external"

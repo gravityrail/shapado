@@ -8,6 +8,6 @@
     <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
 
     = csrf_meta_tag
-  %body
+  %body{:class => "#{user_signed_in? ? "authenticated" : "unauthenticated"}"}
     .main-wrapper
       =yield
