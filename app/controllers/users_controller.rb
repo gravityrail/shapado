@@ -114,6 +114,16 @@ class UsersController < ApplicationController
       format.json {
         render :json => @user.to_json(:only => %w[name login membership_list bio website location language])
       }
+      format.js do
+        html = ""
+        if params[:facebook]
+          html = render_to_string(:partial => "facebook/user", :object => @user)
+        else
+          html = render_to_string(:partial => "users/user", :object => @user)
+        end
+
+        render :json => {:success => true, :html => html}
+      end
     end
   end
 
