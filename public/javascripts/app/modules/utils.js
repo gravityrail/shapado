@@ -7,5 +7,16 @@ var Utils = {
       vars[hash[0]] = hash[1];
     }
     return vars;
+  },
+  append_params: function(url, params) {
+    if(url.indexOf('?')==-1)
+      url += '?'+params;
+    else
+      url += '&'+params;
+
+    return url;
+  },
+  log: function(data) {
+    window.console && window.console.log(data);
   }
 };
