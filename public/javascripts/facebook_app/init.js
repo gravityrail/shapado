@@ -13,6 +13,13 @@ var FbQuestions = {
       });
     }
 
+    $(".markdown a, a[rel=external]").click(function() {
+      var u = $(this).attr("href");
+
+      window.open(u);
+      return false;
+    });
+
     $("article.Question h3 a").click(function() {
       var l = $(this);
       var q = l.parents("article.Question");
