@@ -263,15 +263,24 @@ class QuestionsController < ApplicationController
       end
     end
 
+    return login_required if !@question.user
+
     respond_to do |format|
       if (logged_in? ||  (@question.user.valid? && recaptcha_valid?)) && @question.save
         @question.add_contributor(@question.user)
 
         sweep_question_views
+        html = nil
+        if params[:facebook]
+          html = render_to_string(:partial => "facebook/question", :object => @question)
+        else
+          html = render_to_string(:partial => "questions/question", :object => @question)
+        end
+
         Magent::WebSocketChannel.push({id: "newquestion",
                                        object_id: @question.id,
                                        name: @question.title,
-                                       html: render_to_string(:partial => "questions/question", :object => @question),
+                                       html: html,
                                        channel_id: current_group.slug})
 
         current_group.tag_list.add_tags(*@question.tags)
@@ -303,10 +312,12 @@ class QuestionsController < ApplicationController
           end
         }
         format.json { render :json => @question.to_json(:except => %w[_keywords watchers]), :status => :created}
+        format.js {render :json => {:success => true, :message => flash[:notice], :html => html} }
       else
         @question.errors.add(:captcha, "is invalid") unless recaptcha_valid?
         format.html { render :action => "new" }
-        format.json { render :json => @question.errors+@question.user.errors, :status => :unprocessable_entity }
+        format.json { render :json => @question.errors+@question.user.errors }
+        format.js { render :json => {:success => false, :message => (@question.errors+@question.user.errors).join(", ")} }
       end
     end
   end
