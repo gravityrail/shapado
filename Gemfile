@@ -52,9 +52,9 @@ gem 'sanitize', '1.2.1'
 gem "twitter_oauth"
 
 # authentication
-gem 'omniauth', '~> 0.2.5'
-gem 'oa-openid', '~> 0.2.5', :require => 'omniauth/openid'
-gem "oa-oauth", '~> 0.2.5', :require => "omniauth/oauth"
+gem 'omniauth', '~> 0.2.6'
+gem 'oa-openid', '~> 0.2.6', :require => 'omniauth/openid'
+gem "oa-oauth", '~> 0.2.6', :require => "omniauth/oauth"
 
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 

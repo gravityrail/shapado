@@ -114,11 +114,18 @@ class AnswersController < ApplicationController
         Jobs::Answers.async.on_create_answer(@question.id, @answer.id, link).commit!
 
         sweep_question(@question) # TODO move to magent
+        html = ""
+        if params[:facebook]
+          html = render_to_string(:partial => "facebook/answer",
+                                  :locals => {:answer => @answer, :question => @question})
+        else
+          html = render_to_string(:partial => "questions/answer",
+                                  :locals => {:answer => @answer, :question => @question})
+        end
         Magent::WebSocketChannel.push({id: "newanswer", object_id: @answer.id, name: @answer.body, channel_id: current_group.slug,
                                        owner_id: @answer.user.id, owner_name: @answer.user.login,
                                        question_id: @question.id, question_title: @question.title,
-                                       html: render_to_string(:partial => "questions/answer",
-                                                              :locals => {:answer => @answer, :question => @question})})
+                                       html: html})
 
         flash[:notice] = t(:flash_notice, :scope => "answers.create")
         format.html{redirect_to question_path(@question)}
@@ -126,8 +133,7 @@ class AnswersController < ApplicationController
         format.json { render :json => @answer.to_json(:except => %w[_keywords]) }
         format.js do
           render(:json => {:success => true, :message => flash[:notice],
-            :html => render_to_string(:partial => "questions/answer",
-                                      :locals => {:answer => @answer, :question => @question})}.to_json)
+                           :html => html, :question_id => @question.id}.to_json)
         end
       else
         @answer.errors.add(:captcha, "is invalid") if !logged_in? && !recaptcha_valid?

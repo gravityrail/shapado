@@ -380,9 +380,9 @@ DEPENDENCIES
   multiauth!
   niftier-generators (= 0.1.2)
   nokogiri
-  oa-oauth (~> 0.2.5)
-  oa-openid (~> 0.2.5)
-  omniauth (~> 0.2.5)
+  oa-oauth (~> 0.2.6)
+  oa-openid (~> 0.2.6)
+  omniauth (~> 0.2.6)
   orm_adapter
   rack-recaptcha (= 0.2.2)
   rack-ssl

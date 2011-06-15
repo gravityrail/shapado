@@ -65,6 +65,35 @@ var FbQuestions = {
       }
       return false;
     });
+
+    $("form.new_answer").submit(function() {
+      var f = $(this);
+      var href = f.attr("action");
+
+      $.ajax({
+        url: href+'.js',
+        dataType: 'json',
+        type: "POST",
+        data: f.serialize()+"&facebook=1",
+        success: function(data){
+          if(data.success){
+            Messages.show(data.message, "notice");
+            $("article.Question#"+data.question_id+" .answers-list").prepend(data.html);
+          } else {
+            Messages.show(data.message, "error");
+
+            if(data.status == "unauthenticate") {
+              Auth.open_popup("/users/auth/facebook");
+            }
+          }
+        },
+        error: Messages.ajax_error_handler,
+        complete: function(XMLHttpRequest, textStatus) {
+        }
+      });
+
+      return false;
+    });
   }
 };
 
