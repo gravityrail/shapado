@@ -44,7 +44,14 @@ class ThemesController < ApplicationController
 
   # GET /themes/1/edit
   def edit
-    @theme = Theme.find(params[:id])
+    conditions = {}
+    if params[:tab] == "community"
+      conditions[:community] = true
+    else
+      conditions[:group_id] = current_group.id
+    end
+
+    @theme = Theme.where(conditions).find(params[:id])
   end
 
   # POST /themes

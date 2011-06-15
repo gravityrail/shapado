@@ -255,11 +255,9 @@ class Group
       when "small"
         @group.thumbnails["small"] ? @group.thumbnails.get("small") : logo
       when "css"
-        if @group.has_custom_css?
-          css=@group.custom_css
-          css.content_type = "text/css"
-          css
-        end
+        css=@group.current_theme.stylesheet
+        css.content_type = "text/css"
+        css
       when "favicon"
         @group.custom_favicon if @group.has_custom_favicon?
       end
