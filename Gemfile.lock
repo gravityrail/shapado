@@ -1,11 +1,11 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 316ebbbed9cf2c543cf3ab4cadc8d331210e082e
+  revision: fb53233c02036a85c235eb67c858dc6ba1cb39b3
   specs:
     mongoid_ext (0.6.1)
       differ (>= 0.1.2)
       i18n
-      mongoid (~> 2.0.0)
+      mongoid (~> 2)
       tzinfo
       uuidtools (>= 2.1.1)
 
@@ -27,9 +27,9 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 6bd8077ea91eb99f9c0c1aad6ea117e75867db10
+  revision: d86d31a18253b96ef7ca8b8e8a93a5b149051a39
   specs:
-    mongoid (2.0.2)
+    mongoid (2.1.0)
       activemodel (~> 3.0)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)
@@ -146,8 +146,8 @@ GEM
     i18n (0.5.0)
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
-    json (1.5.1)
-    kgio (2.4.1)
+    json (1.5.2)
+    kgio (2.4.2)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -332,8 +332,8 @@ GEM
       json (>= 1.1.9)
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
-    tzinfo (0.3.27)
-    unicorn (3.6.2)
+    tzinfo (0.3.28)
+    unicorn (3.7.0)
       kgio (~> 2.3)
       rack
     uuidtools (2.1.2)
