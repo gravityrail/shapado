@@ -94,6 +94,17 @@ var FbQuestions = {
 
       return false;
     });
+
+    $("a.follow_question").click(function() {
+      var l = $(this);
+      var href = $(this).attr("href");
+
+      $.get(href+".js", function(data) {
+        Message.show(data.message, 'notice');
+      },
+      'json');
+      return false;
+    });
   }
 };
 
