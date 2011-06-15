@@ -100,7 +100,7 @@ var FbQuestions = {
       var href = $(this).attr("href");
 
       $.get(href+".js", function(data) {
-        Message.show(data.message, 'notice');
+        Messages.show(data.message, 'notice');
       },
       'json');
       return false;
