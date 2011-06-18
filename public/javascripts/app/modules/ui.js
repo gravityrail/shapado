@@ -70,5 +70,8 @@ var Ui = {
       $(selectID).prepend(any);
     // needed for firefox:
     $(selectID).val($(selectID+' '+child+'[selected=selected]').val());
+  },
+  offline: function(){
+    return $('.offline').length>0
   }
 };

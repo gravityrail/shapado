@@ -13,5 +13,6 @@ var Auth = {
     var pparg;
     (authUrl.indexOf('?')==-1)? pparg = '?pp=1' : pparg = '&pp=1'
     window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
+    $('#login_dialog').dialog('close');
   }
 };
