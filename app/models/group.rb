@@ -27,7 +27,6 @@ class Group
   field :state, :type => String, :default => "pending" #pending, active, closed
   field :isolate, :type => Boolean, :default => false
   field :private, :type => Boolean, :default => false
-  field :theme, :type => String, :default => "plain"
   field :owner_id, :type => String
   field :analytics_id, :type => String
   field :analytics_vendor, :type => String
@@ -99,6 +98,8 @@ class Group
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
   references_many :invitations, :dependent => :destroy
+  references_many :themes
+  referenced_in :current_theme, :class_name => "Theme"
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
@@ -254,11 +255,9 @@ class Group
       when "small"
         @group.thumbnails["small"] ? @group.thumbnails.get("small") : logo
       when "css"
-        if @group.has_custom_css?
-          css=@group.custom_css
-          css.content_type = "text/css"
-          css
-        end
+        css=@group.current_theme.stylesheet
+        css.content_type = "text/css"
+        css
       when "favicon"
         @group.custom_favicon if @group.has_custom_favicon?
       end

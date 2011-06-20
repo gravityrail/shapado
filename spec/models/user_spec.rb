@@ -56,9 +56,20 @@ describe User do
   end
 
   describe "instance methods" do
+    describe "User#display_name" do
+      it "should return the user's name" do
+        @user.name = "test"
+        @user.display_name.should == @user.name
+      end
+
+      it "should return the user's login when the name is blank" do
+        @user.display_name.should == @user.login
+      end
+    end
+
     describe "User#membership_list" do
-      it "should" do
-        @user.membership_list
+      it "should return an empty hash" do
+        @user.membership_list.should == {}
       end
     end
 
@@ -209,13 +220,41 @@ describe User do
     end
 
     describe "User#groups" do
+      it "should not return groups" do
+        @user.groups.should be_empty
+      end
+
+      it "should return @group" do
+        @group = Group.make(:group)
+        @user.join!(@group)
+        @user.groups.map(&:id).should include @group.id
+      end
     end
 
     describe "User#member_of?" do
+      before(:each) do
+        @group = Group.make(:group)
+      end
+
+      it "should return false when @user is not a member of @group" do
+        @user.member_of?(@group).should be_false
+      end
+
+      it "should return true when @user is a member of @group" do
+        @user.join!(@group)
+        @user.member_of?(@group).should be_true
+      end
     end
 
     describe "User#role_on" do
+      before(:each) do
+        @group = Group.make(:group)
+      end
 
+      it "should return " do
+        @group.add_member(@user, "moderator")
+        @user.role_on(@user).should == "moderator"
+      end
     end
 
     describe "User#owner_of?" do

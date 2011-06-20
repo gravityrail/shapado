@@ -1,5 +1,5 @@
 
--form_tag change_language_filter_path do
+= form_tag change_language_filter_path do
   = hidden_field_tag :source, request.path
   -langs_options = languages_options(current_group.languages)
   -langs_options.unshift(["Any language", "any"])

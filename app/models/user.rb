@@ -104,8 +104,7 @@ class User
   before_save :update_languages
 
   def display_name
-    return name unless name.blank?
-    return login
+    name.blank? ? login : name
   end
 
   def self.find_for_authentication(conditions={})

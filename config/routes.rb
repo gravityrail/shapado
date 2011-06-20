@@ -184,6 +184,7 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :themes
     resources :constrains_configs
     resources :members
   end
@@ -199,6 +200,7 @@ Rails.application.routes.draw do
       match 'domain' => :domain
       match 'content' => :content
       match 'invitations' => :invitations
+      match 'appearance' => :appearance
     end
   end
 
