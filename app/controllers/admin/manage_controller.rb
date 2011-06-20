@@ -5,7 +5,6 @@ class Admin::ManageController < ApplicationController
   tabs :dashboard => :dashboard,
        :properties => :properties,
        :content => :content,
-       :theme => :theme,
        :actions => :actions,
        :stats => :stats,
        :widgets => :widgets
@@ -32,6 +31,17 @@ class Admin::ManageController < ApplicationController
 
   def properties
     @active_subtab ||= "general"
+  end
+
+  def appearance
+    conditions = {}
+    if params[:tab] == "community"
+      conditions[:community] = true
+    else
+      conditions[:group_id] = current_group.id
+    end
+
+    @themes = Theme.where(conditions).paginate(paginate_opts(params))
   end
 
   def actions

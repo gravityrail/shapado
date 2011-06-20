@@ -5,14 +5,7 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    conditions = {}
-    if params[:tab] == "community"
-      conditions[:community] = true
-    else
-      conditions[:group_id] = current_group.id
-    end
-
-    @themes = Theme.where(conditions).paginate(paginate_opts(params))
+    @themes = @group.themes
 
     respond_to do |format|
       format.html # index.html.haml
