@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   include Shapado::Controllers::Routes
   include Shapado::Controllers::Locale
   include Shapado::Controllers::Utils
-  include Shapado::Controllers::Facebook
 
   if !AppConfig.recaptcha['activate']
     def recaptcha_valid?
@@ -45,10 +44,6 @@ class ApplicationController < ActionController::Base
 
   def find_group
     @current_group ||= begin
-      if sr = (params[:signed_request] || session[:shapado_signed_request])
-        return find_group_on_facebook(sr)
-      end
-
       subdomains = request.subdomains
       subdomains.delete("www") if request.host == "www.#{AppConfig.domain}"
       _current_group = Group.where({:state => "active", :domain => request.host}).first
