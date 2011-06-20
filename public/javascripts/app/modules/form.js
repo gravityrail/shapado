@@ -5,7 +5,7 @@ var From = {
               expandable: true,
               position: { x: 'screenCenter', y: 'center'}
             },
-    images: { clientPath: '/images/' }
+    images: { clientPath: '/images/jpicker/' }
     });
     $("input[type=color]").hide();
   }

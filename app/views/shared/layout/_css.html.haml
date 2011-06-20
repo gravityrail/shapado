@@ -1,9 +1,9 @@
 =include_stylesheets(:base)
 
-//%link#current-theme{ :href => "/stylesheets/compiled/themes/#{current_group.theme}/style.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
-//%link#current-nav{ :href => "/stylesheets/compiled/navigation/#{current_group.theme}.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
+-#%link#current-theme{ :href => "/stylesheets/compiled/themes/#{current_group.theme}/style.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
+-#%link#current-nav{ :href => "/stylesheets/compiled/navigation/#{current_group.theme}.css", :rel => "stylesheet", :media => "screen", :type => "text/css" }
+
+= yield :css
 
 -if current_group.current_theme
   %link{:href => css_group_path(current_group),  :rel => "stylesheet", :media => "screen", :type => "text/css"}
-
-= yield :css
