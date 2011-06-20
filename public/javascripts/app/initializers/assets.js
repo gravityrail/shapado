@@ -6,7 +6,8 @@ jsassets = {
   jqueryautovideo: '/packages/jqueryautovideo.js',
   json: '/packages/json.js',
   websocket: '/packages/websocket.js',
-  jqautocomplete: '/packages/jqautocomplete.js'
+  jqautocomplete: '/packages/jqautocomplete.js',
+  jqtools: '/packages/jqtools.js'
 }
 cssassets = {
   jqueryui: '/packages/jqueryui.css'
