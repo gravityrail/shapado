@@ -36,6 +36,7 @@ javascripts:
     - public/javascripts/app/modules/tags.js
     - public/javascripts/app/modules/ui.js
     - public/javascripts/app/modules/utils.js
+    - public/javascripts/app/initializers/login_dialog.js
     - public/javascripts/app/modules/votes.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/app/modules/websocket.js
