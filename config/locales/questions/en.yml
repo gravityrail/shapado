@@ -34,9 +34,9 @@ en:
       flagged_as: Flagged as
       viewed: viewed
       to_answer_question: to answer this question
-      watch_tooltip: "Watch this question"
+      follow_tooltip: "Follow this question"
       accepted_tooltip: "One of the answers was accepted as the correct answer."
-      unwatch_tooltip: "Stop watching this question"
+      unfollow_tooltip: "Stop following this question"
       asked_on: "asked on"
       last_activity: Latest activity
       retag: Retag

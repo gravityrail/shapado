@@ -8,6 +8,7 @@ $(document).ready(function() {
     $('#new_answer').slideDown('slow');
     $('a#add_answer').addClass('active');
   }
+
   $("form.vote_form button").live("click", function(event) {
     if(Ui.offline()){
       startLoginDialog();
@@ -293,41 +294,6 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".question-action").live("click", function(event) {
-    if(Ui.offline()){
-      startLoginDialog();
-    } else {
-      var link = $(this);
-      if(!link.hasClass('busy')){
-        link.addClass('busy');
-        var href = link.attr("href");
-        var dataUndo = link.attr("data-undo");
-        var title = link.attr("title");
-        var dataTitle = link.attr("data-title");
-        var img = link.children('img');
-        var counter = $(link.attr('data-counter'));
-        $.getJSON(href+'.js', function(data){
-          if(data.success){
-            link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title });
-            img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
-            if(typeof(data.increment)!='undefined'){
-              counter.text(parseFloat($.trim(counter.text()))+data.increment);
-            }
-            Messages.show(data.message, "notice");
-          } else {
-            Messages.show(data.message, "error");
-
-            if(data.status == "unauthenticate") {
-              window.onbeforeunload = null;
-              window.location="/users/login";
-            }
-          }
-          link.removeClass('busy');
-          }, "json");
-        }
-    }
-    return false;
-  });
 });
 
 $(window).load(function() {
