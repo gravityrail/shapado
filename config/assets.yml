@@ -40,6 +40,7 @@ javascripts:
     - public/javascripts/app/modules/votes.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/app/modules/websocket.js
+    - public/javascripts/app/modules/updater.js
 
     - public/javascripts/rails.js
     - public/javascripts/vendor/jquery.cookie.js
@@ -57,6 +58,7 @@ javascripts:
     - public/javascripts/app/initializers/single/question.js
     - public/javascripts/app/initializers/show_question.js
     - public/javascripts/app/initializers/panel_forms.js
+
   base:
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
@@ -71,6 +73,7 @@ javascripts:
     - public/javascripts/app/initializers/tags_question.js
     - public/javascripts/app/initializers/members.js
     - public/javascripts/app/initializers/move_group.js
+
   jqueryui:
     - public/javascripts/vendor/jquery-ui.js
     - public/javascripts/app/modules/effects.js

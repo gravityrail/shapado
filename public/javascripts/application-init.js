@@ -1,6 +1,11 @@
 Ui.fix_html5_on_ie();
-$(document).ready(function() {
+function initialize_all() {
+  Updater.initialize();
   Ui.initialize();
   Messages.initialize();
   Auth.initialize();
+};
+
+$(document).ready(function() {
+  initialize_all();
 });
