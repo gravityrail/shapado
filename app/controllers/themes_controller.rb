@@ -5,7 +5,7 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = @group.themes
+    @themes = current_group.themes
 
     respond_to do |format|
       format.html # index.html.haml
