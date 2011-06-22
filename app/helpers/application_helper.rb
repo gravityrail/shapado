@@ -429,7 +429,7 @@ module ApplicationHelper
     args.unshift([name, current_group.id, params[:controller], params[:action]])
     if user_signed_in?
       args += [current_user.role_on(current_group.to_s)]
-      args += user.preferred_languages.sort
+      args += current_user.preferred_languages.sort
     else
       args << current_group.language
     end
