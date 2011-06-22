@@ -92,7 +92,6 @@
                   =image_tag "atom.png", :width => 20
           .clear
 
-
         -if AppConfig.enable_adbard && request.domain == AppConfig.domain
           -widget = AdbardWidget.new(:settings => {'host_id' => AppConfig.adbard_host_id, 'site_key' => AppConfig.adbard_site_key})
           .widget.block{:id => widget.name}
