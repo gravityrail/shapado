@@ -420,5 +420,21 @@ module ApplicationHelper
   def tag_link(tag)
     link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
   end
+
+  def cache_for(name, *args, &block)
+    cache(cache_key_for(name, *args), &block)
+  end
+
+  def cache_key_for(name, *args)
+    args.unshift([name, current_group.id, params[:controller], params[:action]])
+    if user_signed_in?
+      args += [current_user.role_on(current_group.to_s)]
+      args += user.preferred_languages.sort
+    else
+      args << current_group.language
+    end
+
+    args
+  end
 end
 

@@ -75,8 +75,6 @@
               %li
                 = link_to t('layouts.application.pages'), pages_path, :link_opts => {:"data-ajax" => "1"}
 
-        =#render "widgets/tag_cloud", :widget => TagCloudWidget.new
-
         .widget-networks.module
           %h3= t('layouts.application.follow_us_and_share')
           %ul

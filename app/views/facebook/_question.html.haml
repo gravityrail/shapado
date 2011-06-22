@@ -13,25 +13,24 @@
   -title += " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
 %article{:class => class_for_question(question), :id => question.id}
-  -cache("question_on_fb_index_#{question.id}_#{I18n.locale}") do
-    %h3
-      -if question.wiki
-        = link_to t('questions.question.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-      -else
-        = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-    .question-body
-      .markdown
-        =find_and_preserve(shapado_auto_link(markdown(question.body), :link_users => true))
+  %h3
+    -if question.wiki
+      = link_to t('questions.question.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+    -else
+      = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+  .question-body
+    .markdown
+      =find_and_preserve(shapado_auto_link(markdown(question.body), :link_users => true))
 
-      .answers-list
-        -question.answers.order(:votes_average.desc).each do |answer|
-          =render "facebook/answer", :answer => answer, :question => question
+    .answers-list
+      -question.answers.order(:votes_average.desc).each do |answer|
+        =render "facebook/answer", :answer => answer, :question => question
 
-      .internal-form-wrapper
-        =form_for [question, Answer.new] do |f|
-          =f.text_area :body
-          =f.submit "Answer", :class => "require_login"
-        .clear
+    .internal-form-wrapper
+      =form_for [question, Answer.new] do |f|
+        =f.text_area :body
+        =f.submit "Answer", :class => "require_login"
+      .clear
 
   .user-data.small-info
     -if owner

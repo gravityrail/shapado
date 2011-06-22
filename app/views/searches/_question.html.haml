@@ -17,16 +17,15 @@
   - owner = question.user unless question.anonymous
 
 %article{:class => class_for_question(question)}
-  -cache("question_on_index_#{question.id}_#{I18n.locale}") do
-    %h2
-      = link_to highlight(title, @highlight), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-  .user-data
-    -if owner
-      =render :partial => "users/user_data", :locals => {:user => owner}
-    -else
-      Por:
-      =t("global.anonymous")
-    = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
+  %h2
+    = link_to highlight(title, @highlight), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
+.user-data
+  -if owner
+    =render :partial => "users/user_data", :locals => {:user => owner}
+  -else
+    Por:
+    =t("global.anonymous")
+  = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
   -if question.wiki
     Wiki
 

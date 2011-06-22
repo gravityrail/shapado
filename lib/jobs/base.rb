@@ -31,6 +31,17 @@ module Jobs
           Notifier.earned_badge(user, group, badge).deliver
         end
 
+        # Invalidate Cache
+        Dir.glob("#{Rails.root}/tmp/cache/*/*/views*widgets*#{group.id}").each do |f|
+          FileUtils.rm_rf(f)
+        end
+
+        if badge.source_type == "Question"
+          Dir.glob("#{Rails.root}/tmp/cache/*/*/views*question*#{badget.source_id}").each do |f|
+            FileUtils.rm_rf(f)
+          end
+        end
+
         if user.notification_opts.badges_to_twitter
           token = badge.name(user.language)
           group_name = group.name

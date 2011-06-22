@@ -182,7 +182,7 @@ class QuestionsController < ApplicationController
       @question.viewed!(request.remote_ip)
 
       if (@question.views_count % 10) == 0
-        sweep_question(@question)
+        sweep_question_views
       end
     end
 
@@ -190,7 +190,7 @@ class QuestionsController < ApplicationController
     add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     respond_to do |format|
-      format.html { Jobs::Questions.async.on_view_question(@question.id).commit! }
+      format.html { Jobs::Questions.async.on_view_question(@question.id).commit!(5) }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
       format.atom
@@ -340,7 +340,6 @@ class QuestionsController < ApplicationController
       if @question.save
         @question.add_contributor(current_user)
 
-        sweep_question_views
         sweep_question(@question)
 
         if tags_changes
@@ -377,7 +376,6 @@ class QuestionsController < ApplicationController
       @question.user.update_reputation(:delete_question, current_group)
     end
     sweep_question(@question)
-    sweep_question_views
     @question.destroy
 
     Jobs::Questions.async.on_destroy_question(current_user.id, @question.attributes).commit!
@@ -514,6 +512,9 @@ class QuestionsController < ApplicationController
     @question.add_follower(current_user)
     Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
+
+    sweep_question(@question)
+
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
       format.mobile { redirect_to question_path(@question, :format => :mobile) }
@@ -529,6 +530,9 @@ class QuestionsController < ApplicationController
     @question = current_group.questions.by_slug(params[:id])
     @question.remove_follower(current_user)
     flash[:notice] = t("questions.unwatch.success")
+
+    sweep_question(@question)
+
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
       format.mobile { redirect_to question_path(@question, :format => :mobile) }

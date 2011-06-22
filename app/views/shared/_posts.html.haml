@@ -4,23 +4,6 @@
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom", :tags => params[:tags])}
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
--content_for :subtabs do
-  .navtitle
-    = t(".title")
-    -if @questions
-      == (#{@questions.total_entries})
-
-  %ul
-    %li.newest
-      = link_to t("questions.index.newest"), questions_path(:sort=>"newest"), :title => t("questions.index.newest_tooltip")
-    %li.hot
-      = link_to t("questions.index.hot"), questions_path(:sort=>"hot"), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
-    %li.votes
-      = link_to t("questions.index.votes"), questions_path(:sort=>"votes"), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
-    %li.activity
-      = link_to t("questions.index.active"), questions_path(:sort=>"activity"), :title => t("questions.index.active_tooltip"), :rel => "nofollow"
-
-
 -content_for :sidebar do
   = render "shared/widgets", :context => 'mainlist', :position => 'sidebar'
 
@@ -28,15 +11,17 @@
   = render "shared/empty"
 
 -if params[:answers]
-  /Answers
-  -@questions.each do |question|
-    -answer = find_answer(question)
-    = render "answers/answer", :question => question, :answer => answer if answer
+  -cache_for(:questions, :answers, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do
+    /Answers
+    -@questions.each do |question|
+      -answer = find_answer(question)
+      = render "answers/answer", :question => question, :answer => answer if answer
 
 -else
-  /Questions
-  -@questions.each do |question|
-    = render "questions/question", :question => question
+  -cache_for(:questions, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do
+    /Questions
+    -@questions.each do |question|
+      = render "questions/question", :question => question
 
 #additional_info
   = will_paginate @questions
