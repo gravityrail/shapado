@@ -56,10 +56,10 @@ class ThemesController < ApplicationController
     respond_to do |format|
       if @theme.save
         format.html { redirect_to(@theme, :notice => 'Theme was successfully created.') }
-        format.json  { render :json => @theme, :status => :created, :location => @theme }
+        format.json { render :json => @theme, :status => :created, :location => @theme }
       else
         format.html { render :action => "new" }
-        format.json  { render :json => @theme.errors, :status => :unprocessable_entity }
+        format.json { render :json => @theme.errors, :status => :unprocessable_entity }
       end
     end
   end

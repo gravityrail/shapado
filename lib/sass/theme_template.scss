@@ -1,4 +1,18 @@
+// defined vars
+// $has_bg_image boolean
+// $bg_color color
+// $fg_color color
+// $view_bg_color color
+// $view_fg_color color
+// $button_bg_color color
+// $button_fg_color color
+// $use_link_bg_color boolean
+// $link_bg_color color
+// $link_fg_color color
+
+
 // General site colors
+// replace this color using the theme properties
 $dark: #404040;
 $gray: #aaa;
 $lightGray: #f2f2f2;
@@ -19,25 +33,17 @@ $darkRed: #c00;
 $text-shadow: 0 1px 1px #000;
 
 // Link colors
-$link_color: $orange;
-$hover_color: $darkOrange;
-$active_color: $orange;
+$link_color: $link_fg_color;
+$hover_color: darken($link_fg_color, 20%);
+$active_color: $link_fg_color;
 
-// Cross browser gradients
-@mixin orange-gradient {
-  background-image: -moz-linear-gradient(top, $orange, $darkOrange) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $darkOrange),color-stop(1, $orange)) !important;
-  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange') !important;
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$orange', endColorstr='$darkOrange')" !important;
-  background-color: $orange;
-}
-
-@mixin blue-gradient {
-  background-image: -moz-linear-gradient(top, $blue, $darkBlue) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $darkBlue),color-stop(1, $blue)) !important;
-  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue') !important;
-  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$blue', endColorstr='$darkBlue')" !important;
-  background-color: $blue;
+@mixin gradient($color) {
+  $amount-darker: 15%;
+  background-image: -moz-linear-gradient(top, $color, darken($color, $amount-darker)) !important;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, darken($color, $amount-darker)),color-stop(1, $color)) !important;
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$color', endColorstr='darken($color, $amount-darker)') !important;
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='$color', endColorstr='darken($color, $amount-darker)')" !important;
+  background-color: $color;
 }
 
 @mixin error-gradient {
@@ -86,7 +92,7 @@ a {
 
 #messages {
   color: #fff;
-  @include blue-gradient;
+  @include gradient($blue);
 }
 
 // app/stylesheets/app/_pagination.sass
@@ -123,7 +129,7 @@ a {
       color: #000 !important;
       background-color: #fff !important;
       &:hover{
-        @include orange-gradient;
+        @include gradient($orange);
         color: #fff !important;
       }
     }
@@ -237,7 +243,7 @@ ul.admin-links li {
       background-color: #fff;
     }
     li.follow {
-      @include orange-gradient;
+      @include gradient($orange);
       color: #fff;
       a{
         color: #fff;
@@ -257,7 +263,7 @@ ul.admin-links li {
       border-bottom: 1px dotted #e5e5e5;
       .date { color: #666; }
       a {
-          @include orange-gradient;
+          @include gradient($orange);
           color: #fff;
       }
     }
@@ -287,10 +293,6 @@ ul.admin-links li {
 //app/stylesheets/app/content/admin/_moderate.sass
 .moderate-answers {
   border-top: 1px solid #f1f1f1;
-  input {
-    @include orange-gradient;
-    color: #fff;
-  }
 }
 
 //app/stylesheets/app/content/admin/_widgets.sass
@@ -389,7 +391,6 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/_tabs.sass
 #main-content-wrap {
-  background-color: #fff;
   p.description {
     border-bottom: 1px solid #f1f1f1;
   }
@@ -407,12 +408,12 @@ ul.admin-links li {
 }
 
 .questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a {
-  color: #000 !important;
-  background-color: #fff !important;
+  background-color: $view_bg_color !important;
+  color: $view_fg_color !important;
 }
 
 .questions ul.content-tabs li.questions a:hover, .answers ul.content-tabs li.answers a:hover, .unanswered ul.content-tabs li.unanswered a:hover{
-  background-color: #fff !important
+  background-color: $view_bg_color !important;
 }
 
 .questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a {
@@ -462,12 +463,6 @@ form {
   }
   hr {
     border-top: 1px solid #e5e5e5;
-  }
-  .buttons {
-    input.save {
-      @include orange-gradient;
-      color: #fff;
-    }
   }
   .follow-up-msg {
     background-color: $lightOrange;
@@ -522,7 +517,7 @@ section.sessions {
     li a {
       color: #fff;
       background-color: #c00;
-      @include blue-gradient;
+      @include gradient($blue);
     }
   }
 }
@@ -555,46 +550,46 @@ footer {
 
 // app/stylesheets/app/_layout.sass
 body {
-  background: url("/images/back-site.gif") 0 0
+//   background: url("/images/back-site.gif") 0 0
+  background: $bg_color;
 }
 
 section.left-panel {
-  background-color: #fff;
   .module {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
     h3 {
-      color: #333;
-      text-shadow: 1px 1px 2px #e5e5e5;
-      border-bottom: 1px dotted #f1f1f1;
-    }
-  }
-}
-
-section.invitations-panel {
-  background-color: #fff;
-  .invitation-container {
-    border: 1px solid black;
-    #invitations-points div {
-      background: #E5E5E5;
-      img { background-color: #fff; }
+      color: darken($view_fg_color, 5%);
+      text-shadow: 1px 1px 2px;
+      border-bottom: 1px dotted darken($view_bg_color, 10%);
     }
   }
 }
 
 section.right-panel {
   .module {
-    background-color: #fff;
     h3 {
+      color: darken($view_fg_color, 5%);
       text-shadow: 1px 1px 2px;
-      border-bottom: 1px solid #f1f1f1;
+      border-bottom: 1px solid darken($view_bg_color, 10%);
     }
-    section, footer { background-color: #fff; }
     footer {
-      border-top:  1px solid #f1f1f1;
+      background-color: darken($view_bg_color, 2%);
+      border-top:  1px solid darken($view_bg_color, 10%);
+      color: $view_bg_color;
       a {
-        color: #999;
-        &:hover { color: #000; }
+        color: darken($view_fg_color, 10%);
+        &:hover { color: darken($view_fg_color, 20%); }
       }
+    }
+  }
+}
+
+section.invitations-panel {
+  .invitation-container {
+    border: 1px solid black;
+    #invitations-points div {
+      background: #E5E5E5;
+      img { background-color: #fff; }
     }
   }
 }
@@ -644,15 +639,10 @@ section.right-panel {
 
 // app/stylesheets/app/_topTabs.sass
 .quick_question {
-  background-color: #fff;
   input {
     border: 1px solid #ccc;
     background-color: #fafafa;
     &:hover { border-color: #666; }
-  }
-  input.ask_question{
-    @include orange-gradient;
-    color: #fff;
   }
   h2 {
     text-shadow: 1px 1px 2px #e5e5e5;
@@ -695,7 +685,7 @@ section.right-panel {
   li a {
     color: $dark;
     &:hover {
-      @include orange-gradient;
+      @include gradient($orange);
       color: #fff;
     }
   }
@@ -711,10 +701,6 @@ section.right-panel {
   select {
     border: 1px solid #ccc;
     background-color: #fff;
-  }
-  .save {
-    @include orange-gradient;
-    color: #fff;
   }
 }
 
@@ -784,12 +770,12 @@ section.right-panel {
       a {
         color: $dark;
         &:hover {
-          @include orange-gradient;
+          @include gradient($orange);
           color: #fff;
         }
       }
       &.active a, &.active a:hover {
-        @include orange-gradient;
+        @include gradient($orange);
         color: #fff;
       }
     }
@@ -798,7 +784,7 @@ section.right-panel {
 
 //app/content/question/question.sass
 section.main-question {
-  background-color: #fff;
+//   background-color: #fff;
   h1 {
     text-shadow: 1px 1px 2px #e5e5e5;
   }
@@ -968,7 +954,7 @@ article {
     border-right: 1px solid #f1f1f1;
     &:hover {
       color: #fff;
-      @include orange-gradient;
+      @include gradient($orange);
     }
   }
   ul li {
@@ -1003,15 +989,10 @@ form.answer_comment_form, form.question_comment_form {
   form {
     border-bottom: 1px solid #f1f1f1;
     .field {
-      input {
-        @include orange-gradient;
-        color: #fff;
-        border-color: $orange;
-      }
       #q {
         border-color: #ccc;
         color: #000;
-        background-color: #fff !important;
+//         background-color: #fff !important;
       }
     }
   }
@@ -1026,15 +1007,10 @@ form.answer_comment_form, form.question_comment_form {
 .users_container {
   border-bottom: 1px solid #f1f1f1;
   .field {
-    input {
-      @include orange-gradient;
-      color: #fff;
-      border-color: $orange;
-    }
     #q {
       border-color: #ccc;
       color: #000;
-      background-color: #fff !important;
+//       background-color: #fff !important;
     }
   }
 
@@ -1097,4 +1073,16 @@ form.answer_comment_form, form.question_comment_form {
       .owner-data strong {color: #999;}
     }
   }
+}
+
+//testing
+input[type=submit], button, input.save, .ask_question {
+  @include gradient($button_bg_color);
+  color: $button_fg_color;
+  border-color: $button_bg_color;
+}
+
+.module, .brand, .quick_question, #main-content-wrap {
+  background-color: $view_bg_color;
+  color: $view_fg_color;
 }

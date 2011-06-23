@@ -6,14 +6,14 @@ class Theme
   identity :type => String
   field :name, :type => String
 
-  field :bg_color, :type => String, :default => "000000"
-  field :fg_color, :type => String, :default => "ffffff"
+  field :bg_color, :type => String, :default => "f2f2f2"
+  field :fg_color, :type => String, :default => "404040"
 
   field :view_bg_color, :type => String, :default => "ffffff"
-  field :view_fg_color, :type => String, :default => "ffffff"
+  field :view_fg_color, :type => String, :default => "404040"
 
   field :use_button_bg_color, :type => Boolean, :default => false
-  field :button_bg_color, :type => String, :default => "000000"
+  field :button_bg_color, :type => String, :default => "ee681f"
   field :button_fg_color, :type => String, :default => "ffffff"
 
   field :use_link_bg_color, :type => Boolean, :default => false
@@ -36,7 +36,12 @@ class Theme
   def generate_stylesheet
     css = StringIO.new
     template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
-    css = Sass.compile(define_vars << File.read(template_file), {:style => :compressed})
+    template = Sass::Engine.new(define_vars << File.read(template_file),
+                                  {:style => :compressed,
+                                   :syntax => :scss,
+                                   :cache => false,
+                                   :load_paths => []})
+    css << template.render
     css << self.custom_css || ""
     self.stylesheet = css
   end
