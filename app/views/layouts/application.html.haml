@@ -75,23 +75,6 @@
               %li
                 = link_to t('layouts.application.pages'), pages_path, :link_opts => {:"data-ajax" => "1"}
 
-        .widget-networks.module
-          %h3= t('layouts.application.follow_us_and_share')
-          %ul
-            %li
-              =link_to "Facebook", "#", :class => "facebook", :rel => "nofollow"
-            %li
-              =link_to "Twitter", "#", :class => "twitter", :rel => "nofollow"
-            %li
-              =link_to "Digg", "#", :class => "digg", :rel => "nofollow"
-            %li
-              =link_to "Delicious", "#", :class => "delicious", :rel => "nofollow"
-            %li
-              -feed_urls.each do |title, url|
-                %a{:href => url}
-                  =image_tag "atom.png", :width => 20
-          .clear
-
         -if AppConfig.enable_adbard && request.domain == AppConfig.domain
           -widget = AdbardWidget.new(:settings => {'host_id' => AppConfig.adbard_host_id, 'site_key' => AppConfig.adbard_site_key})
           .widget.block{:id => widget.name}
