@@ -136,6 +136,7 @@ class Group
   before_create :disallow_javascript
   before_save :modify_attributes
   before_create :create_widget_lists
+  before_create :set_default_theme
 
   # TODO: store this variable
   def has_custom_domain?
@@ -418,5 +419,9 @@ class Group
     self.mainlist_widgets = WidgetList.new
     self.question_widgets = WidgetList.new
     self.external_widgets = WidgetList.new
+  end
+
+  def set_default_theme
+    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first
   end
 end
