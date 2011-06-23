@@ -1,13 +1,10 @@
 .top-bar
   margin: 0 0 5px 0
   padding-right: 8px
-  background-color: #5E5E5E
   height: 40px
-
 
   .searcher
     float: left
-    border-right: 1px solid #333
     height: 40px
 
     form#search
@@ -28,7 +25,7 @@
           padding: 3px 28px 3px 3px
           border: none
           +small-radius
-          background: white url("/images/search-icon.png") 219px 50% no-repeat
+          background-image: url("/images/search-icon.png") 219px 50% no-repeat
 
       .buttons
         float: left
@@ -43,10 +40,8 @@
   .languages_filter
     float: left
     padding: 6px 6px 6px 10px
-    border-left: 1px solid #777
     height: 28px
     span
-      color: #fff
       background-image: none
       font-size: 12px
       float: left
@@ -58,7 +53,6 @@
       overflow: hidden
       width: 300px !important
       .field
-        background-color: #c00
         overflow: hidden
         height: 27px
         float: left
@@ -69,8 +63,6 @@
 
   ul.group-list, ul.user-list, ul.drop-menu, ul.auth-list
     float: left
-    border-left: 1px solid #777
-    border-right: 1px solid #333
 
     li
       float: left
@@ -79,25 +71,14 @@
       small
         position: absolute
         font-size: 9px
-        color: #bbb
         top: 2px
         left: 20px
-      &:hover small, &:hover a small
-        color: #000
 
       a
         display: block
-        color: #fff
         padding: 14px 20px 13px 20px
         background-image: none
-        border-right: 1px solid #777
-        border-left: 1px solid #333
         font-weight: bold
-        &:hover
-          background-color: #ddd
-          color: #000
-          small
-            color: #000
 
     li.group
       position: relative
@@ -117,15 +98,9 @@
         position: absolute
         top: 5px
         left: 13px
-        border: 3px solid #666
         +small-radius
       a
         padding-left: 50px
-
-    li.logout
-      a:hover
-        background-color: #c00
-        color: #fff
 
   ul li a
     ul

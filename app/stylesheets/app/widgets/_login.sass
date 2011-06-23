@@ -56,32 +56,11 @@ ul.sf-menu li
   float: left
   margin-bottom: 1em
   a
-    border-left: 1px solid #fff
-    border-top: 1px solid #CFDEFF
     padding: .75em 1em
     text-decoration: none
-    /* visited pseudo selector so IE6 applies text colour */
-    color: #13a
-    &:visited
-      /* visited pseudo selector so IE6 applies text colour */
-      color: #13a
   li
-    background: #BDD2FF
-    li
-      background: #AABDE6
-      li
-        background: #9AAEDB
     &:hover, &.sfHover
-      background: #CFDEFF
       outline: 0
-  a
-    &:focus, &:hover, &:active
-      background: #CFDEFF
-      outline: 0
-    &.sf-with-ul
-      padding-right: 2.25em
-      min-width: 1px
-      /* trigger IE7 hasLayout so spans position accurately */
 
 .sf-sub-indicator
   position: absolute
@@ -140,7 +119,6 @@ ul.sf-menu
   li:first-child
     margin-right: 8px
   li:last-child
-    border-right: 1px dotted $blue
     a
       padding-left: 10px !important
   li
@@ -156,7 +134,6 @@ ul.sf-menu
       top: 27px
       z-index: 99
       background: none
-      background-color: $darkBlue
       padding: 0
       margin: 0
       +none-radius
@@ -164,7 +141,6 @@ ul.sf-menu
     &:hover li ul, &.sfHover li ul
       top: 0
     a
-      color: #000
       padding: 7px 10px
       display: block
       border: 0px
@@ -173,16 +149,10 @@ ul.sf-menu
       line-height: 14px
       &:focus, &:hover, &:active
         outline: 0
-      &:hover
-        +blue-gradient
-        color: #fff
+
       &.sf-with-ul
         padding-right: 30px
         min-width: 1px
-
-  li.sfHover .sf-with-ul
-    +blue-gradient
-    color: #fff
 
   //drop Menu
   ul
@@ -243,8 +213,6 @@ ul.sf-menu
         background: url("/images/myspace.png") no-repeat 50% 50% !important
       .OpenId, .OpenId:hover
         background: url("/images/openid.png") no-repeat 50% 50% !important
-      &:hover
-        background-color: $blue !important
 
 // Menu Trigger
 .sf-sub-indicator

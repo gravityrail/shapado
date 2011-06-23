@@ -2,8 +2,6 @@
 //========================================================================
 #answers-content-wrap
   +normal-radius
-  border: 1px solid #e5e5e5
-  background-color: #fff
   clear: both
   display: block
   padding: 0 0 20px 0
@@ -16,28 +14,9 @@
       padding: 11px 0 10px 40px
 
   section.filters
-    ul
-      border-top: 1px solid $blue
-      border-bottom-color: #bee5e7
 
-    ul.newest
-      li.newest-active
-        a
-          border-bottom: 2px solid $blue
-          color: #000
-          font-weight: bold
-    ul.votes
-      li.votes-active
-        a
-          border-bottom: 2px solid $blue
-          color: #000
-          font-weight: bold
-    ul.oldest
-      li.oldest-active
-        a
-          border-bottom: 2px solid $blue
-          color: #000
-          font-weight: bold
+    ul.newest li.newest-active a, ul.votes li.votes-active a, ul.oldest li.oldest-active a
+      font-weight: bold
 
 /* Main Question - Each Answer */
 //========================================================================
@@ -48,7 +27,6 @@
 
 .answer_vote_box
   overflow: hidden
-  background-color: #f1f1f1
   width: 27px
   position: absolute
   left: 17px
@@ -61,7 +39,6 @@
   .votes_average
     text-align: center
     width: auto
-    background-color: #F1F1F1
     margin: 0
     padding: 3px 10px
   button
@@ -69,17 +46,11 @@
     width: 27px
     border: none
     &.negative
-      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
-      &:hover
-        background-color: #f00
+      background-image: url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
     &.positive
-      background: #F1F1F1 url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
-      &:hover
-        background-color: #0a0
+      background-image: url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
 
 article
-  border-bottom: 1px solid #e5e5e5
-  padding: 20px 20px 0px 50px !important
   width: 90%
   .content
     clear: both
@@ -92,7 +63,6 @@ article
   p
     font-size: 14px
     line-height: 15px
-    color: #333333
   h4
     font-size: 12px
     padding: 10px 10px 0 8px
@@ -101,13 +71,11 @@ article
     img.gravatar
       float: left
       margin: -5px 3px 0 0
-      border: 1px solid #fff
     a:hover
       border-bottom: 1px dotted
     i
       font-size: 10px
       font-style: italic
-      color: #999
   .thumb
     width: 190px
     height: 140px
@@ -145,13 +113,9 @@ article
         display: block
         position: relative
         padding: 7px 14px
-        color: #999
-        border-right: 1px solid #f1f1f1
         cursor: pointer
 
         &:hover
-          color: #fff
-          +orange-gradient
           visibility: inherit
         &:hover ul, &.sfHover ul
           right: -5px
@@ -164,14 +128,8 @@ article
         left: -1px
         +none-radius
 
-        li:first-child
-          border-top: 1px solid #ddd
-
         li
           width: 100%
-          border-left: 1px solid #ddd
-          border-bottom: 1px solid #ddd
-          background-color: #fff
           a:first-letter
             text-transform: uppercase
 
@@ -186,7 +144,3 @@ article
   font-weight: bold
   padding: 10px 0 !important
   margin-bottom: 10px
-  text-shadow: $text-shadow
-  color: #fff
-  +error-gradient
-

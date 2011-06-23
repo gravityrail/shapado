@@ -7,9 +7,6 @@
 //========================================================================
 @import "fancy-buttons"
 
-body
-  background: url("/images/back-site.gif") 0 0
-
 #container
   width: 100%
 
@@ -23,21 +20,16 @@ section.left-panel
   width: 12%
   display: inline
   margin-left: 45px
-  background-color: #fff
   text-align: right
 
   .module
-    border-bottom: 1px solid #f1f1f1
     padding: 0 10px 10px 10px
     margin: 0 0 10px 0
     h3
-      color: #333
       font-size: 16px
       font-weight: bold
-      text-shadow: 1px 1px 2px #e5e5e5
       padding: 5px 0
       margin-bottom: 10px
-      border-bottom: 1px dotted #f1f1f1
 
 //CENTER
 section.content-panel
@@ -48,7 +40,6 @@ section.content-panel
 section.invitations-panel
   margin: auto
   width: 100%
-  background-color: #fff
 
   h1
     font-size: 16px
@@ -60,7 +51,6 @@ section.invitations-panel
     margin-top: 50px
     margin-bottom: 50px
     width: 500px
-    border: 1px solid black
     +small-radius
 
     #invitations-points
@@ -73,12 +63,10 @@ section.invitations-panel
         padding: 2px
         margin: auto
         width: 109px
-        background: #E5E5E5
         display: inline-block
         vertical-align: middle
         +small-radius
         img
-          background-color: #fff
           margin: auto
 
 #twitter-and-facebook
@@ -120,29 +108,21 @@ section.right-panel
 
   .module
     +small-radius
-    background-color: #fff
     margin-bottom: 5px
     padding-bottom: 3px
     h3
       font-size: 14px
-      text-shadow: 1px 1px 2px #e5e5e5
       padding: 8px
-      border-bottom: 1px solid #f1f1f1
     section, footer
-      background-color: #fff
       border: 0px
       padding: 0
       margin: 0
     footer
       text-align: right
       padding: 7px 10px 5px 0
-      border-top:  1px solid #f1f1f1
       a
-        color: #999
         font-size: 11px
         text-transform: italic
-        &:hover
-          color: #000
 
 //SESIONS
 section.sessions

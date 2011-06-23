@@ -1,6 +1,4 @@
 .toolbar
-  border-top: 1px solid #e5e5e5
-
   ul.drop-menu
     margin: 0
     +none-radius
@@ -21,17 +19,7 @@
         display: block
         position: relative
         padding: 5px 7px 7px 25px !important
-        color: #999 !important
-        border-right: 1px solid #e5e5e5
         background: url("/images/question-toolbar-icons-small.png") 5px 5px  no-repeat
-        &:hover
-          color: #000 !important
-          background-color: #f9f9f9 !important
-      a.active
-        background-color: $lightBlue
-        color: #000
-        &:hover
-          background-color: $lightBlue !important
 
       ul
         position: absolute
@@ -40,14 +28,8 @@
         left: -1px
         +none-radius
 
-        li:first-child
-          border-top: 1px solid #ddd
-
         li
           width: 100%
-          border-left: 1px solid #ddd
-          border-bottom: 1px solid #ddd
-          background-color: #fff
           a:first-letter
             text-transform: uppercase
 
@@ -56,26 +38,18 @@ ul.drop-menu
   li.spam
     padding-top: 5px
     padding-left: 7px
-    background-color: $lightRed
     span
       float: left
-      color: $red
     a
       float: right
       margin: -5px 0 0 0 !important
       background: none
       padding-left: 7px
-      color: #eb9696
       margin: 0
-      &:hover
-        background-color: $red
-        color: #fff
-      	      
+
     a#destroy_question_flag_link
-      border-left: 1px solid #e5e5e5
       margin-left: 10px !important
-      border-color: #f4b6b6
-      
+
   li.dropHover
     ul li.spam
       margin: 0 !important
@@ -84,9 +58,9 @@ ul.drop-menu
         background: #fff url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
         &:hover, &.active
           background: #f9f9f9 url("/images/question-toolbar-icons-small.png") 5px -330px no-repeat !important
-  
+
   .answer
-    padding: 0 
+    padding: 0
     #add_answer
       background-position: 5px 5px
       &:hover, &.active
@@ -125,7 +99,7 @@ ul.drop-menu
     &:hover, &:active
       background-position: 6px -581px !important
 
-  .close a 
+  .close a
     background-position: 5px -358px !important
     &:hover, &.active
       background-position: 5px -330px !important
@@ -159,9 +133,9 @@ ul.drop-menu
     background-position: 5px -767px !important
     &:hover
       background-position: 5px -787px !important
-      
-      
-li.dropHover 
+
+
+li.dropHover
   li.spam
     padding-left: 0 !important
     a

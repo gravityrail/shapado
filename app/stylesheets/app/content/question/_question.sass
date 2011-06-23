@@ -12,7 +12,7 @@
 
 section.main-question
   +normal-radius
-  background: #fff url("/images/q-icon-medium.gif") 15px 15px  no-repeat
+  background-image: url("/images/q-icon-medium.gif") 15px 15px  no-repeat
   margin-bottom: 15px
   position: relative
 
@@ -23,7 +23,6 @@ section.main-question
     margin: 10px 20px 10px 50px !important
     padding: 0 !important
     letter-spacing: -0.5px
-    text-shadow: 1px 1px 2px #e5e5e5
     border: 0px !important
 
     &.version
@@ -35,7 +34,6 @@ section.main-question
     small
       a
         font-size: 12px
-        color: #000
         font-style: italic !important
         &:hover
           border-bottom: 1px dotted
@@ -45,37 +43,29 @@ section.main-question
       font-style: italic !important
 
     small.current
-      color: #c00
       font-weight: bold
 
     small.verion-nav
       float: right
       font-size: 12px
-      color: #666
       a
         margin: 0 3px
-        color: $orange
         &:hover
           border-bottom: 1px dotted
-        &.revert
-          color: #c00
 
   .description
     margin: 0 20px 10px 50px !important
     p
       font-size: 13px
       line-height: 16px
-      color: #606060
       margin: 0 !important
       padding: 0 !important
       border: 0px !important
 
     img
-      border: 1px solid #e5e5e5
       max-width: 700px
 
     .thumb
-      background-color: #fcfcfc
       min-width: 130px
       min-height: 95px
       margin: 0 0 10px 0
@@ -97,18 +87,14 @@ section.main-question
         list-style: disc
         list-style-position: inside
         margin: 3px 10px
-        a
-          color: #000
-          &:hover
-            color: $orange
-            border-bottom: 1px dotted
+        a:hover
+          border-bottom: 1px dotted
 
   .stats
     margin: 0 20px 20px 35px
     p
       font-size: 10px
       margin: 0 0 10px 0 !important
-      color: #999
       font-style: italic
       padding: 0 !important
       border: 0px !important
