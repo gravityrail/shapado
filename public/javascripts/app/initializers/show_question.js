@@ -101,14 +101,12 @@ $(document).ready(function() {
     return false;
   });
 
-  $("form.commentForm .button").live("click", function(event) {
-    var form = $(this).parents("form");
-    var commentable = $(this).parents(".commentable");
-    var comments = commentable.find(".comments")
-    var button = $(this)
+  $("form.commentForm, form.question_comment_form").live("submit", function(event) {
+    var form = $(this);
+    var comments = form.parents(".panel-comments").prev('.comments');
+    var button = form.find("input[type=submit]");
     if($("#wysiwyg_editor").length > 0 )
       $("#wysiwyg_editor").htmlarea('updateTextArea');
-
     button.attr('disabled', true)
     $.ajax({ url: form.attr("action"),
              data: form.serialize()+"&format=js",
