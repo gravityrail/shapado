@@ -475,9 +475,8 @@ namespace :fixdb do
 
   task :themes => [:init] do
     Theme.destroy_all
-    theme = Theme.create(:name => "Default",
-                         :community => true,
-                         :is_default => true)
+    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+    Jobs::Themes.generate_stylesheet(theme.id)
     Group.override({}, :current_theme_id => theme.id)
   end
 

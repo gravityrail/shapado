@@ -52,9 +52,11 @@ class ThemesController < ApplicationController
   def create
     @theme = Theme.new(params[:theme])
     @theme.group = current_group
+    @theme.ready = false
 
     respond_to do |format|
       if @theme.save
+        Jobs::Themes.async.generate_stylesheet(@theme.id).commit!(4)
         format.html { redirect_to(@theme, :notice => 'Theme was successfully created.') }
         format.json { render :json => @theme, :status => :created, :location => @theme }
       else
@@ -68,9 +70,11 @@ class ThemesController < ApplicationController
   # PUT /themes/1.json
   def update
     @theme = Theme.find(params[:id])
+    @theme.ready = false
 
     respond_to do |format|
       if @theme.update_attributes(params[:theme])
+        Jobs::Themes.async.generate_stylesheet(@theme.id).commit!(4)
         format.html { redirect_to(@theme, :notice => 'Theme was successfully updated.') }
         format.json  { head :ok }
       else

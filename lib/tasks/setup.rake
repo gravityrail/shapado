@@ -23,7 +23,8 @@ namespace :setup do
   end
 
   task :default_theme do
-    Theme.create(:name => "Default", :community => true, :is_default => true)
+    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+    Jobs::Themes.generate_stylesheet(theme.id)
   end
 
   desc "Create the default group"
