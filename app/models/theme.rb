@@ -20,7 +20,7 @@ class Theme
   field :link_bg_color, :type => String, :default => "000000"
   field :link_fg_color, :type => String, :default => "EE681F"
 
-  field :custom_css, :type => String
+  field :custom_css, :type => String, :default => ""
 
   field :community, :type => Boolean, :default => false
 
@@ -30,31 +30,32 @@ class Theme
   belongs_to :group
 
   before_save :generate_stylesheet
+  validates_uniqueness_of :name, :allow_blank => false
 
   protected
   def generate_stylesheet
     css = StringIO.new
-    css << "#container { color: ##{self.fg_color}; }"
-    css << " body #container { background-color: ##{self.bg_color}; }"
-    css << " body #container a { color: ##{self.link_fg_color}; }"
-
-    css << " body #container .left-panel"
-    css << ", body #container .content-panel .quick_question"
-    css << ", body #container .content-panel #main-content-wrap"
-    css << ", body #container .widget .module"
-    css << ", body #container .widget footer"
-    css << " { background-color: ##{self.view_bg_color}; }"
-    css << " body #container .left-panel { color: ##{self.view_fg_color}; }"
-
-    if self.use_link_bg_color
-      css << " body #container a { background-color: ##{self.link_fg_color}; }"
-    end
-
-    css << " body #container from button { color: ##{self.button_fg_color}; }"
-    if self.use_button_bg_color
-      css << " body #container from button, body #container form .buttons input.save { background-color: ##{self.button_bg_color}; }"
-    end
-
+    template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
+    css = Sass.compile(define_vars << File.read(template_file), {:style => :compressed})
+    css << self.custom_css || ""
     self.stylesheet = css
+  end
+
+  def define_vars
+    %@
+$has_bg_image: #{self.has_bg_image?};
+$bg_color: ##{self.bg_color};
+$fg_color: ##{self.fg_color};
+
+$view_bg_color: ##{self.view_bg_color};
+$view_fg_color: ##{self.view_fg_color};
+
+$button_bg_color: ##{self.button_bg_color};
+$button_fg_color: ##{self.button_fg_color};
+
+$use_link_bg_color: #{self.use_link_bg_color};
+$link_bg_color: ##{self.link_bg_color};
+$link_fg_color: ##{self.link_fg_color};
+@
   end
 end

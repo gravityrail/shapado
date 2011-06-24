@@ -58,12 +58,7 @@ ul.sf-menu
   a
   li // 1th level
     li // 2th level
-      background:  #e5e5e5
       li // 3th
-    &.sfHover:hover
-      background-color: #fff
-      a
-        color: #000
 
     &:hover ul, &.sfhover ul
       top: 39px !important
@@ -71,18 +66,11 @@ ul.sf-menu
 
   ul
     +menu-shadow
-    li
-      border-top: 1px dotted #f1f1f1
 
     a
       padding: 8px 10px !important
       border: 0 !important
-      color: #000 !important
       font-weight: normal !important
-      background-color: #fff !important
-      &:hover
-        +orange-gradient
-        color: #fff !important
 
   a.sf-with-ul
     padding-right:  30px !important // padding for the arrow icon

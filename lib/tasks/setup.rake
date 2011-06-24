@@ -1,6 +1,7 @@
 desc "Setup application"
 task :bootstrap => [:environment, "db:drop",
                     "setup:create_admin",
+                    "setup:default_theme",
                     "setup:default_group",
                     "setup:create_reputation_constrains_modes",
                     "setup:create_widgets",
@@ -19,6 +20,10 @@ namespace :setup do
     admin.password = "admins"
     admin.password_confirmation = "admins"
     admin.save
+  end
+
+  task :default_theme do
+    Theme.create(:name => "Default", :community => true, :is_default => true)
   end
 
   desc "Create the default group"

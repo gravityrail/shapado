@@ -13,8 +13,6 @@
     float: left
     a
       border: none
-      img
-        border: 1px solid #aaa
 
   .greeting
     float: left
@@ -25,7 +23,6 @@
     small
       display: block
       font-size: 10px
-      color: $gray
       margin: 2px 0
     b
       font-size: 12px
@@ -41,12 +38,6 @@
         a
           padding: 5px
           display: block
-          color: $dark
           &:first-letter
             text-transform: capitalize
-          &:hover
-            +orange-gradient
-            color: #fff
-      li.active a, li.active a:hover
-        +orange-gradient
-        color: #fff
+

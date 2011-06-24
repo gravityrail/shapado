@@ -473,4 +473,12 @@ namespace :fixdb do
     Question.override({:wiki=>"1"},{:wiki=>true})
   end
 
+  task :themes => [:init] do
+    Theme.destroy_all
+    theme = Theme.create(:name => "Default",
+                         :community => true,
+                         :is_default => true)
+    Group.override({}, :current_theme_id => theme.id)
+  end
+
 end

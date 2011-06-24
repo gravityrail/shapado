@@ -10,9 +10,6 @@
   border: 0px !important
   padding: 0
 
-  section:last-child
-    border-bottom: 0px solid #cc0000
-
 // User column - Avatar, Badges, edit link
 .userData
   float: left !important
@@ -20,7 +17,6 @@
 
   .avatar
     padding: 20px
-    border-bottom: 1px solid #f1f1f1
     img
       margin: 0 auto 5px auto
       float: none
@@ -31,18 +27,14 @@
       padding: 0 !important
 
       a
-        color: #666
         clear: both
         font-style: italic
         &:hover
           border: 0px
-          color: #000
           border-bottom: 1px dotted
 
   h3
-    font-size: 14px
-    text-shadow: 1px 1px 2px #e5e5e5
-    border-bottom: 1px dotted #f1f1f1
+    font-size: 14px1
     padding: 13px
 
   ul.badges
@@ -50,7 +42,6 @@
     li
       height: 27px
       a
-        color: #000
         padding: 2px 10px
         +big-radius
 
@@ -59,8 +50,6 @@
 .userHistory
   float: right !important
   width: 79.8% !important
-  border-left: 1px solid #e5e5e5
-  background-color: #fff
   padding: 0
 
   .userDescription
@@ -68,7 +57,6 @@
     small
       font-size: 11px
       font-style: italic
-      color: #999
     .basicInfo
       width: 67%
       float: left
@@ -90,18 +78,14 @@
       p
         font-size: 13px
         line-height: 16px
-        color: #666
 
   //stats
   ul.profile-stats
     margin-bottom: 20px
     float: right
     width: 30%
-    border: 1px solid #f1f1f1
     li
-      border-bottom: 1px dotted #e5e5e5
       padding: 5px
-      background-color: #fff
       text-align: center
       float: left
       width: 42%
@@ -114,11 +98,8 @@
         display: block
     li.follow
       border: none
-      +orange-gradient
-      color: #fff
       width: 93%
       a
-        color: #fff
         display: block
     img
       margin: 0 auto
@@ -128,8 +109,6 @@
 #users_show
   .users
     margin: 0
-    .content-tabs
-      border-top: 5px solid #f0f0f0 !important
     article
       padding-left: 40px
       p, h2

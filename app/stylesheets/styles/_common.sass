@@ -6,8 +6,6 @@
   margin: 65px auto 0 auto
   background: url(/images/back-mapa.jpg) repeat-x
 .content-page
-  background-color: #fff
-  border: 1px solid $darkGray
   border-bottom: none
   padding: 50px 0
   width: 900px
@@ -34,37 +32,28 @@ header
       position: absolute
       right: 0
       bottom: 15px
-      color: #666
       font-style: italic
 
 //MAIN NAV
 nav
   float: right
-  background: #29333d url(/images/background-menu.png) repeat-x
+  background-image: url(/images/background-menu.png) repeat-x
   margin-top: 45px
   height: 31px
   overflow: hidden
   li
     float: left
-    border-right: 1px solid $darkGray
-    border-left: 1px solid #323c44
     a
       font-size: 13px
       display: block
       padding: 9px 20px
-      color: #fff
       border: none
       text-decoration: none
-    a:hover
-      color: #fff
-      background-color: $orange
+
   li:first-child
     border-left: none
   li:last-child
     border-right: none
-  li.active
-    a
-      background-color: $orange
 
 //MAP
 .map

@@ -11,9 +11,7 @@
 
     .empty
       margin: 20px
-      border: 1px solid $orange
       padding: 25px 25px 25px 130px
-      background-color:  $lightOrange
       overflow: hidden
 
       img
@@ -24,16 +22,13 @@
         font-size: 20px
         font-weight: bold
         margin: 3px 0 7px 0
-        text-shadow: 1px 1px 2px #e5e5e5
 
       p
         font-size: 14px
 
 
     article
-      border-bottom: 1px solid #f1f1f1
       padding: 30px 20px
-      color: #666
 
       .user-data
         font-size: 12px
@@ -51,10 +46,7 @@
         a
           font-size: 20px
           line-height: 22px
-          color: $dark
           display: block
-          &:hover
-            color: #000
 
       .tags
         display: none
@@ -82,13 +74,10 @@
               float: left
               margin: 0 4px 0 0
             a
-              background: #fff url("/images/ans-icon-small-light.gif") 0 1px  no-repeat
+              background-image: url("/images/ans-icon-small-light.gif") 0 1px  no-repeat
               margin: 0
               padding: 0 0 0 20px
               font-size: 12px
-            a:hover
-              background-color: #fff
-              color: #000
 
           li.votes
             width: 150px
@@ -110,13 +99,8 @@
             margin-left: 5px
             a
               +small-radius
-              color: #666
               padding: 3px 7px
               font-size: 11px
-              background-color: #f1f1f1
-            a:hover
-              background-color: #e5e5e5
-              color: #000
 
 .questions, #users_show .questions
   section
@@ -143,7 +127,6 @@
 
 .admin-nav
   margin: -20px 0 0 0
-  border-bottom: 1px solid #e5e5e5
   height: 31px
   li
     float: left
@@ -151,11 +134,5 @@
     a
       padding: 10px 15px
       display: block
-      border-bottom: 1px solid #f1f1f1
-      border-right: 1px solid #f1f1f1
-      color: #999
       font-size: 11px
       text-transform: uppercase
-      &:hover
-        background-color: #f1f1f1
-        color: #000
