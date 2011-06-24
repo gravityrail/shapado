@@ -117,7 +117,11 @@ $(document).ready(function() {
                             var textarea = form.find("textarea");
                             window.onbeforeunload = null;
                             var comment = $(data.html)
-                            comments.append(comment)
+                            if(data.id){
+                              $('#'+data.id).replaceWith(comment)
+                            } else {
+                              comments.append(comment)
+                            }
                             Effects.fade(comment)
                             Messages.show(data.message, "notice")
                             form.hide();

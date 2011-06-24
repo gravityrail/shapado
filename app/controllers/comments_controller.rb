@@ -80,9 +80,14 @@ class CommentsController < ApplicationController
         flash[:notice] = t(:flash_notice, :scope => "comments.update")
         format.html { redirect_to(params[:source]) }
         format.json { render :json => @comment.to_json, :status => :ok}
-        format.js { render :json => { :message => flash[:notice],
-                                      :success => true,
-                                      :body => @comment.body} }
+        format.js { render :json => {
+            :message => flash[:notice],
+            :success => true,
+            :html => render_to_string(:partial => "comments/comment",
+                                      :object => @comment,
+                                      :locals => {:source => params[:source], :mini => true}),
+            :id => @comment.id
+          } }
       else
         flash[:error] = @comment.errors.full_messages.join(", ")
         format.html { render :action => "edit" }
