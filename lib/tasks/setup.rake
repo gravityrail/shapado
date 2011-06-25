@@ -24,6 +24,8 @@ namespace :setup do
 
   task :default_theme do
     theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+
+    theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
     Jobs::Themes.generate_stylesheet(theme.id)
   end
 
