@@ -1,2 +1,2 @@
-= form_for @theme do |form|
+= form_for @theme, :html => {:multipart => true} do |form|
   = render "form", :form => form

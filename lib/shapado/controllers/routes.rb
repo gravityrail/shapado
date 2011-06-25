@@ -11,8 +11,12 @@ module Shapado
         end
       end
 
-      def css_group_path(group)
-        "/_files/groups/css/#{group.id}"
+      def css_group_path(group, theme_id)
+        "/_files/themes/css/#{group.id}/#{theme_id}"
+      end
+
+      def bg_image_path(group, theme_id)
+        "/_files/themes/bg_image/#{group.id}/#{theme_id}"
       end
 
       def favicon_group_path(group)

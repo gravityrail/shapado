@@ -14,6 +14,10 @@
     = form.text_field :fg_color, :type => "color"
 
   .field
+    = form.label :bg_image
+    = form.file_field :bg_image
+
+  .field
     = form.label :view_bg_color
     = form.text_field :view_bg_color, :type => "color"
 
@@ -30,7 +34,6 @@
     = form.label :button_bg_color
     = form.text_field :button_bg_color, :type => "color"
 
-
 %fieldset
   .field
     = form.label :link_fg_color
@@ -43,11 +46,9 @@
     = form.label :link_bg_color
     = form.text_field :link_bg_color, :type => "color"
 
-
 .field
   = form.label :custom_css
   = form.text_area :custom_css
-
 
 .form-options
   .buttons

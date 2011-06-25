@@ -21,7 +21,7 @@ module Jobs
 $has_bg_image: #{theme.has_bg_image?};
 $bg_color: ##{theme.bg_color};
 $fg_color: ##{theme.fg_color};
-
+$bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}';
 $view_bg_color: ##{theme.view_bg_color};
 $view_fg_color: ##{theme.view_fg_color};
 
