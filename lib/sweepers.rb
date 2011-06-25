@@ -8,6 +8,10 @@ module Sweepers
   def sweep_answer_views
   end
 
+  def sweep_widgets
+    expire_fragment_for("widgets")
+  end
+
   def sweep_user_views
     expire_fragment_for("widgets")
   end

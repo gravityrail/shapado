@@ -29,7 +29,8 @@ class WidgetsController < ApplicationController
 
     respond_to do |format|
       if @widget.save
-        flash[:notice] = 'Widget was successfully created.'
+        sweep_widgets
+        flash[:notice] = 'Widget was successfully created.' # TODO: i18n
         format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :created, :location => widget_path(:id => @widget.id) }
       else
@@ -52,7 +53,8 @@ class WidgetsController < ApplicationController
 
     respond_to do |format|
       if @widget.valid? && @group.save && @widget.save
-        flash[:notice] = 'Widget was successfully updated.'
+        sweep_widgets
+        flash[:notice] = 'Widget was successfully updated.' # TODO: i18n
         format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :updated, :location => widget_path(:id => @widget.id) }
       else
@@ -71,6 +73,8 @@ class WidgetsController < ApplicationController
   if WidgetList::POSITIONS.include? params[:position]
     @widget = widget_list.send(params[:position]).find(params[:id])
     @widget.destroy
+
+    sweep_widgets
   end
 
     respond_to do |format|
@@ -84,6 +88,7 @@ class WidgetsController < ApplicationController
 
     if WidgetList::POSITIONS.include? params[:position]
       widget_list.move_to(params[:move_to], params[:id], params[:position])
+      sweep_widgets
     end
 
     redirect_to widgets_path(:tab => params[:tab])
