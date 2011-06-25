@@ -20,38 +20,19 @@
 
 /* Main Question - Each Answer */
 //========================================================================
-.answer
+article.answer
+  padding: 20px 20px 0px 50px !important
   padding-left: 0px
   float: left
   position: relative
-
-.answer_vote_box
-  overflow: hidden
-  width: 27px
-  position: absolute
-  left: 17px
-  top: 25px
-  li
-    float: left
-  form
-    margin: 0
-    width: auto
-  .votes_average
-    text-align: center
-    width: auto
-    margin: 0
-    padding: 3px 10px
-  button
-    height: 27px
-    width: 27px
-    border: none
-    &.negative
-      background-image: url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
-    &.positive
-      background-image: url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
-
-article
   width: 90%
+
+  .answer_vote_box
+    overflow: hidden
+    width: 27px
+    position: absolute
+    left: 17px
+    top: 25px
   .content
     clear: both
     float: none
@@ -97,7 +78,24 @@ article
   .answer-avatar
     float: right
     margin-right: 50px
-
+  li
+    float: left
+  form
+    margin: 0
+    width: auto
+  .votes_average
+    text-align: center
+    width: auto
+    margin: 0
+    padding: 3px 10px
+  button
+    height: 27px
+    width: 27px
+    border: none
+    &.negative
+      background-image: url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
+    &.positive
+      background-image: url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
 
 /* Editors form output */
 //========================================================================
