@@ -923,7 +923,7 @@ ul.tag-list {
   .votes_average {
     background-color: #f1f1f1;
   }
-  button {
+  form ul.vote_box button {
     &.negative {
       background-color: #f1f1f1;
       &:hover {
@@ -939,7 +939,7 @@ ul.tag-list {
   }
 }
 
-article {
+article.answer {
   border-bottom: 1px solid #e5e5e5;
   p {
     color: #333333;
@@ -1084,7 +1084,7 @@ input[type=submit], button, input.save, .ask_question {
   border-color: $button_bg_color;
 }
 
-.module, .brand, .quick_question, #main-content-wrap {
+.widget, .module, .brand, .quick_question, #main-content-wrap {
   background-color: $view_bg_color;
   color: $view_fg_color;
 }
