@@ -787,7 +787,7 @@ section.invitations-panel {
 
 //app/content/question/question.sass
 section.main-question {
-//   background-color: #fff;
+  background-color: $view_bg_color;
   h1 {
     text-shadow: 1px 1px 2px #e5e5e5;
   }
@@ -941,7 +941,6 @@ ul.tag-list {
 
 article {
   border-bottom: 1px solid #e5e5e5;
-  padding: 20px 20px 0px 50px !important;
   p {
     color: #333333;
   }
