@@ -1,33 +1,60 @@
 var Updater = {
   initialize: function() {
-    $("a[data-ajax=1]").click(function() {
-      var url = $(this).attr("href");
-      var html5 = window.history && window.history.replaceState;
+    var $main_content_wrap = $("#main-content-wrap");
 
-      if(html5){
-        window.history.replaceState({}, document.title, url);
+    Updater.setup_loading_icon();
 
-        $.get(url, function(data) {
-          data = data.replace(/\n|\r/g, "");
+    $("a.pjax").live("click", function(ev) {
+      var link = $(this);
+      var section = link.attr("data-section");
 
-          var m = data.match("<\s*title\s*>(.+)</\s*title\s*>");
-          if(m && m[1]) {
-            document.title = m[1];
-          }
+      var parent = link.parent();
+      var gparent = parent.parent();
 
-          m = data.match("<\s*body[^>]*>(.+)<\/\s*body\s*>");
-          if(m && m[1]) {
-            $("body").html(m[1]);
-            initialize_all();
-          } else {
-            window.location = url;
-          }
-        });
-      } else {
-        window.location = url;
+      if(gparent[0].tagName == "UL") {
+        gparent.find("li").removeClass("active");
+        parent.addClass("active");
+
+        if(parent.hasClass("answers") || parent.hasClass("questions") || parent.hasClass("unanswered") || parent.hasClass("activity")) {
+          $main_content_wrap.removeClass();
+          $main_content_wrap.addClass(parent.attr("class"));
+        }
       }
 
+      $.pjax({
+        timeout: 7000,
+        url: $(this).attr("href"),
+        container: '#main-content-wrap',
+        success: function() {
+          if(section == "question") {
+            alert("run js to setup the question view");
+          }
+
+          return false;
+        }
+      });
+
+      ev.preventDefault();
+
       return false;
-    })
+    });
+  },
+  setup_loading_icon: function() {
+    $("#main-content-wrap").bind('start.pjax', function() {
+      var h = $( "<div class='loading-box'>" +
+                 "<span class='loading-box-icon'></span>" +
+                 "<h1>" + "Please wait.." + "</h1>" + "</div>" );
+
+      $("body").prepend(h);
+      h.css({
+        top: $(window).scrollTop() + $(window).height() / 2
+      });
+
+      h.show();
+    });
+
+    $("#main-content-wrap").bind('end.pjax', function() {
+      $(".loading-box").remove();
+    });
   }
 };

@@ -16,7 +16,6 @@
     = render "shared/analytics"
 
     #container{:class => @current_class}
-
       %nav.top-bar
         %ul.group-list.sf-menu
           -if !current_group.isolate
@@ -55,13 +54,13 @@
         .widget-links.module
           %nav
             %ul
-              = tab_entry "li", t('layouts.application.all'), questions_path, :selected => "active", :link_opts => {:"data-ajax" => "1"}
+              = tab_entry "li", t('layouts.application.all'), questions_path, :selected => "active", :link_opts => {:"class" => "pjax"}
               -if logged_in?
-                = tab_entry "li", t('layouts.application.followed'), feed_user_path(current_user), :selected => "active", :link_opts => {:"data-ajax" => "1"}
-                = tab_entry "li", t('layouts.application.by_me'), by_me_user_path(current_user), :selected => "active", :link_opts => {:"data-ajax" => "1"}
-                = tab_entry "li", t('layouts.application.preferred'), preferred_user_path(current_user), :selected => "active", :link_opts => {:"data-ajax" => "1"}
-                = tab_entry "li", t('layouts.application.contributed'), contributed_user_path(current_user), :selected => "active", :link_opts => {:"data-ajax" => "1"}
-                = tab_entry "li", t('layouts.application.collaborate'), expertise_user_path(current_user), :selected => "active", :"data-ajax" => 1
+                = tab_entry "li", t('layouts.application.followed'), feed_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax"}
+                = tab_entry "li", t('layouts.application.by_me'), by_me_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax"}
+                = tab_entry "li", t('layouts.application.preferred'), preferred_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax"}
+                = tab_entry "li", t('layouts.application.contributed'), contributed_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax"}
+                = tab_entry "li", t('layouts.application.collaborate'), expertise_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax"}
               %li
                 = link_to t('layouts.application.faq')
 
@@ -71,9 +70,9 @@
               %li
                 = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true)
               %li
-                = link_to t('layouts.application.badges'), badges_path, :link_opts => {:"data-ajax" => "1"}
+                = link_to t('layouts.application.badges'), badges_path
               %li
-                = link_to t('layouts.application.pages'), pages_path, :link_opts => {:"data-ajax" => "1"}
+                = link_to t('layouts.application.pages'), pages_path
 
         -if AppConfig.enable_adbard && request.domain == AppConfig.domain
           -widget = AdbardWidget.new(:settings => {'host_id' => AppConfig.adbard_host_id, 'site_key' => AppConfig.adbard_site_key})
@@ -92,6 +91,7 @@
         #main-content-wrap{:class => @active_tab}
           - if params[:controller] =~ /moderate\//
             = render "shared/moderate_navigation"
+
           = yield
           .clear
 

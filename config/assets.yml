@@ -26,6 +26,9 @@ javascripts:
     - public/javascripts/vendor/polyfills/json2.js
 
   offline_bare_minimum_questions:
+    - public/javascripts/vendor/jquery.cookie.js
+    - public/javascripts/vendor/jquery.pjax.js
+
     - public/javascripts/app/modules/answers.js
     - public/javascripts/app/modules/authentication.js
     - public/javascripts/app/modules/geo.js
@@ -42,8 +45,8 @@ javascripts:
     - public/javascripts/app/modules/websocket.js
     - public/javascripts/app/modules/updater.js
 
+
     - public/javascripts/rails.js
-    - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/app/initializers/search.js
     - public/javascripts/app/initializers/index_question.js
     - public/javascripts/vendor/superfish.js

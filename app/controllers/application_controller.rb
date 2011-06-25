@@ -145,7 +145,9 @@ class ApplicationController < ActionController::Base
   helper_method :scoped_conditions
 
   def set_layout
-    if devise_controller? || (action_name == "new" && controller_name == "users")
+    if env['HTTP_X_PJAX'].present?
+      nil
+    elsif devise_controller? || (action_name == "new" && controller_name == "users")
       'sessions'
     elsif params["format"] == "mobile"
       'mobile'
