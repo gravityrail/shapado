@@ -31,4 +31,23 @@ class Theme
   belongs_to :group
 
   validates_uniqueness_of :name, :allow_blank => false
+
+  def self.find_file_from_params(params, request)
+    if request.path =~ /\/(css|bg_image)\/([^\/\.?]+)\/([^\/\.?]+)/
+      @group = Group.find($2)
+      @theme = Theme.find($3)
+      if !@theme.community && @theme.group != @group
+        @theme = @group.current_theme
+      end
+
+      case $1
+      when "css"
+        css=@theme.stylesheet
+        css.content_type = "text/css"
+        css
+      when "bg_image"
+        @theme.bg_image
+      end
+    end
+  end
 end

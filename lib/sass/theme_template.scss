@@ -550,8 +550,11 @@ footer {
 
 // app/stylesheets/app/_layout.sass
 body {
-//   background: url("/images/back-site.gif") 0 0
-  background: $bg_color;
+   @if($has_bg_image) {
+     background: url($bg_image_url) 0 0;
+   } @else {
+     background: $bg_color;
+  }
 }
 
 section.left-panel {
