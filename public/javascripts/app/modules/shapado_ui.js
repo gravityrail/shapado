@@ -36,7 +36,7 @@ var ShapadoUI = {
   },
   new_comment: function(data) {
     if(ShapadoUI.is_on_question_show()) {
-      // TODO
+      Comments.create_on_show(data);
     }
   },
   vote: function(data) {

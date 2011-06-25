@@ -35,16 +35,23 @@ class CommentsController < ApplicationController
       flash[:error] = @comment.errors.full_messages.join(", ")
     end
 
+    html = render_to_string(:partial => "comments/comment",
+                                      :object => @comment,
+                                      :locals => {:source => params[:source], :mini => true})
 
+    Magent::WebSocketChannel.push({:id => "newcomment",
+                                    :object_id => @comment.id,
+                                    :commentable_id => @comment.commentable.id,
+                                    :name => @comment.body,
+                                    :html => html,
+                                    :channel_id => current_group.slug})
     respond_to do |format|
       if saved
         format.html {redirect_to params[:source]}
         format.json {render :json => @comment.to_json, :status => :created}
         format.js do
           render(:json => {:success => true, :message => flash[:notice],
-            :html => render_to_string(:partial => "comments/comment",
-                                      :object => @comment,
-                                      :locals => {:source => params[:source], :mini => true})}.to_json)
+            :html => html}.to_json)
         end
       else
         format.html {redirect_to params[:source]}
