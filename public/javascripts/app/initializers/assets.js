@@ -7,8 +7,10 @@ jsassets = {
   json: '/packages/json.js',
   websocket: '/packages/websocket.js',
   jqautocomplete: '/packages/jqautocomplete.js',
-  jqtools: '/packages/jqtools.js'
+  jqtools: '/packages/jqtools.js',
+  jpicker: '/packages/jpicker.js'
 }
 cssassets = {
-  jqueryui: '/packages/jqueryui.css'
+  jqueryui: '/packages/jqueryui.css',
+  jpicker: '/packages/jpicker.css'
 }

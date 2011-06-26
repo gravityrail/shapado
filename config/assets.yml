@@ -68,7 +68,6 @@ javascripts:
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
-    - public/javascripts/vendor/jpicker.js
     - public/javascripts/application.js
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/initializers/new_question.js
@@ -102,12 +101,17 @@ javascripts:
     - public/javascripts/app/modules/messages.js
     - public/javascripts/facebook_app/init.js
 
+  jpicker:
+    - public/javascripts/vendor/jpicker.js
+
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css
   jqueryui:
     - public/stylesheets/ui-lightness/jquery-ui.css
     - public/stylesheets/jquery.ui.tabs.css
+
+  jpicker:
     - public/stylesheets/compoments/jPicker-1.1.6.css
 
   mobile:

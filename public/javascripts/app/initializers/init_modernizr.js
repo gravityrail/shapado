@@ -7,6 +7,9 @@ Modernizr.load([{
   },
   complete: function() {
     Modernizr.load([{
+      test: window.JSON,
+      nope: jsassets.json
+    },{
       load: jsassets.offline_bare_minimum_questions,
       complete: function(){
         Questions.initialize_on_show();
@@ -23,14 +26,24 @@ Modernizr.load([{
       test: ($('.offline').length == 0 || (location.pathname != '/' && location.pathname.indexOf('/questions' != 0))),
       yep: jsassets.base
     }, {
-      test: window.JSON,
-      nope: jsassets.json
-    }, {
       test: Modernizr.websockets,
       nope: jsassets.websocket,
       complete: function() {
         ShapadoSocket.initialize();
-      }
+        }
     }])
+   $(document).ready(function() {
+     Modernizr.load([{
+       test: $("input[type=color]").length>0,
+       yep: jsassets.jpicker,
+       complete: function(){
+        if($.jPicker)
+          Form.initialize();
+       }
+       }, {
+          test: $("input[type=color]").length>0,
+          yep: cssassets.jpicker
+     }])
+   })
   }
 }]);

@@ -4,5 +4,4 @@ $(document).ready(function() {
   Tags.initialize();
   Votes.initialize();
   Notifier.initialize();
-  From.initialize();
 });
