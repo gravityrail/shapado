@@ -9,7 +9,6 @@ Modernizr.load([{
     Modernizr.load([{
       load: jsassets.offline_bare_minimum_questions,
       complete: function(){
-        console.log(Questions)
         Questions.initialize_on_show();
       }
     }, {
