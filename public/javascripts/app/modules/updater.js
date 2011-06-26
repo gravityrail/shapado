@@ -2,11 +2,24 @@ var Updater = {
   initialize: function() {
     var $main_content_wrap = $("#main-content-wrap");
 
+    var current, prev, refreshed;
     Updater.setup_loading_icon();
 
-    $("a.pjax").live("click", function(ev) {
+    if($("section.questions-index").length > 0) {
+      current = 'index';
+    } else if($("section#main-question").length > 0) {
+      current = 'question';
+    }
+
+    $("a.pjax-index, a.pjax-question").live("click", function(ev) {
       var link = $(this);
-      var section = link.attr("data-section");
+
+      prev = current;
+      if(link.hasClass("pjax-question")) {
+        current = 'question';
+      } else {
+        current = 'index';
+      }
 
       var parent = link.parent();
       var gparent = parent.parent();
@@ -21,13 +34,20 @@ var Updater = {
         }
       }
 
+      var data = {_pjax: true};
+      if(prev && prev != current){
+        refreshed = data._refresh = true;
+      }
+
       $.pjax({
-        timeout: 7000,
+        data: data,
+        timeout: 10000,
         url: $(this).attr("href"),
         container: '#main-content-wrap',
-        success: function() {
-          if(section == "question") {
-            alert("run js to setup the question view");
+        success: function(data) {
+          if(refreshed) {
+            Updater.setup_loading_icon();
+            initialize_all();
           }
 
           return false;

@@ -31,7 +31,7 @@ $.fn.pjax = function( container, options ) {
 
   // We can't persist $objects using the history API so we must use
   // a String selector. Bail if we got anything else.
-  if ( typeof options.container !== 'string' ) {
+  if ( typeof options.container !== 'string' || typeof options.container !== 'function' ) {
     throw "pjax container must be a string selector!"
     return false
   }
@@ -109,11 +109,23 @@ $.pjax = function( options ) {
     success: function(data){
       // If we got no data or an entire web page, go directly
       // to the page and let normal error handling happen.
-      if ( !$.trim(data) || /<html/i.test(data) )
-        return window.location = options.url
+      if ( !$.trim(data) || /<html/i.test(data) ) {
+        data = data.replace(/\n|\r/g, "");
+        var m = data.match("<\s*title\s*>(.+)</\s*title\s*>");
+        if(m && m[1]) {
+          document.title = m[1];
+        }
 
-      // Make it happen.
-      $container.html(data)
+        m = data.match("<\s*body[^>]*>(.+)<\/\s*body\s*>");
+        if(m && m[1]) {
+          $("body").html(m[1]);
+        } else {
+          window.location = url;
+        }
+      } else {
+        // Make it happen.
+        $container.html(data)
+      }
 
       // If there's a <title> tag in the response, use it as
       // the page's title.
