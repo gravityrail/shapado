@@ -33,6 +33,18 @@ article.answer
     position: absolute
     left: 17px
     top: 25px
+    form ul.vote_box button
+      height: 27px
+      width: 27px
+      border: none
+      &.negative
+        background-image: url("/images/question-toolbar-icons-small.png") !important
+        background-position: 6px -401px
+        background-repeat: no-repeat
+      &.positive
+        background-image: url("/images/question-toolbar-icons-small.png") !important
+        background-position: 6px -448px
+        background-repeat: no-repeat
   .content
     clear: both
     float: none
@@ -88,14 +100,6 @@ article.answer
     width: auto
     margin: 0
     padding: 3px 10px
-  button
-    height: 27px
-    width: 27px
-    border: none
-    &.negative
-      background-image: url("/images/question-toolbar-icons-small.png") 6px -401px  no-repeat
-    &.positive
-      background-image: url("/images/question-toolbar-icons-small.png") 6px -448px  no-repeat
 
 /* Editors form output */
 //========================================================================

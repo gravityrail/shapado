@@ -1,9 +1,10 @@
 - if @question.badges.size > 0
-  .block
+  .module
     %h3
       = t('badges', :scope => "activerecord.models")
-    .content
+    %section
       %ul.list
         -@question.badges.each do |badge|
           %li
             = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => false}
+    .clear
