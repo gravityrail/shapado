@@ -34,26 +34,20 @@ article.comment
 
 // Form for comment respond into question views
 //========================================================================
-form.question_comment_form
-  padding-left: 30px !important
-form.answer_comment_form
-  padding-left: 4px !important
-form.edit_comment_form
-  padding-left: 0px !important
 form.answer_comment_form, form.question_comment_form
   margin: 0
   clear: both
   .text_area
     border: 1px solid #ccc  !important
     font-size: 13px !important
-    padding: 5px !important
     margin-left: 20px !important
+    padding: 5px !important
     height: 60px !important
     width: 70%
   .reply_to
     padding: 20px
   .buttons
-    margin-top: 5px !important
+    margin-top: 0px !important
     margin-left: 20px !important
     float: left
     padding-top: 1px
@@ -66,7 +60,7 @@ form.edit_comment_form
     font-size: 13px !important
     padding: 5px !important
     margin-top: 10px !important
-    margin-right: 40px !important
+    margin-right: 70px !important
     height: 60px !important
     width: 70%
   .reply_to
@@ -77,6 +71,21 @@ form.edit_comment_form
     margin-left: 0px !important
     float: left
     padding-top: 1px
+
+form.question_comment_form
+  padding-left: 30px !important
+  margin-left: 0px !important
+
+form.answer_comment_form
+  padding-left: 4px !important
+  .text_area
+    margin-right: 70px
+    margin-left: 0px !important
+  .buttons
+    margin-left: 0px !important
+
+form.edit_comment_form
+  padding-left: 0px !important
 
 .article-actions .add_answer_comment_link
   background-color: #fff
