@@ -33,7 +33,7 @@
       tagwrapper.css('margin-top', '0px');
 
       dataOpts = tagInput.attr('data-opts');
-      if(dataOpts){opts = $.evalJSON(dataOpts)}else{opts={allowNewTags: true}};
+      if(dataOpts){opts = JSON.parse(dataOpts)}else{opts={allowNewTags: true}};
 
       tagInput.wrap(tagwrapper);
       var tagwrapper = tagInput.parent('.tagwrapper');

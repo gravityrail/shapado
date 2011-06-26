@@ -1,4 +1,4 @@
-var From = {
+var Form = {
   initialize: function() {
     $("input[type=color]").jPicker({
     window: {
