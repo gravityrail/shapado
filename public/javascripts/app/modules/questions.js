@@ -1,4 +1,18 @@
 var Questions = {
+  initialize: function() {
+    if($("section#question.main-question").length > 0) {
+      Questions.initialize_on_index();
+    } else if($("section#main-question").length > 0) {
+      Questions.initialize_on_show();
+    }
+  },
+  initialize_on_index: function() {
+
+  },
+  initialize_on_show: function() {
+    Rewards.initialize();
+    Editor.initialize();
+  },
   create_on_index: function(data) {
     var section = $("section.questions-index");
     section.prepend(data.html).hide().slideToggle();

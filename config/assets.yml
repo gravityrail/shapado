@@ -59,6 +59,7 @@ javascripts:
     - public/javascripts/vendor/highlight/prettify.js
     - public/javascripts/app/modules/editor.js
     - public/javascripts/vendor/showdown.js
+    - public/javascripts/app/modules/rewards.js
     - public/javascripts/app/initializers/single/question.js
     - public/javascripts/app/initializers/show_question.js
     - public/javascripts/app/initializers/panel_forms.js

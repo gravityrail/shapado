@@ -47,7 +47,9 @@ var Updater = {
         success: function(data) {
           if(refreshed) {
             Updater.setup_loading_icon();
-            initialize_all();
+            if(current == 'question') {
+              // TODO: initialize questions/show JS here
+            }
           }
 
           return false;
