@@ -7,13 +7,10 @@ Modernizr.load([{
   },
   complete: function() {
     Modernizr.load([{
-      load: jsassets.offline_bare_minimum_questions
-    }, {
-      test: $('meta[data-js=show]').length > 0 || location.pathname == '/questions/new',
-      yep: jsassets.offline_bare_minimum_show,
-      complete: function() {
-        if(window.Editor)
-          Editor.initialize();
+      load: jsassets.offline_bare_minimum_questions,
+      complete: function(){
+        console.log(Questions)
+        Questions.initialize_on_show();
       }
     }, {
       load: cssassets.jqueryui
@@ -27,16 +24,6 @@ Modernizr.load([{
       test: ($('.offline').length == 0 || (location.pathname != '/' && location.pathname.indexOf('/questions' != 0))),
       yep: jsassets.base
     }, {
-      test: $('meta[data-jqmath]').length > 0,
-      yep: eval($('meta[data-jqmath]').attr('data-jqmath-assets'))
-    }, {
-      test: $('meta[data-js=show]').length > 0 && $('.auto-link').length > 0,
-      yep: jsassets.jqueryautovideo,
-      complete: function(){
-        if($.fn.autoVideo)
-          $('.auto-link').autoVideo();
-      }
-    }, {
       test: window.JSON,
       nope: jsassets.json
     }, {
@@ -44,12 +31,6 @@ Modernizr.load([{
       nope: jsassets.websocket,
       complete: function() {
         ShapadoSocket.initialize();
-      }
-    }, {
-      test: $('.autocomplete_for_tags').length > 0,
-      yep: jsassets.jqautocomplete,
-      callback: function() {
-        $('.autocomplete_for_tags').ricodigoComplete();
       }
     }])
   }

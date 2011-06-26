@@ -48,7 +48,7 @@ var Updater = {
           if(refreshed) {
             Updater.setup_loading_icon();
             if(current == 'question') {
-              // TODO: initialize questions/show JS here
+              Questions.initialize_on_show();
             }
           }
 
