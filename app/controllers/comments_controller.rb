@@ -50,8 +50,13 @@ class CommentsController < ApplicationController
         format.html {redirect_to params[:source]}
         format.json {render :json => @comment.to_json, :status => :created}
         format.js do
-          render(:json => {:success => true, :message => flash[:notice],
-            :html => html}.to_json)
+          render(:json => {
+                   :success => true,
+                   :message => flash[:notice],
+                   :html => html,
+                   :object_id => @comment.id,
+                   :commentable_id => @comment.commentable.id
+                 }.to_json)
         end
       else
         format.html {redirect_to params[:source]}
@@ -83,17 +88,27 @@ class CommentsController < ApplicationController
         if question_id = @comment.question_id
           Question.update_last_target(question_id, @comment)
         end
-
+        html = render_to_string(:partial => "comments/comment",
+                                      :object => @comment,
+                                      :locals => {
+                                        :source => params[:source],
+                                        :mini => true})
+        Magent::WebSocketChannel.push({:id => "updatedcomment",
+                                        :object_id => @comment.id,
+                                        :commentable_id => @comment.commentable.id,
+                                        :name => @comment.body,
+                                        :html => html,
+                                        :channel_id => current_group.slug})
         flash[:notice] = t(:flash_notice, :scope => "comments.update")
         format.html { redirect_to(params[:source]) }
         format.json { render :json => @comment.to_json, :status => :ok}
         format.js { render :json => {
             :message => flash[:notice],
             :success => true,
-            :html => render_to_string(:partial => "comments/comment",
-                                      :object => @comment,
-                                      :locals => {:source => params[:source], :mini => true}),
-            :id => @comment.id
+            :html => html,
+            :updated => 1,
+            :object_id => @comment.id,
+            :commentable_id => @comment.commentable.id
           } }
       else
         flash[:error] = @comment.errors.full_messages.join(", ")

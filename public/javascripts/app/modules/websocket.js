@@ -68,6 +68,10 @@ var ShapadoSocket = {
         ShapadoUI.new_comment(data);
       }
       break;
+      case 'updatedcomment': {
+        ShapadoUI.update_comment(data);
+      }
+      break;
     }
   },
   send: function(data) {
