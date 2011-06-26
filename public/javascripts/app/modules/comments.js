@@ -14,6 +14,11 @@ var Comments = {
 
   },
   update_on_show: function(data) {
+    var comment = $('#'+data.object_id);
+    if($.trim(comment.html()) != data.html){
+      comment.replaceWith(data.html);
+      Effects.fade(comment);
+    }
   },
   vote: function(data) {
   }

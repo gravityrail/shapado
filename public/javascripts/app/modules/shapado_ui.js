@@ -39,6 +39,11 @@ var ShapadoUI = {
       Comments.create_on_show(data);
     }
   },
+  update_comment: function(data) {
+    if(ShapadoUI.is_on_question_show()) {
+      Comments.update_on_show(data);
+    }
+  },
   vote: function(data) {
     switch(data.on) {
       case 'Question': {
