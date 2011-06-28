@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  title = "#{AppConfig.domain} - #{@user.login}'s Questions"
+  title = "#{AppConfig.domain} - #{h(@user.login)}'s Questions"
   feed.title(title)
   unless @questions.empty?
     feed.updated(@questions.first.updated_at)
@@ -11,7 +11,7 @@ atom_feed do |feed|
       entry.title(question.title)
       entry.content(markdown(question.body), :type => 'html')
       entry.author do |author|
-        author.name(question.user.login)
+        author.name(h(question.user.login))
       end
     end
   end

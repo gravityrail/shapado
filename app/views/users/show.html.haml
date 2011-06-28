@@ -1,7 +1,7 @@
 
 -content_for :subtabs do
   .navtitle
-    &= @user.login
+    &= h(@user.login)
 
 #users_show
   .follow-info

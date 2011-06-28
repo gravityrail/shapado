@@ -25,7 +25,7 @@ atom_feed do |feed|
       entry.title(question.title)
       entry.content(markdown(question.body), :type => 'html')
       entry.author do |author|
-        author.name(question.user.login)
+        author.name(h(question.user.login))
       end
     end
   end
