@@ -36,14 +36,14 @@
             =t(:website, :scope => "activerecord.attributes.user")
           %td.user-field-value
             -if @user.website
-              =link_to h(@user.website), h(@user.website), :rel => "nofollow"
+              = shapado_auto_link(@user.website)
         %tr
           %td.user-field
             =t(:age, :scope => "activerecord.attributes.user")
           %td.user-field-value
             =@user.age
     .bio-info
-      = markdown(@user.bio)
+      = find_and_preserve(shapado_auto_link(markdown(@user.bio)))
   .clear
 
   -if @user.following.count > 0
