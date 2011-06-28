@@ -16,9 +16,9 @@
   %article{:class => class_for_question(question), :id => question.id}
     %h2
       -if question.wiki
-        = link_to t('.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax-question"
+        = link_to t('.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax", :"data-layout" => "question"
       -else
-        = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax-question"
+        = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax", :"data-layout" => "question"
     .user-data
       -if owner
         =render :partial => "users/user_data", :locals => {:user => owner}
@@ -69,7 +69,7 @@
 -else
   %article{:class => "#{class_for_question(question)} #{local_assigns[:lite] ? 'lite' : ''}"}
     %h3
-      = link_to title, question_path(question), :class => "pjax-question"
+      = link_to title, question_path(question), :class => "pjax", :"data-layout" => "question"
 
     .toolbar
       %ul

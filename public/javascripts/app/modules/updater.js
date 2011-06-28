@@ -5,21 +5,13 @@ var Updater = {
     var current, prev, refreshed;
     Updater.setup_loading_icon();
 
-    if($("section.questions-index").length > 0) {
-      current = 'index';
-    } else if($("section#main-question").length > 0) {
-      current = 'question';
-    }
+    current = Updater.guess_current_layout();
 
-    $("a.pjax-index, a.pjax-question").live("click", function(ev) {
+    $("a.pjax").live("click", function(ev) {
       var link = $(this);
 
       prev = current;
-      if(link.hasClass("pjax-question")) {
-        current = 'question';
-      } else {
-        current = 'index';
-      }
+      current = link.attr("data-layout");
 
       var parent = link.parent();
       var gparent = parent.parent();
@@ -61,11 +53,26 @@ var Updater = {
       return false;
     });
   },
+  guess_current_layout: function() {
+    var layout = '';
+    if($("section.questions-index").length > 0) {
+      layout = 'index';
+    } else if($("section#main-question").length > 0) {
+      layout = 'question';
+    }
+
+    return layout;
+  },
   setup_loading_icon: function() {
+    var text = 'Loading...';
+    if(typeof I18n.loading !== 'undefined'){
+      text = I18n.loading;
+    }
+
     $("#main-content-wrap").bind('start.pjax', function() {
       var h = $( "<div class='loading-box'>" +
                  "<span class='loading-box-icon'></span>" +
-                 "<h1>" + "Please wait.." + "</h1>" + "</div>" );
+                 "<h1>" + text + "</h1>" + "</div>" );
 
       $("body").prepend(h);
       h.css({
