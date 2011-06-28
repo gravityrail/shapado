@@ -1,5 +1,12 @@
 var Ui = {
   initialize: function() {
+     var languages_filter = $(".languages_filter form")
+      languages_filter.find(".buttons").hide();
+      languages_filter.find("#language_filter").change(function(){
+      submit = languages_filter.find(".buttons .change_language");
+      submit.trigger("click");
+    });
+
     $('ul.sf-menu').superfish();
 
     //$('.lang-fields').tabs();
