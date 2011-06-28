@@ -10,10 +10,7 @@ Modernizr.load([{
       test: window.JSON,
       nope: jsassets.json
     },{
-      load: jsassets.offline_bare_minimum_questions,
-      complete: function(){
-        Questions.initialize_on_show();
-      }
+      load: jsassets.base
     }, {
       load: cssassets.jqueryui
     }, {
@@ -22,18 +19,34 @@ Modernizr.load([{
         $('.lang-fields').tabs();
         Effects.initialize();
       }
-    }, {
+    }])
+   $(document).ready(function() {
+     Modernizr.load([{
       test: ($('.offline').length == 0 || (location.pathname != '/' && location.pathname.indexOf('/questions' != 0))),
-      yep: jsassets.base
+      yep: jsassets.extra
     }, {
       test: Modernizr.websockets,
       nope: jsassets.websocket,
       complete: function() {
         ShapadoSocket.initialize();
         }
-    }])
-   $(document).ready(function() {
-     Modernizr.load([{
+    },{
+      test: $('meta[data-js=show]').length > 0 && $('.auto-link').length > 0,
+      yep: jsassets.jqueryautovideo,
+      complete: function(){
+        if($.fn.autoVideo)
+          $('.auto-link').autoVideo();
+      }
+    }, {
+      test: $('meta[data-jqmath]').length > 0,
+      yep: eval($('meta[data-jqmath]').attr('data-jqmath-assets'))
+    }, {
+      test: $('.autocomplete_for_tags').length > 0,
+      yep: jsassets.jqautocomplete,
+      callback: function() {
+        $('.autocomplete_for_tags').ricodigoComplete();
+      }
+    },{
        test: $("input[type=color]").length>0,
        yep: jsassets.jpicker,
        complete: function(){

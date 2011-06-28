@@ -1,6 +1,6 @@
 
 $(document).ready(function() {
-
+  Questions.initialize_on_show();
 //  $(".forms form.flag_form").hide();
 //  $("#close_question_form").hide();
   var answers = $('article.answer').length;

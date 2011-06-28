@@ -10,34 +10,9 @@ var Questions = {
 
   },
   initialize_on_show: function() {
-    Modernizr.load([{
-      test: ($('meta[data-js=show]').length > 0 || location.pathname == '/questions/new') && $('meta[data-js=show][data-loaded]').length == 0,
-      yep: jsassets.offline_bare_minimum_show,
-      complete: function(){
-        Ui.hide_comments_form();
-        if(window.Rewards)
-          Rewards.initialize();
-        if(window.Editor)
-          Editor.initialize();
-        $('meta[data-js=show]').attr({'data-loaded': 1})
-      }
-    }, {
-      test: $('meta[data-js=show]').length > 0 && $('.auto-link').length > 0,
-      yep: jsassets.jqueryautovideo,
-      complete: function(){
-        if($.fn.autoVideo)
-          $('.auto-link').autoVideo();
-      }
-    }, {
-      test: $('meta[data-jqmath]').length > 0,
-      yep: eval($('meta[data-jqmath]').attr('data-jqmath-assets'))
-    }, {
-      test: $('.autocomplete_for_tags').length > 0,
-      yep: jsassets.jqautocomplete,
-      callback: function() {
-        $('.autocomplete_for_tags').ricodigoComplete();
-      }
-    }])
+    Ui.hide_comments_form();
+    Rewards.initialize();
+    Editor.initialize();
   },
   create_on_index: function(data) {
     var section = $("section.questions-index");
