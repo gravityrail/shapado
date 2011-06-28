@@ -107,7 +107,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if (logged_in? || (recaptcha_valid? && @answer.user.valid?)) && @answer.save
-        @question.add_contributor(current_user)
+        @question.add_contributor(current_user || @answer.user)
         link = question_answer_url(@question, @answer)
 
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
