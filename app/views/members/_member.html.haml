@@ -20,7 +20,7 @@
 
     .user-info
       %h2
-        = link_to h(member.login), user_path(member)
+        = link_to h(member.login), user_path(member), :class => "pjax", :"data-layout" => "user"
       %p.description
         =find_and_preserve(auto_link(member.bio))
       %small

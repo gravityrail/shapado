@@ -63,9 +63,15 @@ module Shapado
       end
 
       def after_sign_in_path_for(resource)
+        puts "%"*100
+        puts "ON CONNECT"
+
+        remember_me(current_user)
+
         if current_user.admin?
           Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
         end
+
         current_user.check_social_friends
         # check if cookie pp is set
         # if true this means user logged in through popup

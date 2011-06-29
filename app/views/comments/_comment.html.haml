@@ -2,7 +2,7 @@
   %article.comment{:id=>comment.id}
     %h4
       = avatar_img(comment.user, :size => "small")
-      = link_to h(comment.user.login), user_path(comment.user), :class => "clear"
+      = link_to h(comment.user.login), user_path(comment.user), :class => "clear pjax", :"data-layout" => "user"
       %b
         = t("time.ago", :time => time_ago_in_words(comment.created_at))
         = t("global.from", :site => comment.user.country_name)
@@ -33,7 +33,7 @@
   %article.comment{:id=>comment.id}
     %h4
       = t("time.ago", :time => time_ago_in_words(comment.created_at))
-      =link_to comment.user.login, user_path(comment.user)
+      =link_to comment.user.login, user_path(comment.user), :class => "pjax", :"data-layout" => "user"
       == #{t("comments.shared.said")}:
     .comment-votes
       -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user

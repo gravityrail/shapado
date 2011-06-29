@@ -19,7 +19,7 @@
   / User Summary
   .summary
     %h3
-      = link_to h(user.login), user_path(user)
+      = link_to h(user.login), user_path(user), :class => "pjax", :"data-layout" => "user"
     =find_and_preserve(auto_link(user.bio))
     .owner-data
       %strong
