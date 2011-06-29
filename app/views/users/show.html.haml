@@ -88,3 +88,45 @@
     .additional_info
       = will_paginate @resources
 
+-content_for :sidebar do
+  .networks
+    -if username = @user.networks["flickr"]
+      .one-net.flickr.module
+        %h3 Flickr Feed
+        %section
+          = widget_for(:flickr, {:photos_number=>6, :horizontal=>true, :user=> username,:background  => "#E5DDFF"})
+        .clear
+
+    -if username = @user.networks["youtube"]
+      .one-net.youtube.module
+        %h3 Youtube  Feed
+        %section
+          = widget_for(:youtube, {:channel => username, :vertical => false, :large => false, :height =>   "260px", :width => "320px" })
+        .clear
+
+    -if username = @user.networks["twitter"]
+      .one-net.twitter.module
+        %h3 Twitter  Feed
+        %section
+          = widget_for(:twitter, {:user => username, :interval => "10000", :shell_background => "#3e4953", :shell_color => "#fff", :tweets_background=> "#fff" , :tweets_color=> "#666" ,:tweets_links => "#cc6600", })
+        .clear
+    -if username = @user.networks["linkedin"]
+      .one-net.linkedin.module
+        %h3 LinkedIn  Feed
+        %section
+          = widget_for(:linked_in, {:user => username})
+        .clear
+
+    -if username = @user.networks["github"]
+      .one-net.github.module
+        %h3 GitHub  Feed
+        %section
+          = widget_for(:github, {:user => username, :theme => "white", :title => "Github Projects", :list_length => 6, :show_all => "Show All", :head => "h2"})
+        .clear
+
+    -if username = @user.networks["ohloh"]
+      .one-net.ohloh.module
+        %h3 Ohloh  Feed
+        %section
+          = widget_for(:ohloh, {:user => username})
+        .clear

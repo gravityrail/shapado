@@ -4,4 +4,5 @@ $(document).ready(function() {
   Tags.initialize();
   Votes.initialize();
   Notifier.initialize();
+  Networks.initialize();
 });
