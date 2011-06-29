@@ -1,11 +1,11 @@
 %ul.user-list.sf-menu
   %li.user
     //= link_to "#{avatar_img(current_user, {:size =>24})} #{current_user.login}", user_path(current_user)
-    = link_to current_user.login, user_path(current_user)
+    = link_to current_user.login, user_path(current_user), :class => "pjax", :"data-layout" => "user"
     = avatar_img(current_user, {:size =>"small"})
     %ul
       %li
-        =link_to t('.profile'), user_path(current_user)
+        =link_to t('.profile'), user_path(current_user), :class => "pjax", :"data-layout" => "user"
       %li
         =link_to t('users.edit.settings'), settings_path
       %li

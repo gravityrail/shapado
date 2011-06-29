@@ -8,7 +8,7 @@
   -@users.each do |user|
     %tr
       %td
-        = link_to "#{h(user.name.present? ? user.name : user.login)}", user_path(user)
+        = link_to "#{h(user.name.present? ? user.name : user.login)}", user_path(user), :class => "pjax", :"data-layout" => "user"
       %td
         = user.email
       %td

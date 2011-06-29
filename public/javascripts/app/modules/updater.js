@@ -59,6 +59,8 @@ var Updater = {
       layout = 'index';
     } else if($("section#main-question").length > 0) {
       layout = 'question';
+    } else if($('#users_show').length > 0) {
+      layout = 'user';
     }
 
     return layout;
