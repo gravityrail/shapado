@@ -1,8 +1,8 @@
 desc "Setup application"
 task :bootstrap => [:environment, "db:drop",
                     "setup:create_admin",
-                    "setup:default_theme",
                     "setup:default_group",
+                    "setup:default_theme",
                     "setup:create_reputation_constrains_modes",
                     "setup:create_widgets",
                     "setup:create_pages"] do
@@ -20,13 +20,6 @@ namespace :setup do
     admin.password = "admins"
     admin.password_confirmation = "admins"
     admin.save
-  end
-
-  task :default_theme do
-    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
-
-    theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
-    Jobs::Themes.generate_stylesheet(theme.id)
   end
 
   desc "Create the default group"
@@ -48,12 +41,22 @@ namespace :setup do
 
     if admin = User.where(:login => "admin").first
       default_group.owner = admin
-      default_group.add_member(admin, "owner")
     end
     default_group.save!
+    default_group.add_member(admin, "owner")
     default_group.logo = File.open(Rails.root+"public/images/logo.png")
     default_group.save
   end
+
+  task :default_theme do
+    Theme.destroy_all
+    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+
+    theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
+    Jobs::Themes.generate_stylesheet(theme.id)
+    Group.override({}, {:current_theme_id => theme.id})
+  end
+
 
   desc "Create default widgets"
   task :create_widgets => :environment do
