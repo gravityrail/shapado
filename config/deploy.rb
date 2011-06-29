@@ -3,7 +3,7 @@ set :asset_packager, "jammit"
 
 task :staging do |t|
   set :repository, "git://github.com/ricodigo/shapado.git"
-  set :branch, "origin/next"
+  set :branch, "origin/master"
   set :rails_env, :production
   set :unicorn_workers, 1
   role :web, "metali.co"
