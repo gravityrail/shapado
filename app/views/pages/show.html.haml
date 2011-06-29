@@ -19,13 +19,14 @@
       .content
         %ul.navigation
           %li
-            = link_to t("pages.actions.create_page"), new_page_path
+            = link_to t("pages.actions.create_page"), new_page_path, :class => "pjax", :"data-layout" => "pages"
           %li
-            = link_to t("pages.actions.edit_page"), edit_page_path(@page)
+            = link_to t("pages.actions.edit_page"), edit_page_path(@page), :class => "pjax", :"data-layout" => "pages"
 
-.markdown
-  -if safe_page?(@page)
-    -body = current_group.wysiwyg_editor ? CGI.unescapeHTML(@page.body) : @page.body
-    = markdown(body, :raw => true, :sanitize => false)
-  -else
-    = markdown(@page.body)
+#pages_show
+  .markdown
+    -if safe_page?(@page)
+      -body = current_group.wysiwyg_editor ? CGI.unescapeHTML(@page.body) : @page.body
+      = markdown(body, :raw => true, :sanitize => false)
+    -else
+      = markdown(@page.body)

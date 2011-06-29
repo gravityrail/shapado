@@ -70,9 +70,9 @@
               %li
                 = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true)
               %li
-                = link_to t('layouts.application.badges'), badges_path
+                = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges"
               %li
-                = link_to t('layouts.application.pages'), pages_path
+                = link_to t('layouts.application.pages'), pages_path, :class => "pjax", :"data-layout" => "pages"
 
         -if AppConfig.enable_adbard && request.domain == AppConfig.domain
           -widget = AdbardWidget.new(:settings => {'host_id' => AppConfig.adbard_host_id, 'site_key' => AppConfig.adbard_site_key})

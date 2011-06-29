@@ -61,6 +61,10 @@ var Updater = {
       layout = 'question';
     } else if($('#users_show').length > 0) {
       layout = 'user';
+    } else if($('#badges_show, #badges').length > 0) {
+      layout = 'badges';
+    } else if($('#pages_show, #pages').length > 0) {
+      layout = 'pages';
     }
 
     return layout;
