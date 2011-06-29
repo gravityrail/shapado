@@ -25,7 +25,7 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  offline_bare_minimum_questions:
+  base:
     - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/vendor/jquery.pjax.js
 
@@ -53,7 +53,6 @@ javascripts:
     - public/javascripts/vendor/superfish.js
     - public/javascripts/application-init.js
 
-  offline_bare_minimum_show:
     - public/javascripts/vendor/jquery.textarea.js
     - public/javascripts/vendor/jHtmlArea.js
     - public/javascripts/vendor/highlight/prettify.js
@@ -64,7 +63,7 @@ javascripts:
     - public/javascripts/app/initializers/show_question.js
     - public/javascripts/app/initializers/panel_forms.js
 
-  base:
+  extra:
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
