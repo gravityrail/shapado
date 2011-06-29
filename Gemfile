@@ -59,7 +59,7 @@ gem "oa-oauth", '~> 0.2.6', :require => "omniauth/oauth"
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 
 gem 'orm_adapter'
-gem 'devise', "~> 1.2.1"
+gem 'devise', "~> 1.4.0"
 
 gem 'whenever', :require => false
 gem 'rack-ssl', :require => false

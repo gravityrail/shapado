@@ -1,6 +1,6 @@
 var Auth = {
   initialize: function() {
-    $('.auth-provider').click(function(){
+    $('.auth-provider').live("click", function(){
       var authUrl = $(this).attr('href');
 
       Auth.open_popup(authUrl);
