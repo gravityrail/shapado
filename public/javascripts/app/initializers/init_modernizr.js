@@ -15,9 +15,7 @@ Modernizr.load([{
     }, {
       load: jsassets.base
     }, {
-      load: cssassets.jqueryui
-    }, {
-      load: jsassets.jqueryui,
+      load: $.merge(jsassets.jqueryui, cssassets.jqueryui),
       complete: function() {
         $('.lang-fields').tabs();
         Effects.initialize();
@@ -42,7 +40,7 @@ Modernizr.load([{
       }
     }, {
       test: $('meta[data-jqmath]').length > 0,
-      yep: eval($('meta[data-jqmath]').attr('data-jqmath-assets'))
+      yep: $.merge(eval($('meta[data-jqmath]').attr('data-jsassets')),eval($('meta[data-jqmath]').attr('data-cssassets')))
     }, {
       test: $('.autocomplete_for_tags').length > 0,
       yep: jsassets.jqautocomplete,

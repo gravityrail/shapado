@@ -1,16 +1,18 @@
 jsassets = {
-  jqueryui: '/packages/jqueryui.js',
-  base: '/packages/base.js',
-  extra: '/packages/extra.js',
-  jqueryautovideo: '/packages/jqueryautovideo.js',
-  json: '/packages/json.js',
-  websocket: '/packages/websocket.js',
-  jqautocomplete: '/packages/jqautocomplete.js',
-  jqtools: '/packages/jqtools.js',
-  jpicker: '/packages/jpicker.js',
-  geolocation: '/packages/geolocation.js'
+  jqueryui: ['/packages/jqueryui.js'],
+  base: ['/packages/base.js'],
+  extra: ['/packages/extra.js'],
+  jqueryautovideo: ['/packages/jqueryautovideo.js'],
+  json: ['/packages/json.js'],
+  websocket: ['/packages/websocket.js'],
+  jqautocomplete: ['/packages/jqautocomplete.js'],
+  jqtools: ['/packages/jqtools.js'],
+  jpicker: ['/packages/jpicker.js'],
+  geolocation: ['/packages/geolocation.js'],
+  jqmath: ['/packages/jqmath.js']
 }
 cssassets = {
-  jqueryui: '/packages/jqueryui.css',
-  jpicker: '/packages/jpicker.css'
+  jqueryui: ['/packages/jqueryui.css'],
+  jpicker: ['/packages/jpicker.css'],
+  jqmath: ['/packages/jqmath.css']
 }

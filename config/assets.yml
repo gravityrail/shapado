@@ -107,6 +107,9 @@ javascripts:
   geolocation:
     - public/javascripts/vendor/polyfills/geolocation.js
 
+  jqmath:
+    - public/javascripts/vendor/mathscribe/jqmath-etc-0.1.1.min.js
+
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css
@@ -119,4 +122,7 @@ stylesheets:
 
   mobile:
     - public/stylesheets/compiled/mobile.css
+
+  jqmath:
+    - public/javascripts/vendor/mathscribe/jqmath-0.1.1.css
 
