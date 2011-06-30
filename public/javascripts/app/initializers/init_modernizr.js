@@ -40,7 +40,7 @@ Modernizr.load([{
       }
     }, {
       test: $('meta[data-jqmath]').length > 0,
-      yep: $.merge(eval($('meta[data-jqmath]').attr('data-jsassets')),eval($('meta[data-jqmath]').attr('data-cssassets')))
+      yep: $.merge(eval($('meta[data-jqmath]').attr('data-jsassets'))||[],eval($('meta[data-jqmath]').attr('data-cssassets'))||[])
     }, {
       test: $('.autocomplete_for_tags').length > 0,
       yep: jsassets.jqautocomplete,
