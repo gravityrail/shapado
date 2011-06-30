@@ -10,7 +10,7 @@ Modernizr.load([{
       test: window.JSON,
       nope: jsassets.json
     }, {
-      test: false,
+      test: navigator.geolocation,
       nope: jsassets.geolocation
     }, {
       load: jsassets.base
