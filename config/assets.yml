@@ -104,6 +104,9 @@ javascripts:
   jpicker:
     - public/javascripts/vendor/jpicker.js
 
+  geolocation:
+    - public/javascripts/vendor/polyfills/geolocation.js
+
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css

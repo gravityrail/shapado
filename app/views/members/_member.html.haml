@@ -1,4 +1,6 @@
--membership = member.config_for(@group)
+-membership = member
+-member = membership.user
+
 -can_modify_member = logged_in? && (current_user.admin? || current_user != member ) && current_user.owner_of?(@group)
 %ul
   %li

@@ -1,8 +1,8 @@
 -content_for :subtabs do
   .navtitle
     = t("users.index.title")
-    -if @users
-      == (#{format_number(@users.total_entries)})
+    -if @memberships
+      == (#{format_number(@memberships.total_entries)})
 
   %ul
     %li.reputation
@@ -22,9 +22,9 @@
 
 /Users
 %ul.items#users
-  -@users.each do |user|
-    = render :partial => "user", :object => user
+  -@memberships.each do |membership|
+    = render :partial => "membership", :object => membership
 
 #additional_info
-  =will_paginate @users
+  =will_paginate @memberships
   .clear

@@ -109,7 +109,7 @@ module MultiauthSupport
     def merge_user(user)
       #TODO merge friendlist, facebook friend lists and maybe more
       #TODO merging is broken
-      [Question, Answer, Badge, UserStat].each do |m|
+      [Question, Answer, Badge, UserStat, Membership].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
       end
       begin

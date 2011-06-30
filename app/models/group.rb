@@ -98,7 +98,8 @@ class Group
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
   references_many :invitations, :dependent => :destroy
-  references_many :themes
+  references_many :themes, :dependent => :destroy
+  references_many :memberships, :dependent => :destroy
   referenced_in :current_theme, :class_name => "Theme"
 
   referenced_in :owner, :class_name => "User"
@@ -185,29 +186,17 @@ class Group
     user.member_of?(self)
   end
 
-  def users(conditions = {})
-    conditions.merge!("membership_list.#{self.id}.reputation" => {:$exists => true})
-
-    unless conditions[:near]
-      User.where(conditions)
-    else
-      user_point = conditions.delete(:near)
-      User.near(:position => user_point).where(conditions)
-    end
-  end
-  alias_method :members, :users
-
   def owners
-    users({ "membership_list.#{self.id}.role" => 'owner' })
+    self.memberships.where(:role => 'owner')
   end
 
   def mods
-    users({ "membership_list.#{self.id}.role" => 'moderator' })
+    self.memberships.where(:role => 'moderator')
   end
   alias_method :moderators, :mods
 
   def mods_owners
-    users({ "membership_list.#{self.id}.role" => {:$in => ['moderator', 'owner']} })
+    self.memberships.where(:role.in => ['owner', 'moderator'])
   end
 
   def pending?
@@ -331,7 +320,7 @@ class Group
   end
 
   def has_facebook_login?(providers_keys)
-    (providers_keys && self.domain.index(AppConfig.domain)) || self.fb_active
+    (providers_keys && self.domain.index(AppConfig.domain)) || self.share.fb_active
   end
 
   protected
@@ -422,6 +411,7 @@ class Group
   end
 
   def set_default_theme
-    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first
+    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first.id
+  
   end
 end

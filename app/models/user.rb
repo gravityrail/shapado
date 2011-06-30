@@ -47,8 +47,7 @@ class User
   field :followers_count,           :type => Integer, :default => 0
   field :following_count,           :type => Integer, :default => 0
 
-  field :membership_list,           :type => MembershipList
-  field :inactive_membership_list,  :type => MembershipList
+  field :group_ids,                 :type => Array, :default => []
 
   field :feed_token,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
   field :socket_key,                :type => String, :default => lambda { BSON::ObjectId.new.to_s }
@@ -67,6 +66,7 @@ class User
 
   referenced_in :friend_list
 
+  references_many :memberships, :class_name => "Membership"
   references_many :owned_groups, :inverse_of => :user, :class_name => "Group"
   references_many :questions, :dependent => :destroy
   references_many :answers, :dependent => :destroy
@@ -114,26 +114,8 @@ class User
     where(conditions).first || where(:login => conditions[:email]).first
   end
 
-  def membership_list
-    m = self[:membership_list]
-
-    if m.nil?
-      m = self[:membership_list] = MembershipList.new
-    elsif !m.kind_of?(MembershipList)
-      m = self[:membership_list] = MembershipList[m]
-    end
-    m
-  end
-
   def inactive_membership_list
-    m = self[:inactive_membership_list]
-
-    if m.nil?
-      m = self[:inactive_membership_list] = MembershipList.new
-    elsif !m.kind_of?(MembershipList)
-      m = self[:inactive_membership_list] = MembershipList[m]
-    end
-    m
+    self.memberships.where(:state => 'inactive')
   end
 
   def login=(value)
@@ -167,7 +149,7 @@ class User
                   :_id.in => user_ids}
 
     if group_id = options[:group_id]
-      conditions[:"membership_list.#{group_id}"] = {:$exists => true}
+      conditions[:"group_ids"] = {:$in => group_id}
     end
 
     User.only([:email, :login, :name, :language]).where(conditions)
@@ -186,15 +168,14 @@ class User
       t = t.split(",").map{|e| e.strip}
     end
 
-    self.collection.update({:_id => self._id},
-                           {:$addToSet => {"membership_list.#{group.id}.preferred_tags" => {:$each => t.uniq}}})
+    Membership.push_uniq({:group_id => group.id, :user_id => self.id}, {:preferred_tags => {:$each => t.uniq}})
   end
 
   def remove_preferred_tags(t, group)
     if t.kind_of?(String)
       t = t.split(",").join(" ").split(" ")
     end
-    self.class.pull_all({:_id => self._id}, {"membership_list.#{group.id}.preferred_tags" => t})
+    Membership.pull_all({:group_id => group.id, :user_id => self.id}, {:preferred_tags => t})
   end
 
   def preferred_tags_on(group)
@@ -257,7 +238,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def groups(options = {})
-    self.membership_list.groups(options).order_by([:activity_rate, :desc])
+    Group.where(options.merge(:_id.in => self.group_ids)).order_by([:activity_rate, :desc])
   end
 
   def member_of?(group)
@@ -265,7 +246,7 @@ Time.zone.now ? 1 : 0)
       group = group.id
     end
 
-    self.membership_list.has_key?(group)
+    self.group_ids.include?(group)
   end
 
   def role_on(group)
@@ -295,7 +276,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def user_of?(group)
-    mod_of?(group) || self.membership_list.has_key?(group.id)
+    mod_of?(group) || member_of?(group)
   end
 
   def main_language
@@ -368,7 +349,8 @@ Time.zone.now ? 1 : 0)
   end
 
   def activity_on(group, date)
-    self.override({"membership_list.#{group.id}.last_activity_at" => date.utc})
+    Membership.override({:group_id => group.id, :user_id => self.id}, {:last_activity_at => date.utc})
+
     day = date.utc.at_beginning_of_day
     last_day = nil
     if last_activity_at = config_for(group, false).last_activity_at
@@ -378,7 +360,7 @@ Time.zone.now ? 1 : 0)
     if last_day != day
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
-          self.increment({"membership_list.#{group.id}.activity_days" => 1})
+          Membership.increment({:group_id => group.id, :user_id => self.id}, {:activity_days => 1})
 
           Jobs::Activities.async.on_activity(group.id, self.id).commit!
         elsif !last_day.utc.today? && (last_day.utc != Time.now.utc.yesterday)
@@ -390,15 +372,15 @@ Time.zone.now ? 1 : 0)
   end
 
   def reset_activity_days!(group)
-    self.override({"membership_list.#{group.id}.activity_days" => 0})
+    Membership.override({:group_id => group.id, :user_id => self.id}, {:activity_days => 0})
   end
 
   def upvote!(group, v = 1.0)
-    self.increment({"membership_list.#{group.id}.votes_up" => v.to_f})
+    Membership.override({:group_id => group.id, :user_id => self.id}, {:votes_up => v.to_f})
   end
 
   def downvote!(group, v = 1.0)
-    self.increment({"membership_list.#{group.id}.votes_down" => v.to_f})
+    Membership.override({:group_id => group.id, :user_id => self.id}, {:votes_down => v.to_f})
   end
 
   def update_reputation(key, group, v = nil)
@@ -417,7 +399,7 @@ Time.zone.now ? 1 : 0)
     current_reputation = config_for(group, false).reputation
 
     if value
-      self.increment(:"membership_list.#{group.id}.reputation" =>  value)
+      Membership.override({:group_id => group.id, :user_id => self.id}, {:reputation => value})
     end
 
     stats = self.reputation_stats(group)
@@ -492,7 +474,7 @@ Time.zone.now ? 1 : 0)
   def followers(scope = {})
     conditions = {}
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
-    conditions[:"membership_list.#{scope[:group_id]}"] = {:$exists => true} if scope[:group_id]
+    conditions[:"group_ids"] = {:$in => scope[:group_id]} if scope[:group_id]
     User.where(conditions.merge(:_id.in => self.friend_list.follower_ids)) # FIXME mongoid
   end
 
@@ -506,7 +488,7 @@ Time.zone.now ? 1 : 0)
 
   def viewed_on!(group)
     if member_of?(group)
-      self.increment("membership_list.#{group.id}.views_count" => 1.0)
+      Membership.override({:group_id => group.id, :user_id => self.id}, {:views_count => 1.0})
     end
   end
 
@@ -530,20 +512,15 @@ Time.zone.now ? 1 : 0)
   end
 
   def config_for(group, init = false)
+    membership_selector_for(group).first
+  end
+
+  def membership_selector_for(group)
     if group.kind_of?(Group)
       group = group.id
     end
 
-    config = self.membership_list.get(group)
-    if config.nil?
-      if init
-        config = self.inactive_membership_list[group]
-        if config.nil?
-          config = self.membership_list[group] = Membership.new(:group_id => group)
-        end
-      end
-    end
-    config
+    Membership.where(:user_id => self.id, :group_id => group)
   end
 
   def leave(group)
@@ -551,11 +528,10 @@ Time.zone.now ? 1 : 0)
       group = group.id
     end
 
-    config = self.membership_list[group]
-    if !config.nil?
-      self.membership_list.delete(group)
-      self.inactive_membership_list[group] = config
-      self.save!
+    membership = config_for(group)
+    if membership
+      membership.state = 'inactive'
+      membership.save
     end
   end
 
@@ -564,19 +540,16 @@ Time.zone.now ? 1 : 0)
       group = group.id
     end
 
-    config = self.membership_list.get(group)
-    if config.nil?
-      if config = self.inactive_membership_list[group]
-        self.membership_list[group] = config
-      else
-        self.membership_list[group] = Membership.new(:group_id => group,
-                                                     :last_activity_at => Time.now,
-                                                     :joined_at => Time.now)
-      end
-      block.call(self.membership_list[group]) if block
-      return true
-    end
-    false
+    membership = Membership.create({
+     :user_id => self.id,
+     :group_id => group,
+     :last_activity_at => Time.now,
+     :joined_at => Time.now
+    })
+
+    block.call(membership) if block
+
+    membership
   end
 
   def join!(group, &block)
@@ -668,12 +641,14 @@ Time.zone.now ? 1 : 0)
   # returns tags followed by my friends but not by self
   # TODO: optimize
   def suggested_tags(group, limit = 5)
-    friends = User.where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
-                         "_id" => { "$in" => self.friend_list.following_ids}).
-                         only("membership_list.#{group.id}.preferred_tags", "login", "name")
+    friends = Membership.where(:group_id => group.id,
+                               :user_id.in => self.friend_list.following_ids,
+                               :preferred_tags => {"$ne" => [], "$ne" => nil}).
+                         only(:preferred_tags, :login, :name)
+
     friends_tags = { }
     friends.each do |friend|
-      (friend.membership_list[group.id]["preferred_tags"]-self.preferred_tags_on(group)).each do |tag|
+      (friend.preferred_tags-self.preferred_tags_on(group)).each do |tag|
         friends_tags["#{tag}"] ||= { }
         friends_tags["#{tag}"]["followed_by"] ||= []
         friends_tags["#{tag}"]["followed_by"] << friend
@@ -684,17 +659,18 @@ Time.zone.now ? 1 : 0)
 
   #returns tags followed by self suggested friends that I may not follow
   def suggested_tags_by_suggested_friends(group, limit = 5)
-    friends = suggested_social_friends(group, limit)
+    friends = suggested_social_friends(group, limit).only(:_id).map{|u| u.id}
     unless friends.blank?
-      friends.
-        where("membership_list.#{group.id}.preferred_tags" => {"$ne" => [], "$ne" => nil},
-              :_id => {:$not =>
-                {:$in => self.friend_list.following_ids}})
+      memberships = Membership.where(:group_id => group.id,
+                                     :user_id.in => friends,
+                                     :preferred_tags => {"$ne" => [], "$ne" => nil},
+                                     :_id => {:$not => {:$in => self.friend_list.following_ids}}).
+                         only(:preferred_tags, :login, :name)
+
       friends_tags = { }
-      friends.each do |friend|
-        friend_preferred_tags = []
-        (friend.membership_list[group.id].nil?)? friend_preferred_tags = [] :
-          friend_preferred_tags = friend.membership_list[group.id]["preferred_tags"]
+      memberships.each do |membership|
+        friend_preferred_tags = membership.preferred_tags
+
         if friend_preferred_tags
           (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
             friends_tags["#{tag}"] ||= { }
@@ -718,9 +694,8 @@ Time.zone.now ? 1 : 0)
       end
     end
     (array_hash.blank?)? [] : User.any_of(array_hash).
-      where({"membership_list.#{group.id}" => {"$ne" => [], "$ne" => nil},
-              :_id => {:$not =>
-                {:$in => self.friend_list.following_ids}}}).
+      where({:group_ids => group.id,
+             :_id => {:$not => {:$in => self.friend_list.following_ids}}}).
       limit(limit)
   end
 
@@ -802,7 +777,6 @@ Time.zone.now ? 1 : 0)
     if user.present?
       Rails.logger.info "Merging #{self.email}(#{self.id}) into #{user.email}(#{user.id})"
       merge_user(user)
-      self.membership_list = user.membership_list
 
       user.destroy
     end

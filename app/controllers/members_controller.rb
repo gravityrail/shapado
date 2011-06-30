@@ -7,8 +7,9 @@ class MembersController < ApplicationController
 
   def index
     @group = current_group
-    @members = @group.users.order_by([%W[membership_list.#{@group.id}.role asc], %W[membership_list.#{@group.id}.reputation desc]]).
-                            paginate(paginate_opts(params))
+    @members = current_group.memberships.order_by([%W[role asc], %W[reputation desc]]).
+                                         paginate(paginate_opts(params))
+
     @member = User.new
     @membership = Membership.new
   end
@@ -18,7 +19,7 @@ class MembersController < ApplicationController
     unless @member.nil?
       ok = @group.add_member(@member, params[:role])
       if ok
-        flash[:notice] = "#{@member.login} was successfully added as #{params[:role]}"
+        flash[:notice] = "#{@member.login} was successfully added as #{params[:role]}" # TODO: i18n
         return redirect_to(members_path)
       end
     else

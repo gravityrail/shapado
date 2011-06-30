@@ -9,7 +9,10 @@ Modernizr.load([{
     Modernizr.load([{
       test: window.JSON,
       nope: jsassets.json
-    },{
+    }, {
+      test: false,
+      nope: jsassets.geolocation
+    }, {
       load: jsassets.base
     }, {
       load: cssassets.jqueryui

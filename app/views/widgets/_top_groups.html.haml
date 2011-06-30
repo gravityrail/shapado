@@ -13,7 +13,7 @@
           %b
             = link_to h(group.name), domain_url(:custom => group.domain)
           %small
-            ="#{group.members.count} Members"
+            ="#{group.memberships.count} Members"
         %p
           &= truncate(strip_tags(group.description), :length => 50)
 

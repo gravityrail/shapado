@@ -24,6 +24,28 @@ task :init => [:environment] do
 end
 
 namespace :fixdb do
+  task :memberships => [:init] do
+    User.all.each do |user|
+      count = user[:membership_list].count
+
+      user.memberships.delete_all
+      (user[:membership_list] || {}).each do |group_id, membership|
+        membership["_id"] = BSON::ObjectId.new.to_s
+        membership["group_id"] = group_id
+        membership["user_id"] = user.id
+        Membership.create!(membership)
+      end
+
+      if user.memberships.count != count
+        puts "something is wrong #{user.email} #{user.memberships.count} #{count}"
+      else
+        puts "OK for #{user.email} #{count}"
+      end
+    end
+
+    User.unset({}, {:membership_list => 1})
+  end
+
   task :questions => [:init] do
     Question.all.each do |question|
       question.override(:_random => rand())
