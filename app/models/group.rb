@@ -422,6 +422,7 @@ class Group
   end
 
   def set_default_theme
-    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first
+    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first.id
+  
   end
 end
