@@ -9,7 +9,7 @@ class Report
     @questions = group.questions.where(:created_at => {:$gt => since}).count
     @answers = group.answers.where(:created_at => {:$gt => since}).count
 
-    @users = User.count("membership_list.#{group.id}.reputation" => {:$exists => true})
+    @users = group.memberships.count
     @badges = group.badges.where(:created_at => {:$gt => since}).count
   end
 end

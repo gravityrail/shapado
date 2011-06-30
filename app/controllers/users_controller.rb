@@ -39,22 +39,19 @@ class UsersController < ApplicationController
     set_page_title(t("users.index.title"))
 
     order = current_order
-    conditions = {:anonymous => false}
-    conditions = {:login => /^#{Regexp.escape(params[:q])}/} if params[:q]
+    conditions = {}
+    conditions = {:display_name => /^#{Regexp.escape(params[:q])}/} if params[:q]
 
     if order == "reputation"
-      order = %w(membership_list.#{current_group.id}.reputation desc)
+      order = %w(reputation desc)
     end
 
-    @users = if order.blank?
-               current_group.users(conditions.merge(:near => current_user.point)).paginate(paginate_opts(params))
-             else
-               current_group.users(conditions).order_by(order).paginate(paginate_opts(params))
-             end
+    @memberships = current_group.memberships.where(conditions).order_by(order).paginate(paginate_opts(params))
+
     respond_to do |format|
       format.html
       format.json {
-        render :json => @users.to_json(:only => %w[name login membership_list bio website location language])
+        render :json => @memberships.to_json(:only => %w[name login bio website location language])
       }
       format.js {
         html = render_to_string(:partial => "user", :collection  => @users)
@@ -112,7 +109,7 @@ class UsersController < ApplicationController
       format.html
       format.atom { @questions = @resources }
       format.json {
-        render :json => @user.to_json(:only => %w[name login membership_list bio website location language])
+        render :json => @user.to_json(:only => %w[name login bio website location language])
       }
       format.js do
         html = ""
