@@ -7,7 +7,8 @@ jsassets = {
   websocket: '/packages/websocket.js',
   jqautocomplete: '/packages/jqautocomplete.js',
   jqtools: '/packages/jqtools.js',
-  jpicker: '/packages/jpicker.js'
+  jpicker: '/packages/jpicker.js',
+  geolocation: '/packages/geolocation.js'
 }
 cssassets = {
   jqueryui: '/packages/jqueryui.css',
