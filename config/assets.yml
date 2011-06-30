@@ -67,6 +67,7 @@ javascripts:
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
+    - public/javascripts/app/modules/networks.js
     - public/javascripts/application.js
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/initializers/new_question.js

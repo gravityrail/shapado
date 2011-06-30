@@ -54,6 +54,8 @@ class User
   field :anonymous,                 :type => Boolean, :default => false
   index :anonymous
 
+  field :networks, :type => Hash, :default => {}
+
   field :friend_list_id, :type => String
   embeds_one :notification_opts, :class_name => "NotificationConfig"
 
