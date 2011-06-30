@@ -331,7 +331,7 @@ class Group
   end
 
   def has_facebook_login?(providers_keys)
-    (providers_keys && self.domain.index(AppConfig.domain)) || self.fb_active
+    (providers_keys && self.domain.index(AppConfig.domain)) || self.share.fb_active
   end
 
   protected
