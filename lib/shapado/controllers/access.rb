@@ -63,9 +63,6 @@ module Shapado
       end
 
       def after_sign_in_path_for(resource)
-        puts "%"*100
-        puts "ON CONNECT"
-
         remember_me(current_user)
 
         if current_user.admin?
