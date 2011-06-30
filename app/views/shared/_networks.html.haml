@@ -1,21 +1,22 @@
 = t('shared.networks.title')
 
-= select_tag :network_select, options_for_select([[], ["twitter", "username"], ["digg", "username"], ["facebook", "url"], ["youtube", "channel"], ["flickr", "url"], ["linkedin", "username"], ["blog", "url"], ["github", "username"], ['lastfm', "username"], ['reddit', "username"], ['ohloh', "username"]]), :id => "network_select"
+.network-field
+  = select_tag :network_select, options_for_select([[], ["twitter", "username"], ["digg", "username"], ["facebook", "url"], ["youtube", "channel"], ["flickr", "url"], ["linkedin", "username"], ["blog", "url"], ["github", "username"], ['lastfm', "username"], ['reddit', "username"], ['ohloh', "username"]]), :class => "network_select"
 
-#network-config
-  .text
-  = text_field_tag "networks[][param]", "", :class => "network_param"
-  = hidden_field_tag "networks[][name]", "", :class => "network_name"
-  %span.buttons
-    = link_to t("shared.networks.save"), "#", :class => "save_network"
-    or
-  = link_to t("shared.networks.remove"), "#", :class => "cancel_network"
+  .network-config
+    .text
+    = text_field_tag "networks[][param]", "", :class => "network_param"
+    = hidden_field_tag "networks[][name]", "", :class => "network_name"
+    %span.buttons
+      = link_to t("shared.networks.save"), "#", :class => "save_network"
+      or
+    = link_to t("shared.networks.remove"), "#", :class => "cancel_network"
 
-#networks
-  -networks.each do |name, user|
-    .network-config-entry
-      .text
-        &=name
-      = hidden_field_tag "networks[][param]", user, :class => "network_param"
-      = hidden_field_tag "networks[][name]", name, :class => "network_name"
-      = link_to t("shared.networks.remove"), "#", :class => "cancel_network"
+  .networks
+    -networks.each do |name, user|
+      .network-config-entry
+        .text
+          &=name
+        = hidden_field_tag "networks[][param]", user, :class => "network_param"
+        = hidden_field_tag "networks[][name]", name, :class => "network_name"
+        = link_to t("shared.networks.remove"), "#", :class => "cancel_network"

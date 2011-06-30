@@ -181,40 +181,6 @@ class ApplicationController < ActionController::Base
     Thread.current[:current_ip] = request.remote_ip
   end
 
-
-  def find_networks(networks)
-    r = {}
-    networks.each do |network|
-      next if network["name"].blank?
-
-      r[network["name"]] = case network["name"]
-      when "facebook"
-        network["param"] =~ /facebook\.com\/([^\/\?]+)/ ? $1 : network["param"]
-      when "twitter"
-        network["param"] =~ /twitter\.com\/([^\/\?]+)/ ? $1 : network["param"]
-      when "flickr"
-        network["param"] =~ /flickr\.com\/photos\/([^\/\?]+)/ ? $1 : network["param"]
-      when "github"
-        network["param"] =~ /github\.com\/([^\/\?]+)/ ? $1 : network["param"]
-      when "digg"
-        network["param"] =~ /digg\.com\/([^\/\?]+)/ ? $1 : network["param"]
-      when "youtube"
-        network["param"] =~ /youtube\.com\/([^\/\?]+)/ ? $1 : network["param"]
-      when "linkedin"
-        network["param"] =~ /linkedin\.com\/(in|pub)\/([^\/\?]+)/ ? $2 : network["param"]
-      when "blog"
-        network["param"]
-      when "lastfm"
-        network["param"] =~ /last\.fm\/user\/([^\/\?]+)/ ? $1 : network["param"]
-      when "ohloh"
-        network["param"] =~ /ohloh\.net\/accounts\/([^\/\?]+)/ ? $1 : network["param"]
-      when "reddit"
-        network["param"] =~ /reddit\.com\/user\/([^\/\?]+)/ ? $1 : network["param"]
-      end
-    end
-    r
-  end
-
   def paginate_opts(options = {})
     per_page = 25
     case options[:per_page]

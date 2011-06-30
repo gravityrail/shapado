@@ -6,6 +6,7 @@ class User
   include MultiauthSupport
   include MongoidExt::Storage
   include Shapado::Models::GeoCommon
+  include Shapado::Models::Networks
 
   devise :database_authenticatable, :recoverable, :registerable, :rememberable,
          :lockable, :token_authenticatable, :encryptable, :trackable, :omniauthable, :encryptor => :restful_authentication_sha1
@@ -141,6 +142,10 @@ class User
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def networks=(params)
+    self[:networks] = self.find_networks(params)
   end
 
   def self.find_by_login_or_id(login, conds = {})

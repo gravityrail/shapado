@@ -91,6 +91,7 @@
 -content_for :sidebar do
   .networks
     -if username = @user.networks["flickr"]
+      -username = username["nickname"]
       .one-net.flickr.module
         %h3 Flickr Feed
         %section
@@ -98,6 +99,7 @@
         .clear
 
     -if username = @user.networks["youtube"]
+      -username = username["nickname"]
       .one-net.youtube.module
         %h3 Youtube  Feed
         %section
@@ -105,12 +107,14 @@
         .clear
 
     -if username = @user.networks["twitter"]
+      -username = username["nickname"]
       .one-net.twitter.module
         %h3 Twitter  Feed
         %section
           = widget_for(:twitter, {:user => username, :interval => "10000", :shell_background => "#3e4953", :shell_color => "#fff", :tweets_background=> "#fff" , :tweets_color=> "#666" ,:tweets_links => "#cc6600", })
         .clear
     -if username = @user.networks["linkedin"]
+      -username = username["nickname"]
       .one-net.linkedin.module
         %h3 LinkedIn  Feed
         %section
@@ -118,6 +122,7 @@
         .clear
 
     -if username = @user.networks["github"]
+      -username = username["nickname"]
       .one-net.github.module
         %h3 GitHub  Feed
         %section
@@ -125,6 +130,7 @@
         .clear
 
     -if username = @user.networks["ohloh"]
+      -username = username["nickname"]
       .one-net.ohloh.module
         %h3 Ohloh  Feed
         %section

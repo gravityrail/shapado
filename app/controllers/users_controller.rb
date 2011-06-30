@@ -190,7 +190,7 @@ class UsersController < ApplicationController
       @user.password_confirmation = params[:user][:password_confirmation]
     end
 
-    @user.networks = find_networks(params[:networks])
+    @user.networks = params[:networks]
     @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
     @user.safe_update(%w[login email name language timezone notification_opts bio hide_country website avatar use_gravatar], params[:user])
 
