@@ -1,8 +1,8 @@
 desc "Setup application"
 task :bootstrap => [:environment, "db:drop",
                     "setup:create_admin",
-                    "setup:default_group",
                     "setup:default_theme",
+                    "setup:default_group",
                     "setup:create_reputation_constrains_modes",
                     "setup:create_widgets",
                     "setup:create_pages"] do
@@ -50,13 +50,12 @@ namespace :setup do
 
   task :default_theme do
     Theme.destroy_all
-    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+    theme = Theme.create!(:name => "Default", :community => true, :is_default => true)
 
     theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
     Jobs::Themes.generate_stylesheet(theme.id)
     Group.override({}, {:current_theme_id => theme.id})
   end
-
 
   desc "Create default widgets"
   task :create_widgets => :environment do
@@ -75,10 +74,14 @@ namespace :setup do
 
   desc "Create admin user"
   task :create_admin => [:environment] do
-    admin = User.new(:login => "admin", :password => "admins",
-                                        :password_confirmation => "admins",
-                                        :email => "shapado@example.com",
-                                        :role => "admin")
+    admin = User.new
+    {
+      :login => "admin",
+      :password => "admins",
+      :password_confirmation => "admins",
+      :email => "shapado@example.com",
+      :role => "admin"
+    }.each {|k,v| admin.send("#{k}=", v)}
     admin.preferred_languages = AVAILABLE_LANGUAGES
 
     admin.save!
