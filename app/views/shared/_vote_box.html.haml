@@ -13,12 +13,8 @@
             %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
     - else
       %ul.vote_box
-        %li
-          %button.positive
         %li.votes_average
           = calculate_votes_average(voteable)
-        %li
-          %button.negative
 - elsif !current_user.has_voted?(voteable)
   %form{:action=> url, :method=>'post', :class => 'comment-form'}
     = token_tag
