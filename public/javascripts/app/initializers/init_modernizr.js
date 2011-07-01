@@ -13,13 +13,16 @@ Modernizr.load([{
       test: navigator.geolocation,
       nope: jsassets.geolocation
     }, {
-      load: jsassets.base
+      load: jsassets.base,
+      complete: function(){
+        Jqmath.initialize();
+      }
     }, {
       load: $.merge(jsassets.jqueryui, cssassets.jqueryui),
       complete: function() {
         $('.lang-fields').tabs();
         Effects.initialize();
-      }
+      },
     }])
    $(document).ready(function() {
      Modernizr.load([{
@@ -38,9 +41,6 @@ Modernizr.load([{
         if($.fn.autoVideo)
           $('.auto-link').autoVideo();
       }
-    }, {
-      test: $('meta[data-jqmath]').length > 0,
-      yep: $.merge(eval($('meta[data-jqmath]').attr('data-jsassets'))||[],eval($('meta[data-jqmath]').attr('data-cssassets'))||[])
     }, {
       test: $('.autocomplete_for_tags').length > 0,
       yep: jsassets.jqautocomplete,

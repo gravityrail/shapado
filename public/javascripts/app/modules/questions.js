@@ -13,6 +13,7 @@ var Questions = {
     Ui.hide_comments_form();
     Rewards.initialize();
     Editor.initialize();
+    Jqmath.initialize();
   },
   create_on_index: function(data) {
     var section = $("section.questions-index");
