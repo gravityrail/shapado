@@ -50,7 +50,7 @@ gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 gem "twitter-text", "1.1.8"
 gem 'sanitize', '1.2.1'
 gem "twitter_oauth"
-gem 'social_widgets', '0.1.0'
+gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_widgets.git'
 
 # authentication
 gem 'omniauth', '~> 0.2.6'

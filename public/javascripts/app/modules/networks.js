@@ -3,7 +3,7 @@ var Networks = {
     $(".network-config").hide();
 
     $(".network-field").each(function(index, network_field) {
-      network_field = $(network_field)
+      network_field = $(network_field);
       var $network_select = network_field.find("select.network_select");
 
       network_field.delegate("a.save_network", 'click', function(){
@@ -47,17 +47,27 @@ var Networks = {
           opt.attr("data-picked", true);
           opt.css("color", "grey");
 
-          var text = "enter the "+opt.val()+" for your "+opt.text()+ " account:<br/>";
-          var config = network_field.find(".network-config").clone();
-          config.removeClass("network-config");
-          config.attr("id", ".network-config-"+opt.text());
-          config.find("input.network_name").val(opt.text());
-          config.addClass("network-config-entry");
-          config.find(".text").append(text);
-          config.show();
-
+          if(opt.text() == "google") {
+            var text = "enter the "+opt.val()+" for your "+opt.text()+ " account:<br/>";
+            var config = network_field.find(".network-config").clone();
+            config.removeClass("network-config");
+            config.attr("id", ".network-config-"+opt.text());
+            config.find("input.network_name").val(opt.text());
+            config.find("input.network_param").hide();
+            config.addClass("network-config-entry");
+            config.find(".text").append("google plus one");
+            config.show();
+          } else {
+            var text = "enter the "+opt.val()+" for your "+opt.text()+ " account:<br/>";
+            var config = network_field.find(".network-config").clone();
+            config.removeClass("network-config");
+            config.attr("id", ".network-config-"+opt.text());
+            config.find("input.network_name").val(opt.text());
+            config.addClass("network-config-entry");
+            config.find(".text").append(text);
+            config.show();
+          }
           networks.append(config);
-
         });
     });
   }

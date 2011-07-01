@@ -82,7 +82,7 @@
 
 -unless @user.new_record?
   .field.networks
-    = render "shared/networks", :f => f, :networks => @user.networks
+    = render "shared/networks", :f => f, :networks => @user.networks, :share => true
   %h1
     = t(".notifications")
   .field

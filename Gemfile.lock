@@ -43,6 +43,12 @@ GIT
       omniauth
       rails (>= 3.0.0)
 
+GIT
+  remote: https://git.gitorious.org/social_widgets/social_widgets.git
+  revision: 16e70a60198443fb8a4403c387735e159cfaf4eb
+  specs:
+    social_widgets (0.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -112,7 +118,7 @@ GEM
     configuration (1.3.1)
     daemons (1.0.10)
     database_cleaner (0.6.7)
-    devise (1.4.1)
+    devise (1.4.2)
       bcrypt-ruby (~> 2.1.2)
       orm_adapter (~> 0.0.3)
       warden (~> 1.0.3)
@@ -160,8 +166,8 @@ GEM
       em-websocket
       haml (~> 3.1.1)
       launchy (~> 0.4.0)
-      mongo
       mongo (~> 1.0)
+      mongo
       sinatra (~> 1.2.6)
       uuidtools
       uuidtools
@@ -318,8 +324,7 @@ GEM
     simplecov-html (0.4.5)
     sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (>= 1.2.2, < 2.0)
-    social_widgets (0.1.0)
+      tilt (< 2.0, >= 1.2.2)
     state_machine (0.10.4)
     subexec (0.0.4)
     thor (0.14.6)
@@ -348,7 +353,7 @@ GEM
     uuidtools (2.1.2)
     warden (1.0.4)
       rack (>= 1.0)
-    webrobots (0.0.9)
+    webrobots (0.0.10)
       nokogiri (>= 1.4.4)
     whatlanguage (1.0.0)
     whenever (0.6.8)
@@ -409,7 +414,7 @@ DEPENDENCIES
   sanitize (= 1.2.1)
   sass
   simplecov
-  social_widgets (= 0.1.0)
+  social_widgets!
   state_machine (= 0.10.4)
   tunnlr_connector!
   twitter (= 1.5.0)

@@ -3,6 +3,11 @@ module Models
   module Networks
     extend ActiveSupport::Concern
 
+    SHARE = [["twitter", "username"],["facebook", "url"],["google", "url"]]
+    PROFILE =  [["twitter", "username"],["facebook", "url"],["digg", "username"], ["youtube", "channel"],
+    ["flickr", "url"], ["linkedin", "username"], ["blog", "url"], ["github", "username"],
+    ['lastfm', "username"], ['reddit', "username"], ['ohloh', "username"]]
+
     module InstanceMethods
       def find_networks(params)
         r = {}
@@ -71,6 +76,8 @@ module Models
             else
               {:nickname => network["param"], :url => "reddit.com/user/#{network["param"]}"}
             end
+          when "google"
+            {}
           end
         end
         r
