@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:set_comment_count", "fixdb:wiki_booleans"] do
+task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes"] do
 end
 
 
@@ -179,6 +179,27 @@ namespace :fixdb do
       end
     end
     Mongoid.database.collection("votes").drop
+  end
+
+
+  task :set_comment_count => [:init] do
+    questions = Mongoid.database.collection("questions")
+    answers = Mongoid.database.collection("answers")
+
+    User.only([:_id,:membership_list, :login]).all.each do |u|
+      u.membership_list.each do |group_id, vals|
+        count = 0
+        group = Group.where(:_id => group_id).only([:_id, :name]).first
+        next if group.nil?
+
+        count = Mongoid.database.collection("comments").find(:_type => "Comment", :group_id => group.id, :user_id => u.id).count
+
+        u.override({"membership_list.#{group.id}.comments_count" => count})
+        if count > 0
+          p "#{u.login}: #{count} in #{group.name}"
+        end
+      end
+    end
   end
 
   task :comments => [:init] do
@@ -394,44 +415,6 @@ namespace :fixdb do
     Group.override({:openid_only => true}, {:signup_type => "noemail"})
     Group.override({:openid_only => false}, {:signup_type => "all"})
     p "done"
-  end
-
-  task :set_comment_count => [:init] do
-    questions = Mongoid.database.collection("questions")
-    answers = Mongoid.database.collection("answers")
-
-    User.only([:_id,:membership_list, :login]).all.each do |u|
-      u.membership_list.each do |group_id, vals|
-        count = 0
-        group = Group.where(:_id => group_id).only([:_id, :name]).first
-        next if group.nil?
-
-        questions.find({:group_id => group.id}, {:fields => {:user_id => 1, :"comments.user_id" => 1}}).each do |q|
-          if q["comments"]
-            q["comments"].each do |c|
-              if c["user_id"] == u.id
-                count = count + 1
-              end
-            end
-          end
-        end
-
-        answers.find({:group_id => group.id}, {:fields => {:user_id => 1, :"comments.user_id" => 1}}).each do |a|
-          if a["comments"]
-            a["comments"].each do |c|
-              if c["user_id"] == u.id
-                count = count + 1
-              end
-            end
-          end
-        end
-
-        u.override({"membership_list.#{group.id}.comments_count" => count})
-        if count > 0
-          p "#{u.login}: #{count} in #{group.name}"
-        end
-      end
-    end
   end
 
   task :versions => [:init] do
