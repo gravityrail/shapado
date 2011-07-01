@@ -36,10 +36,7 @@ class WidgetList
       pos = widgets.count-1
     end
 
-    widgets[current_pos], widgets[pos] = widgets[pos], widgets[current_pos]
-
-    self.send(:"context=",widgets.to_a)
-
-    self._parent.raw_save(:force => true)
+    self._parent.override("#{self._position}.#{context}.#{pos}" => widget.attributes)
+    self._parent.override("#{self._position}.#{context}.#{current_pos}" => widgets[pos].attributes)
   end
 end
