@@ -22,7 +22,7 @@ Modernizr.load([{
       complete: function() {
         $('.lang-fields').tabs();
         Effects.initialize();
-      },
+      }
     }])
    $(document).ready(function() {
      Modernizr.load([{
