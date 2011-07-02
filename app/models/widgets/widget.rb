@@ -31,7 +31,7 @@ class Widget
     end
 
     if tab == 'question'
-      types += %w[ModInfoWidget QuestionTagsWidget ContributorsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget TagListWidget]
+      types += %w[ModInfoWidget ContributorsWidget QuestionBadgesWidget QuestionStatsWidget RelatedQuestionsWidget]
     end
     if tab == 'external'
       types += ["AskQuestionWidget"]
@@ -42,6 +42,7 @@ class Widget
 
     types
   end
+
 
   def question_only?
     false

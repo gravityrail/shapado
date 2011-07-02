@@ -291,13 +291,12 @@ class Group
   end
 
   def create_default_widgets
-    [ModInfoWidget, QuestionBadgesWidget, QuestionTagsWidget, RelatedQuestionsWidget,
-     TagListWidget, CurrentTagsWidget].each do |w|
+    [ModInfoWidget, QuestionBadgesWidget, RelatedQuestionsWidget].each do |w|
       self.question_widgets.sidebar << w.new
     end
 
     [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
-      self.mainlist_widgets.sidebar << w.new
+      self.mainlist_widgets.navbar << w.new
     end
 
     self.external_widgets.sidebar << AskQuestionWidget.new
