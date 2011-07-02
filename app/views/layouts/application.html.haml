@@ -11,10 +11,8 @@
     = render "shared/layout/javascript"
 
     = csrf_meta_tag
-
-  %body
     = render "shared/analytics"
-
+  %body
     #container{:class => @current_class}
       %nav.top-bar
         %ul.group-list.sf-menu

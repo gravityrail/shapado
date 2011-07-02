@@ -25,25 +25,33 @@ end
 
 namespace :fixdb do
   task :memberships => [:init] do
+    user_count= User.count
+    user_count_i = 0
+    memberships = []
+    p "gathering memberships"
     User.all.each do |user|
       count = user[:membership_list].count
-
       user.memberships.delete_all
       (user[:membership_list] || {}).each do |group_id, membership|
-        membership["_id"] = BSON::ObjectId.new.to_s
-        membership["group_id"] = group_id
-        membership["user_id"] = user.id
-        Membership.create!(membership)
+        if Group.find(group_id)
+          membership["_id"] = BSON::ObjectId.new.to_s
+          membership["group_id"] = group_id
+          membership["user_id"] = user.id
+          memberships << membership
+        end
       end
-
-      if user.memberships.count != count
-        puts "something is wrong #{user.email} #{user.memberships.count} #{count}"
-      else
-        puts "OK for #{user.email} #{count}"
-      end
+      user_count_i+=1
+      puts "#{user_count_i}/#{user_count}"
     end
-
+    msc = memberships.size
+    msi = 0
+    p "creating memberships:"
+    memberships.each do |m|
+      Membership.create!(m)
+      p "#{msi+=1}/#{msc}"
+    end
     User.unset({}, {:membership_list => 1})
+    p "done creating membership"
   end
 
   task :questions => [:init] do
