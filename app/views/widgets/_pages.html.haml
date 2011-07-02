@@ -1,13 +1,11 @@
-.module.widget-pages
-  %h3
-    =t(".title")
-  
-  %ul
+%aside
+  %ul.list
     -widget.recent_pages(current_group).each do |page|
-      %li    
+      %li
         =link_to h(page.title), page_path(page), :class => "pjax", :"data-layout" => "pages"
-  %footer
-    -if logged_in? && current_user.mod_of?(current_group)
-      =link_to t(".new"), new_page_path, :class => "pjax add", :"data-layout" => "pages"
-      =link_to t("scaffold.more"), pages_path, :class => "pjax more", :"data-layout" => "pages"
-  .clear
+%footer
+  -if logged_in? && current_user.mod_of?(current_group)
+    =link_to t(".new"), new_page_path, :class => "pjax add", :"data-layout" => "pages"
+    =link_to t("scaffold.more"), pages_path, :class => "pjax more", :"data-layout" => "pages"
+.clear
+
