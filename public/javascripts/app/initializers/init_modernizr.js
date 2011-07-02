@@ -20,9 +20,12 @@ Modernizr.load([{
     }, {
       load: $.merge(jsassets.jqueryui, cssassets.jqueryui),
       complete: function() {
-        $('.lang-fields').tabs();
+        var fields = $('.lang-fields');
+        if(fields.length > 0){
+          fields.tabs();
+        }
         Effects.initialize();
-      },
+      }
     }])
    $(document).ready(function() {
      Modernizr.load([{
