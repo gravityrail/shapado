@@ -97,5 +97,6 @@ group :development do
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
   gem 'tunnlr_connector', :git => "git://github.com/dcu/tunnlr_connector.git", :branch => "patch-1", :require => "tunnlr"
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
 end
 

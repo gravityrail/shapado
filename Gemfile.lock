@@ -36,6 +36,12 @@ GIT
       tzinfo (~> 0.3.22)
 
 GIT
+  remote: git://github.com/thedarkone/rails-dev-boost.git
+  revision: 8ea07ebee74d9f2879f074c307890997b1f34f03
+  specs:
+    rails-dev-boost (0.1.1)
+
+GIT
   remote: http://github.com/dcu/multiauth.git
   revision: 4b52e543dcedf0e9e48f824418a4a85dcbe70438
   specs:
@@ -403,6 +409,7 @@ DEPENDENCIES
   rack-recaptcha (= 0.2.2)
   rack-ssl
   rails (= 3.0.8)
+  rails-dev-boost!
   rdiscount (= 1.6.5)
   remarkable_mongoid (>= 0.5.0)
   ricodigo-capistrano-recipes (~> 0.1.3)
