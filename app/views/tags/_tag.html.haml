@@ -1,8 +1,5 @@
-.tag-info
-  = tag_icon_image_link(tag)
-  = tag.name
-  = tag.description
-  -if logged_in? && current_user.mod_of?(current_group)
-    = link_to t("scaffold.edit"), edit_tag_path(tag)
-    = link_to t("scaffold.destroy"), tag_path(tag), :method => :delete, :sure => t("scaffold.sure", :model => "tag")
-  = follow_tag_link(tag)
+= tag.name
+-if logged_in? && current_user.mod_of?(current_group)
+  = link_to t("scaffold.edit"), edit_tag_path(tag)
+  = link_to t("scaffold.destroy"), tag_path(tag), :method => :delete, :sure => t("scaffold.sure", :model => "tag")
+= follow_tag_link(tag)

@@ -821,12 +821,13 @@ section.main-question {
     a {
       color: #999 !important;
       border-right: 1px solid #e5e5e5;
+      background-color: #fff !important;
       &:hover {
         color: #000 !important;
         background-color: #f9f9f9 !important;
       }
       &.active {
-        background-color: $lightBlue;
+        background-color: $lightBlue !important;
         color: #000;
         &:hover{ background-color: $lightBlue !important;}
       }
@@ -860,7 +861,7 @@ ul.drop-menu {
 
 //app/content/question/tags.sass
 ul.tag-list {
-  li, span.tag {
+  li, .tag {
     color: #666666;
     &:hover {
       color: #000;
@@ -950,7 +951,7 @@ article.answer {
     border-right: 1px solid #f1f1f1;
     &:hover {
       color: #fff;
-      @include gradient($orange);
+      background-color: $orange;
     }
   }
   ul li {
