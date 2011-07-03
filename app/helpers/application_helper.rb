@@ -71,7 +71,7 @@ module ApplicationHelper
     roles
   end
 
-  def tag_cloud(tags = [], options = {}, limit = nil)
+  def tag_cloud(tags = [], options = {}, limit = nil, style = "tag_cloud")
     if tags.empty?
       tags = Question.tag_cloud({:group_id => current_group.id, :banned => false}.
                         merge(language_conditions.merge(language_conditions)), limit)
@@ -95,7 +95,7 @@ module ApplicationHelper
 
     render 'shared/tag_cloud', :tags => tags, :css => css,
                                :lowest_value => lowest_value, :ratio => ratio,
-                               :min_size => min_size, :tag_class => tag_class
+                               :min_size => min_size, :tag_class => tag_class, :style => style
   end
 
   def country_flag(code, name)

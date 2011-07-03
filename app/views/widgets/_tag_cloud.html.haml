@@ -9,6 +9,7 @@
         -else
           = link_to "-", tag_path(:id => tags.join("+")), :class => "remove_tag"
 
-  .tag_cloud
-    = tag_cloud([], {}, widget[:settings][:limit])
+  %div{:style => widget.settings["style"]}
+    = tag_cloud([], {}, widget[:settings][:limit], widget.settings["style"])
+
 

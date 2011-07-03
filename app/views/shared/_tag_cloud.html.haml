@@ -1,4 +1,4 @@
-.tag_cloud
+%div{:class => style}
   -tags.each do |tag|
     -size = min_size + (tag["count"] - lowest_value["count"]) * ratio
     -url = tag_url(:id => tag["name"])
