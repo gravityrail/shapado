@@ -14,8 +14,8 @@ Modernizr.load([{
       nope: jsassets.geolocation
     }, {
       load: jsassets.base,
-      complete: function(){
-        if(Jqmath)
+      callback: function(){
+        if(typeof(Jqmath)!='undefined')
           Jqmath.initialize();
       }
     }, {

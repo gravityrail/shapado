@@ -13,7 +13,7 @@ var Questions = {
     Ui.hide_comments_form();
     Rewards.initialize();
     Editor.initialize();
-    if(Jqmath)
+    if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
   },
   create_on_index: function(data) {
