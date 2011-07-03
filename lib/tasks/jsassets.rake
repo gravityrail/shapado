@@ -9,12 +9,12 @@ task :jsassets do
 
   assets["javascripts"].keys.each do |k|
     assets["javascripts"][k].map! do |file|
-      file.gsub('public','')+"?#{Digest::MD5.hexdigest(File.read(file))[0..9]}"
+      file.gsub('public','')
     end
   end
   assets["stylesheets"].keys.each do |k|
     assets["stylesheets"][k].map! do |file|
-      file.gsub('public','')+"?#{Digest::MD5.hexdigest(File.read(file))[0..9]}"
+      file.gsub('public','')
     end
   end
   jsassets = assets["javascripts"].to_json
