@@ -13,6 +13,8 @@
 
   %h4
     = render "questions/answered_by", local_assigns
+    %time{:datetime => answer.created_at.iso8601, :style => "margin: 0 0 0 5px"}
+      = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)    
   .answer-avatar
     = avatar_img(answer.user, :size => "small") unless answer.anonymous
 
@@ -39,6 +41,7 @@
                   = t("global.from", :site => answer.address_name)
                   = country_flag(answer.address["country_code"], answer.address["country"])
 
+
   .article-actions
     %ul.drop-menu
       -if logged_in?
@@ -64,9 +67,6 @@
         - if @aflag.new_record? && current_user != answer.user
           %li
             = link_to t(".flag"), new_question_answer_flag_path(@question,answer), :class => "flag-link", :rel => 'nofollow'
-          %li
-            %time{:datetime => answer.created_at.iso8601}
-              = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)
         %li.more.current
           = link_to t('layouts.manage.actions'), "#"
           %ul
@@ -88,6 +88,7 @@
                   = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
                   = link_to t("scaffold.edit"), edit_question_answer_flag_path(@question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
                   = link_to t("scaffold.destroy"), question_answer_flag_path(@question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+
 
   .comments
     -answer.comments.each do |comment|
