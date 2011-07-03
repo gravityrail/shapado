@@ -1,12 +1,18 @@
--content_for :subtabs do
-  .navtitle
-    = t("users.index.title")
-    -if @memberships
-      == (#{format_number(@memberships.total_entries)})
-
-  %ul
+.list-users
+  .top
+    %h1 Users
+    -form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
+      .field
+        = label_tag :q, t(".filter"), :class => "label"
+        = text_field_tag "q", params[:q], :class => "text_field filter_field"
+        = submit_tag("filter", :class => "filter_input")
+        
+  %ul.filters
+    %li
+      %strong
+        Sort by:
     %li.reputation
-      = link_to t(".reputation"), users_path(:sort=>"reputation"), :title => t(".reputation_tooltip")
+      = link_to "Reputation", users_path(:sort=>"reputation"), :title => t(".reputation_tooltip")
     %li.newest
       = link_to t(".newest"), users_path(:sort=>"newest"), :title => t(".newest_tooltip")
     %li.oldest
@@ -15,16 +21,10 @@
       = link_to t(".name"), users_path(:sort=>"name"), :title => t(".name_tooltip")
     %li.name
       = link_to t(".near"), users_path(:sort=>"near"), :title => t(".name_tooltip")
--form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
-  = label_tag :q, t(".filter"), :class => "label"
-  = text_field_tag "q", params[:q], :class => "text_field filter_field"
-  = submit_tag("filter")
-
-/Users
-%ul.items#users
-  -@memberships.each do |membership|
-    = render :partial => "membership", :object => membership
-
-#additional_info
+     
+  /Users
+  %ul.items#users
+    -@memberships.each do |membership|
+      = render :partial => "membership", :object => membership
+  
   =will_paginate @memberships
-  .clear
