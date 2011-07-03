@@ -100,7 +100,7 @@ class AnswersController < ApplicationController
           @user.save!
           @answer.user = @user
         end
-      elsif !AppConfig.recaptcha["activate"]
+      elsif !AppConfig.recaptcha["activate"] || !current_group.enable_anonymous
         return create_draft!
       end
     end
@@ -139,7 +139,7 @@ class AnswersController < ApplicationController
         @answer.errors.add(:captcha, "is invalid") if !logged_in? && !recaptcha_valid?
 
         errors = @answer.errors
-        errors.merge!(@answer.user.errors) if @answer.user.anonymous && !@answer.user.valid?
+        errors.merge!(@answer.user.errors) if @answer.user && @answer.user.anonymous && !@answer.user.valid?
         puts errors.full_messages
 
         flash.now[:error] = errors.full_messages
