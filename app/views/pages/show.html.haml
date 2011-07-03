@@ -7,10 +7,6 @@
   -if current_group.has_custom_js && @page.has_js?
     %script{:src => js_page_path(@page), :type => "text/javascript"}
 
--content_for :subtabs do
-  %h1.navtitle.title
-    &= @page.title
-
 -content_for :sidebar do
   -if (logged_in? && current_user.can_edit_wiki_post_on?(current_group) )
     .block

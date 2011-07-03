@@ -706,29 +706,25 @@ section.invitations-panel {
 }
 
 //app/widgets/_tags.sass
-.widget-tags {
-  hgroup ul li {
-    a {
-      color: $gray;
-      &:hover{
-        color: $dark;
-      }
-    }
-    &.active a  {
-      color: $dark;
-    }
-  }
-  .tag_cloud span a{
-    background-color: #f1f1f1;
+.widget-tag_cloud {
+  .tags_cloud span a{
+    color: lighten($view_fg_color, 40%);
     &:hover {
-      background-color: #ccc;
-      color: $dark;
+      color: $link_fg_color;
+    }
+  } 
+  .list_cloud span a{
+    color: lighten($view_fg_color, 30%);
+    background-color: darken($view_bg_color, 5%);
+    &:hover {
+      color: $link_fg_color;
+      background-color: darken($view_bg_color, 10%);
     }
   }
 }
 
 //app/widgets/_top_groups.sass
-.top_groups section {
+.widget-top_groups section {
   border-bottom: 1px solid #fafafa;
   .avatar {
     img {border: 1px solid #f1f1f1;}
@@ -742,7 +738,7 @@ section.invitations-panel {
 }
 
 //app/widgets/_top_users.sass
-.top_users ul{
+.widget-top_users ul{
   .avatar {
     img { border: 1px solid #f1f1f1;}
   }

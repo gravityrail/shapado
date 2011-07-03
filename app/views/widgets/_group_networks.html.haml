@@ -1,5 +1,5 @@
 
-%aside
+%aside  
   %ul
     -widget.networks.each do |name, data|
       %li
@@ -7,4 +7,4 @@
     %li
       -feed_urls.each do |title, url|
         %a{:href => url}
-          =image_tag "atom.png", :width => 20
+          =image_tag "rss.png"
