@@ -15,10 +15,11 @@ Modernizr.load([{
     }, {
       load: jsassets.base,
       complete: function(){
-        Jqmath.initialize();
+        if(Jqmath)
+          Jqmath.initialize();
       }
     }, {
-      load: $.merge(jsassets.jqueryui, cssassets.jqueryui),
+      load: $.merge($.merge([],jsassets.jqueryui), cssassets.jqueryui),
       complete: function() {
         var fields = $('.lang-fields');
         if(fields.length > 0){
