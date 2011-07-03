@@ -43,16 +43,16 @@ class WidgetsController < ApplicationController
   # PUT /widgets
   # PUT /widgets.json
   def update
-    widget_list = @group.send(:"#{params[:tab]}_widgets")
+    @widget_list = @group.send(:"#{params[:tab]}_widgets")
 
     @widget = nil
     if WidgetList::POSITIONS.include? params[:position]
-      @widget = widget_list.send(params[:position]).find(params[:id])
+      @widget = @widget_list.send(params[:position]).find(params[:id])
       @widget.update_settings(params)
     end
 
     respond_to do |format|
-      if @widget.valid? && @group.save && @widget.save
+      if @widget.valid? && @widget.save
         sweep_widgets
         flash[:notice] = 'Widget was successfully updated.' # TODO: i18n
         format.html { redirect_to widgets_path(:tab => params[:tab]) }

@@ -10,15 +10,18 @@
     .display
       = render "form", :widget => widget, :position => position, :tab => @active_subtab||"mainlist"
     .controls
-      -form_tag move_widget_path(widget, :tab => @active_subtab||"mainlist"), :class => "vote_box" do
+      = form_tag move_widget_path(widget, :tab => @active_subtab||"mainlist"), :class => "vote_box" do
         = hidden_field_tag "position", position
         = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up")
         = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
       .clear
   - unless widget.question_only? || params[:tab] == 'external'
-    .widget_show.widget{:class => "widget-#{widget.name}"}
-      -if !(widget.settings||{})[:notitle]
-        %h3
-          = t(:"widgets.#{widget.name}.title")
-      = render :partial => widget.partial_name, :locals => {:widget => widget}
+    -if widget.valid?
+      .widget_show.widget{:class => "widget-#{widget.name}"}
+        -if !(widget.settings||{})["notitle"]
+          %h3
+            = t(:"widgets.#{widget.name}.title")
+        = render :partial => widget.partial_name, :locals => {:widget => widget}
+    -else
+      = widget.errors.full_messages.join(", ")
   .clear

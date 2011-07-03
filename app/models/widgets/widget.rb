@@ -8,6 +8,7 @@ class Widget
 
 #   validate :set_name, :on => :create
   validates_presence_of :name
+  validate :check_settings
 
   embedded_in :widget_list_questions, :inverse_of => :question_widgets
   embedded_in :widget_list_external, :inverse_of => :external_widgets
@@ -54,6 +55,7 @@ class Widget
 
   def update_settings(params)
     ##TODO: check what's going in
+    params[:settings][:notitle] = ["on", "true"].include?(params[:settings][:notitle])
     self.settings = params[:settings]
   end
 
@@ -64,6 +66,9 @@ class Widget
   protected
   def set_name
     self[:name] ||= self.class.to_s.sub("Widget", "").underscore
+  end
+
+  def check_settings
   end
 end
 

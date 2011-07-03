@@ -51,9 +51,10 @@ GIT
 
 GIT
   remote: https://git.gitorious.org/social_widgets/social_widgets.git
-  revision: 16e70a60198443fb8a4403c387735e159cfaf4eb
+  revision: 2595d58c73d3ae91b7bcef25f5a36af5ba632c8b
   specs:
     social_widgets (0.1.0)
+      rails
 
 GEM
   remote: http://rubygems.org/
@@ -211,7 +212,7 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     niftier-generators (0.1.2)
-    nokogiri (1.4.6)
+    nokogiri (1.4.7)
     oa-basic (0.2.6)
       oa-core (= 0.2.6)
       rest-client (~> 1.6.0)
@@ -322,7 +323,7 @@ GEM
     rubyntlm (0.1.1)
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
-    sass (3.1.3)
+    sass (3.1.4)
     sexp_processor (3.0.5)
     simple_oauth (0.1.5)
     simplecov (0.4.2)

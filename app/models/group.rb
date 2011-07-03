@@ -300,7 +300,7 @@ class Group
       self.mainlist_widgets.navbar << w.new
     end
 
-    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, ].each do |w|
+    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget].each do |w|
       self.mainlist_widgets.sidebar << w.new
     end
 

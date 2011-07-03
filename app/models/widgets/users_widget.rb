@@ -8,4 +8,11 @@ class UsersWidget < Widget
   end
 
   protected
+  def check_settings
+    valid = settings["limit"].to_i > 1
+    unless valid
+      self.errors.add(:limit, I18n.t(:"errors.messages.greater_than", :count => settings["limit"].to_i))
+    end
+    valid
+  end
 end
