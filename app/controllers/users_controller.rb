@@ -224,7 +224,8 @@ class UsersController < ApplicationController
   #   (questions followed by people I find interesting must be interesting to me)
   # - all the questions tagged with one of the tag I follow
   def feed
-    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+    @user = params[:id] ? User.where(:login => params[:id]).first : current_user
+
     tags = @user.config_for(current_group).preferred_tags
     user_ids = @user.friend_list.following_ids
     user_ids << @user.id
@@ -234,26 +235,26 @@ class UsersController < ApplicationController
   end
 
   def by_me
-    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+    @user = params[:id] ? User.where(:login => params[:id]).first : current_user
     find_questions(:user_id => @user.id)
   end
 
   def preferred
-    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+    @user = params[:id] ? User.where(:login => params[:id]).first : current_user
     @current_tags = tags = @user.config_for(current_group).preferred_tags
 
     find_questions(:tags.in => tags)
   end
 
   def expertise
-    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+    @user = params[:id] ? User.where(:login => params[:id]).first : current_user
     @current_tags = tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
 
     find_questions(:tags.in => tags)
   end
 
   def contributed
-    @user = params[:id] ? current_group.users.where(:login => params[:id]).first : current_user
+    @user = params[:id] ? User.where(:login => params[:id]).first : current_user
 
     find_questions(:contributor_ids.in => [@user.id])
   end
