@@ -1,20 +1,14 @@
-
--content_for :subtabs do
-  .navtitle
-    = t(".title")
-
--content_for :sidebar do
-  = ""
-
 - form_for(@page, :html=>{:class => "form", :id => "new_page"}) do |f|
+    
   =render :partial => "form", :locals => {:f => f}
 
-  .group.navform
-    .right
+  .field
+    .checkbox
       -if current_user.mod_of?(current_group)
         = f.label :wiki, "Wiki", :class => "radio"
         = f.check_box :wiki, :class => "checkbox"
-
-    = f.submit t('scaffold.create')
-    = t("global.or")
+  
+  .buttons
+    = f.submit t('scaffold.create'), :class => "save"
     = link_to t('scaffold.cancel'), pages_path, :class => "button cancel"
+     = t("global.or")
