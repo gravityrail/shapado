@@ -8,12 +8,7 @@
           = link_to "-", tag_path(:id => self.current_tags.join("+")), :class => "remove_tag"
         -else
           = link_to "-", tag_path(:id => tags.join("+")), :class => "remove_tag"
-  %hgroup
-    %ul
-      %li.active
-        =link_to t('global.size')
-      %li
-        =link_to t('global.alphabetically')
+
   .tag_cloud
     = tag_cloud([], {}, widget[:settings][:limit])
 
