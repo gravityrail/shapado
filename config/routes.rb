@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   match '/activities' => 'activities#index', :as => :activities
   get "mobile/index"
 
+  match '/users/auth/:provider' => 'users#auth', :as => :auth_users
+
   match '/facebook' => "facebook#index", :as => :facebook, :method => :any
   match '/facebook/enable_page' => 'facebook#enable_page', :as => :enable_page_facebook
 

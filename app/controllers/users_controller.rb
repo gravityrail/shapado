@@ -378,6 +378,7 @@ class UsersController < ApplicationController
     if params["pp"]
       cookies["pp"] = 1
     end
+
     head :status => 404
   end
 

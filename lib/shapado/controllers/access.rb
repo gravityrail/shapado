@@ -63,7 +63,6 @@ module Shapado
       end
 
       def after_sign_in_path_for(resource)
-        
         if current_user.admin?
           Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
         end
@@ -71,7 +70,7 @@ module Shapado
         current_user.check_social_friends
         # check if cookie pp is set
         # if true this means user logged in through popup
-        if cookies["pp"]
+        if cookies["pp"] && params[:format] != 'mobile'
           cookies.delete :pp
           '/close_popup.html'
         else
