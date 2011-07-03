@@ -29,22 +29,27 @@ article.answer
 
   .answer_vote_box
     overflow: hidden
-    width: 27px
+    width: 25px
     position: absolute
     left: 17px
     top: 25px
-    form ul.vote_box button
-      height: 27px
-      width: 27px
-      border: none
-      &.negative
-        background-image: url("/images/question-toolbar-icons-small.png") !important
-        background-position: 6px -401px
-        background-repeat: no-repeat
-      &.positive
-        background-image: url("/images/question-toolbar-icons-small.png") !important
-        background-position: 6px -448px
-        background-repeat: no-repeat
+    background-color: #fff
+    form 
+      *
+        background-color: #fff
+      ul.vote_box button
+        height: 25px
+        width: 25px
+        border: none
+        background-color: #fff
+        &.negative
+          background-image: url("/images/question-toolbar-icons-small.png") !important
+          background-position: 6px -401px
+          background-repeat: no-repeat
+        &.positive
+          background-image: url("/images/question-toolbar-icons-small.png") !important
+          background-position: 6px -448px
+          background-repeat: no-repeat
   .content
     clear: both
     float: none
