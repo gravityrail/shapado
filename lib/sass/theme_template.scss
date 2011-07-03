@@ -847,10 +847,10 @@ section.main-question {
 }
 
 ul.drop-menu {
-  li.spam {
+  li.flagged {
     background-color: $lightRed;
     span {color: $red;}
-    a {
+    &>a {
       color: #eb9696;
       &:hover {
         background-color: $red;
