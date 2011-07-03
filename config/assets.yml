@@ -15,6 +15,7 @@ javascripts:
   modernizr:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
+    - public/javascripts/app/modules/jqmath.js
     - public/javascripts/app/initializers/init_modernizr.js
 
   websocket:
@@ -30,7 +31,6 @@ javascripts:
     - public/javascripts/vendor/jquery.pjax.js
 
     - public/javascripts/app/modules/app_config.js
-    - public/javascripts/app/modules/jqmath.js
     - public/javascripts/app/modules/comments.js
     - public/javascripts/app/modules/answers.js
     - public/javascripts/app/modules/authentication.js
