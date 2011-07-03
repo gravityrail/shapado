@@ -295,8 +295,12 @@ class Group
       self.question_widgets.sidebar << w.new
     end
 
-    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, TagCloudWidget].each do |w|
+    [TagCloudWidget].each do |w|
       self.mainlist_widgets.navbar << w.new
+    end
+
+    [BadgesWidget, PagesWidget, TopGroupsWidget, TopUsersWidget, ].each do |w|
+      self.mainlist_widgets.sidebar << w.new
     end
 
     self.external_widgets.sidebar << AskQuestionWidget.new

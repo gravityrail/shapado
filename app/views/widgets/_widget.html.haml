@@ -16,6 +16,9 @@
         = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down")
       .clear
   - unless widget.question_only? || params[:tab] == 'external'
-    .widget_show
+    .widget_show.widget{:class => "widget-#{widget.name}"}
+      -if !(widget.settings||{})[:notitle]
+        %h3
+          = t(:"widgets.#{widget.name}.title")
       = render :partial => widget.partial_name, :locals => {:widget => widget}
   .clear
