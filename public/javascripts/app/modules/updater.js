@@ -17,7 +17,7 @@ var Updater = {
       var gparent = parent.parent();
 
       if(gparent[0].tagName == "UL") {
-        gparent.find("li").removeClass("active");
+        $(".widget-links ul li").removeClass('active');
         parent.addClass("active");
 
         if(parent.hasClass("answers") || parent.hasClass("questions") || parent.hasClass("unanswered") || parent.hasClass("activity")) {
