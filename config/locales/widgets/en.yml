@@ -53,10 +53,12 @@ en:
       title: Question Tags
       description: "This widget displays tags related to the current page."
     question_badges:
+      title: Question Badges
       description: "This widget displays badged earned on that question."
     question_stats:
       description: "This widget displays stats about a question such as creation date and number of views."
     related_questions:
+      title: Related Questions
       description: "This widget shows a list of questions related to the current question."
     current_tags:
       description: "This widget displays tags followed by the current user."
