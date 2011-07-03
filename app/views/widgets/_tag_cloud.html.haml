@@ -1,5 +1,5 @@
 %aside
-  .tag-list
+  .active-tags
     -self.current_tags.each do |tag|
       %span.tag{:class => "tag_#{h(tag)}"}
         = link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
