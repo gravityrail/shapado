@@ -65,6 +65,8 @@ var Updater = {
       layout = 'badges';
     } else if($('#pages_show, #pages').length > 0) {
       layout = 'pages';
+    } else if($('.ask_question').length > 0) {
+      layout = 'new-question';
     }
 
     return layout;

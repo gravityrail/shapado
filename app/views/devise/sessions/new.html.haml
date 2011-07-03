@@ -17,7 +17,7 @@
       .field
         =f.label :password, t("password", :scope => "activerecord.attributes.user")
         =f.password_field :password, :class => "password"
-        - if params[:pp]
+        - if params[:pp] && params[:format] != 'mobile'
           = hidden_field_tag :pp, 1
       -if devise_mapping.rememberable?
         .checkbox
@@ -31,7 +31,7 @@
       .field
         = label_tag "OpenID", t(".openid_url")
         = text_field_tag :openid_url, '', :class => "text_field"
-        - if params[:pp]
+        - if params[:pp] && params[:format] != 'mobile'
           = hidden_field_tag :pp, 1
         .buttons
           = submit_tag t('devise.sessions.link'), :class => "save"

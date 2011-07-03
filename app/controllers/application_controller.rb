@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  before_filter :check_cookies
   before_filter :find_group
   before_filter :check_group_access
   before_filter :set_locale
@@ -39,6 +40,13 @@ class ApplicationController < ActionController::Base
     if logged_in? && current_group.is_social_only_signup? &&
         !current_user.is_socially_connected?
       redirect_to social_connect_path if params[:controller] == 'questions'
+    end
+  end
+
+  def check_cookies
+    if params[:format] == 'mobile'
+      cookies.delete(:pp)
+      session[:user_return_to] = '/mobile'
     end
   end
 
