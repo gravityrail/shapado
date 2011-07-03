@@ -97,7 +97,7 @@
               = link_to t(".history", :default => "history")+" (#{@question.versions_count})", history_question_path(@question)
 
             %li.followUp
-              = link_to t('.follow_up'), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t('.follow_up_description')
+              = link_to t('questions.show.follow_up'), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t('.follow_up_description')
 
             - if logged_in?
               -if current_user.can_create_reward?(@question)
