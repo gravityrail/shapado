@@ -45,11 +45,11 @@ class QuestionsController < ApplicationController
       render :history
     else
       if @prev
-        @prev = (@prev == "current" ? :current : @prev.to_i)
+        @prev = (@prev == "current" ? "current" : @prev.to_i)
       end
 
       if @curr
-        @curr = (@curr == "current" ? :current : @curr.to_i)
+        @curr = (@curr == "current" ? "current" : @curr.to_i)
       end
     end
   end
