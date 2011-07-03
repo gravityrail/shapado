@@ -19,16 +19,15 @@
 %article{:class => class_for_question(question)}
   %h2
     = link_to highlight(title, @highlight), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-.user-data
-  -if owner
-    =render :partial => "users/user_data", :locals => {:user => owner}
-  -else
-    Por:
-    =t("global.anonymous")
-  = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
-  -if question.wiki
-    Wiki
-
   .markdown
     =highlight(markdown(question.body), @highlight)
-    .clear
+  .user-data
+    -if owner
+      =render :partial => "users/user_data", :locals => {:user => owner}
+    -else
+      Por:
+      =t("global.anonymous")
+    = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
+    -if question.wiki
+      Wiki
+
