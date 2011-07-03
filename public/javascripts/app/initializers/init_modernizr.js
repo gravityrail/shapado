@@ -24,7 +24,9 @@ Modernizr.load([{
         if(fields.length > 0){
           fields.tabs();
         }
-        Effects.initialize();
+        if(typeof Effects !== 'undefined'){
+          Effects.initialize();
+        }
       }
     }])
    $(document).ready(function() {
