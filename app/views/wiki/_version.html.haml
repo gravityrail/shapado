@@ -1,14 +1,23 @@
-%section
-  .version
-    %small.version
+%li
+  .top
+    %p.version
       =t("wiki.history.version")
       &=number
-      = radio_button_tag("prev", number, prev.to_s == number.to_s)
-      = radio_button_tag("curr", number, curr.to_s == number.to_s)
-    %small.verion-nav
-      = render "diff_actions", :post => post, :number => number
+      .diff
+        = radio_button_tag("prev", number, prev.to_s == number.to_s)
+        = radio_button_tag("curr", number, curr.to_s == number.to_s)
+        
+      %small
+        =#link_to t('.back'), question_path(@question)
+        = render "diff_actions", :post => post, :number => number
 
-    .changes
-      = render "changes", :post => post, :version => version, :scope => scope
-    .owner
-      = render "users/user_data", :user => version.owner
+  = render "changes", :post => post, :version => version, :scope => scope
+  
+  %p.author
+    = render "users/user_data", :user => version.owner
+   
+  .version-nav
+    -if @question.versions.count > 0
+      =link_to t("global.previous"), diff_question_path(@question, :curr => :current, :prev => @question.versions.count-1 )
+    -if !@question.version_message.blank?
+      = t('wiki.history.version_summary')
