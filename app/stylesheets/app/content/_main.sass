@@ -26,9 +26,12 @@
       p
         font-size: 14px
 
-
     article
       padding: 20px
+      .highlight
+        background-color: #ffff99
+        padding: 2px 5px
+        font-size: inherit
       .user-data
         font-size: 12px
         margin: 0 0 10px 20px
@@ -85,9 +88,6 @@
           li.followers
             padding: 3px 5px
             
-
-
-
 .questions
   article
     .toolbar
@@ -127,6 +127,7 @@
       display: block
       font-size: 11px
       text-transform: uppercase
+      
 .tags-list
   h1
     border-bottom: 1px solid #e5e5e5
@@ -134,3 +135,9 @@
     display: block
     overflow: hidden
     min-height: 40px
+    
+.announcement 
+  padding: 15px
+  background-color: #fffee6
+  margin-bottom: 5px
+  +normal-radius

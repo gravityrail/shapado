@@ -1,6 +1,33 @@
 // WIDGET - Tags
 //========================================================================
 .widget-tag_cloud
+  .active-tags
+    text-align: center
+    overflow: hidden
+    span
+      background-color: #f1f1f1
+      margin: 2px
+      float: left
+      +huge-radius
+      position: relative
+      &:hover
+        background-color: #e5e5e5      
+      a
+        line-height: 20px
+        font-size: 12px
+        padding: 0 5px 0 20px
+        color: #000
+    .remove_tag
+      position: absolute
+      top: 4px
+      left: 5px
+      background-color: #c00
+      color: #fff
+      float: left
+      padding: 0 4px 
+      line-height: 12px
+      +huge-radius
+
   .list_cloud
     padding: 5px
     span

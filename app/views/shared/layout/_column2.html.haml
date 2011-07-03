@@ -1,4 +1,8 @@
 %section.content-panel#column2
+  
+  .announcement
+    %p Este es un announcement que deberia ser dinamico en al gun momento; por lo pronto tenemos la posicion y el css para q esto quede bien :P
+    
   - unless params[:controller] =~ /moderate\//
     //= render "shared/action-tabs"
     =render "shared/quick_question_box"
