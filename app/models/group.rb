@@ -292,7 +292,7 @@ class Group
   end
 
   def create_default_widgets
-    [ModInfoWidget, QuestionBadgesWidget, RelatedQuestionsWidget].each do |w|
+    [ContributorsWidget, QuestionBadgesWidget, RelatedQuestionsWidget].each do |w|
       self.question_widgets.sidebar << w.new
     end
 
