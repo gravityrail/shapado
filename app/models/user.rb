@@ -105,9 +105,9 @@ class User
   end
 
   before_save :update_languages
-  
+
   attr_accessible :remember_me
-  
+
   def display_name
     name.blank? ? login : name
   end
@@ -631,12 +631,16 @@ Time.zone.now ? 1 : 0)
 
   ## TODO: add google contacts
   def suggestions(group, limit = 5)
-    sample = (suggested_social_friends(group, limit) | suggested_tags_by_suggested_friends(group, limit) ).sample(limit)
+    rand = Random.rand(2)
+    (rand == 0)? rand_tags = suggested_tags(group, limit) :
+      rand_tags = suggested_tags_by_suggested_friends(group, limit)
+    sample = (suggested_social_friends(group, limit) | rand_tags ).sample(limit)
 
     # if we find less suggestions than requested, complete with
     # most popular users and tags
     (sample.size < limit) ? sample |
-      (group.top_tags_strings(limit+15)-self.preferred_tags_on(group) + group.top_users(limit+5)-[self]).
+      (group.top_tags_strings(limit+15)-self.preferred_tags_on(group) +
+       group.top_users(limit+5)-[self]).
       sample(limit-sample.size) : sample
   end
 
@@ -646,7 +650,7 @@ Time.zone.now ? 1 : 0)
     friends = Membership.where(:group_id => group.id,
                                :user_id.in => self.friend_list.following_ids,
                                :preferred_tags => {"$ne" => [], "$ne" => nil}).
-                         only(:preferred_tags, :login, :name)
+                         only(:preferred_tags, :login, :name, :user_id)
 
     friends_tags = { }
     friends.each do |friend|
@@ -656,18 +660,25 @@ Time.zone.now ? 1 : 0)
         friends_tags["#{tag}"]["followed_by"] << friend
       end
     end
-     friends_tags.to_a.sample(limit)
+     result = friends_tags.to_a.sample(limit)
+     if result.blank?
+       return suggested_tags_by_suggested_friends(group, limit = 5)
+     else
+       return result
+     end
   end
 
-  #returns tags followed by self suggested friends that I may not follow
+  #returns tags followed by self suggested friends
   def suggested_tags_by_suggested_friends(group, limit = 5)
-    friends = suggested_social_friends(group, limit).only(:_id).map{|u| u.id}
+    if suggested_social_friends(group, limit).count > 0
+      friends = suggested_social_friends(group, limit).only(:_id).map{|u| u.id}
+    end
     unless friends.blank?
       memberships = Membership.where(:group_id => group.id,
                                      :user_id.in => friends,
                                      :preferred_tags => {"$ne" => [], "$ne" => nil},
                                      :_id => {:$not => {:$in => self.friend_list.following_ids}}).
-                         only(:preferred_tags, :login, :name)
+                         only(:preferred_tags, :login, :name, :user_id)
 
       friends_tags = { }
       memberships.each do |membership|
@@ -714,8 +725,8 @@ Time.zone.now ? 1 : 0)
   end
 
   # returns a follower that is someone self follows
-  # if @user follows bob and bob follows bill
-  # @user.common_follower(bill) will return bob
+  # if self follows bob and bob follows bill
+  # self.common_follower(bill) will return bob
   def common_follower(user)
     User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
   end
