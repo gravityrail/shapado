@@ -7,6 +7,7 @@ var LayoutEditor = {
   start: function() {
     LayoutEditor.sortable = $("#columns").sortable({
       connectWith: '#columns',
+      cursor: 'move',
       stop: LayoutEditor.dropHandler
     });
   },
