@@ -8,7 +8,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = current_group.announcements.order_by("updated_at desc").
+    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).
                                                  paginate(paginate_opts(params))
 
     @announcement = Announcement.new
@@ -36,6 +36,8 @@ class AnnouncementsController < ApplicationController
         format.html { redirect_to announcements_url }
         format.json  { render :json => @announcement, :status => :created, :location => @announcement }
       else
+        @announcements = current_group.announcements.order_by(["updated_at", "desc"]).
+                                                 paginate(paginate_opts(params))
         format.html { render :action => "index" }
         format.json  { render :json => @announcement.errors, :status => :unprocessable_entity }
       end

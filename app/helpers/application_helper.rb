@@ -271,7 +271,7 @@ module ApplicationHelper
       conditions[:only_anonymous] = false
     end
 
-    Announcement.order_by(:starts_at.desc).where(conditions)
+    Announcement.where(conditions).order_by(:starts_at.desc)
   end
 
   def top_bar_links

@@ -1,8 +1,12 @@
 %section.content-panel#column2
-  
-  .announcement
-    %p Este es un announcement que deberia ser dinamico en al gun momento; por lo pronto tenemos la posicion y el css para q esto quede bien :P
-    
+  -announcements = current_announcements(session[:announcement_hide_time])
+  -unless announcements.empty?
+    .announcement
+      %p
+        -announcements.each do |announcement|
+          =markdown(announcement.message)
+      =link_to "Close", hide_announcements_path, :id => "hide_announcement"
+
   - unless params[:controller] =~ /moderate\//
     //= render "shared/action-tabs"
     =render "shared/quick_question_box"

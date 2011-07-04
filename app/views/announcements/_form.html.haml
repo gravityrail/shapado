@@ -11,11 +11,11 @@
 
   .field.date-msg
     = f.label :starts_at, t(:starts_at, :scope => "activerecord.attributes.announcement")
-    = f.datetime_select :starts_at, :default => Time.zone.now.at_midnight
+    = datetime_select :announcement, :starts_at, :start_year => Time.now.year, :end_year => Time.now.year+10
 
   .field.date-msg
     = f.label :ends_at, t(:ends_at, :scope => "activerecord.attributes.announcement")
-    = f.datetime_select :ends_at, :default => Time.zone.now.at_midnight.tomorrow
+    = datetime_select :announcement, :ends_at, :start_year => Time.now.year, :end_year => Time.now.year+10
 
   .checkbox
     = f.check_box :only_anonymous, :class => "checkbox"

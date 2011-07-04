@@ -1,7 +1,7 @@
 var Messages = {
   initialize: function() {
     $("a#hide_announcement").click(function() {
-      $("#announcement").fadeOut();
+      $(".announcement").fadeOut();
       $.post($(this).attr("href"), "format=js");
       return false;
     });
