@@ -330,14 +330,22 @@ namespace :fixdb do
   end
 
   task :tags => [:init] do
-    Group.all.each do |g|
-      Question.tag_cloud({:group_id => g.id} , 1000).each do |tag|
-        tag = Tag.new(:name => tag["name"], :count => tag["count"])
-        tag.group = g
-        tag.user = g.owner
-        tag.used_at = tag.created_at = tag.updated_at = g.questions.where(:tags.in => [tag["name"]]).first.created_at
-        tag.save
+    count = Question.count
+    i = 0
+    Question.where(:tags => {"$ne" => [], "$ne" => nil}).all.each do |q|
+      q.tags.each do |tag_name|
+        existing_tag = Tag.where(:name => tag_name, :group_id => q.group_id).first
+        if existing_tag
+          existing_tag.inc(:count, 1)
+        else
+          tag = Tag.new(:name => tag_name)
+          tag.group = q.group
+          tag.user = q.group.owner
+          tag.used_at = tag.created_at = tag.updated_at = q.group.questions.where(:created_at=>{:$ne=>nil}).order_by([:created_at, :asc]).first.created_at
+          tag.save
+        end
       end
+      p "#{i+=1}/#{count}"
     end
   end
 
