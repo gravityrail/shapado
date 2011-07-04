@@ -6,12 +6,8 @@
   -content_for :rss do
     %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
-  -content_for :sidebar do
-    = render "shared/widgets", :context => 'mainlist', :position => 'sidebar'
-
   -if @activities.empty?
     = render "activities/empty"
-
 
   -@activities.each do |activity|
     = render "activities/activity", :activity => activity

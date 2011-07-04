@@ -1,9 +1,10 @@
 %div{:class => style}
   -tags.each do |tag|
-    -size = min_size + (tag["count"] - lowest_value["count"]) * ratio
-    -url = tag_url(:id => tag["name"])
-    %span
-      =link_to tag["name"], url, :class => "#{tag_class} #{css[size.round]}"
+    -unless current_tags.include? tag["name"]
+      -size = min_size + (tag["count"] - lowest_value["count"]) * ratio
+      -url = tag_url(:id => (current_tags + [tag["name"]]).join("+"))
+      %span
+        =link_to tag["name"], url, :class => "#{tag_class} #{css[size.round]}", :rel => "tag",:title => t("questions.tags.tooltip")
 .clear
 
 
