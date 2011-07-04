@@ -4,20 +4,24 @@ class Announcement
 
   identity :type => String
 
-  field :message, :type => String, :required => true
-  field :starts_at, :type => Timestamp, :required => true
-  field :ends_at, :type => Timestamp, :required => true
+  field :message, :type => String
+  field :starts_at, :type => Timestamp
+  field :ends_at, :type => Timestamp
 
   field :only_anonymous, :type => Boolean, :default => false
 
   referenced_in :group
 
+  validates_presence_of :message
+  validates_presence_of :starts_at
+  validates_presence_of :ends_at
+
   validate :check_dates
 
   protected
   def check_dates
-    if self.ends_at > Time.now.yesterday
-      if self.starts_at < Time.now.yesterday
+    if self.ends_at > Time.zone.now.yesterday
+      if self.starts_at < Time.zone.now.yesterday
         self.errors.add(:starts_at, "Starting date should be setted to a future date")
       end
 
