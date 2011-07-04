@@ -20,6 +20,8 @@ namespace :deploy do
 
     #magent.restart
     bluepill.restart
+
+    run "rm -rf #{current_path}/tmp/cache/*"
   end
 end
 
