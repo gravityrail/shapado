@@ -1,5 +1,5 @@
 class TopUsersWidget < Widget
-  field :settings, :type => Hash, :default => { :limit => 5, :on_mainlist => true  }
+  field :settings, :type => Hash, :default => { 'limit' => 5, :on_mainlist => true  }
 
   def top_users(group)
     group.memberships.order_by(%W[reputation desc]).limit(self[:settings]['limit']).
