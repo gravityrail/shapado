@@ -56,7 +56,7 @@
 
 
     - if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group))
-      %li.more
+      %li.more.requests
         -# i18n
         = link_to "Requests"
         %ul.drop-menu
