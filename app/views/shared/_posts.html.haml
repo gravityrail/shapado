@@ -23,7 +23,4 @@
     -@questions.each do |question|
       = render "questions/question", :question => question
 
-#additional_info
-  = will_paginate @questions
-
-  .clear
+= will_paginate @questions

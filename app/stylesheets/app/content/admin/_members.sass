@@ -1,34 +1,44 @@
 .members
-  form
-    margin-top: 20px
-    margin-bottom: 20px
-    overflow: hidden
-    .field
-      width: 300px
-      float: left
-      margin-right: 20px
-    .select-role
-      width: 110px
-      margin: 0 10px 0 0
-    .buttons
-      margin: 17px 0 0 0
-      float: left
+  #manage_members
+    form
+      margin: 0 auto -20px auto
+      overflow: hidden
+      .field
+        width: 300px
+        float: left
+        margin-right: 20px
+      .select-role
+        width: 110px
+        margin: 0 10px 0 0
+      .buttons
+        margin: 17px 0 0 0
+        float: left
 
   ul li
     overflow: hidden
     padding: 20px 30px
     margin-top: 20px
+    form
+      margin: 0
+      padding: 0
+      width: auto
+      float: right
+      .field
+        float: left
+        padding: 0
+        margin: 0
     .user-info
       float: left
-      width: 70%
+      width: 50%
       padding-left: 30px
+      
       h2 a
         font-size: 22px
         font-weight: bold
         margin-bottom: 3px
         display: block
       p.description
-        margin-bottom: 5px
+        margin-bottom: 5px !important
         font-size: 11px
         border: 0px !important
         padding: 0 !important
@@ -36,6 +46,7 @@
       small
         font-style: italic
         font-size: 12px
+        margin: 0 !important
 
     .stats
       width: 90px

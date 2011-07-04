@@ -1,10 +1,14 @@
 %h1
   = t(".title", :default => "Themes")
 %p.description
-  = t(".description")
+  Find here your themes and change the look of your app, If you wan you can build your own, 
+  =link_to "new", new_theme_path
 
-.themes
+%section.themes
+  -if @themes.empty?
+    = render "shared/empty"
+    
   -@themes.each do |theme|
     = render "theme", :theme => theme
 
-=link_to "new", new_theme_path
+
