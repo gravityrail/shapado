@@ -9,7 +9,8 @@ task :jsassets do
 
   assets["javascripts"].keys.each do |k|
     assets["javascripts"][k].map! do |file|
-      file.gsub('public','')
+      digest = Digest::MD5.hexdigest(File.read(file))[0..9]
+      file.gsub('public','')+'?'+digest
     end
   end
   assets["stylesheets"].keys.each do |k|
