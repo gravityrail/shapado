@@ -114,7 +114,3 @@
         =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
 
     =will_paginate(@answers)
-
-
-  -content_for :sidebar do
-    = render "shared/widgets", :context => 'question', :position => 'sidebar'

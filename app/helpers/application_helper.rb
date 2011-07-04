@@ -410,6 +410,10 @@ module ApplicationHelper
     link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
   end
 
+  def widgets_context(controller, action)
+    @widgets_context ||= (controller == "questions" && action == "show") ? 'question' : 'mainlist'
+  end
+
   def cache_for(name, *args, &block)
     cache(cache_key_for(name, *args), &block)
   end

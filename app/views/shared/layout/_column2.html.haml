@@ -1,4 +1,5 @@
-%section.content-panel#column2
+- context = widgets_context(params[:controller], params[:action])
+%section.content-panel#column2{:class => current_group.send(:"#{context}_widgets").sidebar.count == 0 ? "nosidebar" : "" }
   -announcements = current_announcements(session[:announcement_hide_time])
   -unless announcements.empty?
     .announcement

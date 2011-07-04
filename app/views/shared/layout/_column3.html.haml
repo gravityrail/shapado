@@ -1,4 +1,8 @@
+
 %section.right-panel#column3
+  - context = widgets_context(params[:controller], params[:action])
+  = render "shared/widgets", :context => context, :position => 'sidebar'
+
   = yield :sidebar
 
   .clear
