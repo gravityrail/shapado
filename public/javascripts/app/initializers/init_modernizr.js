@@ -14,7 +14,7 @@ Modernizr.load([{
       nope: jsassets.geolocation
     }, {
       load: jsassets.base,
-      callback: function(){
+      complete: function(){
         if(typeof(Jqmath)!='undefined')
           Jqmath.initialize();
       }
@@ -48,7 +48,8 @@ Modernizr.load([{
           $('.auto-link').autoVideo();
       }
     }, {
-      test: $('.autocomplete_for_tags').length > 0,
+      test: $('.autocomplete_for_tags').length > 0
+            ||$('#retag').length > 0,
       yep: jsassets.jqautocomplete,
       callback: function() {
         $('.autocomplete_for_tags').ricodigoComplete();
