@@ -162,7 +162,7 @@ class Group
   end
 
   def top_users(limit=5)
-    users.desc(:followers_count).limit(limit)
+    User.where(:group_ids => self.id).desc(:followers_count).limit(limit)
   end
 
   def default_tags=(c)
