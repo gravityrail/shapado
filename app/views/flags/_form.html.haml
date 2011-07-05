@@ -8,7 +8,7 @@
   -klass << " flag_question"
 
 
-=form_for object_form, :html => {:method => "put", :class=>"#{klass} #{local_assigns[:form_id]}", :id => local_assigns[:form_id]} do |f|
+=form_for object_form, :html => {:class=>"#{klass} #{local_assigns[:form_id]}", :id => local_assigns[:form_id]} do |f|
   = hidden_field_tag "return_to", source, :id => "flaggeable_source_#{flaggeable.class.name}_#{flaggeable.id}"
   /%h1=t(".label")
 
