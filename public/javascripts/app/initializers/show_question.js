@@ -1,63 +1,12 @@
 
 $(document).ready(function() {
   Questions.initialize_on_show();
-//  $(".forms form.flag_form").hide();
-//  $("#close_question_form").hide();
+  Comments.initialize_on_question();
   var answers = $('article.answer').length;
   if(answers == 0){
     $('#new_answer').slideDown('slow');
     $('a#add_answer').addClass('active');
   }
-
-  $("form.vote_form button").live("click", function(event) {
-    if(Ui.offline()){
-      startLoginDialog();
-    } else {
-    var btn_name = $(this).attr("name");
-    var form = $(this).parents("form");
-    $.post(form.attr("action")+'.js', form.serialize()+"&"+btn_name+"=1", function(data){
-      if(data.success){
-        form.find(".votes_average").text(data.average);
-        if(data.vote_state == "deleted") {
-        }
-        else {
-          if(data.vote_type == "vote_down") {
-          } else {
-          }
-        }
-        Messages.show(data.message, "notice")
-      } else {
-        Messages.show(data.message, "error")
-        if(data.status == "unauthenticate") {
-          window.onbeforeunload = null;
-          window.location="/users/login"
-        }
-      }
-    }, "json");
-    }
-    return false;
-  });
-
-  $(".comment-form").live("submit", function(event) {
-    var form = $(this);
-    var btn = form.find('button')
-    btn.hide();
-    $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
-      if(data.success){
-        if(data.vote_state == "deleted") {
-        } else {
-          btn.after('<span class="upvoted-comment">✓</span>');
-          btn.remove();
-        }
-        btn.parents(".comment-votes").children(".votes_average").html(data.average);
-        Messages.show(data.message, "notice")
-      } else {
-        Messages.show(data.message, "error")
-      }
-      btn.show();
-    }, "json");
-    return false;
-  });
 
   $("form.mainAnswerForm .button").live("click", function(event) {
     var form = $(this).parents("form");
@@ -101,46 +50,7 @@ $(document).ready(function() {
     return false;
   });
 
-  $("form.commentForm, form.question_comment_form").live("submit", function(event) {
-    var form = $(this);
-    var comments = form.parents(".panel-comments").prev('.comments');
-    var button = form.find("input[type=submit]");
-    if($("#wysiwyg_editor").length > 0 )
-      $("#wysiwyg_editor").htmlarea('updateTextArea');
-    button.attr('disabled', true)
-    $.ajax({ url: form.attr("action"),
-             data: form.serialize()+"&format=js",
-             dataType: "json",
-             type: "POST",
-             success: function(data, textStatus, XMLHttpRequest) {
-                          if(data.success) {
-                            var textarea = form.find("textarea");
-                            window.onbeforeunload = null;
-                            var comment = $(data.html)
-                            if(data.updated){
-                              Comments.update_on_show(data);
-                            } else {
-                              Comments.create_on_show(data);
-                            }
-                            Messages.show(data.message, "notice")
-                            form.hide();
-                            textarea.val("");
-                            LocalStorage.remove(location.href, textarea.attr('id'));
-                          } else {
-                            Messages.show(data.message, "error")
-                            if(data.status == "unauthenticate") {
-                              window.onbeforeunload = null;
-                              window.location="/users/login"
-                            }
-                          }
-                      },
-             error: Messages.ajax_error_handler,
-             complete: function(XMLHttpRequest, textStatus) {
-               button.attr('disabled', false)
-             }
-    });
-    return false;
-  });
+
 
   $("#request_close_question_form").submit(function() {
     var request_button = $(this).find("input.button");
@@ -175,93 +85,13 @@ $(document).ready(function() {
     return false;
   });
 
-  $(".edit_comment").live("click", function() {
-    var comment = $(this).parents(".comment")
-    var link = $(this)
-    link.hide();
-    $.ajax({
-      url: $(this).attr("href"),
-      dataType: "json",
-      type: "GET",
-      data: {format: 'js'},
-      success: function(data) {
-        comment = comment.append(data.html);
-        link.hide()
-        var form = comment.find("form.form")
-        form.find(".cancel_edit_comment").click(function() {
-          form.remove();
-          link.show();
-          return false;
-        });
 
-        var button = form.find("input[type=submit]");
-        var textarea = form.find('textarea');
-        form.submit(function() {
-          button.attr('disabled', true)
-          if($("#wysiwyg_editor").length > 0 )
-            $("#wysiwyg_editor").htmlarea('updateTextArea');
-          $.ajax({url: form.attr("action"),
-                  dataType: "json",
-                  type: "PUT",
-                  data: form.serialize()+"&format=js",
-                  success: function(data, textStatus) {
-                              if(data.success) {
-                                comment.find(".markdown").html('<p>'+data.body+'</p>');
-                                form.remove();
-                                link.show();
-                                Effects.fade(comment);
-                                Messages.show(data.message, "notice");
-                                LocalStorage.remove(location.href, textarea.attr('id'));
-                                window.onbeforeunload = null;
-                              } else {
-                                Messages.show(data.message, "error")
-                                if(data.status == "unauthenticate") {
-                                  window.onbeforeunload = null;
-                                  window.location="/users/login"
-                                }
-                              }
-                            },
-                  error: Messages.ajax_error_handler,
-                  complete: function(XMLHttpRequest, textStatus) {
-                    button.attr('disabled', false)
-                  }
-           });
-           return false
-        });
-      },
-      error: Messages.ajax_error_handler,
-      complete: function(XMLHttpRequest, textStatus) {
-        link.show()
-      }
-    });
-    return false;
-  });
-
-  $(".Answer-commentable, .Question-commentable, .Comment-commentable").live("click", function() {
-    var link = $(this);
-    var answer_id = link.attr('data-commentable');
-    var form = $('form[data-commentable='+answer_id+']')
-    var textarea = form.find('textarea');
-    form.slideToggle();
-    textarea.focus();
-    var viewportHeight = window.innerHeight ? window.innerHeight : $(window).height();
-    var top = form.offset().top - viewportHeight/2;
-
-    $('html,body').animate({scrollTop: top}, 1000);
-    return false;
-  });
-
-  $('.cancel_comment').live('click', function(){
-    $(this).parents('form').slideUp();
-    return false;
-  });
-
-  $(".flag_form .cancel").live("click", function() {
+  $(".flag_form").delegate(".cancel", "click", function() {
     $(this).parents(".flag_form").slideUp();
     return false;
   });
 
-  $(".close_form .cancel").live("click", function() {
+  $(".close_form").delegate(".cancel", "click", function() {
     $(this).parents(".close_form").slideUp();
     return false;
   });

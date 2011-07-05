@@ -50,8 +50,7 @@ class FlagsController < ApplicationController
     @flag.reason = params[:flag][:reason]
 
     respond_to do |format|
-      if @flag.valid?
-        @resource.save
+      if @flag.save
         flash[:notice] = t(:flash_notice, :scope => "flags.update")
         format.html { redirect_to(resource_url) }
         format.json { render :json => @flag.to_json }

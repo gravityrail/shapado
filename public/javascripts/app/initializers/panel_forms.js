@@ -1,7 +1,7 @@
 $(document).ready(function() {
-  $("a#add_reward, a#add_answer, a#share_question, a#flag_question, a#request-close-link").click(function(event) {
+  $("a#add_reward, a#add_answer, a#share_question, a#flag_question, a#request-close-link, a#edit_question_flag_link").click(function(event) {
     var link = $(this);
-    var id = link.attr("id");
+    var id = link.attr("data-form-target") || link.attr("id");
     var lazy = link.attr("data-lazy") == "1";
 
     var form = $("#panel-forms ."+id);
@@ -42,4 +42,3 @@ $(document).ready(function() {
     return false;
   });
 });
-
