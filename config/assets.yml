@@ -7,11 +7,14 @@ package_path:           packages    # (defaults to assets)
 javascript_compressor:  closure     # (yui, closure)
 
 javascripts:
+
   modernizrdev:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets_dev.js
-    - public/javascripts/app/initializers/init_modernizr.js
-
+    - public/javascripts/vendor/jquery.js
+    - public/javascripts/app/modules/jqmath.js
+  init_dev:
+    - public/javascripts/app/initializers/init_dev.js
   modernizr:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
@@ -34,7 +37,6 @@ javascripts:
     - public/javascripts/app/modules/comments.js
     - public/javascripts/app/modules/answers.js
     - public/javascripts/app/modules/authentication.js
-    - public/javascripts/app/modules/geo.js
     - public/javascripts/app/modules/local_storage.js
     - public/javascripts/app/modules/messages.js
     - public/javascripts/app/modules/questions.js
@@ -71,6 +73,7 @@ javascripts:
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
     - public/javascripts/app/modules/networks.js
+    - public/javascripts/app/modules/geo.js
     - public/javascripts/application.js
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/initializers/new_question.js
@@ -114,6 +117,7 @@ javascripts:
   jqmath:
     - public/javascripts/vendor/mathscribe/jqmath-etc-0.1.1.min.js
 
+
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css
@@ -129,4 +133,3 @@ stylesheets:
 
   jqmath:
     - public/javascripts/vendor/mathscribe/jqmath-0.1.1.css
-
