@@ -71,7 +71,10 @@ module MultiauthSupport
           user.login = user.login + "_#{rand(100)}#{rand(100)}#{rand(100)}"
         end
 
-        return false if !user.save
+        if !user.save
+          Rails.logger.info "Invalid new user from #{provider}: #{user.errors.full_messages.inspect}"
+          return false
+        end
       end
       user.check_user_info(fields,provider)
       user
