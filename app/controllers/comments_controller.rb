@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     if @comment.valid? && saved = (@comment.save && scope.save)
       current_user.on_activity(:comment_question, current_group)
 
-      current_user.membership_selector_for(current_group).increment(:comments_count => 1)
+      current_user.membership_selector_for(current_group).first.increment(:comments_count => 1)
       link = question_url(@question)
 
       Jobs::Activities.async.on_comment(scope.id, scope.class.to_s, @comment.id, link).commit!
@@ -126,7 +126,7 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     if current_user.member_of?
-      current_user.membership_selector_for(group).decrement(:comments_count => 1)
+      current_user.membership_selector_for(group).first.decrement(:comments_count => 1)
     end
 
     respond_to do |format|

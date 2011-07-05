@@ -13,10 +13,9 @@ class Flag
   field :user_id, :type => String
   referenced_in :user
 
-  embedded_in :flaggable, :inverse_of => :flags
+  embedded_in :flaggable, :polymorphic => true
 
   validates_presence_of :user
-  validates_presence_of :flaggable
   validates_inclusion_of :reason, :in => REASONS
 
   validate :should_be_unique

@@ -15,7 +15,6 @@ class CloseRequest
   embedded_in :closeable, :inverse_of => :close_requests
 
   validates_presence_of :user
-  validates_presence_of :closeable
   validates_inclusion_of :reason, :in => REASONS
 
 
