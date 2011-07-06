@@ -33,13 +33,17 @@ $(document).ready(function() {
             dataType: "json",
             type: "POST",
             data: form.serialize()+"&format=js",
+            beforeSend: function(jqXHR, settings){
+
+            },
             success: function(data, textStatus) {
                 if(data.success) {
                     var tags = $.map(data.tags, function(n){
                         return '<li><a class="tag" rel="tag" href="/questions/tags/'+n+'">'+n+'</a></li>'
                     })
-                    form.parents('.tag-list').find('li a.tag').parents('li:first').remove();
-                    form.before(tags.join(''));
+                    console.log(form.parents('.tag-list').find('li a.tag'))
+                    form.parents('.tag-list').find('li a.tag').remove();
+                    form.before($.unique(tags).join(''));
                     form.remove();
                     $('.retag').show();
                     Messages.show(data.message, "notice");
@@ -60,6 +64,7 @@ $(document).ready(function() {
 
   $('.cancel-retag').live('click', function(){
       var link = $(this);
+      var form = link.parents('form');
       link.parents('.tag-list').find('.tag').show();
       link.parents('.tag-list').find('.retag').show();
       link.parents('.tag-list').find('form').remove();

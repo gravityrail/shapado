@@ -13,11 +13,17 @@
                 input.attr({placeholder: ''});
                 var tags = [];
                 input.parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
-                input.parent().next('.ac-tags').val(tags.join(','));
+                input.parent().next('.ac-tags').val($.unique(tags).join(','));
                 input.focus();
               }
             }
-      $(".remove-tag").live('click',function(){$(this).parents('ul:first').remove();})
+      $(".remove-tag").live('click',function(){
+        var tagwrapper = $(this).parents('.tagwrapper');
+        $(this).parents('ul:first').remove();
+        var tags = [];
+        tagwrapper.find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
+        tagwrapper.next('.ac-tags').val($.unique(tags).join(','));
+      })
       $(".added-tag").live('mouseenter',function(){$(this).addClass('ui-state-hover')})
       $(".added-tag").live('mouseleave',function(){$(this).removeClass('ui-state-hover')})
       tagInput = $(this);
@@ -52,7 +58,7 @@
             $(this).removeAttr('data-init');
             var tags = [];
             $(this).parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
-            $(this).parent().next('.ac-tags').val(tags.join(','));
+            $(this).parent().next('.ac-tags').val($.unique(tags).join(','));
             $(this).autocomplete( "close" );
           } else {
               tagLink.addClass('ui-state-hover');
