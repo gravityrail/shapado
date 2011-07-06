@@ -32,6 +32,9 @@ class Group
   field :analytics_vendor, :type => String
   field :has_custom_analytics, :type => Boolean, :default => true
 
+  field :auth_providers, :type => Array, :default => %w[Google Twitter Facebook]
+  field :allow_any_openid, :type => Boolean, :default => true
+
   field :language, :type => String
   field :languages, :type => Set, :default => Set.new
   index :languages
@@ -323,8 +326,8 @@ class Group
     signup_type == 'noemail'
   end
 
-  def has_facebook_login?(providers_keys)
-    (providers_keys && self.domain.index(AppConfig.domain)) || self.share.fb_active
+  def has_facebook_login?
+    (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || self.share.fb_active
   end
 
   protected

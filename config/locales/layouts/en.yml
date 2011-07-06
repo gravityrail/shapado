@@ -55,5 +55,6 @@ en:
       announcements: Announcements
       social: Social
       invitations: Invitations
+      access: Access
     notifications:
       message: "If you do not want to receive automatic notifications from %{group} anymore, change your preferences in the notifications screen."

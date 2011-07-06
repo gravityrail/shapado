@@ -205,6 +205,7 @@ Rails.application.routes.draw do
       match 'content' => :content
       match 'invitations' => :invitations
       match 'appearance' => :appearance
+      match 'access' => :access
     end
   end
 

@@ -66,6 +66,10 @@ class Admin::ManageController < ApplicationController
     @active_subtab ||= "invite"
     @invitation = Invitation.new
   end
+
+  def access
+  end
+
   protected
   def check_permissions
     @group = current_group
