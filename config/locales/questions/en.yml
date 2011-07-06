@@ -133,10 +133,10 @@ en:
       failure: "Sorry, the tags could not be updated."
     model:
       messages:
-        too_short: "Seems too short. Please use more words than %{count} to be more specific."
-        too_many_tags: Sorry, you can only enter 9 tags maximum.
+        too_short: "Sorry, your title needs to have more than %{count} words."
+        too_many_tags: Sorry, you can only enter 20 tags maximum.
         empty_tags: Sorry, you need to use at least one tag.
-        title_too_long: "The title is too long. It should not contain more than 100 characters."
+        title_too_long: "Sorry, the title cannot contain more than 100 characters."
         tags_not_added: "The tags '%{tags}' could not be added. You need a reputation of %{reputation_required} to create new tags"
 
   activerecord:
