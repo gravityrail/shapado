@@ -47,6 +47,7 @@
       tagInput.css({outline: 'none', border: 0, padding: '10px', width: '90%'});
       tagInput.keydown(function(event){
         var key = event.keyCode;
+          console.log(key)
         var tag = $(this).prev('ul');
         var tagLink = tag.find('a')
         if($(this).val()==',') //empty the field it if it has a comma
@@ -67,7 +68,7 @@
           tagLink.removeClass('ui-state-hover');
           if($(this).width()>38 && !$(this).attr('data-init'))
             $(this).width($(this).width()-7);
-        } else if (opts.allowNewTags && (key == 9 || key == 32 || key == 188 || key == 13) && $.trim($(this).val().replace(',','')) != '') {
+        } else if (opts.allowNewTags && (key == 9 || key == 32 || key == 188) && $.trim($(this).val().replace(',','')) != '') {
             tagLink.removeClass('ui-state-hover');
             addTag($(this).val(), $(this));
             $(this).focus();
