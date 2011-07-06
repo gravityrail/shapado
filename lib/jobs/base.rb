@@ -37,7 +37,7 @@ module Jobs
         end
 
         if badge.source_type == "Question"
-          Dir.glob("#{Rails.root}/tmp/cache/*/*/views*question*#{badget.source_id}").each do |f|
+          Dir.glob("#{Rails.root}/tmp/cache/*/*/views*question*#{badge.source_id}").each do |f|
             FileUtils.rm_rf(f)
           end
         end
