@@ -14,10 +14,10 @@ class FlagsController < ApplicationController
 
     if @resource.user != current_user
       @flag.flaggable = @resource
+      @flag._parent = @resource
 
       @flag.user = current_user
-      if @flag.valid?
-        @resource.save
+      if @flag.valid? && @flag.save
         flagged = true
         @resource.flagged!
         flash[:notice] = t(:flash_notice, :scope => "flags.create")
