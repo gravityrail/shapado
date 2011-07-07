@@ -1,5 +1,6 @@
 var Comments = {
   initialize_on_question: function(data) {
+    // FIXME: use this code when the ui to vote comments is back
     $(".comment-panel").delegate(".comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button')
@@ -62,7 +63,7 @@ var Comments = {
       return false;
     });
 
-    $(".edit_comment").live("click", function() {
+    $(".comment").delegate(".edit_comment", "click", function() {
       var comment = $(this).parents(".comment")
       var link = $(this)
       link.hide();
@@ -124,7 +125,16 @@ var Comments = {
       return false;
     });
 
-    $(".article-actions").delegate(".Answer-commentable, .Comment-commentable, .Question-commentable", "click", function() {
+    $(".Question-commentable").click(Comments.showCommentForm);
+
+    $(".article-actions").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
+
+    $('.cancel_comment').live('click', function(){
+      $(this).parents('form').slideUp();
+      return false;
+    });
+  },
+  showCommentForm: function() {
       var link = $(this);
       var answer_id = link.attr('data-commentable');
       var form = $('form[data-commentable='+answer_id+']');
@@ -136,13 +146,6 @@ var Comments = {
 
       $('html,body').animate({scrollTop: top}, 1000);
       return false;
-    });
-
-
-    $('.cancel_comment').live('click', function(){
-      $(this).parents('form').slideUp();
-      return false;
-    });
   },
   create_on_index: function(data) {
   },

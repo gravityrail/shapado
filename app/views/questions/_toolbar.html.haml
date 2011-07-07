@@ -21,7 +21,7 @@
 
 
     %li.answer
-      = link_to t("questions.question.answer_verb"), "#", :id => "add_answer"
+      = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"
 
 
 
@@ -33,7 +33,7 @@
 
 
     %li.share_on
-      = link_to t('global.share'), "#", :id => "share_question"
+      = link_to t('global.share'), "#", :id => "share_question", :class => "show_form"
 
 
     - if !@flag.new_record?
@@ -45,11 +45,11 @@
           %li
             %p
               = t(@flag.reason, :scope=>'flags.form')
-              = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :id => "edit_question_flag_link", :class => "flag-link", :rel => 'nofollow', "data-lazy" => "1", "data-form-target" => "flag_question"
+              = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :id => "edit_question_flag_link", :class => "flag-link show_form", :rel => 'nofollow', "data-lazy" => "1", "data-form-target" => "flag_question"
               = link_to t("scaffold.destroy"), question_flag_path(@question,@flag), :id => "destroy_question_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
     - elsif logged_in? && current_user != @question.user
       %li.no-spam
-        = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow'
+        = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
 
 
 
@@ -106,12 +106,12 @@
         - if logged_in?
           -if current_user.can_create_reward?(@question)
             %li.add_reward
-              = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :title => t("#{i18n_scope}.create_reward_description")
+              = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :class => "show_form", :title => t("#{i18n_scope}.create_reward_description")
 
 
           - if show_close_request_form && @close_request.new_record?
             %li.spam
-              = link_to t("#{i18n_scope}.request_closing"), @close_request.new_record? ? new_question_close_request_path(@question) : edit_question_close_request_path(@question, @close_request), :id => "request-close-link", "data-lazy" => "1", :rel => 'nofollow', :title => t("#{i18n_scope}.request_closing_details")
+              = link_to t("#{i18n_scope}.request_closing"), @close_request.new_record? ? new_question_close_request_path(@question) : edit_question_close_request_path(@question, @close_request), :id => "request-close-link", :class => "show_form", "data-lazy" => "1", :rel => 'nofollow', :title => t("#{i18n_scope}.request_closing_details")
 
           - if (@question.wiki && current_user.can_edit_wiki_post_on?(@question.group)) || current_user.can_edit_others_posts_on?(@question.group) || current_user.can_modify?(@question)
             %li.edit-q

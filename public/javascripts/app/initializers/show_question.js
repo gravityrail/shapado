@@ -1,7 +1,6 @@
 
 $(document).ready(function() {
   Questions.initialize_on_show();
-  Comments.initialize_on_question();
   var answers = $('article.answer').length;
   if(answers == 0){
     $('#new_answer').slideDown('slow');
