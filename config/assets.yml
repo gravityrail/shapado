@@ -54,6 +54,7 @@ javascripts:
 
     - public/javascripts/rails.js
     - public/javascripts/app/initializers/search.js
+    - public/javascripts/app/initializers/shapado_toolbar.js
     - public/javascripts/app/initializers/index_question.js
     - public/javascripts/vendor/superfish.js
     - public/javascripts/application-init.js
@@ -66,7 +67,6 @@ javascripts:
     - public/javascripts/app/modules/rewards.js
     - public/javascripts/app/initializers/single/question.js
     - public/javascripts/app/initializers/show_question.js
-    - public/javascripts/app/initializers/panel_forms.js
 
   extra:
     - public/javascripts/app/modules/notifier.js
