@@ -17,9 +17,8 @@
         -if logged_in? && current_user.can_edit_wiki_post_on?(current_group)
           %li
             =link_to t("scaffold.edit"), edit_page_path(page), :class => "pjax", :"data-layout" => "pages" 
-        -if current_user.mod_of?(current_group)
-          %li
-            =link_to t("scaffold.destroy"), page_path(page.id), :class => "important", :method => :delete, :confirm => t("scaffold.sure", :model => t("activerecord.models.page"))
-    
-       
+          -if current_user.mod_of?(current_group)
+            %li
+              =link_to t("scaffold.destroy"), page_path(page.id), :class => "important", :method => :delete, :confirm => t("scaffold.sure", :model => t("activerecord.models.page"))
+
   = will_paginate @pages
