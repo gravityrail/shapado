@@ -540,25 +540,29 @@ Time.zone.now ? 1 : 0)
   end
 
   def join(group, &block)
-    if group.kind_of?(Group)
-      group = group.id
+    if !self.member_of? group
+      if group.kind_of?(Group)
+        group = group.id
+      end
+
+      membership = Membership.new({
+      :user_id => self.id,
+      :group_id => group,
+      :last_activity_at => Time.now,
+      :joined_at => Time.now
+      })
+      self.group_ids << group
+
+      block.call(membership) if block
+
+      membership
     end
-
-    membership = Membership.create({
-     :user_id => self.id,
-     :group_id => group,
-     :last_activity_at => Time.now,
-     :joined_at => Time.now
-    })
-
-    block.call(membership) if block
-
-    membership
   end
 
   def join!(group, &block)
-    if join(group, &block)
-      save!
+    if membership = join(group, &block)
+      membership.save!
+      self.save!
     end
   end
 

@@ -7,6 +7,7 @@ describe VotesController do
     stub_group
     @group = Group.make(:group)
     @user = User.make(:user)
+    @user.join!(@group)
     @user.update_reputation(100, @group)
     @user.reload
     stub_authentication @user

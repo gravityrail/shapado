@@ -177,13 +177,12 @@ class Group
   alias :user :owner
 
   def add_member(user, role)
-    user.join(self) do |membership|
+    user.join!(self) do |membership|
       if membership.reputation < 5
         membership.reputation = 5
       end
       membership.role = role
     end
-    user.save
   end
 
   def is_member?(user)
@@ -418,6 +417,10 @@ class Group
   end
 
   def set_default_theme
-    self.current_theme_id = Theme.where(:is_default => true).only(:_id).first.id
+    theme = Theme.where(:is_default => true).only(:_id).first
+    if theme.nil?
+      theme = Theme.create_default
+    end
+    self.current_theme_id =theme.id
   end
 end

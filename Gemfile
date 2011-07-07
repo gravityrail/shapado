@@ -84,6 +84,7 @@ group :test do
   gem 'ffaker'
   gem 'simplecov'
   gem "autotest"
+  gem 'ruby-debug19', '0.11.6', :require => 'ruby-debug'
 end
 
 group :development do

@@ -50,4 +50,10 @@ class Theme
       end
     end
   end
+
+  def self.create_default
+    theme = Theme.create(:name => "Default", :community => true, :is_default => true)
+    Jobs::Themes.async.generate_stylesheet(theme.id).commit!
+    theme
+  end
 end
