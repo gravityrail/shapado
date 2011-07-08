@@ -64,10 +64,9 @@ describe Group do
 
       it "should return the @group css" do
         @pattern.gsub!("%1", "css")
-        @group.should_receive(:has_custom_css?).and_return(true)
         css = "custom_css"
         css.stub!(:content_type=)
-        @group.should_receive(:custom_css).and_return(css)
+        @group.current_theme.should_receive(:stylesheet).and_return(css)
         @request.should_receive(:path).and_return(@pattern)
         Group.find_file_from_params(@param, @request).should == "custom_css"
       end
@@ -141,25 +140,6 @@ describe Group do
 
       it "should return false for @user" do
         @group.is_member?(@user).should be_false
-      end
-    end
-
-    describe "Group#members" do
-      before(:each) do
-        @user = User.make
-      end
-
-      after(:each) do
-        @user.destroy
-      end
-
-      it "should return an empty array" do
-        @group.members.all.to_a.should be_empty
-      end
-
-      it "should return an array with @user" do
-        @user.join! @group
-        @group.members.map(&:id).include?(@user.id)
       end
     end
 

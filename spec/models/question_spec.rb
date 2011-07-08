@@ -34,13 +34,13 @@ describe Question do
       end
 
       it "should be invalid for a short title" do
-          @question.title = "too short"
+          @question.title = "too"
           @question.valid?.should be_false
           @question.errors[:title].should_not be_nil
       end
 
       it "should be invalid for a short body" do
-          @question.body = "too short"
+          @question.body = "too"
           @question.valid?.should be_false
           @question.errors[:body].should_not be_nil
       end

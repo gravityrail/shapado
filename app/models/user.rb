@@ -361,7 +361,6 @@ Time.zone.now ? 1 : 0)
   end
 
   def activity_on(group, date)
-    Membership.override({:group_id => group.id, :user_id => self.id}, {:last_activity_at => date.utc})
 
     day = date.utc.at_beginning_of_day
     last_day = nil
@@ -369,6 +368,7 @@ Time.zone.now ? 1 : 0)
     if last_activity_at = membership.last_activity_at
       last_day = last_activity_at.at_beginning_of_day
     end
+    membership.override(:last_activity_at => date.utc)
 
     if last_day != day
       if last_day
