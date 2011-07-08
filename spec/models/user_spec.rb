@@ -67,12 +67,6 @@ describe User do
       end
     end
 
-    describe "User#membership_list" do
-      it "should return an empty hash" do
-        @user.membership_list.should == {}
-      end
-    end
-
     describe "User#login=" do
       it "should downcase the login" do
         @user.login = "MEE"
@@ -107,6 +101,7 @@ describe User do
     describe "User#add_preferred_tags" do
       it "should add unique tags" do
         @group = Group.make( :owner => @user)
+        @user.join!(@group)
         @user.add_preferred_tags(["a", "a", "b", "c"], @group)
         @user = User.find(@user.id)
         @user.config_for(@group).preferred_tags.should == ["a", "b", "c"]
@@ -253,7 +248,7 @@ describe User do
 
       it "should return " do
         @group.add_member(@user, "moderator")
-        @user.role_on(@user).should == "moderator"
+        @user.role_on(@group).should == "moderator"
       end
     end
 
@@ -300,12 +295,14 @@ describe User do
       it "should increment activity days for @user on @group" do
         @group = Group.make
         @user.join!(@group)
+
         date = Time.now
         21.times do |i|
           @user.reload
           date += 1.day
           @user.activity_on(@group, date)
-          @user.config_for(@group, false).activity_days.should == i
+          membership = @user.config_for(@group, false)
+          membership.activity_days.should == i+1
         end
       end
 
@@ -317,7 +314,7 @@ describe User do
           @user.reload
           date += 1.day
           @user.activity_on(@group, date)
-          @user.config_for(@group, false).activity_days.should == i
+          @user.config_for(@group, false).activity_days.should == i+1
         end
         date += 2.days
         @user.activity_on(@group, date)

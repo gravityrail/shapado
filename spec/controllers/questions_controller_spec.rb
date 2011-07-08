@@ -115,7 +115,8 @@ describe QuestionsController do
     end
 
     it "should be successful" do
-      post 'create', :question => Question.plan(:question, :user => @user)
+      attrs = Question.plan(:question, :user => @user)
+      post 'create', :question => attrs
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
 

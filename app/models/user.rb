@@ -16,7 +16,9 @@ class User
   LOGGED_OUT_LANGUAGE_FILTERS = %w[any] + AVAILABLE_LANGUAGES
 
   identity :type => String
-  field :login,                     :type => String, :limit => 40, :index => true
+  field :login,                     :type => String, :limit => 40
+  index :login
+
   field :name,                      :type => String, :limit => 100, :default => '', :null => true
 
   field :bio,                       :type => String, :limit => 200
@@ -55,6 +57,8 @@ class User
   field :anonymous,                 :type => Boolean, :default => false
   index :anonymous
 
+  attr_accessible :anonymous, :login
+
   field :networks, :type => Hash, :default => {}
 
   field :friend_list_id, :type => String
@@ -85,7 +89,7 @@ class User
   validates_inclusion_of :language, :in => AVAILABLE_LOCALES
   validates_inclusion_of :role,  :in => ROLES
 
-  with_options :if => lambda { |e| !e.anonymous } do |v|
+  with_options :unless => :anonymous do |v|
     v.validates_presence_of     :login
     v.validates_length_of       :login,    :in => 3..40
     v.validates_uniqueness_of   :login
@@ -166,6 +170,10 @@ class User
   end
 
   def add_preferred_tags(t, group)
+    if !self.member_of? group
+      join!(group)
+    end
+
     if t.kind_of?(String)
       t = t.split(",").map{|e| e.strip}
     end
@@ -357,14 +365,15 @@ Time.zone.now ? 1 : 0)
 
     day = date.utc.at_beginning_of_day
     last_day = nil
-    if last_activity_at = config_for(group, false).last_activity_at
+    membership = config_for(group, false)
+    if last_activity_at = membership.last_activity_at
       last_day = last_activity_at.at_beginning_of_day
     end
 
     if last_day != day
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
-          Membership.increment({:group_id => group.id, :user_id => self.id}, {:activity_days => 1})
+          membership.increment(:activity_days => 1)
 
           Jobs::Activities.async.on_activity(group.id, self.id).commit!
         elsif !last_day.utc.today? && (last_day.utc != Time.now.utc.yesterday)
@@ -380,11 +389,11 @@ Time.zone.now ? 1 : 0)
   end
 
   def upvote!(group, v = 1.0)
-    Membership.override({:group_id => group.id, :user_id => self.id}, {:votes_up => v.to_f})
+    Membership.increment({:group_id => group.id, :user_id => self.id}, {:votes_up => v.to_f})
   end
 
   def downvote!(group, v = 1.0)
-    Membership.override({:group_id => group.id, :user_id => self.id}, {:votes_down => v.to_f})
+    Membership.increment({:group_id => group.id, :user_id => self.id}, {:votes_down => v.to_f})
   end
 
   def update_reputation(key, group, v = nil)
@@ -403,7 +412,7 @@ Time.zone.now ? 1 : 0)
     current_reputation = config_for(group, false).reputation
 
     if value
-      Membership.override({:group_id => group.id, :user_id => self.id}, {:reputation => value})
+      Membership.increment({:group_id => group.id, :user_id => self.id}, {:reputation => value})
     end
 
     stats = self.reputation_stats(group)

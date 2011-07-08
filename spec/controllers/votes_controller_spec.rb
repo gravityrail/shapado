@@ -8,7 +8,7 @@ describe VotesController do
     @group = Group.make(:group)
     @user = User.make(:user)
     @user.join!(@group)
-    @user.update_reputation(100, @group)
+    @user.update_reputation(120, @group)
     @user.reload
     stub_authentication @user
     @question = Question.make(:question, :group => @group)
@@ -40,7 +40,9 @@ describe VotesController do
       body = JSON.load(response.body)
       body["average"].should == 1
 
-      other_user = User.make("membership_list" => { @group.id => {"reputation" => 50}})
+      other_user = User.make
+      other_user.join!(@group)
+      other_user.update_reputation(60, @group)
       stub_authentication(other_user)
       @vote_attrs.merge!(:answer_id => @voteable.id, :format => "js")
       post 'create', @vote_attrs

@@ -254,7 +254,9 @@ class QuestionsController < ApplicationController
         elsif current_group.enable_anonymous
           @user = User.new(:anonymous => true, :login => "Anonymous")
           @user.safe_update(%w[name email website], params[:user])
-          @user.login = @user.name if @user.name.present?
+          if @user.name.present? && @user.name.size > 3
+            @user.login = @user.name
+          end
           @user.save!
           @question.user = @user
         else

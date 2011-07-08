@@ -52,8 +52,8 @@ class SearchesController < ApplicationController
 
   def show
     @search = current_user.searches.by_slug(params[:id], :group_id => current_group.id)
-    if @search
-      redirect_to searches_path
+    if @search.nil?
+      redirect_to search_index
     end
 
     find_questions(@search.conditions)

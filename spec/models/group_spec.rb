@@ -144,7 +144,7 @@ describe Group do
       end
     end
 
-    describe "Group#users" do
+    describe "Group#members" do
       before(:each) do
         @user = User.make
       end
@@ -153,8 +153,13 @@ describe Group do
         @user.destroy
       end
 
-      it "should return and empty array" do
-        @group.users.all.to_a.should be_empty
+      it "should return an empty array" do
+        @group.members.all.to_a.should be_empty
+      end
+
+      it "should return an array with @user" do
+        @user.join! @group
+        @group.members.map(&:id).include?(@user.id)
       end
     end
 

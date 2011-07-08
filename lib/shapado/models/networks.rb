@@ -11,7 +11,7 @@ module Models
     module InstanceMethods
       def find_networks(params)
         r = {}
-        params.each do |network|
+        (params||[]).each do |network|
           next if network["name"].blank?
           r[network["name"]] = case network["name"]
           when "facebook"
