@@ -189,7 +189,14 @@ class User
   end
 
   def preferred_tags_on(group)
-    @group_preferred_tags ||= (config_for(group, false).preferred_tags || []).to_a
+    @group_preferred_tags ||= begin
+      membership = config_for(group, false)
+      if membership
+        membership.preferred_tags || []
+      else
+        []
+      end
+    end
   end
 
   def language_filter=(filter)

@@ -241,7 +241,7 @@ class UsersController < ApplicationController
 
   def preferred
     @user = params[:id] ? User.where(:login => params[:id]).first : current_user
-    @current_tags = tags = @user.config_for(current_group).preferred_tags
+    @current_tags = tags = @user.preferred_tags_on(current_group)
 
     find_questions(:tags.in => tags)
   end
