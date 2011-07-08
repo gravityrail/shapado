@@ -1,4 +1,6 @@
 class DocController < ApplicationController
+  layout 'application'
+
   def privacy
     set_page_title("Privacy")
   end

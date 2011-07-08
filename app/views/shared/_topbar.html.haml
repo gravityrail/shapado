@@ -22,7 +22,7 @@
       %ul.combobox
         %li
           = avatar_img(current_user, :size => 18)
-          = link_to(h(current_user.login), user_path(current_user)), :class => "pjax", :"data-layout" => "user"
+          = link_to h(current_user.login), user_path(current_user), :class => "pjax", :"data-layout" => "user"
           %span.reputation{:title => t("activerecord.attributes.user.reputation")}=format_number(current_user.reputation_on(current_group))
           %ul
             %li

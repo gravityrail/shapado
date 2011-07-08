@@ -2,5 +2,8 @@
 %h1
   =@theme.name
 
-%code
-  = @theme.stylesheet.read
+-if @theme.ready
+  %code
+    = @theme.stylesheet.read
+-else
+  this theme is not ready to be used
