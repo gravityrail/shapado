@@ -10,9 +10,13 @@ module Nominatim
     end
 
     def get_address
-      url = "http://nominatim.openstreetmap.org/reverse?format=json&lat=#{self.lat}&lon=#{self.long}&zoom=18&addressdetails=1"
-      data = JSON.parse(open(url).read)
-      data["address"]
+      url = "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&lat=#{self.lat}&lon=#{self.long}"
+      begin
+        data = JSON.parse(open(url).read)
+        return data["address"]
+      rescue
+        { }
+      end
     end
 
     def get_address_from_country(country)
