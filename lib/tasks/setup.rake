@@ -27,6 +27,8 @@ namespace :setup do
     default_tags = %w[technology business science politics religion
                                sports entertainment gaming lifestyle offbeat]
 
+    group_language = AppConfig.default_language.blank? ? "en" : AppConfig.default_language
+
     subdomain = AppConfig.application_name.gsub(/[^A-Za-z0-9\s\-]/, "")[0,20].strip.gsub(/\s+/, "-").downcase
     default_group = Group.new(:name => AppConfig.application_name,
                               :domain => AppConfig.domain,
