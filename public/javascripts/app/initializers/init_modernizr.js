@@ -1,3 +1,5 @@
+//needed for IE
+fix_html5_on_ie();
 Modernizr.load([{
   load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
   callback: function() {
@@ -51,8 +53,9 @@ Modernizr.load([{
       test: $('.autocomplete_for_tags').length > 0
             ||$('#retag').length > 0,
       yep: jsassets.jqautocomplete,
-      callback: function() {
-        $('.autocomplete_for_tags').ricodigoComplete();
+      complete: function() {
+        if($('.autocomplete_for_tags').length > 0)
+          $('.autocomplete_for_tags').ricodigoComplete();
       }
     },{
        test: $("input[type=color]").length>0,
@@ -68,3 +71,13 @@ Modernizr.load([{
    })
   }
 }]);
+
+function fix_html5_on_ie() {
+  document.createElement('header');
+  document.createElement('footer');
+  document.createElement('section');
+  document.createElement('aside');
+  document.createElement('nav');
+  document.createElement('article');
+  document.createElement('hgroup');
+}

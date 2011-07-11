@@ -51,15 +51,6 @@ var Ui = {
       return false;
     });
   },
-  fix_html5_on_ie: function() {
-    document.createElement('header');
-    document.createElement('footer');
-    document.createElement('section');
-    document.createElement('aside');
-    document.createElement('nav');
-    document.createElement('article');
-    document.createElement('hgroup');
-  },
   supports_input_placeholder: function() {
     var i = document.createElement('input');
     return 'placeholder' in i;

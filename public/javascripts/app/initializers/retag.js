@@ -23,7 +23,7 @@ $(document).ready(function() {
       }
     });
     return false;
-  })
+  });
 
   $('.retag-form').live('submit', function() {
     form = $(this);
@@ -41,7 +41,6 @@ $(document).ready(function() {
                     var tags = $.map(data.tags, function(n){
                         return '<li><a class="tag" rel="tag" href="/questions/tags/'+n+'">'+n+'</a></li>'
                     })
-                    console.log(form.parents('.tag-list').find('li a.tag'))
                     form.parents('.tag-list').find('li a.tag').remove();
                     form.before($.unique(tags).join(''));
                     form.remove();
@@ -69,5 +68,5 @@ $(document).ready(function() {
       link.parents('.tag-list').find('.retag').show();
       link.parents('.tag-list').find('form').remove();
       return false;
-  })
+  });
 });

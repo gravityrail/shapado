@@ -126,6 +126,6 @@
               .append( "<a>" + item.caption + "</a>" )
               .appendTo( ul );
       };
-    })
+    });
   }
 })(jQuery);

@@ -170,4 +170,4 @@ var Comments = {
   },
   vote: function(data) {
   }
-}
+};

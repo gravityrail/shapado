@@ -31,4 +31,4 @@ var Votes = {
   update_on_show: function(data) {
 
   }
-}
+};

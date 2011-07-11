@@ -38,4 +38,4 @@ var Tags = {
       return false;
     });
   }
-}
+};

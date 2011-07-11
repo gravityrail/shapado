@@ -16,4 +16,4 @@ var Answers = {
   vote: function(data) {
     $("article.answer."+data.object_id+" li.votes_average").text(data.average);
   }
-}
+};

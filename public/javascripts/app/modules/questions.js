@@ -54,4 +54,4 @@ var Questions = {
   update_widgets: function(data) {
 
   }
-}
+};
