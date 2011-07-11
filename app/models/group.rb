@@ -389,7 +389,7 @@ class Group
   def modify_attributes
     self.domain.downcase!
     self.subdomain.downcase!
-    if self.language && !self.languages.include?(self.language)
+    if !self.language.blank? && !self.languages.include?(self.language)
       self.languages << self.language
     end
   end
