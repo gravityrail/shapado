@@ -48,6 +48,7 @@ class VotesController < ApplicationController
         sweep_question(@voteable)
         Jobs::Votes.async.on_vote_question(@voteable.id, value, current_user.id, current_group.id).commit!
       elsif @voteable.class == Answer
+        sweep_question(@voteable.question)
         Jobs::Votes.async.on_vote_answer(@voteable.id, value, current_user.id, current_group.id).commit!
       end
     when :destroyed
