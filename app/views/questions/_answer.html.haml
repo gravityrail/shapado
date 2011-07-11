@@ -6,7 +6,7 @@
 - @aflag ||= Flag.new
 
 
-%article{:class => "answer #{answer.id}"}
+%article{:class => "answer #{answer.id} #{solution ? "solution" : ""}"}
   %a{:name => "answer#{answer.id}"}
 
   = vote_box(answer, question_path(@question), @question.closed)
