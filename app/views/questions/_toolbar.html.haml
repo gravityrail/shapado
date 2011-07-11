@@ -78,17 +78,16 @@
 
 
     - if show_close_request_form &&!@close_request.new_record?
-      %li.close-request-label
-        %span
-          Your close request
-          =#t("#{i18n_scope}.requested_close_as")
+      -# i18n
+      %li.more.request-close
+        = link_to  "Your close request"
+        =#t("#{i18n_scope}.requested_close_as")
         %ul.drop-menu
           %li
-            = t(@close_request.reason, :scope=>'close_requests.form')
-          %li
-            = link_to t("#{i18n_scope}.edit_request"), edit_question_close_request_path(@question,@close_request), :id => "edit_question_close_request_link", :rel => 'nofollow', "data-lazy" => "1"
-          %li
-            = link_to t("#{i18n_scope}.retract_request"), question_close_request_path(@question,@close_request), :id => "destroy_question_close_request_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+            %p
+              = t(@close_request.reason, :scope=>'close_requests.form')
+              = link_to "Edit", edit_question_close_request_path(@question,@close_request), :id => "edit_question_close_request_link", :rel => 'nofollow', "data-lazy" => "1"
+              = link_to "Retract", question_close_request_path(@question,@close_request), :id => "destroy_question_close_request_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
 
 
 
