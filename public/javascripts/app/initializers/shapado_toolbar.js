@@ -15,6 +15,7 @@
         var lazy = link.attr("data-lazy") == "1";
 
         var form = formContainer.find("."+id);
+        console.log(form)
 
         if(link.hasClass("active")){
           link.removeClass("active");
@@ -31,7 +32,7 @@
             link.addClass('busy');
             $.getJSON(href+'.js', function(data){
               var nform = $(data.html);
-              $("#panel-forms").prepend(nform);
+              formContainer.prepend(nform);
               nform.slideDown("slow");
               link.removeClass('busy');
               actionsContent.find("li a").removeClass("active");

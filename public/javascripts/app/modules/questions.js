@@ -12,6 +12,8 @@ var Questions = {
   initialize_on_show: function() {
     Ui.hide_comments_form();
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
+    $(".article-actions").shapadoToolbar({formContainer: ".article-forms"});
+    Effects.initialize();
     Rewards.initialize();
     Editor.initialize();
     Comments.initialize_on_question();

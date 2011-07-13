@@ -152,6 +152,11 @@ class AnswersController < ApplicationController
 
   def edit
     @question = @answer.question
+    respond_to do |format|
+      format.html
+      format.js {render :json => {:success => false, :html => render_to_string(:partial => "answers/edit_form",
+                                   :locals => {:question => @question, :answer => @answer}) }.to_json }
+    end
   end
 
   def update
