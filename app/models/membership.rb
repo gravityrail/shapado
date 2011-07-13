@@ -27,6 +27,8 @@ class Membership
 
   field :comments_count,            :type => Integer, :default => 0
 
+  field :reputation_today, :type => Hash, :default => {}
+
   referenced_in :user
   referenced_in :group
 

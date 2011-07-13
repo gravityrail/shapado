@@ -104,7 +104,7 @@ class GroupsController < ApplicationController
   def update
     @group.languages = params[:languages].split(',') if params[:languages]
     @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex
-                          custom_favicon language languages current_theme_id reputation_rewards reputation_constrains
+                          custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
                           has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor
                           fb_button notification_opts auth_providers], params[:group])
     @group.share.safe_update(%w[fb_app_id fb_secret_key fb_active starts_with ends_with enable_twitter twitter_user twitter_pattern], params[:group][:share]) if params[:group][:share]

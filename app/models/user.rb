@@ -415,12 +415,26 @@ Time.zone.now ? 1 : 0)
       value = v
     end
 
-    Rails.logger.info "#{self.login} received #{value} points of karma by #{key} on #{group.name}"
-    current_reputation = config_for(group, false).reputation
+    return if !value
 
-    if value
-      Membership.increment({:group_id => group.id, :user_id => self.id}, {:reputation => value})
+    Rails.logger.info "#{self.login} received #{value} points of karma by #{key} on #{group.name}"
+    membership = config_for(group, false)
+    current_reputation = membership.reputation
+
+    today = Time.now.to_s(:ymd)
+    if membership.reputation_today.include?(today)
+      total_today = membership.reputation_today[today] + value
+      if group.daily_cap != 0 && total_today > group.daily_cap
+        Rails.logger.info "#{membership.id} hitted daily cap"
+        return
+      end
+
+      membership.reputation_today[today] = total_today
+    else
+      membership.reputation_today = {today => self.points} # override
     end
+    membership.reputation = current_reputation + value
+    membership.save(:validate => false)
 
     stats = self.reputation_stats(group)
     stats.save if stats.new?

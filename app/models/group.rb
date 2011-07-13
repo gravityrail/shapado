@@ -53,6 +53,7 @@ class Group
   field :has_reputation_constrains, :type => Boolean, :default => true
   field :reputation_rewards, :type => Hash, :default => REPUTATION_REWARDS
   field :reputation_constrains, :type => Hash, :default => REPUTATION_CONSTRAINS
+  field :daily_cap, :type => Integer, :default => 0
   field :forum, :type => Boolean, :default => false
 
   embeds_one :custom_html
