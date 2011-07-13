@@ -1,7 +1,6 @@
 var Comments = {
   initialize_on_question: function(data) {
-    // FIXME: use this code when the ui to vote comments is back
-    $(".comment-panel").delegate(".comment-form", "submit", function(event) {
+    $(".content-panel").delegate(".comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button')
       btn.hide();
@@ -22,7 +21,7 @@ var Comments = {
       return false;
     });
 
-    $(".comment-panel").delegate("form.commentForm, form.question_comment_form", "submit", function(event) {
+    $(".content-panel").delegate("form.commentForm, form.question_comment_form", "submit", function(event) {
       var form = $(this);
       var comments = form.parents(".panel-comments").prev('.comments');
       var button = form.find("input[type=submit]");
@@ -63,7 +62,7 @@ var Comments = {
       return false;
     });
 
-    $(".comment").delegate(".edit_comment", "click", function() {
+    $(".content-panel").delegate(".edit_comment", "click", function() {
       var comment = $(this).parents(".comment")
       var link = $(this)
       link.hide();
@@ -127,7 +126,7 @@ var Comments = {
 
     $(".Question-commentable").click(Comments.showCommentForm);
 
-    $(".article-actions").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
+    $(".content-panel").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
 
     $('.cancel_comment').live('click', function(){
       $(this).parents('form').slideUp();
