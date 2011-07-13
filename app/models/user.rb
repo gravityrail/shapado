@@ -431,7 +431,7 @@ Time.zone.now ? 1 : 0)
 
       membership.reputation_today[today] = total_today
     else
-      membership.reputation_today = {today => self.points} # override
+      membership.reputation_today = {today => value} # override
     end
     membership.reputation = current_reputation + value
     membership.save(:validate => false)
