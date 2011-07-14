@@ -10,7 +10,7 @@
   %meta{:name => "description", :content => question_body.gsub(/<\/?[^>]*>/, "")[0, 255] }
   %link{:rel => "canonical", :href => question_url(@question) }
 
--cache_for(:question, @question.id) do
+-cache_for(:question, @question.id, @question.user == current_user ? "owner" : "" ) do
   %section#question{:class => "main-question #{@question.id}"}
     %h1
       &= @question.title
@@ -61,7 +61,8 @@
       %li.retag
         = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
-  #answers-content-wrap
+#answers-content-wrap
+  -cache_for(:question_answers, @question.id) do
     %header
       %h3
         = t(".answers_title", :count => @answers.total_entries)
@@ -85,7 +86,7 @@
     .followUp-content
       -if @question.follow_up
         %h1
-          =t("questions.show.follow_up_of")
+          = t("questions.show.follow_up_of")
         = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
 
       -if @question.followed_up_by.limit(1).count > 0
@@ -104,13 +105,13 @@
             .comment
               =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
-    .answers-list
-      - if @question.accepted
-        -solution = @question.answer
-        =render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
+  .answers-list
+    - if @question.accepted
+      - solution = @question.answer
+      = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
 
-      -@answers.each do |answer|
-        -next if answer.id == @question.answer_id
-        =render :partial=> "answer", :locals=> {:question => @question, :answer => answer}
+    - @answers.each do |answer|
+      - next if answer.id == @question.answer_id
+      = render "answer", {:question => @question, :answer => answer}
 
-    =will_paginate(@answers)
+  = will_paginate(@answers)

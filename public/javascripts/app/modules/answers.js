@@ -2,7 +2,6 @@ var Answers = {
   create_on_index: function(data) {
   },
   create_on_show: function(data) {
-    console.log(777)
     var is_there = $('.'+data.object_id).length;
     if(is_there==0){
       alert(is_there);

@@ -1,55 +1,56 @@
 
 -solution = question.accepted && question.answer_id == answer.id
--source = question_path(@question)
+-source = question_path(question)
 
-%article{:class => "answer #{answer.id} #{solution ? "solution" : ""}"}
-  %a{:name => "answer#{answer.id}"}
+-cache_for(:answers, question.id, answer.id, answer.user == current_user ? "owner" : "") do
+  %article{:class => "answer #{answer.id} #{solution ? "solution" : ""}"}
+    %a{:name => "answer#{answer.id}"}
 
-  = vote_box(answer, question_path(@question), @question.closed)
+    = vote_box(answer, question_path(@question), @question.closed)
 
-  %h4
-    = render "questions/answered_by", local_assigns
-    %time{:datetime => answer.created_at.iso8601, :style => "margin: 0 0 0 5px"}
-      = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)
-  .answer-avatar
-    = avatar_img(answer.user, :size => "small") unless answer.anonymous
+    %h4
+      = render "questions/answered_by", local_assigns
+      %time{:datetime => answer.created_at.iso8601, :style => "margin: 0 0 0 5px"}
+        = link_to t("time.ago", :time => time_ago_in_words(answer.created_at)), question_answer_path(@question.id, answer.id)
+    .answer-avatar
+      = avatar_img(answer.user, :size => "small") unless answer.anonymous
 
-  .content.markdown
-    =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+    .content.markdown
+      =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
 
-    -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
-      %h3
-        = t(:flags, :scope => "activerecord.models")
-        = render :partial => "flags/list", :locals => {:flaggeable => answer}
-      -if !answer.updated_by.nil?
-        .author.vcard.user_data
-          .time_ago
-            = t('activerecord.attributes.answer.updated_at', :default => "updated")
-          %strong.updated{:title => answer.updated_at, :class => "relativetime"}
-            = t("time.ago", :time => time_ago_in_words(answer.updated_at))
-          .avatar.logo
-            = avatar_img(answer.updated_by, :size => "small")
-          .user
-            = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
-            -if !answer.updated_by.hide_country && answer.address.present?
-              .adr
-                .country-name
-                  = t("global.from", :site => answer.address_name)
-                  = country_flag(answer.address["country_code"], answer.address["country"])
+      -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
+        %h3
+          = t(:flags, :scope => "activerecord.models")
+          = render :partial => "flags/list", :locals => {:flaggeable => answer}
+        -if !answer.updated_by.nil?
+          .author.vcard.user_data
+            .time_ago
+              = t('activerecord.attributes.answer.updated_at', :default => "updated")
+            %strong.updated{:title => answer.updated_at, :class => "relativetime"}
+              = t("time.ago", :time => time_ago_in_words(answer.updated_at))
+            .avatar.logo
+              = avatar_img(answer.updated_by, :size => "small")
+            .user
+              = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
+              -if !answer.updated_by.hide_country && answer.address.present?
+                .adr
+                  .country-name
+                    = t("global.from", :site => answer.address_name)
+                    = country_flag(answer.address["country_code"], answer.address["country"])
 
-  = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
+    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 
-  .comments
-    -answer.comments.each do |comment|
-      = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
+    .comments
+      -answer.comments.each do |comment|
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 
-  .panel-comments
-    -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
-      %fieldset
-        = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
-        .buttons
-          = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-          = t("global.or")
-          = submit_tag t("comments.shared.comment_submit")
+    .panel-comments
+      -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
+        %fieldset
+          = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
+          .buttons
+            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
+            = t("global.or")
+            = submit_tag t("comments.shared.comment_submit")
 
-  .article-forms
+    .article-forms
