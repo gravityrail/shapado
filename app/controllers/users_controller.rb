@@ -14,9 +14,9 @@ class UsersController < ApplicationController
                 [:oldest, [:created_at, Mongo::ASCENDING]]]
 
   subtabs :index => [[:reputation, "reputation"],
-                     [:newest, %w(created_at desc)],
-                     [:oldest, %w(created_at asc)],
-                     [:name, %w(login asc)],
+                     [:newest, %w(joined_at desc)],
+                     [:oldest, %w(joined_at asc)],
+                     [:name, %w(display_name asc)],
                      [:near, ""]],
           :show => [[:votes, [[:votes_average, :desc], [:created_at, :desc]]],
                     [:views, [:views, :desc]],

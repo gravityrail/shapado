@@ -37,6 +37,7 @@ namespace :fixdb do
           membership["_id"] = BSON::ObjectId.new.to_s
           membership["group_id"] = group_id
           membership["user_id"] = user.id
+          membership["joined_at"] ||= user.created_at
           memberships << membership
         end
       end
