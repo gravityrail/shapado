@@ -168,7 +168,7 @@ class AnswersController < ApplicationController
       if @answer.valid? && @answer.save
         @question.add_contributor(current_user)
 
-        sweep_question(@question)
+        sweep_answer(@answer)
 
         Question.update_last_target(@question.id, @answer)
 
@@ -199,6 +199,7 @@ class AnswersController < ApplicationController
     @answer.destroy
     @question.answer_removed!
     sweep_question(@question)
+    sweep_answer(@answer)
 
     Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
 

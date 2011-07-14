@@ -380,6 +380,9 @@ class QuestionsController < ApplicationController
       @question.user.update_reputation(:delete_question, current_group)
     end
     sweep_question(@question)
+    @question.answers.each do |answer|
+      sweep_answer(answer)
+    end
     @question.destroy
 
     Jobs::Questions.async.on_destroy_question(current_user.id, @question.attributes).commit!
@@ -403,6 +406,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if !@question.subjetive && @question.save
         sweep_question(@question)
+        sweep_answer(@answer)
 
         current_user.on_activity(:close_question, current_group)
         if current_user != @answer.user
@@ -440,6 +444,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         sweep_question(@question)
+        sweep_answer(@answer)
 
         flash[:notice] = t(:flash_notice, :scope => "questions.unsolve")
         current_user.on_activity(:reopen_question, current_group)
@@ -562,6 +567,9 @@ class QuestionsController < ApplicationController
 
       if @question.save
         sweep_question(@question)
+        @question.answers.each do |answer|
+          sweep_answer(answer)
+        end
 
         Answer.override({"question_id" => @question.id},
                         {"group_id" => @group.id})

@@ -45,10 +45,8 @@ class VotesController < ApplicationController
     when :created
       average+=1
       if @voteable.class == Question
-        sweep_question(@voteable)
         Jobs::Votes.async.on_vote_question(@voteable.id, value, current_user.id, current_group.id).commit!
       elsif @voteable.class == Answer
-        sweep_question(@voteable.question)
         Jobs::Votes.async.on_vote_answer(@voteable.id, value, current_user.id, current_group.id).commit!
       end
     when :destroyed
@@ -60,6 +58,11 @@ class VotesController < ApplicationController
 
 
     if state != :error
+      if @voteable.class == Question
+        sweep_question(@voteable)
+      elsif @voteable.class == Answer
+        sweep_answer(@voteable.answer)
+      end
       Magent::WebSocketChannel.push({id: "vote", object_id: @voteable.id, channel_id: current_group.slug,
                                      value: value, average: average, on: @voteable.class.to_s})
     end

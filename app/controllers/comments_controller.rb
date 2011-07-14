@@ -26,7 +26,11 @@ class CommentsController < ApplicationController
 
       Jobs::Activities.async.on_comment(scope.id, scope.class.to_s, @comment.id, link).commit!
       Jobs::Mailer.async.on_new_comment(scope.id, scope.class.to_s, @comment.id).commit!
-      sweep_question(@question)
+      if @answer
+        sweep_answer(@answer)
+      else
+        sweep_question(@question)
+      end
       if question_id = @comment.question_id
         Question.update_last_target(question_id, @comment)
       end
@@ -87,6 +91,8 @@ class CommentsController < ApplicationController
       @comment.body = params[:comment][:body]
       if @comment.valid? && scope.save
         sweep_question(@question)
+        sweep_answer(@answer) if @answer
+
         if question_id = @comment.question_id
           Question.update_last_target(question_id, @comment)
         end
@@ -126,6 +132,7 @@ class CommentsController < ApplicationController
     @comment = @scope.comments.find(params[:id])
     @comment.destroy
     sweep_question(@question)
+    sweep_answer(@answer) if @answer
     if @comment.user.member_of? @comment.group
       @comment.user.membership_selector_for(@comment.group).first.decrement(:comments_count => 1)
     end
