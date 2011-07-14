@@ -387,7 +387,7 @@ module ApplicationHelper
   def follow_tag_link(tag)
     if logged_in?
       if current_user.preferred_tags_on(current_group).include?(tag.name)
-        follow_class = 'unfollow-tag toogle_action'
+        follow_class = 'unfollow-tag toggle-action'
         follow_data = 'follow-tag'
         data_title = t("global.follow")
         title = t("global.unfollow")
@@ -395,7 +395,7 @@ module ApplicationHelper
         data_undo = follow_tags_users_path(:tags => tag.name)
       else
         follow_data = 'unfollow-tag'
-        follow_class = 'follow-tag toogle_action'
+        follow_class = 'follow-tag toggle-action'
         data_title = t("global.unfollow")
         title = t("global.follow")
         opt = 'add'

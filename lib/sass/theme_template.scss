@@ -74,11 +74,14 @@ a {
 }
 
 // app/stylesheets/app/_messages.sass
-.error, #notifyBar{
+#notifyBar .error {
   color: #fff;
   @include error-gradient;
 }
 
+#notifyBar .notice {
+  @include gradient(#80C908);
+}
 #messages {
   color: #fff;
   @include gradient($blue);
