@@ -96,6 +96,7 @@ var FbQuestions = {
     });
 
     $("a.follow_question").click(function() {
+      console.lo("!!!")
       var l = $(this);
       var href = $(this).attr("href");
 

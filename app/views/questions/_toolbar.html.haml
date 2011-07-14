@@ -27,9 +27,9 @@
 
     %li.follow
       - if current_user && @question.follower?(current_user)
-        = link_to t('global.unfollow'), unfollow_question_path(@question), :class => 'unfollow-q question-action', "data-undo" =>  follow_question_path(@question), "data-title" => t("#{i18n_scope}.follow_tooltip"), :title => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.follow')
+        = link_to t('global.unfollow'), unfollow_question_path(@question), :class => 'unfollow-q toggle-action', "data-undo" =>  follow_question_path(@question), "data-title" => t("#{i18n_scope}.follow_tooltip"), :title => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.follow')
       - else
-        = link_to t('global.follow'), follow_question_path(@question), :title => t("#{i18n_scope}.follow_tooltip"), :class => 'follow-q question-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.unfollow')
+        = link_to t('global.follow'), follow_question_path(@question), :title => t("#{i18n_scope}.follow_tooltip"), :class => 'follow-q toggle-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.unfollow')
 
 
     %li.share_on

@@ -18,10 +18,10 @@
 
       - if answer.favorite_for?(current_user)
         %li
-          = link_to t('questions.answer.unfavorite'), unfavorite_question_answer_path(question, answer), :id => "unfavorite-link", :title => t('questions.answer.unfavorite_tooltip'), :class => 'answer-action', "data-undo" =>  favorite_question_answer_path(question, answer), "data-title" => t('questions.answer.favorite_tooltip'), 'data-counter' => '.favorites_count'
+          = link_to t('questions.answer.unfavorite'), unfavorite_question_answer_path(question, answer), :title => t('questions.answer.unfavorite_tooltip'), :class => 'answer-action unfavorite-link toggle-action', "data-undo" => favorite_question_answer_path(question, answer), "data-title" => t('questions.answer.favorite_tooltip'), 'data-counter' => '.favorites_count', 'data-text' => t('questions.answer.favorite')
       - else
         %li
-          = link_to t('questions.answer.favorite'), favorite_question_answer_path(question, answer), :id => "unfavorite-link", :title => t('questions.answer.favorite_tooltip'), :class => 'answer-action', "data-undo" =>  unfavorite_question_answer_path(question, answer), "data-title" => t('questions.answer.unfavorite_tooltip'), 'data-counter' => '.favorites_count'
+          = link_to t('questions.answer.favorite'), favorite_question_answer_path(question, answer), :title => t('questions.answer.favorite_tooltip'), :class => 'answer-action favorite-link toggle-action', "data-undo" =>  unfavorite_question_answer_path(question, answer), "data-title" => t('questions.answer.unfavorite_tooltip'), 'data-counter' => '.favorites_count', 'data-text' => t('questions.answer.unfavorite')
 
       - if @aflag.new_record? && current_user != answer.user
         %li

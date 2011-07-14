@@ -15,7 +15,6 @@
         var lazy = link.attr("data-lazy") == "1";
 
         var form = formContainer.find("."+id);
-        console.log(form)
 
         if(link.hasClass("active")){
           link.removeClass("active");
