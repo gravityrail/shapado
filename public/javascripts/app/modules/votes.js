@@ -25,6 +25,36 @@ var Votes = {
       return false;
     });
   },
+  initialize_on_question: function() {
+    $(".answer").delegate("form.vote_form button", "click", function(event) {
+      if(Ui.offline()){
+        startLoginDialog();
+      } else {
+        var btn_name = $(this).attr("name");
+        var form = $(this).parents("form");
+        $.post(form.attr("action")+'.js', form.serialize()+"&"+btn_name+"=1", function(data){
+          if(data.success){
+            form.find(".votes_average").text(data.average);
+            if(data.vote_state == "deleted") {
+            }
+            else {
+              if(data.vote_type == "vote_down") {
+              } else {
+              }
+            }
+            Messages.show(data.message, "notice");
+          } else {
+            Messages.show(data.message, "error");
+            if(data.status == "unauthenticate") {
+              window.onbeforeunload = null;
+              window.location="/users/login";
+            }
+          }
+        }, "json");
+      }
+      return false;
+    });
+  },
   update_on_index: function(data) {
 
   },

@@ -17,6 +17,7 @@ var Questions = {
     Rewards.initialize();
     Editor.initialize();
     Comments.initialize_on_question();
+    Votes.initialize_on_question();
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
   },
