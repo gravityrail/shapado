@@ -10,11 +10,15 @@
         = link_to t("questions.show.follow_up"), new_question_path(:original_question_id => question.id, :original_answer_id => @answer.id), :class => "pjax", :"data-layout" => "new-question"
       - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
         %li
-          = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "sss"
+          = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
 
-      - if(current_user.can_modify?(question) || current_user.mod_of?(question.group))
+      -if (current_user.mod_of?(question.group) || current_user.can_modify?(question))
         %li
-          = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => "are you sure?", :method => :delete
+          -unless question.accepted && !question.subjetive
+            = link_to t("questions.answer.pick_answer"), solve_question_path(question, :answer_id => answer)
+        -if solution
+          %li
+            = link_to t("questions.answer.unset_answer"),  unsolve_question_path(question)
 
       - if answer.favorite_for?(current_user)
         %li
@@ -29,13 +33,9 @@
       %li.more.current
         = link_to t('layouts.manage.actions'), "#"
         %ul
-          -if (current_user.mod_of?(question.group) || current_user.can_modify?(question))
+          - if(current_user.can_modify?(question) || current_user.mod_of?(question.group))
             %li
-              -unless question.accepted && !question.subjetive
-                = link_to t("questions.answer.pick_answer"), solve_question_path(question, :answer_id => answer)
-            -if solution
-              %li
-                = link_to t("questions.answer.unset_answer"),  unsolve_question_path(question)
+              = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => "are you sure?", :method => :delete
           - if answer.versions.count > 0
             %li
               = link_to t("questions.answer.history", :default => "history"), history_question_answer_path(question, answer)

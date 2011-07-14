@@ -37,7 +37,7 @@
                   = t("global.from", :site => answer.address_name)
                   = country_flag(answer.address["country_code"], answer.address["country"])
 
-  = render "answer_toolbar", :question => @question, :answer => answer, :solution => solution
+  = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 
   .comments
     -answer.comments.each do |comment|
