@@ -32,9 +32,9 @@ class MembersController < ApplicationController
   end
 
   def update
-    @member = @group.users(:_id => params[:id]).first
+    @member = @group.memberships.find(params[:id])
     if @member.id != current_user.id || current_user.admin?
-      @member.config_for(@group).role = params[:role]
+      @member.role = params[:role]
       @member.save
     else
       flash[:error] = "Sorry, you cannot be change the **#{@member.login}'s** membership"
