@@ -47,7 +47,6 @@
       tagInput.css({outline: 'none', border: 0, padding: '10px', width: '90%'});
       tagInput.keydown(function(event){
         var key = event.keyCode;
-          console.log(key)
         var tag = $(this).prev('ul');
         var tagLink = tag.find('a')
         if($(this).val()==',') //empty the field it if it has a comma

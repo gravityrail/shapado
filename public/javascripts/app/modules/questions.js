@@ -13,11 +13,12 @@ var Questions = {
     Ui.hide_comments_form();
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
     $(".article-actions").shapadoToolbar({formContainer: ".article-forms"});
-    Effects.initialize();
+    if(typeof(Effects) !== 'undefined'){
+      Effects.initialize();
+    }
     Rewards.initialize();
     Editor.initialize();
     Comments.initialize_on_question();
-    Votes.initialize_on_question();
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
   },

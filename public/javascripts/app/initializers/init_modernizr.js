@@ -27,9 +27,10 @@ Modernizr.load([{
         if(fields.length > 0){
           fields.tabs();
         }
-        if(typeof Effects !== 'undefined'){
+        if(typeof(Effects) !== 'undefined'){
           Effects.initialize();
         }
+        $('.autocomplete_for_tags').ricodigoComplete();
       }
     }])
    $(document).ready(function() {
@@ -50,14 +51,6 @@ Modernizr.load([{
           $('.auto-link').autoVideo();
       }
     }, {
-      test: $('.autocomplete_for_tags').length > 0
-            ||$('#retag').length > 0,
-      yep: jsassets.jqautocomplete,
-      complete: function() {
-        if($('.autocomplete_for_tags').length > 0)
-          $('.autocomplete_for_tags').ricodigoComplete();
-      }
-    },{
        test: $("input[type=color]").length>0,
        yep: jsassets.jpicker,
        complete: function(){

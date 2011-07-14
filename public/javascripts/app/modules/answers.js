@@ -2,9 +2,14 @@ var Answers = {
   create_on_index: function(data) {
   },
   create_on_show: function(data) {
-    $(".answers-list").prepend(data.html);
-    $("article.answer."+data.object_id).effect("highlight", {}, 3000);
-    hideCommentsForm();
+    console.log(777)
+    var is_there = $('.'+data.object_id).length;
+    if(is_there==0){
+      alert(is_there);
+      $(".answers-list").prepend(data.html);
+      $("article.answer."+data.object_id).effect("highlight", {}, 3000);
+      Ui.hide_comments_form();
+    }
   },
   update_on_index: function(data) {
 
