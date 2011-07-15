@@ -566,6 +566,8 @@ Time.zone.now ? 1 : 0)
     if membership
       membership.state = 'inactive'
       membership.save
+      self.pull(group_ids: group)
+      user = User.find(self.id)
     end
   end
 
@@ -575,12 +577,18 @@ Time.zone.now ? 1 : 0)
         group = group.id
       end
 
-      membership = Membership.new({
-      :user_id => self.id,
-      :group_id => group,
-      :last_activity_at => Time.now,
-      :joined_at => Time.now
-      })
+      membership = config_for(group)
+      if membership.nil?
+        membership = Membership.new({
+          :user_id => self.id,
+          :group_id => group,
+          :last_activity_at => Time.now,
+          :joined_at => Time.now
+        })
+      else
+        membership.state = 'active'
+        membership.save
+      end
       self.group_ids << group
 
       block.call(membership) if block
