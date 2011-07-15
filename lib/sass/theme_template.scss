@@ -1065,7 +1065,7 @@ form.answer_comment_form, form.question_comment_form {
 }
 
 //testing
-input[type=submit], button, input.save, .ask_question {
+input[type=submit], button, input.save {
   @include gradient($button_bg_color);
   color: $button_fg_color;
   border-color: $button_bg_color;
