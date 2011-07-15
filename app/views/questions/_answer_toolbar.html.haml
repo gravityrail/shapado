@@ -33,7 +33,7 @@
       %li.more.current
         = link_to t('layouts.manage.actions'), "#"
         %ul
-          - if(current_user.can_modify?(question) || current_user.mod_of?(question.group))
+          - if(current_user.can_modify?(answer) || current_user.mod_of?(question.group))
             %li
               = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => "are you sure?", :method => :delete
           - if answer.versions.count > 0
