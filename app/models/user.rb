@@ -86,7 +86,7 @@ class User
   before_create :generate_uuid
   after_create :update_anonymous_user
 
-  validates_inclusion_of :language, :in => AVAILABLE_LOCALES
+  validates_inclusion_of :language, :in => AVAILABLE_LOCALES, :if => lambda { AppConfig.enable_i18n }
   validates_inclusion_of :role,  :in => ROLES
 
   with_options :unless => :anonymous do |v|
