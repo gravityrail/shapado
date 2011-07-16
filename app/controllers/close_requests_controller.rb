@@ -109,7 +109,7 @@ class CloseRequestsController < ApplicationController
 
     @close_request.destroy
     @question.decrement(:close_requests_count => 1)
-    @question.save
+
     flash[:notice] = t(:flash_notice, :scope => "close_requests.destroy")
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }
