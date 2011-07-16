@@ -63,7 +63,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :adbards
   resources :badges
 
   resources :searches, :path => "search", :as => "search"

@@ -28,7 +28,7 @@ class Widget
     types = %w[UsersWidget BadgesWidget TopUsersWidget TagCloudWidget
  PagesWidget CurrentTagsWidget CustomHtmlWidget SuggestionsWidget GroupNetworksWidget ShareWidget]
     if ads
-      types += %w[AdbardWidget AdsenseWidget]
+      types += %w[AdsenseWidget]
     end
 
     if tab == 'question'

@@ -481,9 +481,6 @@ namespace :fixdb do
                           :slot => ad['google_ad_slot'],
                           :width => ad['google_ad_width'],
                           :height => ad['google_ad_height']})
-      when "Adbard"
-        widget = AdbardWidget.new(:settings =>{:host_id => ad['adbard_host_id'],
-                                  :site_key => ad['adbard_site_key']})
       end
       widget_list = group.mainlist_widgets
       widget_list.send(:"#{positions[ad['position']]}") << widget
