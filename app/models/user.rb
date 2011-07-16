@@ -554,7 +554,7 @@ Time.zone.now ? 1 : 0)
       group = group.id
     end
 
-    Membership.where(:user_id => self.id, :group_id => group)
+    Membership.unscoped.where(:user_id => self.id, :group_id => group)
   end
 
   def leave(group)

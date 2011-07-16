@@ -5,7 +5,7 @@ module Sweepers
     expire_fragment_for("answers")
   end
 
-  def sweep_answer_views(answer)
+  def sweep_answer(answer)
     expire_fragment_for("answer", answer.id)
     expire_fragment_for("question_answers", answer.question_id)
   end

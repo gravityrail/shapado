@@ -196,10 +196,10 @@ class AnswersController < ApplicationController
     if @answer.user_id == current_user.id
       @answer.user.update_reputation(:delete_answer, current_group)
     end
+    sweep_answer(@answer)
     @answer.destroy
     @question.answer_removed!
     sweep_question(@question)
-    sweep_answer(@answer)
 
     Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
 
