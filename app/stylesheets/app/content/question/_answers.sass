@@ -5,7 +5,7 @@
   clear: both
   display: block
   padding: 0 0 20px 0
-  min-height: 1000px
+  overflow: hidden
 
   header
     h3
@@ -73,9 +73,9 @@ article.answer
     padding: 10px 10px 0 8px
     float: left
     margin: 0 0 10px 0
-    img.gravatar
+    img
       float: left
-      margin: -5px 3px 0 0
+      margin: 0 5px 0 0
     a:hover
       border-bottom: 1px dotted
     i
@@ -129,7 +129,7 @@ article.answer
         display: block
         position: relative
         padding: 5px 10px
-        font-size: 11px
+        font-size: 12px
         cursor: pointer
 
         &:hover
@@ -185,8 +185,26 @@ article.answer
       strong
         font-weight: normal
         
-        
-        
-        
-        
+article.answer
+  .content
+    h1
+      margin: 0 0 10px 0 !important
+      padding: 0 !important
+      font-size: 25px !important
+    h2
+      margin: 0 0 10px 0 !important
+      padding: 0 !important
+      font-size: 20px
+    p
+      font-size: 12px
+      line-height: 18px
+    ul
+      margin: 0 0 0 20px
+      li
+        float: none
+        margin: 0 0 5px 0
+        line-height: 18px
+    img
+      border: 1px solid
+      margin: 10px auto
         
