@@ -171,8 +171,8 @@
                 -#i18n
 
           .buttons
-            = submit_tag t('answers.form.submit'), :class => "save"
             = link_to t('scaffold.cancel'), '', :class => 'cancel'
+            = submit_tag t('answers.form.submit'), :class => "save"
             = t("global.or")
 
     =form_tag "", :class => "share_question" do

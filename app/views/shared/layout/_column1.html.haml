@@ -35,5 +35,7 @@
           = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges"
         %li
           = link_to t('layouts.application.pages'), pages_path, :class => "pjax", :"data-layout" => "pages"
+        %li
+          =link_to "Group users", users_path
 
   = render "shared/widgets", :context => 'mainlist', :position => 'navbar'

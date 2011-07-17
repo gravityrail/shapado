@@ -1,5 +1,10 @@
 - if logged_in?
   = render :partial => "shared/suggestions", :locals => {:limit => 5, :no_title => true}
-  .more
-    = link_to t("scaffold.more"), suggestions_path
-    .clear
+%footer
+  = link_to t("scaffold.more"), suggestions_path
+
+
+
+  
+  
+    

@@ -378,7 +378,7 @@ module ApplicationHelper
 
   def follow_suggestion_link(suggestion)
     if suggestion.class == User
-      link_to "+ #{t("users.show.follow")}", follow_user_path(suggestion), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion)
+      link_to "+ #{t("users.show.follow")} User", follow_user_path(suggestion), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion)
     else
       follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
@@ -389,15 +389,15 @@ module ApplicationHelper
       if current_user.preferred_tags_on(current_group).include?(tag.name)
         follow_class = 'unfollow-tag toggle-action'
         follow_data = 'follow-tag'
-        data_title = t("global.follow")
-        title = t("global.unfollow")
+        data_title = t("global.follow") 
+        title = t("global.unfollow") 
         path = unfollow_tags_users_path(:tags => tag.name)
         data_undo = follow_tags_users_path(:tags => tag.name)
       else
         follow_data = 'unfollow-tag'
         follow_class = 'follow-tag toggle-action'
         data_title = t("global.unfollow")
-        title = t("global.follow")
+        title = 'Follow tag'
         opt = 'add'
         path = follow_tags_users_path(:tags => tag.name)
         data_undo = unfollow_tags_users_path(:tags => tag.name)
@@ -407,7 +407,7 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
+    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag"
   end
 
   def widgets_context(controller, action)
