@@ -5,6 +5,7 @@ class Membership
   ROLES = %w[user moderator owner]
 
   identity :type => String
+  default_scope where(:state => "active")
 
   field :state, :type => String, :default => 'active'
   field :display_name, :type => String
