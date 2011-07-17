@@ -7,6 +7,7 @@
   = render :partial => "form", :object => f
 
   .buttons
-    = link_to  t("scaffold.back"), groups_path, :class => "cancel button"
-    = t("global.or")
     = f.submit  t("scaffold.create"), :class => "save"
+    = t("global.or")
+    = link_to  t("scaffold.back"), groups_path, :class => "cancel button"
+    

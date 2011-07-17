@@ -6,6 +6,7 @@
   =render :partial => "form", :locals => {:f => f, :markdown => true}
   .field-group
     .buttons
-      = f.submit t("scaffold.update")
-      = t("global.or")
       = link_to t("scaffold.cancel"), history_question_answer_path(@question, @answer), :class => "button cancel"
+      = t("global.or")
+      = f.submit t("scaffold.update")
+      

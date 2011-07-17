@@ -1,110 +1,68 @@
 /* Main Question - Each comment inside of each answare */
 //========================================================================
-article.comment
-  border-bottom: none
-  padding: 2px 0px 0px 35px !important
-  background: url("/images/comments-icon.gif") 10px 5px no-repeat
-  h4
-    padding: 3px 0 8px 0
-    margin: 0
-    float: none
-
-  .toolbar
-    margin: 0 0 0 10px !important
-
-.main-question .comments
-  padding: 0 20px 0 60px
-
+.comments
+  padding: 0 0 20px 0
   article.comment
-    padding: 0 0 10px 25px !important
-    background: url("/images/comments-icon.gif") 0 0 no-repeat
+    padding: 7px 0 7px 25px !important
+    background: url("/images/comments-icon.gif") 0 7px no-repeat
     border: 0px !important
-    margin-left: 0 !important
-    h4
-      float: none
-      padding: 0 !important
-      margin: 0 0 5px 0 !important
     p
-      padding: 0 !important
+      display: block
+      font-size: 12px
+      line-height: 15px
+      float: none
+      width: 100%
       margin: 0 0 5px 0 !important
-
-.upvote-comment
-  background-color: transparent
-  border: 0px
-
-// Form for comment respond into question views
+      color: #888 !important
+    h4
+      display: block !important
+      width: 100% !important
+      margin: 0 0 5px 0!important
+      padding: 0 !important
+    .actions a
+      color: #c00
+      font-size: 11px
+      margin: 0 5px 0 0
+      &:hover
+        border-bottom: 1px dotted
+      
+/* Comments inside Main Question top */
 //========================================================================
-form.answer_comment_form, form.question_comment_form
-  margin: 0
-  clear: both
-  .text_area
+.main-question .comments 
+  padding: 0 0 20px 45px
+  
+// Form for edit comments
+//========================================================================
+.main-question form.edit_comment_form
+  width: 87% !important
+form.edit_comment_form
+  width: 94%
+  margin: 10px 0 0 0 !important
+  padding: 20px
+  textarea
     border: 1px solid #ccc  !important
     font-size: 13px !important
-    margin-left: 20px !important
+    line-height: 18px
     padding: 5px !important
-    height: 60px !important
-    width: 70%
-  .reply_to
-    padding: 20px
-  .buttons
-    margin-top: 0px !important
-    margin-left: 20px !important
-    float: left
-    padding-top: 1px
+    height: 100px !important
+    width: 98.5%
+  .buttons input
+    border: 0px
+    padding: 5px 10px
 
-form.edit_comment_form
-  margin: 0
-  clear: both
-  .text_area
-    border: 1px solid #ccc  !important
+// Form for New comments
+//========================================================================
+form#new_comment
+  width: 89% !important
+  margin: 0 20px 20px 20px !important
+  padding: 20px 20px 0 20px !important
+  display: block
+  float: none  
+  textarea
+    border: 1px solid #cccccc !important
     font-size: 13px !important
+    line-height: 18px
     padding: 5px !important
-    margin-top: 10px !important
-    margin-right: 70px !important
-    height: 60px !important
-    width: 70%
-  .reply_to
-    background-color: #fff
-    padding: 20px
-  .buttons
-    margin-top: 5px !important
-    margin-left: 0px !important
-    float: left
-    padding-top: 1px
-
-form.question_comment_form
-  padding-left: 30px !important
-  margin-left: 0px !important
-
-form.answer_comment_form
-  padding-left: 4px !important
-  .text_area
-    margin-right: 70px
-    margin-left: 0px !important
-  .buttons
-    margin-left: 0px !important
-
-form.edit_comment_form
-  padding-left: 0px !important
-
-.article-actions .add_answer_comment_link
-  background-color: #fff
-  border-right: 1px solid #e5e5e5
-
-.add_comment_for_question
-  padding: 30px
-  width: 80%
-  margin: 20px 0 0 0
-  .reply_to
-    margin: 0 0 20px 0
-
-.panel-comments
-  padding: 10px
-
-.comment-votes
-  float: left
-  width: 15px
-  margin-left: -20px
-  form
-    padding: 0px
-    margin: 0px
+    height: 100px !important
+    width: 98.5% !important
+    margin: 0 !important

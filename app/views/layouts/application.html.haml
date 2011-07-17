@@ -34,9 +34,6 @@
 
         -if current_group.languages.count > 1
           .languages_filter
-            %span
-              See questions in
-            - #i18n
             = render "shared/language_filter"
 
         -if !logged_in?
