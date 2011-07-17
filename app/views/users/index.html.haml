@@ -6,7 +6,7 @@
         = label_tag :q, t(".filter"), :class => "label"
         = text_field_tag "q", params[:q], :class => "text_field filter_field"
         = submit_tag("filter", :class => "filter_input")
-        
+
   %ul.filters
     %li
       %strong
@@ -21,10 +21,10 @@
       = link_to t(".name"), users_path(:sort=>"name"), :title => t(".name_tooltip")
     %li.name
       = link_to t(".near"), users_path(:sort=>"near"), :title => t(".name_tooltip")
-     
+
   /Users
   %ul.items#users
     -@memberships.each do |membership|
       = render :partial => "membership", :object => membership
-  
+
   =will_paginate @memberships
