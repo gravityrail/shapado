@@ -25,9 +25,9 @@
       = yield :close_requests_table
       
       .buttons
-        = link_to t("scaffold.cancel"), question_path(@question), :class => "button cancel"
+        = form.submit t("scaffold.update"), :id => "close_question_submit_#{@question.id}", :class => "save"     
         = t("global.or")
-        = form.submit t("scaffold.update"), :id => "close_question_submit_#{@question.id}", :class => "save"      
+        = link_to t("scaffold.cancel"), question_path(@question), :class => "button cancel"         
         
         
   - else

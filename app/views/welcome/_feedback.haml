@@ -18,7 +18,6 @@
     = label_tag "result", "#{n1} * #{n2}="
     = text_field_tag "result", "", :class=> "text_field"
   .buttons
-    = link_to t("scaffold.cancel"), root_path, :class => 'cancel-feedback'
-    = t("global.or")
     = submit_tag(t("scaffold.send"), :class => "save")
-    
+    = t("global.or")
+    = link_to t("scaffold.cancel"), root_path, :class => 'cancel-feedback'

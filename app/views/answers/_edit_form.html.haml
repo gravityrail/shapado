@@ -6,6 +6,6 @@
     = f.label :wiki, "Wiki", :class => "radio"
 
   .buttons
-    = f.submit t("scaffold.update"), :class => "buttton save"
     = link_to t('scaffold.cancel'), question_path(question), :class => "button cancel"
+    = f.submit t("scaffold.update"), :class => "buttton save"
     = t("global.or")
