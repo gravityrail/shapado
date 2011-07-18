@@ -138,7 +138,7 @@
             %li.open
               = link_to t("#{i18n_scope}.request_opening"), new_question_open_request_path(@question), :id => "request-open-link", :rel => 'nofollow', :title => t("#{i18n_scope}.request_opening_details")
 
-          - if (current_user.can_modify?(@question) || current_user.owner_of?(@question.group))
+          - if current_user.can_modify?(@question) || current_user.owner_of?(@question.group)
             %li.ban
               = link_to @question.banned ? t("#{i18n_scope}.unban") : t("#{i18n_scope}.ban"), manage_moderate_questions_path(:question_ids => [@question.id], :commit => @question.banned ? "unban": "ban"), :method => :put, :confirm => "are you sure?"
             %li.delete

@@ -148,16 +148,16 @@ article.answer
           a:first-letter
             text-transform: uppercase
 
-  .flagged
-    width: 380px
-    margin: -1px 0 0 0
-    padding: 7px 0 0 10px
-    a
-      float: right
-      margin-top: -6px
-      padding: 7px 0 6px 7px
+  ul.drop-menu
+    li.flagged
+      padding: 4px
+      &>a, span
+        float: right
+      ul li a
+        background-image: none
+        padding: 4px
 
-  
+
 /* Closed reasons */
 //========================================================================
 #close_reason
@@ -172,7 +172,7 @@ article.answer
 
 /* Closed reasons */
 //========================================================================
-article.answer 
+article.answer
   h3
     color: #c00
     font-size: 13px
@@ -184,7 +184,7 @@ article.answer
       color: #000
       strong
         font-weight: normal
-        
+
 article.answer
   .content
     h1
@@ -207,4 +207,3 @@ article.answer
     img
       border: 1px solid
       margin: 10px auto
-        
