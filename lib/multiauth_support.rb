@@ -48,7 +48,8 @@ module MultiauthSupport
       auth_key = "#{provider}_#{uid}"
       user = User.where({:auth_keys.in => [auth_key]}).first
       if user.nil?
-        user = User.new(:auth_keys => [auth_key])
+        user = User.new
+        user.auth_keys = [auth_key]
 
         puts ">>>>>>> #{provider} #{fields["user_info"].inspect}"
         user.user_info[provider] = fields["user_info"]
@@ -67,7 +68,7 @@ module MultiauthSupport
           end
         end
 
-        if !user.valid? && !user.errors.on(:login).empty?
+        if !user.valid? && !user.errors[:login].empty?
           user.login = user.login + "_#{rand(100)}#{rand(100)}#{rand(100)}"
         end
 
