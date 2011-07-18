@@ -6,7 +6,7 @@
 
 
   %div{:"data-role" => "content"}
-    - form_for(@question, :html=>{:class => "form", :id => "ask_question"}) do |f|
+    = form_for(@question, :html=>{:class => "form", :id => "ask_question"}) do |f|
       = f.error_messages
       = error_messages_for(:user)
 

@@ -5,7 +5,7 @@
     - link = link_to t(".create_your_own"), new_group_path, :class => "request_group"
     =raw t('.description', :link => link)
 
-  -form_tag groups_path, :id => "filter_groups", :method => "get" do
+  = form_tag groups_path, :id => "filter_groups", :method => "get" do
     .field
       = label_tag :q, t(".filter")
       = text_field_tag "q", params[:q]

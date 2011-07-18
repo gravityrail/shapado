@@ -18,7 +18,7 @@
     = link_to t(".footer"), manage_content_path(:tab=>"footer")
 
 
--form_for @group, :html => {:class => "form"} do |form|
+= form_for @group, :html => {:class => "form"} do |form|
   = form.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "content", :tab=>@active_subtab)
   - langs = @group.languages.sort

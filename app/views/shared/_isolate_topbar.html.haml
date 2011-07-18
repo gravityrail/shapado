@@ -36,7 +36,7 @@
       %li
         =link_to t(".about", :default => :"groups.index.about"), about_path
       %li.last
-        -form_tag search_path, :class => "form", :method => :get do
+        = form_tag search_path, :class => "form", :method => :get do
           = text_field_tag 'q', params[:q], :class => "text-field"
           %button{:type => "submit"}
             = t('.search', :default => "Go")

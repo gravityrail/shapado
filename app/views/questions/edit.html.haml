@@ -4,7 +4,7 @@
 %p.description
   = t('questions.new.title')
 
-- form_for(@question, :url => question_path(@question), :html => {:class => "question-form", :multipart => true}) do |f|
+= form_for(@question, :url => question_path(@question), :html => {:class => "question-form", :multipart => true}) do |f|
 
   =render :partial => "form", :locals => {:f => f}
 
@@ -17,5 +17,5 @@
       = f.submit t("scaffold.update"), :class => "save"
       = t("global.or")
       = link_to t('scaffold.cancel'), questions_path
-      
+
 

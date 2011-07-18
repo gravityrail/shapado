@@ -21,7 +21,7 @@
 
 = error_messages_for :user
 
-- form_for @user, :html => {:class => "form", :multipart => true} do |f|
+= form_for @user, :html => {:class => "form", :multipart => true} do |f|
   %h1
     = t("users.form.information")
   =render :partial => "form", :locals => {:f => f}

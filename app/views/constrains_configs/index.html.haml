@@ -19,7 +19,7 @@
   |
 = link_to t("scaffold.new", model: ConstrainsConfig.model_name.human), domain_url(custom: @group.domain, controller: "constrains_configs", action: "new")
 
--form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
+= form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
   = f.error_messages
   = hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "properties", :tab => @active_subtab)
 

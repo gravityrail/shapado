@@ -1,7 +1,7 @@
 .list-users
   .top
     %h1 Users
-    -form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
+    = form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
       .field
         = label_tag :q, t(".filter"), :class => "label"
         = text_field_tag "q", params[:q], :class => "text_field filter_field"

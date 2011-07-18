@@ -4,7 +4,7 @@
 .members
   -if logged_in? && current_user.owner_of?(@group)
     #manage_members
-      -form_tag(members_path, :class => "form members-form", :method => :post) do
+      = form_tag(members_path, :class => "form members-form", :method => :post) do
         =render :partial => "form"
         .buttons
           = submit_tag t('scaffold.add', :model => "member"), :class => "save"
