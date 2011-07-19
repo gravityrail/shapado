@@ -1,4 +1,6 @@
--related_questions = Question.related_questions(@question, :language => find_languages)
+
+-related_questions = Question.related_questions(@question, :language => find_languages, :per_page => widget.settings['limit']||10)
+
 - if !related_questions.empty?
   %aside
     %ul.list
