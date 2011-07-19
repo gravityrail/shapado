@@ -6,6 +6,9 @@ module Sweepers
   end
 
   def sweep_answer(answer)
+    if answer.is_a? String
+      answer = Answer.find(answer)
+    end
     expire_fragment_for("answer", answer.id)
     expire_fragment_for("question_answers", answer.question_id)
   end

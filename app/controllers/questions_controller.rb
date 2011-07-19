@@ -444,7 +444,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         sweep_question(@question)
-        sweep_answer(@answer)
+        sweep_answer(@answer_id)
 
         flash[:notice] = t(:flash_notice, :scope => "questions.unsolve")
         current_user.on_activity(:reopen_question, current_group)

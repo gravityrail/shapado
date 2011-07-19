@@ -3,7 +3,7 @@ require 'spec_helper'
 describe QuestionsController do
   include Devise::TestHelpers
 
-  before (:each) do
+  before(:each) do
     stub_group
     @user = User.make(:user)
     stub_authentication @user
@@ -184,7 +184,7 @@ describe QuestionsController do
     end
 
     it "should be successful" do
-      get 'unsolve', :id => @question.id, :answer_id => @answer.id
+      get 'unsolve', :id => @question.id
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
   end
