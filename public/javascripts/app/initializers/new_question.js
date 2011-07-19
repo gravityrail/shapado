@@ -1,11 +1,5 @@
 
 $(document).ready(function() {
-  $("label#rqlabel").hide();
-
-  $(".text_field#question_title").focus( function() {
-    Effects.fade($("#sidebar .help"));
-  });
-
   $("#related_questions").hide();
 
   $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",

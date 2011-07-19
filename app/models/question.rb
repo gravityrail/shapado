@@ -155,8 +155,12 @@ class Question
   def self.related_questions(question, opts = {})
     opts[:group_id] = question.group_id
     opts[:banned] = false
+    opts[:_id] = {:$ne => question.id}
 
-    Question.where(opts.merge(:_keywords.in => question.tags, :_id.ne => question.id))
+    text_search = question.title || ""
+    text_search << (question.body || "")
+    text_search << question.tags.join
+    Question.filter(text_search, opts)
   end
 
   def viewed!(ip)

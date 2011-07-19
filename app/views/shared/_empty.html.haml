@@ -1,7 +1,7 @@
-.empty
-  =image_tag("empty.png")
+.empty{:class => "empty_#{type}"}
+  = image_tag("empty.png")
   %h2
-    = t('.title')
+    = t("shared.empty.#{type}.title", :default => :"shared.empty.default.title")
   %p
-    - link = link_to t('ask_a_question'), new_question_path
-    =raw t('.description', :ask_a_question_link => link)
+    - link = link_to t("shared.empty.#{type}.description.action_link"), url, :class => "empty_#{type}_text"
+    = raw t("shared.empty.#{type}.description.text", :action_link => link, :default => :"shared.empty.default.description.text")

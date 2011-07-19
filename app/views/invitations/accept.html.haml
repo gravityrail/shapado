@@ -32,7 +32,7 @@
     %h1
       = t('.create_account')
   - elsif @invitation.state?(:connect)
-    - form_for current_user, :html => {:class => "form", :multipart => true} do |f|
+    = form_for current_user, :html => {:class => "form", :multipart => true} do |f|
       .field
         = f.label :name, t(:name, :scope => "activerecord.attributes.user"), :class => "label"
         = f.text_field :name, :class => "text_field"

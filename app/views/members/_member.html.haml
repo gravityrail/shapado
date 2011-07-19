@@ -29,7 +29,7 @@
         = t("time.ago", :time => time_ago_in_words(member.created_at))
 
     -if can_modify_member
-      -form_tag(member_path(membership), :class => "form", :method => :put) do |f|
+      = form_tag(member_path(membership), :class => "form", :method => :put) do |f|
         .field
           = select_tag :role, options_for_select(locales_roles, membership.role)
         .buttons

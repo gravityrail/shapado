@@ -2,7 +2,7 @@
   = t(".title")
 %p.description
 
--form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
+= form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
   = f.error_messages
 
   .field.group-logo

@@ -327,14 +327,15 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/_main.sass
 #main-content-wrap, .users-main-content{
-  section {
-    .empty {
-      border: 1px solid $orange;
-      background-color: $lightOrange;
-      h2 {
-        text-shadow: 1px 1px 2px #e5e5e5;
-      }
+  .empty {
+    border: 1px solid $orange;
+    background-color: $lightOrange;
+    h2 {
+      text-shadow: 1px 1px 2px #e5e5e5;
     }
+  }
+
+  section {
     article {
       border-bottom: 1px solid #f1f1f1;
       color: #666;
