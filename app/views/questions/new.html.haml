@@ -1,18 +1,8 @@
 
--content_for :subtabs do
-  .navtitle
-    = t(".title")
--content_for :sidebar do
-  -if !current_group.question_help.empty?
-    .help
-      %h4
-        = t(".how_to_ask")
-      = raw(current_group.question_help)
 %h1
   = t(".title")
 %p.description
-  = t(".description")
-
+  = raw(current_group.question_help)
 
 = form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
   =render :partial => "form", :locals => {:f => f}
