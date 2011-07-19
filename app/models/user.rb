@@ -775,12 +775,13 @@ Time.zone.now ? 1 : 0)
     User.where(:_id => (self.friend_list.following_ids & user.friend_list.follower_ids).sample).first
   end
 
-  def invite(email, user_role, group)
+  def invite(email, user_role, group, body)
     if self.can_invite_on?(group)
       Invitation.create(:user_id => self.id,
                         :email => email,
                         :group_id => group.id,
-                        :user_role => user_role)
+                        :user_role => user_role,
+                        :body => body)
     end
   end
 

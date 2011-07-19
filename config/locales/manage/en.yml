@@ -40,6 +40,8 @@ en:
         title: Group properties
         invite:
           title: Invite people by email
+          body_instructions: "Write a message to the people you are inviting (optional)"
+          body_length_warning: "The length of your body cannot be bigger than 400 characters"
           emails_instructions: "Enter emails separated by coma"
           user_role: "Invite users as"
           invite: Invite people
