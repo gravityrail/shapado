@@ -52,3 +52,4 @@ en:
       subject: "%{user} has invited you to %{group}"
       message1: "Click here to accept the invitation %{link}"
       message2: "The %{group} team."
+      message3: "A message from your inviter:"

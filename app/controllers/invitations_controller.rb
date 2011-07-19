@@ -12,7 +12,8 @@ class InvitationsController < ApplicationController
       unless email.blank? ||
           (invited_user && current_group.is_member?(invited_user))
         invitation = current_user.invite(email, user_role,
-                                       current_group)
+                                       current_group,
+                                       params[:invitations][:body])
         Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
       end
     end
