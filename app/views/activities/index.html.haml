@@ -21,10 +21,10 @@
       %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
     -if @activities.empty?
-      = render "activities/empty"
-
-    -@activities.each do |activity|
-      = render "activities/activity", :activity => activity
+      = render "shared/empty", :type => "activities", :url => ""
+    -else
+      -@activities.each do |activity|
+        = render "activities/activity", :activity => activity
 
     #additional_info
       =will_paginate @activities
