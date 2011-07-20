@@ -172,10 +172,10 @@ hgroup {
     li {
       em {color: #666; }
       a {
-        color: #fff;
-        background-color: $lightGray;
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
         &:hover {
-          background-color: $darkGray;
+          background-color: darken($link_fg_color, 10%);
           em {color: #fff;}
         }
       }
@@ -423,12 +423,12 @@ ul.admin-links li {
 
 .questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a, .questions .activity li.activity a {
   border-bottom: 2px solid $view_fg_color !important;
-  color: lighten($view_bg_color, 15%);
+  color: lighten($view_fg_color, 10%);
 }
 
 .answers .newest li.newest a, .answers .hot li.hot a, .answers .votes li.votes a, .unanswered .newest li.newest a, .unanswered .hot li.hot a, .unanswered .votes li.votes a {
   border-bottom: 2px solid $blue !important;
-  color: #000 !important;
+  color: $fg_color !important;
 }
 
 .filters {
@@ -757,7 +757,7 @@ section.invitations-panel {
       }
       small {
         background-color: darken($link_fg_color, 5%);
-        color: $view_fg_color;
+        color: $view_bg_color;
       }
     }
   }
