@@ -48,4 +48,4 @@ en:
     layout:
       footer:
         cc_footer: 'All Shapado.com content and data are available under the %{cc_link} license'
-        powered_by: Powered by %{source_link} %{version} under the #{agpl_link}
+        powered_by: Powered by %{source_link} %{version} under the %{agpl_link}
