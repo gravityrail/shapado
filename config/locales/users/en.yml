@@ -43,6 +43,7 @@ en:
       edit_profile: Edit profile
     follow:
       flash_notice: "You are now following %{user}."
+      flash_error: "You cannot follow yourself."
     unfollow:
       flash_notice: "You are not following %{user} anymore."
     update_followed_tags:

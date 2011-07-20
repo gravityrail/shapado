@@ -752,7 +752,7 @@ Time.zone.now ? 1 : 0)
     end
     (array_hash.blank?)? [] : User.any_of(array_hash).
       where({:group_ids => group.id,
-             :_id => {:$not => {:$in => self.friend_list.following_ids}}}).
+             :_id => {:$not => {:$in => self.friend_list.following_ids << self._id}}}).
       limit(limit)
   end
 
@@ -764,7 +764,7 @@ Time.zone.now ? 1 : 0)
       array_hash << { "#{provider}_id".to_sym => {:$in => self.social_friends_ids(provider)}}
       provider_ids << "#{provider}_id"
     end
-    User.any_of(array_hash).
+    User.where(:_id => {:$not => self._id}).any_of(array_hash).
       only(provider_ids)
   end
 
