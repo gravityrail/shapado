@@ -1,9 +1,38 @@
-
 %h1
-  =@theme.name
+  = @theme.name
+%p.description
+  = @theme.description
 
--if @theme.ready
-  %code
-    = @theme.stylesheet.read
--else
+-if !@theme.ready
   this theme is not ready to be used
+
+-#i18n
+
+bg color
+
+%div.display-color{:style => "background: ##{@theme.bg_color}"}
+
+fg color
+%div.display-color{:style => "background: ##{@theme.fg_color}"}
+
+-if !@theme.new? && @theme.has_bg_image?
+  bg image
+  = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
+
+view bg color
+%div.display-color{:style => "background: ##{@theme.view_bg_color}"}
+
+view fg color
+%div.display-color{:style => "background: ##{@theme.view_fg_color}"}
+
+button bg color
+%div.display-color{:style => "background: ##{@theme.button_bg_color}"}
+
+button fg color
+%div.display-color{:style => "background: ##{@theme.button_fg_color}"}
+
+link fg color
+%div.display-color{:style => "background: ##{@theme.link_fg_color}"}
+
+link bg color
+%div.display-color{:style => "background: ##{@theme.link_bg_color}"}

@@ -5,6 +5,7 @@ class Theme
 
   identity :type => String
   field :name, :type => String
+  field :description, :type => String, :default => ""
 
   field :bg_color, :type => String, :default => "f2f2f2"
   field :fg_color, :type => String, :default => "404040"
@@ -21,7 +22,6 @@ class Theme
   field :link_fg_color, :type => String, :default => "EE681F"
 
   field :custom_css, :type => String, :default => ""
-
   field :community, :type => Boolean, :default => false
   field :ready, :type => Boolean, :default => false
 

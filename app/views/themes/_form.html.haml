@@ -2,6 +2,10 @@
   = form.label :name
   = form.text_field :name
 
+.field
+  = form.label :description
+  = form.text_area :description
+
 %fieldset
   .field
     = form.label :bg_color
@@ -28,12 +32,13 @@
 
 %fieldset
   .field
+    = form.label :button_bg_color
+    = form.text_field :button_bg_color, :type => "color"
+
+  .field
     = form.label :button_fg_color
     = form.text_field :button_fg_color, :type => "color"
 
-  .field
-    = form.label :button_bg_color
-    = form.text_field :button_bg_color, :type => "color"
 
 %fieldset
   .field
