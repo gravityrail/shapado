@@ -12,6 +12,8 @@ class Invitation
   field :accepted_by, :type => String
   field :accepted_at, :type => Time
   field :user_role, :type => String, :default => "user"
+  field :body, :type => String
+
   referenced_in :group
   referenced_in :user
 
@@ -19,7 +21,7 @@ class Invitation
 
   validates_uniqueness_of :user_id, :scope => [:group_id, :email]
   validates_inclusion_of :user_role,  :in => Membership::ROLES
-
+  validates_length_of       :body,    :in => 0..400, :wrong_length => lambda { I18n.t('admin.manage.properties.invite.body_length_warning') }
   state_machine :state, :initial => :pending do
     after_transition :on => :connect, :do => :on_connected
     after_transition :on => :confirm, :do => :on_confirmed

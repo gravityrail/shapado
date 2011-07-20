@@ -1,11 +1,10 @@
--if @resources.empty?
-  = render "activities/empty"
-
-
--@resources.each do |activity|
-  = render "activities/activity", :activity => activity
+-if @activities.empty?
+  = render "shared/empty", :type => "activities", :url => ""
+-else
+  - @resources.each do |activity|
+    = render "activities/activity", :activity => activity
 
 #additional_info
-  =will_paginate @resources
+  = will_paginate @resources
 
   .clear

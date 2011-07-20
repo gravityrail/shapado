@@ -41,8 +41,8 @@ describe Jobs::Users do
   describe "get_twitter_friends" do
     before(:each) do
       @twitter_client = mock("twitter client")
-      @user.should_receive(:twitter_client).and_return(@twitter_client)
-      @twitter_client.stub!(:friends_ids).and_return([])
+      @user.stub!(:twitter_client).and_return(@twitter_client)
+      @twitter_client.stub!(:all_friends).and_return([])
       User.stub!(:find).with(@user.id).and_return(@user)
     end
 
@@ -59,6 +59,7 @@ describe Jobs::Users do
     end
 
     it "should be successful" do
+      Jobs::Users.get_identica_friends(@user.id)
       lambda {Jobs::Users.get_identica_friends(@user.id)}.should_not raise_error
     end
   end

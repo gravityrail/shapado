@@ -1,4 +1,4 @@
-- form_for(:answer, :url => question_answer_path(question, answer), :html => {:method => :put, :class => "form edit_answer"}) do |f|
+= form_for(:answer, :url => question_answer_path(question, answer), :html => {:method => :put, :class => "form edit_answer"}) do |f|
   = render :partial => "answers/form", :locals => {:f => f, :markdown => true,:question => question}
 
   .field
@@ -6,6 +6,6 @@
     = f.label :wiki, "Wiki", :class => "radio"
 
   .buttons
-    = f.submit t("scaffold.update"), :class => "buttton save"
     = link_to t('scaffold.cancel'), question_path(question), :class => "button cancel"
+    = f.submit t("scaffold.update"), :class => "buttton save"
     = t("global.or")

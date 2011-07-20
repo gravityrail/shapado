@@ -1,5 +1,5 @@
 %section.questions-index.moderate-answers
-  -form_tag moderate_answers_path do
+  = form_tag moderate_answers_path do
     -@answers.each do |answer|
       %article
         %h2
@@ -12,8 +12,8 @@
           = link_to answer.body, question_answer_path(answer.question, answer)
 
   = will_paginate @answers
-  
+
   .buttons
-    = submit_tag "ban"
-    = t("global.or")
     = submit_tag "unban"
+    = t("global.or")
+    = submit_tag "ban"

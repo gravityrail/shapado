@@ -57,12 +57,12 @@
           %strong
             = @user.following_count
           %small
-            = t('.following')
+            = link_to t('.following'), follows_user_path(@user, :sort=>"following")
         %li
           %strong
             = @user.followers_count
           %small
-            = t('.followers')
+            = link_to t('.followers'), follows_user_path(@user, :sort=>"followers")
         -if current_user != @user
           -if logged_in? && current_user.following?(@user)
             %li.follow

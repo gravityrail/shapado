@@ -82,7 +82,6 @@ $text-shadow: 0 1px 1px #000
 // If you want to have multiple box shadows, you must enclose the values in quotes (" ").
 $shadow: 0 0 10px #000
 $menu: 0 2px 3px #999
-$inner: inset 2px 2px 2px #e5e5e5
 $none: 0 0 0 transparent
 
 =box-shadow($shadow)
@@ -100,14 +99,6 @@ $none: 0 0 0 transparent
   o-box-shadow: $menu
   khtml-box-shadow: $menu
   box-shadow: $menu
-
-=inner-shadow($inner)
-  $shadow: unquote($inner)
-  -moz-box-shadow: $inner
-  -webkit-box-shadow: $inner
-  o-box-shadow: $inner
-  khtml-box-shadow: $inner
-  box-shadow: $inner
 
 =none-shadow($none)
   $shadow: unquote($none)
@@ -152,7 +143,7 @@ $noneRadius: 0
   khtml-border-radius: $bigRadius
   border-radius: $bigRadius
 
-=huge-radius($bigRadius)
+=huge-radius($hugeRadius)
   -moz-border-radius: $hugeRadius
   -webkit-border-radius: $hugeRadius
   o-border-radius: $hugeRadius

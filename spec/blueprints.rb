@@ -73,3 +73,9 @@ Search.blueprint do
   group {Group.make}
   user {User.make}
 end
+
+Theme.blueprint do
+  name { Sham.name }
+  group {Group.make}
+end
+

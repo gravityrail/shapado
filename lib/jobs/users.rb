@@ -42,7 +42,7 @@ module Jobs
     def self.get_identica_friends(user_id)
       user = User.find(user_id)
       friends = user.get_identica_friends
-      unless friends[0]["error"]
+      unless !friends.blank? && friends[0]["error"]
         user.external_friends_list.friends["identica"] = friends
         user.external_friends_list.save
         user.save

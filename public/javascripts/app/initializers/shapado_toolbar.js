@@ -30,6 +30,10 @@
           if(!link.hasClass('busy')){
             link.addClass('busy');
             $.getJSON(href+'.js', function(data){
+              if(data.status=='unauthenticate'){
+                startLoginDialog();
+                return false;
+              }
               var nform = $(data.html);
               formContainer.prepend(nform);
               nform.slideDown("slow");

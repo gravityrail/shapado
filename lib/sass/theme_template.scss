@@ -30,12 +30,25 @@ $red: #f00;
 $lightRed: #ffe5e5;
 $darkRed: #c00;
 
-$text-shadow: 0 1px 1px #000;
+$text-shadow: 0 1px 1px $fg_color;
 
 // Link colors
 $link_color: $link_fg_color;
 $hover_color: darken($link_fg_color, 20%);
 $active_color: $link_fg_color;
+
+
+//shadow
+$inner: inset 2px 2px 2px $fg_color;
+
+@mixin inner-shadow($inner){
+  $shadow: unquote($inner);
+  -moz-box-shadow: $inner;
+  -webkit-box-shadow: $inner;
+  o-box-shadow: $inner;
+  khtml-box-shadow: $inner;
+  box-shadow: $inner;
+}
 
 @mixin gradient($color) {
   $amount-darker: 15%;
@@ -116,7 +129,7 @@ a {
   }
 
   ul {
-    li { border-top: 1px dotted #f1f1f1; }
+    li { border-top: 1px dotted darken($view_bg_color, 10%); }
     a {
       color: #000 !important;
       background-color: #fff !important;
@@ -159,10 +172,10 @@ hgroup {
     li {
       em {color: #666; }
       a {
-        color: #fff;
-        background-color: $lightGray;
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
         &:hover {
-          background-color: $darkGray;
+          background-color: darken($link_fg_color, 10%);
           em {color: #fff;}
         }
       }
@@ -205,14 +218,14 @@ ul.admin-links li {
 }
 
 .userData .avatar {
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid darken($view_bg_color, 10%);
   p a {
     color: #666;
     &:hover {color: #000;}
   }
   h3 {
     text-shadow: 1px 1px 2px #e5e5e5;
-    border-bottom: 1px dotted #f1f1f;
+    border-bottom: 1px dotted darken($view_bg_color, 10%);
   }
   ul.badges li .badge_item a {
     color: #fff !important;
@@ -229,7 +242,7 @@ ul.admin-links li {
     }
   }
   ul.profile-stats {
-    border: 1px solid #f1f1f1;
+    border: 1px solid darken($view_bg_color, 10%);
     li {
       border-bottom: 1px dotted #e5e5e5;
       background-color: #fff;
@@ -264,7 +277,7 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/admin/_members.sass
 .members {
-  border-bottom: 1px dotted #f1f1f1;
+  border-bottom: 1px dotted darken($view_bg_color, 10%);
   ul li {
     border-top: 1px dotted #e5e5e5;
     .user-info {
@@ -284,7 +297,7 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/admin/_moderate.sass
 .moderate-answers {
-  border-top: 1px solid #f1f1f1;
+  border-top: 1px solid darken($view_bg_color, 10%);
 }
 
 //app/stylesheets/app/content/admin/_widgets.sass
@@ -305,7 +318,7 @@ ul.admin-links li {
   }
 
   .controls input{
-    background-color: #f1f1f1;
+    background-color: darken($view_bg_color, 10%);
     border: 1px solid #e5e5e5;
     &:hover { background-color: #e5e5e5;}
   }
@@ -315,7 +328,7 @@ ul.admin-links li {
   }
 
   .widgets-admin .module {
-    border: 1px solid #f1f1f1;
+    border: 1px solid darken($view_bg_color, 10%);
     footer {
       background-color: #fff;
       a {
@@ -327,20 +340,21 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/_main.sass
 #main-content-wrap, .users-main-content{
-  section {
-    .empty {
-      border: 1px solid $orange;
-      background-color: $lightOrange;
-      h2 {
-        text-shadow: 1px 1px 2px #e5e5e5;
-      }
+  .empty {
+    border: 1px solid $orange;
+    background-color: $lightOrange;
+    h2 {
+      text-shadow: 1px 1px 2px #e5e5e5;
     }
+  }
+
+  section {
     article {
-      border-bottom: 1px solid #f1f1f1;
+      border-bottom: 1px solid darken($view_bg_color, 10%);
       color: #666;
       h2 a {
-        color: $dark;
-        &:hover {color: #000;}
+        color: darken($link_fg_color, 5%);
+        &:hover {color: darken($link_fg_color, 10%);}
       }
     }
   }
@@ -358,7 +372,7 @@ ul.admin-links li {
     li {
       a {
         color: #666;
-        background-color: #f1f1f1;
+        background-color: darken($view_bg_color, 10%);
       }
       a:hover{
         background-color: #e5e5e5;
@@ -384,10 +398,10 @@ ul.admin-links li {
 //app/stylesheets/app/content/_tabs.sass
 #main-content-wrap {
   p.description {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
   }
   nav ul.content-tabs {
-    background-color: #f0f0f0;
+    background-color: $bg_color;
     li a {
       color: #999;
       border-bottom: 1px solid transparent;
@@ -399,27 +413,26 @@ ul.admin-links li {
   }
 }
 
-.questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a {
+.questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a, .activity ul.content-tabs li.activity a {
   background-color: $view_bg_color !important;
   color: $view_fg_color !important;
+  &:hover {
+    background-color: $view_bg_color !important;
+  }
 }
 
-.questions ul.content-tabs li.questions a:hover, .answers ul.content-tabs li.answers a:hover, .unanswered ul.content-tabs li.unanswered a:hover{
-  background-color: $view_bg_color !important;
-}
-
-.questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a {
-  border-bottom: 2px solid $orange !important;
-  color: #000;
+.questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a, .questions .activity li.activity a {
+  border-bottom: 2px solid $view_fg_color !important;
+  color: lighten($view_fg_color, 10%);
 }
 
 .answers .newest li.newest a, .answers .hot li.hot a, .answers .votes li.votes a, .unanswered .newest li.newest a, .unanswered .hot li.hot a, .unanswered .votes li.votes a {
   border-bottom: 2px solid $blue !important;
-  color: #000 !important;
+  color: $fg_color !important;
 }
 
 .filters {
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid darken($view_bg_color, 10%);
   ul li a {
     background: none;
     color: #999;
@@ -505,7 +518,7 @@ form .domain small {color: #000; }
 // Login form
 section.sessions {
   .options{
-    border-top: 1px solid #f1f1f1;
+    border-top: 1px solid darken($view_bg_color, 10%);
     li a {
       color: #fff;
       background-color: #c00;
@@ -543,13 +556,14 @@ footer {
 // app/stylesheets/app/_layout.sass
 body {
    @if($has_bg_image) {
-     background: url($bg_image_url) 0 0;
+     background: $bg_color url($bg_image_url) 0 0;
    } @else {
      background: $bg_color;
   }
 }
 
 section.left-panel {
+  background-color: $view_bg_color;
   .module {
     border-bottom: 1px solid darken($view_bg_color, 10%);
     h3 {
@@ -633,9 +647,10 @@ section.invitations-panel {
 // app/stylesheets/app/_topTabs.sass
 .quick_question {
   input {
-    border: 1px solid #ccc;
+    border: 1px solid darken($fg_color, 5%);
     background-color: #fafafa;
     &:hover { border-color: #666; }
+    @include inner-shadow;
   }
   h2 {
     text-shadow: 1px 1px 2px #e5e5e5;
@@ -676,10 +691,10 @@ section.invitations-panel {
 //app/widgets/_customLinks.sass
 .widget-links ul {
   li a {
-    color: $dark;
+    color: $link_fg_color;
     &:hover {
-      @include gradient($orange);
-      color: #fff;
+      @include gradient($button_bg_color);
+      color: $button_fg_color;
     }
   }
   li.active a, li.active a:hover {
@@ -719,11 +734,11 @@ section.invitations-panel {
 .widget-top_groups section {
   border-bottom: 1px solid #fafafa;
   .avatar {
-    img {border: 1px solid #f1f1f1;}
+    img {border: 1px solid darken($view_bg_color, 10%);}
   }
   .data {
     h5 {
-      a {color: #000;}
+      a {color: $link_fg_color;}
       small {color: #777;}
     }
   }
@@ -732,17 +747,17 @@ section.invitations-panel {
 //app/widgets/_top_users.sass
 .widget-top_users ul{
   .avatar {
-    img { border: 1px solid #f1f1f1;}
+    img { border: 1px solid darken($view_bg_color, 10%);}
   }
   .data {
     h5 {
       a {
-        color: #666;
-        &:hover{ color: #000;}
+        color: $link_fg_color;
+        &:hover{ color: $link_fg_color;}
       }
       small {
-        background-color: #f1f1f1;
-        color: black;
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
       }
     }
   }
@@ -771,6 +786,24 @@ section.invitations-panel {
   }
 }
 
+//app/widgets/_suggestions.sass
+.widget-suggestions, .widget-suggestions-page {
+  ul li {
+    border-bottom: 1px dotted #e5e5e5;
+    .link {
+      color: $link_fg_color;
+      .tag {
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
+      }
+    }
+  }
+}
+
+.widget-suggestions-page h3 {
+  border-bottom: 1px solid #e5e5e5;
+}
+
 //app/content/question/question.sass
 section.main-question {
   background-color: $view_bg_color;
@@ -789,7 +822,7 @@ section.main-question {
     }
   }
   .description {
-    p {color: #606060;}
+    p {color: darken($view_fg_color, 5%);}
     img { border: 1px solid #e5e5e5; }
     .thumb {background-color: #fcfcfc;}
     #attachments_list li a {
@@ -892,7 +925,8 @@ ul.tag-list {
 //app/content/question/answers.sass
 #answers-content-wrap {
   border: 1px solid #e5e5e5;
-  background-color: #fff;
+  background-color: $view_bg_color;
+
   section.filters ul {
     border-top: 1px solid $blue;
     border-bottom-color: #bee5e7;
@@ -906,19 +940,20 @@ ul.tag-list {
 }
 
 .answer_vote_box {
-  background-color: #f1f1f1;
+  background-color: $view_fg_color;
+  color: $view_bg_color;
   .votes_average {
-    background-color: #f1f1f1;
+    background-color: $view_fg_color;
   }
   form ul.vote_box button {
     &.negative {
-      background-color: #f1f1f1;
+      background-color: $view_fg_color;
       &:hover {
         background-color: #f00;
       }
     }
     &.positive {
-      background-color: #f1f1f1;
+      background-color: $view_fg_color;
       &:hover {
         background-color: #0a0;
       }
@@ -929,7 +964,7 @@ ul.tag-list {
 article.answer {
   border-bottom: 1px solid #e5e5e5;
   p {
-    color: #333333;
+    color: darken($view_fg_color, 5%);
   }
   h4 {
     img.gravatar { border: 1px solid #fff; }
@@ -940,7 +975,7 @@ article.answer {
 .article-actions ul li {
   a {
     color: #999;
-    border-right: 1px solid #f1f1f1;
+    border-right: 1px solid darken($view_bg_color, 10%);
     &:hover {
       color: #fff;
       background-color: $orange;
@@ -976,7 +1011,7 @@ form.answer_comment_form, form.question_comment_form {
 //app/content/more/_groups.sass
 .groups_container {
   form {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
     .field {
       #q {
         border-color: #ccc;
@@ -986,7 +1021,7 @@ form.answer_comment_form, form.question_comment_form {
     }
   }
   ul li {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
     .logo { border: 1px solid #e5e5e5; }
     .summary h3 a { color: #000; }
   }
@@ -994,7 +1029,7 @@ form.answer_comment_form, form.question_comment_form {
 
 //app/content/more/_users.sass
 .users_container {
-  border-bottom: 1px solid #f1f1f1;
+  border-bottom: 1px solid darken($view_bg_color, 10%);
   .field {
     #q {
       border-color: #ccc;
@@ -1005,7 +1040,7 @@ form.answer_comment_form, form.question_comment_form {
 
   ul {
     li {
-      border-bottom: 1px solid #f1f1f1;
+      border-bottom: 1px solid darken($view_bg_color, 10%);
       .logo { border: 1px solid #e5e5e5; }
       .summary h3 a { color: #000; }
     }
@@ -1039,7 +1074,7 @@ form.answer_comment_form, form.question_comment_form {
 
 #badges_show {
   .description {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
     p .badge_item {
       color: #000;
       text-shadow: 1px 1px 2px #e5e5e5;
@@ -1050,9 +1085,9 @@ form.answer_comment_form, form.question_comment_form {
     b{ color: #000;}
   }
   .users ul li {
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid darken($view_bg_color, 10%);
     .stats {
-      border-right: 1px solid #f1f1f1;
+      border-right: 1px solid darken($view_bg_color, 10%);
     }
     .summary {
       h3 a {

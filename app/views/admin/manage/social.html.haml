@@ -15,7 +15,7 @@
   %li.tag_your_tweets
     = link_to t(".tag_your_tweets"), manage_social_path(:tab=>"tag_your_tweets"), :title => t(".tag_your_tweets_title")
 
--form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
+= form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
   = f.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "social", :tab => @active_subtab)
   =render :partial => "admin/manage/properties/#{@active_subtab}", :locals => {:f => f}

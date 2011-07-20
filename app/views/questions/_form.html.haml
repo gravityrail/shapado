@@ -1,7 +1,7 @@
 = f.error_messages
 = error_messages_for(:user)
 
-=render "followup_form.html.haml", local_assigns
+=render "followup_form", local_assigns
 
 -if @question.position
   = hidden_field_tag "question[position][lat]", @question.position["lat"], :class => "lat_input"
@@ -16,6 +16,7 @@
   %label
     =t(".related_questions", :default => :"questions.show.related_questions" )
   %ul#related_questions
+  /i18n
   %small Here you will find questions that are similar to yours
 
 .field

@@ -46,9 +46,11 @@
         %fieldset
           = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question)}
           .buttons
-            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
             = t("global.or")
+            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
             = submit_tag t("comments.shared.comment_submit")
+
+
     = render "toolbar"
 
   %ul.tag-list
@@ -83,6 +85,15 @@
       - source = question_path(@question)
       = error_messages_for 'answer'
 
+    - if @question.closed && @question.close_reason.present?
+      #close_reason.pacho
+        = t(".close_reason")
+        = t(@question.close_reason.reason, :scope=>"close_requests.form")
+        - if !@question.close_reason.comment.empty?
+
+          .comment
+            =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
+
     .followUp-content
       -if @question.follow_up
         %h1
@@ -96,22 +107,18 @@
             %li
               = link_to child.title, question_path(child)
 
-      - if @question.closed && @question.close_reason.present?
-        #close_reason.pacho
-          = t(".close_reason")
-          = t(@question.close_reason.reason, :scope=>"close_requests.form")
-          - if !@question.close_reason.comment.empty?
-
-            .comment
-              =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
   .answers-list
-    - if @question.accepted
-      - solution = @question.answer
-      = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
+    - if @answers.empty? && !@question.accepted
+      = render "shared/empty", :type => "answers", :url => ""
+    - else
+      - if @question.accepted
+        - solution = @question.answer
+        = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
 
-    - @answers.each do |answer|
-      - next if answer.id == @question.answer_id
-      = render "answer", {:question => @question, :answer => answer}
+      - else
+        - @answers.each do |answer|
+          - next if answer.id == @question.answer_id
+          = render "answer", {:question => @question, :answer => answer}
 
   = will_paginate(@answers)

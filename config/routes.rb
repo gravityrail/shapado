@@ -187,7 +187,11 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :themes
+    resources :themes do
+      member do
+        get :remove_bg_image
+      end
+    end
     resources :constrains_configs
     resources :members
   end

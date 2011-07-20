@@ -5,7 +5,7 @@
   clear: both
   display: block
   padding: 0 0 20px 0
-  min-height: 1000px
+  overflow: hidden
 
   header
     h3
@@ -73,9 +73,9 @@ article.answer
     padding: 10px 10px 0 8px
     float: left
     margin: 0 0 10px 0
-    img.gravatar
+    img
       float: left
-      margin: -5px 3px 0 0
+      margin: 0 5px 0 0
     a:hover
       border-bottom: 1px dotted
     i
@@ -117,6 +117,7 @@ article.answer
 //========================================================================
 .article-actions
   position: relative
+  margin-bottom: 20px
   ul
     height: 20px
     background-color: #f5f5f5
@@ -128,7 +129,7 @@ article.answer
         display: block
         position: relative
         padding: 5px 10px
-        font-size: 11px
+        font-size: 12px
         cursor: pointer
 
         &:hover
@@ -147,16 +148,16 @@ article.answer
           a:first-letter
             text-transform: uppercase
 
-  .flagged
-    width: 380px
-    margin: -1px 0 0 0
-    padding: 7px 0 0 10px
-    a
-      float: right
-      margin-top: -6px
-      padding: 7px 0 6px 7px
+  ul.drop-menu
+    li.flagged
+      padding: 4px
+      &>a, span
+        float: right
+      ul li a
+        background-image: none
+        padding: 4px
 
-  
+
 /* Closed reasons */
 //========================================================================
 #close_reason
@@ -171,7 +172,7 @@ article.answer
 
 /* Closed reasons */
 //========================================================================
-article.answer 
+article.answer
   h3
     color: #c00
     font-size: 13px
@@ -183,9 +184,26 @@ article.answer
       color: #000
       strong
         font-weight: normal
-        
-        
-        
-        
-        
-        
+
+article.answer
+  .content
+    h1
+      margin: 0 0 10px 0 !important
+      padding: 0 !important
+      font-size: 25px !important
+    h2
+      margin: 0 0 10px 0 !important
+      padding: 0 !important
+      font-size: 20px
+    p
+      font-size: 12px
+      line-height: 18px
+    ul
+      margin: 0 0 0 20px
+      li
+        float: none
+        margin: 0 0 5px 0
+        line-height: 18px
+    img
+      border: 1px solid
+      margin: 10px auto

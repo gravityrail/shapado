@@ -5,7 +5,7 @@
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
 -if @questions.empty?
-  = render "shared/empty"
+  = render "shared/empty", :type => "questions", :url => new_question_path
 
 -if params[:answers]
   -cache_for(:questions, :answers, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do

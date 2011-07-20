@@ -1,5 +1,15 @@
 
-= link_to theme.name, theme_path(theme)
-|
-= link_to t("scaffold.edit"), edit_theme_path(theme)
-%br
+%article.theme
+  %h2
+    = link_to theme.name, theme_path(theme)
+  %p.content.markdown
+    = theme.description
+  .article-actions
+    %ul.drop-menu
+      %li
+        = link_to t("scaffold.edit"), edit_theme_path(theme)
+      %li
+        = link_to "Try", domain_url(custom: current_group.domain, theme: theme.id, controller: "questions", action: "index"), :target => "_blank"
+      %li
+        = link_to t('scaffold.destroy'),  theme_path(theme), :metod => :delete, :confirm => t("scaffold.sure", :model => Theme.model_name.human)
+  %br

@@ -24,10 +24,28 @@ en:
       title_content: Group content
       title_features: Group features
     empty:
-      title: Sorry! There's not much to see here.
-      description: Be the first to %{ask_a_question_link}!
-      ask_a_question: ask a question
+      default:
+        title: Sorry! There's not much to see here.
+        description:
+          text: Be the first to %{action_link}!
+      questions:
+        description:
+          action_link: ask a question
+      themes:
+        title: You haven't created any themes for now.
+        description:
+          text: create one %{action_link}
+          action_link: now
+      activities:
+        title: There are no activities so far.
+        description:
+          text:
+            This place will get filled up automatically once people start using the site.
+      answers:
+        title: No one has answered this question yet.
+        description:
+          text: Be the first!
     layout:
       footer:
         cc_footer: 'All Shapado.com content and data are available under the %{cc_link} license'
-        powered_by: Powered by %{source_link} %{version} under the #{agpl_link}
+        powered_by: Powered by %{source_link} %{version} under the %{agpl_link}

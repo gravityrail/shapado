@@ -45,12 +45,12 @@
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
 
     .panel-comments
-      -form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
+      = form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
         %fieldset
           = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
           .buttons
-            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-            = t("global.or")
             = submit_tag t("comments.shared.comment_submit")
+            = t("global.or")
+            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
 
     .article-forms
