@@ -87,12 +87,22 @@ class ThemesController < ApplicationController
   # DELETE /themes/1
   # DELETE /themes/1.json
   def destroy
-    @theme = Theme.find(params[:id])
+    @theme = current_group.themes.find(params[:id])
     @theme.destroy
 
     respond_to do |format|
       format.html { redirect_to(themes_url) }
       format.json  { head :ok }
+    end
+  end
+
+  def remove_bg_image
+    @theme = Theme.find(params[:id])
+    @theme.delete_file("bg_image")
+    @theme.save
+    respond_to do |format|
+      format.html { redirect_to edit_theme_path(@theme) }
+      format.json { render :json => {:ok => true} }
     end
   end
 end

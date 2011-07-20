@@ -12,6 +12,9 @@
     = form.text_field :fg_color, :type => "color"
 
   .field
+    -if !@theme.new? && @theme.has_bg_image?
+      = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
+      =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
     = form.label :bg_image
     = form.file_field :bg_image
 
@@ -36,7 +39,7 @@
   .field
     = form.label :link_fg_color
     = form.text_field :link_fg_color, :type => "color"
-    
+
   .field{:style => "margin-bottom: 3px"}
     .checkbox
       = form.label :use_link_bg_color

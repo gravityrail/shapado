@@ -31,6 +31,7 @@ class Theme
   belongs_to :group
 
   validates_uniqueness_of :name, :allow_blank => false
+  validates_presence_of :name
 
   def self.find_file_from_params(params, request)
     if request.path =~ /\/(css|bg_image)\/([^\/\.?]+)\/([^\/\.?]+)/
