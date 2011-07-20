@@ -413,16 +413,15 @@ ul.admin-links li {
   }
 }
 
-.questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a {
+.questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a, .activity ul.content-tabs li.activity a {
   background-color: $view_bg_color !important;
   color: $view_fg_color !important;
+  &:hover {
+    background-color: $view_bg_color !important;
+  }
 }
 
-.questions ul.content-tabs li.questions a:hover, .answers ul.content-tabs li.answers a:hover, .unanswered ul.content-tabs li.unanswered a:hover{
-  background-color: $view_bg_color !important;
-}
-
-.questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a {
+.questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a, .questions .activity li.activity a {
   border-bottom: 2px solid $view_fg_color !important;
   color: lighten($view_bg_color, 15%);
 }
@@ -805,7 +804,7 @@ section.main-question {
     }
   }
   .description {
-    p {color: #606060;}
+    p {color: darken($view_fg_color, 5%);}
     img { border: 1px solid #e5e5e5; }
     .thumb {background-color: #fcfcfc;}
     #attachments_list li a {
@@ -908,7 +907,8 @@ ul.tag-list {
 //app/content/question/answers.sass
 #answers-content-wrap {
   border: 1px solid #e5e5e5;
-  background-color: #fff;
+  background-color: $view_bg_color;
+
   section.filters ul {
     border-top: 1px solid $blue;
     border-bottom-color: #bee5e7;
@@ -922,19 +922,20 @@ ul.tag-list {
 }
 
 .answer_vote_box {
-  background-color: #f1f1f1;
+  background-color: $view_fg_color;
+  color: $view_bg_color;
   .votes_average {
-    background-color: #f1f1f1;
+    background-color: $view_fg_color;
   }
   form ul.vote_box button {
     &.negative {
-      background-color: #f1f1f1;
+      background-color: $view_fg_color;
       &:hover {
         background-color: #f00;
       }
     }
     &.positive {
-      background-color: #f1f1f1;
+      background-color: $view_fg_color;
       &:hover {
         background-color: #0a0;
       }
@@ -945,7 +946,7 @@ ul.tag-list {
 article.answer {
   border-bottom: 1px solid #e5e5e5;
   p {
-    color: #333333;
+    color: darken($view_fg_color, 5%);
   }
   h4 {
     img.gravatar { border: 1px solid #fff; }
