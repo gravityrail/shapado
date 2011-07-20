@@ -786,6 +786,24 @@ section.invitations-panel {
   }
 }
 
+//app/widgets/_suggestions.sass
+.widget-suggestions, .widget-suggestions-page {
+  ul li {
+    border-bottom: 1px dotted #e5e5e5;
+    .link {
+      color: $link_fg_color;
+      .tag {
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
+      }
+    }
+  }
+}
+
+.widget-suggestions-page h3 {
+  border-bottom: 1px solid #e5e5e5;
+}
+
 //app/content/question/question.sass
 section.main-question {
   background-color: $view_bg_color;
