@@ -54,8 +54,8 @@ class UsersController < ApplicationController
         render :json => @memberships.to_json(:only => %w[name login bio website location language])
       }
       format.js {
-        html = render_to_string(:partial => "user", :collection  => @users)
-        pagination = render_to_string(:partial => "shared/pagination", :object => @users,
+        html = render_to_string(:partial => "membership", :collection  => @memberships)
+        pagination = render_to_string(:partial => "shared/pagination", :object => @memberships,
                                       :format => "html")
         render :json => {:html => html, :pagination => pagination }
       }
