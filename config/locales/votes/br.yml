@@ -15,6 +15,9 @@ br:
       to_vote_down: Klikañ da zislavarout
       to_vote_up: Klikit ma aprouit
     create: 
+      average: 
+        one: "%{count} mouezh"
+        other: "%{count} mouezh"
       flash_error: Ne c'hellit ket votiñ an dra-se
       flash_notice: Trugarez deoc'h da vezañ mouezhiet !
       unauthenticated: Ne c'hell ket an implijerien dizanv mouezhiañ

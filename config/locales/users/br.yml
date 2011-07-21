@@ -90,5 +90,10 @@ br:
       title: Implijer %{user}
       unfollow: chom hep heuliañ
       views: gweladennoù
+    top_user: 
+      connect: Kevreañ
+      profile: Profil
     unfollow: 
       flash_notice: Lamet eo bet an implijer %{user} kuit eus ho roll mignoned
+    user_bar: 
+      create_account: Krouiñ ur gont

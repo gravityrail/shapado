@@ -15,9 +15,15 @@ mk:
       addict: 
         description: го посетил мрежното место 20 дена по ред
         name: Зависник
+      altruist: 
+        description: Прва награда што сте ја доделиле рачно на нечие прашање
+        name: Човекољубец
       autobiographer: 
         description: ги пополнил сите полиња во корисничкиот профил
         name: автобиограф
+      benefactor: 
+        description: Прва награда што сте ја доделиле рачно на ваше прашање
+        name: Добротвор
       celebrity: 
         description: Има над 100 следбеници
         name: славна личност
@@ -54,8 +60,11 @@ mk:
       fanatic: 
         description: го посетил мрежното место 100 дена по ред
         name: Фанатик
+      favorite_answer: 
+        description: Има одговор бендисан од 25 корисници
+        name: Омилен одговор
       favorite_question: 
-        description: Поставил прашање бендисано од 25 корисници
+        description: Поставил прашање проследено од 25 корисници
         name: Бендисано прашање
       friendly: 
         description: следење некого за прв пат
@@ -81,6 +90,9 @@ mk:
       interesting_person: 
         description: Има над 10 следбеници
         name: интересна личност
+      investor: 
+        description: Прва награда што сте ја доделиле на нечие прашање
+        name: Вложувач
       merit_medal: 
         description: добивање на 200 позитивни гласа
         name: Медал за заслуги
@@ -114,6 +126,9 @@ mk:
       popular_question: 
         description: поставил прашање со 1000 прегледи
         name: Популарно прашање
+      promoter: 
+        description: Прва награда што сте ја доделиле на ваше прашање
+        name: Промотор
       rockstar: 
         description: Има 1000 позитивни, а највеќе 10 негавитни гласови
         name: Рок-ѕвезда
@@ -128,8 +143,11 @@ mk:
         name: Медал за служба
       shapado: 
         description: го посетил мрежното место 8 дена по ред
+      stellar_answer: 
+        description: Има одговор бендисан од 100 корисници
+        name: Ѕвезден одговор
       stellar_question: 
-        description: Поставил прашање бендисано од 100 корисници
+        description: "!Поставил прашање проследено од 100 корисници"
         name: ѕвездено прашање
       student: 
         description: го поставил првото прашање со барем еден глас „за“

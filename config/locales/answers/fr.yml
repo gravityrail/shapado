@@ -1,6 +1,8 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
+# Author: Od1n
 # Author: Patcito
 # Author: Y-M D
 fr: 
@@ -8,7 +10,7 @@ fr:
     attributes: 
       answer: 
         body: Corps
-        created_at: Répondue
+        created_at: "Créé le :"
         link: Lien
     models: 
       answer: Réponse
@@ -16,7 +18,7 @@ fr:
   answers: 
     create: 
       flash_error: "Une erreur s'est produite lors de l'ajout de votre question. \n  N'oubliez pas que: \n - Les réponses vides de contenu ou les doublons ne sont pas autorisées. \n - Vous devez attendre au moins 20 secondes avant de poster une autre réponse. \n - Vous ne pouvez poster qu'une réponse par question."
-      flash_notice: Merci!
+      flash_notice: Merci !
     edit: 
       title: Éditer la réponse
     form: 

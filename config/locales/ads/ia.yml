@@ -8,8 +8,8 @@ ia:
     create: 
       success: Le annuncio ha essite create con successo.
     index: 
-      add_adbard: Adder un nove annuncio Adbard
       add_adsense: Adder un nove annuncio Google AdSense
+      description: Gerer annuncios
       title: Publicitate
     name: "Nomine:"
     position: "Position:"

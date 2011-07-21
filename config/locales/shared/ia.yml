@@ -6,6 +6,27 @@ ia:
   shared: 
     current_tags: 
       title: Etiquettas seligite
+    layout: 
+      footer: 
+        cc_footer: Tote le contento e datos de Shapado.com es disponibile sub licentia %{cc_link}
+        powered_by: Actionate per %{source_link} %{version} sub le
+    login_drop_down: 
+      with_facebook: con Facebook
+      with_google: con Google
+      with_identica: con Identi.ca
+      with_linked_in: con LinkedIn
+      with_openid: con OpenID
+      with_twitter: con Twitter
+      with_user_pass: usator/contrasigno
+    manage_navigation: 
+      title_content: Contento del gruppo
+      title_features: Functionalitate del gruppo
+      title_options: Optiones de gruppo
+    social_connect: 
+      find_friends_facebook: Trovar amicos in Facebook
+      find_friends_identica: Trovar amicos in Identi.ca
+      find_friends_linked_in: Trovar amicos in LinkedIn
+      find_friends_twitter: Trovar amicos in Twitter
     topbar: 
       admin: Admin
       logged_as: Authenticate como %{login}

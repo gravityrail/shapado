@@ -15,6 +15,6 @@ gl:
       delete: eliminar
       title: Accións
     create: 
-      success: o aviso creouse correctamente.
+      success: O aviso creouse correctamente.
     index: 
       title: avisos

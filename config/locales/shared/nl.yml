@@ -1,11 +1,29 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   shared: 
     current_tags: 
       title: Geselecteerde labels
+    login_drop_down: 
+      with_facebook: met Facebook
+      with_google: met Google
+      with_identica: met Identi.ca
+      with_linked_in: met LinkedIn
+      with_openid: met OpenID
+      with_twitter: met Twitter
+      with_user_pass: gebruiker/wachtwoord
+    manage_navigation: 
+      title_content: Groepsinhoud
+      title_features: Groepsfuncties
+      title_options: Groepsopties
+    social_connect: 
+      find_friends_facebook: Vrienden op Facebook vinden
+      find_friends_identica: Vrienden op Identi.ca vinden
+      find_friends_linked_in: Vrienden op LinkedIn vinden
+      find_friends_twitter: Vrienden op Twitter vinden
     topbar: 
       admin: Beheer
       logged_as: Aangemeld als %{login}

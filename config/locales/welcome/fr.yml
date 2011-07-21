@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 fr: 
   welcome: 
@@ -8,9 +9,9 @@ fr:
       notice: Vous ne pouvez entrer sur ce site internet seulement si vous avez au moins 18 ans, ou au moins l'age de la majorité de la juridiction dans laquelle vous résidez ou de laquelle vous accedez cette page internet
       over_18: J'ai plus de 18 ans
       under_18: J'ai moins de 18 ans
-      warning: "ATTENTION: Cette page peux contenir du matériel explicite pour adultes."
+      warning: "ATTENTION : Cette page peut contenir du contenu explicite pour adultes."
     feedback: 
-      captcha_error: s'il vous plait, veuillez résoudre cette simple opération mathématique
+      captcha_error: S'il vous plait, veuillez résoudre cette simple opération mathématique
       email_description: S'il vous plait, donnez-nous votre email afin que nous puissions répondre à votre message.
       feedback_description: Description
       feedback_title: Titre

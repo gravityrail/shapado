@@ -5,6 +5,8 @@
 ia: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Nove message marcate in %{group}
       earned_badge: 
         subject: Tu ha ganiate un insignia in %{group}!
       favorited: 
@@ -20,5 +22,7 @@ ia:
         subject_owner: "%{login} respondeva a tu question %{title}"
       new_comment: 
         subject: "%{login} commentava super %{group}"
+      new_invitation: 
+        subject: "%{user} te invita a adherer a %{group}"
       report: 
         subject: Reporto pro le gruppo %{group} de %{app}

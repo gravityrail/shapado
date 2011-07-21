@@ -5,10 +5,18 @@
 ia: 
   layouts: 
     application: 
+      all: Totes
       ask_question: Poner question
       badges: Insignias
+      by_me: Per me
+      collaborate: Collaborar
+      contributed: Contribuite
+      faq: FAQ
+      follow_us_and_share: Seque nos e diffunde le parola
+      followed: Sequite
       forgot: Oblidate?
       home: Initio
+      join_group: Adherer a %{group}
       languages: Linguas
       log_in: Aperir session
       logged: Authenticate como %{login}
@@ -19,9 +27,11 @@ ia:
       openid: 
         explaination: "Si tu vole crear un conto o solmente aperir un session, per favor selige tu providitor OpenID:"
       pages: Paginas
+      preferred: Preferite
       questions: Questiones
       questions_in: Questiones in
       questions_tagged: etiquettate con
+      random_question: Question aleatori
       search: Cercar
       settings: Configurationes
       signup: Crear un conto
@@ -39,11 +49,13 @@ ia:
       dashboard: Pannello de instrumentos
       domain: Dominio
       general: General
+      invitations: Invitationes
       members: Membros
       pages: Paginas
       properties: Proprietates
       reputation: Reputation
       rewards: Recompensas
+      social: Social
       stats: Statisticas
       theme: Thema
       widgets: Widgets

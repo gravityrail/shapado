@@ -45,6 +45,9 @@ mk:
       vote_up: гласај „за“
     anonymous_form: 
       never_shown: никогаш не се прикажува
+    change_password: 
+      submit: Смени лозинка
+      title: Смени лозинка
     create: 
       flash_error: Нажалост, не можевме да ја направиме таа сметка. Обидете се повторно, или пак обратете се кај администратор (врската е погоре)
       flash_notice: ви благодариме што се регистриравте!
@@ -53,7 +56,7 @@ mk:
       submit: Зачувај
       title: поставки
     follow: 
-      flash_notice: Корисникот %{user} е додаден како ваш пријател
+      flash_notice: Сега го следите корисникот %{user}.
     form: 
       activities_notification: Испраќај ми соопштенија по е-пошта за системски активности како заработени значки, нови следбеници и тн.
       avatar_tip: сменете си ја профилната слика со граватар
@@ -63,12 +66,19 @@ mk:
       new_answer_notification: Испраќај ми соопштенија по е-пошта за нови одговори
       notifications: соопштенија
       reports_notification: Испраќај ми извештај за најновите активности во групата (само за администратори на групи)
+      send_answers_to_twitter: Испраќај ги моите одговори на мојата сметка на Twitter
+      send_badges_to_twitter: Испраќај ги моите новодобиени значки на мојата сметка на Twitter
+      send_comments_to_twitter: Испраќај ги моите коментари на мојата сметка на Twitter
+      send_favorites_to_twitter: Испраќај ги моите бендисани (омилени) прашања на мојата сметка на Twitter
+      send_questions_to_twitter: Испраќај ги моите прашања на мојата сметка на Twitter
       show_more_lang: Покажи повеќе јазици
+      social_interaction: Општење преку друштвените медиуми
     index: 
       empty: оваа група нема членови. Учествувајте за да се зачлените во групава.
       filter: пребарај корисници
       name: име
       name_tooltip: корисниците по азбучен ред
+      near: Во ваша близина
       newest: најнови
       newest_tooltip: штотуку регистрирани корисници
       oldest: најстари
@@ -80,14 +90,30 @@ mk:
       errors: 
         reputation_needed: за да %{action} потребен ви е углед од %{min_reputation}
     new: 
+      description: Станете дел од заедницата — прашувајте, одговарајте и осознавајте!
+      join_group: Зачлени се во %{group}
       submit: пријави се
       title: регистрирај се како нов корисник
     show: 
+      edit_profile: Уреди профил
       follow: следи
       followers: Следбеници
       following: Следи
       title: Корисник %{user}
       unfollow: повеќе не следи
       views: посети
+    top_user: 
+      connect: Поврзи
+      my_karma: "Моја карма: %{karma}"
+      profile: Профил
     unfollow: 
-      flash_notice: Корисникот %{user} е отстранет од вашите пријатели
+      flash_notice: Повеќе не го следите корисникот %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Сега ја следите ознаката %{tag}.
+      unfollowed: 
+        flash_notice: Повеќе не ја следите ознаката %{tag}.
+    user_bar: 
+      create_account: Направете сметка
+      not_logged_in: Ненајавен
+      signed_as: Најавен како

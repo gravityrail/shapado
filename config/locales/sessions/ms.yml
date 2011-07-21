@@ -14,9 +14,9 @@ ms:
       not_registered: Belum berdaftar?
       registered: Sudah berdaftar?
       remember_me: Ingati saya
-      sign_in: Daftar masuk
+      sign_in: Log masuk
       signup: Daftar diri
       with_authentication: Log masuk dengan sistem pengesahan kami
-      with_facebook: Daftar masuk dengan Facebook
+      with_facebook: Log masuk dengan Facebook
       with_openid: Log masuk dengan OpenID
-      with_twitter: Daftar masuk dengan Twitter
+      with_twitter: Log masuk dengan Twitter

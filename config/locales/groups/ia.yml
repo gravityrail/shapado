@@ -13,13 +13,15 @@ ia:
         fb_button: Activar le button Like de Facebook (non protege le vita private)
         forum: Permitter plus de un responsa per usator
         group_created_by: create per
-        language: Lingua
+        language: Lingua predefinite
+        languages: Linguas additional
         legend: Legenda
         logo: Logotypo
         may_contain_adult_content: Iste sito pote continer contento adulte
         name: Nomine
         owner: Iste gruppo esseva create per %{login}
         registered_only: Solo le personas registrate pote acceder al sito
+        signup_type: Qual methodo pote tu usatores usar pro crear un conto
         state: Stato
         subdomain: URL
         wysiwyg_editor: Activar le editor facile a usar
@@ -28,8 +30,13 @@ ia:
       group: Gruppo
       groups: Gruppos
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Un problema ha occurrite. Per favor reproba.
+      success_twitter_connection: Felicitationes, tu ha connectite tu conto de Twitter con successo!
     create: 
       flash_notice: Tu gruppo ha essite create con successo. Tu pote ora comenciar a configurar lo.
+    edit: 
+      title: Modificar tu gruppo
     form: 
       access: Configurationes de accesso
       analytics_engine: Motor de analyse
@@ -44,6 +51,10 @@ ia:
       legend_legend: Isto essera usate in le titulo. Tu ha 40 characteres.
       logo_legend: Tu pote incargar le logotypo del gruppo. Le grandor maxime del file es 2MB.
       members_only: Solmente le membros del gruppo potera acceder a iste gruppo
+      signup_all: Totes (usatores pote crear un conto per e-mail, OpenID, Facebook, Twitter, etc.)
+      signup_email: E-mail solmente (le usatores pote solmente crear un conto con lor adresse de e-mail e contrasigno)
+      signup_noemail: Sin e-mail/contrasigno (le usatores crea un conto con OpenID, Facebook, Twitter)
+      signup_social: Rete social solmente (le usatores pote solmente crear un conto con Facebook, Twitter, LinkedIn e Identica)
       website_analytics_id: ID de analyse de sito web
     group: 
       about: A proposito
@@ -54,6 +65,8 @@ ia:
       disallow_ads: Non permitter publicitate
     index: 
       actives: Active
+      create_your_own: crear tu proprie gruppo
+      description: Isto es le lista de gruppos public que ha essite create. Usa le campo de recerca sequente pro filtrar le gruppos. Tu pote etiam %{link}.
       filter: Cercar gruppos
       most_active: Le plus active
       name: Nomine
@@ -70,3 +83,5 @@ ia:
       group_closed: Iste gruppo ha essite claudite.
       title: A proposito de %{name}
       visit_group: Visitar iste gruppo
+    top_grouplist: 
+      active_site: "Sito active:"

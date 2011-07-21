@@ -9,6 +9,9 @@ ia:
       search_box_title: Verifica que tu question non ha jam essite ponite
       tags_tip: Usa [etiquetta] pro specificar etiquettas.
     index: 
+      advanced_search: recerca avantiate
+      description: Usa le optiones %{link} pro obtener resultatos plus precise.
       empty: Nulle question correspondeva al terminos de tu recerca.
+      found_results: "%{quantity} resultatos ha essite trovate."
       search_text: Questiones continente
       tags: intra iste etiquettas

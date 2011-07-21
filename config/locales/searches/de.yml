@@ -7,8 +7,11 @@ de:
     form: 
       clear: leeren
       search_box_title: Prüfe, ob Deine Frage bereits gestellt wurde
-      tags_tip: Verwende [tag] um Stichworte anzugeben.
+      tags_tip: Verwende [tag], um Stichworte anzugeben.
     index: 
-      empty: Deine Suche hat keine Ergebnisse erzielt.
+      advanced_search: Erweiterte Suche
+      description: Verwende die %{link} Optionen, um präzisere Ergebnisse zu erhalten.
+      empty: Deine Suche hat keine Ergebnisse erbracht.
+      found_results: "%{quantity} Ergebnisse wurden gefunden."
       search_text: Fragen enthalten
       tags: in diesen Schlagworten

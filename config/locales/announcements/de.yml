@@ -15,6 +15,7 @@ de:
       delete: entfernen
       title: Aktionen
     create: 
-      success: Die Ankündigung wurde erfolgreich erstellt.
+      success: Deine Ankündigung wurde erfolgreich erstellt.
     index: 
+      description: Verwalte und erstelle neue Ankündigungen, die Deinen Besuchern auf der gesamten Website angezeigt werden.
       title: Ankündigungen

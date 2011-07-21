@@ -1,6 +1,7 @@
 # Messages for Portuguese (Português)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Analuisa
 # Author: Hamilton Abreu
 # Author: Waldir
 pt-PT: 
@@ -9,6 +10,7 @@ pt-PT:
       question: 
         answers: Respostas
         asked_by: Feita por
+        banned: Banido
         body: Conteúdo
         closed: Fechada
         created_at: Feita
@@ -25,8 +27,11 @@ pt-PT:
   questions: 
     answer: 
       add_comment: Adicionar comentário...
+      favorite: Guardar
+      favorite_tooltip: Adicione esta resposta às suas favoritas
       flag: Reportar
       pick_answer: Escolher como solução
+      unfavorite_tooltip: Remover esta resposta das suas favoritas
       unset_answer: Retirar como solução?
     create: 
       flash_notice: A pergunta foi criada.
@@ -35,9 +40,11 @@ pt-PT:
     flag: 
       title: Reportar pergunta
     form: 
+      add_attachment: Adicionar anexo
       adult_content: Esta pergunta envolve conteúdo para adultos.
       body_tip: Qual é a sua pergunta? Seja descritivo.
       language_tip: Seleccione a língua da pergunta.
+      remove_attachment: Remover
       tags_tip: Use categorias para fornecer mais informação sobre a sua pergunta.
     index: 
       active: Activas
@@ -57,6 +64,7 @@ pt-PT:
     model: 
       messages: 
         empty_tags: Desculpe, tem de usar pelo menos uma categoria.
+        tags_not_added: As tags '%{tags}' não puderam ser adicionadas. Precisa de uma reputação de  %{reputation_required} para criar novas tags.
         title_too_long: O título é demasiado longo. Não pode conter mais do que 100 caracteres.
         too_many_tags: Desculpe, mas só pode introduzir até 9 categorias.
         too_short: Parece demasiado curta. Use mais do que %{count} palavras para ser mais específico.
@@ -68,10 +76,14 @@ pt-PT:
       group_dont_exists: O grupo %{group} não existe
       success: Pergunta movida para o grupo %{group}
     new: 
+      description: Por favor seja descritivo e certifique-se que adiciona as tags relacionadas de modo que a sua pergunta possa ser facilmente encontrada.
       how_to_ask: Como perguntar
       title: Fazer pergunta
     question: 
       accepted_tooltip: Esta pergunta tem uma resposta que foi aceite
+      answers_number: "%{quantity} respostas"
+      votes_number: "%{quantity} votos"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Recategorizar
     retag_form: 

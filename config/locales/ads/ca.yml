@@ -8,7 +8,6 @@ ca:
     create: 
       success: S'ha creat correctament l'anunci
     index: 
-      add_adbard: Afegeix una nova barra d'anuncis
       add_adsense: Afegeix un nou anunci de Google AdSense
       title: Anuncis
     name: "Nom:"

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 # Author: Verdy p
@@ -11,7 +12,7 @@ fr:
     post_new_questions: Poster les nouvelles questions à
     question: Souscrire à cette question
     questions: Souscrire à toutes les questions
-    share_on_twitter: twitter, facebook et plus...
+    share_on_twitter: Twitter, Facebook et plus...
     tag: Souscrite au tag
     user: Inscrivez-vous aux questions de l'utilisateur
   global: 
@@ -26,7 +27,10 @@ fr:
     please_login: Ouvrez une session s'il vous plait
     preview: Prévisualisation
     previous: Précédent
+    privacy: Confidentialité
     share: Partager
+    tos: CGU
+    what_to_do: Que voulez-vous faire ?
   models: 
     question: La question
   number: 
@@ -35,8 +39,8 @@ fr:
       other: "%{count} fois"
       zero: Jamais
   pagination: 
-    next: Suivant »
-    previous: « Précédent
+    next: Suivant &raquo;
+    previous: "&laquo; Précédent"
   scaffold: 
     add: Ajouter
     back: Retour
@@ -45,13 +49,13 @@ fr:
     create: Créer
     destroy: Supprimer
     details: Détails
-    edit: Éditer
+    edit: Modifier
     more: Plus...
     new: Ajouter %{model}
     post_as_anonymous: Publier de manière anonyme
     save: Sauvegarder
     send: Envoyer
-    show: Monter
+    show: Afficher
     sure: Êtes-vous sûr de vouloir supprimer ce %{model} ?
     update: Actualiser
   time: 

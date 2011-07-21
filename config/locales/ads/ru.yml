@@ -8,7 +8,6 @@ ru:
     create: 
       success: Рекламное объявление успешно создано.
     index: 
-      add_adbard: Добавить новое рекламное объявление adbard
       add_adsense: Добавить новое рекламное объявление Google AdSense
       title: Реклама
     name: "Имя:"

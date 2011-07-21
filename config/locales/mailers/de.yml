@@ -5,6 +5,8 @@
 de: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Der neue Beitrag wurde in der Gruppe %{group} gekennzeichnet
       earned_badge: 
         subject: Du hast ein Abzeichen in der Gruppe %{group} erhalten!
       favorited: 
@@ -20,5 +22,7 @@ de:
         subject_owner: "%{login} hat Deine Frage „%{title}“ beantwortet"
       new_comment: 
         subject: "%{login} hat einen Kommentar in Gruppe %{group} hinterlassen"
+      new_invitation: 
+        subject: "%{user} läd Dich ein der Gruppe %{group} beizutreten."
       report: 
         subject: Bericht für die Gruppe %{group} auf %{app}

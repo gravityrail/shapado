@@ -5,10 +5,18 @@
 de: 
   layouts: 
     application: 
+      all: Alle
       ask_question: Frage stellen
       badges: Abzeichen
+      by_me: Von mir
+      collaborate: Mitmachen
+      contributed: Bearbeitet
+      faq: Häufige Fragen
+      follow_us_and_share: Folge uns und mache auf uns aufmerksam
+      followed: Beobachtet
       forgot: Vergessen?
       home: Startseite
+      join_group: "%{group} beitreten"
       languages: Sprachen
       log_in: Anmeldung
       logged: Als %{login} angemeldet
@@ -19,9 +27,11 @@ de:
       openid: 
         explaination: "Sofern Du Dich nicht registrieren oder anmelden möchtest, kannst Du auch Deinen OpenID-Anbieter auswählen:"
       pages: Seiten
+      preferred: Bevorzugt
       questions: Fragen
       questions_in: Fragen in
       questions_tagged: mit folgenden Stichwörtern versehen
+      random_question: Zufällige Frage
       search: Suchen
       settings: Einstellungen
       signup: Registrieren
@@ -32,6 +42,7 @@ de:
       users: Nutzer
       welcome_from: Herzlich Willkommen! Du kannst
     manage: 
+      access: Zugriff
       actions: Aktionen
       announcements: Ankündigungen
       constrains: Voraussetzungen
@@ -39,11 +50,13 @@ de:
       dashboard: Übersichtsseite
       domain: Domain
       general: Allgemein
+      invitations: Einladungen
       members: Mitglieder
       pages: Seiten
       properties: Eigenschaften
       reputation: Reputation
       rewards: Auszeichnungen
+      social: Sozial
       stats: Statistiken
       theme: Theme
       widgets: Widgets

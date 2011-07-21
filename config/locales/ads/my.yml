@@ -7,7 +7,6 @@ my:
     create: 
       success: ကြော်ငြာအား ပြုလုပ်ပြီးဖြစ်သည်။
     index: 
-      add_adbard: ကြော်ငြာ အသစ် ပေါင်းရန်
       title: ကြော်ငြာများ
     name: အမည်
     position: အဆင့်

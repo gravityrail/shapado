@@ -8,6 +8,7 @@ de:
       question: 
         answers: Antworten
         asked_by: Gefragt von
+        banned: Gesperrt
         body: Text
         closed: Beendet
         created_at: Gefragt
@@ -24,8 +25,12 @@ de:
   questions: 
     answer: 
       add_comment: Kommentar hinzufügen …
+      favorite: Speichern
+      favorite_tooltip: Diese Antwort zu Deiner Favoritenliste hinzufügen
       flag: Kennzeichnen
       pick_answer: Als Lösung auswählen
+      unfavorite: Speichern rückgängig machen
+      unfavorite_tooltip: Diese Antwort aus Deiner Favoritenliste entfernen
       unset_answer: Antwort in Frage stellen?
     create: 
       flash_notice: Die Frage wurde erfolgreich erstellt.
@@ -34,15 +39,20 @@ de:
     flag: 
       title: Kennzeichnen der Frage
     form: 
+      add_attachment: Anhang hinzufügen
       adult_content: Diese Frage enthält jugendgefährdende Angaben.
       body_tip: Wie lautet Deine Frage? Sei aussagekräftig.
       language_tip: Wähle die Sprache der Frage.
+      remove_attachment: Entfernen
       tags_tip: Verwende Stichwörter, um weitere Informationen zu Deiner Frage anzugeben.
+    history: 
+      back: ← zurück zur Frage
     index: 
       active: Aktiv
       active_tooltip: Fragen die vor kurzem aktualisiert wurden
       ask_question: Frage stellen
       empty: Bislang hat noch niemand eine Frage gestellt. Sei der Erste!
+      followers_count: "%{quantity} Beobachter"
       help_to_answer: Helfe uns beim Beantworten
       hot: Populär
       hot_tooltip: Fragen mit den meisten Aktivitäten während der letzten 5 Tage
@@ -56,9 +66,10 @@ de:
     model: 
       messages: 
         empty_tags: Du musst mindestens ein Stichwort verwenden.
-        title_too_long: Der Titel ist zu lang. Er darf aus nicht mehr als 100 Zeichen bestehen.
-        too_many_tags: Du kannst maximal neun Stichwörter verwenden.
-        too_short: Er scheint zu kurz zu sein. Bitte verwende mehr als %{count} Wörter.
+        tags_not_added: Die Stichwörter „%{tags}“ konnten nicht hinzugefügt werden. Du benötigst die Reputation %{reputation_required}, um neue Stichwörter erstellen zu können.
+        title_too_long: Der Titel darf leider nicht mehr als 100 Zeichen enthalten.
+        too_many_tags: Du kannst leider nur maximal 20 Stichwörter verwenden.
+        too_short: Der Titel ist leider kurz. Bitte verwende mehr als %{count} Wörter.
     move: 
       group_label: "Verschiebe zur Gruppe:"
       submit: Verschieben!
@@ -67,10 +78,15 @@ de:
       group_dont_exists: Die Gruppe %{group} existiert nicht
       success: Frage wurde nach %{group} verschoben
     new: 
+      description: Bitte gebe eine ausführliche Beschreibung an und füge relevante Stichwörter hinzu, damit Deine Frage auch leicht gefunden werden kann.
       how_to_ask: Wie fragen
       title: Frage stellen
     question: 
       accepted_tooltip: Zu dieser Frage gibt es eine Antwort, die akzeptiert wurde
+      answer_verb: Antwort
+      answers_number: "%{quantity} Antworten"
+      votes_number: "%{quantity} Stimmen"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Stichwörter ändern
     retag_form: 
@@ -85,7 +101,7 @@ de:
     shared: 
       flag: Kennzeichnen
     show: 
-      accepted_tooltip: Eine der Antworten wurde als richtig akzeptiert
+      accepted_tooltip: Eine der Antworten wurde als richtig akzeptiert.
       another_answers: Andere Antworten
       answers: Antworten
       answers_title: 
@@ -95,11 +111,18 @@ de:
       ban: Verbieten
       close: Beendet
       close_reason: "Die Frage wurde aus folgenden Gründen beendet:"
+      create_reward: Belohnung erstellen
+      create_reward_description: Belohne die beste Antwort mit etwas von Deinem eigenen Karma.
       edit_request: Bitte bearbeiten
       flag: Kennzeichen
       flagged_as: "Gekennzeichnet als:"
       flags: Gemeldet als
+      follow_tooltip: Diese Frage beobachten
+      follow_up: Zur Nachverfolgung
+      follow_up_description: Eine auf diesem Beitrag basierende neue Frage erstellen.
+      follow_up_of: Diese Frage ist eine Folgefrage zu
       last_activity: Letzte Aktivität
+      more_actions: Weitere Aktionen
       open: Öffnen
       related_questions: Ähnliche Frage
       request_closing: Um Beendigung der Frage bitten
@@ -115,6 +138,7 @@ de:
       solution: Lösung
       to_answer_question: Frage beantworten
       unauthenticated_retag: Du brauchst ein Nutzerkonto, um die Stichwörter ändern zu können
+      unfollow_tooltip: Diese Frage nicht mehr beobachten
       viewed: Gesehen
     solve: 
       flash_notice: Die Frage wurde beantwortet.

@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Mor
 # Author: Patcito
 es: 
   activerecord: 
@@ -20,7 +21,7 @@ es:
       title: Editar el reporte de %{model}
     form: 
       attention: Requiere atención de un moderador
-      label: por favor reporte con cuidado
+      label: Por favor marca con cuidado
       offensive: ofensivo, abusivo o intolerante
       spam: Spam
     model: 

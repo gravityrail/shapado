@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
@@ -12,8 +13,8 @@ fr:
       flash_notice: Vous avez été déconnecté.
     new: 
       log_in: Connectez-vous
-      not_registered: Pas encore enregistré?
-      registered: Déjà enregistré?
+      not_registered: Pas encore enregistré ?
+      registered: Déjà enregistré ?
       remember_me: Se souvenir de moi
       sign_in: S’identifier
       signup: Créer un compte

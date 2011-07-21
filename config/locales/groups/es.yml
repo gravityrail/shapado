@@ -4,6 +4,7 @@
 # Author: Crazymadlover
 # Author: Diego Grez
 # Author: McDutchie
+# Author: Mor
 # Author: Patcito
 es: 
   activerecord: 
@@ -16,7 +17,7 @@ es:
         fb_button: Activar el boton Like de Facebook (no muy amigable para la privacidad)
         forum: Permitir más de una respuesta por usuario
         group_created_by: creado por
-        language: Idioma
+        language: Idioma predeterminado
         legend: Leyenda
         logo: Logo
         may_contain_adult_content: Este sitio podria tener contenido para adultos
@@ -31,8 +32,10 @@ es:
       group: Grupo
       groups: Grupos
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Lo sentimos, algo fue mal. Inténtelo de nuevo por favor.
     create: 
-      flash_notice: Tu grupo ah sido creado exitosamente, ahora puedes empezar a configurarlo.
+      flash_notice: Tu grupo ha sido creado exitosamente, ahora puedes empezar a configurarlo.
     form: 
       access: Configuración de Acceso
       analytics_engine: Motor de análisis

@@ -8,7 +8,6 @@ gl:
     create: 
       success: o anuncio creouse correctamente.
     index: 
-      add_adbard: engadir un novo anuncio
       add_adsense: engadir un novo anuncio do Google
       title: anuncios
     name: "nome:"

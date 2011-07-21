@@ -7,7 +7,7 @@ gl:
     attributes: 
       answer: 
         body: corpo
-        created_at: respondidas
+        created_at: Creado o
         link: ligazón
     models: 
       answer: Resposta

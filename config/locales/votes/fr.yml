@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
@@ -16,8 +17,11 @@ fr:
       to_vote_down: Cliquez si vous désapprouvez.
       to_vote_up: Cliquez si vous approuvez
     create: 
+      average: 
+        one: "%{count} vote"
+        other: "%{count} votes"
       flash_error: Vous ne pouvez pas voter
-      flash_notice: Merci d'avoir voté!
+      flash_notice: Merci d'avoir voté !
       unauthenticated: Les utilisateurs anonymes ne peuvent pas voter.
     destroy: 
       flash_notice: Votre vote a été annulé avec succès.

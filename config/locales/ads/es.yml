@@ -9,7 +9,6 @@ es:
     create: 
       success: Anuncio fue creado exitosamente.
     index: 
-      add_adbard: Agregar un nuevo anuncio adbard
       add_adsense: Agregar un nuevo anuncio google adsense
       title: Anuncios
     name: "Nombre:"

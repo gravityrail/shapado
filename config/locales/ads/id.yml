@@ -8,7 +8,6 @@ id:
     create: 
       success: Iklan berhasil dibuat.
     index: 
-      add_adbard: Tambahkan iklan Ad Bard yang baru
       add_adsense: Tambahkan iklan Google AdSense yang baru
       title: Iklan
     name: "Nama:"

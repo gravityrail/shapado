@@ -7,7 +7,6 @@ ja:
     create: 
       success: 広告を作成しました
     index: 
-      add_adbard: バナー広告の追加
       add_adsense: Google Adsenseの追加
       title: 広告
     name: 名前：

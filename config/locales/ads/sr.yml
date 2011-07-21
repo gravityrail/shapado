@@ -8,7 +8,6 @@ sr:
     create: 
       success: Оглас је успешно направљен.
     index: 
-      add_adbard: Додај нови „Ед Бард“ оглас
       add_adsense: Додај нови Гугл Адсенс оглас
       title: Огласи
     name: "Назив:"

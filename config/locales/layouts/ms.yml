@@ -5,10 +5,18 @@
 ms: 
   layouts: 
     application: 
+      all: Semua
       ask_question: Tanyakan soalan
       badges: Lencana
+      by_me: Oleh Saya
+      collaborate: Kerjasama
+      contributed: Disumbangkan
+      faq: Soalan Lazim
+      follow_us_and_share: Ikuti kami dan berkongsi
+      followed: Diikuti
       forgot: Lupa?
       home: Laman utama
+      join_group: Sertai %{group}
       languages: Bahasa
       log_in: Log masuk
       logged: Log masuk sebagai %{login}
@@ -19,9 +27,11 @@ ms:
       openid: 
         explaination: "Jika anda ingin mendaftar atau sekadar log masuk, sila pilih pembekal OpenID anda:"
       pages: Laman
+      preferred: Diutamakan
       questions: Soalan
       questions_in: Soalan dalam
       questions_tagged: bertag
+      random_question: Soalan rawak
       search: Cari
       settings: Tetapan
       signup: Daftar diri
@@ -39,11 +49,13 @@ ms:
       dashboard: Papan Pemuka
       domain: Domain
       general: Umum
+      invitations: Jemputan
       members: Ahli
       pages: Laman
       properties: Sifat
       reputation: Reputasi
       rewards: Ganjaran
+      social: Sosial
       stats: Statistik
       theme: Tema
       widgets: Widget

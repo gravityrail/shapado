@@ -45,6 +45,9 @@ ia:
       vote_up: Votar positivemente
     anonymous_form: 
       never_shown: nunquam monstrate
+    change_password: 
+      submit: Cambiar mi contrasigno
+      title: Cambiar contrasigno
     create: 
       flash_error: Infelicemente, nos non poteva crear iste conto. Per favor reproba, o contacta un administrator (le ligamine es hic supra).
       flash_notice: Gratias pro registrar te!
@@ -53,7 +56,7 @@ ia:
       submit: Salveguardar
       title: Configurationes
     follow: 
-      flash_notice: Le usator %{user} esseva addite a tu amicos
+      flash_notice: Tu seque ora %{user}.
     form: 
       activities_notification: Reciper notificationes per e-mail super activitates de systema como insignias ganiate, nove sequitores, etc.
       avatar_tip: Cambiar le imagine de tu profilo usante Gravatar
@@ -63,12 +66,19 @@ ia:
       new_answer_notification: Reciper notificationes per e-mail pro nove responsas
       notifications: Notificationes
       reports_notification: Reciper un reporto con le ultime activitate del gruppo (solmente pro administratores del gruppo)
+      send_answers_to_twitter: Inviar mi responsas a mi Twitter
+      send_badges_to_twitter: Inviar mi insignias novemente ganiate a mi Twitter
+      send_comments_to_twitter: Inviar mi commentos a mi Twitter
+      send_favorites_to_twitter: Inviar mi responsas favorite a mi Twitter
+      send_questions_to_twitter: Inviar mi questiones a mi Twitter
       show_more_lang: Monstrar plus linguas
+      social_interaction: Interaction per rete social
     index: 
       empty: Iste gruppo non ha membros. Participa per unir te a iste gruppo.
       filter: Cercar usatores
       name: Nomine
       name_tooltip: Usatores per ordine alphabetic
+      near: Proxime a te
       newest: Le plus nove
       newest_tooltip: Usatores qui justo se registrava
       oldest: Le plus ancian
@@ -80,14 +90,30 @@ ia:
       errors: 
         reputation_needed: Tu debe haber un reputation de %{min_reputation} pro poter %{action}
     new: 
+      description: Face parte de iste communitate pro demandar, responder e apprender!
+      join_group: Adherer a %{group}
       submit: Crear un conto
       title: Registrar te como nove usator
     show: 
+      edit_profile: Modificar profilo
       follow: Sequer
       followers: Sequitores
       following: Seque
       title: Usator %{user}
       unfollow: Non plus sequer
       views: visitas
+    top_user: 
+      connect: Connecter
+      my_karma: "Mi karma: %{karma}"
+      profile: Profilo
     unfollow: 
-      flash_notice: Le usator %{user} esseva removite de tu amicos
+      flash_notice: Tu non plus seque %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Tu seque ora le etiquetta %{tag}.
+      unfollowed: 
+        flash_notice: Tu non plus seque le etiquetta %{tag}.
+    user_bar: 
+      create_account: Crear un conto
+      not_logged_in: Non identificate
+      signed_as: Identificate como

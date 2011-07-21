@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Mor
 # Author: Patcito
 es: 
   errors: 
@@ -13,7 +14,7 @@ es:
       explanation: Ya se nos ha informado de este problema y lo resolveremos a la brevedad.
       title: Lo sentimos pero algo salió mal.
     not_found: 
-      explanation: Has digitado mal la direccion o esta página ha sido movida.
+      explanation: Has tecleado mal la direccion o esta página puede haber sido movida.
       title: Pagina no encontrada.
     options_label: "Otras cosas que puedes hacer:"
     search: Buscar

@@ -12,18 +12,40 @@ ia:
     tag: Subscriber al etiquetta
     user: Subscriber a questiones de usatores
   global: 
+    actions: Actiones
     active: Activar
+    alphabetically: Alphabeticamente
     anonymous: Anonyme
+    blog: Blog
     by: per
+    chat: Conversar
     current: Actual
+    feedback: Commentos
+    follow: Sequer
+    followed_by: "Sequite per:"
+    following: Sub observation
     from: de %{site}
     group_not_found: Le pagina %{url} non existe
+    home: Initio
+    next_button: Sequente
     or: o
     permission_denied: Permission refusate
     please_login: Per favor aperi un session
     preview: Previsualisar
     previous: Precedente
+    privacy: Confidentialitate
     share: partir
+    sign_up: Crear conto
+    size: Dimension
+    sort_by: "Ordinar per:"
+    subjetive: subjective
+    tags_label: "Etiquettas:"
+    tos: CdS
+    unfollow: Non plus sequer
+    unknown_place: Incognite
+    view: Leger
+    view_question: Vider le question
+    what_to_do: Que vole tu facer?
   models: 
     question: Le question
   number: 
@@ -34,6 +56,13 @@ ia:
   pagination: 
     next: Sequente &raquo;
     previous: "&laquo; Precedente"
+  preferred_languages: 
+    any: Qualcunque
+    user: Mi linguas preferite
+  roles: 
+    moderator: Moderator
+    owner: Proprietario
+    user: Usator normal
   scaffold: 
     add: Adder
     back: Retro

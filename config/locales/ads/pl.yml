@@ -8,7 +8,6 @@ pl:
     create: 
       success: Reklama została utworzona.
     index: 
-      add_adbard: Dodaj nowy billboard reklamowy
       add_adsense: Dodaj nową reklamę kontekstową google
       title: Reklamy
     name: Nazwa

@@ -15,9 +15,15 @@ ia:
       addict: 
         description: Visitava le sito cata die durante 20 dies consecutive
         name: Maniaco
+      altruist: 
+        description: Le prime premio que tu adjudicava manualmente sur le question de un altere persona
+        name: Altruista
       autobiographer: 
         description: Completava tote le campos del profilo de usator
         name: Autobiographo
+      benefactor: 
+        description: Le prime premio que tu adjudicava manualmente sur tu proprie question
+        name: Benefactor
       celebrity: 
         description: Accumulava plus de 100 sequitores
         name: Celebritate
@@ -54,8 +60,11 @@ ia:
       fanatic: 
         description: Visitava le sito cata die durante 100 dies consecutive
         name: Fanatico
+      favorite_answer: 
+        description: Ha un responsa marcate como favorite per 25 usatores
+        name: Responsa favorite
       favorite_question: 
-        description: Poneva un question marcate como favorite per 25 usatores
+        description: Poneva un question sequite per 25 usatores
         name: Question favorite
       friendly: 
         description: Sequer alcuno pro le prime vice
@@ -81,6 +90,9 @@ ia:
       interesting_person: 
         description: Accumulava plus de 10 sequitores
         name: Persona interessante
+      investor: 
+        description: Le prime premio que tu offereva sur le question de un altere persona
+        name: Investitor
       merit_medal: 
         description: Recipeva 200 votos positive
         name: Medalia de merito
@@ -114,6 +126,9 @@ ia:
       popular_question: 
         description: Poneva un question con 1000 visitas
         name: Question popular
+      promoter: 
+        description: Le prime premio que tu offereva sur tu proprie question
+        name: Promotor
       rockstar: 
         description: Ha 1000 votos positive, maximo de 10 votos negative
         name: Rockstar
@@ -128,8 +143,11 @@ ia:
         name: Medalia de servicio
       shapado: 
         description: Visitava le sito cata die durante 8 dies consecutive
+      stellar_answer: 
+        description: Ha un responsa marcate como favorite per 100 usatores
+        name: Responsa stellar
       stellar_question: 
-        description: Poneva un question addite al favorites per 100 usatores
+        description: Poneva un question sequite per 100 usatores
         name: Question stellar
       student: 
         description: Poneva su prime question con al minus un voto positive

@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -24,8 +25,11 @@ nl:
   questions: 
     answer: 
       add_comment: Opmerking toevoegen...
+      favorite: Opslaan
+      favorite_tooltip: Dit antwoord toevoegen aan uw favorieten
       flag: Markeren
       pick_answer: Als correct antwoord instellen
+      unfavorite_tooltip: Dit antwoord uit uw favorieten verwijderen
       unset_answer: Als correct antwoorden verwijderen?
     create: 
       flash_notice: De vraag is gesteld.
@@ -34,10 +38,14 @@ nl:
     flag: 
       title: Vraag markeren
     form: 
+      add_attachment: Bijlage toevoegen
       adult_content: Deze vraag bevat inhoud alleen voor volwassenen.
       body_tip: Wat is uw vraag? Zorg dat deze beschrijvend is.
       language_tip: Selecteer de taal voor de vraag.
+      remove_attachment: Verwijderen
       tags_tip: Gebruik labels om meer informatie aan uw vraag toe te voegen.
+    history: 
+      back: ← terug naar vraag
     index: 
       active: Actief
       active_tooltip: Vragen die recent zijn bijgewerkt
@@ -71,6 +79,10 @@ nl:
       title: Stel vraag
     question: 
       accepted_tooltip: Deze vraag heeft een antwoord dat is geaccepteerd.
+      answer_verb: Antwoord
+      answers_number: "%{quantity} antwoorden"
+      votes_number: "%{quantity} stemmen"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Labels wijzigen
     retag_form: 
@@ -99,7 +111,9 @@ nl:
       flag: Markeren
       flagged_as: Gemarkeerd als
       flags: Gerapporteerd als
+      follow_tooltip: Deze vraag volgen
       last_activity: Laatste activiteit
+      more_actions: Meer handelingen
       open: Open
       related_questions: Gerelateerde vragen
       request_closing: Sluitingsverzoek indienen
@@ -115,6 +129,7 @@ nl:
       solution: Correct antwoord
       to_answer_question: Om deze vraag te beantwoorden
       unauthenticated_retag: U moet een gebruiker hebben om labels voor vragen te kunnen wijzigen.
+      unfollow_tooltip: Deze vraag niet langer volgen
       viewed: bekeken
     solve: 
       flash_notice: De vraag is beantwoord.

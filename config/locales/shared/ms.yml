@@ -6,6 +6,27 @@ ms:
   shared: 
     current_tags: 
       title: Tag yang dipilih
+    layout: 
+      footer: 
+        cc_footer: Segala kandungan dan data Shapado.com disediakan di bawah lesen %{cc_link}
+        powered_by: Dikuasakan oleh %{source_link} %{version} di bawah
+    login_drop_down: 
+      with_facebook: dengan Facebook
+      with_google: dengan Google
+      with_identica: dengan Identi.ca
+      with_linked_in: dengan LinkedIn
+      with_openid: dengan OpenID
+      with_twitter: dengan Twitter
+      with_user_pass: pengguna/kata laluan
+    manage_navigation: 
+      title_content: Kandungan kumpulan
+      title_features: Ciri-ciri kumpulan
+      title_options: Pilihan kumpulan
+    social_connect: 
+      find_friends_facebook: Cari rakan di Facebook
+      find_friends_identica: Cari rakan di Identi.ca
+      find_friends_linked_in: Cari rakan di LinkedIn
+      find_friends_twitter: Cari rakan di Twitter
     topbar: 
       admin: Pentadbir
       logged_as: Log masuk sebagai %{login}

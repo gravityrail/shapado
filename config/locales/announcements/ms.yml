@@ -15,6 +15,7 @@ ms:
       delete: Buang
       title: Tindakan
     create: 
-      success: Pengumuman berjaya dicipta.
+      success: Pengumuman anda berjaya dicipta.
     index: 
+      description: Uruskan dan buat pengumuman baru yang akan dipaparkan kepada pelawat di seluruh tapak.
       title: Pengumuman

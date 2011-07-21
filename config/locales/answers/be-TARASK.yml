@@ -9,7 +9,7 @@ be-TARASK:
     attributes: 
       answer: 
         body: Тэкст
-        created_at: З адказамі
+        created_at: Створана
         link: Спасылка
     models: 
       answer: адказ

@@ -9,7 +9,6 @@ pms:
     create: 
       success: L'anonsi a l'é stàit creà për da bin.
     index: 
-      add_adbard: Gionté un neuv anonsi adbard
       add_adsense: Gionté un neuv anonsi adsense ëd google
       title: Anonsi
     name: "Nòm:"

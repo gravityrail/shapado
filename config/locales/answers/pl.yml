@@ -7,7 +7,7 @@ pl:
     attributes: 
       answer: 
         body: Treść
-        created_at: Z odpowiedziami
+        created_at: Utworzone w dniu
         link: Link
     models: 
       answer: Odpowiedź

@@ -8,7 +8,6 @@ sv:
     create: 
       success: Annonsen skapades utan problem.
     index: 
-      add_adbard: Lägg till en ny Ad Bard annons
       add_adsense: Lägg till en ny Google AdSense annons
       title: Annonser
     name: "Namn:"

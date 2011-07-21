@@ -9,8 +9,8 @@ be-TARASK:
     create: 
       success: Рэкляма была пасьпяхова створаная.
     index: 
-      add_adbard: Дадаць новую рэклямную аб’яву
       add_adsense: Дадаць новую рэкляму Google AdSense
+      description: Кіраваньне рэклямай
       title: Рэкляма
     name: "Назва:"
     position: "Пазыцыя:"

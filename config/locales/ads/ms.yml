@@ -8,8 +8,8 @@ ms:
     create: 
       success: Iklan berjaya dicipta.
     index: 
-      add_adbard: Tambahkan iklan Ad Bard yang baru
       add_adsense: Tambahkan iklan Google AdSense yang baru
+      description: Uruskan iklan
       title: Iklan
     name: "Nama:"
     position: "Kedudukan:"

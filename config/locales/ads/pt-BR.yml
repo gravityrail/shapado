@@ -8,7 +8,6 @@ pt-BR:
     create: 
       success: O anúncio foi criado.
     index: 
-      add_adbard: Adicionar um novo anúncio Ad Bard
       add_adsense: Adicionar um novo anúncio do Google AdSense
       title: Anúncios
     name: "Nome:"

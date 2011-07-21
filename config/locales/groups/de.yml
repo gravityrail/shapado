@@ -7,6 +7,7 @@ de:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Tägliche Obergrenze
         default_tags: Standard-Stichwörter
         description: Beschreibung
         domain: Domain
@@ -14,13 +15,15 @@ de:
         fb_button: Aktiviere eine Schaltfläche, ähnlich wie bei Facebook (nicht privatsphärenfreundlich)
         forum: Mehr als eine Antwort pro Nutzer zulassen
         group_created_by: erstellt von
-        language: Sprache
+        language: Standardsprache
+        languages: Zusätzliche Sprachen
         legend: Legende
         logo: Logo
         may_contain_adult_content: Diese Website enthält möglicherweise jugendgefährdende Inhalte
         name: Name
         owner: Diese Gruppe wurde erstellt von %{login}
         registered_only: Diese Website ist nur für registrierte Nutzer zugänglich
+        signup_type: Welche Methode können die Benutzer verwenden, um sich zu registrieren?
         state: Land
         subdomain: URL
         wysiwyg_editor: Nutzerfreundlichen Editor aktivieren
@@ -29,8 +32,13 @@ de:
       group: Gruppe
       groups: Gruppen
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Es ist leider ein Problem aufgetreten. Versuche es bitte erneut.
+      success_twitter_connection: Glückwunsch, Dein Twitter-Konto wurde erfolgreich verknüpft.
     create: 
       flash_notice: Deine Gruppe wurde erfolgreich erstellt. Du kannst jetzt beginnen, sie zu konfigurieren.
+    edit: 
+      title: Bearbeite Deine Gruppe
     form: 
       access: Zugangs-Einstellungen
       analytics_engine: Webanalytik-System
@@ -45,6 +53,10 @@ de:
       legend_legend: Es wird in der Kopfzeile verwendet werden. Sie haben 40 Zeichen.
       logo_legend: Du kannst ein Gruppenlogo hochladen. Die maximale Dateigröße beträgt 2 MB.
       members_only: Nur Gruppenmitglieder haben Zugriff auf diese Gruppe.
+      signup_all: Alle (Nutzer können sich mit E-Mail-Adresse, OpenID, Facebook, Twitter, etc. anmelden)
+      signup_email: Nur mit E-Mail-Adresse (Nutzer können sich nur mit E-Mail-Adresse und Passwort anmelden)
+      signup_noemail: Nicht mit E-Mail-Adresse (Nutzer können sich mit OpenID, Facebook  und Twitter anmelden)
+      signup_social: Nur mit sozialen Plattformen (Nutzer können sich nur mit Facebook, Twitter, LinkedIn und Identica anmelden)
       website_analytics_id: Webanalytik-ID der Website
     group: 
       about: Über
@@ -55,6 +67,8 @@ de:
       disallow_ads: Werbung verbieten
     index: 
       actives: Aktiv
+      create_your_own: Erstelle Deine eigene Gruppe
+      description: Dies ist die Liste öffentlicher Gruppen, die bislang erstellt wurden. Nutze das Suchfeld unten, um nach Gruppen zu filtern. Du kannst auch %{link}.
       filter: Nach Gruppen suchen
       most_active: Aktivste
       name: Name
@@ -71,3 +85,5 @@ de:
       group_closed: Diese Gruppe wurde geschlossen.
       title: Über %{name}
       visit_group: Diese Gruppe besuchen
+    top_grouplist: 
+      active_site: "Aktive Website:"

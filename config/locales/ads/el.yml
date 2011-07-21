@@ -8,7 +8,6 @@ el:
     create: 
       success: Η διαφήμιση δημιουργήθηκε επιτυχώς.
     index: 
-      add_adbard: Προσθήκη νέας διαφήμισης adbard
       add_adsense: Προσθήκη νέας διαφήμισης google adsense
       title: Διαφημίσεις
     name: "Όνομα:"

@@ -8,7 +8,6 @@ nb:
     create: 
       success: Annonsen ble opprettet.
     index: 
-      add_adbard: Legg til en ny Ad Bard-annonse
       add_adsense: Legg til en ny Google Adsense-annonse
       title: Annonser
     name: "Navn:"

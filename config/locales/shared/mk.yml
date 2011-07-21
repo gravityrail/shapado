@@ -6,6 +6,27 @@ mk:
   shared: 
     current_tags: 
       title: одбрани ознаки
+    layout: 
+      footer: 
+        cc_footer: Сите содржини и податоци на Shapado.com се достапни под лиценцата %{cc_link}
+        powered_by: Овозможено од %{source_link} %{version} под
+    login_drop_down: 
+      with_facebook: со Facebook
+      with_google: со Google
+      with_identica: со Identi.ca
+      with_linked_in: со LinkedIn
+      with_openid: со OpenID
+      with_twitter: со Twitter
+      with_user_pass: корисник/лозинка
+    manage_navigation: 
+      title_content: Содржина на групата
+      title_features: Карактеристики на групата
+      title_options: Нагодувања за групата
+    social_connect: 
+      find_friends_facebook: Пронајди пријатели од Facebook
+      find_friends_identica: Пронајди пријатели од Identi.ca
+      find_friends_linked_in: Пронајди пријатели од LinkedIn
+      find_friends_twitter: Пронајди пријатели од Twitter
     topbar: 
       admin: админ
       logged_as: најавен како %{login}

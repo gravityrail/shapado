@@ -12,18 +12,40 @@ mk:
     tag: претплати се на ознаката
     user: претплати се на кориснички прашања
   global: 
+    actions: Дејства
     active: Активирај
+    alphabetically: Азбучно
     anonymous: Анонимно
+    blog: Блог
     by: од
+    chat: Разговор
     current: тековно
+    feedback: Мислења
+    follow: Следи
+    followed_by: "Следбеници:"
+    following: Следени
     from: од %{site}
     group_not_found: страницата %{url} не постои
+    home: Почетна
+    next_button: Следна
     or: или
     permission_denied: дозволата е одбиена
     please_login: најавете се
     preview: преглед
     previous: претходно
+    privacy: Приватност
     share: сподели
+    sign_up: Регистрација
+    size: Големина
+    sort_by: "Подреди по:"
+    subjetive: субјективно
+    tags_label: "Ознаки:"
+    tos: Услови
+    unfollow: Престани со следење
+    unknown_place: Непознато
+    view: Преглед
+    view_question: Преглед на прашањето
+    what_to_do: Што сакате да правите?
   models: 
     question: Прашање
   number: 
@@ -34,6 +56,13 @@ mk:
   pagination: 
     next: Следна &raquo;
     previous: "&laquo; Претходна"
+  preferred_languages: 
+    any: било кој
+    user: Мои претпочитани јазици
+  roles: 
+    moderator: Модератор
+    owner: Сопственик
+    user: Обичен корисник
   scaffold: 
     add: Додај
     back: Назад

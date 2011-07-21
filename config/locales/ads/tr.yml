@@ -8,7 +8,6 @@ tr:
     create: 
       success: Reklam başarıyla oluşturuldu.
     index: 
-      add_adbard: Yeni bir Ad Bard reklamı ekleyin
       add_adsense: Yeni bir Google AdSense reklamı ekle
       title: Reklamlar
     name: "İsim:"

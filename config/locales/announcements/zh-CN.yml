@@ -2,13 +2,14 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Xiaomingyan
 # Author: ZhengYiFeng
 zh-CN: 
   activerecord: 
     attributes: 
       announcement: 
         ends_at: 要结束
-        message: 消息
+        message: 信息
         only_anonymous: 仅对匿名用户
         starts_at: 开始
   announcements: 
