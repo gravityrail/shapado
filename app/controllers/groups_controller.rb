@@ -47,7 +47,7 @@ class GroupsController < ApplicationController
     else
       @group = current_group
     end
-    raise Goalie::NotFound if @group.nil?
+    raise Error404 if @group.nil?
 
     respond_to do |format|
       format.html # show.html.erb

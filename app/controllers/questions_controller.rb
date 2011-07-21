@@ -158,6 +158,8 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.xml
   def show
+    raise "HERE"
+    raise @question.inspect
     if params[:language]
       params.delete(:language)
       head :moved_permanently, :location => url_for(params)

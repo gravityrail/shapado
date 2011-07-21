@@ -419,7 +419,7 @@ module ApplicationHelper
   end
 
   def widgets_context(controller, action)
-    @widgets_context ||= (controller == "questions" && action == "show") ? 'question' : 'mainlist'
+    @widgets_context ||= (controller == "questions" && action == "show" && @question.present?) ? 'question' : 'mainlist'
   end
 
   def cache_for(name, *args, &block)
