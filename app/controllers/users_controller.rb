@@ -162,7 +162,18 @@ class UsersController < ApplicationController
   end
 
   def activity
-    @resources = @user.activities.paginate(paginate_opts(params))
+    conds = {}
+    case params[:tab]
+    when "questions"
+      conds[:trackable_type] = "Question"
+    when "answers"
+      conds[:trackable_type] = "Answer"
+    when "users"
+      conds[:trackable_type] = "User"
+    when "pages"
+      conds[:trackable_type] = "Page"
+    end
+    @resources = @user.activities.where(conds).paginate(paginate_opts(params))
     respond_to do |format|
       format.html{render :show}
     end
