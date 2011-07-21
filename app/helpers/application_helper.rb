@@ -28,8 +28,16 @@ module ApplicationHelper
   end
 
   def preferred_languages_code(entity, language_method)
-    entity.send(language_method).map do |code|
-      I18n.t("languages.#{code}")+":#{code}"
+    if logged_in?
+      entity.send(language_method).map do |code|
+        I18n.t("languages.#{code}")+":#{code}"
+      end
+    else
+      if I18n.locale.to_s != current_group.language &&
+          current_group.languages.include?(I18n.locale.to_s)
+        return [I18n.t("languages.#{I18n.locale}")+":#{I18n.locale}"]
+      end
+      return []
     end
   end
 
