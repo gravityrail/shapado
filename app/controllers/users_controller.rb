@@ -237,7 +237,7 @@ class UsersController < ApplicationController
   def feed
     @user = params[:id] ? User.where(:login => params[:id]).first : current_user
 
-    tags = @user.config_for(current_group).preferred_tags
+    tags = @user.preferred_tags_on(current_group)
     user_ids = @user.friend_list.following_ids
     user_ids << @user.id
     find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
