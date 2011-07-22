@@ -25,7 +25,7 @@ module Shapado
     # Add additional load paths for your own custom dirs
     config.autoload_paths += %W( #{Rails.root}/app/middlewares
                                  #{Rails.root}/app/models/widgets
-                                 #{Rails.root}/app/models/payments
+                                 #{Rails.root}/app/models/invoices
                                  #{Rails.root}/lib )
 
     # Only load the plugins named here, in the order given (default is alphabetical).

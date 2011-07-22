@@ -180,6 +180,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :invoices
+
   scope '/manage' do
     resources :widgets do
       member do
