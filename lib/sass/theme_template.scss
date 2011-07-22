@@ -636,10 +636,14 @@ section.invitations-panel {
     }
   }
   ul.user-list, ul.auth-list {
-    li.user img { border: 3px solid #666; }
-    li.logout a:hover {
-      background-color: #c00;
-      color: #fff;
+    li.user {
+      img {
+        border: 3px solid #666;
+      }
+      ul li.logout a:hover {
+        background-color: #c00;
+        color: #fff;
+      }
     }
   }
 }
