@@ -44,3 +44,7 @@
 
 
       = render "shared/layout/footer"
+      #login_dialog.top-bar{'data-title' => t('devise.sessions.link')}
+        %ul.auth-list
+          %li
+            = render "shared/login_drop_down"

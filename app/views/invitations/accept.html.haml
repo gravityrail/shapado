@@ -27,8 +27,7 @@
           - identica = link_to 'Identi.ca', '/users/auth/identica', :class => 'auth-provider'
           %p=raw t('.other_social_options', :linkedin => linkedin, :identica => identica)
         - elsif current_group.is_all_signup?
-          = t('.other_connect')
-          = render "shared/login_drop_down"
+          = link_to t('.other_connect'), '#', :id => 'ppmenu'
     %h1
       = t('.create_account')
   - elsif @invitation.state?(:connect)

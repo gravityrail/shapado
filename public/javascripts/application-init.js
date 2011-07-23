@@ -3,6 +3,7 @@ function initialize_all() {
   Ui.initialize();
   Messages.initialize();
   Auth.initialize();
+  Invitations.initialize();
 };
 
 $(document).ready(function() {

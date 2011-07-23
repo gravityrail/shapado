@@ -1,10 +1,11 @@
 %ul
-  -current_group.auth_providers.each do |provider|
-    -dprovider = provider.downcase
-    -if provider == 'Facebook' && current_group.has_facebook_login?
+  - current_group.auth_providers.each do |provider|
+    - next if params[:controller] == 'invitations' && ['Twitter','Facebook'].include?(provider)
+    - dprovider = provider.downcase
+    - if provider == 'Facebook' && current_group.has_facebook_login?
       %li
         = link_to provider.titleize, '/users/auth/facebook', :class => 'auth-provider Facebook', :id => 'facebook'
-    -else
+    - elsif
       %li
         = link_to provider.titleize, multiauth_url(provider), :class => "auth-provider #{provider}", :id => dprovider
 
@@ -12,6 +13,9 @@
     %li
       = link_to t('.with_openid'), '/users/login?open_id=1', :class => 'auth-provider OpenID', :id => 'openid'
 
-  -unless current_group.signup_type == 'noemail'
+  - if current_group.signup_type != 'noemail' && params[:controller] != 'invitations'
     %li
       = link_to t('.with_user_pass'), '/users/login', :class => 'auth-provider login', :id => 'login'
+  -elsif params[:controller] == 'invitations'
+    %li
+      = link_to t('.with_user_pass'), "/users/new?invitation_id=#{params[:id]}", :class => 'login', :id => 'login'

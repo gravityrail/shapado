@@ -6,7 +6,7 @@ en:
       with_twitter: with Twitter
       with_linked_in: with LinkedIn
       with_identica: with Identi.ca
-      with_openid: with OpenID
+      with_openid: OpenID
       with_user_pass: user/password
     social_connect:
       find_friends_facebook: Find friends on Facebook
