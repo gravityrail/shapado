@@ -3,34 +3,34 @@
 .comments
   padding: 0 0 20px 0
   article.comment
-    padding: 7px 0 7px 25px !important
-    background: url("/images/comments-icon.gif") 0 7px no-repeat
-    border: 0px !important
+    border-top: 1px dotted #CCC
+    margin-top: 10px
+    padding-top: 4px
+    .user-avatar
+      width: 8%
+    .comment-body
+      width: 85%
+    .comment-content.markdown
+      display: inline
+    .comment-votes
+      form
+        display: inline
     p
-      display: block
+      display: inline
       font-size: 12px
       line-height: 15px
-      float: none
-      width: 100%
-      margin: 0 0 5px 0 !important
-      color: #888 !important
-    h4
-      display: block !important
-      width: 100% !important
-      margin: 0 0 5px 0!important
-      padding: 0 !important
     .actions a
       color: #c00
       font-size: 11px
       margin: 0 5px 0 0
       &:hover
         border-bottom: 1px dotted
-      
+
 /* Comments inside Main Question top */
 //========================================================================
-.main-question .comments 
+.main-question .comments
   padding: 0 0 20px 45px
-  
+
 // Form for edit comments
 //========================================================================
 .main-question form.edit_comment_form
@@ -57,7 +57,7 @@ form#new_comment
   margin: 0 20px 20px 20px !important
   padding: 20px 20px 0 20px !important
   display: block
-  float: none  
+  float: none
   textarea
     border: 1px solid #cccccc !important
     font-size: 13px !important
