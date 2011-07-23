@@ -203,6 +203,31 @@ module ApplicationHelper
     text
   end
 
+  def format_article_date(date, short)
+    now = Time.now
+    if short
+      if date.today?
+        date.strftime("%I:%M %p")
+      elsif now.yesterday.beginning_of_day < date && date < now.yesterday.end_of_day
+        "#{I18n.t("time.yesterday")} #{date.strftime("%I:%M %p")}"
+      else
+        "#{I18n.t("date.abbr_month_names")[date.month]} #{date.day}, #{date.year}"
+      end
+    else
+      I18n.l(date)
+    end
+  end
+
+  def article_date(article, short = true)
+    out = ""
+    out << format_article_date(article.created_at, short)
+    out << " ("
+    out << t('global.edited')
+    out << " "
+    out << format_article_date(article.updated_at, short)
+    out << ")"
+  end
+
   def require_js(*files)
     content_for(:js) { javascript_include_tag(*files) }
   end

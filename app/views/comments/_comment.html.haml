@@ -39,8 +39,8 @@
       .comment-content.markdown
         = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))
       %div
-        %time{:datetime => comment.created_at.iso8601}
-          = t("time.ago", :time => time_ago_in_words(comment.created_at))
+        %time{:datetime => comment.created_at.iso8601, :title => article_date(comment, false)}
+          = article_date comment
         -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
           %span.comment-votes
             = vote_box(comment, request.path, comment.find_question.closed)

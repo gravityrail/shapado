@@ -25,6 +25,7 @@ en:
     post_as_anonymous: Post as anonymous
   time:
     today: today
+    yesterday: yesterday
     ago: "%{time} ago"
   models:
     question: The question
@@ -63,6 +64,7 @@ en:
     sort_by: 'Sort by:'
     tags_label: 'Tags:'
     followed_by: 'Followed by:'
+    edited: Edited
   feeds:
     question: Subscribe to this question
     questions: Subscribe to all questions
