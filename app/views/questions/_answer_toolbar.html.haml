@@ -44,7 +44,7 @@
     %li.more.current
       = link_to t('layouts.manage.actions'), "#"
       %ul
-        - if answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer)
+        - if logged_in? && (answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer))
           %li
             = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
         - if logged_in? && (current_user.can_modify?(answer) || current_user.mod_of?(question.group))
