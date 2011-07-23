@@ -105,4 +105,10 @@ class ThemesController < ApplicationController
       format.json { render :json => {:ok => true} }
     end
   end
+
+  def apply
+    @theme = Theme.find(params[:id])
+    current_group.override(:current_theme_id => @theme.id)
+    redirect_to theme_url(@theme)
+  end
 end

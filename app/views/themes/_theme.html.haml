@@ -11,5 +11,7 @@
       %li
         = link_to t("themes.theme.try", :default => "Try"), domain_url(custom: current_group.domain, theme: theme.id, controller: "questions", action: "index"), :target => "_blank"
       %li
-        = link_to t('scaffold.destroy'),  theme_path(theme), :metod => :delete, :confirm => t("scaffold.sure", :model => Theme.model_name.human)
+        = link_to t("themes.theme.apply", :default => "Apply"), apply_theme_path(theme), :method => :put
+      %li
+        = link_to t('scaffold.destroy'),  theme_path(theme), :method => :delete, :confirm => t("scaffold.sure", :model => Theme.model_name.human)
   %br

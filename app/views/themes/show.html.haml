@@ -3,6 +3,11 @@
 %p.description
   = @theme.description
 
+  = link_to t("scaffold.edit"), edit_theme_path(@theme)
+
+  = link_to t("themes.theme.try", :default => "Try"), domain_url(custom: current_group.domain, theme: @theme.id, controller: "questions", action: "index"), :target => "_blank"
+  = link_to t("themes.theme.apply", :default => "Apply"), apply_theme_path(@theme), :method => :put
+
 -if !@theme.ready
   this theme is not ready to be used
 

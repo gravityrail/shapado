@@ -190,6 +190,7 @@ Rails.application.routes.draw do
     resources :themes do
       member do
         get :remove_bg_image
+        put :apply
       end
     end
     resources :constrains_configs
