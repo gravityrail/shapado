@@ -8,7 +8,7 @@ de:
     attributes: 
       answer: 
         body: Antworttext
-        created_at: beantwortet
+        created_at: Erstellt am
         link: Link
     models: 
       answer: Antwort

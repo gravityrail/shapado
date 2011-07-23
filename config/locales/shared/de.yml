@@ -6,6 +6,48 @@ de:
   shared: 
     current_tags: 
       title: Ausgewählte Stichworte
+    empty: 
+      activities: 
+        description: 
+          text: Sobald Personen damit anfangen die Website zu nutzen, wird sich diese Seite mit Inhalten füllen.
+        title: Es gibt bislang noch keine Aktivitäten.
+      answers: 
+        description: 
+          text: Sei der Erste!
+        title: Bislang hat noch niemand die Frage beantwortet.
+      default: 
+        description: 
+          text: Sei der erste, der %{action_link}!
+        title: Leider ist hier noch nicht viel passiert.
+      questions: 
+        description: 
+          action_link: eine Frage stellt
+      themes: 
+        description: 
+          action_link: jetzt
+          text: erstelle ein %{action_link}
+        title: Bislang hast Du noch keine Themen erstellt.
+    layout: 
+      footer: 
+        cc_footer: Alle Inhalte und Daten auf Shapado.com stehen unter der Lizenz %{cc_link}
+        powered_by: Nutzt %{source_link} in Version %{version}, das gemäß %{agpl_link} lizenziert ist.
+    login_drop_down: 
+      with_facebook: mit Facebook
+      with_google: mit Google
+      with_identica: mit Identi.ca
+      with_linked_in: mit LinkedIn
+      with_openid: mit OpenID
+      with_twitter: mit Twitter
+      with_user_pass: Nutzer/Passwort
+    manage_navigation: 
+      title_content: Thema der Gruppe
+      title_features: Funktionen der Gruppe
+      title_options: Optionen zur Gruppe
+    social_connect: 
+      find_friends_facebook: Freunde bei Facebook finden
+      find_friends_identica: Freunde bei Ideni.ca finden
+      find_friends_linked_in: Freunde bei LinkedIn finden
+      find_friends_twitter: Freunde bei Twitter finden
     topbar: 
       admin: administrieren
       logged_as: Als %{login} angemeldet

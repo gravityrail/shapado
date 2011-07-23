@@ -11,7 +11,8 @@ te:
         description: వివరణ
         forum: ఒక వాడుకరిని ఒకటి కంటే ఎక్కువ జవాబులు చెప్పనివ్వు
         group_created_by: సృష్టించినది
-        language: భాష
+        language: అప్రమేయ భాష
+        languages: అదనపు భాషలు
         legend: సూచిక
         logo: చిహ్నం
         may_contain_adult_content: ఈ సైటులో పెద్దవారికి మాత్రమే సంబంధించిన సమాచారం ఉండవచ్చు
@@ -23,6 +24,9 @@ te:
       group: గుంపు
       groups: గుంపులు
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: క్షమించండి, ఏదో పొరపాటు జరిగింది. దయచేసి మళ్ళీ ప్రయత్నించండి.
+      success_twitter_connection: అభినందనలు, మీ ట్విట్టర్ ఖాతాను విజయవంతంగా అనుసంధానించారు!
     create: 
       flash_notice: మీ గుంపుని విజయవంతంగా సృష్టించాం. మీరు ఇక దాన్ని స్వరూపించుకోవడం మొదలుపెట్టవచ్చు.
     form: 

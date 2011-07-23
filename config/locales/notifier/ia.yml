@@ -4,13 +4,23 @@
 # Author: McDutchie
 ia: 
   notifier: 
+    admin_login: 
+      message1: Le usator %{user} se ha connectite como administrator a %{time} con le adresse IP %{ip}.
+      subject: "Alerta: connexion administrator"
+    created_flag: 
+      message1: Tu ha recipite iste message perque tu es moderator de %{group}.
+      message2: "Un message ha essite reportate pro le sequente ration:"
+      message2bis: Tu pote leger le message marcate hic.
+      message2bistext: "Tu pote leger le message marcate per cliccar super le sequente ligamine:"
+      message3: "Va al pagina de moderation pro vider le lista de elementos marcate:"
+      message4: Visita le pagina de moderation pro vider le lista de elementos marcate.
     earned_badge: 
       message1: Tu ha ganiate un insignia %{badge} in %{app}
       message2: "Description del insignia:"
       message3: Tu pote vider tote tu insignias in tu %{user_page}
     favorited: 
-      message1: "%{user} addeva tu question como favorite in %{group}"
-      message2: "Le texto de tu question:"
+      message1: "%{user} addeva tu responsa como favorite in %{group}"
+      message2: "Le question esseva:"
       message3: "Tu pote vider lo hic:"
     follow: 
       message1: "%{user} seque ora tu questiones e responsas in %{app}"
@@ -22,6 +32,7 @@ ia:
       message4: Si nos non recipe tosto un responsa de te, nos lo demandara a qualcuno altere. Tu pote sempre responder al question quandocunque tu vole.
     global: 
       hi: Salute %{user},
+      hi_no_user: Salute,
       user_page: pagina de usator
     new_answer: 
       message: "%{user} respondeva %{new_answer} al question %{question}"
@@ -32,6 +43,10 @@ ia:
       message2: Un usator anonyme ha inviate un retroaction ab le adresse IP %{ip}
       message3: "Adresse de e-mail: %{email}"
       message4: "Subjecto: %{subject}"
+    new_invitation: 
+      message1: Clicca hic pro acceptar le invitation %{link}
+      message2: Le equipa de %{group}.
+      subject: "%{user} te ha invitate a %{group}"
     report: 
       message1: Reporto pro le gruppo %{group}
       message2: Depost %{date}

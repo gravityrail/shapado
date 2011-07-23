@@ -14,13 +14,15 @@ mk:
         fb_button: Овозможи Facebook-овидно копче (не е погодно за приватност)
         forum: дозволи повеќе од еден одговор по корисник
         group_created_by: создадена од
-        language: јазик
+        language: Основен јазик
+        languages: Дополнителни јазици
         legend: легенда
         logo: лого
         may_contain_adult_content: ова мрежно место може да има содржини за возрасни
         name: име
         owner: групава е создадена од %{login}
         registered_only: само регистрирани корисници можат да пристапат на местото
+        signup_type: На кој начин може да се регистрираат вашите корисници
         state: држава
         subdomain: URL
         wysiwyg_editor: Овозможи згоден кориснички уредувач
@@ -29,8 +31,13 @@ mk:
       group: група
       groups: групи
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Нажалост, нешто не е во ред. Обидете се подоцна.
+      success_twitter_connection: Честитки! Успешно ја поврзавте сметката на Twitter!
     create: 
       flash_notice: Вашата група е успешно создадена. Сега можете да почнете да правите поставки и прилагодувања.
+    edit: 
+      title: Уредете ја вашата група
     form: 
       access: Поставки за пристап
       analytics_engine: Аналитички погон
@@ -45,6 +52,10 @@ mk:
       legend_legend: ова ќе се користи во заглавието. имате 40 знаци
       logo_legend: можете да подигнете лого на групата. максималната дозволена големина изнесува 2 Мб
       members_only: Само членовите на групата ќе имаат пристап до неа
+      signup_all: Сите (корисниците можат да се регистрираат со е-пошта, OpenId, Facebook, Twitter и тн.)
+      signup_email: Само е-пошта (корисниците можат да се регистрираат само со е-пошта/лозинка)
+      signup_noemail: Без е-пошта/лозинка (корисниците можат да се регистрираат со OpenId, Facebook, Twitter)
+      signup_social: Само друштвени (корисниците можат да се регистрираат само со Facebook, Twitter, LinkedIn и Identica)
       website_analytics_id: ID на аналитика на мреж. место
     group: 
       about: за групата
@@ -55,6 +66,8 @@ mk:
       disallow_ads: забрани реклами
     index: 
       actives: активни
+      create_your_own: создајте своја група
+      description: Ова е список на создадените јавни групи. Филтрирајте ги подолу во полето запребарување. Можете и да %{link}.
       filter: пребарување на нови групи
       most_active: најактивни
       name: име
@@ -71,3 +84,5 @@ mk:
       group_closed: оваа група е затворена.
       title: за %{name}
       visit_group: посети ја групава
+    top_grouplist: 
+      active_site: Активно мр. место

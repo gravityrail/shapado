@@ -28,8 +28,16 @@ module ApplicationHelper
   end
 
   def preferred_languages_code(entity, language_method)
-    entity.send(language_method).map do |code|
-      I18n.t("languages.#{code}")+":#{code}"
+    if logged_in?
+      entity.send(language_method).map do |code|
+        I18n.t("languages.#{code}")+":#{code}"
+      end
+    else
+      if I18n.locale.to_s != current_group.language &&
+          current_group.languages.include?(I18n.locale.to_s)
+        return [I18n.t("languages.#{I18n.locale}")+":#{I18n.locale}"]
+      end
+      return []
     end
   end
 
@@ -378,7 +386,7 @@ module ApplicationHelper
 
   def follow_suggestion_link(suggestion)
     if suggestion.class == User
-      link_to "+ #{t("users.show.follow")} User", follow_user_path(suggestion), :class => "follow_link", 'data-class' => "unfollow_link", 'data-title' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion)
+      link_to "+ #{t("users.show.follow")} User", follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
     else
       follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
@@ -389,8 +397,8 @@ module ApplicationHelper
       if current_user.preferred_tags_on(current_group).include?(tag.name)
         follow_class = 'unfollow-tag toggle-action'
         follow_data = 'follow-tag'
-        data_title = t("global.follow") 
-        title = t("global.unfollow") 
+        data_title = t("global.follow")
+        title = t("global.unfollow")
         path = unfollow_tags_users_path(:tags => tag.name)
         data_undo = follow_tags_users_path(:tags => tag.name)
       else
@@ -411,7 +419,7 @@ module ApplicationHelper
   end
 
   def widgets_context(controller, action)
-    @widgets_context ||= (controller == "questions" && action == "show") ? 'question' : 'mainlist'
+    @widgets_context ||= (controller == "questions" && action == "show" && @question.present?) ? 'question' : 'mainlist'
   end
 
   def cache_for(name, *args, &block)

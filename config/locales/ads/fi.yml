@@ -8,7 +8,6 @@ fi:
     create: 
       success: mainos luotu.
     index: 
-      add_adbard: lisää uusi adbard-mainos
       add_adsense: lisää uusi google adsense -mainos
       title: mainokset
     name: "nimi:"

@@ -8,7 +8,6 @@ it:
     create: 
       success: Annuncio creato.
     index: 
-      add_adbard: Aggiungi annuncio Ad Bard
       add_adsense: Aggiungi annuncio Google AdSense
       title: Annunci
     name: "Nome:"

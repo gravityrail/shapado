@@ -5,10 +5,18 @@
 mk: 
   layouts: 
     application: 
+      all: Сите
       ask_question: постави прашање
       badges: значки
+      by_me: Од мене
+      collaborate: Соработка
+      contributed: Придонесени
+      faq: ЧПП
+      follow_us_and_share: Следете нè и споделувајте
+      followed: Следени
       forgot: заборавивте?
       home: почетна
+      join_group: Зачлени се во %{group}
       languages: јазици
       log_in: најава
       logged: најавен како %{login}
@@ -19,9 +27,11 @@ mk:
       openid: 
         explaination: ако сакате да се регистрирате или пак само да се најавите, одберете го вашиот добавувач на OpenID
       pages: страници
+      preferred: Претпочитани
       questions: прашања
       questions_in: прашања во
       questions_tagged: означени со
+      random_question: Случајно прашање
       search: пребарај
       settings: нагодувања
       signup: регистрација
@@ -39,11 +49,13 @@ mk:
       dashboard: Контролна табла
       domain: домен
       general: општо
+      invitations: Покани
       members: членови
       pages: страници
       properties: својства
       reputation: углед
       rewards: награди
+      social: Друштвени
       stats: статистики
       theme: мотив
       widgets: елементи

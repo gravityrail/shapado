@@ -54,8 +54,8 @@ class UsersController < ApplicationController
         render :json => @memberships.to_json(:only => %w[name login bio website location language])
       }
       format.js {
-        html = render_to_string(:partial => "user", :collection  => @users)
-        pagination = render_to_string(:partial => "shared/pagination", :object => @users,
+        html = render_to_string(:partial => "membership", :collection  => @memberships)
+        pagination = render_to_string(:partial => "shared/pagination", :object => @memberships,
                                       :format => "html")
         render :json => {:html => html, :pagination => pagination }
       }
@@ -162,7 +162,18 @@ class UsersController < ApplicationController
   end
 
   def activity
-    @resources = @user.activities.paginate(paginate_opts(params))
+    conds = {}
+    case params[:tab]
+    when "questions"
+      conds[:trackable_type] = "Question"
+    when "answers"
+      conds[:trackable_type] = "Answer"
+    when "users"
+      conds[:trackable_type] = "User"
+    when "pages"
+      conds[:trackable_type] = "Page"
+    end
+    @resources = @user.activities.where(conds).paginate(paginate_opts(params))
     respond_to do |format|
       format.html{render :show}
     end
@@ -226,7 +237,7 @@ class UsersController < ApplicationController
   def feed
     @user = params[:id] ? User.where(:login => params[:id]).first : current_user
 
-    tags = @user.config_for(current_group).preferred_tags
+    tags = @user.preferred_tags_on(current_group)
     user_ids = @user.friend_list.following_ids
     user_ids << @user.id
     find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
@@ -303,20 +314,26 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by_login_or_id(params[:id])
-    current_user.add_friend(@user)
+    if @user != current_user
+      current_user.add_friend(@user)
 
-    flash[:notice] = t("flash_notice", :scope => "users.follow", :user => @user.login)
-
-    Jobs::Activities.async.on_follow(current_user.id, @user.id, current_group.id).commit!
-    Jobs::Mailer.async.on_follow(current_user.id, @user.id, current_group.id).commit!
-
+      flash[:notice] = t("flash_notice", :scope => "users.follow", :user => @user.login)
+      message = flash[:notice]
+      Jobs::Activities.async.on_follow(current_user.id, @user.id, current_group.id).commit!
+      Jobs::Mailer.async.on_follow(current_user.id, @user.id, current_group.id).commit!
+      success = true
+    else
+      success = false
+      flash[:error] = t("flash_error", :scope => "users.follow", :user => @user.login)
+      message = flash[:error]
+    end
     respond_to do |format|
       format.html do
         redirect_to user_path(@user)
       end
       format.js {
-        render(:json => {:success => true,
-                 :message => flash[:notice] }.to_json)
+        render(:json => {:success => success,
+                 :message => message }.to_json)
       }
     end
   end
@@ -413,7 +430,7 @@ class UsersController < ApplicationController
     conds = {}
     conds[:se_id] = params[:se_id] if params[:se_id]
     @user = User.find_by_login_or_id(params[:id], conds)
-    raise Goalie::NotFound unless @user
+    raise Error404 unless @user
     set_page_title(t("users.show.title", :user => @user.login))
     @badges = @user.badges.where(:group_id => current_group.id).
                            paginate(paginate_opts(params))

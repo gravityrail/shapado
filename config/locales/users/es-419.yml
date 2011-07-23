@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Crazymadlover
 # Author: Danke7
+# Author: Mor
 # Author: Patcito
 es-419: 
   activerecord: 
@@ -90,4 +91,4 @@ es-419:
       unfollow: Dejar de seguir
       views: vistas
     unfollow: 
-      flash_notice: El usuario %{user} fue removido de su lista de amigos
+      flash_notice: Ya no estás siguiendo a %{user}.

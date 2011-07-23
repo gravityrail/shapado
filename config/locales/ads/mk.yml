@@ -8,8 +8,8 @@ mk:
     create: 
       success: рекламата е успешно создадена.
     index: 
-      add_adbard: додај нова реклама за Ad Bard
       add_adsense: додај нова реклама за Google AdSense
+      description: Раководење со реклами
       title: реклами
     name: "назив:"
     position: "позиција:"

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
@@ -40,14 +41,16 @@ fr:
       body_tip: Quelle est votre question? soyez descriptif.
       language_tip: Sélectionnez la langue de votre question.
       tags_tip: Utilisez les tags pour ajouter plus d'information à question.
+    history: 
+      back: ← revenir à la question
     index: 
       active: Actives
       active_tooltip: Les questions actualisées le plus récemment
       ask_question: Poser une question
-      empty: Aucune question n'a été posé pour le moment, soyez le premier à en poser une!
+      empty: Aucune question n'a été posée pour le moment, soyez le premier à en poser une !
       help_to_answer: Aidez-nous
       hot: Chaud
-      hot_tooltip: Les questions les plus active de ces 5 derniers jours
+      hot_tooltip: Les questions les plus actives de ces 5 derniers jours
       newest: Récentes
       newest_tooltip: Les questions les plus récentes
       oldest: Anciennes
@@ -96,7 +99,7 @@ fr:
       asked_on: posée dans
       ban: Bannir
       close: Fermer
-      close_reason: "Cette question a été fermée pour la raison suivante:"
+      close_reason: "Cette question a été fermée pour la raison suivante :"
       edit_request: Modifier la demande
       flag: Reporter un abus
       flagged_as: Reporté comme

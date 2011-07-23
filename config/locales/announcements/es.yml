@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Mor
 # Author: Patcito
 es: 
   activerecord: 
@@ -15,6 +16,6 @@ es:
       delete: Suprimir
       title: Acciones
     create: 
-      success: El anuncio se ha creado con éxito.
+      success: Tu anuncio se ha creado correctamente.
     index: 
       title: Anuncios

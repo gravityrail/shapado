@@ -8,7 +8,6 @@ af:
     create: 
       success: Die advertensie is geskep.
     index: 
-      add_adbard: Voeg 'n nuwe "Ad Bar"-tipe advertensie by
       add_adsense: Voeg 'n nuwe "Google AdSense"-advertensie by
       title: Advertensies
     name: "Naam:"

@@ -1,14 +1,19 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   layouts: 
     application: 
       ask_question: Vraag stellen
       badges: speldjes
+      by_me: Door mij
+      follow_us_and_share: Volg ons en delen
+      followed: Gevolgd
       forgot: Vergeten?
       home: Hoofdmenu
+      join_group: Lid worden van %{group}
       languages: Talen
       log_in: Aanmelden
       logged: Aangemeld als %{login}
@@ -22,6 +27,7 @@ nl:
       questions: Vragen
       questions_in: Vragen in het
       questions_tagged: Met label
+      random_question: Willekeurige vraag
       search: Zoeken
       settings: Voorkeuren
       signup: Registreren
@@ -39,6 +45,7 @@ nl:
       dashboard: Dashboard
       domain: Domein
       general: Algemeen
+      invitations: Uitnodigingen
       members: Leden
       pages: Pagina's
       properties: Eigenschappen

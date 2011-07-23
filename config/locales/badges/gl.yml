@@ -55,7 +55,7 @@ gl:
         description: Visitou o sitio cada día durante 100 días consecutivos
         name: Fanático
       favorite_question: 
-        description: Fixo unha pregunta marcada como favorita por 25 usuarios
+        description: Fixo unha pregunta seguida por 25 usuarios
         name: Pregunta favorita
       friendly: 
         description: Segue a alguén por vez primeira
@@ -129,7 +129,7 @@ gl:
       shapado: 
         description: Visitou o sitio cada día durante 8 días consecutivos
       stellar_question: 
-        description: Fixo unha pregunta engadida aos favoritos por 100 usuarios
+        description: Fixo unha pregunta seguida por 100 usuarios
         name: Pregunta estelar
       student: 
         description: Preguntou por vez primeira con, polo menos, un voto positivo

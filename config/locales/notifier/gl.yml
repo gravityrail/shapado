@@ -9,8 +9,8 @@ gl:
       message2: "Descrición da insignia:"
       message3: Pode ollar todas as insignias que ten na súa %{user_page}
     favorited: 
-      message1: "%{user} engadiu a súa pregunta aos favoritos en %{group}"
-      message2: "O texto da súa pregunta:"
+      message1: "%{user} engadiu a súa pregunta de %{group} aos favoritos"
+      message2: "A pregunta era:"
       message3: "Pode vela aquí:"
     follow: 
       message1: "%{user} está a seguir as súas preguntas e respostas en %{app}"

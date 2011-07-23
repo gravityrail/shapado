@@ -13,18 +13,39 @@ be-TARASK:
     tag: Падпісацца на тэг
     user: Падпісацца на пытаньні гэтага карыстальніка
   global: 
+    actions: Дзеяньні
     active: Актывізаваць
+    alphabetically: Па альфабэце
     anonymous: Ананім
+    blog: Блёг
     by: ад
+    chat: Чат
     current: Цяперашняя
+    feedback: Водгук
+    follow: Сачыць
+    following: Сачэньне
     from: з %{site}
     group_not_found: Старонка %{url} не існуе
+    home: Пачатак
+    next_button: Наступнае
     or: ці
     permission_denied: Доступ забаронены
     please_login: Калі ласка, увайдзіце ў сыстэму
     preview: Папярэдні прагляд
     previous: Папярэдні
+    privacy: Прыватнае
     share: Адкрыць доступ
+    sign_up: Зарэгістравацца
+    size: Памер
+    sort_by: "Сартаваць па:"
+    subjetive: суб’ектыўны
+    tags_label: "Тэгі:"
+    tos: Умовы абслугоўваньня
+    unfollow: Не сачыць
+    unknown_place: Невядомае
+    view: Прагляд
+    view_question: Прагляд пытаньня
+    what_to_do: Што Вы жадаеце зрабіць?
   models: 
     question: Пытаньне
   number: 
@@ -35,6 +56,10 @@ be-TARASK:
   pagination: 
     next: Наступная &raquo;
     previous: "&laquo; Папярэдняя"
+  roles: 
+    moderator: Мадэратар
+    owner: Уладальнік
+    user: Звычайны карыстальнік
   scaffold: 
     add: Дадаць
     back: Назад

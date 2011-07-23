@@ -7,7 +7,7 @@ mk:
     attributes: 
       answer: 
         body: текст
-        created_at: одговорено
+        created_at: Создадено во
         link: врска
     models: 
       answer: одговор

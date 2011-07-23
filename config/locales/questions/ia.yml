@@ -8,6 +8,7 @@ ia:
       question: 
         answers: Responsas
         asked_by: Ponite per
+        banned: Bannite
         body: Texto
         closed: Claudite
         created_at: Ponite
@@ -24,8 +25,12 @@ ia:
   questions: 
     answer: 
       add_comment: Adder commento...
+      favorite: Salveguardar
+      favorite_tooltip: Adder iste responsa a tu favorites
       flag: Marcar
       pick_answer: Seliger como solution
+      unfavorite: Non plus salveguardar
+      unfavorite_tooltip: Remover iste responsa de tu favorites
       unset_answer: Dismarcar como solution?
     create: 
       flash_notice: Le question ha essite create.
@@ -34,10 +39,14 @@ ia:
     flag: 
       title: Marcar question
     form: 
+      add_attachment: Adder annexo
       adult_content: Iste question contine material pro adultos.
       body_tip: Que es tu question? Sia descriptive.
       language_tip: Selige le lingua de tu question.
+      remove_attachment: Remover
       tags_tip: Usa etiquettas pro adder plus information super le question.
+    history: 
+      back: ← retornar al question
     index: 
       active: Active
       active_tooltip: Questiones que ha essite actualisate recentemente
@@ -56,6 +65,7 @@ ia:
     model: 
       messages: 
         empty_tags: Es obligatori usar al minus un etiquetta.
+        tags_not_added: Le etiquettas '%{tags}' non poteva esser addite. Es necessari haber un reputation de %{reputation_required} pro crear nove etiquettas.
         title_too_long: Le titulo es troppo longe. Illo non pote continer plus de 100 characteres.
         too_many_tags: Non es possibile entrar plus de 9 etiquettas.
         too_short: Isto sembla troppo curte. Per favor usa plus de %{count} parolas pro esser plus specific.
@@ -67,10 +77,15 @@ ia:
       group_dont_exists: Le gruppo %{group} non existe
       success: Question displaciate a %{group}
     new: 
+      description: Per favor sia descriptive e assecura te de adder etiquettas relevante de maniera que tu question pote esser facilemente trovate.
       how_to_ask: Como poner
       title: Poner question
     question: 
       accepted_tooltip: Iste question ha un responsa que ha essite acceptate
+      answer_verb: Responsa
+      answers_number: "%{quantity} responsas"
+      votes_number: "%{quantity} votos"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquettar
     retag_form: 
@@ -95,11 +110,17 @@ ia:
       ban: Bannir
       close: Clauder
       close_reason: "Le question ha essite claudite pro le sequente ration:"
+      create_reward: Crear premio
+      create_reward_description: Recompensa le melior responsa con alcun de tu proprie karma.
       edit_request: Modificar requesta
       flag: Marcar
       flagged_as: Marcate como
       flags: Reportate como
+      follow_tooltip: Sequer iste question
+      follow_up: Prosequer
+      follow_up_description: Crear un nove question a base de iste message.
       last_activity: Ultime activitate
+      more_actions: Plus actiones
       open: Aperte
       related_questions: Questiones connexe
       request_closing: Requestar clausura
@@ -115,6 +136,7 @@ ia:
       solution: Solution
       to_answer_question: pro responder a iste question
       unauthenticated_retag: Tu debe haber un conto pro re-etiquettar questiones
+      unfollow_tooltip: Cessar de sequer iste question
       viewed: vidite
     solve: 
       flash_notice: Le question ha essite resolvite.

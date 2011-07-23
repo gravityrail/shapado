@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -14,7 +15,8 @@ nl:
         fb_button: Knop "Facebook like" inschakelen (niet privacyvriendelijk)
         forum: Meer dan één antwoord per gebruiker toestaan
         group_created_by: Aangemaakt door
-        language: Taal
+        language: Standaard taal
+        languages: Extra talen
         legend: Legenda
         logo: Logo
         may_contain_adult_content: Deze site kan inhoud voor volwassenen bevatten
@@ -29,8 +31,12 @@ nl:
       group: Groep
       groups: Groepen
   groups: 
+    connect_group_to_twitter: 
+      success_twitter_connection: Proficiat, u hebt nu uw Twitter-account verbonden!
     create: 
       flash_notice: Uw groep is aangemaakt. U kunt nu de instellingen maken.
+    edit: 
+      title: Uw groep bewerken
     form: 
       access: Toegangsinstellingen
       analytics_engine: Analytics Engine
@@ -55,6 +61,7 @@ nl:
       disallow_ads: Advertenties niet toestaan
     index: 
       actives: Actief
+      create_your_own: uw eigen groep aanmaken
       filter: Groepen doorzoeken
       most_active: Meest actief
       name: Naam
@@ -71,3 +78,5 @@ nl:
       group_closed: Deze groep is gesloten.
       title: Over %{name}
       visit_group: Deze groep bezoeken
+    top_grouplist: 
+      active_site: "Actieve site:"

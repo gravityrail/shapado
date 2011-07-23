@@ -1,6 +1,7 @@
 # Messages for Portuguese (Português)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Analuisa
 # Author: Hamilton Abreu
 pt-PT: 
   mailers: 
@@ -20,5 +21,7 @@ pt-PT:
         subject_owner: "%{login} respondeu à sua pergunta %{title}"
       new_comment: 
         subject: "%{login} comentou no grupo %{group}"
+      new_invitation: 
+        subject: "%{user} está a convidá-lo(a) para se juntar ao grupo %{group}"
       report: 
         subject: Relatório do grupo %{group}, da aplicação %{app}

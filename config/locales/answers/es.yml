@@ -1,13 +1,14 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Mor
 # Author: Patcito
 es: 
   activerecord: 
     attributes: 
       answer: 
         body: Contenido
-        created_at: Contestado
+        created_at: Creado el
         link: Enlace
     models: 
       answer: Respuesta
@@ -20,10 +21,10 @@ es:
       title: editar respuesta
     form: 
       answer_label: conteste la pregunta
-      comment_label: commenta sobre esta respuesta
+      comment_label: Opina sobre esta respuesta
       comment_submit: comentar
       submit: contestar
     revert: 
-      title: revert answer
+      title: Revertir la respuesta
     update: 
       flash_notice: la respuesta fue actualizada exitosamente.

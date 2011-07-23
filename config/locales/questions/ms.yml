@@ -8,6 +8,7 @@ ms:
       question: 
         answers: Jawapan
         asked_by: Ditanyakan oleh
+        banned: Dilarang
         body: Isi
         closed: Tutup
         created_at: Ditanya
@@ -24,8 +25,12 @@ ms:
   questions: 
     answer: 
       add_comment: Tulis ulasan...
+      favorite: Simpan
+      favorite_tooltip: Tambahkan jawapan ini ke dalam kegemaran anda
       flag: Bendera
       pick_answer: Pilih sebagai jawapan
+      unfavorite: Nyahsimpan
+      unfavorite_tooltip: Gugurkan jawapan ini daripada kegemaran anda
       unset_answer: Jawapan tidak ditetapkan?
     create: 
       flash_notice: Soalan berjaya dicipta.
@@ -34,10 +39,14 @@ ms:
     flag: 
       title: Menaikkan bendera pada soalan
     form: 
+      add_attachment: Bubuh lampiran
       adult_content: Soalan ini mengandungi kandungan dewasa (18+).
       body_tip: Apakah soalan anda? Sila nyatakan dengan deskriptif.
       language_tip: Pilih bahasa soalan yang anda tanyakan itu.
+      remove_attachment: Buang
       tags_tip: Gunakan tag untuk menambahkan maklumat mengenai soalan anda.
+    history: 
+      back: ← kembali ke soalan
     index: 
       active: Aktif
       active_tooltip: Soalan yang dikemas kini baru-baru ini
@@ -56,6 +65,7 @@ ms:
     model: 
       messages: 
         empty_tags: Maaf, anda perlu menggunakan sekurang-kurangnya satu tag.
+        tags_not_added: Tag '%{tags}' tidak dapat dibubuh. Anda memerlukan reputasi %{reputation_required} untuk membuat tag baru
         title_too_long: Tajuknya terlalu panjang, sepatutnya tidak lebih 100 aksara.
         too_many_tags: Maaf, anda boleh mengisikan sebanyak 9 tag sahaja.
         too_short: Nampak terlalu pendek. Sila gunakan lebih daripada %{count} perkataan supaya lebih terperinci.
@@ -67,10 +77,15 @@ ms:
       group_dont_exists: Kumpulan %{group} tidak wujud
       success: Soalan dipindahkan ke %{group}
     new: 
+      description: Sila pastikan soalan anda deskriptif, dan pastikan ia dibubuhi tag-tag yang berkenaan supaya mudah dicari.
       how_to_ask: Cara menanya
       title: Tanyakan soalan
     question: 
       accepted_tooltip: Soalan ini ada jawapan yang diterima
+      answer_verb: Jawab
+      answers_number: "%{quantity} jawapan"
+      votes_number: "%{quantity} undian"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Tag semula
     retag_form: 
@@ -95,11 +110,17 @@ ms:
       ban: Larang
       close: Tutup
       close_reason: "Soalan ini ditutup atas sebab berikut:"
+      create_reward: Cipta ganjaran
+      create_reward_description: Ganjari jawapan terbaik dengan sedikit karma anda sendiri.
       edit_request: Permohonan menyunting
       flag: Bendera
       flagged_as: Dinaikkan bendera kerana
       flags: Dilaporkan kerana
+      follow_tooltip: Ikuti soalan ini
+      follow_up: Susulan
+      follow_up_description: Buat soalan baru berasaskan kiriman ini.
       last_activity: Kegiatan terkini
+      more_actions: Tindakan lain
       open: Buka
       related_questions: Soalan berkaitan
       request_closing: Pohon penutupan
@@ -115,6 +136,7 @@ ms:
       solution: Jawapan
       to_answer_question: menjawab soalan ini
       unauthenticated_retag: Anda memerlukan akaun untuk mengetag semula soalan
+      unfollow_tooltip: Berhenti mengikuti soalan ini
       viewed: dilihat
     solve: 
       flash_notice: Soalan ini terjawab.

@@ -6,10 +6,13 @@
 br: 
   layouts: 
     application: 
+      all: Pep tra
       ask_question: Goulenn un dra bennak
       badges: Badjoù
+      faq: FAG
       forgot: Disoñjet ?
       home: Degemer
+      join_group: Mont e %{group}
       languages: Yezhoù
       log_in: Kevreañ
       logged: Kevreet evel %{login}
@@ -45,6 +48,7 @@ br:
       properties: Perzhioù
       reputation: Brud
       rewards: Prizioù
+      social: Sokial
       stats: Stadegoù
       theme: Tem
       widgets: Bitrakoù

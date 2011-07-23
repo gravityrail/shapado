@@ -12,18 +12,40 @@ de:
     tag: Abonniere das Stichwort
     user: Abonniere die Fragen des Nutzers
   global: 
+    actions: Aktionen
     active: Aktivieren
+    alphabetically: Alphabetisch
     anonymous: Anonymer
+    blog: Blog
     by: von
+    chat: Chat
     current: Aktuell
+    feedback: Rückmeldungen
+    follow: Beachten
+    followed_by: "Beachtet von:"
+    following: Beachtet
     from: von %{site}
     group_not_found: Die Seite %{url} existiert nicht
+    home: Startseite
+    next_button: Nächste
     or: oder
     permission_denied: Zugriff verweigert
     please_login: Bitte melde Dich an
     preview: Vorschau betrachten
     previous: Vorherige
+    privacy: Datenschutz
     share: freigeben
+    sign_up: Registrieren
+    size: Größe
+    sort_by: "Sortieren nach:"
+    subjetive: unsachlich
+    tags_label: "Stichwörter:"
+    tos: AGB
+    unfollow: Nicht mehr beachten
+    unknown_place: Unbekannt
+    view: Ansehen
+    view_question: Fragen ansehen
+    what_to_do: Was möchtest Du tun?
   models: 
     question: Die Frage
   number: 
@@ -34,6 +56,13 @@ de:
   pagination: 
     next: Nächste &raquo;
     previous: "&laquo; Vorige"
+  preferred_languages: 
+    any: Alle
+    user: Meine bevorzugten Sprachen
+  roles: 
+    moderator: Moderator
+    owner: Besitzer
+    user: Normaler Nutzer
   scaffold: 
     add: Hinzufügen
     back: Zurück

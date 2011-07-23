@@ -16,9 +16,13 @@ be-TARASK:
       addict: 
         description: Наведваў сайт кожны дзень на працягу 20 дзён
         name: Залежны
+      altruist: 
+        name: Альтруіст
       autobiographer: 
         description: Запоўніць усе палі профілю карыстальніка
         name: Аўтабіёграф
+      benefactor: 
+        name: Ахвяравальнік
       celebrity: 
         description: Мае болей за 100 пасьлядоўнікаў
         name: Знакамітасьць
@@ -55,8 +59,11 @@ be-TARASK:
       fanatic: 
         description: Наведваў сайт кожны дзень на працягу 100 дзён
         name: Фанатык
+      favorite_answer: 
+        description: Мае адказ, які лічаць улюблёным 25 карыстальнікаў
+        name: Улюблёны адказ
       favorite_question: 
-        description: Задаў улюблёнае пытаньне 25 удзельнікаў
+        description: Задаў пытаньне, за якім сочаць 25 карыстальнікаў
         name: Улюблёнае пытаньне
       friendly: 
         description: Упершыню пачаў за кімсьці сачыць
@@ -82,6 +89,8 @@ be-TARASK:
       interesting_person: 
         description: Атрымаў болей за 10 пасьлядоўнікаў
         name: Цікавая асоба
+      investor: 
+        name: Інвэстар
       merit_medal: 
         description: Атрымаў 200 галасоў «за»
         name: Мэдаль за заслугі
@@ -115,6 +124,8 @@ be-TARASK:
       popular_question: 
         description: Задаў пытаньне з 1000 праглядаў
         name: Папулярнае пытаньне
+      promoter: 
+        description: Першая ўзнагарода, якую Вы прапануеце за адказ Вашае пытаньне
       rockstar: 
         description: Мае 1000 галасоў «за», і ня болей 10 галасоў «супраць»
         name: Рок-зорка
@@ -129,8 +140,11 @@ be-TARASK:
         name: Мэдаль за службу
       shapado: 
         description: Наведваў сайт кожны дзень на працягу 8 дзён
+      stellar_answer: 
+        description: Мае адказ, які лічаць улюблёным 100 карыстальнікаў
+        name: Зорны адказ
       stellar_question: 
-        description: Задаў пытаньне, якое 100 карыстальнікаў дадалі да ўлюблёных
+        description: Задаў пытаньне, за якім сочаць 100 карыстальнікаў
         name: Зорнае пытаньне
       student: 
         description: Задаў першае пытаньне, з хаця б адным голасам «за»

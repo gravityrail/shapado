@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: McDutchie
 # Author: Protozoan
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   feeds: 
@@ -14,18 +15,34 @@ nl:
     tag: Op label abonneren
     user: Op gebruikersvragen abonneren
   global: 
+    actions: Handelingen
     active: Activeren
+    alphabetically: Alfabetisch
     anonymous: Anoniem
+    blog: Blog
     by: door
     current: huidige
+    feedback: Terugkoppeling
+    follow: Volgen
+    followed_by: "Gevolgd door:"
     from: uit %{site}
     group_not_found: De pagina %{url} bestaat niet
+    next_button: Volgende
     or: of
     permission_denied: Geen toegang
     please_login: Meld u aan
     preview: Voorvertoning
     previous: Vorige
+    privacy: Privacy
     share: Delen
+    size: Grootte
+    sort_by: "Sorteren op:"
+    tags_label: "Labels:"
+    unfollow: Niet langer volgen
+    unknown_place: Onbekend
+    view: Bekijken
+    view_question: Vraag bekijken
+    what_to_do: Wat wilt u doen?
   models: 
     question: De vraag
   number: 
@@ -36,6 +53,10 @@ nl:
   pagination: 
     next: Volgende &raquo;
     previous: "&laquo; Vorige"
+  preferred_languages: 
+    user: Mijn voorkeurstalen
+  roles: 
+    owner: Eigenaar
   scaffold: 
     add: Toevoegen
     back: Terug

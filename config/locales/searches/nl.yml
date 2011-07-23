@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   searches: 
@@ -10,5 +11,6 @@ nl:
       tags_tip: Gebruik [label] om labels aan te geven.
     index: 
       empty: Er waren geen vragen die voldoen aan uw zoekopdracht.
+      found_results: "%{quantity} resultaten werden gevonden."
       search_text: Vragen die tekst bevatten
       tags: Met deze labels

@@ -1,4 +1,4 @@
-# Messages for Yakut (Саха тыла)
+# Messages for Sakha (Саха тыла)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: HalanTul
@@ -8,7 +8,6 @@ sah:
     create: 
       success: Арбыыр биллэрии сөпкө оҥоһулунна
     index: 
-      add_adbard: Саҥа Ad Bard биллэриини эбии
       add_adsense: Google AdSense саҥа биллэриитин эбии
       title: Арбааһын
     name: "Аата:"

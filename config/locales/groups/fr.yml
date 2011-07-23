@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
@@ -14,7 +15,8 @@ fr:
         fb_button: Activer le boutton Like de Facebook (ne protège pas la vie privée)
         forum: Permettre plus d'une réponse par utilisateur
         group_created_by: crée par
-        language: Langue
+        language: Langue par défaut
+        languages: Langues supplémentaires
         legend: Légende
         logo: Logo
         may_contain_adult_content: Ce site peut inclure du contenu pour adultes

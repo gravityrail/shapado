@@ -5,6 +5,8 @@
 mk: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Нова објава означена на %{group}
       earned_badge: 
         subject: На %{group} добивте значка!
       favorited: 
@@ -20,5 +22,7 @@ mk:
         subject_owner: "%{login} ви одговори на прашањето %{title}"
       new_comment: 
         subject: "%{login} искоментира на %{group}"
+      new_invitation: 
+        subject: "%{user} ве кани да се зачлените во %{group}"
       report: 
         subject: извештај за групата %{group} од %{app}

@@ -15,9 +15,15 @@ ms:
       addict: 
         description: Mengunjungi tapak ini setiap hari selama 20 hari berturut-turut
         name: Ketagih
+      altruist: 
+        description: Ganjaran pertama yang anda berikan secara insani kepada soalan orang lain
+        name: Altruis
       autobiographer: 
         description: Melengkapkan semua ruangan profil pengguna
         name: Periwayat diri
+      benefactor: 
+        description: Ganjaran pertama yang anda berikan secara insani kepada soalan sendiri
+        name: Dermawan
       celebrity: 
         description: Diikuti oleh lebih daripada 100 pengikut
         name: Selebriti
@@ -54,8 +60,11 @@ ms:
       fanatic: 
         description: Mengunjungi tapak ini setiap hari selama 100 hari berturut-turut
         name: Fanatik
+      favorite_answer: 
+        description: Mempunyai jawapan yang digemari oleh 25 pengguna
+        name: Jawapan kegemaran
       favorite_question: 
-        description: Menanyakan soalan yang digemari oleh 25 pengguna
+        description: Menanyakan soalan yang diikuti oleh 25 pengguna
         name: Soalan kegemaran
       friendly: 
         description: Mulai mengikuti orang lain buat kali pertama
@@ -81,6 +90,9 @@ ms:
       interesting_person: 
         description: Diikuti oleh lebih daripada 10 pengikut
         name: Baik orangnya
+      investor: 
+        description: Ganjaran pertama yang anda tawarkan kepada soalan orang lain
+        name: Pelabur
       merit_medal: 
         description: Mendapat 200 undian setuju
         name: Pingat merit
@@ -114,6 +126,9 @@ ms:
       popular_question: 
         description: Menanyakan soalan yang dikunjungi 1,000 kali
         name: Soalan popular
+      promoter: 
+        description: Ganjaran pertama yang anda tawarkan kepada soalan sendiri
+        name: Promoter
       rockstar: 
         description: Mendapat 1,000 undian setuju, maksimum 10 undian tak setuju
         name: Bintang rock
@@ -128,8 +143,11 @@ ms:
         name: Pingat khidmat
       shapado: 
         description: Mengunjungi tapak ini setiap hari selama 8 hari berturut-turut
+      stellar_answer: 
+        description: Mempunyai jawapan yang digemari oleh 100 pengguna
+        name: Jawapan terbaik
       stellar_question: 
-        description: Menanyakan soalan yang disenaraikan sebagai kegemaran oleh 100 pengguna
+        description: Menanyakan soalan yang diikuti oleh 100 pengguna
         name: Soalan najam
       student: 
         description: Menanyakan soalan yang diundi setuju sekurang-kurangnya sekali

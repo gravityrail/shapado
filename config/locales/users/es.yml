@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Crazymadlover
 # Author: Danke7
+# Author: Mor
 # Author: Ovruni
 # Author: Patcito
 es: 
@@ -48,6 +49,9 @@ es:
       vote_up: Votar positivo
     anonymous_form: 
       never_shown: Nunca mostrado
+    change_password: 
+      submit: Cambiar mi contraseña
+      title: Cambiar contraseña
     create: 
       flash_error: No hemos podido crear tu cuenta, lo sentimos. Por favor intentalo otra vez, o contacta a un administrador (el enlace esta arriba).
       flash_notice: ¡Gracias por registrarse!
@@ -63,15 +67,17 @@ es:
       give_advice_notification: Obtener notificaciones via correo electrónico sobre preguntas en su campo de experiencia.
       information: Información
       language: Idioma usado para la interfaz de la pagina
-      new_answer_notification: Obtener notificaciones via correo electrónico de nuevas respuestas
+      new_answer_notification: Obtener notificaciones de nuevas respuestas por correo electrónico
       notifications: Notificaciones
       reports_notification: Recibir un reporte con las ultimas actividades del grupo (solo para administradores de grupo)
+      send_comments_to_twitter: Enviar mis comentarios a Twitter
       show_more_lang: Mostrar más idiomas
     index: 
       empty: Este grupo no tiene miembros, participe para unirse a este grupo.
       filter: Busca usuarios
       name: Por nombre de usuario
       name_tooltip: Usuarios ordenados alfabéticamente
+      near: Cerca de ti
       newest: Recientes
       newest_tooltip: Usuarios que se acaban de unir
       oldest: Antiguos
@@ -86,11 +92,20 @@ es:
       submit: Registrarse
       title: Registrar un nuevo usuario
     show: 
+      edit_profile: Editar perfil
       follow: Seguir
       followers: Seguidores
       following: Siguiendo
       title: Usuario %{user}
       unfollow: Dejar de seguir
       views: vistas
+    top_user: 
+      connect: Conectar
+      profile: Perfil
     unfollow: 
-      flash_notice: El usuario %{user} fue removido de su lista de amigos
+      flash_notice: Ya no estás siguiendo a %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Ahora estás siguiendo la etiqueta %{tag}.
+      unfollowed: 
+        flash_notice: Ya no estás siguiendo la etiqueta %{tag}.

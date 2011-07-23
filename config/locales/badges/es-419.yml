@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crazymadlover
+# Author: Mor
 # Author: Patcito
 es-419: 
   activerecord: 
@@ -18,7 +19,7 @@ es-419:
         name: Adicto
       autobiographer: 
         description: completed all user profile fields
-        name: autobiographer
+        name: Autobiógrafo
       celebrity: 
         description: Tiene mas de 100 seguidores
         name: Celebridad

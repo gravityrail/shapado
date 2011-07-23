@@ -13,13 +13,15 @@ ms:
         fb_button: Hidupkan butang Facebook Like (tidak mesra privasi)
         forum: Benarkan pengguna mengemukakan lebih daripada satu jawapan
         group_created_by: dicipta oleh
-        language: Bahasa
+        language: Bahasa utama
+        languages: Bahasa tambahan
         legend: Petunjuk
         logo: Logo
         may_contain_adult_content: Tapak ini mungkin mengandungi kandungan dewasa
         name: Nama
         owner: Kumpulan ini dicipta oleh %{login}
         registered_only: Hanya yang berdaftar yang boleh mencapai tapak ini
+        signup_type: Kaedah-kaedah mana yang boleh digunakan oleh pengguna anda untuk mendaftar diri
         state: Negara
         subdomain: URL
         wysiwyg_editor: Hidupkan alat sunting mesra pengguna
@@ -28,8 +30,13 @@ ms:
       group: Kumpulan
       groups: Kumpulan
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Maaf, ada sesuatu yang tidak kena. Sila cuba lagi.
+      success_twitter_connection: Syabas, anda berjaya menyambungkan akaun Twitter anda!
     create: 
       flash_notice: Kumpulan anda berjaya dicipta. Anda boleh mulai menentukan tatarajahnya.
+    edit: 
+      title: Sunting kumpulan anda
     form: 
       access: Tetapan Capaian
       analytics_engine: Enjin analitis
@@ -44,6 +51,10 @@ ms:
       legend_legend: Ini akan digunakan sebagai pengatas (header). Anda ada 40 aksara.
       logo_legend: Anda boleh memuat naik logo kumpulan, asalkan saiz fail tidak melebihi 2MB.
       members_only: Ahli-ahli kumpulan sahaja yang boleh mencapai kumpulan ini
+      signup_all: Semua (pengguna boleh berdaftar dengan e-mel, OpenId, Facebook, Twitter dsb)
+      signup_email: E-mel sahaja (pengguna hanya boleh mendaftar diri dengan alamat/kata laluan e-mel mereka)
+      signup_noemail: Tiada e-mel/kata laluan (pengguna berdaftar dengan OpenId, Facebook, Twitter)
+      signup_social: Sosial sahaja (pengguna hanya boleh mendaftar diri dengan Facebook, Twitter, LinkedIn dan Identica)
       website_analytics_id: ID Analitis Tapak Web
     group: 
       about: Perihal
@@ -54,6 +65,8 @@ ms:
       disallow_ads: Larang iklan
     index: 
       actives: Aktif
+      create_your_own: tubuhkan kumpulan sendiri
+      description: Berikut ialah senarai kumpulan umum yang telah ditubuhkan. Gunakan input pencarian di bawah untuk menapis kumpulan. Anda juga boleh %{link}.
       filter: Cari kumpulan
       most_active: Paling aktif
       name: Nama
@@ -70,3 +83,5 @@ ms:
       group_closed: Kumpulan ini ditutup.
       title: Tentang %{name}
       visit_group: Kunjungi kumpulan ini
+    top_grouplist: 
+      active_site: "Tapak aktif:"

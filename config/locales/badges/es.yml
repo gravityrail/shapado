@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crazymadlover
+# Author: Mor
 # Author: Patcito
 es: 
   activerecord: 
@@ -16,9 +17,11 @@ es:
       addict: 
         description: Visita el sitio 20 días consecutivos
         name: Adicto
+      altruist: 
+        name: Altruista
       autobiographer: 
         description: completed all user profile fields
-        name: autobiographer
+        name: Autobiógrafo
       celebrity: 
         description: Tiene mas de 100 seguidores
         name: Celebridad
@@ -29,7 +32,7 @@ es:
         description: Vota 300 veces
         name: Deber cívico
       cleanup: 
-        description: Primer reversión
+        description: Hizo la primera reversión
         name: Limpieza
       commentator: 
         description: Deja 10 comentarios
@@ -38,7 +41,7 @@ es:
         description: Votar negativamente por primera vez
         name: Crítico
       disciplined: 
-        description: Borra su propio post con puntaje mayor igual a 3
+        description: Borrado post propio con puntuación de 3 o superior
         name: Disciplinado
       editor: 
         description: Primer mensaje editado
@@ -55,8 +58,11 @@ es:
       fanatic: 
         description: Visita el sitio 100 días consecutivos
         name: Fanático
+      favorite_answer: 
+        description: Tiene una respuesta elegida favorita por 25 usuarios
+        name: Respuesta favorita
       favorite_question: 
-        description: Pregunta seleccionada como preferida por 25 usuarios
+        description: Hecha una pregunta seguida por 25 usuarios
         name: Pregunta favorita
       friendly: 
         description: Sigue a alguien por primera vez
@@ -82,6 +88,8 @@ es:
       interesting_person: 
         description: Tiene mas de 10 seguidores
         name: Persona interesante
+      investor: 
+        name: Inversor
       merit_medal: 
         description: Recibir 200 votos positivos
         name: Insignia del merito
@@ -116,21 +124,23 @@ es:
         description: hace una pregunta con 1000 visitas
         name: Pregunta popular
       rockstar: 
-        description: 1000 votos positivos, máximo 10 negativos
+        description: Tiene 1.000 votos positivos, máximo 10 votos negativos
         name: Rockstar
       scholar: 
         description: Primera respuesta aceptada en tu propia pregunta
         name: Erudito
       self-learner: 
-        description: Contesto su propia pregunta con al menos 3 votos positivos
+        description: Contestó una pregunta propia con al menos 3 votos positivos
         name: Autodidacta
       service_medal: 
-        description: Recibir 300 votos positivos
+        description: Tiene 300 votos positivos
         name: Insignia de servicio
       shapado: 
         description: Visita el sitio 8 días consecutivos
+      stellar_answer: 
+        name: Respuesta estelar
       stellar_question: 
-        description: Pregunta con mas de 100 favoritos
+        description: Hecha una pregunta seguida por 100 usuarios
         name: Pregunta extraordinaria
       student: 
         description: Primera pregunta con al menos un voto positivo

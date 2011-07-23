@@ -10,7 +10,6 @@ eo:
     create: 
       success: Reklamo estis sukcese kreita.
     index: 
-      add_adbard: Aldoni novan „Ad Bard”-reklamon
       add_adsense: Aldoni novan reklamon Google AdSense
       title: Reklamo
     name: "Nomo:"

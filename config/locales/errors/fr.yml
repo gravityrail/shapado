@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
@@ -12,7 +13,7 @@ fr:
     help_us_answer: Aider nous à répondre à %{link}
     internal_error: 
       explanation: Nous avons été alerté à propos de cette erreur et nous allons vérifier d'ici peu.
-      title: Nous somme désolé mais une erreur s'est produite.
+      title: Nous sommes désolés, mais une erreur s'est produite.
     not_found: 
       explanation: Vous avez peut-être mal écrit l'adresse ou bien la page en question a changé.
       title: Page non trouvée.

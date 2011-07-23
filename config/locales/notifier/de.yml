@@ -4,13 +4,23 @@
 # Author: Kghbln
 de: 
   notifier: 
+    admin_login: 
+      message1: Nutzer %{user} hat sich um %{time} Uhr über die %{ip} als Administrator angemeldet.
+      subject: "Warnung: Administratorverbindung"
+    created_flag: 
+      message1: Du erhältst diese Nachricht, da Du ein Moderator bei %{group} bis.
+      message2: "Ein Beitrag wurde aus folgendem Grund gemeldet:"
+      message2bis: Du kannst den gekennzeichneten Beitrag hier lesen.
+      message2bistext: "Du kannst den gekennzeichneten Beitrag lesen, indem Du den folgenden Link anklickst:"
+      message3: "Gehe zur Moderationsseite, um die Liste der gekennzeichneten Beiträge anzusehen:"
+      message4: "Besuche die Moderationsseite, um die Liste der gekennzeichneten Beiträge anzusehen:"
     earned_badge: 
       message1: Du hast ein %{badge}-Abzeichen auf %{app} erhalten.
       message2: "Beschreibung des Abzeichens:"
       message3: Du kannst alle Deine Abzeichen auf Deiner %{user_page} ansehen.
     favorited: 
-      message1: "%{user} hat Deine Frage als Favorit in der Gruppe %{group} hinzugefügt"
-      message2: "Der Text Deiner Frage:"
+      message1: "%{user} hat Deine Antwort in der Gruppe %{group} als Favorit hinzugefügt"
+      message2: "Die Frage lautete:"
       message3: "Du kannst es hier sehen:"
     follow: 
       message1: "%{user} beachtet nun Deine Fragen und Antworten auf %{app}"
@@ -22,6 +32,7 @@ de:
       message4: Sofern wir von Dir nicht bald eine Antwort erhalten, werden wir jemand anderen fragen. Dennoch kannst Du antworten, wann immer Du möchtest.
     global: 
       hi: Hallo %{user},
+      hi_no_user: Hallo,
       user_page: Nutzerseite
     new_answer: 
       message: "%{user} hat %{new_answer} zu Frage „%{question}“ verfasst"
@@ -32,6 +43,11 @@ de:
       message2: Ein anonymer Nutzer mit der IP-Adresse %{ip} hat eine Rückmeldung gegeben
       message3: "E-Mail-Adresse: %{email}"
       message4: "Betreff: %{subject}"
+    new_invitation: 
+      message1: "Klicke folgenden Link an, um die Einladung anzunehmen: %{link}"
+      message2: Das %{group}-Team.
+      message3: "Eine Nachricht vom Einladenden:"
+      subject: "%{user} hat Dich nach %{group} eingeladen"
     report: 
       message1: Bericht für Gruppe %{group}
       message2: Seit %{date}

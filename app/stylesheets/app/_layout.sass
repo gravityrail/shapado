@@ -9,6 +9,7 @@
 
 #container
   width: 100%
+  min-width: 700px
 
 // Diagramation
 //========================================================================
@@ -17,7 +18,7 @@ section
 
 //LEFT
 section.left-panel
-  width: 12%
+  width: 14%
   display: inline
   margin-left: 5px
   text-align: right
@@ -35,11 +36,11 @@ section.left-panel
 
 //CENTER
 section.content-panel
-  width: 55%
+  width: 59%
   padding: 0 0.4%
   display: inline
   &.nosidebar
-    width: 80%
+    width: 85%
 
 section.invitations-panel
   margin: auto
@@ -137,3 +138,7 @@ section.sessions
   float: none !important
   width: 700px
   display: block !important
+
+#columns
+  max-width: 980px
+  margin: auto

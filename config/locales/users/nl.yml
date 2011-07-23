@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Kjell
 # Author: Protozoan
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -47,6 +48,9 @@ nl:
       vote_up: Positief beoordelen
     anonymous_form: 
       never_shown: nooit weergegeven
+    change_password: 
+      submit: Mijn wachtwoord wijzigen
+      title: Wachtwoord wijzigen
     create: 
       flash_error: Het was niet mogelijk die gebruiker aan te maken. Probeer het opnieuw of neem contact op met een beheerder via de verwijzing hierboven.
       flash_notice: Bedankt voor uw aanmelding!
@@ -55,7 +59,7 @@ nl:
       submit: Opslaan
       title: Voorkeuren
     follow: 
-      flash_notice: De gebruiker %{user} is toegevoegd aan uw vrienden.
+      flash_notice: U volgt nu %{user}.
     form: 
       activities_notification: E-mails ontvangen over systeemactiviteiten zoals verdiende speldjes, nieuwe volgers, enzovoort.
       avatar_tip: Uw profielafbeelding wijzigen via gravatar
@@ -65,6 +69,10 @@ nl:
       new_answer_notification: E-mail ontvangen over nieuwe antwoorden
       notifications: Kennisgevingen
       reports_notification: Een overzicht ontvangen van de laatste groepsactiviteit (alleen voor beheerders)
+      send_answers_to_twitter: Mijn antwoorden naar mijn Twitter verzenden
+      send_comments_to_twitter: Mijn opmerkingen naar Twitter verzenden
+      send_favorites_to_twitter: Mijn favoriete antwoorden naar mijn Twitter verzenden
+      send_questions_to_twitter: Mijn vragen naar mijn Twitter verzenden
       show_more_lang: Meer talen weergeven
     index: 
       empty: Deze groep heeft geen leden. Neem deel om er lid van te worden.
@@ -82,14 +90,23 @@ nl:
       errors: 
         reputation_needed: Uw reputatie moet minimaal %{min_reputation} zijn om te kunnen %{action}
     new: 
+      description: Word een deel van deze gemeenschap om te vragen, te beantwoorden en te leren!
+      join_group: Lid worden van %{group}
       submit: Registreren
       title: Aanmelden als nieuwe gebruiker
     show: 
+      edit_profile: Profiel bewerken
       follow: Volgen
       followers: Abonnees
       following: Abonnementen
       title: Gebruiker %{user}
       unfollow: Niet langer volgen
       views: x bekeken
+    top_user: 
+      connect: Koppelen
+      profile: Profiel
     unfollow: 
-      flash_notice: De gebruiker %{user} is niet langer uw vriend
+      flash_notice: U volgt %{user} niet langer.
+    user_bar: 
+      create_account: Gebruiker aanmaken
+      not_logged_in: Niet aangemeld

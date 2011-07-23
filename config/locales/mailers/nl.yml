@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   mailers: 
@@ -21,5 +22,7 @@ nl:
         subject_owner: "%{login} heeft uw vraag %{title} beantwoord"
       new_comment: 
         subject: "%{login} heeft een opmerking toegevoegd aan %{group}"
+      new_invitation: 
+        subject: "%{user} heeft u uitgenodigd om lid te worden van %{group}"
       report: 
         subject: Rapportage voor de groep %{group} van %{app}

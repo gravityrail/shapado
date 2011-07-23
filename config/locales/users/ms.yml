@@ -45,6 +45,9 @@ ms:
       vote_up: Undi setuju
     anonymous_form: 
       never_shown: tidak pernah dipaparkan
+    change_password: 
+      submit: Tukar kata laluan saya
+      title: Tukar kata laluan
     create: 
       flash_error: Maaf, kami tidak dapat membuka akaun itu. Sila cuba lagi atau hubungi pentadbir (melalui pautan di atas).
       flash_notice: Terima kasih kerana mendaftar diri!
@@ -53,7 +56,7 @@ ms:
       submit: Simpan
       title: Tetapan
     follow: 
-      flash_notice: Pengguna %{user} disenaraikan sebagai rakan anda
+      flash_notice: Anda sedang mengikuti %{user}.
     form: 
       activities_notification: Terima pemberitahuan e-mel mengenai kegiatan sistem seperti lencana yang diraih, pengikut baru, dsb.
       avatar_tip: Tukar gambar profil anda dengan menggunakan Gravatar
@@ -63,12 +66,19 @@ ms:
       new_answer_notification: Dapatkan pemberitahuan e-mel untuk jawapan baru
       notifications: Pemberitahuan
       reports_notification: Terima laporan kegiatan kumpulan terkini (untuk pentadbir kumpulan sahaja)
+      send_answers_to_twitter: Hantar jawapan saya ke Twitter saya
+      send_badges_to_twitter: Hantar lencana yang baru saya raih ke Twitter saya
+      send_comments_to_twitter: Hantar komen saya ke Twitter
+      send_favorites_to_twitter: Hantar jawapan kegemaran saya ke Twitter saya
+      send_questions_to_twitter: Hantar soalan saya ke Twitter saya
       show_more_lang: Tunjukkan banyak lagi bahasa
+      social_interaction: Interaksi media sosial
     index: 
       empty: Kumpulan ini tiada ahli baru. Ambil bahagian dengan menyertai kumpulan ini.
       filter: Cari pengguna
       name: Nama
       name_tooltip: Pengguna disusun mengikut turutan abjad
+      near: Dekat anda
       newest: Terbaru
       newest_tooltip: Pengguna yang baru menyertai
       oldest: Terlama
@@ -80,14 +90,30 @@ ms:
       errors: 
         reputation_needed: Anda memerlukan tahap reputasi %{min_reputation} untuk %{action}
     new: 
+      description: Sertai komuniti ini untuk bertanya, menjawab dan menambah ilmu!
+      join_group: Sertai %{group}
       submit: Daftar diri
-      title: Berdaftar sebagai pengguna baru
+      title: Daftar diri sebagai pengguna baru
     show: 
+      edit_profile: Sunting profil
       follow: Ikuti
       followers: Pengikut
       following: Mengikuti
       title: Pengguna %{user}
       unfollow: Berhenti mengikut
       views: kunjungan
+    top_user: 
+      connect: Sambung
+      my_karma: "Karma saya: %{karma}"
+      profile: Profil
     unfollow: 
-      flash_notice: Pengguna %{user} telah digugurkan daripada rakan-rakan anda
+      flash_notice: Anda tidak mengikuti %{user} lagi.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Anda sedang mengikuti tag %{tag}.
+      unfollowed: 
+        flash_notice: Anda tidak mengikuti tag %{tag} lagi.
+    user_bar: 
+      create_account: Buka akaun
+      not_logged_in: Belum log masuk
+      signed_as: Log masuk sebagai

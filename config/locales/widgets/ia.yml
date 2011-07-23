@@ -4,22 +4,70 @@
 # Author: McDutchie
 ia: 
   widgets: 
+    ask_question: 
+      ask: Demandar
+      description: Iste widget permitte que usatores pone questiones ab ubicunque.
+      footer: Vider tote le questiones sur %{group}
+      title: "Poner un question:"
+      view_question: <p>Tu pote vider lo <a href="%{question}">hic</a> o poner un altere hic infra.</p>
     badges: 
-      description: Iste widget monstra insignias recentemente ganiate per usatores o questiones
+      description: Iste widget monstra insignias recentemente ganiate per usatores.
+      see_all: Vider tote le insignias
       title: Insignias recente
+    contributors: 
+      title: Contributores al question
+    current_tags: 
+      description: Iste widget monstra etiquettas sequite per le usator actual.
     groups: 
       description: Iste widgets monstra le ultime gruppos
       title: Gruppos recente
     index: 
       description: Usa le sagittas pro displaciar tu widgets
+      external_widgets: Externe
+      external_widgets_title: Widgets que tu pote incorporar in tu proprie sito
+      mainlist_widgets: Lista principal
+      mainlist_widgets_title: Widgets que apparera in le lista principal de questiones
+      question_widgets: Question
+      question_widgets_title: Widgets que apparera in cata pagina de question
       title: Administrar widgets del barra lateral
+      welcome_widgets: Benvenite
+      welcome_widgets_title: Widgets que apparera in le pagina de benvenita /
+    mod_info: 
+      description: Iste widget monstra information relevante al moderatores como marcationes e requestas de reportage.
     pages: 
       description: Iste widget monstra le lista de paginas wiki
       new: Adder nove pagina
       title: Paginas wiki
+    question_badges: 
+      description: Iste widget monstra insignias ganiate sur ille question.
+    question_stats: 
+      description: Iste widget monstra statisticas super un question como le data de creation e le numero de visitas.
+    question_tags: 
+      description: Iste widget monstra etiquettas connexe al pagina actual.
+    related_questions: 
+      description: Iste widget monstra un lista de questiones connexe al question actual.
+    settings: 
+      code: "Copiar e collar iste codice in tu sito o blog, como un widget de texto in tu Wordpress:"
+      custom_external_css: "Includer CSS personalisate in tu widget (recommendate si tu non include le CSS de Shapado):"
+      custom_html: "HTML personalisate:"
+      exclude_css_on_external: Excluder le CSS de tu sito Shapado de tu widget
+      limit: "Numero a monstrar:"
+      on_questions: Monstrar in pagina de lista principal de questiones
+      on_show_question: Monstrar quando un question es monstrate
+      on_welcome: Monstrar in pagina de benvenita
+      preview: "Previsualisation del widget:"
+    sharing_buttons: 
+      description: Iste widget monstrara buttones de diffusion social
+      title: Diffunder isto sur
+    suggestions: 
+      description: Suggestion de amicos e etiquettas que le usator pote sequer
+      followed_by: Sequite per %{user}
+      title: Personas e etiquettas a sequer
     tag_cloud: 
       description: Iste widget monstra un nube de etiquettas
       title: Etiquettario
+    tag_list: 
+      description: Iste widget monstra etiquettas connexe al pagina actual.
     top_groups: 
       description: Iste widget monstra le prime cinque gruppos
       title: Prime 5 gruppos

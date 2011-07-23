@@ -18,5 +18,5 @@ de:
       signup: Registrierung
       with_authentication: Melde Dich mich unserem Authentifizierungssystem an
       with_facebook: Mit „Facebook“<br />anmelden
-      with_openid: Mit „OpenID“ anmelden
+      with_openid: Mit OpenID anmelden
       with_twitter: Mit „Twitter“<br />anmelden

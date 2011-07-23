@@ -9,7 +9,6 @@ fa:
     create: 
       success: آگهی با موفقیت ایجاد شد
     index: 
-      add_adbard: آگهی ادبارد تازه‌ای بیافزایید
       add_adsense: آگهی گوگل ادسنس تازه‌ای بیافزایید
       title: آگهی‌ها
     name: "نام:"

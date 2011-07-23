@@ -1,13 +1,14 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 fr: 
   comments: 
     create: 
       flash_notice: Merci pour votre commentaire
     edit: 
-      title: Éditer le commentaire
+      title: Modifier le commentaire
     shared: 
       add_comment: Ajouter un commentaire...
       comment_submit: Commenter

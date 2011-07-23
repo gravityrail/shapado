@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 # Author: Verdy p
@@ -27,7 +28,7 @@ fr:
         name: Nom réel
         password: Mot de passe
         password_confirmation: Confirmation du mot de passe
-        preferred_languages: "Vous souhaitez lire les questions dans les langues suivantes:"
+        preferred_languages: "Vous souhaitez lire les questions dans les langues suivantes :"
         preferred_tags: Tags préférés
         reputation: Réputation
         timezone: Fuseau horaire
@@ -50,9 +51,9 @@ fr:
       never_shown: jamais montré
     create: 
       flash_error: Désolé, nous n'avons pas pu configurer votre compte. Éssayer encore s'il vous plait, ou contacter un administrateur (le lien est ci-dessus).
-      flash_notice: Merci de vous avoir enregistré!
+      flash_notice: Merci de vous être enregistré !
     edit: 
-      enable_twitter: Activer vos comptes facebook ou twitter
+      enable_twitter: Activer vos comptes Facebook ou Twitter
       submit: Sauvegarder
       title: Configuration
     follow: 
@@ -72,6 +73,7 @@ fr:
       filter: Recherchez des utilisateurs
       name: Nom
       name_tooltip: Utilisateurs par ordre alphabétique
+      near: Près de vous
       newest: Les plus récents
       newest_tooltip: Utilisateurs vennant d'ouvrir un compte
       oldest: Les plus anciens
@@ -86,11 +88,14 @@ fr:
       submit: Inscrivez-vous
       title: Se connecter en tant que nouvel utilisateur
     show: 
+      edit_profile: Modifier le profil
       follow: Suivre
       followers: Suiveurs
       following: Suivi
       title: Utilisateur %{user}
       unfollow: Ne plus suivre
       views: vues
+    top_user: 
+      profile: Profil
     unfollow: 
       flash_notice: L'utilisateur %{user} a été ajouté à votre liste d'amis

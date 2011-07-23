@@ -12,18 +12,40 @@ ms:
     tag: Langgan tag
     user: Langgan soalan pengguna
   global: 
+    actions: Tindakan
     active: Hidupkan
+    alphabetically: Ikut turutan abjad
     anonymous: Tanpa nama
+    blog: Blog
     by: oleh
+    chat: Sembang
     current: Kini
+    feedback: Maklum Balas
+    follow: Ikuti
+    followed_by: "Diikuti oleh:"
+    following: Diikuti
     from: dari %{site}
     group_not_found: Laman %{url} tak wujud
+    home: Laman Utama
+    next_button: Berikutnya
     or: atau
     permission_denied: Kebenaran ditolak
     please_login: Sila log masuk
     preview: Pralihat
     previous: Sebelumnya
+    privacy: Privasi
     share: Kongsi
+    sign_up: Daftar diri
+    size: Saiz
+    sort_by: "Isih mengikut:"
+    subjetive: subjektif
+    tags_label: "Tag:"
+    tos: Terma Perkhidmatan
+    unfollow: Berhenti mengikut
+    unknown_place: Tidak diketahui
+    view: Lihat
+    view_question: Lihat soalan
+    what_to_do: Apakah yang ingin anda lakukan?
   models: 
     question: Soalan
   number: 
@@ -34,6 +56,13 @@ ms:
   pagination: 
     next: Berikutnya &raquo;
     previous: "&laquo; Sebelumnya"
+  preferred_languages: 
+    any: Semua
+    user: Bahasa-bahasa keutamaan saya
+  roles: 
+    moderator: Pengawal selia
+    owner: Pemilik
+    user: Pengguna biasa
   scaffold: 
     add: Tambahkan
     back: Kembali

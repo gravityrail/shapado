@@ -2,13 +2,14 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
     attributes: 
       answer: 
         body: Tekst
-        created_at: Beantwoord
+        created_at: Aangemaakt op
         link: Verwijzing
     models: 
       answer: Antwoord

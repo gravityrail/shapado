@@ -8,7 +8,6 @@ hu:
     create: 
       success: A hirdetés sikeresen létrejött.
     index: 
-      add_adbard: Új Ad Bard-hirdetés
       add_adsense: Új Google AdSense-hirdetés
       title: Hirdetések
     name: "Név:"

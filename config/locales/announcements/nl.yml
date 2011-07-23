@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -15,6 +16,6 @@ nl:
       delete: Verwijderen
       title: Handelingen
     create: 
-      success: De aankondiging is aangemaakt.
+      success: Uw aankondiging is aangemaakt.
     index: 
       title: Aankondigingen

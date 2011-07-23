@@ -15,6 +15,7 @@ ia:
       delete: Remover
       title: Actiones
     create: 
-      success: Le aviso ha essite create con successo.
+      success: Le annuncio ha essite create con successo.
     index: 
+      description: Gerer e crear nove annuncios que essera monstrate a tu visitatores in tote le sito.
       title: Avisos

@@ -4,22 +4,78 @@
 # Author: Kghbln
 de: 
   widgets: 
+    ask_question: 
+      ask: Fragen
+      description: Dieses Widget erlaubt es Nutzern, vor überall ausgehend, Fragen zu stellen.
+      footer: Alle Fragen bei %{group} ansehen
+      title: "Eine Frage stellen:"
+      view_question: <p>Du kannst sie <a href="%{question}">hier</a> ansehen oder weiter unten eine weitere Frage stellen.</p>
     badges: 
-      description: Dieses Widget zeigt die Abzeichen an, die kürzlich an Nutzer oder Fragen vergeben wurden
+      description: Dieses Widget zeigt die Abzeichen an, die kürzlich an Nutzer vergeben wurden.
+      see_all: Alle Abzeichen ansehen
       title: Kürzlich vergebene Abzeichen
+    contributors: 
+      title: Nutzer, die zur Frage beigetragen haben
+    current_tags: 
+      description: Diese Widget zeigt die Stichwörter an, die vom aktuellen Nutzer beachtet werden.
+    group_networks: 
+      title: Folge uns
     groups: 
       description: Dieses Widget zeigt die fünf neuesten Gruppen an
       title: Kürzlich aktive Gruppen
     index: 
       description: Verwende die Pfeile, um Deine Widgets zu verschieben
+      external_widgets: Extern
+      external_widgets_title: Widgets, die Du auf Deiner eigenen Website einbinden kannst
+      mainlist_widgets: Hauptliste
+      mainlist_widgets_title: Widgets, die auf der Seite mit der Hauptliste der Fragen angezeigt werden
+      question_widgets: Frage
+      question_widgets_title: Widgets, die auf jeder Seite mit einer Frage angezeigt werden
       title: Widgets der Seitenleiste verwalten
+      welcome_widgets: Herzlich willkommen
+      welcome_widgets_title: Widgets, die auf der Willkommensseite angezeigt werden
+    mod_info: 
+      description: Dieses Widget zeigt Informationen an, die für Moderatoren hilfreich sind, wie bswp. Kennzeichnungen und Berichtsanfragen.
     pages: 
       description: Dieses Widget zeigt die Liste der Wiki-Seiten an
       new: Neue Seite hinzufügen
       title: Wiki-Seiten
+    question_badges: 
+      description: Dieses Widget zeigt die Auszeichnungen an, die aufgrund dieser Frage verdient wurden.
+      title: Stichwörter zu Auszeichnungen
+    question_stats: 
+      description: Dieses Widget zeigt Statistiken zu einer Frage an, wie bspw. das Erstellungsdatum oder die Anzahl der Aufrufe.
+    question_tags: 
+      description: Dieses Widget zeigt mit der aktuellen Seite zusammenhängende Stichwörter an.
+      title: Stichwörter zu Fragen
+    related_questions: 
+      description: Dieses Widget zeigt eine Liste der mit der aktuellen Frage zusammenhängenden Fragen an.
+      title: Ähnliche Fragen
+    settings: 
+      code: "Diesen Code kopieren und auf Deiner Website oder Deinem Blog einfügen - analog zu einem Textwidget bei Wordpress:"
+      custom_external_css: "Benutzerdefiniertes CSS auf Dein Widget anwenden (empfohlen, sofern das CSS von Shapado nicht angewendet werden soll):"
+      custom_html: "Benutzerdefiniertes HTML:"
+      exclude_css_on_external: Das CSS Deiner Shapado-Website nicht auf Dein Widget anwenden
+      limit: "Anzuzeigende Menge:"
+      on_questions: Auf der Seite mit der Hauptliste der Fragen anzeigen
+      on_show_question: Beim Anzeigen einer Frage anzeigen
+      on_welcome: Auf der Willkommenseite anzeigen
+      preview: "Vorschau des Widgets:"
+    share: 
+      title: Teile mit uns
+    sharing_buttons: 
+      description: Dieses Widget wird Schaltflächen Sozialer Dienste anzeigen.
+      title: Darauf aufmerksam machen bei
+    suggestions: 
+      description: Vorschläge von Freunden und Schlagwärter für den zu beachtenden Nutzer
+      followed_by: Beachtet von %{user}
+      title: Zu beachtende Nutzer und Stichwörter
     tag_cloud: 
       description: Dieses Widget zeigt die Stichwortwolke an
       title: Stichwortwolke
+    tag_list: 
+      description: Dieses Widget zeigt mit der aktuellen Seite zusammenhängende Stichwörter an.
+      title: Stichwörter
     top_groups: 
       description: Dieses Widget zeigt die fünf aktivsten Gruppen an
       title: Top 5 Gruppen

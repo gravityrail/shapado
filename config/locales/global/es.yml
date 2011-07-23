@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Mor
 # Author: Patcito
 # Author: Translationista
 es: 
@@ -14,9 +15,11 @@ es:
     user: Subscribirse a las preguntas del usuario
   global: 
     active: Activar
+    alphabetically: Alfabéticamente
     anonymous: Anónimo
     by: por
     current: Actual
+    follow: Seguir
     from: desde %{site}
     group_not_found: La página %{url} no existe
     or: o
@@ -24,7 +27,12 @@ es:
     please_login: Por favor inicia sesión
     preview: Vista previa
     previous: Anterior
+    privacy: Privacidad
     share: Compartir
+    size: Tamaño
+    unknown_place: Desconocido
+    view: Ver
+    what_to_do: ¿Qué quieres hacer?
   models: 
     question: La pregunta
   number: 
@@ -35,6 +43,11 @@ es:
   pagination: 
     next: Siguiente &raquo;
     previous: "&laquo; Anterior"
+  preferred_languages: 
+    user: Mis idiomas preferidos
+  roles: 
+    moderator: Moderador
+    owner: Propietario
   scaffold: 
     add: Añadir
     back: Volver

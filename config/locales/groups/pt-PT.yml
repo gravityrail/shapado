@@ -1,6 +1,7 @@
 # Messages for Portuguese (Português)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Analuisa
 # Author: Hamilton Abreu
 # Author: Malafaya
 pt-PT: 
@@ -15,6 +16,7 @@ pt-PT:
         forum: Permitir mais do que uma resposta por utilizador
         group_created_by: criado por
         language: Língua
+        languages: Línguas extra
         legend: Legenda
         logo: Logótipo
         may_contain_adult_content: Este site pode ter conteúdo para adultos
@@ -29,8 +31,12 @@ pt-PT:
       group: Grupo
       groups: Grupos
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Desculpe, algo correu mal. Por favor, tente novamente.
     create: 
       flash_notice: O seu grupo foi criado. Agora pode começar a configurá-lo.
+    edit: 
+      title: Edite o seu grupo
     form: 
       access: Definições de Acesso
       analytics_engine: Motor de Análise
@@ -45,6 +51,8 @@ pt-PT:
       legend_legend: Será usado no cabeçalho. Dispõe de 40 caracteres.
       logo_legend: Pode fazer upload do logótipo do grupo. O tamanho máximo do ficheiro é 2MB.
       members_only: Só os membros do grupo poderão aceder a este grupo
+      signup_email: E-mail apenas (os utilizadores podem apenas registrar-se com o seu email/password).
+      signup_noemail: Nenhum e-mail/password (utilizadores entram com o OpenId, Facebook ou Twitter)
       website_analytics_id: ID da Análise do Site
     group: 
       about: Sobre
@@ -55,6 +63,7 @@ pt-PT:
       disallow_ads: Não permitir anúncios
     index: 
       actives: Activos
+      create_your_own: Crie o seu próprio grupo
       filter: Pesquisar grupos
       most_active: Mais activos
       name: Nome

@@ -9,6 +9,9 @@ ms:
       search_box_title: Semak sama ada soalan anda sudah ditanya
       tags_tip: Gunakan [tag] untuk menetapkan tag.
     index: 
+      advanced_search: carian lanjutan
+      description: Gunakan pilihan %{link} untuk mendapatkan hasil-hasil yang terperinci.
       empty: Tiada soalan yang sepadan dengan carian anda.
+      found_results: "%{quantity} hasil dijumpai."
       search_text: Soalan yang mengandungi
       tags: di dalam tag-tag ini

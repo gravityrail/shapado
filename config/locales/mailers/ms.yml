@@ -5,6 +5,8 @@
 ms: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Kiriman baru yang dibenderakan di %{group}
       earned_badge: 
         subject: Anda telah meraih lencana di %{group}!
       favorited: 
@@ -20,5 +22,7 @@ ms:
         subject_owner: "%{login} menjawab soalan anda, %{title}"
       new_comment: 
         subject: "%{login} mengulas %{group}"
+      new_invitation: 
+        subject: "%{user} menjemput anda untuk menyertai %{group}"
       report: 
         subject: Laporan untuk kumpulan %{group} di %{app}

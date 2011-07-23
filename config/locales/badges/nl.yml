@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: McDutchie
 # Author: Protozoan
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -56,8 +57,11 @@ nl:
       fanatic: 
         description: Heeft de site honderd dagen achter elkaar bezocht
         name: Fanaticus
+      favorite_answer: 
+        description: Heeft een antwoord dat door 25 gebruikers als favoriet is aangegeven
+        name: Favoriet antwoord
       favorite_question: 
-        description: Heeft een vraag gesteld die door 25 gebruikers als favoriet is ingesteld
+        description: Heeft een vraag gesteld die door 25 gebruikers gevolgd wordt
         name: Favoriete vraag
       friendly: 
         description: Is voor de eerste keer iemand gaan volgen
@@ -130,8 +134,10 @@ nl:
         name: Dienstmedaille
       shapado: 
         description: Heeft de site acht dagen achter elkaar bezocht
+      stellar_answer: 
+        description: Heeft een antwoord dat door 100 gebruikers als favoriet is aangegeven
       stellar_question: 
-        description: Heeft een vraag gesteld die door honderd gebruikers als favoriet is aangegeven
+        description: Heeft een vraag gesteld die door honderd gebruikers gevolgd wordt
         name: Bovennatuurlijk goede vraag
       student: 
         description: Heeft een vraag gesteld met tenminste één positieve stem

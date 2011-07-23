@@ -8,7 +8,6 @@ da:
     create: 
       success: Annoncen blev oprettet med succes.
     index: 
-      add_adbard: Tilføj en ny Ad Bard annonce
       add_adsense: Tilføj en ny Google AdSense annonce
       title: Annoncer
     name: "Navn:"

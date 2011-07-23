@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: IAlex
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 # Author: Y-M D
@@ -18,9 +19,13 @@ fr:
       addict: 
         description: Visiter le site 20 jours consécutifs
         name: Accro
+      altruist: 
+        name: Altruiste
       autobiographer: 
         description: A complété tous ses champs utilisateurs
         name: Autobiographe
+      benefactor: 
+        name: Bienfaiteur
       celebrity: 
         description: A plus de 100 suiveurs
         name: Célébrité
@@ -84,6 +89,8 @@ fr:
       interesting_person: 
         description: A plus de 10 suiveurs
         name: Personne intéressante
+      investor: 
+        name: Investisseur
       merit_medal: 
         description: Recevoir 200 votes positifs
         name: Médaille du Mérite
@@ -117,6 +124,8 @@ fr:
       popular_question: 
         description: Question ayant reçu 1000 visites
         name: Question populaire
+      promoter: 
+        name: Promoteur
       rockstar: 
         description: A 1000 votes positifs, pour 10 négatifs maximum
         name: Rockstar

@@ -1,16 +1,19 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: SPQRobin
 # Author: Siebrand
 nl: 
   notifier: 
+    created_flag: 
+      message2: "Een post is opnieuw gepost om de volgende reden:"
     earned_badge: 
       message1: U hebt het speldje %{badge} verdiend op %{app}
       message2: "Beschrijving speldje:"
       message3: U kunt al uw speldjes bekijken op uw %{user_page}
     favorited: 
-      message1: "%{user} heeft uw vraag als favoriet toegevoegd op %{group}"
-      message2: "Uw vraag:"
+      message1: "%{user} heeft uw antwoord op %{group} als favoriet toegevoegd"
+      message2: "De vraag was:"
       message3: "U kunt deze hier bekijken:"
     follow: 
       message1: "%{user} volgt uw vragen en antwoorden op %{app}"
@@ -22,6 +25,7 @@ nl:
       message4: Als we niet snel een antwoord van u krijgen, vragen we iemand anders. U kunt de vraag nog steeds beantwoorden wanneer u maar wilt.
     global: 
       hi: Hallo %{user},
+      hi_no_user: Hallo,
       user_page: gebruikerspagina
     new_answer: 
       message: "%{user} heeft %{new_answer} geantwoord op de vraag %{question}"
@@ -32,6 +36,9 @@ nl:
       message2: Een anonieme gebruiker heeft een reactie gegeven vanaf IP-adres %{ip}
       message3: "E-mailadres: %{email}"
       message4: "Onderwerp: %{subject}"
+    new_invitation: 
+      message1: Klik hier om de uitnodiging te aanvaarden %{link}
+      subject: "%{user} heeft u uitgenodigd voor %{group}"
     report: 
       message1: Rapportage voor groep %{group}
       message2: Sinds %{date}

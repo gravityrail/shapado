@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: Od1n
 # Author: Patcito
 # Author: Verdy p
 fr: 
@@ -9,15 +10,16 @@ fr:
     application: 
       ask_question: Posez une question
       badges: Insignes
-      forgot: Oublié?
+      faq: FAQ
+      forgot: Oublié ?
       home: Accueil
       languages: Langues
       log_in: Se connecter
       logged: Connecté %{login}
       logout: Se déconnecter
-      manage_ads: administrer les publicités
+      manage_ads: Gérer les publicités
       moderate: Modérer
-      now: now!
+      now: maintenant !
       openid: 
         explaination: "Si vous souhaitez ouvrir un compte ou juste vous connectez, sélectionnez un fournisseur openid:"
       pages: Pages
@@ -32,7 +34,7 @@ fr:
       title: questions & réponses
       unanswered: Sans réponses
       users: Utilisateurs
-      welcome_from: welcome! you can
+      welcome_from: Bienvenue ! Vous pouvez
     manage: 
       actions: Actions
       announcements: Annonces

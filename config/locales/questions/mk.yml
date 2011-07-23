@@ -8,6 +8,7 @@ mk:
       question: 
         answers: Одговори
         asked_by: поставено од
+        banned: Забрането
         body: текст
         closed: затворено
         created_at: поставено
@@ -24,8 +25,12 @@ mk:
   questions: 
     answer: 
       add_comment: додај коментар...
+      favorite: Зачувај
+      favorite_tooltip: Бендисајте го одговоров
       flag: означи
       pick_answer: одбери како решение
+      unfavorite: Одзачувај
+      unfavorite_tooltip: Отстранете го одговоров од бендисаните
       unset_answer: ова повеќе да не биде решение?
     create: 
       flash_notice: прашањето е успешно создадено.
@@ -34,10 +39,14 @@ mk:
     flag: 
       title: означување на прашање
     form: 
+      add_attachment: Додај прилог
       adult_content: ова прашање содржи материјал за возрасни
       body_tip: што сакате да прашате? бидете описни.
       language_tip: одберете прашање за јазикот
+      remove_attachment: Отстрани
       tags_tip: користете ознаки за да додете повеќе информации за вашето прашање.
+    history: 
+      back: ← назад на прашањето
     index: 
       active: активни
       active_tooltip: неодамна подновени прашања
@@ -56,6 +65,7 @@ mk:
     model: 
       messages: 
         empty_tags: Нажалост, мора да употребите барем една ознака.
+        tags_not_added: Не можев да ги додадам ознаките „%{tags}“. За да можете да додавате ознаки, потребен ви е углед од %{reputation_required}
         title_too_long: Насловот е предолг. не треба да содржи повеќе од 100 знаци
         too_many_tags: Нажалост, можете да внесете највеќе до 9 ознаки.
         too_short: изгледа прекратко. Употребете повеќе зборови од %{count} за да бидете поконкретни.
@@ -67,10 +77,15 @@ mk:
       group_dont_exists: групата %{group} не постои
       success: прашањето е преместено во %{group}
     new: 
+      description: Напишете описно и не заборавајте да додадете поврзани ознаки, за да може прашањето да се најде лесно.
       how_to_ask: како да поставите прашање
       title: постави прашање
     question: 
       accepted_tooltip: Ова прашање има одговор кој е прифатен
+      answer_verb: Одговори
+      answers_number: "%{quantity} одговори"
+      votes_number: "%{quantity} гласа"
+      wiki_title: "Вики: %{title}"
     retag: 
       title: преозначи
     retag_form: 
@@ -95,11 +110,17 @@ mk:
       ban: забрани
       close: затвори
       close_reason: "прашањево е затворено од следнава причина:"
+      create_reward: Создај награда
+      create_reward_description: Наградете го најдобриот одговор со дел од вашата карма.
       edit_request: Уреди барање
       flag: знаменце
       flagged_as: означени како
       flags: пријавено како
+      follow_tooltip: Следи го прашањево
+      follow_up: Проследи
+      follow_up_description: Создај ново прашање врз основа на објавава.
       last_activity: последна активност
+      more_actions: Повеќе можности
       open: Отворени
       related_questions: поврзани прашања
       request_closing: побарај затворање
@@ -115,6 +136,7 @@ mk:
       solution: решение
       to_answer_question: за да одговорите на ова прашање
       unauthenticated_retag: треба да имате сметка за да можете да преозначувате прашања
+      unfollow_tooltip: Престани со следење на прашањево
       viewed: прегледани
     solve: 
       flash_notice: одговорот е решен.

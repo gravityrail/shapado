@@ -7,7 +7,7 @@ ia:
     attributes: 
       answer: 
         body: Texto
-        created_at: Respondite
+        created_at: Create le
         link: Ligamine
     models: 
       answer: Responsa

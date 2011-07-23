@@ -8,7 +8,6 @@ tl:
     create: 
       success: matagumpay na nalikha ang anunsyo.
     index: 
-      add_adbard: magdagdag ng isang bagong anunsyong adbard
       add_adsense: magdagdag ng isang bagong anunsyong google adsense
       title: mga anunsyo
     name: "pangalan:"
