@@ -55,8 +55,9 @@ class Widget
 
   def update_settings(params)
     ##TODO: check what's going in
-    params[:settings][:notitle] = ["on", "true"].include?(params[:settings][:notitle])
-    self.settings = params[:settings]
+    options = params[:settings]
+    options[:notitle] = ["on", "true"].include?(options[:notitle])
+    self.settings = options
   end
 
   def description

@@ -1,7 +1,7 @@
 =form_for(widget, :url => widget_path(widget, :tab => tab), :class => "form") do |f|
   = hidden_field_tag "position", position
   .field.checkbox
-    = check_box_tag "settings[notitle]", widget.settings["notitle"]
+    = check_box_tag "settings[notitle]", "true", widget.settings["notitle"]
     = label_tag "without title"
   = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget}
   .buttons
