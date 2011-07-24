@@ -1,5 +1,9 @@
 en:
   questions:
+    toolbar:
+      requests: Requests
+      your_close_request: "Your close request"
+      answer_by_mail: "Answer by email"
     answer_toolbar:
       flagged_by_you: Flagged by you
     disallow_spam:
@@ -87,6 +91,7 @@ en:
       adult_content: This question contains adult material.
       add_attachment: Add attachment
       remove_attachment: Remove
+      related_questions_desc: "Here will be displayed similar questions."
     flag:
       title:   Flag question
     edit:

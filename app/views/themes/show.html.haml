@@ -4,35 +4,34 @@
   = @theme.description
 
 -if !@theme.ready
-  this theme is not ready to be used
+  = I18n.t('themes.show.not_ready')
 
--#i18n
 
-bg color
+= I18n.t('themes.show.bg_color')
 
 %div.display-color{:style => "background: ##{@theme.bg_color}"}
 
-fg color
+= I18n.t('themes.show.fg_color')
 %div.display-color{:style => "background: ##{@theme.fg_color}"}
 
 -if !@theme.new? && @theme.has_bg_image?
-  bg image
+  = I18n.t('themes.show.bg_image')
   = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
 
-view bg color
+= I18n.t('themes.show.view_bg')
 %div.display-color{:style => "background: ##{@theme.view_bg_color}"}
 
-view fg color
+= I18n.t('themes.show.view_fg')
 %div.display-color{:style => "background: ##{@theme.view_fg_color}"}
 
-button bg color
+= I18n.t('themes.show.button_bg')
 %div.display-color{:style => "background: ##{@theme.button_bg_color}"}
 
-button fg color
+= I18n.t('themes.show.button_fg')
 %div.display-color{:style => "background: ##{@theme.button_fg_color}"}
 
-link fg color
+= I18n.t('themes.show.link_bg')
 %div.display-color{:style => "background: ##{@theme.link_fg_color}"}
 
-link bg color
+= I18n.t('themes.show.link_fg')
 %div.display-color{:style => "background: ##{@theme.link_bg_color}"}

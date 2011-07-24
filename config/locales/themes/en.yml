@@ -1,0 +1,13 @@
+en:
+  themes:
+    show:
+      not_ready: This theme is not ready to be used, check back soon.
+      bg_color: Background color
+      fg_color: Foreground color
+      bg_image: Background image
+      view_bg: View's background color
+      view_fg: View's foreground color
+      button_bg: Buttons background color
+      button_fg: Buttons foreground color
+      link_bg: Links background color
+      link_fg: Links foreground color
