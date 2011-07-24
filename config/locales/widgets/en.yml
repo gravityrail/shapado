@@ -1,5 +1,9 @@
 en:
   widgets:
+    create:
+      notice: 'The widget was successfully created.'
+    update:
+      notice: 'The widget was successfully updated.'
     index:
       title: Manage sidebar widgets
       description: Use the arrows to move your widgets
@@ -21,6 +25,7 @@ en:
     top_groups:
       title: Top 5 groups
       description: "This widget displays the top five groups."
+      members_count: "%{count} members"
     top_users:
       title: Top 5 users
       description: "This widget displays the top five users."

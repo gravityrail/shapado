@@ -246,7 +246,7 @@ class QuestionsController < ApplicationController
         @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
-            flash[:notice] = "The user is already registered, please log in" # TODO: i18n
+            flash[:notice] = I18n.t('questions.create.already_registered', :email => params[:user][:email])
             return create_draft!
           else
             @question.user = @user
@@ -475,7 +475,7 @@ class QuestionsController < ApplicationController
     @question = Question.by_slug(params[:id])
 
     if @question.reward && @question.reward.active
-      flash[:error] = "this question has an active reward and cannot be closed" # FIXME: i18n
+      flash[:error] = I18n.t('questions.close.failure')
     else
       @question.closed = true
       @question.closed_at = Time.zone.now

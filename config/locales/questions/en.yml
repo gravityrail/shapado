@@ -1,5 +1,9 @@
 en:
   questions:
+    answer_toolbar:
+      flagged_by_you: Flagged by you
+    disallow_spam:
+      error: "You need to wait 20 senconds before posting another question."
     history:
       back: "← back to question"
     index:
@@ -103,6 +107,7 @@ en:
       how_to_ask: How to ask
     create:
       flash_notice: "The question was successfully created."
+      already_registered: "A user with the email %{email} is already registered, please log in using this email."
     update:
       flash_notice: "The question was successfully updated."
     solve:
@@ -131,6 +136,8 @@ en:
     retag_to:
       success: "The tags have been updated successfully."
       failure: "Sorry, the tags could not be updated."
+    close:
+      failure: "This question has an active reward and cannot be closed."
     model:
       messages:
         too_short: "Sorry, your title needs to have more than %{count} words."

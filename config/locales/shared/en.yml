@@ -1,5 +1,6 @@
 en:
   shared:
+    by_anon: "By anonymous"
     login_drop_down:
       with_google: with Google
       with_facebook: with Facebook

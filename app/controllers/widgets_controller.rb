@@ -30,7 +30,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       if @widget.save
         sweep_widgets
-        flash[:notice] = 'Widget was successfully created.' # TODO: i18n
+        flash[:notice] = I18n.t('widgets.create.notice')
         format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :created, :location => widget_path(:id => @widget.id) }
       else
@@ -54,7 +54,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       if @widget.valid? && @widget.save
         sweep_widgets
-        flash[:notice] = 'Widget was successfully updated.' # TODO: i18n
+        flash[:notice] = I18n.t('widgets.update.notice')
         format.html { redirect_to widgets_path(:tab => params[:tab]) }
         format.json  { render :json => @widget.to_json, :status => :updated, :location => widget_path(:id => @widget.id) }
       else

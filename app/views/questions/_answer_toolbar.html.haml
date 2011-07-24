@@ -34,8 +34,7 @@
     - elsif !@aflag.new_record?
       %li.flagged
         %span.flag-link
-          Flagged by you
-          -#i18n
+          = t('questions.answer_toolbar.flagged_by_you')
         %ul.drop-menu
           %li
             %p
