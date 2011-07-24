@@ -1,5 +1,5 @@
 class DocController < ApplicationController
-  layout 'application'
+  layout 'invitations'
 
   def privacy
     set_page_title("Privacy")
