@@ -32,6 +32,12 @@ var Ui = {
     Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
     Ui.sort_values('select#question_language', 'option', false, 'text', null);
 
+    // adsense is incompatible with pjax http://goo.gl/ieq2u
+    // TODO remove this once adsense is compatible with html5 history
+    if($('.widget-adsense').length > 0){
+      $('.pjax').removeClass('pjax');
+    }
+
     $(".toggle-action").live("click", function(event) {
       if(Ui.offline()){
         startLoginDialog();
