@@ -22,21 +22,21 @@
         %h3
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
-        -if !answer.updated_by.nil?
-          .author.vcard.user_data
-            .time_ago
-              = t('activerecord.attributes.answer.updated_at', :default => "updated")
-            %strong.updated{:title => answer.updated_at, :class => "relativetime"}
-              = t("time.ago", :time => time_ago_in_words(answer.updated_at))
-            .avatar.logo
-              = avatar_img(answer.updated_by, :size => "small")
-            .user
-              = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
-              -if !answer.updated_by.hide_country && answer.address.present?
-                .adr
-                  .country-name
-                    = t("global.from", :site => answer.address_name)
-                    = country_flag(answer.address["country_code"], answer.address["country"])
+      -if !answer.updated_by.nil?
+        .author.vcard.user_data
+          .time_ago
+            = t('activerecord.attributes.answer.updated_at', :default => "updated")
+          %strong.updated{:title => answer.updated_at, :class => "relativetime"}
+            = t("time.ago", :time => time_ago_in_words(answer.updated_at))
+          .avatar.logo
+            = avatar_img(answer.updated_by, :size => "small")
+          .user
+            = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
+            -if !answer.updated_by.hide_country && answer.address.present?
+              .adr
+                .country-name
+                  = t("global.from", :site => answer.address_name)
+                  = country_flag(answer.address["country_code"], answer.address["country"])
 
     = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 

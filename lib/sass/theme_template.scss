@@ -74,8 +74,8 @@ $inner: inset 2px 2px 2px $fg_color;
 }
 
 @mixin bronze-gradient {
-  background-image: -moz-linear-gradient(top, #e67347, #f3a273) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273)) !important;
+  background-image: -moz-linear-gradient(top, #e67347, #f3a273);
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273));
   background-color: #e67347;
 }
 
