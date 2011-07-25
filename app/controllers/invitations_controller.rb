@@ -14,7 +14,9 @@ class InvitationsController < ApplicationController
         invitation = current_user.invite(email, user_role,
                                        current_group,
                                        params[:invitations][:body])
-        Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
+        unless invitation.blank? || invitation.new?
+          Jobs::Mailer.async.on_new_invitation(invitation.id).commit!
+        end
       end
     end
     flash[:notice] = t("flash_notice", :scope => "invitations.create")
