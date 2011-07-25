@@ -30,7 +30,7 @@
     %form{"accept-charset"=>"UTF-8", :action=>"/users/auth/open_id", :class=>"form", :method=>"get"}
       .field
         = label_tag "OpenID", t(".openid_url")
-        = text_field_tag :openid_url, '', :class => "text_field"
+        = text_field_tag :openid_url, params[:url], :class => "text_field"
         - if params[:pp] && params[:format] != 'mobile'
           = hidden_field_tag :pp, 1
         .buttons

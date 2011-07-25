@@ -1,12 +1,13 @@
 en:
   shared:
+    by_anon: "By anonymous"
     login_drop_down:
       with_google: with Google
       with_facebook: with Facebook
       with_twitter: with Twitter
       with_linked_in: with LinkedIn
       with_identica: with Identi.ca
-      with_openid: with OpenID
+      with_openid: OpenID
       with_user_pass: user/password
     social_connect:
       find_friends_facebook: Find friends on Facebook

@@ -437,7 +437,7 @@ class Question
 
       valid = (last_question.nil? || (Time.now - last_question.created_at) > 20)
       if !valid
-        self.errors.add(:body, "you need to wait 20 senconds before posting another question.") # TODO i18n
+        self.errors.add(:body, I18n.t('questions.disallow_spam.error'))
       end
     end
   end

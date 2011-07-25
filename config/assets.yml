@@ -57,6 +57,7 @@ javascripts:
     - public/javascripts/app/initializers/shapado_toolbar.js
     - public/javascripts/app/initializers/index_question.js
     - public/javascripts/vendor/superfish.js
+    - public/javascripts/app/modules/invitations.js
     - public/javascripts/application-init.js
 
     - public/javascripts/vendor/jquery.textarea.js

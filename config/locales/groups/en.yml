@@ -1,5 +1,7 @@
 en:
   groups:
+    update:
+      notice: "Your group was successfully updated."
     top_grouplist:
       active_site: "Active site:"
     index:

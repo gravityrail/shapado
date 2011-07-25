@@ -14,10 +14,9 @@
 
 .field.related_questions
   %label
-    =t(".related_questions", :default => :"questions.show.related_questions" )
+    = t(".related_questions", :default => :"questions.show.related_questions" )
   %ul#related_questions
-  /i18n
-  %small Here you will find questions that are similar to yours
+  %small= t(".related_questions", :default => :"questions.form.related_questions_desc" )
 
 .field
   = f.label :tags, "#{t(:tags, :scope => "activerecord.attributes.question")}", :class => "label"

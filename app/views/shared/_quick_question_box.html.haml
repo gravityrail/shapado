@@ -8,7 +8,7 @@
       -lang = logged_in? ? current_user.main_language : nil
       -lang = current_group.language ? current_group.language : lang
 
-      =f.text_field :title, :class => "text_area", :id => "question_title"
+      =f.text_field :title, :class => "text_area", :id => "question_title", :autocomplete => 'off'
       =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
 
       -if lang

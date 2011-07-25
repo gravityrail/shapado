@@ -19,11 +19,14 @@ class MembersController < ApplicationController
     unless @member.nil?
       ok = @group.add_member(@member, params[:role])
       if ok
-        flash[:notice] = "#{@member.login} was successfully added as #{params[:role]}" # TODO: i18n
+        flash[:notice] = I18n.t('members.create.notice',
+                                :login => @member.login,
+                                :role => params[:role])
         return redirect_to(members_path)
       end
     else
-      flash[:error] = "Sorry, the user **#{params[:user_id]}** does not exists" # TODO: i18n
+      flash[:error] = I18n.t('members.create.error',
+                             :user_id => params[:user_id])
       @member = User.new(:login => params[:user_id])
     end
 
@@ -37,7 +40,7 @@ class MembersController < ApplicationController
       @member.role = params[:role]
       @member.save
     else
-      flash[:error] = "Sorry, you cannot be change the **#{@member.login}'s** membership"
+      flash[:error] = I18n.t('members.update.error', :login => @member.login)
     end
     redirect_to members_path
   end

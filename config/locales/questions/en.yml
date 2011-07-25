@@ -1,5 +1,13 @@
 en:
   questions:
+    toolbar:
+      requests: Requests
+      your_close_request: "Your close request"
+      answer_by_mail: "Answer by email"
+    answer_toolbar:
+      flagged_by_you: Flagged by you
+    disallow_spam:
+      error: "You need to wait 20 senconds before posting another question."
     history:
       back: "← back to question"
     index:
@@ -18,6 +26,7 @@ en:
       votes_tooltip:  Questions with the most votes
       newest_tooltip: The most recently asked questions
       followers_count: %{quantity} followers
+      follower_count: 1 follower
     show:
       create_reward: Create reward
       create_reward_description: Reward the best answer with some of your own karma.
@@ -73,6 +82,7 @@ en:
     question:
       accepted_tooltip: This question has an answer that has been accepted
       wiki_title: 'Wiki: %{title}'
+      answer_number: '1 answer'
       answers_number: '%{quantity} answers'
       votes_number: '%{quantity} votes'
       answer_verb: Answer
@@ -83,6 +93,7 @@ en:
       adult_content: This question contains adult material.
       add_attachment: Add attachment
       remove_attachment: Remove
+      related_questions_desc: "Here will be displayed similar questions."
     flag:
       title:   Flag question
     edit:
@@ -103,6 +114,7 @@ en:
       how_to_ask: How to ask
     create:
       flash_notice: "The question was successfully created."
+      already_registered: "A user with the email %{email} is already registered, please log in using this email."
     update:
       flash_notice: "The question was successfully updated."
     solve:
@@ -131,6 +143,8 @@ en:
     retag_to:
       success: "The tags have been updated successfully."
       failure: "Sorry, the tags could not be updated."
+    close:
+      failure: "This question has an active reward and cannot be closed."
     model:
       messages:
         too_short: "Sorry, your title needs to have more than %{count} words."
