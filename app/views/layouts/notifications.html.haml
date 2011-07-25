@@ -4,7 +4,8 @@
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
   %body
     =yield
-    %br
-    %p{:style=>"border-top: 1px solid #999"}
-      = I18n.t("layouts.notifications.message", :group => @group.name, :locale => @language)
-      = url_for(:host => @group.domain, :controller => "users", :action => "edit", :id => @user, :anchor => "notifications")
+    - unless @invite
+      %br
+      %p{:style=>"border-top: 1px solid #999"}
+        = I18n.t("layouts.notifications.message", :group => @group.name, :locale => @language)
+        = url_for(:host => @group.domain, :controller => "users", :action => "edit", :id => @user, :anchor => "notifications")

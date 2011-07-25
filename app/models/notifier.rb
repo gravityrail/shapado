@@ -81,6 +81,7 @@ class Notifier < ActionMailer::Base
   end
 
   def new_invitation(invitation_id)
+    @invite = true
     @invitation = Invitation.find(invitation_id)
     @group = @invitation.group
     @user = @invitation.user
