@@ -1,182 +1,107 @@
-%p
-  %h1.center
-    =t('.title')
-  %h3.center.beta_info
-    = t(".beta_info")
-.plans
-  .plan.left.short.border-left
-    %h1.bold
-      Optimum
-    %h2
-      == $999/#{t('.month')}
-    %h3
-      = t('.huge_sites')
-    %ul
-      %li
-        %span.value
-          = t('.unlimited')
-      %li
-        %span.value
-          = t('.custom_ads')
-      %li
-        %span.value
-          = t('.custom_ui')
-      %li
-        %span.value
-          = t('.custom_domain')
-      %li
-        %span.value
-          = t('.private_site')
-      %li
-        %span.value
-          = t('.custom_analytics')
-      %li
-        %span.description
-          = t('.custom_themes')
-      %li
-        %span.description
-          = t('.247_all_support')
-      %li
-        = link_to t('global.sign_up'), "#", :class => "sign_up"
+#main-content-wrap.plans
+  .top
+    %h1=t('.title') 
+    %p= t(".beta_info")
 
-  .plan.left.short.border-left
-    %h1.bold
-      Maximum
-    %h2
-      == $749/#{t('.month')}
-    %h3
-      = t('.big_sites')
-    %ul
-      %li
-        %span.value
-          = t('.15millions')
-      %li
-        %span.value
-          = t('.custom_ads')
-      %li
-        %span.value
-          = t('.custom_ui')
-      %li
-        %span.value
-          = t('.custom_domain')
-      %li
-        %span.value
-          = t('.private_site')
-      %li
-        %span.value
-          = t('.custom_analytics')
-      %li
-        %span.description
-          = t('.custom_themes')
-      %li
-        %span.description
-          = t('.all_support')
-      %li
-        = link_to t('global.sign_up'), "#", :class => "sign_up"
-  .plan.left.short.border-left
-    %h1.bold
-      Premium
-    %h2
-      ==$249/#{t('.month')}
-    %h3
-      = t('.getting_popular')
-    %ul
-      %li
-        %span.value
-          = t('.5millions')
-      %li
-        %span.value
-          = t('.custom_ads')
-      %li
-        %span.value
-          = t('.custom_ui')
-      %li
-        %span.value
-          = t('.custom_domain')
-      %li
-        %span.value
-          = t('.private_site')
-      %li
-        %span.value
-          = t('.custom_analytics')
-      %li
-        %span.description
-          = t('.custom_themes')
-      %li
-        %span.description
-          = t('.all_support')
-      %li
-        = link_to t('global.sign_up'), "#", :class => "sign_up"
-  .plan.left.tall
-    %h1.bold
-      Plus
-    %h2
-      ==$49/#{t('.month')}
-    %h3
-      = t('.start_monetizing')
-    %ul
-      %li
-        %span.value
-          = t('.1million')
-      %li
-        %span.value
-          = t('.custom_ads')
-      %li
-        %span.value
-          = t('.custom_ui')
-      %li
-        %span.value
-          = t('.custom_domain')
-      %li
-        %span.value
-          = t('.private_site')
-      %li
-        %span.value
-          = t('.custom_analytics')
-      %li
-        %span.description
-          = t('.custom_themes')
-      %li
-        %span.description
-          = t('.all_support')
-      %li
-        = link_to t('global.sign_up'), "#", :class => "sign_up"
-  .plan.left.short.border-right
-    %h1.bold
-      Basic
-    %h2
-      ==$9/#{t('.month')}
-    %h3
-      = t('.small_private')
-    %ul
-      %li
-        %span.value
-          = t('.unlimited')
-      %li
-        %span.value
-          = t('.custom_domain')
-      %li
-        %span.value
-          = t('.private_site')
-      %li
-        %span.value
-          = t('.custom_analytics')
-      %li
-        %span.description
-          = t('.custom_themes')
-      %li
-        %span.description
-          = t('.basic_restrictions')
-      %li
-        %span.description
-          = t('.web_support')
-      %li
-        &nbsp;
-      %li
-        = link_to t('global.sign_up'), "#", :class => "sign_up"
-  %p.clear
-    %h2.free-offer
-      = t(".we_offer")
-      = link_to t(".free_plan"), new_group_path
-      = t(".with_unlimited")
+  .plans-table
+    .each.first
+      .header
+        %h2 Optimum
+        %p= t('.huge_sites')
+      .features
+        %ul
+          %li= t('.unlimited')
+          %li= t('.custom_ads')
+          %li= t('.custom_ui')
+          %li= t('.custom_domain')
+          %li= t('.private_site')
+          %li= t('.custom_analytics')
+          %li= t('.custom_themes')
+          %li= t('.247_all_support')
+      .bottom
+        .price== $999/#{t('.month')}
+        .button
+          = link_to t('global.sign_up'), "#", :class => "sign_up"
+
+
+    .each
+      .header
+        %h2 Maximum
+        %p= t('.big_sites')
+      .features
+        %ul
+          %li= t('.15millions')
+          %li= t('.custom_ads')
+          %li= t('.custom_ui')
+          %li= t('.custom_domain')
+          %li= t('.private_site')
+          %li= t('.custom_analytics')
+          %li= t('.custom_themes')
+          %li= t('.all_support')
+      .bottom
+        .price== $749/#{t('.month')}
+        .button
+          = link_to t('global.sign_up'), "#", :class => "sign_up"
+
+    .each
+      .header
+        %h2 Premium
+        %p= t('.getting_popular')
+      .features
+        %ul
+          %li= t('.5millions')
+          %li= t('.custom_ads')
+          %li= t('.custom_ui')
+          %li= t('.custom_domain')
+          %li= t('.private_site')
+          %li= t('.custom_analytics')
+          %li= t('.custom_themes')
+          %li= t('.all_support')
+      .bottom
+        .price==$249/#{t('.month')}
+        .button
+          = link_to t('global.sign_up'), "#", :class => "sign_up"
+       
+    .each.selected
+      .header
+        %h2  Plus
+        %p= t('.start_monetizing')
+      .features
+        %ul
+          %li= t('.1million')
+          %li= t('.custom_ads')
+          %li= t('.custom_ui')
+          %li= t('.custom_domain')
+          %li= t('.private_site')
+          %li= t('.custom_analytics')
+          %li= t('.custom_themes')
+          %li= t('.all_support')
+      .bottom
+        .price==$49/#{t('.month')}
+        .button
+          = link_to t('global.sign_up'), "#", :class => "sign_up"
+
+    .each.last
+      .header
+        %h2  Basic
+        %p= t('.small_private')
+      .features
+        %ul
+          %li= t('.unlimited')
+          %li= t('.custom_domain')
+          %li= t('.private_site')
+          %li= t('.custom_analytics')
+          %li= t('.custom_themes')
+          %li= t('.basic_restrictions')
+          %li= t('.web_support')
+      .bottom
+        .price==$9/#{t('.month')}
+        .button
+          = link_to t('global.sign_up'), "#", :class => "sign_up"
+
+
+  %p.free-offer
+    = t(".we_offer")
+    = link_to t(".free_plan"), new_group_path
+    = t(".with_unlimited")
 
