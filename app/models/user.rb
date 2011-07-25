@@ -179,6 +179,8 @@ class User
     end
 
     Membership.push_uniq({:group_id => group.id, :user_id => self.id}, {:preferred_tags => {:$each => t.uniq}})
+
+    Tag.increment({:name => {:$in => t}, :group_id => group.id}, {:followers_count => 1})
   end
 
   def remove_preferred_tags(t, group)
@@ -186,6 +188,7 @@ class User
       t = t.split(",").join(" ").split(" ")
     end
     Membership.pull_all({:group_id => group.id, :user_id => self.id}, {:preferred_tags => t})
+    Tag.increment({:name => {:$in => t}, :group_id => group.id}, {:followers_count => -1})
   end
 
   def preferred_tags_on(group)
