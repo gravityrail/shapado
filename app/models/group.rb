@@ -397,18 +397,16 @@ class Group
   end
 
   def disallow_javascript
-    unless self.has_custom_js
-       %w[footer head _question_help _question_prompt head_tag].each do |key|
-         value = self.custom_html[key]
-         if value.kind_of?(Hash)
-           value.each do |k,v|
-             value[k] = v.to_s.gsub(/<*.?script.*?>/, "")
-           end
-         elsif value.kind_of?(String)
-           value = value.gsub(/<*.?script.*?>/, "")
-         end
-         self.custom_html[key] = value
-       end
+    %w[footer head _question_help _question_prompt head_tag].each do |key|
+      value = self.custom_html[key]
+      if value.kind_of?(Hash)
+        value.each do |k,v|
+          value[k] = v.to_s.gsub(/<*.?script.*?>/, "")
+        end
+      elsif value.kind_of?(String)
+        value = value.gsub(/<*.?script.*?>/, "")
+      end
+      self.custom_html[key] = value
     end
   end
 
