@@ -1,8 +1,6 @@
 %meta{"data-js"=> 'show'}
 = include_latex
 
-- @current_class = 'question hentry entry post'
-
 - question_body = find_and_preserve(shapado_auto_link(markdown(@question.body.present? ? @question.body : @question.title)))
 
 - content_for :head do
@@ -11,14 +9,15 @@
   %link{:rel => "canonical", :href => question_url(@question) }
 
 -cache_for(:question, @question.id, @question.user == current_user ? "owner" : "" ) do
-  %section#question{:class => "main-question #{@question.id}"}
-    %h1
-      &= @question.title
+  %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
+    %h1{:itemprop => "name"}
+      = @question.title
       - if @question.closed
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
     .description.markdown
-      = question_body
+      %div{:itemprop => "articleBody"}
+        = question_body
       = render "reward_info"
       = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
       .clear
@@ -29,7 +28,7 @@
           = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
         %strong
           = t('activerecord.attributes.question.created_at')
-        %time{:datetime => @question.created_at.iso8601}
+        %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
         %strong
           = t('questions.show.viewed')
@@ -37,6 +36,11 @@
         %strong
           = t("questions.show.last_activity")
         = t("time.ago", :time => time_ago_in_words(@question.activity_at))
+
+    %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
+    %meta{:itemprop=>"inLanguage", :content=>@question.language}
+    %meta{:itemprop=>"interactionCount", :content=>"UserComments:#{@question.answers_count}"}
+    %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
 
     .comments
       -@question.comments.each do |comment|
