@@ -4,13 +4,13 @@ class RewardController < ApplicationController
 
   def start
     if @question.reward && @question.reward.active
-      flash[:notice] = "this question has an active reward" # TODO: i18n
+      flash[:notice] =  I18n.t('rewards.start.active_notice')
       redirect_to question_path(@question)
       return
     end
 
     if Time.now - @question.created_at < 2.days
-      flash[:notice] = "you should wait 2 days before offering a reward on this question" # TODO: i18n
+      flash[:notice] = I18n.t('rewards.start.wait_notice')
       redirect_to question_path(@question)
       return
     end
@@ -20,7 +20,7 @@ class RewardController < ApplicationController
     config = current_user.config_for(current_group)
 
     if config.reputation < 75 || config.reputation-25 < @question.reward.reputation
-      flash[:notice] = "you don't have enough reputation to create a reward on this question" # TODO: i18n
+      flash[:notice] =  I18n.t('rewards.start.reputation_notice')
       redirect_to question_path(@question)
       return
     end
@@ -53,7 +53,7 @@ class RewardController < ApplicationController
     end
 
     if (Time.now - @question.reward.started_at) < 1.day
-      flash[:error] = "you must wait #{distance_of_time_in_words(Time.now, @question.reward.started_at+1.day)} before awarding this reward." # TODO: i18n
+      flash[:error] = I18n.t('rewards.close.error', :time => distance_of_time_in_words(Time.now, @question.reward.started_at+1.day))
       redirect_to question_path(@question)
       return
     end

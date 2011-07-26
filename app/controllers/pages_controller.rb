@@ -17,7 +17,7 @@ class PagesController < ApplicationController
     @pages = current_group.pages.where(options).
                                  paginate(paginate_opts(params))
 
-    set_page_title("Wiki") # TODO: i18n
+    set_page_title(I18n.t('pages.index.wiki'))
 
     respond_to do |format|
       format.html # index.html.haml

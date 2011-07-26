@@ -23,9 +23,7 @@
       -if owner
         =render :partial => "users/user_data", :locals => {:user => owner}
       -else
-        =# i18n
-        By:
-        =t("global.anonymous")
+        = I18n.t('shared.by_anon')
       %time{:pubdate => "pubdate", :datetime => last_target_date.iso8601}
         = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question, :anchor => last_target_id), :class => "pjax", :"data-layout" => "question"
 
@@ -45,11 +43,17 @@
     .toolbar
       %ul
         %li.answers
-          = link_to t('.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
+          - if question.answers_count == 1
+            = link_to t('.answer_number'), question_path(question)
+          - else
+            = link_to t('.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers
-            = t('questions.index.followers_count', :quantity => format_number(question.followers_count))
+            - if question.followers_count.to_i == 1
+              = t('questions.index.follower_count')
+            - else
+              = t('questions.index.followers_count', :quantity => format_number(question.followers_count))
 
         -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
           %li.spam

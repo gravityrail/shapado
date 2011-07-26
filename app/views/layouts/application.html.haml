@@ -44,7 +44,8 @@
       #columns
         -(current_group.columns||["column1", "column2", "column3"]).each do |c|
           =render "shared/layout/#{c}"
-
+          -if c == "column1"
+            = render "shared/widgets", :context => 'mainlist', :position => 'header'
       = render "shared/widgets", :context => 'mainlist', :position => 'footer'
 
       = render "shared/layout/footer"

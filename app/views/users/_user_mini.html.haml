@@ -1,6 +1,9 @@
 -bronze, silver, gold = user.badges_count_on(current_group)
 -unless user.nil?
-  =link_to h(user.display_name), user_path(user), :class => "user-link", :class => "pjax", :"data-layout" => "user"
+  - link_options = {:class => "user-link", :class => "pjax", :"data-layout" => "user"}
+  -if local_assigns[:author]
+    - link_options[:rel] = "autor"
+  = link_to h(user.display_name), user_path(user), link_options
 
 -if user.owner_of?(current_group)
   %i.admin{:title => "admin"}

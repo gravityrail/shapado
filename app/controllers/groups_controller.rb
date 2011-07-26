@@ -114,7 +114,7 @@ class GroupsController < ApplicationController
 
     respond_to do |format|
       if @group.save
-        flash[:notice] = 'Group was successfully updated.' # TODO: i18n
+        flash[:notice] = I18n.t('groups.update.notice')
         format.html { redirect_to(params[:source] ? params[:source] : group_path(@group)) }
         format.json  { head :ok }
       else

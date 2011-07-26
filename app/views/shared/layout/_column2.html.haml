@@ -1,4 +1,5 @@
 - context = widgets_context(params[:controller], params[:action])
+
 %section.content-panel#column2{:class => current_group.send(:"#{context}_widgets").sidebar.count == 0 ? "nosidebar" : "" }
   -announcements = current_announcements(session[:announcement_hide_time])
   -unless announcements.empty?
@@ -11,7 +12,6 @@
   - unless params[:controller] =~ /moderate\//
     //= render "shared/action-tabs"
     =render "shared/quick_question_box"
-  = render "shared/widgets", :context => 'mainlist', :position => 'header'
 
   #main-content-wrap{:class => @active_tab}
     - if params[:controller] =~ /moderate\//

@@ -31,32 +31,36 @@
 
 -else
   %article.comment{:id=>comment.id}
-    %h4
-      = t("time.ago", :time => time_ago_in_words(comment.created_at))
-      =link_to comment.user.login, user_path(comment.user), :class => "pjax", :"data-layout" => "user"
-      == #{t("comments.shared.said")}:
-    -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
-      .comment-votes    
-        = vote_box(comment, request.path, comment.find_question.closed)
-    .comment-content.markdown
-      = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))
+    .user-avatar
+      = avatar_img(comment.user, :size => "small")
+    .comment-body
+      = link_to comment.user.login, user_path(comment.user), :class => "pjax", :"data-layout" => "user", :class => "user-login"
+      %span='-'
+      .comment-content.markdown
+        = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))
+      %div
+        %time{:datetime => comment.created_at.iso8601, :title => article_date(comment, false)}
+          = article_date comment
+        -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
+          %span.comment-votes
+            = vote_box(comment, request.path, comment.find_question.closed)
 
-    .controls
-      .actions
-        - if logged_in? && current_user != comment.user
-          = link_to t("comments.shared.reply"), "#", :class => "reply #{comment.commentable.class}-commentable", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable.id
+      .controls
+        .actions
+          - if logged_in? && current_user != comment.user
+            = link_to t("comments.shared.reply"), "#", :class => "reply #{comment.commentable.class}-commentable", 'data-author' => comment.user.login, 'data-commentable' => comment.commentable.id
 
-        -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
-          -case comment.commentable.class
-            -when Question
-              = link_to t("scaffold.edit"), edit_question_comment_path(:question_id => comment.commentable.id, :id => comment.id, :source => source), :class => "edit_comment"
-            -when Answer
-              = link_to t("scaffold.edit"), edit_question_answer_comment_path(:question_id => comment.commentable.question, :answer_id => comment.commentable, :id => comment.id, :source => source), :class => "edit_comment"
-        -if logged_in? && comment.can_be_deleted_by?(current_user)
-          -case comment.commentable
-            -when Question
-              = link_to t("scaffold.destroy"), question_comment_path(:question_id =>  comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
-            -when Answer
-              = link_to t("scaffold.destroy"), question_answer_comment_path(:question_id =>  comment.commentable.question.id, :answer_id => comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
+          -if logged_in? && (current_user.can_modify?(comment) || current_user.mod_of?(current_group))
+            -case comment.commentable.class
+              -when Question
+                = link_to t("scaffold.edit"), edit_question_comment_path(:question_id => comment.commentable.id, :id => comment.id, :source => source), :class => "edit_comment"
+              -when Answer
+                = link_to t("scaffold.edit"), edit_question_answer_comment_path(:question_id => comment.commentable.question, :answer_id => comment.commentable, :id => comment.id, :source => source), :class => "edit_comment"
+          -if logged_in? && comment.can_be_deleted_by?(current_user)
+            -case comment.commentable
+              -when Question
+                = link_to t("scaffold.destroy"), question_comment_path(:question_id =>  comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
+              -when Answer
+                = link_to t("scaffold.destroy"), question_answer_comment_path(:question_id =>  comment.commentable.question.id, :answer_id => comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
     .clear
 

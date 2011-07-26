@@ -39,8 +39,7 @@
     - if !@flag.new_record?
       %li.flagged
         %span.flag-link
-          Flagged by you
-          -#i18n
+          = t('questions.answer_toolbar.flagged_by_you')
         %ul.drop-menu
           %li
             %p
@@ -57,8 +56,7 @@
 
     - if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group))
       %li.more.requests
-        -# i18n
-        = link_to "Requests"
+        = link_to I18n.t('questions.toolbar.requests')
         %ul.drop-menu
           -unless @question.flags.count == 0
             %li
@@ -78,9 +76,8 @@
 
 
     - if show_close_request_form &&!@close_request.new_record?
-      -# i18n
       %li.more.request-close
-        = link_to  "Your close request"
+        = link_to I18n.t('questions.toolbar.your_close_request')
         =#t("#{i18n_scope}.requested_close_as")
         %ul.drop-menu
           %li
@@ -167,8 +164,7 @@
           -if AppConfig.mailing && AppConfig.mailing["activate"]
             .column.by_mail
               %a{:href => "mailto:#{@question.email}"}
-                Answer by email
-                -#i18n
+                = I18n.t('questions.toolbar.answer_by_mail')
 
           .buttons
             = link_to t('scaffold.cancel'), '', :class => 'cancel'
@@ -177,7 +173,7 @@
 
     =form_tag "", :class => "share_question" do
       %h1
-        Share this on:
+        = I18n.t('widgets.sharing_buttons.title')
       %ul
         %li.facebook
           =link_to "Facebook"

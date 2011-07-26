@@ -9,10 +9,9 @@
     = render "shared/layout/meta"
     <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
     = render "shared/layout/javascript"
-    <link type="text/css" rel="stylesheet" media="screen" href="http://jqueryui.com/themes/base/jquery.ui.tabs.css">
 
     = csrf_meta_tag
-    = render :partial => "shared/analytics"
+    = render "shared/analytics"
 
   %body
 

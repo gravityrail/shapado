@@ -36,9 +36,7 @@
     -if owner
       =render :partial => "users/user_data", :locals => {:user => owner}
     -else
-      =# i18n
-      By:
-      =t("global.anonymous")
+      = I18n.t('shared.by_anon')
     %time{:pubdate => "pubdate", :datetime => last_target_date.iso8601}
       =t("time.ago", :time => time_ago_in_words(last_target_date))
     ·
