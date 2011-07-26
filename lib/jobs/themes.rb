@@ -11,6 +11,8 @@ module Jobs
       css << template.render
       css << theme.custom_css || ""
       theme.stylesheet = css
+      theme.stylesheet["extention"] = "css"
+      theme.stylesheet["content_type"] = "text/css"
       theme.ready = true
       theme.save
     end

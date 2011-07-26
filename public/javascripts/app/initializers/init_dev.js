@@ -10,4 +10,8 @@ $(document).ready(function() {
   $('.auto-link').autoVideo();
   $('.autocomplete_for_tags').ricodigoComplete();
   Form.initialize();
+  Modernizr.load({
+      test: $('meta[data-has-js]').length > 0,
+      yep: $('meta[data-theme-js]').attr('data-theme-js')
+    })
 })

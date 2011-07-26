@@ -43,7 +43,10 @@ Modernizr.load([{
       complete: function() {
         ShapadoSocket.initialize();
         }
-    },{
+    }, {
+      test: $('meta[data-has-js]').length > 0,
+      yep: $('meta[data-theme-js]').attr('data-theme-js')
+    }, {
       test: $('meta[data-js=show]').length > 0 && $('.auto-link').length > 0,
       yep: jsassets.jqueryautovideo,
       complete: function(){

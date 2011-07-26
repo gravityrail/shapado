@@ -1,3 +1,4 @@
+%meta{'data-has-js'=> current_group.current_theme.has_js, 'data-theme-js' => javascript_group_path(current_group, params[:theme] || current_group.current_theme_id)}
 = include_javascripts(MODERNIZR)
 - if Rails.env == 'development'
   = include_javascripts(:websocket)
