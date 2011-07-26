@@ -58,12 +58,13 @@
   = form.label :custom_css
   = form.text_area :custom_css
 
-.field
-  = form.label :javascript
-  - if @theme.has_js
-    = form.text_area :javascript, :value => @theme.javascript.get.read
-  - else
-    = form.text_area :javascript, :value => ''
+- if current_group.has_custom_js
+  .field
+    = form.label :javascript
+    - if @theme.has_js
+      = form.text_area :javascript, :value => @theme.javascript.get.read
+    - else
+      = form.text_area :javascript, :value => ''
 .form-options
   .buttons
     = form.submit :value => I18n.t('themes.form.update') , :class => "save"
