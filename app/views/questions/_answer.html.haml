@@ -3,27 +3,28 @@
 -source = question_path(question)
 
 -cache_for(:answers, question.id, answer.id, answer.user == current_user ? "owner" : "") do
-  %article{:class => "answer #{answer.id} #{solution ? "solution" : ""}"}
+  %article{:class => "answer #{answer.id} #{solution ? "solution" : ""}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     %a{:name => "answer#{answer.id}"}
 
     = vote_box(answer, question_path(@question), @question.closed)
 
     %h4
       = render "questions/answered_by", local_assigns
-      %time{:datetime => answer.created_at.iso8601, :title => article_date(answer), :style => "margin: 0 0 0 5px"}
-        = link_to article_date(answer), question_answer_path(@question.id, answer.id)
+      %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer), :style => "margin: 0 0 0 5px"}
+        = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
     .answer-avatar
       = avatar_img(answer.user, :size => "small") unless answer.anonymous
 
     .content.markdown
-      =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+      %div{:itemprop => "articleBody"}
+        = find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
 
       -if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group)) && answer.flags.count > 0
         %h3
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
       -if !answer.updated_by.nil?
-        .author.vcard.user_data
+        .author.user_data
           .time_ago
             = t('activerecord.attributes.answer.updated_at', :default => "updated")
           %strong.updated{:title => answer.updated_at, :class => "relativetime"}

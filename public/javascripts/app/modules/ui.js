@@ -54,7 +54,7 @@ var Ui = {
           var text = link.text();
           var dataText = link.attr("data-text");
 
-          $.getJSON(href+'.js', function(data){
+          $.getJSON(href, {format: "js"}, function(data){
             if(data.success){
               link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
               if(dataText && $.trim(dataText)!='')

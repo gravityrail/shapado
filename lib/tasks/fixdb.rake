@@ -30,15 +30,17 @@ namespace :fixdb do
     memberships = []
     p "gathering memberships"
     User.all.each do |user|
-      count = user[:membership_list].count
-      user.memberships.delete_all
-      (user[:membership_list] || {}).each do |group_id, membership|
-        if Group.find(group_id)
-          membership["_id"] = BSON::ObjectId.new.to_s
-          membership["group_id"] = group_id
-          membership["user_id"] = user.id
-          membership["joined_at"] ||= user.created_at
-          memberships << membership
+      if user[:membership_list]
+        count = user[:membership_list].count
+        user.memberships.delete_all
+        (user[:membership_list] || {}).each do |group_id, membership|
+          if Group.find(group_id)
+            membership["_id"] = BSON::ObjectId.new.to_s
+            membership["group_id"] = group_id
+            membership["user_id"] = user.id
+            membership["joined_at"] ||= user.created_at
+            memberships << membership
+          end
         end
       end
       user_count_i+=1
@@ -504,4 +506,10 @@ namespace :fixdb do
     Group.override({}, :current_theme_id => theme.id)
   end
 
+  task :update_tag_followers_count => [:init] do
+    Tag.override({}, {:followers_count => 0.0})
+    Membership.all.each do |membership|
+      Tag.increment({:name => {:$in => membership.preferred_tags||[]}, :group_id => membership.group.id}, {:followers_count => 1})
+    end
+  end
 end
