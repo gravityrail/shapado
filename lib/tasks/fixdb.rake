@@ -512,4 +512,16 @@ namespace :fixdb do
       Tag.increment({:name => {:$in => membership.preferred_tags||[]}, :group_id => membership.group.id}, {:followers_count => 1})
     end
   end
+
+  task :themes_files => [:init] do
+    Theme.all.each do |f|
+      f.stylesheet["content_type"] = "text/css"
+      f.save
+    end
+
+    Theme.all.each do |f|
+      f.has_js = false
+      f.save
+    end
+  end
 end
