@@ -1,21 +1,8 @@
 #users_show
-  %section.userData
-    .avatar
-      = avatar_img @user, :size => "big"
-      -if current_user == @user
-        %p
-          = link_to t('.edit_profile'), settings_path
-
-    %h3= t("activerecord.models.badges")
-    %ul.badges
-      -@badges.each do |badge|
-        %li
-          = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => true}
-
-
   %section.userHistory
     .userDescription
       .basicInfo
+        = avatar_img @user, :size => "medium"
         %h2
           = @user.name
         - config = @user.config_for(current_group)
@@ -40,7 +27,9 @@
         .description
           %p
             = markdown(@user.bio)
-
+        -if current_user == @user
+          %p
+            = link_to t('.edit_profile'), settings_path
       %ul.profile-stats
         %li
           %strong
@@ -71,6 +60,13 @@
             %li.follow
               =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user)
       .clear
+      
+    .badges
+      %h3= t("activerecord.models.badges")
+      %ul
+        -@badges.each do |badge|
+          %li
+            = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => true}
 
     #main-content-wrap{:class => @active_tab}
       %nav{:class => @active_subtab }
