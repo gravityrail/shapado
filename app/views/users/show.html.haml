@@ -1,7 +1,7 @@
 #users_show
   %section.userData
     .avatar
-      = avatar_img @user, :size => "big"
+      = avatar_img @user, :size => "medium"
       -if current_user == @user
         %p
           = link_to t('.edit_profile'), settings_path
