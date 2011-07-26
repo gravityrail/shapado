@@ -1,22 +1,20 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:new, :create, :index, :show, :unanswered, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random]
+  before_filter :login_required, :except => [:new, :create, :index, :show, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random, :follow, :unfollow]
   before_filter :admin_required, :only => [:move, :move_to]
   before_filter :moderator_required, :only => [:close]
   before_filter :check_permissions, :only => [:solve, :unsolve, :destroy]
   before_filter :check_update_permissions, :only => [:edit, :update, :revert, :remove_attachment]
-  before_filter :check_favorite_permissions, :only => [:favorite, :unfavorite] #TODO remove this
   before_filter :set_active_tag
   before_filter :check_age, :only => [:show]
   before_filter :check_retag_permissions, :only => [:retag, :retag_to]
 
   tabs :default => :questions, :tags => :tags,
-       :unanswered => :unanswered, :new => :ask_question
+       :new => :ask_question
 
   subtabs :index => [[:newest, [:created_at, Mongo::DESCENDING]],
                      [:hot, [[:hotness, Mongo::DESCENDING], [:views_count, Mongo::DESCENDING]]],
                      [:votes, [:votes_average, Mongo::DESCENDING]],
                      [:activity, [:activity_at, :desc]], [:expert, [:created_at, Mongo::DESCENDING]]],
-          :unanswered => [[:newest, [:created_at, Mongo::DESCENDING]], [:votes, [:votes_average, Mongo::DESCENDING]], [:mytags, [:created_at, Mongo::DESCENDING]]],
           :show => [[:votes, [:votes_average, Mongo::DESCENDING]], [:oldest, [:created_at, Mongo::ASCENDING]], [:newest, [:created_at, Mongo::DESCENDING]]]
   helper :votes
 
@@ -101,35 +99,6 @@ class QuestionsController < ApplicationController
         end
         render :json => {:html => content}.to_json
       end
-    end
-  end
-
-  # TODO: remove me
-  def unanswered
-    if params[:language] || request.query_string =~ /tags=/
-      params.delete(:language)
-      head :moved_permanently, :location => url_for(params)
-      return
-    end
-
-    set_page_title(t("questions.unanswered.title"))
-    conditions = scoped_conditions({:answered_with_id => nil, :banned => false, :closed => false})
-
-    if logged_in?
-      if @active_subtab.to_s == "expert"
-        @current_tags = current_user.stats(:expert_tags).expert_tags
-      elsif @active_subtab.to_s == "mytags"
-        @current_tags = current_user.preferred_tags_on(current_group)
-      end
-    end
-
-    @tag_cloud = Question.tag_cloud(conditions, 25)
-
-    @questions = Question.minimal.order_by(current_order).where(conditions).paginate(paginate_opts(params))
-
-    respond_to do |format|
-      format.html # unanswered.html.erb
-      format.json  { render :json => @questions.to_json(:except => %w[_keywords slug watchers]) }
     end
   end
 
@@ -723,28 +692,6 @@ class QuestionsController < ApplicationController
       return redirect_to questions_path
     end
   end
-
-  def check_favorite_permissions
-    @question = current_group.questions.by_slug(params[:id])
-    unless logged_in?
-      flash[:error] = t(:unauthenticated, :scope => "favorites.create")
-      respond_to do |format|
-        format.html do
-          flash[:error] += ", [#{t("global.please_login")}](#{new_user_session_path})"
-          redirect_to question_path(@question)
-        end
-        format.js do
-          flash[:error] += ", <a href='#{new_user_session_path}'> #{t("global.please_login")} </a>"
-          render(:json => {:status => :error, :message => flash[:error] }.to_json)
-        end
-        format.json do
-          flash[:error] += ", <a href='#{new_user_session_path}'> #{t("global.please_login")} </a>"
-          render(:json => {:status => :error, :message => flash[:error] }.to_json)
-        end
-      end
-    end
-  end
-
 
   def check_retag_permissions
     @question = current_group.questions.by_slug(params[:id])
