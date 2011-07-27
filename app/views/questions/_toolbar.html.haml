@@ -17,8 +17,6 @@
 
 .toolbar
   %ul.drop-menu
-
-    = current_user.can_answer_on?(current_group)
     -if !logged_in? || current_user.can_answer_on?(current_group)
       %li.answer
         = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"

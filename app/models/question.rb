@@ -230,8 +230,8 @@ class Question
 
   def self.ban(ids, options = {})
     self.override({:_id => {"$in" => ids}}.merge(options), {:banned => true})
-    Question.where({:_id => {"$in" => ids}}.merge(options)).only(:user_id) do |user|
-      self.user.update_reputation("post_banned", self.group)
+    Question.where({:_id => {"$in" => ids}}).only(:user_id, :group_id).each do |question|
+      question.user.update_reputation("post_banned", question.group)
     end
   end
 
