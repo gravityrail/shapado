@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   before_filter :login_required, :except => [:show, :create, :index]
-  before_filter :check_permissions, :only => [:destroy]
+  before_filter :check_permissions, :only => [:destroy, :create]
   before_filter :check_update_permissions, :only => [:edit, :update, :revert]
 
   helper :votes
@@ -246,14 +246,32 @@ class AnswersController < ApplicationController
 
   protected
   def check_permissions
-    @answer = current_group.answers.find(params[:id])
-    if !@answer.nil?
-      unless (current_user.can_modify?(@answer) || current_user.mod_of?(@answer.group))
-        flash[:error] = t("global.permission_denied")
-        redirect_to question_path(@answer.question)
+    if params[:id]
+      @answer = current_group.answers.find(params[:id])
+      if !@answer.nil?
+        unless (current_user.can_modify?(@answer) || current_user.mod_of?(@answer.group))
+          flash[:error] = t("global.permission_denied")
+          redirect_to question_path(@answer.question)
+        end
+      else
+        redirect_to questions_path
       end
     else
-      redirect_to questions_path
+      if logged_in? && !current_user.can_answer_on?(current_group)
+        reputation = current_group.reputation_constrains["answer"]
+
+        flash[:error] = I18n.t("users.messages.errors.reputation_needed",
+                              :min_reputation => reputation,
+                              :action => I18n.t("users.actions.answer"))
+
+        respond_to do |format|
+          format.html {redirect_to questions_path}
+          format.js {
+            render(:json => {:success => false,
+                           :message => flash[:error] }.to_json)
+          }
+        end
+      end
     end
   end
 

@@ -18,10 +18,10 @@
 .toolbar
   %ul.drop-menu
 
-
-
-    %li.answer
-      = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"
+    = current_user.can_answer_on?(current_group)
+    -if !logged_in? || current_user.can_answer_on?(current_group)
+      %li.answer
+        = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"
 
 
 
@@ -145,7 +145,7 @@
   #panel-forms
     = render "reward_form"
 
-    -unless @question.closed
+    -unless @question.closed || (!logged_in? || current_user.can_answer_on?(current_group))
       =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer markdown"} do |f|
 
         = render :partial => "answers/form", :locals => {:f => f, :markdown => true, :question => @question}

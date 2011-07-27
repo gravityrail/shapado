@@ -33,7 +33,7 @@ class Moderate::AnswersController < ApplicationController
     end
 
     respond_to do |format|
-      format.html{redirect_to :action => "flagged"}
+      format.html{redirect_to :action => "index"}
     end
   end
 

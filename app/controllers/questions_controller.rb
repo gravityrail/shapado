@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   before_filter :check_update_permissions, :only => [:edit, :update, :revert, :remove_attachment]
   before_filter :set_active_tag
   before_filter :check_age, :only => [:show]
+  before_filter :check_create_permissions, :only => [:create, :new]
   before_filter :check_retag_permissions, :only => [:retag, :retag_to]
 
   tabs :default => :questions, :tags => :tags,
@@ -709,6 +710,24 @@ class QuestionsController < ApplicationController
         format.js {
           render(:json => {:success => false,
                    :message => flash[:error] }.to_json)
+        }
+      end
+    end
+  end
+
+  def check_create_permissions
+    if logged_in? && !current_user.can_ask_on?(current_group)
+      reputation = current_group.reputation_constrains["ask"]
+
+      flash[:error] = I18n.t("users.messages.errors.reputation_needed",
+                              :min_reputation => reputation,
+                              :action => I18n.t("users.actions.ask"))
+
+      respond_to do |format|
+        format.html {redirect_to questions_path}
+        format.js {
+          render(:json => {:success => false,
+                           :message => flash[:error] }.to_json)
         }
       end
     end

@@ -97,11 +97,12 @@ class Answer
   def ban
     self.question.answer_removed!
     unsolve_question
-    self.override({:banned => true})
+    self.user.update_reputation("post_banned", self.group)
+    self.override(:banned => true)
   end
 
-  def self.ban(ids)
-    self.where(:_id.in => ids).only(:question_id).each do |answer|
+  def self.ban(ids, options)
+    self.where({:_id.in => ids}.merge(options)).only([:question_id, :user_id, :group_id]).each do |answer|
       answer.ban
     end
   end

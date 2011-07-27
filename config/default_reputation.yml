@@ -26,3 +26,4 @@ answer_receives_down_vote:       -1
 answer_undo_down_vote:            1
 day_with_activity:                0
 day_without_activity:             0
+post_banned:                   -100

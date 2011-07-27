@@ -140,7 +140,9 @@ namespace :setup do
       vote_to_close_any_question: 3000,
       vote_to_open_any_question: 3000,
       delete_closed_questions: 10000,
-      moderate: 10000
+      moderate: 10000,
+      ask: -100,
+      answer: -200
     }
     ConstrainsConfig.create(:name => "bootstrap", :content => bootstrap_content)
   end

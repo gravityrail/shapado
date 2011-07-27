@@ -512,4 +512,12 @@ namespace :fixdb do
       Tag.increment({:name => {:$in => membership.preferred_tags||[]}, :group_id => membership.group.id}, {:followers_count => 1})
     end
   end
+
+  task :update_reputation_keys => [:init] do
+    Group.override({}, {"reputation_rewards.post_banned" => -200})
+    Group.override({}, {"reputation_constrains.ask" => -100})
+    Group.override({}, {"reputation_constrains.answer" => -200})
+    ConstrainsConfig.override({}, {"content.ask" => -100})
+    ConstrainsConfig.override({}, {"content.answer" => -200})
+  end
 end
