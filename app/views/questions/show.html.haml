@@ -16,6 +16,10 @@
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
     .description.markdown
+      = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
+      -if !@question.user.hide_country && @question.address.present?
+        = t("global.from", :site => @question.address_name)
+        = country_flag(@question.address["country_code"], @question.address["country"])
       %div{:itemprop => "articleBody"}
         = question_body
       = render "reward_info"

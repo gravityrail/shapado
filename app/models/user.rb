@@ -523,9 +523,13 @@ Time.zone.now ? 1 : 0)
     FriendList.only(:following_ids).where(:_id => self.friend_list_id).first.following_ids.include?(user.id)
   end
 
-  def viewed_on!(group)
-    if member_of?(group)
-      Membership.override({:group_id => group.id, :user_id => self.id}, {:views_count => 1.0})
+  def viewed_on!(group, ip)
+    if member_of? group
+      view_count_id = "#{self.id}-#{group.id}-#{ip}"
+      if ViewsCount.where({:_id => view_count_id}).first.nil?
+        ViewsCount.create(:_id => view_count_id)
+        Membership.increment({:group_id => group.id, :user_id => self.id}, {:views_count => 1.0})
+      end
     end
   end
 

@@ -128,14 +128,14 @@ describe ThemesController do
 
   describe "DELETE destroy" do
     it "destroys the requested theme" do
-      theme = Theme.create! valid_attributes
+      theme = Theme.make(valid_attributes.merge(:group => @group))
       expect {
         delete :destroy, :id => theme.id.to_s
       }.to change(Theme, :count).by(-1)
     end
 
     it "redirects to the themes list" do
-      theme = Theme.create! valid_attributes
+      theme = Theme.make(valid_attributes.merge(:group => @group))
       delete :destroy, :id => theme.id.to_s
       response.should redirect_to(themes_url)
     end

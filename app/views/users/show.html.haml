@@ -1,4 +1,4 @@
-#users_show
+#users_show{:item_scope => '', :itemtype => "http://schema.org/Person"}
   %section.userData
     .avatar
       = avatar_img @user, :size => "big"
@@ -16,7 +16,7 @@
   %section.userHistory
     .userDescription
       .basicInfo
-        %h2
+        %h2{:itemprop => "name"}
           = @user.name
         - config = @user.config_for(current_group)
         - if config
@@ -35,22 +35,23 @@
         -if @user.website
           %p
             =t(:website, :scope => "activerecord.attributes.user")
-            %a{:rel => "nofollow", :href =>  @user.website }= @user.website
+            %a{:rel => "nofollow", :href =>  @user.website ,  :itemprop=>"url"}= @user.website
 
         .description
-          %p
+          %p{ :itemprop=>"description"}
             = markdown(@user.bio)
 
       %ul.profile-stats
         %li
           %strong
-            =format_number(@user.reputation_on(current_group))
+            = format_number(@user.reputation_on(current_group))
           %small
             = t(:reputation, :scope => "activerecord.attributes.user")
 
         %li
           %strong
-            =format_number(@user.views_on(current_group))
+            = format_number(@user.views_on(current_group))
+            %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@user.views_on(current_group)}"}
           %small
             = t(".views")
         %li

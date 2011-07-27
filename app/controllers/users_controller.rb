@@ -435,7 +435,8 @@ class UsersController < ApplicationController
     @badges = @user.badges.where(:group_id => current_group.id).
                            paginate(paginate_opts(params))
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
-    @user.viewed_on!(current_group) if @user != current_user && !is_bot?
+
+    @user.viewed_on!(current_group, request.remote_ip) if @user != current_user && !is_bot?
   end
 end
 
