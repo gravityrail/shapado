@@ -4,6 +4,7 @@ en:
       requests: Requests
       your_close_request: "Your close request"
       answer_by_mail: "Answer by email"
+      more_actions: More actions
     answer_toolbar:
       flagged_by_you: Flagged by you
     disallow_spam:
@@ -28,6 +29,7 @@ en:
       followers_count: %{quantity} followers
       follower_count: 1 follower
     show:
+      history: History
       create_reward: Create reward
       create_reward_description: Reward the best answer with some of your own karma.
       follow_up: Follow up
@@ -82,6 +84,7 @@ en:
     question:
       accepted_tooltip: This question has an answer that has been accepted
       wiki_title: 'Wiki: %{title}'
+      no_answer_number: '0 answers'
       answer_number: '1 answer'
       answers_number: '%{quantity} answers'
       votes_number: '%{quantity} votes'

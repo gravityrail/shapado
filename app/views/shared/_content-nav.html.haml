@@ -3,11 +3,11 @@
     %li.questions
       =link_to t("layouts.application.questions"), url_for(questions_link), :class => "pjax", :"data-layout" => "index"
     %li.answers
-      =link_to t('activities.activerecord.models.answers'), url_for(questions_link.merge(:answers => 1)), :class => "pjax", :"data-layout" => "index"
+      =link_to t('activerecord.models.answers'), url_for(questions_link.merge(:answers => 1)), :class => "pjax", :"data-layout" => "index"
     %li.unanswered
       =link_to t("layouts.application.unanswered"), url_for(questions_link.merge(:unanswered => 1)), :class => "pjax", :"data-layout" => "index"
     %li.activity
-      =link_to t('activities.activerecord.models.activity'), activities_path(:context => (params[:context]||params[:action])), :class => "pjax", :"data-layout" => "index"
+      =link_to t('activerecord.models.activity'), activities_path(:context => (params[:context]||params[:action])), :class => "pjax", :"data-layout" => "index"
 
   %section.filters{:class => @active_subtab }
     %ul

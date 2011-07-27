@@ -43,10 +43,12 @@
     .toolbar
       %ul
         %li.answers
-          - if question.answers_count == 1
-            = link_to t('.answer_number'), question_path(question)
+          - if question.answers_count == 0
+            = link_to t('questions.question.no_answer_number'), question_path(question)
+          - elsif question.answers_count == 1
+            = link_to t('questions.question.answer_number'), question_path(question)
           - else
-            = link_to t('.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
+            = link_to t('questions.question.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers

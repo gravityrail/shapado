@@ -1,6 +1,10 @@
 en:
   shared:
+    name: Name
+    description: Description
     by_anon: "By anonymous"
+    preferred_lang: "My preferred languages"
+    any_lang: Any language
     login_drop_down:
       with_google: with Google
       with_facebook: with Facebook
