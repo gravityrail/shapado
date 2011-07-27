@@ -50,9 +50,10 @@ class CommentsController < ApplicationController
                                     :name => @comment.body,
                                     :html => html,
                                     :channel_id => current_group.slug})
+
     respond_to do |format|
       if saved
-        format.html {redirect_to params[:source]}
+        format.html {redirect_to params[:source]||question_path(:id => @question.slug)}
         format.json {render :json => @comment.to_json, :status => :created}
         format.js do
           render(:json => {
@@ -64,7 +65,7 @@ class CommentsController < ApplicationController
                  }.to_json)
         end
       else
-        format.html {redirect_to params[:source]}
+        format.html {redirect_to params[:source]||question_path(:id => @question.slug)}
         format.json {render :json => @comment.errors.to_json, :status => :unprocessable_entity }
         format.js {render :json => {:success => false, :message => flash[:error] }.to_json }
       end
@@ -72,7 +73,6 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = current_scope.find(params[:id])
     respond_to do |format|
       format.html
       format.js do
@@ -108,7 +108,7 @@ class CommentsController < ApplicationController
                                         :html => html,
                                         :channel_id => current_group.slug})
         flash[:notice] = t(:flash_notice, :scope => "comments.update")
-        format.html { redirect_to(params[:source]) }
+        format.html { redirect_to(params[:source]||question_path(:id => @question.slug)) }
         format.json { render :json => @comment.to_json, :status => :ok}
         format.js { render :json => {
             :message => flash[:notice],
@@ -138,7 +138,7 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to(params[:source]) }
+      format.html { redirect_to(params[:source]||question_path(:id => @question.slug)) }
       format.json { head :ok }
     end
   end
