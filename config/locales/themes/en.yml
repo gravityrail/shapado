@@ -11,3 +11,13 @@ en:
       button_fg: Buttons foreground color
       link_bg: Links background color
       link_fg: Links foreground color
+      use_link_bg: Use a background for links
+      apply: Apply
+      try: Try
+    form:
+      update: Update theme
+    index:
+      description: "Find here your themes and change the look of your app."
+      new_theme: "You wan you can build your own here."
+    edit:
+      title: Edit theme

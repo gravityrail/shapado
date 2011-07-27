@@ -37,7 +37,7 @@
             %p
               = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
               = link_to t("scaffold.edit"), edit_question_answer_flag_path(question,answer,@aflag), :class => "flag-link", :id => "edit_answer_flag_link", :rel => 'nofollow'
-              = link_to t("scaffold.destroy"), question_answer_flag_path(question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => "are you sure?", :method => :delete
+              = link_to t("scaffold.destroy"), question_answer_flag_path(question,answer,@aflag), :id => "destroy_answer_flag_link", :rel => 'nofollow', :confirm => t('scaffold.are_you_sure'), :method => :delete
 
 
     %li.more.current
@@ -48,7 +48,7 @@
             = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
         - if logged_in? && (current_user.can_modify?(answer) || current_user.mod_of?(question.group))
           %li
-            = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => "are you sure?", :method => :delete
+            = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
         %li
           = link_to t("questions.answer.history", :default => "history"), history_question_answer_path(question, answer)
   .article-forms.clear

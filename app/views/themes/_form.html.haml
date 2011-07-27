@@ -1,58 +1,58 @@
 .field
-  = form.label :name
+  = form.label t('shared.name')
   = form.text_field :name
 
 .field
-  = form.label :description
+  = form.label t('shared.description')
   = form.text_area :description
 
 %fieldset
   .field
-    = form.label :bg_color
+    = form.label I18n.t('themes.show.bg_color')
     = form.text_field :bg_color, :type => "color"
 
   .field
-    = form.label :fg_color
+    = form.label I18n.t('themes.show.fg_color')
     = form.text_field :fg_color, :type => "color"
 
   .field
     -if !@theme.new? && @theme.has_bg_image?
       = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
       =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
-    = form.label :bg_image
+    = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image
 
   .field
-    = form.label :view_bg_color
+    = form.label I18n.t('themes.show.view_bg')
     = form.text_field :view_bg_color, :type => "color"
 
   .field
-    = form.label :view_fg_color
+    = form.label I18n.t('themes.show.view_fg')
     = form.text_field :view_fg_color, :type => "color"
 
 %fieldset
   .field
-    = form.label :button_bg_color
+    = form.label I18n.t('themes.show.button_bg')
     = form.text_field :button_bg_color, :type => "color"
 
   .field
-    = form.label :button_fg_color
+    = form.label I18n.t('themes.show.button_fg')
     = form.text_field :button_fg_color, :type => "color"
 
 
 %fieldset
   .field
-    = form.label :link_fg_color
-    = form.text_field :link_fg_color, :type => "color"
+    = form.label  I18n.t('themes.show.link_bg')
+    = form.text_field :link_bg_color, :type => "color"
 
   .field{:style => "margin-bottom: 3px"}
     .checkbox
-      = form.label :use_link_bg_color
+      = form.label  I18n.t('themes.show.use_link_bg')
       = form.check_box :use_link_bg_color
 
   .field
-    = form.label :link_bg_color
-    = form.text_field :link_bg_color, :type => "color"
+    = form.label I18n.t('themes.show.link_fg')
+    = form.text_field :link_fg_color, :type => "color"
 
 .field
   = form.label :custom_css
@@ -60,4 +60,4 @@
 
 .form-options
   .buttons
-    = form.submit :class => "save"
+    = form.submit :value => I18n.t('themes.form.update') , :class => "save"

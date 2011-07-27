@@ -8,7 +8,12 @@
         %b
           = link_to h(group.name), domain_url(:custom => group.domain)
         %small
-          = I18n.t('widgets.top_groups.members_count', :count => group.memberships.count)
+          - if group.memberships.count == 0
+            = I18n.t('widgets.top_groups.no_members')
+          - elsif group.memberships.count == 1
+            = I18n.t('widgets.top_groups.one_member')
+          - elsif group.memberships.count > 1
+            = I18n.t('widgets.top_groups.members_count', :count => group.memberships.count)
       %p
         &= truncate(strip_tags(group.description), :length => 50)
 

@@ -3,6 +3,7 @@ en:
     index:
       title: List of close requests
     form:
+      retract: Retract
       dupe: Duplicate
       ot: Off topic
       no_question: Not a question
