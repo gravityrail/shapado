@@ -52,6 +52,7 @@ en:
       unfollowed:
         flash_notice: "You are not following the tag %{tag} anymore."
     form:
+      desktop_notification: Desktop notifications
       information: Information
       notifications: Notifications
       new_answer_notification: Get email notifications for new answers
