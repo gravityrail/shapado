@@ -107,6 +107,9 @@ class Group
   references_many :memberships, :dependent => :destroy
   referenced_in :current_theme, :class_name => "Theme"
 
+  references_many :invoices, :dependent => :destroy
+  references_one :credit_card
+
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
 

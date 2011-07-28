@@ -207,4 +207,8 @@ class ApplicationController < ActionController::Base
 
     {:page => options[:page], :per_page => per_page}
   end
+
+  def on_payment(success, invoice)
+    Rails.logger.info ">> A PAYMENT WAS MADE: #{success.inspect}"
+  end
 end

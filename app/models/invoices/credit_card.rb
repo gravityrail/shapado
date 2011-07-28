@@ -1,14 +1,14 @@
 class CreditCard
   include Mongoid::Document
   include Mongoid::Timestamps
-  #include MongoidExt::Encryptor
+  include MongoidExt::Encryptor
 
-  field :number, :type => Integer, :key => AppConfig.session_secret
-  field :month, :type => Integer, :key => AppConfig.session_secret
-  field :year, :type => Integer, :key => AppConfig.session_secret
-  field :first_name, :type => String, :key => AppConfig.session_secret
-  field :last_name, :type => String, :key => AppConfig.session_secret
-  field :verification_code, :type => Integer, :key => AppConfig.session_secret
+  encrypted_field :number, :type => Integer, :key => AppConfig.session_secret
+  encrypted_field :month, :type => Integer, :key => AppConfig.session_secret
+  encrypted_field :year, :type => Integer, :key => AppConfig.session_secret
+  encrypted_field :first_name, :type => String, :key => AppConfig.session_secret
+  encrypted_field :last_name, :type => String, :key => AppConfig.session_secret
+  encrypted_field :verification_code, :type => Integer, :key => AppConfig.session_secret
 
   field :email, :type => String
   field :address1, :type => String
@@ -16,9 +16,9 @@ class CreditCard
   field :country, :type => String
   field :remember, :type => Boolean, :default => false
 
-  has_many :payments, :class_name => "Payment"
+  has_many :invoices, :class_name => "Invoice"
 
-  referenced_in :account
+  referenced_in :group
 
   validates_presence_of :number
   validates_presence_of :month
