@@ -43,8 +43,8 @@ class CreditCard
     )
   end
 
-  def valid?
-    ok = super
+  def valid?(*args)
+    ok = super(*args)
     if ok
       am = to_am
       ok = am.valid?
@@ -55,5 +55,15 @@ class CreditCard
 
     ok
   end
+
+  def inspect
+    number = self.number.to_s
+    "Credit Card ending in #{self.ending_in}"
+  end
+
+  def ending_in
+    number[number.size-4, number.size]
+  end
+
 
 end

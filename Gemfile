@@ -52,6 +52,7 @@ gem 'sanitize', '1.2.1'
 gem "twitter_oauth"
 gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_widgets.git'
 gem 'activemerchant', '1.16.0'
+gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
 # authentication
 gem 'omniauth', '~> 0.2.6'

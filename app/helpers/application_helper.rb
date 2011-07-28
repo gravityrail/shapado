@@ -462,5 +462,9 @@ module ApplicationHelper
 
     args
   end
+
+  def payment_form(title, options = {})
+    render :partial => "invoices/form", :locals => {:opts => options.merge(:title => title)}
+  end
 end
 

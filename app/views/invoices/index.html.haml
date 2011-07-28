@@ -1,0 +1,6 @@
+%ul
+  -@payments.each do |payment|
+    %li
+      =link_to payment.id, account_payment_path(current_account, payment)
+
+=will_paginate @payments

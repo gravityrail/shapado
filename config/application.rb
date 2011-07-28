@@ -52,6 +52,7 @@ module Shapado
 
     # middlewares
     config.middleware.use "BugHunter::Middleware"
+    config.middleware.use "PDFKit::Middleware", :print_media_type => false, :quiet => false
     config.middleware.use "DynamicDomain"
     config.middleware.use "MongoidExt::FileServer"
     if AppConfig.recaptcha["activate"]
