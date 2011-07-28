@@ -95,12 +95,12 @@ module Jobs
     def self.on_unfollow(follower_id, followed_id, group_id)
     end
 
-    def self.on_flag(user_id, group_id, reason)
+    def self.on_flag(user_id, group_id, reason, path)
       group = Group.find(group_id)
       create_badge(User.find(user_id), group, :token => "citizen_patrol", :unique => true)
       group.mods_owners.each do |user|
         if !user.email.blank? && user.notification_opts.activities
-          Notifier.created_flag(user, group, reason).deliver
+          Notifier.created_flag(user, group, reason, path).deliver
         end
       end
     end

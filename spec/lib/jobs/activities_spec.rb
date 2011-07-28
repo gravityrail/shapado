@@ -5,8 +5,10 @@ describe Jobs::Activities do
     Thread.current[:current_user] = @current_user
     @question = Question.make(:votes => {})
     @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
+
     @current_user = User.make
     @current_user.join!(@question.group)
+    @question.group.stub(:mods_owners).and_return([@current_user])
   end
 
   describe "on_activity" do
@@ -58,7 +60,8 @@ describe Jobs::Activities do
 
   describe "on_flag" do
     it "should be successful" do
-      lambda {Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam")}.should_not raise_error
+      Group.stub!(:find).with(@question.group.id).and_return(@question.group)
+      Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")
     end
   end
 
