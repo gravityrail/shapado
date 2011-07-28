@@ -93,8 +93,13 @@ describe Jobs::Activities do
     end
 
     it "should be successful" do
+<<<<<<< HEAD
       @twitter.should_receive(:update).with(anything).twice
       lambda {Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")}.should_not raise_error
+=======
+      Group.stub!(:find).with(@question.group.id).and_return(@question.group)
+      Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")
+>>>>>>> Fix sending notification email when a post is flagged
     end
   end
 
