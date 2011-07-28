@@ -143,7 +143,7 @@
   #panel-forms
     = render "reward_form"
 
-    -unless @question.closed || (!logged_in? || current_user.can_answer_on?(current_group))
+    -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
       =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer markdown"} do |f|
 
         = render :partial => "answers/form", :locals => {:f => f, :markdown => true, :question => @question}
