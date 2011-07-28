@@ -1,0 +1,49 @@
+basic:
+  page_views: 0
+  custom_ads: false
+  custom_js: false
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: true
+  phone_support: false
+
+plus:
+  page_views: 1000000
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: true
+  phone_support: true
+
+premium:
+  page_views: 5000000
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: true
+  phone_support: true
+
+maximium:
+  page_views: 15000000
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: true
+  phone_support: true
+
+optimum:
+  page_views: 0
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: true
+  phone_support: true

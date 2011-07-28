@@ -4,4 +4,8 @@ if AppConfig.is_shapadocom
   if Rails.env != "production"
     ActiveMerchant::Billing::Base.mode = :test
   end
+
+  if ShapadoVersion.count == 0
+    ShapadoVersion.reload!
+  end
 end

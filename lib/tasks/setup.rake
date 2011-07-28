@@ -182,5 +182,10 @@ namespace :setup do
       group.save(:validate => false)
     end
   end
+
+  desc "Create/Update Versions"
+  task :versions => [:environment] do
+    ShapadoVersion.reload!
+  end
 end
 
