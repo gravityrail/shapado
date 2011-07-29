@@ -117,9 +117,9 @@ class FlagsController < ApplicationController
 
   def resource_url
     if @resource.is_a?(Answer)
-      question_path(@resource.question)
+      question_url(@resource.question)
     elsif @resource.is_a?(Question)
-      question_path(@resource)
+      question_url(@resource)
     else
       params[:return_to]
     end

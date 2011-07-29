@@ -43,27 +43,36 @@ module Jobs
       end
     end
 
-    def self.on_comment(commentable_id, commentable_class, comment_id)
+    def self.on_comment(commentable_id, commentable_class, comment_id, link)
       commentable = commentable_class.constantize.find(commentable_id)
       comment = commentable.comments.find(comment_id)
       group = commentable.group
       user = comment.user
 #       comment.set_address FIXME
 
-      if user.config_for(group).comments_count >= 10
+      if user.comments_count_on(group) >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
       if user.notification_opts.comments_to_twitter
-        shortlink = shorten_url(link, answer)
+        title = ""
+        shortlink = shorten_url(link, commentable)
         author = user
-        title = comment.question.title
+        if commentable.is_a? Question
+          title = commentable.title
+        elsif commentable.is_a? Answer
+          title = commentable.question.title
+        end
+
         message = I18n.t('jobs.comments.on_comment.send_twitter',
-                         :question => title, :locale => author.language)
+                        :question => title, :locale => author.language)
+
         status = make_status(message, shortlink, 138)
         author.twitter_client.update(status)
       end
+
       if group.notification_opts.comments_to_twitter
-        shortlink ||= shorten_url(link, answer)
+        title = ""
+        shortlink ||= shorten_url(link, commentable)
         author ||= user
         title ||= comment.question.title
         message = I18n.t('jobs.comments.on_comment.group_send_twitter',
@@ -95,12 +104,12 @@ module Jobs
     def self.on_unfollow(follower_id, followed_id, group_id)
     end
 
-    def self.on_flag(user_id, group_id, reason)
+    def self.on_flag(user_id, group_id, reason, path)
       group = Group.find(group_id)
       create_badge(User.find(user_id), group, :token => "citizen_patrol", :unique => true)
       group.mods_owners.each do |user|
         if !user.email.blank? && user.notification_opts.activities
-          Notifier.created_flag(user, group, reason).deliver
+          Notifier.created_flag(user, group, reason, path).deliver
         end
       end
     end

@@ -6,6 +6,11 @@
   = form.label t('shared.description')
   = form.text_area :description
 
+.field
+  .checkbox
+    = form.label  I18n.t('themes.show.fluid') #i18n
+    = form.check_box :fluid
+
 %fieldset
   .field
     = form.label I18n.t('themes.show.bg_color')

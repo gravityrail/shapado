@@ -1,5 +1,6 @@
--link = url_for(:host => @group.domain, :action=>"flagged", :controller=>"moderate/questions")
-- flaggable_link =  link_to t("notifier.created_flag.message2bis"), url_for(:host => @group.domain)+@path
+- link = url_for(:host => @group.domain, :action=>"flagged", :controller=>"moderate/questions")
+- flaggable_link =  link_to t("notifier.created_flag.message2bis"), @path
+
 = t("notifier.global.hi", :user => @user.login)
 %br
 = t("notifier.created_flag.message1", :group => @group.name)

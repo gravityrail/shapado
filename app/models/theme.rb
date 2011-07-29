@@ -20,6 +20,7 @@ class Theme
   field :use_link_bg_color, :type => Boolean, :default => false
   field :link_bg_color, :type => String, :default => "000000"
   field :link_fg_color, :type => String, :default => "EE681F"
+  field :fluid, :type => Boolean, :default => false
 
   field :custom_css, :type => String, :default => ""
   field :community, :type => Boolean, :default => false
