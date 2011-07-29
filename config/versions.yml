@@ -7,6 +7,7 @@ basic:
   custom_themes: true
   basic_support: true
   phone_support: false
+  price: 900
 
 plus:
   page_views: 1000000
@@ -17,6 +18,7 @@ plus:
   custom_themes: true
   basic_support: true
   phone_support: true
+  price: 4900
 
 premium:
   page_views: 5000000
@@ -27,6 +29,7 @@ premium:
   custom_themes: true
   basic_support: true
   phone_support: true
+  price: 24900
 
 maximium:
   page_views: 15000000
@@ -37,6 +40,7 @@ maximium:
   custom_themes: true
   basic_support: true
   phone_support: true
+  price: 74900
 
 optimum:
   page_views: 0
@@ -47,3 +51,4 @@ optimum:
   custom_themes: true
   basic_support: true
   phone_support: true
+  price: 99900

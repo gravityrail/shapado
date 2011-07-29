@@ -4,48 +4,65 @@
 
   -@credit_card = (@invoice.credit_card||current_group.credit_card||@cc||CreditCard.new)
   -if @credit_card.remember
-      Using credit card ending in
-      = @credit_card.ending_in
-      = link_to "change", "#", :id => "show_credit_card_info"
+    Using credit card ending in
+    = @credit_card.ending_in
+    = link_to "change", "#", :id => "show_credit_card_info"
 
   %span.credit_card_form{:style => "display: #{@credit_card.remember ? 'none' : 'inline'}"}
     =fields_for "credit_card", @credit_card do |ff|
-      First Name
-      =ff.text_field :first_name
+      .field
+        %label
+          First Name
+        =ff.text_field :first_name
 
-      Last Name
-      =ff.text_field :last_name
+      .field
+        %label
+          Last Name
+        =ff.text_field :last_name
 
-      Email
-      =ff.text_field :email
+      .field
+        %label
+          Email
+        =ff.text_field :email
 
-      Credit Card Number
-      =ff.text_field :number
+      .field
+        %label
+          Credit Card Number
+        =ff.text_field :number
 
-      Verification Code
-      =ff.text_field :verification_code
+      .field
+        %label
+          Verification Code
+        =ff.text_field :verification_code
 
-      Expiration Date
-      =ff.select :year, (Time.now.year..Time.now.year+15).to_a
-      =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}
+      .field
+        %label
+          Expiration Date
+        -index = -1
+        =ff.select :year, (Time.now.year..Time.now.year+15).to_a
+        =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}
 
-      Billing Address
-      =ff.text_field :address1
+      .field
+        %label
+          Billing Address
+        =ff.text_field :address1
 
-      Billing Address line 2(optional)
-      =ff.text_field :address2
+      .field
+        %label
+          Billing Address line 2(optional)
+        =ff.text_field :address2
 
-      Country
-      =ff.text_field :country
+      .field
+        %label
+          Country
+        =ff.text_field :country
 
-      Please remember this card later
-      =ff.check_box :remember
+      .field
+        %label
+          Please remember this card later
+        =ff.check_box :remember
 
   =render "invoices/invoice", :invoice => @invoice
 
 
-  TOTAL
-  =@invoice.total / 100.0
-
-
-=f.submit "Sign Up"
+  =f.submit "Checkout"

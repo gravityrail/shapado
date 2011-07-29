@@ -247,6 +247,24 @@ class GroupsController < ApplicationController
     redirect_to url
   end
 
+  def upgrade
+    version = ShapadoVersion.where(:token => params[:plan]).first
+
+    @invoice = current_group.invoices.where(:payed => false,
+                                            :version => version.token,
+                                            :action => "upgrade_plan").last
+    if !@invoice
+      @invoice = current_group.invoices.create!(:action => "upgrade_plan",
+                                                :version => version.token,
+                                                :credit_card => current_group.credit_card)
+    end
+
+    @invoice.reset!
+    @invoice.add_item(version.name, "", version.price, version)
+
+    @invoice.save!
+  end
+
   protected
   def check_permissions
     @group = Group.find_by_slug_or_id(params[:id]) || current_group

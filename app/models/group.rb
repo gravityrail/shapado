@@ -88,6 +88,9 @@ class Group
   slug_key :name, :unique => true
   filterable_keys :name
 
+  referenced_in :shapado_version, :class_name => "ShapadoVersion"
+  field :plan_expires_at, :type => Time
+
   references_many :tags, :dependent => :destroy
   references_many :activities, :dependent => :destroy
 
@@ -98,7 +101,6 @@ class Group
   references_many :badges, :dependent => :destroy, :validate => false
   references_many :questions, :dependent => :destroy, :validate => false
   references_many :answers, :dependent => :destroy, :validate => false
-#   references_many :votes, :dependent => :destroy # FIXME:
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
@@ -331,6 +333,12 @@ class Group
 
   def has_facebook_login?
     (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || self.share.fb_active
+  end
+
+  def version_expired?
+    return false if self.shapado_version.nil?
+
+    Time.now > self.plan_expires_at
   end
 
   protected

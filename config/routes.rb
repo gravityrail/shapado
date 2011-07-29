@@ -168,6 +168,7 @@ Rails.application.routes.draw do
       get :disallow_custom_ads
       get :close
       get :accept
+      get :upgrade
 
       post :set_columns
     end

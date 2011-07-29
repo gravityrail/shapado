@@ -1,6 +1,6 @@
 %ul
-  -@payments.each do |payment|
+  -@invoices.each do |invoice|
     %li
-      =link_to payment.id, account_payment_path(current_account, payment)
+      =link_to invoice.id, invoice_path(invoice)
 
-=will_paginate @payments
+=will_paginate @invoices

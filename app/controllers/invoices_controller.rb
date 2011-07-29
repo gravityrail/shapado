@@ -10,6 +10,11 @@ class InvoicesController < ApplicationController
 
   def show
     @invoice = current_group.invoices.find(params[:id])
+
+    ropts = {}
+    ropts[:layout] = false if params[:print] == '1'
+
+    render ropts
   end
 
   def update
@@ -31,7 +36,7 @@ class InvoicesController < ApplicationController
     end
 
     if @cc.valid? && @invoice.save
-      on_payment(@invoice.charge!(request.remote_ip, @cc), @invoice)
+      process_payment_and_redirect(@invoice.charge!(request.remote_ip, @cc), @invoice)
     else
       flash[:error] = I18n.t("invoices.flash.cannot_pay")
       render 'edit'

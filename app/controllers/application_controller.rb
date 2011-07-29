@@ -208,7 +208,26 @@ class ApplicationController < ActionController::Base
     {:page => options[:page], :per_page => per_page}
   end
 
-  def on_payment(success, invoice)
+  def process_payment_and_redirect(success, invoice)
     Rails.logger.info ">> A PAYMENT WAS MADE: #{success.inspect}"
+    if success
+      flash[:notice] = "The payment was successful"
+      case invoice.action
+      when "upgrade_plan"
+        invoice.items.each do |item|
+          if item["item_class"] == "ShapadoVersion"
+            current_group.override(:shapado_version_id => item["item_id"],
+                                     :plan_expires_at => Time.now + 1.month)
+
+          end
+        end
+      end
+
+      redirect_to root_path
+    else
+      flash[:error] = "Something went wrong with the payment"
+      redirect_to root_path
+    end
+
   end
 end

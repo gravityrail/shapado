@@ -19,6 +19,14 @@ class ShapadoVersion
   validates_presence_of :token, :price
   validates_uniqueness_of :token
 
+  def name
+    I18n.t("versions.#{token}")
+  end
+
+  def in_dollars
+    self.price / 100.0
+  end
+
   def self.reload!
     versions_data = YAML.load_file("#{Rails.root}/config/versions.yml")
 

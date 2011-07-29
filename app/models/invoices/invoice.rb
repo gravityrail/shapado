@@ -6,6 +6,7 @@ class Invoice
   field :payed_at, :type => Time
 
   field :action, :type => String
+  field :version, :type => String
 
   field :items, :type => Array, :default => []
   field :total, :type => Float, :default => 0.0

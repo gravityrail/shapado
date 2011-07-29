@@ -13,7 +13,7 @@
 
 
 .invoice_info
-  -cc = @invoice.credit_card || current_account.credit_card
+  -cc = @invoice.credit_card || current_group.credit_card
   %ul
     %li
       Payment Method:
@@ -27,4 +27,4 @@
 
 
 -if params[:print] != "1"
-  =link_to "Download as pdf", account_invoice_path(current_account, @invoice, :print => "1", :format => "pdf")
+  =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")

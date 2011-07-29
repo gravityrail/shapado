@@ -1,9 +1,10 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: f09a2fd2aa8ccb04947a9da4b1e32c92cac78946
+  revision: 75c340ee99de40eca15c3560a1adb6c3d066b3f3
   specs:
-    mongoid_ext (0.6.1)
+    mongoid_ext (0.6.2)
       differ (>= 0.1.2)
+      encryptor (~> 1.1.3)
       i18n
       mongoid (~> 2)
       tzinfo
@@ -19,11 +20,17 @@ GIT
       net-ssh (>= 2.0.15)
 
 GIT
+  remote: git://github.com/jdpace/PDFKit.git
+  revision: 3dd4cef8addb650b90ab3027013667af84ca8f39
+  specs:
+    pdfkit (0.5.2)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
-  revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
+  revision: db32fcf2020db3bb894d472cf620ed6a8e4c18ab
   branch: rails3
   specs:
-    will_paginate (3.0.pre3)
+    will_paginate (3.0.pre4)
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
@@ -37,7 +44,7 @@ GIT
 
 GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
-  revision: 8ea07ebee74d9f2879f074c307890997b1f34f03
+  revision: 18dbce9593808eb2a4f5b4eb1135d8a261327302
   specs:
     rails-dev-boost (0.1.1)
 
@@ -63,7 +70,7 @@ GEM
       Platform (>= 0.4.0)
       open4
     Platform (0.4.0)
-    ZenTest (4.5.0)
+    ZenTest (4.6.0)
     aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.8)
@@ -144,6 +151,7 @@ GEM
     em-websocket (0.3.0)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
+    encryptor (1.1.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     eventmachine (0.12.10)
@@ -152,7 +160,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (< 2, >= 1.1.0)
+      rack (>= 1.1.0, < 2)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
     ffaker (1.8.0)
@@ -170,7 +178,7 @@ GEM
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     json (1.5.3)
-    kgio (2.5.0)
+    kgio (2.6.0)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
@@ -197,10 +205,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mechanize (2.0.1)
-      net-http-digest_auth (>= 1.1.1, ~> 1.1)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (>= 0.0.9, ~> 0.0)
+      webrobots (~> 0.0, >= 0.0.9)
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)
@@ -211,7 +219,7 @@ GEM
       gem_plugin (~> 0.2.3)
     multi_json (1.0.3)
     multi_xml (0.2.2)
-    multipart-post (1.1.2)
+    multipart-post (1.1.3)
     net-http-digest_auth (1.1.1)
     net-http-persistent (1.8)
     net-ldap (0.2.2)
@@ -263,7 +271,7 @@ GEM
       oa-openid (= 0.2.6)
     open4 (1.1.0)
     orm_adapter (0.0.5)
-    polyglot (0.3.1)
+    polyglot (0.3.2)
     pyu-ruby-sasl (0.0.3.3)
     rack (1.2.3)
     rack-mount (0.6.14)
@@ -344,7 +352,7 @@ GEM
     rubyntlm (0.1.1)
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
-    sass (3.1.4)
+    sass (3.1.5)
     sexp_processor (3.0.5)
     simple_oauth (0.1.5)
     simplecov (0.4.2)
@@ -352,12 +360,13 @@ GEM
     simplecov-html (0.4.5)
     sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (< 2.0, >= 1.2.2)
+      tilt (>= 1.2.2, < 2.0)
     state_machine (0.10.4)
     subexec (0.0.4)
     thor (0.14.6)
     tilt (1.3.2)
-    treetop (1.4.9)
+    treetop (1.4.10)
+      polyglot
       polyglot (>= 0.3.1)
     twitter (1.5.0)
       faraday (~> 0.6.1)
@@ -379,7 +388,7 @@ GEM
       rack
       raindrops (~> 0.6)
     uuidtools (2.1.2)
-    warden (1.0.4)
+    warden (1.0.5)
       rack (>= 1.0)
     webrobots (0.0.10)
       nokogiri (>= 1.4.4)
@@ -429,6 +438,7 @@ DEPENDENCIES
   oa-openid (~> 0.2.6)
   omniauth (~> 0.2.6)
   orm_adapter
+  pdfkit!
   rack-recaptcha (= 0.2.2)
   rack-ssl
   rails (= 3.0.8)
