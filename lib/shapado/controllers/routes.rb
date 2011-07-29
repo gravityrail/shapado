@@ -7,12 +7,17 @@ module Shapado
                         :favicon_group_path, :tag_icon_path,
                         :avatar_user_path,
                         :logo_group_path,
-                        :question_attachment_path
+                        :question_attachment_path,
+                        :javascript_group_path
         end
       end
 
+      def javascript_group_path(group, theme_id)
+        "/_files/themes/javascript/#{group.id}/#{theme_id}.js"
+      end
+
       def css_group_path(group, theme_id)
-        "/_files/themes/css/#{group.id}/#{theme_id}"
+        "/_files/themes/css/#{group.id}/#{theme_id}.css"
       end
 
       def bg_image_path(group, theme_id)

@@ -88,6 +88,9 @@ class Group
   slug_key :name, :unique => true
   filterable_keys :name
 
+  referenced_in :shapado_version, :class_name => "ShapadoVersion"
+  field :plan_expires_at, :type => Time
+
   references_many :tags, :dependent => :destroy
   references_many :activities, :dependent => :destroy
 
@@ -98,7 +101,6 @@ class Group
   references_many :badges, :dependent => :destroy, :validate => false
   references_many :questions, :dependent => :destroy, :validate => false
   references_many :answers, :dependent => :destroy, :validate => false
-#   references_many :votes, :dependent => :destroy # FIXME:
   references_many :pages, :dependent => :destroy
   references_many :announcements, :dependent => :destroy
   references_many :constrains_configs, :dependent => :destroy
@@ -106,6 +108,9 @@ class Group
   references_many :themes, :dependent => :destroy
   references_many :memberships, :dependent => :destroy
   referenced_in :current_theme, :class_name => "Theme"
+
+  references_many :invoices, :dependent => :destroy
+  references_one :credit_card
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
@@ -140,6 +145,7 @@ class Group
   validates_inclusion_of :signup_type,  :in => %w[all noemail social email]
 
   before_create :disallow_javascript
+  before_update :disallow_javascript
   before_save :modify_attributes
   before_create :create_widget_lists
   before_create :set_default_theme
@@ -330,6 +336,12 @@ class Group
     (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || self.share.fb_active
   end
 
+  def version_expired?
+    return false if self.shapado_version.nil?
+
+    Time.now > self.plan_expires_at
+  end
+
   protected
   #validations
   def initialize_fields
@@ -406,18 +418,16 @@ class Group
   end
 
   def disallow_javascript
-    unless self.has_custom_js
-       %w[footer _head _question_help _question_prompt head_tag].each do |key|
-         value = self.custom_html[key]
-         if value.kind_of?(Hash)
-           value.each do |k,v|
-             value[k] = v.to_s.gsub(/<*.?script.*?>/, "")
-           end
-         elsif value.kind_of?(String)
-           value = value.gsub(/<*.?script.*?>/, "")
-         end
-         self.custom_html[key] = value
-       end
+    %w[footer head _question_help _question_prompt head_tag].each do |key|
+      value = self.custom_html[key]
+      if value.kind_of?(Hash)
+        value.each do |k,v|
+          value[k] = v.to_s.gsub(/<*.?script.*?>/, "")
+        end
+      elsif value.kind_of?(String)
+        value = value.gsub(/<*.?script.*?>/, "")
+      end
+      self.custom_html[key] = value
     end
   end
 

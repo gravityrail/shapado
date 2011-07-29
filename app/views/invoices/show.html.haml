@@ -1,0 +1,30 @@
+%ul
+  %li
+    Order Placed:
+    =@invoice.payed_at.to_s(:ymd)
+  %li
+    Order number:
+    =@invoice.id
+  %li
+    Order Total:
+    ==$#{@invoice.total / 100.0}
+
+=render "invoices/invoice", :invoice => @invoice
+
+
+.invoice_info
+  -cc = @invoice.credit_card || current_group.credit_card
+  %ul
+    %li
+      Payment Method:
+      Credit Card ending in
+      =cc.ending_in
+    %li
+      Billing Address:
+      == #{cc.first_name} #{cc.last_name}
+      == #{cc.address1}
+      == #{cc.address2}
+
+
+-if params[:print] != "1"
+  =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")

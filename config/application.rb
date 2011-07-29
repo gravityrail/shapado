@@ -23,7 +23,9 @@ module Shapado
     # -- all .rb files in that directory are automatically loaded.
 
     # Add additional load paths for your own custom dirs
-    config.autoload_paths += %W( #{Rails.root}/app/middlewares #{Rails.root}/app/models/widgets
+    config.autoload_paths += %W( #{Rails.root}/app/middlewares
+                                 #{Rails.root}/app/models/widgets
+                                 #{Rails.root}/app/models/invoices
                                  #{Rails.root}/lib )
 
     # Only load the plugins named here, in the order given (default is alphabetical).
@@ -50,6 +52,7 @@ module Shapado
 
     # middlewares
     config.middleware.use "BugHunter::Middleware"
+    config.middleware.use "PDFKit::Middleware", :print_media_type => false, :quiet => false
     config.middleware.use "DynamicDomain"
     config.middleware.use "MongoidExt::FileServer"
     if AppConfig.recaptcha["activate"]

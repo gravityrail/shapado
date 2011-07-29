@@ -28,8 +28,8 @@ task :jsassets do
   end
   puts "done generating assets_dev.js."
   puts "generating prod assets"
+
   assets = YAML::load( File.open( 'config/assets.yml' ) )
-  Jammit.package!
   assets["javascripts"].keys.each do |k|
     file = "public/packages/#{k}.js"
     digest = Digest::MD5.hexdigest(File.read(file))[0..9]

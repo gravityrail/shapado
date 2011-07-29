@@ -1,0 +1,6 @@
+%ul
+  -@invoices.each do |invoice|
+    %li
+      =link_to invoice.id, invoice_path(invoice)
+
+=will_paginate @invoices

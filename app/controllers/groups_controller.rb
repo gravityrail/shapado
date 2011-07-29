@@ -112,6 +112,14 @@ class GroupsController < ApplicationController
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
     @group.custom_html.update_attributes(params[:group][:custom_html] || {}) if @group.has_custom_html
 
+    if @group.domain == AppConfig.domain ||
+        @group.domain.index(AppConfig.domain).nil? ||
+        @group.user.role == 'admin'
+      @group.has_custom_js = true
+    else
+      @group.has_custom_js = false
+    end
+
     respond_to do |format|
       if @group.save
         flash[:notice] = I18n.t('groups.update.notice')
@@ -245,6 +253,24 @@ class GroupsController < ApplicationController
     end
 
     redirect_to url
+  end
+
+  def upgrade
+    version = ShapadoVersion.where(:token => params[:plan]).first
+
+    @invoice = current_group.invoices.where(:payed => false,
+                                            :version => version.token,
+                                            :action => "upgrade_plan").last
+    if !@invoice
+      @invoice = current_group.invoices.create!(:action => "upgrade_plan",
+                                                :version => version.token,
+                                                :credit_card => current_group.credit_card)
+    end
+
+    @invoice.reset!
+    @invoice.add_item(version.name, "", version.price, version)
+
+    @invoice.save!
   end
 
   protected

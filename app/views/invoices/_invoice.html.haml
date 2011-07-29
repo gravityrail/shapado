@@ -1,0 +1,18 @@
+%table
+  -invoice.items.each do |item|
+    %tr
+      %td
+        =item["name"]
+      %td
+        -if item["value"] == 0.0
+          free
+        -else
+          =item["value"].to_f / 100.0
+      %td
+        =item["description"]
+  %tr
+    %td
+      TOTAL
+    %td
+      =@invoice.total / 100.0
+    %td

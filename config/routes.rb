@@ -168,6 +168,7 @@ Rails.application.routes.draw do
       get :disallow_custom_ads
       get :close
       get :accept
+      get :upgrade
 
       post :set_columns
     end
@@ -179,6 +180,8 @@ Rails.application.routes.draw do
       post :resend
     end
   end
+
+  resources :invoices
 
   scope '/manage' do
     resources :widgets do

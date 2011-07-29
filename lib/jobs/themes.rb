@@ -10,6 +10,8 @@ module Jobs
                         {:style => :compressed, :syntax => :scss, :cache => false, :load_paths => []})
       css << template.render
       theme.stylesheet = css
+      theme.stylesheet["extention"] = "css"
+      theme.stylesheet["content_type"] = "text/css"
       theme.ready = true
       theme.save
     end

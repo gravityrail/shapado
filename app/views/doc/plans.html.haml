@@ -1,6 +1,6 @@
 #main-content-wrap.plans
   .top
-    %h1=t('.title') 
+    %h1=t('.title')
     %p= t(".beta_info")
 
   .plans-table
@@ -21,7 +21,7 @@
       .bottom
         .price== $999/#{t('.month')}
         .button
-          = link_to t('global.sign_up'), "#", :class => "sign_up"
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "optimum"), :class => "sign_up"
 
 
     .each
@@ -41,7 +41,7 @@
       .bottom
         .price== $749/#{t('.month')}
         .button
-          = link_to t('global.sign_up'), "#", :class => "sign_up"
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "maximum"), :class => "sign_up"
 
     .each
       .header
@@ -60,8 +60,8 @@
       .bottom
         .price==$249/#{t('.month')}
         .button
-          = link_to t('global.sign_up'), "#", :class => "sign_up"
-       
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "premium"), :class => "sign_up"
+
     .each.selected
       .header
         %h2  Plus
@@ -79,7 +79,7 @@
       .bottom
         .price==$49/#{t('.month')}
         .button
-          = link_to t('global.sign_up'), "#", :class => "sign_up"
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "plus"), :class => "sign_up"
 
     .each.last
       .header
@@ -97,7 +97,7 @@
       .bottom
         .price==$9/#{t('.month')}
         .button
-          = link_to t('global.sign_up'), "#", :class => "sign_up"
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "basic"), :class => "sign_up"
 
 
   %p.free-offer
