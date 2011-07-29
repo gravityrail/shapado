@@ -112,6 +112,14 @@ class GroupsController < ApplicationController
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
     @group.custom_html.update_attributes(params[:group][:custom_html] || {}) if @group.has_custom_html
 
+    if @group.domain == AppConfig.domain ||
+        @group.domain.index(AppConfig.domain).nil? ||
+        @group.user.role == 'admin'
+      @group.has_custom_js = true
+    else
+      @group.has_custom_js = false
+    end
+
     respond_to do |format|
       if @group.save
         flash[:notice] = I18n.t('groups.update.notice')

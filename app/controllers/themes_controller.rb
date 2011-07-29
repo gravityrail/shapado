@@ -53,6 +53,7 @@ class ThemesController < ApplicationController
     @theme = Theme.new(params[:theme])
     @theme.group = current_group
     @theme.ready = false
+    @theme.set_has_js(params[:theme][:javascript])
 
     respond_to do |format|
       if @theme.save
@@ -71,6 +72,7 @@ class ThemesController < ApplicationController
   def update
     @theme = Theme.find(params[:id])
     @theme.ready = false
+    @theme.set_has_js(params[:theme][:javascript])
 
     respond_to do |format|
       if @theme.update_attributes(params[:theme])
