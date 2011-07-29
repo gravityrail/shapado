@@ -9,7 +9,7 @@ class ConstrainsConfig
                   remove_advertising vote_to_open_own_question vote_to_close_own_question
                   retag_others_questions delete_comments_on_own_questions
                   edit_others_posts view_offensive_counts vote_to_close_any_question
-                  vote_to_open_any_question delete_closed_questions moderate]
+                  vote_to_open_any_question delete_closed_questions moderate ask answer]
 
   identity :type => String
   field :content, :type => Hash, :default => {}

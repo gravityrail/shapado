@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes"] do
+task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count ", "fixdb:update_reputation_keys"] do
 end
 
 
@@ -511,5 +511,13 @@ namespace :fixdb do
     Membership.all.each do |membership|
       Tag.increment({:name => {:$in => membership.preferred_tags||[]}, :group_id => membership.group.id}, {:followers_count => 1})
     end
+  end
+
+  task :update_reputation_keys => [:init] do
+    Group.override({}, {"reputation_rewards.post_banned" => -200})
+    Group.override({}, {"reputation_constrains.ask" => -100})
+    Group.override({}, {"reputation_constrains.answer" => -300})
+    ConstrainsConfig.override({}, {"content.ask" => -100})
+    ConstrainsConfig.override({}, {"content.answer" => -300})
   end
 end

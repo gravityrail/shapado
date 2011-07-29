@@ -225,7 +225,11 @@ Rails.application.routes.draw do
         post :manage
       end
     end
-    resources :answers
+    resources :answers do
+      collection do
+        post :manage
+      end
+    end
     resources :users
   end
 
