@@ -9,7 +9,7 @@
 // $use_link_bg_color boolean
 // $link_bg_color color
 // $link_fg_color color
-
+// $fluid
 
 // General site colors
 // replace this color using the theme properties
@@ -559,6 +559,33 @@ body {
      background: $bg_color url($bg_image_url) 0 0;
    } @else {
      background: $bg_color;
+  }
+}
+
+@if($fluid) {
+  #container #columns {
+    max-width: 100%;
+    min-width: 700px;
+    section#column1 {
+      width: 14%;
+    }
+    section#column2 {
+      width: 59%;
+      &.nosidebar {
+        width: 84.5%;
+      }
+    }
+    section#column3 {
+      width: 25.5%;
+    }
+  }
+
+  .footer-widgets {
+    max-width: 99%;
+  }
+
+  .header-widgets {
+    width: 85%;
   }
 }
 

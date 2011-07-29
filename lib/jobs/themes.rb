@@ -6,10 +6,9 @@ module Jobs
       theme = Theme.find(theme_id)
       css = StringIO.new
       template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
-      template = Sass::Engine.new(self.define_vars(theme) << File.read(template_file),
+      template = Sass::Engine.new(self.define_vars(theme) << File.read(template_file) << "\n" << theme.custom_css || "",
                         {:style => :compressed, :syntax => :scss, :cache => false, :load_paths => []})
       css << template.render
-      css << theme.custom_css || ""
       theme.stylesheet = css
       theme.ready = true
       theme.save
@@ -31,6 +30,7 @@ $button_fg_color: ##{theme.button_fg_color};
 $use_link_bg_color: #{theme.use_link_bg_color};
 $link_bg_color: ##{theme.link_bg_color};
 $link_fg_color: ##{theme.link_fg_color};
+$fluid: #{theme.fluid};
 @
     end
   end
