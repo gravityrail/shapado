@@ -26,7 +26,7 @@ Group.blueprint do
   default_tags {["testing"]}
   state "active"
   languages ["en", "es", "fr"]
-  owner { User.make }
+  owner { User.make { |u| u.notification_opts = NotificationConfig.new} }
   activity_rate 0.0
 end
 
@@ -35,8 +35,8 @@ Question.blueprint do
   position {Sham.position}
   votes {{}}
   comments {[]}
-  group {Group.make}
-  user {User.make}
+  group {Group.make { |g| g.notification_opts = NotificationConfig.make_unsaved}}
+  user {User.make { |u| u.notification_opts = NotificationConfig.make_unsaved}}
 end
 
 Answer.blueprint do
@@ -44,15 +44,15 @@ Answer.blueprint do
   position {Sham.position}
   votes {{}}
   comments {[]}
-  group {Group.make}
-  user {User.make}
+  group {Group.make { |g| g.notification_opts = NotificationConfig.make_unsaved}}
+  user {User.make { |u| u.notification_opts = NotificationConfig.make_unsaved}}
   question {Question.make}
 end
 
 Comment.blueprint do
   body { Sham.body }
   votes {{}}
-  user {User.make}
+  user {User.make { |u| u.notification_opts = NotificationConfig.make_unsaved}}
 end
 
 UserStat.blueprint do
@@ -60,7 +60,19 @@ UserStat.blueprint do
   question_tags { (0..rand(10)).to_a.map {|i| "tag#{i}"} }
   expert_tags { (0..rand(10)).to_a.map {|i| "tag#{i}"} }
   tag_votes { (0..rand(10)).to_a.map {|i| "tag#{i}"} }
-  user {User.make}
+  user {User.make { |u| u.notification_opts = NotificationConfig.make_unsaved}}
+end
+
+NotificationConfig.blueprint do
+  give_advice { true }
+  activities { true }
+  reports { true }
+  new_answer { true }
+  questions_to_twitter { true }
+  badges_to_twitter { true }
+  favorites_to_twitter { true }
+  answers_to_twitter { true }
+  comments_to_twitter { true }
 end
 
 CloseRequest.blueprint do

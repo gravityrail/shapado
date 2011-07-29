@@ -63,12 +63,18 @@ class Notifier < ActionMailer::Base
     end
   end
 
-  def new_comment(group, comment, user, question)
+  def new_comment(group, comment, user, commentable)
     @user = user
     @comment = comment
-    @question = question
-    @group = group
+    @commentable = commentable
+    @group = commentable.group
     @language = language_for(user)
+
+    @question = commentable
+    if commentable.class == Answer
+      @question = commentable.question
+    end
+
     set_locale @language
     mail(:to => user.email, :from => from_email(group),
          :subject => I18n.t("mailers.notifications.new_comment.subject",

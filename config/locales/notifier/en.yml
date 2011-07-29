@@ -30,7 +30,7 @@ en:
     new_answer:
       message: "%{user} answered %{new_answer} to the question %{question}"
     new_comment:
-      message: "%{user} commented %{new_comment} on the question %{question}"
+      message: "%{user} commented %{new_comment} on the question %{link}"
     new_feedback:
       message1: "The user %{user} <%{email}> sent a feedback"
       message2: "Anonymous user sent a feedback from IP address %{ip}"

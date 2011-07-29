@@ -5,6 +5,13 @@ describe Jobs::Questions do
     @current_user = User.make
     Thread.current[:current_user] = @current_user
     @question = Question.make(:votes => {})
+    @group = @question.group
+
+    Question.stub!(:find).with(@question.id).and_return(@question)
+    @twitter = mock("twitter client")
+    @twitter.stub(:update).with(anything)
+    @question.user.stub!(:twitter_client).and_return @twitter
+    @group.stub!(:twitter_client).and_return @twitter
   end
 
   describe "on_question_solved" do
@@ -61,6 +68,9 @@ describe Jobs::Questions do
   describe "on_close_reward" do
     it "should be successful" do
       answer = Answer.make(:votes => {}, :question => @question)
+      user = @question.user
+      User.stub(:find).with(user.id).and_return(user)
+      user.stub(:twitter_client).and_return(@twitter)
       lambda {Jobs::Questions.on_close_reward(@question.id, answer.id, @question.user.id)}.should_not raise_error
     end
   end

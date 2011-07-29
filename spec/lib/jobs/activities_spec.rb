@@ -3,12 +3,21 @@ require 'spec_helper'
 describe Jobs::Activities do
   before(:each) do
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:votes => {})
+    @question = Question.make(:question, :votes => {})
     @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
 
     @current_user = User.make
     @current_user.join!(@question.group)
-    @question.group.stub(:mods_owners).and_return([@current_user])
+    @answer.user.join!(@question.group)
+    @moderator = User.make
+    @question.group.add_member(@moderator, "moderator")
+
+    @twitter = mock("Twitter client")
+    @moderator.stub!(:twitter_client).and_return(@twitter)
+    @current_user.stub!(:twitter_client).and_return(@twitter)
+    @question.user.stub!(:twitter_client).and_return(@twitter)
+    @answer.user.stub!(:twitter_client).and_return(@twitter)
+    @question.group.stub!(:twitter_client).and_return(@twitter)
   end
 
   describe "on_activity" do
@@ -19,8 +28,11 @@ describe Jobs::Activities do
 
   describe "on_update_answer" do
     it "should be successful" do
-      @answer.updated_by = @answer.user
-      @answer.save
+      Answer.stub!(:find).with(@answer.id).and_return(@answer)
+      @answer.stub!(:group).and_return(@question.group)
+
+      @answer.stub!(:updated_by).and_return(@answer.user)
+      @twitter.should_receive(:update).twice.with(anything)
       lambda {Jobs::Activities.on_update_answer(@answer.id)}.should_not raise_error
     end
   end
@@ -38,11 +50,26 @@ describe Jobs::Activities do
   end
 
   describe "on_comment" do
-    it "should be successful" do
+    before(:each) do
       @comment = Comment.make(:commentable => @answer, :user => @current_user)
       @answer.comments << @comment
       @answer.save
-      lambda {Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id)}.should_not raise_error
+
+      @comment.user.join!(@question.group)
+
+      Answer.stub!(:find).with(@answer.id).and_return(@answer)
+
+      @answer.comments.stub!(:find).with{@comment.id}.and_return @comment
+      @answer.stub!(:group).and_return(@question.group)
+
+      @comment.stub!(:user).and_return(@current_user)
+    end
+
+    it "should be successful" do
+      @twitter.should_receive(:update).twice.with(anything)
+
+      Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")
+      lambda {Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")}.should_not raise_error
     end
   end
 
@@ -59,16 +86,26 @@ describe Jobs::Activities do
   end
 
   describe "on_flag" do
-    it "should be successful" do
+    before(:each) do
       Group.stub!(:find).with(@question.group.id).and_return(@question.group)
-      Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")
+      User.stub(:find).with{@moderator.id}.and_return(@question.user)
+      User.stub(:find).with{@question.user.id}.and_return(@question.user)
+    end
+
+    it "should be successful" do
+      @twitter.should_receive(:update).with(anything).twice
+      lambda {Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")}.should_not raise_error
     end
   end
 
   describe "on_rollback" do
     it "should be successful" do
-      @question.updated_by = @answer.user
-      @question.save
+      Question.stub!(:find).with(@question.id).and_return(@question)
+      @group = @question.group
+      @question.stub!(:group).and_return(@group)
+      @question.stub!(:updated_by).and_return(@question.user)
+      @twitter.should_receive(:update).with(anything).twice
+      Jobs::Activities.on_rollback(@question.id)
       lambda {Jobs::Activities.on_rollback(@question.id)}.should_not raise_error
     end
   end

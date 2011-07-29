@@ -464,6 +464,14 @@ Time.zone.now ? 1 : 0)
     end
   end
 
+  def comments_count_on(group)
+    if config = config_for(group, false)
+      config.comments_count.to_i
+    else
+      0
+    end
+  end
+
   def stats(*extra_fields)
     fields = [:_id]
 
