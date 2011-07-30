@@ -271,6 +271,8 @@ class GroupsController < ApplicationController
     @invoice.add_item(version.name, "", version.price, version)
 
     @invoice.save!
+    
+    render :layout => 'invitations'
   end
 
   protected
