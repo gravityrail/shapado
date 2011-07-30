@@ -39,8 +39,9 @@ en:
         explaination: "If you would like to register or just log in, please select your OpenID provider:"
     manage:
       edit_layout: Edit layout
-      group_content: Group content
-      group_features: Group features
+      group_user_management: User Management
+      group_features: Features
+      group_look_and_feel: Look & Feel
       themes: Themes
       appearance: Appearance
       dashboard: Dashboard
