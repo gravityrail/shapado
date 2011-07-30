@@ -208,7 +208,6 @@ Rails.application.routes.draw do
       match 'actions' => :actions
       match 'stats' => :stats
       match 'reputation' => :reputation
-      match 'domain' => :domain
       match 'content' => :content
       match 'invitations' => :invitations
       match 'appearance' => :appearance
