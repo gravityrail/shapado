@@ -1,4 +1,6 @@
 class InvoicesController < ApplicationController
+  layout 'invitations'
+
   before_filter :authenticate_user!
   before_filter :owner_required
 

@@ -2,7 +2,7 @@ class Flag
   include Mongoid::Document
   include Shapado::Models::Trackable
 
-  track_activities :user, :reason, :flaggable, :scope => [:group_id], :target => :flaggable
+  track_activities :user, :reason, :_parent, :scope => [:group_id], :target => :_parent
 
   REASONS = ["spam", "offensive", "attention"]
 
