@@ -82,6 +82,7 @@ javascripts:
     - public/javascripts/app/initializers/index_group.js
     - public/javascripts/app/initializers/index_user.js
     - public/javascripts/app/initializers/tags_question.js
+    - public/javascripts/app/modules/members.js
     - public/javascripts/app/initializers/members.js
     - public/javascripts/app/initializers/move_group.js
 

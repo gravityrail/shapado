@@ -50,7 +50,7 @@ class Admin::ManageController < ApplicationController
   end
 
   def content
-    @active_subtab ||= "question_prompt"
+    @active_subtab ||= "head_tag"
     unless @group.has_custom_html
       flash[:error] = t("global.permission_denied")
       redirect_to domain_url(:custom => @group.domain, :controller => "manage",
