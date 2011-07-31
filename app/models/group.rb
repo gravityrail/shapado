@@ -85,6 +85,8 @@ class Group
   file_key :custom_favicon, :max_length => 256.kilobytes
   file_list :thumbnails
 
+  field :used_quota, :type => Float, :default => 0
+
   slug_key :name, :unique => true
   filterable_keys :name
 
