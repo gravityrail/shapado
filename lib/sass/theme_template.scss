@@ -679,7 +679,7 @@ section.invitations-panel {
 // app/stylesheets/app/_topTabs.sass
 .quick_question {
   input {
-    border: 1px solid darken($fg_color, 5%);
+    border: 1px solid darken($fg_color, 1%) !important;
     background-color: #fafafa;
     &:hover { border-color: #666; }
     @include inner-shadow;
