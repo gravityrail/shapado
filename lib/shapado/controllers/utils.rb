@@ -3,7 +3,7 @@ module Shapado
     module Utils
       def self.included(base)
         base.class_eval do
-          helper_method :page_title, :feed_urls, :is_bot?, :current_tags
+          helper_method :page_title, :feed_urls, :is_bot?, :current_tags, :bodys_class
         end
       end
 
@@ -63,6 +63,14 @@ module Shapado
 
       def build_datetime(params, name)
         Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}") rescue nil
+      end
+
+      def bodys_class(params)
+        out = "#{params[:controller].gsub("/","-")}-controller #{params[:action]}"
+        if params[:tab]
+          out << " #{params[:tab]}"
+        end
+        out
       end
     end
   end
