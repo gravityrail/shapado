@@ -14,7 +14,13 @@
       %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer)}
         = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
       
-
+    -if !answer.updated_by.nil?
+      %h4.author.update
+        = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}      
+        %time
+          = t('activerecord.attributes.answer.updated_at', :default => "updated")
+          = t("time.ago", :time => time_ago_in_words(answer.updated_at))
+          = t("global.from", :site => answer.address_name)        
 
     .content.markdown
       %div{:itemprop => "articleBody"}
@@ -24,23 +30,8 @@
         %h3
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
-      -if !answer.updated_by.nil?
-        .author.user_data
-          .time_ago
-            = t('activerecord.attributes.answer.updated_at', :default => "updated")
-          %strong.updated{:title => answer.updated_at, :class => "relativetime"}
-            = t("time.ago", :time => time_ago_in_words(answer.updated_at))
-          .avatar.logo
-            = avatar_img(answer.updated_by, :size => "small")
-          .user
-            = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}
-            -if !answer.updated_by.hide_country && answer.address.present?
-              .adr
-                .country-name
-                  = t("global.from", :site => answer.address_name)
-                  = country_flag(answer.address["country_code"], answer.address["country"])
-
-    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
+      
+      
 
     .comments
       -answer.comments.each do |comment|
@@ -54,5 +45,9 @@
             = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
+
+
+    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
+
 
     .article-forms

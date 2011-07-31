@@ -28,8 +28,7 @@ article.answer
   &.solution
     .content
       padding-left: 26px
-      background: url("/images/answer-winner.png")
-      background-repeat: no-repeat
+      background: url("/images/answer-winner.png") 13px 0 no-repeat
       min-height: 26px
 
   .answer_vote_box
@@ -72,9 +71,7 @@ article.answer
     line-height: 15px
   h4.author
     font-size: 12px
-    padding: 10px 10px 0 8px
-    float: left
-    margin: 0 0 10px 0
+    padding: 0 10px 5px 8px
     img
       float: left
       margin: -7px 5px 0 0
@@ -84,11 +81,14 @@ article.answer
     i
       font-size: 10px
       font-style: italic
-    time a
+    time a, time
       font-size: 11px
       padding: 2px 0 0 0 5px !important
       color: #ccc !important
-      
+  h4.update
+    margin-left: 32px
+    time
+      color: #666 !important      
   .thumb
     width: 190px
     height: 140px
@@ -194,6 +194,8 @@ article.answer
 
 article.answer
   .content
+    padding: 7px
+    margin: 0
     h1
       margin: 0 0 10px 0 !important
       padding: 0 !important

@@ -1,37 +1,41 @@
 /* Main Question - Each comment inside of each answare */
 //========================================================================
-.comments
-  padding: 0 0 20px 0
-  time
-    color: #999
+.comments  
+  margin: 30px 0 20px 0
   article.comment
-    border-top: 1px dotted #CCC
-    margin-top: 10px
-    padding-top: 4px
-    .user-avatar
-      width: 8%
+    background: url("/images/comments-icon-small.gif") 20px 5px no-repeat !important
+    padding: 5px 10px 5px 40px !important
+    border: 0px !important
+    img
+      float: left
+      margin: 0 5px 5px 0
     .comment-body
-      width: 85%
-    .comment-content.markdown
+    comment-content, .markdown
       display: inline
     .comment-votes
       form
         display: inline
+        button
+          border: 0px
+          padding: 2px
+    time
+      font-size: 11px
+      font-style: italic
+      float: left
+      color: #999
+      margin: 5px 5px 0 0
     p
       display: inline
       font-size: 12px
       line-height: 15px
-    .actions a
-      color: #c00
-      font-size: 11px
-      margin: 0 5px 0 0
-      &:hover
-        border-bottom: 1px dotted
-
-/* Comments inside Main Question top */
-//========================================================================
-.main-question .comments
-  padding: 0 0 20px 45px
+      color: #888
+    .actions 
+      margin: 3px 0 0 0
+      a
+        color: #c00
+        font-size: 11px
+        &:hover
+          border-bottom: 1px dotted
 
 // Form for edit comments
 //========================================================================
@@ -51,20 +55,4 @@ form.edit_comment_form
   .buttons input
     border: 0px
     padding: 5px 10px
-
-// Form for New comments
-//========================================================================
-form#new_comment
-  width: 465px !important
-  margin: 0 !important
-  padding: 20px 20px 0 20px !important
-  display: block
-  float: none
-  textarea
-    border: 1px solid #cccccc !important
-    font-size: 13px !important
-    line-height: 18px
-    padding: 5px !important
-    height: 100px !important
-    width: 460px !important
-    margin: 0 !important
+          
