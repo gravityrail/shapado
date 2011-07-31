@@ -95,8 +95,8 @@
             %label
               Expiration Date
             -index = -1
-            =ff.select :year, (Time.now.year..Time.now.year+15).to_a
             =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}
+            =ff.select :year, (Time.now.year..Time.now.year+15).to_a
 
         .half
           .field
