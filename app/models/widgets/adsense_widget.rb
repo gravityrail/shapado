@@ -1,5 +1,5 @@
 class AdsenseWidget < Widget
-  field :settings, :type => Hash, :default => { 'client' => "", 'slot' => 0, 'width' => 0, 'height' => 0}
+  field :settings, :type => Hash, :default => { 'client' => "", 'slot' => 0, 'width' => 0, 'height' => 0, :notitle => 1}
   validate :has_ads
 
   def ad
