@@ -11,6 +11,8 @@ class Invoice
   field :items, :type => Array, :default => []
   field :total, :type => Float, :default => 0.0
 
+  field :order_number, :type => String
+
   referenced_in :credit_card
   referenced_in :group
 
@@ -18,6 +20,8 @@ class Invoice
   validates_inclusion_of :action, :in => %w[upgrade_plan]
 
   attr_protected :payed, :total, :items
+
+  before_create :generate_order_number
 
   def reset!
     self.items = []
@@ -58,5 +62,10 @@ class Invoice
       return false
     end
 
+  end
+
+  protected
+  def generate_order_number
+    self[:order_number] = (self.group.invoices.count+1).to_s.rjust(8, "0")
   end
 end

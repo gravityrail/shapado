@@ -15,6 +15,7 @@ class CreditCard
   field :address2, :type => String
   field :country, :type => String
   field :remember, :type => Boolean, :default => false
+  field :credit_card_type, :type => String
 
   has_many :invoices, :class_name => "Invoice"
 

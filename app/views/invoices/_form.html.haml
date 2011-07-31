@@ -4,47 +4,51 @@
 
     =error_messages_for @invoice.credit_card||@cc
     =error_messages_for @invoice
-  
+
     -@credit_card = (@invoice.credit_card||current_group.credit_card||@cc||CreditCard.new)
     -if @credit_card.remember
       Using credit card ending in
       = @credit_card.ending_in
       = link_to "change", "#", :id => "show_credit_card_info"
-  
+
     .invoice_info
       .brand
         =image_tag "logo.png"
-        
+
       .references
         %p.reference
           %strong Invoice reference:
-          32468769
+          =@invoice.order_number
         %p
           %strong Date:
-          July 30 - 2011
+          =@invoice.created_at
         %p
           %strong Valid until:
-          Agust 30 - 2011
+          =@invoice.created_at+1.month
       .clear
-      
-    .thanks 
-      %p.action 
-        You're upgrading your 
-        %em “dgfrancisco” 
-        Shapado account 
-        %br located at 
-        %em dgfrancisco.shapado.com. 
-      
-      %p 
-        Once you click the checkout button below you'll be upgraded to the Plus plan. You'll be charged the new rate of $49/month starting on your next bill as shows. 
-        %br
-        =link_to "I want to change it", "#" 
-      
+
+    -if @invoice.items.first["item_class"] == "ShapadoVersion"
+      -version = ShapadoVersion.find(@invoice.items.first["item_id"])
+      .thanks
+        %p.action
+          You're upgrading your
+          %em
+            = current_group.name
+          Shapado account
+          %br located at
+          %em
+            ==#{current_group.domain}.
+
+        %p
+          == Once you click the checkout button below you'll be upgraded to the #{version.name} plan. You'll be charged the new rate of $#{version.in_dollars}/month starting on your next bill as shows.
+          %br
+          =link_to "I want to change this plan", plans_path
+
     .credit_card_form{:style => "display: #{@credit_card.remember ? 'none' : 'inline'}"}
       %h2 Contact Details
-        
+
       =fields_for "credit_card", @credit_card do |ff|
-        
+
         .contact-details
           .field
             .name
@@ -53,69 +57,71 @@
             .lastname
               %label Last Name
               =ff.text_field :last_name
-  
+
         .field
           %label
             Email
           =ff.text_field :email
 
-        %h2 Credit Card Details
-        
-        
+        %h2
+          Credit Card Details
+
+
         .half
           .field.credit-cards
-            %label  Credit card type
+            %label
+              Credit card type
             .visa
-              %input{ :type => "radio"}
+              =ff.radio_button :credit_card_type, "visa"
             .master
-              %input{ :type => "radio"}
+              =ff.radio_button :credit_card_type, "master"
             .amex
-              %input{ :type => "radio"}                       
-               
+              =ff.radio_button :credit_card_type, "amax"
+
           .field
             %label
               Credit Card Number
             =ff.text_field :number
             %small Exactly as it appears on the card
-        
+
         .half.cc-info
           .field
             %label
               Verification Code
             =ff.text_field :verification_code
-            %small The CVC code is a 3 or 4 digit number on the front or back of the card.
-  
+            %small The CVV code is a 3 or 4 digit number on the front or back of the card.
+
           .field.date
             %label
               Expiration Date
             -index = -1
             =ff.select :year, (Time.now.year..Time.now.year+15).to_a
             =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}
-  
+
         .half
           .field
             %label
               Billing Address
             =ff.text_field :address1
-  
+
           .field
             %label
               Billing Address line 2(optional)
             =ff.text_field :address2
-  
+
         .half
           .field
             %label
               Country
             =ff.text_field :country
-  
+
           .field
             .checkbox
               %label
                 Please remember this card later
               =ff.check_box :remember
-  
+
     =render "invoices/invoice", :invoice => @invoice
-  
+
     .buttons
       =f.submit "Checkout", :class => "save"
