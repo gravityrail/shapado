@@ -10,7 +10,7 @@ module Jobs
                         {:style => :compressed, :syntax => :scss, :cache => false, :load_paths => []})
       css << YUI::CssCompressor.new.compress(template.render)
       theme.stylesheet = css
-      theme.stylesheet["extention"] = "css"
+      theme.stylesheet["extension"] = "css"
       theme.stylesheet["content_type"] = "text/css"
       theme.ready = true
       theme.save

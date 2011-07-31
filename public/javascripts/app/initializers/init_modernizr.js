@@ -19,10 +19,6 @@ Modernizr.load([{
       complete: function(){
         if(typeof(Jqmath)!='undefined')
           Jqmath.initialize();
-      }
-    }, {
-      load: $.merge($.merge([],jsassets.jqueryui), cssassets.jqueryui),
-      complete: function() {
         var fields = $('.lang-fields');
         if(fields.length > 0){
           fields.tabs();
@@ -30,9 +26,14 @@ Modernizr.load([{
         if(typeof(Effects) !== 'undefined'){
           Effects.initialize();
         }
-        $('.autocomplete_for_tags').ricodigoComplete();
+        $(document).ready(function() {
+          if($('.autocomplete_for_tags').length >0)
+          $('.autocomplete_for_tags').ricodigoComplete();
+        });
       }
-    }])
+    }, {
+        load: cssassets.jqueryui
+    }]);
    $(document).ready(function() {
      Modernizr.load([{
       test: ($('.offline').length == 0 || (location.pathname != '/' && location.pathname.indexOf('/questions' != 0))),

@@ -47,7 +47,7 @@ class Activity
     when "User"
       url_helper.user_path(self.target_param, :host => domain)
     else
-      raise ArgumentError, "#{self.target_type} is not handled yet"
+      raise ArgumentError, "#{self.target_type.inspect} is not handled yet. Activity #{self.id}"
     end
   end
 

@@ -591,6 +591,7 @@ body {
 
 section.left-panel {
   background-color: $view_bg_color;
+  border-right: 1px solid $bg_color;
   .module {
     border-bottom: 1px solid darken($view_bg_color, 10%);
     h3 {

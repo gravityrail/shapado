@@ -27,6 +27,7 @@ var Updater = {
       }
 
       var data = {_pjax: true};
+
       if(prev && prev != current){
         refreshed = data._refresh = true;
       }
@@ -42,6 +43,11 @@ var Updater = {
             if(current == 'question') {
               Questions.initialize_on_show();
             }
+          }
+          if(current == 'manage-announcements') {
+            Editor.initialize();
+          } else if(current == 'mange-members') {
+            Members.initilize();
           }
 
           return false;
@@ -67,6 +73,10 @@ var Updater = {
       layout = 'pages';
     } else if($('.ask_question').length > 0) {
       layout = 'new-question';
+    } else if($('#manage_members').length > 0) {
+      layout = 'manage-members';
+    } else if($('.announcements').length > 0) {
+      layout = 'manage-announcements';
     }
 
     return layout;

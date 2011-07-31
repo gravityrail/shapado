@@ -17,7 +17,7 @@ module Shapado
       end
 
       def css_group_path(group, theme_id)
-        "/_files/themes/css/#{group.id}/#{theme_id}.css"
+        "/_files/themes/css/#{group.id}/#{theme_id}"
       end
 
       def bg_image_path(group, theme_id)

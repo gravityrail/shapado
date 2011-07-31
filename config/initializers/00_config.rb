@@ -19,6 +19,10 @@ if AppConfig.smtp["activate"]
   }
 end
 
+share_links = File.open( 'config/share_links.yml' ) { |yf| YAML::load( yf ) }
+
+AppConfig.share_links = share_links[Rails.env]
+
 if Rails.env == "development" || ENV['debug_assets']
   MODERNIZR = :modernizrdev
 else

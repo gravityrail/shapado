@@ -214,6 +214,7 @@ Rails.application.routes.draw do
       match 'access' => :access
     end
   end
+  match '/manage/properties/:tab' => 'admin/manage#properties', :as => :manage_properties_tab
 
   namespace :moderate do
     resources :questions do

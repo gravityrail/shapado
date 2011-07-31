@@ -64,14 +64,16 @@ class Theme
   end
 
   def set_has_js(param)
-    unless param.blank?
+    if param.blank?
+      self["has_js"] = false
+    else
       self["has_js"] = true
     end
   end
 
   protected
   def js_mime
-    self.javascript["extention"] = "js"
+    self.javascript["extension"] = "js"
     self.javascript["content_type"] = "text/javascript"
   end
 end

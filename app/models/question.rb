@@ -333,6 +333,8 @@ class Question
     files.each do |k,v|
       if(v.size > 0)
         self.attachments.put(BSON::ObjectId.new.to_s, v)
+
+        Group.increment({:_id => self.group_id}, {:used_quota => v.size})
       end
     end
   end
