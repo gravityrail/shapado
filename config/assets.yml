@@ -30,7 +30,7 @@ javascripts:
     - public/javascripts/vendor/polyfills/json2.js
 
   base:
-    - public/javascripts/vendor/jquery-ui-1.8.14.custom.js
+    - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
     - public/javascripts/vendor/jqueryui.ricodigoComplete.js
 

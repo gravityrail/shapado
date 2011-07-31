@@ -31,6 +31,8 @@ Modernizr.load([{
           $('.autocomplete_for_tags').ricodigoComplete();
         });
       }
+    }, {
+        load: cssassets.jqueryui
     }]);
    $(document).ready(function() {
      Modernizr.load([{
