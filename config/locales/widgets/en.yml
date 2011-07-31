@@ -94,5 +94,7 @@ en:
       title: "Question's Contributors"
     group_networks:
       title: "Follow us"
+      description: "This widget displays a list of social network links so that you users can follow you there"
     share:
       title: "Share in"
+      description: "This widget displays various buttons to share the current page to social networks"
