@@ -55,6 +55,8 @@ module Jobs
       user = question.user
       group = question.group
 
+      group.increment(:question_views => 1)
+
       views = question.views_count
       opts = {:source_id => question.id, :source_type => "Question", :unique => true}
       if views >= 1000

@@ -24,6 +24,7 @@
       = render "shared/empty", :type => "activities", :url => ""
     -else
       -@activities.each do |activity|
+        -next if activity.target_type.nil?
         = render "activities/activity", :activity => activity
 
     #additional_info

@@ -4,6 +4,8 @@ en:
       top_admin:
         title: Admin
         site: Site
+      access:
+        title: Access
 
       invitations:
         title: Invitations

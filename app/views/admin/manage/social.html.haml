@@ -17,8 +17,8 @@
 
 = form_for(@group, :html => {:class => "form", :multipart => true}) do |f|
   = f.error_messages
-  =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "social", :tab => @active_subtab)
-  =render :partial => "admin/manage/properties/#{@active_subtab}", :locals => {:f => f}
+  = hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "social", :tab => @active_subtab)
+  = render :partial => "admin/manage/properties/#{@active_subtab}", :locals => {:f => f}
 
 
 = yield :after_form
