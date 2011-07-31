@@ -10,16 +10,24 @@
 
 -cache_for(:question, @question.id, @question.user == current_user ? "owner" : "" ) do
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
+    .author
+      %p
+        By:
+        = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
+        = t('activerecord.attributes.question.created_at')
+        %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
+          = t("time.ago", :time => time_ago_in_words(@question.created_at))
+        -if !@question.user.hide_country && @question.address.present?
+          = t("global.from", :site => @question.address_name)
+      
     %h1{:itemprop => "name"}
       = @question.title
       - if @question.closed
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
-
+ 
     .description.markdown
-      = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
-      -if !@question.user.hide_country && @question.address.present?
-        = t("global.from", :site => @question.address_name)
-        = country_flag(@question.address["country_code"], @question.address["country"])
+      
+   
       %div{:itemprop => "articleBody"}
         = question_body
       = render "reward_info"
@@ -30,10 +38,6 @@
       %p
         %strong
           = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
-        %strong
-          = t('activerecord.attributes.question.created_at')
-        %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
-          = t("time.ago", :time => time_ago_in_words(@question.created_at))
         %strong
           = t('questions.show.viewed')
         = t('number.x_time', :count => number_with_delimiter(@question.views_count))
@@ -49,14 +53,16 @@
     .comments
       -@question.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
+        
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
         %fieldset
           = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question)}
           .buttons
+            = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-            = submit_tag t("comments.shared.comment_submit")
+            
 
 
     = render "toolbar"

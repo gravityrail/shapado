@@ -8,12 +8,13 @@
 
     = vote_box(answer, question_path(@question), @question.closed)
 
-    %h4
-      = render "questions/answered_by", local_assigns
-      %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer), :style => "margin: 0 0 0 5px"}
-        = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
-    .answer-avatar
+    %h4.author
       = avatar_img(answer.user, :size => "small") unless answer.anonymous
+      = render "questions/answered_by", local_assigns
+      %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer)}
+        = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
+      
+
 
     .content.markdown
       %div{:itemprop => "articleBody"}
