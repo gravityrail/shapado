@@ -7,7 +7,7 @@ var Updater = {
 
     current = Updater.guess_current_layout();
 
-    $("a.pjax").live("click", function(ev) {
+    $(document.body).delegate("a.pjax", "click", function(ev) {
       var link = $(this);
 
       prev = current;
@@ -46,8 +46,8 @@ var Updater = {
           }
           if(current == 'manage-announcements') {
             Editor.initialize();
-          } else if(current == 'mange-members') {
-            Members.initilize();
+          } else if(current == 'manage-members') {
+            Members.initialize();
           }
 
           return false;
@@ -61,22 +61,26 @@ var Updater = {
   },
   guess_current_layout: function() {
     var layout = '';
-    if($("section.questions-index").length > 0) {
+    var pageClass = $('body').attr('class');
+
+    if(pageClass.match(/questions-controller index/)) {
       layout = 'index';
-    } else if($("section#main-question").length > 0) {
+    } else if(pageClass.match(/questions-controller show/)) {
       layout = 'question';
-    } else if($('#users_show').length > 0) {
+    } else if(pageClass.match(/users-controller show/)) {
       layout = 'user';
-    } else if($('#badges_show, #badges').length > 0) {
+    } else if(pageClass.match(/badges-controller/)) {
       layout = 'badges';
-    } else if($('#pages_show, #pages').length > 0) {
+    } else if(pageClass.match(/pages-controller/)) {
       layout = 'pages';
-    } else if($('.ask_question').length > 0) {
+    } else if(pageClass.match(/questions-controller new/)) {
       layout = 'new-question';
-    } else if($('#manage_members').length > 0) {
+    } else if(pageClass.match(/admin-members-controller/)) {
       layout = 'manage-members';
-    } else if($('.announcements').length > 0) {
+    } else if(pageClass.match(/admin-announcements-controller/)) {
       layout = 'manage-announcements';
+    } else {
+      layout = pageClass.split(' ')[0]
     }
 
     return layout;

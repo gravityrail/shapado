@@ -13,7 +13,7 @@
     = csrf_meta_tag
     = render "shared/analytics"
 
-  %body
+  %body{:class => bodys_class(params) }
 
     #container{:class => @current_class}
 

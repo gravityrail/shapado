@@ -13,8 +13,8 @@
     = csrf_meta_tag
     = render "shared/analytics"
 
-  %body
-    =render_app_config
+  %body{:class => bodys_class(params) }
+    = render_app_config
     #container{:class => @current_class}
       %nav.top-bar
         %ul.group-list.sf-menu
