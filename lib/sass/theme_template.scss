@@ -34,8 +34,32 @@ $text-shadow: 0 1px 1px $fg_color;
 
 // Link colors
 $link_color: $link_fg_color;
-$hover_color: darken($link_fg_color, 20%);
+$hover_color: $link_fg_color;
+@if(lightness($link_fg_color) > 10%) {
+  $hover_color: lighten($link_fg_color, 10%);
+} @else {
+  $hover_color: darken($link_fg_color, 10%);
+}
+$alt_link_color: $link_color;
+$alt_hover_color: $hover_color;
+
+@if(lightness($view_fg_color) > 10%) {
+  $alt_link_color: darken($view_fg_color, 10%);
+  $alt_hover_color: lighten($view_fg_color, 10%);
+} @else {
+  $alt_link_color: lighten($view_fg_color, 10%);
+  $alt_hover_color: lighten($view_fg_color, 10%);
+}
+
+
 $active_color: $link_fg_color;
+
+$view_border_color: $view_bg_color;
+@if(lightness($view_border_color) > 10%) {
+   $view_border_color: darken($view_border_color, 10%);
+} @else {
+  $view_border_color: lighten($view_border_color, 10%);
+}
 
 
 //shadow
@@ -129,7 +153,7 @@ a {
   }
 
   ul {
-    li { border-top: 1px dotted darken($view_bg_color, 10%); }
+    li { border-top: 1px dotted $view_border_color; }
     a {
       color: #000 !important;
       background-color: #fff !important;
@@ -218,14 +242,14 @@ ul.admin-links li {
 }
 
 .userData .avatar {
-  border-bottom: 1px solid darken($view_bg_color, 10%);
+  border-bottom: 1px solid $view_border_color;
   p a {
     color: #666;
     &:hover {color: #000;}
   }
   h3 {
     text-shadow: 1px 1px 2px #e5e5e5;
-    border-bottom: 1px dotted darken($view_bg_color, 10%);
+    border-bottom: 1px dotted $view_border_color;
   }
   ul.badges li .badge_item a {
     color: #fff !important;
@@ -242,7 +266,7 @@ ul.admin-links li {
     }
   }
   ul.profile-stats {
-    border: 1px solid darken($view_bg_color, 10%);
+    border: 1px solid $view_border_color;
     li {
       border-bottom: 1px dotted #e5e5e5;
       background-color: #fff;
@@ -277,7 +301,7 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/admin/_members.sass
 .members {
-  border-bottom: 1px dotted darken($view_bg_color, 10%);
+  border-bottom: 1px dotted $view_border_color;
   ul li {
     border-top: 1px dotted #e5e5e5;
     .user-info {
@@ -297,7 +321,7 @@ ul.admin-links li {
 
 //app/stylesheets/app/content/admin/_moderate.sass
 .moderate-answers {
-  border-top: 1px solid darken($view_bg_color, 10%);
+  border-top: 1px solid $view_border_color;
 }
 
 //app/stylesheets/app/content/admin/_widgets.sass
@@ -318,7 +342,7 @@ ul.admin-links li {
   }
 
   .controls input{
-    background-color: darken($view_bg_color, 10%);
+    background-color: $view_border_color;
     border: 1px solid #e5e5e5;
     &:hover { background-color: #e5e5e5;}
   }
@@ -328,7 +352,7 @@ ul.admin-links li {
   }
 
   .widgets-admin .module {
-    border: 1px solid darken($view_bg_color, 10%);
+    border: 1px solid $view_border_color;
     footer {
       background-color: #fff;
       a {
@@ -350,11 +374,13 @@ ul.admin-links li {
 
   section {
     article {
-      border-bottom: 1px solid darken($view_bg_color, 10%);
+      border-bottom: 1px solid $view_border_color;
       color: #666;
       h2 a {
-        color: darken($link_fg_color, 5%);
-        &:hover {color: darken($link_fg_color, 10%);}
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
       }
     }
   }
@@ -398,7 +424,7 @@ ul.admin-links li {
 //app/stylesheets/app/content/_tabs.sass
 #main-content-wrap {
   p.description {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
   }
   nav ul.content-tabs {
     background-color: $bg_color;
@@ -432,7 +458,7 @@ ul.admin-links li {
 }
 
 .filters {
-  border-bottom: 1px solid darken($view_bg_color, 10%);
+  border-bottom: 1px solid $view_border_color;
   ul li a {
     background: none;
     color: #999;
@@ -518,7 +544,7 @@ form .domain small {color: #000; }
 // Login form
 section.sessions {
   .options{
-    border-top: 1px solid darken($view_bg_color, 10%);
+    border-top: 1px solid $view_border_color;
     li a {
       color: #fff;
       background-color: #c00;
@@ -593,10 +619,10 @@ section.left-panel {
   background-color: $view_bg_color;
   border-right: 1px solid $bg_color;
   .module {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
     h3 {
       color: darken($view_fg_color, 5%);
-      border-bottom: 1px dotted darken($view_bg_color, 10%);
+      border-bottom: 1px dotted $view_border_color;
     }
   }
 }
@@ -605,11 +631,11 @@ section.right-panel {
   .module {
     h3 {
       color: darken($view_fg_color, 5%);
-      border-bottom: 1px solid darken($view_bg_color, 10%);
+      border-bottom: 1px solid $view_border_color;
     }
     footer {
       background-color: darken($view_bg_color, 2%);
-      border-top:  1px solid darken($view_bg_color, 10%);
+      border-top:  1px solid $view_border_color;
       color: $view_bg_color;
       a {
         color: darken($view_fg_color, 10%);
@@ -757,7 +783,7 @@ section.invitations-panel {
     background-color: darken($view_bg_color, 5%);
     &:hover {
       color: $link_fg_color;
-      background-color: darken($view_bg_color, 10%);
+      background-color: $view_border_color;
     }
   }
 }
@@ -766,7 +792,7 @@ section.invitations-panel {
 .widget-top_groups section {
   border-bottom: 1px solid #fafafa;
   .avatar {
-    img {border: 1px solid darken($view_bg_color, 10%);}
+    img {border: 1px solid $view_border_color;}
   }
   .data {
     h5 {
@@ -779,7 +805,7 @@ section.invitations-panel {
 //app/widgets/_top_users.sass
 .widget-top_users ul{
   .avatar {
-    img { border: 1px solid darken($view_bg_color, 10%);}
+    img { border: 1px solid $view_border_color;}
   }
   .data {
     h5 {
@@ -834,6 +860,11 @@ section.invitations-panel {
 
 .widget-suggestions-page h3 {
   border-bottom: 1px solid #e5e5e5;
+}
+
+//app/widgets/_related_questions.sass
+.widget-related_questions aside ul li a {
+  color: $alt_link_color;
 }
 
 //app/content/question/question.sass
@@ -1007,7 +1038,7 @@ article.answer {
 .article-actions ul li {
   a {
     color: #999;
-    border-right: 1px solid darken($view_bg_color, 10%);
+    border-right: 1px solid $view_border_color;
     &:hover {
       color: #fff;
       background-color: $orange;
@@ -1043,7 +1074,7 @@ form.answer_comment_form, form.question_comment_form {
 //app/content/more/_groups.sass
 .groups_container {
   form {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
     .field {
       #q {
         border-color: #ccc;
@@ -1053,7 +1084,7 @@ form.answer_comment_form, form.question_comment_form {
     }
   }
   ul li {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
     .logo { border: 1px solid #e5e5e5; }
     .summary h3 a { color: #000; }
   }
@@ -1061,7 +1092,7 @@ form.answer_comment_form, form.question_comment_form {
 
 //app/content/more/_users.sass
 .users_container {
-  border-bottom: 1px solid darken($view_bg_color, 10%);
+  border-bottom: 1px solid $view_border_color;
   .field {
     #q {
       border-color: #ccc;
@@ -1072,7 +1103,7 @@ form.answer_comment_form, form.question_comment_form {
 
   ul {
     li {
-      border-bottom: 1px solid darken($view_bg_color, 10%);
+      border-bottom: 1px solid $view_border_color;
       .logo { border: 1px solid #e5e5e5; }
       .summary h3 a { color: #000; }
     }
@@ -1106,7 +1137,7 @@ form.answer_comment_form, form.question_comment_form {
 
 #badges_show {
   .description {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
     p .badge_item {
       color: #000;
       text-shadow: 1px 1px 2px #e5e5e5;
@@ -1117,9 +1148,9 @@ form.answer_comment_form, form.question_comment_form {
     b{ color: #000;}
   }
   .users ul li {
-    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid $view_border_color;
     .stats {
-      border-right: 1px solid darken($view_bg_color, 10%);
+      border-right: 1px solid $view_border_color;
     }
     .summary {
       h3 a {
@@ -1131,7 +1162,6 @@ form.answer_comment_form, form.question_comment_form {
   }
 }
 
-//testing
 input[type=submit], button, input.save {
   @include gradient($button_bg_color);
   color: $button_fg_color;
@@ -1142,3 +1172,5 @@ input[type=submit], button, input.save {
   background-color: $view_bg_color;
   color: $view_fg_color;
 }
+
+
