@@ -9,6 +9,10 @@
 
 #container
 
+#columns
+  max-width: 1000px
+  margin: 5px auto
+  
 // Diagramation
 //========================================================================
 section
@@ -16,7 +20,7 @@ section
 
 //LEFT
 section.left-panel
-  width: 159px
+  width: 180px
   display: inline
   text-align: right
 
@@ -33,11 +37,11 @@ section.left-panel
 
 //CENTER
 section.content-panel
-  width: 560px
-  margin-right: 4px
-  display: inline
+  width: 513px
+  margin: 0 0 0 3px
+  display: inline-table
   &.nosidebar
-  width: 812px
+    width: 812px
 
 section.invitations-panel
   margin: auto
@@ -104,9 +108,10 @@ a#linked_in_auth
 
 //RIGHT
 section.right-panel
-  width: 249px
+  width: 300px
   display: inline
   overflow: hidden
+  float: right
 
   .module
     +small-radius
@@ -135,7 +140,3 @@ section.sessions
   float: none !important
   width: 700px
   display: block !important
-
-#columns
-  max-width: 980px
-  margin: 5px auto

@@ -1,11 +1,9 @@
 /* Main Question - Answers*/
 //========================================================================
 #answers-content-wrap
-  +normal-radius
   clear: both
   display: block
   padding: 0 0 20px 0
-  overflow: hidden
 
   header
     h3
@@ -21,7 +19,7 @@
 /* Main Question - Each Answer */
 //========================================================================
 article.answer
-  padding: 20px 20px 0px 50px !important
+  padding: 10px 30px 0px 10px !important
   padding-left: 0px
   float: left
   position: relative
@@ -30,33 +28,36 @@ article.answer
   &.solution
     .content
       padding-left: 26px
-      background: url("/images/answer-winner.png")
-      background-repeat: no-repeat
+      background: url("/images/answer-winner.png") 13px 0 no-repeat
       min-height: 26px
 
   .answer_vote_box
+    z-index: 0
     overflow: hidden
     width: 25px
     position: absolute
-    left: 17px
-    top: 25px
-    background-color: #fff
+    right: 0
+    top: 10px
+    
     form
       *
-        background-color: #fff
+        background-color: #f1f1f1
+        color: #000
       ul.vote_box button
         height: 25px
         width: 25px
         border: none
-        background-color: #fff
         &.negative
+          background-color: #f1f1f1
           background-image: url("/images/question-toolbar-icons-small.png") !important
           background-position: 6px -401px
           background-repeat: no-repeat
         &.positive
+          background-color: #f1f1f1
           background-image: url("/images/question-toolbar-icons-small.png") !important
           background-position: 6px -448px
           background-repeat: no-repeat
+          
   .content
     clear: both
     float: none
@@ -68,19 +69,26 @@ article.answer
   p
     font-size: 14px
     line-height: 15px
-  h4
+  h4.author
     font-size: 12px
-    padding: 10px 10px 0 8px
-    float: left
-    margin: 0 0 10px 0
+    padding: 0 10px 5px 8px
     img
       float: left
-      margin: 0 5px 0 0
+      margin: -7px 5px 0 0
+      border: 1px solid #ccc
     a:hover
       border-bottom: 1px dotted
     i
       font-size: 10px
       font-style: italic
+    time a, time
+      font-size: 11px
+      padding: 2px 0 0 0 5px !important
+      color: #ccc !important
+  h4.update
+    margin-left: 32px
+    time
+      color: #666 !important      
   .thumb
     width: 190px
     height: 140px
@@ -138,7 +146,7 @@ article.answer
           top: 25px
           z-index: 99
       ul
-        width: 130px
+        width: 100px
         +none-radius
         position: absolute
 
@@ -186,6 +194,8 @@ article.answer
 
 article.answer
   .content
+    padding: 7px
+    margin: 0
     h1
       margin: 0 0 10px 0 !important
       padding: 0 !important

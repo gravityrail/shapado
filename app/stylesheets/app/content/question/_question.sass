@@ -15,15 +15,21 @@ section.main-question
   background-image: url("/images/q-icon-medium.gif") 15px 15px  no-repeat
   margin-bottom: 15px
   position: relative
-
+  .author
+    margin: 15px 0 10px 20px
+    p
+      color: #999
   h1
     font-size: 28px
     line-height: 32px
     font-weight: bold
-    margin: 10px 20px 10px 50px !important
+    margin: 0 20px !important
     padding: 0 !important
     letter-spacing: -0.5px
     border: 0px !important
+    color: #000 !important
+    &:first-letter
+      text-transform: uppercase
 
     &.version
       font-size: 18px
@@ -54,7 +60,7 @@ section.main-question
           border-bottom: 1px dotted
 
   .description
-    margin: 0 20px 10px 50px !important
+    margin: 0 20px 15px 20px !important
     p
       font-size: 13px
       line-height: 16px
@@ -92,7 +98,7 @@ section.main-question
           border-bottom: 1px dotted
 
   .stats
-    margin: 0 20px 20px 35px
+    margin: 0 20px -15px 10px
     p
       font-size: 10px
       margin: 0 0 10px 0 !important
