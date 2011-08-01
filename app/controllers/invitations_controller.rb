@@ -30,7 +30,7 @@ class InvitationsController < ApplicationController
         !logged_in?
       redirect_to new_user_path(:invitation_id => params[:id])
     elsif @invitation.state?(:pending) && logged_in?
-      current_user.accept_invitation(params[:id]) &&
+      current_user.accept_invitation(params[:id])
         @invitation.reload.connect!
     end
     @invitation.send(params[:step]) if params[:step]
