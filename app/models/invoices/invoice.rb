@@ -64,6 +64,10 @@ class Invoice
 
   end
 
+  def total_in_dollars
+    self.total / 100.0
+  end
+
   protected
   def generate_order_number
     self[:order_number] = (self.group.invoices.count+1).to_s.rjust(8, "0")

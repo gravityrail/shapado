@@ -14,8 +14,8 @@
     = render "shared/analytics"
 
   %body{:class => bodys_class(params) }
-    #Feedback-btn 
-      %p=link_to "Feedback", "#"  
+    #Feedback-btn
+      %p=link_to "Feedback", "/feedback"
     = render_app_config
     #container{:class => @current_class}
       %nav.top-bar

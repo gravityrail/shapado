@@ -1,49 +1,31 @@
 #main-content-wrap
-  
-  %h1 Your invoices
-  %p Here you can see all the invoices that you already purcehased for you groups.
-  
+  %h1
+    Your invoices
+  %p
+    Here you can see all the invoices that you already purcehased for you groups.
+
   %table
     %thead
       %tr
         %td ID
         %td Date
-        %td Expiration
+        %td Payed At
         %td Group/Domain
-        %td Plan
+        %td Detail
         %td Amount
     %tbody
       -@invoices.each do |invoice|
         %tr
-          %td=link_to invoice.id, invoice_path(invoice)
-      %tr
-        %td=link_to "98794856786578", "#"
-        %td July 31 2011
-        %td Agust 31 2011
-        %td dgfrancisco
-        %td Basic
-        %td US$49
-      %tr
-        %td=link_to "98794856786578", "#"
-        %td July 31 2011
-        %td Agust 31 2011
-        %td dgfrancisco
-        %td Basic
-        %td US$49
-      %tr
-        %td=link_to "98794856786578", "#"
-        %td July 31 2011
-        %td Agust 31 2011
-        %td dgfrancisco
-        %td Basic
-        %td US$49              
+          %td=link_to invoice.order_number, invoice_path(invoice)
+          %td
+            =invoice.created_at.to_s(:yml)
+          %td
+            =invoice.payed_at.to_s(:yml)
+          %td
+            =current_group.name
+          %td
+            =invoice.items.map{|i| i["name"]}.join(", ")
+          %td
+            ==US$#{invoice.total_in_dollars}
 
-      %tr
-        %td=link_to "98794856786578", "#"
-        %td July 31 2011
-        %td Agust 31 2011
-        %td dgfrancisco
-        %td Basic
-        %td US$49     
-  
   =will_paginate @invoices
