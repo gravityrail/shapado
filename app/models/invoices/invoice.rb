@@ -11,6 +11,18 @@ class Invoice
   field :items, :type => Array, :default => []
   field :total, :type => Float, :default => 0.0
 
+  field :order_number, :type => String
+
+  field :first_name, :type => String
+  field :last_name, :type => String
+  field :email, :type => String
+  field :payment_method, :type => String
+  field :cc_type, :type => String
+  field :cc_ending, :type => String
+  field :billing_address1, :type => String
+  field :billing_address2, :type => String
+  field :country, :type => String
+
   referenced_in :credit_card
   referenced_in :group
 
@@ -18,6 +30,8 @@ class Invoice
   validates_inclusion_of :action, :in => %w[upgrade_plan]
 
   attr_protected :payed, :total, :items
+
+  before_create :generate_order_number
 
   def reset!
     self.items = []
@@ -58,5 +72,26 @@ class Invoice
       return false
     end
 
+  end
+
+  def total_in_dollars
+    self.total / 100.0
+  end
+
+  def copy_info_from_cc(cc)
+    self[:first_name] = cc.first_name
+    self[:last_name]  = cc.last_name
+    self[:email] = cc.email
+    self[:payment_method] = "credit_card"
+    self[:cc_type] = cc.credit_card_type
+    self[:cc_ending] = cc.ending_in
+    self[:billing_address1] = cc.address1
+    self[:billing_address2] = cc.address2
+    self[:country] = cc.country
+  end
+
+  protected
+  def generate_order_number
+    self[:order_number] = (self.group.invoices.count+1).to_s.rjust(8, "0")
   end
 end

@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
     @invoice = current_group.invoices.find(params[:id])
 
     ropts = {}
-    ropts[:layout] = false if params[:print] == '1'
+    ropts[:layout] = "printing" if params[:print] == '1'
 
     render ropts
   end
@@ -35,6 +35,8 @@ class InvoicesController < ApplicationController
       @cc.group = current_group
       @cc.save
     end
+
+    @invoice.copy_info_from_cc(@cc)
 
     if @cc.valid? && @invoice.save
       process_payment_and_redirect(@invoice.charge!(request.remote_ip, @cc), @invoice)

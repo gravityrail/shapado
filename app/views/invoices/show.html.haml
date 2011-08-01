@@ -1,30 +1,60 @@
-%ul
-  %li
-    Order Placed:
-    =@invoice.payed_at.to_s(:ymd)
-  %li
-    Order number:
-    =@invoice.id
-  %li
-    Order Total:
-    ==$#{@invoice.total / 100.0}
+.invoices.each-invoice
+  .invoice_info
+    .brand
+      =image_tag "logo.png"
 
-=render "invoices/invoice", :invoice => @invoice
+    .references
+      %p
+        -if params[:print] != "1"
+          =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")
+      %p.reference
+        %strong Order number:
+        =@invoice.order_number
+      %p
+        %strong Order Placed:
+        =@invoice.payed_at.to_s(:ymd)
+
+      .clear
+
+    %h2 Contact Details
+    %p
+      %strong Name:
+      ="#{@invoice.first_name} #{@invoice.last_name}"
+    %p
+      %strong Email:
+      =@invoice.email
+
+    %h2 Payment Details
+    %p
+      %strong Payment Method:
+      =I18n.t("versions.#{@invoice.payment_method||'credit_card'}")
+    %p
+      %strong Credit Card type:
+      =I18n.t("versions.#{@invoice.cc_type||'unknown'}")
+    %p
+      %strong Credit Card #:
+      XXXXXXXXXXX -
+      =@invoice.cc_ending
+    %p
+      %strong Name:
+      == #{@invoice.first_name} #{@invoice.last_name}
+    %p
+      %strong Billing Addres
+      %br
+      == #{@invoice.billing_address1}
+      %br
+      == #{@invoice.billing_address2}
+      %br
+      =@invoice.country
+
+    %h2
+      Product Details
+    %p
+      %strong
+        Order Total:
+      ==$#{@invoice.total_in_dollars}
+
+    =render "invoices/invoice", :invoice => @invoice
 
 
-.invoice_info
-  -cc = @invoice.credit_card || current_group.credit_card
-  %ul
-    %li
-      Payment Method:
-      Credit Card ending in
-      =cc.ending_in
-    %li
-      Billing Address:
-      == #{cc.first_name} #{cc.last_name}
-      == #{cc.address1}
-      == #{cc.address2}
 
-
--if params[:print] != "1"
-  =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")

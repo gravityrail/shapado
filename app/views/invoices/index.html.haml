@@ -1,6 +1,31 @@
-%ul
-  -@invoices.each do |invoice|
-    %li
-      =link_to invoice.id, invoice_path(invoice)
+#main-content-wrap
+  %h1
+    Your invoices
+  %p
+    Here you can see all the invoices that you already purcehased for you groups.
 
-=will_paginate @invoices
+  %table
+    %thead
+      %tr
+        %td ID
+        %td Date
+        %td Payed At
+        %td Group/Domain
+        %td Detail
+        %td Amount
+    %tbody
+      -@invoices.each do |invoice|
+        %tr
+          %td=link_to invoice.order_number, invoice_path(invoice)
+          %td
+            =invoice.created_at.to_s(:yml)
+          %td
+            =invoice.payed_at.to_s(:yml)
+          %td
+            =current_group.name
+          %td
+            =invoice.items.map{|i| i["name"]}.join(", ")
+          %td
+            ==US$#{invoice.total_in_dollars}
+
+  =will_paginate @invoices

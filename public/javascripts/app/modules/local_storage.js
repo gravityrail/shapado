@@ -1,6 +1,6 @@
 var LocalStorage = {
   initialize: function(){
-    if(LocalStorage.hasStorage()){
+    if(Modernizr.localstorage){
       Storage.prototype.setObject = function(key, value) {
           this.setItem(key, JSON.stringify(value));
       }
@@ -44,7 +44,9 @@ var LocalStorage = {
     });
   },
   hasStorage: function(){
-    if (window.localStorage && typeof(Storage)!='undefined'){
+    if (Modernizr.localstorage
+        && localStorage['setObject']
+        && localStorage['getObject']){
       return true;
     } else {
         return false;
