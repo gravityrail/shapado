@@ -54,6 +54,8 @@ var Updater = {
             Editor.initialize();
           } else if(current == 'manage-members') {
             Members.initialize();
+          } else if(current == 'manage-widgets') {
+            Widgets.initialize();
           }
 
           return false;

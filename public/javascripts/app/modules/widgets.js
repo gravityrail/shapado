@@ -1,4 +1,7 @@
 var Widgets = {
+  initialize: function(data) {
+    Networks.initialize();
+  },
   create_on_index: function(data) {
   },
   create_on_show: function(data) {
