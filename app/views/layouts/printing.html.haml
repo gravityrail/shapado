@@ -3,7 +3,7 @@
   %head
     %title
       &= page_title
-    =stylesheet_link_tag "#{AppConfig.site}/stylesheets/compiled/printing.css", :media => "print"
+    =stylesheet_link_tag "#{AppConfig.site}/stylesheets/compiled/printing.css", :media => "print,screen"
 
   %body{:class => bodys_class(params) }
     =yield

@@ -36,6 +36,8 @@ class InvoicesController < ApplicationController
       @cc.save
     end
 
+    @invoice.copy_info_from_cc(@cc)
+
     if @cc.valid? && @invoice.save
       process_payment_and_redirect(@invoice.charge!(request.remote_ip, @cc), @invoice)
     else

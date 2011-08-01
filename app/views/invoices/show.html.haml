@@ -1,5 +1,4 @@
 .invoices.each-invoice
-  -cc = @invoice.credit_card || current_group.credit_card
   .invoice_info
     .brand
       =image_tag "logo.png"
@@ -20,39 +19,40 @@
     %h2 Contact Details
     %p
       %strong Name:
-      Francisco Rodriguez
+      ="#{@invoice.first_name} #{@invoice.last_name}"
     %p
       %strong Email:
-      dgfranciscorodriguez@gmail.com
+      =@invoice.email
 
-    -cc = @invoice.credit_card || current_group.credit_card
     %h2 Payment Details
     %p
       %strong Payment Method:
-      Credit Card
+      =I18n.t("versions.#{@invoice.payment_method||'credit_card'}")
     %p
       %strong Credit Card type:
-      American Express
+      =I18n.t("versions.#{@invoice.cc_type||'unknown'}")
     %p
       %strong Credit Card #:
       XXXXXXXXXXX -
-      =cc.ending_in
+      =@invoice.cc_ending
     %p
       %strong Name:
-      == #{cc.first_name} #{cc.last_name}
+      == #{@invoice.first_name} #{@invoice.last_name}
     %p
       %strong Billing Addres
       %br
-      == #{cc.address1}
+      == #{@invoice.billing_address1}
       %br
-      == #{cc.address2}
+      == #{@invoice.billing_address2}
       %br
-      Colombia
+      =@invoice.country
 
-    %h2 Product Details
+    %h2
+      Product Details
     %p
-      %strong Order Total:
-      ==$#{@invoice.total / 100.0}
+      %strong
+        Order Total:
+      ==$#{@invoice.total_in_dollars}
 
     =render "invoices/invoice", :invoice => @invoice
 
