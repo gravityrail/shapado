@@ -6,9 +6,9 @@ task :staging do |t|
   set :branch, "origin/master"
   set :rails_env, :production
   set :unicorn_workers, 1
-  role :web, "metali.co"
-  role :app, "metali.co"
-  role :db,  "metali.co", :primary => true
+  role :web, "your-server.com"
+  role :app, "your-server.com"
+  role :db,  "your-server.com", :primary => true
 end
 
 namespace :deploy do
