@@ -637,7 +637,7 @@ class QuestionsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to question_path(@question) }
+      format.html {  redirect_to @question.nil? ?  questions_path : question_path(@question) }
       format.json { render :json => @question }
     end
   end
