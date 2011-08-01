@@ -14,6 +14,7 @@ end
 namespace :deploy do
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "echo '#{`git describe`}' > #{current_path}/public/version.txt"
+    run "cd #{current_path} && ln -sf #{shared_path}/config/auth_providers.yml #{current_path}/config/auth_providers.yml"
 
     assets.compass
     assets.package
@@ -29,6 +30,11 @@ require 'ricodigo_capistrano_recipes'
 
 set(:websocket_remote_config) { "#{shared_path}/config/pills/websocket.pill"}
 namespace :websocket do
+  desc "setup websocket pill"
+  task :setup do
+    generate_config("#{File.dirname(__FILE__)}/pills/websocket.pill.erb", websocket_remote_config)
+  end
+
   desc "Init websocket with bluepill"
   task :init do
     rvmsudo "bluepill load #{websocket_remote_config}"

@@ -58,5 +58,10 @@ app     ALL=(ALL) NOPASSWD: ALL
 7.  Deploy
     $ cap production bootstrap
     $ cap production bluepill:init
+    $ cap production magent:setup
     $ cap production magent:init
+
+    $ cap production websocket:setup
+    $ cap production websocket:init
+
     $ cap production deploy
