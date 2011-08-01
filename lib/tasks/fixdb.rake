@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count ", "fixdb:update_reputation_keys"] do
+task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count", "fixdb:update_reputation_keys"] do
 end
 
 
@@ -335,6 +335,7 @@ namespace :fixdb do
   task :tags => [:init] do
     count = Question.count
     i = 0
+    bad_count = 0
     Question.where(:tags => {"$ne" => [], "$ne" => nil}).all.each do |q|
       q.tags.each do |tag_name|
         existing_tag = Tag.where(:name => tag_name, :group_id => q.group_id).first
@@ -342,14 +343,19 @@ namespace :fixdb do
           existing_tag.inc(:count, 1)
         else
           tag = Tag.new(:name => tag_name)
-          tag.group = q.group
-          tag.user = q.group.owner
-          tag.used_at = tag.created_at = tag.updated_at = q.group.questions.where(:created_at=>{:$ne=>nil}).order_by([:created_at, :asc]).first.created_at
-          tag.save
+          if q.group
+            tag.group = q.group
+            tag.user = q.group.owner
+            tag.used_at = tag.created_at = tag.updated_at = q.group.questions.where(:created_at=>{:$ne=>nil}).order_by([:created_at, :asc]).first.created_at
+            tag.save
+          else
+            bad_count += 0
+          end
         end
       end
       p "#{i+=1}/#{count}"
     end
+    p "Found #{bad_count} questions without"
   end
 
   task :remove_retag_other_tag => [:init] do
@@ -470,6 +476,7 @@ namespace :fixdb do
 
   task :ads => [:init]  do
     collection = Mongoid.database.collection("ads")
+    counters = {}
     collection.find.each do |ad|
       group = Group.find(ad["group_id"])
       positions = {'context_panel' => "sidebar",
@@ -477,16 +484,16 @@ namespace :fixdb do
                    'footer' => "footer",
                    'content' => "navbar"}
       widget = nil
-      case ad['_type']
-      when "Adsense"
+      if ad['_type'] == "Adsense"
+
         widget = AdsenseWidget.new(:settings =>{:client => ad['google_ad_client'],
                           :slot => ad['google_ad_slot'],
                           :width => ad['google_ad_width'],
                           :height => ad['google_ad_height']})
+        widget_list = group.mainlist_widgets
+        widget_list.send(:"#{positions[ad['position']]}") << widget
+        widget.save
       end
-      widget_list = group.mainlist_widgets
-      widget_list.send(:"#{positions[ad['position']]}") << widget
-      widget.save
     end
     collection.remove
   end
@@ -504,6 +511,13 @@ namespace :fixdb do
     theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
     Jobs::Themes.generate_stylesheet(theme.id)
     Group.override({}, :current_theme_id => theme.id)
+    Group.all.each do |g|
+      custom_css = g.custom_css.read
+      if !custom_css.blank?
+        theme = Theme.create(:name => "#{g.name}'s theme", :custom_css => custom_css)
+        Jobs::Themes.generate_stylesheet(theme.id)
+      end
+    end
   end
 
   task :update_tag_followers_count => [:init] do
