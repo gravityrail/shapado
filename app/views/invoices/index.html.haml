@@ -1,6 +1,49 @@
-%ul
-  -@invoices.each do |invoice|
-    %li
-      =link_to invoice.id, invoice_path(invoice)
+#main-content-wrap
+  
+  %h1 Your invoices
+  %p Here you can see all the invoices that you already purcehased for you groups.
+  
+  %table
+    %thead
+      %tr
+        %td ID
+        %td Date
+        %td Expiration
+        %td Group/Domain
+        %td Plan
+        %td Amount
+    %tbody
+      -@invoices.each do |invoice|
+        %tr
+          %td=link_to invoice.id, invoice_path(invoice)
+      %tr
+        %td=link_to "98794856786578", "#"
+        %td July 31 2011
+        %td Agust 31 2011
+        %td dgfrancisco
+        %td Basic
+        %td US$49
+      %tr
+        %td=link_to "98794856786578", "#"
+        %td July 31 2011
+        %td Agust 31 2011
+        %td dgfrancisco
+        %td Basic
+        %td US$49
+      %tr
+        %td=link_to "98794856786578", "#"
+        %td July 31 2011
+        %td Agust 31 2011
+        %td dgfrancisco
+        %td Basic
+        %td US$49              
 
-=will_paginate @invoices
+      %tr
+        %td=link_to "98794856786578", "#"
+        %td July 31 2011
+        %td Agust 31 2011
+        %td dgfrancisco
+        %td Basic
+        %td US$49     
+  
+  =will_paginate @invoices
