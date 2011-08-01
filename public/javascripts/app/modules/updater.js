@@ -32,6 +32,12 @@ var Updater = {
         refreshed = data._refresh = true;
       }
 
+      // adsense is incompatible with pjax http://goo.gl/ieq2u
+      // TODO remove this once adsense is compatible with html5 history
+      if($('#ads').length > 0 && refreshed){
+        return true;
+      }
+
       $.pjax({
         data: data,
         timeout: 10000,
