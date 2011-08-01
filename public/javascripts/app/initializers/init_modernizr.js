@@ -39,7 +39,7 @@ Modernizr.load([{
       test: ($('.offline').length == 0 || (location.pathname != '/' && location.pathname.indexOf('/questions' != 0))),
       yep: jsassets.extra
     }, {
-      test: Modernizr.websockets,
+      test: typeof(window.WebSocket)!=='undefined',
       nope: jsassets.websocket,
       complete: function() {
         ShapadoSocket.initialize();
