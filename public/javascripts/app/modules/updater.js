@@ -34,7 +34,7 @@ var Updater = {
 
       // adsense is incompatible with pjax http://goo.gl/ieq2u
       // TODO remove this once adsense is compatible with html5 history
-      if($('#ads').length > 0 && refreshed){
+      if($('.widget-adsense').length > 0 && refreshed){
         return true;
       }
 

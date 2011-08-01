@@ -1,7 +1,7 @@
 set :application, "shapado"
 set :asset_packager, "jammit"
 
-task :staging do |t|
+task :production do |t|
   set :repository, "git://github.com/ricodigo/shapado.git"
   set :branch, "origin/master"
   set :rails_env, :production
