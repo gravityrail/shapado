@@ -152,6 +152,7 @@ class Group
   before_save :modify_attributes
   before_create :create_widget_lists
   before_create :set_default_theme
+  after_create :create_default_tags
 
   # TODO: store this variable
   def has_custom_domain?
@@ -446,5 +447,11 @@ class Group
       theme = Theme.create_default
     end
     self.current_theme_id =theme.id
+  end
+
+  def create_default_tags
+    default_tags.each do |tag|
+      Tag.create(:name => tag, :group_id => self.id)
+    end
   end
 end
