@@ -1,8 +1,8 @@
 = t('shared.networks.title')
 
 .network-field
-  -options = share ? Shapado::Models::Networks::SHARE : Shapado::Models::Networks::PROFILE
-  = select_tag :network_select, options_for_select(options.unshift([])), :class => "network_select"
+  - options = share ? Shapado::Models::Networks::SHARE : Shapado::Models::Networks::PROFILE
+  = select_tag :network_select, options_for_select([[]]+options), :class => "network_select"
 
   .network-config
     .text
