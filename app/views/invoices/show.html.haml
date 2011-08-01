@@ -1,44 +1,41 @@
 .invoices.each-invoice
   -cc = @invoice.credit_card || current_group.credit_card
-  .invoice_info      
+  .invoice_info
     .brand
       =image_tag "logo.png"
-    
+
     .references
-      %p 
+      %p
         -if params[:print] != "1"
-          =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")   
+          =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")
       %p.reference
         %strong Order number:
-        =@invoice.id
+        =@invoice.order_number
       %p
         %strong Order Placed:
         =@invoice.payed_at.to_s(:ymd)
-      %p
-        %strong Valid until:
-        Agust 31 - 2011   
-      
+
       .clear
-      
+
     %h2 Contact Details
-    %p 
+    %p
       %strong Name:
       Francisco Rodriguez
     %p
       %strong Email:
       dgfranciscorodriguez@gmail.com
-    
+
     -cc = @invoice.credit_card || current_group.credit_card
     %h2 Payment Details
     %p
       %strong Payment Method:
       Credit Card
-    %p 
+    %p
       %strong Credit Card type:
       American Express
     %p
       %strong Credit Card #:
-      XXXXXXXXXXX - 
+      XXXXXXXXXXX -
       =cc.ending_in
     %p
       %strong Name:
@@ -51,12 +48,12 @@
       == #{cc.address2}
       %br
       Colombia
-      
+
     %h2 Product Details
-    %p 
+    %p
       %strong Order Total:
       ==$#{@invoice.total / 100.0}
-    
+
     =render "invoices/invoice", :invoice => @invoice
 
 

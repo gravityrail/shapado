@@ -13,7 +13,7 @@ class InvoicesController < ApplicationController
     @invoice = current_group.invoices.find(params[:id])
 
     ropts = {}
-    ropts[:layout] = false if params[:print] == '1'
+    ropts[:layout] = "printing" if params[:print] == '1'
 
     render ropts
   end
