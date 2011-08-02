@@ -506,18 +506,33 @@ namespace :fixdb do
   end
 
   task :themes => [:init] do
-    Theme.destroy_all
-    theme = Theme.create_default
-    theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
-    Jobs::Themes.generate_stylesheet(theme.id)
-    Group.override({}, :current_theme_id => theme.id)
+    theme = Theme.where(:is_default => true).first
+    if !theme
+      theme = Theme.create_default
+      theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
+      Jobs::Themes.generate_stylesheet(theme.id)
+      Group.override({}, :current_theme_id => theme.id)
+    end
+
     Group.all.each do |g|
-      custom_css = g.custom_css.read
-      if !custom_css.blank?
-        theme = Theme.create(:name => "#{g.name}'s theme", :custom_css => custom_css)
-        Jobs::Themes.generate_stylesheet(theme.id)
+      if g.has_custom_css? && !g.custom_css.nil?
+        begin
+          custom_css = g.custom_css.read
+          if !custom_css.blank?
+            theme = Theme.create(:name => "#{g.name}'s theme", :custom_css => custom_css)
+            Jobs::Themes.generate_stylesheet(theme.id)
+          end
+          g.delete_file("custom_css")
+        rescue
+          g.delete_file("custom_css")
+          p "error"
+        end
       end
     end
+  end
+
+  task :regenerate_themes => [:init] do
+    Theme.all.each {|theme| Jobs::Themes.generate_stylesheet(theme.id)}
   end
 
   task :update_tag_followers_count => [:init] do
