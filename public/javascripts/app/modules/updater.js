@@ -20,7 +20,7 @@ var Updater = {
         $(".widget-links ul li").removeClass('active');
         parent.addClass("active");
 
-        if(parent.hasClass("answers") || parent.hasClass("questions") || parent.hasClass("unanswered") || parent.hasClass("activity")) {
+        if(parent.hasClass("answers") || parent.hasClass("questions") || parent.hasClass("unanswered") || parent.hasClass("activities")) {
           $main_content_wrap.removeClass();
           $main_content_wrap.addClass(parent.attr("class"));
         }

@@ -11,7 +11,7 @@
   %li.users
     = link_to "Pages", activities_path(:tab=>"pages", :context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
 
-.activity
+.activities
   - questions_link =  questions_link_for(params[:context])
   = render "shared/content-nav", :questions_link => questions_link
   %section

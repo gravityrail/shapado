@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  tabs :default => :activities
   def index
     conds = {}
     if params[:context] == "by_me" && logged_in?

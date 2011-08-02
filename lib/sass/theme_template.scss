@@ -56,7 +56,7 @@ $active_color: $link_fg_color;
 
 $view_border_color: $view_bg_color;
 @if(lightness($view_border_color) > 10%) {
-   $view_border_color: darken($view_border_color, 10%);
+  $view_border_color: darken($view_border_color, 10%);
 } @else {
   $view_border_color: lighten($view_border_color, 10%);
 }
@@ -439,7 +439,10 @@ ul.admin-links li {
   }
 }
 
-.questions ul.content-tabs li.questions a, .answers ul.content-tabs li.answers a, .unanswered ul.content-tabs li.unanswered a, .activity ul.content-tabs li.activity a {
+.questions ul.content-tabs li.questions a,
+.answers ul.content-tabs li.answers a,
+.unanswered ul.content-tabs li.unanswered a,
+.activities ul.content-tabs li.activities a {
   background-color: $view_bg_color !important;
   color: $view_fg_color !important;
   &:hover {
@@ -447,9 +450,12 @@ ul.admin-links li {
   }
 }
 
-.questions .newest li.newest a, .questions .hot li.hot a, .questions .votes li.votes a, .questions .activity li.activity a {
+.filters.newest ul li.newest a,
+.filters.hot ul li.hot a,
+.filters.votes ul li.votes a,
+.filters.activity ul li.activity a {
   border-bottom: 2px solid $view_fg_color !important;
-  color: lighten($view_fg_color, 10%);
+  color: $alt_hover_color;
 }
 
 .answers .newest li.newest a, .answers .hot li.hot a, .answers .votes li.votes a, .unanswered .newest li.newest a, .unanswered .hot li.hot a, .unanswered .votes li.votes a {
@@ -461,8 +467,8 @@ ul.admin-links li {
   border-bottom: 1px solid $view_border_color;
   ul li a {
     background: none;
-    color: #999;
-    &:hover{ color: #000; }
+    color: $alt_link_color;
+    &:hover{ color: $alt_hover_color; }
   }
 }
 
