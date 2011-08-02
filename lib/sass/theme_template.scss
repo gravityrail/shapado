@@ -30,7 +30,7 @@ $red: #f00;
 $lightRed: #ffe5e5;
 $darkRed: #c00;
 
-$text-shadow: 0 1px 1px $fg_color;
+$text-shadow: 0 1px 1px darken($fg_color, 10%);
 
 // Link colors
 $link_color: $link_fg_color;
@@ -563,23 +563,37 @@ section.sessions {
 
 // app/stylesheets/app/_footer.sass
 footer {
-  background-color: #e5e5e5;
-  border-top: 1px solid #ccc;
+  background-color: darken($bg_color, 4%);
+  border-top: 5px solid $view_border_color;
   ul li {
     border-right: 1px solid #aaa;
     a {
-      color: #000;
-      &:hover {
-        color: #000;
+      @if(lightness($fg_color) > 10%) {
+        color: darken($fg_color, 10%);
+        &:hover {
+          color: lighten($fg_color, 10%);
+        }
+      } @else {
+        color: lighten($fg_color, 10%);
+        &:hover {
+          color: darken($fg_color, 10%);
+        }
       }
     }
   }
   p {
-    color: #999;
+    color: $fg_color;
     a {
-      color: #000;
-      &:hover {
-        color: #000;
+      @if(lightness($fg_color) > 10%) {
+        color: darken($fg_color, 10%);
+        &:hover {
+          color: lighten($fg_color, 10%);
+        }
+      } @else {
+        color: lighten($fg_color, 10%);
+        &:hover {
+          color: darken($fg_color, 10%);
+        }
       }
     }
   }
@@ -644,8 +658,10 @@ section.right-panel {
       border-top:  1px solid $view_border_color;
       color: $view_bg_color;
       a {
-        color: darken($view_fg_color, 10%);
-        &:hover { color: darken($view_fg_color, 20%); }
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
       }
     }
   }
@@ -745,9 +761,9 @@ section.invitations-panel {
     color: #000;
   }
   .user a {
-    color: #666;
+    color: $alt_link_color;
     &:hover {
-      color: #000;
+      color: $alt_hover_color;
     }
   }
 }
@@ -779,10 +795,6 @@ section.invitations-panel {
 //app/widgets/_tags.sass
 .widget-tag_cloud {
   .tags_cloud span a{
-    color: lighten($view_fg_color, 40%);
-    &:hover {
-      color: $link_fg_color;
-    }
   }
   .list_cloud span a{
     color: lighten($view_fg_color, 30%);
@@ -816,8 +828,10 @@ section.invitations-panel {
   .data {
     h5 {
       a {
-        color: $link_fg_color;
-        &:hover{ color: $link_fg_color;}
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
       }
       small {
         background-color: darken($link_fg_color, 5%);
@@ -853,12 +867,27 @@ section.invitations-panel {
 //app/widgets/_suggestions.sass
 .widget-suggestions, .widget-suggestions-page {
   ul li {
-    border-bottom: 1px dotted #e5e5e5;
+    border-bottom: 1px dotted $view_border_color;
+    &:nth-child(-2n+5) {
+      border-right: 1px solid $view_border_color;
+    }
+    .gravatar img { border: 1px solid $view_border_color; }
     .link {
       color: $link_fg_color;
+      a {
+        font-size: 12px;
+      }
       .tag {
         background-color: darken($link_fg_color, 5%);
-        color: $view_bg_color;
+        color: $link_fg_color;
+      }
+    }
+    .f-link {
+      a {
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
       }
     }
   }
@@ -1085,7 +1114,6 @@ form.answer_comment_form, form.question_comment_form {
       #q {
         border-color: #ccc;
         color: #000;
-//         background-color: #fff !important;
       }
     }
   }
@@ -1103,7 +1131,6 @@ form.answer_comment_form, form.question_comment_form {
     #q {
       border-color: #ccc;
       color: #000;
-//       background-color: #fff !important;
     }
   }
 
