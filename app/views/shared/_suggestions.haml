@@ -8,11 +8,9 @@
 %ul.list
   - suggestions.each do |suggestion|
     %li
-      .gravatar
-        = suggestion_avatar(suggestion)
-      .link
-        = suggestion_link(suggestion)
-      .f-link
-        = follow_suggestion_link(suggestion)
-      - if logged_in?
-        = common_follower(current_user, suggestion)
+      .gravatar= suggestion_avatar(suggestion)
+      .info
+        .link= suggestion_link(suggestion)
+        .f-link= follow_suggestion_link(suggestion)
+        - if logged_in?
+          = common_follower(current_user, suggestion)
