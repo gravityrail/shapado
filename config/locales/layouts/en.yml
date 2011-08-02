@@ -54,6 +54,7 @@ en:
       content: Content
       theme: Theme
       domain: Domain
+      invoices: Invoices
       pages: Pages
       constrains: Requirements
       rewards: Rewards
