@@ -13,6 +13,7 @@ var Ui = {
 
     Ui.hide_comments_form();
     //Ui.initialize_feedback();
+    Widgets.initialize();
 
     //$('.autocomplete_for_tags').ricodigoComplete();
     $('#quick_question').find('.tagwrapper').css({'margin-left':'18px',width:'68%'});
@@ -32,7 +33,7 @@ var Ui = {
     Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
     Ui.sort_values('select#question_language', 'option', false, 'text', null);
 
-    $(".toggle-action").live("click", function(event) {
+    $(document.body).delegate(".toggle-action", "click", function(event) {
       if(Ui.offline()){
         startLoginDialog();
       } else {

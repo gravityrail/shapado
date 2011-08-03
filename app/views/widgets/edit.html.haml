@@ -1,0 +1,7 @@
+-#i18n
+%h1
+  Edit Widget
+%p.description
+  =t(".description")
+
+= render "form", :widget => @widget, :position => params[:position], :tab => params[:tab]
