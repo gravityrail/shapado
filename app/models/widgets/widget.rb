@@ -53,11 +53,11 @@ class Widget
     "widgets/#{self.name}"
   end
 
-  def update_settings(params)
-    ##TODO: check what's going in
-    options = params[:settings]
+  def update_settings(options)
     options[:notitle] = ["on", "true"].include?(options[:notitle])
     self.settings = options
+    ##TODO: check what's going in
+    self.settings = options[:settings]
   end
 
   def description
@@ -65,6 +65,10 @@ class Widget
   end
 
   protected
+  def limit_to_int
+    self[:settings]['limit'] = self[:settings]['limit'].to_i
+  end
+
   def set_name
     self[:name] ||= self.class.to_s.sub("Widget", "").underscore
   end
