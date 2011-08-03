@@ -14,6 +14,7 @@ en:
       use_link_bg: Use a background for links
       apply: Apply
       try: Try
+      fluid: Fluid (this will make the layout elastic as the browser window gets resized)
     form:
       update: Update theme
     index:
