@@ -23,7 +23,13 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       format.html
       format.js do
-        render_string "widgets/form", :widget => @widget, :position => params[:position], :tab => params[:tab]
+        render :json => {
+          :html => render_to_string(:partial => "widgets/form",
+                                    :locals => {:widget => @widget,
+                                               :position => params[:position],
+                                               :tab => params[:tab]}),
+          :success => true
+        }
       end
     end
   end
@@ -42,7 +48,7 @@ class WidgetsController < ApplicationController
       if @widget.save
         sweep_widgets
         flash[:notice] = I18n.t('widgets.create.notice')
-        format.html { redirect_to widgets_path(:tab => params[:tab]) }
+        format.html { redirect_to widgets_path(:tab => params[:tab], :anchor => @widget.id) }
         format.json  { render :json => @widget.to_json, :status => :created, :location => widget_path(:id => @widget.id) }
       else
         format.html { render :action => "index" }
@@ -90,7 +96,8 @@ class WidgetsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(widgets_url) }
-      format.json  { head :ok }
+      format.json { head :ok }
+      format.js { render :json => {:success => true}}
     end
   end
 

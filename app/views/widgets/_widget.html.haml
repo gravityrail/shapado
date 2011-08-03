@@ -4,7 +4,7 @@
     %h2
       = widget.name.titleize
 
-      = link_to t("scaffold.edit"), edit_widget_path(widget, :tab => @active_subtab||"mainlist", :position => position)
+      = link_to t("scaffold.edit"), edit_widget_path(widget, :tab => @active_subtab||"mainlist", :position => position), :class => "edit_widget", 'data-text' => t(".preview", :default => "Preview") #i18n
 
       = form_tag move_widget_path(widget, :tab => @active_subtab||"mainlist"), :class => "vote_box", :style => "display:inline" do
         = hidden_field_tag "position", position
@@ -16,13 +16,14 @@
       = widget.description # do not escape
 
     .display
-      - unless widget.question_only? || params[:tab] == 'external'
-        -if widget.valid?
-          .widget_show.widget{:class => "widget-#{widget.name}"}
-            -if !(widget.settings||{})["notitle"]
-              %h3
-                = t(:"widgets.#{widget.name}.title")
-            = render :partial => widget.partial_name, :locals => {:widget => widget}
-        -else
-          = widget.errors.full_messages.join(", ")
+      .preview
+        - unless widget.question_only? || params[:tab] == 'external'
+          -if widget.valid?
+            .widget_show.widget{:class => "widget-#{widget.name}"}
+              -if !(widget.settings||{})["notitle"]
+                %h3
+                  = t(:"widgets.#{widget.name}.title")
+              = render :partial => widget.partial_name, :locals => {:widget => widget}
+          -else
+            = widget.errors.full_messages.join(", ")
   .clear
