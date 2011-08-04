@@ -34,10 +34,6 @@ class Admin::ManageController < ApplicationController
   end
 
   def appearance
-    conditions = {:$or => [{:community => true},
-                          {:group_id => current_group.id}]}
-
-    @themes = Theme.where(conditions).paginate(paginate_opts(params))
   end
 
   def actions
