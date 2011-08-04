@@ -8,3 +8,10 @@ $(document).ready(function() {
   Networks.initialize();
   LayoutEditor.initialize();
 });
+
+$(document).ready(function(){
+	$(".advanced-search").click(function(){
+		$(".advanced-form").toggleClass("open").slideToggle("slow");
+		return false; 
+	});
+});

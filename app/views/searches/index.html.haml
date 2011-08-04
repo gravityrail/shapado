@@ -10,7 +10,8 @@
       - link = link_to t('.advanced_search'), '#', :class => "advanced-search"
       =raw t('.description', :link => link)
   
-    =# render :partial => "form"
+    .advanced-form
+      = render :partial => "form"
   
     %ul  
       -if @questions.blank? && params[:q]
