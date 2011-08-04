@@ -221,6 +221,10 @@ module ApplicationHelper
   def article_date(article, short = true)
     out = ""
     out << format_article_date(article.created_at, short)
+  end
+
+  def edited_date(article, short = true)
+    out = ""
     out << " ("
     out << t('global.edited')
     out << " "
