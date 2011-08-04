@@ -8,7 +8,7 @@
     = link_to t(".mainlist_widgets"), widgets_path(:tab=>"mainlist"), :title => t(".mainlist_widgets_title")
   %li.question_widgets
     = link_to t(".question_widgets"), widgets_path(:tab=>"question"), :title => t(".question_widgets_title")
-  %li.question_widgets
+  %li.external_widgets
     = link_to t(".external_widgets"), widgets_path(:tab=>"external"), :title => t(".external_widgets_title")
 
 .widgets-admin
@@ -27,25 +27,26 @@
         .clear
 
     -if @active_subtab != "external"
+      -#i18n
       %li
         Header
       -@widget_list.header.each do |widget|
-        =render "widget", :widget => widget, :position => "header"
+        = render "widget", :widget => widget, :position => "header"
 
       %li
         Sidebar
       -@widget_list.sidebar.each do |widget|
-        =render "widget", :widget => widget, :position => "sidebar"
+        = render "widget", :widget => widget, :position => "sidebar"
 
       %li
         Navbar
       -@widget_list.navbar.each do |widget|
-        =render "widget", :widget => widget, :position => "navbar"
+        = render "widget", :widget => widget, :position => "navbar"
 
       %li
         Footer
       -@widget_list.footer.each do |widget|
-        =render "widget", :widget => widget, :position => "footer"
+        = render "widget", :widget => widget, :position => "footer"
     -else
       -@widget_list.sidebar.each do |widget|
-        =render "widget", :widget => widget, :position => "sidebar"
+        = render "widget", :widget => widget, :position => "sidebar"
