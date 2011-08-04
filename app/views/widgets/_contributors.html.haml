@@ -1,13 +1,6 @@
 
 %aside
-  %ul
-    - @question.contributors.each do |user|
-      %li
-        .avatar
-          = avatar_img(user, :size => "small")
-        .data
-          %h5
-            %b
-              =link_to h(user.login), user_path(user), :class => "pjax", :"data-layout" => "user"
-            %small
-              ==#{user.reputation_on(current_group)}
+  - @question.contributors.each do |user|
+    %a{ :href => user_path(user), :class => "pjax", :"data-layout" => "user"}
+      = avatar_img(user, :size => "small")
+  .clear

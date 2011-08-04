@@ -4,10 +4,19 @@
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> feed_url}
 
 .tags-list
+  
   %h1
     Tags:
+  .tags  
     -@tags.each do |tag|
-      = render "tag", :tag => tag
+      .each
+        = render "tag", :tag => tag
+        .clear
+        -if tag.has_icon?
+          = image_tag tag_icon_path(current_group,tag.name)
+        %p
+          = tag.description
+        .clear
 
   %section
     -if @questions.empty?
