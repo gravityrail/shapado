@@ -6,7 +6,7 @@
 //    Description :   Estilos para los formularios en la app
 //========================================================================
 form
-  width: 500px
+  width: 400px
   margin: 40px auto
   overflow: hidden
 
@@ -42,7 +42,7 @@ form
     input
       font-size: 13px
       padding: 5px 5px
-      width: 97.6%
+      width: 97%
       margin-bottom: 5px
 
     select
@@ -65,7 +65,7 @@ form
 
       label
         float: right
-        width: 96%
+        width: 90%
         font-weight: normal
 
       input
@@ -76,8 +76,10 @@ form
   .column
     width: 50%
     float: left
+    input 
+      margin: 0 !important
     label
-      width: 80%
+      width: 87% !important
 
   .capcha
     clear: both
@@ -175,12 +177,15 @@ form
     padding: 0
     min-height: 25px
     margin-bottom: 5px
+    .toolbar
+      display: none
     article
       padding: 0
+      background-color: #fff8e6 !important
       h3
         font-size: 14px
         a
-          padding: 10px
+          padding: 5px 10px
           display: block
       .toolbar
         padding: 0 0 10px 10px
