@@ -1,10 +1,11 @@
-
-%aside
-  %ul
-    -widget.networks.each do |name, data|
+.module.widget.block{:class => 'widget-group_networks'}
+  = raw widget_title(widget)
+  %aside
+    %ul
+      -widget.networks.each do |name, data|
+        %li
+          = link_to "", "http://#{data["url"]}", :class => name, :rel => "nofollow"
       %li
-        =link_to "", "http://#{data["url"]}", :class => name, :rel => "nofollow"
-    %li
-      -feed_urls.each do |title, url|
-        %a{:href => url}
-          =image_tag "rss.png"
+        - feed_urls.each do |title, url|
+          %a{:href => url}
+            =image_tag "rss.png"

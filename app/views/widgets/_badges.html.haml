@@ -1,7 +1,11 @@
-%section
-  %ul
-    -widget.recent_badges(current_group).each do |badge|
-      %li
-        = render :partial => "badges/badge", :object => badge
-%footer
-  =link_to t('.see_all'), badges_path
+- recent_badges = widget.recent_badges(current_group)
+- if recent_badges.count > 0
+  .module.widget.block{:class => 'widget-badges'}
+    %section
+      %ul
+        - recent_badges.each do |badge|
+          %li
+            = render :partial => "badges/badge", :object => badge
+    %footer
+      = link_to t('.see_all'), badges_path
+  .clear
