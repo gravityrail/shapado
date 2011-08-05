@@ -22,9 +22,11 @@ class InvoicesController < ApplicationController
     @invoice = current_group.invoices.find(params[:id])
 
     @cc = current_group.credit_card
-    cc_params = params[:credit_card] || {}
 
-    if @cc.nil? || !@cc.remember
+    cc_params = params[:credit_card] || {}
+    if cc_params.empty?
+      @cc = current_group.credit_card
+    else
       @cc = CreditCard.new(cc_params)
     end
 
