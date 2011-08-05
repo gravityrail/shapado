@@ -393,18 +393,18 @@ class Group
       self.reputation_rewards.each do |k,v|
         self.reputation_rewards[k] = v.to_i
         if !REPUTATION_REWARDS.has_key?(k)
-          self.errors.add(:reputation_rewards, "Invalid key") #i18n
+          self.errors.add(I18n.t('activerecord.models.reputation_rewards_key'))
           return false
         end
       end
 
       if self.reputation_rewards["ask"] > 0
-        self.errors.add(:reputation_rewards, "contrain to ask should be negative") #i18n
+        self.errors.add(I18n.t('activerecord.models.reputation_rewards_ask_constrain'))
         return false
       end
 
       if self.reputation_rewards["answer"] > 0
-        self.errors.add(:reputation_rewards, "contrain to answer rewards should be negative") #i18n
+        self.errors.add(I18n.t('activerecord.models.reputation_rewards_answer_constrain'))
         return false
       end
     end

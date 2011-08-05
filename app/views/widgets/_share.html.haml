@@ -1,7 +1,8 @@
-
-%aside
-  %ul
-    - widget.share_links.each do |key|
-      %li
-        = raw AppConfig.share_links[key]
+.module.widget.block{:class => 'widget-share'}
+  = raw widget_title(widget)
+  %aside
+    %ul
+      - widget.settings["share_links"].keys.each do |key|
+        %li
+          = raw AppConfig.share_links[key]
 

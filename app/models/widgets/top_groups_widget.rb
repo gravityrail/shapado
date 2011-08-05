@@ -1,5 +1,6 @@
 class TopGroupsWidget < Widget
   field :settings, :type => Hash, :default => { 'limit' => 5, :on_mainlist => true  }
+  before_save :limit_to_int
 
   def top_groups
     Group.where({:state => "active", :private => false, :isolate => false}).
