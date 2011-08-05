@@ -24,7 +24,17 @@
           = hidden_field_tag "widget[position]", "sidebar"
       .buttons
         =submit_tag t("scaffold.add"), :class => "save"
-      .clear  
+      .clear 
+    .zone
+      %p 
+        %strong Zone:
+        Header
+      =image_tag "zone-header.gif"
+    .type
+      %p
+        %strong Type:
+        Nombre del widget
+      =image_tag "zone-header.gif"
 
   .widget-containers
     -if @active_subtab != "external"
