@@ -17,11 +17,7 @@
   - unless widget.question_only? || params[:tab] == 'external'
     -if widget.valid?
       .widget-info
-        .module.widget_show.widget{:class => "widget-#{widget.name}"}
-          -if !(widget.settings||{})["notitle"]
-            %h3
-              = t(:"widgets.#{widget.name}.title")
-          = render :partial => widget.partial_name, :locals => {:widget => widget}
+        = render :partial => widget.partial_name, :locals => {:widget => widget}
     -else
       = widget.errors.full_messages.join(", ")
   .clear
