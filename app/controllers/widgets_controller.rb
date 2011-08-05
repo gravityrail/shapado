@@ -41,8 +41,8 @@ class WidgetsController < ApplicationController
       @widget = params[:widget][:_type].constantize.new
     end
 
-    widget_list = @group.send(:"#{params[:tab]}_widgets")
-    widget_list.send(:"#{params[:widget][:position]}") << @widget
+    @widget_list = @group.send(:"#{params[:tab]}_widgets")
+    @widget_list.send(:"#{params[:widget][:position]}") << @widget
 
     respond_to do |format|
       if @widget.save

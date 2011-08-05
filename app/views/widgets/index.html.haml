@@ -14,6 +14,7 @@
 .widgets-admin
 
   .select-widget
+    = error_messages_for(:widget)
     = form_tag widgets_path(:tab => @active_subtab), :class => "add-widget" do
       .field
         = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
