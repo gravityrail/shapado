@@ -114,6 +114,7 @@ class Question
   filterable_keys :title, :body
   language :language
 
+  before_save :remove_empty_tags
   before_save :update_activity_at
   before_save :save_slug
   validate :update_language, :on => :create
@@ -452,6 +453,10 @@ class Question
     if self.slug_changed?
       self.push_uniq(:slugs => self.slug_was)
     end
+  end
+
+  def remove_empty_tags
+    self.tags.delete_if {|tag| tag.blank? }
   end
 end
 

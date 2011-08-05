@@ -390,7 +390,7 @@ module ApplicationHelper
                    end
     else
       tag = Tag.where(:name => suggestion[0], :group_id => current_group.id).first
-      avatar_tag = tag_icon_image_link(tag)
+      avatar_tag = tag_icon_image_link(tag) if tag
     end
     avatar_tag
   end
@@ -450,7 +450,7 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag"
+    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
   end
 
   def widgets_context(controller, action)
