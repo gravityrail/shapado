@@ -1,4 +1,4 @@
-.container{:class => widget.name}
+.container.widget-container{:class => widget.name}
   .top
     = widget.name.titleize
     %p
@@ -9,17 +9,19 @@
     = form_tag move_widget_path(widget, :tab => @active_subtab||"mainlist"), :class => "vote_box", :style => "display:inline" do
       %p
         Change widget position:
+      -#i18n
       = hidden_field_tag "position", position
       = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up", :class => "img")
       = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down", :class => "img")
-    
+
   - unless widget.question_only? || params[:tab] == 'external'
     -if widget.valid?
-      .module.widget_show.widget{:class => "widget-#{widget.name}"}
-        -if !(widget.settings||{})["notitle"]
-          %h3
-            = t(:"widgets.#{widget.name}.title")
-        = render :partial => widget.partial_name, :locals => {:widget => widget}
+      .widget-info
+        .module.widget_show.widget{:class => "widget-#{widget.name}"}
+          -if !(widget.settings||{})["notitle"]
+            %h3
+              = t(:"widgets.#{widget.name}.title")
+          = render :partial => widget.partial_name, :locals => {:widget => widget}
     -else
       = widget.errors.full_messages.join(", ")
   .clear

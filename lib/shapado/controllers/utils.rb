@@ -62,7 +62,17 @@ module Shapado
       end
 
       def build_datetime(params, name)
-        Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}") rescue nil
+        begin
+          if params[name].is_a? Hash
+            datetime = params[name]
+
+            Time.zone.parse("#{datetime["day"]}-#{datetime["month"]}-#{datetime["year"]} #{datetime["hour"]}:#{datetime["minute"]}")
+          else
+            Time.zone.parse("#{params["#{name}(1i)"]}-#{params["#{name}(2i)"]}-#{params["#{name}(3i)"]} #{params["#{name}(4i)"]}:#{params["#{name}(5i)"]}")
+          end
+        rescue
+          nil
+        end
       end
 
       def bodys_class(params)
