@@ -6,7 +6,7 @@
 //    Description :   Estilos para los formularios en la app
 //========================================================================
 form
-  width: 500px
+  width: 400px
   margin: 40px auto
   overflow: hidden
 
@@ -32,6 +32,7 @@ form
 
     small, small span
       display: block
+      clear: both
       font-size: 11px
 
     label, label span
@@ -42,7 +43,7 @@ form
     input
       font-size: 13px
       padding: 5px 5px
-      width: 97.6%
+      width: 97%
       margin-bottom: 5px
 
     select
@@ -54,7 +55,7 @@ form
     textarea
       font-size: 13px
       padding: 10px
-      width: 95.5%
+      width: 94%
       margin-bottom: 5px
       height: 100px
 
@@ -65,7 +66,7 @@ form
 
       label
         float: right
-        width: 96%
+        width: 90%
         font-weight: normal
 
       input
@@ -76,8 +77,10 @@ form
   .column
     width: 50%
     float: left
+    input 
+      margin: 0 !important
     label
-      width: 80%
+      width: 87% !important
 
   .capcha
     clear: both
@@ -175,12 +178,15 @@ form
     padding: 0
     min-height: 25px
     margin-bottom: 5px
+    .toolbar
+      display: none
     article
       padding: 0
+      background-color: #fff8e6 !important
       h3
         font-size: 14px
         a
-          padding: 10px
+          padding: 5px 10px
           display: block
       .toolbar
         padding: 0 0 10px 10px
@@ -248,31 +254,41 @@ section.sessions
         +small-radius
 
 // Search form
+.advanced-form
+  display: none
+  background-color: #fff8e6
+  padding: 20px 0 0 0
+  margin: -20px 0 0 0
 .search-form
+  margin: 0
+  padding: 0
   form
     margin: 0 auto
+    width: 460px
     padding: 5px 0 25px 0
   .fields-search
     overflow: hidden
     .field
-      float: left
-      width: 290px
+      margin: 0 0 10px 0
+    .buttons
+      padding: 0
+      margin: 0
     .checkbox
-      float: left
-      width: 90px
-      margin: 7px 0 0 15px
+      height: 30px
       label
-        width: 70px
+        width: 80px
         float: left
         margin: 0 0 0 5px
       input
         float: left
+        
 .save-search
   form
+    width: 430px
     margin: 20px auto 10px auto !important
   .field
     float: left
-    width: 340px
+    width: 270px
   .buttons
     float: right
     margin: 15px 0 0 0

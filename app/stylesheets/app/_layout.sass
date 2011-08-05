@@ -7,7 +7,6 @@
 //========================================================================
 @import "fancy-buttons"
 
-
 #feedback-btn
   position: fixed
   top: 50%
@@ -29,9 +28,6 @@
     font-size: 18px
     color: #fff
 
-
-#container
-
 #columns
   max-width: 1000px
   margin: 5px auto
@@ -47,17 +43,6 @@ section.left-panel
   display: inline
   text-align: right
 
-  .module
-    padding: 0 5px 5px 5px
-    margin: 0 0 10px 0
-    h3
-      font-size: 16px
-      font-weight: bold
-      padding: 5px 0
-      margin-bottom: 10px
-  .tag_cloud
-    padding: 0
-
 //CENTER
 section.content-panel
   width: 513px
@@ -66,10 +51,34 @@ section.content-panel
   &.nosidebar
     width: 812px
 
+//RIGHT
+section.right-panel
+  width: 300px
+  display: inline
+  float: right
+  
+.module
+  margin: 0 0 3px 0
+  h3
+    font-size: 16px
+    font-weight: bold
+    padding: 10px
+    margin-bottom: 5px
+  footer
+    text-align: right
+    padding: 7px
+    background-color: transparent !important
+    a
+      font-size: 12px
+      text-transform: italic    
+      &:hover
+        border-bottom: 1px dotted
+    
+
+
 section.invitations-panel
   margin: auto
   width: 100%
-
   h1
     font-size: 16px
     font-weight: bold
@@ -128,34 +137,6 @@ a#linked_in_auth
   +fancy-button-colors-matte(#378AB3)
   +fancy-button-size(12px, 6px, 1px)
   white-space: nowrap
-
-//RIGHT
-section.right-panel
-  width: 300px
-  display: inline
-  overflow: hidden
-  float: right
-
-  .module
-    +small-radius
-    margin-bottom: 5px
-    padding-bottom: 3px
-    h3
-      font-size: 16px
-      font-weight: bold
-      padding: 10px
-      margin-bottom: 10px
-    section, footer
-      border: 0px
-      padding: 0
-      margin: 0
-    footer
-      text-align: right
-      padding: 7px 10px 5px 0
-      background-color: transparent !important
-      a
-        font-size: 11px
-        text-transform: italic
 
 //SESIONS
 section.sessions

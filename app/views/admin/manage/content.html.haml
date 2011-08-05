@@ -25,7 +25,8 @@
   - default_lang = langs.delete(@group.language)
 
   -if @active_subtab == "head_tag"
-    = text_area_tag "group[custom_html][#{@active_subtab}]", @group.custom_html.send(@active_subtab), :class => "text_area"
+    .field 
+      = text_area_tag "group[custom_html][#{@active_subtab}]", @group.custom_html.send(@active_subtab), :class => "text_area"
   -elsif %w[question_help question_prompt head top_bar footer]
     .field
       =form.label "_#{@active_subtab}[#{default_lang}]", language_desc(default_lang), :class => "label"

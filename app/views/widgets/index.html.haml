@@ -12,41 +12,67 @@
     = link_to t(".external_widgets"), widgets_path(:tab=>"external"), :title => t(".external_widgets_title")
 
 .widgets-admin
-  %ul
-    %li
-      = form_tag widgets_path(:tab => @active_subtab), :class => "add-widget" do
-        .field
-          = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
-          = select :widget, "_type", Widget.types(params[:tab],current_group.has_custom_ads).map {|w| [w.sub("Widget", "").titleize, w]}
-          -if @active_subtab != "external"
-            = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
-          -else
-            = hidden_field_tag "widget[position]", "sidebar"
-        .buttons
-          =submit_tag t("scaffold.add"), :class => "save"
-        .clear
 
+  .select-widget
+    = form_tag widgets_path(:tab => @active_subtab), :class => "add-widget" do
+      .field
+        = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
+        = select :widget, "_type", Widget.types(params[:tab],current_group.has_custom_ads).map {|w| [w.sub("Widget", "").titleize, w]}
+        -if @active_subtab != "external"
+          = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
+        -else
+          = hidden_field_tag "widget[position]", "sidebar"
+      .buttons
+        =submit_tag t("scaffold.add"), :class => "save"
+      .clear 
+    .zone
+      %p 
+        %strong Zone:
+        Header
+      =image_tag "zone-header.gif"
+    .type
+      %p
+        %strong Type:
+        Nombre del widget
+      =image_tag "zone-header.gif"
+
+  .widget-containers
     -if @active_subtab != "external"
       -#i18n
-      %li
-        Header
-      -@widget_list.header.each do |widget|
-        = render "widget", :widget => widget, :position => "header"
+      .container.header
+        .header 
+          Header
+          =link_to "Add new widget", "#"
+        -@widget_list.header.each do |widget|
+          = render "widget", :widget => widget, :position => "header"
+        .clear
 
-      %li
-        Sidebar
-      -@widget_list.sidebar.each do |widget|
-        = render "widget", :widget => widget, :position => "sidebar"
-
-      %li
-        Navbar
-      -@widget_list.navbar.each do |widget|
-        = render "widget", :widget => widget, :position => "navbar"
-
-      %li
-        Footer
-      -@widget_list.footer.each do |widget|
-        = render "widget", :widget => widget, :position => "footer"
-    -else
-      -@widget_list.sidebar.each do |widget|
-        = render "widget", :widget => widget, :position => "sidebar"
+      .container.navbar
+        .header 
+          Navbar
+          =link_to "Add new widget", "#"
+        -@widget_list.navbar.each do |widget|
+          = render "widget", :widget => widget, :position => "navbar"
+        .clear
+        
+      .container.sidebar
+        .header 
+          Sidebar
+          =link_to "Add new widget", "#"
+        -@widget_list.sidebar.each do |widget|
+          = render "widget", :widget => widget, :position => "sidebar"
+        .clear
+        
+      .container.footer
+        .header 
+          Footer
+          =link_to "Add new widget", "#"
+        -@widget_list.footer.each do |widget|
+          = render "widget", :widget => widget, :position => "footer"
+        .clear
+        
+      -else
+      
+        -@widget_list.sidebar.each do |widget|
+          = render "widget", :widget => widget, :position => "sidebar"
+        .clear
