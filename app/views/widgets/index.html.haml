@@ -35,6 +35,7 @@
           =link_to "Add new widget", "#"
         -@widget_list.header.each do |widget|
           = render "widget", :widget => widget, :position => "header"
+        .clear
 
       .container.navbar
         .header 
@@ -42,22 +43,26 @@
           =link_to "Add new widget", "#"
         -@widget_list.navbar.each do |widget|
           = render "widget", :widget => widget, :position => "navbar"
-          
+        .clear
+        
       .container.sidebar
         .header 
           Sidebar
           =link_to "Add new widget", "#"
         -@widget_list.sidebar.each do |widget|
           = render "widget", :widget => widget, :position => "sidebar"
-
+        .clear
+        
       .container.footer
         .header 
           Footer
           =link_to "Add new widget", "#"
         -@widget_list.footer.each do |widget|
           = render "widget", :widget => widget, :position => "footer"
-          
+        .clear
+        
       -else
       
         -@widget_list.sidebar.each do |widget|
           = render "widget", :widget => widget, :position => "sidebar"
+        .clear
