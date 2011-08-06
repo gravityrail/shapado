@@ -13,7 +13,6 @@ var Ui = {
 
     Ui.hide_comments_form();
     //Ui.initialize_feedback();
-    Widgets.initialize();
 
     //$('.autocomplete_for_tags').ricodigoComplete();
     $('#quick_question').find('.tagwrapper').css({'margin-left':'18px',width:'68%'});
