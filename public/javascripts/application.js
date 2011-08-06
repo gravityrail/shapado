@@ -12,6 +12,6 @@ $(document).ready(function() {
 $(document).ready(function(){
 	$(".advanced-search").click(function(){
 		$(".advanced-form").toggleClass("open").slideToggle("slow");
-		return false; 
+		return false;
 	});
 });

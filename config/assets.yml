@@ -50,6 +50,7 @@ javascripts:
     - public/javascripts/app/modules/utils.js
     - public/javascripts/app/initializers/login_dialog.js
     - public/javascripts/app/modules/votes.js
+    - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/app/modules/websocket.js
     - public/javascripts/app/modules/updater.js
@@ -77,7 +78,6 @@ javascripts:
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
-    - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/geo.js
     - public/javascripts/application.js
     - public/javascripts/app/initializers/retag.js
