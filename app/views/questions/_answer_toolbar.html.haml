@@ -49,6 +49,4 @@
         - if logged_in? && (current_user.can_modify?(answer) || current_user.mod_of?(question.group))
           %li
             = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
-        %li
-          = link_to t("questions.answer.history", :default => "history"), history_question_answer_path(question, answer)
   .article-forms.clear

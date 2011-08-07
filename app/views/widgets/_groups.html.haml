@@ -1,9 +1,13 @@
-
-%aside
-  %ul.list
-    -widget.recent_groups.each do |group|
-      %li
-        = link_to h(group.name), domain_url(:custom => group.domain)
-        &= truncate(strip_tags(group.description), :length => 35)
-%footer
-  =link_to t("scaffold.more"), groups_path
+- recent_groups = widget.recent_groups
+- if recent_groups.count > 0
+  .module.widget.block{:class => 'widget-question_badges'}
+    = raw widget_title(widget)
+    %aside
+      %ul.list
+        - recent_groups.each do |group|
+          %li
+            = link_to h(group.name), domain_url(:custom => group.domain)
+            &= truncate(strip_tags(group.description), :length => 35)
+    %footer
+      = link_to t("scaffold.more"), groups_path
+  .clear

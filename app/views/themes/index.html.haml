@@ -4,11 +4,19 @@
   = t('themes.index.description')
   = link_to t('themes.index.new_theme'), new_theme_path
 
+%ul.admin-nav
+  %li
+    = link_to t('themes.index.group_themes'), themes_path
+  %li
+    = link_to t('themes.index.all_themes'), themes_path(:tab => "all")
+
 %section.themes
+  = render "theme", :theme => current_group.current_theme
+
   -if @themes.empty?
     = render "shared/empty", :type => "themes", :url => new_theme_path
+  -else
+    -@themes.each do |theme|
+      = render "theme", :theme => theme
 
-  -@themes.each do |theme|
-    = render "theme", :theme => theme
-
-
+  = will_paginate @themes

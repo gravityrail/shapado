@@ -4,13 +4,12 @@
   = @theme.description
 
   = link_to t("scaffold.edit"), edit_theme_path(@theme)
-
-  = link_to t("themes.show.try"), domain_url(custom: current_group.domain, theme: @theme.id, controller: "questions", action: "index"), :target => "_blank"
-  = link_to t("themes.show.apply"), apply_theme_path(@theme), :method => :put
+  -if @theme.ready
+    = link_to t("themes.show.try"), domain_url(custom: current_group.domain, theme: @theme.id, controller: "questions", action: "index"), :target => "_blank"
+    = link_to t("themes.show.apply"), apply_theme_path(@theme), :method => :put
 
 -if !@theme.ready
   = I18n.t('themes.show.not_ready')
-
 
 = I18n.t('themes.show.bg_color')
 

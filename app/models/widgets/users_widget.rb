@@ -1,6 +1,6 @@
 class UsersWidget < Widget
   field :settings, :type => Hash, :default => { 'limit' => 5, :on_mainlist => true  }
-
+  before_save :limit_to_int
 
   def recent_users(group)
     group.memberships.order_by(%W[created_at desc]).limit(self[:settings]['limit']).map(&:user)

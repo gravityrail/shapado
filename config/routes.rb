@@ -181,7 +181,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :invoices
+  resources :invoices do
+    member do
+      get :success
+    end
+  end
 
   scope '/manage' do
     resources :widgets do

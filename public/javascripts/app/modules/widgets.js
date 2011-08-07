@@ -1,10 +1,10 @@
 var Widgets = {
   initialize: function(data) {
     Networks.initialize();
-    var widget = $(".widget_description");
-    widget.delegate('.delete-widget', 'click', function(event) {
+    var widget = $('.widget-container');
+    widget.delegate('a.delete-widget', 'click', function(event) {
       var link = $(this);
-      var parent = link.parents('li');
+      var parent = link.parents('.widget-container');
       var message = link.attr('data-confirm');
       if(confirm(message)) {
         parent.hide();
@@ -13,7 +13,7 @@ var Widgets = {
           type: 'post',
           data: {'_method': 'delete', format: 'js'},
           success: function(data) {
-            link.parents('li').remove();
+            parent.remove();
           }
         });
       };
@@ -23,10 +23,10 @@ var Widgets = {
     widget.delegate('.edit_widget', 'click', function(event) {
       var link = $(this);
       link.hide();
-      var parent = link.parents('li');
-      var form = parent.find('.display form');
-      var display = parent.find('.display ');
-      var preview = display.find('.preview');
+      var parent = link.parents('.widget-container');
+      var display = parent.find('.widget-info');
+      var form = display.find('form');
+      var preview = display.find('.widget');
       var text = link.text();
       var dataText = link.attr("data-text");
       if(form.length < 1) {
@@ -59,10 +59,17 @@ var Widgets = {
         if(dataText && $.trim(dataText)!='')
           link.text(dataText);
         form.toggle();
-        var preview = parent.find('.display .preview');
+        var preview = parent.find('.widget-info .widget');
         preview.toggle();
       }
       return false;
+    });
+
+    $('#widget_position').change(function() {
+      var opt = $(this).find("option:selected");
+      $('.select-widget .zone img').attr({src: '/images/zone-'+opt.val()+'.gif'});
+      $('.zone .name').text(opt.text())
+
     });
   },
   create_on_index: function(data) {

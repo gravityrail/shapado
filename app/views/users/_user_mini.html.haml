@@ -2,9 +2,9 @@
 -unless user.nil?
   - link_options = {:class => "user-link", :class => "pjax", :"data-layout" => "user"}
   -if local_assigns[:author]
-    - link_options[:rel] = "autor"
+    - link_options[:rel] = "author"
   = link_to h(user.display_name), user_path(user), link_options
-
+/#i18n
 -if user.owner_of?(current_group)
   %i.admin{:title => "admin"}
     [ Admin ]

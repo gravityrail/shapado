@@ -1,5 +1,11 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  def widget_title(widget)
+    if !(widget.settings||{})["notitle"]
+      "<h3>#{I18n.t(:"widgets.#{widget.name}.title")}</h3>"
+    end
+  end
+
   def known_languages(user, group)
     return group.languages unless logged_in?
     languages = user.preferred_languages & group.languages
@@ -221,6 +227,10 @@ module ApplicationHelper
   def article_date(article, short = true)
     out = ""
     out << format_article_date(article.created_at, short)
+  end
+
+  def edited_date(article, short = true)
+    out = ""
     out << " ("
     out << t('global.edited')
     out << " "
@@ -380,7 +390,7 @@ module ApplicationHelper
                    end
     else
       tag = Tag.where(:name => suggestion[0], :group_id => current_group.id).first
-      avatar_tag = tag_icon_image_link(tag)
+      avatar_tag = tag_icon_image_link(tag) if tag
     end
     avatar_tag
   end
@@ -440,7 +450,7 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag"
+    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
   end
 
   def widgets_context(controller, action)

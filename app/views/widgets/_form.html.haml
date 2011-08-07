@@ -2,9 +2,9 @@
   = hidden_field_tag "position", position
   .field
     .checkbox
-      = label_tag "without title"
       = check_box_tag "settings[notitle]", "true", widget.settings["notitle"]
-  = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget}
+      = label_tag "without title"
+  = render :partial => "#{widget.partial_name}_settings", :locals => {:widget => widget, :form => f}
   .buttons
     = submit_tag t("scaffold.update"), :class => "save"
     = t('scaffold.or')

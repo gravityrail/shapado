@@ -13,14 +13,9 @@
       = render "questions/answered_by", local_assigns
       %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer)}
         = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
-      
-    -if !answer.updated_by.nil?
-      %h4.author.update
-        = render :partial => "users/user_mini", :locals => {:user => answer.updated_by}      
-        %time
-          = t('activerecord.attributes.answer.updated_at', :default => "updated")
-          = t("time.ago", :time => time_ago_in_words(answer.updated_at))
-          = t("global.from", :site => answer.address_name)        
+        = link_to edited_date(answer), history_question_answer_path(@question.id, answer.id), :title => t("questions.show.history")+" (#{answer.versions_count})"
+
+
 
     .content.markdown
       %div{:itemprop => "articleBody"}
@@ -30,8 +25,8 @@
         %h3
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
-      
-      
+
+
 
     .comments
       -answer.comments.each do |comment|
