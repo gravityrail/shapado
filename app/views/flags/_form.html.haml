@@ -19,9 +19,9 @@
 
   .field.form-options
     .buttons
-      = link_to t("scaffold.cancel"), source, :class => "button cancel"
       -if flag.new?
         = f.submit t("scaffold.create"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}",  :class => "save"
       -else
         = f.submit t("scaffold.update"), :id => "flaggeable_submit_#{flaggeable.class.name}_#{flaggeable.id}",  :class => "save"
       = t("global.or")
+      = link_to t("scaffold.cancel"), source, :class => "button cancel"

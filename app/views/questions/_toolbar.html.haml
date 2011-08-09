@@ -165,9 +165,9 @@
                 = I18n.t('questions.toolbar.answer_by_mail')
 
           .buttons
-            = link_to t('scaffold.cancel'), '', :class => 'cancel'
             = submit_tag t('answers.form.submit'), :class => "save"
             = t("global.or")
+            = link_to t('scaffold.cancel'), '', :class => 'cancel'
 
     =form_tag "", :class => "share_question" do
       %h1
