@@ -1,8 +1,9 @@
 var Networks = {
-  initialize: function() {
-    $(".network-config").hide();
+  initialize: function(form) {
+    form = form || $('form')
+    form.find(".network-config").hide();
 
-    $(".network-field").each(function(index, network_field) {
+    form.find(".network-field").each(function(index, network_field) {
       network_field = $(network_field);
       var $network_select = network_field.find("select.network_select");
 

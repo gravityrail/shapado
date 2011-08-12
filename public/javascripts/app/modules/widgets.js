@@ -50,6 +50,9 @@ var Widgets = {
               return false;
             });
             display.append(form);
+            if(form.attr('id').match(/edit_group_networks_widget/)) {
+              Networks.initialize(form);
+            }
           }
         });
       } else {

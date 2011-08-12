@@ -1,13 +1,13 @@
 var Questions = {
   initialize: function() {
-    if($("section#question.main-question").length > 0) {
+    if($(".questions-controller.index").length > 0) {
       Questions.initialize_on_index();
     } else if($("section#main-question").length > 0) {
       Questions.initialize_on_show();
     }
   },
   initialize_on_index: function() {
-
+    Ui.navigate_shortcuts($(".questions-index"), ".Question");
   },
   initialize_on_show: function() {
     Ui.hide_comments_form();

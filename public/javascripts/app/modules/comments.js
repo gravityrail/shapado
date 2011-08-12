@@ -1,8 +1,13 @@
 var Comments = {
   initialize_on_question: function(data) {
+    $('.comment-votes form').hide();
+    $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
+      $(this).find(".comment-votes form").toggle();
+    });
+
     $(".content-panel").delegate(".comment-form", "submit", function(event) {
       var form = $(this);
-      var btn = form.find('button')
+      var btn = form.find('button');
       btn.hide();
       $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
         if(data.success){
@@ -12,9 +17,9 @@ var Comments = {
             btn.remove();
           }
           btn.parents(".comment-votes").children(".votes_average").html(data.average);
-          Messages.show(data.message, "notice")
+          Messages.show(data.message, "notice");
         } else {
-          Messages.show(data.message, "error")
+          Messages.show(data.message, "error");
         }
         btn.show();
       }, "json");
@@ -50,7 +55,7 @@ var Comments = {
                               Messages.show(data.message, "error")
                               if(data.status == "unauthenticate") {
                                 window.onbeforeunload = null;
-                                window.location="/users/login"
+                                window.location="/users/login";
                               }
                             }
                         },

@@ -1207,3 +1207,6 @@ input[type=submit], button, input.save {
 }
 
 
+article.active {
+  background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
+}

@@ -7,6 +7,7 @@ $(document).ready(function() {
   Notifier.initialize();
   Networks.initialize();
   LayoutEditor.initialize();
+  Widgets.initialize();
 });
 
 $(document).ready(function(){
