@@ -54,6 +54,8 @@ gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_w
 gem 'activemerchant', '1.16.0'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
+gem 'geoip'
+
 # authentication
 gem 'omniauth', '~> 0.2.6'
 gem 'oa-openid', '~> 0.2.6', :require => 'omniauth/openid'

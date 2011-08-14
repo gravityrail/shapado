@@ -160,6 +160,7 @@ GEM
     ffi (1.0.9)
     fssm (0.2.7)
     gem_plugin (0.2.3)
+    geoip (1.1.1)
     goalie (0.0.4)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -413,6 +414,7 @@ DEPENDENCIES
   eventmachine (~> 0.12.10)
   fancy-buttons (= 1.1.1)
   ffaker
+  geoip
   goalie (~> 0.0.4)
   haml
   hpricot
