@@ -52,6 +52,7 @@ ia:
       active_tooltip: Questiones que ha essite actualisate recentemente
       ask_question: Poner question
       empty: Nemo ha ancora ponite un question. Sia le prime!
+      followers_count: "%{quantity} sequitores"
       help_to_answer: Adjuta nos a responder
       hot: Popular
       hot_tooltip: Le questiones le plus active in le ultime 5 dies
@@ -66,9 +67,9 @@ ia:
       messages: 
         empty_tags: Es obligatori usar al minus un etiquetta.
         tags_not_added: Le etiquettas '%{tags}' non poteva esser addite. Es necessari haber un reputation de %{reputation_required} pro crear nove etiquettas.
-        title_too_long: Le titulo es troppo longe. Illo non pote continer plus de 100 characteres.
-        too_many_tags: Non es possibile entrar plus de 9 etiquettas.
-        too_short: Isto sembla troppo curte. Per favor usa plus de %{count} parolas pro esser plus specific.
+        title_too_long: Le titulo non pote continer plus de 100 characteres.
+        too_many_tags: Non es possibile entrar plus de 20 etiquettas.
+        too_short: Es necessari que le titulo ha plus de %{count} parolas.
     move: 
       group_label: "Transferer al gruppo con le limace:"
       submit: Transferer!
@@ -119,6 +120,7 @@ ia:
       follow_tooltip: Sequer iste question
       follow_up: Prosequer
       follow_up_description: Crear un nove question a base de iste message.
+      follow_up_of: Iste question es un continuation de
       last_activity: Ultime activitate
       more_actions: Plus actiones
       open: Aperte

@@ -6,6 +6,7 @@ ia:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Limite quotidian
         default_tags: Etiquettas predefinite
         description: Description
         domain: Dominio

@@ -2,10 +2,37 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   shared: 
     current_tags: 
       title: Valitut tunnisteet
+    empty: 
+      activities: 
+        title: Ei toimintaa toistaiseksi.
+      answers: 
+        description: 
+          text: Ole ensimmäinen!
+      default: 
+        title: Anteeksi! Ei ole paljon nähtävää.
+      questions: 
+        description: 
+          action_link: Kysy kysymys
+      themes: 
+        description: 
+          action_link: nyt
+        title: Et ole luonut teemoja vielä.
+    login_drop_down: 
+      with_user_pass: käyttäjä / salasana
+    manage_navigation: 
+      title_content: Ryhmän sisältöä
+      title_features: Ryhmän ominaisuudet
+      title_options: Ryhmän toiminnot
+    social_connect: 
+      find_friends_facebook: Etsi ystäviä Facebookista
+      find_friends_identica: Etsi ystäviä Identi.casta
+      find_friends_linked_in: Etsi ystäviä LinkedInistä
+      find_friends_twitter: Etsi ystäviä Twitteristä
     topbar: 
       admin: Ylläpitäjä
       logged_as: Kirjautunut nimellä %{login}

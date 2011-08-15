@@ -18,6 +18,8 @@ ms:
       title: Penyumbang Soalan
     current_tags: 
       description: Widget ini memaparkan tag-tag yang diikuti oleh pengguna semasa.
+    group_networks: 
+      title: Ikuti kami
     groups: 
       description: Widget ini memaparkan kumpulan terbaru
       title: Kumpulan terbaru
@@ -40,12 +42,15 @@ ms:
       title: Laman wiki
     question_badges: 
       description: Widget ini memaparkan lencana-lencana yang diraih pada soalan itu.
+      title: Lencana Soalan
     question_stats: 
       description: Widget ini memaparkan statistik tentang soalan seperti tarikh penciptaan dan jumlah kunjungan.
     question_tags: 
       description: Widget ini memaparkan tag-tag yang berkaitan pada laman semasa.
+      title: Tag Soalan
     related_questions: 
       description: Widget ini menunjukkan senarai soalan yang berkaitan dengan soalan semasa.
+      title: Soalan Berkaitan
     settings: 
       code: "Salin dan tampalkan kod ini pada tapak dan blog anda, seperti widget teks di Wordpress anda:"
       custom_external_css: "Sertakan CSS tersuai pada widget anda (disaran jika anda tidak menyertakan CSS Shapado):"
@@ -56,6 +61,8 @@ ms:
       on_show_question: Tunjukkan ketika memaparkan soalan
       on_welcome: Tunjukkan di laman Selamat Datang
       preview: "Pralihat widget:"
+    share: 
+      title: Kongsi di
     sharing_buttons: 
       description: Widget ini memaparkan butang-butang perkongsian sosial
       title: Kongsikan yang ini di
@@ -68,6 +75,7 @@ ms:
       title: Awan tag
     tag_list: 
       description: Widget ini memaparkan tag-tag yang berkaitan pada laman semasa.
+      title: Tag
     top_groups: 
       description: Widget ini memaparkan lima kumpulan paling aktif
       title: 5 kumpulan terunggul

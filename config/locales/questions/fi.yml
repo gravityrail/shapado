@@ -3,12 +3,14 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 fi: 
   activerecord: 
     attributes: 
       question: 
         answers: Vastaukset
         asked_by: "Kysytty:"
+        banned: Kielletty
         body: Runko
         closed: Suljettu
         created_at: Kysytty
@@ -25,8 +27,11 @@ fi:
   questions: 
     answer: 
       add_comment: Lisää kommentti...
+      favorite: Tallenna
+      favorite_tooltip: Lisää tämä kysymys suosikkeihisi
       flag: Merkintä
       pick_answer: Valitse ratkaisuna
+      unfavorite_tooltip: Poista tämä kysymys suosikeistasi
       unset_answer: Asettamaton ratkaisu?
     create: 
       flash_notice: Kysymyksen luonti onnistui.
@@ -35,15 +40,20 @@ fi:
     flag: 
       title: Merkitse kysymys
     form: 
+      add_attachment: Liitetiedoston lisäys
       adult_content: Tämä kysymys sisältää aikuisille tarkoitettua aineistoa.
       body_tip: Mikä on kysymys? Ole kuvaileva.
       language_tip: Valitse kieli, jolla kysymys esitetään.
+      remove_attachment: Poista
       tags_tip: Tarkenna kysymyksesi alaa lisäämällä siihen tunnisteita.
+    history: 
+      back: ← takaisin kysymykseen
     index: 
       active: Käytössä
       active_tooltip: Kysymykset, jotka on päivitetty äskettäin
       ask_question: Kysy kysymys
       empty: Kukaan ei ole vielä kysynyt yhtään kysymystä. Ole ensimmäinen!
+      followers_count: "%{quantity} seuraa"
       help_to_answer: Auta vastaamalla kysymyksiin
       hot: Suosittu
       hot_tooltip: Kysymykset, joissa on ollut eniten toimintaa viimeisen viiden päivän aikana
@@ -68,10 +78,13 @@ fi:
       group_dont_exists: Ryhmä %{group} ei ole olemassa
       success: Kysymys siirretty ryhmään %{group}
     new: 
+      description: Ole mahdollisemman kuvaileva ja lisää asiaan liittyviä tunnisteita, jotta muut löytävät kysymyksesi helposti.
       how_to_ask: Kuinka kysyä
       title: Kysy kysymys
     question: 
       accepted_tooltip: Tällä kysymyksellä on  vastaus, joka on hyväksytty
+      answer_verb: Vastaa
+      wiki_title: Wiki:%{title}
     retag: 
       title: Uudelleenmerkintä
     retag_form: 
@@ -96,11 +109,15 @@ fi:
       ban: Porttikielto
       close: Sulje
       close_reason: "Kysymys on suljettu seuraavista syistä:"
+      create_reward: Luo palkinto
       edit_request: Muokkaa pyyntöä
       flag: Merkintä
       flagged_as: Merkitty nimellä
       flags: Ilmoitettu nimellä
+      follow_tooltip: Seuraa tätä kysymystä
+      follow_up: Seuraa
       last_activity: Viimeiset tapahtumat
+      more_actions: Lisää toimintoja
       open: Avaa
       related_questions: Liittyvät kysymykset
       request_closing: Sulkemispyyntö
@@ -116,6 +133,7 @@ fi:
       solution: Ratkaisu
       to_answer_question: tähän kysymykseen vastaamiseksi
       unauthenticated_retag: Tarvitset tilin kysymysten uudelleenmerkintää varten
+      unfollow_tooltip: Lopeta tämän kysymyksen seuraaminen
       viewed: katsottu
     solve: 
       flash_notice: Kysymys oli ratkaistu.

@@ -55,6 +55,8 @@ ms:
           resend_button: Hantar semula
           revoke_button: Tarik balik
         invite: 
+          body_instructions: Tulis pesanan kepada sesiapa yang anda jemput (pilihan)
+          body_length_warning: Isi tidak boleh melebihi 400 aksara
           emails_instructions: Isikan e-mel, asingkan dengan tanda koma
           invitations: Jemputan dihantar
           invite: Jemput orang

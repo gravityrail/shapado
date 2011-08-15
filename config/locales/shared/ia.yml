@@ -6,10 +6,31 @@ ia:
   shared: 
     current_tags: 
       title: Etiquettas seligite
+    empty: 
+      activities: 
+        description: 
+          text: Iste loco se plenara automaticamente quando on comencia a usar iste sito.
+        title: Il non ha activitates al momento.
+      answers: 
+        description: 
+          text: Sia le prime!
+        title: Nemo ha ancora respondite a iste question.
+      default: 
+        description: 
+          text: Sia le prime a %{action_link}!
+        title: Regrettabilemente, il non ha multo a vider hic.
+      questions: 
+        description: 
+          action_link: poner un question
+      themes: 
+        description: 
+          action_link: ora
+          text: crear un %{action_link}
+        title: Tu non ha ancora create apparentias.
     layout: 
       footer: 
         cc_footer: Tote le contento e datos de Shapado.com es disponibile sub licentia %{cc_link}
-        powered_by: Actionate per %{source_link} %{version} sub le
+        powered_by: Actionate per %{source_link} %{version} sub le %{agpl_link}
     login_drop_down: 
       with_facebook: con Facebook
       with_google: con Google

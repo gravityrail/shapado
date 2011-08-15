@@ -42,6 +42,7 @@ mk:
       users: корисници
       welcome_from: "добредојдовте! еве што можете да правите:"
     manage: 
+      access: Пристап
       actions: дејства
       announcements: соопштенија
       constrains: ограничувања

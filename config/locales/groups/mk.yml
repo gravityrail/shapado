@@ -7,6 +7,7 @@ mk:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Дневно ограничување
         default_tags: основно зададени ознаки
         description: опис
         domain: домен

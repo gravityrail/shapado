@@ -42,6 +42,7 @@ ia:
       users: Usatores
       welcome_from: Benvenite! Tu pote
     manage: 
+      access: Accesso
       actions: Actiones
       announcements: Avisos
       constrains: Requisitos

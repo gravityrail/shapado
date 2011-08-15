@@ -38,6 +38,7 @@ nl:
       message4: "Onderwerp: %{subject}"
     new_invitation: 
       message1: Klik hier om de uitnodiging te aanvaarden %{link}
+      message2: Het team %{group}.
       subject: "%{user} heeft u uitgenodigd voor %{group}"
     report: 
       message1: Rapportage voor groep %{group}

@@ -46,6 +46,7 @@ mk:
     new_invitation: 
       message1: Стиснете тука за да ја прифатите поканата %{link}
       message2: Екипата на %{group}.
+      message3: "Порака од канителот:"
       subject: "%{user} ве покани на %{group}"
     report: 
       message1: Извештај за групата %{group}

@@ -52,6 +52,7 @@ ms:
       active_tooltip: Soalan yang dikemas kini baru-baru ini
       ask_question: Tanyakan soalan
       empty: Di sini belum ada yang tanyakan apa-apa soalan lagi. Jadilah orang pertama!
+      followers_count: "%{quantity} pengikut"
       help_to_answer: Bantu kami menjawabnya
       hot: Hangat
       hot_tooltip: Soalan yang paling giat selama 5 hari yang lalu
@@ -66,9 +67,9 @@ ms:
       messages: 
         empty_tags: Maaf, anda perlu menggunakan sekurang-kurangnya satu tag.
         tags_not_added: Tag '%{tags}' tidak dapat dibubuh. Anda memerlukan reputasi %{reputation_required} untuk membuat tag baru
-        title_too_long: Tajuknya terlalu panjang, sepatutnya tidak lebih 100 aksara.
-        too_many_tags: Maaf, anda boleh mengisikan sebanyak 9 tag sahaja.
-        too_short: Nampak terlalu pendek. Sila gunakan lebih daripada %{count} perkataan supaya lebih terperinci.
+        title_too_long: Maaf, tajuk tidak boleh mengandungi lebih daripada 100 aksara.
+        too_many_tags: Maaf, anda hanya boleh isikan maksimum 20 tag.
+        too_short: Maaf, tajuk anda perlu mempunyai lebih daripada %{count} perkataan.
     move: 
       group_label: "Pindah ke kumpulan:"
       submit: Pindahkan!
@@ -119,6 +120,7 @@ ms:
       follow_tooltip: Ikuti soalan ini
       follow_up: Susulan
       follow_up_description: Buat soalan baru berasaskan kiriman ini.
+      follow_up_of: Soalan ini ialah susulan
       last_activity: Kegiatan terkini
       more_actions: Tindakan lain
       open: Buka

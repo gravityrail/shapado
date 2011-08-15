@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: Hashar
 # Author: Od1n
 # Author: Patcito
 # Author: Verdy p
@@ -10,6 +11,8 @@ fr:
     application: 
       ask_question: Posez une question
       badges: Insignes
+      by_me: Par moi
+      contributed: Contribué
       faq: FAQ
       forgot: Oublié ?
       home: Accueil
@@ -23,6 +26,7 @@ fr:
       openid: 
         explaination: "Si vous souhaitez ouvrir un compte ou juste vous connectez, sélectionnez un fournisseur openid:"
       pages: Pages
+      preferred: Préféré
       questions: Questions
       questions_in: Questions en
       questions_tagged: taguées

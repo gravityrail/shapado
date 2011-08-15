@@ -55,6 +55,8 @@ mk:
           resend_button: Испрати пак
           revoke_button: Отповикај
         invite: 
+          body_instructions: Напишете им порака на луѓето што ги каните (незадолжително)
+          body_length_warning: Содржината може да има највеќе 400 знаци
           emails_instructions: Внесете ги адресите, одделени со запирка
           invitations: Испратени покани
           invite: Покани луѓе

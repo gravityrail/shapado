@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Verdy p
 fr: 
@@ -16,6 +17,6 @@ fr:
       delete: Enlever
       title: Actions
     create: 
-      success: Announce créée avec succès.
+      success: Votre annonce a été créée avec succès.
     index: 
       title: Annonces

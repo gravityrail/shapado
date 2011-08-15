@@ -2,18 +2,26 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   activerecord: 
     models: 
       vote: Ääni
       votes: Äänet
   votes: 
+    comments: 
+      title: 
+        no_user_no_vote: Klikkaa äänestääksesi tätä kommenttia.
+        one_vote_user: Vain sinä äänestit tätä kommenttia.
     control: 
       have_voted_down: Peru hylkäämisäänesi napsauttamalla
       have_voted_up: Peru kannatusäänesi napsauttamalla
       to_vote_down: Anna hylkäämisääni napsauttamalla
       to_vote_up: Anna kannatusääni napsauttamalla
     create: 
+      average: 
+        one: "%{count} ääni"
+        other: "%{count} ääntä"
       flash_error: Et voi äänestää tässä
       flash_notice: Kiitos äänestäsi!
       unauthenticated: Anonyymit käyttäjät eivät voi äänestää

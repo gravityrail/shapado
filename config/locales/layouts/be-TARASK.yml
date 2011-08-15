@@ -6,10 +6,17 @@
 be-TARASK: 
   layouts: 
     application: 
+      all: Усе
       ask_question: Задаць пытаньне
       badges: Узнагароды
+      by_me: Мной
+      collaborate: Супрацоўніцтва
+      contributed: Унесены
+      faq: Частыя пытаньні
+      followed: Сочаць
       forgot: Забыліся?
       home: Пачатак
+      join_group: Далучыцца да %{group}
       languages: Мовы
       log_in: Увайсьці ў сыстэму
       logged: Увайшлі як %{login}
@@ -20,9 +27,11 @@ be-TARASK:
       openid: 
         explaination: "Калі Вы жадаеце зарэгістравацца ці проста ўвайсьці ў сыстэму, калі ласка, выберыце Ваш сэрвіс OpenID:"
       pages: Старонкі
+      preferred: Пажадана
       questions: Пытаньні
       questions_in: Пытаньні ў
       questions_tagged: памечаная з
+      random_question: Выпадковае пытаньне
       search: Шукаць
       settings: Устаноўкі
       signup: Зарэгіструйцеся
@@ -33,6 +42,7 @@ be-TARASK:
       users: Карыстальнікі
       welcome_from: Вітаем! Вы можаце
     manage: 
+      access: Доступ
       actions: Дзеяньні
       announcements: Аб’явы
       constrains: Патрабаваньні
@@ -40,11 +50,13 @@ be-TARASK:
       dashboard: Панэль інструмэнтаў
       domain: Дамэн
       general: Агульныя
+      invitations: Запрашэньні
       members: Удзельнікі
       pages: Старонкі
       properties: Уласьцівасьці
       reputation: Рэпутацыя
       rewards: Узнагароды
+      social: Сацыяльны
       stats: Статыстыка
       theme: Афармленьне
       widgets: Віджэты

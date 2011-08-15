@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   admin: 
     moderate: 
@@ -14,3 +15,17 @@ fi:
         item_title: Otsikko
         need_tags: Uudelleenmerkintä
         title: Valvo
+  moderate: 
+    questions: 
+      flagged: 
+        banned: Kielletty
+        banned_tooltip: Näytä vain kielletyt kysymykset
+        filters: "Suodattimet:"
+        unbanned: Sallinut
+      subtabs: 
+        flagged: Merkitty
+        retag: Tarvitsee tunnisteita
+        retag_tooltip: Kysymykset ilman tunnisteita
+        to_close: Sulkemispyynnöt
+        to_close_tooltip: Kysymyksiä, joita käyttäjät ovat pyytäneet suljettaviksi
+        to_open: Avaamispyynnöt

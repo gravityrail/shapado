@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Hashar
 # Author: McDutchie
 # Author: Od1n
 # Author: Patcito
@@ -22,6 +23,7 @@ fr:
     current: Actuel
     from: depuis %{site}
     group_not_found: La page %{url} n'existe pas
+    next_button: Suivant
     or: ou
     permission_denied: Permission refusée
     please_login: Ouvrez une session s'il vous plait
@@ -29,6 +31,7 @@ fr:
     previous: Précédent
     privacy: Confidentialité
     share: Partager
+    size: Taille
     tos: CGU
     what_to_do: Que voulez-vous faire ?
   models: 
@@ -41,6 +44,9 @@ fr:
   pagination: 
     next: Suivant &raquo;
     previous: "&laquo; Précédent"
+  roles: 
+    moderator: Modérateur
+    owner: Propriétaire
   scaffold: 
     add: Ajouter
     back: Retour

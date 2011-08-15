@@ -7,6 +7,10 @@ nl:
   shared: 
     current_tags: 
       title: Geselecteerde labels
+    empty: 
+      themes: 
+        description: 
+          action_link: nu
     login_drop_down: 
       with_facebook: met Facebook
       with_google: met Google

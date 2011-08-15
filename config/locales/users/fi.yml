@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 fi: 
   activerecord: 
     attributes: 
@@ -46,6 +47,9 @@ fi:
       vote_up: antaa kannatusäänen
     anonymous_form: 
       never_shown: ei koskaan näytetty
+    change_password: 
+      submit: Vaihda salasanani
+      title: Vaihda salasana
     create: 
       flash_error: Emme valitettavasti voineet perustaa kyseistä tiliä. Yritä uudelleen tai ota yhteyttä järjestelmänvalvojaan (linkki yllä).
       flash_notice: Kiitos rekisteröitymisestä!
@@ -70,6 +74,7 @@ fi:
       filter: Etsi käyttäjiä
       name: Nimi
       name_tooltip: Käyttäjät aakkosjärjestyksessä
+      near: Lähellä sinua
       newest: Uusin
       newest_tooltip: Käyttäjät, jotka juuri liittyivät
       oldest: Vanhin
@@ -81,14 +86,24 @@ fi:
       errors: 
         reputation_needed: Tarvitset %{min_reputation} mainepistettä, jotta voisit %{action}.
     new: 
+      join_group: Liity ryhmään %{group}
       submit: Rekisteröidy
       title: Rekisteröidy uutena käyttäjänä
     show: 
+      edit_profile: Muokkaa profiilia
       follow: Seuraa
       followers: Seuraajat
       following: Seurattavat
       title: Käyttäjä %{user}
       unfollow: Älä seuraa
       views: näyttökertaa
+    top_user: 
+      connect: Yhdistä
+      my_karma: "Karmani: %{karma}"
+      profile: Profiili
     unfollow: 
       flash_notice: Käyttäjä %{user} poistettiin ystävistäsi
+    user_bar: 
+      create_account: Luo käyttäjätunnus
+      not_logged_in: Et ole kirjautunut sisään
+      signed_as: Olet sisäänkirjautuneena käyttäjätunnuksella

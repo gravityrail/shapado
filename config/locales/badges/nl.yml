@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Ewout124
 # Author: McDutchie
 # Author: Protozoan
 # Author: SPQRobin
@@ -87,6 +88,8 @@ nl:
       interesting_person: 
         description: Heeft meer dan tien volgers
         name: Interessant persoon
+      investor: 
+        name: Investeerder
       merit_medal: 
         description: Heeft tweehonderd positieve stemmen gekregen
         name: Medaille van verdienste

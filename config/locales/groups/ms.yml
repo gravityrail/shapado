@@ -6,6 +6,7 @@ ms:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Had Harian
         default_tags: Tag sediaan
         description: Keterangan
         domain: Domain
