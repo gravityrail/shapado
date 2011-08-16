@@ -12,7 +12,7 @@ class Moderate::QuestionsController < ApplicationController
     options = {:banned => false}
 
     @questions = current_group.questions.where(options.merge(:tags => {:$size => 0})).
-                                         paginate(paginate_opts(params))
+                                         page(params["page"])
   end
 
   def flagged
@@ -26,7 +26,7 @@ class Moderate::QuestionsController < ApplicationController
 
     @questions = current_group.questions.where(options).
                             order_by("flags_count desc").
-                            paginate(paginate_opts(params))
+                            page(params["page"])
   end
 
   def to_close
@@ -35,7 +35,7 @@ class Moderate::QuestionsController < ApplicationController
     @questions = current_group.questions.
                             where(options.merge(:close_requests_count.gt => 0)).
                             order_by("close_requests_count desc").
-                            paginate(paginate_opts(params))
+                            page(params["page"])
   end
 
   def to_open
@@ -44,7 +44,7 @@ class Moderate::QuestionsController < ApplicationController
     @questions = current_group.questions.
                         where(options.merge(:open_requests_count.gt => 0)).
                         order_by("open_requests_count desc").
-                        paginate(paginate_opts(params))
+                        page(params["page"])
   end
 
   def manage

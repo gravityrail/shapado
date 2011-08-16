@@ -3,7 +3,7 @@ class PagesWidget < Widget
   before_save :limit_to_int
 
   def recent_pages(group)
-    group.pages.order_by(:created_at.desc).where(:wiki => true).paginate(:per_page => self[:settings]['limit'], :page => 1)
+    group.pages.order_by(:created_at.desc).where(:wiki => true).limit(self[:settings]['limit'])
   end
 
   protected

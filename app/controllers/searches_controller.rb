@@ -34,7 +34,7 @@ class SearchesController < ApplicationController
 
         @highlight = @questions.parsed_query[:tokens].to_a
       else
-        @questions = Question.where(options).paginate(paginate_opts(params))
+        @questions = Question.where(options).page(params["page"])
       end
     else
       @questions = []

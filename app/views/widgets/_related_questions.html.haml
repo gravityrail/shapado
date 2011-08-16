@@ -2,7 +2,7 @@
 
 - if !related_questions.empty?
   .module.widget.block{:class => 'widget-related_questions'}
-    = raw widget_title(widget)
+    = render "widgets/header", :widget => widget
     %aside
       %ul.list
         -related_questions.each do |rq|

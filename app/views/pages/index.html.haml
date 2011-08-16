@@ -21,4 +21,4 @@
             %li
               =link_to t("scaffold.destroy"), page_path(page.id), :class => "important", :method => :delete, :confirm => t("scaffold.sure", :model => t("activerecord.models.page"))
 
-  = will_paginate @pages
+  = paginate @pages

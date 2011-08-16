@@ -14,8 +14,7 @@ class PagesController < ApplicationController
       options[:wiki] = true
     end
 
-    @pages = current_group.pages.where(options).
-                                 paginate(paginate_opts(params))
+    @pages = current_group.pages.where(options).page(params["page"])
 
     set_page_title(I18n.t('pages.index.wiki'))
 

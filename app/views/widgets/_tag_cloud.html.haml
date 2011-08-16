@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-tag_cloud'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     .active-tags
       - self.current_tags.each do |tag|

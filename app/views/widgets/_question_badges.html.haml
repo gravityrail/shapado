@@ -1,6 +1,6 @@
 - if @question.badges.size > 0
   .module.widget.block{:class => 'widget-question_badges'}
-    = raw widget_title(widget)
+    = render "widgets/header", :widget => widget
     %aside
       %ul.list
         -@question.badges.each do |badge|

@@ -4,6 +4,7 @@ class Tag
   include MongoidExt::Storage
 
   identity :type => String
+  paginates_per 100
 
   field :name,  :type => String
   field :description, :type => String

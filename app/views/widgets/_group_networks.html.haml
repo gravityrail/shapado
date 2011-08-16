@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-group_networks'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     %ul
       -widget.networks.each do |name, data|

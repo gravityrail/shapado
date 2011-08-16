@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-adsense'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     = widget.ad
 .clear

@@ -1,6 +1,7 @@
 - recent_users = widget.recent_users(current_group)
 - if recent_users.count > 0
   .module.widget.block{:class => 'widget-users'}
+    = render "widgets/header", :widget => widget
     %aside
       %ul.list
         - recent_users.each do |user|
