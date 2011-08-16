@@ -42,8 +42,8 @@ en:
       description: "This widget displays the list of wiki pages."
       new: Add new page
     adsense:
-      title: Adsense
-      description: "This widget allows you to display Google Adsense ads."
+      title: AdSense
+      description: "This widget allows you to display Google AdSense ads."
     settings:
       limit: "Quantity to display:"
       custom_html: "Custom html:"
