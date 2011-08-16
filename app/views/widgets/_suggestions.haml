@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-suggestions'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   = render :partial => "shared/suggestions", :locals => {:limit => 5, :no_title => true}
   %footer
     = link_to t("scaffold.more"), suggestions_path

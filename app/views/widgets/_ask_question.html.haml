@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-ask_question'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   - @question = Question.new
   = show_flash_messages(:class => "flash", :markdown => true)
   .widget-ask_question.module

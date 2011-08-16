@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-contributors'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     - @question.contributors.each do |user|
       %a{ :href => user_path(user), :class => "pjax", :"data-layout" => "user"}

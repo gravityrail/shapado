@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-pages'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     %ul.list
       - widget.recent_pages(current_group).each do |page|

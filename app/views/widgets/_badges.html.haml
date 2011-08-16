@@ -1,6 +1,7 @@
 - recent_badges = widget.recent_badges(current_group)
 - if recent_badges.count > 0
   .module.widget.block{:class => 'widget-badges'}
+    = render "widgets/header", :widget => widget
     %section
       %ul
         - recent_badges.each do |badge|

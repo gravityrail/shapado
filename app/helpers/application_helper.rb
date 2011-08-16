@@ -1,11 +1,5 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
-  def widget_title(widget)
-    if !(widget.settings||{})["notitle"]
-      "<h3>#{I18n.t(:"widgets.#{widget.name}.title")}</h3>"
-    end
-  end
-
   def known_languages(user, group)
     return group.languages unless logged_in?
     languages = user.preferred_languages & group.languages
