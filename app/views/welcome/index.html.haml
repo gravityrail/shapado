@@ -7,7 +7,7 @@
   .navtitle
     = t(".recent_questions", :default => "Recent Questions")
     -if @questions
-      == (#{@questions.total_entries})
+      == (#{@questions.total_count})
 
   %ul{:style => "display: inline"}
     %li.activity

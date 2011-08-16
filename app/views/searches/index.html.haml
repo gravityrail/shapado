@@ -2,7 +2,7 @@
   %section
     %h1
       -unless @questions.blank?
-        = t('.found_results', :quantity => @questions.total_entries)
+        = t('.found_results', :quantity => @questions.total_count)
       -else
         = t('.advanced_search')
 
