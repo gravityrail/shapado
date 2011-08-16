@@ -24,7 +24,7 @@ gem "sass"
 gem 'compass', '0.11.1'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
+gem 'kaminari'
 
 # mongodb
 gem 'bson', '1.3.0'

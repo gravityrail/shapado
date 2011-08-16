@@ -9,5 +9,4 @@
     .tag-list
       = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag'
 
-= will_paginate @questions
-
+= paginate @questions

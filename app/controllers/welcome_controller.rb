@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
     add_feeds_url(url_for({:controller => 'questions', :action => 'index',
                             :format => "atom"}.merge(feed_params)), t("feeds.questions"))
 
-    @questions = Question.minimal.where(conditions).order_by(order).paginate(paginate_opts(params))
+    @questions = Question.minimal.where(conditions).order_by(order).page(params["page"])
   end
 
   def feedback

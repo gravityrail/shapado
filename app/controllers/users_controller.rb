@@ -46,7 +46,7 @@ class UsersController < ApplicationController
       order = %w(reputation desc)
     end
 
-    @memberships = current_group.memberships.where(conditions).order_by(order).paginate(paginate_opts(params))
+    @memberships = current_group.memberships.where(conditions).order_by(order).page(params["page"])
 
     respond_to do |format|
       format.html
@@ -103,7 +103,7 @@ class UsersController < ApplicationController
                                        :banned => false,
                                        :anonymous => false).
                        order_by(current_order).
-                       paginate(paginate_opts(params))
+                       page(params["page"])
 
     respond_to do |format|
       format.html
@@ -129,7 +129,7 @@ class UsersController < ApplicationController
                                      :banned => false,
                                      :anonymous => false).
                               order_by(current_order).
-                              paginate(paginate_opts(params))
+                              page(params["page"])
     respond_to do |format|
       format.html{render :show}
     end
@@ -138,23 +138,23 @@ class UsersController < ApplicationController
   def follows
     case @active_subtab.to_s
     when "following"
-      @resources = @user.following.paginate(paginate_opts(params))
+      @resources = @user.following.page(params["page"])
     when "followers"
-      @resources = @user.followers.paginate(paginate_opts(params))
+      @resources = @user.followers.page(params["page"])
     when "answers"
       @resources = Answer.where(:favoriter_ids.in => [@user.id],
                                 :banned => false,
                                 :group_id => current_group.id,
                                 :anonymous => false).
       order_by(current_order).
-      paginate(paginate_opts(params))
+      page(params["page"])
     else
       @resources = Question.where(:follower_ids.in => [@user.id],
                                 :banned => false,
                                 :group_id => current_group.id,
                                 :anonymous => false).
                           order_by(current_order).
-                          paginate(paginate_opts(params))
+                          page(params["page"])
     end
     respond_to do |format|
       format.html{render :show}
@@ -173,7 +173,7 @@ class UsersController < ApplicationController
     when "pages"
       conds[:trackable_type] = "Page"
     end
-    @resources = @user.activities.where(conds).paginate(paginate_opts(params))
+    @resources = @user.activities.where(conds).page(params["page"])
     respond_to do |format|
       format.html{render :show}
     end
@@ -433,7 +433,7 @@ class UsersController < ApplicationController
     raise Error404 unless @user
     set_page_title(t("users.show.title", :user => @user.login))
     @badges = @user.badges.where(:group_id => current_group.id).
-                           paginate(paginate_opts(params))
+                           page(params["page"])
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
 
     @user.viewed_on!(current_group, request.remote_ip) if @user != current_user && !is_bot?

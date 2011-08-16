@@ -7,8 +7,7 @@ class MembersController < ApplicationController
 
   def index
     @group = current_group
-    @members = current_group.memberships.order_by([%W[role asc], %W[reputation desc]]).
-                                         paginate(paginate_opts(params))
+    @members = current_group.memberships.order_by([%W[role asc], %W[reputation desc]]).page(params["page"])
 
     @member = User.new
     @membership = Membership.new
@@ -30,7 +29,7 @@ class MembersController < ApplicationController
       @member = User.new(:login => params[:user_id])
     end
 
-    @members = @group.users.paginate(paginate_opts(params))
+    @members = @group.users.page(params["page"])
     render :index
   end
 

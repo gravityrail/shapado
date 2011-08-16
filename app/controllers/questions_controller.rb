@@ -144,7 +144,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.where(options).
                                 order_by(current_order).
                                 without(:_keywords).
-                                paginate(paginate_opts(params))
+                                page(params["page"])
 
     @answer = Answer.new(params[:answer])
 
@@ -392,9 +392,7 @@ class QuestionsController < ApplicationController
         @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
-        @answers = @question.answers.where(options).
-                                    paginate(paginate_opts(params)).
-                                    order_by(current_order)
+        @answers = @question.answers.where(options).page(params["page"]).order_by(current_order)
         @answer = Answer.new
 
         format.html { render :action => "show" }
@@ -432,7 +430,7 @@ class QuestionsController < ApplicationController
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
                             order_by(current_order).
-                            paginate(paginate_opts(params))
+                            page(params["page"])
         @answer = Answer.new
 
         format.html { render :action => "show" }

@@ -9,9 +9,9 @@ class AnswersController < ApplicationController
     exclude = [:votes, :_keywords]
     if params[:question_id]
       @question = current_group.questions.by_slug(params[:question_id])
-      @answers = @question.answers.without(exclude).paginate(paginate_opts(params))
+      @answers = @question.answers.without(exclude).page(params["page"])
     else
-      @answers = current_group.answers.without(exclude).paginate(paginate_opts(params))
+      @answers = current_group.answers.without(exclude).page(params["page"])
     end
 
     respond_to do |format|

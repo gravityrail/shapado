@@ -3,7 +3,7 @@ class GroupsWidget < Widget
   before_save :limit_to_int
 
   def recent_groups
-    Group.where({:state => "active", :private => false, :isolate => false}).order_by(:created_at.desc).paginate(:per_page => self[:settings]['limit'], :page => 1)
+    Group.where({:state => "active", :private => false, :isolate => false}).order_by(:created_at.desc).limit(self[:settings]['limit'])
   end
 
   protected

@@ -21,16 +21,9 @@ GIT
 
 GIT
   remote: git://github.com/jdpace/PDFKit.git
-  revision: 3dd4cef8addb650b90ab3027013667af84ca8f39
+  revision: f468adae4bc4e991614a0d0e0a29efeef3e817c9
   specs:
     pdfkit (0.5.2)
-
-GIT
-  remote: git://github.com/mislav/will_paginate.git
-  revision: db32fcf2020db3bb894d472cf620ed6a8e4c18ab
-  branch: rails3
-  specs:
-    will_paginate (3.0.pre4)
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
@@ -44,7 +37,7 @@ GIT
 
 GIT
   remote: git://github.com/thedarkone/rails-dev-boost.git
-  revision: 18dbce9593808eb2a4f5b4eb1135d8a261327302
+  revision: 46fd99659f6a192f0a60557f459ca70dbfac3e6e
   specs:
     rails-dev-boost (0.1.1)
 
@@ -58,7 +51,7 @@ GIT
 
 GIT
   remote: https://git.gitorious.org/social_widgets/social_widgets.git
-  revision: 2595d58c73d3ae91b7bcef25f5a36af5ba632c8b
+  revision: e6f1f40d7027c3bd2ec50714cdb285d409170f79
   specs:
     social_widgets (0.1.0)
       rails
@@ -70,7 +63,7 @@ GEM
       Platform (>= 0.4.0)
       open4
     Platform (0.4.0)
-    ZenTest (4.6.0)
+    ZenTest (4.6.1)
     aaronh-chronic (0.3.9)
     abstract (1.0.0)
     actionmailer (3.0.8)
@@ -110,7 +103,7 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (2.1.4)
-    braintree (2.10.1)
+    braintree (2.10.2)
       builder (>= 2.0.0)
     bson (1.3.0)
     bson_ext (1.3.0)
@@ -122,7 +115,7 @@ GEM
       sass
       sinatra (~> 1.2.6)
     builder (2.1.2)
-    capistrano (2.6.0)
+    capistrano (2.8.0)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -130,7 +123,7 @@ GEM
       net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
-    chunky_png (1.2.0)
+    chunky_png (1.2.1)
     columnize (0.3.4)
     compass (0.11.1)
       chunky_png (~> 1.1)
@@ -148,7 +141,7 @@ GEM
     diff-lcs (1.1.2)
     differ (0.1.2)
     dynamic_form (1.1.4)
-    em-websocket (0.3.0)
+    em-websocket (0.3.1)
       addressable (>= 2.1.1)
       eventmachine (>= 0.12.9)
     encryptor (1.1.3)
@@ -160,7 +153,7 @@ GEM
     faraday (0.6.1)
       addressable (~> 2.2.4)
       multipart-post (~> 1.1.0)
-      rack (>= 1.1.0, < 2)
+      rack (< 2, >= 1.1.0)
     faraday_middleware (0.6.5)
       faraday (~> 0.6.0)
     ffaker (1.8.0)
@@ -178,6 +171,8 @@ GEM
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
     json (1.5.3)
+    kaminari (0.12.4)
+      rails (>= 3.0.0)
     kgio (2.6.0)
     launchy (0.4.0)
       configuration (>= 0.0.5)
@@ -205,10 +200,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mechanize (2.0.1)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-digest_auth (>= 1.1.1, ~> 1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (~> 0.0, >= 0.0.9)
+      webrobots (>= 0.0.9, ~> 0.0)
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)
@@ -221,7 +216,7 @@ GEM
     multi_xml (0.2.2)
     multipart-post (1.1.3)
     net-http-digest_auth (1.1.1)
-    net-http-persistent (1.8)
+    net-http-persistent (1.8.1)
     net-ldap (0.2.2)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
@@ -312,7 +307,7 @@ GEM
       remarkable_activemodel (~> 4.0.0.alpha4)
     rest-client (1.6.3)
       mime-types (>= 1.16)
-    ricodigo-capistrano-recipes (0.1.7)
+    ricodigo-capistrano-recipes (0.1.8)
       capistrano (>= 2.5.9)
       capistrano-ext (>= 1.2.1)
       magent
@@ -347,12 +342,12 @@ GEM
     ruby-stemmer (0.8.5)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
-    ruby_parser (2.0.6)
+    ruby_parser (2.1.0)
       sexp_processor (~> 3.0)
     rubyntlm (0.1.1)
     sanitize (1.2.1)
       nokogiri (~> 1.4.1)
-    sass (3.1.5)
+    sass (3.1.7)
     sexp_processor (3.0.5)
     simple_oauth (0.1.5)
     simplecov (0.4.2)
@@ -360,7 +355,7 @@ GEM
     simplecov-html (0.4.5)
     sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (>= 1.2.2, < 2.0)
+      tilt (< 2.0, >= 1.2.2)
     state_machine (0.10.4)
     subexec (0.0.4)
     thor (0.14.6)
@@ -390,7 +385,7 @@ GEM
     uuidtools (2.1.2)
     warden (1.0.5)
       rack (>= 1.0)
-    webrobots (0.0.10)
+    webrobots (0.0.11)
       nokogiri (>= 1.4.4)
     whatlanguage (1.0.0)
     whenever (0.6.8)
@@ -422,6 +417,7 @@ DEPENDENCIES
   haml
   hpricot
   jammit
+  kaminari
   machinist_mongo
   magent (= 0.6.2)
   magic
@@ -465,4 +461,3 @@ DEPENDENCIES
   uuidtools (~> 2.1.1)
   whatlanguage (= 1.0.0)
   whenever
-  will_paginate!
