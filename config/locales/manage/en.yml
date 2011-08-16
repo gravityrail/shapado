@@ -24,7 +24,7 @@ en:
         tag_your_tweets_title: Add tags to your tweets
         post_to_twitter_title: Post all questions and answers to Twitter automatically
         ask_from_twitter_title: Allow your users to ask questions from Twitter
-        facebook_app_title: Configure your Facebook app that will be used to allow your users to login with their facebook account
+        facebook_app_title: Configure your Facebook app that will be used to allow your users to login with their Facebook account
         twitter_account_title: Configure your Twitter account that will be used to post to Twitter
       content:
         title: Custom content
