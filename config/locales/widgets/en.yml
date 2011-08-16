@@ -6,7 +6,7 @@ en:
       notice: 'The widget was successfully updated.'
     index:
       title: Manage sidebar widgets
-      description: Use the arrows to move your widgets
+      description: Use the arrows to move your widgets.
       welcome_widgets: Welcome
       mainlist_widgets: Main list
       question_widgets: Question
@@ -61,7 +61,7 @@ en:
 
     sharing_buttons:
       title: "Share this on"
-      description: "This widget will display social sharing buttons"
+      description: "This widget will display social sharing buttons."
     mod_info:
       description: "This widget shows information relevant to moderators such as flags and reporting requests."
     question_tags:
@@ -88,13 +88,13 @@ en:
       view_question: "<p>You can view it <a href=\"%{question}\">here</a> or ask another one below.</p>"
     suggestions:
       title: "People And Tags To Follow"
-      description: "Suggestion of friends and tags for the user to follow"
+      description: "Suggestion of friends and tags for the user to follow."
       followed_by: "Followed by %{user}"
     contributors:
       title: "Question's Contributors"
     group_networks:
       title: "Follow us"
-      description: "This widget displays a list of social network links so that you users can follow you there"
+      description: "This widget displays a list of social network links so that your users can follow you there."
     share:
       title: "Share in"
-      description: "This widget displays various buttons to share the current page to social networks"
+      description: "This widget displays various buttons to share the current page to social networks."
