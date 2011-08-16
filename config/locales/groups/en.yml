@@ -63,8 +63,8 @@ en:
       group: Group
       default_tags_message: "You cannot have more than 10 default tags"
       reputation_rewards_key: "Invalid key"
-      reputation_rewards_ask_constrain: "Constrain for asking should be negative"
-      reputation_rewards_answer_constrain: "Constrain to answer rewards should be negative"
+      reputation_rewards_ask_constrain: "Constraint for asking should be negative"
+      reputation_rewards_answer_constrain: "Constraint to answer rewards should be negative"
     attributes:
       group:
         name: Name
