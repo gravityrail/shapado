@@ -1,0 +1,9 @@
+
+= form_tag ban_moderate_question_url(question), :class => "form", :method => :put do
+  = render "flags/list", :flaggeable => question
+  -if question.banned
+    = hidden_field_tag "undo", "1"
+  .buttons
+    = submit_tag question.banned ? t("questions.show.unban", :default => "Unban") : t("questions.show.ban"), :class => "save"
+    = t("global.or")
+    = link_to t('scaffold.cancel'), question_path(question), :class => "button cancel"
