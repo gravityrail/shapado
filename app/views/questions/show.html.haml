@@ -12,6 +12,7 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
+        #18n
         By:
         = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
         = t('activerecord.attributes.question.created_at')
@@ -81,7 +82,7 @@
   -cache_for(:question_answers, @question.id) do
     %header
       %h3
-        = t(".answers_title", :count => @answers.total_count)
+        = t("questions.question.has_answers", :count => @answers.total_count)
 
     %section.filters
       %ul{:class => @active_subtab.to_s}
