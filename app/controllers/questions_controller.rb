@@ -439,51 +439,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def close
-    @question = Question.by_slug(params[:id])
-
-    if @question.reward && @question.reward.active
-      flash[:error] = I18n.t('questions.close.failure')
-    else
-      @question.closed = true
-      @question.closed_at = Time.zone.now
-      @question.close_reason_id = params[:close_request_id]
-    end
-
-    respond_to do |format|
-      if @question.save
-        sweep_question(@question)
-
-        format.html { redirect_to question_path(@question) }
-        format.json { head :ok }
-      else
-        flash[:error] = @question.errors.full_messages.join(", ")
-        format.html { redirect_to question_path(@question) }
-        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
-      end
-    end
-  end
-
-  def open
-    @question = current_group.questions.by_slug(params[:id])
-
-    @question.closed = false
-    @question.close_reason_id = nil
-
-    respond_to do |format|
-      if @question.save
-        sweep_question(@question)
-
-        format.html { redirect_to question_path(@question) }
-        format.json { head :ok }
-      else
-        flash[:error] = @question.errors.full_messages.join(", ")
-        format.html { redirect_to question_path(@question) }
-        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
-      end
-    end
-  end
-
   def follow
     @question = current_group.questions.by_slug(params[:id])
     @question.add_follower(current_user)

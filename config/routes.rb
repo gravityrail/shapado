@@ -120,10 +120,7 @@ Rails.application.routes.draw do
       put :move_to
       get :retag
       put :retag_to
-      get :close
-      put  :open
       get :remove_attachment
-
       get :twitter_share
     end
 
@@ -227,6 +224,16 @@ Rails.application.routes.draw do
         get :to_close
         get :to_open
         post :manage
+      end
+      member do
+        get :banning
+        put :ban
+        put :unban
+
+        get :closing
+        put :close
+        get :opening
+        put :open
       end
     end
     resources :answers do
