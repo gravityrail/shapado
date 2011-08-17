@@ -11,6 +11,7 @@ fr:
       question: 
         answers: Réponses
         asked_by: Posée par
+        banned: Bannie
         body: Corps
         closed: Fermée
         created_at: Posée

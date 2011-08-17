@@ -6,10 +6,31 @@ mk:
   shared: 
     current_tags: 
       title: одбрани ознаки
+    empty: 
+      activities: 
+        description: 
+          text: Ова место ќе се исполни автоматски кога посетителите ќе почнат да го користат мрежното место.
+        title: Досега нема активности.
+      answers: 
+        description: 
+          text: Бидете први!
+        title: Досега никој нема одговорено на прашањево.
+      default: 
+        description: 
+          text: Бидете првиот што ќе %{action_link}!
+        title: Нажалост, тука нема многу што да се види.
+      questions: 
+        description: 
+          action_link: постави прашање
+      themes: 
+        description: 
+          action_link: сега
+          text: создајте %{action_link}
+        title: Засега немате создадено ниеден изглед.
     layout: 
       footer: 
         cc_footer: Сите содржини и податоци на Shapado.com се достапни под лиценцата %{cc_link}
-        powered_by: Овозможено од %{source_link} %{version} под
+        powered_by: Овозможено од %{source_link} %{version} под %{agpl_link}
     login_drop_down: 
       with_facebook: со Facebook
       with_google: со Google

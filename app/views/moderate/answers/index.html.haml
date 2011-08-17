@@ -11,7 +11,7 @@
         %p
           = link_to answer.body, question_answer_path(answer.question, answer)
 
-    = will_paginate @answers
+    = paginate @answers
 
     .buttons
       = submit_tag "unban"

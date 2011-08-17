@@ -8,7 +8,7 @@ en:
       flash_notice: "Comment was successfully updated."
     shared:
       add_comment: "Add comment..."
-      comment_submit: "Comment"
+      comment_submit: Comment
       said: said
       reply: Reply
   models:

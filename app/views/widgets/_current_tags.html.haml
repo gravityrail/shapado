@@ -1,6 +1,6 @@
 - unless self.current_tags.empty?
   .module.widget.block{:class => 'widget-current_tags'}
-    = raw widget_title(widget)
+    = render "widgets/header", :widget => widget
     %aside.tag-list
       - self.current_tags.each do |tag|
         %span.tag{:class => "tag_#{h(tag)}"}

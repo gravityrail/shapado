@@ -14,13 +14,15 @@ be-TARASK:
         fb_button: Уключыць кнопку Facebook Like (адмоўна ўплывае на прыватнасьць)
         forum: Дазволіць болей аднаго адказу на карыстальніка
         group_created_by: створаная
-        language: Мова
+        language: Мова па змоўчваньні
+        languages: Дадатковыя мовы
         legend: Легенда
         logo: Лягатып
         may_contain_adult_content: Гэты сайт можа ўтрымліваць зьмест для дарослых
         name: Назва
         owner: Гэтая група была створаная %{login}
         registered_only: Толькі зарэгістраваныя людзі могуць зайсьці на сайт
+        signup_type: Якім спосабам Вашыя карыстальнікі могуць уваходзіць у сыстэму
         state: Стан
         subdomain: URL-адрас
         wysiwyg_editor: Уключыць рэдактар зручны для карыстальніка
@@ -29,8 +31,13 @@ be-TARASK:
       group: Група
       groups: Групы
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Прабачце, нешта пайшло ня так. Калі ласка, паспрабуйце яшчэ раз.
+      success_twitter_connection: Віншуем, Вы пасьпяхова злучыліся з Вашым рахункам на Twitter!
     create: 
       flash_notice: Вашая група была пасьпяхова створаная. Цяпер Вы можаце пачаць яе ўстанаўліваць.
+    edit: 
+      title: Рэдагаваць Вашую групу
     form: 
       access: Устаноўкі доступу
       analytics_engine: Рухавік Analytics
@@ -45,6 +52,10 @@ be-TARASK:
       legend_legend: Гэта будзе выкарыстоўвацца ў загалоўку. Вы маеце 40 сымбаляў.
       logo_legend: Вы можаце загрузіць лягатып групы. Максымальны памер файла складае 2 Мб.
       members_only: Толькі сябры групы будуць мець доступ да гэтай групы
+      signup_all: Усе (карыстальнікі могуць уваходзіць ствараць рахункі з электроннай поштай, ці выкарыстоўваць рахунік OpenId, Facebook, Twitter і г. д.)
+      signup_email: Толькі электронная пошта (карыстальнікі могуць толькі ствараць рахунак з адрасам электроннай пошты/паролям)
+      signup_noemail: Без электроннай пошты/паролю (карыстальнікі могуць выкарыстоўваць рахункі OpenId, Facebook, Twitter)
+      signup_social: Толькі сацыяльныя сеткі (карыстальнікі могуць выкарыстоўваць рахункі Facebook, Twitter, LinkedIn і Identica)
       website_analytics_id: Ідэнтыфікатар аналітыкі сайта
     group: 
       about: Пра
@@ -55,6 +66,8 @@ be-TARASK:
       disallow_ads: Забараніць рэкляму
     index: 
       actives: Актыўныя
+      create_your_own: стварыць уласную групу
+      description: Гэта сьпіс створаных публічных групаў. Карыстайцеся функцыяй пошуку каб знайсьці групу. Таксама Вы можаце %{link}.
       filter: Пошук групаў
       most_active: Самыя актыўныя
       name: Назва
@@ -71,3 +84,5 @@ be-TARASK:
       group_closed: Гэтая група была закрытая.
       title: Пра %{name}
       visit_group: Наведаць гэтую групу
+    top_grouplist: 
+      active_site: "Актыўны сайт:"

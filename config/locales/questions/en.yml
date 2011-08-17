@@ -8,7 +8,7 @@ en:
     answer_toolbar:
       flagged_by_you: Flagged by you
     disallow_spam:
-      error: "You need to wait 20 senconds before posting another question."
+      error: "You need to wait 20 seconds before posting another question."
     history:
       back: "← back to question"
     index:
@@ -175,4 +175,3 @@ en:
         updated_by: updated by
         closed: Closed
         banned: Banned
-

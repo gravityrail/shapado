@@ -24,7 +24,7 @@ en:
         tag_your_tweets_title: Add tags to your tweets
         post_to_twitter_title: Post all questions and answers to Twitter automatically
         ask_from_twitter_title: Allow your users to ask questions from Twitter
-        facebook_app_title: Configure your Facebook app that will be used to allow your users to login with their facebook account
+        facebook_app_title: Configure your Facebook app that will be used to allow your users to login with their Facebook account
         twitter_account_title: Configure your Twitter account that will be used to post to Twitter
       content:
         title: Custom content
@@ -85,7 +85,7 @@ en:
         twitter_account:
           twitter_account: Twitter account
           connect_to_other_twitter: Click here to connect a different Twitter account to your group
-          legend_with_account: 'Your twitter account <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> will be used to post new questions and answers to Twitter. You can configure what gets sent to Twitter <a href="%{link}">here</a>.'
+          legend_with_account: 'Your Twitter account <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> will be used to post new questions and answers to Twitter. You can configure what gets sent to Twitter <a href="%{link}">here</a>.'
           disconnect_twitter_group: Disconnect this group from Twitter
           connect_to_twitter: Click here to connect a Twitter account to your group
           legend: This account will be used to post new questions and answers to Twitter.

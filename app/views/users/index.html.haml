@@ -27,4 +27,4 @@
     -@memberships.each do |membership|
       = render :partial => "membership", :object => membership
 
-  =will_paginate @memberships
+  = paginate @memberships

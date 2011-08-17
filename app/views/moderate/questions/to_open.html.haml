@@ -23,7 +23,7 @@
         %td
           = truncate(h(question.body), :length => 100)
 
-  = will_paginate @questions
+  = paginate @questions
   = submit_tag "ban"
   = t("global.or")
   = submit_tag "unban"

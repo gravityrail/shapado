@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   searches: 
     form: 
@@ -9,6 +10,7 @@ fi:
       search_box_title: Tarkista, onko kysymys on jo kysytty
       tags_tip: Käytä [tag] määrittämään tunnisteita.
     index: 
+      advanced_search: Laajennettu haku
       empty: Hakusi ei täsmää mihinkään kysymykseen.
       search_text: Kysymykset, jotka sisältävät
       tags: näiden tunnisteiden sisällä

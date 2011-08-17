@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-top_groups'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   - widget.top_groups.each do |group|
     %aside
       .avatar

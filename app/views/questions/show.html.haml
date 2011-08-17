@@ -19,15 +19,15 @@
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
         -if !@question.user.hide_country && @question.address.present?
           = t("global.from", :site => @question.address_name)
-      
+
     %h1{:itemprop => "name"}
       = @question.title
       - if @question.closed
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
- 
+
     .description.markdown
-      
-   
+
+
       %div{:itemprop => "articleBody"}
         = question_body
       = render "reward_info"
@@ -53,7 +53,7 @@
     .comments
       -@question.comments.each do |comment|
         = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
-        
+
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
         %fieldset
@@ -62,7 +62,7 @@
             = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-            
+
 
 
     = render "toolbar"
@@ -81,7 +81,7 @@
   -cache_for(:question_answers, @question.id) do
     %header
       %h3
-        = t(".answers_title", :count => @answers.total_entries)
+        = t(".answers_title", :count => @answers.total_count)
 
     %section.filters
       %ul{:class => @active_subtab.to_s}
@@ -135,4 +135,4 @@
           - next if answer.id == @question.answer_id
           = render "answer", {:question => @question, :answer => answer}
 
-  = will_paginate(@answers)
+  = paginate(@answers)

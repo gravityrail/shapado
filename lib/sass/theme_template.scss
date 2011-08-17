@@ -126,8 +126,8 @@ a {
 
 // app/stylesheets/app/_pagination.sass
 .pagination {
-  border-bottom: 1px solid #ccc;
-  color: #fff;
+  border-bottom: 1px solid $view_border_color;
+  color: $view_fg_color;
   background-color: $lightOrange;
   em {
     background-color: $orange;

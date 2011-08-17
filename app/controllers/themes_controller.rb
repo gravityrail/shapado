@@ -7,12 +7,12 @@ class ThemesController < ApplicationController
   def index
 
     conditions = {:_id => {:$ne => current_group.current_theme_id}}
-    @themes = current_group.themes.where(conditions).paginate(paginate_opts(params))
+    @themes = current_group.themes.where(conditions).page(params["page"])
 
     if params[:tab] == "all"
       conditions[:$or] = [{:community => true}, {:group_id => current_group.id}]
 
-      @themes = Theme.where(conditions).paginate(paginate_opts(params))
+      @themes = Theme.where(conditions).page(params["page"])
     end
 
 

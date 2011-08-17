@@ -38,6 +38,7 @@ nl:
       users: Gebruikers
       welcome_from: Welkom! U kunt
     manage: 
+      access: Toegang
       actions: Handelingen
       announcements: Aankondigingen
       constrains: Beperkingen

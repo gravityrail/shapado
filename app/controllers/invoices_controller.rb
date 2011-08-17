@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
   filter_parameter_logging :number, :verification_code
 
   def index
-    @invoices = current_group.invoices.where(:payed => true).paginate(:per_page => 25, :page => params[:page])
+    @invoices = current_group.invoices.where(:payed => true).page(params["page"])
   end
 
   def show

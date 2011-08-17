@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Hashar
 # Author: IAlex
 # Author: Od1n
 # Author: Patcito
@@ -62,6 +63,8 @@ fr:
       fanatic: 
         description: Visiter le site 100 jours consécutifs
         name: Fanatique
+      favorite_answer: 
+        name: Réponse favorite
       favorite_question: 
         description: A posé une question sélectionnée comme favorite par 25 utilisateurs
         name: Question favorite
@@ -156,7 +159,7 @@ fr:
         description: Donner une solution à une question ayant une moyenne de votes supérieure à 2
         name: Tuteur
     show: 
-      description: "Utilisateurs ayant gagné cette insigne. Récemment décernée à:"
+      description: "Utilisateurs ayant gagné cette insigne. Récemment décernée à :"
       earned: Gagné
       for_tag_bronze: 200 votes pour le tag %{tag}
       for_tag_gold: 1000 votes pour le tag %{tag}

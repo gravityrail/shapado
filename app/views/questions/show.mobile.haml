@@ -53,7 +53,7 @@
         %h3
           Answers
           %span{:class=>"ui-li-count"}
-            = @answers.total_entries
+            = @answers.total_count
 
         - @answers.each do |answer|
           %div{:"data-role" => "content"}
@@ -84,4 +84,4 @@
               = submit_tag t('answers.form.submit'), :class => "save"
 
     %div{:"data-role" => "footer"}
-      = will_paginate(@answers)
+      = paginate(@answers)

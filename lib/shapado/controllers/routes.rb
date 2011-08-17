@@ -17,22 +17,22 @@ module Shapado
       end
 
       def css_group_path(group, theme_id)
-        "/_files/themes/css/#{group.id}/#{theme_id}"
+        "/_files/themes/css/#{group.id}/#{theme_id}.css"
       end
 
       def bg_image_path(group, theme_id)
-        "/_files/themes/bg_image/#{group.id}/#{theme_id}"
+        "/_files/themes/bg_image/#{group.id}/#{theme_id}.png"
       end
 
       def favicon_group_path(group)
-        "/_files/groups/favicon/#{group.id}"
+        "/_files/groups/favicon/#{group.id}.png"
       end
 
       def tag_icon_path(group,tag_name)
         if tag_name.is_a?(Tag)
           tag_name = tag_name.name
         end
-        "/_files/tags/icon/#{group.id}/#{tag_name}"
+        "/_files/tags/icon/#{group.id}/#{tag_name}.png"
       end
 
       def avatar_user_path(user, size = nil)
@@ -40,7 +40,7 @@ module Shapado
         if !size.nil? && ["big", "medium", "small"].include?(size)
           prefix = size
         end
-        "/_files/users/#{prefix}/#{user.id}"
+        "/_files/users/#{prefix}/#{user.id}.png"
       end
 
       def logo_path(group, size = nil)
@@ -48,7 +48,7 @@ module Shapado
         if !size.nil? && ["big", "medium", "small"].include?(size)
           prefix = size
         end
-        "/_files/groups/#{prefix}/#{group.id}"
+        "/_files/groups/#{prefix}/#{group.id}.png"
       end
 
       def question_attachment_path(group,question, file, attach_id)

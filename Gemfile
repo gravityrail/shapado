@@ -24,7 +24,7 @@ gem "sass"
 gem 'compass', '0.11.1'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
+gem 'kaminari'
 
 # mongodb
 gem 'bson', '1.3.0'
@@ -53,6 +53,8 @@ gem "twitter_oauth"
 gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_widgets.git'
 gem 'activemerchant', '1.16.0'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
+
+gem 'geoip'
 
 # authentication
 gem 'omniauth', '~> 0.2.6'

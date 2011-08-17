@@ -46,6 +46,7 @@ ia:
     new_invitation: 
       message1: Clicca hic pro acceptar le invitation %{link}
       message2: Le equipa de %{group}.
+      message3: "Un message de tu invitator:"
       subject: "%{user} te ha invitate a %{group}"
     report: 
       message1: Reporto pro le gruppo %{group}

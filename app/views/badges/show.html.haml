@@ -8,7 +8,7 @@
   .counter
     %p
       %b
-        =@badges.total_entries
+        =@badges.total_count
       =t(".description")
 
   .users
@@ -16,5 +16,5 @@
       -@users.each do |user|
         = render :partial => "user", :object => user, :locals => {:badge => @badge}
 
-  =will_paginate @badges
+  =paginate @badges
   .clear

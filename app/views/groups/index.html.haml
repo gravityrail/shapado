@@ -15,7 +15,7 @@
     = render :partial => "group", :collection => @groups
 
   #additional_info
-    =will_paginate @groups
+    = paginate @groups
     .clear
 
 

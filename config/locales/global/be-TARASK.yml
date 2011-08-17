@@ -23,6 +23,7 @@ be-TARASK:
     current: Цяперашняя
     feedback: Водгук
     follow: Сачыць
+    followed_by: "Сочаць:"
     following: Сачэньне
     from: з %{site}
     group_not_found: Старонка %{url} не існуе
@@ -33,7 +34,7 @@ be-TARASK:
     please_login: Калі ласка, увайдзіце ў сыстэму
     preview: Папярэдні прагляд
     previous: Папярэдні
-    privacy: Прыватнае
+    privacy: Прыватнасьць
     share: Адкрыць доступ
     sign_up: Зарэгістравацца
     size: Памер
@@ -56,6 +57,9 @@ be-TARASK:
   pagination: 
     next: Наступная &raquo;
     previous: "&laquo; Папярэдняя"
+  preferred_languages: 
+    any: Любая
+    user: Мае пажаданыя мовы
   roles: 
     moderator: Мадэратар
     owner: Уладальнік

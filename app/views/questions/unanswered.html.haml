@@ -8,7 +8,7 @@
   .navtitle
     = t(".title")
     -if @questions
-      == (#{@questions.total_entries})
+      == (#{@questions.total_count})
 
   %ul
     %li.newest
@@ -36,6 +36,4 @@
     = render :partial => "question", :object => question
 
 #additional_info
-  =will_paginate @questions
-
-
+  =paginate @questions

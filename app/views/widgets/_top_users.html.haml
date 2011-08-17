@@ -1,5 +1,5 @@
 .module.widget.block{:class => 'widget-top_users'}
-  = raw widget_title(widget)
+  = render "widgets/header", :widget => widget
   %aside
     %ul
       - widget.top_users(current_group).each do |user|

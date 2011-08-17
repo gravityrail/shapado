@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Crt
+# Author: Raspi
 # Author: Str4nd
 fi: 
   feeds: 
@@ -14,18 +15,39 @@ fi:
     tag: Tilaa merkintään
     user: Tilaa käyttäjän kysymyksiin
   global: 
+    actions: Toiminnot
     active: Ota käyttöön
+    alphabetically: Aakkosjärjestyksessä
     anonymous: Anonyymi
+    blog: Blogi
     by: /
+    chat: Keskustelu
     current: Nykyinen
+    feedback: Palaute
+    follow: Seuraa
+    followed_by: "Seuraaja:"
+    following: Seuratut
     from: maasta %{site}
     group_not_found: Sivua %{url} ei ole olemassa
+    home: Etusivu
+    next_button: Seuraava
     or: tai
     permission_denied: Käyttö estetty
     please_login: Kirjaudu sisään
     preview: Esikatselu
     previous: Edellinen
+    privacy: Yksityisyys
     share: Jaa
+    sign_up: Rekisteröidy
+    size: Koko
+    sort_by: "Lajitteluperuste:"
+    tags_label: "Tunnisteet:"
+    tos: Palvelun säännöt
+    unfollow: Lopeta seuraaminen
+    unknown_place: Tuntematon
+    view: Näytä
+    view_question: Näytä kysymys
+    what_to_do: Mitä haluat tehdä?
   models: 
     question: Kysymys
   number: 
@@ -36,6 +58,13 @@ fi:
   pagination: 
     next: Seuraava &raquo;
     previous: "&laquo; Edellinen"
+  preferred_languages: 
+    any: Mikä tahansa
+    user: Ensisijaiset kieleni
+  roles: 
+    moderator: Valvoja
+    owner: Omistaja
+    user: Tavallinen käyttäjä
   scaffold: 
     add: Lisää
     back: Takaisin

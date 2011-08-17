@@ -3,13 +3,14 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 # Author: Silvonen
 fi: 
   activerecord: 
     attributes: 
       answer: 
         body: Runko
-        created_at: Vastattu
+        created_at: Luotu
         link: Linkki
     models: 
       answer: Vastaus

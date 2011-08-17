@@ -6,10 +6,31 @@ ms:
   shared: 
     current_tags: 
       title: Tag yang dipilih
+    empty: 
+      activities: 
+        description: 
+          text: Tempat ini akan menjadi rancak dalam sekelip mata sebaik sahaja orang ramai mulai menggunakan tapak web ini.
+        title: Tiada aktiviti setakat ini.
+      answers: 
+        description: 
+          text: Jadilah yang pertama!
+        title: Tiada siapa yang menjawab soalan ini lagi.
+      default: 
+        description: 
+          text: Jadilah yang pertama untuk %{action_link}!
+        title: Maaf! Tidak banyak perkara untuk dilihat di sini.
+      questions: 
+        description: 
+          action_link: tanyakan soalan
+      themes: 
+        description: 
+          action_link: sekarang
+          text: buat satu %{action_link}
+        title: Anda belum mencipta apa-apa tema buat sekarang.
     layout: 
       footer: 
         cc_footer: Segala kandungan dan data Shapado.com disediakan di bawah lesen %{cc_link}
-        powered_by: Dikuasakan oleh %{source_link} %{version} di bawah
+        powered_by: Dikuasakan oleh %{source_link} %{version} di bawah %{agpl_link}
     login_drop_down: 
       with_facebook: dengan Facebook
       with_google: dengan Google

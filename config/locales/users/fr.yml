@@ -49,6 +49,9 @@ fr:
       vote_up: Voter positif
     anonymous_form: 
       never_shown: jamais montré
+    change_password: 
+      submit: Changer mon mot de passe
+      title: Changer le mot de passe
     create: 
       flash_error: Désolé, nous n'avons pas pu configurer votre compte. Éssayer encore s'il vous plait, ou contacter un administrateur (le lien est ci-dessus).
       flash_notice: Merci de vous être enregistré !
@@ -57,6 +60,7 @@ fr:
       submit: Sauvegarder
       title: Configuration
     follow: 
+      flash_error: Vous ne pouvez pas vous suivre vous-même.
       flash_notice: L'utilisateur %{user} a été ajouté à votre liste d' amis
     form: 
       activities_notification: Recevoir des notifications via courrier électronique sur les activités système telles que les insignes gagnées, les nouveaux suiveurs, etc.

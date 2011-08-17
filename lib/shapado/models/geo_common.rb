@@ -5,7 +5,7 @@ module Models
 
     included do
       field :address, :type => Hash, :default => {}
-      field :position, :type => Hash, :default => {"lat" => 0, "long" => 0}
+      field :position, :type => Hash, :default => {"lat" => 0.0, "long" => 0.0}
       index [[:position, Mongo::GEO2D]]
 
       before_save :float_position
@@ -18,11 +18,22 @@ module Models
 
     module InstanceMethods
 
-    def set_address
+    def set_address(ip)
       lat = self["position"]["lat"]
       long = self["position"]["long"]
-      if lat != 0 || long != 0
+      if defined?(Localize) && (lat == 0.0 || long == 0.0)
+       geoip = Rails.cache.fetch("geoip_#{ip}") do
+          Localize.city(ip)
+        end
+        if geoip
+          lat = geoip.latitude
+          long = geoip.longitude
+        end
+      end
+
+      if lat != 0.0 || long != 0.0
         self["address"] = Nominatim::Place.new(lat, long).get_address
+        self["position"] = { "lat" => lat, "long" => long}
         self.save
         if self.user.address != self.address
           self.user.position = self.position

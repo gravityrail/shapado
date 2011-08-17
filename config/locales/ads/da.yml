@@ -9,6 +9,7 @@ da:
       success: Annoncen blev oprettet med succes.
     index: 
       add_adsense: Tilføj en ny Google AdSense annonce
+      description: Administrer annoncer
       title: Annoncer
     name: "Navn:"
     position: "Placering:"

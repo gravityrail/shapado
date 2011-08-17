@@ -64,9 +64,9 @@ nl:
     model: 
       messages: 
         empty_tags: U moet tenminste één label opgeven
-        title_too_long: De vraag is te lang. Deze mag niet meer dan honderd tekens bevatten.
-        too_many_tags: U kunt maximaal negen labels opgeven.
-        too_short: Dit lijkt te kort. Gebruik alstublieft meer dan %{count} woorden om specifieker te zijn.
+        title_too_long: Sorry, de titel mag niet meer dan honderd tekens bevatten.
+        too_many_tags: Sorry, u kunt maximaal 20 labels opgeven.
+        too_short: Sorry, de titel moet meer dan %{count} woorden hebben.
     move: 
       group_label: "Verplaatsen naar de groep:"
       submit: Verplaatsen!
