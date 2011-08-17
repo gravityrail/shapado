@@ -81,7 +81,7 @@
   -cache_for(:question_answers, @question.id) do
     %header
       %h3
-        = t(".answers_title", :count => @answers.total_entries)
+        = t(".answers_title", :count => @answers.total_count)
 
     %section.filters
       %ul{:class => @active_subtab.to_s}
