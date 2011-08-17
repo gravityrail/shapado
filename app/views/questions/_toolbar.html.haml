@@ -1,10 +1,13 @@
 -i18n_scope = "questions.show"
 - show_close_request_form = !@question.closed && logged_in? && @question.can_be_requested_to_close_by?(current_user)
+
 - show_open_request_form = @question.closed && logged_in? && @question.can_be_requested_to_open_by?(current_user)
 
+-if logged_in? && current_user.mod_of?(current_group)
+  -show_open_request_form = false
+  -show_close_request_form = false
+
 - if logged_in?
-  - if current_user.mod_of?(current_group) && @question.closed && @question.close_reason.present?
-    - show_close_request_form = (@question.close_reason.user_id == current_user.id)
   - @flag = current_user.has_flagged?(@question) || Flag.new
 
 - @flag ||= Flag.new
@@ -44,36 +47,16 @@
               = t(@flag.reason, :scope=>'flags.form')
               = link_to t("scaffold.edit"), edit_question_flag_path(@question,@flag), :id => "edit_question_flag_link", :class => "flag-link show_form", :rel => 'nofollow', "data-lazy" => "1", "data-form-target" => "flag_question"
               = link_to t("scaffold.destroy"), question_flag_path(@question,@flag), :id => "destroy_question_flag_link", :rel => 'nofollow', :confirm => t('scaffold.are_you_sure'), :method => :delete
-    - elsif logged_in? && current_user != @question.user
+    - elsif current_user != @question.user
       %li.no-spam
-        = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
+        - if !logged_in? || !current_user.mod_of?(current_group)
+          = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
+
+    - if logged_in?
+      = render "requests_menu", :question => @question, :i18n_scope => i18n_scope
 
 
-
-
-
-    - if logged_in? && (current_user.mod_of?(current_group) || current_user.can_view_offensive_counts_on?(current_group))
-      %li.more.requests
-        = link_to I18n.t('questions.toolbar.requests')
-        %ul.drop-menu
-          -unless @question.flags.count == 0
-            %li
-              = t(:flags, :scope => "activerecord.models")
-              = render :partial => "flags/list", :locals => {:flaggeable => @question}
-
-          -unless @question.close_requests.size == 0
-            %li
-              = t(:prural_name, :scope => "close_requests.model")
-              = render :partial => "close_requests/list", :locals => {:question => @question}
-
-          -unless @question.open_requests.size == 0
-            %li
-              = t(:prural_name, :scope => "open_requests.model")
-              = render :partial => "open_requests/list", :locals => {:question => @question}
-
-
-
-    - if show_close_request_form &&!@close_request.new_record?
+    - if show_close_request_form && !@close_request.new_record?
       %li.more.request-close
         = link_to I18n.t('questions.toolbar.your_close_request')
         =#t("questions.toolbar.requested_close_as")
@@ -110,13 +93,10 @@
           - if (@question.wiki && current_user.can_edit_wiki_post_on?(@question.group)) || current_user.can_edit_others_posts_on?(@question.group) || current_user.can_modify?(@question)
             %li.edit-q
               = link_to t('scaffold.edit'), edit_question_path(@question)
+
           - if (current_user.can_modify?(@question) || current_user.owner_of?(@question.group))
             %li.delete-q
               = link_to t("scaffold.destroy"), question_path(@question), :confirm => t('scaffold.are_you_sure'), :method => :delete
-
-          -if current_user.mod_of?(@question.group) && !@question.closed
-            %li.close
-              = link_to t('#{i18n_scope}.close'), question_close_requests_path(@question)
 
         - if show_open_request_form
           -if !@open_request.new_record?
@@ -124,18 +104,11 @@
               = "#{t('#{i18n_scope}.requested_reopening')} #{@open_request.comment}"
               = link_to t("#{i18n_scope}.edit_request"), edit_question_open_request_path(@question, @open_request), :id => "edit_question_open_request_link", :rel => 'nofollow'
               = link_to t("#{i18n_scope}.retract_request"), question_open_request_path(@question,@open_request), :id => "destroy_question_open_request_link", :rel => 'nofollow', :confirm => t('scaffold.are_you_sure'), :method => :delete
-
-          -if current_user.mod_of?(current_group)
-            %li.open
-              = link_to t("#{i18n_scope}.open"), open_question_path(@question), :rel => 'nofollow', :title => t("#{i18n_scope}.request_opening_details"), :method => "put"
-
           -else
             %li.open
               = link_to t("#{i18n_scope}.request_opening"), new_question_open_request_path(@question), :id => "request-open-link", :rel => 'nofollow', :title => t("#{i18n_scope}.request_opening_details")
 
           - if current_user.can_modify?(@question) || current_user.owner_of?(@question.group)
-            %li.ban
-              = link_to @question.banned ? t("#{i18n_scope}.unban") : t("#{i18n_scope}.ban"), manage_moderate_questions_path(:question_ids => [@question.id], :commit => @question.banned ? "unban": "ban"), :method => :put, :confirm => t('scaffold.are_you_sure')
             %li.delete
               = link_to t("scaffold.destroy"), question_path(@question.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
 

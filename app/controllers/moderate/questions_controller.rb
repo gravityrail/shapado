@@ -64,6 +64,111 @@ class Moderate::QuestionsController < ApplicationController
     end
   end
 
+  def banning
+    @question = current_group.questions.by_slug(params[:id])
+
+    respond_to do |format|
+      format.html
+
+      format.js {
+        html = render_to_string(:partial => "banning_form", :locals => {:question => @question})
+        render :json => {:html => html, :success => true}
+      }
+    end
+  end
+
+  def ban
+    @question = current_group.questions.by_slug(params[:id])
+    if params[:undo] == "1"
+      @question.unban
+    else
+      @question.ban
+    end
+
+    respond_to do |format|
+      format.html {redirect_to question_path(@question)}
+
+      format.js {
+        render :json => {:success => true}
+      }
+    end
+  end
+
+  def closing
+    @question = current_group.questions.by_slug(params[:id])
+
+    respond_to do |format|
+      format.html
+
+      format.js {
+        html = render_to_string(:partial => "closing_form", :locals => {:question => @question})
+        render :json => {:html => html, :success => true}
+      }
+    end
+  end
+
+  def close
+    @question = Question.by_slug(params[:id])
+    @close_request = CloseRequest.new(params[:close_request])
+    @close_request.user = current_user
+    @close_request.closeable = @question
+
+    if @question.reward && @question.reward.active
+      flash[:error] = I18n.t('questions.close.failure')
+    end
+
+    respond_to do |format|
+      if @close_request
+        @question.closed = true
+        @question.closed_at = Time.zone.now
+        @question.close_reason_id = @close_request.id
+        @question.save(:validate => false)
+
+        sweep_question(@question)
+
+        format.html { redirect_to question_path(@question) }
+        format.json { head :ok }
+      else
+        flash[:error] = @close_request.errors.full_messages.join(", ")
+        format.html { redirect_to question_path(@question) }
+        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
+      end
+    end
+  end
+
+  def opening
+    @question = current_group.questions.by_slug(params[:id])
+
+    respond_to do |format|
+      format.html
+
+      format.js {
+        html = render_to_string(:partial => "opening_form", :locals => {:question => @question})
+        render :json => {:html => html, :success => true}
+      }
+    end
+  end
+
+  def open
+    @question = current_group.questions.by_slug(params[:id])
+
+    @question.closed = false
+    @question.close_reason_id = nil
+
+    respond_to do |format|
+      if @question.save
+        sweep_question(@question)
+
+        format.html { redirect_to question_path(@question) }
+        format.json { head :ok }
+      else
+        flash[:error] = @question.errors.full_messages.join(", ")
+        format.html { redirect_to question_path(@question) }
+        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
+      end
+    end
+  end
+
   protected
   def current_scope
   end
