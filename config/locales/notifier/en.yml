@@ -47,7 +47,7 @@ en:
       message8: "Visit your group at %{link}"
     admin_login:
       subject: "Alert: admin connection"
-      message1: "User %{user} has connected as admin at %{time} with the ip %{ip}."
+      message1: "User %{user} has connected as admin at %{time} with the IP address %{ip}."
     new_invitation:
       subject: "%{user} has invited you to %{group}"
       message1: "Click here to accept the invitation %{link}"
