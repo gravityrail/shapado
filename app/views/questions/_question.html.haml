@@ -40,8 +40,8 @@
             = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag', :class => "retag"
         .clear
 
-    .toolbar
-      %ul
+    .article-actions
+      %ul.drop-menu
         %li.answers
           - if question.answers_count == 0
             = link_to t('questions.question.no_answer_number'), question_path(question)
@@ -57,10 +57,6 @@
             - else
               = t('questions.index.followers_count', :quantity => format_number(question.followers_count))
 
-        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
-          %li.spam
-            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
-
         %li
           - if logged_in? && question.follower?(current_user)
             = link_to t('global.unfollow'), unfollow_question_path(question), :class => 'unfollow-q toggle-action', "data-undo" =>  follow_question_path(question), "data-title" => t("questions.show.follow_tooltip"), :title => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.follow')
@@ -69,6 +65,12 @@
 
         %li
           =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
+
+        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
+          %li.spam
+            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
+        = render "requests_menu", :question => question, :i18n_scope => "questions.show"
+      .panel-forms
 
     .clear
 
