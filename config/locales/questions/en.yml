@@ -27,7 +27,7 @@ en:
       votes_tooltip:  Questions with the most votes
       newest_tooltip: The most recently asked questions
       has_followers:
-        one: "1 follower"
+        one: "%{count} follower"
         other: "%{count} followers"
     show:
       history: History
@@ -84,7 +84,7 @@ en:
       accepted_tooltip: This question has an answer that has been accepted
       wiki_title: 'Wiki: %{title}'
       has_answers:
-        one: '1 answer'
+        one: '%{count} answer'
         other: '%{count} answers'
       answer_verb: Answer
     form:

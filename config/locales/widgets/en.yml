@@ -26,7 +26,7 @@ en:
       title: Top 5 groups
       description: "This widget displays the top five groups."
       has_members:
-        one: "1 member"
+        one: "%{count} member"
         other: "%{count} members"
     top_users:
       title: Top 5 users
