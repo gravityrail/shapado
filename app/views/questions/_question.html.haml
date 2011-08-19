@@ -43,19 +43,11 @@
     .article-actions
       %ul.drop-menu
         %li.answers
-          - if question.answers_count == 0
-            = link_to t('questions.question.no_answer_number'), question_path(question)
-          - elsif question.answers_count == 1
-            = link_to t('questions.question.answer_number'), question_path(question)
-          - else
-            = link_to t('questions.question.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
+          = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers
-            - if question.followers_count.to_i == 1
-              = t('questions.index.follower_count')
-            - else
-              = t('questions.index.followers_count', :quantity => format_number(question.followers_count))
+            = t('questions.index.has_followers', :count => question.followers_count)
 
         %li
           - if logged_in? && question.follower?(current_user)
