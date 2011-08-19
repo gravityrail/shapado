@@ -37,5 +37,34 @@ class Moderate::AnswersController < ApplicationController
     end
   end
 
+  def banning
+    @answer = current_group.answers.find(params[:id])
+    respond_to do |format|
+      format.html
+
+      format.js {
+        html = render_to_string(:partial => "moderate/shared/banning_form", :locals => {:flaggeable => @answer})
+        render :json => {:html => html, :success => true}
+      }
+    end
+  end
+
+  def ban
+    @answer = current_group.answers.find(params[:id])
+    if params[:undo] == "1"
+      @answer.unban
+    else
+      @answer.ban
+    end
+
+    respond_to do |format|
+      format.html {redirect_to question_path(@answer.question)}
+
+      format.js {
+        render :json => {:success => true}
+      }
+    end
+  end
+
   protected
 end

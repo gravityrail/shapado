@@ -1,0 +1,7 @@
+-#i18n
+%h1 Ban question
+
+= @question.title
+= @question.body
+
+= render "moderate/shared/banning_form", :flaggeable => @question

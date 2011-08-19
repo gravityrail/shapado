@@ -3,8 +3,6 @@ class InvoicesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :owner_required
 
-  filter_parameter_logging :number, :verification_code
-
   def index
     @invoices = current_group.invoices.where(:payed => true).page(params["page"])
   end

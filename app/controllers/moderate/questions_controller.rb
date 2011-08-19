@@ -71,7 +71,7 @@ class Moderate::QuestionsController < ApplicationController
       format.html
 
       format.js {
-        html = render_to_string(:partial => "banning_form", :locals => {:question => @question})
+        html = render_to_string(:partial => "moderate/shared/banning_form", :locals => {:flaggeable => @question})
         render :json => {:html => html, :success => true}
       }
     end
