@@ -40,4 +40,4 @@
             =question.answers_count
             answers
   %div{:data => {:role => "footer"}}
-    =paginate(@questions, :renderer => Shapado::Utils::JqmPaginator)
+    =paginate(@questions, :"data-role" => "button")
