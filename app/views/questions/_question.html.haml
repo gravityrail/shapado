@@ -61,7 +61,7 @@
         -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
           %li.spam
             = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
-        = render "requests_menu", :question => question, :i18n_scope => "questions.show"
+        = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
       .panel-forms
 
     .clear
