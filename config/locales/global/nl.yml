@@ -52,6 +52,11 @@ nl:
     what_to_do: Wat wilt u doen?
   models: 
     question: De vraag
+  number: 
+    x_time: 
+      one: Eén keer
+      other: "%{count} keer"
+      zero: Nooit
   preferred_languages: 
     any: Alle
     user: Mijn voorkeurstalen
