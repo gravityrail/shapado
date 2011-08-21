@@ -1,5 +1,9 @@
 en:
   users:
+    user_mini:
+      admin: '[ Admin ]'
+      mod: '[ Moderator ]'
+      editor: '[ Editor ]'
     user_bar:
       signed_as: Signed in as
       not_logged_in: 'Not logged in'

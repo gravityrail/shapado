@@ -9,8 +9,7 @@
 
       = form_tag move_widget_path(widget, :tab => @active_subtab||"mainlist"), :class => "vote_box", :style => "display:inline" do
         %p
-          Change widget position:
-        -#i18n
+          = t('widgets.widget.change_position')
         = hidden_field_tag "position", position
         = image_submit_tag("to_vote_up.png", :name=>"move_to", :value => "up", :class => "img")
         = image_submit_tag("to_vote_down.png", :name=>"move_to", :value => "down", :class => "img")

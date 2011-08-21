@@ -415,7 +415,7 @@ module ApplicationHelper
 
   def follow_suggestion_link(suggestion)
     if suggestion.class == User
-      link_to "+ #{t("users.show.follow")} User", follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
+      link_to t('widgets.suggestions.follow_user'), follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
     else
       follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
@@ -434,7 +434,7 @@ module ApplicationHelper
         follow_data = 'unfollow-tag'
         follow_class = 'follow-tag toggle-action'
         data_title = t("global.unfollow")
-        title = 'Follow tag'
+        title = t('widgets.suggestions.follow_tag')
         opt = 'add'
         path = follow_tags_users_path(:tags => tag.name)
         data_undo = unfollow_tags_users_path(:tags => tag.name)

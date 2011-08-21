@@ -4,15 +4,15 @@
   -if local_assigns[:author]
     - link_options[:rel] = "author"
   = link_to h(user.display_name), user_path(user), link_options
-/#i18n
+
 -if user.owner_of?(current_group)
   %i.admin{:title => "admin"}
-    [ Admin ]
+    = t('users.user_mini.admin')
 
 -elsif user.mod_of?(current_group)
   %i.mod{:title => "moderator"}
-    [ Moderator ]
+    = t('users.user_mini.mod')
 
 -elsif user.editor_of?(current_group)
   %i.editor{:title => "editor"}
-    [ Editor ]
+    = t('users.user_mini.editor')

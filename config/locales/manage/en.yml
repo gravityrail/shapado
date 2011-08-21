@@ -1,6 +1,12 @@
 en:
   admin:
     manage:
+      questions:
+        banning:
+          title: 'Ban question'
+      answers:
+        banning:
+          title: 'Ban answer'
       top_admin:
         title: Admin
         site: Site
