@@ -25,11 +25,6 @@ id:
     share: bagikan
   models: 
     question: Pertanyaan
-  number: 
-    x_time: 
-      one: "%{count} kali"
-      other: "%{count} kali"
-      zero: Tidak pernah
   scaffold: 
     add: Tambahkan
     back: Kembali

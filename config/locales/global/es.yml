@@ -35,14 +35,6 @@ es:
     what_to_do: ¿Qué quieres hacer?
   models: 
     question: La pregunta
-  number: 
-    x_time: 
-      one: "%{count} vez"
-      other: "%{count} veces"
-      zero: Nunca
-  pagination: 
-    next: Siguiente &raquo;
-    previous: "&laquo; Anterior"
   preferred_languages: 
     user: Mis idiomas preferidos
   roles: 

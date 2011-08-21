@@ -49,7 +49,10 @@ ia:
       content: Contento
       dashboard: Pannello de instrumentos
       domain: Dominio
+      edit_layout: Modificar disposition
       general: General
+      group_features: Functiones
+      group_user_management: Gestion de usatores
       invitations: Invitationes
       members: Membros
       pages: Paginas

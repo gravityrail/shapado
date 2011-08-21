@@ -8,9 +8,14 @@ nl:
       member: 
         role: Rol
   members: 
+    create: 
+      error: De gebruiker **%{user_id}** bestaat niet.
+      notice: "%{login} is toegevoegd als %{role}."
     form: 
       login_tip: Zoeken tijdens het invoeren
     index: 
       manage_members_title: Leden beheren
       title: Leden van de groep %{name}
       title_isolate: Leden van %{name}
+    update: 
+      error: U kunt het lidmaatschap van **%{login}** niet aanpassen.

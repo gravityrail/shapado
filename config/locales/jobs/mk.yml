@@ -1,0 +1,20 @@
+# Messages for Macedonian (Македонски)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Bjankuloski06
+mk: 
+  jobs: 
+    answers: 
+      on_create_answer: 
+        group_send_twitter: "%{user} одговори на прашањето: %{question}"
+        send_twitter: "Одговорив на прашањето: %{question}"
+      on_favorite_answer: 
+        group_send_twitter: "%{user} го бендиса одговорот на %{author} на прашањето: %{question}"
+        send_twitter: "Го бендисав одговорот на %{author} на прашањето: %{question}"
+    base: 
+      create_badge: 
+        group_send_twitter: "%{user} штотуку ја освои значката %{token} на %{group_name} %{link}"
+        send_twitter: Штотуку ја освоив значката %{token} на %{group_name} %{link}
+    comments: 
+      group_on_comment: "%{user} коментираше на прашањето: %{question}"
+      on_comment: "Коментирав на прашњето: %{question}"

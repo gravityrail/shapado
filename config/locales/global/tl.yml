@@ -26,14 +26,6 @@ tl:
     share: Ibahagi
   models: 
     question: Ang katanungan
-  number: 
-    x_time: 
-      one: "%{count} ulit"
-      other: "%{count} mga ulit"
-      zero: Hindi magpakailanman
-  pagination: 
-    next: Susunod &raquo;
-    previous: "&laquo; Nakaraan"
   scaffold: 
     add: Idagdag
     back: Bumalik

@@ -1,0 +1,28 @@
+# Messages for Dutch (Nederlands)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Siebrand
+nl: 
+  themes: 
+    edit: 
+      title: Vormgeving bewerken
+    form: 
+      update: Vormgeving bijwerken
+    index: 
+      description: Vind hier uw vormgevingen en wijzig het uiterlijk van uw app.
+      new_theme: Hier kunt u uw eigen vormgeving maken.
+    show: 
+      apply: Toepassen
+      bg_color: Achtergrondkleur
+      bg_image: Achtergrondafbeelding
+      button_bg: Achtergrondkleur voor knoppen
+      button_fg: Voorgrondkleur voor knoppen
+      fg_color: Voorgrondkleur
+      fluid: Vloeiend (hiermee wordt de achtergrond elastisch en vervormt mee met de afmetingen van het browservenster)
+      link_bg: Achtergrondkleur voor verwijzingen
+      link_fg: Voorgrondkleur voor verwijzingen
+      not_ready: Dit thema kan nog niet gebruikt worden. Kom binnenkort terug.
+      try: Proberen
+      use_link_bg: Achtergrond gebruiken voor verwijzingen
+      view_bg: Achtergrondkleur van de weergave
+      view_fg: Voorgrondkleur van de weergave

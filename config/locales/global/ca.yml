@@ -28,14 +28,6 @@ ca:
     share: compateix
   models: 
     question: La pregunta
-  number: 
-    x_time: 
-      one: "%{count} temps"
-      other: "%{count} cops"
-      zero: Mai
-  pagination: 
-    next: Següent &raquo;
-    previous: "&laquo; Anterior"
   scaffold: 
     add: Afegeix
     back: Enrera

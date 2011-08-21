@@ -45,12 +45,18 @@ de:
       access: Zugriff
       actions: Aktionen
       announcements: Ankündigungen
+      appearance: Aussehen
       constrains: Voraussetzungen
       content: Inhalt
       dashboard: Übersichtsseite
       domain: Domain
+      edit_layout: Layout bearbeiten
       general: Allgemein
+      group_features: Funktionen
+      group_look_and_feel: Anmutung
+      group_user_management: Nutzerverwaltung
       invitations: Einladungen
+      invoices: Rechnungen
       members: Mitglieder
       pages: Seiten
       properties: Eigenschaften
@@ -59,6 +65,7 @@ de:
       social: Sozial
       stats: Statistiken
       theme: Theme
+      themes: Nutzeroberflächen
       widgets: Widgets
     notifications: 
       message: Sofern Du keine automatischen Benachrichtigungen mehr von %{group} erhalten möchtest, musst Du Deine Einstellungen auf der Benachrichtigungsseite ändern. Siehe

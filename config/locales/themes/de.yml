@@ -1,0 +1,28 @@
+# Messages for German (Deutsch)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Kghbln
+de: 
+  themes: 
+    edit: 
+      title: Benutzeroberfläche bearbeiten
+    form: 
+      update: Benutzeroberfläche aktualisieren
+    index: 
+      description: Hier kannst Du Deine Benutzeroberflächen finden und die Anmutung Deiner Anwendung ändern.
+      new_theme: Du kannst hier Deine eigene Benutzeroberfläche erstellen.
+    show: 
+      apply: Anwenden
+      bg_color: Hintergrundfarbe
+      bg_image: Hintergrundbild
+      button_bg: Hintergrundfarbe für Schaltflächen
+      button_fg: Vordergrundfarbe für Schaltflächen
+      fg_color: Vordergrundfarbe
+      fluid: Flüssig (Dies sorgt während der Größenänderung eines Browserfensters für ein elastisch anmutendes Layout.)
+      link_bg: Hintergrundfarbe für Links
+      link_fg: Vordergrundfarbe für Links
+      not_ready: Diese Benutzeroberfläche kann noch nicht verwendet werden. Schau bald mal wieder vorbei.
+      try: Ausprobieren
+      use_link_bg: Einen Hintergrund für Links verwenden
+      view_bg: Hintergrundfarbe der Ansicht
+      view_fg: Vordergrundfarbe der Ansicht

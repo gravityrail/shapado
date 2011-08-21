@@ -5,24 +5,52 @@
 # Author: Siebrand
 nl: 
   shared: 
+    any_lang: Alle talen
+    by_anon: Door anoniem
     current_tags: 
       title: Geselecteerde labels
+    description: Beschrijving
     empty: 
+      activities: 
+        description: 
+          text: Deze ruimte wordt automatisch opgevuld als mensen de site gaan gebruiken.
+        title: Er zijn nog geen activiteiten.
+      answers: 
+        description: 
+          text: U kunt de eerste zijn!
+        title: Deze vraag is nog niet beantwoord.
+      default: 
+        description: 
+          text: U kunt als eerste %{action_link}!
+        title: Sorry! Hier is niet veel te zien.
+      questions: 
+        description: 
+          action_link: een vraag stellen
       themes: 
         description: 
           action_link: nu
+          text: maak er een aan %{action_link}
+        title: U hebt nog geen thema's aangemaakt.
+    layout: 
+      footer: 
+        cc_footer: Alle inhoud en gegevens van shapado.com zijn beschikbaar onder de licentie %{cc_link}
+        powered_by: Aangeboden met %{source_link} %{version} onder de %{agpl_link}
     login_drop_down: 
       with_facebook: met Facebook
       with_google: met Google
       with_identica: met Identi.ca
       with_linked_in: met LinkedIn
-      with_openid: met OpenID
+      with_openid: OpenID
       with_twitter: met Twitter
       with_user_pass: gebruiker/wachtwoord
     manage_navigation: 
       title_content: Groepsinhoud
       title_features: Groepsfuncties
       title_options: Groepsopties
+    name: Naam
+    preferred_lang: Voorkeurstalen
+    quick_question: 
+      random_question: Een willekeurige vraag beantwoorden
     social_connect: 
       find_friends_facebook: Vrienden op Facebook vinden
       find_friends_identica: Vrienden op Identi.ca vinden

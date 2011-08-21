@@ -10,6 +10,8 @@ nl:
       search_box_title: Controleer of uw vraag al gesteld is
       tags_tip: Gebruik [label] om labels aan te geven.
     index: 
+      advanced_search: uitgebreid zoeken
+      description: Gebruik de %{link}instellingen om fijnmazige resultaten te krijgen.
       empty: Er waren geen vragen die voldoen aan uw zoekopdracht.
       found_results: "%{quantity} resultaten werden gevonden."
       search_text: Vragen die tekst bevatten

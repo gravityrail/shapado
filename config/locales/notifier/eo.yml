@@ -26,7 +26,7 @@ eo:
     new_answer: 
       message: "%{user} respondis %{new_answer} al la demando %{question}"
     new_comment: 
-      message: "%{user} komentis %{new_comment} al la demando %{question}"
+      message: "%{user} komentis %{new_comment} al la demando %{link}"
     new_feedback: 
       message1: La uzanto %{user} <%{email}> sendis takson
       message2: Anonimulo sendis takson de la IP-adreso %{ip}

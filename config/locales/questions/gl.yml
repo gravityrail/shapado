@@ -88,9 +88,6 @@ gl:
       accepted_tooltip: Unha das respostas foi aceptada como a resposta correcta.
       another_answers: Outras respostas
       answers: Respostas
-      answers_title: 
-        one: "%{count} resposta"
-        other: "%{count} respostas"
       asked_on: preguntada o
       ban: Bloquear
       close: Pechar

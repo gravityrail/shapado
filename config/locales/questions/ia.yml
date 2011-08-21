@@ -52,7 +52,6 @@ ia:
       active_tooltip: Questiones que ha essite actualisate recentemente
       ask_question: Poner question
       empty: Nemo ha ancora ponite un question. Sia le prime!
-      followers_count: "%{quantity} sequitores"
       help_to_answer: Adjuta nos a responder
       hot: Popular
       hot_tooltip: Le questiones le plus active in le ultime 5 dies
@@ -84,8 +83,6 @@ ia:
     question: 
       accepted_tooltip: Iste question ha un responsa que ha essite acceptate
       answer_verb: Responsa
-      answers_number: "%{quantity} responsas"
-      votes_number: "%{quantity} votos"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquettar
@@ -104,9 +101,6 @@ ia:
       accepted_tooltip: Un del responsas esseva acceptate como le responsa correcte.
       another_answers: Altere responsas
       answers: Responsas
-      answers_title: 
-        one: "%{count} responsa"
-        other: "%{count} responsas"
       asked_on: ponite le
       ban: Bannir
       close: Clauder

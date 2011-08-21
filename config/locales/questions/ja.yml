@@ -87,9 +87,6 @@ ja:
       accepted_tooltip: 1つの回答を正解として受け入れました
       another_answers: 他の回答
       answers: 回答
-      answers_title: 
-        one: "%{count}つの回答"
-        other: "%{count}つの回答"
       asked_on: 質問日
       ban: 弾く
       close: 閉じる

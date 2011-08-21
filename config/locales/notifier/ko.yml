@@ -26,7 +26,7 @@ ko:
     new_answer: 
       message: "%{user}님이  %{question} 질문에 %{new_answer} 답변을 다셨습니다."
     new_comment: 
-      message: "%{user}님이  %{question} 질문에 %{new_comment} 코멘트를 다셨습니다."
+      message: "%{user}님이  %{link} 질문에 %{new_comment} 코멘트를 다셨습니다."
     new_feedback: 
       message1: "%{user} <%{email}>님이 피드백을 보냈습니다."
       message2: IP address %{ip}인 익명 사용자가 피드백을 보냈습니다.

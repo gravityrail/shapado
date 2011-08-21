@@ -89,9 +89,6 @@ br:
       accepted_tooltip: Degemeret ez eus bet unan eus ar respontoù da respont reizh.
       another_answers: Respontoù all
       answers: Respontoù
-      answers_title: 
-        one: "%{count} respont"
-        other: "%{count} respont"
       asked_on: Goulennet e
       ban: Forbannañ
       close: Serriñ

@@ -88,9 +88,6 @@ ko:
       accepted_tooltip: 답변들 중 하나를 정답으로 수락
       another_answers: 기타 답변
       answers: 답변
-      answers_title: 
-        one: "%{count} 답변"
-        other: "%{count} 답변들"
       asked_on: "질문 대상:"
       ban: 금지
       close: 닫기

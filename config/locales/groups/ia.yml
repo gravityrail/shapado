@@ -30,6 +30,9 @@ ia:
       default_tags_message: Tu non pote haber plus de 10 etiquettas predefinite
       group: Gruppo
       groups: Gruppos
+      reputation_rewards_answer_constrain: Le restriction pro premios de responsa debe esser negative
+      reputation_rewards_ask_constrain: Le restriction pro poner questiones debe esser negative
+      reputation_rewards_key: Clave invalide
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Un problema ha occurrite. Per favor reproba.
@@ -86,3 +89,5 @@ ia:
       visit_group: Visitar iste gruppo
     top_grouplist: 
       active_site: "Sito active:"
+    update: 
+      notice: Le gruppo ha essite actualisate con successo.

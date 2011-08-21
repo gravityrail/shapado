@@ -89,9 +89,6 @@ el:
       accepted_tooltip: Μια από τις απαντήσεις επιλέχθηκε ως λύση
       another_answers: Άλλες απαντήσεις
       answers: Απαντήσεις
-      answers_title: 
-        one: "%{count} απάντηση"
-        other: "%{count} απαντήσεις"
       asked_on: Ερωτήθηκε στις
       ban: Απαγόρευση
       close: Κλείδωμα

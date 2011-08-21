@@ -37,7 +37,7 @@ ia:
     new_answer: 
       message: "%{user} respondeva %{new_answer} al question %{question}"
     new_comment: 
-      message: "%{user} commentava %{new_comment} al question %{question}"
+      message: "%{user} commentava %{new_comment} al question %{link}"
     new_feedback: 
       message1: Le usator %{user} <%{email}> ha inviate un retroaction
       message2: Un usator anonyme ha inviate un retroaction ab le adresse IP %{ip}

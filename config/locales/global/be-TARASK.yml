@@ -21,6 +21,7 @@ be-TARASK:
     by: ад
     chat: Чат
     current: Цяперашняя
+    edited: Рэдагаваны
     feedback: Водгук
     follow: Сачыць
     followed_by: "Сочаць:"
@@ -49,14 +50,6 @@ be-TARASK:
     what_to_do: Што Вы жадаеце зрабіць?
   models: 
     question: Пытаньне
-  number: 
-    x_time: 
-      one: "%{count} разоў"
-      other: "%{count} раз(оў)"
-      zero: Ніколі
-  pagination: 
-    next: Наступная &raquo;
-    previous: "&laquo; Папярэдняя"
   preferred_languages: 
     any: Любая
     user: Мае пажаданыя мовы
@@ -66,6 +59,7 @@ be-TARASK:
     user: Звычайны карыстальнік
   scaffold: 
     add: Дадаць
+    are_you_sure: Вы ўпэўнены?
     back: Назад
     cancel: Скасаваць
     close: Закрыць
@@ -84,3 +78,8 @@ be-TARASK:
   time: 
     ago: "%{time} таму"
     today: сёньня
+    yesterday: учора
+  views: 
+    pagination: 
+      next: Наступная &raquo;
+      previous: "&laquo; Папярэдняя"

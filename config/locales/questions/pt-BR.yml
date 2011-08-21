@@ -90,9 +90,6 @@ pt-BR:
       accepted_tooltip: Uma das respostas foi aceitada como correta
       another_answers: Outras respostas
       answers: Respostas
-      answers_title: 
-        one: "%{count} resposta"
-        other: "%{count} respostas"
       asked_on: perguntado em
       ban: Banir
       close: Fechar

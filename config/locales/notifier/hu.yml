@@ -21,7 +21,7 @@ hu:
     new_answer: 
       message: "%{user} a következőt válaszolta a(z) %{question} kérdésre: %{new_answer}"
     new_comment: 
-      message: "%{user} a következő megjegyzést fűzte a(z) %{question} kérdéshez: %{new_comment}"
+      message: "%{user} a következő megjegyzést fűzte a(z) %{link} kérdéshez: %{new_comment}"
     new_feedback: 
       message1: "%{user} <%{email}> visszajelzést küldött"
       message2: "Egy névtelen felhasználó visszajelzést küldött a következő IP-címről: %{ip}"

@@ -20,6 +20,7 @@ mk:
     by: од
     chat: Разговор
     current: тековно
+    edited: Уредено
     feedback: Мислења
     follow: Следи
     followed_by: "Следбеници:"
@@ -48,14 +49,6 @@ mk:
     what_to_do: Што сакате да правите?
   models: 
     question: Прашање
-  number: 
-    x_time: 
-      one: "%{count} пат"
-      other: "%{count} пати"
-      zero: Никогаш
-  pagination: 
-    next: Следна &raquo;
-    previous: "&laquo; Претходна"
   preferred_languages: 
     any: било кој
     user: Мои претпочитани јазици
@@ -65,6 +58,7 @@ mk:
     user: Обичен корисник
   scaffold: 
     add: Додај
+    are_you_sure: Дали сте сигурни?
     back: Назад
     cancel: Откажи
     close: Затвори
@@ -83,3 +77,8 @@ mk:
   time: 
     ago: пред %{time}
     today: денес
+    yesterday: вчера
+  views: 
+    pagination: 
+      next: Следна &raquo;
+      previous: "&laquo; Претходна"

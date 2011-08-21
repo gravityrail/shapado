@@ -4,8 +4,11 @@
 # Author: Anakmalaysia
 ms: 
   shared: 
+    any_lang: Mana-mana bahasa
+    by_anon: Oleh tanpa nama
     current_tags: 
       title: Tag yang dipilih
+    description: Keterangan
     empty: 
       activities: 
         description: 
@@ -36,13 +39,17 @@ ms:
       with_google: dengan Google
       with_identica: dengan Identi.ca
       with_linked_in: dengan LinkedIn
-      with_openid: dengan OpenID
+      with_openid: OpenID
       with_twitter: dengan Twitter
       with_user_pass: pengguna/kata laluan
     manage_navigation: 
       title_content: Kandungan kumpulan
       title_features: Ciri-ciri kumpulan
       title_options: Pilihan kumpulan
+    name: Nama
+    preferred_lang: Bahasa keutamaan saya
+    quick_question: 
+      random_question: Jawab soalan rawak
     social_connect: 
       find_friends_facebook: Cari rakan di Facebook
       find_friends_identica: Cari rakan di Identi.ca
