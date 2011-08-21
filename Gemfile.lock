@@ -461,7 +461,7 @@ DEPENDENCIES
   twitter (= 1.5.0)
   twitter-text (= 1.1.8)
   twitter_oauth
-  unicorn
+  unicorn (= 4.1.0)
   uuidtools (~> 2.1.1)
   whatlanguage (= 1.0.0)
   whenever

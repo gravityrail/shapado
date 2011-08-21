@@ -74,7 +74,7 @@ gem 'state_machine', "0.10.4"
 group :deploy do
   gem 'capistrano', :require => false
   gem 'ricodigo-capistrano-recipes', "~> 0.1.3", :require => false
-  gem 'unicorn', :require => false
+  gem 'unicorn', '4.1.0', :require => false
 end
 
 group :scripts do
