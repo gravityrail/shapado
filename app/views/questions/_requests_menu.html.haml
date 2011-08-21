@@ -1,4 +1,4 @@
--if current_user.mod_of?(current_group)
+-if logged_in? && current_user.mod_of?(current_group)
   %li.more.moderate
     = link_to I18n.t('questions.toolbar.moderate', :default => "Moderate")
     %ul.drop-menu
