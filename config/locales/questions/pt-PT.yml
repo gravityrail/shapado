@@ -81,8 +81,6 @@ pt-PT:
       title: Fazer pergunta
     question: 
       accepted_tooltip: Esta pergunta tem uma resposta que foi aceite
-      answers_number: "%{quantity} respostas"
-      votes_number: "%{quantity} votos"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Recategorizar
@@ -101,9 +99,6 @@ pt-PT:
       accepted_tooltip: Uma das respostas foi aceite como sendo a resposta correcta.
       another_answers: Outras respostas
       answers: Respostas
-      answers_title: 
-        one: "%{count} resposta"
-        other: "%{count} respostas"
       asked_on: colocada a
       ban: Banir
       close: Fechar

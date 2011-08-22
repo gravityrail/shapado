@@ -25,7 +25,7 @@ module Jobs
 
     def self.on_create_answer(answer_id)
       answer = Answer.find(answer_id)
-      answer.set_address
+      answer.set_address(answer.user.last_sign_in_ip)
     end
 
     def self.on_destroy_answer(user_id, attributes)

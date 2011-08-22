@@ -18,11 +18,9 @@ class GroupsController < ApplicationController
     conds = {:state => @state, :private => false}
 
     if params[:q].blank?
-      @groups = Group.where(conds).order_by(current_order).
-                                   paginate(paginate_opts(params))
+      @groups = Group.where(conds).order_by(current_order).page(params["page"])
     else
-      @groups = Group.filter(params[:q], options).order_by(current_order).
-                                                  paginate(paginate_opts(params))
+      @groups = Group.filter(params[:q], options).order_by(current_order).page(params["page"])
     end
 
     respond_to do |format|
@@ -271,7 +269,7 @@ class GroupsController < ApplicationController
     @invoice.add_item(version.name, "", version.price, version)
 
     @invoice.save!
-    
+
     render :layout => 'invitations'
   end
 

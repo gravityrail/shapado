@@ -1,12 +1,16 @@
 en:
   widgets:
+    edit:
+      title: 'Edit Widget'
+    widget:
+      change_position: 'Change widget position:'
     create:
       notice: 'The widget was successfully created.'
     update:
       notice: 'The widget was successfully updated.'
     index:
       title: Manage sidebar widgets
-      description: Use the arrows to move your widgets
+      description: Use the arrows to move your widgets.
       welcome_widgets: Welcome
       mainlist_widgets: Main list
       question_widgets: Question
@@ -15,6 +19,14 @@ en:
       mainlist_widgets_title: Widgets that will appear on the main list of questions
       question_widgets_title: Widgets that will appear on each question page
       external_widgets_title: Widgets that you will be able to embed on your own site
+      header: Header
+      zone: "Page's section:"
+      type: 'Type:'
+      name: "Widget's name"
+      add_new: "Add new widget"
+      navbar: "Navigation bar"
+      sidebar: "Side bar"
+      footer: "Footer"
     badges:
       title: Recent badges
       description: "This widget displays recent badges earned by users."
@@ -25,9 +37,9 @@ en:
     top_groups:
       title: Top 5 groups
       description: "This widget displays the top five groups."
-      no_members: "0 members"
-      one_member: "1 member"
-      members_count: "%{count} members"
+      has_members:
+        one: "%{count} member"
+        other: "%{count} members"
     top_users:
       title: Top 5 users
       description: "This widget displays the top five users."
@@ -42,8 +54,8 @@ en:
       description: "This widget displays the list of wiki pages."
       new: Add new page
     adsense:
-      title: Adsense
-      description: "This widget allows you to display Google Adsense ads."
+      title: AdSense
+      description: "This widget allows you to display Google AdSense ads."
     settings:
       limit: "Quantity to display:"
       custom_html: "Custom html:"
@@ -61,7 +73,7 @@ en:
 
     sharing_buttons:
       title: "Share this on"
-      description: "This widget will display social sharing buttons"
+      description: "This widget will display social sharing buttons."
     mod_info:
       description: "This widget shows information relevant to moderators such as flags and reporting requests."
     question_tags:
@@ -88,13 +100,15 @@ en:
       view_question: "<p>You can view it <a href=\"%{question}\">here</a> or ask another one below.</p>"
     suggestions:
       title: "People And Tags To Follow"
-      description: "Suggestion of friends and tags for the user to follow"
+      description: "Suggestion of friends and tags for the user to follow."
       followed_by: "Followed by %{user}"
+      follow_user: "+ Follow user"
+      follow_tag: "+ Follow tag"
     contributors:
       title: "Question's Contributors"
     group_networks:
       title: "Follow us"
-      description: "This widget displays a list of social network links so that you users can follow you there"
+      description: "This widget displays a list of social network links so that your users can follow you there."
     share:
       title: "Share in"
-      description: "This widget displays various buttons to share the current page to social networks"
+      description: "This widget displays various buttons to share the current page to social networks."

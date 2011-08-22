@@ -7,31 +7,20 @@ class MembersController < ApplicationController
 
   def index
     @group = current_group
-    @members = current_group.memberships.order_by([%W[role asc], %W[reputation desc]]).
-                                         paginate(paginate_opts(params))
+    conditions = {}
+    conditions = {:display_name => /^#{Regexp.escape(params[:q])}/} if params[:q]
 
-    @member = User.new
-    @membership = Membership.new
-  end
+    @members = current_group.memberships.where(conditions).order_by([%W[role asc], %W[reputation desc]]).page(params["page"])
 
-  def create
-    @member = User.where(:login => params[:user_id]).first
-    unless @member.nil?
-      ok = @group.add_member(@member, params[:role])
-      if ok
-        flash[:notice] = I18n.t('members.create.notice',
-                                :login => @member.login,
-                                :role => params[:role])
-        return redirect_to(members_path)
-      end
-    else
-      flash[:error] = I18n.t('members.create.error',
-                             :user_id => params[:user_id])
-      @member = User.new(:login => params[:user_id])
+    respond_to do |format|
+      format.html
+      format.js {
+        html = render_to_string(:partial => "members/member", :collection  => @members)
+        pagination = render_to_string(:partial => "shared/pagination", :object => @members,
+                                      :format => "html")
+        render :json => {:html => html, :pagination => pagination }
+      }
     end
-
-    @members = @group.users.paginate(paginate_opts(params))
-    render :index
   end
 
   def update

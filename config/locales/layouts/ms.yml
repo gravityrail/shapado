@@ -42,14 +42,21 @@ ms:
       users: Pengguna
       welcome_from: Selamat datang! Anda boleh
     manage: 
+      access: Akses
       actions: Tindakan
       announcements: Pengumuman
+      appearance: Penampilan
       constrains: Keperluan
       content: Kandungan
       dashboard: Papan Pemuka
       domain: Domain
+      edit_layout: Sunting susun atur
       general: Umum
+      group_features: Ciri-ciri
+      group_look_and_feel: Wajah
+      group_user_management: Pengurusan Pengguna
       invitations: Jemputan
+      invoices: Invois
       members: Ahli
       pages: Laman
       properties: Sifat
@@ -58,6 +65,7 @@ ms:
       social: Sosial
       stats: Statistik
       theme: Tema
+      themes: Tema
       widgets: Widget
     notifications: 
       message: Jika anda tidak ingin menerima pemberitahuan automatik dari %{group} lagi, tukar keutamaan anda di skirn pemberitahuan.

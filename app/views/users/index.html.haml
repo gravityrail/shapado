@@ -1,6 +1,7 @@
 .list-users
   .top
-    %h1 Users
+    %h1
+      = t('activerecord.models.users')
     = form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
       .field
         = label_tag :q, t(".filter"), :class => "label"
@@ -10,7 +11,7 @@
   %ul.filters
     %li
       %strong
-        Sort by:
+        = t('global.sort_by')
     %li.reputation
       = link_to "Reputation", users_path(:sort=>"reputation"), :title => t(".reputation_tooltip")
     %li.newest
@@ -27,4 +28,4 @@
     -@memberships.each do |membership|
       = render :partial => "membership", :object => membership
 
-  =will_paginate @memberships
+  = paginate @memberships

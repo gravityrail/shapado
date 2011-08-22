@@ -1,0 +1,28 @@
+# Messages for Malay (Bahasa Melayu)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Anakmalaysia
+ms: 
+  themes: 
+    edit: 
+      title: Sunting tema
+    form: 
+      update: Kemas kini tema
+    index: 
+      description: Cari tema anda di sini dan ubah penampilan aplikasi anda.
+      new_theme: Anda boleh membuat tema sendiri di sini.
+    show: 
+      apply: Gunakan
+      bg_color: Warna latar belakang
+      bg_image: Imej latar belakang
+      button_bg: Warna latar belakang butang
+      button_fg: Warna latar depan butang
+      fg_color: Warna latar depan
+      fluid: Bendalir (ini akan membuat susuna atur lebih anjal apabila tetingkap pelayar dilaraskan saiznya)
+      link_bg: Warna latar belakang pautan
+      link_fg: Warna latar depan pautan
+      not_ready: Tema ini belum sedia dipakai. Sila balik nanti.
+      try: Cuba
+      use_link_bg: Gunakan latar belakang untuk pautan
+      view_bg: Warna latar belakang paparan
+      view_fg: Warna latar depan paparan

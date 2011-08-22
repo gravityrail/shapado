@@ -144,7 +144,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers.where(options).
                                 order_by(current_order).
                                 without(:_keywords).
-                                paginate(paginate_opts(params))
+                                page(params["page"])
 
     @answer = Answer.new(params[:answer])
 
@@ -392,9 +392,7 @@ class QuestionsController < ApplicationController
         @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
-        @answers = @question.answers.where(options).
-                                    paginate(paginate_opts(params)).
-                                    order_by(current_order)
+        @answers = @question.answers.where(options).page(params["page"]).order_by(current_order)
         @answer = Answer.new
 
         format.html { render :action => "show" }
@@ -432,56 +430,11 @@ class QuestionsController < ApplicationController
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
                             order_by(current_order).
-                            paginate(paginate_opts(params))
+                            page(params["page"])
         @answer = Answer.new
 
         format.html { render :action => "show" }
         format.json  { render :json => @question.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def close
-    @question = Question.by_slug(params[:id])
-
-    if @question.reward && @question.reward.active
-      flash[:error] = I18n.t('questions.close.failure')
-    else
-      @question.closed = true
-      @question.closed_at = Time.zone.now
-      @question.close_reason_id = params[:close_request_id]
-    end
-
-    respond_to do |format|
-      if @question.save
-        sweep_question(@question)
-
-        format.html { redirect_to question_path(@question) }
-        format.json { head :ok }
-      else
-        flash[:error] = @question.errors.full_messages.join(", ")
-        format.html { redirect_to question_path(@question) }
-        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
-      end
-    end
-  end
-
-  def open
-    @question = current_group.questions.by_slug(params[:id])
-
-    @question.closed = false
-    @question.close_reason_id = nil
-
-    respond_to do |format|
-      if @question.save
-        sweep_question(@question)
-
-        format.html { redirect_to question_path(@question) }
-        format.json { head :ok }
-      else
-        flash[:error] = @question.errors.full_messages.join(", ")
-        format.html { redirect_to question_path(@question) }
-        format.json { render :json => @question.errors, :status => :unprocessable_entity  }
       end
     end
   end

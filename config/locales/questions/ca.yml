@@ -88,9 +88,6 @@ ca:
       accepted_tooltip: S'ha acceptat una de les respostes com a correcta
       another_answers: Altres respostes
       answers: Respostes
-      answers_title: 
-        one: resposta %{count}
-        other: "%{count} respostes"
       asked_on: preguntat a
       ban: Prohibir
       close: Tanca

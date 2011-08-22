@@ -2,36 +2,35 @@
   %section
     %h1
       -unless @questions.blank?
-        = t('.found_results', :quantity => @questions.total_entries)
+        = t('.found_results', :quantity => @questions.total_count)
       -else
         = t('.advanced_search')
-        
+
     %p.description
       - link = link_to t('.advanced_search'), '#', :class => "advanced-search"
       =raw t('.description', :link => link)
-  
+
     .advanced-form
       = render :partial => "form"
-  
-    %ul  
+
+    %ul
       -if @questions.blank? && params[:q]
         %li.box.highlight
           = t(".empty")
       -else
         -@questions.each do |question|
           = render :partial => "searches/question", :object => question, :locals => {:query_regexp => @query_regexp}
-  
-    = will_paginate @questions unless @questions.blank?
-  
+
+    = paginate @questions unless @questions.blank?
+
     -if params[:q]
       .save-search
         =form_for :search, @search, :url => search_index_path, :html => {:class => "form"} do |f|
           =f.hidden_field :query
           .field
-            =f.label :name, "Save this search:"
-            =f.text_field :name
+            =f.label :name, t('searches.index.input_title')
+            =f.text_field :name, :value => params[:q]
             %small
-              You can be checking your seraches, in order to see changes.
-              //il8n
+              = t('searches.index.input_legend')
           .buttons
-            =f.submit "Save with this name", :class => "save"
+            =f.submit t('scaffold.save'), :class => "save"

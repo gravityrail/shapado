@@ -2,10 +2,12 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Päivittäinen raja
         default_tags: Oletustunnisteet
         description: Kuvaus
         domain: Toimialue
@@ -13,7 +15,8 @@ fi:
         fb_button: Ota käyttöön Facebookin Tykkää-painike (ei yksityisyystävällinen)
         forum: Salli käyttäjälle useampia kuin yhden vastauksen
         group_created_by: "luotu:"
-        language: Kieli
+        language: Oletuskieli
+        languages: Ylimääräiset kielet
         legend: Selite
         logo: Logo
         may_contain_adult_content: Tämä sivusto voi sisältää aikuisviihdettä
@@ -28,8 +31,12 @@ fi:
       group: Ryhmä
       groups: Ryhmät
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Anteeksi, jokin meni pieleen. Yritä uudelleen kiitos.
     create: 
       flash_notice: Ryhmäsi luotiin onnistuneesti. Voit aloittaa nyt asettamaan sen asetuksia.
+    edit: 
+      title: Muokkaa ryhmääsi
     form: 
       access: Käyttöoikeusasetukset
       analytics_engine: Analytiikkakone
@@ -54,6 +61,7 @@ fi:
       disallow_ads: Älä hyväksy mainoksia
     index: 
       actives: Käytössä
+      create_your_own: Luo oma ryhmä
       filter: Etsi ryhmiä
       most_active: Aktiivisimmat
       name: Nimi
@@ -70,3 +78,5 @@ fi:
       group_closed: Tämä ryhmä oli suljettu.
       title: Ohjelmasta %{name}
       visit_group: Vieraile tässä ryhmässä
+    top_grouplist: 
+      active_site: "Aktiivinen sivusto:"

@@ -2,9 +2,13 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   admin: 
     manage: 
+      appearance: 
+        logo_legend: Lataa logo ryhmällesi. Kuvan on oltava pienempi kuin 2 Mt.
+        title: Poimi ja mukauta teemaa
       content: 
         footer: Alatunniste
         head: Otsake
@@ -13,7 +17,16 @@ fi:
         title: Mukautettu sisältö
         top_bar: Ylin palkki
         top_bar_tip: Kirjoita yksi linkki per rivi
+      invitations: 
+        invitations: Lähetetyt kutsut
+        invitations_title: Lista lähettämästäsi kutsuista
+        invite: Kutsu ihmisiä
+        invite_title: Kutsu sähköpostitse
+        title: Kutsut
       properties: 
+        ask_from_twitter: 
+          question_asked_to: Kysymys kysytty kohteeseen
+          question_must_include_example: "esim. # iAsk"
         constrains: 
           reputation_constrains_description: Tämä lomake sallii sinun asettaa, kuinka monta mainepistettä käyttäjien tarvitsee tehdä tíetylle toimelle
           reputation_constrains_subtitle: Jokaisen toimen mainepisteiden luettelo
@@ -28,28 +41,41 @@ fi:
           instruction6: Kun näin on tapahtunut, palaa tänne ja laita toimialuenimesi www.%{subdomain} alla olevaan kenttään ja paina painiketta 'update'. Jos sinulla on kysymyksiä, kysy meiltä verkkojuttelussa %{chat_url} tai tukifoorumillamme.
           title: Aseta toimialueesi
           warning: Oletko varma, että haluat muuttaa toimialueesi?
+        facebook_app: 
+          application_id: Sovellustunniste
+          secret_key: Salainen avain
         general: 
           title: Ryhmän ominaisuudet
+        invitations: 
+          resend_button: Lähetä uudelleen
+          revoke_button: Peruuta
+        invite: 
+          body_length_warning: Sisältö voi sisältää enintään 400 merkkiä
+          invitations: Lähetetyt kutsut
+          invite: Kutsu ihmisiä
+          title: Kutsu sähköpostitse
+          user_role: Kutsu käyttäjiä
+        post_to_twitter: 
+          send_answers_to_twitter: Lähetä kaikki vastaukset Twitteriin
+          send_comments_to_twitter: Lähetä kaikki kommentit Twitteriin
+          send_favorites_to_twitter: Lähetä kaikki suosikkivastaukset Twitteriin
+          send_questions_to_twitter: Lähetä kaikki kysymykset Twitteriin
         rewards: 
           reputation_rewards_description: Tämän lomakkeen avulla voit määrittää, miten käyttäjät voivat voittaa ja menettää mainepisteitä tietystä toimesta
           reputation_rewards_subtitle: Mainepalkintojen luettelo
           title: Palkkiot
         share: 
-          add_tags: Lisää tunnisteet twitter-sanomiisi
-          application_id: Sovellustunniste
-          asking_from_twitter: Kysytään kysymyksiä Twitteristä
-          ends_with_example: "esimerkiksi #shapado"
-          facebook_app: Facebook-sovellusasetukset
-          question_asked_to: Kysymys kysytty kohteeseen
-          question_must_include: Kysymyksen tulee sisältää seuraava tunniste, jotta se voidaan lähettää Twitterissä
-          question_must_include_example: "esimerkiksi #iAsk"
-          secret_key: Salainen avain
-          starts_with_example: "esimerkiksi #qa"
           title: Jaa
-          title_on_dlvr: Jaa kohteessa dlvr.it
-          tweet_ends_with: Liitä tunniste Twitter-viesteihisi
-          tweet_starts_with: Liitä tunniste twitter-viestiesi alkuun
-          twitter_account: Twitter-tili, jossa käyttäjäsi kysyvät kysymyksiä.
-        theme: 
-          logo_legend: Kopioi logo ryhmäsi palvelimelle. Sen on oltava pienempi kuin 2 megatavua.
-          title: Aseta ryhmän teema
+        tag_your_tweets: 
+          ends_with_example: "esim. # shapado"
+          starts_with_example: "esim. # qa"
+        title: Ryhmän ominaisuudet
+        twitter_account: 
+          twitter_account: Twitter-tili
+        twitter_app: 
+          key: Sovellustunniste
+      social: 
+        post_to_twitter: Lähetä Twitteriin
+      top_admin: 
+        site: Sivusto
+        title: Ylläpitäjä

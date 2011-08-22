@@ -89,9 +89,6 @@ be-TARASK:
       accepted_tooltip: Адзін з адказаў быў прызнаны слушным.
       another_answers: Іншыя адказы
       answers: Адказы
-      answers_title: 
-        one: "%{count} адказ"
-        other: "%{count} адказаў"
       asked_on: зададзенае
       ban: Заблякаваць
       close: Закрыць

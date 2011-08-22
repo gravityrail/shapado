@@ -28,14 +28,6 @@ pt-BR:
     share: Compartilhar
   models: 
     question: A pergunta
-  number: 
-    x_time: 
-      one: "%{count} vez"
-      other: "%{count} vezes"
-      zero: Nunca
-  pagination: 
-    next: Seguinte &raquo;
-    previous: "&laquo; Anterior"
   scaffold: 
     add: Adicionar
     back: Voltar

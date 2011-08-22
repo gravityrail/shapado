@@ -66,9 +66,9 @@ ia:
       messages: 
         empty_tags: Es obligatori usar al minus un etiquetta.
         tags_not_added: Le etiquettas '%{tags}' non poteva esser addite. Es necessari haber un reputation de %{reputation_required} pro crear nove etiquettas.
-        title_too_long: Le titulo es troppo longe. Illo non pote continer plus de 100 characteres.
-        too_many_tags: Non es possibile entrar plus de 9 etiquettas.
-        too_short: Isto sembla troppo curte. Per favor usa plus de %{count} parolas pro esser plus specific.
+        title_too_long: Le titulo non pote continer plus de 100 characteres.
+        too_many_tags: Non es possibile entrar plus de 20 etiquettas.
+        too_short: Es necessari que le titulo ha plus de %{count} parolas.
     move: 
       group_label: "Transferer al gruppo con le limace:"
       submit: Transferer!
@@ -83,8 +83,6 @@ ia:
     question: 
       accepted_tooltip: Iste question ha un responsa que ha essite acceptate
       answer_verb: Responsa
-      answers_number: "%{quantity} responsas"
-      votes_number: "%{quantity} votos"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquettar
@@ -103,9 +101,6 @@ ia:
       accepted_tooltip: Un del responsas esseva acceptate como le responsa correcte.
       another_answers: Altere responsas
       answers: Responsas
-      answers_title: 
-        one: "%{count} responsa"
-        other: "%{count} responsas"
       asked_on: ponite le
       ban: Bannir
       close: Clauder
@@ -119,6 +114,7 @@ ia:
       follow_tooltip: Sequer iste question
       follow_up: Prosequer
       follow_up_description: Crear un nove question a base de iste message.
+      follow_up_of: Iste question es un continuation de
       last_activity: Ultime activitate
       more_actions: Plus actiones
       open: Aperte

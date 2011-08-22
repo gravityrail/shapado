@@ -37,7 +37,7 @@ mk:
     new_answer: 
       message: "%{user} одговори %{new_answer} на прашањето %{question}"
     new_comment: 
-      message: "%{user} коментираше %{new_comment} на прашањето %{question}"
+      message: "%{user} коментираше %{new_comment} на прашањето %{link}"
     new_feedback: 
       message1: Корисникот %{user} <%{email}> испрати мислење
       message2: Анонимен корисник испратил мислење од IP-адресата %{ip}
@@ -46,6 +46,7 @@ mk:
     new_invitation: 
       message1: Стиснете тука за да ја прифатите поканата %{link}
       message2: Екипата на %{group}.
+      message3: "Порака од канителот:"
       subject: "%{user} ве покани на %{group}"
     report: 
       message1: Извештај за групата %{group}

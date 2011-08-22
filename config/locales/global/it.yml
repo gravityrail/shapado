@@ -27,14 +27,6 @@ it:
     share: Condividi
   models: 
     question: La domanda
-  number: 
-    x_time: 
-      one: "%{count} volta"
-      other: "%{count} volte"
-      zero: Mai
-  pagination: 
-    next: Successivo &raquo;
-    previous: "&laquo; Precedente"
   scaffold: 
     add: Aggiungi
     back: Indietro

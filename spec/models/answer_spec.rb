@@ -4,7 +4,13 @@ describe Answer do
   before(:each) do
     @current_user = User.make
     Thread.current[:current_user] = @current_user
-    @answer = Answer.make(:votes => {})
+    @answer = Answer.make(:votes => {}, :question => Question.make)
+  end
+
+  after(:each) do
+    q = @answer.question
+    @answer.destroy
+    q.destroy
   end
 
   describe "module/plugin inclusions (optional)" do

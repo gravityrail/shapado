@@ -40,26 +40,14 @@
             = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag', :class => "retag"
         .clear
 
-    .toolbar
-      %ul
+    .article-actions
+      %ul.drop-menu
         %li.answers
-          - if question.answers_count == 0
-            = link_to t('questions.question.no_answer_number'), question_path(question)
-          - elsif question.answers_count == 1
-            = link_to t('questions.question.answer_number'), question_path(question)
-          - else
-            = link_to t('questions.question.answers_number', :quantity => format_number(question.answers_count)), question_path(question)
+          = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers
-            - if question.followers_count.to_i == 1
-              = t('questions.index.follower_count')
-            - else
-              = t('questions.index.followers_count', :quantity => format_number(question.followers_count))
-
-        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
-          %li.spam
-            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
+            = t('questions.index.has_followers', :count => question.followers_count)
 
         %li
           - if logged_in? && question.follower?(current_user)
@@ -69,6 +57,12 @@
 
         %li
           =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
+
+        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
+          %li.spam
+            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
+        = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
+      .panel-forms
 
     .clear
 

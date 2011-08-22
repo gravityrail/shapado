@@ -221,6 +221,10 @@ module ApplicationHelper
   def article_date(article, short = true)
     out = ""
     out << format_article_date(article.created_at, short)
+  end
+
+  def edited_date(article, short = true)
+    out = ""
     out << " ("
     out << t('global.edited')
     out << " "
@@ -380,7 +384,7 @@ module ApplicationHelper
                    end
     else
       tag = Tag.where(:name => suggestion[0], :group_id => current_group.id).first
-      avatar_tag = tag_icon_image_link(tag)
+      avatar_tag = tag_icon_image_link(tag) if tag
     end
     avatar_tag
   end
@@ -411,7 +415,7 @@ module ApplicationHelper
 
   def follow_suggestion_link(suggestion)
     if suggestion.class == User
-      link_to "+ #{t("users.show.follow")} User", follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
+      link_to t('widgets.suggestions.follow_user'), follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
     else
       follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
@@ -430,7 +434,7 @@ module ApplicationHelper
         follow_data = 'unfollow-tag'
         follow_class = 'follow-tag toggle-action'
         data_title = t("global.unfollow")
-        title = 'Follow tag'
+        title = t('widgets.suggestions.follow_tag')
         opt = 'add'
         path = follow_tags_users_path(:tags => tag.name)
         data_undo = unfollow_tags_users_path(:tags => tag.name)
@@ -440,7 +444,7 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag"
+    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
   end
 
   def widgets_context(controller, action)

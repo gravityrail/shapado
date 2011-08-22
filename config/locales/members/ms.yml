@@ -8,9 +8,14 @@ ms:
       member: 
         role: Peranan
   members: 
+    create: 
+      error: Maaf, pengguna **%{user_id}** tidak wujud
+      notice: "%{login} berjaya ditambahkan sebagai %{role}."
     form: 
       login_tip: Cari sambil taip
     index: 
       manage_members_title: Uruskan ahli
       title: Ahli-ahli kumpulan %{name}
       title_isolate: Ahli-ahli %{name}
+    update: 
+      error: Maaf, anda tidak boleh mengubah keahlian **%{login}**

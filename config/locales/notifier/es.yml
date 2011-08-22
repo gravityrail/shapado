@@ -29,7 +29,7 @@ es:
     new_answer: 
       message: "%{user} respondió %{new_answer} a la pregunta %{question}"
     new_comment: 
-      message: "%{user} comento %{new_comment} en la pregunta %{question}"
+      message: "%{user} comento %{new_comment} en la pregunta %{link}"
     new_feedback: 
       message1: El usuario %{user} <%{email}> mando un feedback
       message2: Un usuario anónimo mando un feedback desde la dirección IP %{ip}

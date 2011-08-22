@@ -63,6 +63,7 @@ de:
     form: 
       activities_notification: E-Mail-Benachrichtigungen zu Aktivitäten, z. B. zu erhaltenen Auszeichnungen, neuen Anhängern, etc.
       avatar_tip: Ändere Dein Profilbild mit „Gravatar“
+      desktop_notification: Desktop-Benachrichtigungen
       give_advice_notification: E-Mail-Benachrichtigungen zu Fragen in Deinem Fachgebiet
       information: Nutzerinformationen
       language: "Die Sprache, die für die Nutzeroberfläche verwendet werden soll:"

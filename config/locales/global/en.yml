@@ -3,9 +3,10 @@ en:
     user: Regular user
     moderator: Moderator
     owner: Owner
-  pagination:
-    previous: "&laquo; Previous"
-    next: "Next &raquo;"
+  views:
+    pagination:
+      previous: "&laquo; Previous"
+      next: "Next &raquo;"
   scaffold:
     are_you_sure: "Are you sure?"
     sure: Are you sure you want to delete this %{model} ?
@@ -46,7 +47,7 @@ en:
     active: Activate
     anonymous: Anonymous
     unknown_place: Unknown
-    subjetive: subjetive
+    subjetive: subjective
     follow: Follow
     following: Following
     unfollow: Unfollow

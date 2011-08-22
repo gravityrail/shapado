@@ -26,7 +26,7 @@ gl:
     new_answer: 
       message: "%{user} respondeu %{new_answer} á pregunta %{question}"
     new_comment: 
-      message: "%{user} comentou %{new_comment} na pregunta %{question}"
+      message: "%{user} comentou %{new_comment} na pregunta %{link}"
     new_feedback: 
       message1: O usuario %{user} <%{email}> enviou comentarios
       message2: Un usuario anónimo mandou comentarios desde o enderezo IP %{ip}

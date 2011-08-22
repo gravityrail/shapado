@@ -26,14 +26,6 @@ sv:
     share: Dela
   models: 
     question: Frågan
-  number: 
-    x_time: 
-      one: "%{count} gång"
-      other: "%{count} gånger"
-      zero: Aldrig
-  pagination: 
-    next: Nästa &raquo;
-    previous: "&laquo; Föregående"
   scaffold: 
     add: Lägg till
     back: Tillbaka

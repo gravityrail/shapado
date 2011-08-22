@@ -31,6 +31,9 @@ de:
       default_tags_message: Du kannst nicht mehr als 10 Standard-Stichwörter verwenden
       group: Gruppe
       groups: Gruppen
+      reputation_rewards_answer_constrain: Die Einschränkung Auszeichnungen beantworten zu können sollte negativ sein
+      reputation_rewards_ask_constrain: Die Einschränkung Fragen zu können sollte negativ sein
+      reputation_rewards_key: Ungültiger Schlüssel
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Es ist leider ein Problem aufgetreten. Versuche es bitte erneut.
@@ -87,3 +90,5 @@ de:
       visit_group: Diese Gruppe besuchen
     top_grouplist: 
       active_site: "Aktive Website:"
+    update: 
+      notice: Deine Gruppe wurde erfolgreich aktualisiert.

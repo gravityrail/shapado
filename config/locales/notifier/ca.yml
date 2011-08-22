@@ -26,7 +26,7 @@ ca:
     new_answer: 
       message: "%{user} ha respost %{new_answer} a la pregunta %{question}"
     new_comment: 
-      message: "%{user} ha comentat %{new_comment} a la pregunta %{question}"
+      message: "%{user} ha comentat %{new_comment} a la pregunta %{link}"
     new_feedback: 
       message1: L'usuari %{user} <%{email}> ha enviat una retroacció
       message2: Un usuari anònim ha enviat una retroacció des de l'adreça IP %{ip}

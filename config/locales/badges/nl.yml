@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Ewout124
 # Author: McDutchie
 # Author: Protozoan
 # Author: SPQRobin
@@ -18,9 +19,15 @@ nl:
       addict: 
         description: Heeft de site twintig dagen achter elkaar bezocht
         name: Verslaafde
+      altruist: 
+        description: De eerste onderscheiding die u handmatig hebt toegekend aan de vraag van een ander
+        name: Altruïst
       autobiographer: 
         description: Heeft alle velden in het gebruikersprofiel ingevuld
         name: Autobiograaf
+      benefactor: 
+        description: De eerste onderscheiding die u handmatig hebt toegekend aan uw eigen vraag
+        name: Weldoener
       celebrity: 
         description: Heeftmeer dan honderd volgers
         name: Beroemdheid
@@ -87,6 +94,9 @@ nl:
       interesting_person: 
         description: Heeft meer dan tien volgers
         name: Interessant persoon
+      investor: 
+        description: De eerste onderscheiding die u hebt toegekend aan de vraag van een ander
+        name: Investeerder
       merit_medal: 
         description: Heeft tweehonderd positieve stemmen gekregen
         name: Medaille van verdienste
@@ -120,6 +130,9 @@ nl:
       popular_question: 
         description: Heeft een vraag gesteld die duizend keer bekeken is
         name: Populaire vraag
+      promoter: 
+        description: De eerste onderscheiding die u hebt toegekend aan uw eigen vraag
+        name: Promotor
       rockstar: 
         description: Heeft duizend positieve stemmen en maximaal tien negatieve stemmen
         name: Rockster
@@ -136,6 +149,7 @@ nl:
         description: Heeft de site acht dagen achter elkaar bezocht
       stellar_answer: 
         description: Heeft een antwoord dat door 100 gebruikers als favoriet is aangegeven
+        name: Fantastisch antwoord
       stellar_question: 
         description: Heeft een vraag gesteld die door honderd gebruikers gevolgd wordt
         name: Bovennatuurlijk goede vraag

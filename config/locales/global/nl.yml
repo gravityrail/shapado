@@ -21,12 +21,16 @@ nl:
     anonymous: Anoniem
     blog: Blog
     by: door
+    chat: Chat
     current: huidige
+    edited: Bewerkt
     feedback: Terugkoppeling
     follow: Volgen
     followed_by: "Gevolgd door:"
+    following: Abonnementen
     from: uit %{site}
     group_not_found: De pagina %{url} bestaat niet
+    home: Hoofdmenu
     next_button: Volgende
     or: of
     permission_denied: Geen toegang
@@ -35,9 +39,12 @@ nl:
     previous: Vorige
     privacy: Privacy
     share: Delen
+    sign_up: Registreren
     size: Grootte
     sort_by: "Sorteren op:"
+    subjetive: subjectief
     tags_label: "Labels:"
+    tos: Gebruiksvoorwaarden
     unfollow: Niet langer volgen
     unknown_place: Onbekend
     view: Bekijken
@@ -45,20 +52,16 @@ nl:
     what_to_do: Wat wilt u doen?
   models: 
     question: De vraag
-  number: 
-    x_time: 
-      one: "%{count} keer"
-      other: "%{count} keer"
-      zero: Nooit
-  pagination: 
-    next: Volgende &raquo;
-    previous: "&laquo; Vorige"
   preferred_languages: 
+    any: Alle
     user: Mijn voorkeurstalen
   roles: 
+    moderator: Moderator
     owner: Eigenaar
+    user: Gewone gebruiker
   scaffold: 
     add: Toevoegen
+    are_you_sure: Weet u het zeker?
     back: Terug
     cancel: Annuleren
     close: Sluiten
@@ -77,3 +80,8 @@ nl:
   time: 
     ago: "%{time} geleden"
     today: Vandaag
+    yesterday: gisteren
+  views: 
+    pagination: 
+      next: Volgende &raquo;
+      previous: "&laquo; Vorige"

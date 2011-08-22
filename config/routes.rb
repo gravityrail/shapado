@@ -120,10 +120,7 @@ Rails.application.routes.draw do
       put :move_to
       get :retag
       put :retag_to
-      get :close
-      put  :open
       get :remove_attachment
-
       get :twitter_share
     end
 
@@ -181,7 +178,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :invoices
+  resources :invoices do
+    member do
+      get :success
+    end
+  end
 
   scope '/manage' do
     resources :widgets do
@@ -224,10 +225,23 @@ Rails.application.routes.draw do
         get :to_open
         post :manage
       end
+      member do
+        get :banning
+        put :ban
+
+        get :closing
+        put :close
+        get :opening
+        put :open
+      end
     end
     resources :answers do
       collection do
         post :manage
+      end
+      member do
+        get :banning
+        put :ban
       end
     end
     resources :users

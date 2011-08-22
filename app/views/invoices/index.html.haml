@@ -1,19 +1,18 @@
--#i18n
 %h1
-  Your invoices
+  = t('invoices.index.title')
 %p.description
-  Here you can see all the invoices that you already purcehased for you groups.
+  = t('invoices.index.description')
 
 #main-content-wrap
   %table
     %thead
       %tr
-        %td ID
-        %td Date
-        %td Payed At
-        %td Group/Domain
-        %td Detail
-        %td Amount
+        %td = t('invoices.index.id')
+        %td = t('invoices.index.date')
+        %td = t('invoices.index.payed_at')
+        %td = t('invoices.index.group_domain')
+        %td = t('invoices.index.detail')
+        %td = t('invoices.index.amount')
     %tbody
       -@invoices.each do |invoice|
         %tr
@@ -29,4 +28,4 @@
           %td
             ==US$#{invoice.total_in_dollars}
 
-  =will_paginate @invoices
+  = paginate @invoices

@@ -55,6 +55,8 @@ ia:
           resend_button: Reinviar
           revoke_button: Revocar
         invite: 
+          body_instructions: Scribe un message al personas que tu invita (optional)
+          body_length_warning: Le texto non pote continer plus de 400 characteres
           emails_instructions: Entra adresses de e-mail separate con commas
           invitations: Invitationes inviate
           invite: Invitar personas

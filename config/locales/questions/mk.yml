@@ -32,8 +32,15 @@ mk:
       unfavorite: Одзачувај
       unfavorite_tooltip: Отстранете го одговоров од бендисаните
       unset_answer: ова повеќе да не биде решение?
+    answer_toolbar: 
+      flagged_by_you: Означено од вас
+    close: 
+      failure: Ова прашање има активна награда и затоа не може да се затвори.
     create: 
+      already_registered: Веќе е регистриран корисник со адреса %{email}, Најавете се со оваа адреса.
       flash_notice: прашањето е успешно создадено.
+    disallow_spam: 
+      error: Треба да почекате 20 секунди пред да објавите друго прашање.
     edit: 
       title: уредување на прашањето
     flag: 
@@ -43,6 +50,7 @@ mk:
       adult_content: ова прашање содржи материјал за возрасни
       body_tip: што сакате да прашате? бидете описни.
       language_tip: одберете прашање за јазикот
+      related_questions_desc: Тука ќе се прикажуваат слични прашања.
       remove_attachment: Отстрани
       tags_tip: користете ознаки за да додете повеќе информации за вашето прашање.
     history: 
@@ -66,9 +74,9 @@ mk:
       messages: 
         empty_tags: Нажалост, мора да употребите барем една ознака.
         tags_not_added: Не можев да ги додадам ознаките „%{tags}“. За да можете да додавате ознаки, потребен ви е углед од %{reputation_required}
-        title_too_long: Насловот е предолг. не треба да содржи повеќе од 100 знаци
-        too_many_tags: Нажалост, можете да внесете највеќе до 9 ознаки.
-        too_short: изгледа прекратко. Употребете повеќе зборови од %{count} за да бидете поконкретни.
+        title_too_long: Насловот не може да содржи повеќе од 100 знаци.
+        too_many_tags: Нажалост, можете да внесете највеќе 20 ознаки.
+        too_short: Насловот мора да има повеќе од %{count} збора.
     move: 
       group_label: "премести во групата со насловот:"
       submit: премести!
@@ -83,8 +91,6 @@ mk:
     question: 
       accepted_tooltip: Ова прашање има одговор кој е прифатен
       answer_verb: Одговори
-      answers_number: "%{quantity} одговори"
-      votes_number: "%{quantity} гласа"
       wiki_title: "Вики: %{title}"
     retag: 
       title: преозначи
@@ -103,9 +109,6 @@ mk:
       accepted_tooltip: еден од одговорите е прифатен како точен
       another_answers: други одговори
       answers: Одговори
-      answers_title: 
-        one: "%{count} одговор"
-        other: "%{count} одговори"
       asked_on: постевено на
       ban: забрани
       close: затвори
@@ -119,6 +122,8 @@ mk:
       follow_tooltip: Следи го прашањево
       follow_up: Проследи
       follow_up_description: Создај ново прашање врз основа на објавава.
+      follow_up_of: Прашавењево е поставено проследувајќи го
+      history: Историја
       last_activity: последна активност
       more_actions: Повеќе можности
       open: Отворени
@@ -144,6 +149,11 @@ mk:
       filter: пребарај ознаки
       title: ознаки
       tooltip: приказ на прашања со ознаката %{tag}
+    toolbar: 
+      answer_by_mail: Одговори по е-пошта
+      more_actions: Повеќе можности
+      requests: Барања
+      your_close_request: Вашето барање за затворање
     unanswered: 
       empty: оваа група нема неодговорени прашања.
       expert: стручњаци

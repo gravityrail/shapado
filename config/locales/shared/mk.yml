@@ -4,24 +4,52 @@
 # Author: Bjankuloski06
 mk: 
   shared: 
+    any_lang: Било кој јазик
+    by_anon: Анонимно
     current_tags: 
       title: одбрани ознаки
+    description: Опис
+    empty: 
+      activities: 
+        description: 
+          text: Ова место ќе се исполни автоматски кога посетителите ќе почнат да го користат мрежното место.
+        title: Досега нема активности.
+      answers: 
+        description: 
+          text: Бидете први!
+        title: Досега никој нема одговорено на прашањево.
+      default: 
+        description: 
+          text: Бидете првиот што ќе %{action_link}!
+        title: Нажалост, тука нема многу што да се види.
+      questions: 
+        description: 
+          action_link: постави прашање
+      themes: 
+        description: 
+          action_link: сега
+          text: создајте %{action_link}
+        title: Засега немате создадено ниеден изглед.
     layout: 
       footer: 
         cc_footer: Сите содржини и податоци на Shapado.com се достапни под лиценцата %{cc_link}
-        powered_by: Овозможено од %{source_link} %{version} под
+        powered_by: Овозможено од %{source_link} %{version} под %{agpl_link}
     login_drop_down: 
       with_facebook: со Facebook
       with_google: со Google
       with_identica: со Identi.ca
       with_linked_in: со LinkedIn
-      with_openid: со OpenID
+      with_openid: OpenID
       with_twitter: со Twitter
       with_user_pass: корисник/лозинка
     manage_navigation: 
       title_content: Содржина на групата
       title_features: Карактеристики на групата
       title_options: Нагодувања за групата
+    name: Име
+    preferred_lang: Мои претпочитани јазици
+    quick_question: 
+      random_question: Одговори случајно прашање
     social_connect: 
       find_friends_facebook: Пронајди пријатели од Facebook
       find_friends_identica: Пронајди пријатели од Identi.ca

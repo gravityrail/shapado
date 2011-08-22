@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 fi: 
   activerecord: 
     models: 
@@ -16,9 +17,13 @@ fi:
       addict: 
         description: Vieraillut sivustolla päivittäin 20 peräkkäisenä päivänä
         name: Narkomaani
+      altruist: 
+        name: Altruisti
       autobiographer: 
         description: Kaikki käyttäjäprofiilikentät tulivat valmiiksi
         name: Omaelämäkerta
+      benefactor: 
+        name: Hyväntekijä
       celebrity: 
         description: Saanut yli 100 seuraajaa
         name: Julkkis
@@ -55,6 +60,9 @@ fi:
       fanatic: 
         description: Vieraillut sivustolla päivittäin 100 peräkkäisen päivän ajan
         name: Fanaatikko
+      favorite_answer: 
+        description: On 25 käyttäjän suosikkivastaus
+        name: Suosikkivastaus
       favorite_question: 
         description: 25 käyttäjän suosikkikysymys
         name: Suosikkikysymys
@@ -82,6 +90,8 @@ fi:
       interesting_person: 
         description: Saanut yli 10 seuraajaa
         name: Mielenkiintoinen henkilö
+      investor: 
+        name: Sijoittaja
       merit_medal: 
         description: Saanut 200 myönteistä ääntä
         name: Ansiomitali
@@ -115,6 +125,8 @@ fi:
       popular_question: 
         description: Kysyi kysymyksen, jota on katsottu 1000 kertaa
         name: Suosittu kysymys
+      promoter: 
+        name: Edistäjä
       rockstar: 
         description: On 100 myönteistä ääntä, enintään 10 kielteistä
         name: Rock-tähti
@@ -129,6 +141,9 @@ fi:
         name: Palvelumitali
       shapado: 
         description: Vieraillut sivustolla päivittäin 8 peräkkäisenä päivänä
+      stellar_answer: 
+        description: On 100 käyttäjän suosikkivastaus
+        name: Tähtivastaus
       stellar_question: 
         description: Kysyi kysymyksen, jonka 100 käyttäjää lisäsi suosikkeihin
         name: Tähtikysymys

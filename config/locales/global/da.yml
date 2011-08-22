@@ -26,14 +26,6 @@ da:
     share: Del
   models: 
     question: Spørgsmålet
-  number: 
-    x_time: 
-      one: "%{count} gang"
-      other: "%{count} gange"
-      zero: Aldrig
-  pagination: 
-    next: Næste &raquo;
-    previous: "&laquo; Forrige"
   scaffold: 
     add: Tilføj
     back: Tilbage

@@ -26,7 +26,7 @@ da:
     new_answer: 
       message: "%{user} svarede %{new_answer} på spørgsmålet %{question}"
     new_comment: 
-      message: "%{user} kommenterede %{new_comment} på spørgsmålet %{question}"
+      message: "%{user} kommenterede %{new_comment} på spørgsmålet %{link}"
     new_feedback: 
       message1: Brugeren %{user} <%{email}> sendte feedback
       message2: Anonym bruger har sendt feedback fra IP-adressen %{ip}

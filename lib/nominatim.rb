@@ -12,8 +12,9 @@ module Nominatim
     def get_address
       url = "http://open.mapquestapi.com/nominatim/v1/reverse?format=json&lat=#{self.lat}&lon=#{self.long}"
       begin
-        data = JSON.parse(open(url).read)
-        return data["address"]
+        data = Rails.cache.fetch("osm_lat#{self.lat}lon#{self.long}") do
+          JSON.parse(open(url).read)["address"]
+        end
       rescue
         { }
       end

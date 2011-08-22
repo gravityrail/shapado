@@ -3,16 +3,33 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 fi: 
   devise: 
     confirmations: 
       confirmed: Tilisi vahvistettiin. Olet nyt kirjautunut sisään.
-      link: Etkö ole saanut vahvistusohjeita?
       send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet tilin varmistamiseen.
+    failure: 
+      inactive: Tili ei ole vielä vahvistettu.
+      invalid: Virheellinen sähköpostiosoite tai salasana.
+      invalid_token: Virheellinen todennustunniste.
+      locked: Tilisi on lukittu.
+      timeout: Istuntosi on vanhentunut. Jatka kirjautumalla sisään.
     mailer: 
-      confirmation_instructions: Vahvistusohjeet
-      reset_password_instructions: Ohjeet salasanan alustamiseen
-      unlock_instructions: Poista ohjeiden lukitus
+      confirm_account: 
+        link: Vahvista käyttäjätunnus
+        welcome: Tervetuloa
+      confirmation_instructions: 
+        subject: Vahvistusohjeet
+      hello: Hei
+      reset_password: 
+        link: Salasanan vaihto
+      reset_password_instructions: 
+        subject: Salasanan palautusohjeet
+      unlock: 
+        link: Avaa tili
+      unlock_instructions: 
+        subject: Lukituksen poistamisen ohjeet
     passwords: 
       link: Unohditko salasanasi?
       send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet salasanan alustamisesta.
@@ -20,26 +37,21 @@ fi:
     registrations: 
       destroyed: Heippa! Tilisi on peruutettu. Toivomme näkevämme sinut pian uudelleen.
       link: Rekisteröidy
-      signed_up: Olet rekisteröitynyt.
+      signed_up: Olet rekisteröitynyt onnistuneesti. Jos vahvistustoiminto on aktiivinen, saat vahvistusviestin.
       updated: Olet päivittänyt tilisi.
     sessions: 
-      facebook_actions: 
-        sign_in: Kirjaudu sisään
-        sign_out: Kirjaudu ulos
-      facebook_authenticity_token: Jokin meni vikaan. Turvallisuussyistä kirjaudu sisään uudelleen.
-      facebook_invalid: Ei voitu kirjautua sisään. Virheellinen tili.
-      facebook_timeout: Facebook-istunto on vanhentunut. Jatka kirjautumalla uudelleen sisään.
-      inactive: Tili ei ole vielä vahvistettu.
-      invalid: Virheellinen sähköpostiosoite tai salasana.
-      invalid_token: Virheellinen todennustunniste.
       link: Kirjaudu sisään
-      locked: Tilisi on lukittu.
+      new: 
+        remember_me: Pidä minut sisäänkirjautuneena
+      sign_out: Kirjaudu ulos
       signed_in: Kirjautunut sisään
       signed_out: Kirjautunut ulos.
-      timeout: Istuntosi on vanhentunut. Jatka kirjautumalla sisään.
-      unauthenticated: Sinun täytyy kirjautua sisään tai rekisteröityä ennen kuin jatkat.
-      unconfirmed: Sinun on vahvistettava tilisi ennen kuin jatkat.
     unlocks: 
       link: Etkö vastaanottanut lukituksenpoisto-ohjeita?
       send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet tilin lukituksen poistamisesta.
       unlocked: Tilisi on avattu. Olet nyt kirjautunut sisään
+  errors: 
+    messages: 
+      already_confirmed: oli jo vahvistettu
+      not_found: ei löytynyt
+      not_locked: ei lukittu

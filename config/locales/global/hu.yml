@@ -26,14 +26,6 @@ hu:
     share: Megosztás
   models: 
     question: A kérdés
-  number: 
-    x_time: 
-      one: "%{count} alkalommal"
-      other: "%{count} alkalommal"
-      zero: Soha
-  pagination: 
-    next: következő &raquo;
-    previous: "&laquo; előző"
   scaffold: 
     add: Hozzáadás
     back: Vissza

@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.0.10'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -24,7 +24,7 @@ gem "sass"
 gem 'compass', '0.11.1'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => "rails3"
+gem 'kaminari'
 
 # mongodb
 gem 'bson', '1.3.0'
@@ -54,6 +54,8 @@ gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_w
 gem 'activemerchant', '1.16.0'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
+gem 'geoip'
+
 # authentication
 gem 'omniauth', '~> 0.2.6'
 gem 'oa-openid', '~> 0.2.6', :require => 'omniauth/openid'
@@ -72,7 +74,7 @@ gem 'state_machine', "0.10.4"
 group :deploy do
   gem 'capistrano', :require => false
   gem 'ricodigo-capistrano-recipes', "~> 0.1.3", :require => false
-  gem 'unicorn', :require => false
+  gem 'unicorn', '4.1.0', :require => false
 end
 
 group :scripts do

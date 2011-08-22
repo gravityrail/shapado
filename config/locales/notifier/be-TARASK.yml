@@ -27,7 +27,7 @@ be-TARASK:
     new_answer: 
       message: "%{user} адказаў %{new_answer} на пытаньне %{question}"
     new_comment: 
-      message: "%{user} пакінуў камэнтар %{new_comment} да пытаньня %{question}"
+      message: "%{user} пакінуў камэнтар %{new_comment} да пытаньня %{link}"
     new_feedback: 
       message1: Карыстальнік %{user} <%{email}> даслаў водгук
       message2: Ананімны карыстальнік даслаў водгук з IP-адрасу %{ip}

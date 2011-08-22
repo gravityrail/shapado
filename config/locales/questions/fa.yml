@@ -89,9 +89,6 @@ fa:
       accepted_tooltip: یکی از پاسخها به عنوان پاسخ درست انتخاب شده است.
       another_answers: دیگر پاسخ‌ها
       answers: پاسخ‌ها
-      answers_title: 
-        one: "%{count} پاسخ"
-        other: "%{count} پاسخ"
       asked_on: پرسیده است در
       ban: ممنوع کردن
       close: بستن

@@ -28,11 +28,6 @@ eo:
     share: Diskonigu
   models: 
     question: La demando
-  number: 
-    x_time: 
-      one: "%{count} fojon"
-      other: "%{count} fojojn"
-      zero: Neniam
   scaffold: 
     add: Aldoni
     back: Reen

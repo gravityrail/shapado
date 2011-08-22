@@ -32,8 +32,15 @@ ms:
       unfavorite: Nyahsimpan
       unfavorite_tooltip: Gugurkan jawapan ini daripada kegemaran anda
       unset_answer: Jawapan tidak ditetapkan?
+    answer_toolbar: 
+      flagged_by_you: Dibenderakan oleh anda
+    close: 
+      failure: Soalan ini mempunyai ganjaran yang aktif dan tidak boleh ditutup.
     create: 
+      already_registered: Seorang pengguna dengan alamat e-mel %{email} sudah berdaftar, sila log masuk dengan menggunakan alamat ini.
       flash_notice: Soalan berjaya dicipta.
+    disallow_spam: 
+      error: Anda perlu menunggu 20 saat sebelum mengepos soalan lain.
     edit: 
       title: Menyunting soalan
     flag: 
@@ -43,6 +50,7 @@ ms:
       adult_content: Soalan ini mengandungi kandungan dewasa (18+).
       body_tip: Apakah soalan anda? Sila nyatakan dengan deskriptif.
       language_tip: Pilih bahasa soalan yang anda tanyakan itu.
+      related_questions_desc: Soalan yang serupa akan dipaparkan di sini.
       remove_attachment: Buang
       tags_tip: Gunakan tag untuk menambahkan maklumat mengenai soalan anda.
     history: 
@@ -66,9 +74,9 @@ ms:
       messages: 
         empty_tags: Maaf, anda perlu menggunakan sekurang-kurangnya satu tag.
         tags_not_added: Tag '%{tags}' tidak dapat dibubuh. Anda memerlukan reputasi %{reputation_required} untuk membuat tag baru
-        title_too_long: Tajuknya terlalu panjang, sepatutnya tidak lebih 100 aksara.
-        too_many_tags: Maaf, anda boleh mengisikan sebanyak 9 tag sahaja.
-        too_short: Nampak terlalu pendek. Sila gunakan lebih daripada %{count} perkataan supaya lebih terperinci.
+        title_too_long: Maaf, tajuk tidak boleh mengandungi lebih daripada 100 aksara.
+        too_many_tags: Maaf, anda hanya boleh isikan maksimum 20 tag.
+        too_short: Maaf, tajuk anda perlu mempunyai lebih daripada %{count} perkataan.
     move: 
       group_label: "Pindah ke kumpulan:"
       submit: Pindahkan!
@@ -83,8 +91,6 @@ ms:
     question: 
       accepted_tooltip: Soalan ini ada jawapan yang diterima
       answer_verb: Jawab
-      answers_number: "%{quantity} jawapan"
-      votes_number: "%{quantity} undian"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Tag semula
@@ -103,9 +109,6 @@ ms:
       accepted_tooltip: Satu jawapan telah diterima sebagai jawapan tepat.
       another_answers: Jawapan lain
       answers: Jawapan
-      answers_title: 
-        one: "%{count} jawapan"
-        other: "%{count} jawapan"
       asked_on: ditanya pada
       ban: Larang
       close: Tutup
@@ -119,6 +122,8 @@ ms:
       follow_tooltip: Ikuti soalan ini
       follow_up: Susulan
       follow_up_description: Buat soalan baru berasaskan kiriman ini.
+      follow_up_of: Soalan ini ialah susulan
+      history: Sejarah
       last_activity: Kegiatan terkini
       more_actions: Tindakan lain
       open: Buka
@@ -144,6 +149,11 @@ ms:
       filter: Cari tag
       title: Tag
       tooltip: Tunjukkan soalan yang bertag %{tag}
+    toolbar: 
+      answer_by_mail: Jawab melalui e-mel
+      more_actions: Tindakan lain
+      requests: Permintaan
+      your_close_request: Permintaan tutup anda
     unanswered: 
       empty: Kumpulan ini tiada soalan yang tak terjawab.
       expert: Pakar

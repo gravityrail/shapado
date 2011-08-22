@@ -3,10 +3,8 @@ class InvoicesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :owner_required
 
-  filter_parameter_logging :number, :verification_code
-
   def index
-    @invoices = current_group.invoices.where(:payed => true).paginate(:per_page => 25, :page => params[:page])
+    @invoices = current_group.invoices.where(:payed => true).page(params["page"])
   end
 
   def show
@@ -22,9 +20,11 @@ class InvoicesController < ApplicationController
     @invoice = current_group.invoices.find(params[:id])
 
     @cc = current_group.credit_card
-    cc_params = params[:credit_card] || {}
 
-    if @cc.nil? || !@cc.remember
+    cc_params = params[:credit_card] || {}
+    if cc_params.empty?
+      @cc = current_group.credit_card
+    else
       @cc = CreditCard.new(cc_params)
     end
 
@@ -39,10 +39,19 @@ class InvoicesController < ApplicationController
     @invoice.copy_info_from_cc(@cc)
 
     if @cc.valid? && @invoice.save
-      process_payment_and_redirect(@invoice.charge!(request.remote_ip, @cc), @invoice)
+      if process_payment(@invoice.charge!(request.remote_ip, @cc), @invoice)
+        redirect_to success_invoice_path(@invoice)
+      else
+        flash[:error] = I18n.t("invoices.flash.cannot_pay")
+        render 'edit'
+      end
     else
       flash[:error] = I18n.t("invoices.flash.cannot_pay")
       render 'edit'
     end
+  end
+
+  def success
+    @invoice = current_group.invoices.find(params[:id])
   end
 end

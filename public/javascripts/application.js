@@ -7,11 +7,12 @@ $(document).ready(function() {
   Notifier.initialize();
   Networks.initialize();
   LayoutEditor.initialize();
+  Widgets.initialize();
 });
 
 $(document).ready(function(){
 	$(".advanced-search").click(function(){
 		$(".advanced-form").toggleClass("open").slideToggle("slow");
-		return false; 
+		return false;
 	});
 });

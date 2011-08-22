@@ -27,7 +27,7 @@ br:
     new_answer: 
       message: "%{user} en deus respontet %{new_answer} d'ar goulenn %{question}"
     new_comment: 
-      message: "%{user} en deus graet un evezhiadenn %{new_comment} evit ar goulenn %{question}"
+      message: "%{user} en deus graet un evezhiadenn %{new_comment} evit ar goulenn %{link}"
     new_feedback: 
       message1: An implijer %{user} <%{email}> en deus kaset un kilober
       message2: Un implijer dizanv en deus kaset ur c'hilober eus ar chomlec'h IP %{ip}

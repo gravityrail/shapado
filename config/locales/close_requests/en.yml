@@ -23,7 +23,7 @@ en:
       name: Closing request
       prural_name: Closing requests
       messages:
-        already_requested: "You have already requested to close this question"
+        already_requested: You have already requested to close this question
       attributes:
         user: User
         reason: Reason

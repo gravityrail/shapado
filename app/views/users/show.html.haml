@@ -83,7 +83,7 @@
       = render "users/show/user_#{params[:action]}_content"
 
     .additional_info
-      = will_paginate @resources
+      = paginate @resources
 
 -content_for :sidebar do
   .networks

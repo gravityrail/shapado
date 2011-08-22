@@ -26,14 +26,6 @@ zh-CN:
     share: 共享
   models: 
     question: 问题
-  number: 
-    x_time: 
-      one: "%{count} 次"
-      other: "%{count} 次"
-      zero: 永远不会
-  pagination: 
-    next: 下一步 &raquo;
-    previous: "&laquo; 前"
   scaffold: 
     add: 添加
     back: 返回

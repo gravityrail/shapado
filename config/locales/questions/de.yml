@@ -32,8 +32,15 @@ de:
       unfavorite: Speichern rückgängig machen
       unfavorite_tooltip: Diese Antwort aus Deiner Favoritenliste entfernen
       unset_answer: Antwort in Frage stellen?
+    answer_toolbar: 
+      flagged_by_you: Von Dir gekennzeichnet
+    close: 
+      failure: Zu dieser Frage ist eine aktive Auszeichnung vorhanden. Sie kann daher nicht beendet werden.
     create: 
+      already_registered: Ein Nutzer mit der E-Mail-Adresse %{email} ist bereits registriert. Bitte melde Dich mit dieser E-Mail-Adresse an.
       flash_notice: Die Frage wurde erfolgreich erstellt.
+    disallow_spam: 
+      error: Bevor Du eine neue Frage stellen kannst, musst Du noch 20 Sekunden warten.
     edit: 
       title: Frage bearbeiten
     flag: 
@@ -43,6 +50,7 @@ de:
       adult_content: Diese Frage enthält jugendgefährdende Angaben.
       body_tip: Wie lautet Deine Frage? Sei aussagekräftig.
       language_tip: Wähle die Sprache der Frage.
+      related_questions_desc: Hier werden ähnliche Fragen angezeigt werden.
       remove_attachment: Entfernen
       tags_tip: Verwende Stichwörter, um weitere Informationen zu Deiner Frage anzugeben.
     history: 
@@ -52,7 +60,6 @@ de:
       active_tooltip: Fragen die vor kurzem aktualisiert wurden
       ask_question: Frage stellen
       empty: Bislang hat noch niemand eine Frage gestellt. Sei der Erste!
-      followers_count: "%{quantity} Beobachter"
       help_to_answer: Helfe uns beim Beantworten
       hot: Populär
       hot_tooltip: Fragen mit den meisten Aktivitäten während der letzten 5 Tage
@@ -84,8 +91,6 @@ de:
     question: 
       accepted_tooltip: Zu dieser Frage gibt es eine Antwort, die akzeptiert wurde
       answer_verb: Antwort
-      answers_number: "%{quantity} Antworten"
-      votes_number: "%{quantity} Stimmen"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Stichwörter ändern
@@ -104,9 +109,6 @@ de:
       accepted_tooltip: Eine der Antworten wurde als richtig akzeptiert.
       another_answers: Andere Antworten
       answers: Antworten
-      answers_title: 
-        one: "%{count} Antwort"
-        other: "%{count} Antworten"
       asked_on: gefragt bei
       ban: Verbieten
       close: Beendet
@@ -121,6 +123,7 @@ de:
       follow_up: Zur Nachverfolgung
       follow_up_description: Eine auf diesem Beitrag basierende neue Frage erstellen.
       follow_up_of: Diese Frage ist eine Folgefrage zu
+      history: Verlauf
       last_activity: Letzte Aktivität
       more_actions: Weitere Aktionen
       open: Öffnen
@@ -146,6 +149,11 @@ de:
       filter: Suche nach Stichwörtern
       title: Stichwörter
       tooltip: Alle Fragen mit dem Stichwort %{tag} anzeigen
+    toolbar: 
+      answer_by_mail: Antwort per E-Mail
+      more_actions: Weitere Aktionen
+      requests: Anfragen
+      your_close_request: Anfragen zur Beendigung
     unanswered: 
       empty: Diese Gruppe beinhaltet keine offenen Fragen.
       expert: Experten

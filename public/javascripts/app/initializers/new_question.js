@@ -24,9 +24,9 @@ $(document).ready(function() {
   });
 
   $("#ask_question").bind("keypress", function(e) {
-    if (e.keyCode == 13) {
-       return false;
-     }
+    if(e.keyCode == 13) {
+      return false;
+    }
   });
 
   var fields = $("#attachments #fields");

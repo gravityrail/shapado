@@ -2,13 +2,22 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   layouts: 
     application: 
+      all: Kaikki
       ask_question: Kysy kysymys
       badges: Ansiomitalit
+      by_me: Omat
+      collaborate: Tee yhteistyötä
+      contributed: Muokkaajat
+      faq: UKK
+      follow_us_and_share: Seuraa meitä ja jaa
+      followed: Seuraajat
       forgot: Unohditko?
       home: Etusivu
+      join_group: Liity ryhmään %{group}
       languages: Kielet
       log_in: Kirjaudu sisään
       logged: Kirjautunut nimellä %{login}
@@ -19,9 +28,11 @@ fi:
       openid: 
         explaination: "Jos haluat rekisteröityä tai vain kirjautua sisään, valitse OpenID-palveluntarjoaja:"
       pages: Sivut
+      preferred: Suositut
       questions: Kysymykset
       questions_in: Kysymyksiin
       questions_tagged: varustettu tunnisteella
+      random_question: Satunnainen kysymys
       search: Etsi
       settings: Asetukset
       signup: Rekisteröidy
@@ -32,6 +43,7 @@ fi:
       users: Käyttäjät
       welcome_from: Tervetuloa! Voit
     manage: 
+      access: Käyttöoikeus
       actions: Toimet
       announcements: Ilmoitukset
       constrains: Vaatimukset
@@ -39,11 +51,13 @@ fi:
       dashboard: Kojelauta
       domain: Toimialue
       general: Yleinen
+      invitations: Kutsut
       members: Jäsenet
       pages: Sivut
       properties: Ominaisuudet
       reputation: Maine
       rewards: Palkkiot
+      social: Sosiaalinen
       stats: Tilastot
       theme: Teema
       widgets: Ikkunaoliot

@@ -27,7 +27,7 @@ fa:
     new_answer: 
       message: "%{user} به سوال %{question} پاسخ %{new_answer} را داده است"
     new_comment: 
-      message: "%{user} برای سوال %{question} نظر %{new_comment} را داده است."
+      message: "%{user} برای سوال %{link} نظر %{new_comment} را داده است."
     new_feedback: 
       message1: کاربر %{user} <%{email}> یک فیدبک ارسال کرده
       message2: کاربر ناشناس از آدرس %{ip} یک فید بک ارسال کرده است

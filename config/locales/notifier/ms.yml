@@ -37,7 +37,7 @@ ms:
     new_answer: 
       message: "%{user} menjawab %{new_answer} pada soalan %{question}"
     new_comment: 
-      message: "%{user} mengulas %{new_comment} pada soalan %{question}"
+      message: "%{user} mengulas %{new_comment} pada soalan %{link}"
     new_feedback: 
       message1: Pengguna %{user} <%{email}> menghantar maklumbalas
       message2: Seorang pengguna tanpa nama menghantar maklumbalas dari alamat IP %{ip}
@@ -46,6 +46,7 @@ ms:
     new_invitation: 
       message1: Klik di sini untuk menerima jemputan %{link}
       message2: Pasukan %{group}.
+      message3: "Pesanan daripada penjemput anda:"
       subject: "%{user} menjemput anda untuk menyertai %{group}"
     report: 
       message1: Laporan untuk kumpulan %{group}

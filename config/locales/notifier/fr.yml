@@ -28,7 +28,7 @@ fr:
     new_answer: 
       message: "%{user} a répondu %{new_answer} à la question %{question}"
     new_comment: 
-      message: "%{user} a commenté %{new_comment} à la question %{question}"
+      message: "%{user} a commenté %{new_comment} à la question %{link}"
     new_feedback: 
       message1: L’utilisateur %{user} <%{email}> a envoyé un retour
       message2: Un utilisateur anonyme a envoyé un retour depuis l’adresse IP %{ip}

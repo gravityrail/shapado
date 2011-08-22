@@ -15,6 +15,7 @@ da:
       delete: Fjern
       title: Handlinger
     create: 
-      success: Bekendtgørelsen blev oprettet med succes.
+      success: Din bekendtgørelse blev oprettet.
     index: 
+      description: Administrere og opret nye bekendtgørelser, som vil blive vist på hele webstedet til dine besøgende.
       title: Bekendtgørelser

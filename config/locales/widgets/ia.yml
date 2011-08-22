@@ -18,6 +18,8 @@ ia:
       title: Contributores al question
     current_tags: 
       description: Iste widget monstra etiquettas sequite per le usator actual.
+    group_networks: 
+      title: Sequer nos
     groups: 
       description: Iste widgets monstra le ultime gruppos
       title: Gruppos recente
@@ -40,12 +42,15 @@ ia:
       title: Paginas wiki
     question_badges: 
       description: Iste widget monstra insignias ganiate sur ille question.
+      title: Insignias de question
     question_stats: 
       description: Iste widget monstra statisticas super un question como le data de creation e le numero de visitas.
     question_tags: 
       description: Iste widget monstra etiquettas connexe al pagina actual.
+      title: Etiquettas de question
     related_questions: 
       description: Iste widget monstra un lista de questiones connexe al question actual.
+      title: Questiones connexe
     settings: 
       code: "Copiar e collar iste codice in tu sito o blog, como un widget de texto in tu Wordpress:"
       custom_external_css: "Includer CSS personalisate in tu widget (recommendate si tu non include le CSS de Shapado):"
@@ -56,6 +61,8 @@ ia:
       on_show_question: Monstrar quando un question es monstrate
       on_welcome: Monstrar in pagina de benvenita
       preview: "Previsualisation del widget:"
+    share: 
+      title: Divider in
     sharing_buttons: 
       description: Iste widget monstrara buttones de diffusion social
       title: Diffunder isto sur
@@ -68,6 +75,7 @@ ia:
       title: Etiquettario
     tag_list: 
       description: Iste widget monstra etiquettas connexe al pagina actual.
+      title: Etiquettas
     top_groups: 
       description: Iste widget monstra le prime cinque gruppos
       title: Prime 5 gruppos

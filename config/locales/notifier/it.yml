@@ -26,7 +26,7 @@ it:
     new_answer: 
       message: "%{user} ha risposto %{new_answer} alla domanda %{question}"
     new_comment: 
-      message: "%{user} ha commentato %{new_comment} alla domanda %{question}"
+      message: "%{user} ha commentato %{new_comment} alla domanda %{link}"
     new_feedback: 
       message1: L'utente %{user} <%{email}> ha inviato un feedback
       message2: Un utente anonimo ha inviato un feedback dall'indirizzo IP %{ip}

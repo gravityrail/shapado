@@ -7,6 +7,8 @@
 nl: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Nieuw bericht gemarkeerd op %{group}
       earned_badge: 
         subject: U hebt een speldje verdiend in %{group}!
       favorited: 

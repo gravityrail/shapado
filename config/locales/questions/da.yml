@@ -88,9 +88,6 @@ da:
       accepted_tooltip: Et af svarene blev accepteret som det korrekte svar.
       another_answers: Andre svar
       answers: Svar
-      answers_title: 
-        one: "%{count} svar"
-        other: "%{count} svar"
       asked_on: spurgte på
       ban: Bloker
       close: Luk

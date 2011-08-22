@@ -11,6 +11,7 @@ fr:
       question: 
         answers: Réponses
         asked_by: Posée par
+        banned: Bannie
         body: Corps
         closed: Fermée
         created_at: Posée
@@ -93,9 +94,6 @@ fr:
       accepted_tooltip: L'une des réponses a été accepté comme solution
       another_answers: Autres réponses
       answers: Réponses
-      answers_title: 
-        one: "%{count} réponse"
-        other: "%{count} réponses"
       asked_on: posée dans
       ban: Bannir
       close: Fermer

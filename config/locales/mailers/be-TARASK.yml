@@ -6,6 +6,8 @@
 be-TARASK: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Новыя паведамленьні пазначаныя ў %{group}
       earned_badge: 
         subject: Вы атрымалі адзнаку ў %{group}!
       favorited: 
@@ -21,5 +23,7 @@ be-TARASK:
         subject_owner: "%{login} адказаў на Вашае пытаньне %{title}"
       new_comment: 
         subject: "%{login} пакінуў камэнтар у %{group}"
+      new_invitation: 
+        subject: "%{user} запрашае Вас далучыцца да %{group}"
       report: 
         subject: Паведаміць групе %{group} на %{app}

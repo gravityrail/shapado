@@ -28,14 +28,6 @@ ru:
     share: распространить
   models: 
     question: Вопрос
-  number: 
-    x_time: 
-      one: "%{count} раз"
-      other: "%{count} раз(а)"
-      zero: Никогда
-  pagination: 
-    next: Следующая &raquo;
-    previous: "&laquo; Предыдущая"
   scaffold: 
     add: Добавить
     back: Назад

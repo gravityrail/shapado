@@ -3,8 +3,14 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Nike
+# Author: Raspi
 fi: 
   notifier: 
+    admin_login: 
+      subject: "Varoitus: pääkäyttäjäyhteys"
+    created_flag: 
+      message2bis: Voit lukea merkityt täällä.
+      message2bistext: "Voit lukea merkityt klikkaamalla seuraavaa linkkiä:"
     earned_badge: 
       message1: Ansaitsit rintanapin %{badge} sovelluksella %{app}
       message2: "Rintanappikuvaus:"
@@ -23,16 +29,19 @@ fi:
       message4: Jos emme saa vastausta sinulta pian, kysymme joltain muulta. Voit silti vastata milloin haluat.
     global: 
       hi: Hei %{user},
+      hi_no_user: Hei,
       user_page: käyttäjäsivu
     new_answer: 
       message: "%{user} vastasi %{new_answer} kysymykseen %{question}"
     new_comment: 
-      message: "%{user} kommentoi %{new_comment} kysymyksessä %{question}"
+      message: "%{user} kommentoi %{new_comment} kysymyksessä %{link}"
     new_feedback: 
       message1: Käyttäjä %{user} <%{email}> lähetti palautetta
       message2: Anonyymi käyttäjä lähetti palautetta IP-osoitteesta %{ip}
       message3: "Sähköpostiosoite: %{email}"
       message4: "Aihe: %{subject}"
+    new_invitation: 
+      message3: "Viesti kutsujaltasi:"
     report: 
       message1: Ilmoita ryhmälle %{group}
       message2: "%{date} lähtien"

@@ -1,6 +1,9 @@
 - if @question.badges.size > 0
-  %aside
-    %ul.list
-      -@question.badges.each do |badge|
-        %li
-          = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => false}
+  .module.widget.block{:class => 'widget-question_badges'}
+    = render "widgets/header", :widget => widget
+    %aside
+      %ul.list
+        -@question.badges.each do |badge|
+          %li
+            = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => false}
+  .clear

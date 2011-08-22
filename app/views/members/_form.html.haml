@@ -1,9 +1,0 @@
-.field
-  = label_tag :user_id, t(:login, :scope => "activerecord.attributes.user")
-  = text_field_tag :user_id, @member.login, :class => "text_field", :id => "member_user_id"
-  .small
-    = t(".login_tip")
-
-.field.select-role
-  = label_tag :role, t(:role, :scope => "activerecord.attributes.member")
-  = select_tag :role, options_for_select(locales_roles, @member.role)
