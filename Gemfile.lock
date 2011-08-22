@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: e74e1a1866f016acf55607e0c4a87b4173e2eb85
+  revision: 5acd2bb868d51f00578c480590fb6f0fa36d77a8
   specs:
     mongoid_ext (0.6.2)
       differ (>= 0.1.2)
@@ -201,10 +201,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mechanize (2.0.1)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-digest_auth (>= 1.1.1, ~> 1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (~> 0.0, >= 0.0.9)
+      webrobots (>= 0.0.9, ~> 0.0)
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)
@@ -308,7 +308,7 @@ GEM
       rspec (>= 2.0.0.alpha11)
     remarkable_mongoid (0.6.0)
       remarkable_activemodel (~> 4.0.0.alpha4)
-    rest-client (1.6.3)
+    rest-client (1.6.6)
       mime-types (>= 1.16)
     ricodigo-capistrano-recipes (0.1.8)
       capistrano (>= 2.5.9)
@@ -358,7 +358,7 @@ GEM
     simplecov-html (0.4.5)
     sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (>= 1.2.2, < 2.0)
+      tilt (< 2.0, >= 1.2.2)
     state_machine (0.10.4)
     subexec (0.0.4)
     thor (0.14.6)

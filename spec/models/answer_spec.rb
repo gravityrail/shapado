@@ -7,6 +7,12 @@ describe Answer do
     @answer = Answer.make(:votes => {}, :question => Question.make)
   end
 
+  after(:each) do
+    q = @answer.question
+    @answer.destroy
+    q.destroy
+  end
+
   describe "module/plugin inclusions (optional)" do
   end
 

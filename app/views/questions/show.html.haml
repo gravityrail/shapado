@@ -12,7 +12,7 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
-        #18n
+        -#18n
         By:
         = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
         = t('activerecord.attributes.question.created_at')
