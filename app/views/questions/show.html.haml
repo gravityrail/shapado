@@ -124,7 +124,6 @@
             %li
               = link_to child.title, question_path(child)
 
-
   .answers-list
     - if @answers.empty? && !@question.accepted
       = render "shared/empty", :type => "answers", :url => ""
@@ -133,9 +132,8 @@
         - solution = @question.answer
         = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
 
-      - else
-        - @answers.each do |answer|
-          - next if answer.id == @question.answer_id
-          = render "answer", {:question => @question, :answer => answer}
+      - @answers.each do |answer|
+        - next if answer.id == @question.answer_id
+        = render "answer", {:question => @question, :answer => answer}
 
   = paginate(@answers)

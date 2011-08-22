@@ -13,7 +13,9 @@ var Questions = {
   initialize_on_show: function() {
     Ui.hide_comments_form();
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
-    $(".article-actions").shapadoToolbar({formContainer: ".article-forms"});
+    $(".article-actions").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
+      Editor.setup_editor(form.find(".markdown_editor, .wysiwyg_editor"));
+    }});
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }

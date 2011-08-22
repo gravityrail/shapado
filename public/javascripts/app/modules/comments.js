@@ -30,8 +30,8 @@ var Comments = {
       var form = $(this);
       var comments = form.parents(".panel-comments").prev('.comments');
       var button = form.find("input[type=submit]");
-      if($("#wysiwyg_editor").length > 0 )
-        $("#wysiwyg_editor").htmlarea('updateTextArea');
+      if($(".wysiwyg_editor").length > 0 )
+        $(".wysiwyg_editor").htmlarea('updateTextArea');
       button.attr('disabled', true)
       $.ajax({ url: form.attr("action"),
               data: form.serialize()+"&format=js",
@@ -90,8 +90,8 @@ var Comments = {
           var textarea = form.find('textarea');
           form.submit(function() {
             button.attr('disabled', true)
-            if($("#wysiwyg_editor").length > 0 )
-              $("#wysiwyg_editor").htmlarea('updateTextArea');
+            if($(".wysiwyg_editor").length > 0 )
+              $(".wysiwyg_editor").htmlarea('updateTextArea');
             $.ajax({url: form.attr("action"),
                     dataType: "json",
                     type: "PUT",

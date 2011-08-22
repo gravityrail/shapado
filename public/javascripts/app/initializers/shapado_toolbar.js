@@ -1,7 +1,8 @@
 (function($){
   $.fn.shapadoToolbar = function(options) {
     var defaults = {
-      formContainer: ".panel-forms"
+      formContainer: ".panel-forms",
+      afterFetchForm: function(link,form) {}
     }
 
     var options =  $.extend(defaults, options);
@@ -38,6 +39,7 @@
               formContainer.prepend(nform);
               nform.slideDown("slow");
               link.removeClass('busy');
+              options.afterFetchForm.call(toolbar, link, nform);
               actionsContent.find("li a").removeClass("active");
               link.addClass("active");
             });
