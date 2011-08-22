@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   layout "manage"
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required
 
   # GET /themes
   # GET /themes.json
