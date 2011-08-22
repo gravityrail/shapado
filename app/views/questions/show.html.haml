@@ -124,7 +124,6 @@
             %li
               = link_to child.title, question_path(child)
 
-
   .answers-list
     - if @answers.empty? && !@question.accepted
       = render "shared/empty", :type => "answers", :url => ""
