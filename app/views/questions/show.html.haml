@@ -115,7 +115,7 @@
       -if @question.follow_up
         %h1
           = t("questions.show.follow_up_of")
-        = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
+        = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
 
       -if @question.followed_up_by.limit(1).count > 0
         %h1= t('global.followed_by')

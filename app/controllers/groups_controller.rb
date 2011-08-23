@@ -109,6 +109,7 @@ class GroupsController < ApplicationController
     @group.safe_update(%w[isolate domain private has_custom_analytics has_custom_html has_custom_js], params[:group]) #if current_user.admin?
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
     @group.custom_html.update_attributes(params[:group][:custom_html] || {}) if @group.has_custom_html
+    @group.notification_opts.safe_update(%w[questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter comments_to_twitter], params[:group][:notification_opts]) if params[:group][:notification_opts]
 
     if @group.domain == AppConfig.domain ||
         @group.domain.index(AppConfig.domain).nil? ||
