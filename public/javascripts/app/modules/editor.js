@@ -20,11 +20,8 @@ var Editor = {
     });
   },
   setup: function(editor) {
-    if(editor.hasClass("wysiwyg_editor")) {
-      Editor.setup_wysiwyg(editor);
-    } else if(editor.hasClass("markdown_editor")) {
-      Editor.setup_editor(editor);
-    }
+    Editor.setup_wysiwyg(editor);
+    Editor.setup_editor(editor);
   },
   setup_wysiwyg: function(editor) {
     var editor = editor || $(".wysiwyg_editor");
