@@ -31,7 +31,7 @@ class AnnouncementsController < ApplicationController
     @announcement.group = current_group
 
     respond_to do |format|
-      if @announcement.save
+      if @announcement.valid? && @announcement.save
         flash[:notice] = I18n.t("announcements.create.success")
         format.html { redirect_to announcements_url }
         format.json  { render :json => @announcement, :status => :created, :location => @announcement }
