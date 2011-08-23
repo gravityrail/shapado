@@ -1,0 +1,151 @@
+// ========================================================================
+//    Document     :   _setup.sass
+//    Created on   :   Nov14 - 2010, 20:29 pm
+//    Author       :   @dgfrancisco
+//    Client       :   Shapado
+//    Description	 :   Variables y set up basico del portal, estas variables podran ser
+//                     cambiadas en pro de modificar colores, fuentes etc
+//========================================================================
+
+
+//  FONTS
+//========================================================================
+// Sans Serif
+$Arial: Arial, Helvetica, sans-serif
+// Serif
+$Georgia: Georgia, "Times New Roman", Times, serif
+// Monospace
+$courier: "courier new", courier, freemono, "nimbus mono l", "liberation mono", monospace
+$monaco: monaco, "lucida console", "dejavu sans mono", "bitstream vera sans mono", "liberation mono", monospace
+
+// Font sizes
+$x-small: 9px
+$small: 11px
+$medium: 13px
+$x-medium: 17px
+$large: 21px
+$x-large: 34px
+$xx-large: 55px
+$huge: 72px
+$x-huge: 89px
+
+// Text shadow
+$text-shadow: 0 1px 1px #000
+
+
+//  FANCY VIEW - CSS3
+//========================================================================
+// Quickly outline any tag for debug purposes
+=o
+  background: rgba(255, 0, 0, 0.15) !important
+  outline: 1px solid red !important
+
+// Cross browser opacity
+=opacity($opacity)
+  -ms-filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=") + $opacity + unquote(")")
+  filter: unquote("alpha(opacity=") + $opacity + unquote(")")
+  opacity: $opacity * 0.01
+
+// Cross browser transition effect
+=transition($transition)
+  -moz-transition: $transition
+  -o-transition: $transition
+  -webkit-transition: $transition
+  transition: $transition
+
+// Cross browser transform effect
+=transform($transform)
+  -moz-transform: $transform
+  -o-transform: $transform
+  -webkit-transform: $transform
+  transform: $transform
+
+// Cross browser multi-column layout
+// # of columns
+=column-count($count)
+  -moz-column-count: $count
+  -webkit-column-count: $count
+  column-count: $count
+
+// Space between columns
+=column-gap($gap)
+  -moz-column-gap: $gap
+  -webkit-column-gap: $gap
+  column-gap: $gap
+
+// Combine -count and -gap into one easy mixin
+=columns($count, $gap)
+  +column-count($count)
+  +column-gap($gap)
+
+// Cross browser box shadow
+// If you want to have multiple box shadows, you must enclose the values in quotes (" ").
+$shadow: 0 0 10px #000
+$menu: 0 2px 3px #999
+$none: 0 0 0 transparent
+
+=box-shadow($shadow)
+  $shadow: unquote($shadow)
+  -moz-box-shadow: $shadow
+  -webkit-box-shadow: $shadow
+  o-box-shadow: $shadow
+  khtml-box-shadow: $shadow
+  box-shadow: $shadow
+
+=menu-shadow($shadow)
+  $shadow: unquote($menu)
+  -moz-box-shadow: $menu
+  -webkit-box-shadow: $menu
+  o-box-shadow: $menu
+  khtml-box-shadow: $menu
+  box-shadow: $menu
+
+=none-shadow($none)
+  $shadow: unquote($none)
+  -moz-box-shadow: $none
+  -webkit-box-shadow: $none
+  o-box-shadow: $none
+  khtml-box-shadow: $none
+  box-shadow: $none
+
+// Cross browser rounded corners
+$smallRadius: 3px
+$normalRadius: 5px
+$bigRadius: 20px
+$hugeRadius: 50px
+$noneRadius: 0
+
+=none-radius($noneRadius)
+  -moz-border-radius: $noneRadius
+  -webkit-border-radius: $noneRadius
+  o-border-radius: $noneRadius
+  khtml-border-radius: $noneRadius
+  border-radius: $noneRadius
+
+=small-radius($smallRadius)
+  -moz-border-radius: $smallRadius
+  -webkit-border-radius: $smallRadius
+  o-border-radius: $smallRadius
+  khtml-border-radius: $smallRadius
+  border-radius: $smallRadius
+
+=normal-radius($normalRadius)
+  -moz-border-radius: $normalRadius
+  -webkit-border-radius: $normalRadius
+  o-border-radius: $normalRadius
+  khtml-border-radius: $normalRadius
+  border-radius: $normalRadius
+
+=big-radius($bigRadius)
+  -moz-border-radius: $bigRadius
+  -webkit-border-radius: $bigRadius
+  o-border-radius: $bigRadius
+  khtml-border-radius: $bigRadius
+  border-radius: $bigRadius
+
+=huge-radius($hugeRadius)
+  -moz-border-radius: $hugeRadius
+  -webkit-border-radius: $hugeRadius
+  o-border-radius: $hugeRadius
+  khtml-border-radius: $hugeRadius
+  border-radius: $hugeRadius

@@ -1,0 +1,1319 @@
+// ========================================================================
+//    Document     	:   setup.sass
+//    Created on   	:   Nov14 - 2010, 20:29 pm
+//    Author       		:   @dgfrancisco
+//    Client       		:   Shapado
+//    Description	 	:   Variables y set up basico del portal, estas variables podran ser
+//                     			cambiadas en pro de modificar colores, fuentes etc
+//========================================================================
+
+// ================================================================================================================================================
+//    VARS    		    
+// ================================================================================================================================================
+// $has_bg_image boolean
+// $bg_color color
+// $fg_color color
+// $view_bg_color color
+// $view_fg_color color
+// $button_bg_color color
+// $button_fg_color color
+// $use_link_bg_color boolean
+// $link_bg_color color
+// $link_fg_color color
+// $fluid
+
+// General site colors
+// HEY!! > replace this color using the theme properties, this are just for default theme, shapado Theme
+//========================================================================
+$dark: #404040;
+$gray: #aaa;
+$lightGray: #f2f2f2;
+$darkGray: #3e4953;
+
+$orange: #ee681f;
+$lightOrange: #fffbeb;
+$darkOrange: #d05800;
+
+$blue: #00a9b2;
+$lightBlue: #eef7f8;
+$darkBlue: #019199;
+
+$red: #f00;
+$lightRed: #ffe5e5;
+$darkRed: #c00;
+
+$text-shadow: 0 1px 1px darken($fg_color, 10%);
+
+// Link colors
+//========================================================================
+$link_color: $link_fg_color;
+$hover_color: $link_fg_color;
+@if(lightness($link_fg_color) > 10%) {
+	$hover_color: lighten($link_fg_color, 10%);
+} @else {
+  	$hover_color: darken($link_fg_color, 10%);
+}
+$alt_link_color: $link_color;
+$alt_hover_color: $hover_color;
+
+@if(lightness($view_fg_color) > 10%) {
+  	$alt_link_color: darken($view_fg_color, 10%);
+  	$alt_hover_color: lighten($view_fg_color, 10%);
+} @else {
+  	$alt_link_color: lighten($view_fg_color, 10%);
+  	$alt_hover_color: lighten($view_fg_color, 10%);
+}
+$active_color: $link_fg_color;
+$view_border_color: $view_bg_color;
+@if(lightness($view_border_color) > 10%) {
+ 	$view_border_color: darken($view_border_color, 10%);
+} @else {
+  	$view_border_color: lighten($view_border_color, 10%);
+}
+a {
+  color: $link_color;
+  &:hover{ color: $hover_color;}
+  &:active{ color: $active_color;}
+}
+//shadow
+//========================================================================
+$inner: inset 2px 2px 2px $fg_color;
+
+@mixin inner-shadow($inner){
+  $shadow: unquote($inner);
+  -moz-box-shadow: $inner;
+  -webkit-box-shadow: $inner;
+  o-box-shadow: $inner;
+  khtml-box-shadow: $inner;
+  box-shadow: $inner;
+}
+@mixin gradient($color) {
+  $amount-darker: 15%;
+  background-image: -moz-linear-gradient(top, $color, darken($color, $amount-darker)) !important;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, darken($color, $amount-darker)),color-stop(1, $color)) !important;
+}
+@mixin error-gradient {
+  background-image: -moz-linear-gradient(top, $red, $darkRed) !important;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $darkRed),color-stop(1, $red)) !important;
+  background-color: $red;
+}
+// Gradiants for badges
+//========================================================================
+@mixin gold-gradient{
+  background-image: -moz-linear-gradient(top, #fbd65f, #ffff7c) !important;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffff7c),color-stop(1, #fbd65f)) !important;
+}
+@mixin silver-gradient {
+  background-image: -moz-linear-gradient(top, #c6c6c6, #e5e5e5) !important;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e5e5e5),color-stop(1, #c6c6c6)) !important;
+}
+@mixin bronze-gradient {
+  background-image: -moz-linear-gradient(top, #e67347, #f3a273);
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273));
+  background-color: #e67347;
+}
+
+
+// ================================================================================================================================================
+//    COLORS   		    
+// ================================================================================================================================================
+// MESSAGES == Notices == Flash
+// From: app/stylesheets/app/forms/_general.sass
+//------------------------------------------------------------------------------------------------------------------- 
+form {
+  h2 {
+    border-bottom: 1px solid $orange;
+  }
+  .field {
+    img {
+      border: 1px solid #e5e5e5;
+    }
+    small, small span {
+      color: #666;
+    }
+    input {
+      border: 1px solid #ccc;
+      &:active, &:focus, &:hover { border-color: $orange;}
+    }
+    select {
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    textarea {
+      border: 1px solid #ccc;
+      &:active, &:focus, &:hover {border-color: $orange;}
+    }
+  }
+  hr {
+    border-top: 1px solid #e5e5e5;
+  }
+  .follow-up-msg {
+    background-color: $lightOrange;
+    border: 1px solid $orange;
+  }
+
+  .manage-domain {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .domain-url {
+    background-color: $lightOrange;
+  }
+}
+
+
+// MESSAGES == Notices == Flash
+// From: app/stylesheets/app/_messages.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#notifyBar {
+    .error {
+      color: #fff;
+      @include error-gradient;
+    }
+    .notice {
+      @include gradient(#80C908);
+    }
+}
+#messages {
+  color: #fff;
+  @include gradient($blue);
+}
+
+
+// PAGINATION
+// From: app/stylesheets/app/_pagination.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.pagination {
+  border-color: $view_border_color;
+  color: $view_fg_color;
+  background-color: $lightOrange;
+  em {
+    background-color: $orange;
+  }
+  a:hover {
+    color: #fff;
+    background-color: $orange;
+  }
+}
+
+
+// ADVERTISEMENT
+// From: app/stylesheets/_advertisement.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.ad h6 { color: #aaa; }
+
+
+// DROP DOWN MENUS
+// From: app/stylesheets/app/_drop-menus.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.top-bar .user-list, 
+.top-bar .group-list, 
+.top-bar .auth-list {
+  li li {
+    background:  #e5e5e5;
+    &.sfHover:hover {
+      background-color: #fff;
+      a { color: #000; }
+    }
+  }
+
+  ul {
+    li { border-top: 1px dotted $view_border_color; }
+    a {
+      color: #000 !important;
+      background-color: #fff !important;
+      &:hover{
+        @include gradient($orange);
+        color: #fff !important;
+      }
+    }
+  }
+}
+
+
+// ---
+// From: app/stylesheets/app/_template.sass
+//------------------------------------------------------------------------------------------------------------------- 
+hgroup {
+  h2 { color: $darkGray; }
+  h3 a {
+    color: $darkOrange;
+    &:hover {color: $darkOrange;}
+  }
+}
+
+.row ul li { background-color: #dfdfdf; }
+
+.column {
+  hgroup { border-bottom: 1px solid #c7c7c7; }
+  ul { border-top: 1px solid #edeeee; }
+  h4 {
+    color: #000;
+    a { color: #000; }
+    a:hover { border-bottom: 1px dotted #000; }
+  }
+  p a { color: #999; }
+  h6 span { color: $darkOrange; }
+}
+
+.about-module hgroup { border-bottom: 1px solid #c7c7c7; }
+.tags-cloud {
+  hgroup { border-bottom: 1px solid #c7c7c7; }
+  ol {
+    border-top: 1px solid #edeeee;
+    li {
+      em {color: #666; }
+      a {
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
+        &:hover {
+          background-color: darken($link_fg_color, 10%);
+          em {color: #fff;}
+        }
+      }
+    }
+  }
+}
+
+ul.admin-links li {
+  border-bottom: 1px dotted #ccc;
+  a {
+    color: #000;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 3px;
+    o-border-radius: 3px;
+    khtml-border-radius: 3px;
+    border-radius: 3px;
+    &:hover {
+      color: #fff;
+      background-color: $orange;
+    }
+  }
+  &.delete {
+    a:hover {background-color: #c00;}
+  }
+
+  .user .header {
+    border-bottom: 1px dotted #ccc;
+    h2 {
+      color: $darkGray;
+      span { color: $lightGray; }
+    }
+    p {color: #666;}
+  }
+}
+
+// PROFILE
+// From: app/stylesheets/app/content/admin/_profile.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.users section:last-child{
+  border-bottom: 0px solid #cc0000;
+}
+.userData .avatar {
+  border-bottom: 1px solid $view_border_color;
+  p a {
+    color: #666;
+    &:hover {color: #000;}
+  }
+  h3 {
+    text-shadow: 1px 1px 2px #e5e5e5;
+    border-bottom: 1px dotted $view_border_color;
+  }
+  ul.badges li .badge_item a {
+    color: #fff !important;
+  }
+}
+
+.userHistory {
+  border-left: 1px solid #e5e5e5;
+  background-color: #fff;
+  .userDescription {
+    small { color: #999; }
+    .description p {
+      color: #666;
+    }
+  }
+  ul.profile-stats {
+    border: 1px solid $view_border_color;
+    li {
+      border-bottom: 1px dotted #e5e5e5;
+      background-color: #fff;
+    }
+    li.follow {
+      @include gradient($orange);
+      color: #fff;
+      a{
+        color: #fff;
+      }
+    }
+  }
+}
+
+#users_show .users .content-tabs { border-top: 5px solid #f0f0f0 !important; }
+
+// ANNOUNCEMENTS
+// From: app/stylesheets/app/content/admin/_announcements.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.announcements {
+  .list-announcements {
+    h1 {border-bottom: 1px solid #ccc;}
+    .each-announcement li {
+      border-bottom: 1px dotted #e5e5e5;
+      .date { color: #666; }
+      a {
+          @include gradient($orange);
+          color: #fff;
+      }
+    }
+  }
+}
+
+
+// MEMBERS
+// From: app/stylesheets/app/content/admin/_members.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.members {
+  border-bottom: 1px dotted $view_border_color;
+  ul li {
+    border-top: 1px dotted #e5e5e5;
+    .user-info {
+      border-left: 1px dotted #aaa;
+      h2 a {
+        color: black;
+      }
+      small {
+        color: #666;
+      }
+      .stats {
+        color: #999;
+      }
+    }
+  }
+}
+
+
+// MODERATE
+// From: app/stylesheets/app/content/admin/_moderate.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.moderate-answers {
+  border-top: 1px solid $view_border_color;
+}
+
+
+// WIDGETS
+// From: app/stylesheets/app/content/admin/_widgets.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widgets-admin {
+  h1 {
+    border-bottom: 1px solid #ccc;
+  }
+  .widget_description h2 small {
+    a {
+      color: #c00;
+      &:hover{
+        border-bottom: 1px dotted;
+      }
+    }
+  }
+  p {
+    color: #888;
+  }
+  .controls input{
+    background-color: $view_border_color;
+    border: 1px solid #e5e5e5;
+    &:hover { background-color: #e5e5e5;}
+  }
+
+  li {
+    border-bottom: 1px solid #e5e5e5
+  }
+  .widgets-admin .module {
+    border: 1px solid $view_border_color;
+    footer {
+      background-color: #fff;
+      a {
+        color: #666;
+      }
+    }
+  }
+}
+
+
+// MAIN
+// From: app/stylesheets/app/content/_main.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#main-content-wrap, 
+.users-main-content{
+  .empty {
+    border: 1px solid $orange;
+    background-color: $lightOrange;
+    h2 {
+      text-shadow: 1px 1px 2px #e5e5e5;
+    }
+  }
+
+  section {
+    article {
+      border-bottom: 1px solid $view_border_color;
+      color: #666;
+      h2 a {
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
+      }
+    }
+  }
+
+  .toolbar ul {
+    li.answers, li.votes, li.followers {
+      a {
+        background-color: #fff;
+        &:hover {
+          background-color: #fff;
+          color: #000;
+        }
+      }
+    }
+    li {
+      a {
+        color: #666;
+        background-color: darken($view_bg_color, 10%);
+      }
+      a:hover{
+        background-color: #e5e5e5;
+        color: #000;
+      }
+    }
+  }
+}
+
+.admin-nav {
+  border-bottom: 1px solid #e5e5e5;
+  li a {
+    border-bottom: 1px solid #f1f1f1;
+    border-right: 1px solid #f1f1f1;
+    color: #999;
+    &:hover {
+      background-color: #f1f1f1;
+      color: #000;
+    }
+  }
+}
+
+
+// TABS
+// From: app/stylesheets/app/content/_tabs.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#main-content-wrap {
+  p.description {
+    border-bottom: 1px solid $view_border_color;
+  }
+  nav ul.content-tabs {
+    background-color: $bg_color;
+    li a {
+      color: #999;
+      border-bottom: 1px solid transparent;
+      &:hover {
+        color: #000;
+        background-color: #e5e5e5;
+      }
+    }
+  }
+}
+.questions ul.content-tabs li.questions a,
+.answers ul.content-tabs li.answers a,
+.unanswered ul.content-tabs li.unanswered a,
+.activities ul.content-tabs li.activities a {
+  background-color: $view_bg_color !important;
+  color: $view_fg_color !important;
+  &:hover {
+    background-color: $view_bg_color !important;
+  }
+}
+
+.filters.newest ul li.newest a,
+.filters.hot ul li.hot a,
+.filters.votes ul li.votes a,
+.filters.activity ul li.activity a {
+  border-bottom: 2px solid $view_fg_color !important;
+  color: $alt_hover_color;
+}
+
+.answers .newest li.newest a, 
+.answers .hot li.hot a, 
+.answers .votes li.votes a, 
+.unanswered .newest li.newest a, 
+.unanswered .hot li.hot a, 
+.unanswered .votes li.votes a {
+  border-bottom: 2px solid $blue !important;
+  color: $fg_color !important;
+}
+
+.filters {
+  border-bottom: 1px solid $view_border_color;
+  ul li a {
+    background: none;
+    color: $alt_link_color;
+    &:hover{ color: $alt_hover_color; }
+  }
+}
+
+// FORMS - Login
+// From: ---
+//------------------------------------------------------------------------------------------------------------------- 
+.errorExplanation{
+  border: 1px solid #c00;
+  background-color: $lightRed;
+  ul li {
+    color: #000;
+  }
+}
+form .domain small {color: #000; }
+
+section.sessions {
+  .options{
+    border-top: 1px solid $view_border_color;
+    li a {
+      color: #fff;
+      background-color: #c00;
+      @include gradient($blue);
+    }
+  }
+}
+.search-form{ border-bottom: 1px solid #e5e5e5;}
+
+// FOOTER
+// From: app/stylesheets/app/_footer.sass
+//------------------------------------------------------------------------------------------------------------------- 
+footer {
+  background-color: darken($bg_color, 4%);
+  border-top: 5px solid $view_border_color;
+  ul li {
+    border-right: 1px solid #aaa;
+    a {
+      @if(lightness($fg_color) > 10%) {
+        color: darken($fg_color, 10%);
+        &:hover {
+          color: lighten($fg_color, 10%);
+        }
+      } @else {
+        color: lighten($fg_color, 10%);
+        &:hover {
+          color: darken($fg_color, 10%);
+        }
+      }
+    }
+  }
+  p {
+    color: $fg_color;
+    a {
+      @if(lightness($fg_color) > 10%) {
+        color: darken($fg_color, 10%);
+        &:hover {
+          color: lighten($fg_color, 10%);
+        }
+      } @else {
+        color: lighten($fg_color, 10%);
+        &:hover {
+          color: darken($fg_color, 10%);
+        }
+      }
+    }
+  }
+}
+
+
+// LAYOUT
+// From: app/stylesheets/app/_layout.sass
+//------------------------------------------------------------------------------------------------------------------- 
+body {
+   @if($has_bg_image) {
+     background: $bg_color url($bg_image_url) 0 0;
+   } @else {
+     background: $bg_color;
+  }
+}
+section.left-panel {
+  background-color: $view_bg_color;
+  border-right: 1px solid $bg_color;
+  .module {
+    border-bottom: 1px solid $view_border_color;
+    h3 {
+      color: darken($view_fg_color, 5%);
+      border-bottom: 1px dotted $view_border_color;
+    }
+  }
+}
+
+section.right-panel {
+  .module {
+    h3 {
+      color: darken($view_fg_color, 5%);
+      border-bottom: 1px solid $view_border_color;
+    }
+    footer {
+      background-color: darken($view_bg_color, 2%);
+      border-top:  1px solid $view_border_color;
+      color: $view_bg_color;
+      a {
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
+      }
+    }
+  }
+}
+
+section.invitations-panel {
+  .invitation-container {
+    border: 1px solid black;
+    #invitations-points div {
+      background: #E5E5E5;
+      img { background-color: #fff; }
+    }
+  }
+}
+
+
+// TOP BAR 
+// From: app/stylesheets/app/_topBar.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.top-bar {
+  background-color: #5E5E5E;
+  .searcher {
+    border-right: 1px solid #333;
+    form#search input {
+      background-color: white;
+    }
+  }
+  .languages_filter {
+    border-left: 1px solid #777;
+    span { color: #fff; }
+    form .field { background-color: #c00; }
+  }
+  ul.group-list, ul.user-list, ul.drop-menu, ul.auth-list {
+    border-left: 1px solid #777;
+    border-right: 1px solid #333;
+    li {
+      small { color: #bbb; }
+      &:hover small, &:hover a small {
+        color: #000;
+      }
+      a {
+        color: #fff;
+        border-right: 1px solid #777;
+        border-left: 1px solid #333;
+        &:hover {
+          background-color: #ddd;
+          color: #000;
+          small {color: #000; }
+        }
+      }
+    }
+  }
+  ul.user-list, ul.auth-list {
+    li.user {
+      img {
+        border: 3px solid #666;
+      }
+      ul li.logout a:hover {
+        background-color: #c00;
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+// TOP TABS 
+// From: app/stylesheets/app/_topTabs.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.quick_question {
+  input#question_title {
+    border: 1px solid lighten($fg_color, 50%) !important;
+    background-color: #fafafa;
+    &:hover { border-color: #666; }
+  }
+  h2 {
+    text-shadow: 1px 1px 2px #e5e5e5;
+  }
+}
+
+// MARKDOWN
+// From: app/stylesheets/app/content/editors/_markdown.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#markdown_editor {
+  border: 1px solid #cccccc;
+  &:hover, &:focus{
+    border-color: $orange;
+  }
+}
+
+.markdown_toolbar {
+  border: 1px solid #d7d7d7;
+  background-color: #F6F6F6;
+}
+
+#markdown_preview {
+  color: $dark;
+}
+
+
+// RELATED QUESTIONS
+// From: ---
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-related_questions aside ul li a {
+  color: $alt_link_color;
+}
+.related_questions {
+  #related_questions {
+    background: #f9f9f9 url("/images/loading.gif") 50% 50% no-repeat;
+    border: 1px solid #e5e5e5;
+    article {
+      background-color: #fff;
+      h3 a {
+        color: #000;
+        &:hover {
+          background-color: $orange;
+          color: #fff;
+        }
+      }
+      .toolbar ul li a {
+        color: #999;
+      }
+    }
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_badges.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-badges ul .badge_item {
+  a.badge {
+    color: #000;
+  }
+  .user a {
+    color: $alt_link_color;
+    &:hover {
+      color: $alt_hover_color;
+    }
+  }
+}
+
+// BADGES
+// From: app/widgets/_customLinks.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-links ul {
+  li a {
+    color: $link_fg_color;
+    &:hover {
+      @include gradient($button_bg_color);
+      color: $button_fg_color;
+    }
+  }
+  li.active a, li.active a:hover {
+    background-color: #eee;
+    color: #000;
+    text-shadow: 1px 1px 1px #fff !important;
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_language.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-lang form {
+  select {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_tags.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-tag_cloud {
+  .tags_cloud span a{
+  }
+  .list_cloud span a{
+    color: lighten($view_fg_color, 30%);
+    background-color: darken($view_bg_color, 5%);
+    &:hover {
+      color: $link_fg_color;
+      background-color: $view_border_color;
+    }
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_top_groups.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-top_groups section {
+  border-bottom: 1px solid #fafafa;
+  .avatar {
+    img {border: 1px solid $view_border_color;}
+  }
+  .data {
+    h5 {
+      a {color: $link_fg_color;}
+      small {color: #777;}
+    }
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_top_users.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-top_users ul{
+  .avatar {
+    img { border: 1px solid $view_border_color;}
+  }
+  .data {
+    h5 {
+      a {
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
+      }
+      small {
+        background-color: darken($link_fg_color, 5%);
+        color: $view_bg_color;
+      }
+    }
+  }
+}
+
+
+// USER ZONE
+// From: app/widgets/_userZone.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.user-zone {
+  .avatar a img { border: 1px solid #aaa }
+  .greeting small {
+    color: $gray;
+  }
+  nav.user-nav {
+    ul li {
+      a {
+        color: $dark;
+        &:hover {
+          @include gradient($orange);
+          color: #fff;
+        }
+      }
+      &.active a, &.active a:hover {
+        @include gradient($orange);
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+// SUGGESTIONS
+// From: app/widgets/_suggestions.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-suggestions, .widget-suggestions-page {
+  ul li {
+    border-bottom: 1px dotted $view_border_color;
+    &:nth-child(-2n+5) {
+      border-right: 1px solid $view_border_color;
+    }
+    .gravatar img { border: 1px solid $view_border_color; }
+    .link {
+      color: $link_fg_color;
+      a {
+        font-size: 12px;
+      }
+      .tag {
+        background-color: darken($link_fg_color, 5%);
+        color: $link_fg_color;
+      }
+    }
+    .f-link {
+      a {
+        color: $alt_link_color;
+        &:hover {
+          color: $alt_hover_color;
+        }
+      }
+    }
+  }
+}
+
+.widget-suggestions-page h3 {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+// QUESTIONS
+// From: app/content/question/question.sass
+//------------------------------------------------------------------------------------------------------------------- 
+section.main-question {
+  background-color: $view_bg_color;
+  h1 {
+    text-shadow: 1px 1px 2px #e5e5e5;
+  }
+  small {
+    a {color: #000;}
+    &.current {color: #c00;}
+    &.version-nav {
+      color: #666;
+      a {
+        color: $orange;
+        &.revert {color: #c00;}
+      }
+    }
+  }
+  .description {
+    p {color: darken($view_fg_color, 5%);}
+    img { border: 1px solid #e5e5e5; }
+    .thumb {background-color: #fcfcfc;}
+    #attachments_list li a {
+      color: #000;
+      &:hover {
+        color: $orange;
+      }
+    }
+    .stats p {color: #999;}
+  }
+}
+
+// ACTION PANELS
+// From: app/content/question/_actionPanels.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#panel-forms { background-color: $lightBlue;}
+.add_answer .by_mail a { color: #000; }
+
+
+// TOOLBARS
+// From: app/content/question/toolbar.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.toolbar{
+  border-top: 1px solid #e5e5e5;
+  li {
+    a {
+      color: #999 !important;
+      border-right: 1px solid #e5e5e5;
+      background-color: #fff !important;
+      &:hover {
+        color: #000 !important;
+        background-color: #f9f9f9 !important;
+      }
+      &.active {
+        background-color: $lightBlue !important;
+        color: #000;
+        &:hover{ background-color: $lightBlue !important;}
+      }
+    }
+    ul li {
+      border-left: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      background-color: #fff;
+      &:first-child{ border-top: 1px solid #ddd;}
+    }
+  }
+}
+
+ul.drop-menu {
+  li.flagged {
+    background-color: $lightRed;
+    span {color: $red;}
+    &>a {
+      color: #eb9696;
+      &:hover {
+        background-color: $red;
+        color: #fff;
+      }
+      &#destroy_question_flag_link {
+        border-left: 1px solid #e5e5e5;
+        border-color: #f4b6b6;
+      }
+    }
+  }
+}
+
+
+// TAGS
+// From: app/content/question/tags.sass
+//------------------------------------------------------------------------------------------------------------------- 
+ul.tag-list {
+  li, .tag {
+    color: #666666;
+    &:hover {
+      color: #000;
+    }
+    &.retag a {
+      color: #fff;
+    }
+  }
+}
+
+.tagwrapper {
+  border: 1px solid #cccccc !important;
+  ul li{
+    a { color: #000; }
+    a:hover, &:hover a, a.ui-state-hover, span:hover {
+      color: #000;
+    }
+  }
+}
+
+.ui-autocomplete {
+  background-color: #f4f4f4;
+  .ui-menu-item {
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #fff !important;
+    a {
+      &:hover, &:active, &:focus, &#ui-active-menuitem{
+        background: $orange !important;
+        color: #fff !important;
+        border-color: $orange;
+      }
+    }
+  }
+}
+
+
+// ANSWERS
+// From: app/content/question/answers.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#answers-content-wrap {
+  border-top: 1px solid #e5e5e5;
+  background-color: $view_bg_color;
+
+  section.filters ul {
+    border-top: 1px solid $blue;
+    border-bottom-color: #bee5e7;
+    &.newest li.newest-active a,
+    &.votes li.votes-active a,
+    &.oldest li.oldest-active a {
+      border-bottom: 2px solid $blue;
+      color: #000;
+    }
+  }
+}
+.answer_vote_box {
+  background-color: $view_fg_color;
+  color: $view_bg_color;
+  .votes_average {
+    background-color: $view_fg_color;
+  }
+  form ul.vote_box button {
+    &.negative {
+      background-color: $view_fg_color;
+      &:hover {
+        background-color: #f00;
+      }
+    }
+    &.positive {
+      background-color: $view_fg_color;
+      &:hover {
+        background-color: #0a0;
+      }
+    }
+  }
+}
+article.answer {
+  border-bottom: 1px solid #e5e5e5;
+  p {
+    color: darken($view_fg_color, 5%);
+  }
+  h4 {
+    img.gravatar { border: 1px solid #fff; }
+    i { color: #999; }
+  }
+}
+.article-actions ul li {
+  a {
+    color: #999;
+    border-right: 1px solid $view_border_color;
+    &:hover {
+      color: #fff;
+      background-color: $orange;
+    }
+  }
+  ul li {
+    &:first-child {border-top: 1px solid #ddd;}
+    border-left: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    background-color: #fff;
+  }
+}
+
+#close_reason {
+  text-shadow: $text-shadow;
+  color: #fff;
+  @include error-gradient;
+}
+
+
+// COMMENTS
+// From: app/content/question/comments.sass
+//------------------------------------------------------------------------------------------------------------------- 
+article.comment p { color: #333333; }
+span.upvoted-comment{ color: #EE681F;}
+form.answer_comment_form, form.question_comment_form {
+  .text_area {border: 1px solid #ccc  !important;}
+  .reply_to {background-color: #fff;}
+}
+
+.article-actions .add_answer_comment_link{
+  background-color: #fff;
+  border-right: 1px solid #e5e5e5;
+}
+
+
+// COMMENTS
+// From: app/content/more/_groups.sass
+//-------------------------------------------------------------------------------------------------------------------
+.groups_container {
+  form {
+    border-bottom: 1px solid $view_border_color;
+    .field {
+      #q {
+        border-color: #ccc;
+        color: #000;
+      }
+    }
+  }
+  ul li {
+    border-bottom: 1px solid $view_border_color;
+    .logo { border: 1px solid #e5e5e5; }
+    .summary h3 a { color: #000; }
+  }
+}
+
+
+// USERS
+// From: app/content/more/_users.sass
+//-------------------------------------------------------------------------------------------------------------------
+.users_container {
+  border-bottom: 1px solid $view_border_color;
+  .field {
+    #q {
+      border-color: #ccc;
+      color: #000;
+    }
+  }
+
+  ul {
+    li {
+      border-bottom: 1px solid $view_border_color;
+      .logo { border: 1px solid #e5e5e5; }
+      .summary h3 a { color: #000; }
+    }
+  }
+}
+
+
+// BADGES
+// From: app/content/more/_badges.sass
+//-------------------------------------------------------------------------------------------------------------------
+.badges ul li {
+  .badge {
+    color: #000;
+    text-shadow: 1px 1px 2px #e5e5e5;
+  }
+  .counter {
+    color: #999;
+  }
+}
+.gold .badge {
+  @include gold-gradient;
+  border: 1px solid #fbd65f;
+}
+
+.silver .badge {
+  @include silver-gradient;
+  border: 1px solid #c6c6c6;
+}
+
+.bronze .badge {
+  @include bronze-gradient;
+  border: 1px solid #e67347;
+}
+
+#badges_show {
+  .description {
+    border-bottom: 1px solid $view_border_color;
+    p .badge_item {
+      color: #000;
+      text-shadow: 1px 1px 2px #e5e5e5;
+    }
+  }
+  .counter p{
+    color: #999;
+    b{ color: #000;}
+  }
+  .users ul li {
+    border-bottom: 1px solid $view_border_color;
+    .stats {
+      border-right: 1px solid $view_border_color;
+    }
+    .summary {
+      h3 a {
+        color: #000;
+        text-shadow: 1px 1px 2px #e5e5e5;
+      }
+      .owner-data strong {color: #999;}
+    }
+  }
+}
+
+input[type=submit], button, input.save {
+  @include gradient($button_bg_color);
+  color: $button_fg_color;
+  border-color: $button_bg_color;
+}
+
+.widget, .module, .brand, .quick_question, #main-content-wrap {
+  background-color: $view_bg_color;
+  color: $view_fg_color;
+}
+
+
+article.active {
+  background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
+}
+
+
+// ================================================================================================================================================
+//    LAYOUT	    
+// ================================================================================================================================================
+// LAYOUT
+// From: app/stylesheets/app/_layout.sass
+//------------------------------------------------------------------------------------------------------------------- 
+@if($fluid) {
+  #container #columns {
+    max-width: 100%;
+    min-width: 700px;
+    section#column1 {
+      width: 14%;
+    }
+    section#column2 {
+      width: 59%;
+      &.nosidebar {
+        width: 84.5%;
+      }
+    }
+    section#column3 {
+      width: 25.5%;
+    }
+  }
+
+  .footer-widgets {
+    max-width: 99%;
+  }
+
+  .header-widgets {
+    width: 85%;
+  }
+}
