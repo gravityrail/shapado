@@ -25,7 +25,7 @@
   .field
     = form.label :description,  t('description', :scope => "activerecord.attributes.group"), :class => "label"
     -if current_group.wysiwyg_editor
-      = form.text_area :description, :class => "text_area wysiwyg_editor" :value => markdown(@group.description)
+      = form.text_area :description, :class => "text_area wysiwyg_editor", :value => markdown(@group.description)
     -else
       = form.text_area :description, :class => "text_area markdown_editor"
       %small
