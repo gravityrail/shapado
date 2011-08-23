@@ -3,10 +3,10 @@
 -opts = {:class => "text_area", :rows => 'auto', :cols => 'auto'}
 -if local_assigns[:markdown]
   -if current_group.wysiwyg_editor
-    -opts[:id] = "wysiwyg_editor"
+    -opts[:class] = "wysiwyg_editor"
     -opts[:value] = markdown(@comment.body)
   -else
-    -opts[:id] = "markdown_editor"
+    -opts[:class] = "markdown_editor"
 
 = f.text_area :body, opts
 

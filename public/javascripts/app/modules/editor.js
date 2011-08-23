@@ -19,8 +19,15 @@ var Editor = {
       }
     });
   },
-  setup_wysiwyg: function() {
-    var editor = $("#wysiwyg_editor");
+  setup: function(editor) {
+    if(editor.hasClass("wysiwyg_editor")) {
+      Editor.setup_wysiwyg(editor);
+    } else if(editor.hasClass("markdown_editor")) {
+      Editor.setup_editor(editor);
+    }
+  },
+  setup_wysiwyg: function(editor) {
+    var editor = editor || $(".wysiwyg_editor");
     if(!editor || editor.length == 0)
       return;
 
@@ -44,25 +51,28 @@ var Editor = {
       ]
     });
   },
-  setup_editor: function() {
-    var editor = $("#markdown_editor");
-    if(!editor || editor.length == 0)
+  setup_editor: function(editor) {
+    var editor = editor || $(".markdown_editor");
+    if(!editor || editor.length == 0){
       return;
+    }
 
     var converter = new Showdown.converter;
     var timer_id = null;
 
     var converter_callback = function(value) {
-      $('#markdown_preview')[0].innerHTML = converter.makeHtml(value);
-      //addToLocalStorage(location.href, 'markdown_editor', value);
-      $('#markdown_preview.markdown p code').addClass("prettyprint");
-      if(timer_id)
-        clearTimeout(timer_id);
+      var preview = $('.markdown_preview');
+      if(preview.length > 0){
+        $('.markdown_preview')[0].innerHTML = converter.makeHtml(value);
+        //addToLocalStorage(location.href, 'markdown_editor', value);
+        $('.markdown_preview.markdown p code').addClass("prettyprint");
+        if(timer_id)
+          clearTimeout(timer_id);
 
-      timer_id = setTimeout(function(){
-        prettyPrint();
-      }, 500);
-
+        timer_id = setTimeout(function(){
+          prettyPrint();
+        }, 500);
+      }
     }
 
     var textarea = editor.TextArea({

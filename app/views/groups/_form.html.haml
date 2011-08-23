@@ -25,14 +25,14 @@
   .field
     = form.label :description,  t('description', :scope => "activerecord.attributes.group"), :class => "label"
     -if current_group.wysiwyg_editor
-      = form.text_area :description, :class => "text_area", :id => "wysiwyg_editor", :value => markdown(@group.description)
+      = form.text_area :description, :class => "text_area wysiwyg_editor" :value => markdown(@group.description)
     -else
-      = form.text_area :description, :class => "text_area", :id => "markdown_editor"
+      = form.text_area :description, :class => "text_area markdown_editor"
       %small
         = t('.description_legend')
       %label.label
         = t("global.preview")
-      #markdown_preview.markdown
+      .markdown_preview.markdown
         =markdown(@group.description)
 
 -if true
