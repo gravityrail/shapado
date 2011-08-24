@@ -1,4 +1,4 @@
-require 'open-uri'
+require 'rest-client'
 module Jobs
   module Base
     include Magent::Async
@@ -66,7 +66,7 @@ module Jobs
     def shorten_url(url, entry)
       if entry.short_url.blank?
         begin
-          link = open("http://bit.ly/api?url=#{CGI.escape(url)}").read
+          link = JSON.parse(RestClient.post("https://www.googleapis.com/urlshortener/v1/url?key=#{AppConfig.googl_api_key}" , { 'longUrl' => url }.to_json, :content_type => :json, :accept => :json))["id"]
           entry.override(:short_url => link)
         rescue
           link = url
