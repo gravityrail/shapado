@@ -380,7 +380,7 @@ module ApplicationHelper
                    elsif suggestion.linked_in_login?
                      linked_in_avatar(suggestion)
                    else
-                     gravatar(suggestion.email.to_s, :size => 32)
+                     avatar_img(suggestion, :size => "small")
                    end
     else
       tag = Tag.where(:name => suggestion[0], :group_id => current_group.id).first

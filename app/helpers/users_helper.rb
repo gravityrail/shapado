@@ -94,11 +94,12 @@ module UsersHelper
     size = options.delete(:size)
     options[:alt] = user.login
     options[:title] = user.login
+
     if user.use_gravatar || !user.has_avatar?
-      # TODO: convert size's name to pixels
-      if size
+      if !size.is_a? Integer
         options[:size] = size_for_string(size)
       end
+      # TODO: convert size's name to pixels
       gravatar(user.email.to_s, options)
     else
       options[:class] ||= "gravatar"
