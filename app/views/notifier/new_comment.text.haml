@@ -1,5 +1,5 @@
 - new_comment = @comment.body
-- link = url_for(:host => @group.domain, :id => @question.id, :controller => "questions", :anchor =>  "comment#{@comment.id}")
+- link =  url_for(:host => @group.domain, :id => @question.slug, :controller => "questions", :action => 'show', :anchor =>  "comment#{@comment.id}")
 
 = t("notifier.global.hi", :user => h(@user.login))
 
