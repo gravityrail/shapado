@@ -1,4 +1,15 @@
-// defined vars
+// ========================================================================
+//    Document     	:   setup.sass
+//    Created on   	:   Nov14 - 2010, 20:29 pm
+//    Author       		:   @dgfrancisco
+//    Client       		:   Shapado
+//    Description	 	:   Variables y set up basico del portal, estas variables podran ser
+//                     			cambiadas en pro de modificar colores, fuentes etc
+//========================================================================
+
+// ================================================================================================================================================
+//    VARS    		    
+// ================================================================================================================================================
 // $has_bg_image boolean
 // $bg_color color
 // $fg_color color
@@ -12,7 +23,8 @@
 // $fluid
 
 // General site colors
-// replace this color using the theme properties
+// HEY!! > replace this color using the theme properties, this are just for default theme, shapado Theme
+//========================================================================
 $dark: #404040;
 $gray: #aaa;
 $lightGray: #f2f2f2;
@@ -33,36 +45,38 @@ $darkRed: #c00;
 $text-shadow: 0 1px 1px darken($fg_color, 10%);
 
 // Link colors
+//========================================================================
 $link_color: $link_fg_color;
 $hover_color: $link_fg_color;
 @if(lightness($link_fg_color) > 10%) {
-  $hover_color: lighten($link_fg_color, 10%);
+	$hover_color: lighten($link_fg_color, 10%);
 } @else {
-  $hover_color: darken($link_fg_color, 10%);
+  	$hover_color: darken($link_fg_color, 10%);
 }
 $alt_link_color: $link_color;
 $alt_hover_color: $hover_color;
 
 @if(lightness($view_fg_color) > 10%) {
-  $alt_link_color: darken($view_fg_color, 10%);
-  $alt_hover_color: lighten($view_fg_color, 10%);
+  	$alt_link_color: darken($view_fg_color, 10%);
+  	$alt_hover_color: lighten($view_fg_color, 10%);
 } @else {
-  $alt_link_color: lighten($view_fg_color, 10%);
-  $alt_hover_color: lighten($view_fg_color, 10%);
+  	$alt_link_color: lighten($view_fg_color, 10%);
+  	$alt_hover_color: lighten($view_fg_color, 10%);
 }
-
-
 $active_color: $link_fg_color;
-
 $view_border_color: $view_bg_color;
 @if(lightness($view_border_color) > 10%) {
-  $view_border_color: darken($view_border_color, 10%);
+ 	$view_border_color: darken($view_border_color, 10%);
 } @else {
-  $view_border_color: lighten($view_border_color, 10%);
+  	$view_border_color: lighten($view_border_color, 10%);
 }
-
-
+a {
+  color: $link_color;
+  &:hover{ color: $hover_color;}
+  &:active{ color: $active_color;}
+}
 //shadow
+//========================================================================
 $inner: inset 2px 2px 2px $fg_color;
 
 @mixin inner-shadow($inner){
@@ -73,77 +87,128 @@ $inner: inset 2px 2px 2px $fg_color;
   khtml-box-shadow: $inner;
   box-shadow: $inner;
 }
-
 @mixin gradient($color) {
   $amount-darker: 15%;
   background-image: -moz-linear-gradient(top, $color, darken($color, $amount-darker)) !important;
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, darken($color, $amount-darker)),color-stop(1, $color)) !important;
 }
-
 @mixin error-gradient {
   background-image: -moz-linear-gradient(top, $red, $darkRed) !important;
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $darkRed),color-stop(1, $red)) !important;
   background-color: $red;
 }
-
 // Gradiants for badges
+//========================================================================
 @mixin gold-gradient{
   background-image: -moz-linear-gradient(top, #fbd65f, #ffff7c) !important;
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffff7c),color-stop(1, #fbd65f)) !important;
 }
-
 @mixin silver-gradient {
   background-image: -moz-linear-gradient(top, #c6c6c6, #e5e5e5) !important;
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e5e5e5),color-stop(1, #c6c6c6)) !important;
 }
-
 @mixin bronze-gradient {
   background-image: -moz-linear-gradient(top, #e67347, #f3a273);
   background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273));
   background-color: #e67347;
 }
 
-// app/stylesheets/_reset.sass
-a {
-  color: $link_color;
-  &:hover{ color: $hover_color;}
-  &:active{ color: $active_color;}
+
+// ================================================================================================================================================
+//    COLORS   		    
+// ================================================================================================================================================
+// MESSAGES == Notices == Flash
+// From: app/stylesheets/app/forms/_general.sass
+//------------------------------------------------------------------------------------------------------------------- 
+form {
+  h2 {
+    border-bottom: 1px solid $orange;
+  }
+  .field {
+    img {
+      border: 1px solid #e5e5e5;
+    }
+    small, small span {
+      color: #666;
+    }
+    input {
+      border: 1px solid #ccc;
+      &:active, &:focus, &:hover { border-color: $orange;}
+    }
+    select {
+      border: 1px solid #ccc;
+      background-color: #fff;
+    }
+    textarea {
+      border: 1px solid #ccc;
+      &:active, &:focus, &:hover {border-color: $orange;}
+    }
+  }
+  hr {
+    border-top: 1px solid #e5e5e5;
+  }
+  .follow-up-msg {
+    background-color: $lightOrange;
+    border: 1px solid $orange;
+  }
+
+  .manage-domain {
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  .domain-url {
+    background-color: $lightOrange;
+  }
 }
 
-// app/stylesheets/app/_messages.sass
-#notifyBar .error {
-  color: #fff;
-  @include error-gradient;
-}
 
-#notifyBar .notice {
-  @include gradient(#80C908);
+// MESSAGES == Notices == Flash
+// From: app/stylesheets/app/_messages.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#notifyBar {
+    .error {
+      color: #fff;
+      @include error-gradient;
+    }
+    .notice {
+      @include gradient(#80C908);
+    }
 }
 #messages {
   color: #fff;
   @include gradient($blue);
 }
 
-// app/stylesheets/app/_pagination.sass
+
+// PAGINATION
+// From: app/stylesheets/app/_pagination.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .pagination {
-  border-bottom: 1px solid $view_border_color;
+  border-color: $view_border_color;
   color: $view_fg_color;
   background-color: $lightOrange;
   em {
     background-color: $orange;
   }
-
   a:hover {
     color: #fff;
     background-color: $orange;
   }
 }
 
-// app/stylesheets/_advertisement.sass
+
+// ADVERTISEMENT
+// From: app/stylesheets/_advertisement.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .ad h6 { color: #aaa; }
 
-// app/stylesheets/app/_drop-menus.sass
-.top-bar .user-list, .top-bar .group-list, .top-bar .auth-list {
+
+// DROP DOWN MENUS
+// From: app/stylesheets/app/_drop-menus.sass
+//------------------------------------------------------------------------------------------------------------------- 
+.top-bar .user-list, 
+.top-bar .group-list, 
+.top-bar .auth-list {
   li li {
     background:  #e5e5e5;
     &.sfHover:hover {
@@ -165,7 +230,10 @@ a {
   }
 }
 
-//app/stylesheets/app/_template.sass
+
+// ---
+// From: app/stylesheets/app/_template.sass
+//------------------------------------------------------------------------------------------------------------------- 
 hgroup {
   h2 { color: $darkGray; }
   h3 a {
@@ -235,12 +303,12 @@ ul.admin-links li {
   }
 }
 
-
-//app/stylesheets/app/content/admin/_profile.sass
+// PROFILE
+// From: app/stylesheets/app/content/admin/_profile.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .users section:last-child{
   border-bottom: 0px solid #cc0000;
 }
-
 .userData .avatar {
   border-bottom: 1px solid $view_border_color;
   p a {
@@ -283,8 +351,9 @@ ul.admin-links li {
 
 #users_show .users .content-tabs { border-top: 5px solid #f0f0f0 !important; }
 
-//app/stylesheets/app/content/admin/_announcements.sass
-
+// ANNOUNCEMENTS
+// From: app/stylesheets/app/content/admin/_announcements.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .announcements {
   .list-announcements {
     h1 {border-bottom: 1px solid #ccc;}
@@ -299,7 +368,10 @@ ul.admin-links li {
   }
 }
 
-//app/stylesheets/app/content/admin/_members.sass
+
+// MEMBERS
+// From: app/stylesheets/app/content/admin/_members.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .members {
   border-bottom: 1px dotted $view_border_color;
   ul li {
@@ -319,12 +391,18 @@ ul.admin-links li {
   }
 }
 
-//app/stylesheets/app/content/admin/_moderate.sass
+
+// MODERATE
+// From: app/stylesheets/app/content/admin/_moderate.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .moderate-answers {
   border-top: 1px solid $view_border_color;
 }
 
-//app/stylesheets/app/content/admin/_widgets.sass
+
+// WIDGETS
+// From: app/stylesheets/app/content/admin/_widgets.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widgets-admin {
   h1 {
     border-bottom: 1px solid #ccc;
@@ -340,7 +418,6 @@ ul.admin-links li {
   p {
     color: #888;
   }
-
   .controls input{
     background-color: $view_border_color;
     border: 1px solid #e5e5e5;
@@ -350,7 +427,6 @@ ul.admin-links li {
   li {
     border-bottom: 1px solid #e5e5e5
   }
-
   .widgets-admin .module {
     border: 1px solid $view_border_color;
     footer {
@@ -362,8 +438,12 @@ ul.admin-links li {
   }
 }
 
-//app/stylesheets/app/content/_main.sass
-#main-content-wrap, .users-main-content{
+
+// MAIN
+// From: app/stylesheets/app/content/_main.sass
+//------------------------------------------------------------------------------------------------------------------- 
+#main-content-wrap, 
+.users-main-content{
   .empty {
     border: 1px solid $orange;
     background-color: $lightOrange;
@@ -421,7 +501,10 @@ ul.admin-links li {
   }
 }
 
-//app/stylesheets/app/content/_tabs.sass
+
+// TABS
+// From: app/stylesheets/app/content/_tabs.sass
+//------------------------------------------------------------------------------------------------------------------- 
 #main-content-wrap {
   p.description {
     border-bottom: 1px solid $view_border_color;
@@ -438,7 +521,6 @@ ul.admin-links li {
     }
   }
 }
-
 .questions ul.content-tabs li.questions a,
 .answers ul.content-tabs li.answers a,
 .unanswered ul.content-tabs li.unanswered a,
@@ -458,7 +540,12 @@ ul.admin-links li {
   color: $alt_hover_color;
 }
 
-.answers .newest li.newest a, .answers .hot li.hot a, .answers .votes li.votes a, .unanswered .newest li.newest a, .unanswered .hot li.hot a, .unanswered .votes li.votes a {
+.answers .newest li.newest a, 
+.answers .hot li.hot a, 
+.answers .votes li.votes a, 
+.unanswered .newest li.newest a, 
+.unanswered .hot li.hot a, 
+.unanswered .votes li.votes a {
   border-bottom: 2px solid $blue !important;
   color: $fg_color !important;
 }
@@ -472,71 +559,9 @@ ul.admin-links li {
   }
 }
 
-
-// app/stylesheets/app/forms/_general.sass
-form {
-  h2 {
-    border-bottom: 1px solid $orange;
-  }
-  .field {
-    img {
-      border: 1px solid #e5e5e5;
-    }
-    small, small span {
-      color: #666;
-    }
-    input {
-      border: 1px solid #ccc;
-      &:active, &:focus, &:hover { border-color: $orange;}
-    }
-    select {
-      border: 1px solid #ccc;
-      background-color: #fff;
-    }
-    textarea {
-      border: 1px solid #ccc;
-      &:active, &:focus, &:hover {border-color: $orange;}
-    }
-  }
-  hr {
-    border-top: 1px solid #e5e5e5;
-  }
-  .follow-up-msg {
-    background-color: $lightOrange;
-    border: 1px solid $orange;
-  }
-
-  .manage-domain {
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .domain-url {
-    background-color: $lightOrange;
-  }
-}
-
-
-.related_questions {
-  #related_questions {
-    background: #f9f9f9 url("/images/loading.gif") 50% 50% no-repeat;
-    border: 1px solid #e5e5e5;
-    article {
-      background-color: #fff;
-      h3 a {
-        color: #000;
-        &:hover {
-          background-color: $orange;
-          color: #fff;
-        }
-      }
-      .toolbar ul li a {
-        color: #999;
-      }
-    }
-  }
-}
-
-// Form Errors
+// FORMS - Login
+// From: ---
+//------------------------------------------------------------------------------------------------------------------- 
 .errorExplanation{
   border: 1px solid #c00;
   background-color: $lightRed;
@@ -544,10 +569,8 @@ form {
     color: #000;
   }
 }
-
 form .domain small {color: #000; }
 
-// Login form
 section.sessions {
   .options{
     border-top: 1px solid $view_border_color;
@@ -558,10 +581,11 @@ section.sessions {
     }
   }
 }
-
 .search-form{ border-bottom: 1px solid #e5e5e5;}
 
-// app/stylesheets/app/_footer.sass
+// FOOTER
+// From: app/stylesheets/app/_footer.sass
+//------------------------------------------------------------------------------------------------------------------- 
 footer {
   background-color: darken($bg_color, 4%);
   border-top: 5px solid $view_border_color;
@@ -599,7 +623,10 @@ footer {
   }
 }
 
-// app/stylesheets/app/_layout.sass
+
+// LAYOUT
+// From: app/stylesheets/app/_layout.sass
+//------------------------------------------------------------------------------------------------------------------- 
 body {
    @if($has_bg_image) {
      background: $bg_color url($bg_image_url) 0 0;
@@ -607,34 +634,6 @@ body {
      background: $bg_color;
   }
 }
-
-@if($fluid) {
-  #container #columns {
-    max-width: 100%;
-    min-width: 700px;
-    section#column1 {
-      width: 14%;
-    }
-    section#column2 {
-      width: 59%;
-      &.nosidebar {
-        width: 84.5%;
-      }
-    }
-    section#column3 {
-      width: 25.5%;
-    }
-  }
-
-  .footer-widgets {
-    max-width: 99%;
-  }
-
-  .header-widgets {
-    width: 85%;
-  }
-}
-
 section.left-panel {
   background-color: $view_bg_color;
   border-right: 1px solid $bg_color;
@@ -677,7 +676,10 @@ section.invitations-panel {
   }
 }
 
-// app/stylesheets/app/_topBar.sass
+
+// TOP BAR 
+// From: app/stylesheets/app/_topBar.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .top-bar {
   background-color: #5E5E5E;
   .searcher {
@@ -724,21 +726,24 @@ section.invitations-panel {
   }
 }
 
-// app/stylesheets/app/_topTabs.sass
+
+// TOP TABS 
+// From: app/stylesheets/app/_topTabs.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .quick_question {
-  input {
-    border: 1px solid darken($fg_color, 1%) !important;
+  input#question_title {
+    border: 1px solid lighten($fg_color, 50%) !important;
     background-color: #fafafa;
     &:hover { border-color: #666; }
-    @include inner-shadow;
   }
   h2 {
     text-shadow: 1px 1px 2px #e5e5e5;
   }
 }
 
-// app/stylesheets/app/content/editors/_markdown.sass
-
+// MARKDOWN
+// From: app/stylesheets/app/content/editors/_markdown.sass
+//------------------------------------------------------------------------------------------------------------------- 
 #markdown_editor {
   border: 1px solid #cccccc;
   &:hover, &:focus{
@@ -755,7 +760,37 @@ section.invitations-panel {
   color: $dark;
 }
 
-//app/widgets/_badges.sass
+
+// RELATED QUESTIONS
+// From: ---
+//------------------------------------------------------------------------------------------------------------------- 
+.widget-related_questions aside ul li a {
+  color: $alt_link_color;
+}
+.related_questions {
+  #related_questions {
+    background: #f9f9f9 url("/images/loading.gif") 50% 50% no-repeat;
+    border: 1px solid #e5e5e5;
+    article {
+      background-color: #fff;
+      h3 a {
+        color: #000;
+        &:hover {
+          background-color: $orange;
+          color: #fff;
+        }
+      }
+      .toolbar ul li a {
+        color: #999;
+      }
+    }
+  }
+}
+
+
+// BADGES
+// From: app/widgets/_badges.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-badges ul .badge_item {
   a.badge {
     color: #000;
@@ -768,7 +803,9 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_customLinks.sass
+// BADGES
+// From: app/widgets/_customLinks.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-links ul {
   li a {
     color: $link_fg_color;
@@ -784,7 +821,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_language.sass
+
+// BADGES
+// From: app/widgets/_language.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-lang form {
   select {
     border: 1px solid #ccc;
@@ -792,7 +832,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_tags.sass
+
+// BADGES
+// From: app/widgets/_tags.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-tag_cloud {
   .tags_cloud span a{
   }
@@ -806,7 +849,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_top_groups.sass
+
+// BADGES
+// From: app/widgets/_top_groups.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-top_groups section {
   border-bottom: 1px solid #fafafa;
   .avatar {
@@ -820,7 +866,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_top_users.sass
+
+// BADGES
+// From: app/widgets/_top_users.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-top_users ul{
   .avatar {
     img { border: 1px solid $view_border_color;}
@@ -841,7 +890,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_userZone.sass
+
+// USER ZONE
+// From: app/widgets/_userZone.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .user-zone {
   .avatar a img { border: 1px solid #aaa }
   .greeting small {
@@ -864,7 +916,10 @@ section.invitations-panel {
   }
 }
 
-//app/widgets/_suggestions.sass
+
+// SUGGESTIONS
+// From: app/widgets/_suggestions.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .widget-suggestions, .widget-suggestions-page {
   ul li {
     border-bottom: 1px dotted $view_border_color;
@@ -897,12 +952,10 @@ section.invitations-panel {
   border-bottom: 1px solid #e5e5e5;
 }
 
-//app/widgets/_related_questions.sass
-.widget-related_questions aside ul li a {
-  color: $alt_link_color;
-}
 
-//app/content/question/question.sass
+// QUESTIONS
+// From: app/content/question/question.sass
+//------------------------------------------------------------------------------------------------------------------- 
 section.main-question {
   background-color: $view_bg_color;
   h1 {
@@ -933,11 +986,16 @@ section.main-question {
   }
 }
 
-//app/content/question/_actionPanels.sass
+// ACTION PANELS
+// From: app/content/question/_actionPanels.sass
+//------------------------------------------------------------------------------------------------------------------- 
 #panel-forms { background-color: $lightBlue;}
 .add_answer .by_mail a { color: #000; }
 
-//app/content/question/toolbar.sass
+
+// TOOLBARS
+// From: app/content/question/toolbar.sass
+//------------------------------------------------------------------------------------------------------------------- 
 .toolbar{
   border-top: 1px solid #e5e5e5;
   li {
@@ -982,7 +1040,10 @@ ul.drop-menu {
   }
 }
 
-//app/content/question/tags.sass
+
+// TAGS
+// From: app/content/question/tags.sass
+//------------------------------------------------------------------------------------------------------------------- 
 ul.tag-list {
   li, .tag {
     color: #666666;
@@ -1020,7 +1081,10 @@ ul.tag-list {
   }
 }
 
-//app/content/question/answers.sass
+
+// ANSWERS
+// From: app/content/question/answers.sass
+//------------------------------------------------------------------------------------------------------------------- 
 #answers-content-wrap {
   border-top: 1px solid #e5e5e5;
   background-color: $view_bg_color;
@@ -1036,7 +1100,6 @@ ul.tag-list {
     }
   }
 }
-
 .answer_vote_box {
   background-color: $view_fg_color;
   color: $view_bg_color;
@@ -1058,7 +1121,6 @@ ul.tag-list {
     }
   }
 }
-
 article.answer {
   border-bottom: 1px solid #e5e5e5;
   p {
@@ -1069,7 +1131,6 @@ article.answer {
     i { color: #999; }
   }
 }
-
 .article-actions ul li {
   a {
     color: #999;
@@ -1093,7 +1154,10 @@ article.answer {
   @include error-gradient;
 }
 
-//app/content/question/comments.sass
+
+// COMMENTS
+// From: app/content/question/comments.sass
+//------------------------------------------------------------------------------------------------------------------- 
 article.comment p { color: #333333; }
 span.upvoted-comment{ color: #EE681F;}
 form.answer_comment_form, form.question_comment_form {
@@ -1106,7 +1170,10 @@ form.answer_comment_form, form.question_comment_form {
   border-right: 1px solid #e5e5e5;
 }
 
-//app/content/more/_groups.sass
+
+// COMMENTS
+// From: app/content/more/_groups.sass
+//-------------------------------------------------------------------------------------------------------------------
 .groups_container {
   form {
     border-bottom: 1px solid $view_border_color;
@@ -1124,7 +1191,10 @@ form.answer_comment_form, form.question_comment_form {
   }
 }
 
-//app/content/more/_users.sass
+
+// USERS
+// From: app/content/more/_users.sass
+//-------------------------------------------------------------------------------------------------------------------
 .users_container {
   border-bottom: 1px solid $view_border_color;
   .field {
@@ -1143,7 +1213,10 @@ form.answer_comment_form, form.question_comment_form {
   }
 }
 
-//app/content/more/_badges.sass
+
+// BADGES
+// From: app/content/more/_badges.sass
+//-------------------------------------------------------------------------------------------------------------------
 .badges ul li {
   .badge {
     color: #000;
@@ -1209,4 +1282,38 @@ input[type=submit], button, input.save {
 
 article.active {
   background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
+}
+
+
+// ================================================================================================================================================
+//    LAYOUT	    
+// ================================================================================================================================================
+// LAYOUT
+// From: app/stylesheets/app/_layout.sass
+//------------------------------------------------------------------------------------------------------------------- 
+@if($fluid) {
+  #container #columns {
+    max-width: 100%;
+    min-width: 700px;
+    section#column1 {
+      width: 14%;
+    }
+    section#column2 {
+      width: 59%;
+      &.nosidebar {
+        width: 84.5%;
+      }
+    }
+    section#column3 {
+      width: 25.5%;
+    }
+  }
+
+  .footer-widgets {
+    max-width: 99%;
+  }
+
+  .header-widgets {
+    width: 85%;
+  }
 }

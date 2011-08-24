@@ -75,7 +75,7 @@ module Jobs
         shortlink ||= shorten_url(link, commentable)
         author ||= user
         title ||= comment.question.title
-        message = I18n.t('jobs.comments.on_comment.group_send_twitter',
+        message = I18n.t('jobs.comments.on_comment.group_on_comment',
                          :question => title, :user => author.login,
                          :locale => author.language)
         status = make_status(message, shortlink, 138)
