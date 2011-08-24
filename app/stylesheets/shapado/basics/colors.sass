@@ -1,0 +1,46 @@
+// HEADER - dropdowns for groups, user link, and admin/moderate
+//------------------------------------------------------------------------------------------------------------------- 
+.top-bar 
+  background: #222
+  background-color: #222222
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222))
+  background-image: -moz-linear-gradient(#333333, #222222)
+  background-image: -ms-linear-gradient(#333333, #222222)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222))
+  background-image: -webkit-linear-gradient(#333333, #222222)
+  background-image: -o-linear-gradient(#333333, #222222)
+  background-image: linear-gradient(#333333, #222222)
+  .sf-menu 
+    li 
+      small
+        color: #bbb
+      &:hover small, &:hover a small
+        color: #000
+      a
+        background-image: none
+        color: #fff
+        border-right: 1px solid #444
+        border-left: 1px solid #000
+        &:hover, &:hover a
+          background-color: #333
+    ul
+      background-color: #fff
+      li
+        border-top: 1px solid #f1f1f1
+      a
+        color: #000
+        &:hover
+          background-color: $orange
+          color: #fff
+    .sf-sub-indicator
+      background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat
+  
+  .searcher 
+    border-right: 1px solid #444
+    form#search input
+      background: #fff url(/images/search-icon.png) 5px 50% no-repeat  
+  .languages_filter
+    border-left: 1px solid #000
+    
+

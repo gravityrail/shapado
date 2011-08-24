@@ -1,13 +1,29 @@
 // ========================================================================
-//    Document   	:   _application.sass
+//    Document   	:   application.sass
 //    Created on 	:   Nov14 - 2010, 20:29 pm
-//    Author      	:   @dgfrancisco
-//    Client     		:   Shapado
-//    Description	:   Estilos de la aplicacion y los llamados a reset y el setup basico del portal
+//    Author      		:   @dgfrancisco
+//    Project     		:   Shapado
 //========================================================================
-@import "setup"
-@import "reset"
+@import "shapado/setup"
 
-@import "shapado/tipography"
-@import "shapado/layout"
-@import "shapado/forms"
+// Basics css 
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/basics/reset"
+@import "shapado/basics/tipography"
+@import "shapado/basics/colors"
+
+// Layout css 
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/layout/generals"
+@import "shapado/layout/columns"
+@import "shapado/layout/header"
+@import "shapado/layout/footer"
+
+// Widgets css 
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/widgets/generals"
+
+// Others css 
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/others/drop-menus"
+@import "shapado/others/feedback"
