@@ -10,9 +10,64 @@
     text-align: right
     padding: 10px
 
+section.left-panel
+  .module
+    border-bottom: 1px solid #f1f1f1
+    padding: 0 10px 10px 10px
+    margin: 0 0 10px 0
+
+    h3
+      font-size: 13px
+      font-weight: bold
+      padding: 0 0 10px
+      text-shadow: none
+
 // WIDGET ZONES
 //-------------------------------------------------------------------------------------------------------------------
 .footer-widgets
+  max-width: 1000px
+  margin: 0px auto 4px auto
   clear: both
+
 .header-widgets
   float: left
+  width: 815px
+  margin: 0px 0px 4px 3px
+
+
+// ADMIN
+//-------------------------------------------------------------------------------------------------------------------
+
+.user-zone
+  .avatar
+    padding: 0 5px 5px 0
+    float: left
+    a
+      border: none
+
+  .greeting
+    float: left
+    width: 72%
+    overflow: hidden
+    margin-bottom: 5px
+
+    small
+      display: block
+      font-size: 10px
+      margin: 2px 0
+    b
+      font-size: 12px
+
+  .open
+    display: none
+
+  nav.user-nav
+    //height: 138px
+    //overflow: hidden
+    ul
+      li
+        a
+          padding: 5px
+          display: block
+          &:first-letter
+            text-transform: capitalize

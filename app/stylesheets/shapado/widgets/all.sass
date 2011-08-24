@@ -1,0 +1,338 @@
+//_wikis.sass
+.widget-pages
+  ul
+    margin: 10px 10px 10px 30px
+    list-style: disc
+    li
+      margin: 0 0 5px 0
+      a
+        color: #000
+        font-size: 12px
+        &:hover
+          border-bottom: 1px dotted
+  .add
+    float: left
+    color: #000 !important
+    margin: 0 0 0 10px
+    &:hover
+      border-bottom: 1px dotted
+  .more
+
+.widget-contributors aside
+  padding: 0 10px 8px 5px
+  a
+    float: left
+    margin: 0 0 0 7px
+    border: 1px solid #ccc
+
+//_customLinks.sass
+.widget-links
+  ul
+    li
+      a
+        padding: 5px
+        display: block
+        &:first-letter
+          text-transform: capitalize
+        &:hover
+          +normal-radius
+
+    li.active a, li.active a:hover
+      background-image: none !important
+      +normal-radius
+
+//_networks.sass
+.widget-group_networks
+  border: 0px !important
+  margin: 0
+  h3
+    margin: 0 0 10px 0
+  ul
+    padding: 0 !important
+    overflow: hidden
+    margin: -3px -3px 20px 0 !important
+    li
+      margin: 3px
+      float: right
+      display: inline
+      a
+        display: block
+        text-indent: -1000000px
+        height: 16px
+        width: 16px
+      .facebook
+        background: url("/images/facebook.png") 0 0  no-repeat
+      .twitter
+        background: url("/images/twitter.png") 0 0 no-repeat
+      .digg
+        background: url("/images/digg.png") 0 0 no-repeat
+      .youtube
+        background: url("/images/youtube.png") 0 0 no-repeat
+      .flickr
+        background: url("/images/youtube.png") 0 0 no-repeat
+      .linkedin
+        background: url("/images/linkedin.png") 0 0 no-repeat
+      .blog
+        background: url("/images/rss.png") 0 0 no-repeat
+      .github
+        background: url("/images/github.png") 0 0 no-repeat
+      .lastfm
+        background: url("/images/lastfm.png") 0 0 no-repeat
+      .reddit
+        background: url("/images/reddit.png") 0 0 no-repeat
+      .ohloh
+        background: url("/images/ohloh.png") 0 0 no-repeat
+
+//_tags.sass
+.widget-tag_cloud
+  .active-tags
+    text-align: center
+    overflow: hidden
+    span
+      background-color: #f1f1f1
+      margin: 2px
+      float: left
+      +huge-radius
+      position: relative
+      &:hover
+        background-color: #e5e5e5
+      a
+        line-height: 20px
+        font-size: 12px
+        padding: 0 5px 0 20px
+        color: #000
+    .remove_tag
+      position: absolute
+      top: 4px
+      left: 5px
+      background-color: #c00
+      color: #fff
+      float: left
+      padding: 0 4px
+      line-height: 12px
+      +huge-radius
+
+  .list_cloud
+    padding: 5px
+    span
+      margin: 1px 5px
+      display: block
+      a
+        padding: 4px 10px
+        display: block
+        +huge-radius
+        &:hover
+          width: 95%
+      .xxs
+        width: 20%
+      .xs
+        width: 30%
+      .s
+        width: 40%
+      .m
+        width: 50%
+      .xm
+        width: 60%
+      .xxm
+        width: 70%
+      .l
+        width: 80%
+      .xl
+        width: 90%
+      .xxl
+        width: 100%
+
+  .tag_cloud
+    padding: 10px
+    span
+      float: left
+      display: inline
+      margin: 0 10px 0 0
+      a
+        line-height: 24px
+      .xxs
+        font-size: 10px
+      .xs
+        font-size: 12px
+      .s
+        font-size: 14px
+      .m
+        font-size: 16px
+      .xm
+        font-size: 18px
+      .xxm
+        font-size: 20px
+      .l
+        font-size: 22px
+      .xl
+        font-size: 24px
+      .xxl
+        font-size: 26px
+
+//_top_groups.sass
+.widget-top_groups
+  aside
+    overflow: hidden
+    display: block
+    padding: 5px 15px !important
+
+    .avatar
+      float: left
+      margin-right: 10px
+      overflow: hidden
+      width: 25px
+      height: 25px
+      border: 1px solid #e5e5e5
+      img
+    .data
+      float: left
+      width: 180px
+
+      h5
+        font-size: 14px
+        margin: 0 0 4px 0
+        a
+          font-weight: bold !important
+        small
+          font-size: 9px
+          font-weight: normal !important
+          font-style: italic
+          display: block
+      p
+        font-size: 12px
+
+//_top_users.sass
+.widget-top_users, .widget-contributors, .widget-users
+  ul
+    padding: 10px 10px 5px 10px
+    li
+      overflow: hidden
+      display: block
+      margin-bottom: 5px
+
+      .avatar
+        float: left
+        margin-right: 5px
+        a
+
+      .data
+        float: left
+        h5
+          margin: 1px 0 0 0
+          a
+            font-size: 12px
+          small
+            font-size: 9px
+            font-weight: normal !important
+            font-style: italic
+            +big-radius
+            padding: 2px 6px
+
+//_share.sass
+.widget-badges ul, .widget-share ul
+  padding: 10px
+  li
+    margin: 0
+    height: 36px
+
+
+//_suggestions.sass
+.widget-suggestions, .widget-suggestions-page
+  ul
+    margin-top: -10px
+    li
+      overflow: hidden
+      padding: 10px
+      width: 129px
+      height: 30px
+      float: left
+      &:last-child
+        border-bottom: 0px
+
+      .gravatar
+        float: left
+        margin: 0 10px 0 0
+        padding: 0 !important
+        img
+          width: 35px
+          margin: 0 !important
+      .info
+        float: left
+
+        .link
+          margin: -3px 0 5px 0 !important
+          background-color: transparent
+          a
+            font-size: 12px
+            background-color: transparent
+        .f-link
+          a
+            font-size: 11px !important
+            display: block
+            padding: 3px 6px
+
+.left-panel
+  .widget-suggestions
+    border: 0px !important
+    ul
+      li
+        width: 150px
+        border-right: 0px !important
+        .gravatar
+          float: right
+          margin: 0 0 0 10px
+        .info
+          float: right
+    footer
+      padding: 5px 0 0 0
+      text-align: right
+      border-color: #e5e5e5
+      background-color: transparent
+      a
+        color: #000
+
+.header-widgets, .footer-widgets
+  .widget-suggestions
+    h3
+      font-weight: bold
+      font-size: 16px
+      padding: 10px
+      border-bottom: 1px solid #e5e5e5
+    ul
+      margin: 0
+      li
+        width: auto
+        border-right: 1px solid #e5e5e5 !important
+        border-bottom: 0px
+        &:last-child
+          border: 0px !important
+    footer
+      background-color: transparent
+      padding: 10px
+      text-align: right
+      a
+        color: #000
+
+//_badges.sass
+.widget-badges ul, .widget-question_badges ul
+  padding: 10px
+  li
+    margin: 0
+    height: 26px
+
+  .badge_item
+
+    a.badge
+      font-size: 11.5px
+      padding: 4px
+      display: block
+      width: 100px
+      float: left
+      text-align: center
+      margin: 0 10px 0 0
+      color: #000
+      +big-radius
+
+    .user
+      margin: 4px 0 0 0
+      float: left
