@@ -1,4 +1,24 @@
+@import "compass/utilities/general/reset"
+
+//content/editors/_markdown.sass
 .markdown
+  textarea
+    border: 1px solid #cccccc
+    font-size: 13px
+    padding: 10px
+    width: 96.5%
+    margin-bottom: 10px
+    height: 100px
+  ol
+  p
+    margin: 0 0 10px 0
+  pre
+    background-color: #fffbeb
+    padding: 10px
+    line-height: 16px
+
+.markdown
+  width: 93% !important
   font-size: 14px
   p
     line-height: 18px
@@ -13,6 +33,14 @@
   ol
     list-style: decimal outside
     padding: 4px
+    margin: 10px 0 20px 0
+    li
+      margin: 0 0 7px 0
+      font-size: 12px
+      line-height: 18px
+      color: #666
+      a:hover
+        border-bottom: 1px dotted
 
   li
     margin-left: 1.3em
