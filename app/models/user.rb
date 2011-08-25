@@ -348,7 +348,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def favorites(opts = {})
-    Answer.where(opts.merge(:favoriter_ids.in => id))
+    Answer.where(opts.merge(:favoriter_ids.in => [id]))
   end
 
   def logged!(group = nil)
