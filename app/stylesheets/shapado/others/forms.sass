@@ -1,0 +1,118 @@
+// BASICS
+//-------------------------------------------------------------------------------------------------------------------
+form
+  margin-bottom: 18px
+
+  fieldset
+    margin-bottom: 18px
+    padding-top: 18px
+    legend
+      display: block
+      margin-left: 150px
+      font-size: $l
+      line-height: 100
+      *margin: 0 0 5px 145px
+      /* IE6-7 */
+      *line-height: 1.5
+      /* IE6-7 */
+      color: #404040
+
+  label, input, select, textarea
+    font: normal $s/$s
+
+  label
+    padding-top: 6px
+    font-size: $s
+    line-height: $l
+    float: left
+    width: 130px
+    text-align: right
+    color: #404040
+
+  div.input
+    margin-left: 150px
+
+  .checkbox input, .radio input,
+  input[type=checkbox], form input[type=radio]
+    cursor: pointer
+
+  input[type=text],
+  input[type=password],
+  textarea,
+  select,
+  .uneditable-input
+    display: inline-block
+    width: 210px
+    margin: 0
+    padding: 4px
+    font-size: $s
+    line-height: $l
+    height: 18px
+    color: #444
+    border: 1px solid #ccc 
+    +small-radius
+
+  select, form input[type=file]
+    height: 24px
+    line-height: $xl
+
+  textarea
+    height: auto
+    
+  ::-webkit-input-placeholder
+    color: #bfbfbf
+
+  input[type=text],
+  input[type=password],
+  select,
+  textarea
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+    transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+    -webkit-box-shadow: inset 0 1px 3px $lightOrange
+    -moz-box-shadow: inset 0 1px 3px $lightOrange
+    box-shadow: inset 0 1px 3px $lightOrange
+
+  input[type=text]:focus,
+  form input[type=password]:focus,
+  form textarea:focus
+    outline: none
+    color: #000
+    border-color: $orange
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+    background-color: $lightyellow
+
+  .error
+    background: #fae5e3
+    padding: 10px 0
+    margin: -10px 0 10px
+    +small-radius
+
+// BTNS
+//-------------------------------------------------------------------------------------------------------------------
+input[type=submit], input.save
+  display: inline-block
+  background-color: $orange
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from($orange), to($darkOrange))
+  background-image: -moz-linear-gradient($orange, $darkOrange)
+  background-image: -ms-linear-gradient($orange, $darkOrange)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $orange), color-stop(100%, $darkOrange))
+  background-image: -webkit-linear-gradient($orange, $darkOrange)
+  background-image: -o-linear-gradient($orange, $darkOrange)
+  background-image: linear-gradient($orange, $darkOrange)
+  color: #fff
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+  border: 1px solid $darkOrange !important
+  padding: 4px 14px
+  +normal-radius
+  overflow: hidden
+  font-size: $s
+  line-height: $s
+  
+  &:hover
+    background-position: 0 -30px
+    color: #fff
+    text-decoration: none

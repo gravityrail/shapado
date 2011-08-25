@@ -1,4 +1,5 @@
 //_wikis.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-pages
   ul
     margin: 10px 10px 10px 30px
@@ -26,22 +27,21 @@
     border: 1px solid #ccc
 
 //_customLinks.sass
-.widget-links
-  ul
-    li
-      a
-        padding: 5px
-        display: block
-        &:first-letter
-          text-transform: capitalize
-        &:hover
-          +normal-radius
-
-    li.active a, li.active a:hover
-      background-image: none !important
+//-------------------------------------------------------------------------------------------------------------------
+.widget-links ul li
+  a
+    padding: 5px
+    display: block
+    &:first-letter
+      text-transform: capitalize
+    &:hover
       +normal-radius
+  &.active a, &.active a:hover
+    background-image: none !important
+    +normal-radius
 
 //_networks.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-group_networks
   border: 0px !important
   margin: 0
@@ -84,6 +84,7 @@
         background: url("/images/ohloh.png") 0 0 no-repeat
 
 //_tags.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-tag_cloud
   .active-tags
     text-align: center
@@ -170,6 +171,7 @@
         font-size: 26px
 
 //_top_groups.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-top_groups
   aside
     overflow: hidden
@@ -202,6 +204,7 @@
         font-size: 12px
 
 //_top_users.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-top_users, .widget-contributors, .widget-users
   ul
     padding: 10px 10px 5px 10px
@@ -229,6 +232,7 @@
             padding: 2px 6px
 
 //_share.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-badges ul, .widget-share ul
   padding: 10px
   li
@@ -237,6 +241,7 @@
 
 
 //_suggestions.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-suggestions, .widget-suggestions-page
   ul
     margin-top: -10px
@@ -271,49 +276,8 @@
             display: block
             padding: 3px 6px
 
-.left-panel
-  .widget-suggestions
-    border: 0px !important
-    ul
-      li
-        width: 150px
-        border-right: 0px !important
-        .gravatar
-          float: right
-          margin: 0 0 0 10px
-        .info
-          float: right
-    footer
-      padding: 5px 0 0 0
-      text-align: right
-      border-color: #e5e5e5
-      background-color: transparent
-      a
-        color: #000
-
-.header-widgets, .footer-widgets
-  .widget-suggestions
-    h3
-      font-weight: bold
-      font-size: 16px
-      padding: 10px
-      border-bottom: 1px solid #e5e5e5
-    ul
-      margin: 0
-      li
-        width: auto
-        border-right: 1px solid #e5e5e5 !important
-        border-bottom: 0px
-        &:last-child
-          border: 0px !important
-    footer
-      background-color: transparent
-      padding: 10px
-      text-align: right
-      a
-        color: #000
-
 //_badges.sass
+//-------------------------------------------------------------------------------------------------------------------
 .widget-badges ul, .widget-question_badges ul
   padding: 10px
   li
@@ -336,3 +300,54 @@
     .user
       margin: 4px 0 0 0
       float: left
+
+
+
+//  WIDGETS PER AREA
+//-------------------------------------------------------------------------------------------------------------------
+
+//  Left Column
+//-------------------------------------------------------------------------------------------------------------------
+.left-panel
+  .widget-suggestions
+    border: 0px !important
+    ul
+      li
+        width: 150px
+        border-right: 0px !important
+        .gravatar
+          float: right
+          margin: 0 0 0 10px
+        .info
+          float: right
+    footer
+      padding: 5px 0 0 0
+      text-align: right
+      border-color: #e5e5e5
+      background-color: transparent
+      a
+        color: #000
+
+//  Header // Footer zones
+//-------------------------------------------------------------------------------------------------------------------
+.header-widgets, .footer-widgets
+  .widget-suggestions
+    h3
+      font-weight: bold
+      font-size: 16px
+      padding: 10px
+      border-bottom: 1px solid #e5e5e5
+    ul
+      margin: 0
+      li
+        width: auto
+        border-right: 1px solid #e5e5e5 !important
+        border-bottom: 0px
+        &:last-child
+          border: 0px !important
+    footer
+      background-color: transparent
+      padding: 10px
+      text-align: right
+      a
+        color: #000

@@ -1,0 +1,30 @@
+// Basics
+//-------------------------------------------------------------------------------------------------------------------
+.toolbar ul
+  zoom: 1
+  width: 100%
+  &:before, &:after
+    display: table
+    content: ""
+  &:after
+    clear: both
+  li
+    display: inline
+    line-height: 24px
+    a
+      float: left
+      padding: 0 5px
+      display: block
+      line-height: 24px
+      &:hover
+        background-color: $lightOrange
+
+// Article actions for home/lists/main content
+//-------------------------------------------------------------------------------------------------------------------      
+article
+  .article-actions
+    margin: 0 0 0 -5px
+    .answers a
+      color: $orange
+      font-weight: bold
+      margin: 0 5px 0 0
