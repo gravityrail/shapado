@@ -2,7 +2,7 @@ module Jobs
   class Mailer
     extend Jobs::Base
 
-    def self.on_ask_question(question_id
+    def self.on_ask_question(question_id)
       question = Question.find!(question_id)
       group = question.group
       users = User.find_experts(question.tags, [question.language],
