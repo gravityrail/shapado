@@ -1,10 +1,10 @@
 // Generals
 //-------------------------------------------------------------------------------------------------------------------
-.sf-menu, .sf-menu *
+.sf-menu, .sf-menu *, .drop-menu
   margin:       0
   padding:      0
   list-style:   none
-.sf-menu
+.sf-menu, .drop-menu
   line-height:  1.0
   .sf-sub-indicator
     position: absolute
@@ -26,21 +26,22 @@
     width: auto // left offset of submenus need to match (see below)
     li
       width:	100%
+      border-top: 1px solid #f1f1f1
       &:hover
         visibility: inherit // fixes IE7 'sticky bug'
   li
     float:	 left
     position: relative
-    &:hover ul, &.sfHover ul
+    &:hover ul, &.sfHover ul, &.dropHover ul
       left:	 0
       top: 2.5em // match top ul list item height
       z-index: 99
-    &:hover li ul, &.sfHover li ul
+    &:hover li ul, &.sfHover li ul, &.dropHover li ul
       top: -999em
-    li:hover ul, li.sfHover ul
+    li:hover ul, li.sfHover ul, li.dropHover ul
       left:	 auto // match ul width
       top: 0
-    li li:hover ul, li li.sfHover ul
+    li li:hover ul, li li.sfHover ul, li li.dropHover ul
       left:	 auto // match ul width
       top: 0
 
@@ -90,3 +91,24 @@
 
   ul.offline a
     padding-left: 10px
+    
+// ARTICLE TOOLBAR - dropdown for moderate
+//-------------------------------------------------------------------------------------------------------------------
+article
+  .article-actions
+    .more:hover
+      background-color: $lightOrange
+    .dropHover ul
+      top: 22px
+      background-color: #fff
+      +outer-shadow
+      a, li
+        display: block
+        &:hover
+          background-color: $orange
+          color: #fff
+          cursor: pointer
+      li:hover a
+        color: #fff
+
+
