@@ -2,15 +2,16 @@ module Jobs
   class Mailer
     extend Jobs::Base
 
-    def self.on_ask_question(question_id)
+    def self.on_ask_question(question_id
       question = Question.find!(question_id)
       group = question.group
       users = User.find_experts(question.tags, [question.language],
                                                 :except => [question.user.id],
                                                 :group_id => group.id)
-      followers = question.user.followers(:group_id => group.id, :languages => [question.language])
 
-      (users - followers).each do |u|
+      followers = question.user.followers(:group_id => group.id, :languages.in => [question.language])
+
+      (users.to_a - followers.to_a).each do |u|
         if !u.email.blank?
           Notifier.give_advice(u, group, question, false).deliver
         end

@@ -8,8 +8,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).
-                                                 page(params["page"])
+    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).page(params["page"])
 
     @announcement = Announcement.new
 

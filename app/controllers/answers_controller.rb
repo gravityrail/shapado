@@ -113,6 +113,7 @@ class AnswersController < ApplicationController
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
         Jobs::Answers.async.on_create_answer(@question.id, @answer.id, link).commit!
 
+        @question.answer_added!
         sweep_question(@question) # TODO move to magent
         html = ""
         if params[:facebook]
@@ -196,12 +197,11 @@ class AnswersController < ApplicationController
     if @answer.user_id == current_user.id
       @answer.user.update_reputation(:delete_answer, current_group)
     end
+    Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
     sweep_answer(@answer)
     @answer.destroy
     @question.answer_removed!
     sweep_question(@question)
-
-    Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
 
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }
