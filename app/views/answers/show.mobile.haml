@@ -17,7 +17,7 @@
 
         = link_to t('users.action.vote_up'), question_answer_votes_path(@question, @answer, :vote_up => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
         = link_to t('users.actions.vote_down'), question_answer_votes_path(@question, @answer, :vote_down => true, :source => qpath), :method => :post, :"data-role" => "button", :"data-theme" => "c"
-        - if logged_in? && favorite_for?(current_user)
+        - if logged_in? && @answer.favorite_for?(current_user)
           = link_to t(".unfavorite"), unfavorite_question_answer_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
         -else
           = link_to t(".favorite"), favorite_question_answer_path(@question, :format => :mobile), :"data-role" => "button", :"data-theme" => "c"
