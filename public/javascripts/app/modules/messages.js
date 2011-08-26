@@ -2,7 +2,7 @@ var Messages = {
   initialize: function() {
     $("a#hide_announcement").click(function() {
       $(".announcement").fadeOut();
-      $.post($(this).attr("href"), "format=js");
+      $.get($(this).attr("href"), "format=js");
       return false;
     });
   },
