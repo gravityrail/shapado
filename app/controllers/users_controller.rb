@@ -173,6 +173,9 @@ class UsersController < ApplicationController
     when "pages"
       conds[:trackable_type] = "Page"
     end
+    if current_group
+      conds[:group_id] = current_group.id
+    end
     @resources = @user.activities.where(conds).page(params["page"])
     respond_to do |format|
       format.html{render :show}
