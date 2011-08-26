@@ -7,7 +7,7 @@
   == "#{h(@question.title)}"
   %br
   = t("notifier.give_advice.message2")
-  =raw link_to url_for(:host => @domain, :controller => "questions", :action => "show", :id => @question.slug), url_for(:host => @domain, :controller => "questions", :action => "show", :id => @question.slug)
+  = raw link_to url_for(:host => @domain, :controller => "questions", :action => "show", :id => @question.slug), url_for(:host => @domain, :controller => "questions", :action => "show", :id => @question.slug)
   %br
 
   = t("notifier.give_advice.message3")

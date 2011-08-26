@@ -22,7 +22,7 @@ class Notifier < ActionMailer::Base
     @question = question
     @group = group
     @following = following
-
+    @domain = group.domain
     mail(:to => user.email, :from => from_email(group),
          :subject => @subject,
          :date => Time.now,
