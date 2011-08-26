@@ -239,6 +239,7 @@ class UsersController < ApplicationController
   # - all the questions tagged with one of the tag I follow
   def feed
     @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
+    return render_404 if @user.nil?
 
     tags = @user.preferred_tags_on(current_group)
     user_ids = @user.friend_list.following_ids
