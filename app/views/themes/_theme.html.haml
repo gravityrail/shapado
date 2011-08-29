@@ -4,8 +4,8 @@
     = link_to "#{theme.name} #{current ? "[Current]" : ""}", theme_path(theme)
   %p.content.markdown
     = theme.description
-  .article-actions
-    %ul.drop-menu
+  .toolbar
+    %ul
       -if theme.ready
         %li
           = link_to t("themes.show.try"), domain_url(custom: current_group.domain, theme: theme.id, controller: "questions", action: "index"), :target => "_blank"

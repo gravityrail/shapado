@@ -22,15 +22,15 @@
         = I18n.t('shared.by_anon')
       %time{:pubdate => "pubdate", :datetime => last_target_date.iso8601}
         = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question, :anchor => last_target_id), :class => "pjax", :"data-layout" => "question"
-          
+
     %h2
       -if question.wiki
         = link_to t('.wiki_title', :title => title), question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax", :"data-layout" => "question"
       -else
         = link_to title, question_path(question), :title => truncate(strip_tags(question.body), :length => 200), :class => "pjax", :"data-layout" => "question"
 
-    .toolbar.article-actions
-      %ul.drop-menu
+    .toolbar
+      %ul.sf-menu
         %li.answers
           = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 

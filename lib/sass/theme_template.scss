@@ -464,28 +464,6 @@ ul.admin-links li {
       }
     }
   }
-
-  .toolbar ul {
-    li.answers, li.votes, li.followers {
-      a {
-        background-color: #fff;
-        &:hover {
-          background-color: #fff;
-          color: #000;
-        }
-      }
-    }
-    li {
-      a {
-        color: #666;
-        background-color: darken($view_bg_color, 10%);
-      }
-      a:hover{
-        background-color: #e5e5e5;
-        color: #000;
-      }
-    }
-  }
 }
 
 .admin-nav {
@@ -997,15 +975,15 @@ section.main-question {
 // From: app/content/question/toolbar.sass
 //-------------------------------------------------------------------------------------------------------------------
 .toolbar{
+  background-color: darken($view_bg_color, 4%);
   border-top: 1px solid #e5e5e5;
   li {
     a {
-      color: #999 !important;
-      border-right: 1px solid #e5e5e5;
-      background-color: #fff !important;
+      color: #999;
+      border-right: 1px solid $view_border_color;
       &:hover {
-        color: #000 !important;
-        background-color: #f9f9f9 !important;
+        color:  #000;
+        background-color: $hover_color;
       }
       &.active {
         background-color: $lightBlue !important;
@@ -1018,6 +996,16 @@ section.main-question {
       border-bottom: 1px solid #ddd;
       background-color: #fff;
       &:first-child{ border-top: 1px solid #ddd;}
+    }
+
+    li.answers, li.votes, li.followers {
+      a {
+        background-color: #fff;
+        &:hover {
+          background-color: #fff;
+          color: #000;
+        }
+      }
     }
   }
 }
@@ -1131,22 +1119,6 @@ article.answer {
     i { color: #999; }
   }
 }
-.article-actions ul li {
-  a {
-    color: #999;
-    border-right: 1px solid $view_border_color;
-    &:hover {
-      color: #fff;
-      background-color: $orange;
-    }
-  }
-  ul li {
-    &:first-child {border-top: 1px solid #ddd;}
-    border-left: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-  }
-}
 
 #close_reason {
   text-shadow: $text-shadow;
@@ -1165,7 +1137,7 @@ form.answer_comment_form, form.question_comment_form {
   .reply_to {background-color: #fff;}
 }
 
-.article-actions .add_answer_comment_link{
+.toolbar .add_answer_comment_link{
   background-color: #fff;
   border-right: 1px solid #e5e5e5;
 }

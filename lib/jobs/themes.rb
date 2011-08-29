@@ -7,8 +7,12 @@ module Jobs
       css = StringIO.new
       template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
       template = Sass::Engine.new(self.define_vars(theme) << File.read(template_file) << "\n" << theme.custom_css || "",
-                        {:style => :compressed, :syntax => :scss, :cache => false, :load_paths => []})
-      css << YUI::CssCompressor.new.compress(template.render)
+                        {:style => Sass::Plugin.options[:style], :syntax => :scss, :cache => false, :load_paths => []})
+      if Rails.env == "production"
+        css << YUI::CssCompressor.new.compress(template.render)
+      else
+        css << template.render
+      end
       theme.stylesheet = css
       theme.stylesheet["extension"] = "css"
       theme.stylesheet["content_type"] = "text/css"

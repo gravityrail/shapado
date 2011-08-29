@@ -2,8 +2,8 @@
 - @aflag ||= Flag.new
 
 
-.article-actions
-  %ul.drop-menu
+.toolbar
+  %ul.sf-menu
     - if logged_in?
       %li
         = link_to t("questions.answer.add_comment"), new_question_comment_path(question, answer), :class => "Answer-commentable", "data-commentable"=>answer.id
@@ -33,7 +33,7 @@
         %li.flagged
           %span.flag-link
             = t('questions.answer_toolbar.flagged_by_you')
-          %ul.drop-menu
+          %ul
             %li
               %p
                 = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
