@@ -31,6 +31,9 @@ mk:
       default_tags_message: не може да имате повеќе од 10 основно зададени ознаки
       group: група
       groups: групи
+      reputation_rewards_answer_constrain: Ограничувањето за наградување одговори треба да биде негативно
+      reputation_rewards_ask_constrain: Ограничувањето за поставување прашања треба да биде негативно
+      reputation_rewards_key: Неважечки клуч
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Нажалост, нешто не е во ред. Обидете се подоцна.
@@ -87,3 +90,5 @@ mk:
       visit_group: посети ја групава
     top_grouplist: 
       active_site: Активно мр. место
+    update: 
+      notice: Вашата група е успешно подновена.

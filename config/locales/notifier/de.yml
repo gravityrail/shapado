@@ -37,7 +37,7 @@ de:
     new_answer: 
       message: "%{user} hat %{new_answer} zu Frage „%{question}“ verfasst"
     new_comment: 
-      message: "%{user} hat %{new_comment} zu Frage „%{question}“ verfasst"
+      message: "%{user} kommentierte %{new_comment} zur Frage %{link}"
     new_feedback: 
       message1: Der Nutzer %{user} <%{email}> hat eine Rückmeldung gegeben
       message2: Ein anonymer Nutzer mit der IP-Adresse %{ip} hat eine Rückmeldung gegeben

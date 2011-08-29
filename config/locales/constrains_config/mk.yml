@@ -1,0 +1,8 @@
+# Messages for Macedonian (Македонски)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Bjankuloski06
+mk: 
+  activemodel: 
+    models: 
+      constrains_config: Поставки на ограничувања за угледот

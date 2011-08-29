@@ -27,14 +27,6 @@ fa:
     share: به اشتراک گذاشتن
   models: 
     question: سوال
-  number: 
-    x_time: 
-      one: "%{count} دفعه"
-      other: "%{count} دفعه"
-      zero: هرگز
-  pagination: 
-    next: بعدی &raquo;
-    previous: "&laquo; قبلی"
   scaffold: 
     add: اضافه کردن
     back: بازگشت

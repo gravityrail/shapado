@@ -26,7 +26,7 @@ tl:
     new_answer: 
       message: Nagbigay ng kasagutang %{new_answer} si %{user} sa katanungang %{question}
     new_comment: 
-      message: Nagbigay ng punang %{new_comment} si %{user} hinggil sa katanungang %{question}
+      message: Nagbigay ng punang %{new_comment} si %{user} hinggil sa katanungang %{link}
     new_feedback: 
       message1: Nagpadala ng isang punang-tugon ang tagagamit na si %{user} <%{email}>
       message2: Nagpadala ang isang hindi nagpapakilalang tagagamit ng isang punang-tugon mula sa tirahan ng IP na %{ip}

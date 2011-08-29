@@ -30,6 +30,9 @@ ms:
       default_tags_message: Anda tidak boleh mempunyai lebih daripada 10 tag sediaan
       group: Kumpulan
       groups: Kumpulan
+      reputation_rewards_answer_constrain: Had ganjaran menjawab mestilah negatif
+      reputation_rewards_ask_constrain: Had pertanyaan mestilah negatif
+      reputation_rewards_key: Kekunci tidak sah
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Maaf, ada sesuatu yang tidak kena. Sila cuba lagi.
@@ -86,3 +89,5 @@ ms:
       visit_group: Kunjungi kumpulan ini
     top_grouplist: 
       active_site: "Tapak aktif:"
+    update: 
+      notice: Kumpulan anda berjaya dikemas kini.

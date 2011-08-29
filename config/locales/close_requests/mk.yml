@@ -17,6 +17,7 @@ mk:
       not_relevant: нерелевантно
       ot: вон тема
       request_closing_details: побарај да се затвори ова прашање
+      retract: Повлечи
       spam: спам
     index: 
       title: список на барања за затворање

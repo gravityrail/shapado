@@ -27,7 +27,7 @@ el:
     new_answer: 
       message: Ο/η %{user} αποδέχτηκε την απάντηση %{new_answer} στην ερώτηση %{question}
     new_comment: 
-      message: Ο/η %{user} σχολίασε %{new_comment} στην ερώτηση %{question}
+      message: Ο/η %{user} σχολίασε %{new_comment} στην ερώτηση %{link}
     new_feedback: 
       message1: Ο χρήστης %{user} <%{email}> έστειλε σχόλια
       message2: Ένας ανώνυμος χρήστης έστειλε σχόλια από την IP διεύθυνση %{ip}

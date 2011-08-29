@@ -11,15 +11,35 @@ nl:
     failure: 
       inactive: Uw gebruiker is nog niet geactiveerd.
       invalid: Ongeldig e-mailadres of wachtwoord.
+      invalid_token: Ongeldig authenticatietoken.
+      locked: Uw gebruiker is geblokkeerd.
+      timeout: Uw sessie is verlopen. Meld opnieuw aan om door te kunnen gaan.
+      unauthenticated: U moet aanmelden of registeren voordat u door kunt gaan.
+      unconfirmed: U moet uw gebruiker bevestigen voordat u verder kunt gaan.
     mailer: 
       confirm_account: 
+        instruction1: "Bevestig uw gebruiker via de onderstaande verwijzing:"
         link: Mijn gebruiker bevestigen
         welcome: Welkom
+      confirmation_instructions: 
+        subject: Instructies voor bevestigen
       hello: Hallo
       reset_password: 
+        instruction1: Iemand heeft een verzoek gedaan om uw wachtwoord te wijzigen en dit kunt u doen via de onderstaande verwijzing.
         link: Mijn wachtwoord wijzigen
+        nonrequested: Als dit verzoek niet van u komt, negeer deze e-mail dan.
+        warning: Uw wachtwoord wordt niet gewijzigd totdat u de onderstaande verwijzing gebruikt en een nieuw wachtwoord invoert.
+      reset_password_instructions: 
+        subject: Instructies voor opnieuw instellen wachtwoord
+      unlock: 
+        instruction1: Uw gebruiker is geblokkeerd vanwege een bovenmatige hoeveelheid aanmeldpogingen.
+        instruction2: "Klik hieronder om uw gebruiker te ontgrendelen:"
+        link: Mijn gerbuiker ontgrendelen
+      unlock_instructions: 
+        subject: Instructief voor opheffen blokkade
     passwords: 
       link: Wachtwoord vergeten?
+      send_button: Stuur me instructies om mijn wachtwoord opnieuw in te stellen
       send_instructions: U ontvangt binnenkort een e-mail met daarin een beschrijving hoe u uw wachtwoord kunt wijzigen.
       updated: Uw wachtwoord is gewijzigd. U bent nu aangemeld.
     registrations: 
@@ -36,6 +56,7 @@ nl:
       sign_out: Afmelden
       signed_in: Aangemeld.
       signed_out: Afgemeld.
+      signin_group: Aanmelden bij %{group}
     unlocks: 
       link: Hebt u geen instructies ontvangen in de blokkade op te heffen?
       send_instructions: U ontvangt binnenkort een e-mail met daarin een beschrijving hoe u de blokkade van uw gebruiker kunt opheffen.
@@ -44,3 +65,4 @@ nl:
     messages: 
       already_confirmed: is reeds bevestigd
       not_found: niet gevonden
+      not_locked: was niet gesloten

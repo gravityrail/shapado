@@ -101,7 +101,7 @@ class Answer
     self.override(:banned => true)
   end
 
-  def self.ban(ids, options)
+  def self.ban(ids, options={})
     self.where({:_id.in => ids}.merge(options)).only([:question_id, :user_id, :group_id]).each do |answer|
       answer.ban
     end

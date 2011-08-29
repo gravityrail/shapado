@@ -43,7 +43,6 @@ module Jobs
       answer = question.answers.find(answer_id)
       Question.update_last_target(question.id, answer)
 
-      question.answer_added!
       group.on_activity(:answer_question)
 
       unless answer.anonymous

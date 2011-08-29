@@ -45,12 +45,18 @@ mk:
       access: Пристап
       actions: дејства
       announcements: соопштенија
+      appearance: Изглед
       constrains: ограничувања
       content: содржина
       dashboard: Контролна табла
       domain: домен
+      edit_layout: Уреди распоред
       general: општо
+      group_features: Можности
+      group_look_and_feel: Изглед и чувство
+      group_user_management: Раководење со корисници
       invitations: Покани
+      invoices: Фактури
       members: членови
       pages: страници
       properties: својства
@@ -59,6 +65,7 @@ mk:
       social: Друштвени
       stats: статистики
       theme: мотив
+      themes: Мотиви
       widgets: елементи
     notifications: 
       message: Ако повеќе не сакате да добивате автоматски известувања од %{group} , изменете си ги нагодувањата во екранот за известувања.

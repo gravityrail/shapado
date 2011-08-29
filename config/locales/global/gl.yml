@@ -26,14 +26,6 @@ gl:
     share: compartir
   models: 
     question: A pregunta
-  number: 
-    x_time: 
-      one: "%{count} vez"
-      other: "%{count} veces"
-      zero: Nunca
-  pagination: 
-    next: Seguinte &raquo;
-    previous: "&laquo; Anterior"
   scaffold: 
     add: Engadir
     back: Volver

@@ -5,6 +5,8 @@
 mk: 
   admin: 
     manage: 
+      access: 
+        title: Пристап
       appearance: 
         logo_legend: Подигнете лого за групата (највеќе 2 МБ).
         title: Одберете изглед и прилагодете го

@@ -30,6 +30,8 @@ be-TARASK:
       default_tags_message: Вы ня можаце мець болей 10 тэгаў па змоўчваньні
       group: Група
       groups: Групы
+      reputation_rewards_ask_constrain: Абмежаваньне, пры якім адказ лічыцца адмоўным
+      reputation_rewards_key: Няслушны ключ
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Прабачце, нешта пайшло ня так. Калі ласка, паспрабуйце яшчэ раз.
@@ -86,3 +88,5 @@ be-TARASK:
       visit_group: Наведаць гэтую групу
     top_grouplist: 
       active_site: "Актыўны сайт:"
+    update: 
+      notice: Вашая група была пасьпяхова абноўленая.

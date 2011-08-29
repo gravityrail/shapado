@@ -53,7 +53,6 @@ fi:
       active_tooltip: Kysymykset, jotka on päivitetty äskettäin
       ask_question: Kysy kysymys
       empty: Kukaan ei ole vielä kysynyt yhtään kysymystä. Ole ensimmäinen!
-      followers_count: "%{quantity} seuraa"
       help_to_answer: Auta vastaamalla kysymyksiin
       hot: Suosittu
       hot_tooltip: Kysymykset, joissa on ollut eniten toimintaa viimeisen viiden päivän aikana
@@ -102,9 +101,6 @@ fi:
       accepted_tooltip: Yksi vastauksista hyväksyttiin oikeana vastauksena.
       another_answers: Muut vastaukset
       answers: Vastaukset
-      answers_title: 
-        one: "%{count} vastaus"
-        other: "%{count} vastausta"
       asked_on: pyysivät
       ban: Porttikielto
       close: Sulje

@@ -76,7 +76,7 @@ Rails.application.routes.draw do
 
   resources :announcements do
     collection do
-      post :hide
+      get :hide
     end
   end
 
@@ -228,7 +228,6 @@ Rails.application.routes.draw do
       member do
         get :banning
         put :ban
-        put :unban
 
         get :closing
         put :close
@@ -239,6 +238,10 @@ Rails.application.routes.draw do
     resources :answers do
       collection do
         post :manage
+      end
+      member do
+        get :banning
+        put :ban
       end
     end
     resources :users

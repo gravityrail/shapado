@@ -20,6 +20,7 @@ de:
     by: von
     chat: Chat
     current: Aktuell
+    edited: Bearbeitet
     feedback: Rückmeldungen
     follow: Beachten
     followed_by: "Beachtet von:"
@@ -48,14 +49,6 @@ de:
     what_to_do: Was möchtest Du tun?
   models: 
     question: Die Frage
-  number: 
-    x_time: 
-      one: "%{count}-mal"
-      other: "%{count}-mal"
-      zero: Nie
-  pagination: 
-    next: Nächste &raquo;
-    previous: "&laquo; Vorige"
   preferred_languages: 
     any: Alle
     user: Meine bevorzugten Sprachen
@@ -65,6 +58,7 @@ de:
     user: Normaler Nutzer
   scaffold: 
     add: Hinzufügen
+    are_you_sure: Bist du sicher?
     back: Zurück
     cancel: Abbrechen
     close: Schließen
@@ -83,3 +77,8 @@ de:
   time: 
     ago: vor %{time}
     today: heute
+    yesterday: gestern
+  views: 
+    pagination: 
+      next: Nächste &raquo;
+      previous: "&laquo; Vorige"

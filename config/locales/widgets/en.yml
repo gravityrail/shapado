@@ -1,5 +1,9 @@
 en:
   widgets:
+    edit:
+      title: 'Edit Widget'
+    widget:
+      change_position: 'Change widget position:'
     create:
       notice: 'The widget was successfully created.'
     update:
@@ -15,6 +19,14 @@ en:
       mainlist_widgets_title: Widgets that will appear on the main list of questions
       question_widgets_title: Widgets that will appear on each question page
       external_widgets_title: Widgets that you will be able to embed on your own site
+      header: Header
+      zone: "Page's section:"
+      type: 'Type:'
+      name: "Widget's name"
+      add_new: "Add new widget"
+      navbar: "Navigation bar"
+      sidebar: "Side bar"
+      footer: "Footer"
     badges:
       title: Recent badges
       description: "This widget displays recent badges earned by users."
@@ -26,7 +38,7 @@ en:
       title: Top 5 groups
       description: "This widget displays the top five groups."
       has_members:
-        one: "1 member"
+        one: "%{count} member"
         other: "%{count} members"
     top_users:
       title: Top 5 users
@@ -90,6 +102,8 @@ en:
       title: "People And Tags To Follow"
       description: "Suggestion of friends and tags for the user to follow."
       followed_by: "Followed by %{user}"
+      follow_user: "+ Follow user"
+      follow_tag: "+ Follow tag"
     contributors:
       title: "Question's Contributors"
     group_networks:

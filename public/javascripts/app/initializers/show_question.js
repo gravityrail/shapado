@@ -13,8 +13,8 @@ $(document).ready(function() {
     var button = $(this)
 
     button.attr('disabled', true)
-    if($("#wysiwyg_editor").length > 0 )
-      $("#wysiwyg_editor").htmlarea('updateTextArea');
+    if($("form .wysiwyg_editor").length > 0 )
+      $("form .wysiwyg_editor").htmlarea('updateTextArea');
     $.ajax({ url: form.attr("action"),
       data: form.serialize()+"&format=js",
       dataType: "json",
@@ -23,21 +23,21 @@ $(document).ready(function() {
                   if(data.success) {
                     window.onbeforeunload = null;
 
-                    var answer = $(data.html)
+                    var answer = $(data.html);
                     answer.find("form.commentForm").hide();
-                    answers.append(answer)
-                    Effects.fade(answer)
+                    answers.append(answer);
+                    Effects.fade(answer);
                     Messages.show(data.message, "notice")
                     form.find("textarea").val("");
-                    form.find("#markdown_preview").html("");
-                    if($("#wysiwyg_editor").length > 0 )
-                      $("#wysiwyg_editor").htmlarea('updateHtmlArea');
+                    form.find(".markdown_preview").html("");
+                    if($(".wysiwyg_editor").length > 0 )
+                      $(".wysiwyg_editor").htmlarea('updateHtmlArea');
                     LocalStorage.remove(location.href, "markdown_editor");
                   } else {
                     Messages.show(data.message, "error")
                     if(data.status == "unauthenticate") {
                       window.onbeforeunload = null;
-                      window.location="/users/login"
+                      window.location="/users/login";
                     }
                   }
                 },

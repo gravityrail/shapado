@@ -25,11 +25,6 @@ ja:
     share: share
   models: 
     question: 質問
-  number: 
-    x_time: 
-      one: "%{count}回"
-      other: "%{count}回"
-      zero: なし
   scaffold: 
     add: 追加
     back: 戻る

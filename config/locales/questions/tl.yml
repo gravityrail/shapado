@@ -88,9 +88,6 @@ tl:
       accepted_tooltip: Isa sa mga sagot ay tinanggap bilang tamang kasagutan.
       another_answers: Iba pang mga sagot
       answers: Mga kasagutan
-      answers_title: 
-        one: "%{count} kasagutan"
-        other: "%{count} mga kasagutan"
       asked_on: itinanong sa
       ban: Ipagbawal
       close: Isara

@@ -20,6 +20,7 @@ ia:
     by: per
     chat: Conversar
     current: Actual
+    edited: Modificate
     feedback: Commentos
     follow: Sequer
     followed_by: "Sequite per:"
@@ -48,14 +49,6 @@ ia:
     what_to_do: Que vole tu facer?
   models: 
     question: Le question
-  number: 
-    x_time: 
-      one: "%{count} vice"
-      other: "%{count} vices"
-      zero: Nunquam
-  pagination: 
-    next: Sequente &raquo;
-    previous: "&laquo; Precedente"
   preferred_languages: 
     any: Qualcunque
     user: Mi linguas preferite
@@ -65,6 +58,7 @@ ia:
     user: Usator normal
   scaffold: 
     add: Adder
+    are_you_sure: Es tu secur?
     back: Retro
     cancel: Cancellar
     close: Clauder
@@ -83,3 +77,8 @@ ia:
   time: 
     ago: "%{time} retro"
     today: hodie
+    yesterday: heri
+  views: 
+    pagination: 
+      next: Sequente &raquo;
+      previous: "&laquo; Precedente"

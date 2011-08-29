@@ -28,7 +28,7 @@ ru:
     new_answer: 
       message: "%{user} добавил ответ %{new_answer} на вопрос %{question}"
     new_comment: 
-      message: "%{user} оставил комментарий %{new_comment} к вопросу %{question}"
+      message: "%{user} оставил комментарий %{new_comment} к вопросу %{link}"
     new_feedback: 
       message1: Пользователь %{user} <%{email}> отправил отзыв
       message2: Анонимный пользователь отправил отзыв с IP-адреса %{ip}

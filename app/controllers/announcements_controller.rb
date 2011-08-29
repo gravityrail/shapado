@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
-  before_filter :login_required
-  before_filter :check_permissions
+  before_filter :login_required, :except => [:hide]
+  before_filter :check_permissions, :except => [:hide]
   layout "manage"
 
   tabs :default => :announcements
@@ -8,8 +8,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).
-                                                 page(params["page"])
+    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).page(params["page"])
 
     @announcement = Announcement.new
 
@@ -31,7 +30,7 @@ class AnnouncementsController < ApplicationController
     @announcement.group = current_group
 
     respond_to do |format|
-      if @announcement.save
+      if @announcement.valid? && @announcement.save
         flash[:notice] = I18n.t("announcements.create.success")
         format.html { redirect_to announcements_url }
         format.json  { render :json => @announcement, :status => :created, :location => @announcement }
@@ -59,7 +58,7 @@ class AnnouncementsController < ApplicationController
     session[:announcement_hide_time] = Time.zone.now
 
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to :back }
       format.js { render :json => {:status => "ok"} }
     end
   end

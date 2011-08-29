@@ -5,6 +5,8 @@
 ms: 
   admin: 
     manage: 
+      access: 
+        title: Akses
       appearance: 
         logo_legend: Muat naik logo kumpulan anda, asalkan tidak melebihi 2MB.
         title: Pilih dan suaikan tema anda

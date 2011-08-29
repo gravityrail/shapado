@@ -34,7 +34,7 @@ fi:
     new_answer: 
       message: "%{user} vastasi %{new_answer} kysymykseen %{question}"
     new_comment: 
-      message: "%{user} kommentoi %{new_comment} kysymyksessä %{question}"
+      message: "%{user} kommentoi %{new_comment} kysymyksessä %{link}"
     new_feedback: 
       message1: Käyttäjä %{user} <%{email}> lähetti palautetta
       message2: Anonyymi käyttäjä lähetti palautetta IP-osoitteesta %{ip}

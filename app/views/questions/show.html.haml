@@ -12,14 +12,17 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
-        #18n
-        By:
-        = render :partial => "users/user_mini.html.haml", :locals => {:user => @question.user, :author => true}
-        = t('activerecord.attributes.question.created_at')
+        -#18n
+        %span
+          By:
+        = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
+        %span
+          = t('activerecord.attributes.question.created_at')
         %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
         -if !@question.user.hide_country && @question.address.present?
-          = t("global.from", :site => @question.address_name)
+          %span
+            = t("global.from", :site => CGI.escape_html(@question.address_name))
 
     %h1{:itemprop => "name"}
       = @question.title
@@ -37,12 +40,11 @@
 
     .stats
       %p
-        %strong
-          = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
-        %strong
+        = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
+        %span
           = t('questions.show.viewed')
         = t('number.x_time', :count => number_with_delimiter(@question.views_count))
-        %strong
+        %span
           = t("questions.show.last_activity")
         = t("time.ago", :time => time_ago_in_words(@question.activity_at))
 
@@ -113,7 +115,7 @@
       -if @question.follow_up
         %h1
           = t("questions.show.follow_up_of")
-        = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}"
+        = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
 
       -if @question.followed_up_by.limit(1).count > 0
         %h1= t('global.followed_by')
@@ -121,7 +123,6 @@
           -@question.followed_up_by.all.each do |child|
             %li
               = link_to child.title, question_path(child)
-
 
   .answers-list
     - if @answers.empty? && !@question.accepted
@@ -131,9 +132,8 @@
         - solution = @question.answer
         = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
 
-      - else
-        - @answers.each do |answer|
-          - next if answer.id == @question.answer_id
-          = render "answer", {:question => @question, :answer => answer}
+      - @answers.each do |answer|
+        - next if answer.id == @question.answer_id
+        = render "answer", {:question => @question, :answer => answer}
 
   = paginate(@answers)

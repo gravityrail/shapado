@@ -4,8 +4,11 @@
 # Author: Kghbln
 de: 
   shared: 
+    any_lang: Alle Sprachen
+    by_anon: Von einem Anonymen
     current_tags: 
       title: Ausgewählte Stichworte
+    description: Beschreibung
     empty: 
       activities: 
         description: 
@@ -43,6 +46,10 @@ de:
       title_content: Thema der Gruppe
       title_features: Funktionen der Gruppe
       title_options: Optionen zur Gruppe
+    name: Name
+    preferred_lang: Meine bevorzugten Sprachen
+    quick_question: 
+      random_question: Beantworte eine zufällige Frage
     social_connect: 
       find_friends_facebook: Freunde bei Facebook finden
       find_friends_identica: Freunde bei Ideni.ca finden

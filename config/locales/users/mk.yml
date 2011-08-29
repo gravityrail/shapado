@@ -42,7 +42,7 @@ mk:
       vote_down: гласај „против“
       vote_to_close_any_question: барање да се затвори било кое прашање
       vote_to_close_own_question: барање да се затвори сопствено прашање
-      vote_up: гласај „за“
+      vote_up: гласате „За“
     anonymous_form: 
       never_shown: никогаш не се прикажува
     change_password: 
@@ -61,6 +61,7 @@ mk:
     form: 
       activities_notification: Испраќај ми соопштенија по е-пошта за системски активности како заработени значки, нови следбеници и тн.
       avatar_tip: сменете си ја профилната слика со граватар
+      desktop_notification: Известувања на работната површина
       give_advice_notification: Испраќај ми известувања по е-пошта за прашања од мојата стручна област
       information: информации
       language: Јазик на посредникот на мрежното место

@@ -43,14 +43,6 @@ br:
     view: Gwelet
   models: 
     question: Ar goulenn
-  number: 
-    x_time: 
-      one: "%{count} gwech"
-      other: "%{count} gwech"
-      zero: Morse
-  pagination: 
-    next: War-lerc'h &raquo;
-    previous: "&laquo; Kent"
   roles: 
     moderator: Habasker
     owner: Perc'henn

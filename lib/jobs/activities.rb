@@ -49,19 +49,13 @@ module Jobs
       group = commentable.group
       user = comment.user
 #       comment.set_address FIXME
-
       if user.comments_count_on(group) >= 10
         create_badge(user, group, :token => "commentator", :source => comment, :unique => true)
       end
       if user.notification_opts.comments_to_twitter
-        title = ""
         shortlink = shorten_url(link, commentable)
         author = user
-        if commentable.is_a? Question
-          title = commentable.title
-        elsif commentable.is_a? Answer
-          title = commentable.question.title
-        end
+        title ||= comment.find_question.title
 
         message = I18n.t('jobs.comments.on_comment.send_twitter',
                         :question => title, :locale => author.language)
@@ -71,11 +65,10 @@ module Jobs
       end
 
       if group.notification_opts.comments_to_twitter
-        title = ""
         shortlink ||= shorten_url(link, commentable)
         author ||= user
-        title ||= comment.question.title
-        message = I18n.t('jobs.comments.on_comment.group_send_twitter',
+        title ||= comment.find_question.title
+        message = I18n.t('jobs.comments.on_comment.group_on_comment',
                          :question => title, :user => author.login,
                          :locale => author.language)
         status = make_status(message, shortlink, 138)

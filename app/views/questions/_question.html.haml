@@ -40,18 +40,14 @@
             = link_to t('questions.show.retag'), retag_question_path(question), :id => 'retag', :class => "retag"
         .clear
 
-    .toolbar
-      %ul
+    .article-actions
+      %ul.drop-menu
         %li.answers
           = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
         -if question.followers_count.to_i > 0
           %li.followers
             = t('questions.index.has_followers', :count => question.followers_count)
-
-        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
-          %li.spam
-            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
 
         %li
           - if logged_in? && question.follower?(current_user)
@@ -61,6 +57,12 @@
 
         %li
           =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
+
+        -if !logged_in? || (current_user != question.user && current_user.has_flagged?(question).nil?)
+          %li.spam
+            = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
+        = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
+      .panel-forms
 
     .clear
 

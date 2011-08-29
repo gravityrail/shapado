@@ -36,14 +36,6 @@ fr:
     what_to_do: Que voulez-vous faire ?
   models: 
     question: La question
-  number: 
-    x_time: 
-      one: "%{count} fois"
-      other: "%{count} fois"
-      zero: Jamais
-  pagination: 
-    next: Suivant &raquo;
-    previous: "&laquo; Précédent"
   roles: 
     moderator: Modérateur
     owner: Propriétaire

@@ -88,9 +88,6 @@ hu:
       accepted_tooltip: A válaszok egyike helyes válasznak lett elfogadva.
       another_answers: További válaszok
       answers: Válaszok
-      answers_title: 
-        one: "%{count} válasz"
-        other: "%{count} válasz"
       asked_on: Létrehozás ideje
       ban: Letiltás
       close: Lezárás

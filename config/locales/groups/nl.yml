@@ -8,6 +8,7 @@ nl:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Dagelijkse beperking
         default_tags: Standaardlabels
         description: Beschrijving
         domain: Domein
@@ -23,6 +24,7 @@ nl:
         name: Naam
         owner: Deze groep is aangemaakt door %{login}
         registered_only: Alleen geregistreerde gebruikers kunnen de site lezen
+        signup_type: Via welke methoden kunnen uw gebruikers registreren
         state: Status
         subdomain: URL
         wysiwyg_editor: Gebruikersvriendelijke tekstverwerker inschakelen
@@ -30,8 +32,12 @@ nl:
       default_tags_message: U kunt niet meer dan tien standaardlabels hebben.
       group: Groep
       groups: Groepen
+      reputation_rewards_answer_constrain: De beperking voor antwoordonderscheidingen moet negatief zijn
+      reputation_rewards_ask_constrain: De beperking voor vragen moet negatief zijn
+      reputation_rewards_key: Ongeldige sleutel
   groups: 
     connect_group_to_twitter: 
+      failed_twitter_connection: Er is iets fout gegaan. Probeer het opnieuw.
       success_twitter_connection: Proficiat, u hebt nu uw Twitter-account verbonden!
     create: 
       flash_notice: Uw groep is aangemaakt. U kunt nu de instellingen maken.
@@ -51,6 +57,10 @@ nl:
       legend_legend: Dit wordt gebruikt als kop. Gebruik maximaal veertig tekens
       logo_legend: U kunt het groepslogo uploaden. De maximale grootte is 2MB.
       members_only: Alleen leden van de groep hebben toegang tot deze groep
+      signup_all: Alle (gebruikers kunnen aanmelden met e-mailadres, OpenId, Facebook, Twitter, enzovoort)
+      signup_email: Alleen e-mail (gebruikers kunnen alleen aanmelden met hun e-mailadres en wachtwoord)
+      signup_noemail: Geen e-mailadres/wachtwoord (gebruikers melden aan met OpenId, Facebook of Twitter)
+      signup_social: Alleen sociaal (gebruikers kunnen alleen aanmelden met Facebook, Twitter, LinkedIn en Identica)
       website_analytics_id: Website Analytics ID
     group: 
       about: Over
@@ -62,6 +72,7 @@ nl:
     index: 
       actives: Actief
       create_your_own: uw eigen groep aanmaken
+      description: Dit is de lijst met publieke groepen. U kunt groepen filteren met behulp van het onderstaande veld. U kunt ook %{link}.
       filter: Groepen doorzoeken
       most_active: Meest actief
       name: Naam
@@ -80,3 +91,5 @@ nl:
       visit_group: Deze groep bezoeken
     top_grouplist: 
       active_site: "Actieve site:"
+    update: 
+      notice: Uw groep is aangepast.

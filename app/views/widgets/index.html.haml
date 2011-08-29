@@ -1,5 +1,5 @@
 %h1
-  Widgets
+  = t('layouts.manage.widgets')
 %p.description
   =t(".description")
 
@@ -28,47 +28,46 @@
       .clear
     .zone
       %p
-        %strong Zone:
+        %strong= t('widgets.index.zone')
         .name
-          Header
+          = t('widgets.index.header')
       =image_tag "zone-header.gif"
     .type
       %p
-        %strong Type:
-        Nombre del widget
+        %strong= t('widgets.index.type')
+        =t('widgets.index.name')
       =image_tag "zone-header.gif"
 
   .widget-containers
     -if @active_subtab != "external"
-      -#i18n
       .container.header
         .header
-          Header
-          =link_to "Add new widget", "#"
+          = t('widgets.index.header')
+          = link_to t('widgets.index.add_new'), "#"
         -@widget_list.header.each do |widget|
           = render "widget", :widget => widget, :position => "header"
         .clear
 
       .container.navbar
         .header
-          Navbar
-          =link_to "Add new widget", "#"
+          = t('widgets.index.navbar')
+          = link_to t('widgets.index.add_new'), "#"
         -@widget_list.navbar.each do |widget|
           = render "widget", :widget => widget, :position => "navbar"
         .clear
 
       .container.sidebar
         .header
-          Sidebar
-          =link_to "Add new widget", "#"
+          = t('widgets.index.sidebar')
+          = link_to t('widgets.index.add_new'), "#"
         -@widget_list.sidebar.each do |widget|
           = render "widget", :widget => widget, :position => "sidebar"
         .clear
 
       .container.footer
         .header
-          Footer
-          =link_to "Add new widget", "#"
+          = t('widgets.index.footer')
+          = link_to t('widgets.index.add_new'), "#"
         -@widget_list.footer.each do |widget|
           = render "widget", :widget => widget, :position => "footer"
         .clear

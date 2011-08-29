@@ -20,6 +20,7 @@ ms:
     by: oleh
     chat: Sembang
     current: Kini
+    edited: Disunting
     feedback: Maklum Balas
     follow: Ikuti
     followed_by: "Diikuti oleh:"
@@ -48,14 +49,6 @@ ms:
     what_to_do: Apakah yang ingin anda lakukan?
   models: 
     question: Soalan
-  number: 
-    x_time: 
-      one: "%{count} kali"
-      other: "%{count} kali"
-      zero: Tidak pernah
-  pagination: 
-    next: Berikutnya &raquo;
-    previous: "&laquo; Sebelumnya"
   preferred_languages: 
     any: Semua
     user: Bahasa-bahasa keutamaan saya
@@ -65,6 +58,7 @@ ms:
     user: Pengguna biasa
   scaffold: 
     add: Tambahkan
+    are_you_sure: Adakah anda pasti?
     back: Kembali
     cancel: Batalkan
     close: Tutup
@@ -83,3 +77,8 @@ ms:
   time: 
     ago: "%{time} yang lalu"
     today: hari ini
+    yesterday: semalam
+  views: 
+    pagination: 
+      next: Berikutnya &raquo;
+      previous: "&laquo; Sebelumnya"

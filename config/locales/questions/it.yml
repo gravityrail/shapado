@@ -89,9 +89,6 @@ it:
       accepted_tooltip: Una delle risposte è stata accettata come risposta corretta.
       another_answers: Altre risposte
       answers: Risposte
-      answers_title: 
-        one: "%{count} risposta"
-        other: "%{count} risposte"
       asked_on: chiesto il
       ban: Banna
       close: Chiudi

@@ -8,9 +8,14 @@ mk:
       member: 
         role: улога
   members: 
+    create: 
+      error: Нажалост, корисникот **%{user_id}** не постои
+      notice: Корисникот %{login} е успешно додаден како %{role}.
     form: 
       login_tip: пребарувај пишувајќи
     index: 
       manage_members_title: раководење со членови
       title: членови на групата на %{name}
       title_isolate: членови на %{name}
+    update: 
+      error: Нажалост, не можете да го измените членството на **%{login}**

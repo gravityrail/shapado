@@ -88,9 +88,6 @@ zh-CN:
       accepted_tooltip: 其中一个答案被接纳为正确答案。
       another_answers: 其他答案
       answers: 答案
-      answers_title: 
-        one: "%{count} 答案"
-        other: "%{count} 答案"
       asked_on: 要求
       ban: 禁止
       close: 关闭

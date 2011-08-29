@@ -59,10 +59,12 @@ nl:
       submit: Opslaan
       title: Voorkeuren
     follow: 
+      flash_error: U kunt uzelf niet volgen.
       flash_notice: U volgt nu %{user}.
     form: 
       activities_notification: E-mails ontvangen over systeemactiviteiten zoals verdiende speldjes, nieuwe volgers, enzovoort.
       avatar_tip: Uw profielafbeelding wijzigen via gravatar
+      desktop_notification: Desktopmeldingen
       give_advice_notification: E-mail ontvangen over vragen in uw expertisegebied
       information: Gegevens
       language: Taal die gebruikt wordt voor de interface van de site
@@ -70,15 +72,18 @@ nl:
       notifications: Kennisgevingen
       reports_notification: Een overzicht ontvangen van de laatste groepsactiviteit (alleen voor beheerders)
       send_answers_to_twitter: Mijn antwoorden naar mijn Twitter verzenden
+      send_badges_to_twitter: Stuur nieuw verkregen speldjes naar Twitter
       send_comments_to_twitter: Mijn opmerkingen naar Twitter verzenden
       send_favorites_to_twitter: Mijn favoriete antwoorden naar mijn Twitter verzenden
       send_questions_to_twitter: Mijn vragen naar mijn Twitter verzenden
       show_more_lang: Meer talen weergeven
+      social_interaction: Sociale media
     index: 
       empty: Deze groep heeft geen leden. Neem deel om er lid van te worden.
       filter: Gebruikers zoeken
       name: Naam
       name_tooltip: Alfabetisch gesorteerde gebruikerslijst
+      near: In uw buurt
       newest: Nieuwste
       newest_tooltip: Recent geregistreerde gebruikers
       oldest: Oudste
@@ -104,9 +109,16 @@ nl:
       views: x bekeken
     top_user: 
       connect: Koppelen
+      my_karma: "Mijn karma: %{karma}"
       profile: Profiel
     unfollow: 
       flash_notice: U volgt %{user} niet langer.
+    update_followed_tags: 
+      followed: 
+        flash_notice: U bent nu geabonneerd op het label %{tag}.
+      unfollowed: 
+        flash_notice: U bent niet langer geabonneerd op het label %{tag}.
     user_bar: 
       create_account: Gebruiker aanmaken
       not_logged_in: Niet aangemeld
+      signed_as: Aangemeld als

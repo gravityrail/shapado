@@ -14,6 +14,8 @@ class Question
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 
+  paginates_per 25
+
   track_activities :user, :title, :language, :scope => [:group_id]
 
   index :tags

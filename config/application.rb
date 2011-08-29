@@ -78,7 +78,7 @@ module Shapado
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :number, :verification_code]
   end
 end
 

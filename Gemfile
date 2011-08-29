@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.8'
+gem 'rails', '3.0.10'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -74,7 +74,7 @@ gem 'state_machine', "0.10.4"
 group :deploy do
   gem 'capistrano', :require => false
   gem 'ricodigo-capistrano-recipes', "~> 0.1.3", :require => false
-  gem 'unicorn', :require => false
+  gem 'unicorn', '4.1.0', :require => false
 end
 
 group :scripts do

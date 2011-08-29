@@ -6,6 +6,8 @@
 de: 
   admin: 
     manage: 
+      access: 
+        title: Zugriff
       appearance: 
         logo_legend: Lade ein Logo für Deine Gruppe hoch. Es muss kleiner als 2 MB sein.
         title: Wähle Deine Benutzeroberfläche und passe sie an

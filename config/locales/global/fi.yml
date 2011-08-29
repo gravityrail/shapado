@@ -50,14 +50,6 @@ fi:
     what_to_do: Mitä haluat tehdä?
   models: 
     question: Kysymys
-  number: 
-    x_time: 
-      one: "%{count} kerta"
-      other: "%{count} kertaa"
-      zero: Ei koskaan
-  pagination: 
-    next: Seuraava &raquo;
-    previous: "&laquo; Edellinen"
   preferred_languages: 
     any: Mikä tahansa
     user: Ensisijaiset kieleni

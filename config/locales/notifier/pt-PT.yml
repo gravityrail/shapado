@@ -26,7 +26,7 @@ pt-PT:
     new_answer: 
       message: "%{user} deu a resposta %{new_answer} à pergunta %{question}"
     new_comment: 
-      message: "%{user} fes o comentário %{new_comment} na pergunta %{question}"
+      message: "%{user} fes o comentário %{new_comment} na pergunta %{link}"
     new_feedback: 
       message1: O utilizador %{user} <%{email}> enviou um comentário
       message2: Utilizador anónimo enviou um comentário do endereço IP %{ip}

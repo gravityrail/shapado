@@ -25,13 +25,6 @@ es-419:
     share: Compartir
   models: 
     question: La pregunta
-  number: 
-    x_time: 
-      one: "%{count} vez"
-      other: "%{count} veces"
-      zero: Nunca
-  pagination: 
-    next: Siguiente &raquo;
   scaffold: 
     add: Añadir
     back: Volver

@@ -18,4 +18,5 @@ nl:
     create: 
       success: Uw aankondiging is aangemaakt.
     index: 
+      description: Nieuwe aankondigingen die sitebreed worden weergegeven aan bezoekers beheren en maken
       title: Aankondigingen

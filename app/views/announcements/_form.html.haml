@@ -1,11 +1,13 @@
+= error_messages_for(:announcement)
+
 .announcements
   %h1
     = t(:message, :scope => "activerecord.attributes.announcement")
 
   -if current_group.wysiwyg_editor
-    = f.text_area :message, :class => "text_area", :id => "wysiwyg_editor", :value => markdown(@announcement.message)
+    = f.text_area :message, :class => "text_area wysiwyg_editor", :value => markdown(@announcement.message)
   -else
-    = f.text_area :message, :class => "text_area", :id => "markdown_editor"
+    = f.text_area :message, :class => "text_area markdown_editor"
 
   = markdown(@announcement.message)
 
