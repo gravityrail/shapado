@@ -66,24 +66,23 @@
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
 
-
+    %ul.tag-list
+      %li.title
+        = t('global.tags_label')
+      - @question.tags.each do |tag|
+        %li
+          = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
+      - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
+        %li.retag
+          = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
     = render "toolbar"
 
-  %ul.tag-list
-    %li.title
-      = t('global.tags_label')
-    - @question.tags.each do |tag|
-      %li
-        = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
-    - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
-      %li.retag
-        = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
 #answers-content-wrap
   -cache_for(:question_answers, @question.id) do
     %header
-      %h3
+      %h2
         = t("questions.question.has_answers", :count => @answers.total_count)
 
     %section.filters

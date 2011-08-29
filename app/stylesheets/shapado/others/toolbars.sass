@@ -28,3 +28,110 @@ article
       color: $orange
       font-weight: bold
       margin: 0 5px 0 0
+      
+// Question actions triggers for show/hide panbels into question show
+//-------------------------------------------------------------------------------------------------------------------         
+.main-question
+  .toolbar
+    width: 515px
+    .drop-menu  
+      height: 26px
+      li 
+        ul
+          top: 26px !important
+        a
+          display: block
+          position: relative
+          padding: 2px 8px 1px 25px
+          background: url("/images/question-toolbar-icons-small.png") 5px 7px  no-repeat
+          &:hover, &.active
+            background-color: $orange
+            color: #fff
+          
+      .answer a
+        background-position: 5px 7px
+        &:hover 
+          background-position: 5px -23px
+      
+      .follow
+        .follow-q
+          background-position: 5px -261px
+        .follow-q:hover
+          background-position: 5px -241px
+        .unfollow-q
+          background-position: 5px -218px
+        .unfollow-q:hover
+          background-position: 5px -194px
+      
+      .share_on a
+        background-position: 5px -121px
+        &:hover, &.active
+          background-position: 5px -97px
+          
+      .more a
+        background-position: 5px -380px 
+
+      .activity a
+        background-position: 5px -73px 
+        &:hover, &.active
+          background-position: 5px -49px 
+
+      .followUp a
+        background-position: 6px -606px 
+        &:hover, &:active
+          background-position: 6px -580px 
+
+      .close a
+        background-position: 5px -357px !important
+        &:hover, &.active
+          background-position: 5px -329px !important 
+
+      #request-close-link
+        background-position: 5px -657px 
+        &:hover
+          background-position: 5px -634px 
+
+      .delete a, .delete-q a
+        background-position: 5px -546px 
+        &:hover, &.active
+          background-position: 5px -518px 
+
+      .edit-q a
+        background-position: 5px -305px 
+        &:hover, &.active
+          background-position: 5px -282px 
+
+      .ban a
+        background-position: 5px -170px 
+        &:hover, &.active
+          background-position: 5px -146px 
+
+      #flag_question
+        background-position: 5px -722px
+        &:hover
+          background-position: 5px -744px
+
+      .add_reward a
+        background-position: 5px -767px !important
+        &:hover
+          background-position: 5px -787px !important                  
+
+// Article actions for each answer into main question
+//-------------------------------------------------------------------------------------------------------------------    
+.article-actions
+  height: 22px
+  .drop-menu  
+    float: right
+    background-color: #f9f9f9
+    +normal-radius
+    li a
+      display: block
+      position: relative
+      padding: 6px 10px 4px 10px
+      font-size: 12px
+      line-height: 12px
+      +normal-radius
+      &:hover, &.active
+        background-color: $orange
+        color: #fff
+  

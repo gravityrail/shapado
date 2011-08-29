@@ -1,6 +1,6 @@
 // BASICS
 //-------------------------------------------------------------------------------------------------------------------
-form
+form  
   margin-bottom: 18px
 
   fieldset
@@ -18,7 +18,7 @@ form
       color: #404040
 
   label, input, select, textarea
-    font: normal $s/$s
+    font: normal $s/$s $arial
 
   label
     padding-top: 6px
@@ -42,7 +42,6 @@ form
   select,
   .uneditable-input
     display: inline-block
-    width: 210px
     margin: 0
     padding: 4px
     font-size: $s
@@ -92,6 +91,8 @@ form
 
 // BTNS
 //-------------------------------------------------------------------------------------------------------------------
+.buttons
+  float: right
 input[type=submit], input.save
   display: inline-block
   background-color: $orange
@@ -116,3 +117,16 @@ input[type=submit], input.save
     background-position: 0 -30px
     color: #fff
     text-decoration: none
+
+// Main questions forms
+//-------------------------------------------------------------------------------------------------------------------
+.questions
+  form.question_comment_form, form.answer_comment_form
+    padding: 5px 15px
+    background-color: $lightOrange
+    textarea
+      width: 510px
+      height: 100px
+      margin: 0 0 10px 0
+   
+

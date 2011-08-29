@@ -111,4 +111,21 @@ article
       li:hover a
         color: #fff
 
-
+// ARTICLE TOOLBAR - dropdown for moderate
+//-------------------------------------------------------------------------------------------------------------------
+.main-question
+  .dropHover
+    a:hover
+      background-color: $lightOrange
+    ul
+      top: 30px !important
+      background-color: #fff
+      +outer-shadow
+      a, li
+        display: block
+        &:hover
+          background-color: $orange !important
+          color: #fff
+          cursor: pointer
+      li:hover a
+        color: #fff !important   
