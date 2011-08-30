@@ -1,59 +1,29 @@
-//_wikis.sass
+//_wikis.sass, customLinks.sass
 //-------------------------------------------------------------------------------------------------------------------
-.widget-pages
-  ul
-    margin: 10px 10px 10px 30px
-    list-style: disc
-    li
-      margin: 0 0 5px 0
-      a
-        color: #000
-        font-size: 12px
-        &:hover
-          border-bottom: 1px dotted
-  .add
-    float: left
-    color: #000 !important
-    margin: 0 0 0 10px
-    &:hover
-      border-bottom: 1px dotted
-  .more
-
-.widget-contributors aside
-  padding: 0 10px 8px 5px
-  a
-    float: left
-    margin: 0 0 0 7px
-    border: 1px solid #ccc
-
-//_customLinks.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-links ul li
-  a
-    padding: 5px
-    display: block
-    &:first-letter
-      text-transform: capitalize
-    &:hover
+.widget-pages ul, .widget-links ul 
+  li
+    margin: 0 0 2px 0
+    a
+      padding: 4px 5px
+      display: block
       +normal-radius
-  &.active a, &.active a:hover
-    background-image: none !important
-    +normal-radius
+      &:first-letter
+        text-transform: capitalize
+      &:hover
+        background-color: $orange
+        color: #fff
+    &.active a
+      background-color: $orange
+      color: #fff
 
 //_networks.sass
 //-------------------------------------------------------------------------------------------------------------------
 .widget-group_networks
-  border: 0px !important
-  margin: 0
-  h3
-    margin: 0 0 10px 0
   ul
-    padding: 0 !important
     overflow: hidden
-    margin: -3px -3px 20px 0 !important
     li
       margin: 3px
-      float: right
+      float: left
       display: inline
       a
         display: block
@@ -87,70 +57,29 @@
 //-------------------------------------------------------------------------------------------------------------------
 .widget-tag_cloud
   .active-tags
-    text-align: center
-    overflow: hidden
-    span
-      background-color: #f1f1f1
-      margin: 2px
-      float: left
-      +huge-radius
-      position: relative
-      &:hover
-        background-color: #e5e5e5
-      a
-        line-height: 20px
-        font-size: 12px
-        padding: 0 5px 0 20px
-        color: #000
+    border-bottom: 1px dotted #f1f1f1
+    margin-bottom: 5px
+    padding-bottom: 5px
+    a
+      color: #c00
+      line-height: 22px
+      margin: 0 2px
     .remove_tag
-      position: absolute
-      top: 4px
-      left: 5px
       background-color: #c00
       color: #fff
-      float: left
       padding: 0 4px
       line-height: 12px
       +huge-radius
-
-  .list_cloud
-    padding: 5px
+  .tag_cloud, .list_cloud
     span
-      margin: 1px 5px
-      display: block
-      a
-        padding: 4px 10px
-        display: block
-        +huge-radius
-        &:hover
-          width: 95%
-      .xxs
-        width: 20%
-      .xs
-        width: 30%
-      .s
-        width: 40%
-      .m
-        width: 50%
-      .xm
-        width: 60%
-      .xxm
-        width: 70%
-      .l
-        width: 80%
-      .xl
-        width: 90%
-      .xxl
-        width: 100%
-
-  .tag_cloud
-    padding: 10px
-    span
-      float: left
-      display: inline
-      margin: 0 10px 0 0
       a
         line-height: 24px
+        padding: 3px 5px 2px 5px
+        line-height: 22px
+        +normal-radius
+        &:hover
+          background-color: $orange
+          color: #fff
       .xxs
         font-size: 10px
       .xs
@@ -169,6 +98,11 @@
         font-size: 24px
       .xxl
         font-size: 26px
+        
+  .list_cloud
+    span a, span
+      display: block
+
 
 //_top_groups.sass
 //-------------------------------------------------------------------------------------------------------------------
@@ -176,60 +110,59 @@
   aside
     overflow: hidden
     display: block
-    padding: 5px 15px !important
-
+    padding-bottom: 10px
+    margin-bottom: 10px
     .avatar
       float: left
       margin-right: 10px
       overflow: hidden
-      width: 25px
-      height: 25px
+      width: 40px
+      height: 40px
       border: 1px solid #e5e5e5
       img
+        width: 40px
+        height: 40px       
+         
     .data
-      float: left
-      width: 180px
 
-      h5
-        font-size: 14px
-        margin: 0 0 4px 0
-        a
-          font-weight: bold !important
+      h3
+        margin: 0 !important
+        border: 0px
         small
           font-size: 9px
           font-weight: normal !important
           font-style: italic
-          display: block
+          color: #666
       p
         font-size: 12px
 
 //_top_users.sass
 //-------------------------------------------------------------------------------------------------------------------
-.widget-top_users, .widget-contributors, .widget-users
-  ul
-    padding: 10px 10px 5px 10px
-    li
-      overflow: hidden
-      display: block
-      margin-bottom: 5px
+.widget-top_users, .widget-users ul
+  li
+    overflow: hidden
+    display: block
+    margin-bottom: 7px
+    padding-bottom: 7px
 
-      .avatar
-        float: left
-        margin-right: 5px
+    .avatar
+      float: left
+      margin-right: 5px
+      a
+
+    .data
+      float: left
+      h5
+        margin: 1px 0 0 0
         a
-
-      .data
-        float: left
-        h5
-          margin: 1px 0 0 0
-          a
-            font-size: 12px
-          small
-            font-size: 9px
-            font-weight: normal !important
-            font-style: italic
-            +big-radius
-            padding: 2px 6px
+          font-size: 12px
+          color: #000
+        small
+          display: block
+          font-size: 9px
+          color: #666
+          font-weight: normal !important
+          font-style: italic
 
 //_share.sass
 //-------------------------------------------------------------------------------------------------------------------
@@ -242,50 +175,46 @@
 
 //_suggestions.sass
 //-------------------------------------------------------------------------------------------------------------------
-.widget-suggestions, .widget-suggestions-page
-  ul
-    margin-top: -10px
-    li
-      overflow: hidden
-      padding: 10px
-      width: 129px
-      height: 30px
+.widget-suggestions
+  li
+    padding-bottom: 5px
+    margin-bottom: 5px
+    border-bottom: 1px dotted #f1f1f1
+    overflow: hidden
+    &:last-child
+      border: 0px
+    .info
       float: left
-      &:last-child
-        border-bottom: 0px
-
-      .gravatar
-        float: left
-        margin: 0 10px 0 0
-        padding: 0 !important
-        img
-          width: 35px
-          margin: 0 !important
-      .info
-        float: left
-
-        .link
-          margin: -3px 0 5px 0 !important
-          background-color: transparent
-          a
-            font-size: 12px
-            background-color: transparent
-        .f-link
-          a
-            font-size: 11px !important
-            display: block
-            padding: 3px 6px
+      .link a
+        font-weight: bold
+        color: #000
+        &:hover
+          color: $orange
+      .f-link a 
+        font-size: 11px
+        line-height: 11px
+        font-style: italic
+        padding: 2px 5px
+        +normal-radius
+        &:hover
+          background-color: $orange
+          color: #fff
+  img
+    width: 25px
+    height: 25px
+    border: 1px solid #e5e5e5
+    margin: 0 10px 0 0
+    float: left
 
 //_badges.sass
 //-------------------------------------------------------------------------------------------------------------------
 .widget-badges ul, .widget-question_badges ul
-  padding: 10px
+  padding: 0
+  margin: 0
   li
     margin: 0
     height: 26px
-
   .badge_item
-
     a.badge
       font-size: 11.5px
       padding: 4px
@@ -301,7 +230,39 @@
       margin: 4px 0 0 0
       float: left
 
+.gold .badge
+  background-image: -moz-linear-gradient(top,#fbd65f,#ffff7c)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#ffff7c),color-stop(1,#fbd65f))
+  border: 1px solid #fbd65f
+.silver .badge
+  background-image: -moz-linear-gradient(top,#c6c6c6,#e5e5e5)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e5e5e5),color-stop(1,#c6c6c6))
+  border: 1px solid #c6c6c6
+.bronze .badge
+  background-image: -moz-linear-gradient(top,#e67347,#f3a273)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e67347),color-stop(1,#f3a273))
+  background-color: #e67347
+  border: 1px solid #e67347
 
+//  related_questions
+//-------------------------------------------------------------------------------------------------------------------      
+.widget-related_questions ul 
+  margin: 0 0 0 20px
+  li 
+    list-style: disc
+    margin-bottom: 8px
+    &:first-letter
+      text-transform: uppercase
+    a
+      color: #000
+      &:hover
+        color: $orange
+
+//  Contrinutor
+//-------------------------------------------------------------------------------------------------------------------   
+.widget-contributors a 
+  float: left
+  margin: 0 10px 0 0
 
 //  WIDGETS PER AREA
 //-------------------------------------------------------------------------------------------------------------------
@@ -310,44 +271,43 @@
 //-------------------------------------------------------------------------------------------------------------------
 .left-panel
   .widget-suggestions
-    border: 0px !important
-    ul
-      li
-        width: 150px
-        border-right: 0px !important
-        .gravatar
-          float: right
-          margin: 0 0 0 10px
-        .info
-          float: right
-    footer
-      padding: 5px 0 0 0
-      text-align: right
-      border-color: #e5e5e5
-      background-color: transparent
-      a
-        color: #000
+    li .info
+      float: right
+    img
+      float: right
+      margin: 0 0 0 10px
 
 //  Header // Footer zones
 //-------------------------------------------------------------------------------------------------------------------
 .header-widgets, .footer-widgets
   .widget-suggestions
-    h3
-      font-weight: bold
-      font-size: 16px
-      padding: 10px
-      border-bottom: 1px solid #e5e5e5
-    ul
+    li
+      float: left
+      padding: 0
       margin: 0
-      li
-        width: auto
-        border-right: 1px solid #e5e5e5 !important
-        border-bottom: 0px
-        &:last-child
-          border: 0px !important
-    footer
-      background-color: transparent
-      padding: 10px
-      text-align: right
-      a
-        color: #000
+      height: 30px
+      width: 145px
+      border: 0px
+      .info
+        float: left
+        .link a
+          font-weight: bold
+          color: #000
+          &:hover
+            color: $orange
+        .f-link a 
+          font-size: 11px
+          line-height: 11px
+          font-style: italic
+          padding: 2px 5px
+          +normal-radius
+          &:hover
+            background-color: $orange
+            color: #fff
+    img
+      width: 25px
+      height: 25px
+      border: 1px solid #e5e5e5
+      margin: 0 10px 0 0
+      float: left
+      
