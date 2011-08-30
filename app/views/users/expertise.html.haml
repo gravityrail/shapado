@@ -1,3 +1,7 @@
-= render "shared/content-nav", :questions_link => questions_link_for(params[:action])
+- questions_link = questions_link_for(params[:action])
+- content_for :nav_filters do
+  = render "questions/nav_filters", :questions_link => questions_link
+= render "shared/content-nav", :questions_link => questions_link
+
 %section
   = render 'shared/posts'

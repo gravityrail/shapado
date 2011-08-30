@@ -1,0 +1,9 @@
+
+%li.activity
+  = link_to t("questions.index.active"), url_for(params.merge(questions_link).merge(:sort=>"activity")), :title => t("questions.index.active_tooltip"), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+%li.newest
+  = link_to t("questions.index.newest"), url_for(params.merge(questions_link).merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip"), :class => "pjax", :"data-layout" => "index"
+%li.hot
+  = link_to t("questions.index.hot"), url_for(params.merge(questions_link).merge(:sort=>"hot")), :title => t("questions.index.hot_tooltip"), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+%li.votes
+  = link_to t("questions.index.votes"), url_for(params.merge(questions_link).merge(:sort=>"votes")), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"

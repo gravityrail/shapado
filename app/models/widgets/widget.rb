@@ -64,6 +64,10 @@ class Widget
     @description ||= I18n.t("widgets.#{self.name}.description") if self.name
   end
 
+  def cache_keys(params)
+    ""
+  end
+
   protected
   def limit_to_int
     self[:settings]['limit'] = self[:settings]['limit'].to_i
