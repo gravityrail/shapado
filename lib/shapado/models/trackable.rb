@@ -71,7 +71,7 @@ module Shapado
             conds[:target_id] = target.id
           end
 
-          activity = Activity.where(conds).first
+          activity = Activity.where(conds).desc(:created_at).first
 
           if activity
             activity.increment(:times => 1)
