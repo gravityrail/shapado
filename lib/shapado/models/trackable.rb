@@ -56,17 +56,38 @@ module Shapado
 
         def __create_activity(action, opts = {})
           Rails.logger.info "Adding #{action} activity for #{self.class}"
-          Activity.create!(opts.merge({
+
+          group_id = self[:group_id] || Thread.current[:current_group].try(:id)
+          user_id = Thread.current[:current_user].try(:id) || self[:user_id]
+          target = __resolve_target
+
+          conds = {
             :action => action,
-            :trackable_info => __generate_trackable_info,
-            :target_info => __generate_target_info,
-            :scope => __resolve_trackable_scope,
-            :group_id => self[:group_id] || Thread.current[:current_group].try(:id),
-            :user_id => Thread.current[:current_user].try(:id) || self[:user_id],
-            :trackable => self,
-            :target => __resolve_target,
-            :user_ip => Thread.current[:current_ip]
-          }))
+            :group_id => group_id,
+            :user_id => user_id,
+            :trackable_id => self.id
+          }
+          if target
+            conds[:target_id] = target.id
+          end
+
+          activity = Activity.where(conds).first
+
+          if activity
+            activity.increment(:times => 1)
+          else
+            Activity.create!(opts.merge({
+              :action => action,
+              :trackable_info => __generate_trackable_info,
+              :target_info => __generate_target_info,
+              :scope => __resolve_trackable_scope,
+              :group_id => group_id,
+              :user_id => user_id,
+              :trackable => self,
+              :target => target,
+              :user_ip => Thread.current[:current_ip]
+            }))
+          end
         end
       end
 

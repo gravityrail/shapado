@@ -10,6 +10,8 @@ class Activity
   field :scope, :type => Hash
   field :login, :type => String
 
+  field :times, :type => Integer, :default => 1
+
   field :group_id, :type => String
   referenced_in :group
 
