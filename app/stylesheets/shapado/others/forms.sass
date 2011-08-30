@@ -1,8 +1,6 @@
 // BASICS
 //-------------------------------------------------------------------------------------------------------------------
 form  
-  margin-bottom: 18px
-
   fieldset
     margin-bottom: 18px
     padding-top: 18px
@@ -19,29 +17,38 @@ form
 
   label, input, select, textarea
     font: normal $s/$s $arial
-
+    
+  .field
+    margin: 0 50px 20px 50px
+    
   label
-    padding-top: 6px
     font-size: $s
     line-height: $l
-    float: left
-    width: 130px
-    text-align: right
-    color: #404040
-
-  div.input
-    margin-left: 150px
-
-  .checkbox input, .radio input,
+    font-weight: bold
+    
+  .checkbox input, 
+  .radio input,
   input[type=checkbox], form input[type=radio]
     cursor: pointer
 
+  select, 
+  form input[type=file]
+    height: 24px
+    line-height: $xl
+
+  textarea
+    height: auto
+
+  ::-webkit-input-placeholder
+    color: #bfbfbf
+        
   input[type=text],
   input[type=password],
   textarea,
   select,
   .uneditable-input
     display: inline-block
+    width: 437px
     margin: 0
     padding: 4px
     font-size: $s
@@ -50,17 +57,7 @@ form
     color: #444
     border: 1px solid #ccc 
     +small-radius
-
-  select, form input[type=file]
-    height: 24px
-    line-height: $xl
-
-  textarea
-    height: auto
     
-  ::-webkit-input-placeholder
-    color: #bfbfbf
-
   input[type=text],
   input[type=password],
   select,
@@ -89,11 +86,123 @@ form
     margin: -10px 0 10px
     +small-radius
 
+  .radio, .checkbox
+    float: left
+    width: 100%
+    margin-bottom: 5px
+
+    label
+      float: right
+      width: 90%
+      font-weight: normal
+
+    input
+      float: left
+      width: 15px
+      margin-right: 5px
+
+  .column
+    width: 50%
+    float: left
+    input 
+      margin: 0 !important
+    label
+      width: 87% !important
+
+  .capcha
+    clear: both
+    float: none
+    display: block
+
+  hr
+    border: none
+    margin-bottom: 20px
+
+  .form-options
+    clear: both
+    overflow: hidden
+    .column
+      width: 30%
+      label
+        white-space: nowrap
+
+  .birthday
+    select
+      width: 30%
+    select:nth-child(2)
+      width: 68px
+    select:nth-child(3)
+      width: 150px
+    select:nth-child(4)
+      width: 60px
+
+  .buttons
+    float: right
+    padding-top: 8px
+    input.save
+      margin-top: -8px
+      margin-right: 5px
+      border: none
+      font-size: 14px
+      padding: 5px 10px
+      float: left
+      width: auto
+
+  .follow-up-msg
+    padding: 15px
+    margin: 0 0 30px 0
+    text-align: center
+    p
+      margin: 0
+      a
+        display: block
+
+  .group-logo
+    .img-up
+      float: left !important
+      margin: 0 10px 0 0
+    .size
+      width: 160px
+      margin-top: 39px
+      float: left
+      input
+        float: left !important
+        width: 50px !important
+      span
+        float: left
+        padding: 7px
+        display: block
+    small
+      display: block
+      clear: both
+
+  .manage-domain
+    list-style-type: decimal !important
+    margin: 0 0 20px 20px
+    li
+      margin: 0 0 20px 0
+  .domain-url
+    height: 30px
+    padding: 10px
+    input
+      float: right !important
+    span
+      font-size: 16px
+      float: left
+      margin: 6px 0 0 8px
+
+  .asked-twitter
+    span
+      float: left
+      padding: 7px 5px 0 0
+    input
+      width: 94%
+          
 // BTNS
 //-------------------------------------------------------------------------------------------------------------------
 .buttons
   float: right
-input[type=submit], input.save
+input[type=submit], input.save, .add_attachment
   display: inline-block
   background-color: $orange
   background-repeat: repeat-x
@@ -116,7 +225,7 @@ input[type=submit], input.save
   &:hover
     background-position: 0 -30px
     color: #fff
-    text-decoration: none
+    text-decoration: none  
 
 // Main questions forms
 //-------------------------------------------------------------------------------------------------------------------
@@ -125,8 +234,44 @@ input[type=submit], input.save
     padding: 5px 15px
     background-color: $lightOrange
     textarea
-      width: 510px
+      width: 500px
       height: 100px
       margin: 0 0 10px 0
-   
+           
+// Ask question header
+//-------------------------------------------------------------------------------------------------------------------    
+.ask_question
+  .tagwrapper
+    width: 437px !important
+  h1, h1 span
+    font-size: 18px 
+    padding: 20px 20px 5px 20px 
+    display: block 
+  p
+    margin: 0 20px 40px 20px
+  .buttons
+    margin-bottom: 30px
 
+// Related Questions
+.related_questions
+  #related_questions
+    *
+      border: 0px
+    .toolbar
+      display: none
+    article
+      padding: 0
+      margin: 0
+      h3
+        font-size: 12px
+        font-weight: normal
+        a
+          background-color: $lightOrange 
+          padding: 5px 10px
+          border: 0px !important
+          display: block
+          &:first-letter
+            text-transform: uppercase
+          &:hover
+            background-color: $orange 
+            color: #fff
