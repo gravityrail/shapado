@@ -44,6 +44,7 @@
         -else
           = render "users/top_user"
       #columns
+        = show_flash_messages(:class => "flash", :markdown => true)
         -(current_group.columns||["column1", "column2", "column3"]).each do |c|
           =render "shared/layout/#{c}"
           -if c == "column1"
