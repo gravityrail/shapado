@@ -20,14 +20,14 @@
   %h2
     = link_to highlight(title, @highlight), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
   .markdown
-    =highlight(markdown(question.body), @highlight)
+    = highlight(markdown(question.body), @highlight)
   .user-data
     -if owner
       =render :partial => "users/user_data", :locals => {:user => owner}
     -else
-      Por:
+      = I18n.t('global.by_semi')
       =t("global.anonymous")
     = link_to t("time.ago", :time => time_ago_in_words(last_target_date)), question_path(question)+"##{last_target_id}"
     -if question.wiki
-      Wiki
+      = I18n.t('pages.index.wiki')
 

@@ -73,14 +73,12 @@
       = link_to t("#{i18n_scope}.more_actions")
 
       %ul
-        %li.activity
-          = link_to t("#{i18n_scope}.history")+" (#{@question.versions_count})", history_question_path(@question), "rel" => 'nofollow'
-
-
         %li.followUp
           = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description")
 
         - if logged_in?
+          %li.activity
+            = link_to t("#{i18n_scope}.history")+" (#{@question.versions_count})", history_question_path(@question), "rel" => 'nofollow'
           -if current_user.can_create_reward?(@question)
             %li.add_reward
               = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :class => "show_form", :title => t("#{i18n_scope}.create_reward_description")
