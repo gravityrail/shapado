@@ -84,6 +84,9 @@ group :scripts do
 end
 
 group :test do
+  gem 'capybara', '1.0.0'
+  gem "capybara-webkit", '1.0.0.beta4'
+  gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'ffaker'
   gem 'simplecov'
