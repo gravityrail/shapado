@@ -1,6 +1,6 @@
 // Generals
 //-------------------------------------------------------------------------------------------------------------------
-.sf-menu, .sf-menu *, .drop-menu
+.sf-menu, .sf-menu *
   margin:       0
   padding:      0
   list-style:   none
@@ -24,11 +24,26 @@
     position: absolute
     top: -999em
     width: auto // left offset of submenus need to match (see below)
+    background-color: #fff !important
+    +outer-shadow
     li
       width:	100%
+      display: block
       border-top: 1px solid #f1f1f1
       &:hover
         visibility: inherit // fixes IE7 'sticky bug'
+        background-color: $orange
+        color: #fff
+        cursor: pointer
+        a
+          color: #fff
+      a
+        display: block
+        position: relative
+        &:hover
+          background-color: $orange
+          color: #fff
+          cursor: pointer
   li
     float:	 left
     position: relative
@@ -45,13 +60,54 @@
       left:	 auto // match ul width
       top: 0
 
+// arrows 
+.sf-menu a.sf-with-ul
+  min-width: 1px 
+  // trigger IE7 hasLayout so spans position accurately
+
+.sf-menu  a > .sf-sub-indicator 
+  // give all except IE6 the correct values 
+  top: .8em
+  background-position: 0 -100px 
+  // use translucent arrow for modern browsers
+
+// apply hovers to modern browsers 
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator
+  background-position: -10px -100px 
+  // arrow hovers for modern browsers
+
+// point right for anchors in subs 
+.sf-menu ul 
+  .sf-sub-indicator
+    background-position:  -10px 0
+  a > .sf-sub-indicator
+    background-position:  0 0
+
+// apply hovers to modern browsers 
+.sf-menu  ul 
+  a:focus > .sf-sub-indicator,
+  a:hover > .sf-sub-indicator,
+  a:active > .sf-sub-indicator,
+  li:hover > a > .sf-sub-indicator,
+  li.sfHover > a > .sf-sub-indicator
+    background-position: -10px 0 
+    // arrow hovers for modern browsers
+
+// shadows for all but IE6 
+.sf-shadow ul
+  background:	url('../images/shadow.png') no-repeat bottom right
+  &.sf-shadow-off
+    background: transparent
+
+
 // HEADER - dropdowns for groups, user link, and admin/moderate
 //-------------------------------------------------------------------------------------------------------------------
 .top-bar
-  height: 40px
   .sf-menu
-    top: 40px
-    right: 0
     float: left
     li
       float: left
@@ -62,9 +118,8 @@
         left: 15px
       a
         display: block
-        padding: 14px 20px 13px 15px
+        padding: 14px 25px 13px 15px
     ul
-      +outer-shadow
       top: 40px !important
       li:first-child
         border: 0px
@@ -89,43 +144,15 @@
         +normal-radius
         width: 25px
 
-  ul.offline a
-    padding-left: 10px
 
-// ARTICLE TOOLBAR - dropdown for moderate
+// ARTICLE TOOLBAR - dropdown for moderate + ARTICLE TOOLBAR - dropdown for moderate
 //-------------------------------------------------------------------------------------------------------------------
-article
-  .article-actions
-    .more:hover
-      background-color: $lightOrange
-    .dropHover ul
-      top: 22px
-      background-color: #fff
-      +outer-shadow
-      a, li
-        display: block
-        &:hover
-          background-color: $orange
-          color: #fff
-          cursor: pointer
-      li:hover a
-        color: #fff
+.index .toolbar .dropHover  ul,
+.main-question .toolbar .dropHover ul
+  top: 22px
+  a, li
+    +none-radius
+.main-question .toolbar .dropHover ul
+  top: 27px
 
-// ARTICLE TOOLBAR - dropdown for moderate
-//-------------------------------------------------------------------------------------------------------------------
-.main-question
-  .dropHover
-    a:hover
-      background-color: $lightOrange
-    ul
-      top: 30px !important
-      background-color: #fff
-      +outer-shadow
-      a, li
-        display: block
-        &:hover
-          background-color: $orange !important
-          color: #fff
-          cursor: pointer
-      li:hover a
-        color: #fff !important
+
