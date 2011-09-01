@@ -25,7 +25,8 @@
       margin: 0
       background-color: $lightOrange
 
-
+// Main Question - Answers
+//-------------------------------------------------------------------------------------------------------------------
 #answers-content-wrap
   clear: both
   h2
@@ -98,12 +99,15 @@
           float: left
           margin: 0 10px 0 0
 
+// Main Question - Answers messages
+//-------------------------------------------------------------------------------------------------------------------
 .followUp-content 
   display: block
   clear: both
   padding: 20px 30px
   overflow: hidden
   border-bottom: 1px solid #e5e5e5
+
 #close_reason 
   padding: 10px
   clear: both
@@ -113,3 +117,68 @@
   text-align: center
   background-color: #c00    
   font-size: 14px
+
+// Main Question - Action Panels 
+//-------------------------------------------------------------------------------------------------------------------
+#panel-forms
+  height: 100%
+  clear: both
+  padding: 0
+
+  form
+    display: none
+    margin: 0 auto
+    padding: 20px
+    width: 90%
+    overflow: hidden
+      
+.share_question
+  h1
+    font-size: 14px
+    margin: 0 0 5px 0
+    padding: 0
+    border: none
+  ul
+    overflow: hidden
+    width: 345px
+    margin: 0 auto
+
+    li
+      width: 24px
+      height: 24px
+      display: inline
+      a
+        text-indent: -9999px
+        display: block
+        overflow: hidden
+        width: 24px
+        height: 24px        
+        padding: 0 !important
+        margin: 0 5px 0 0
+        border: none
+        float: left
+        &:hover
+          background-color: transparent !important
+
+    li.facebook a
+      background: url("/images/share/facebook.png") 0 0 no-repeat
+    li.twitter a
+      background: url("/images/share/twitter.png") 0 0 no-repeat
+    li.identica a
+      background: url("/images/share/identi.png") 0 0 no-repeat
+    li.digg a
+      background: url("/images/share/digg.png") 0 0 no-repeat
+    li.blogger a
+      background: url("/images/share/blogger.png") 0 0 no-repeat
+    li.delicious a
+      background: url("/images/share/delicious.png") 0 0 no-repeat
+    li.linkedin a
+      background: url("/images/share/linkedin.png") 0 0 no-repeat
+    li.misterwong a
+      background: url("/images/share/mister-wong.png") 0 0 no-repeat
+    li.stumbleupon a
+      background: url("/images/share/stumbleupon.png") 0 0 no-repeat
+    li.googlebuzz a
+      background: url("/images/share/google-buzz.png") 0 0 no-repeat
+    li.friendster a
+      background: url("/images/share/frinedster.png") 0 0 no-repeat

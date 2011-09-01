@@ -23,6 +23,7 @@ section
 #main-content-wrap
   margin-bottom: 3px
   background-color: #fff
+  zoom: 1
   +normal-radius
   article
     padding: 20px 20px 15px 20px
@@ -40,3 +41,17 @@ section
     h2
       &:first-letter
         text-transform: uppercase
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+    
+.index
+  .questions .content-tabs .questions a,
+  .answers .content-tabs .answers a,
+  .unanswered .content-tabs .unanswered a,
+  .activities .content-tabs .activities a 
+    background-color: $lightOrange
