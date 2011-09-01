@@ -16,9 +16,6 @@ var Questions = {
     $(".article-actions").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
     }});
-    if(typeof(Effects) !== 'undefined'){
-      Effects.initialize();
-    }
     Rewards.initialize();
     Editor.initialize();
     Votes.initialize_on_question();

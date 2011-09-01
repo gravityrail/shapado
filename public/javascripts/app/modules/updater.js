@@ -45,6 +45,9 @@ var Updater = {
         container: '#main-content-wrap',
         success: function(data) {
           if(refreshed) {
+            if(typeof(Effects) !== 'undefined'){
+              Effects.initialize();
+            }
             Updater.setup_loading_icon();
             if(current == 'question') {
               Questions.initialize_on_show();
