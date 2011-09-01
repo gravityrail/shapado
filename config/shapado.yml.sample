@@ -16,6 +16,7 @@ base: &common
   enable_i18n: false
   default_timezone: "Tokyo"
   ssl: false
+  googl_api_key: YOUR_GOOGL_API_KEY_HERE
 
   smtp:
     activate: false

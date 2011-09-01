@@ -9,6 +9,9 @@ var Questions = {
   initialize_on_index: function() {
     Ui.navigate_shortcuts($(".questions-index"), ".Question");
     $(".questions .Question .article-actions").shapadoToolbar();
+    if(typeof(Effects) !== 'undefined'){
+      Effects.initialize();
+    }
   },
   initialize_on_show: function() {
     Ui.hide_comments_form();

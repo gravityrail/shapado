@@ -7,9 +7,9 @@
     - if logged_in?
       %li
         = link_to t("questions.answer.add_comment"), new_question_comment_path(question, answer), :class => "Answer-commentable", "data-commentable"=>answer.id
-      %li
-        = link_to t("questions.show.follow_up"), new_question_path(:original_question_id => question.id, :original_answer_id => @answer.id), :class => "pjax", :"data-layout" => "new-question"
-
+      - if (answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer))
+        %li
+          = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
       - if current_user.mod_of?(question.group) || current_user.can_modify?(question)
         %li
           - unless question.accepted && !question.subjetive
@@ -43,15 +43,14 @@
       %li
         = link_to answer.banned ? t("questions.show.unban", :default => "Unban") : t("questions.show.ban"), banning_moderate_answer_path(answer), :class => "ban-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
 
-
-    %li.more.current
-      = link_to t('layouts.manage.actions'), "#"
-      %ul
-        - if logged_in? && (answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer))
+    - if logged_in?
+      %li.more.current
+        = link_to t('layouts.manage.actions'), "#"
+        %ul
           %li
-            = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
-        - if logged_in? && (current_user.can_modify?(answer) || current_user.mod_of?(question.group))
-          %li
-            = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
+            = link_to t("questions.show.follow_up"), new_question_path(:original_question_id => question.id, :original_answer_id => @answer.id), :class => "pjax", :"data-layout" => "new-question"
+          - if (current_user.can_modify?(answer) || current_user.mod_of?(question.group))
+            %li
+              = link_to t("scaffold.destroy"), question_answer_path(question.id, answer.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
   .article-forms.clear
 .clear

@@ -10,6 +10,8 @@ class Activity
   field :scope, :type => Hash
   field :login, :type => String
 
+  field :times, :type => Integer, :default => 1
+
   field :group_id, :type => String
   referenced_in :group
 
@@ -41,7 +43,7 @@ class Activity
     when "Question"
       url_helper.question_path(self.target_param, :host => domain)
     when "Answer"
-      url_helper.question_answer_path(self.target_info["question_param"], self.target_param, :host => domain)
+      url_helper.question_answer_path(:question_id => self.target_info["question_param"], :id =>  self.target_param, :host => domain)
     when "Page"
       url_helper.page_path(self.target_param, :host => domain)
     when "User"

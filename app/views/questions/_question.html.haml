@@ -42,7 +42,7 @@
           - if logged_in? && question.follower?(current_user)
             = link_to t('global.unfollow'), unfollow_question_path(question), :class => 'unfollow-q toggle-action', "data-undo" =>  follow_question_path(question), "data-title" => t("questions.show.follow_tooltip"), :title => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.follow')
           - elsif !logged_in? || !question.follower?(current_user)
-            = link_to t('global.follow'), follow_question_path(question), :title => t("questions.show.follow_tooltip"), :class => 'follow-q toggle-action', "data-undo" =>  unfollow_question_path(question), "data-title" => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.unfollow')
+            = link_to t('global.follow'), follow_question_path(question), :title => t("questions.show.follow_tooltip"), :class => 'follow-q toggle-action', "data-undo" =>  unfollow_question_path(question), "data-title" => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.unfollow'), "rel" => 'nofollow'
 
         %li
           =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")

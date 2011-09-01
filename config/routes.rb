@@ -76,7 +76,7 @@ Rails.application.routes.draw do
 
   resources :announcements do
     collection do
-      post :hide
+      get :hide
     end
   end
 

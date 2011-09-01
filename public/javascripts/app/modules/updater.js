@@ -44,6 +44,9 @@ var Updater = {
         url: $(this).attr("href"),
         container: '#main-content-wrap',
         success: function(data) {
+          if(typeof(Effects) !== 'undefined'){
+            Effects.initialize();
+          }
           if(refreshed) {
             if(typeof(Effects) !== 'undefined'){
               Effects.initialize();

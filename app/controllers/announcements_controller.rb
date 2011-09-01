@@ -8,8 +8,7 @@ class AnnouncementsController < ApplicationController
   # GET /announcements
   # GET /announcements.json
   def index
-    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).
-                                                 page(params["page"])
+    @announcements = current_group.announcements.order_by(["updated_at", "desc"]).page(params["page"])
 
     @announcement = Announcement.new
 
@@ -59,7 +58,7 @@ class AnnouncementsController < ApplicationController
     session[:announcement_hide_time] = Time.zone.now
 
     respond_to do |format|
-      format.html { redirect_to root_path }
+      format.html { redirect_to :back }
       format.js { render :json => {:status => "ok"} }
     end
   end

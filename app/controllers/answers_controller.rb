@@ -1,5 +1,5 @@
 class AnswersController < ApplicationController
-  before_filter :login_required, :except => [:show, :create, :index]
+  before_filter :login_required, :except => [:show, :create, :index, :history, :diff]
   before_filter :check_permissions, :only => [:destroy, :create]
   before_filter :check_update_permissions, :only => [:edit, :update, :revert]
 
@@ -88,7 +88,7 @@ class AnswersController < ApplicationController
         @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
-            flash[:notice] = "The user is already registered, please log in"
+            flash[:notice] = "The user is already registered, please log in" #i18n
             return create_draft!
           else
             @answer.user = @user
@@ -113,6 +113,7 @@ class AnswersController < ApplicationController
         Jobs::Activities.async.on_create_answer(@answer.id).commit!
         Jobs::Answers.async.on_create_answer(@question.id, @answer.id, link).commit!
 
+        @question.answer_added!
         sweep_question(@question) # TODO move to magent
         html = ""
         if params[:facebook]
@@ -142,10 +143,15 @@ class AnswersController < ApplicationController
         errors.merge!(@answer.user.errors) if @answer.user && @answer.user.anonymous && !@answer.user.valid?
         puts errors.full_messages
 
-        flash.now[:error] = errors.full_messages
-        format.html{redirect_to question_path(@question)}
+        format.html{
+          flash[:error] = errors.full_messages
+          redirect_to question_path(@question)
+        }
         format.json { render :json => errors, :status => :unprocessable_entity }
-        format.js {render :json => {:success => false, :message => flash.now[:error] }.to_json }
+        format.js {
+          flash.now[:error] = errors.full_messages
+          render :json => {:success => false, :message => flash.now[:error] }.to_json
+        }
       end
     end
   end
@@ -196,12 +202,11 @@ class AnswersController < ApplicationController
     if @answer.user_id == current_user.id
       @answer.user.update_reputation(:delete_answer, current_group)
     end
+    Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
     sweep_answer(@answer)
     @answer.destroy
     @question.answer_removed!
     sweep_question(@question)
-
-    Jobs::Activities.async.on_destroy_answer(current_user.id, @answer.attributes).commit!
 
     respond_to do |format|
       format.html { redirect_to(question_path(@question)) }

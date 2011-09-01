@@ -22,7 +22,7 @@ class Notifier < ActionMailer::Base
     @question = question
     @group = group
     @following = following
-
+    @domain = group.domain
     mail(:to => user.email, :from => from_email(group),
          :subject => @subject,
          :date => Time.now,
@@ -140,7 +140,7 @@ class Notifier < ActionMailer::Base
     @group = group
     @language = language_for(user)
     set_locale @language
-    mail(:to => followed.email ,
+    mail(:to => user.email ,
          :from => from_email(group),
          :subject => I18n.t("mailers.notifications.follow.subject",
                             :login => @follower.login,

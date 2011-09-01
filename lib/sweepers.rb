@@ -25,6 +25,7 @@ module Sweepers
     expire_fragment_for("question", question.id)
     expire_fragment_for("question_answers", question.id)
     expire_fragment_for("questions")
+    expire_fragment_for("widgets")
   end
 
   def sweep_new_users(group)

@@ -155,7 +155,7 @@ class User
                   :_id.in => user_ids}
 
     if group_id = options[:group_id]
-      conditions[:"group_ids"] = {:$in => group_id}
+      conditions[:"group_ids"] = {:$in => [group_id]}
     end
 
     User.only([:email, :login, :name, :language]).where(conditions)
@@ -348,7 +348,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def favorites(opts = {})
-    Answer.where(opts.merge(:favoriter_ids.in => id))
+    Answer.where(opts.merge(:favoriter_ids.in => [id]))
   end
 
   def logged!(group = nil)
@@ -518,9 +518,15 @@ Time.zone.now ? 1 : 0)
 
   def followers(scope = {})
     conditions = {}
+
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
-    conditions[:"group_ids"] = {:$in => scope[:group_id]} if scope[:group_id]
-    User.where(conditions.merge(:_id.in => self.friend_list.follower_ids)) # FIXME mongoid
+
+    conditions[:group_ids] = {:$in => [scope[:group_id]]} if scope[:group_id]
+
+    if !self.friend_list.follower_ids.blank?
+      conditions.merge!(:_id => {:$in => self.friend_list.follower_ids})
+    end
+    User.where(conditions)
   end
 
   def following
