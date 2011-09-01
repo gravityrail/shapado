@@ -1,58 +1,47 @@
-//content/admin/_members.sass
-.members
-  #manage_members
-    form
-      margin: 0 auto -20px auto
+.members-controller
+  .members 
+    width: 700px
+    h1
+      margin: 30px 0 30px 30px
+    ul li
       overflow: hidden
-      .field
-        width: 300px
+      padding: 20px 30px
+      position: relative
+      .role
+        position: absolute
+        right: 45px
+        padding: 5px 10px  
+        background-color: #c00
+        color: #fff
+        +normal-radius
+      .stats
+        width: 90px
         float: left
-        margin-right: 20px
-      .select-role
-        width: 110px
-        margin: 0 10px 0 0
-      .buttons
-        margin: 17px 0 0 0
+        p
+          margin-bottom: 3px
+          font-size: 11px
+      .user-info
         float: left
-
-  ul li
-    overflow: hidden
-    padding: 20px 30px
-    margin-top: 20px
-    form
-      margin: 0
-      padding: 0
-      width: auto
-      float: right
-      .field
-        float: left
-        padding: 0
+        width: auto !important
+        h2 a
+          color: #000
+        p.description
+          margin: 5px 0
+          font-size: 11px
+        small
+          font-style: italic
+          font-size: 12px
+          margin: 0 !important
+      form
         margin: 0
-    .user-info
-      float: left
-      width: 50%
-      padding-left: 30px
-
-      h2 a
-        font-size: 22px
-        font-weight: bold
-        margin-bottom: 3px
-        display: block
-      p.description
-        margin-bottom: 5px !important
-        font-size: 11px
-        border: 0px !important
-        padding: 0 !important
-
-      small
-        font-style: italic
-        font-size: 12px
-        margin: 0 !important
-
-    .stats
-      width: 90px
-      float: left
-      p
-        float: left
-        margin-bottom: 5px
-        font-size: 11px !important
+        padding: 0
+        width: auto
+        float: right
+        .field
+          padding: 0
+          margin: 0
+          float: left
+          select
+            width: auto
+            margin: 0 10px 0 0
+      

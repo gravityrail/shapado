@@ -33,7 +33,7 @@ form
 
   select, 
   form input[type=file]
-    height: 24px
+    height: 28px  !important
     line-height: $xl
 
   textarea
@@ -53,7 +53,6 @@ form
     padding: 4px
     font-size: $s
     line-height: $l
-    height: 18px
     color: #444
     border: 1px solid #ccc 
     +small-radius
@@ -98,7 +97,7 @@ form
 
     input
       float: left
-      width: 15px
+      width: 15px !important
       margin-right: 5px
 
   .column
@@ -172,9 +171,10 @@ form
         float: left
         padding: 7px
         display: block
-    small
-      display: block
-      clear: both
+  small
+    display: block
+    clear: both
+    margin: 5px 0 0 0
 
   .manage-domain
     list-style-type: decimal !important
@@ -284,3 +284,66 @@ input[type=submit], input.save, .add_attachment
           &:hover
             background-color: $orange 
             color: #fff
+
+// New group form
+//-------------------------------------------------------------------------------------------------------------------                
+.groups-controller
+  #main-content-wrap 
+    h1
+      margin: 30px
+    form
+      .domain
+        small
+          float: left !important
+          font-size: 13px !important
+          line-height: 20px
+      .buttons
+        margin: 0 50px 30px 0
+        
+// Group properties form
+//-------------------------------------------------------------------------------------------------------------------    
+.properties .properties
+  width: 545px
+  h1
+    margin: 30px 0 30px 30px
+  .buttons
+    margin: 0 40px 30px 0 
+    
+// Group properties form
+//------------------------------------------------------------------------------------------------------------------- 
+.domain
+  .properties 
+    width: 700px
+    form
+      margin: 0 50px
+      
+// Acces form
+//------------------------------------------------------------------------------------------------------------------- 
+.access  
+  #main-content-wrap
+    h1
+      margin: 30px 0 30px 30px
+      width: 700px
+    form
+      h2
+        border-bottom: 1px solid #f1f1f1
+        margin: 0 0 20px 0
+        padding: 0px 0 5px 0
+        font-size: 14px
+        display: block
+      .settings, .providers
+        margin: 0 50px
+      .settings
+        margin-bottom: 40px
+        select
+          width: 200px
+          margin: 10px 60px
+      .providers
+        .field
+          float: left !important
+          margin: 0
+          label
+            width: 150px
+      .buttons
+        margin: 0 40px 30px 0     
+   

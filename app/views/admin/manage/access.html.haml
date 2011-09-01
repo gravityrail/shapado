@@ -6,44 +6,45 @@
   = f.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "access", :tab => @active_subtab)
 
-  %h1
-    = t("groups.form.access")
-
-  .field
-    .checkbox
-      = f.label :forum, t('forum', :scope => "activerecord.attributes.group"), :class => "radio"
-      = f.check_box :forum, :class => "checkbox"
-
-  .field
-    .checkbox
-      = f.label :signup_type, t('signup_type', :scope => "activerecord.attributes.group"), :class => "label"
-      = f.select :signup_type, [[t('.signup_all'),'all'],[t('.signup_noemail'), 'noemail'],[t('.signup_social'), 'social'],[t('.signup_email'),'email only']], :selected => 'all', :class => "select"
-  .field
-    .checkbox
-      = f.label :registered_only, t('registered_only', :scope => "activerecord.attributes.group"), :class => "radio"
-      = f.check_box :registered_only, :class => "checkbox"
-  .field
-    .checkbox
-      = f.label :enable_anonymous, t('enable_anonymous', :scope => "activerecord.attributes.group"), :class => "radio"
-      = f.check_box :enable_anonymous, :class => "checkbox"
-
-  .field
-    .checkbox
-      = f.label :has_adult_content, t('may_contain_adult_content', :scope => "activerecord.attributes.group"), :class => "radio"
-      = f.check_box :has_adult_content, :class => "checkbox"
-
-  %h1
-    =t("groups.form.auth_providers")
-  .field
-    .checkbox
-      =f.label :allow_any_openid, t('active_record.attributes.group.allow_any_openid'), :class => "radio"
-      =f.check_box :allow_any_openid, :class => "checkbox"
-
-  -Multiauth.providers.each do |provider, opts|
+  .settings
+    %h2= t("groups.form.access")
     .field
       .checkbox
-        =label_tag provider, provider.titleize, :class => "radio"
-        =check_box_tag :"group[auth_providers][]", provider, current_group.auth_providers.include?(provider), :class => "checkbox"
+        = f.label :forum, t('forum', :scope => "activerecord.attributes.group"), :class => "radio"
+        = f.check_box :forum, :class => "checkbox"
+  
+    .field
+      .checkbox
+        = f.label :signup_type, t('signup_type', :scope => "activerecord.attributes.group"), :class => "label"
+        = f.select :signup_type, [[t('.signup_all'),'all'],[t('.signup_noemail'), 'noemail'],[t('.signup_social'), 'social'],[t('.signup_email'),'email only']], :selected => 'all', :class => "select"
+    .field
+      .checkbox
+        = f.label :registered_only, t('registered_only', :scope => "activerecord.attributes.group"), :class => "radio"
+        = f.check_box :registered_only, :class => "checkbox"
+    .field
+      .checkbox
+        = f.label :enable_anonymous, t('enable_anonymous', :scope => "activerecord.attributes.group"), :class => "radio"
+        = f.check_box :enable_anonymous, :class => "checkbox"
+  
+    .field
+      .checkbox
+        = f.label :has_adult_content, t('may_contain_adult_content', :scope => "activerecord.attributes.group"), :class => "radio"
+        = f.check_box :has_adult_content, :class => "checkbox"
+    .clear
+        
+  .providers      
+    %h2=t("groups.form.auth_providers")
+    .field
+      .checkbox
+        =f.label :allow_any_openid, t('active_record.attributes.group.allow_any_openid'), :class => "radio"
+        =f.check_box :allow_any_openid, :class => "checkbox"
+  
+    -Multiauth.providers.each do |provider, opts|
+      .field
+        .checkbox
+          =label_tag provider, provider.titleize, :class => "radio"
+          =check_box_tag :"group[auth_providers][]", provider, current_group.auth_providers.include?(provider), :class => "checkbox"
+    .clear
 
   .buttons
     =f.submit t('scaffold.update'), :class => "save"
