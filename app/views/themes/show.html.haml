@@ -23,20 +23,10 @@
   = I18n.t('themes.show.bg_image')
   = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
 
-= I18n.t('themes.show.view_bg')
-%div.display-color{:style => "background: ##{@theme.view_bg_color}"}
 
 = I18n.t('themes.show.view_fg')
-%div.display-color{:style => "background: ##{@theme.view_fg_color}"}
+%div.display-color{:style => "background: ##{@theme.view_bg_color}"}
 
-= I18n.t('themes.show.button_bg')
-%div.display-color{:style => "background: ##{@theme.button_bg_color}"}
+= I18n.t('themes.show.brand_color')
+%div.display-color{:style => "background: ##{@theme.brand_color}"}
 
-= I18n.t('themes.show.button_fg')
-%div.display-color{:style => "background: ##{@theme.button_fg_color}"}
-
-= I18n.t('themes.show.link_bg')
-%div.display-color{:style => "background: ##{@theme.link_fg_color}"}
-
-= I18n.t('themes.show.link_fg')
-%div.display-color{:style => "background: ##{@theme.link_bg_color}"}

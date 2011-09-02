@@ -1,14 +1,5 @@
 
 -@questions.each do |question|
-  %article
-    .user-data
-      By:
-      = link_to "dgfranciscorodriguez", "#"
-      %i [ Admin ]
-      =link_to "3 days ago", "#"
-
-
-    %h2
-      = link_to h(question.title), question_path(question)
+  = render "questions/question", :question => question
 
 = paginate @questions
