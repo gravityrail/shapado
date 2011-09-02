@@ -1,19 +1,15 @@
-%meta{ :content => "text/html; charset=utf-8", "http-equiv" => "Content-Type" }
 %title
   &= page_title
-%meta{ :name => "description", :content => "" }
-%meta{ :name => "keywords", :content => "" }
+= render "shared/layout/css"
+
+= raw(current_group.head_tag)
+= render "shared/layout/meta"
+<!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
+= render "shared/layout/javascript"
 
 -if @feed_urls && !@feed_urls.empty?
   -@feed_urls.each do |title, url|
     %link{:rel=>"alternate", :type=>"application/atom+xml", :title => title, :href=> url}
 
-= include_javascripts(:base)
-= yield :js
-= stylesheet_link_tag 'compoments/dialog.css', :media => 'screen, projection'
-= stylesheet_link_tag 'jquery-ui.css', :media => 'screen, projection'
-= stylesheet_link_tag 'compiled/grid.css', :media => 'screen, projection'
-= stylesheet_link_tag 'compiled/application.css', :media => 'screen, projection'
-= stylesheet_link_tag 'compiled/markdown_editor.css', :media => 'screen, projection'
-= stylesheet_link_tag '/javascripts/openid/css/style.css', :media => 'screen, projection'
-= yield :css
+= csrf_meta_tag
+= render "shared/analytics"
