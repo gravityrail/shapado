@@ -59,3 +59,32 @@ ul.content-tabs
         font-size: 13px
         line-height: 30px
         color: #000
+
+// Admin nav
+//-------------------------------------------------------------------------------------------------------------------          
+.admin-nav 
+  border: 1px solid #e5e5e5
+  background-color: #f9f9f9
+  overflow: hidden
+  margin: 0 0 30px 0
+  +normal-radius
+  li
+    float:left
+    display: inline
+    margin: 0 0 -1px 0
+    a
+      padding: 10px 15px
+      border-right: 1px solid #f1f1f1
+      color: #999
+      display: block
+      float: left
+      font-size: 11px
+      text-transform: uppercase
+      &:hover
+        color: #000
+        background-color: #e5e5e5
+
+.invite .admin-nav .invite a,
+.invitations .admin-nav .invitations a
+  background-color: $lightOrange
+  color: #000        

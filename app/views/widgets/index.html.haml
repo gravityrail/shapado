@@ -26,17 +26,17 @@
       .buttons
         =submit_tag t("scaffold.add"), :class => "save"
       .clear
-    .zone
-      %p
-        %strong= t('widgets.index.zone')
-        .name
-          = t('widgets.index.header')
-      =image_tag "zone-header.gif"
     .type
       %p
         %strong= t('widgets.index.type')
         =t('widgets.index.name')
       =image_tag "zone-header.gif"
+    .zone
+      %p
+        %strong= t('widgets.index.zone')
+        = t('widgets.index.header')
+      =image_tag "zone-header.gif"
+
 
   .widget-containers
     -if @active_subtab != "external"

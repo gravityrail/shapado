@@ -3,29 +3,28 @@
 %p.description
   = t('invoices.index.description')
 
-#main-content-wrap
-  %table
-    %thead
+%table
+  %thead
+    %tr
+      %td= t('invoices.index.id')
+      %td= t('invoices.index.date')
+      %td= t('invoices.index.payed_at')
+      %td= t('invoices.index.group_domain')
+      %td= t('invoices.index.detail')
+      %td= t('invoices.index.amount')
+  %tbody
+    -@invoices.each do |invoice|
       %tr
-        %td= t('invoices.index.id')
-        %td= t('invoices.index.date')
-        %td= t('invoices.index.payed_at')
-        %td= t('invoices.index.group_domain')
-        %td= t('invoices.index.detail')
-        %td= t('invoices.index.amount')
-    %tbody
-      -@invoices.each do |invoice|
-        %tr
-          %td=link_to invoice.order_number, invoice_path(invoice)
-          %td
-            =invoice.created_at.to_s(:yml)
-          %td
-            =invoice.payed_at.to_s(:yml)
-          %td
-            =current_group.name
-          %td
-            =invoice.items.map{|i| i["name"]}.join(", ")
-          %td
-            ==US$#{invoice.total_in_dollars}
+        %td=link_to invoice.order_number, invoice_path(invoice)
+        %td
+          =invoice.created_at.to_s(:yml)
+        %td
+          =invoice.payed_at.to_s(:yml)
+        %td
+          =current_group.name
+        %td
+          =invoice.items.map{|i| i["name"]}.join(", ")
+        %td
+          ==US$#{invoice.total_in_dollars}
 
-  = paginate @invoices
+= paginate @invoices

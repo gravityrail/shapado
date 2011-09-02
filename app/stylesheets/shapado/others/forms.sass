@@ -302,55 +302,205 @@ input[type=submit], input.save, .add_attachment
         
 // Group properties form
 //-------------------------------------------------------------------------------------------------------------------    
-.properties .properties 
-  width: 545px
-  h1
-    margin: 30px 0 30px 30px
-  .buttons
-    margin: 0 40px 30px 0 
+.manage-layout
+  #main-content-wrap
+    padding: 30px
+    width: 545px 
+    h1
+      margin: 0 0 10px 0
+    p
+      margin: 0 0 30px 0
     
-// Group properties form
-//------------------------------------------------------------------------------------------------------------------- 
-.domain
-  .properties 
-    width: 700px
-    form
-      margin: 0 50px
+    .ui-tabs, .ui-tabs-nav
+      background: transparent
+      border: 0px
+      .ui-tabs-nav
+        border-bottom: 1px solid #e5e5e5
+        li
+          border-color: #e5e5e5
+          a
+            color: #666
+            font-size: 13px
+            font-weight: normal
+          &.ui-tabs-selected a
+            color: #000
+            font-weight: bold
+      .field
+        margin: 0
+        padding: 20px
+        input
+          width: 100%
+
+
       
 // Acces form
 //------------------------------------------------------------------------------------------------------------------- 
-.access  
-  #main-content-wrap 
-    h1
-      margin: 30px 0 30px 30px
+.manage-layout
+  .access  
     form
+      margin-top: 30px
       h2
         border-bottom: 1px solid #f1f1f1
         margin: 0 0 20px 0
         padding: 0px 0 5px 0
         font-size: 14px
         display: block
-      .settings, .providers
-        margin: 0 50px
       .settings
         margin-bottom: 40px
         select
           width: 200px
-          margin: 10px 60px
+          margin: 10px 40px
       .providers
         .field
           float: left !important
-          margin: 0
+          margin: 0 
           label
             width: 150px
-      .buttons
-        margin: 0 40px 30px 0     
+         
 
 // Invitations form
 //-------------------------------------------------------------------------------------------------------------------    
-.invitations
-  #main-content-wrap
-    h1
-      margin: 30px 0 10px 30px    
-    p
-      margin: 0px 0 30px 30px    
+.invitations-ready
+  margin: 0 30px 30px 30px
+  ul
+    margin: 0 0 0 20px
+    li
+      list-style: disc
+      overflow: hidden
+      margin: 0 0 30px 0
+      form
+        float: right
+        margin: 0 0 0 10px
+
+// Anouncements form
+//-------------------------------------------------------------------------------------------------------------------      
+.announcements
+  .date-msg select
+    width: auto
+
+  .list-announcements
+    margin: 50px 60px 0 60px
+    .each-announcement
+      li
+        overflow: hidden
+        padding: 20px
+        p
+          font-size: 14px
+          line-height: 17px
+          margin: 0 0 5px 0
+        .date
+          font-size: 11px
+          font-weight: normal !important
+          margin-bottom: 10px
+        .strong
+          font-weight: normal
+          font-style: italic !important
+        a
+          padding: 5px 10px
+          float: right
+
+.announcement
+  padding: 15px
+  background-color: #fffee6
+  margin-bottom: 5px
+  +normal-radius   
+
+// Requirements form
+//-------------------------------------------------------------------------------------------------------------------     
+.manage-layout
+  .widgets
+    width: 100% !important
+.widgets-admin
+  .select-widget
+    background-color: #fff8e6
+    padding: 20px
+    margin: 0 0 20px 0
+    overflow: hidden
+    form
+      float: left
+      margin: 0 30px 0 0
+      .field
+        float: left
+        margin: 0 0 10px 0
+        select
+          width: auto
+          float: left
+          margin: 0 10px 0 0
+      .buttons
+        float: left
+        margin: 16px 0 0 0
+
+    .zone, .type
+      float: left
+      width: 100px
+      margin: 0 10px 0 0
+      img
+        width: 60px
+      p
+        color: #000
+        margin: 0 0 10px 0 !important
+        strong
+          font-weight: bold
+          color: #000
+          margin: 0 0 5px 0
+          display: block
+
+
+
+  .container
+    .container
+      border: 1px solid #e5e5e5
+      margin-bottom: 20px
+      overflow: hidden
+      +normal-radius
+      
+    .header
+      font-size: 14px
+      line-height: 14px
+      font-weight: bold
+      padding: 10px 15px
+      background-color: #e5e5e5
+      margin-bottom: 10px
+      overflow: hidden
+      color: #000
+      display: block
+      clear: both
+      +normal-radius
+      a
+        float: right
+        color: $orange
+        font-weight: normal
+        
+    .top
+      padding: 10px
+      font-size: 12px
+      background-color: #fef9ed
+      border-bottom: 1px solid #e5e5e5
+      p
+        margin: 5px 0 !important
+        line-height: 15px
+      .img
+        width: 13px
+      form
+        margin: 0
+        input
+          margin: 6px 0 0 10px 
+        p
+          float: left
+          font-weight: bold
+          margin: 2px 10px 0 0
+    .widget
+      h3
+        border-bottom: 1px solid #e5e5e5
+
+  .navbar .container
+    width: 180px
+    float: left
+    margin-left: 5px
+    margin-right: 5px
+  .sidebar .container
+    width: 300px
+    float: left
+    margin-left: 5px
+    margin-right: 5px
+
