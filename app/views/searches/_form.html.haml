@@ -1,19 +1,10 @@
 .search-form
   = form_tag search_index_path, :method => :get do
-
-    .fields-search
-
-      .checkbox
-        = check_box_tag "answered"
-        = label_tag :answered, t("answered", :scope => "activerecord.attributes.question")
-
-        = check_box_tag "accepted"
-        = label_tag :accepted, t("accepted", :scope => "activerecord.attributes.question")
         
-      .field
-        = text_field_tag :q, params[:q], :class => "text_field title"
-        %small
-          = t("searches.form.tags_tip")
+    .field
+      = text_field_tag :q, params[:q], :class => "text_field title"
+      %small
+        = t("searches.form.tags_tip")
 
 
     -if current_group.languages.size>1 && AppConfig.enable_i18n
@@ -25,6 +16,17 @@
       = label_tag :by, t(:"global.asked_by"), :class => "label"
       = text_field_tag :user_id
 
+
+    .field
+      .checkbox
+        = check_box_tag "answered"
+        = label_tag :answered, t("answered", :scope => "activerecord.attributes.question")
+
+    .field
+      .checkbox
+        = check_box_tag "accepted"
+        = label_tag :accepted, t("accepted", :scope => "activerecord.attributes.question")
+          
     .buttons
       = submit_tag t("layouts.application.search"), :class => "save"
       = t("global.or")
