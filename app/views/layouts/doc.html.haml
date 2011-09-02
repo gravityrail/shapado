@@ -3,15 +3,19 @@
   %head
     %title
       &= page_title
-    = current_group.head_tag
-    = render :partial => "shared/layout/meta"
-    = render :partial => "shared/layout/javascript"
-    = render :partial => "shared/layout/css"
-    = render :partial => "shared/analytics"
+    = render "shared/layout/css"
 
-  %body
+    = raw(current_group.head_tag)
+    = render "shared/layout/meta"
+    <!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
+    = render "shared/layout/javascript"
+
+    = csrf_meta_tag
+    = render "shared/analytics"
+
+  %body{:class => bodys_class(params) << "doc-layout" }
+    = render :partial => "shared/topbar"
     #container
-      = render :partial => "shared/topbar"
       #header
         = current_group.head
         #doc-main-bar
@@ -20,7 +24,7 @@
               =link_to image_tag(logo_path(current_group), :class => "group_logo"), domain_url(:custom => current_group.domain)
             -else
               = image_tag("default_logo.png", :class => "group_logo")
-              
+
     #doc-wrapper
       #main-doc
         = yield
