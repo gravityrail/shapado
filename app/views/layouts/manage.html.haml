@@ -13,7 +13,7 @@
     = csrf_meta_tag
     = render "shared/analytics"
 
-  %body{:class => bodys_class(params) }
+  %body{:class => bodys_class(params) << " manage-layout" }
 
     #container{:class => @current_class}
 
@@ -52,7 +52,7 @@
               %ul
                 = tab_entry "li", t('.site'), manage_properties_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
                 - if current_user.owner_of? current_group
-                  = tab_entry "li", t('layouts.manage.invoices'), invoices_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                  = tab_entry "li", t('layouts.manage.invoices'), invoices_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage-invoices"}
                 = tab_entry "li", t('layouts.manage.domain'), manage_properties_tab_path(:tab => "domain"), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
 
           .widget-links.module
