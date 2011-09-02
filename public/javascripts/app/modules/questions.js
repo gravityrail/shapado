@@ -8,7 +8,7 @@ var Questions = {
   },
   initialize_on_index: function() {
     Ui.navigate_shortcuts($(".questions-index"), ".Question");
-    $(".questions .Question .article-actions").shapadoToolbar();
+    $(".Question .toolbar").shapadoToolbar();
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }
@@ -16,7 +16,7 @@ var Questions = {
   initialize_on_show: function() {
     Ui.hide_comments_form();
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
-    $(".article-actions").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
+    $(".answer .toolbar, .comment .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
     }});
     Rewards.initialize();
