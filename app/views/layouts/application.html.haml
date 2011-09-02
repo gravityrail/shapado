@@ -17,32 +17,32 @@
     #feedback-btn
       %p=link_to "Feedback", "/feedback"
     = render_app_config
-    #container{:class => @current_class}
-      %nav.top-bar
-        %ul.group-list.sf-menu
-          -if !current_group.isolate
-            = render "groups/top_grouplist"
-          -if !logged_in?
-          - else
-            -if current_user.admin_of?(current_group)
-              = render "admin/manage/top_admin"
-            -if current_user.mod_of?(current_group)
-              = render "admin/moderate/top_moderate"
-
-        .searcher
-          = form_tag search_index_path, :method => :get, :id => "search" do
-            .field
-              = text_field_tag :q, params[:q]
-
-        -if current_group.languages.count > 1
-          .languages_filter
-            = render "shared/language_filter"
-
+    %nav.top-bar
+      %ul.group-list.sf-menu
+        -if !current_group.isolate
+          = render "groups/top_grouplist"
         -if !logged_in?
-          /=multiauth_menu("Sign In")
-          = multiauth_dropdown("Sign In")
-        -else
-          = render "users/top_user"
+        - else
+          -if current_user.admin_of?(current_group)
+            = render "admin/manage/top_admin"
+          -if current_user.mod_of?(current_group)
+            = render "admin/moderate/top_moderate"
+
+      .searcher
+        = form_tag search_index_path, :method => :get, :id => "search" do
+          .field
+            = text_field_tag :q, params[:q]
+
+      -if current_group.languages.count > 1
+        .languages_filter
+          = render "shared/language_filter"
+
+      -if !logged_in?
+        /=multiauth_menu("Sign In")
+        = multiauth_dropdown("Sign In")
+      -else
+        = render "users/top_user"
+    #container{:class => @current_class}
       #columns
         = show_flash_messages(:class => "flash", :markdown => true)
         -(current_group.columns||["column1", "column2", "column3"]).each do |c|

@@ -13,33 +13,29 @@
     = csrf_meta_tag
     = render "shared/analytics"
 
-  %body{:class => bodys_class(params) << " manage-layout" }
-
-    #container{:class => @current_class}
-
-      %nav.top-bar
-        %ul.group-list.sf-menu
-          -if !current_group.isolate
-            = render "groups/top_grouplist"
-          -if !logged_in?
-          - else
-            -if current_user.admin_of?(current_group)
-              = render "admin/manage/top_admin"
-            -if current_user.mod_of?(current_group)
-              = render "admin/moderate/top_moderate"
-
-        .searcher
-          = form_tag search_index_path, :method => :get, :id => "search" do
-            .field
-              = text_field_tag :q, params[:q]
-
-
+  %body{:class => bodys_class(params) << "manage-layout" }
+    %nav.top-bar
+      %ul.group-list.sf-menu
+        -if !current_group.isolate
+          = render "groups/top_grouplist"
         -if !logged_in?
-          /=multiauth_menu("Sign In")
-          = multiauth_dropdown("Sign In")
-        -else
-          = render "users/top_user"
+        - else
+          -if current_user.admin_of?(current_group)
+            = render "admin/manage/top_admin"
+          -if current_user.mod_of?(current_group)
+            = render "admin/moderate/top_moderate"
 
+      .searcher
+        = form_tag search_index_path, :method => :get, :id => "search" do
+          .field
+            = text_field_tag :q, params[:q]
+
+      -if !logged_in?
+        /=multiauth_menu("Sign In")
+        = multiauth_dropdown("Sign In")
+      -else
+        = render "users/top_user"
+    #container{:class => @current_class}
       = show_flash_messages(:class => "flash", :markdown => true)
       #columns
         %section#column1.left-panel
