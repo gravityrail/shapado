@@ -110,6 +110,7 @@ a
   background-image: -webkit-linear-gradient(#c00, #a00)
   background-image: -o-linear-gradient(#c00, #a00)
   background-image: linear-gradient(#c00, #a00)
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c00), to(#a00))
 
 .message
   background-color: #0c0
@@ -257,11 +258,10 @@ form.history
   color: #fff
   background-color: #c00
 
-
 // Groups
 //========================================================================
 .groups_container
-  ul 
+  ul
     li
       border-top: 1px solid #e5e5e5
       .logo
@@ -286,19 +286,19 @@ form.history
           background-color: #fafafa
 
 // Members
-//-------------------------------------------------------------------------------------------------------------------          
+//-------------------------------------------------------------------------------------------------------------------
 .manage-layout
-  .members 
+  .members
     ul li
       .role
         background-color: #c00
-        color: #fff        
+        color: #fff
       .user-info
         h2 a
           color: #000
 
 // Pages
-//-------------------------------------------------------------------------------------------------------------------   
+//-------------------------------------------------------------------------------------------------------------------
 .page-list
   .title
     border-bottom: 1px solid #f1f1f1
@@ -330,8 +330,8 @@ form.history
 
 
 // Suggestions
-//-------------------------------------------------------------------------------------------------------------------  
-.suggestions 
+//-------------------------------------------------------------------------------------------------------------------
+.suggestions
   #main-content-wrap
     ul
       li
@@ -349,7 +349,7 @@ form.history
               color: #fff
 
 // Users
-//-------------------------------------------------------------------------------------------------------------------  
+//-------------------------------------------------------------------------------------------------------------------
 .userData
   ul.badges
     li
@@ -397,12 +397,12 @@ form.history
           text-shadow: 0 1px 3px #ccc
           a
             color: #000
-            
+
 // WIDGETS
-//-------------------------------------------------------------------------------------------------------------------          
+//-------------------------------------------------------------------------------------------------------------------
 //_wikis.sass, customLinks.sass
 //-------------------------------------------------------------------------------------------------------------------
-.widget-pages ul, .widget-links ul 
+.widget-pages ul, .widget-links ul
   li
     a
       &:hover
@@ -461,7 +461,7 @@ form.history
         color: #000
         &:hover
           color: $orange
-      .f-link a 
+      .f-link a
         &:hover
           background-color: $orange
           color: #fff
@@ -497,9 +497,9 @@ form.history
   border: 1px solid #e67347
 
 //  related_questions
-//-------------------------------------------------------------------------------------------------------------------      
-.widget-related_questions ul 
-  li 
+//-------------------------------------------------------------------------------------------------------------------
+.widget-related_questions ul
+  li
     a
       color: #000
       &:hover
@@ -517,7 +517,7 @@ form.history
           color: #000
           &:hover
             color: $orange
-        .f-link a 
+        .f-link a
           &:hover
             background-color: $orange
             color: #fff
@@ -534,6 +534,316 @@ form.history
       &:hover
         color: $orange
 
+// OTHERS
+// shapado/others/tags
+.tagwrapper
+  border: 1px solid #e5e5e5 !important
+
+.tags-list
+  .tags
+    .each
+      background-color: #f9f9f9
+    .tools
+      background-color: #e5e5e5
+      a
+        color: #999
+        &:hover
+          color: #000
+
+// shapado/others/content-nav
+ul.content-tabs
+  border-bottom: 1px solid #e5e5e5
+  li
+    a
+      color: #000
+      border-right: 1px solid #e5e5e5
+
+// FILTERS
+.filters
+  border-bottom: 1px solid #e5e5e5
+  ul li a
+    color #000
+
+// Admin nav
+.admin-nav
+  border: 1px solid #e5e5e5
+  background-color: #f9f9f9
+  li a
+    border-right: 1px solid #f1f1f1
+    color: #999
+    &:hover
+      color: #000
+      background-color: #e5e5e5
+
+.invite .admin-nav .invite a,
+.invitations .admin-nav .invitations a
+  background-color: $light_brand_color
+  color: #000
+
+// shapado/others/drop-menu
+.sf-menu, .drop-menu
+  ul
+    background-color: #fff !important
+    li
+      border-top: 1px solid #f1f1f1
+      &:hover
+        background-color: $brand_color
+        color: #fff
+        a
+          color: #fff
+      a:hover
+        background-color: $brand_color
+        color: #fff
+
+// shapado/others/editors
+.jHtmlArea, .ToolBar
+  iframe
+    background-color: #fff
+    border: 1px solid #ccc
+
+.question-form
+  .ToolBar
+    background-color: #f1f1f1
+    border: 1px solid #ccc
+
+div.jHtmlArea
+  .ToolBar ul
+    li
+      &:hover
+        border: solid 1px #ccc
+        background-color: #dddddd
+      a
+        &.highlighted
+          border: solid 1px #aaa
+          background-color: #bbb
+      &.separator
+        border-left: 1px solid #ccc
+        background-color: #fff
+
+.markdown_toolbar
+  border: 1px solid #d7d7d7
+  background-color: #F6F6F6
+  li
+    a
+      border: 1px solid #fff
+      border-right-color: #d7d7d7
+      &:hover
+        border-color: #900
+    a#markdown_help_button
+      border-left-color: #d7d7d7
+      border-right-color: #fff
+      &:hover
+        border-left-color: #900
+        border-right-color: #900
+
+// shapado/others/forms
+form
+  fieldset
+    color: #404040
+  ::-webkit-input-placeholder
+    color: #bfbfbf
+
+  input[type=text],
+  input[type=password],
+  textarea,
+  select,
+  .uneditable-input
+    color: #444
+    border: 1px solid #ccc
+
+  input[type=text],
+  input[type=password],
+  select,
+  textarea
+    -webkit-box-shadow: inset 0 1px 3px $light_brand_color
+    -moz-box-shadow: inset 0 1px 3px $light_brand_color
+    box-shadow: inset 0 1px 3px $light_brand_color
+
+  input[type=text]:focus,
+  form input[type=password]:focus,
+  form textarea:focus
+    color: #000
+    border-color: $brand_color
+    background-color: $lightyellow //FIXME
+
+  .error
+    background: #fae5e3
+
+input[type=submit], input.save, .add_attachment
+  background-color: $brand_color
+  background-image: -khtml-gradient(linear, left top, left bottom, from($brand_color), to($darkOrange))
+  background-image: -moz-linear-gradient($brand_color, $darkOrange)
+  background-image: -ms-linear-gradient($brand_color, $darkOrange)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand_color), color-stop(100%, $darkOrange))
+  background-image: -webkit-linear-gradient($brand_color, $darkOrange)
+  background-image: -o-linear-gradient($brand_color, $darkOrange)
+  background-image: linear-gradient($brand_color, $darkOrange)
+  color: #fff
+  border: 1px solid $darkOrange !important
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25)
+  &:hover
+    color: #fff
+
+.questions
+  form.question_comment_form, form.answer_comment_form
+    background-color: $light_brand_color
 
 
+.related_questions
+  #related_questions
+    article
+      h3
+        a:hover
+          background-color: $brand_color
+          color: #fff
 
+.manage-layout,
+  #main-content-wrap
+    .ui-tabs, .ui-tabs-nav
+      .ui-tabs-nav
+        border-bottom: 1px solid #e5e5e5
+        li
+          border-color: #e5e5e5
+          a
+            color: #666
+          &.ui-tabs-selected a
+            color: #000
+
+.manage-layout
+  .access
+    form
+      h2
+        border-bottom: 1px solid #f1f1f1
+
+.announcement
+  background-color: #fffee6
+
+.widgets-admin
+  .select-widget
+    background-color: #fff8e6
+    .zone, .type
+      p
+        color: #000
+        strong
+          color: #000
+  .container
+    .container
+      border: 1px solid #e5e5e5
+
+    .header
+      background-color: #e5e5e5
+      color: #000
+      a
+        color: $brand_color
+
+    .top
+      background-color: #fef9ed
+      border-bottom: 1px solid #e5e5e5
+    .widget
+      h3
+        border-bottom: 1px solid #e5e5e5
+
+// shapado/other/loading
+.loading-box
+  background: #222
+  color: #fff
+
+  h1
+    color: #fff
+
+// shapado/other/markdown
+.markdown
+  textarea
+    border: 1px solid #cccccc
+  pre
+    background-color: #fffbeb
+  ol
+    li
+      color: #666
+  code
+    background-color: #EEE
+  blockquote
+    background-color: #ddd
+
+
+// shapado/other/plans
+.plans
+  background-color: #fff
+  .each
+    border-top: 1px solid #e5e5e5
+    border-bottom: 1px solid #e5e5e5
+    border-right: 1px solid #e5e5e5
+    .header
+      border-bottom: 1px solid #e5e5e5
+      background-color: #f9f9f9
+      h2
+        text-shadow: 0 0 3px #999
+        color: #000
+    .price
+      color: #777
+    .button a
+      color: #666
+    .bottom
+      background-image: -moz-linear-gradient(top, #e5e5e5, #aaa)
+      background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #aaa),color-stop(1, #e5e5e5))
+
+      filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e5e5e5', endColorstr='#aaa')
+
+      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e5e5e5', endColorstr='#aaa')"
+      background-color: #aaa
+  .first
+    border: 1px solid #e5e5e5
+  .last
+    border: 1px solid #e5e5e5
+  p.free-offer
+    color: #888
+    a
+      color: #555
+  .selected
+    border: 1px solid #ed671f
+    background-color: #fff3d2
+    -moz-box-shadow: 0 0 5px #000
+    -webkit-box-shadow: 0 0 5px #000
+    o-box-shadow: 0 0 5px #000
+    khtml-box-shadow: 0 0 5px #000
+    box-shadow: 0 0 5px #000
+    .header
+      background-color: #ffcc66
+    .price
+      text-shadow: 0 1px 3px #000
+      color: #fff
+    .button a
+      color: #fff
+      text-shadow: 0 1px 1px #000
+    .bottom
+      background-image: -moz-linear-gradient(top, #ed671e, #b4490f)
+      background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #b4490f),color-stop(1, #ed671e))
+      filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ed671e', endColorstr='#b4490f')
+      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ed671e', endColorstr='#b4490f')"
+      background-color: #ed671e
+
+// shapado/others/quick-question
+.quick_question
+  background-color: #fff
+
+// shapado/others/toolbars.toolbar
+.toolbar ul li a
+  &:hover
+    background-color: $brand_color
+    color: #fff
+
+.index .toolbar .answers a
+  color: $brand_color
+  &:hover
+    background-color: $brand_color
+    color: #fff
+
+.main-question .toolbar
+  li
+    a
+      &:hover, &.active
+        background-color: $brand_color
+        color: #fff
+
+.answers-list article .toolbar
+  background-color: #f5f5f5

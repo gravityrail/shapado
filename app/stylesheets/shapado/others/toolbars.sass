@@ -1,6 +1,6 @@
 // Basics
 //-------------------------------------------------------------------------------------------------------------------
-.toolbar 
+.toolbar
   ul
     zoom: 1
     width: 100%
@@ -18,29 +18,20 @@
         display: block
         line-height: 24px
         +small-radius
-        &:hover
-          background-color: $orange
-          color: #fff
 
 // Article actions for home/lists/main content
 //-------------------------------------------------------------------------------------------------------------------
 .index .toolbar .answers a
-  color: $orange
   font-weight: bold
   margin: 0 5px 0 0
-  &:hover
-    color: #fff
 
 // Question actions triggers for show/hide panbels into question show
 //-------------------------------------------------------------------------------------------------------------------
-.main-question .toolbar 
-  li 
-    a 
+.main-question .toolbar
+  li
+    a
       padding: 2px 8px 1px 25px
       background: url("/images/question-toolbar-icons-small.png") 5px 7px  no-repeat
-      &:hover, &.active
-        background-color: $orange
-        color: #fff
       &:hover
         +none-radius
 
@@ -73,17 +64,17 @@
       &:hover, &.active
         background-position: 5px -49px
     &:hover a
-      background-position: 5px -49px    
+      background-position: 5px -49px
 
-  .followUp 
+  .followUp
     a
       background-position: 6px -606px
       &:hover, &:active
         background-position: 6px -580px
     &:hover a
       background-position: 6px -580px
-      
-  .close 
+
+  .close
     a
       background-position: 5px -357px !important
       &:hover, &.active, .close:hover a
@@ -96,7 +87,7 @@
     &:hover
       background-position: 5px -634px
 
-  .delete, .delete-q 
+  .delete, .delete-q
     a
       background-position: 5px -546px
       &:hover, &.active
@@ -104,14 +95,14 @@
     &:hover a
       background-position: 5px -518px
 
-  .edit-q 
+  .edit-q
     a
       background-position: 5px -305px
       &:hover, &.active
         background-position: 5px -282px
     &:hover a
       background-position: 5px -282px
-        
+
   .ban a
     background-position: 5px -170px
     &:hover, &.active, .ban:hover a
@@ -131,7 +122,6 @@
 // Article actions for each answer into main question
 //-------------------------------------------------------------------------------------------------------------------
 .answers-list article .toolbar
-  background-color: #f5f5f5
   float: right
   +normal-radius
 
