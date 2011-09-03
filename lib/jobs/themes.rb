@@ -30,6 +30,7 @@ $bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}';
 $view_bg_color: ##{theme.view_bg_color};
 $brand_color: ##{theme.brand_color};
 $fluid: #{theme.fluid};
+$bg_shadow:      #999;
 @
     end
   end

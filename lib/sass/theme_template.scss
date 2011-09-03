@@ -27,6 +27,17 @@
 }
 
 
+$darkOrange: #0f0; // FIXME: change to dark_brand_color
+// lightOrange, this color comes from brand color var
+$light_brand_color: $brand_color;
+
+@if lightness($brand_color) < 96% {
+  $light_brand_color: lighten($brand_color, 96% - lightness($brand_color)); }
+@else {
+  $light_brand_color: darken($brand_color, 10%); }
+
+$highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
+
 // LAYOUT
 //------------------------------------------------------------------------------
 @if($fluid) {
@@ -67,16 +78,8 @@ body {
 
 
 article.active {
-  background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
+  background-color: $highlighted_view_bg_color;
 }
-
-// lightOrange, this color comes from brand color var
-$light_brand_color: $brand_color;
-
-@if lightness($brand_color) < 96% {
-  $light_brand_color: lighten($brand_color, 96% - lightness($brand_color)); }
-@else {
-  $light_brand_color: darken($brand_color, 10%); }
 
 a {
   color: $fg_color;
@@ -749,7 +752,7 @@ form {
   form textarea:focus {
     color: $fg_color;
     border-color: $brand_color;
-    background-color: $lightyellow; }
+    background-color: $highlighted_view_bg_color; }
   .error {
     background: #fae5e3; } }
 
