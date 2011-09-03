@@ -397,3 +397,143 @@ form.history
           text-shadow: 0 1px 3px #ccc
           a
             color: #000
+            
+// WIDGETS
+//-------------------------------------------------------------------------------------------------------------------          
+//_wikis.sass, customLinks.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-pages ul, .widget-links ul 
+  li
+    a
+      &:hover
+        background-color: $orange
+        color: #fff
+    &.active a
+      background-color: $orange
+      color: #fff
+
+//_tags.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-tag_cloud
+  .active-tags
+    border-bottom: 1px dotted #f1f1f1
+    a
+      color: #c00
+    .remove_tag
+      background-color: #c00
+      color: #fff
+  .tag_cloud, .list_cloud
+    span
+      a
+        &:hover
+          background-color: $orange
+          color: #fff
+
+//_top_groups.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-top_groups
+  aside
+    .avatar
+      border: 1px solid #e5e5e5
+    .data
+      h3
+        small
+          color: #666
+
+//_top_users.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-top_users, .widget-users ul
+  li
+    .data
+      h5
+        a
+          color: #000
+        small
+          color: #666
+
+//_suggestions.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-suggestions
+  li
+    border-bottom: 1px dotted #f1f1f1
+    .info
+      .link a
+        color: #000
+        &:hover
+          color: $orange
+      .f-link a 
+        &:hover
+          background-color: $orange
+          color: #fff
+  img
+    border: 1px solid #e5e5e5
+
+//_badges.sass
+//-------------------------------------------------------------------------------------------------------------------
+.widget-badges ul, .widget-question_badges ul
+  li
+  .badge_item
+    a.badge
+      color: #000
+
+
+// *************************************************
+// *************************************************
+// This are the badges should not be change it by anyone!!!!!
+// *************************************************
+// *************************************************
+.gold .badge
+  background-image: -moz-linear-gradient(top,#fbd65f,#ffff7c)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#ffff7c),color-stop(1,#fbd65f))
+  border: 1px solid #fbd65f
+.silver .badge
+  background-image: -moz-linear-gradient(top,#c6c6c6,#e5e5e5)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e5e5e5),color-stop(1,#c6c6c6))
+  border: 1px solid #c6c6c6
+.bronze .badge
+  background-image: -moz-linear-gradient(top,#e67347,#f3a273)
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e67347),color-stop(1,#f3a273))
+  background-color: #e67347
+  border: 1px solid #e67347
+
+//  related_questions
+//-------------------------------------------------------------------------------------------------------------------      
+.widget-related_questions ul 
+  li 
+    a
+      color: #000
+      &:hover
+        color: $orange
+
+//  WIDGETS PER AREA
+//-------------------------------------------------------------------------------------------------------------------
+//  Header // Footer zones
+//-------------------------------------------------------------------------------------------------------------------
+.header-widgets, .footer-widgets
+  .widget-suggestions
+    li
+      .info
+        .link a
+          color: #000
+          &:hover
+            color: $orange
+        .f-link a 
+          &:hover
+            background-color: $orange
+            color: #fff
+    img
+      border: 1px solid #e5e5e5
+
+// MODULE
+//-------------------------------------------------------------------------------------------------------------------
+.module
+  h3
+  footer
+    border-top: 1px solid #f1f1f1
+    a
+      &:hover
+        color: $orange
+
+
+
+
