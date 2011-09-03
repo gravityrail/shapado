@@ -1,5 +1,7 @@
+$bg_color: #f2f2f2
+$fg_color: #404040
+$view_bg_color: #ffffff
 $brand_color: #ee681f
-$fg_color: #000
 
 $light_brand_color: $brand_color
 @if lightness($brand_color) < 96%
@@ -194,7 +196,7 @@ form.history
     table
       border: 1px solid #f1f1f1
       a
-        color: $orange
+        color: $brand_color
       td
         border-bottom: 1px solid #f1f1f1
         background-color: #fff
@@ -213,7 +215,7 @@ form.history
 .main-question
   .author
     a
-      color: $orange
+      color: $brand_color
   .stats a
     color: $brand_color
   #panel-forms
@@ -342,10 +344,10 @@ form.history
           .link
             color: #000
             &:hover
-              color: $orange
+              color: $brand_color
           .f-link a
             &:hover
-              background-color: $orange
+              background-color: $brand_color
               color: #fff
 
 // Users
@@ -362,13 +364,13 @@ form.history
       border: 1px solid #f1f1f1
     p
       a
-        color: $orange
+        color: $brand_color
   ul.profile-stats
     background-color: #f9f9f9
     border: 1px solid #e5e5e5
     li
       &.follow
-        background-color: $orange
+        background-color: $brand_color
         a
           color: #fff
 
@@ -406,10 +408,10 @@ form.history
   li
     a
       &:hover
-        background-color: $orange
+        background-color: $brand_color
         color: #fff
     &.active a
-      background-color: $orange
+      background-color: $brand_color
       color: #fff
 
 //_tags.sass
@@ -426,7 +428,7 @@ form.history
     span
       a
         &:hover
-          background-color: $orange
+          background-color: $brand_color
           color: #fff
 
 //_top_groups.sass
@@ -460,10 +462,10 @@ form.history
       .link a
         color: #000
         &:hover
-          color: $orange
+          color: $brand_color
       .f-link a
         &:hover
-          background-color: $orange
+          background-color: $brand_color
           color: #fff
   img
     border: 1px solid #e5e5e5
@@ -503,7 +505,7 @@ form.history
     a
       color: #000
       &:hover
-        color: $orange
+        color: $brand_color
 
 //  WIDGETS PER AREA
 //-------------------------------------------------------------------------------------------------------------------
@@ -516,10 +518,10 @@ form.history
         .link a
           color: #000
           &:hover
-            color: $orange
+            color: $brand_color
         .f-link a
           &:hover
-            background-color: $orange
+            background-color: $brand_color
             color: #fff
     img
       border: 1px solid #e5e5e5
@@ -532,7 +534,7 @@ form.history
     border-top: 1px solid #f1f1f1
     a
       &:hover
-        color: $orange
+        color: $brand_color
 
 // OTHERS
 // shapado/others/tags
