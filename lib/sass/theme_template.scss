@@ -25,6 +25,7 @@
   $fg_brand_color: #f2f2f2;
 }
 
+
 // LAYOUT
 //-------------------------------------------------------------------------------------------------------------------
 @if($fluid) {
@@ -63,6 +64,8 @@ body {
   }
 }
 
+
 article.active {
   background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
 }
+
