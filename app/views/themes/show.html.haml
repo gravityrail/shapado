@@ -12,21 +12,22 @@
 -if !@theme.ready
   = I18n.t('themes.show.not_ready')
 
-= I18n.t('themes.show.bg_color')
-
-%div.display-color{:style => "background: ##{@theme.bg_color}"}
-
-= I18n.t('themes.show.fg_color')
-%div.display-color{:style => "background: ##{@theme.fg_color}"}
-
--if !@theme.new? && @theme.has_bg_image?
-  = I18n.t('themes.show.bg_image')
-  = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
-
-
-= I18n.t('themes.show.view_fg')
-%div.display-color{:style => "background: ##{@theme.view_bg_color}"}
-
-= I18n.t('themes.show.brand_color')
-%div.display-color{:style => "background: ##{@theme.brand_color}"}
+%ul.details-theme
+  %li
+    %div.display-color{:style => "background: ##{@theme.bg_color}"}
+    = I18n.t('themes.show.bg_color')
+  %li
+    %div.display-color{:style => "background: ##{@theme.fg_color}"}
+    = I18n.t('themes.show.fg_color')
+  -if !@theme.new? && @theme.has_bg_image?
+    %li
+      = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
+      = I18n.t('themes.show.bg_image')
+  %li
+    %div.display-color{:style => "background: ##{@theme.view_bg_color}"}
+    = I18n.t('themes.show.view_fg')
+    
+  %li
+    %div.display-color{:style => "background: ##{@theme.brand_color}"}
+    = I18n.t('themes.show.brand_color')
 
