@@ -20,6 +20,7 @@
 // $brand_color color
 // $fluid boolean
 
+$fg_brand_color: $brand_color;
 @if(lightness($brand_color) > 50%) {
   $fg_brand_color: #222;
 } @else {
@@ -34,11 +35,17 @@ $dark_brand_color: $brand_color;
 
 // lightOrange, this color comes from brand color var
 $light_brand_color: $brand_color;
-
 @if lightness($brand_color) < 96% {
   $light_brand_color: lighten($brand_color, 96% - lightness($brand_color)); }
 @else {
   $light_brand_color: darken($brand_color, lightness($brand_color) - 96%); }
+
+
+$fg_light_brand_color: $fg_color;
+@if lightness($fg_color) > 20% {
+  $fg_light_brand_color: darken($fg_color, lightness($fg_color) - 20%); }
+@else {
+  $fg_light_brand_color: lighten($fg_color, 20% - lightness($fg_color));}
 
 $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
 
@@ -73,10 +80,14 @@ $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $
 
 // Body
 body {
+  color: $fg_color;
   @if($has_bg_image) {
     background: $bg_color url($bg_image_url) 0 0;
   } @else {
     background: $bg_color;
+  }
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: $fg_color;
   }
 }
 
@@ -108,12 +119,12 @@ a {
   .sf-menu {
     li {
       small {
-        color: darken($view_bg_color, 20%); }
+        color: darken($fg_color, 20%); }
       &:hover small, &:hover a small, a:hover small {
         color: $fg_color !important; }
       a {
         background-image: none;
-        color: $view_bg_color;
+        color: $fg_color;
         border-right: 1px solid darken($view_bg_color, 73%);
         border-left: 1px solid $fg_color;
         &:hover, &:hover a {
@@ -155,6 +166,7 @@ a {
 .module {
   background-color: $view_bg_color;
   h3 {
+    color: $fg_color;
     border-bottom: 1px solid darken($view_bg_color, 8.5%); } }
 
 // shapado/layout/columns
@@ -175,7 +187,8 @@ a {
   .answers .content-tabs .answers a,
   .unanswered .content-tabs .unanswered a,
   .activities .content-tabs .activities a {
-    background-color: $light_brand_color; } }
+    background-color: $light_brand_color;
+    color: $fg_light_brand_color; } }
 
 // shapado/layout/generals
 .notice {
@@ -296,26 +309,32 @@ form.history {
     color: $brand_color; }
   #panel-forms {
     form {
-      background-color: $light_brand_color; } } }
+      background-color: $light_brand_color;
+      color: $fg_light_brand_color;
+      a, label {
+        color: $fg_light_brand_color; } } } }
 
 #answers-content-wrap {
   h2 {
     border-top: 1px solid darken($view_bg_color, 10%); }
   .filters {
     border-top: 1px dotted darken($view_bg_color, 10%); }
-  h2, .filters {
-    background-color: $light_brand_color; }
+  .filters {
+    background-color: $light_brand_color;
+    color: $fg_light_brand_color;
+    a {
+      color: $fg_light_brand_color; } }
   .answers-list {
     article.solution {
       border-left: 5px solid #a2c538; } }
   .answer_vote_box {
     .vote_box button {
       &.negative {
-        background-color: #fafafa !important;
+        background-color: lighten($view_bg_color, 10%) !important;
         &:hover {
           background-color: #cc0000 !important; } }
       &.positive {
-        background-color: #fafafa !important;
+        background-color: lighten($view_bg_color, 10%) !important;
         &:hover {
           background-color: #a2c538 !important; } } } }
   .answer {
@@ -651,7 +670,10 @@ ul.content-tabs {
   li {
     a {
       color: $fg_color;
-      border-right: 1px solid darken($view_bg_color, 10%); } } }
+      border-right: 1px solid darken($view_bg_color, 10%);
+      &:hover {
+        background-color: $light_brand_color;
+        color: $fg_light_brand_color; } } } }
 
 // FILTERS
 .filters {
@@ -673,7 +695,7 @@ ul.content-tabs {
 .invite .admin-nav .invite a,
 .invitations .admin-nav .invitations a {
   background-color: $light_brand_color;
-  color: $fg_color; }
+  color: $fg_light_brand_color; }
 
 // shapado/others/drop-menu
 .sf-menu, .drop-menu {
@@ -733,21 +755,24 @@ div.jHtmlArea {
 
 // shapado/others/forms
 form {
+  label {
+    color: $fg_color; }
   fieldset {
-    color: #404040; }
+    color: lighten($fg_color, 5%); }
   ::-webkit-input-placeholder {
-    color: #bfbfbf; }
+    color: lighten($fg_color, 10%); }
   input[type=text],
   input[type=password],
   textarea,
   select,
   .uneditable-input {
-    color: #444444;
+    color: lighten($fg_color, 10%);
     border: 1px solid #cccccc; }
   input[type=text],
   input[type=password],
   select,
   textarea {
+    background: lighten($view_bg_color, 10%);
     -webkit-box-shadow: inset 0 1px 3px $light_brand_color;
     -moz-box-shadow: inset 0 1px 3px $light_brand_color;
     box-shadow: inset 0 1px 3px $light_brand_color; }
@@ -777,6 +802,7 @@ input[type=submit], input.save, .add_attachment {
 
 .questions {
   form.question_comment_form, form.answer_comment_form {
+    color: $fg_light_brand_color;
     background-color: $light_brand_color; } }
 
 .related_questions {
@@ -806,7 +832,7 @@ input[type=submit], input.save, .add_attachment {
         border-bottom: 1px solid darken($view_bg_color, 5%); } } } }
 
 .announcement {
-  background-color: #fffee6; }
+  background-color: $highlighted_view_bg_color; }
 
 .widgets-admin {
   .select-widget {
@@ -903,7 +929,7 @@ input[type=submit], input.save, .add_attachment {
 
 // shapado/others/quick-question
 .quick_question {
-  background-color: white; }
+  background-color: $view_bg_color; }
 
 // shapado/others/toolbars.toolbar
 .toolbar ul li a {
@@ -925,4 +951,4 @@ input[type=submit], input.save, .add_attachment {
         color: white; } } } }
 
 .answers-list article .toolbar {
-  background-color: #f5f5f5; }
+  background-color: lighten($view_bg_color, 10%); }
