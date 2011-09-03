@@ -160,7 +160,11 @@ class QuestionsController < ApplicationController
     add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     respond_to do |format|
-      format.html { Jobs::Questions.async.on_view_question(@question.id).commit!(5) }
+      format.html {
+        if @question.views_count >= 1000
+          Jobs::Questions.async.on_view_question(@question.id).commit!(5)
+        end
+      }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
       format.atom
