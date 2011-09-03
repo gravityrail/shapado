@@ -952,3 +952,28 @@ input[type=submit], input.save, .add_attachment {
 
 .answers-list article .toolbar {
   background-color: lighten($view_bg_color, 10%); }
+
+
+//Themes
+.themes-controller {
+  .details-theme {
+    li { 
+      div {
+        border: 1px solid darken($view_bg_color, 10%); } } }
+  .themes {
+    .theme {
+      border-top: 1px solid darken($view_bg_color, 10%);}
+      p, h2 {
+        a {
+          color: $brand_color;} }
+      .toolbar {
+        background-color: lighten($view_bg_color, 10%); } }
+  form {
+    .theme_colors {
+      .field {
+        .Icon {
+          border: 1px solid darken($view_bg_color, 10%);} } } }
+   }
+}          
+          
+          
