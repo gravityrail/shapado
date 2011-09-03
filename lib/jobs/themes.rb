@@ -28,14 +28,7 @@ $bg_color: ##{theme.bg_color};
 $fg_color: ##{theme.fg_color};
 $bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}';
 $view_bg_color: ##{theme.view_bg_color};
-$view_fg_color: ##{theme.view_fg_color};
-
-$button_bg_color: ##{theme.button_bg_color};
-$button_fg_color: ##{theme.button_fg_color};
-
-$use_link_bg_color: #{theme.use_link_bg_color};
-$link_bg_color: ##{theme.link_bg_color};
-$link_fg_color: ##{theme.link_fg_color};
+$brand_color: ##{theme.brand_color};
 $fluid: #{theme.fluid};
 @
     end

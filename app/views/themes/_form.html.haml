@@ -27,37 +27,15 @@
     = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image
 
+%fieldset
+  .field
+    = form.label I18n.t('themes.show.brand_color')
+    = form.text_field :brand_color, :type => "color"
+
   .field
     = form.label I18n.t('themes.show.view_bg')
     = form.text_field :view_bg_color, :type => "color"
 
-  .field
-    = form.label I18n.t('themes.show.view_fg')
-    = form.text_field :view_fg_color, :type => "color"
-
-%fieldset
-  .field
-    = form.label I18n.t('themes.show.button_bg')
-    = form.text_field :button_bg_color, :type => "color"
-
-  .field
-    = form.label I18n.t('themes.show.button_fg')
-    = form.text_field :button_fg_color, :type => "color"
-
-
-%fieldset
-  .field
-    = form.label  I18n.t('themes.show.link_bg')
-    = form.text_field :link_bg_color, :type => "color"
-
-  .field{:style => "margin-bottom: 3px"}
-    .checkbox
-      = form.label  I18n.t('themes.show.use_link_bg')
-      = form.check_box :use_link_bg_color
-
-  .field
-    = form.label I18n.t('themes.show.link_fg')
-    = form.text_field :link_fg_color, :type => "color"
 
 .field
   = form.label :custom_css
