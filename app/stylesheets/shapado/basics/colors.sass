@@ -1,97 +1,103 @@
-$bg_color: #f2f2f2
-$fg_color: #404040
-$view_bg_color: #ffffff
-$brand_color: #ee681f
+$bg_color: 				#f3f3f3      //  Background of the site, remember to use a color that give you contrast with modules background
+$fg_color: 				#000         //  Color for texts and links with out actions, suggestion black, but you can use what ever you want but darker 
+$view_bg_color: 		#fff   //  Background for each block on the app, suggestion white or at least really light in order to have a good contrast
+$brand_color: 			#c00         //  Principal color from branding, must representative
+$bg_shadow: 			#999
 
+// lightOrange, this color comes from brand color var
 $light_brand_color: $brand_color
 @if lightness($brand_color) < 96%
   $light_brand_color: lighten($brand_color, 96% - lightness($brand_color))
 @else
   $light_brand_color: darken($brand_color, 10%)
 
+body
+  background-color: $bg_color
 a
-  color: #000
+  color: $fg_color
   &:visited
-    color: #555
+    color: lighten($fg_color, 30%)
   &:hover
-    color: #000
+    color: $fg_color
 
 // HEADER - dropdowns for groups, user link, and admin/moderate
 //-------------------------------------------------------------------------------------------------------------------
 .top-bar
-  background: #222
-  background-color: #222222
+  background: darken($view_bg_color, 83%)
+  background-color: darken($view_bg_color, 83%)
   background-repeat: repeat-x
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#333333), to(#222222))
-  background-image: -moz-linear-gradient(#333333, #222222)
-  background-image: -ms-linear-gradient(#333333, #222222)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #222222))
-  background-image: -webkit-linear-gradient(#333333, #222222)
-  background-image: -o-linear-gradient(#333333, #222222)
-  background-image: linear-gradient(#333333, #222222)
+  background-image: -khtml-gradient(linear, left top, left bottom, from(darken($view_bg_color, 80%)), to(darken($view_bg_color, 83%)))
+  background-image: -moz-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
+  background-image: -ms-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken($view_bg_color, 80%)), color-stop(100%, darken($view_bg_color, 83%)))
+  background-image: -webkit-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
+  background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
+  background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
+  
   .sf-menu
     li
       small
-        color: #bbb
-      &:hover small, &:hover a small
-        color: #000
+        color: darken($view_bg_color, 20%)
+      &:hover small, &:hover a small, a:hover small
+        color: $fg_color !important
       a
         background-image: none
-        color: #fff
-        border-right: 1px solid #444
-        border-left: 1px solid #000
+        color: $view_bg_color
+        border-right: 1px solid darken($view_bg_color, 73%)
+        border-left: 1px solid $fg_color
         &:hover, &:hover a
-          background-color: #333
+          background-color: darken($view_bg_color, 70%)
     ul
-      background-color: #fff
+      background-color: $view_bg_color !important
       li
-        border-top: 1px solid #f1f1f1
+        border-top: 1px solid darken($view_bg_color, 5%)
       a
-        color: #000
+        color: $fg_color
         &:hover
           background-color: $brand_color
-          color: #fff
+          color: #fff !important
     .sf-sub-indicator
       background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat
 
   .searcher
-    border-right: 1px solid #444
+    border-right: 1px solid darken($view_bg_color, 73%)
+    border-left: 1px solid $fg_color
     form#search input
       background: #fff url(/images/search-icon.png) 5px 50% no-repeat
   .languages_filter
-    border-left: 1px solid #000
+    border-left: 1px solid $fg_color
 
 // FEEDBACK btn
 //-------------------------------------------------------------------------------------------------------------------
 #feedback-btn
   p a
-    background-color: #ff6600
-    -moz-box-shadow: 0 2px 7px #999
-    -webkit-box-shadow: 0 2px 7px #999
-    o-box-shadow: 0 2px 7px #999
-    khtml-box-shadow: 0 2px 7px #999
-    box-shadow: 0 2px 7px #999
-    border: 3px solid #fff
+    background-color: $brand_color
+    -moz-box-shadow: 0 2px 7px $bg_shadow
+    -webkit-box-shadow: 0 2px 7px $bg_shadow
+    -o-box-shadow: 0 2px 7px $bg_shadow
+    -khtml-box-shadow: 0 2px 7px $bg_shadow
+    -box-shadow: 0 2px 7px $bg_shadow
+    border: 3px solid $view_bg_color
     color: #fff
 
 // MODULE each module container
 //-------------------------------------------------------------------------------------------------------------------
 .module
-  background-color: #fff
+  background-color:  $view_bg_color
   h3
-    border-bottom: 1px solid #e9e9e9
+    border-bottom: 1px solid darken($view_bg_color, 8.5%)
 
 // shapado/layout/columns
 #main-content-wrap
-  background-color: #fff
+  background-color: $view_bg_color
   article
-    border-bottom: 1px solid #e5e5e5
+    border-bottom: 1px solid darken($view_bg_color, 10%)
     .user-data
-      color: #888
+      color:  ligthen( $fg_color, 53%)
       a
-        color: #888
+        color:  ligthen( $fg_color, 53%)
         &.user-link
-          color: #ee681f
+          color: $brand_color
 
 // This must be refixed need some improvements from html side
 .index
@@ -126,7 +132,7 @@ a
 
 .pagination
   span a
-    background-color: #f1f1f1
+    background-color: darken($view_bg_color, 5%)
     &:hover
       background-color: $brand_color
       color: #fff
@@ -150,7 +156,7 @@ a
     time
       color: #999
     p
-      color: #888
+      color:  ligthen( $fg_color, 53%)
     .actions
       a
         color: #c00
@@ -159,13 +165,13 @@ a
 
 form.history
   ul li
-    border-bottom: 1px solid #e5e5e5
+    border-bottom: 1px solid darken($view_bg_color, 10%)
     .top
-      background-color: #f1f1f1
+      background-color: darken($view_bg_color, 5%)
     p.current
       color: #c00
     .tag-list li strong
-      color: #000
+      color: $fg_color
 
 .buttons-history
   input
@@ -173,43 +179,42 @@ form.history
 
 .diff-view
   .navform
-    background-color: #f1f1f1
+    background-color: darken($view_bg_color, 5%)
 
 // shapado/modules/invoices
 .invoices
-  background-color: #fff
   .thanks
     background-color: #ffefa7
     p
       a
-        color: #c00
+        color: $brand_color
       &.action
         em
-          color: #c00
+          color: $brand_color
   table
-    border: 1px solid #ffa622
+    border: 1px solid darken($view_bg_color, 8.5%)
     tfoot
       background-color: #fff2e1
 
 .manage-layout
   .invoices
     table
-      border: 1px solid #f1f1f1
+      border: 1px solid darken($view_bg_color, 5%)
       a
         color: $brand_color
       td
-        border-bottom: 1px solid #f1f1f1
-        background-color: #fff
+        border-bottom: 1px solid darken($view_bg_color, 5%)
+        background-color: $view_bg_color
       tr:nth-child(2n) td
-        background-color: #f9f9f9
+        background-color: darken($view_bg_color, 3%)
       thead, thead tr td
-        background-color: #e5e5e5 !important
+        background-color: darken($view_bg_color, 10%) !important
         td
-          border: 1px solid #ccc
+          border: 1px solid darken($view_bg_color, 20%)
 
 .each-invoice
   h2
-    border-bottom: 1px solid #ff6600
+    border-bottom: 1px solid $brand_color
 
 // shapado/modules/invoices
 .main-question
@@ -224,9 +229,9 @@ form.history
 
 #answers-content-wrap
   h2
-    border-top: 1px solid #e5e5e5
+    border-top: 1px solid darken($view_bg_color, 10%)
   .filters
-    border-top: 1px dotted #e5e5e5
+    border-top: 1px dotted darken($view_bg_color, 10%)
 
   h2, .filters
     background-color: $light_brand_color
@@ -236,25 +241,25 @@ form.history
   .answer_vote_box
     .vote_box button
       &.negative
-        background-color: #fafafa
+        background-color: #fafafa !important
         &:hover
-          background-color: #c00
+          background-color: #c00 !important
       &.positive
-        background-color: #fafafa
+        background-color: #fafafa !important
         &:hover
-          background-color: #a2c538
+          background-color: #a2c538 !important
   .answer
     .author
       *
-        color: #666
+        color: lighten($fg_color, 40%)
       .user-data a
         color: $brand_color
       img
-        border: 1px solid #e5e5e5
+        border: 1px solid darken($view_bg_color, 10%)
 
 
 .followUp-content
-  border-bottom: 1px solid #e5e5e5
+  border-bottom: 1px solid darken($view_bg_color, 10%)
 
 #close_reason
   color: #fff
@@ -265,15 +270,15 @@ form.history
 .groups_container
   ul
     li
-      border-top: 1px solid #e5e5e5
+      border-top: 1px solid darken($view_bg_color, 10%)
       .logo
-        border: 1px solid #e5e5e5
+        border: 1px solid darken($view_bg_color, 10%)
       .actions
-        background-color: #f9f9f9
+        background-color: lighten($fg_color, 97%)
         a
-          color: #999
+          color: lighten($fg_color, 60%)
           &:hover
-            color: #000
+            color: $fg_color
 
 
 // Main Question - Answers
@@ -297,38 +302,37 @@ form.history
         color: #fff
       .user-info
         h2 a
-          color: #000
+          color: $fg_color
 
 // Pages
 //-------------------------------------------------------------------------------------------------------------------
 .page-list
   .title
-    border-bottom: 1px solid #f1f1f1
+    border-bottom: 1px solid darken($view_bg_color, 5%)
   .page
-    border-bottom: 1px solid #f1f1f1
+    border-bottom: 1px solid darken($view_bg_color, 5%)
     h2
       a
-        color: #000
+        color: $fg_color
     .actions-bar
-      background-color: #f6f6f6
+      background-color: darken($view_bg_color, 5%)
       li
         a
           &:hover
-            background-color: #f60 !important
             color: #fff !important
 
 .generic-text
   p
     strong
-      color: #000
+      color: $fg_color
 .chat
   background-color: #fff
 .display-color
-  border: 1px solid #666
+  border: 1px solid darken($view_bg_color, 5%)
 
 .ui-widget-header
   background: #ccc !important
-  color: #000 !important
+  color: $fg_color !important
 
 
 // Suggestions
@@ -337,12 +341,12 @@ form.history
   #main-content-wrap
     ul
       li
-        border-top: 1px solid #e5e5e5
+        border-top: 1px solid darken($view_bg_color, 10%)
         img
-          border: 1px solid #f1f1f1
+          border: 1px solid darken($view_bg_color, 5%)
         .info
           .link
-            color: #000
+            color: $fg_color
             &:hover
               color: $brand_color
           .f-link a
@@ -356,18 +360,18 @@ form.history
   ul.badges
     li
       a
-        color: #000
+        color: $fg_color
 
 .userHistory
   .userDescription
     img
-      border: 1px solid #f1f1f1
+      border: 1px solid darken($view_bg_color, 5%)
     p
       a
         color: $brand_color
   ul.profile-stats
-    background-color: #f9f9f9
-    border: 1px solid #e5e5e5
+    background-color: darken($view_bg_color, 5%)
+    border: 1px solid darken($view_bg_color, 10%)
     li
       &.follow
         background-color: $brand_color
@@ -376,29 +380,28 @@ form.history
 
 .userHistory
   .badges
-    border-top: 1px solid #e5e5e5
-    border-bottom: 1px solid #e5e5e5
+    border-top: 1px solid darken($view_bg_color, 10%)
+    border-bottom: 1px solid darken($view_bg_color, 10%)
 
 .list-users
   .top
-    border-bottom: 1px solid #e5e5e5
+    border-bottom: 1px solid darken($view_bg_color, 10%)
   .filters
     li
       strong
       a
         color: #999
         &:hover, a.active
-          color: #000
-          border-bottom-color: #f60
+          color: $fg_color
+          border-bottom-color: $brand_color
   ul.items
     li
-      border-bottom: 1px solid #e5e5e5
+      border-bottom: 1px solid darken($view_bg_color, 10%)
       .summary
         img
         h3
-          text-shadow: 0 1px 3px #ccc
           a
-            color: #000
+            color: $fg_color
 
 // WIDGETS
 //-------------------------------------------------------------------------------------------------------------------
@@ -418,7 +421,7 @@ form.history
 //-------------------------------------------------------------------------------------------------------------------
 .widget-tag_cloud
   .active-tags
-    border-bottom: 1px dotted #f1f1f1
+    border-bottom: 1px dotted darken($view_bg_color, 5%)
     a
       color: #c00
     .remove_tag
@@ -436,7 +439,7 @@ form.history
 .widget-top_groups
   aside
     .avatar
-      border: 1px solid #e5e5e5
+      border: 1px solid darken($view_bg_color, 10%)
     .data
       h3
         small
@@ -449,7 +452,7 @@ form.history
     .data
       h5
         a
-          color: #000
+          color: $fg_color
         small
           color: #666
 
@@ -457,10 +460,10 @@ form.history
 //-------------------------------------------------------------------------------------------------------------------
 .widget-suggestions
   li
-    border-bottom: 1px dotted #f1f1f1
+    border-bottom: 1px dotted darken($view_bg_color, 5%)
     .info
       .link a
-        color: #000
+        color: $fg_color
         &:hover
           color: $brand_color
       .f-link a
@@ -468,7 +471,7 @@ form.history
           background-color: $brand_color
           color: #fff
   img
-    border: 1px solid #e5e5e5
+    border: 1px solid darken($view_bg_color, 10%)
 
 //_badges.sass
 //-------------------------------------------------------------------------------------------------------------------
@@ -476,7 +479,7 @@ form.history
   li
   .badge_item
     a.badge
-      color: #000
+      color: $fg_color
 
 
 // *************************************************
@@ -485,25 +488,47 @@ form.history
 // *************************************************
 // *************************************************
 .gold .badge
-  background-image: -moz-linear-gradient(top,#fbd65f,#ffff7c)
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#ffff7c),color-stop(1,#fbd65f))
   border: 1px solid #fbd65f
+  background-color: #fbd65f;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c));
+  background-image: -moz-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -ms-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c));
+  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -o-linear-gradient(#fbd65f, #ffff7c);
+  background-image: linear-gradient(#fbd65f, #ffff7c);
+  
 .silver .badge
-  background-image: -moz-linear-gradient(top,#c6c6c6,#e5e5e5)
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e5e5e5),color-stop(1,#c6c6c6))
   border: 1px solid #c6c6c6
+  background-color: #c6c6c6;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5));
+  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5));
+  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: linear-gradient(#c6c6c6, #e5e5e5);
+  
 .bronze .badge
-  background-image: -moz-linear-gradient(top,#e67347,#f3a273)
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#e67347),color-stop(1,#f3a273))
-  background-color: #e67347
   border: 1px solid #e67347
+  background-color: #e67347;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273));
+  background-image: -moz-linear-gradient(#e67347, #f3a273);
+  background-image: -ms-linear-gradient(#e67347, #f3a273);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273));
+  background-image: -webkit-linear-gradient(#e67347, #f3a273);
+  background-image: -o-linear-gradient(#e67347, #f3a273);
+  background-image: linear-gradient(#e67347, #f3a273);
 
 //  related_questions
 //-------------------------------------------------------------------------------------------------------------------
 .widget-related_questions ul
   li
     a
-      color: #000
+      color: $fg_color
       &:hover
         color: $brand_color
 
@@ -516,7 +541,7 @@ form.history
     li
       .info
         .link a
-          color: #000
+          color: $fg_color
           &:hover
             color: $brand_color
         .f-link a
@@ -524,14 +549,14 @@ form.history
             background-color: $brand_color
             color: #fff
     img
-      border: 1px solid #e5e5e5
+      border: 1px solid darken($view_bg_color, 10%)
 
 // MODULE
 //-------------------------------------------------------------------------------------------------------------------
 .module
   h3
   footer
-    border-top: 1px solid #f1f1f1
+    border-top: 1px solid darken($view_bg_color, 5%)
     a
       &:hover
         color: $brand_color
@@ -539,55 +564,55 @@ form.history
 // OTHERS
 // shapado/others/tags
 .tagwrapper
-  border: 1px solid #e5e5e5 !important
+  border: 1px solid darken($view_bg_color, 10%) !important
 
 .tags-list
   .tags
     .each
       background-color: #f9f9f9
     .tools
-      background-color: #e5e5e5
+      background-color: darken($view_bg_color, 10%)
       a
         color: #999
         &:hover
-          color: #000
+          color: $fg_color
 
 // shapado/others/content-nav
 ul.content-tabs
-  border-bottom: 1px solid #e5e5e5
+  border-bottom: 1px solid darken($view_bg_color, 10%)
   li
     a
-      color: #000
-      border-right: 1px solid #e5e5e5
+      color: $fg_color
+      border-right: 1px solid darken($view_bg_color, 10%)
 
 // FILTERS
 .filters
-  border-bottom: 1px solid #e5e5e5
+  border-bottom: 1px solid darken($view_bg_color, 10%)
   ul li a
-    color #000
+    color: $fg_color
 
 // Admin nav
 .admin-nav
-  border: 1px solid #e5e5e5
+  border: 1px solid darken($view_bg_color, 10%)
   background-color: #f9f9f9
   li a
-    border-right: 1px solid #f1f1f1
+    border-right: 1px solid darken($view_bg_color, 5%)
     color: #999
     &:hover
-      color: #000
-      background-color: #e5e5e5
+      color: $fg_color
+      background-color: darken($view_bg_color, 10%)
 
 .invite .admin-nav .invite a,
 .invitations .admin-nav .invitations a
   background-color: $light_brand_color
-  color: #000
+  color: $fg_color
 
 // shapado/others/drop-menu
 .sf-menu, .drop-menu
   ul
     background-color: #fff !important
     li
-      border-top: 1px solid #f1f1f1
+      border-top: 1px solid darken($view_bg_color, 5%)
       &:hover
         background-color: $brand_color
         color: #fff
@@ -605,7 +630,7 @@ ul.content-tabs
 
 .question-form
   .ToolBar
-    background-color: #f1f1f1
+    background-color: darken($view_bg_color, 5%)
     border: 1px solid #ccc
 
 div.jHtmlArea
@@ -664,7 +689,7 @@ form
   input[type=text]:focus,
   form input[type=password]:focus,
   form textarea:focus
-    color: #000
+    color: $fg_color
     border-color: $brand_color
     background-color: $lightyellow //FIXME
 
@@ -703,19 +728,19 @@ input[type=submit], input.save, .add_attachment
   #main-content-wrap
     .ui-tabs, .ui-tabs-nav
       .ui-tabs-nav
-        border-bottom: 1px solid #e5e5e5
+        border-bottom: 1px solid darken($view_bg_color, 10%)
         li
-          border-color: #e5e5e5
+          border-color: darken($view_bg_color, 10%)
           a
             color: #666
           &.ui-tabs-selected a
-            color: #000
+            color: $fg_color
 
 .manage-layout
   .access
     form
       h2
-        border-bottom: 1px solid #f1f1f1
+        border-bottom: 1px solid darken($view_bg_color, 5%)
 
 .announcement
   background-color: #fffee6
@@ -725,25 +750,25 @@ input[type=submit], input.save, .add_attachment
     background-color: #fff8e6
     .zone, .type
       p
-        color: #000
+        color: $fg_color
         strong
-          color: #000
+          color: $fg_color
   .container
     .container
-      border: 1px solid #e5e5e5
+      border: 1px solid darken($view_bg_color, 10%)
 
     .header
-      background-color: #e5e5e5
-      color: #000
+      background-color: darken($view_bg_color, 10%)
+      color: $fg_color
       a
         color: $brand_color
 
     .top
       background-color: #fef9ed
-      border-bottom: 1px solid #e5e5e5
+      border-bottom: 1px solid darken($view_bg_color, 10%)
     .widget
       h3
-        border-bottom: 1px solid #e5e5e5
+        border-bottom: 1px solid darken($view_bg_color, 10%)
 
 // shapado/other/loading
 .loading-box
@@ -772,56 +797,49 @@ input[type=submit], input.save, .add_attachment
 .plans
   background-color: #fff
   .each
-    border-top: 1px solid #e5e5e5
-    border-bottom: 1px solid #e5e5e5
-    border-right: 1px solid #e5e5e5
+    border-top: 1px solid darken($view_bg_color, 10%)
+    border-bottom: 1px solid darken($view_bg_color, 10%)
+    border-right: 1px solid darken($view_bg_color, 10%)
     .header
-      border-bottom: 1px solid #e5e5e5
+      border-bottom: 1px solid darken($view_bg_color, 10%)
       background-color: #f9f9f9
       h2
         text-shadow: 0 0 3px #999
-        color: #000
+        color: $fg_color
     .price
       color: #777
     .button a
       color: #666
     .bottom
-      background-image: -moz-linear-gradient(top, #e5e5e5, #aaa)
-      background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #aaa),color-stop(1, #e5e5e5))
-
-      filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e5e5e5', endColorstr='#aaa')
-
-      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#e5e5e5', endColorstr='#aaa')"
-      background-color: #aaa
+      background-image: -moz-linear-gradient(top, darken($view_bg_color, 10%), #aaa)
+      background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #aaa),color-stop(1, darken($view_bg_color, 10%)))
   .first
-    border: 1px solid #e5e5e5
+    border: 1px solid darken($view_bg_color, 10%)
   .last
-    border: 1px solid #e5e5e5
+    border: 1px solid darken($view_bg_color, 10%)
   p.free-offer
-    color: #888
+    color:  ligthen( $fg_color, 53%)
     a
-      color: #555
+      color: lighten($fg_color, 33%)
   .selected
     border: 1px solid #ed671f
     background-color: #fff3d2
-    -moz-box-shadow: 0 0 5px #000
-    -webkit-box-shadow: 0 0 5px #000
-    o-box-shadow: 0 0 5px #000
-    khtml-box-shadow: 0 0 5px #000
-    box-shadow: 0 0 5px #000
+    -moz-box-shadow: 0 0 5px $fg_color
+    -webkit-box-shadow: 0 0 5px $fg_color
+    -o-box-shadow: 0 0 5px $fg_color
+    -khtml-box-shadow: 0 0 5px $fg_color
+    box-shadow: 0 0 5px $fg_color
     .header
       background-color: #ffcc66
     .price
-      text-shadow: 0 1px 3px #000
+      text-shadow: 0 1px 3px $fg_color
       color: #fff
     .button a
       color: #fff
-      text-shadow: 0 1px 1px #000
+      text-shadow: 0 1px 1px $fg_color
     .bottom
       background-image: -moz-linear-gradient(top, #ed671e, #b4490f)
       background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #b4490f),color-stop(1, #ed671e))
-      filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ed671e', endColorstr='#b4490f')
-      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#ed671e', endColorstr='#b4490f')"
       background-color: #ed671e
 
 // shapado/others/quick-question
