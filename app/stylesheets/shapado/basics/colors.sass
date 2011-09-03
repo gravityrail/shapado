@@ -1,8 +1,8 @@
-$bg_color: 				#f3f3f3      //  Background of the site, remember to use a color that give you contrast with modules background
-$fg_color: 				#000         //  Color for texts and links with out actions, suggestion black, but you can use what ever you want but darker 
-$view_bg_color: 		#fff   //  Background for each block on the app, suggestion white or at least really light in order to have a good contrast
-$brand_color: 			#c00         //  Principal color from branding, must representative
-$bg_shadow: 			#999
+$bg_color:       #f3f3f3      //  Background of the site, remember to use a color that give you contrast with modules background
+$fg_color:       #000         //  Color for texts and links with out actions, suggestion black, but you can use what ever you want but darker
+$view_bg_color:  #fff         //  Background for each block on the app, suggestion white or at least really light in order to have a good contrast
+$brand_color:    #c00         //  Principal color from branding, must representative
+$bg_shadow:      #999
 
 // lightOrange, this color comes from brand color var
 $light_brand_color: $brand_color
@@ -21,7 +21,7 @@ a
     color: $fg_color
 
 // HEADER - dropdowns for groups, user link, and admin/moderate
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .top-bar
   background: darken($view_bg_color, 83%)
   background-color: darken($view_bg_color, 83%)
@@ -33,7 +33,7 @@ a
   background-image: -webkit-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
   background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
   background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%))
-  
+
   .sf-menu
     li
       small
@@ -68,7 +68,7 @@ a
     border-left: 1px solid $fg_color
 
 // FEEDBACK btn
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 #feedback-btn
   p a
     background-color: $brand_color
@@ -81,7 +81,7 @@ a
     color: #fff
 
 // MODULE each module container
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .module
   background-color:  $view_bg_color
   h3
@@ -266,7 +266,7 @@ form.history
   background-color: #c00
 
 // Groups
-//========================================================================
+//------------------------------------------------------------------------------
 .groups_container
   ul
     li
@@ -282,7 +282,7 @@ form.history
 
 
 // Main Question - Answers
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 #answers-content-wrap
   .answers-list
     .answer_vote_box
@@ -293,7 +293,7 @@ form.history
           background-color: #fafafa
 
 // Members
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .manage-layout
   .members
     ul li
@@ -305,7 +305,7 @@ form.history
           color: $fg_color
 
 // Pages
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .page-list
   .title
     border-bottom: 1px solid darken($view_bg_color, 5%)
@@ -336,7 +336,7 @@ form.history
 
 
 // Suggestions
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .suggestions
   #main-content-wrap
     ul
@@ -355,7 +355,7 @@ form.history
               color: #fff
 
 // Users
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .userData
   ul.badges
     li
@@ -404,9 +404,9 @@ form.history
             color: $fg_color
 
 // WIDGETS
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //_wikis.sass, customLinks.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-pages ul, .widget-links ul
   li
     a
@@ -418,7 +418,7 @@ form.history
       color: #fff
 
 //_tags.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-tag_cloud
   .active-tags
     border-bottom: 1px dotted darken($view_bg_color, 5%)
@@ -435,7 +435,7 @@ form.history
           color: #fff
 
 //_top_groups.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-top_groups
   aside
     .avatar
@@ -446,7 +446,7 @@ form.history
           color: #666
 
 //_top_users.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-top_users, .widget-users ul
   li
     .data
@@ -457,7 +457,7 @@ form.history
           color: #666
 
 //_suggestions.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-suggestions
   li
     border-bottom: 1px dotted darken($view_bg_color, 5%)
@@ -474,7 +474,7 @@ form.history
     border: 1px solid darken($view_bg_color, 10%)
 
 //_badges.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-badges ul, .widget-question_badges ul
   li
   .badge_item
@@ -489,42 +489,42 @@ form.history
 // *************************************************
 .gold .badge
   border: 1px solid #fbd65f
-  background-color: #fbd65f;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c));
-  background-image: -moz-linear-gradient(#fbd65f, #ffff7c);
-  background-image: -ms-linear-gradient(#fbd65f, #ffff7c);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c));
-  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c);
-  background-image: -o-linear-gradient(#fbd65f, #ffff7c);
-  background-image: linear-gradient(#fbd65f, #ffff7c);
-  
+  background-color: #fbd65f
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c))
+  background-image: -moz-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -ms-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c))
+  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -o-linear-gradient(#fbd65f, #ffff7c)
+  background-image: linear-gradient(#fbd65f, #ffff7c)
+
 .silver .badge
   border: 1px solid #c6c6c6
-  background-color: #c6c6c6;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5));
-  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5);
-  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5));
-  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5);
-  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5);
-  background-image: linear-gradient(#c6c6c6, #e5e5e5);
-  
+  background-color: #c6c6c6
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5))
+  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5))
+  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: linear-gradient(#c6c6c6, #e5e5e5)
+
 .bronze .badge
   border: 1px solid #e67347
-  background-color: #e67347;
-  background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273));
-  background-image: -moz-linear-gradient(#e67347, #f3a273);
-  background-image: -ms-linear-gradient(#e67347, #f3a273);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273));
-  background-image: -webkit-linear-gradient(#e67347, #f3a273);
-  background-image: -o-linear-gradient(#e67347, #f3a273);
-  background-image: linear-gradient(#e67347, #f3a273);
+  background-color: #e67347
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273))
+  background-image: -moz-linear-gradient(#e67347, #f3a273)
+  background-image: -ms-linear-gradient(#e67347, #f3a273)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273))
+  background-image: -webkit-linear-gradient(#e67347, #f3a273)
+  background-image: -o-linear-gradient(#e67347, #f3a273)
+  background-image: linear-gradient(#e67347, #f3a273)
 
 //  related_questions
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .widget-related_questions ul
   li
     a
@@ -533,9 +533,9 @@ form.history
         color: $brand_color
 
 //  WIDGETS PER AREA
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 //  Header // Footer zones
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .header-widgets, .footer-widgets
   .widget-suggestions
     li
@@ -552,7 +552,7 @@ form.history
       border: 1px solid darken($view_bg_color, 10%)
 
 // MODULE
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 .module
   h3
   footer
