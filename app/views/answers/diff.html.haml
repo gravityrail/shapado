@@ -2,7 +2,7 @@
   .navtitle
     =t("wiki.diff.title", :prev => @prev, :curr => @curr)
 
-=render :partial => "wiki/diff", :locals => {:post => @answer, :prev => @prev, :curr => @curr, :scope => "activerecord.attributes.answer" }
+=render :partial => "wiki/diff", :locals => {:post => @answer, :prev => @prev, :curr => @curr, :scope => "activerecord.attributes.answer", :versioned_keys => [:body] }
 
 %br
 .form

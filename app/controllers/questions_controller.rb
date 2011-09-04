@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :login_required, :except => [:new, :create, :index, :show, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random]
+  before_filter :login_required, :except => [:new, :create, :index, :show, :related_questions, :tags_for_autocomplete, :retag, :retag_to, :random, :history, :diff]
   before_filter :admin_required, :only => [:move, :move_to]
   before_filter :moderator_required, :only => [:close]
   before_filter :check_permissions, :only => [:solve, :unsolve, :destroy]
@@ -160,7 +160,11 @@ class QuestionsController < ApplicationController
     add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
     respond_to do |format|
-      format.html { Jobs::Questions.async.on_view_question(@question.id).commit!(5) }
+      format.html {
+        if @question.views_count >= 1000
+          Jobs::Questions.async.on_view_question(@question.id).commit!(5)
+        end
+      }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }
       format.atom
