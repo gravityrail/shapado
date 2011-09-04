@@ -63,6 +63,8 @@ class Group
 
   field :enable_latex, :type => Boolean, :default => false
 
+  field :sso_url, :type => String
+
   # can be:
   # * 'all': email, openid, oauth
   # * 'noemail': openid and oauth only

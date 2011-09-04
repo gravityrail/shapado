@@ -111,6 +111,9 @@ Devise.setup do |config|
   # role declared in your routes.
   config.default_scope = :user
 
+  require 'sso_strategy'
+  config.omniauth :sso_strategy
+
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
   # :html, should redirect to the sign in page when the user does not have
