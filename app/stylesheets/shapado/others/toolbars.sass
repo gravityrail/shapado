@@ -1,0 +1,131 @@
+// Basics
+//-------------------------------------------------------------------------------------------------------------------
+.toolbar
+  ul
+    zoom: 1
+    width: 100%
+    &:before, &:after
+      display: table
+      content: ""
+    &:after
+      clear: both
+    li
+      display: inline
+      line-height: 24px
+      a
+        float: left
+        padding: 0 5px
+        display: block
+        line-height: 24px
+        +small-radius
+
+// Article actions for home/lists/main content
+//-------------------------------------------------------------------------------------------------------------------
+.index .toolbar .answers a
+  font-weight: bold
+  margin: 0 5px 0 0
+
+// Question actions triggers for show/hide panbels into question show
+//-------------------------------------------------------------------------------------------------------------------
+.main-question .toolbar
+  li
+    a
+      padding: 2px 8px 1px 25px
+      background: url("/images/question-toolbar-icons-small.png") 5px 7px  no-repeat
+      &:hover
+        +none-radius
+
+  .answer a
+    background-position: 5px 7px
+    &:hover, .answer:hover a
+      background-position: 5px -23px
+
+  .follow
+    .follow-q
+      background-position: 5px -261px
+    .follow-q:hover, &:hover .follow-q
+      background-position: 5px -241px
+    .unfollow-q
+      background-position: 5px -218px
+    .unfollow-q:hover, &:hover .unfollow-q
+      background-position: 5px -194px
+
+  .share_on a
+    background-position: 5px -121px
+    &:hover, &.active, .share_on:hover .share_on a
+      background-position: 5px -97px
+
+  .more a
+    background-position: 5px -380px
+
+  .activity
+    a
+      background-position: 5px -73px
+      &:hover, &.active
+        background-position: 5px -49px
+    &:hover a
+      background-position: 5px -49px
+
+  .followUp
+    a
+      background-position: 6px -606px
+      &:hover, &:active
+        background-position: 6px -580px
+    &:hover a
+      background-position: 6px -580px
+
+  .close
+    a
+      background-position: 5px -357px !important
+      &:hover, &.active, .close:hover a
+        background-position: 5px -329px !important
+    &:hover a
+      background-position: 5px -329px !important
+
+  #request-close-link
+    background-position: 5px -657px
+    &:hover
+      background-position: 5px -634px
+
+  .delete, .delete-q
+    a
+      background-position: 5px -546px
+      &:hover, &.active
+        background-position: 5px -518px
+    &:hover a
+      background-position: 5px -518px
+
+  .edit-q
+    a
+      background-position: 5px -305px
+      &:hover, &.active
+        background-position: 5px -282px
+    &:hover a
+      background-position: 5px -282px
+
+  .ban a
+    background-position: 5px -170px
+    &:hover, &.active, .ban:hover a
+      background-position: 5px -146px
+
+  #flag_question
+    background-position: 5px -722px
+    &:hover
+      background-position: 5px -744px
+
+  .add_reward a
+    background-position: 5px -767px !important
+    &:hover, .add_reward:hover a
+      background-position: 5px -787px !important
+
+
+// Article actions for each answer into main question
+//-------------------------------------------------------------------------------------------------------------------
+.answers-list article .toolbar
+  float: right
+  +normal-radius
+  .more
+    ul
+      display: block
+      width: auto !important
+

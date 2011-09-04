@@ -11,6 +11,7 @@
               %b
                 = link_to h(user.login), user_path(user), :class => "pjax", :"data-layout" => "user"
               %small
+                Reputation:
                 ==#{user.reputation_on(current_group)}
 
   %footer

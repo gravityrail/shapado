@@ -11,15 +11,8 @@ class Theme
   field :fg_color, :type => String, :default => "404040"
 
   field :view_bg_color, :type => String, :default => "ffffff"
-  field :view_fg_color, :type => String, :default => "404040"
+  field :brand_color, :type => String, :default => "ee681f"
 
-  field :use_button_bg_color, :type => Boolean, :default => false
-  field :button_bg_color, :type => String, :default => "ee681f"
-  field :button_fg_color, :type => String, :default => "ffffff"
-
-  field :use_link_bg_color, :type => Boolean, :default => false
-  field :link_bg_color, :type => String, :default => "000000"
-  field :link_fg_color, :type => String, :default => "EE681F"
   field :fluid, :type => Boolean, :default => false
 
   field :custom_css, :type => String, :default => ""

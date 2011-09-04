@@ -1,1295 +1,56 @@
-// ========================================================================
-//    Document     	:   setup.sass
-//    Created on   	:   Nov14 - 2010, 20:29 pm
-//    Author       		:   @dgfrancisco
-//    Client       		:   Shapado
-//    Description	 	:   Variables y set up basico del portal, estas variables podran ser
-//                     			cambiadas en pro de modificar colores, fuentes etc
-//========================================================================
+//==============================================================================
+//    Document       :   setup.sass
+//    Created on     :   Nov14 - 2010, 20:29 pm
+//    Author           :   @dgfrancisco
+//    Client           :   Shapado
+//    Description     :   Variables y set up basico del portal, estas variables podran ser
+//                           cambiadas en pro de modificar colores, fuentes etc
+//==============================================================================
 
-// ================================================================================================================================================
+
+//==============================================================================
 //    VARS
-// ================================================================================================================================================
+//==============================================================================
 // $has_bg_image boolean
 // $bg_color color
 // $fg_color color
+// $bg_image_url string
 // $view_bg_color color
-// $view_fg_color color
-// $button_bg_color color
-// $button_fg_color color
 // $use_link_bg_color boolean
-// $link_bg_color color
-// $link_fg_color color
-// $fluid
+// $brand_color color
+// $fluid boolean
 
-// General site colors
-// HEY!! > replace this color using the theme properties, this are just for default theme, shapado Theme
-//========================================================================
-$dark: #404040;
-$gray: #aaa;
-$lightGray: #f2f2f2;
-$darkGray: #3e4953;
-
-$orange: #ee681f;
-$lightOrange: #fffbeb;
-$darkOrange: #d05800;
-
-$blue: #00a9b2;
-$lightBlue: #eef7f8;
-$darkBlue: #019199;
-
-$red: #f00;
-$lightRed: #ffe5e5;
-$darkRed: #c00;
-
-$text-shadow: 0 1px 1px darken($fg_color, 10%);
-
-// Link colors
-//========================================================================
-$link_color: $link_fg_color;
-$hover_color: $link_fg_color;
-@if(lightness($link_fg_color) > 10%) {
-	$hover_color: lighten($link_fg_color, 10%);
+$fg_brand_color: $brand_color;
+@if(lightness($brand_color) > 50%) {
+  $fg_brand_color: #222;
 } @else {
-  	$hover_color: darken($link_fg_color, 10%);
-}
-$alt_link_color: $link_color;
-$alt_hover_color: $hover_color;
-
-@if(lightness($view_fg_color) > 10%) {
-  	$alt_link_color: darken($view_fg_color, 10%);
-  	$alt_hover_color: lighten($view_fg_color, 10%);
-} @else {
-  	$alt_link_color: lighten($view_fg_color, 10%);
-  	$alt_hover_color: lighten($view_fg_color, 10%);
-}
-$active_color: $link_fg_color;
-$view_border_color: $view_bg_color;
-@if(lightness($view_border_color) > 10%) {
- 	$view_border_color: darken($view_border_color, 10%);
-} @else {
-  	$view_border_color: lighten($view_border_color, 10%);
-}
-a {
-  color: $link_color;
-  &:hover{ color: $hover_color;}
-  &:active{ color: $active_color;}
-}
-//shadow
-//========================================================================
-$inner: inset 2px 2px 2px $fg_color;
-
-@mixin inner-shadow($inner){
-  $shadow: unquote($inner);
-  -moz-box-shadow: $inner;
-  -webkit-box-shadow: $inner;
-  o-box-shadow: $inner;
-  khtml-box-shadow: $inner;
-  box-shadow: $inner;
-}
-@mixin gradient($color) {
-  $amount-darker: 15%;
-  background-image: -moz-linear-gradient(top, $color, darken($color, $amount-darker)) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, darken($color, $amount-darker)),color-stop(1, $color)) !important;
-}
-@mixin error-gradient {
-  background-image: -moz-linear-gradient(top, $red, $darkRed) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, $darkRed),color-stop(1, $red)) !important;
-  background-color: $red;
-}
-// Gradiants for badges
-//========================================================================
-@mixin gold-gradient{
-  background-image: -moz-linear-gradient(top, #fbd65f, #ffff7c) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #ffff7c),color-stop(1, #fbd65f)) !important;
-}
-@mixin silver-gradient {
-  background-image: -moz-linear-gradient(top, #c6c6c6, #e5e5e5) !important;
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e5e5e5),color-stop(1, #c6c6c6)) !important;
-}
-@mixin bronze-gradient {
-  background-image: -moz-linear-gradient(top, #e67347, #f3a273);
-  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0, #e67347),color-stop(1, #f3a273));
-  background-color: #e67347;
+  $fg_brand_color: #f2f2f2;
 }
 
+$dark_brand_color: $brand_color;
+@if lightness($brand_color) > 35% {
+  $dark_brand_color: darken($brand_color, lightness($brand_color) - 35%); }
+@else {
+  $dark_brand_color: lighten($brand_color, 35% - lightness($brand_color));}
 
-// ================================================================================================================================================
-//    COLORS
-// ================================================================================================================================================
-// MESSAGES == Notices == Flash
-// From: app/stylesheets/app/forms/_general.sass
-//-------------------------------------------------------------------------------------------------------------------
-form {
-  h2 {
-    border-bottom: 1px solid $orange;
-  }
-  .field {
-    img {
-      border: 1px solid #e5e5e5;
-    }
-    small, small span {
-      color: #666;
-    }
-    input {
-      border: 1px solid #ccc;
-      &:active, &:focus, &:hover { border-color: $orange;}
-    }
-    select {
-      border: 1px solid #ccc;
-      background-color: #fff;
-    }
-    textarea {
-      border: 1px solid #ccc;
-      &:active, &:focus, &:hover {border-color: $orange;}
-    }
-  }
-  hr {
-    border-top: 1px solid #e5e5e5;
-  }
-  .follow-up-msg {
-    background-color: $lightOrange;
-    border: 1px solid $orange;
-  }
-
-  .manage-domain {
-    border-bottom: 1px solid #e5e5e5;
-  }
-
-  .domain-url {
-    background-color: $lightOrange;
-  }
-}
+// lightOrange, this color comes from brand color var
+$light_brand_color: $brand_color;
+@if lightness($brand_color) < 96% {
+  $light_brand_color: lighten($brand_color, 96% - lightness($brand_color)); }
+@else {
+  $light_brand_color: darken($brand_color, lightness($brand_color) - 96%); }
 
 
-// MESSAGES == Notices == Flash
-// From: app/stylesheets/app/_messages.sass
-//-------------------------------------------------------------------------------------------------------------------
-#notifyBar {
-    .error {
-      color: #fff;
-      @include error-gradient;
-    }
-    .notice {
-      @include gradient(#80C908);
-    }
-}
-#messages {
-  color: #fff;
-  @include gradient($blue);
-}
+$fg_light_brand_color: $fg_color;
+@if lightness($fg_color) > 20% {
+  $fg_light_brand_color: darken($fg_color, lightness($fg_color) - 20%); }
+@else {
+  $fg_light_brand_color: lighten($fg_color, 20% - lightness($fg_color));}
 
-
-// PAGINATION
-// From: app/stylesheets/app/_pagination.sass
-//-------------------------------------------------------------------------------------------------------------------
-.pagination {
-  border-color: $view_border_color;
-  color: $view_fg_color;
-  background-color: $lightOrange;
-  em {
-    background-color: $orange;
-  }
-  a:hover {
-    color: #fff;
-    background-color: $orange;
-  }
-}
-
-
-// ADVERTISEMENT
-// From: app/stylesheets/_advertisement.sass
-//-------------------------------------------------------------------------------------------------------------------
-.ad h6 { color: #aaa; }
-
-
-// DROP DOWN MENUS
-// From: app/stylesheets/app/_drop-menus.sass
-//-------------------------------------------------------------------------------------------------------------------
-.top-bar .user-list,
-.top-bar .group-list,
-.top-bar .auth-list {
-  li li {
-    background:  #e5e5e5;
-    &.sfHover:hover {
-      background-color: #fff;
-      a { color: #000; }
-    }
-  }
-
-  ul {
-    li { border-top: 1px dotted $view_border_color; }
-    a {
-      color: #000 !important;
-      background-color: #fff !important;
-      &:hover{
-        @include gradient($orange);
-        color: #fff !important;
-      }
-    }
-  }
-}
-
-
-// ---
-// From: app/stylesheets/app/_template.sass
-//-------------------------------------------------------------------------------------------------------------------
-hgroup {
-  h2 { color: $darkGray; }
-  h3 a {
-    color: $darkOrange;
-    &:hover {color: $darkOrange;}
-  }
-}
-
-.row ul li { background-color: #dfdfdf; }
-
-.column {
-  hgroup { border-bottom: 1px solid #c7c7c7; }
-  ul { border-top: 1px solid #edeeee; }
-  h4 {
-    color: #000;
-    a { color: #000; }
-    a:hover { border-bottom: 1px dotted #000; }
-  }
-  p a { color: #999; }
-  h6 span { color: $darkOrange; }
-}
-
-.about-module hgroup { border-bottom: 1px solid #c7c7c7; }
-.tags-cloud {
-  hgroup { border-bottom: 1px solid #c7c7c7; }
-  ol {
-    border-top: 1px solid #edeeee;
-    li {
-      em {color: #666; }
-      a {
-        background-color: darken($link_fg_color, 5%);
-        color: $view_bg_color;
-        &:hover {
-          background-color: darken($link_fg_color, 10%);
-          em {color: #fff;}
-        }
-      }
-    }
-  }
-}
-
-ul.admin-links li {
-  border-bottom: 1px dotted #ccc;
-  a {
-    color: #000;
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 3px;
-    o-border-radius: 3px;
-    khtml-border-radius: 3px;
-    border-radius: 3px;
-    &:hover {
-      color: #fff;
-      background-color: $orange;
-    }
-  }
-  &.delete {
-    a:hover {background-color: #c00;}
-  }
-
-  .user .header {
-    border-bottom: 1px dotted #ccc;
-    h2 {
-      color: $darkGray;
-      span { color: $lightGray; }
-    }
-    p {color: #666;}
-  }
-}
-
-// PROFILE
-// From: app/stylesheets/app/content/admin/_profile.sass
-//-------------------------------------------------------------------------------------------------------------------
-.users section:last-child{
-  border-bottom: 0px solid #cc0000;
-}
-.userData .avatar {
-  border-bottom: 1px solid $view_border_color;
-  p a {
-    color: #666;
-    &:hover {color: #000;}
-  }
-  h3 {
-    text-shadow: 1px 1px 2px #e5e5e5;
-    border-bottom: 1px dotted $view_border_color;
-  }
-  ul.badges li .badge_item a {
-    color: #fff !important;
-  }
-}
-
-.userHistory {
-  border-left: 1px solid #e5e5e5;
-  background-color: #fff;
-  .userDescription {
-    small { color: #999; }
-    .description p {
-      color: #666;
-    }
-  }
-  ul.profile-stats {
-    border: 1px solid $view_border_color;
-    li {
-      border-bottom: 1px dotted #e5e5e5;
-      background-color: #fff;
-    }
-    li.follow {
-      @include gradient($orange);
-      color: #fff;
-      a{
-        color: #fff;
-      }
-    }
-  }
-}
-
-#users_show .users .content-tabs { border-top: 5px solid #f0f0f0 !important; }
-
-// ANNOUNCEMENTS
-// From: app/stylesheets/app/content/admin/_announcements.sass
-//-------------------------------------------------------------------------------------------------------------------
-.announcements {
-  .list-announcements {
-    h1 {border-bottom: 1px solid #ccc;}
-    .each-announcement li {
-      border-bottom: 1px dotted #e5e5e5;
-      .date { color: #666; }
-      a {
-          @include gradient($orange);
-          color: #fff;
-      }
-    }
-  }
-}
-
-
-// MEMBERS
-// From: app/stylesheets/app/content/admin/_members.sass
-//-------------------------------------------------------------------------------------------------------------------
-.members {
-  border-bottom: 1px dotted $view_border_color;
-  ul li {
-    border-top: 1px dotted #e5e5e5;
-    .user-info {
-      border-left: 1px dotted #aaa;
-      h2 a {
-        color: black;
-      }
-      small {
-        color: #666;
-      }
-      .stats {
-        color: #999;
-      }
-    }
-  }
-}
-
-
-// MODERATE
-// From: app/stylesheets/app/content/admin/_moderate.sass
-//-------------------------------------------------------------------------------------------------------------------
-.moderate-answers {
-  border-top: 1px solid $view_border_color;
-}
-
-
-// WIDGETS
-// From: app/stylesheets/app/content/admin/_widgets.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widgets-admin {
-  h1 {
-    border-bottom: 1px solid #ccc;
-  }
-  .widget_description h2 small {
-    a {
-      color: #c00;
-      &:hover{
-        border-bottom: 1px dotted;
-      }
-    }
-  }
-  p {
-    color: #888;
-  }
-  .controls input{
-    background-color: $view_border_color;
-    border: 1px solid #e5e5e5;
-    &:hover { background-color: #e5e5e5;}
-  }
-
-  li {
-    border-bottom: 1px solid #e5e5e5
-  }
-  .widgets-admin .module {
-    border: 1px solid $view_border_color;
-    footer {
-      background-color: #fff;
-      a {
-        color: #666;
-      }
-    }
-  }
-}
-
-
-// MAIN
-// From: app/stylesheets/app/content/_main.sass
-//-------------------------------------------------------------------------------------------------------------------
-#main-content-wrap,
-.users-main-content{
-  .empty {
-    border: 1px solid $orange;
-    background-color: $lightOrange;
-    h2 {
-      text-shadow: 1px 1px 2px #e5e5e5;
-    }
-  }
-
-  section {
-    article {
-      border-bottom: 1px solid $view_border_color;
-      color: #666;
-      h2 a {
-        color: $alt_link_color;
-        &:hover {
-          color: $alt_hover_color;
-        }
-      }
-    }
-  }
-
-  .toolbar ul {
-    li.answers, li.votes, li.followers {
-      a {
-        background-color: #fff;
-        &:hover {
-          background-color: #fff;
-          color: #000;
-        }
-      }
-    }
-    li {
-      a {
-        color: #666;
-        background-color: darken($view_bg_color, 10%);
-      }
-      a:hover{
-        background-color: #e5e5e5;
-        color: #000;
-      }
-    }
-  }
-}
-
-.admin-nav {
-  border-bottom: 1px solid #e5e5e5;
-  li a {
-    border-right: 1px solid #f1f1f1;
-    color: #999;
-    &:hover {
-      background-color: #f1f1f1;
-      color: #000;
-    }
-  }
-}
-
-
-// TABS
-// From: app/stylesheets/app/content/_tabs.sass
-//-------------------------------------------------------------------------------------------------------------------
-#main-content-wrap {
-  p.description {
-    border-bottom: 1px solid $view_border_color;
-  }
-  nav ul.content-tabs {
-    background-color: $bg_color;
-    li a {
-      color: #999;
-      border-bottom: 1px solid transparent;
-      &:hover {
-        color: #000;
-        background-color: #e5e5e5;
-      }
-    }
-  }
-}
-.questions ul.content-tabs li.questions a,
-.answers ul.content-tabs li.answers a,
-.unanswered ul.content-tabs li.unanswered a,
-.activities ul.content-tabs li.activities a {
-  background-color: $view_bg_color !important;
-  color: $view_fg_color !important;
-  &:hover {
-    background-color: $view_bg_color !important;
-  }
-}
-
-.filters.newest ul li.newest a,
-.filters.hot ul li.hot a,
-.filters.votes ul li.votes a,
-.filters.activity ul li.activity a {
-  border-bottom: 2px solid $view_fg_color !important;
-  color: $alt_hover_color;
-}
-
-.answers .newest li.newest a,
-.answers .hot li.hot a,
-.answers .votes li.votes a,
-.unanswered .newest li.newest a,
-.unanswered .hot li.hot a,
-.unanswered .votes li.votes a {
-  border-bottom: 2px solid $blue !important;
-  color: $fg_color !important;
-}
-
-.filters {
-  border-bottom: 1px solid $view_border_color;
-  ul li a {
-    background: none;
-    color: $alt_link_color;
-    &:hover{ color: $alt_hover_color; }
-  }
-}
-
-// FORMS - Login
-// From: ---
-//-------------------------------------------------------------------------------------------------------------------
-.errorExplanation{
-  border: 1px solid #c00;
-  background-color: $lightRed;
-  ul li {
-    color: #000;
-  }
-}
-form .domain small {color: #000; }
-
-section.sessions {
-  .options{
-    border-top: 1px solid $view_border_color;
-    li a {
-      color: #fff;
-      background-color: #c00;
-      @include gradient($blue);
-    }
-  }
-}
-.search-form{ border-bottom: 1px solid #e5e5e5;}
-
-// FOOTER
-// From: app/stylesheets/app/_footer.sass
-//-------------------------------------------------------------------------------------------------------------------
-footer {
-  background-color: darken($bg_color, 4%);
-  border-top: 5px solid $view_border_color;
-  ul li {
-    border-right: 1px solid #aaa;
-    a {
-      @if(lightness($fg_color) > 10%) {
-        color: darken($fg_color, 10%);
-        &:hover {
-          color: lighten($fg_color, 10%);
-        }
-      } @else {
-        color: lighten($fg_color, 10%);
-        &:hover {
-          color: darken($fg_color, 10%);
-        }
-      }
-    }
-  }
-  p {
-    color: $fg_color;
-    a {
-      @if(lightness($fg_color) > 10%) {
-        color: darken($fg_color, 10%);
-        &:hover {
-          color: lighten($fg_color, 10%);
-        }
-      } @else {
-        color: lighten($fg_color, 10%);
-        &:hover {
-          color: darken($fg_color, 10%);
-        }
-      }
-    }
-  }
-}
-
+$highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
 
 // LAYOUT
-// From: app/stylesheets/app/_layout.sass
-//-------------------------------------------------------------------------------------------------------------------
-body {
-   @if($has_bg_image) {
-     background: $bg_color url($bg_image_url) 0 0;
-   } @else {
-     background: $bg_color;
-  }
-}
-section.left-panel {
-  background-color: $view_bg_color;
-  border-right: 1px solid $bg_color;
-  .module {
-    border-bottom: 1px solid $view_border_color;
-    h3 {
-      color: darken($view_fg_color, 5%);
-      border-bottom: 1px dotted $view_border_color;
-    }
-  }
-}
-
-section.right-panel {
-  .module {
-    h3 {
-      color: darken($view_fg_color, 5%);
-      border-bottom: 1px solid $view_border_color;
-    }
-    footer {
-      background-color: darken($view_bg_color, 2%);
-      border-top:  1px solid $view_border_color;
-      color: $view_bg_color;
-      a {
-        color: $alt_link_color;
-        &:hover {
-          color: $alt_hover_color;
-        }
-      }
-    }
-  }
-}
-
-section.invitations-panel {
-  .invitation-container {
-    border: 1px solid black;
-    #invitations-points div {
-      background: #E5E5E5;
-      img { background-color: #fff; }
-    }
-  }
-}
-
-
-// TOP BAR
-// From: app/stylesheets/app/_topBar.sass
-//-------------------------------------------------------------------------------------------------------------------
-.top-bar {
-  background-color: #5E5E5E;
-  .searcher {
-    border-right: 1px solid #333;
-    form#search input {
-      background-color: white;
-    }
-  }
-  .languages_filter {
-    border-left: 1px solid #777;
-    span { color: #fff; }
-    form .field { background-color: #c00; }
-  }
-  ul.group-list, ul.user-list, ul.drop-menu, ul.auth-list {
-    border-left: 1px solid #777;
-    border-right: 1px solid #333;
-    li {
-      small { color: #bbb; }
-      &:hover small, &:hover a small {
-        color: #000;
-      }
-      a {
-        color: #fff;
-        border-right: 1px solid #777;
-        border-left: 1px solid #333;
-        &:hover {
-          background-color: #ddd;
-          color: #000;
-          small {color: #000; }
-        }
-      }
-    }
-  }
-  ul.user-list, ul.auth-list {
-    li.user {
-      img {
-        border: 3px solid #666;
-      }
-      ul li.logout a:hover {
-        background-color: #c00;
-        color: #fff;
-      }
-    }
-  }
-}
-
-
-// TOP TABS
-// From: app/stylesheets/app/_topTabs.sass
-//-------------------------------------------------------------------------------------------------------------------
-.quick_question {
-  input#question_title {
-    border: 1px solid lighten($fg_color, 50%) !important;
-    background-color: #fafafa;
-    &:hover { border-color: #666; }
-  }
-  h2 {
-    text-shadow: 1px 1px 2px #e5e5e5;
-  }
-}
-
-// MARKDOWN
-// From: app/stylesheets/app/content/editors/_markdown.sass
-//-------------------------------------------------------------------------------------------------------------------
-#markdown_editor {
-  border: 1px solid #cccccc;
-  &:hover, &:focus{
-    border-color: $orange;
-  }
-}
-
-.markdown_toolbar {
-  border: 1px solid #d7d7d7;
-  background-color: #F6F6F6;
-}
-
-#markdown_preview {
-  color: $dark;
-}
-
-
-// RELATED QUESTIONS
-// From: ---
-//-------------------------------------------------------------------------------------------------------------------
-.widget-related_questions aside ul li a {
-  color: $alt_link_color;
-}
-.related_questions {
-  #related_questions {
-    background: #f9f9f9 url("/images/loading.gif") 50% 50% no-repeat;
-    border: 1px solid #e5e5e5;
-    article {
-      background-color: #fff;
-      h3 a {
-        color: #000;
-        &:hover {
-          background-color: $orange;
-          color: #fff;
-        }
-      }
-      .toolbar ul li a {
-        color: #999;
-      }
-    }
-  }
-}
-
-
-// BADGES
-// From: app/widgets/_badges.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-badges ul .badge_item {
-  a.badge {
-    color: #000;
-  }
-  .user a {
-    color: $alt_link_color;
-    &:hover {
-      color: $alt_hover_color;
-    }
-  }
-}
-
-// BADGES
-// From: app/widgets/_customLinks.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-links ul {
-  li a {
-    color: $link_fg_color;
-    &:hover {
-      @include gradient($button_bg_color);
-      color: $button_fg_color;
-    }
-  }
-  li.active a, li.active a:hover {
-    background-color: #eee;
-    color: #000;
-    text-shadow: 1px 1px 1px #fff !important;
-  }
-}
-
-
-// BADGES
-// From: app/widgets/_language.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-lang form {
-  select {
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-}
-
-
-// BADGES
-// From: app/widgets/_tags.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-tag_cloud {
-  .tags_cloud span a{
-  }
-  .list_cloud span a{
-    color: lighten($view_fg_color, 30%);
-    background-color: darken($view_bg_color, 5%);
-    &:hover {
-      color: $link_fg_color;
-      background-color: $view_border_color;
-    }
-  }
-}
-
-
-// BADGES
-// From: app/widgets/_top_groups.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-top_groups section {
-  border-bottom: 1px solid #fafafa;
-  .avatar {
-    img {border: 1px solid $view_border_color;}
-  }
-  .data {
-    h5 {
-      a {color: $link_fg_color;}
-      small {color: #777;}
-    }
-  }
-}
-
-
-// BADGES
-// From: app/widgets/_top_users.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-top_users ul{
-  .avatar {
-    img { border: 1px solid $view_border_color;}
-  }
-  .data {
-    h5 {
-      a {
-        color: $alt_link_color;
-        &:hover {
-          color: $alt_hover_color;
-        }
-      }
-      small {
-        background-color: darken($link_fg_color, 5%);
-        color: $view_bg_color;
-      }
-    }
-  }
-}
-
-
-// USER ZONE
-// From: app/widgets/_userZone.sass
-//-------------------------------------------------------------------------------------------------------------------
-.user-zone {
-  .avatar a img { border: 1px solid #aaa }
-  .greeting small {
-    color: $gray;
-  }
-  nav.user-nav {
-    ul li {
-      a {
-        color: $dark;
-        &:hover {
-          @include gradient($orange);
-          color: #fff;
-        }
-      }
-      &.active a, &.active a:hover {
-        @include gradient($orange);
-        color: #fff;
-      }
-    }
-  }
-}
-
-
-// SUGGESTIONS
-// From: app/widgets/_suggestions.sass
-//-------------------------------------------------------------------------------------------------------------------
-.widget-suggestions, .widget-suggestions-page {
-  ul li {
-    border-bottom: 1px dotted $view_border_color;
-    &:nth-child(-2n+5) {
-      border-right: 1px solid $view_border_color;
-    }
-    .gravatar img { border: 1px solid $view_border_color; }
-    .link {
-      color: $link_fg_color;
-      a {
-        font-size: 12px;
-      }
-      .tag {
-        background-color: darken($link_fg_color, 5%);
-        color: $link_fg_color;
-      }
-    }
-    .f-link {
-      a {
-        color: $alt_link_color;
-        &:hover {
-          color: $alt_hover_color;
-        }
-      }
-    }
-  }
-}
-
-.widget-suggestions-page h3 {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-
-// QUESTIONS
-// From: app/content/question/question.sass
-//-------------------------------------------------------------------------------------------------------------------
-section.main-question {
-  background-color: $view_bg_color;
-  h1 {
-    text-shadow: 1px 1px 2px #e5e5e5;
-  }
-  small {
-    a {color: #000;}
-    &.current {color: #c00;}
-    &.version-nav {
-      color: #666;
-      a {
-        color: $orange;
-        &.revert {color: #c00;}
-      }
-    }
-  }
-  .description {
-    p {color: darken($view_fg_color, 5%);}
-    img { border: 1px solid #e5e5e5; }
-    .thumb {background-color: #fcfcfc;}
-    #attachments_list li a {
-      color: #000;
-      &:hover {
-        color: $orange;
-      }
-    }
-    .stats p {color: #999;}
-  }
-}
-
-// ACTION PANELS
-// From: app/content/question/_actionPanels.sass
-//-------------------------------------------------------------------------------------------------------------------
-#panel-forms { background-color: $lightBlue;}
-.add_answer .by_mail a { color: #000; }
-
-
-// TOOLBARS
-// From: app/content/question/toolbar.sass
-//-------------------------------------------------------------------------------------------------------------------
-.toolbar{
-  border-top: 1px solid #e5e5e5;
-  li {
-    a {
-      color: #999 !important;
-      border-right: 1px solid #e5e5e5;
-      background-color: #fff !important;
-      &:hover {
-        color: #000 !important;
-        background-color: #f9f9f9 !important;
-      }
-      &.active {
-        background-color: $lightBlue !important;
-        color: #000;
-        &:hover{ background-color: $lightBlue !important;}
-      }
-    }
-    ul li {
-      border-left: 1px solid #ddd;
-      border-bottom: 1px solid #ddd;
-      background-color: #fff;
-      &:first-child{ border-top: 1px solid #ddd;}
-    }
-  }
-}
-
-ul.drop-menu {
-  li.flagged {
-    background-color: $lightRed;
-    span {color: $red;}
-    &>a {
-      color: #eb9696;
-      &:hover {
-        background-color: $red;
-        color: #fff;
-      }
-      &#destroy_question_flag_link {
-        border-left: 1px solid #e5e5e5;
-        border-color: #f4b6b6;
-      }
-    }
-  }
-}
-
-
-// TAGS
-// From: app/content/question/tags.sass
-//-------------------------------------------------------------------------------------------------------------------
-ul.tag-list {
-  li, .tag {
-    color: #666666;
-    &:hover {
-      color: #000;
-    }
-    &.retag a {
-      color: #fff;
-    }
-  }
-}
-
-.tagwrapper {
-  border: 1px solid #cccccc !important;
-  ul li{
-    a { color: #000; }
-    a:hover, &:hover a, a.ui-state-hover, span:hover {
-      color: #000;
-    }
-  }
-}
-
-.ui-autocomplete {
-  background-color: #f4f4f4;
-  .ui-menu-item {
-    border-bottom: 1px solid #e5e5e5;
-    background-color: #fff !important;
-    a {
-      &:hover, &:active, &:focus, &#ui-active-menuitem{
-        background: $orange !important;
-        color: #fff !important;
-        border-color: $orange;
-      }
-    }
-  }
-}
-
-
-// ANSWERS
-// From: app/content/question/answers.sass
-//-------------------------------------------------------------------------------------------------------------------
-#answers-content-wrap {
-  border-top: 1px solid #e5e5e5;
-  background-color: $view_bg_color;
-
-  section.filters ul {
-    border-top: 1px solid $blue;
-    border-bottom-color: #bee5e7;
-    &.newest li.newest-active a,
-    &.votes li.votes-active a,
-    &.oldest li.oldest-active a {
-      border-bottom: 2px solid $blue;
-      color: #000;
-    }
-  }
-}
-.answer_vote_box {
-  background-color: $view_fg_color;
-  color: $view_bg_color;
-  .votes_average {
-    background-color: $view_fg_color;
-  }
-  form ul.vote_box button {
-    &.negative {
-      background-color: $view_fg_color;
-      &:hover {
-        background-color: #f00;
-      }
-    }
-    &.positive {
-      background-color: $view_fg_color;
-      &:hover {
-        background-color: #0a0;
-      }
-    }
-  }
-}
-article.answer {
-  border-bottom: 1px solid #e5e5e5;
-  p {
-    color: darken($view_fg_color, 5%);
-  }
-  h4 {
-    img.gravatar { border: 1px solid #fff; }
-    i { color: #999; }
-  }
-}
-.article-actions ul li {
-  a {
-    color: #999;
-    border-right: 1px solid $view_border_color;
-    &:hover {
-      color: #fff;
-      background-color: $orange;
-    }
-  }
-  ul li {
-    &:first-child {border-top: 1px solid #ddd;}
-    border-left: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    background-color: #fff;
-  }
-}
-
-#close_reason {
-  text-shadow: $text-shadow;
-  color: #fff;
-  @include error-gradient;
-}
-
-
-// COMMENTS
-// From: app/content/question/comments.sass
-//-------------------------------------------------------------------------------------------------------------------
-article.comment p { color: #333333; }
-span.upvoted-comment{ color: #EE681F;}
-form.answer_comment_form, form.question_comment_form {
-  .text_area {border: 1px solid #ccc  !important;}
-  .reply_to {background-color: #fff;}
-}
-
-.article-actions .add_answer_comment_link{
-  background-color: #fff;
-  border-right: 1px solid #e5e5e5;
-}
-
-
-// COMMENTS
-// From: app/content/more/_groups.sass
-//-------------------------------------------------------------------------------------------------------------------
-.groups_container {
-  form {
-    border-bottom: 1px solid $view_border_color;
-    .field {
-      #q {
-        border-color: #ccc;
-        color: #000;
-      }
-    }
-  }
-  ul li {
-    border-bottom: 1px solid $view_border_color;
-    .logo { border: 1px solid #e5e5e5; }
-    .summary h3 a { color: #000; }
-  }
-}
-
-
-// USERS
-// From: app/content/more/_users.sass
-//-------------------------------------------------------------------------------------------------------------------
-.users_container {
-  border-bottom: 1px solid $view_border_color;
-  .field {
-    #q {
-      border-color: #ccc;
-      color: #000;
-    }
-  }
-
-  ul {
-    li {
-      border-bottom: 1px solid $view_border_color;
-      .logo { border: 1px solid #e5e5e5; }
-      .summary h3 a { color: #000; }
-    }
-  }
-}
-
-
-// BADGES
-// From: app/content/more/_badges.sass
-//-------------------------------------------------------------------------------------------------------------------
-.badges ul li {
-  .badge {
-    color: #000;
-    text-shadow: 1px 1px 2px #e5e5e5;
-  }
-  .counter {
-    color: #999;
-  }
-}
-.gold .badge {
-  @include gold-gradient;
-  border: 1px solid #fbd65f;
-}
-
-.silver .badge {
-  @include silver-gradient;
-  border: 1px solid #c6c6c6;
-}
-
-.bronze .badge {
-  @include bronze-gradient;
-  border: 1px solid #e67347;
-}
-
-#badges_show {
-  .description {
-    border-bottom: 1px solid $view_border_color;
-    p .badge_item {
-      color: #000;
-      text-shadow: 1px 1px 2px #e5e5e5;
-    }
-  }
-  .counter p{
-    color: #999;
-    b{ color: #000;}
-  }
-  .users ul li {
-    border-bottom: 1px solid $view_border_color;
-    .stats {
-      border-right: 1px solid $view_border_color;
-    }
-    .summary {
-      h3 a {
-        color: #000;
-        text-shadow: 1px 1px 2px #e5e5e5;
-      }
-      .owner-data strong {color: #999;}
-    }
-  }
-}
-
-input[type=submit], button, input.save {
-  @include gradient($button_bg_color);
-  color: $button_fg_color;
-  border-color: $button_bg_color;
-}
-
-.widget, .module, .brand, .quick_question, #main-content-wrap {
-  background-color: $view_bg_color;
-  color: $view_fg_color;
-}
-
-
-article.active {
-  background-color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
-}
-
-
-// ================================================================================================================================================
-//    LAYOUT
-// ================================================================================================================================================
-// LAYOUT
-// From: app/stylesheets/app/_layout.sass
-//-------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 @if($fluid) {
   #container #columns {
     max-width: 100%;
@@ -1315,4 +76,909 @@ article.active {
   .header-widgets {
     width: 85%;
   }
+}
+
+// Body
+body {
+  color: $fg_color;
+  @if($has_bg_image) {
+    background: $bg_color url($bg_image_url) 0 0;
+  } @else {
+    background: $bg_color;
+  }
+  h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
+    color: $fg_color;
+  }
+}
+
+
+article.active {
+  background-color: $highlighted_view_bg_color;
+}
+
+a {
+  color: $fg_color;
+  &:visited {
+    color: lighten($fg_color, 30%); }
+  &:hover {
+    color: $fg_color; } }
+
+// HEADER - dropdowns for groups, user link, and admin/moderate
+//------------------------------------------------------------------------------
+.top-bar {
+  background: darken($view_bg_color, 83%);
+  background-color: darken($view_bg_color, 83%);
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(darken($view_bg_color, 80%)), to(darken($view_bg_color, 83%)));
+  background-image: -moz-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+  background-image: -ms-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken($view_bg_color, 80%)), color-stop(100%, darken($view_bg_color, 83%)));
+  background-image: -webkit-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+  background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+  background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+  .sf-menu {
+    li {
+      small {
+        color: lighten($fg_color, 40%); }
+      &:hover small, &:hover a small, a:hover small {
+        color: $fg_color !important; }
+      a {
+        background-image: none;
+        color: lighten($fg_color, 40%);;
+        border-right: 1px solid darken($view_bg_color, 73%);
+        border-left: 1px solid $fg_color;
+        &:hover, &:hover a {
+          background-color: darken($view_bg_color, 70%); } } }
+    ul {
+      background-color: $view_bg_color !important;
+      li {
+        border-top: 1px solid darken($view_bg_color, 5%); }
+      a {
+        color: lighten($fg_color, 40%);;
+        &:hover {
+          background-color: $brand_color;
+          color: white !important; } } }
+    .sf-sub-indicator {
+      background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat; } }
+  .searcher {
+    border-right: 1px solid darken($view_bg_color, 73%);
+    border-left: 1px solid $fg_color;
+    form#search input {
+      background: white url(/images/search-icon.png) 5px 50% no-repeat; } }
+  .languages_filter {
+    border-left: 1px solid $fg_color; } }
+
+// FEEDBACK btn
+//------------------------------------------------------------------------------
+#feedback-btn {
+  p a {
+    background-color: $brand_color;
+    -moz-box-shadow: 0 2px 7px $bg_shadow;
+    -webkit-box-shadow: 0 2px 7px $bg_shadow;
+    -o-box-shadow: 0 2px 7px $bg_shadow;
+    -khtml-box-shadow: 0 2px 7px $bg_shadow;
+    -box-shadow: 0 2px 7px $bg_shadow;
+    border: 3px solid $view_bg_color;
+    color: white; } }
+
+// MODULE each module container
+//------------------------------------------------------------------------------
+.module {
+  background-color: $view_bg_color;
+  h3 {
+    color: $fg_color;
+    border-bottom: 1px solid darken($view_bg_color, 8.5%); } }
+
+// shapado/layout/columns
+#main-content-wrap {
+  background-color: $view_bg_color;
+  article {
+    border-bottom: 1px solid darken($view_bg_color, 10%);
+    .user-data {
+      color: ligthen($fg_color, 53%);
+      a {
+        color: ligthen($fg_color, 53%);
+        &.user-link {
+          color: $brand_color; } } } } }
+
+// This must be refixed need some improvements from html side
+.index {
+  .questions .content-tabs .questions a,
+  .answers .content-tabs .answers a,
+  .unanswered .content-tabs .unanswered a,
+  .activities .content-tabs .activities a {
+    background-color: $light_brand_color;
+    color: $fg_light_brand_color; } }
+
+// shapado/layout/generals
+.notice {
+  color: white; }
+
+.error {
+  background-color: #cc0000;
+  background-image: -moz-linear-gradient(#cc0000, #aa0000);
+  background-image: -ms-linear-gradient(#cc0000, #aa0000);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cc0000), color-stop(100%, #aa0000));
+  background-image: -webkit-linear-gradient(#cc0000, #aa0000);
+  background-image: -o-linear-gradient(#cc0000, #aa0000);
+  background-image: linear-gradient(#cc0000, #aa0000);
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#cc0000), to(#aa0000)); }
+
+.message {
+  background-color: #00cc00;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#00cc00), to(#00aa00));
+  background-image: -moz-linear-gradient(#00cc00, #00aa00);
+  background-image: -ms-linear-gradient(#00cc00, #00aa00);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #cc0000), color-stop(100%, #00aa00));
+  background-image: -webkit-linear-gradient(#00cc00, #00aa00);
+  background-image: -o-linear-gradient(#00cc00, #00aa00);
+  background-image: linear-gradient(#00cc00, #00aa00); }
+
+.pagination {
+  span a {
+    background-color: darken($view_bg_color, 5%);
+    &:hover {
+      background-color: $brand_color;
+      color: white; } }
+  span.current {
+    background-color: $brand_color;
+    color: white; } }
+
+//MODULES
+
+// shapado/modules/badges
+#badges_show {
+  .description .badget_item a {
+    color: white; } }
+
+// shapado/modules/comments
+.comments {
+  article.comment {
+    .comment-body {
+      .user-login {
+        color: $brand_color; } }
+    time {
+      color: #999999; }
+    p {
+      color: ligthen($fg_color, 53%); }
+    .actions {
+      a {
+        color: #cc0000; } } } }
+
+// shapado/modules/history
+
+form.history {
+  ul li {
+    border-bottom: 1px solid darken($view_bg_color, 10%);
+    .top {
+      background-color: darken($view_bg_color, 5%); }
+    p.current {
+      color: #cc0000; }
+    .tag-list li strong {
+      color: $fg_color; } } }
+
+.buttons-history {
+  input {
+    color: white; } }
+
+.diff-view {
+  .navform {
+    background-color: darken($view_bg_color, 5%); } }
+
+// shapado/modules/invoices
+.invoices {
+  .thanks {
+    background-color: #ffefa7;
+    p {
+      a {
+        color: $brand_color; }
+      &.action {
+        em {
+          color: $brand_color; } } } }
+  table {
+    border: 1px solid darken($view_bg_color, 8.5%);
+    tfoot {
+      background-color: #fff2e1; } } }
+
+.manage-layout {
+  .invoices {
+    table {
+      border: 1px solid darken($view_bg_color, 5%);
+      a {
+        color: $brand_color; }
+      td {
+        border-bottom: 1px solid darken($view_bg_color, 5%);
+        background-color: $view_bg_color; }
+      tr:nth-child(2n) td {
+        background-color: darken($view_bg_color, 3%); }
+      thead, thead tr td {
+        background-color: darken($view_bg_color, 10%) !important;
+        td {
+          border: 1px solid darken($view_bg_color, 20%); } } } } }
+
+.each-invoice {
+  h2 {
+    border-bottom: 1px solid $brand_color; } }
+
+// shapado/modules/invoices
+.main-question {
+  .author {
+    a {
+      color: $brand_color; } }
+  .stats a {
+    color: $brand_color; }
+  #panel-forms {
+    form {
+      background-color: $light_brand_color;
+      color: $fg_light_brand_color;
+      a, label {
+        color: $fg_light_brand_color; } } } }
+
+#answers-content-wrap {
+  h2 {
+    border-top: 1px solid darken($view_bg_color, 10%); }
+  .filters {
+    border-top: 1px dotted darken($view_bg_color, 10%); }
+  .filters {
+    background-color: $light_brand_color;
+    color: $fg_light_brand_color;
+    a {
+      color: $fg_light_brand_color; } }
+  .answers-list {
+    article.solution {
+      border-left: 5px solid #a2c538; } }
+  .answer_vote_box {
+    .vote_box button {
+      &.negative {
+        background-color: lighten($view_bg_color, 10%) !important;
+        &:hover {
+          background-color: #cc0000 !important; } }
+      &.positive {
+        background-color: lighten($view_bg_color, 10%) !important;
+        &:hover {
+          background-color: #a2c538 !important; } } } }
+  .answer {
+    .author {
+      * {
+        color: lighten($fg_color, 40%); }
+      .user-data a {
+        color: $brand_color; }
+      img {
+        border: 1px solid darken($view_bg_color, 10%); } } } }
+
+.followUp-content {
+  border-bottom: 1px solid darken($view_bg_color, 10%); }
+
+#close_reason {
+  color: white;
+  background-color: #cc0000; }
+
+// Groups
+//========================================================================
+.groups_container {
+  ul {
+    li {
+      border-top: 1px solid darken($view_bg_color, 10%);
+      .logo {
+        border: 1px solid darken($view_bg_color, 10%); }
+      .actions {
+        background-color: lighten($fg_color, 97%);
+        a {
+          color: lighten($fg_color, 60%);
+          &:hover {
+            color: $fg_color; } } } } } }
+
+// Main Question - Answers
+//------------------------------------------------------------------------------
+#answers-content-wrap {
+  .answers-list {
+    .answer_vote_box {
+      .vote_box button {
+        &.negative {
+          background-color: #fafafa; }
+        &.positive {
+          background-color: #fafafa; } } } } }
+
+// Members
+//------------------------------------------------------------------------------
+.manage-layout {
+  .members {
+    ul li {
+      .role {
+        background-color: #cc0000;
+        color: white; }
+      .user-info {
+        h2 a {
+          color: $fg_color; } } } } }
+
+// Pages
+//------------------------------------------------------------------------------
+.page-list {
+  .title {
+    border-bottom: 1px solid darken($view_bg_color, 5%); }
+  .page {
+    border-bottom: 1px solid darken($view_bg_color, 5%);
+    h2 {
+      a {
+        color: $fg_color; } }
+    .actions-bar {
+      background-color: darken($view_bg_color, 5%);
+      li {
+        a {
+          &:hover {
+            color: white !important; } } } } } }
+
+.generic-text {
+  p {
+    strong {
+      color: $fg_color; } } }
+
+.display-color {
+  border: 1px solid darken($view_bg_color, 5%); }
+
+.ui-widget-header {
+  background: #cccccc !important;
+  color: $fg_color !important; }
+
+// Suggestions
+//------------------------------------------------------------------------------
+.suggestions {
+  #main-content-wrap {
+    ul {
+      li {
+        border-top: 1px solid darken($view_bg_color, 10%);
+        img {
+          border: 1px solid darken($view_bg_color, 5%); }
+        .info {
+          .link {
+            color: $fg_color;
+            &:hover {
+              color: $brand_color; } }
+          .f-link a {
+            &:hover {
+              background-color: $brand_color;
+              color: white; } } } } } } }
+
+// Users
+//------------------------------------------------------------------------------
+.userData {
+  ul.badges {
+    li {
+      a {
+        color: $fg_color; } } } }
+
+.userHistory {
+  .userDescription {
+    img {
+      border: 1px solid darken($view_bg_color, 5%); }
+    p {
+      a {
+        color: $brand_color; } } }
+  ul.profile-stats {
+    background-color: darken($view_bg_color, 5%);
+    border: 1px solid darken($view_bg_color, 10%);
+    li {
+      &.follow {
+        background-color: $brand_color;
+        a {
+          color: white; } } } } }
+
+.userHistory {
+  .badges {
+    border-top: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid darken($view_bg_color, 10%); } }
+
+.list-users {
+  .top {
+    border-bottom: 1px solid darken($view_bg_color, 10%); }
+  .filters {
+    li {
+      strong {}
+      a {
+        color: #999999;
+        &:hover, a.active {
+          color: $fg_color;
+          border-bottom-color: $brand_color; } } } }
+  ul.items {
+    li {
+      border-bottom: 1px solid darken($view_bg_color, 10%);
+      .summary {
+        img {}
+        h3 {
+          a {
+            color: $fg_color; } } } } } }
+
+// WIDGETS
+//------------------------------------------------------------------------------
+//_wikis.sass, customLinks.sass
+//------------------------------------------------------------------------------
+.widget-pages ul, .widget-links ul {
+  li {
+    a {
+      &:hover {
+        background-color: $brand_color;
+        color: white; } }
+    &.active a {
+      background-color: $brand_color;
+      color: white; } } }
+
+//_tags.sass
+//------------------------------------------------------------------------------
+.widget-tag_cloud {
+  .active-tags {
+    border-bottom: 1px dotted darken($view_bg_color, 5%);
+    a {
+      color: #cc0000; }
+    .remove_tag {
+      background-color: #cc0000;
+      color: white; } }
+  .tag_cloud, .list_cloud {
+    span {
+      a {
+        &:hover {
+          background-color: $brand_color;
+          color: white; } } } } }
+
+//_top_groups.sass
+//------------------------------------------------------------------------------
+.widget-top_groups {
+  aside {
+    .avatar {
+      border: 1px solid darken($view_bg_color, 10%); }
+    .data {
+      h3 {
+        small {
+          color: #666666; } } } } }
+
+//_top_users.sass
+//------------------------------------------------------------------------------
+.widget-top_users, .widget-users ul {
+  li {
+    .data {
+      h5 {
+        a {
+          color: $fg_color; }
+        small {
+          color: #666666; } } } } }
+
+//_suggestions.sass
+//------------------------------------------------------------------------------
+.widget-suggestions {
+  li {
+    border-bottom: 1px dotted darken($view_bg_color, 5%);
+    .info {
+      .link a {
+        color: $fg_color;
+        &:hover {
+          color: $brand_color; } }
+      .f-link a {
+        &:hover {
+          background-color: $brand_color;
+          color: white; } } } }
+  img {
+    border: 1px solid darken($view_bg_color, 10%); } }
+
+//_badges.sass
+//------------------------------------------------------------------------------
+.widget-badges ul, .widget-question_badges ul {
+  li {}
+  .badge_item {
+    a.badge {
+      color: $fg_color; } } }
+
+// *************************************************
+// *************************************************
+// This are the badges should not be change it by anyone!!!!!
+// *************************************************
+// *************************************************
+.gold .badge {
+  border: 1px solid #fbd65f;
+  background-color: #fbd65f;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c));
+  background-image: -moz-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -ms-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c));
+  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c);
+  background-image: -o-linear-gradient(#fbd65f, #ffff7c);
+  background-image: linear-gradient(#fbd65f, #ffff7c); }
+
+.silver .badge {
+  border: 1px solid #c6c6c6;
+  background-color: #c6c6c6;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5));
+  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5));
+  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5);
+  background-image: linear-gradient(#c6c6c6, #e5e5e5); }
+
+.bronze .badge {
+  border: 1px solid #e67347;
+  background-color: #e67347;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273));
+  background-image: -moz-linear-gradient(#e67347, #f3a273);
+  background-image: -ms-linear-gradient(#e67347, #f3a273);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273));
+  background-image: -webkit-linear-gradient(#e67347, #f3a273);
+  background-image: -o-linear-gradient(#e67347, #f3a273);
+  background-image: linear-gradient(#e67347, #f3a273); }
+
+//  related_questions
+//------------------------------------------------------------------------------
+.widget-related_questions ul {
+  li {
+    a {
+      color: $fg_color;
+      &:hover {
+        color: $brand_color; } } } }
+
+//  WIDGETS PER AREA
+//------------------------------------------------------------------------------
+//  Header // Footer zones
+//------------------------------------------------------------------------------
+.header-widgets, .footer-widgets {
+  .widget-suggestions {
+    li {
+      .info {
+        .link a {
+          color: $fg_color;
+          &:hover {
+            color: $brand_color; } }
+        .f-link a {
+          &:hover {
+            background-color: $brand_color;
+            color: white; } } } }
+    img {
+      border: 1px solid darken($view_bg_color, 10%); } } }
+
+// MODULE
+//------------------------------------------------------------------------------
+.module {
+  h3 {}
+  footer {
+    border-top: 1px solid darken($view_bg_color, 5%);
+    a {
+      &:hover {
+        color: $brand_color; } } } }
+
+// OTHERS
+// shapado/others/tags
+.tagwrapper {
+  border: 1px solid darken($view_bg_color, 10%) !important; }
+
+.tags-list {
+  .tags {
+    .each {
+      background-color: #f9f9f9; }
+    .tools {
+      background-color: darken($view_bg_color, 10%);
+      a {
+        color: #999999;
+        &:hover {
+          color: $fg_color; } } } } }
+
+// shapado/others/content-nav
+ul.content-tabs {
+  border-bottom: 1px solid darken($view_bg_color, 10%);
+  li {
+    a {
+      color: $fg_color;
+      border-right: 1px solid darken($view_bg_color, 10%);
+      &:hover {
+        background-color: $light_brand_color;
+        color: $fg_light_brand_color; } } } }
+
+// FILTERS
+.filters {
+  border-bottom: 1px solid darken($view_bg_color, 10%);
+  ul li a {
+    color: $fg_color; } }
+
+// Admin nav
+.admin-nav {
+  border: 1px solid darken($view_bg_color, 10%);
+  background-color: #f9f9f9;
+  li a {
+    border-right: 1px solid darken($view_bg_color, 5%);
+    color: #999999;
+    &:hover {
+      color: $fg_color;
+      background-color: darken($view_bg_color, 10%); } } }
+
+.invite .admin-nav .invite a,
+.invitations .admin-nav .invitations a {
+  background-color: $light_brand_color;
+  color: $fg_light_brand_color; }
+
+// shapado/others/drop-menu
+.sf-menu, .drop-menu {
+  ul {
+    background-color: $view_bg_color;
+    li {
+      border-top: 1px solid darken($view_bg_color, 5%);
+      &:hover {
+        background-color: $brand_color;
+        color: white;
+        a {
+          color: white; } }
+      a:hover {
+        background-color: $brand_color;
+        color: white; } } } }
+
+// shapado/others/editors
+.jHtmlArea, .ToolBar {
+  iframe {
+    background-color: white;
+    border: 1px solid #cccccc; } }
+
+.question-form {
+  .ToolBar {
+    background-color: darken($view_bg_color, 5%);
+    border: 1px solid #cccccc; } }
+
+div.jHtmlArea {
+  .ToolBar ul {
+    li {
+      &:hover {
+        border: solid 1px #cccccc;
+        background-color: #dddddd; }
+      a {
+        &.highlighted {
+          border: solid 1px #aaaaaa;
+          background-color: #bbbbbb; } }
+      &.separator {
+        border-left: 1px solid #cccccc;
+        background-color: white; } } } }
+
+.markdown_toolbar {
+  border: 1px solid #d7d7d7;
+  background-color: #f6f6f6;
+  li {
+    a {
+      border: 1px solid white;
+      border-right-color: #d7d7d7;
+      &:hover {
+        border-color: #990000; } }
+    a#markdown_help_button {
+      border-left-color: #d7d7d7;
+      border-right-color: white;
+      &:hover {
+        border-left-color: #990000;
+        border-right-color: #990000; } } } }
+
+// shapado/others/forms
+form {
+  label {
+    color: $fg_color; }
+  fieldset {
+    color: lighten($fg_color, 5%); }
+  ::-webkit-input-placeholder {
+    color: lighten($fg_color, 10%); }
+  input[type=text],
+  input[type=password],
+  textarea,
+  select,
+  .uneditable-input {
+    color: lighten($fg_color, 10%);
+    border: 1px solid #cccccc; }
+  input[type=text],
+  input[type=password],
+  select,
+  textarea {
+    background: lighten($view_bg_color, 10%);
+    -webkit-box-shadow: inset 0 1px 3px $light_brand_color;
+    -moz-box-shadow: inset 0 1px 3px $light_brand_color;
+    box-shadow: inset 0 1px 3px $light_brand_color; }
+  input[type=text]:focus,
+  form input[type=password]:focus,
+  form textarea:focus {
+    color: $fg_color;
+    border-color: $brand_color;
+    background-color: $highlighted_view_bg_color; }
+  .error {
+    background: #fae5e3; } }
+
+input[type=submit], input.save, .add_attachment {
+  background-color: $brand_color;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($brand_color), to($dark_brand_color));
+  background-image: -moz-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -ms-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand_color), color-stop(100%, $dark_brand_color));
+  background-image: -webkit-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -o-linear-gradient($brand_color, $dark_brand_color);
+  background-image: linear-gradient($brand_color, $dark_brand_color);
+  color: white;
+  border: 1px solid $dark_brand_color !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  &:hover {
+    color: white; } }
+
+.questions {
+  form.question_comment_form, form.answer_comment_form {
+    color: $fg_light_brand_color;
+    background-color: $light_brand_color; } }
+
+.related_questions {
+  #related_questions {
+    article {
+      h3 {
+        a:hover {
+          background-color: $brand_color;
+          color: white; } } } } }
+
+.manage-layout, {
+  #main-content-wrap {
+    .ui-tabs, .ui-tabs-nav {
+      .ui-tabs-nav {
+        border-bottom: 1px solid darken($view_bg_color, 10%);
+        li {
+          border-color: darken($view_bg_color, 10%);
+          a {
+            color: #666666; }
+          &.ui-tabs-selected a {
+            color: $fg_color; } } } } } }
+
+.manage-layout {
+  .access {
+    form {
+      h2 {
+        border-bottom: 1px solid darken($view_bg_color, 5%); } } } }
+
+.announcement {
+  background-color: $highlighted_view_bg_color; }
+
+.widgets-admin {
+  .select-widget {
+    background-color: #fff8e6;
+    .zone, .type {
+      p {
+        color: $fg_color;
+        strong {
+          color: $fg_color; } } } }
+  .container {
+    .container {
+      border: 1px solid darken($view_bg_color, 10%); }
+    .header {
+      background-color: darken($view_bg_color, 10%);
+      color: $fg_color;
+      a {
+        color: $brand_color; } }
+    .top {
+      background-color: #fef9ed;
+      border-bottom: 1px solid darken($view_bg_color, 10%); }
+    .widget {
+      h3 {
+        border-bottom: 1px solid darken($view_bg_color, 10%); } } } }
+
+// shapado/other/loading
+.loading-box {
+  background: #222222;
+  color: white;
+  h1 {
+    color: white; } }
+
+// shapado/other/markdown
+.markdown {
+  textarea {
+    border: 1px solid #cccccc; }
+  pre {
+    background-color: #fffbeb; }
+  ol {
+    li {
+      color: #666666; } }
+  code {
+    background-color: #eeeeee; }
+  blockquote {
+    background-color: #dddddd; } }
+
+// shapado/other/plans
+.plans {
+  .each {
+    border-top: 1px solid darken($view_bg_color, 10%);
+    border-bottom: 1px solid darken($view_bg_color, 10%);
+    border-right: 1px solid darken($view_bg_color, 10%);
+    .header {
+      border-bottom: 1px solid darken($view_bg_color, 10%);
+      background-color: #f9f9f9;
+      h2 {
+        text-shadow: 0 0 3px #999999;
+        color: $fg_color; } }
+    .price {
+      color: #777777; }
+    .button a {
+      color: #666666; }
+    .bottom {
+      background-image: -moz-linear-gradient(top, darken($view_bg_color, 10%), #aaaaaa);
+      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #aaaaaa), color-stop(1, darken($view_bg_color, 10%))); } }
+  .first {
+    border: 1px solid darken($view_bg_color, 10%); }
+  .last {
+    border: 1px solid darken($view_bg_color, 10%); }
+  p.free-offer {
+    color: ligthen($fg_color, 53%);
+    a {
+      color: lighten($fg_color, 33%); } }
+  .selected {
+    border: 1px solid #ed671f;
+    background-color: #fff3d2;
+    -moz-box-shadow: 0 0 5px $fg_color;
+    -webkit-box-shadow: 0 0 5px $fg_color;
+    -o-box-shadow: 0 0 5px $fg_color;
+    -khtml-box-shadow: 0 0 5px $fg_color;
+    box-shadow: 0 0 5px $fg_color;
+    .header {
+      background-color: #ffcc66; }
+    .price {
+      text-shadow: 0 1px 3px $fg_color;
+      color: white; }
+    .button a {
+      color: white;
+      text-shadow: 0 1px 1px $fg_color; }
+    .bottom {
+      background-image: -moz-linear-gradient(top, #ed671e, #b4490f);
+      background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #b4490f), color-stop(1, #ed671e));
+      background-color: #ed671e; } } }
+
+// shapado/others/quick-question
+.quick_question {
+  background-color: $view_bg_color; }
+
+// shapado/others/toolbars.toolbar
+.toolbar ul li a {
+  &:hover {
+    background-color: $brand_color;
+    color: white; } }
+
+.index .toolbar .answers a {
+  color: $brand_color;
+  &:hover {
+    background-color: $brand_color;
+    color: white; } }
+
+.main-question .toolbar {
+  li {
+    a {
+      &:hover, &.active {
+        background-color: $brand_color;
+        color: white; } } } }
+
+.answers-list article .toolbar {
+  background-color: lighten($view_bg_color, 10%); }
+
+
+//Themes
+.themes-controller #main-content-wrap p a{
+  background-color: $brand_color;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($brand_color), to($dark_brand_color));
+  background-image: -moz-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -ms-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand_color), color-stop(100%, $dark_brand_color));
+  background-image: -webkit-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -o-linear-gradient($brand_color, $dark_brand_color);
+  background-image: linear-gradient($brand_color, $dark_brand_color);
+  color: white;
+  border: 1px solid $dark_brand_color !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.themes-controller #main-content-wrap p a:hover {
+    color: white;
+}
+.themes-controller #main-content-wrap .details-theme li div{
+  border: 1px solid darken($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme {
+  border-top: 1px solid darken($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme p a, .themes-controller #main-content-wrap .themes .theme h2 a{
+  color: $brand_color;
+}
+.themes-controller #main-content-wrap .themes .theme .toolbar {
+  background-color: lighten($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
+  border: 1px solid darken($view_bg_color, 10%);
 }

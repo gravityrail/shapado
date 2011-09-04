@@ -8,7 +8,7 @@ var Effects = {
       $(this).toggleClass("active"); return false;
     });
 
-    jQuery('ul.drop-menu').superfish({
+    jQuery('.sf-menu').superfish({
       hoverClass:    'dropHover',
       autoArrows:    false
     });

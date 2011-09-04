@@ -8,17 +8,18 @@
 
 .field
   .checkbox
-    = form.label  I18n.t('themes.show.fluid')
+    = form.label "Fluid layout"
     = form.check_box :fluid
+    %small This let your app to take the full with, usefull when you are in a big screen or small
+  .clear
 
-%fieldset
+%h2 Colors and Backgrounds
+
+%fieldset.theme_colors
   .field
     = form.label I18n.t('themes.show.bg_color')
     = form.text_field :bg_color, :type => "color"
-
-  .field
-    = form.label I18n.t('themes.show.fg_color')
-    = form.text_field :fg_color, :type => "color"
+    %small  Define plane color as background, be sure about contrast with your app.  
 
   .field
     -if !@theme.new? && @theme.has_bg_image?
@@ -26,42 +27,27 @@
       =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
     = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image
+    %small  You can upload an image as background. Max 800K. GIF, JPG, PNG.
 
   .field
-    = form.label I18n.t('themes.show.view_bg')
+    = form.label "App main color"
+    = form.text_field :brand_color, :type => "color"
+    %small This color will be the must important from your brand, pick well
+
+  .field
+    = form.label "Modules colors"
     = form.text_field :view_bg_color, :type => "color"
+    %small Be sure this color will work great with your background.
 
   .field
-    = form.label I18n.t('themes.show.view_fg')
-    = form.text_field :view_fg_color, :type => "color"
-
-%fieldset
-  .field
-    = form.label I18n.t('themes.show.button_bg')
-    = form.text_field :button_bg_color, :type => "color"
-
-  .field
-    = form.label I18n.t('themes.show.button_fg')
-    = form.text_field :button_fg_color, :type => "color"
-
-
-%fieldset
-  .field
-    = form.label  I18n.t('themes.show.link_bg')
-    = form.text_field :link_bg_color, :type => "color"
-
-  .field{:style => "margin-bottom: 3px"}
-    .checkbox
-      = form.label  I18n.t('themes.show.use_link_bg')
-      = form.check_box :use_link_bg_color
-
-  .field
-    = form.label I18n.t('themes.show.link_fg')
-    = form.text_field :link_fg_color, :type => "color"
+    = form.label "Text color"
+    = form.text_field :fg_color, :type => "color"
+    %small Be sure you can read well your texts, getting good contrast with backgrounds.
 
 .field
   = form.label :custom_css
   = form.text_area :custom_css
+  %small You can use normal CSS and SCSS as custum styles sheets
 
 - if current_group.has_custom_js
   .field
@@ -70,7 +56,8 @@
       = form.text_area :javascript, :value => @theme.javascript.get.read
     - else
       = form.text_area :javascript, :value => ''
+      
 .form-options
   .buttons
-    = form.submit :value => I18n.t('themes.form.update') , :class => "save"
+    = form.submit :value => "Update theme" , :class => "save"
 

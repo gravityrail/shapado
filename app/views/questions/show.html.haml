@@ -66,24 +66,23 @@
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
 
-
+    %ul.tag-list
+      %li.title
+        = t('global.tags_label')
+      - @question.tags.each do |tag|
+        %li
+          = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
+      - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
+        %li.retag
+          = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
     = render "toolbar"
 
-  %ul.tag-list
-    %li.title
-      = t('global.tags_label')
-    - @question.tags.each do |tag|
-      %li
-        = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
-    - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
-      %li.retag
-        = link_to t('.retag'), retag_question_path(@question), :id => 'retag'
 
 #answers-content-wrap
   -cache_for(:question_answers, @question.id) do
     %header
-      %h3
+      %h2
         = t("questions.question.has_answers", :count => @answers.total_count)
 
     %section.filters
@@ -103,7 +102,7 @@
       = error_messages_for 'answer'
 
     - if @question.closed && @question.close_reason.present?
-      #close_reason.pacho
+      #close_reason
         = t(".close_reason")
         = t(@question.close_reason.reason, :scope=>"close_requests.form")
         - if !@question.close_reason.comment.empty?
@@ -111,11 +110,11 @@
           .comment
             =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
-    .followUp-content
       -if @question.follow_up
-        %h1
-          = t("questions.show.follow_up_of")
-        = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
+        .followUp-content
+          %h1
+            = t("questions.show.follow_up_of")
+          = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
 
       -if @question.followed_up_by.limit(1).count > 0
         %h1= t('global.followed_by')

@@ -1,0 +1,501 @@
+// BASICS
+//-------------------------------------------------------------------------------------------------------------------
+form
+  fieldset
+    margin-bottom: 18px
+    padding-top: 18px
+    legend
+      display: block
+      margin-left: 150px
+      font-size: $l
+      line-height: 100
+      *margin: 0 0 5px 145px
+      /* IE6-7 */
+      *line-height: 1.5
+      /* IE6-7 */
+
+  label, input, select, textarea
+    font: normal $s/$s $arial
+
+  .field
+    margin: 0 50px 20px 50px
+
+  label
+    font-size: $s
+    line-height: $l
+    font-weight: bold
+
+  .checkbox input,
+  .radio input,
+  input[type=checkbox], form input[type=radio]
+    cursor: pointer
+
+  select,
+  form input[type=file]
+    height: 28px  !important
+    line-height: $xl
+
+  textarea
+    height: auto
+
+  input[type=text],
+  input[type=password],
+  textarea,
+  select,
+  .uneditable-input
+    display: inline-block
+    width: 437px
+    margin: 0
+    padding: 4px
+    font-size: $s
+    line-height: $l
+    +small-radius
+
+  input[type=text],
+  input[type=password],
+  select,
+  textarea
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+    transition: border linear 0.2s, box-shadow linear 0.2s, background-color linear 0.2s
+
+  input[type=text]:focus,
+  form input[type=password]:focus,
+  form textarea:focus
+    outline: none
+    -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+    -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+
+  .error
+    padding: 10px 0
+    margin: -10px 0 10px
+    +small-radius
+
+  .radio, .checkbox
+    float: left
+    width: 100%
+    margin-bottom: 5px
+
+    label
+      float: right
+      width: 95%
+      font-weight: normal
+
+    input
+      float: left
+      width: 15px !important
+      margin-right: 5px
+
+  .column
+    width: 50%
+    float: left
+    input
+      margin: 0 !important
+    label
+      width: 87% !important
+
+  .capcha
+    clear: both
+    float: none
+    display: block
+
+  hr
+    border: none
+    margin-bottom: 20px
+
+  .form-options
+    clear: both
+    overflow: hidden
+    .column
+      width: 30%
+      label
+        white-space: nowrap
+
+  .birthday
+    select
+      width: 30%
+    select:nth-child(2)
+      width: 68px
+    select:nth-child(3)
+      width: 150px
+    select:nth-child(4)
+      width: 60px
+
+  .buttons
+    float: right
+    padding-top: 8px
+    input.save
+      margin-top: -8px
+      margin-right: 5px
+      border: none
+      font-size: 14px
+      padding: 5px 10px
+      float: left
+      width: auto
+
+  .follow-up-msg
+    padding: 15px
+    margin: 0 0 30px 0
+    text-align: center
+    p
+      margin: 0
+      a
+        display: block
+
+  .group-logo
+    .img-up
+      float: left !important
+      margin: 0 10px 0 0
+    .size
+      width: 160px
+      margin-top: 39px
+      float: left
+      input
+        float: left !important
+        width: 50px !important
+      span
+        float: left
+        padding: 7px
+        display: block
+  small
+    display: block
+    clear: both
+    margin: 5px 0 0 0
+
+  .manage-domain
+    list-style-type: decimal !important
+    margin: 0 0 20px 20px
+    li
+      margin: 0 0 20px 0
+  .domain-url
+    height: 30px
+    padding: 10px
+    input
+      float: right !important
+    span
+      font-size: 16px
+      float: left
+      margin: 6px 0 0 8px
+
+  .asked-twitter
+    span
+      float: left
+      padding: 7px 5px 0 0
+    input
+      width: 94%
+
+  .follow-up-msg
+    background-color: $lightOrange
+    margin: 0 30px 30px 30px
+    font-size: 18px
+    a
+      font-size: 14px
+      margin: 5px 0 0 0
+
+
+// BTNS
+//-------------------------------------------------------------------------------------------------------------------
+.buttons
+  float: right
+input[type=submit], input.save, .add_attachment
+  display: inline-block
+  background-repeat: repeat-x
+
+  padding: 4px 14px
+  +normal-radius
+  overflow: hidden
+  font-size: $s
+  line-height: $s
+
+  &:hover
+    background-position: 0 -30px
+    text-decoration: none
+
+// Main questions forms
+//-------------------------------------------------------------------------------------------------------------------
+.questions
+  form.question_comment_form, form.answer_comment_form
+    padding: 5px 15px
+    textarea
+      width: 500px
+      height: 100px
+      margin: 0 0 10px 0
+
+// Ask question header
+//-------------------------------------------------------------------------------------------------------------------
+.ask_question, .edit .questions
+  .tagwrapper
+    width: 437px !important
+  h1, h1 span
+    font-size: 18px
+    padding: 20px 20px 5px 20px
+    display: block
+  p
+    margin: 0 20px 40px 20px
+  .buttons
+    margin-bottom: 30px
+
+// Related Questions
+.related_questions
+  #related_questions
+    *
+      border: 0px
+    .toolbar
+      display: none
+    article
+      padding: 0
+      margin: 0
+      h3
+        font-size: 12px
+        font-weight: normal
+        a
+          background-color: $lightOrange
+          padding: 5px 10px
+          border: 0px !important
+          display: block
+          &:first-letter
+            text-transform: uppercase
+
+// New group form
+//-------------------------------------------------------------------------------------------------------------------
+.groups-controller
+  #main-content-wrap
+    h1
+      margin: 30px
+    form
+      .domain
+        small
+          float: left !important
+          font-size: 13px !important
+          line-height: 20px
+      .buttons
+        margin: 0 50px 30px 0
+
+// Group properties form
+//-------------------------------------------------------------------------------------------------------------------
+.manage-layout,
+  #main-content-wrap
+    padding: 30px
+    width: 545px
+    h1
+      margin: 0 0 10px 0
+    p
+      margin: 0 0 30px 0
+
+    .ui-tabs, .ui-tabs-nav
+      background: transparent
+      border: 0px
+      .ui-tabs-nav
+        li
+          a
+            font-size: 13px
+            font-weight: normal
+          &.ui-tabs-selected a
+            font-weight: bold
+      .field
+        margin: 0
+        padding: 20px
+        input
+          width: 100%
+
+// Acces form
+//-------------------------------------------------------------------------------------------------------------------
+.manage-layout
+  .access
+    form
+      margin-top: 30px
+      h2
+        margin: 0 0 20px 0
+        padding: 0px 0 5px 0
+        font-size: 14px
+        display: block
+      .settings
+        margin-bottom: 40px
+        select
+          width: 200px
+          margin: 10px 40px
+      .providers
+        .field
+          float: left !important
+          margin: 0
+          label
+            width: 150px
+
+
+// Invitations form
+//-------------------------------------------------------------------------------------------------------------------
+.invitations-ready
+  margin: 0 30px 30px 30px
+  ul
+    margin: 0 0 0 20px
+    li
+      list-style: disc
+      overflow: hidden
+      margin: 0 0 30px 0
+      form
+        float: right
+        margin: 0 0 0 10px
+
+// Anouncements form
+//-------------------------------------------------------------------------------------------------------------------
+.announcements
+  .date-msg select
+    width: auto
+
+  .list-announcements
+    margin: 50px 60px 0 60px
+    .each-announcement
+      li
+        overflow: hidden
+        padding: 20px
+        p
+          font-size: 14px
+          line-height: 17px
+          margin: 0 0 5px 0
+        .date
+          font-size: 11px
+          font-weight: normal !important
+          margin-bottom: 10px
+        .strong
+          font-weight: normal
+          font-style: italic !important
+        a
+          padding: 5px 10px
+          float: right
+
+.announcement
+  padding: 15px
+  margin-bottom: 5px
+  +normal-radius
+
+// Requirements form
+//-------------------------------------------------------------------------------------------------------------------
+.manage-layout
+  .widgets
+    width: 100% !important
+
+.widgets-admin
+  .select-widget
+    padding: 20px
+    margin: 0 0 20px 0
+    overflow: hidden
+    form
+      float: left
+      margin: 0 30px 0 0
+      .field
+        float: left
+        margin: 0 0 10px 0
+        select
+          width: auto
+          float: left
+          margin: 0 10px 0 0
+      .buttons
+        float: left
+        margin: 16px 0 0 0
+
+    .zone, .type
+      float: left
+      width: 100px
+      margin: 0 10px 0 0
+      img
+        width: 60px
+      p
+        margin: 0 0 10px 0 !important
+        strong
+          font-weight: bold
+          margin: 0 0 5px 0
+          display: block
+
+
+  .container
+    .container
+      margin-bottom: 20px
+      overflow: hidden
+      +normal-radius
+
+    .header
+      font-size: 14px
+      line-height: 14px
+      font-weight: bold
+      padding: 10px 15px
+      margin-bottom: 10px
+      overflow: hidden
+      display: block
+      clear: both
+      +normal-radius
+      a
+        float: right
+        font-weight: normal
+
+    .top
+      padding: 10px
+      font-size: 12px
+      p
+        margin: 5px 0 !important
+        line-height: 15px
+      .img
+        width: 13px
+      form
+        margin: 0
+        input
+          margin: 6px 0 0 10px
+        p
+          float: left
+          font-weight: bold
+          margin: 2px 10px 0 0
+
+  .navbar .container
+    width: 180px
+    float: left
+    margin-left: 5px
+    margin-right: 5px
+  .sidebar .container
+    width: 300px
+    float: left
+    margin-left: 5px
+    margin-right: 5px
+
+
+// Search form
+//-------------------------------------------------------------------------------------------------------------------
+.searches-controller
+  #main-content-wrap
+    h1
+      margin: 30px 0 0 30px
+    p
+      margin: 0 0 30px 30px
+    .buttons
+      padding: 30px
+
+// Settings form
+//-------------------------------------------------------------------------------------------------------------------
+.users-controller 
+  .users form
+    h1
+      margin: 30px 0 0 30px
+      padding-bottom: 30px
+    .buttons
+      padding: 30px    
+
+// Sesions form
+//------------------------------------------------------------------------------------------------------------------- 
+.devise-sessions-controller, .devise-passwords-controller,  .devise-unlocks-controller, .users-controller.new
+  #main-content-wrap
+    width: 545px
+    padding: 30px
+    margin: 80px auto
+    h1
+      margin-bottom: 30px
+    p
+      margin: -20px 0 30px 0
+    .checkbox
+      margin: 0 0 0 25px
+    ul
+      display: block
+      clear: both
+      padding-top: 20px
+      margin-left: 40px
+      li
+        list-style: disc
+        margin: 0 0 6px 0
