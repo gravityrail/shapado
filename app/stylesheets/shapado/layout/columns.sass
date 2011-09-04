@@ -1,0 +1,69 @@
+// COLUMNS - Sections
+//-------------------------------------------------------------------------------------------------------------------
+section
+  float: left
+  &.left-panel
+    width: 137px
+    display: inline
+    text-align: right
+    margin: 0 3px 0 0
+
+  &.content-panel
+    width: 545px
+    display: inline-table
+    margin: 0 3px 0 0
+    &.nosidebar
+      width: 800px
+
+  &.right-panel
+    width: 310px
+    display: inline
+    float: right
+
+#main-content-wrap
+  margin-bottom: 3px
+  zoom: 1
+  +normal-radius
+  article
+    padding: 20px 20px 15px 20px
+    &:last-child
+      border: 0px
+    .user-data
+      margin-bottom: 5px
+      font-size: $xs
+    h2
+      font-weight: normal
+      font-size: 24px
+      margin: 10px 0 5px 0
+      &:first-letter
+        text-transform: uppercase
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+
+.empty_questions
+  padding: 20px
+  overflow: hidden
+  margin: 0
+  width: 505px
+  img
+    float: left
+    margin: 0 20px
+
+.moderate-answers-controller
+  #main-content-wrap
+    .buttons
+      margin: 30px
+.moderate-questions-controller
+  #main-content-wrap
+    .filters
+      margin-bottom: 20px
+.feedback
+  #main-content-wrap
+    padding: 30px 0
+    .buttons
+      margin: 0 60px 0 0

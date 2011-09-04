@@ -7,8 +7,12 @@ module Jobs
       css = StringIO.new
       template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
       template = Sass::Engine.new(self.define_vars(theme) << File.read(template_file) << "\n" << theme.custom_css || "",
-                        {:style => :compressed, :syntax => :scss, :cache => false, :load_paths => []})
-      css << YUI::CssCompressor.new.compress(template.render)
+                        {:style => Sass::Plugin.options[:style], :syntax => :scss, :cache => false, :load_paths => []})
+      if Rails.env == "production"
+        css << YUI::CssCompressor.new.compress(template.render)
+      else
+        css << template.render
+      end
       theme.stylesheet = css
       theme.stylesheet["extension"] = "css"
       theme.stylesheet["content_type"] = "text/css"
@@ -24,15 +28,9 @@ $bg_color: ##{theme.bg_color};
 $fg_color: ##{theme.fg_color};
 $bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}';
 $view_bg_color: ##{theme.view_bg_color};
-$view_fg_color: ##{theme.view_fg_color};
-
-$button_bg_color: ##{theme.button_bg_color};
-$button_fg_color: ##{theme.button_fg_color};
-
-$use_link_bg_color: #{theme.use_link_bg_color};
-$link_bg_color: ##{theme.link_bg_color};
-$link_fg_color: ##{theme.link_fg_color};
+$brand_color: ##{theme.brand_color};
 $fluid: #{theme.fluid};
+$bg_shadow:      #999;
 @
     end
   end

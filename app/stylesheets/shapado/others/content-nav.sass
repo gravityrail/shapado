@@ -1,0 +1,71 @@
+// MAIN NAV + FILTERS
+//-------------------------------------------------------------------------------------------------------------------
+ul.content-tabs
+  zoom: 1
+  width: 100%
+  &:before, &:after
+    display: table
+    content: ""
+  &:after
+    clear: both
+  li
+    display: inline
+    a
+      float: left
+      width: auto
+      padding: 0 15px 0 36px
+      display: block
+      line-height: 35px
+      text-transform: uppercase
+      font-size: $s
+      background-position: 7px 50%
+      background-repeat: no-repeat
+
+    &.questions a
+      background-image: url("/images/q-icon-medium.gif")
+    &.answers a
+      background-image: url("/images/ans-icon-medium.gif")
+    &.unanswered a
+      background-image: url("/images/noans-icon-medium.gif")
+    &.activities a
+      background-image: url("/images/activity-iacon.gif")
+
+
+// FILTERS
+//-------------------------------------------------------------------------------------------------------------------
+.filters
+  zoom: 1
+  width: 100%
+  ul
+    header
+      float: left
+      display: inline
+      font-size: 13px
+      line-height: 30px
+      font-weight: bold
+      margin: 0 10px
+    li
+      display: inline
+      a
+        float: left
+        display: block
+        padding: 0 12px 0 12px
+        font-size: 13px
+        line-height: 30px
+
+// Admin nav
+//-------------------------------------------------------------------------------------------------------------------
+.admin-nav
+  overflow: hidden
+  margin: 0 0 30px 0
+  +normal-radius
+  li
+    float:left
+    display: inline
+    margin: 0 0 -1px 0
+    a
+      padding: 10px 15px
+      display: block
+      float: left
+      font-size: 11px
+      text-transform: uppercase

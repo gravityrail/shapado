@@ -1,0 +1,153 @@
+// Generals
+//-------------------------------------------------------------------------------------------------------------------
+.sf-menu, .sf-menu *
+  margin:       0
+  padding:      0
+  list-style:   none
+.sf-menu, .drop-menu
+  line-height:  1.0
+  .sf-sub-indicator
+    position: absolute
+    display: block
+    right: 8px
+    top: 1.05em // IE6 only
+    width: 10px
+    height: 10px
+    text-indent: -999em
+    overflow: hidden
+    background:	 url('../images/arrows-ffffff.png') no-repeat -10px -100px //8-bit indexed alpha png. IE6 gets solid image only
+  a
+    display: block
+    position: relative
+    white-space: nowrap
+  ul
+    position: absolute
+    top: -999em
+    width: auto // left offset of submenus need to match (see below)
+    +outer-shadow
+    li
+      width: 100%
+      display: block
+      &:hover
+        visibility: inherit // fixes IE7 'sticky bug'
+        cursor: pointer
+      a
+        display: block
+        position: relative
+        border-right: 0px !important
+        border-left: 0px !important
+        &:hover
+          cursor: pointer
+  li
+    float:	 left
+    position: relative
+    &:hover ul, &.sfHover ul, &.dropHover ul
+      left:  0
+      top: 24px // match top ul list item height
+      z-index: 99
+    &:hover li ul, &.sfHover li ul, &.dropHover li ul
+      top: -999em
+    li:hover ul, li.sfHover ul, li.dropHover ul
+      left:	 auto // match ul width
+      top: 0
+    li li:hover ul, li li.sfHover ul, li li.dropHover ul
+      left:	 auto // match ul width
+      top: 0
+
+// arrows
+.sf-menu a.sf-with-ul
+  min-width: 1px
+  // trigger IE7 hasLayout so spans position accurately
+
+.sf-menu  a > .sf-sub-indicator
+  // give all except IE6 the correct values
+  top: .8em
+  background-position: 0 -100px
+  // use translucent arrow for modern browsers
+
+// apply hovers to modern browsers
+a:focus > .sf-sub-indicator,
+a:hover > .sf-sub-indicator,
+a:active > .sf-sub-indicator,
+li:hover > a > .sf-sub-indicator,
+li.sfHover > a > .sf-sub-indicator
+  background-position: -10px -100px
+  // arrow hovers for modern browsers
+
+// point right for anchors in subs
+.sf-menu ul
+  .sf-sub-indicator
+    background-position:  -10px 0
+  a > .sf-sub-indicator
+    background-position:  0 0
+
+// apply hovers to modern browsers
+.sf-menu  ul
+  a:focus > .sf-sub-indicator,
+  a:hover > .sf-sub-indicator,
+  a:active > .sf-sub-indicator,
+  li:hover > a > .sf-sub-indicator,
+  li.sfHover > a > .sf-sub-indicator
+    background-position: -10px 0
+    // arrow hovers for modern browsers
+
+// shadows for all but IE6
+.sf-shadow ul
+  background:	url('../images/shadow.png') no-repeat bottom right
+  &.sf-shadow-off
+    background: transparent
+
+
+// HEADER - dropdowns for groups, user link, and admin/moderate
+//-------------------------------------------------------------------------------------------------------------------
+.top-bar
+  .sf-menu
+    float: left
+    li
+      float: left
+      display: inline
+      small
+        position: absolute
+        top: 2px
+        left: 15px
+      a
+        display: block
+        padding: 14px 25px 13px 15px
+    ul
+      top: 40px !important
+      li:first-child
+        border: 0px
+      a
+        padding: 8px 10px
+        border: 0
+        &.sf-with-ul
+          padding-right: 30px
+
+  ul.user-list
+    float: right
+    a
+      padding-left: 50px
+    ul li a
+      padding-left: 10px
+    li.user
+      position: relative
+      border: 0px 
+      img
+        position: absolute
+        top: 7px
+        left: 13px
+        +normal-radius
+        width: 25px
+
+
+// ARTICLE TOOLBAR - dropdown for moderate + ARTICLE TOOLBAR - dropdown for moderate
+//-------------------------------------------------------------------------------------------------------------------
+.index .toolbar .dropHover  ul,
+.main-question .toolbar .dropHover ul
+  top: 22px
+  a, li
+    +none-radius
+.main-question .toolbar .dropHover ul
+  top: 27px
+
+

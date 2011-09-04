@@ -1,5 +1,6 @@
 class InvoicesController < ApplicationController
   layout "manage"
+  tabs :default => :invoices
   before_filter :authenticate_user!
   before_filter :owner_required
 

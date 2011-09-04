@@ -1,85 +1,55 @@
 // ========================================================================
-//    Document   	:   _application.sass
+//    Document   	:   application.sass
 //    Created on 	:   Nov14 - 2010, 20:29 pm
-//    Author      	:   @dgfrancisco
-//    Client     		:   Shapado
-//    Description	:   Estilos de la aplicacion y los llamados a reset y el setup basico del portal
+//    Author      		:   @dgfrancisco
+//    Project     		:   Shapado
 //========================================================================
-// BASIC SETUP
-//========================================================================
-@import "setup"
+@import "shapado/setup"
 
+// Basics css
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/basics/reset"
+@import "shapado/basics/tipography"
+@import "shapado/basics/colors"
 
-// BASIC STYLES
-//========================================================================
-@import "reset"
-@import "app/messages"
-@import "app/pagination"
-@import "app/advertisement"
-@import "app/drop-menus"
-@import "app/markdown"
+// Layout css
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/layout/generals"
+@import "shapado/layout/columns"
+@import "shapado/layout/header"
+@import "shapado/layout/footer"
 
-// BASIC LAYOUT
-//========================================================================
-@import "app/brand"
-@import "app/layout"
-@import "app/footer"
-@import "app/topBar"
-@import "app/topTabs"
-@import "app/login_dialog"
-@import "app/loading_box"
+// Widgets css
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/widgets/generals"
+@import "shapado/widgets/all"
 
+// Modules
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/modules/badges"
+@import "shapado/modules/invoices"
+@import "shapado/modules/pages"
+@import "shapado/modules/users"
+@import "shapado/modules/groups"
+@import "shapado/modules/history"
+@import "shapado/modules/members"
+@import "shapado/modules/activities"
+@import "shapado/modules/comments"
+@import "shapado/modules/main-question"
+@import "shapado/modules/suggestions"
 
-// ADMIN
-//========================================================================
-@import "app/content/admin/profile"
-@import "app/content/admin/widgets"
-@import "app/content/admin/announcements"
-@import "app/content/admin/members"
-@import "app/content/admin/moderate"
-@import "app/content/more/users"
-
-// WIDGETS
-//========================================================================
-@import "app/widgets/widgets"
-@import "app/widgets/customLinks"
-@import "app/widgets/tags"
-@import "app/widgets/networks"
-@import "app/widgets/badges"
-@import "app/widgets/top_groups"
-@import "app/widgets/top_users"
-@import "app/widgets/wikis"
-@import "app/widgets/suggestions"
-@import "app/widgets/related_questions"
-@import "app/widgets/share"
-
-// MAIN CONTENT
-//========================================================================
-@import "app/content/tabs"
-@import "app/content/main"
-
-@import "app/content/question/question"
-@import "app/content/question/history"
-@import "app/content/question/toolbar"
-@import "app/content/more/badges"
-@import "app/content/more/groups"
-@import "app/content/more/wikis"
-@import "app/content/more/plans"
-@import "app/content/question/actionPanels"
-@import "app/content/question/tags"
-@import "app/content/question/answers"
-@import "app/content/question/comments"
-
-@import "app/content/editors/jhtmlarea"
-@import "app/content/editors/markdown"
-@import "app/content/editors/markdown_editor"
-
-
-// FORMS
-//========================================================================
-@import "app/forms/general"
-
-
-//UIJQuery
-//========================================================================
-@import "public/stylesheets/ui-lightness/jquery-ui.css"
+// Others css
+//-------------------------------------------------------------------------------------------------------------------
+@import "shapado/others/forms"
+@import "shapado/others/drop-menus"
+@import "shapado/others/feedback"
+@import "shapado/others/login"
+@import "shapado/others/tags"
+@import "shapado/others/editors"
+@import "shapado/others/markdown"
+@import "shapado/others/quick-question"
+@import "shapado/others/content-nav"
+@import "shapado/others/toolbars"
+@import "shapado/others/loading"
+@import "shapado/others/plans"
+@import "shapado/others/themes"

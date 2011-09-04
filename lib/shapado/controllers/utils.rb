@@ -76,9 +76,9 @@ module Shapado
       end
 
       def bodys_class(params)
-        out = "#{params[:controller].gsub("/","-")}-controller #{params[:action]}"
+        out = ["#{params[:controller].gsub("/","-")}-controller", params[:action]]
         if params[:tab]
-          out << " #{params[:tab]}"
+          out << params[:tab]
         end
         out
       end
