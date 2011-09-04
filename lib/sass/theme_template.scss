@@ -119,12 +119,12 @@ a {
   .sf-menu {
     li {
       small {
-        color: darken($fg_color, 20%); }
+        color: lighten($fg_color, 20%); }
       &:hover small, &:hover a small, a:hover small {
         color: $fg_color !important; }
       a {
         background-image: none;
-        color: $fg_color;
+        color: lighten($fg_color, 20%);;
         border-right: 1px solid darken($view_bg_color, 73%);
         border-left: 1px solid $fg_color;
         &:hover, &:hover a {
@@ -134,7 +134,7 @@ a {
       li {
         border-top: 1px solid darken($view_bg_color, 5%); }
       a {
-        color: $fg_color;
+        color: lighten($fg_color, 20%);;
         &:hover {
           background-color: $brand_color;
           color: white !important; } } }
