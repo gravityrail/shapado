@@ -564,7 +564,8 @@ namespace :fixdb do
 
   task :fix_themes => [:init] do
     Theme.all.each do |theme|
-      theme.override(:brand_color => theme.button_bg_color)
+      next if !theme[:button_bg_color]
+      theme.override(:brand_color => theme[:button_bg_color])
     end
     Theme.unset({}, {:use_button_bg_color => true, :button_fg_color=> true, :button_bg_color=> true, :use_link_bg_color=> true, :link_bg_color=> true, :link_fg_color=> true, :view_fg_color=> true})
     Theme.all.each {|theme| Jobs::Themes.generate_stylesheet(theme.id)}
