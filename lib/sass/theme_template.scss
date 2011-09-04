@@ -28,10 +28,10 @@ $fg_brand_color: $brand_color;
 }
 
 $dark_brand_color: $brand_color;
-@if lightness($brand_color) > 20% {
-  $dark_brand_color: darken($brand_color, lightness($brand_color) - 20%); }
+@if lightness($brand_color) > 35% {
+  $dark_brand_color: darken($brand_color, lightness($brand_color) - 35%); }
 @else {
-  $dark_brand_color: lighten($brand_color, 20% - lightness($brand_color));}
+  $dark_brand_color: lighten($brand_color, 35% - lightness($brand_color));}
 
 // lightOrange, this color comes from brand color var
 $light_brand_color: $brand_color;
@@ -965,7 +965,7 @@ input[type=submit], input.save, .add_attachment {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 .themes-controller #main-content-wrap p a:hover {
-    color: white;  
+    color: white;
 }
 .themes-controller #main-content-wrap .details-theme li div{
   border: 1px solid darken($view_bg_color, 10%);
@@ -977,7 +977,7 @@ input[type=submit], input.save, .add_attachment {
   color: $brand_color;
 }
 .themes-controller #main-content-wrap .themes .theme .toolbar {
-  background-color: lighten($view_bg_color, 10%); 
+  background-color: lighten($view_bg_color, 10%);
 }
 .themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
   border: 1px solid darken($view_bg_color, 10%);
