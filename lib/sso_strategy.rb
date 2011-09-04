@@ -55,7 +55,7 @@ module OmniAuth
           end
         end
 
-        if request.cookies['oa_sso_id'] < 15
+        if request.cookies['oa_sso_id'].length < 15
           raise ArgumentError, "oa_sso_id is too short. minimum size is 15"
         end
       end
