@@ -700,7 +700,7 @@ ul.content-tabs {
 // shapado/others/drop-menu
 .sf-menu, .drop-menu {
   ul {
-    background-color: white !important;
+    background-color: $view_bg_color;
     li {
       border-top: 1px solid darken($view_bg_color, 5%);
       &:hover {
@@ -957,7 +957,7 @@ input[type=submit], input.save, .add_attachment {
 //Themes
 .themes-controller {
   .details-theme {
-    li { 
+    li {
       div {
         border: 1px solid darken($view_bg_color, 10%); } } }
   .themes {
@@ -972,8 +972,6 @@ input[type=submit], input.save, .add_attachment {
     .theme_colors {
       .field {
         .Icon {
-          border: 1px solid darken($view_bg_color, 10%);} } } }
-   }
-}          
-          
-          
+          border: 1px solid darken($view_bg_color, 10%);} } } } }
+
+
