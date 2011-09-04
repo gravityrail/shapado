@@ -28,10 +28,10 @@ $fg_brand_color: $brand_color;
 }
 
 $dark_brand_color: $brand_color;
-@if lightness($brand_color) > 20% {
-  $dark_brand_color: darken($brand_color, lightness($brand_color) - 20%); }
+@if lightness($brand_color) > 35% {
+  $dark_brand_color: darken($brand_color, lightness($brand_color) - 35%); }
 @else {
-  $dark_brand_color: lighten($brand_color, 20% - lightness($brand_color));}
+  $dark_brand_color: lighten($brand_color, 35% - lightness($brand_color));}
 
 // lightOrange, this color comes from brand color var
 $light_brand_color: $brand_color;
@@ -119,12 +119,12 @@ a {
   .sf-menu {
     li {
       small {
-        color: darken($fg_color, 20%); }
+        color: lighten($fg_color, 40%); }
       &:hover small, &:hover a small, a:hover small {
         color: $fg_color !important; }
       a {
         background-image: none;
-        color: $fg_color;
+        color: lighten($fg_color, 40%);;
         border-right: 1px solid darken($view_bg_color, 73%);
         border-left: 1px solid $fg_color;
         &:hover, &:hover a {
@@ -134,7 +134,7 @@ a {
       li {
         border-top: 1px solid darken($view_bg_color, 5%); }
       a {
-        color: $fg_color;
+        color: lighten($fg_color, 40%);;
         &:hover {
           background-color: $brand_color;
           color: white !important; } } }
@@ -412,9 +412,6 @@ form.history {
   p {
     strong {
       color: $fg_color; } } }
-
-.chat {
-  background-color: white; }
 
 .display-color {
   border: 1px solid darken($view_bg_color, 5%); }
@@ -880,7 +877,6 @@ input[type=submit], input.save, .add_attachment {
 
 // shapado/other/plans
 .plans {
-  background-color: white;
   .each {
     border-top: 1px solid darken($view_bg_color, 10%);
     border-bottom: 1px solid darken($view_bg_color, 10%);
@@ -955,23 +951,34 @@ input[type=submit], input.save, .add_attachment {
 
 
 //Themes
-.themes-controller {
-  .details-theme {
-    li {
-      div {
-        border: 1px solid darken($view_bg_color, 10%); } } }
-  .themes {
-    .theme {
-      border-top: 1px solid darken($view_bg_color, 10%);}
-      p, h2 {
-        a {
-          color: $brand_color;} }
-      .toolbar {
-        background-color: lighten($view_bg_color, 10%); } }
-  form {
-    .theme_colors {
-      .field {
-        .Icon {
-          border: 1px solid darken($view_bg_color, 10%);} } } } }
-
-
+.themes-controller #main-content-wrap p a{
+  background-color: $brand_color;
+  background-image: -khtml-gradient(linear, left top, left bottom, from($brand_color), to($dark_brand_color));
+  background-image: -moz-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -ms-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand_color), color-stop(100%, $dark_brand_color));
+  background-image: -webkit-linear-gradient($brand_color, $dark_brand_color);
+  background-image: -o-linear-gradient($brand_color, $dark_brand_color);
+  background-image: linear-gradient($brand_color, $dark_brand_color);
+  color: white;
+  border: 1px solid $dark_brand_color !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.themes-controller #main-content-wrap p a:hover {
+    color: white;
+}
+.themes-controller #main-content-wrap .details-theme li div{
+  border: 1px solid darken($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme {
+  border-top: 1px solid darken($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme p a, .themes-controller #main-content-wrap .themes .theme h2 a{
+  color: $brand_color;
+}
+.themes-controller #main-content-wrap .themes .theme .toolbar {
+  background-color: lighten($view_bg_color, 10%);
+}
+.themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
+  border: 1px solid darken($view_bg_color, 10%);
+}

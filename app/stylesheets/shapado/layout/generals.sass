@@ -11,9 +11,20 @@
       content: ""
     &:after
       clear: both
-
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    overflow: hidden
+  &:after
+    clear: both
+    
 #container
   margin-top: 47px
+  
+.doc-layout
+  .top-page
+    margin: 30px 50px 0 50px
 
 // App Messages
 //-------------------------------------------------------------------------------------------------------------------
