@@ -19,11 +19,11 @@
   .field
     = form.label I18n.t('themes.show.bg_color')
     = form.text_field :bg_color, :type => "color"
-    %small  Define plane color as background, be sure about contrast with your app.  
+    %small  Define plane color as background, be sure about contrast with your app.
 
   .field
     -if !@theme.new? && @theme.has_bg_image?
-      = image_tag("/_files/themes/bg_image/#{@theme.group_id}/#{@theme.id}")
+      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.group.theme_version))
       =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
     = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image
@@ -56,7 +56,7 @@
       = form.text_area :javascript, :value => @theme.javascript.get.read
     - else
       = form.text_area :javascript, :value => ''
-      
+
 .form-options
   .buttons
     = form.submit :value => "Update theme" , :class => "save"

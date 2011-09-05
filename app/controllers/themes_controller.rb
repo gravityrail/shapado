@@ -101,7 +101,6 @@ class ThemesController < ApplicationController
   def destroy
     @theme = current_group.themes.find(params[:id])
     @theme.destroy
-
     respond_to do |format|
       format.html { redirect_to(themes_url) }
       format.json  { head :ok }
@@ -112,6 +111,8 @@ class ThemesController < ApplicationController
     @theme = Theme.find(params[:id])
     @theme.delete_file("bg_image")
     @theme.save
+    Jobs::Themes.async.generate_stylesheet(@theme.id).commit!(4)
+
     respond_to do |format|
       format.html { redirect_to edit_theme_path(@theme) }
       format.json { render :json => {:ok => true} }

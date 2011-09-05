@@ -119,6 +119,13 @@ class GroupsController < ApplicationController
       @group.has_custom_js = false
     end
 
+    if params[:group][:logo]
+      @group.logo_version += 1
+    end
+    if params[:group][:custom_favicon]
+      @group.custom_favicon_version += 1
+    end
+
     respond_to do |format|
       if @group.save
         flash[:notice] = I18n.t('groups.update.notice')
