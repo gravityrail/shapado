@@ -1,9 +1,10 @@
 // Efects
 var Effects = {
   initialize: function() {
-    $('.sf-menu').superfish({
-      hoverClass:    'dropHover',
-      autoArrows:    false
+    $('.sf-menu').droppy({
+      className:    'dropHover',
+      autoArrows:    false,
+      trigger: 'click'
     });
 
     $(".highlight_for_user").effect("highlight", {}, 2000);

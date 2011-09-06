@@ -57,7 +57,7 @@ javascripts:
     - public/javascripts/rails.js
     - public/javascripts/app/initializers/search.js
     - public/javascripts/app/initializers/shapado_toolbar.js
-    - public/javascripts/vendor/superfish.js
+    - public/javascripts/vendor/jquery.droppy.js
     - public/javascripts/app/modules/invitations.js
     - public/javascripts/application-init.js
 
