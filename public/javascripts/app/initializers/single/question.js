@@ -1,3 +1,4 @@
 $(document).ready(function() {
-  Questions.initialize();
-})
+//   FIXME: why is it here?
+//   Questions.initialize();
+});

@@ -471,4 +471,3 @@ module ApplicationHelper
     render :partial => "invoices/form", :locals => {:opts => options.merge(:title => title)}
   end
 end
-

@@ -1,20 +1,17 @@
 var Questions = {
-  initialize: function() {
-    if($(".questions-controller.index").length > 0) {
-      Questions.initialize_on_index();
-    } else if($("section#main-question").length > 0) {
-      Questions.initialize_on_show();
+  initialize: function($body) {
+    if($body.hasClass("show")) {
+      Questions.initialize_on_index($body);
+    } else if($body.hasClass("index")) {
+      Questions.initialize_on_show($body);
     }
   },
-  initialize_on_index: function() {
+  initialize_on_index: function($body) {
     Ui.navigate_shortcuts($(".questions-index"), ".Question");
     $(".Question .toolbar").shapadoToolbar();
-    if(typeof(Effects) !== 'undefined'){
-      Effects.initialize();
-    }
+    Votes.initialize_on_questions();
   },
-  initialize_on_show: function() {
-    Ui.hide_comments_form();
+  initialize_on_show: function($body) {
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
     $(".answer .toolbar, .comment .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));

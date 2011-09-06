@@ -1,5 +1,7 @@
 var Votes = {
   initialize: function() {
+  },
+  initialize_on_questions: function() {
     $(".quick-vote-button").live("click", function(event) {
       var btn = $(this);
       btn.hide();
@@ -28,7 +30,7 @@ var Votes = {
   initialize_on_question: function() {
     $(".answer").delegate("form.vote_form button", "click", function(event) {
       if(Ui.offline()){
-        startLoginDialog();
+        Auth.startLoginDialog();
       } else {
         var btn_name = $(this).attr("name");
         var form = $(this).parents("form");
@@ -56,9 +58,7 @@ var Votes = {
     });
   },
   update_on_index: function(data) {
-
   },
   update_on_show: function(data) {
-
   }
 };

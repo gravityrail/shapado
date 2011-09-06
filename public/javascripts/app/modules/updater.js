@@ -12,6 +12,7 @@ var Updater = {
 
       prev = current;
       current = link.attr("data-layout");
+      current_page = link.attr("data-page");
 
       var parent = link.parent();
       var gparent = parent.parent();
@@ -44,26 +45,9 @@ var Updater = {
         url: $(this).attr("href"),
         container: '#main-content-wrap',
         success: function(data) {
-          if(typeof(Effects) !== 'undefined'){
-            Effects.initialize();
-          }
-          if(refreshed) {
-            if(typeof(Effects) !== 'undefined'){
-              Effects.initialize();
-            }
-            Updater.setup_loading_icon();
-            if(current == 'question') {
-              Questions.initialize_on_show();
-            }
-          }
-          if(current == 'manage-announcements') {
-            Editor.initialize();
-          } else if(current == 'manage-members') {
-            Members.initialize();
-          } else if(current == 'manage-widgets') {
-            Widgets.initialize();
-          }
-
+          var body = $(document.body);
+          body.attr({"class": current_page});
+          Uploader.refresh(body, refreshed);
           return false;
         }
       });
@@ -75,26 +59,26 @@ var Updater = {
   },
   guess_current_layout: function() {
     var layout = '';
-    var pageClass = $('body').attr('class');
+    var page = $(document.body);
 
-    if(pageClass.match(/questions-controller index/)) {
+    if(page.hasClass('questions-controller index')) {
       layout = 'index';
-    } else if(pageClass.match(/questions-controller show/)) {
+    } else if(page.hasClass('questions-controller show')) {
       layout = 'question';
-    } else if(pageClass.match(/users-controller show/)) {
+    } else if(page.hasClass('users-controller show')) {
       layout = 'user';
-    } else if(pageClass.match(/badges-controller/)) {
+    } else if(page.hasClass('badges-controller')) {
       layout = 'badges';
-    } else if(pageClass.match(/pages-controller/)) {
+    } else if(page.hasClass('pages-controller')) {
       layout = 'pages';
-    } else if(pageClass.match(/questions-controller new/)) {
+    } else if(page.hasClass('questions-controller new')) {
       layout = 'new-question';
-    } else if(pageClass.match(/admin-members-controller/)) {
+    } else if(page.hasClass('admin-members-controller')) {
       layout = 'manage-members';
-    } else if(pageClass.match(/admin-announcements-controller/)) {
+    } else if(page.hasClass('admin-announcements-controller')) {
       layout = 'manage-announcements';
     } else {
-      layout = pageClass.split(' ')[0]
+      layout = "index" // FIXME
     }
 
     return layout;

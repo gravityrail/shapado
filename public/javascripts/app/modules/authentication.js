@@ -17,5 +17,12 @@ var Auth = {
     (authUrl.indexOf('?')==-1)? pparg = '?pp=1' : pparg = '&pp=1'
     window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
     $('#login_dialog').dialog('close');
+  },
+  startLoginDialog: function(){
+    var title = $('#login_dialog').attr('data-title');
+    $('#login_dialog').dialog({title: title,
+                             modal: true,
+                             width: "150px",
+                             resizable: false});
   }
 };

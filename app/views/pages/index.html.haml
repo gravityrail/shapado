@@ -7,7 +7,7 @@
   -@pages.each do |page|
     %article.page
       %h2
-        = link_to h(page.title), page_path(page), :class => "pjax", :"data-layout" => "pages"
+        = pjax_link_to h(page.title), "pages", {'controller' => "pages", 'action' => 'show', 'id' => page.to_param}
       %p
         &= truncate(strip_tags(page.body), :length => 200)
       -if page.language
@@ -16,7 +16,7 @@
       %ul.actions-bar
         -if logged_in? && current_user.can_edit_wiki_post_on?(current_group)
           %li
-            =link_to t("scaffold.edit"), edit_page_path(page), :class => "pjax", :"data-layout" => "pages"
+            = pjax_link_to t("scaffold.edit"), "pages", {'controller' => "pages", 'action' => 'edit', 'id' => page.to_param}
           -if current_user.mod_of?(current_group)
             %li
               =link_to t("scaffold.destroy"), page_path(page.id), :class => "important", :method => :delete, :confirm => t("scaffold.sure", :model => t("activerecord.models.page"))

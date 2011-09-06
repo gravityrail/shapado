@@ -1,5 +1,5 @@
 .badge_item{:class => badge.type}
-  = link_to badge.name, badge_path(badge), {:class => "badge pjax", :title => badge.description, :"data-layout" => "pages"}
+  = pjax_link_to badge.name, "badges", {'controller' => 'badges', 'action'=>'show','id'=>badge.to_param}, {:class => "badge", :title => badge.description}
   -if !local_assigns[:hide_user] && !local_assigns[:mini]
     %span.user
-      =link_to h(truncate(badge.user.login, :length => 20)), user_path(badge.user), :title => h(badge.user.login), :class => "pjax", :"data-layout" => "user"
+      = pjax_link_to truncate(badge.user.login, :length => 20), "user", {'controller' => "users", 'action' => 'show', 'id' => (badge.user.login||badge.user_id)}, {:title => badge.user.login}

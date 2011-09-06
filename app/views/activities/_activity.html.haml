@@ -1,15 +1,14 @@
 -# FIXME: use t('activity.humanized', :user=>user, :action=> action, :target=> target) after styling
 %article.activity
   %p
-    =link_to activity.login, user_path(activity.login||activity.user_id), :class => "pjax", :"data-layout" => "user"
+    = pjax_link_to activity.login, "user", {'controller' => "users", 'action' => "show", 'id' => activity.login||activity.user_id}
     = activity.humanize_action
   %h2
     - if activity.action == "destroy"
       = activity.target_name
     - else
-      = link_to activity.target_name, activity.url_for_trackable(request.host), :class => "pjax", :"data-layout" => activity.layout_for_trackable
+      = pjax_link_to activity.target_name, activity.layout_for_trackable, activity.params_for_trackable
   %p
     %time{:pubdate => "pubdate", :datetime => activity.created_at.iso8601}
       = t("time.ago", :time => time_ago_in_words(activity.created_at, true))
       = activity.created_at
-

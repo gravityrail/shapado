@@ -15,9 +15,9 @@
       .content
         %ul.navigation
           %li
-            = link_to t("pages.actions.create_page"), new_page_path, :class => "pjax", :"data-layout" => "pages"
+            = pjax_link_to t("pages.actions.create_page"), "pages", {'controller' => "pages", 'action' => 'new'}
           %li
-            = link_to t("pages.actions.edit_page"), edit_page_path(@page), :class => "pjax", :"data-layout" => "pages"
+            = pjax_link_to t("pages.actions.edit_page"), "pages", {'controller' => "pages", 'action' => 'edit', 'id' => @page.to_param}
 
 #pages_show
   .markdown

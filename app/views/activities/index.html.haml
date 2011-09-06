@@ -1,15 +1,17 @@
 
 -content_for :nav_filters do
+  - url_options = {"controller" => "activities", "action" => "index"}
   %li.all
-    = link_to "All", activities_path(:context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+    -#i18n
+    = pjax_link_to "All", "index", url_options.merge(:context => params[:context]), {:rel => "nofollow"}
   %li.questions
-    = link_to "Questions", activities_path(:tab=>"questions", :context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+    = pjax_link_to "Questions", "index", url_options.merge(:tab=>"questions", :context => params[:context]), {:rel => "nofollow"}
   %li.answers
-    = link_to "Answers", activities_path(:tab=>"answers", :context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+    = pjax_link_to "Answers", "index", url_options.merge(:tab=>"answers", :context => params[:context]), {:rel => "nofollow"}
   %li.users
-    = link_to "Users", activities_path(:tab=>"users", :context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
-  %li.users
-    = link_to "Pages", activities_path(:tab=>"pages", :context => params[:context]), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"
+    = pjax_link_to "Users", "index", url_options.merge(:tab=>"users", :context => params[:context]), {:rel => "nofollow"}
+  %li.pages
+    = pjax_link_to "Pages", "index", url_options.merge(:tab=>"pages", :context => params[:context]), {:rel => "nofollow"}
 
 .activities
   - questions_link =  questions_link_for(params[:context])

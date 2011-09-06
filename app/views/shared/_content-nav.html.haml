@@ -1,13 +1,13 @@
 %nav
   %ul.content-tabs
     %li.questions
-      =link_to t("layouts.application.questions"), url_for(questions_link), :class => "pjax", :"data-layout" => "index"
+      = pjax_link_to(t('layouts.application.questions'), "index", questions_link)
     %li.answers
-      =link_to t('activerecord.models.answers'), url_for(questions_link.merge(:answers => 1)), :class => "pjax", :"data-layout" => "index"
+      = pjax_link_to t('activerecord.models.answers'), "index", questions_link.merge(:answers => 1)
     %li.unanswered
-      =link_to t("layouts.application.unanswered"), url_for(questions_link.merge(:unanswered => 1)), :class => "pjax", :"data-layout" => "index"
+      = pjax_link_to t('layouts.application.unanswered'), "index", questions_link.merge(:unanswered => 1)
     %li.activities
-      =link_to t('activerecord.models.activity'), activities_path(:context => (params[:context]||params[:action])), :class => "pjax", :"data-layout" => "index"
+      = pjax_link_to t('activerecord.models.activity'), "index", {'controller' => "activities", 'action' => "index", 'context' => (params[:context]||params[:action])}
 
   %section.filters{:class => @active_subtab }
     %ul
