@@ -8,24 +8,25 @@ module Shapado
                         :avatar_user_path,
                         :logo_group_path,
                         :question_attachment_path,
-                        :javascript_group_path
+                        :javascript_group_path,
+                        :bg_image_path
         end
       end
 
-      def javascript_group_path(group, theme_id)
-        "/_files/themes/javascript/#{group.id}/#{theme_id}.js"
+      def javascript_group_path(group, theme_id, theme_version)
+        "/_files/themes/javascript/#{group.id}/#{theme_id}/#{theme_version}.js"
       end
 
-      def css_group_path(group, theme_id)
-        "/_files/themes/css/#{group.id}/#{theme_id}.css"
+      def css_group_path(group, theme_id, theme_version)
+        "/_files/themes/css/#{group.id}/#{theme_id}/#{theme_version}.css"
       end
 
-      def bg_image_path(group, theme_id)
-        "/_files/themes/bg_image/#{group.id}/#{theme_id}.png"
+      def bg_image_path(group, theme_id, theme_version)
+        "/_files/themes/bg_image/#{group.id}/#{theme_id}/#{theme_version}.png"
       end
 
       def favicon_group_path(group)
-        "/_files/groups/favicon/#{group.id}.png"
+        "/_files/groups/favicon/#{group.id}/#{group.custom_favicon_version}.png"
       end
 
       def tag_icon_path(group,tag_name)
@@ -48,7 +49,7 @@ module Shapado
         if !size.nil? && ["big", "medium", "small"].include?(size)
           prefix = size
         end
-        "/_files/groups/#{prefix}/#{group.id}.png"
+        "/_files/groups/#{prefix}/#{group.id}/#{group.logo_version}.png"
       end
 
       def question_attachment_path(group,question, file, attach_id)
