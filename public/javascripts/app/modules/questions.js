@@ -1,15 +1,40 @@
 var Questions = {
   initialize: function($body) {
     if($body.hasClass("show")) {
-      Questions.initialize_on_index($body);
-    } else if($body.hasClass("index")) {
       Questions.initialize_on_show($body);
+    } else if($body.hasClass("index")) {
+      Questions.initialize_on_index($body);
+    } else if($body.hasClass("new")) {
+      Questions.initialize_on_new($body);
     }
   },
   initialize_on_index: function($body) {
     Ui.navigate_shortcuts($(".questions-index"), ".Question");
     $(".Question .toolbar").shapadoToolbar();
     Votes.initialize_on_questions();
+
+    var extraParams = Utils.url_vars();
+    extraParams['format'] = 'js';
+
+    $(".quick_question #ask_question").searcher({
+      url : "/questions/related_questions.js",
+      target : $(".questions-index"),
+      fields : $(".quick_question #ask_question input#question_title"),
+      behaviour : "live",
+      timeout : 500,
+      extraParams : extraParams,
+      success: function(data) {
+        $('#additional_info .pagination').html(data.pagination);
+      }
+    });
+
+    $(".flag-link-index").live("click", function(event) {
+      var link = $(this).parents("article.unanswered").find("h2 a");
+      if(link) {
+        window.location= link.attr("href")+"#to_flag"
+      }
+      return false;
+    });
   },
   initialize_on_show: function($body) {
     $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
@@ -22,6 +47,73 @@ var Questions = {
     Comments.initialize_on_question();
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
+  },
+  initialize_on_index: function($body) {
+    $("#related_questions").hide();
+
+    $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
+      target : $("#related_questions"),
+      fields : $("form#ask_question input[type=text][name*=question]"),
+      behaviour : "focusout",
+      timeout : 2500,
+      extraParams : { 'format' : 'js',
+                      'per_page' : 5,
+                      mini: true
+      },
+      before_query: function(target) {
+        target.show();
+      },
+      success: function(data) {
+        if(!data.html) {
+          $("#related_questions").hide();
+          // TODO: show a message
+        }
+        $("label#rqlabel").show();
+      }
+    });
+
+    $("#ask_question").bind("keypress", function(e) {
+      if(e.keyCode == 13) {
+        return false;
+      }
+    });
+
+    var fields = $("#attachments #fields");
+    var template = fields.find(".template");
+    template.find("input").attr("name", "question[attachments[id]]");
+    template.hide();
+
+    $("#attachments #fields .attachment_field .remove_attachment").live("click", function(e) {
+      $(this).parent().remove();
+      return false;
+    });
+
+    $(".remove_attachment_link").live("click", function(e) {
+      var url = $(this).attr("href");
+      var remove = confirm("are you sure?"); //TODO; i18n
+      if (remove) {
+        $.ajax({url: url, dataType: 'json', context: $(this), success: function(data, textStatus, XMLHttpRequest){
+          $(this).parent().remove();
+        }});
+      }
+      return false;
+    });
+
+    var count = -1;
+    $("#attachments .add_attachment").live("click", function(e) {
+      var template = fields.find(".template");
+      var new_field = template.clone();
+      new_field.removeClass("template");
+      count++;
+      var new_name = new_field.find("input").attr("name").replace(/(id)/, count);
+      new_field.find("input").attr("name",new_name)
+
+      new_field.show();
+
+      fields.append(new_field);
+
+      return false;
+    });
   },
   create_on_index: function(data) {
     var section = $("section.questions-index");
