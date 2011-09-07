@@ -12,7 +12,6 @@ var Updater = {
 
       prev = current;
       current = link.attr("data-layout");
-      current_page = link.attr("data-page");
 
       var parent = link.parent();
       var gparent = parent.parent();
@@ -44,9 +43,9 @@ var Updater = {
         timeout: 10000,
         url: $(this).attr("href"),
         container: '#main-content-wrap',
-        success: function(data) {
+        success: function(data, state, xhr) {
           var body = $(document.body);
-          body.attr({"class": current_page});
+          body.attr({"class": xhr.getResponseHeader('x-bodyclass')});
           Uploader.refresh(body, refreshed);
           return false;
         }

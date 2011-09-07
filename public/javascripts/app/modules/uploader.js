@@ -4,13 +4,14 @@ var Uploader = {
   initialize: function($body, refreshed) {
     Updater.initialize();
     Ui.initialize();
+    Messages.initialize();
     Auth.initialize();
     AppConfig.initialize();
     Geo.initialize();
     LocalStorage.initialize();
     Notifier.initialize();
     LayoutEditor.initialize();
-    Uploader.refresh($body, refreshed);
+    Uploader.refresh($body, false);
   },
   //for Updater
   refresh: function($body, refreshed) {
