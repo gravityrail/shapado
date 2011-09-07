@@ -1,9 +1,9 @@
 
 %li.activity
-  = pjax_link_to t("questions.index.active"), "index", params.merge(questions_link).merge(:sort=>"activity"), :title => t("questions.index.active_tooltip"), :rel => "nofollow"
+  = pjax_link_to t("questions.index.active"), "index", url_for(params.merge(questions_link).merge(:sort=>"activity")), :title => t("questions.index.active_tooltip"), :rel => "nofollow"
 %li.newest
-  = pjax_link_to t("questions.index.newest"), "index", params.merge(questions_link).merge(:sort=>"newest"), :title => t("questions.index.newest_tooltip"), :rel => "nofollow"
+  = pjax_link_to t("questions.index.newest"), "index", url_for(params.merge(questions_link).merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip"), :rel => "nofollow"
 %li.hot
-  = pjax_link_to t("questions.index.hot"), "index", params.merge(questions_link).merge(:sort=>"hot"), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
+  = pjax_link_to t("questions.index.hot"), "index", url_for(params.merge(questions_link).merge(:sort=>"hot")), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
 %li.votes
-  = pjax_link_to t("questions.index.votes"), "index", params.merge(questions_link).merge(:sort=>"votes"), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"
+  = pjax_link_to t("questions.index.votes"), "index", url_for(params.merge(questions_link).merge(:sort=>"votes")), :title =>  t("questions.index.votes_tooltip"), :rel => "nofollow"

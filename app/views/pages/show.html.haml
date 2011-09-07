@@ -15,9 +15,9 @@
       .content
         %ul.navigation
           %li
-            = pjax_link_to t("pages.actions.create_page"), "pages", {'controller' => "pages", 'action' => 'new'}
+            = pjax_link_to t("pages.actions.create_page"), "pages", new_page_path
           %li
-            = pjax_link_to t("pages.actions.edit_page"), "pages", {'controller' => "pages", 'action' => 'edit', 'id' => @page.to_param}
+            = pjax_link_to t("pages.actions.edit_page"), "pages", page_path(@page)
 
 #pages_show
   .markdown
