@@ -62,7 +62,6 @@ class Group
   field :fb_button, :type => Boolean, :default => true
 
   field :enable_latex, :type => Boolean, :default => false
-  field :theme_version, :type => Integer, :default => 0
   field :logo_version, :type => Integer, :default => 0
   field :custom_favicon_version, :type => Integer, :default => 0
 

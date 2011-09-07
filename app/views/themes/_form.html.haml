@@ -23,7 +23,7 @@
 
   .field
     -if !@theme.new? && @theme.has_bg_image?
-      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.group.theme_version))
+      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.version))
       =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
     = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image

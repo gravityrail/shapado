@@ -20,6 +20,7 @@ class Theme
   field :ready, :type => Boolean, :default => false
 
   field :has_js, :type => Boolean, :default => false
+  field :version, :type => Integer, :default => 0
 
   file_key :javascript, :max_length => 256.kilobytes
   file_key :stylesheet, :max_length => 256.kilobytes
@@ -27,7 +28,6 @@ class Theme
 
   belongs_to :group
   before_create :js_mime
-  before_update :increment_version
 
   validates_uniqueness_of :name, :allow_blank => false
   validates_presence_of :name
@@ -65,13 +65,13 @@ class Theme
     end
   end
 
+  def increment_version
+    self.version += 1
+  end
+
   protected
   def js_mime
     self.javascript["extension"] = "js"
     self.javascript["content_type"] = "text/javascript"
-  end
-
-  def increment_version
-    self.group.inc(:theme_version, 1)
   end
 end
