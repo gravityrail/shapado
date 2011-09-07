@@ -5,7 +5,7 @@ $(document).ready(function() {
   if(fields.length > 0){
     fields.tabs();
   }
-  Effects.initialize();
+//   Effects.initialize();
   ShapadoSocket.initialize();
   $('.auto-link').autoVideo();
   $('.autocomplete_for_tags').ricodigoComplete();

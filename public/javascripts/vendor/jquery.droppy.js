@@ -3,7 +3,7 @@
  * (c) 2008 Jason Frame (jason@onehackoranother.com)
  */
 (function($) {
-  
+
   $.fn.droppy = function(options) {
 
     options = $.extend({speed: 250, className: 'droppy', trigger: 'hover'}, options || {});
@@ -13,7 +13,7 @@
       var root = this, zIndex = 1000;
 
       $(root).addClass(options.className);
-			$(root).find('li:has(> ul) > a').addClass('has-subnav');
+        $(root).find('li:has(> ul) > a').addClass('has-subnav');
 
       function getSubnav(ele) {
         if (ele.nodeName.toLowerCase() == 'li') {
@@ -55,7 +55,7 @@
         }
         return false;
       };
-      
+
       if (options.trigger == 'click') {
         $('> li', this).click(function(evt) {
           if (evt.target == this || evt.target.parentNode == this) {
@@ -73,9 +73,11 @@
           $('ul, li', this).hover(show, hide);
         }
       }
-      
+
+      var test = this;
       $('li', this).hover(
-        function() { $(this).addClass('hover'); $('> a', this).addClass('hover'); },
+        function() {
+          $(this).addClass('hover'); $('> a', this).addClass('hover'); },
         function() { $(this).removeClass('hover'); $('> a', this).removeClass('hover'); }
       );
 

@@ -23,9 +23,9 @@ Modernizr.load([{
         if(fields.length > 0){
           fields.tabs();
         }
-        if(typeof(Effects) !== 'undefined'){
-          Effects.initialize();
-        }
+//         if(typeof(Effects) !== 'undefined'){
+//           Effects.initialize();
+//         }
         $(document).ready(function() {
           if($('.autocomplete_for_tags').length >0)
           $('.autocomplete_for_tags').ricodigoComplete();

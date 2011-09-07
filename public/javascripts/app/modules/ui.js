@@ -1,5 +1,6 @@
 var Ui = {
   initialize: function() {
+    console.log("Ui.initialize")
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }
