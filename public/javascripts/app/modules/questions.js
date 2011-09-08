@@ -63,6 +63,7 @@ var Questions = {
   },
   initialize_on_new: function($body) {
     $("#related_questions").hide();
+    Editor.initialize();
 
     $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
       target : $("#related_questions"),
@@ -82,12 +83,6 @@ var Questions = {
           // TODO: show a message
         }
         $("label#rqlabel").show();
-      }
-    });
-
-    $("#ask_question").bind("keypress", function(e) {
-      if(e.keyCode == 13) {
-        return false;
       }
     });
 
