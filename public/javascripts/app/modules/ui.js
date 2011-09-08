@@ -1,6 +1,5 @@
 var Ui = {
   initialize: function() {
-    console.log("Ui.initialize")
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }
@@ -116,7 +115,7 @@ var Ui = {
     if(window.innerHeight)
       viewportHeight = window.innerHeight;
 
-    var top = tag.offset().top - viewportHeight/2.0;
+    var top = tag.offset().top - (viewportHeight/2.0);
 
     container.scrollTop(top);
   },
@@ -131,7 +130,6 @@ var Ui = {
       elements.removeClass("active");
       next = $(this);
       next.addClass("active");
-      Ui.center_scroll(next);
     });
 
     $(document).keydown(function(ev){

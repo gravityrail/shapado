@@ -77,9 +77,6 @@ module Shapado
 
       def bodys_class(params)
         controller = (params['controller'] || params[:controller]).gsub("/","-")
-        if controller.start_with? "-" # FIXME
-          controller = controller[1..-1]
-        end
         out = ["#{controller}-controller", params['action']]
         if params['tab']
           out << params['tab']

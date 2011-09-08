@@ -1,7 +1,6 @@
 // Efects
 var Effects = {
   initialize: function() {
-    console.log("Effects.initialize")
     $('ul.sf-menu').droppy({
       className:    'dropHover',
       autoArrows:    false,

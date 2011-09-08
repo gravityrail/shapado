@@ -48,7 +48,7 @@ var Questions = {
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
   },
-  initialize_on_index: function($body) {
+  initialize_on_new: function($body) {
     $("#related_questions").hide();
 
     $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
