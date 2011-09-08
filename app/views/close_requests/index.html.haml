@@ -16,7 +16,7 @@
       - @close_requests.each do |request|
         %tr
           %td= radio_button_tag 'close_request_id', request.id
-          %td= pjax_link_to request.user.login, "user", {'controller' => 'users', 'action' => 'show', 'id' => (request.user.login||request.user.id)}
+          %td= pjax_link_to request.user.login, "user", user_path(request.user)
           %td= t(request.reason, :scope=>"close_requests.form")
           %td= h(request.comment)
 
