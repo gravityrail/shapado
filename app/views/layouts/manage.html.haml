@@ -17,42 +17,40 @@
           .widget-links.module
             %nav
               %ul
-                = tab_entry "li", t('.site'), manage_properties_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                = pjax_tab_entry "li", t('.site'), "manage", manage_properties_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
                 - if current_user.owner_of? current_group
-                  = tab_entry "li", t('layouts.manage.invoices'), invoices_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage-invoices"}
-                = tab_entry "li", t('layouts.manage.domain'), manage_properties_tab_path(:tab => "domain"), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                  = pjax_tab_entry "li", t('layouts.manage.invoices'), "manage", invoices_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.domain'), "manage",  manage_properties_tab_path(:tab => "domain"), :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
 
           .widget-links.module
             %h3
               = t("layouts.manage.group_user_management")
             %nav
               %ul
-                = tab_entry "li", t('layouts.manage.access'), manage_access_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
-                = tab_entry "li", t('layouts.manage.members'), members_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage-members"}
-                = tab_entry "li", t('layouts.manage.invitations'), manage_invitations_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                = pjax_tab_entry "li", t('layouts.manage.access'), "manage", manage_access_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.members'), "manage",  members_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.invitations'), "manage", manage_invitations_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
 
           .widget-links.module
             %h3
               = t("layouts.manage.group_features")
             %nav
               %ul
-                -if current_group.has_custom_html
-                  = tab_entry "li", t('layouts.manage.announcements'), announcements_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage-announcements"}
-                = tab_entry "li", t('layouts.manage.social'), manage_social_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
-                = tab_entry "li", t('layouts.manage.constrains'), constrains_configs_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
-                = tab_entry "li", t('layouts.manage.rewards'), manage_properties_tab_path(:tab => "rewards"), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                = pjax_tab_entry "li", t('layouts.manage.announcements'), "manage-announcements", announcements_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.social'), "manage", manage_social_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.constrains'), "manage", constrains_configs_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.rewards'), "manage", manage_properties_tab_path(:tab => "rewards"), :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
 
           .widget-links.module
             %h3
               = t("layouts.manage.group_look_and_feel")
             %nav
               %ul
-                = tab_entry "li", t('layouts.manage.appearance'), manage_appearance_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
+                = pjax_tab_entry "li", t('layouts.manage.appearance'), "manage", manage_appearance_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
                 -if current_group.has_custom_html
-                  = tab_entry "li", t('layouts.manage.content'), manage_content_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
-                = tab_entry "li", t('layouts.manage.themes'), themes_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage"}
-                = tab_entry "li", t('layouts.manage.widgets'), widgets_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "manage-widgets"}
-
+                  = pjax_tab_entry "li", t('layouts.manage.content'), "manage", manage_content_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.themes'), "manage", themes_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                = pjax_tab_entry "li", t('layouts.manage.widgets'), "manage-widgets", widgets_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
 
         %section#column2.content-panel.nosidebar
           #main-content-wrap{:class => @active_tab}

@@ -1,16 +1,21 @@
 // Efects
 var Effects = {
   initialize: function() {
+    $('ul.sf-menu').droppy({
+      className:    'dropHover',
+      autoArrows:    false,
+      trigger: 'click'
+    });
+
+    $('ul.sf-menu .has-subnav').click(function(e) {
+      e.preventDefault();
+    })
+
     $(".highlight_for_user").effect("highlight", {}, 2000);
 
     $(".btn-answer").click(function() {
       $("#panel-answer").slideToggle("slow");
       $(this).toggleClass("active"); return false;
-    });
-
-    jQuery('.sf-menu').superfish({
-      hoverClass:    'dropHover',
-      autoArrows:    false
     });
   },
   fade: function(object) {

@@ -20,8 +20,8 @@
   .summary
     = avatar_img(user, :size => "small")
     %h3
-      = link_to h(user.login), user_path(user), :class => "pjax", :"data-layout" => "user"
-    =find_and_preserve(auto_link(user.bio))
+      = pjax_link_to user.login, "user", user_path(user.login||user.id)
+    = find_and_preserve(auto_link(user.bio))
     .owner-data
       %strong
         = t(:created_at, :scope => "activerecord.attributes.user")

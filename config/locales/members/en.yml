@@ -12,6 +12,6 @@ en:
       login_tip: "Search as you type"
     create:
       notice: "%{login} was successfully added as %{role}."
-      error: "Sorry, the user **%{user_id}** does not exists"
+      error: "Sorry, the user **%{user_id}** does not exists."
     update:
-      error: "Sorry, you cannot be change the **%{login}'s** membership"
+      error: "Sorry, you do not have enough permissions to change **%{login}'s** membership."

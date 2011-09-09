@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
                                               :connect_group_to_twitter,
                                               :disconnect_twitter_group, :set_columns]
   before_filter :admin_required , :only => [:accept, :destroy]
-  subtabs :index => [ [:most_active, "activity_rate desc"], [:newest, "created_at desc"],
-                      [:oldest, "created_at asc"], [:name, "name asc"]]
+  subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
+                      [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
   # GET /groups
   # GET /groups.json
   def index
@@ -18,9 +18,9 @@ class GroupsController < ApplicationController
     conds = {:state => @state, :private => false}
 
     if params[:q].blank?
-      @groups = Group.where(conds).order_by(current_order).page(params["page"])
+      @groups = Group.where(conds).page(params["page"])
     else
-      @groups = Group.filter(params[:q], options).order_by(current_order).page(params["page"])
+      @groups = Group.filter(params[:q],conds)
     end
 
     respond_to do |format|

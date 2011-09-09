@@ -1,18 +1,11 @@
 $(document).ready(function() {
-  AppConfig.initialize();
-  Geo.initialize();
-  LocalStorage.initialize();
-  Tags.initialize();
-  Votes.initialize();
-  Notifier.initialize();
-  Networks.initialize();
-  LayoutEditor.initialize();
-  Widgets.initialize();
+  var $body = $(document.body);
+  Uploader.initialize($body, true);
 });
 
 $(document).ready(function(){
-	$(".advanced-search").click(function(){
-		$(".advanced-form").toggleClass("open").slideToggle("slow");
-		return false;
-	});
+  $(".advanced-search").click(function(){
+    $(".advanced-form").toggleClass("open").slideToggle("slow");
+      return false;
+    });
 });
