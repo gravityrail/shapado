@@ -8,46 +8,53 @@
 
 .field
   .checkbox
-    = form.label "Fluid layout"
+    = form.label I18n.t('themes.form.fluid_layout')
     = form.check_box :fluid
-    %small This let your app to take the full with, usefull when you are in a big screen or small
+    %small
+      = I18n.t('themes.form.fluid_layout_legend')
   .clear
 
-%h2 Colors and Backgrounds
+%h2
+  = I18n.t('themes.form.colors_and_bg')
 
 %fieldset.theme_colors
   .field
     = form.label I18n.t('themes.show.bg_color')
     = form.text_field :bg_color, :type => "color"
-    %small  Define plane color as background, be sure about contrast with your app.
+    %small
+      = I18n.t('themes.form.bg_color_legend')
 
   .field
     -if !@theme.new? && @theme.has_bg_image?
-      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.group.theme_version))
+      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.version))
       =link_to t("scaffold.destroy"), remove_bg_image_theme_path(@theme)
     = form.label I18n.t('themes.show.bg_image')
     = form.file_field :bg_image
-    %small  You can upload an image as background. Max 800K. GIF, JPG, PNG.
+    %small
+      = I18n.t('themes.form.bg_image_legend')
 
   .field
-    = form.label "App main color"
+    = form.label  I18n.t('themes.show.main_color')
     = form.text_field :brand_color, :type => "color"
-    %small This color will be the must important from your brand, pick well
-
+    %small
+      = I18n.t('themes.form.main_color_legend')
   .field
-    = form.label "Modules colors"
+    = form.label  I18n.t('themes.show.modules_color')
     = form.text_field :view_bg_color, :type => "color"
-    %small Be sure this color will work great with your background.
+    %small
+      = I18n.t('themes.form.modules_color_legend')
 
   .field
-    = form.label "Text color"
+    = form.label I18n.t('themes.show.text_color')
     = form.text_field :fg_color, :type => "color"
-    %small Be sure you can read well your texts, getting good contrast with backgrounds.
+    %small
+      = I18n.t('themes.form.text_color_legend')
 
 .field
   = form.label :custom_css
   = form.text_area :custom_css
-  %small You can use normal CSS and SCSS as custum styles sheets
+  %small
+      = I18n.t('themes.form.custom_css_legend')
 
 - if current_group.has_custom_js
   .field
@@ -59,5 +66,5 @@
 
 .form-options
   .buttons
-    = form.submit :value => "Update theme" , :class => "save"
+    = form.submit :value => I18n.t('themes.form.submit_update') , :class => "save"
 

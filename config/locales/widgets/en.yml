@@ -56,6 +56,8 @@ en:
     adsense:
       title: AdSense
       description: "This widget allows you to display Google AdSense ads."
+    custom_html:
+      description: "Add any kind of HTML you want here."
     settings:
       limit: "Quantity to display:"
       custom_html: "Custom html:"

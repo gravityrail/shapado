@@ -7,6 +7,6 @@
       = fields.text_field :comment, :class => "text_field"
 
   .buttons
-    = submit_tag t("questions.show.open", :default => "Open"), :class => "save"
+    = submit_tag t("global.open"), :class => "save"
     = t("global.or")
     = link_to t('scaffold.cancel'), question_path(question), :class => "button cancel"
