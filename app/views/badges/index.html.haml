@@ -5,9 +5,7 @@
     - @badges.each do |badge|
       %li
         .badge_item{:class => badge.type}
-
-          %a.badge{:href => badge_path(:id => badge.token), :title => badge.description, :class => "pjax", :"data-layout" => "pages"}
-            =h badge.name
+          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge", :title => badge.description}
 
           .counter
             == × #{badge["count"]}

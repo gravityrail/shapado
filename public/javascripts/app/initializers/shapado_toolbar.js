@@ -32,7 +32,7 @@
             link.addClass('busy');
             $.getJSON(href+'.js', function(data){
               if(data.status=='unauthenticate'){
-                startLoginDialog();
+                Auth.startLoginDialog();
                 return false;
               }
               var nform = $(data.html);

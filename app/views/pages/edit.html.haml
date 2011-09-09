@@ -16,4 +16,4 @@
 
     = f.submit t('scaffold.update')
     = t("global.or")
-    = link_to t('scaffold.cancel'), page_path(@page), :class => "button cancel pjax", :"data-layout" => "pages"
+    = pjax_link_to t('scaffold.cancel'), "pages", page_path(@page), :class => "button cancel"

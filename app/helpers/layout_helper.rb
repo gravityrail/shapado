@@ -20,6 +20,28 @@ module LayoutHelper
     end
   end
 
+  def pjax_tab_entry(element, text, layout, path, options = {}, html_opts = {})
+    link_opts = options[:link_opts] || {}
+    if link_opts[:class].nil? || !(link_opts[:class] =~ /pjax/)
+
+      link_opts[:class] = "#{link_opts[:class]} pjax"
+    end
+
+    link_opts.merge!(:"data-layout" => layout)
+    options[:link_opts] = link_opts
+
+    tab_entry(element, text, path, options, html_opts)
+  end
+
+  def pjax_link_to(text, layout, path, options = {})
+    klass = "pjax"
+    if extra_class = options.delete(:class) || options.delete('class')
+      klass << " " << extra_class
+    end
+
+    link_to text, path, options.merge(:class => klass, :"data-layout" => layout)
+  end
+
   def render_app_config
     content_tag(:span, "", {:id=>"appconfig",:"data-g"=>current_group.id})
   end

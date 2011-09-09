@@ -53,6 +53,26 @@ class Activity
     end
   end
 
+  def params_for_trackable
+    result = {'action' => 'show', 'id' => self.target_param}
+
+    case (self[:target_type] || self[:trackable_type]).to_s
+    when "Question"
+      result['controller'] = "questions"
+    when "Answer"
+      result['controller'] = "answers"
+      result['question_id'] = self.target_info["question_param"]
+    when "Page"
+      result['controller'] = "pages"
+    when "User"
+      result['controller'] = "users"
+    else
+      raise ArgumentError, "#{self.target_type.inspect} is not handled yet. Activity #{self.id}"
+    end
+    result
+  end
+
+
   def layout_for_trackable
     case (self[:target_type] || self[:trackable_type]).to_s
     when "Question"
