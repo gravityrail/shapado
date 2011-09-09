@@ -17,11 +17,20 @@
     comment-content, .markdown
       display: inline
     .comment-votes
+      position: relative
       form
         display: inline
-        button
-          border: 0px
-          padding: 2px
+        width: 200px
+      .upvote-comment, .upvoted-comment
+        border: 0px
+        +normal-radius
+        background-color: #a2c538
+        color: #fff
+        padding: 3px 5px
+        position: absolute
+        top: -17px
+        left: -114px
+        font-size: 12px
     time
       font-size: 11px
       font-style: italic

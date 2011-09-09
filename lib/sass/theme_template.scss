@@ -117,6 +117,7 @@ a {
   background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   .sf-menu {
+    .active: darken($view_bg_color, 70%);  
     li {
       small {
         color: lighten($fg_color, 40%); }
@@ -798,7 +799,7 @@ input[type=submit], input.save, .add_attachment {
     color: white; } }
 
 .questions {
-  form.question_comment_form, form.answer_comment_form {
+  form.question_comment_form, form.answer_comment_form, .edit_comment_form, .edit_answer {
     color: $fg_light_brand_color;
     background-color: $light_brand_color; } }
 
