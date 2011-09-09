@@ -6,6 +6,8 @@ var Questions = {
       Questions.initialize_on_index($body);
     } else if($body.hasClass("new")) {
       Questions.initialize_on_new($body);
+    } else if($body.hasClass("move")) {
+      Questions.initialize_on_move($body);
     }
   },
   initialize_on_index: function($body) {
@@ -122,6 +124,24 @@ var Questions = {
 
       return false;
     });
+  },
+  initialize_on_move: function(data) {
+    if($('#groups_slug').length){
+      $('#groups_slug').autocomplete({
+        source: "/groups/autocomplete_for_group_slug.json",
+        minLength: 1,
+        select: function( event, ui ) {
+            $('#groups_slug').val(ui.item.slug);
+            return false;
+        }
+      })
+      .data( "autocomplete" )._renderItem = function( ul, item ) {
+        return $( "<li></li>" )
+          .data( "item.autocomplete", item )
+          .append( "<a>" + item.slug + "</a>" )
+          .appendTo( ul );
+      };
+    }
   },
   create_on_index: function(data) {
     var section = $("section.questions-index");
