@@ -9,8 +9,9 @@ fi:
     admin_login: 
       subject: "Varoitus: pääkäyttäjäyhteys"
     created_flag: 
-      message2bis: Voit lukea merkityt täällä.
-      message2bistext: "Voit lukea merkityt klikkaamalla seuraavaa linkkiä:"
+      message2: "Viesti on raportoitu seuraavasta syystä:"
+      message2bis: Voit lukea merkityn viestin täällä.
+      message2bistext: "Voit lukea merkityn viestin napsauttamalla seuraavaa linkkiä:"
     earned_badge: 
       message1: Ansaitsit rintanapin %{badge} sovelluksella %{app}
       message2: "Rintanappikuvaus:"
@@ -41,6 +42,7 @@ fi:
       message3: "Sähköpostiosoite: %{email}"
       message4: "Aihe: %{subject}"
     new_invitation: 
+      message1: Napsauta tästä hyväksyäksesi kutsu %{link}
       message3: "Viesti kutsujaltasi:"
     report: 
       message1: Ilmoita ryhmälle %{group}

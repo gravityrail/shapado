@@ -46,12 +46,17 @@ fi:
       access: Käyttöoikeus
       actions: Toimet
       announcements: Ilmoitukset
+      appearance: Ulkoasu
       constrains: Vaatimukset
       content: Sisältö
       dashboard: Kojelauta
       domain: Toimialue
+      edit_layout: Muokkaa ulkoasua
       general: Yleinen
+      group_features: Ominaisuudet
+      group_user_management: Käyttäjien hallinta
       invitations: Kutsut
+      invoices: Laskut
       members: Jäsenet
       pages: Sivut
       properties: Ominaisuudet
@@ -60,6 +65,7 @@ fi:
       social: Sosiaalinen
       stats: Tilastot
       theme: Teema
+      themes: Teemat
       widgets: Ikkunaoliot
     notifications: 
       message: Jos et halua enää vastaanottaa automaattisia ilmoituksia kohteesta %{group}, muuta asetuksiasi ilmoitusnäytöllä.

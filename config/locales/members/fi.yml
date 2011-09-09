@@ -2,15 +2,21 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
+# Author: Raspi
 fi: 
   activerecord: 
     attributes: 
       member: 
         role: Rooli
   members: 
+    create: 
+      notice: "%{login} lisätty onnistuneesti rooliin %{role}."
     form: 
       login_tip: Etsi kirjoittamisen aikana
     index: 
       manage_members_title: Hallinnoi jäseniä
       title: Jäsenet / ryhmä %{name}
       title_isolate: Jäsenet / %{name}
+    update: 
+      error: Pahoittelemme, et voi muuttaa käyttäjän **%{login}** jäsenyyttä

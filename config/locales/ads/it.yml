@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   ads: 
@@ -9,6 +10,7 @@ it:
       success: Annuncio creato.
     index: 
       add_adsense: Aggiungi annuncio Google AdSense
+      description: Gestione pubblicità
       title: Annunci
     name: "Nome:"
     position: "Posizione:"

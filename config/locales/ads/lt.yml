@@ -9,6 +9,7 @@ lt:
       success: Reklama buvo sėkmingai sukurta.
     index: 
       add_adsense: Pridėti naują Google AdSense reklamą
+      description: Tvarkyti reklamas
       title: Reklamos
     name: "Pavadinimas:"
     position: "Vieta:"

@@ -9,9 +9,14 @@ be-TARASK:
       member: 
         role: Роля
   members: 
+    create: 
+      error: Прабачце, карыстальнік **%{user_id}** не існуе
+      notice: "%{login} быў пасьпяхова дададзены як %{role}."
     form: 
       login_tip: Пошук падчас увядзеньня
     index: 
       manage_members_title: Кіраваньне ўдзельнікамі
       title: Удзельнікі групы %{name}
       title_isolate: Удзельнікі %{name}
+    update: 
+      error: Прабачце, Вы ня можаце зьмяняць ўдзел **%{login}'s**

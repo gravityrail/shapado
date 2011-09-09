@@ -45,11 +45,16 @@ be-TARASK:
       access: Доступ
       actions: Дзеяньні
       announcements: Аб’явы
+      appearance: Выгляд
       constrains: Патрабаваньні
       content: Зьмест
       dashboard: Панэль інструмэнтаў
       domain: Дамэн
+      edit_layout: Рэдагаваць разьмяшчэньне
       general: Агульныя
+      group_features: Магчымасьці
+      group_look_and_feel: Выгляд
+      group_user_management: Кіраваньне карыстальнікамі
       invitations: Запрашэньні
       members: Удзельнікі
       pages: Старонкі
@@ -59,6 +64,7 @@ be-TARASK:
       social: Сацыяльны
       stats: Статыстыка
       theme: Афармленьне
+      themes: Афармленьні
       widgets: Віджэты
     notifications: 
       message: Калі Вы болей не жадаеце атрымліваць аўтаматычныя абвяшчэньні з %{group}, зьмяніце Вашыя ўстаноўкі ў акне абвяшчэньняў.

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Lockal
+# Author: Shemerey
 # Author: Александр Сигачёв
 ru: 
   activerecord: 
@@ -29,6 +30,9 @@ ru:
       group: Группа
       groups: Группы
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Извините, что-то пошло не так. Попробуйте еще раз, пожалуйста.
+      success_twitter_connection: Поздравляем, вы подключили свой Twitter успешно!
     create: 
       flash_notice: Ваша группа успешно создана, теперь вы можете приступить к её настройке.
     form: 

@@ -62,6 +62,7 @@ fi:
     form: 
       activities_notification: Lähetä sähköposti-ilmoituksia järjestelmän toiminnasta, kuten ansaituista rintanapeista, uusista seuraajista, jne.
       avatar_tip: Muuta profiilikuvaasi käyttäen Gravatar-ohjelmaa
+      desktop_notification: Työpöytäilmoitukset
       give_advice_notification: Lähetä sähköposti-ilmoitukset kysymyksistä omalta erikoisalaltani
       information: Tiedot
       language: Sivuston käyttöliittymän kieli
@@ -107,3 +108,5 @@ fi:
       create_account: Luo käyttäjätunnus
       not_logged_in: Et ole kirjautunut sisään
       signed_as: Olet sisäänkirjautuneena käyttäjätunnuksella
+    user_mini: 
+      admin: "[ Pääkäyttäjä ]"

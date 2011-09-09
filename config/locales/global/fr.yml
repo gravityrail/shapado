@@ -21,6 +21,7 @@ fr:
     anonymous: Anonyme
     by: par
     current: Actuel
+    follow: Suivre
     from: depuis %{site}
     group_not_found: La page %{url} n'existe pas
     next_button: Suivant
@@ -32,7 +33,9 @@ fr:
     privacy: Confidentialité
     share: Partager
     size: Taille
+    sort_by: "Trier par :"
     tos: CGU
+    unfollow: Ne plus suivre
     what_to_do: Que voulez-vous faire ?
   models: 
     question: La question
@@ -41,6 +44,7 @@ fr:
     owner: Propriétaire
   scaffold: 
     add: Ajouter
+    are_you_sure: Êtes-vous sûr ?
     back: Retour
     cancel: Annuler
     close: Fermer
@@ -59,3 +63,8 @@ fr:
   time: 
     ago: il y a %{time}
     today: aujourd'hui
+    yesterday: hier
+  views: 
+    pagination: 
+      next: Suivant &raquo;
+      previous: "&laquo; Précédent"

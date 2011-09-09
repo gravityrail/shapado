@@ -15,3 +15,20 @@ be-TARASK:
         item_title: Назва
         need_tags: Зьмяніць тэг
         title: Мадэрацыя
+  moderate: 
+    questions: 
+      flagged: 
+        banned: Заблякаванныя
+        banned_tooltip: Паказаць толькі заблякаваныя пытаньні
+        filters: "Фільтры:"
+        title: Мадэрацыя пытаньняў
+        unbanned: Незаблякаваныя
+        unbanned_tooltip: Паказаць толькі незаблякаваныя пытаньні
+      index: 
+        title: Мадэрацыя пытаньняў
+      subtabs: 
+        flagged: Пазначаныя
+        flagged_tooltip: Пытаньні пазначаныя ўдзельнікамі
+        retag: Неабходныя тэгі
+        retag_tooltip: Пытаньні без тэгаў
+        to_close: Запыты на закрыцьцё

@@ -13,5 +13,7 @@ de:
       description: Verwende die %{link} Optionen, um präzisere Ergebnisse zu erhalten.
       empty: Deine Suche hat keine Ergebnisse erbracht.
       found_results: "%{quantity} Ergebnisse wurden gefunden."
+      input_legend: Diese gespeicherte Suche wird in der Navigationsleiste für den schnellen Zugriff erscheinen.
+      input_title: "Diese Suche speichern als:"
       search_text: Fragen enthalten
       tags: in diesen Schlagworten

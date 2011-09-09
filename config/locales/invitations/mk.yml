@@ -6,7 +6,7 @@ mk:
   invitations: 
     accept: 
       create_account: Создај сметка (1 од 2)
-      create_account_step2: Создај сметка
+      create_account_step2: Направи сметка
       description: "%{group} е збирка на прашања и одговори на било која тема која постојано се подобрува и усовршува."
       done: Готово!
       facebook_connect: Поврзете се со вашата сметка на Facebook

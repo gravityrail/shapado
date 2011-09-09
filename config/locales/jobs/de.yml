@@ -16,5 +16,6 @@ de:
         group_send_twitter: "%{user} hat gerade das Abzeichen %{token} bei %{group_name} %{link} erhalten"
         send_twitter: Ich habe gerade das Abzeichen %{token} bei %{group_name} %{link} erhalten
     comments: 
-      group_on_comment: "%{user} kommentierte %{question}"
-      on_comment: Ich kommentierte %{question}
+      on_comment: 
+        group_on_comment: "%{user} kommentierte %{question}"
+        send_twitter: Mein Kommentar zu %{question}

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: IAlex
+# Author: Od1n
 # Author: Patcito
 # Author: Y-M D
 fr: 
@@ -14,12 +15,12 @@ fr:
       247_all_support: Support 24/7 sur le web, email, tchat et téléphone
       5millions: 5 millions de pages vues/mois
       all_support: Support sur le web, email, tchat et téléphone
-      basic_restrictions: Pas de publicités ni d'interface personalisées
+      basic_restrictions: Pas de publicités ni d'interface personnalisées
       beta_info: Pour les moments, tous les sites sont gratuits et bénéficient des options du plan Optimum, à l'exception du support d'aide qui n'est accessible que par le web, l'email et le tchat.
       big_sites: Gros sites
       custom_ads: Vos propres publicités
       custom_analytics: Stats du trafic
-      custom_domain: Domaine personalisé
+      custom_domain: Domaine personnalisé
       custom_themes: Utilisation de nos thèmes pré-faits
       custom_ui: Interface personnalisable
       free_plan: plan gratuit
@@ -36,4 +37,4 @@ fr:
       unlimited: Trafic illimité tous les mois
       we_offer: Nous offrons aussi un
       web_support: Sur le web
-      with_unlimited: avec trafic illimité et sans publicités personalisées ni domaines personalisés.
+      with_unlimited: avec trafic illimité et sans publicités personnalisées ni domaines personnalisés.

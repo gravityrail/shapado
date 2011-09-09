@@ -1,13 +1,14 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   activerecord: 
     attributes: 
       answer: 
         body: Corpo
-        created_at: Risposta
+        created_at: "Creato il:"
         link: Collegamento
     models: 
       answer: Risposta

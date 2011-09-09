@@ -15,7 +15,7 @@ mk:
         created_at: се придружил
         current_password: тековна лозинка
         email: е-пошта
-        fullname: полно име
+        fullname: Име и презиме
         hide_country: Не прикажувај од која земја сум
         language: јазик
         language_filter: филтрирај по јазик
@@ -119,3 +119,7 @@ mk:
       create_account: Направете сметка
       not_logged_in: Ненајавен
       signed_as: Најавен како
+    user_mini: 
+      admin: "[ Админ ]"
+      editor: "[ Уредник ]"
+      mod: "[ Модератор ]"

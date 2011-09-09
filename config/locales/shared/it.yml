@@ -1,12 +1,62 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 # Author: HalphaZ
 it: 
   shared: 
+    any_lang: Qualsiasi lingua
+    by_anon: Da anonimo
     current_tags: 
       title: Tag selezionati
+    description: Descrizione
+    empty: 
+      activities: 
+        description: 
+          text: Questo posto sarà riempito automaticamente una volta che la gente comincerà ad usare il sito.
+        title: Non ci sono attività finora.
+      answers: 
+        description: 
+          text: Sii il primo!
+        title: Nessuno ha ancora risposto a questa domanda.
+      default: 
+        description: 
+          text: Sii il primo a %{action_link}!
+        title: Ci dispiace! Non c'è molto da vedere qui.
+      questions: 
+        description: 
+          action_link: fai una domanda
+      themes: 
+        description: 
+          action_link: ora
+          text: crea un %{action_link}
+        title: Non hai creato alcun tema per ora.
+    layout: 
+      footer: 
+        cc_footer: Tutti i contenuti di Shapado.com e i dati sono disponibili sotto licenza %{cc_link}
+        powered_by: Powered by %{source_link} %{version} sotto il %{agpl_link}
+    login_drop_down: 
+      with_facebook: con Facebook
+      with_google: con Google
+      with_identica: con Identi. ca
+      with_linked_in: con LinkedIn
+      with_openid: OpenID
+      with_twitter: con Twitter
+      with_user_pass: utente/password
+    manage_navigation: 
+      title_content: Contenuti del gruppo
+      title_features: Caratteristiche del gruppo
+      title_options: Opzioni di gruppo
+    name: Nome
+    preferred_lang: Le mie lingue preferite
+    quick_question: 
+      random_question: Rispondi a una domanda a caso
+    social_connect: 
+      find_friends_facebook: Trova amici su Facebook
+      find_friends_identica: Trova amici su Identi.ca
+      find_friends_linked_in: Trova amici su LinkedIn
+      find_friends_twitter: Trova amici su Twitter
     topbar: 
       admin: Amministrazione
       logged_as: Collegato come %{login}

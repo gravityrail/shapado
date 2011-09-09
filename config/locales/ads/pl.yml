@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Sp5uhe
+# Author: Woytecr
 pl: 
   ads: 
     ad_links: Dodaj nową %{type} reklamę
@@ -9,6 +10,7 @@ pl:
       success: Reklama została utworzona.
     index: 
       add_adsense: Dodaj nową reklamę kontekstową google
+      description: Zarządzaj reklamami
       title: Reklamy
     name: Nazwa
     position: Pozycja

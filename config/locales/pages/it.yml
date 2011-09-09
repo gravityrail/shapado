@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   activerecord: 
@@ -26,6 +27,7 @@ it:
     index: 
       create_page: Crea nuova pagina
       title: Lista delle pagine
+      wiki: Wiki
       written_in: Scritto in %{language}
     new: 
       title: Nuova pagina

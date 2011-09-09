@@ -18,6 +18,7 @@ de:
     anonymous: Anonymer
     blog: Blog
     by: von
+    by_semi: "Von:"
     chat: Chat
     current: Aktuell
     edited: Bearbeitet
@@ -49,6 +50,11 @@ de:
     what_to_do: Was möchtest Du tun?
   models: 
     question: Die Frage
+  number: 
+    x_time: 
+      one: Einmal
+      other: "%{count} Male"
+      zero: Nie
   preferred_languages: 
     any: Alle
     user: Meine bevorzugten Sprachen

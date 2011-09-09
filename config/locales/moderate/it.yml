@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   admin: 
@@ -14,3 +15,23 @@ it:
         item_title: Titolo
         need_tags: Modifica tag
         title: Modera
+  moderate: 
+    questions: 
+      flagged: 
+        banned: Escluso
+        banned_tooltip: Mostra solo domande escluse
+        filters: "Filtri:"
+        title: Modera Domande
+        unbanned: Riammesso
+        unbanned_tooltip: Mostra solo domande riammesse
+      index: 
+        title: Modera Domande
+      subtabs: 
+        flagged: Contrassegnati
+        flagged_tooltip: Domande segnalate dagli utenti
+        retag: Bisogna usare tag
+        retag_tooltip: Domande senza tag
+        to_close: Richieste di chiusura
+        to_close_tooltip: Domande che gli utenti hanno chiesto di chiudere
+        to_open: Richieste di riapertura
+        to_open_tooltip: Domande chiuse che gli utenti hanno richiesto di riaprire

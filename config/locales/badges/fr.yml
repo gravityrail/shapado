@@ -6,6 +6,7 @@
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
+# Author: Sherbrooke
 # Author: Y-M D
 fr: 
   activerecord: 
@@ -21,11 +22,13 @@ fr:
         description: Visiter le site 20 jours consécutifs
         name: Accro
       altruist: 
+        description: C'est la première récompense que vous avez remise pour la question d'une autre personne
         name: Altruiste
       autobiographer: 
         description: A complété tous ses champs utilisateurs
         name: Autobiographe
       benefactor: 
+        description: C'est la première récompense que vous avez remise pour votre question
         name: Bienfaiteur
       celebrity: 
         description: A plus de 100 suiveurs
@@ -64,9 +67,10 @@ fr:
         description: Visiter le site 100 jours consécutifs
         name: Fanatique
       favorite_answer: 
+        description: Possède une question sélectionnée comme favorite par 25 utilisateurs
         name: Réponse favorite
       favorite_question: 
-        description: A posé une question sélectionnée comme favorite par 25 utilisateurs
+        description: A posé une question suivie par 25 utilisateurs
         name: Question favorite
       friendly: 
         description: Suivre quelqu'un pour la première fois
@@ -93,6 +97,7 @@ fr:
         description: A plus de 10 suiveurs
         name: Personne intéressante
       investor: 
+        description: C'est la première récompense automatique que vous avez remise pour la question d'une autre personne
         name: Investisseur
       merit_medal: 
         description: Recevoir 200 votes positifs
@@ -128,6 +133,7 @@ fr:
         description: Question ayant reçu 1000 visites
         name: Question populaire
       promoter: 
+        description: C'est la première récompense automatique que vous avez remise pour votre question
         name: Promoteur
       rockstar: 
         description: A 1000 votes positifs, pour 10 négatifs maximum
@@ -143,8 +149,11 @@ fr:
         name: Médaille du service
       shapado: 
         description: Visiter le site tous jours durant 8 jours consécutifs
+      stellar_answer: 
+        description: Possède une question sélectionnée comme favorite par 100 utilisateurs
+        name: Réponse stellaire
       stellar_question: 
-        description: A posé une question marquée comme favorite par au moins 100 utilisateurs
+        description: A posé une question suivie par au moins 100 utilisateurs
         name: Question extraordinaire
       student: 
         description: Recevoir au moins un vote positif sur sa première question

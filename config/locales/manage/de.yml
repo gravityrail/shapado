@@ -8,12 +8,15 @@ de:
     manage: 
       access: 
         title: Zugriff
+      answers: 
+        banning: 
+          title: Antwort verbieten
       appearance: 
         logo_legend: Lade ein Logo für Deine Gruppe hoch. Es muss kleiner als 2 MB sein.
         title: Wähle Deine Benutzeroberfläche und passe sie an
       content: 
         description: Konfiguriere Deine Gruppe mit benutzerdefinierten Texten und individueller Anmutung
-        footer: Fußzeile
+        footer: Fußbereich
         head: Kopfzeile
         question_help: Hilfe zu Fragen
         question_prompt: Eingabeaufforderung für Fragen
@@ -99,6 +102,9 @@ de:
           key: Kennung der App
           secret: Geheimer Schlüssel der App
           twitter_app: Twitter-App
+      questions: 
+        banning: 
+          title: Frage verbieten
       social: 
         ask_from_twitter: Von Twitter aus fragen
         ask_from_twitter_title: Erlaube es Deinen Nutzern, von Twitter aus, Fragen zu stellen

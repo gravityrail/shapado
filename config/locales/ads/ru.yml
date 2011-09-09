@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Lockal
+# Author: Shemerey
 ru: 
   ads: 
     ad_links: Добавить новое рекламное объявление %{type}
@@ -9,6 +10,7 @@ ru:
       success: Рекламное объявление успешно создано.
     index: 
       add_adsense: Добавить новое рекламное объявление Google AdSense
+      description: Управление объявлениями
       title: Реклама
     name: "Имя:"
     position: "Расположение:"

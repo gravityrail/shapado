@@ -17,13 +17,14 @@ gl:
       not_relevant: non é relevante
       ot: fóra do tema
       request_closing_details: solicitar o peche desta pregunta
+      retract: Retraer
       spam: spam
     index: 
       title: lista de solicitudes de peche
     model: 
       attributes: 
-        comment: comentario
-        reason: motivo
+        comment: Comentario
+        reason: Motivo
         user: Usuario
       messages: 
         already_requested: xa solicitou o peche desta pregunta

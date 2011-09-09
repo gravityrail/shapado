@@ -1,0 +1,14 @@
+# Messages for Swedish (Svenska)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: WikiPhoenix
+sv: 
+  activerecord: 
+    models: 
+      activities: Aktiviteter
+      activity: Aktivitet
+  activity: 
+    changed: ändrad
+    created: skapad
+    deleted: raderad
+    updated: uppdaterad

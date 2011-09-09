@@ -53,7 +53,7 @@ fr:
       submit: Changer mon mot de passe
       title: Changer le mot de passe
     create: 
-      flash_error: Désolé, nous n'avons pas pu configurer votre compte. Éssayer encore s'il vous plait, ou contacter un administrateur (le lien est ci-dessus).
+      flash_error: Désolé, nous n'avons pas pu configurer votre compte. Essayez encore s'il vous plait, ou contactez un administrateur (le lien est ci-dessus).
       flash_notice: Merci de vous être enregistré !
     edit: 
       enable_twitter: Activer vos comptes Facebook ou Twitter

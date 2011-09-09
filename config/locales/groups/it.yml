@@ -1,24 +1,29 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Cap quotidiano
         default_tags: tag predefiniti
         description: Descrizione
         domain: Dominio
+        enable_latex: Abilita LaTeX
         fb_button: Abilita pulsante "Mi piace" di Facebook (diminuisce la privacy)
         forum: Permetti più risposte per ogni utente
         group_created_by: creato da
-        language: Lingua
+        language: Lingua predefinita
+        languages: Lingue supplementari
         legend: Legenda
         logo: Logo
         may_contain_adult_content: Il sito può avere contenuti per adulti
         name: Nome
         owner: Questo gruppo è stato creato da %{login}
         registered_only: Solo gli utenti registrati possono accedere al sito
+        signup_type: Quali metodi gli utenti possono utilizzare per iscriversi
         state: Stato
         subdomain: URL
         wysiwyg_editor: Attiva editor semplificato
@@ -26,9 +31,17 @@ it:
       default_tags_message: Non si pososno avere più di 10 tag predefiniti
       group: Group
       groups: Gruppi
+      reputation_rewards_answer_constrain: Il vincolo per le ricompense per le domande dovrebbe essere negativo
+      reputation_rewards_ask_constrain: Il vincolo per chiedere dovrebbe essere negativo
+      reputation_rewards_key: Chiave non valida
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Ci dispiace, qualcosa è andato storto. Prova ancora per favore.
+      success_twitter_connection: Congratulazioni, hai collegato il tuo account Twitter con successo!
     create: 
       flash_notice: Il gruppo è stato creato correttamente. Ora si può iniziare a configurarlo.
+    edit: 
+      title: Modifica il tuo gruppo
     form: 
       access: Impostazioni di accesso
       analytics_engine: Sistema di analytics
@@ -43,6 +56,10 @@ it:
       legend_legend: Sarà utilizzata nell'intestazione. Massimo 40 caratteri.
       logo_legend: È possibile caricare il logo del gruppo. La dimensione massima del file è di 2MB.
       members_only: Solo i membri del gruppo saranno in grado di accedere a questo gruppo
+      signup_all: Tutti (gli utenti possono registrarsi con indirizzo e-mail, OpenID, Facebook, Twitter, ecc)
+      signup_email: Solo indirizzo e-mail (gli utenti possono registrarsi solo con il proprio indirizzo email/password)
+      signup_noemail: Niente indirizzo email/password (gli utenti si iscrivono con OpenID, Facebook, Twitter)
+      signup_social: Solo sociale (gli utenti possono iscriversi solo con Facebook, Twitter, LinkedIn e Identica)
       website_analytics_id: Analytics ID
     group: 
       about: Informazioni
@@ -53,6 +70,8 @@ it:
       disallow_ads: Disattiva annunci
     index: 
       actives: Attivo
+      create_your_own: Crea il tuo gruppo
+      description: Questa è la lista dei gruppi pubblici che sono stati creati. Utilizza la ricerca qui sotto per filtrarla. È anche possibile %{link}.
       filter: Cerca gruppo
       most_active: Più attivi
       name: Nome
@@ -69,3 +88,7 @@ it:
       group_closed: Questo gruppo è stato chiuso.
       title: Informazioni su %{name}
       visit_group: Visita questo gruppo
+    top_grouplist: 
+      active_site: "Sito attivo:"
+    update: 
+      notice: Il tuo gruppo è stato aggiornato con successo.

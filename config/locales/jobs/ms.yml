@@ -16,5 +16,6 @@ ms:
         group_send_twitter: "%{user} baru memenangi %{token} di %{group_name} %{link}"
         send_twitter: Saya baru memenangi %{token} di %{group_name} %{link}
     comments: 
-      group_on_comment: "%{user} mengulas: %{question}"
-      on_comment: "Saya mengulas: %{question}"
+      on_comment: 
+        group_on_comment: "%{user} mengulas: %{question}"
+        send_twitter: Komen saya kepada %{question}

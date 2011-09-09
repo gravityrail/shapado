@@ -1,6 +1,7 @@
 # Messages for Arabic (العربية)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Meno25
 # Author: Mutarjem horr
 # Author: OsamaK
 # Author: عمرو
@@ -9,7 +10,7 @@ ar:
     attributes: 
       answer: 
         body: نص الرسالة
-        created_at: مجاب
+        created_at: تم إنشاؤه في
         link: الرابط
     models: 
       answer: إجابة

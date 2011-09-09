@@ -23,6 +23,8 @@ de:
       notice: Das Widget wurde erfolgreich erstellt.
     current_tags: 
       description: Diese Widget zeigt die Stichwörter an, die vom aktuellen Nutzer beachtet werden.
+    edit: 
+      title: Widget bearbeiten
     group_networks: 
       description: Dieses Widget zeigt eine Liste mit Links zu sozialen Netzwerken an, so dass Deine Nutzer Dir auch dort folgen können.
       title: Folge uns
@@ -30,16 +32,24 @@ de:
       description: Dieses Widget zeigt die fünf neuesten Gruppen an
       title: Kürzlich aktive Gruppen
     index: 
+      add_new: Neues Widget hinzufügen
       description: Verwende die Pfeile, um Deine Widgets zu verschieben
       external_widgets: Extern
       external_widgets_title: Widgets, die Du auf Deiner eigenen Website einbinden kannst
+      footer: Fußbereich
+      header: Kopfbereich
       mainlist_widgets: Hauptliste
       mainlist_widgets_title: Widgets, die auf der Seite mit der Hauptliste der Fragen angezeigt werden
+      name: Name des Widgets
+      navbar: Navigationsleiste
       question_widgets: Frage
       question_widgets_title: Widgets, die auf jeder Seite mit einer Frage angezeigt werden
+      sidebar: Seitenleiste
       title: Widgets der Seitenleiste verwalten
+      type: "Typ:"
       welcome_widgets: Herzlich willkommen
       welcome_widgets_title: Widgets, die auf der Willkommensseite angezeigt werden
+      zone: "Seitenabschnitt:"
     mod_info: 
       description: Dieses Widget zeigt Informationen an, die für Moderatoren hilfreich sind, wie bswp. Kennzeichnungen und Berichtsanfragen.
     pages: 
@@ -79,6 +89,8 @@ de:
       title: Darauf aufmerksam machen bei
     suggestions: 
       description: Vorschläge von Freunden und Schlagwärter für den zu beachtenden Nutzer
+      follow_tag: + Stichwort beobachten
+      follow_user: + Benutzer folgen
       followed_by: Beachtet von %{user}
       title: Zu beachtende Nutzer und Stichwörter
     tag_cloud: 
@@ -89,6 +101,9 @@ de:
       title: Stichwörter
     top_groups: 
       description: Dieses Widget zeigt die fünf aktivsten Gruppen an
+      has_members: 
+        one: Ein Mitglied
+        other: "%{count} Mitglieder"
       title: Top 5 Gruppen
     top_users: 
       description: Dieses Widget zeigt die fünf aktivsten Nutzer an
@@ -98,3 +113,5 @@ de:
     users: 
       description: Dieses Widget zeigt die neu registrierten Nutzer an
       title: Kürzlich aktive Nutzer
+    widget: 
+      change_position: "Position des Widgets ändern:"

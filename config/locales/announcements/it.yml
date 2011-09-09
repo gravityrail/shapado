@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 # Author: Ric
 # Author: Tuxwet
@@ -17,6 +18,7 @@ it:
       delete: Rimuovi
       title: Azioni
     create: 
-      success: Annuncio creato
+      success: Il tuo annuncio è stato creato con successo.
     index: 
+      description: Gestire e creare nuovi annunci che verranno mostrati sull'intero sito ai tuoi visitatori
       title: Annunci

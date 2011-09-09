@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   activerecord: 
     attributes: 
@@ -26,6 +27,7 @@ fi:
     index: 
       create_page: Luo uusi sivu
       title: Sivuluettelo
+      wiki: Wiki
       written_in: Kirjoitettu kielellä %{language}
     new: 
       title: Uusi sivu

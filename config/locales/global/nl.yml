@@ -21,6 +21,7 @@ nl:
     anonymous: Anoniem
     blog: Blog
     by: door
+    by_semi: "Door:"
     chat: Chat
     current: huidige
     edited: Bewerkt

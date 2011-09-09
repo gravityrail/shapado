@@ -121,3 +121,7 @@ de:
       create_account: Ein Nutzerkonto anlegen
       not_logged_in: Nicht angemeldet
       signed_as: Angemeldet als
+    user_mini: 
+      admin: "[ Administrator ]"
+      editor: "[ Bearbeiter ]"
+      mod: "[ Moderator ]"

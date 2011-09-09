@@ -4,6 +4,7 @@
 # Author: Eleferen
 # Author: G0rn
 # Author: Lockal
+# Author: Shemerey
 # Author: Александр Сигачёв
 ru: 
   feeds: 
@@ -18,14 +19,19 @@ ru:
     active: Активировать
     anonymous: Аноним
     current: Текущий
+    edited: Отредактировано
     from: с сайта %{site}
     group_not_found: Страница %{url} не существует
+    home: Главная
     or: или
     permission_denied: Доступ запрещён
     please_login: Представьтесь, пожалуйста
     preview: Предпросмотр
     previous: Предыдущий
     share: распространить
+    sort_by: "Сортировать по:"
+    tags_label: "Теги:"
+    view_question: Посмотреть вопрос
   models: 
     question: Вопрос
   scaffold: 

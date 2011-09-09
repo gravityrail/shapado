@@ -30,6 +30,7 @@ fr:
       questions: Questions
       questions_in: Questions en
       questions_tagged: taguées
+      random_question: Question au hasard
       search: Chercher
       settings: Configuration
       signup: Créer un compte
@@ -42,6 +43,7 @@ fr:
     manage: 
       actions: Actions
       announcements: Annonces
+      appearance: Apparence
       constrains: Contraintes
       content: Contenu
       dashboard: Dashboard
@@ -54,6 +56,7 @@ fr:
       rewards: Récompenses
       stats: États
       theme: Thème
+      themes: Thèmes
       widgets: Widgets
     notifications: 
       message: Si vous ne souhaitez plus recevoir de notifications automatiques de %{group}, vous pouvez changer votre configuration de notifications.

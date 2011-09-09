@@ -2,30 +2,75 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
+# Author: Raspi
 fi: 
   widgets: 
+    adsense: 
+      title: AdSense
+    ask_question: 
+      ask: Kysy
+      footer: Katso kaikki kysymykset ryhmästä %{group}
+      title: "Kysy kysymys:"
     badges: 
       description: Tämä ikkunaolio näyttää käyttäjien tai kysymysten ansaitsemat äskettäiset rintanapit
       title: Viimeaikaiset rintanapit
+    contributors: 
+      title: Kysymyksen avustajat
+    create: 
+      notice: Vimpaimen luominen onnistui.
+    edit: 
+      title: Muokkaa Widgetiä
+    group_networks: 
+      title: Seuraa meitä
     groups: 
       description: Tämä ikkunaolio näyttää äskettäiset ryhmät
       title: Äskettäiset ryhmät
     index: 
       description: Käytä nuolinäppäimiä ikkunaolioitesi siirtämiseen
+      external_widgets: Ulkoinen
+      footer: Alatunniste
+      header: Ylätunniste
+      mainlist_widgets: Päälista
+      name: Widgetin nimi
+      navbar: Navigointipalkki
+      question_widgets: Kysymys
+      sidebar: Sivupalkki
       title: Hallinnoi sivupalkki-ikkunaolioita
+      type: "Tyyppi:"
+      welcome_widgets: Tervetuloa
     pages: 
       description: Tämä ikkunaolio näyttää wiki-sivujen luettelon
       new: Lisää uusi sivu
       title: Wiki-sivut
+    question_tags: 
+      title: Kysymyksen tunnisteet
+    related_questions: 
+      title: Aiheeseen liittyvät kysymykset
+    settings: 
+      code: "Kopioi ja liitä tämä koodi sivustoosi tai blogiin, kuten text widgetiin Wordpressissä:"
+      limit: "Määrä:"
+      on_welcome: Näytä Tervetuloa-sivulla
+    share: 
+      title: jaa
+    sharing_buttons: 
+      title: Jaa tämä
+    suggestions: 
+      follow_user: + Seuraa käyttäjää
+      followed_by: Seuraaja %{user}
     tag_cloud: 
       description: Tämä ikkunaolio näyttää painotetun luettelon
       title: Painotettu luettelo
+    tag_list: 
+      title: Tunnisteet
     top_groups: 
       description: Tämä ikkunaolio näyttää viisi huippuryhmää
       title: Viisi huippuryhmää
     top_users: 
       description: Tämä ikkunaolio näyttää viisi huippukäyttäjää
       title: Viisi huippukäyttäjää
+    update: 
+      notice: Vimpaimen päivittäminen onnistui.
     users: 
       description: Tämä ikkunaolio näyttää äskettäin rekisteröityneet jäsenet
       title: Äskettäiset käyttäjät

@@ -142,7 +142,7 @@ fi:
       shapado: 
         description: Vieraillut sivustolla päivittäin 8 peräkkäisenä päivänä
       stellar_answer: 
-        description: On 100 käyttäjän suosikkivastaus
+        description: 100 käyttäjää on merkinnyt tämän käyttäjän vastauksen suosikikseen
         name: Tähtivastaus
       stellar_question: 
         description: Kysyi kysymyksen, jonka 100 käyttäjää lisäsi suosikkeihin

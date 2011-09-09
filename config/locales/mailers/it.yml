@@ -1,10 +1,13 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Nuovo post segnalato su %{group}
       earned_badge: 
         subject: Hai guadagnato un badge su %{group}!
       favorited: 
@@ -20,5 +23,7 @@ it:
         subject_owner: "%{login} ha risposto alla tua domanda %{title}"
       new_comment: 
         subject: "%{login} ha commentato su %{group}"
+      new_invitation: 
+        subject: "%{user} ti invita a partecipare a %{group}"
       report: 
         subject: Report del gruppo %{group} di %{app}

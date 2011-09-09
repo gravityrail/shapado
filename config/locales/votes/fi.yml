@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
 # Author: Raspi
 fi: 
   activerecord: 
@@ -11,8 +12,8 @@ fi:
   votes: 
     comments: 
       title: 
-        no_user_no_vote: Klikkaa äänestääksesi tätä kommenttia.
-        one_vote_user: Vain sinä äänestit tätä kommenttia.
+        no_user_no_vote: Äänestä tätä kommenttia napsauttamalla.
+        one_vote_user: Vain sinä olet äänestänyt tätä kommenttia.
     control: 
       have_voted_down: Peru hylkäämisäänesi napsauttamalla
       have_voted_up: Peru kannatusäänesi napsauttamalla
