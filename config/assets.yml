@@ -85,7 +85,6 @@ javascripts:
     - public/javascripts/app/modules/users.js
     - public/javascripts/app/modules/members.js
     - public/javascripts/app/modules/tags.js
-    - public/javascripts/app/initializers/move_group.js
 
   jqueryautovideo:
     - public/javascripts/vendor/jquery.autovideo.js
