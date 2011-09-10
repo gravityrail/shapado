@@ -50,7 +50,7 @@ var Updater = {
           if(current_page_layout)
             body_class += ' ' + current_page_layout
           body.attr({"class": body_class});
-          Uploader.refresh(body, refreshed);
+          Loader.refresh(body, refreshed);
           return false;
         }
       });

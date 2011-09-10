@@ -50,6 +50,7 @@ javascripts:
     - public/javascripts/app/modules/utils.js
     - public/javascripts/app/modules/votes.js
     - public/javascripts/app/modules/websocket.js
+    - public/javascripts/app/modules/loader.js
     - public/javascripts/app/modules/updater.js
     - public/javascripts/app/modules/layout_editor.js
 
@@ -68,11 +69,6 @@ javascripts:
     - public/javascripts/vendor/showdown.js
     - public/javascripts/app/modules/rewards.js
     - public/javascripts/app/initializers/single/question.js
-    - public/javascripts/app/modules/uploader.js
-
-  extra:
-
-    - public/javascripts/app/initializers/show_question.js
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
@@ -80,10 +76,13 @@ javascripts:
     - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/application.js
+
+  extra:
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/modules/groups.js
     - public/javascripts/app/modules/users.js
     - public/javascripts/app/modules/members.js
+    - public/javascripts/app/modules/searches.js
     - public/javascripts/app/modules/tags.js
 
   jqueryautovideo:
