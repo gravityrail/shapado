@@ -31,7 +31,7 @@ var Questions = {
     });
 
     $(".flag-link-index").live("click", function(event) {
-      var link = $(this).parents("article.unanswered").find("h2 a");
+      var link = $(this).parents("article.Question").find("h2 a");
       if(link) {
         window.location= link.attr("href")+"#to_flag"
       }
