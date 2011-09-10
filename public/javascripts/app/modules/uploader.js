@@ -34,6 +34,8 @@ var Uploader = {
       Members.initialize($body);
     } else if($body.hasClass("groups-controller")) {
       Groups.initialize($body);
+    } else if($body.hasClass("searches-controller")) {
+      Searches.initialize($body);
     }
 
     Invitations.initialize(); //FIXME: empty function

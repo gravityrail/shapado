@@ -83,6 +83,7 @@ javascripts:
     - public/javascripts/app/modules/groups.js
     - public/javascripts/app/modules/users.js
     - public/javascripts/app/modules/members.js
+    - public/javascripts/app/modules/searches.js
     - public/javascripts/app/modules/tags.js
 
   jqueryautovideo:
