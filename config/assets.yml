@@ -72,7 +72,6 @@ javascripts:
 
   extra:
 
-    - public/javascripts/app/initializers/show_question.js
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
