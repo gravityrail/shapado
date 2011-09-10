@@ -1,6 +1,6 @@
 
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count", "fixdb:update_reputation_keys"] do
+task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count", "fixdb:update_reputation_keys", "fixdb:votes_to_followers"] do
 end
 
 
@@ -569,5 +569,17 @@ namespace :fixdb do
     end
     Theme.unset({}, {:use_button_bg_color => true, :button_fg_color=> true, :button_bg_color=> true, :use_link_bg_color=> true, :link_bg_color=> true, :link_fg_color=> true, :view_fg_color=> true})
     Theme.all.each {|theme| Jobs::Themes.generate_stylesheet(theme.id)}
+  end
+
+  task :votes_to_followers => [:init] do
+    count = Question.count
+    i=1
+    Question.all.each do |q|
+      p "#{i}/#{count}"
+      q.votes.keys.each do |u|
+        q.add_follower(User.find(u))
+      end
+      i+=1
+    end
   end
 end
