@@ -80,8 +80,10 @@ class User
   references_many :invitations, :dependent => :destroy
   references_one :external_friends_list, :dependent => :destroy
 
+  references_one :read_list, :dependent => :destroy
+
   before_create :initialize_fields
-  after_create :create_friends_lists
+  after_create :create_lists
 
   before_create :generate_uuid
   after_create :update_anonymous_user
@@ -833,6 +835,15 @@ Time.zone.now ? 1 : 0)
                        :user_id => self.id)
   end
 
+  def after_viewing(question)
+    rl = ReadList.where(:user_id => self.id).only(:_id).first
+    if rl.nil?
+      rl = ReadList.create(:user_id => self.id)
+    end
+
+    rl.override(:"questions.#{question.id}" => Time.now)
+  end
+
   protected
   def update_languages
     self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }
@@ -861,8 +872,11 @@ Time.zone.now ? 1 : 0)
     end
   end
 
-  def create_friends_lists
+  def create_lists
     external_friends_list = ExternalFriendsList.create
     self.external_friends_list = external_friends_list
+
+    read_list = ReadList.create
+    self.read_list = read_list
   end
 end
