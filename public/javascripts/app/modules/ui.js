@@ -1,5 +1,9 @@
 var Ui = {
   initialize: function() {
+    if(typeof(Effects) !== 'undefined'){
+      Effects.initialize();
+    }
+
      var languages_filter = $(".languages_filter form")
       languages_filter.find(".buttons").hide();
       languages_filter.find("#language_filter").change(function(){
@@ -7,15 +11,7 @@ var Ui = {
       submit.trigger("click");
     });
 
-    $('ul.sf-menu').superfish();
-
-    //$('.lang-fields').tabs();
-
     Ui.hide_comments_form();
-    //Ui.initialize_feedback();
-
-    //$('.autocomplete_for_tags').ricodigoComplete();
-    $('#quick_question').find('.tagwrapper').css({'margin-left':'18px',width:'68%'});
 
     if(Ui.supports_input_placeholder()) {
       $('.hideifplaceholder').remove();
@@ -34,7 +30,7 @@ var Ui = {
 
     $(document.body).delegate(".toggle-action", "click", function(event) {
       if(Ui.offline()){
-        startLoginDialog();
+        Auth.startLoginDialog();
       } else {
         var link = $(this);
         if(!link.hasClass('busy')){
@@ -119,7 +115,7 @@ var Ui = {
     if(window.innerHeight)
       viewportHeight = window.innerHeight;
 
-    var top = tag.offset().top - viewportHeight/2.0;
+    var top = tag.offset().top - (viewportHeight/2.0);
 
     container.scrollTop(top);
   },
@@ -134,7 +130,6 @@ var Ui = {
       elements.removeClass("active");
       next = $(this);
       next.addClass("active");
-      Ui.center_scroll(next);
     });
 
     $(document).keydown(function(ev){
