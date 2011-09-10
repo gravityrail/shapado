@@ -62,6 +62,23 @@ var Questions = {
       $('html,body').animate({scrollTop: flag_question.offset().top-100}, 1000);
     }
     prettyPrint();
+
+    $("article.read").hide();
+    $.each($("a.toggle_comments"), function() {
+      var l = $(this);
+      var s = l.nextAll("article.read").length;
+      if(s == 0) {
+        l.hide();
+      } else {
+        var t = l.text().replace("NN", s);
+        l.text(t);
+      }
+    });
+
+    $("a.toggle_comments").click(function() {
+      $(this).nextAll("article.read").slideToggle();
+      return false;
+    });
   },
   initialize_on_new: function($body) {
     $("#related_questions").hide();

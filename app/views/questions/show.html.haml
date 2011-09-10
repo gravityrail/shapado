@@ -54,8 +54,10 @@
     %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
 
     .comments
+      =link_to "show NN hidden comments", "#", :class => "toggle_comments"
       -@question.comments.each do |comment|
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
+        -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => @question, :mini => true, :read => read}
 
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|

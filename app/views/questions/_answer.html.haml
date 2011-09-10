@@ -29,8 +29,10 @@
 
 
     .comments
+      =link_to "show NN hidden comments", "#", :class => "toggle_comments"
       -answer.comments.each do |comment|
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true}
+        -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true, :read => read}
 
     .panel-comments
       = form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
