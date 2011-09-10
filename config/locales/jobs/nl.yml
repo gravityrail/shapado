@@ -16,5 +16,6 @@ nl:
         group_send_twitter: "%{user} heeft zojuist het speldje %{token} gekregen op %{group_name} %{link}"
         send_twitter: Ik heb zojuist het speldje %{token} gekregen op %{group_name} %{link}
     comments: 
-      group_on_comment: "%{user} heeft gereageerd op: %{question}"
-      on_comment: "Ik heb gereageerd op: %{question}"
+      on_comment: 
+        group_on_comment: "%{user} heeft een opmerking geplaatst bij: %{question}"
+        send_twitter: Mijn opmerking bij %{question}

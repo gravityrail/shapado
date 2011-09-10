@@ -24,6 +24,8 @@ nl:
       notice: De widget is aangemaakt.
     current_tags: 
       description: Dit widget geeft labels weer die de huidige gebruiker volgt.
+    edit: 
+      title: Widget bewerken
     group_networks: 
       description: Dit widget geeft een lijst weer met verwijzingen naar sociale netwerken zodat uw gebruiker u daar kunnen volgen.
       title: Volg ons
@@ -31,16 +33,24 @@ nl:
       description: In deze widget worden de meest recent actieve groepen weergegeven
       title: Recente groepen
     index: 
+      add_new: Nieuw widget toevoegen
       description: Gebruik de pijlen om uw widgets te verplaatsten
       external_widgets: Extern
       external_widgets_title: Widgets die u kunt gebruiken op uw eigen site
+      footer: Voettekst
+      header: Koptekst
       mainlist_widgets: Hoofdlijst
       mainlist_widgets_title: Widgets die in de hoofdlijst met vragen verschijnen
+      name: Widgetnaam
+      navbar: Navigatiebalk
       question_widgets: Vraag
       question_widgets_title: Widgets die op iedere vraagpagina verschijnen
+      sidebar: Menubalk
       title: Menubalkwidgets beheren
+      type: "Type:"
       welcome_widgets: Welkom
       welcome_widgets_title: Widget die op de welkomstpagina verschijnen /
+      zone: "Sectie van de pagina:"
     mod_info: 
       description: Dit widget geeft gegevens weer die relevant zijn voor moderatoren, zoals markeringen en probleemrapporten.
     pages: 
@@ -76,6 +86,8 @@ nl:
       title: Dit delen op
     suggestions: 
       description: Suggesties om vrienden en labels te volgen.
+      follow_tag: + Label volgen
+      follow_user: + Gebruiker volgen
       followed_by: Gevolgd door %{user}
       title: Mensen en labels om te volgen
     tag_cloud: 
@@ -98,3 +110,5 @@ nl:
     users: 
       description: In deze widget wordende nieuwe gebruikers weergegeven
       title: Recente gebruikers
+    widget: 
+      change_position: "Widgetpositie wijzigen:"

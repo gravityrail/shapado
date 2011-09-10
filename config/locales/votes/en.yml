@@ -13,10 +13,8 @@ en:
       flash_error:  "You cannot vote this"
       unauthenticated: "Anonymous users cannot vote"
       average:
-        one:
-          "%{count} vote"
-        other:
-          "%{count} votes"
+        one: "%{count} vote"
+        other: "%{count} votes"
     destroy:
       flash_notice: "Your vote has been revoked successfully."
     control:

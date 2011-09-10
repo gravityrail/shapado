@@ -6,15 +6,15 @@ gl:
   activerecord: 
     attributes: 
       announcement: 
-        ends_at: remata o
-        message: mensaxe
-        only_anonymous: só para usuarios anónimos
-        starts_at: comeza o
+        ends_at: Remata o
+        message: Mensaxe
+        only_anonymous: Só para usuarios anónimos
+        starts_at: Comeza o
   announcements: 
     actions: 
-      delete: eliminar
+      delete: Eliminar
       title: Accións
     create: 
       success: O aviso creouse correctamente.
     index: 
-      title: avisos
+      title: Anuncios

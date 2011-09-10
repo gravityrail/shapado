@@ -15,5 +15,5 @@
 
   -@open_requests.each do |request|
     %tr
-      %td= link_to h(request.user.login), user_path(request.user), :class => "pjax", :"data-layout" => "user"
+      %td= pjax_link_to request.user.login, "user", user_path(request.user.login||request.user.id), {:title => request.user.login}
       %td= h(request.comment)

@@ -21,7 +21,7 @@
     = I18n.t('themes.show.fg_color')
   -if !@theme.new? && @theme.has_bg_image?
     %li
-      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.group.theme_version))
+      = image_tag(bg_image_path(@theme.group,@theme.id,@theme.version))
       = I18n.t('themes.show.bg_image')
   %li
     %div.display-color{:style => "background: ##{@theme.view_bg_color}"}

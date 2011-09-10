@@ -6,6 +6,11 @@
 be-TARASK: 
   admin: 
     manage: 
+      access: 
+        title: Доступ
+      answers: 
+        banning: 
+          title: Забараніць адказ
       appearance: 
         logo_legend: Загрузка лягатыпу для Вашай групы. Яго памер павінен быць меней чым 2 Мб.
         title: Выберыце і наладзьце Вашую тэму
@@ -85,8 +90,20 @@ be-TARASK:
           tweet_ends_with: Далучаць тэг у канец Вашых паведамленьняў на Twitter
           tweet_starts_with: Далучыць тэг у пачатак Вашых паведамленьняў у Twitter
         title: Уласьцівасьці групы
+        twitter_account: 
+          connect_to_other_twitter: Націсьніце тут, каб далучыць розныя рахункі на Twitter з Вашай групай
+          connect_to_twitter: Націсьніце тут, каб злучыць рахунак на Twitter з Вашай групай
+          disconnect_twitter_group: Разлучыць гэтую групу з Twitter
+          legend: Гэты рахунак будзе выкарыстоўвацца для адпраўкі новых пытаньняў і адказаў на Twitter.
+          legend_with_account: Ваш рахунак на Twitter <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> будзе выкарыстоўвацца для адпраўкі новых пытаньняў і адказаў на Twitter. <a href="%{link}">Тут</a> Вы можаце наладзіць што дасылаць на Twitter.
+          twitter_account: Рахунак на Twitter
         twitter_app: 
+          key: Ключ дастасаваньня
+          secret: Сакрэт дастасаваньня
           twitter_app: Дастасаваньне Twitter
+      questions: 
+        banning: 
+          title: Забараніць пытаньне
       social: 
         ask_from_twitter: Спытаць у Twitter
         ask_from_twitter_title: Дазволіць карыстальнікам задаваць пытаньні з Twitter

@@ -13,5 +13,7 @@ ms:
       description: Gunakan pilihan %{link} untuk mendapatkan hasil-hasil yang terperinci.
       empty: Tiada soalan yang sepadan dengan carian anda.
       found_results: "%{quantity} hasil dijumpai."
+      input_legend: Carian tersimpan ini akan muncul dalam bar pandu arah demi akses segera.
+      input_title: "Simpan carian ini sebagai:"
       search_text: Soalan yang mengandungi
       tags: di dalam tag-tag ini

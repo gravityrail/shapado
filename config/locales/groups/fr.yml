@@ -30,6 +30,7 @@ fr:
       default_tags_message: Vous ne pouvez pas utiliser plus de 10 tags par défaut.
       group: Groupe
       groups: Groupes
+      reputation_rewards_key: Clé invalide
   groups: 
     create: 
       flash_notice: Votre groupe a été créé avec succès, vous pouvez maintenant commencer à le configurer.
@@ -40,7 +41,7 @@ fr:
       any_language: Toutes
       custom_analytics: Autoriser l’analyse personnalisée
       custom_html: Autoriser le HTML personnalisé
-      custom_js: Autoriser le Javascript personnalisé
+      custom_js: Autoriser le JavaScript personnalisé
       default_tags_legend: séparez les tags avec des virgules. seuls 10 tags par défaut sont autorisés.
       description_legend: vous avez 400 caractères pour décrire le groupe.
       isolate_group: Isoler le groupe des autres groupes

@@ -60,6 +60,9 @@ de:
       active_tooltip: Fragen die vor kurzem aktualisiert wurden
       ask_question: Frage stellen
       empty: Bislang hat noch niemand eine Frage gestellt. Sei der Erste!
+      has_followers: 
+        one: Ein Folgender
+        other: "%{count} Folgende"
       help_to_answer: Helfe uns beim Beantworten
       hot: Populär
       hot_tooltip: Fragen mit den meisten Aktivitäten während der letzten 5 Tage
@@ -91,6 +94,9 @@ de:
     question: 
       accepted_tooltip: Zu dieser Frage gibt es eine Antwort, die akzeptiert wurde
       answer_verb: Antwort
+      has_answers: 
+        one: Eine Antwort
+        other: "%{count} Antworten"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Stichwörter ändern
@@ -141,6 +147,7 @@ de:
       solution: Lösung
       to_answer_question: Frage beantworten
       unauthenticated_retag: Du brauchst ein Nutzerkonto, um die Stichwörter ändern zu können
+      unban: Entsperren
       unfollow_tooltip: Diese Frage nicht mehr beobachten
       viewed: Gesehen
     solve: 

@@ -8,7 +8,7 @@
       .data
         %h3
           %b
-            = link_to h(group.name), domain_url(:custom => group.domain)
+            = link_to group.name, domain_url(:custom => group.domain)
           %small
             = I18n.t('widgets.top_groups.has_members', :count => group.memberships.count)
         %p

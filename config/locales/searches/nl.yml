@@ -14,5 +14,7 @@ nl:
       description: Gebruik de %{link}instellingen om fijnmazige resultaten te krijgen.
       empty: Er waren geen vragen die voldoen aan uw zoekopdracht.
       found_results: "%{quantity} resultaten werden gevonden."
+      input_legend: Deze opgeslagen zoekopdracht verschijnt in de navigatiebalk voor snelle toegang.
+      input_title: "Deze zoekopdracht bewaren als:"
       search_text: Vragen die tekst bevatten
       tags: Met deze labels

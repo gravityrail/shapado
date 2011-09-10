@@ -8,6 +8,9 @@ nl:
     manage: 
       access: 
         title: Toegang
+      answers: 
+        banning: 
+          title: Antwoord verbannen
       appearance: 
         logo_legend: Een logo voor uw groep uploaden. Het moet kleiner zijn dan 2 MB.
         title: Kies uw thema en past het aan
@@ -99,6 +102,9 @@ nl:
           key: Toepassingssleutel
           secret: Applicatiegeheim
           twitter_app: Twitter app
+      questions: 
+        banning: 
+          title: Vraag verbannen
       social: 
         ask_from_twitter: Vanop Twitter vragen
         ask_from_twitter_title: Uw gebruikers toestaan om vragen te stellen vanop Twitter

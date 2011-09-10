@@ -18,6 +18,7 @@ ms:
     anonymous: Tanpa nama
     blog: Blog
     by: oleh
+    by_semi: "Oleh:"
     chat: Sembang
     current: Kini
     edited: Disunting
@@ -49,6 +50,11 @@ ms:
     what_to_do: Apakah yang ingin anda lakukan?
   models: 
     question: Soalan
+  number: 
+    x_time: 
+      one: "%{count} kali"
+      other: "%{count} kali"
+      zero: Tak pernah
   preferred_languages: 
     any: Semua
     user: Bahasa-bahasa keutamaan saya

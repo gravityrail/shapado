@@ -7,6 +7,9 @@ mk:
     manage: 
       access: 
         title: Пристап
+      answers: 
+        banning: 
+          title: Забрани одговор
       appearance: 
         logo_legend: Подигнете лого за групата (највеќе 2 МБ).
         title: Одберете изглед и прилагодете го
@@ -98,6 +101,9 @@ mk:
           key: Клуч за прилож. програм
           secret: Тајна за прилож. програм
           twitter_app: Прилог за Twitter
+      questions: 
+        banning: 
+          title: Забрани прашање
       social: 
         ask_from_twitter: Постави прашање преку Twitter
         ask_from_twitter_title: Дозволете им на вашите корисници да поставуваат прашања од Twitter

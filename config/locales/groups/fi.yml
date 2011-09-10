@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
 # Author: Raspi
 fi: 
   activerecord: 
@@ -23,6 +24,7 @@ fi:
         name: Nimi
         owner: "Tämän ryhmän loi: %{login}"
         registered_only: Vain rekisteröityneet käyttäjät voivat käyttää sivustoa
+        signup_type: Mitä menetelmiä käyttäjät voivat käyttää sisäänkirjautumiseen
         state: Tila
         subdomain: Verkko-osoite
         wysiwyg_editor: Ota käyttöön käyttäjäystävällinen editori
@@ -30,9 +32,11 @@ fi:
       default_tags_message: Et voi luoda yli 10 oletustunnistetta
       group: Ryhmä
       groups: Ryhmät
+      reputation_rewards_key: Virheellinen avain
   groups: 
     connect_group_to_twitter: 
-      failed_twitter_connection: Anteeksi, jokin meni pieleen. Yritä uudelleen kiitos.
+      failed_twitter_connection: Jokin meni pieleen. Yritä uudelleen.
+      success_twitter_connection: Onnea, olet yhdistänyt Twitter-tilisi onnistuneesti!
     create: 
       flash_notice: Ryhmäsi luotiin onnistuneesti. Voit aloittaa nyt asettamaan sen asetuksia.
     edit: 
@@ -51,6 +55,7 @@ fi:
       legend_legend: Sitä käytetään otsakkeessa. Käytettävissä on 40 merkkiä.
       logo_legend: Voit kopioida palvelimelle ryhmän logon. Tiedoston enimmäiskoko on 2 megatavua.
       members_only: Vain ryhmän jäsenet voivat käyttää tätä ryhmää
+      signup_noemail: Ei sähköpostiosoitetta eikä salasanaa (käyttäjät kirjautuvat OpenID:llä, Facebookilla tai Twitterillä)
       website_analytics_id: Verkkosivun analytiikkatunnus
     group: 
       about: Tietoja
@@ -62,6 +67,7 @@ fi:
     index: 
       actives: Käytössä
       create_your_own: Luo oma ryhmä
+      description: Tämä on luettelo julkisista ryhmistä mitkä on luotu. Käytä hakukenttää alla suodataksesi ryhmiä. Voit myös %{link}.
       filter: Etsi ryhmiä
       most_active: Aktiivisimmat
       name: Nimi
@@ -80,3 +86,5 @@ fi:
       visit_group: Vieraile tässä ryhmässä
     top_grouplist: 
       active_site: "Aktiivinen sivusto:"
+    update: 
+      notice: Ryhmäsi päivittäminen onnistui.

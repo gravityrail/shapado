@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Od1n
 # Author: Patcito
+# Author: Sherbrooke
 # Author: Verdy p
 fr: 
   activerecord: 
@@ -19,4 +20,5 @@ fr:
     create: 
       success: Votre annonce a été créée avec succès.
     index: 
+      description: Gère et crée de nouvelles annonces qui seront affichées sur tout le site.
       title: Annonces

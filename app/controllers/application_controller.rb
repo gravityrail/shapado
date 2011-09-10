@@ -26,6 +26,7 @@ class ApplicationController < ActionController::Base
   before_filter :find_languages
   before_filter :share_variables
   before_filter :check_social
+  before_filter :set_custom_headers
 
   layout :set_layout
 
@@ -161,6 +162,12 @@ class ApplicationController < ActionController::Base
       'mobile'
     else
       'application'
+    end
+  end
+
+  def set_custom_headers
+    if env && env['HTTP_X_PJAX'].present?
+      response.headers['X-BODYCLASS'] = bodys_class(params).join(" ")
     end
   end
 

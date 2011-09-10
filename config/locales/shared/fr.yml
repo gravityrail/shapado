@@ -1,12 +1,41 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
   shared: 
     current_tags: 
       title: Étiquettes sélectionnées
+    description: Description
+    empty: 
+      answers: 
+        description: 
+          text: Soyez le premier !
+      default: 
+        description: 
+          text: Soyez le premier à %{action_link} !
+      questions: 
+        description: 
+          action_link: poser une question
+      themes: 
+        description: 
+          action_link: maintenant
+    login_drop_down: 
+      with_facebook: avec Facebook
+      with_google: avec Google
+      with_identica: avec Identi.ca
+      with_linked_in: avec LinkedIn
+      with_openid: OpenID
+      with_twitter: avec Twitter
+    name: Nom
+    preferred_lang: Mes langues préférées
+    social_connect: 
+      find_friends_facebook: Trouver des amis sur Facebook
+      find_friends_identica: Trouver des amis sur Identi.ca
+      find_friends_linked_in: Trouver des amis sur LinkedIn
+      find_friends_twitter: Trouver des amis sur Twitter
     topbar: 
       admin: Administrer
       logged_as: Connecté en tant que %{login}

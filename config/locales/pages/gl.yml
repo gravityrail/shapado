@@ -26,6 +26,7 @@ gl:
     index: 
       create_page: crear unha nova páxina
       title: lista de páxinas
+      wiki: Wiki
       written_in: escrito en %{language}
     new: 
       title: páxina nova

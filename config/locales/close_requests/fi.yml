@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Raspi
 fi: 
   close_requests: 
     create: 
@@ -17,6 +18,7 @@ fi:
       not_relevant: Ei olennainen
       ot: Aiheen vierestä
       request_closing_details: Pyyntö sulkea tämä kysymys
+      retract: Peru
       spam: roskaposti
     index: 
       title: Sulkupyyntöjen luettelo

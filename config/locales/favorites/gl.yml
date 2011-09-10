@@ -5,8 +5,8 @@
 gl: 
   activerecord: 
     models: 
-      favorite: favorito
-      favorites: favoritos
+      favorite: Favorito
+      favorites: Favoritos
   favorites: 
     create: 
       success: engadiuse a pregunta aos seus favoritos

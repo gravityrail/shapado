@@ -18,6 +18,7 @@ mk:
     anonymous: Анонимно
     blog: Блог
     by: од
+    by_semi: "Од:"
     chat: Разговор
     current: тековно
     edited: Уредено
@@ -49,6 +50,11 @@ mk:
     what_to_do: Што сакате да правите?
   models: 
     question: Прашање
+  number: 
+    x_time: 
+      one: "%{count} пат"
+      other: "%{count} пати"
+      zero: Never
   preferred_languages: 
     any: било кој
     user: Мои претпочитани јазици

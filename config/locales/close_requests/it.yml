@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Deneb
 # Author: Giallu
 it: 
@@ -18,6 +19,7 @@ it:
       not_relevant: Non pertinente
       ot: Fuori tema
       request_closing_details: Richiesta di chiusura per la domanda
+      retract: Ritrattare
       spam: spam
     index: 
       title: Elenco delle richieste chiuse

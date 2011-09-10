@@ -60,6 +60,9 @@ mk:
       active_tooltip: неодамна подновени прашања
       ask_question: постави прашање
       empty: сè уште никој нема поставено прашање. Бидете првиот што ќе постави!
+      has_followers: 
+        one: "%{count} следбеник"
+        other: "%{count} следбеници"
       help_to_answer: помогнете ни да одговориме на
       hot: интересни
       hot_tooltip: прашања со највеќе активности во текот на последните 5 дена
@@ -91,6 +94,9 @@ mk:
     question: 
       accepted_tooltip: Ова прашање има одговор кој е прифатен
       answer_verb: Одговори
+      has_answers: 
+        one: "%{count} одговор"
+        other: "%{count} одговори"
       wiki_title: "Вики: %{title}"
     retag: 
       title: преозначи
@@ -141,6 +147,7 @@ mk:
       solution: решение
       to_answer_question: за да одговорите на ова прашање
       unauthenticated_retag: треба да имате сметка за да можете да преозначувате прашања
+      unban: Тргни забрана
       unfollow_tooltip: Престани со следење на прашањево
       viewed: прегледани
     solve: 

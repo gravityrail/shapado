@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 it: 
   activerecord: 
@@ -8,9 +9,14 @@ it:
       member: 
         role: Ruolo
   members: 
+    create: 
+      error: Spiacente, l'utente **%{user_id}** non esiste
+      notice: "%{login} è stato aggiunto come %{role}."
     form: 
       login_tip: Ricerca mentre si digita
     index: 
       manage_members_title: Gestione membri
       title: Membri del gruppo di %{name}
       title_isolate: Membri di %{name}
+    update: 
+      error: Spiacente, non puoi essere cambiare l'appartenenza di **%{login}**

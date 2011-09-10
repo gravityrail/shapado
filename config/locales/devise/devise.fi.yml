@@ -15,8 +15,11 @@ fi:
       invalid_token: Virheellinen todennustunniste.
       locked: Tilisi on lukittu.
       timeout: Istuntosi on vanhentunut. Jatka kirjautumalla sisään.
+      unauthenticated: Sinun täytyy kirjautua sisään tai rekisteröityä ennen kuin jatkat.
+      unconfirmed: Sinun on vahvistettava tilisi ennen kuin jatkat.
     mailer: 
       confirm_account: 
+        instruction1: "Voit vahvistaa tilisi alla olevan linkin kautta:"
         link: Vahvista käyttäjätunnus
         welcome: Tervetuloa
       confirmation_instructions: 
@@ -24,14 +27,19 @@ fi:
       hello: Hei
       reset_password: 
         link: Salasanan vaihto
+        nonrequested: Jos et pyytänyt tätä, älä reagoi tähän viestiin.
+        warning: Salasanasi ei muutu ennen kuin käytät yllä olevaa linkkiä ja luot uuden salasanan.
       reset_password_instructions: 
         subject: Salasanan palautusohjeet
       unlock: 
+        instruction1: Tilisi on lukittu liian monen epäonnistuneen kirjautumisen takia.
+        instruction2: "Napsauta alla olevaa linkkiä avataksesi käyttäjätilisi:"
         link: Avaa tili
       unlock_instructions: 
         subject: Lukituksen poistamisen ohjeet
     passwords: 
       link: Unohditko salasanasi?
+      send_button: Lähetä minulle ohjeet salasanan vaihtoon
       send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet salasanan alustamisesta.
       updated: Salasanasi on vaihdettu. Olet nyt kirjautunut sisään.
     registrations: 
@@ -42,10 +50,13 @@ fi:
     sessions: 
       link: Kirjaudu sisään
       new: 
+        openid_url: Oma OpenID-URL
         remember_me: Pidä minut sisäänkirjautuneena
+      registered_only: Sinun täytyy olla kirjautunut sisään nähdäksesi sisällön.
       sign_out: Kirjaudu ulos
       signed_in: Kirjautunut sisään
       signed_out: Kirjautunut ulos.
+      signin_group: Liity ryhmään %{group}
     unlocks: 
       link: Etkö vastaanottanut lukituksenpoisto-ohjeita?
       send_instructions: Saat muutaman minuutin kuluttua sähköpostiviestin, joka sisältää ohjeet tilin lukituksen poistamisesta.

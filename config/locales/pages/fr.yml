@@ -27,6 +27,7 @@ fr:
     index: 
       create_page: Créer une nouvelle page
       title: Liste de pages
+      wiki: Wiki
       written_in: Écrite en %{language}
     new: 
       title: Nouvelle page

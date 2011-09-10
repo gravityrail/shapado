@@ -1,13 +1,14 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Od1n
 # Author: Patcito
 fr: 
   activerecord: 
     models: 
-      favorite: Favorite
-      favorites: Favorites
+      favorite: Favori
+      favorites: Favoris
   favorites: 
     create: 
-      success: La question a été ajouté à vos favorits
+      success: La question a été ajoutée à vos favoris
       unauthenticated: Vous devez créer un compte pour ajouter des favorits

@@ -19,7 +19,7 @@ de:
       message2: "Beschreibung des Abzeichens:"
       message3: Du kannst alle Deine Abzeichen auf Deiner %{user_page} ansehen.
     favorited: 
-      message1: "%{user} hat Deine Antwort in der Gruppe %{group} als Favorit hinzugefügt"
+      message1: "%{user} hat Deine Antwort in der Gruppe %{group} als Favorit gespeichert"
       message2: "Die Frage lautete:"
       message3: "Du kannst es hier sehen:"
     follow: 

@@ -456,7 +456,7 @@ module ApplicationHelper
   end
 
   def cache_key_for(name, *args)
-    args.unshift([name, current_group.id, params[:controller], params[:action]])
+    args.unshift([name, current_group.id, params[:controller], params[:action], I18n.locale])
     if user_signed_in?
       args += [current_user.role_on(current_group.to_s)]
       args += current_user.preferred_languages.sort
@@ -471,4 +471,3 @@ module ApplicationHelper
     render :partial => "invoices/form", :locals => {:opts => options.merge(:title => title)}
   end
 end
-

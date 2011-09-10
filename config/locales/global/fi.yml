@@ -21,8 +21,10 @@ fi:
     anonymous: Anonyymi
     blog: Blogi
     by: /
+    by_semi: "Tekijä:"
     chat: Keskustelu
     current: Nykyinen
+    edited: muokattu
     feedback: Palaute
     follow: Seuraa
     followed_by: "Seuraaja:"
@@ -41,6 +43,7 @@ fi:
     sign_up: Rekisteröidy
     size: Koko
     sort_by: "Lajitteluperuste:"
+    subjetive: subjektiivinen
     tags_label: "Tunnisteet:"
     tos: Palvelun säännöt
     unfollow: Lopeta seuraaminen
@@ -59,6 +62,7 @@ fi:
     user: Tavallinen käyttäjä
   scaffold: 
     add: Lisää
+    are_you_sure: Oletko varma?
     back: Takaisin
     cancel: Peruuta
     close: Sulje
@@ -77,3 +81,8 @@ fi:
   time: 
     ago: "%{time} sitten"
     today: tänään
+    yesterday: eilen
+  views: 
+    pagination: 
+      next: Seuraava &raquo;
+      previous: "&laquo; Edellinen"

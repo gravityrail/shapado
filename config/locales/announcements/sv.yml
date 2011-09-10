@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Tobulos1
+# Author: WikiPhoenix
 sv: 
   activerecord: 
     attributes: 
@@ -15,6 +16,6 @@ sv:
       delete: Ta bort
       title: Åtgärder
     create: 
-      success: Meddelandet har skapats.
+      success: Ditt meddelandet har skapats.
     index: 
       title: Meddelanden

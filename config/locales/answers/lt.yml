@@ -6,7 +6,8 @@ lt:
   activerecord: 
     attributes: 
       answer: 
-        created_at: Atsakyta
+        created_at: Sukurta
+        link: Nuoroda
     models: 
       answer: Atsakymas
       answers: Atsakymai

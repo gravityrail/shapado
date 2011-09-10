@@ -1,6 +1,7 @@
 # Messages for Arabic (العربية)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Meno25
 # Author: عمرو
 ar: 
   activerecord: 
@@ -15,6 +16,6 @@ ar:
       delete: إزالة
       title: الإجراءات
     create: 
-      success: تم إنشاء البلاغ بنجاح
+      success: تم إنشاء بلاغك بنجاح.
     index: 
       title: البلاغات

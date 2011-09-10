@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 # Author: Tuxwet
 it: 
@@ -46,6 +47,9 @@ it:
       vote_up: Votare positivamente
     anonymous_form: 
       never_shown: mai mostrato
+    change_password: 
+      submit: Cambia la password
+      title: Cambia la password
     create: 
       flash_error: Creazione account non riuscita. Riprovare o contattare un amministratore (link sopra).
       flash_notice: Grazie per esserti iscritto!
@@ -54,22 +58,31 @@ it:
       submit: Salva
       title: Impostazioni
     follow: 
-      flash_notice: L'utente %{user} è stato aggiunto agli amici
+      flash_error: Non puoi seguire te stesso.
+      flash_notice: Ora stai seguendo %{user}.
     form: 
       activities_notification: "Ricevi email di notifica per eventi come: nuovi follow, bagde conquistati, etc."
       avatar_tip: Cambia l'immagine del profilo utilizzando Gravatar
+      desktop_notification: Notifiche desktop
       give_advice_notification: Ricevi email di notifica su domande nel tuo campo di competenza
       information: Informazione
       language: Lingua utilizzata per l'interfaccia del sito
       new_answer_notification: Ricevi email di notifica su nuove risposte
       notifications: Notifiche
       reports_notification: Ricevi un report dell'attività recente del gruppo (solo per amministratori)
+      send_answers_to_twitter: Invia le mie risposte su Twitter
+      send_badges_to_twitter: Invia i miei badge da poco conquistati a Twitter
+      send_comments_to_twitter: Invia i miei commenti suTwitter
+      send_favorites_to_twitter: Invia tutte le mie risposte preferite su Twitter
+      send_questions_to_twitter: Invia le mie domande su Twitter
       show_more_lang: Mostra altre lingue
+      social_interaction: Interazione media sociali
     index: 
       empty: Il gruppo non ha nessun membro. Partecipa unendoti a questo gruppo.
       filter: Cerca utenti
       name: Nome
       name_tooltip: Utenti in ordine alfabetico
+      near: Vicino a te
       newest: più recente
       newest_tooltip: Utenti iscritti da meno tempo
       oldest: più datato
@@ -81,12 +94,34 @@ it:
       errors: 
         reputation_needed: E' necessaria una reputazione di %{min_reputation} per %{action}
     new: 
+      description: Diventa parte di questa comunità per chiedere, rispondere e imparare!
+      join_group: Iscriviti a %{group}
       submit: Iscriviti
       title: Iscriviti come nuovo utente
     show: 
+      edit_profile: Modifica profilo
       follow: Follow
+      followers: Seguaci
+      following: Seguendo
       title: Utente %{user}
       unfollow: Annulla follow
       views: visualizzazioni
+    top_user: 
+      connect: Collegati
+      my_karma: "Il mio karma: %{karma}"
+      profile: Profilo
     unfollow: 
-      flash_notice: L'utente %{user} è stato rimosso dagli amici
+      flash_notice: Ora non stai seguendo più %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Ora stai seguendo la il tag %{tag}.
+      unfollowed: 
+        flash_notice: Ora non stai seguendo più il tag %{tag}.
+    user_bar: 
+      create_account: Crea un account
+      not_logged_in: Non connesso
+      signed_as: Identificato come
+    user_mini: 
+      admin: "[Admin]"
+      editor: "[Editor]"
+      mod: "[Moderatore]"

@@ -2,12 +2,15 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
 # Author: Raspi
 fi: 
   admin: 
     manage: 
+      access: 
+        title: Käyttöoikeus
       appearance: 
-        logo_legend: Lataa logo ryhmällesi. Kuvan on oltava pienempi kuin 2 Mt.
+        logo_legend: Lataa logo ryhmällesi. Kuvan on oltava alle 2 megatavua.
         title: Poimi ja mukauta teemaa
       content: 
         footer: Alatunniste
@@ -19,14 +22,15 @@ fi:
         top_bar_tip: Kirjoita yksi linkki per rivi
       invitations: 
         invitations: Lähetetyt kutsut
-        invitations_title: Lista lähettämästäsi kutsuista
+        invitations_title: Lista lähettämistäsi kutsuista
         invite: Kutsu ihmisiä
         invite_title: Kutsu sähköpostitse
         title: Kutsut
       properties: 
         ask_from_twitter: 
           question_asked_to: Kysymys kysytty kohteeseen
-          question_must_include_example: "esim. # iAsk"
+          question_must_include: Kysymyksen tulee sisältää seuraava tunniste, jotta se voidaan lähettää Twitterissä
+          question_must_include_example: "esim. #iAsk"
         constrains: 
           reputation_constrains_description: Tämä lomake sallii sinun asettaa, kuinka monta mainepistettä käyttäjien tarvitsee tehdä tíetylle toimelle
           reputation_constrains_subtitle: Jokaisen toimen mainepisteiden luettelo
@@ -43,6 +47,7 @@ fi:
           warning: Oletko varma, että haluat muuttaa toimialueesi?
         facebook_app: 
           application_id: Sovellustunniste
+          facebook_app: Facebook-sovellusasetukset
           secret_key: Salainen avain
         general: 
           title: Ryhmän ominaisuudet
@@ -51,11 +56,13 @@ fi:
           revoke_button: Peruuta
         invite: 
           body_length_warning: Sisältö voi sisältää enintään 400 merkkiä
+          emails_instructions: Anna sähköpostiosoitteet pilkulla erotettuna
           invitations: Lähetetyt kutsut
           invite: Kutsu ihmisiä
           title: Kutsu sähköpostitse
           user_role: Kutsu käyttäjiä
         post_to_twitter: 
+          post_to_twitter: Lähetä Twitteriin
           send_answers_to_twitter: Lähetä kaikki vastaukset Twitteriin
           send_comments_to_twitter: Lähetä kaikki kommentit Twitteriin
           send_favorites_to_twitter: Lähetä kaikki suosikkivastaukset Twitteriin
@@ -67,15 +74,23 @@ fi:
         share: 
           title: Jaa
         tag_your_tweets: 
-          ends_with_example: "esim. # shapado"
-          starts_with_example: "esim. # qa"
+          ends_with_example: "esim. #shapado"
+          starts_with_example: "esim. #qa"
+          title: Merkitse tweettisi
         title: Ryhmän ominaisuudet
         twitter_account: 
+          connect_to_twitter: Klikkaa tästä kytkeäksesi Twitter-tili ryhmään
+          disconnect_twitter_group: Irrota tämä ryhmä Twitteristä
           twitter_account: Twitter-tili
         twitter_app: 
           key: Sovellustunniste
+          secret: Sovelluksen avain
+          twitter_app: Twitter-ohjelma
       social: 
+        ask_from_twitter: Kysy Twitterissä
+        facebook_app: Facebook-ohjelma
         post_to_twitter: Lähetä Twitteriin
+        twitter_account: Twitter-tili
       top_admin: 
         site: Sivusto
         title: Ylläpitäjä

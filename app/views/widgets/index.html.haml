@@ -19,7 +19,7 @@
       .field
         = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
         = select :widget, "_type", Widget.types(params[:tab],current_group.has_custom_ads).map {|w| [w.sub("Widget", "").titleize, w]}
-        -if @active_subtab != "external"
+        -if @active_subtab == "mainlist"
           = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
         -else
           = hidden_field_tag "widget[position]", "sidebar"
@@ -31,15 +31,16 @@
         %strong= t('widgets.index.type')
         =t('widgets.index.name')
       =image_tag "zone-header.gif"
-    .zone
-      %p
-        %strong= t('widgets.index.zone')
-        = t('widgets.index.header')
-      =image_tag "zone-header.gif"
+    -if @active_subtab == "mainlist"
+      .zone
+        %p
+          %strong= t('widgets.index.zone')
+          = t('widgets.index.header')
+        =image_tag "zone-header.gif"
 
 
   .widget-containers
-    -if @active_subtab != "external"
+    -if @active_subtab == "mainlist"
       .container.header
         .header
           = t('widgets.index.header')

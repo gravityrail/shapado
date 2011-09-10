@@ -32,6 +32,7 @@ en:
   models:
     question: The question
   global:
+    open: Open
     size: Size
     alphabetically: Alphabetically
     from: "from %{site}"

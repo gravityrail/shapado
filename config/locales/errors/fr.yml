@@ -17,7 +17,7 @@ fr:
     not_found: 
       explanation: Vous avez peut-être mal écrit l'adresse ou bien la page en question a changé.
       title: Page non trouvée.
-    options_label: "Autres choses que vous pouvez faire:"
+    options_label: "Autres choses que vous pouvez faire :"
     search: Chercher
     unprocessable_entity: 
       explanation: Peut-être que vous avez éssayer de changer un élément dont vous n'avez pas accès.

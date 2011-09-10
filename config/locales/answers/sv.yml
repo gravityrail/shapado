@@ -2,12 +2,13 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Tobulos1
+# Author: WikiPhoenix
 sv: 
   activerecord: 
     attributes: 
       answer: 
         body: Innehåll
-        created_at: Besvarade
+        created_at: Skapades den
         link: Länk
     models: 
       answer: Svar
@@ -23,5 +24,7 @@ sv:
       comment_label: Kommentera detta svar
       comment_submit: Kommentera
       submit: Svar
+    revert: 
+      title: Återgående svar
     update: 
       flash_notice: Svaren har uppdaterats.

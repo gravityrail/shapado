@@ -60,6 +60,7 @@ ms:
       active_tooltip: Soalan yang dikemas kini baru-baru ini
       ask_question: Tanyakan soalan
       empty: Di sini belum ada yang tanyakan apa-apa soalan lagi. Jadilah orang pertama!
+      has_followers: "%{count} pengikut"
       help_to_answer: Bantu kami menjawabnya
       hot: Hangat
       hot_tooltip: Soalan yang paling giat selama 5 hari yang lalu
@@ -91,6 +92,7 @@ ms:
     question: 
       accepted_tooltip: Soalan ini ada jawapan yang diterima
       answer_verb: Jawab
+      has_answers: "%{count} jawapan"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Tag semula
@@ -141,6 +143,7 @@ ms:
       solution: Jawapan
       to_answer_question: menjawab soalan ini
       unauthenticated_retag: Anda memerlukan akaun untuk mengetag semula soalan
+      unban: Tarik Balik Larangan
       unfollow_tooltip: Berhenti mengikuti soalan ini
       viewed: dilihat
     solve: 

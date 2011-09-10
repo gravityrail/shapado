@@ -3,7 +3,7 @@
     %a{:name => "comment#{comment.id}"}
     %h4
       = avatar_img(comment.user, :size => "small")
-      = link_to h(comment.user.login), user_path(comment.user), :class => "clear pjax", :"data-layout" => "user"
+      = pjax_link_to comment.user.login, "user", user_path(comment.user), {:class => "clear"}
       %b
         = t("time.ago", :time => time_ago_in_words(comment.created_at))
         = t("global.from", :site => comment.user.country_name)
@@ -35,7 +35,7 @@
     .user-avatar
       = avatar_img(comment.user, :size => "small")
     .comment-body
-      = link_to comment.user.login, user_path(comment.user), :class => "pjax", :"data-layout" => "user", :class => "user-login"
+      = pjax_link_to comment.user.login, "user", user_path(comment.user), {:class => 'user-login'}
       %span='-'
       .comment-content.markdown
         = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))

@@ -119,3 +119,7 @@ ms:
       create_account: Buka akaun
       not_logged_in: Belum log masuk
       signed_as: Log masuk sebagai
+    user_mini: 
+      admin: "[ Pentadbir ]"
+      editor: "[ Penyunting ]"
+      mod: "[ Pengawal Selia ]"

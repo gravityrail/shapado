@@ -21,7 +21,10 @@ fi:
         banned: Kielletty
         banned_tooltip: Näytä vain kielletyt kysymykset
         filters: "Suodattimet:"
+        title: Hallitse kysymyksiä
         unbanned: Sallinut
+      index: 
+        title: Hallitse kysymyksiä
       subtabs: 
         flagged: Merkitty
         retag: Tarvitsee tunnisteita

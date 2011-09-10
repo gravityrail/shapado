@@ -28,13 +28,17 @@ fi:
     answer: 
       add_comment: Lisää kommentti...
       favorite: Tallenna
-      favorite_tooltip: Lisää tämä kysymys suosikkeihisi
+      favorite_tooltip: Lisää tämä kysymys suosikkeihini
       flag: Merkintä
       pick_answer: Valitse ratkaisuna
-      unfavorite_tooltip: Poista tämä kysymys suosikeistasi
+      unfavorite_tooltip: Poista tämä kysymys suosikeistani
       unset_answer: Asettamaton ratkaisu?
+    answer_toolbar: 
+      flagged_by_you: Merkitsemäsi
     create: 
       flash_notice: Kysymyksen luonti onnistui.
+    disallow_spam: 
+      error: Sinun täytyy odottaa 20 sekuntia ennen toisen kysymyksen lähettämistä.
     edit: 
       title: Muokataan kysymystä
     flag: 
@@ -44,6 +48,7 @@ fi:
       adult_content: Tämä kysymys sisältää aikuisille tarkoitettua aineistoa.
       body_tip: Mikä on kysymys? Ole kuvaileva.
       language_tip: Valitse kieli, jolla kysymys esitetään.
+      related_questions_desc: Tähän tulee näkyviin samankaltaisia kysymyksiä.
       remove_attachment: Poista
       tags_tip: Tarkenna kysymyksesi alaa lisäämällä siihen tunnisteita.
     history: 
@@ -83,7 +88,7 @@ fi:
     question: 
       accepted_tooltip: Tällä kysymyksellä on  vastaus, joka on hyväksytty
       answer_verb: Vastaa
-      wiki_title: Wiki:%{title}
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Uudelleenmerkintä
     retag_form: 
@@ -112,6 +117,9 @@ fi:
       flags: Ilmoitettu nimellä
       follow_tooltip: Seuraa tätä kysymystä
       follow_up: Seuraa
+      follow_up_description: Luo uusi kysymys perustuen tähän viestiin.
+      follow_up_of: Tämä kysymys on jatkoa
+      history: Historia
       last_activity: Viimeiset tapahtumat
       more_actions: Lisää toimintoja
       open: Avaa
@@ -137,6 +145,11 @@ fi:
       filter: Hae tunnisteita
       title: Tunnisteet
       tooltip: Näytä kysymykset tunnisteella %{tag}
+    toolbar: 
+      answer_by_mail: Vastaus sähköpostitse
+      more_actions: Lisää toimintoja
+      requests: Pyynnöt
+      your_close_request: Sulkemispyyntö
     unanswered: 
       empty: Tässä ryhmässä ei ole vastaamattomia kysymyksiä.
       expert: Asiantuntijat

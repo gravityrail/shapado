@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 # Author: Rippitippi
 it: 
@@ -13,22 +14,59 @@ it:
     tag: Iscriviti al tag
     user: Iscriviti alle domande dell'utente
   global: 
+    actions: Azioni
     active: Attiva
+    alphabetically: In ordine alfabetico
     anonymous: Anonimo
+    blog: Blog
     by: da
+    by_semi: "Da:"
+    chat: Chat
     current: Attuale
+    edited: Modificato
+    feedback: Feedback
+    follow: Segui
+    followed_by: "Seguito da:"
+    following: Seguendo
     from: da %{site}
     group_not_found: La pagina %{url} non esiste
+    home: Pagina principale
+    next_button: Successivo
     or: o
     permission_denied: Permesso negato
     please_login: Accedi
     preview: Anteprima
     previous: Precedenti
+    privacy: Privacy
     share: Condividi
+    sign_up: Iscriviti
+    size: Dimensioni
+    sort_by: "Ordina per:"
+    subjetive: soggettivo
+    tags_label: "Tag:"
+    tos: Termini di Servizio
+    unfollow: Non seguire
+    unknown_place: Sconosciuto
+    view: Visualizza
+    view_question: Visualizza domanda
+    what_to_do: Cosa vuoi fare?
   models: 
     question: La domanda
+  number: 
+    x_time: 
+      one: "%{count} volta"
+      other: "%{count} volte"
+      zero: Mai
+  preferred_languages: 
+    any: Qualsiasi
+    user: Lingue preferite
+  roles: 
+    moderator: Moderatore
+    owner: Proprietario
+    user: Utente normale
   scaffold: 
     add: Aggiungi
+    are_you_sure: Sei sicuro?
     back: Indietro
     cancel: Annulla
     close: Chiudi
@@ -47,3 +85,8 @@ it:
   time: 
     ago: "%{time} fa"
     today: oggi
+    yesterday: ieri
+  views: 
+    pagination: 
+      next: Successivo &raquo;
+      previous: "&laquo; Precedente"

@@ -30,6 +30,7 @@ be-TARASK:
       default_tags_message: Вы ня можаце мець болей 10 тэгаў па змоўчваньні
       group: Група
       groups: Групы
+      reputation_rewards_answer_constrain: Абмежаваньне ўзнагароднаў за адказы, якія лічацца адмоўнымі
       reputation_rewards_ask_constrain: Абмежаваньне, пры якім адказ лічыцца адмоўным
       reputation_rewards_key: Няслушны ключ
   groups: 

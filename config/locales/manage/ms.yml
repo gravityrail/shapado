@@ -7,6 +7,9 @@ ms:
     manage: 
       access: 
         title: Akses
+      answers: 
+        banning: 
+          title: Larang jawapan
       appearance: 
         logo_legend: Muat naik logo kumpulan anda, asalkan tidak melebihi 2MB.
         title: Pilih dan suaikan tema anda
@@ -98,6 +101,9 @@ ms:
           key: Kunci aplikasi
           secret: Rahsia aplikasi
           twitter_app: Aplikasi Twitter
+      questions: 
+        banning: 
+          title: Larang soalan
       social: 
         ask_from_twitter: Tanya dari Twitter
         ask_from_twitter_title: Benarkan pengguna anda untuk menanyakan soalan dari Twitter

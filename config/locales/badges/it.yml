@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Deneb
 # Author: Giallu
 it: 
@@ -16,11 +17,17 @@ it:
       addict: 
         description: Ha visitato il sito ogni giorno per 20 giorni consecutivi
         name: Maniaco
+      altruist: 
+        description: Il primo compenso che hai assegnato manualmente ad una domanda di un'altra persona
+        name: Altruista
       autobiographer: 
         description: Completati tutti i campi del profilo utente
         name: Autobiografo
+      benefactor: 
+        description: Il primo compenso che hai assegnato manualmente per una tua domanda
+        name: Benefattore
       celebrity: 
-        description: Raggiunti più di 100 follower
+        description: Ha raggiunto più di 100 seguaci
         name: Celebrità
       citizen_patrol: 
         description: Primo post segnalato
@@ -29,7 +36,7 @@ it:
         description: Votato 300 volte
         name: Dovere civico
       cleanup: 
-        description: Primo rollback
+        description: Ha fatto il primo rollback
         name: Pulizia
       commentator: 
         description: Lasciati 10 commenti
@@ -47,7 +54,7 @@ it:
         description: Ha ottenuto 100 voti positivi
         name: Medaglia all'impegno
       enlightened: 
-        description: La prima risposta è stata accettata con almeno 10 voti positivi
+        description: Ha una risposta che è stata accettata con almeno 10 voti positivi
         name: Illuminato
       famous_question: 
         description: Ha posto una domanda con 10000 visualizzazioni
@@ -55,20 +62,23 @@ it:
       fanatic: 
         description: Ha visitato il sito ogni giorno per 100 giorni consecutivi
         name: Fanatico
+      favorite_answer: 
+        description: Ha una risposta preferita da 25 utenti
+        name: Risposta preferita
       favorite_question: 
-        description: Domanda preferita da 25 utenti
+        description: Ha fatto una domanda seguita da 25 utenti
         name: Domanda preferita
       friendly: 
         description: Segui qualcuno per la prima volta
         name: Amichevole
       good_answer: 
-        description: Avere una risposta che raggiunge una media di più di 25 voti
+        description: Ha dato una risposta che ha raggiunto una media di più di 25 voti
         name: Buona risposta
       good_question: 
-        description: Avere una domanda che raggiunge una media di più di 25 voti
+        description: Ha fatto una domanda che ha raggiunto una media di più di 25 voti
         name: Buona domanda
       great_answer: 
-        description: Risposta votata 100 volte
+        description: Ha una risposta con 100 voti positivi
         name: Ottima risposta
       great_question: 
         description: Domanda votata positivamente 100 volte
@@ -77,11 +87,14 @@ it:
         description: Ha dato una soluzione ad una domanda con una media di più di 40 voti
         name: Guru
       inquirer: 
-        description: Domandato per la prima volta
+        description: Ha fatto una domanda per la prima volta
         name: Indagatore
       interesting_person: 
-        description: Raggiunti più di 10 follower
+        description: Ha raggiunto più di 10 seguaci
         name: Persona interessante
+      investor: 
+        description: Il primo riconoscimento che hai assegnato ad una domanda di un'altra persona
+        name: Investitore
       merit_medal: 
         description: Ha ottenuto 200 voti positivi
         name: Medaglia al merito
@@ -89,16 +102,16 @@ it:
         description: Risposto ad una domanda più di 60 giorni dopo con almeno 5 voti
         name: Necromante
       nice_answer: 
-        description: Risposta votata positivamente 10 volte
+        description: Ha una risposta con 10 voti positivi
         name: Bella risposta
       nice_question: 
-        description: Domanda votata 10 volte
+        description: Ha fatto una domanda con 10 voti positivi
         name: Bella domanda
       notable_question: 
         description: Ha posto una domanda con 2500 visualizzazioni
         name: Domanda nota
       organizer: 
-        description: Primo retag
+        description: Ha fatto il primo re-tag
         name: Organizzatore
       peer_pressure: 
         description: Cancellato post proprio con punteggio di -3 o inferiore
@@ -107,30 +120,36 @@ it:
         description: Essere uno dei primi utenti registrati
         name: Pioniere
       popstar: 
-        description: 500 voti positivi, 10 voti negativi al massimo
+        description: Ha 500 voti positivi, al massimo 10 voti negativi
         name: Popstar
       popular_person: 
-        description: Raggiunti più di 50 follower
+        description: Hai più di 50 seguaci
         name: Persona popolare
       popular_question: 
         description: Ha posto una domanda con 1000 visualizzazioni
         name: Domanda popolare
+      promoter: 
+        description: Il primo compenso che hai offerto per una tua domanda
+        name: Promotore
       rockstar: 
-        description: 1000 voti positivi, al massimo 10 voti negativi
+        description: Ha 1.000 voti positivi, al massimo 10 voti negativi
         name: Rockstar
       scholar: 
-        description: Prima risposta accettata ad una propria domanda
+        description: Ha risposto alla prima domanda fatta a se stesso con una risposta accettata
         name: Studioso
       self-learner: 
-        description: Risposto alla propria domanda con almeno 3 voti
+        description: Ha risposto a una domanda propria con almeno 3 voti positivi
         name: Autodidatta
       service_medal: 
-        description: 300 voti positivi
+        description: Ha 300 voti a favore
         name: Medaglia al servizio
       shapado: 
         description: Ha visitato il sito ogni giorno per 8 giorni consecutivi
+      stellar_answer: 
+        description: Ha una risposta preferita da 100 utenti
+        name: Risposta stellare
       stellar_question: 
-        description: Domanda aggiunta ai preferiti da 100 utenti
+        description: Ha fatto una domanda seguita da 100 utenti
         name: Domanda stellare
       student: 
         description: Prima domanda fatta con almeno un voto positivo

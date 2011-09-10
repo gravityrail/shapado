@@ -122,3 +122,7 @@ nl:
       create_account: Gebruiker aanmaken
       not_logged_in: Niet aangemeld
       signed_as: Aangemeld als
+    user_mini: 
+      admin: "[ Beheerder ]"
+      editor: "[ Redacteur ]"
+      mod: "[ Moderator ]"

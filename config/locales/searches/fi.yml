@@ -12,5 +12,6 @@ fi:
     index: 
       advanced_search: Laajennettu haku
       empty: Hakusi ei täsmää mihinkään kysymykseen.
+      input_title: "Tallenna hakusi:"
       search_text: Kysymykset, jotka sisältävät
       tags: näiden tunnisteiden sisällä

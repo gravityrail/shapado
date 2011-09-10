@@ -23,6 +23,8 @@ ms:
       notice: Widget berjaya dicipta.
     current_tags: 
       description: Widget ini memaparkan tag-tag yang diikuti oleh pengguna semasa.
+    edit: 
+      title: Sunting Widget
     group_networks: 
       description: Widget ini memaparkan senarai pautan rangkaian sosial supaya pengguna-pengguna anda boleh mengikuti anda di situ.
       title: Ikuti kami
@@ -30,16 +32,24 @@ ms:
       description: Widget ini memaparkan kumpulan terbaru
       title: Kumpulan terbaru
     index: 
+      add_new: Tambahkan widget baru
       description: Gunakan anak panah untuk mengalihkan widget-widget anda
       external_widgets: Luaran
       external_widgets_title: Widget yang boleh anda benamkan dalam laman anda sendiri
+      footer: Pembawah
+      header: Pengatas
       mainlist_widgets: Senarai utama
       mainlist_widgets_title: Widget yang muncul di senarai utama soalan
+      name: Nama widget
+      navbar: Bar pandu arah
       question_widgets: Soalan
       question_widgets_title: Widget yang muncul di setiap laman soalan
+      sidebar: Bar sisi
       title: Uruskan widget bar sisi
+      type: "Jenis:"
       welcome_widgets: Selamat Datang
       welcome_widgets_title: Widget yang muncul di laman selamat datang /
+      zone: "Bahagian halaman:"
     mod_info: 
       description: Widget ini menunjukkan maklumat yang relevan kepada pengawal selia seperti bendera dan permohonan laporan.
     pages: 
@@ -75,6 +85,8 @@ ms:
       title: Kongsikan yang ini di
     suggestions: 
       description: Cadangan rakan dan tag untuk diikuti pengguna
+      follow_tag: + Ikuti tag
+      follow_user: + Ikuti pengguna
       followed_by: Diikuti oleh %{user}
       title: Orang dan Tag untuk Diikuti
     tag_cloud: 
@@ -85,6 +97,7 @@ ms:
       title: Tag
     top_groups: 
       description: Widget ini memaparkan lima kumpulan paling aktif
+      has_members: "%{count} ahli"
       title: 5 kumpulan terunggul
     top_users: 
       description: Widget ini memaparkan lima pengguna paling aktif
@@ -94,3 +107,5 @@ ms:
     users: 
       description: Widget ini memaparkan ahli-ahli yang baru berdaftar
       title: Pengguna terkini
+    widget: 
+      change_position: "Ubah kedudukan widget:"

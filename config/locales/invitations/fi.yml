@@ -1,0 +1,22 @@
+# Messages for Finnish (Suomi)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Nike
+# Author: Raspi
+fi: 
+  invitations: 
+    accept: 
+      create_account: Luo tili (1 2)
+      create_account_step2: Luo tili
+      done: Valmis.
+      facebook_connect: Yhdistä Facebook-tilisi
+      final_step: Viimeinen vaihe (2 2)
+      other_connect: tai käytä yhtä näistä.
+      twitter_connect: Yhdistä Twitter-tilisi
+      welcome: Tervetuloa
+    create: 
+      flash_notice: Kutsusi on lähetetty onnistuneesti.
+    resend: 
+      flash_notice: Kutsu on lähetetty uudelleen onnistuneesti.
+    revoke: 
+      flash_notice: Kutsu on peruutettu onnistuneesti.

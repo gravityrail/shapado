@@ -19,7 +19,7 @@ ms:
       message2: "Keterangan lencana:"
       message3: Anda boleh melihat semua lencana anda di %{user_page} anda
     favorited: 
-      message1: "%{user} menambahkan jawapan anda sebagai kegemaran di %{group}"
+      message1: "%{user} menyimpan jawapan anda sebagai kegemaran di %{group}"
       message2: "Soalannya:"
       message3: Anda boleh lihat di sini;
     follow: 

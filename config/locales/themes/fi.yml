@@ -1,0 +1,21 @@
+# Messages for Finnish (Suomi)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Raspi
+fi: 
+  themes: 
+    edit: 
+      title: Muokkaa teemaa
+    form: 
+      update: Päivitä teema
+    index: 
+      new_theme: Voit luoda oman teeman täällä.
+    show: 
+      apply: Käytä
+      bg_color: Taustaväri
+      bg_image: Taustakuva
+      button_bg: Painikkeiden taustaväri
+      link_bg: Linkkien taustaväri
+      try: Kokeile
+      use_link_bg: Käytä taustaa linkeissä
+      view_bg: Näkymän taustaväri
