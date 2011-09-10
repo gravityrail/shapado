@@ -6,6 +6,10 @@ module Models
       if result.blank?
         result = I18n.t("custom_html.question_prompt")
       end
+      if result.blank?
+        result = self.custom_html.question_prompt[self.language]
+      end
+
       result
     end
 
@@ -13,6 +17,9 @@ module Models
       result = self.custom_html.question_help[I18n.locale.to_s.split("-").first]
       if result.blank?
         result = I18n.t("custom_html.question_help")
+      end
+      if result.blank?
+        result = self.custom_html.question_help[self.language]
       end
       result
     end
