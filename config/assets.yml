@@ -69,9 +69,6 @@ javascripts:
     - public/javascripts/vendor/showdown.js
     - public/javascripts/app/modules/rewards.js
     - public/javascripts/app/initializers/single/question.js
-
-  extra:
-
     - public/javascripts/app/modules/notifier.js
     - public/javascripts/vendor/jquery.notifyBar.js
     - public/javascripts/app/modules/form.js
@@ -79,6 +76,8 @@ javascripts:
     - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/application.js
+
+  extra:
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/modules/groups.js
     - public/javascripts/app/modules/users.js
