@@ -1,4 +1,4 @@
 $(document).ready(function() {
   var $body = $(document.body);
-  Uploader.initialize($body, true);
+  Loader.initialize($body, true);
 });

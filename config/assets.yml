@@ -50,6 +50,7 @@ javascripts:
     - public/javascripts/app/modules/utils.js
     - public/javascripts/app/modules/votes.js
     - public/javascripts/app/modules/websocket.js
+    - public/javascripts/app/modules/loader.js
     - public/javascripts/app/modules/updater.js
     - public/javascripts/app/modules/layout_editor.js
 
@@ -68,7 +69,6 @@ javascripts:
     - public/javascripts/vendor/showdown.js
     - public/javascripts/app/modules/rewards.js
     - public/javascripts/app/initializers/single/question.js
-    - public/javascripts/app/modules/uploader.js
 
   extra:
 

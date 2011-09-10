@@ -1,5 +1,5 @@
 
-var Uploader = {
+var Loader = {
   //only for ready
   initialize: function($body, refreshed) {
     Updater.initialize();
@@ -11,7 +11,7 @@ var Uploader = {
     LocalStorage.initialize();
     Notifier.initialize();
     LayoutEditor.initialize();
-    Uploader.refresh($body, false);
+    Loader.refresh($body, false);
   },
   //for Updater
   refresh: function($body, refreshed) {
