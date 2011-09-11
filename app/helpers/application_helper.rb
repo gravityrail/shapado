@@ -87,23 +87,25 @@ module ApplicationHelper
 
     return '' if tags.size <= 2
 
-    # Sizes: xxs xs s l xl xxl
-    css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
-    max_size = 5
-    min_size = 1
-
     tag_class = options.delete(:tag_class) || "tag"
+    if style == "tag_cloud"
+      # Sizes: xxs xs s l xl xxl
+      css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
+      max_size = 5
+      min_size = 1
+      lowest_value = tags.min { |a, b| a["count"].to_i <=> b["count"].to_i }
+      highest_value = tags.max { |a, b| a["count"].to_i <=> b["count"].to_i }
 
-    lowest_value = tags.min { |a, b| a["count"].to_i <=> b["count"].to_i }
-    highest_value = tags.max { |a, b| a["count"].to_i <=> b["count"].to_i }
+      spread = (highest_value["count"] - lowest_value["count"])
+      spread = 1 if spread == 0
+      ratio = (max_size - min_size) / spread
 
-    spread = (highest_value["count"] - lowest_value["count"])
-    spread = 1 if spread == 0
-    ratio = (max_size - min_size) / spread
-
-    render 'shared/tag_cloud', :tags => tags, :css => css,
-                               :lowest_value => lowest_value, :ratio => ratio,
-                               :min_size => min_size, :tag_class => tag_class, :style => style
+      render 'shared/tag_cloud', :tags => tags, :css => css,
+                                :lowest_value => lowest_value, :ratio => ratio,
+                                :min_size => min_size, :tag_class => tag_class, :style => style
+    else
+      render 'shared/tag_list', :tags => tags, :tag_class => tag_class, :style => style
+    end
   end
 
   def country_flag(code, name)
