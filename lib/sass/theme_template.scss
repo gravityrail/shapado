@@ -117,6 +117,7 @@ a {
   background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   .sf-menu {
+    .active: darken($view_bg_color, 70%);  
     li {
       small {
         color: lighten($fg_color, 40%); }
@@ -394,8 +395,21 @@ form.history {
 // Pages
 //------------------------------------------------------------------------------
 .page-list {
-  .title {
-    border-bottom: 1px solid darken($view_bg_color, 5%); }
+  .title a {
+  	background-color: $brand_color;
+  	background-image: -khtml-gradient(linear, left top, left bottom, from($brand_color), to($dark_brand_color));
+  	background-image: -moz-linear-gradient($brand_color, $dark_brand_color);
+  	background-image: -ms-linear-gradient($brand_color, $dark_brand_color);
+  	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $brand_color), color-stop(100%, $dark_brand_color));
+  	background-image: -webkit-linear-gradient($brand_color, $dark_brand_color);
+ 	background-image: -o-linear-gradient($brand_color, $dark_brand_color);
+  	background-image: linear-gradient($brand_color, $dark_brand_color);
+  	color: white;
+  	border: 1px solid $dark_brand_color !important;
+  	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  &:hover {
+    color: white; } 
+  }
   .page {
     border-bottom: 1px solid darken($view_bg_color, 5%);
     h2 {
@@ -798,7 +812,7 @@ input[type=submit], input.save, .add_attachment {
     color: white; } }
 
 .questions {
-  form.question_comment_form, form.answer_comment_form {
+  form.question_comment_form, form.answer_comment_form, .edit_comment_form, .edit_answer {
     color: $fg_light_brand_color;
     background-color: $light_brand_color; } }
 
@@ -828,6 +842,7 @@ input[type=submit], input.save, .add_attachment {
       h2 {
         border-bottom: 1px solid darken($view_bg_color, 5%); } } } }
 
+.save-search,    
 .announcement {
   background-color: $highlighted_view_bg_color; }
 
@@ -981,4 +996,8 @@ input[type=submit], input.save, .add_attachment {
 }
 .themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
   border: 1px solid darken($view_bg_color, 10%);
+}
+.devise-passwords-controller #main-content-wrap .errorExplanation{
+	background-color: #fdecec;
+	border: 1px solid #c00;
 }

@@ -22,7 +22,7 @@
 
     .user-info
       %h2
-      = pjax_link_to member.login, "user", user_path(member.login||member.id), {:title => member.login}
+      = pjax_link_to member.login, "user", user_path(member), {:title => member.login}
       %p.description
         =find_and_preserve(auto_link(member.bio))
         %small
