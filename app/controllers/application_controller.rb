@@ -161,7 +161,7 @@ class ApplicationController < ActionController::Base
     elsif params["format"] == "mobile"
       'mobile'
     else
-      'application'
+      'classic' #'application'
     end
   end
 

@@ -37,5 +37,7 @@
           = link_to t('layouts.application.pages'), pages_path, :class => "pjax", :"data-layout" => "pages"
         %li
           =link_to t('layouts.application.users'), users_path
+        %li
+          = link_to t('layouts.application.tags'), tags_path, :class => "pjax", :"data-layout" => "tags"
 
   = render "shared/widgets", :context => 'mainlist', :position => 'navbar'
