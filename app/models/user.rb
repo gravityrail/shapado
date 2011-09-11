@@ -755,7 +755,7 @@ Time.zone.now ? 1 : 0)
           (friend_preferred_tags-self.preferred_tags_on(group)).each do |tag|
             friends_tags["#{tag}"] ||= { }
             friends_tags["#{tag}"]["followed_by"] ||= []
-            friends_tags["#{tag}"]["followed_by"] << friend
+            friends_tags["#{tag}"]["followed_by"] << membership.user
           end
         end
       end
@@ -773,7 +773,7 @@ Time.zone.now ? 1 : 0)
         array_hash << { "#{provider}_id".to_sym => {:$in => self.social_friends_ids(provider)}}
       end
     end
-    (array_hash.blank?)? [] : User.any_of(array_hash).
+    (array_hash.blank?)? [] : self.class.any_of(array_hash).
       where({:group_ids => group.id,
              :_id => {:$not => {:$in => self.friend_list.following_ids << self._id}}}).
       limit(limit)
