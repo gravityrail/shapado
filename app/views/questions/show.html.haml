@@ -12,9 +12,8 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
-        -#18n
         %span
-          By:
+          = I18n.t('global.by_semi')
         = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
         %span
           = t('activerecord.attributes.question.created_at')
