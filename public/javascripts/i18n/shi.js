@@ -1,4 +1,4 @@
-/** Messages for Tachelhit (Tašlḥiyt)
+/** Messages for Tachelhit (Tašlḥiyt/ⵜⴰⵛⵍⵃⵉⵜ)
  *  Exported from translatewiki.net
  *
  * Translators:

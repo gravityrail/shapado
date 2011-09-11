@@ -1,0 +1,25 @@
+# Messages for Galician (Galego)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Toliño
+gl: 
+  invitations: 
+    accept: 
+      create_account: Crear unha conta (1 de 2)
+      create_account_step2: Crear unha conta
+      done: Feito!
+      facebook_connect: Conectar coa conta do Facebook
+      final_step: Último paso (2 de 2)
+      find_friends: "Buscar amigos e conectarse:"
+      follow_things: Seguir etiquetas e xente
+      follow_things_description: As preguntas relacionadas con estas aparecerán na súa fonte de novas.
+      other_connect: ou use unha destas.
+      other_social_options: Tamén pode usar %{linkedin} e %{identica}.
+      twitter_connect: Conectar coa conta do Twitter
+      welcome: Benvido
+    create: 
+      flash_notice: As súas invitacións enviáronse correctamente.
+    resend: 
+      flash_notice: A súa invitación reenviouse correctamente.
+    revoke: 
+      flash_notice: A súa invitación revogouse correctamente.

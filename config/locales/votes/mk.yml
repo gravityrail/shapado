@@ -22,9 +22,6 @@ mk:
       to_vote_down: кликнете за да гласате „против“
       to_vote_up: кликнете за да гласате „за“
     create: 
-      average: 
-        one: "%{count} глас"
-        other: "%{count} гласа"
       flash_error: не може да гласате за ова
       flash_notice: ви благодариме што гласавте!
       unauthenticated: анонимните корисници не можат да гласаат

@@ -1,5 +1,5 @@
 -if !local_assigns[:mini]
-  %article.comment{:id=>comment.id}
+  %article.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
     %a{:name => "comment#{comment.id}"}
     %h4
       = avatar_img(comment.user, :size => "small")
@@ -31,7 +31,7 @@
     .clear
 
 -else
-  %article.comment{:id=>comment.id}
+  %article.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
     .user-avatar
       = avatar_img(comment.user, :size => "small")
     .comment-body

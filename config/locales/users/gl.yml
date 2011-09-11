@@ -45,6 +45,9 @@ gl:
       vote_up: Votar positivamente
     anonymous_form: 
       never_shown: nunca mostrado
+    change_password: 
+      submit: Cambiar o contrasinal
+      title: Cambiar o contrasinal
     create: 
       flash_error: Por desgraza, non podemos crear a conta. Inténteo de novo ou póñase en contacto cun administrador (a ligazón está enriba).
       flash_notice: Grazas por se rexistrar!
@@ -69,6 +72,7 @@ gl:
       filter: Procurar usuarios
       name: Nome
       name_tooltip: Usuarios ordenados alfabeticamente
+      near: Preto de vostede
       newest: Os máis novos
       newest_tooltip: Os usuarios que acaban de unirse
       oldest: Os máis antigos
@@ -80,14 +84,28 @@ gl:
       errors: 
         reputation_needed: Necesita unha reputación de %{min_reputation} para poder %{action}
     new: 
+      join_group: Unirse a %{group}
       submit: Rexístrese
       title: Rexístrese como novo usuario
     show: 
+      edit_profile: Editar o perfil
       follow: Vixiar
       followers: Seguidores
       following: Seguindo
       title: Usuario %{user}
       unfollow: Deixar de vixiar
       views: visitas
+    top_user: 
+      connect: Conectar
+      my_karma: "O meu karma: %{karma}"
+      profile: Perfil
     unfollow: 
       flash_notice: Xa non está seguindo a %{user}.
+    user_bar: 
+      create_account: Crear unha conta
+      not_logged_in: Non accedeu ao sistema
+      signed_as: Rexistrado como
+    user_mini: 
+      admin: "[ Administrador ]"
+      editor: "[ Editor ]"
+      mod: "[ Moderador ]"

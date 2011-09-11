@@ -12,9 +12,8 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
-        -#18n
         %span
-          By:
+          = I18n.t('global.by_semi')
         = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
         %span
           = t('activerecord.attributes.question.created_at')
@@ -54,8 +53,10 @@
     %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
 
     .comments
+      =link_to "NN comments", "#", :class => "toggle_comments"
       -@question.comments.each do |comment|
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => @quetion, :mini => true}
+        -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => @question, :mini => true, :read => read}
 
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
@@ -83,7 +84,7 @@
   -cache_for(:question_answers, @question.id) do
     %header
       %h2
-        = t("questions.question.has_answers", :count => @answers.total_count)
+        = t("questions.question.has_answers", :count => @question.answers_count)
 
     %section.filters
       %ul{:class => @active_subtab.to_s}

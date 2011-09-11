@@ -24,6 +24,8 @@ nl:
       notice: De widget is aangemaakt.
     current_tags: 
       description: Dit widget geeft labels weer die de huidige gebruiker volgt.
+    custom_html: 
+      description: Elke vorm van HTML die u hier wilt toevoegen.
     edit: 
       title: Widget bewerken
     group_networks: 

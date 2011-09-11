@@ -8,9 +8,14 @@ gl:
       member: 
         role: rol
   members: 
+    create: 
+      error: Sentímolo, o usuario **%{user_id}** non existe.
+      notice: "%{login} engadiuse correctamente como %{role}."
     form: 
       login_tip: procurar á vez que escribe
     index: 
       manage_members_title: xestionar os membros
       title: membros do grupo de %{name}
       title_isolate: membros de %{name}
+    update: 
+      error: Sentímolo, non ten os permisos necesarios para cambiar as afiliacións de **%{login}**.

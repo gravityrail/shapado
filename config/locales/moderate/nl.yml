@@ -6,6 +6,8 @@
 nl: 
   admin: 
     moderate: 
+      closing: 
+        title: Vraag sluiten
       index: 
         all: alle
         ban: Verbergen
@@ -15,6 +17,8 @@ nl:
         item_title: Naam
         need_tags: Labels wijzigen
         title: Modereren
+      opening: 
+        title: Vraag openen
   moderate: 
     questions: 
       flagged: 

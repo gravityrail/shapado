@@ -67,7 +67,7 @@ fi:
     index: 
       actives: Käytössä
       create_your_own: Luo oma ryhmä
-      description: Tämä on luettelo julkisista ryhmistä mitkä on luotu. Käytä hakukenttää alla suodataksesi ryhmiä. Voit myös %{link}.
+      description: Tämä on luettelo julkisista ryhmistä. Käytä hakukenttää alla suodattaaksesi ryhmiä. Voit myös %{link}.
       filter: Etsi ryhmiä
       most_active: Aktiivisimmat
       name: Nimi

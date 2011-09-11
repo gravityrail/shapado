@@ -4,8 +4,55 @@
 # Author: Toliño
 gl: 
   shared: 
+    any_lang: Calquera lingua
+    by_anon: Por anónimo
     current_tags: 
       title: etiquetas seleccionadas
+    description: Descrición
+    empty: 
+      activities: 
+        title: Non hai ningunha actividade ata agora.
+      answers: 
+        description: 
+          text: Sexa o primeiro!
+        title: Aínda ninguén respondeu esta pregunta.
+      default: 
+        description: 
+          text: Sexa o primeiro en %{action_link}!
+        title: Sentímolo! Non hai moito que ver por aquí.
+      questions: 
+        description: 
+          action_link: formular unha pregunta
+      themes: 
+        description: 
+          action_link: agora
+          text: crear un %{action_link}
+        title: Aínda non creou ningún tema visual.
+    layout: 
+      footer: 
+        cc_footer: Todos os contidos e datos de Shapado.com están dispoñibles baixo a licenza %{cc_link}
+        powered_by: Desenvolvido por %{source_link} %{version} baixo a %{agpl_link}
+    login_drop_down: 
+      with_facebook: co Facebook
+      with_google: co Google
+      with_identica: co Identi.ca
+      with_linked_in: co LinkedIn
+      with_openid: OpenID
+      with_twitter: co Twitter
+      with_user_pass: usuario/contrasinal
+    manage_navigation: 
+      title_content: Contidos do grupo
+      title_features: Características do grupo
+      title_options: Opcións do grupo
+    name: Nome
+    preferred_lang: As linguas que coñezo
+    quick_question: 
+      random_question: Responder unha pregunta ao chou
+    social_connect: 
+      find_friends_facebook: Atopar amigos no Facebook
+      find_friends_identica: Atopar amigos no Identi.ca
+      find_friends_linked_in: Atopar amigos no LinkedIn
+      find_friends_twitter: Atopar amigos no Twitter
     topbar: 
       admin: administrador
       logged_as: conectado como %{login}

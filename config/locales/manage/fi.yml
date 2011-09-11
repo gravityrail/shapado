@@ -79,7 +79,7 @@ fi:
           title: Merkitse tweettisi
         title: Ryhmän ominaisuudet
         twitter_account: 
-          connect_to_twitter: Klikkaa tästä kytkeäksesi Twitter-tili ryhmään
+          connect_to_twitter: Kytke Twitter-tili ryhmään napsauttamalla tästä
           disconnect_twitter_group: Irrota tämä ryhmä Twitteristä
           twitter_account: Twitter-tili
         twitter_app: 

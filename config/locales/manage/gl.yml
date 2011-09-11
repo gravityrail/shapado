@@ -5,15 +5,30 @@
 gl: 
   admin: 
     manage: 
+      access: 
+        title: Acceso
+      appearance: 
+        logo_legend: Suba un logo para o seu grupo. Non pode exceder os 2MB.
       content: 
-        footer: pé de páxina
+        footer: Pé de páxina
         head: cabeceira
         question_help: Axuda sobre as preguntas
         question_prompt: Formulación da pregunta
         title: Contido personalizado
         top_bar: Barra superior
         top_bar_tip: Insira unha ligazón por liña
+      invitations: 
+        invitations: Invitacións enviadas
+        invite: Convidar xente
+        invite_title: Convidar xente por correo electrónico
+        title: Invitacións
       properties: 
+        ask_from_twitter: 
+          asking_from_twitter: Preguntas desde o Twitter
+          question_asked_to: Pregunta feita a
+          question_must_include: A pregunta debe incluír a seguinte etiqueta para podela converter nun chío.
+          question_must_include_example: "por exemplo, #euPregunto"
+          twitter_account: A conta de Twitter á que os seus usuarios realizarán as preguntas.
         constrains: 
           reputation_constrains_description: Este formulario permite configurar o número de puntos de reputación que os usuarios necesitan para levar a cabo unha determinada acción
           reputation_constrains_subtitle: Lista de requirimentos de reputación para cada acción
@@ -28,28 +43,45 @@ gl:
           instruction6: Cando se dea este caso, volva aquí e poña o nome do seu dominio, www.%{subdomain}, no campo de embaixo e prema o botón "actualizar". Se ten algunha dúbida, pregunte no %{chat_url} ou no noso foro de axuda.
           title: Configurar o seu dominio
           warning: Está seguro de querer cambiar o seu dominio?
+        facebook_app: 
+          application_id: ID da aplicación
+          facebook_app: Configuración da aplicación do Facebook
+          secret_key: Clave secreta
         general: 
           title: Propiedades do grupo
+        invitations: 
+          resend_button: Reenviar
+          revoke_button: Revogar
+        invite: 
+          invitations: Invitacións enviadas
+          invite: Convidar xente
+          title: Convidar xente por correo electrónico
+          user_role: Convidar usuarios como
         rewards: 
           reputation_rewards_description: Este formulario permítelle configurar o xeito de que os usuarios gañen e perdan puntos de reputación por unha determinada acción
           reputation_rewards_subtitle: Lista de recompensas por reputación
           title: Recompensas
         share: 
-          add_tags: Engadir etiquetas aos seus chíos
-          application_id: ID da aplicación
-          asking_from_twitter: Preguntas desde o Twitter
-          ends_with_example: "por exemplo, #shapado"
-          facebook_app: Configuración da aplicación do Facebook
-          question_asked_to: Pregunta feita a
-          question_must_include: A pregunta debe incluír a seguinte etiqueta para podela converter nun chío
-          question_must_include_example: "por exemplo, #euPregunto"
-          secret_key: Clave secreta
-          starts_with_example: "por exemplo, #pr"
           title: Compartir
-          title_on_dlvr: Compartir en dlvr.it
+        tag_your_tweets: 
+          add_tags: Engadir etiquetas aos seus chíos
+          ends_with_example: "por exemplo, #shapado"
+          starts_with_example: "por exemplo, #qa"
+          title: Etiquetar os seus chíos
           tweet_ends_with: Engadir unha etiqueta aos seus chíos
           tweet_starts_with: Antepor unha etiqueta aos seus chíos
-          twitter_account: A conta de Twitter á que os seus usuarios realizarán as preguntas.
-        theme: 
-          logo_legend: Suba un logo para o seu grupo. Non pode exceder os 2MB.
-          title: Establecer o tema do grupo
+        title: Propiedades do grupo
+        twitter_account: 
+          twitter_account: Conta do Twitter
+        twitter_app: 
+          key: Clave da aplicación
+      questions: 
+        banning: 
+          title: Prohibir a pregunta
+      social: 
+        tag_your_tweets: Etiquetar os seus chíos
+        tag_your_tweets_title: Engadir etiquetas aos seus chíos
+        twitter_account: Conta do Twitter
+      top_admin: 
+        site: Sitio
+        title: Administrador

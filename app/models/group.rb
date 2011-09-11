@@ -424,7 +424,7 @@ class Group
   end
 
   def disallow_javascript
-    %w[footer head _question_help _question_prompt head_tag].each do |key|
+    %w[footer head question_help question_prompt head_tag].each do |key|
       value = self.custom_html[key]
       if value.kind_of?(Hash)
         value.each do |k,v|

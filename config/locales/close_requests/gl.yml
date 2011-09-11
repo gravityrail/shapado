@@ -28,7 +28,7 @@ gl:
         user: Usuario
       messages: 
         already_requested: xa solicitou o peche desta pregunta
-      name: solicitude de peche
-      prural_name: solicitudes de peche
+      name: Solicitude de peche
+      prural_name: Solicitudes de peche
     update: 
       flash_notice: a solicitude de peche actualizouse correctamente

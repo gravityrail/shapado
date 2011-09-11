@@ -1,0 +1,28 @@
+# Messages for Galician (Galego)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Toliño
+gl: 
+  themes: 
+    edit: 
+      title: Editar o tema visual
+    form: 
+      submit_update: Actualizar o tema visual
+      update: Actualizar o tema visual
+    show: 
+      apply: Aplicar
+      bg_color: Cor de fondo
+      bg_image: Imaxe de fondo
+      button_bg: Cor dos botóns de fondo
+      button_fg: Cor dos botóns de primeiro plano
+      fg_color: Cor de primeiro plano
+      link_bg: Cor das ligazóns de fondo
+      link_fg: Cor das ligazóns de primeiro plano
+      main_color: Cor principal
+      modules_color: Cor dos módulos
+      not_ready: Este tema visual non está listo para o seu uso; volva noutro momento.
+      text_color: Cor do texto
+      try: Intentar
+      use_link_bg: Utilizar un fondo para as ligazóns
+      view_bg: Ver a cor de fondo
+      view_fg: Ver a cor de primeiro plano

@@ -23,6 +23,8 @@ de:
       notice: Das Widget wurde erfolgreich erstellt.
     current_tags: 
       description: Diese Widget zeigt die Stichwörter an, die vom aktuellen Nutzer beachtet werden.
+    custom_html: 
+      description: Füge hier jede Art von HTML hinzu, die Du möchtest.
     edit: 
       title: Widget bearbeiten
     group_networks: 

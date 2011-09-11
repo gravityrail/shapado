@@ -17,4 +17,5 @@ gl:
     create: 
       success: O aviso creouse correctamente.
     index: 
+      description: Xestionar e crear novos anuncios que serán mostrados en todo o sitio aos seus visitantes.
       title: Anuncios

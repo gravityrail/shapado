@@ -12,7 +12,7 @@ gl:
     feedback: 
       captcha_error: resolva a operación matemática
       email_description: escriba o seu enderezo de correo electrónico para que poidamos dar resposta á súa mensaxe
-      feedback_description: descrición
+      feedback_description: Descrición
       feedback_title: Título
       title: dea a súa opinión
     index: 
