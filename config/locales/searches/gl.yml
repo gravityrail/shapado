@@ -9,6 +9,11 @@ gl:
       search_box_title: Comprobar se a súa pregunta xa se realizou nalgunha ocasión
       tags_tip: empregue [etiqueta] para especificar etiquetas.
     index: 
+      advanced_search: busca avanzada
+      description: Use as opcións %{link} para obter os mellores resultados.
       empty: non se atopou ningunha pregunta que coincidise coa súa procura.
+      found_results: Atopáronse %{quantity} resultados.
+      input_legend: Esta procura gardada aparecerá na barra de navegación para acceder a ela rapidamente.
+      input_title: "Gardar a procura como:"
       search_text: preguntas que conteñen
       tags: con estas etiquetas

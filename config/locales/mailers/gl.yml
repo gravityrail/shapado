@@ -5,6 +5,8 @@
 gl: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Nova mensaxe marcada en %{group}
       earned_badge: 
         subject: Gañou unha insignia en %{group}!
       favorited: 
@@ -20,5 +22,7 @@ gl:
         subject_owner: "%{login} respondeu a súa pregunta \"%{title}\""
       new_comment: 
         subject: "%{login} deixou un comentario en %{group}"
+      new_invitation: 
+        subject: "%{user} convídao a unirse a %{group}"
       report: 
         subject: Informe para o grupo %{group} de %{app}

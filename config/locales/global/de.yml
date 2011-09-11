@@ -30,6 +30,7 @@ de:
     group_not_found: Die Seite %{url} existiert nicht
     home: Startseite
     next_button: Nächste
+    open: Öffnen
     or: oder
     permission_denied: Zugriff verweigert
     please_login: Bitte melde Dich an

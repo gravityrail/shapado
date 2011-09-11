@@ -23,6 +23,8 @@ mk:
       notice: Елеметот е создаден успешно.
     current_tags: 
       description: Овој елемент ги истакнува ознаките што ги следи тековниот корисник.
+    custom_html: 
+      description: Тука додајте HTML-текст од било кој вид.
     edit: 
       title: Уреди елемент
     group_networks: 

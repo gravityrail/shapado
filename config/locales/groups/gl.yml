@@ -14,6 +14,7 @@ gl:
         forum: Permitir máis dunha resposta por usuario
         group_created_by: creado por
         language: Lingua por defecto
+        languages: Linguas adicionais
         legend: Lenda
         logo: Logo
         may_contain_adult_content: Este sitio pode posuír contidos para adultos
@@ -27,9 +28,12 @@ gl:
       default_tags_message: Non pode empregar máis de 10 etiquetas por defecto
       group: Grupo
       groups: Grupos
+      reputation_rewards_key: Clave inválida
   groups: 
     create: 
       flash_notice: A creación do seu grupo rematou correctamente. Agora, xa pode comezar a configuralo.
+    edit: 
+      title: Edite o seu grupo
     form: 
       access: Configuracións de acceso
       analytics_engine: Motor de análise
@@ -54,6 +58,7 @@ gl:
       disallow_ads: Desactivar os anuncios
     index: 
       actives: Activos
+      create_your_own: cree o seu propio grupo
       filter: Procurar un grupo
       most_active: Máis activos
       name: Nome
@@ -70,3 +75,7 @@ gl:
       group_closed: Este grupo foi pechado.
       title: Acerca de "%{name}"
       visit_group: Visitar este grupo
+    top_grouplist: 
+      active_site: "Sitio activo:"
+    update: 
+      notice: O grupo actualizouse correctamente.

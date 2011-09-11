@@ -23,6 +23,8 @@ ms:
       notice: Widget berjaya dicipta.
     current_tags: 
       description: Widget ini memaparkan tag-tag yang diikuti oleh pengguna semasa.
+    custom_html: 
+      description: Tambahkan sebarang jenis HTML yang anda mahu di sini.
     edit: 
       title: Sunting Widget
     group_networks: 

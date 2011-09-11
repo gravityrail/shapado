@@ -7,6 +7,16 @@ nl:
     edit: 
       title: Vormgeving bewerken
     form: 
+      bg_color_legend: U kunt een enkele kleur als achtergrond instellen. Zorg dat deze goed contrasteert met de rest van uw vormgeving.
+      bg_image_legend: Deze afbeelding wordt in de achtergrond van iedere pagina weergegeven. De afbeelding mag niet groter zijn dan 800 kilobyte en moet in het formaat GIF, JPEG of PNG zijn.
+      colors_and_bg: Kleuren en achtergronden
+      custom_css_legend: Als u overweg kunt met CSS, dan kunt u hier de vormgeving van uw site aanpassen. U kunt gewone CSS gebruiken of SCSS.
+      fluid_layout: Vloeibare vormgeving
+      fluid_layout_legend: Een vloeibare vormgeving maakt de breedte van iedere element op de pagina afhankelijk van de breedte van het scherm van de gebruiker. Door een venster van grootte te veranderen, of door een apparaat met een kleinere schermresolutie te gebruik, wordt de vormgeving uitgerekt of kleiner gemaakt.
+      main_color_legend: Dit is één van de meest gebruikte kleuren op iedere pagina. Zorg dat u een goede kleur selecteer voor uw merk of gemeenschap.
+      modules_color_legend: Zorg ervoor dat deze kleur en de hoofdkleur bij elkaar passen.
+      submit_update: Vormgeving bijwerken
+      text_color_legend: Zorg ervoor dat uw tekst leesbaar is en past bij de achtergrondkleur.
       update: Vormgeving bijwerken
     index: 
       description: Vind hier uw vormgevingen en wijzig het uiterlijk van uw app.
@@ -21,7 +31,10 @@ nl:
       fluid: Vloeiend (hiermee wordt de achtergrond elastisch en vervormt mee met de afmetingen van het browservenster)
       link_bg: Achtergrondkleur voor verwijzingen
       link_fg: Voorgrondkleur voor verwijzingen
+      main_color: Hoofdkleur
+      modules_color: Kleur voor modules
       not_ready: Dit thema kan nog niet gebruikt worden. Kom binnenkort terug.
+      text_color: Tekstkleur
       try: Proberen
       use_link_bg: Achtergrond gebruiken voor verwijzingen
       view_bg: Achtergrondkleur van de weergave

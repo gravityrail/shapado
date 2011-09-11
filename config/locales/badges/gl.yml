@@ -15,9 +15,15 @@ gl:
       addict: 
         description: Visitou o sitio cada día durante 20 días consecutivos
         name: Adicto
+      altruist: 
+        description: Primeira recompensa que concedeu manualmente pola pregunta doutra persoa
+        name: Altruísta
       autobiographer: 
         description: Completou todos os campos do perfil de usuario
         name: Autobiógrafo
+      benefactor: 
+        description: Primeira recompensa que concedeu manualmente pola súa propia pregunta
+        name: Benfeitor
       celebrity: 
         description: Ten máis de 100 seguidores
         name: Celebridade
@@ -54,6 +60,9 @@ gl:
       fanatic: 
         description: Visitou o sitio cada día durante 100 días consecutivos
         name: Fanático
+      favorite_answer: 
+        description: Ten unha resposta que 25 usuarios marcaron como favorita
+        name: Resposta favorita
       favorite_question: 
         description: Fixo unha pregunta seguida por 25 usuarios
         name: Pregunta favorita
@@ -81,6 +90,9 @@ gl:
       interesting_person: 
         description: Ten máis de 10 seguidores
         name: Persoa interesante
+      investor: 
+        description: Primeira recompensa que ofreceu pola pregunta doutra persoa
+        name: Investidor
       merit_medal: 
         description: Recibiu 200 votos positivos
         name: Medalla do mérito
@@ -114,6 +126,9 @@ gl:
       popular_question: 
         description: Realizou unha pregunta con 1.000 visitas
         name: Pregunta popular
+      promoter: 
+        description: Primeira recompensa que ofreceu pola súa propia pregunta
+        name: Promotor
       rockstar: 
         description: Ten 1.000 votos positivos, máximo de 10 votos negativos
         name: Estrela do rock
@@ -128,6 +143,9 @@ gl:
         name: Medalla do servizo
       shapado: 
         description: Visitou o sitio cada día durante 8 días consecutivos
+      stellar_answer: 
+        description: Ten unha resposta que 100 usuarios marcaron como favorita
+        name: Resposta estelar
       stellar_question: 
         description: Fixo unha pregunta seguida por 100 usuarios
         name: Pregunta estelar

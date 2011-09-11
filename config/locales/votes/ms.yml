@@ -22,9 +22,6 @@ ms:
       to_vote_down: Klik untuk mengundi tak setuju
       to_vote_up: Klik untuk mengundi setuju
     create: 
-      average: 
-        one: "%{count} undian"
-        other: "%{count} undian"
       flash_error: Anda tidak boleh mengundi di sini
       flash_notice: Terima kasih kerana mengundi!
       unauthenticated: Pengguna tanpa nama tidak boleh mengundi

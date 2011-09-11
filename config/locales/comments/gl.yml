@@ -14,7 +14,7 @@ gl:
       reply: responder
       said: dixo
     update: 
-      flash_notice: o comentario actualizouse correctamente.
+      flash_notice: O comentario actualizouse correctamente.
   models: 
     comment: Comentario
     comments: comentarios
