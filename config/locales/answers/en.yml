@@ -8,6 +8,7 @@ en:
     edit:
       title: Editing answer
     create:
+      annon_notice: "The user is already registered, please log in."
       flash_notice: "Thanks!"
       flash_error:  "Something went wrong adding your answer.
   \n  Remember that:

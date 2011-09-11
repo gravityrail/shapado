@@ -71,7 +71,7 @@ mk:
       oldest: најстари
       title: сите прашања
       unanswered_questions: неодговорени прашања
-      votes: Гласа
+      votes: Гласови
       votes_tooltip: прашања со највеќе гласови
     model: 
       messages: 

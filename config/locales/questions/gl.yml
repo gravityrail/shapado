@@ -24,9 +24,12 @@ gl:
   questions: 
     answer: 
       add_comment: Engadir un comentario...
+      favorite: Gardar
       flag: Informar
       pick_answer: Elixir como solución
       unset_answer: Quere anular a solución?
+    answer_toolbar: 
+      flagged_by_you: Marcado por vostede
     create: 
       flash_notice: A pregunta foi creada correctamente.
     edit: 
@@ -34,10 +37,14 @@ gl:
     flag: 
       title: Informar dun abuso
     form: 
+      add_attachment: Engadir o dato adxunto
       adult_content: Esta pregunta contén material para adultos.
       body_tip: Cal é a súa pregunta? Sexa descritivo.
       language_tip: Seleccione a lingua na que formula a pregunta.
+      remove_attachment: Eliminar
       tags_tip: Use as etiquetas para engadir máis información sobre a pregunta.
+    history: 
+      back: ← volver á pregunta
     index: 
       active: Activas
       active_tooltip: As preguntas que foron actualizadas recentemente
@@ -71,6 +78,11 @@ gl:
       title: Facer unha pregunta
     question: 
       accepted_tooltip: Esta pregunta ten unha resposta que foi aceptada
+      answer_verb: Responder
+      has_answers: 
+        one: "%{count} resposta"
+        other: "%{count} respostas"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Cambiar a etiqueta
     retag_form: 
@@ -96,7 +108,10 @@ gl:
       flag: Informar
       flagged_as: Informado como
       flags: Informar como
+      follow_tooltip: Seguir esta pregunta
+      history: Historial
       last_activity: Última actividade
+      more_actions: Máis accións
       open: Aberta
       related_questions: Preguntas relacionadas
       request_closing: Pedir o peche
@@ -112,6 +127,7 @@ gl:
       solution: Solución
       to_answer_question: para responder a esta pregunta
       unauthenticated_retag: Necesita unha conta para cambiar as etiquetas das preguntas
+      unfollow_tooltip: Deixar de seguir esta pregunta
       viewed: visitada
     solve: 
       flash_notice: A pregunta está resolta.
@@ -119,6 +135,9 @@ gl:
       filter: Procurar etiquetas
       title: Etiquetas
       tooltip: Mostrar as preguntas etiquetadas con "%{tag}"
+    toolbar: 
+      more_actions: Máis accións
+      requests: Solicitudes
     unanswered: 
       empty: Este grupo non contén ningunha pregunta sen resposta.
       expert: Expertos

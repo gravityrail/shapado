@@ -30,6 +30,7 @@ mk:
     group_not_found: страницата %{url} не постои
     home: Почетна
     next_button: Следна
+    open: Отвори
     or: или
     permission_denied: дозволата е одбиена
     please_login: најавете се

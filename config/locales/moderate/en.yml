@@ -31,3 +31,7 @@ en:
         flagged: Flagged questions
         banned: Banned questions
         need_tags: Retag
+      opening:
+        title: Open question
+      closing:
+        title: Close question

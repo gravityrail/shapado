@@ -17,9 +17,6 @@ fr:
       to_vote_down: Cliquez si vous désapprouvez.
       to_vote_up: Cliquez si vous approuvez
     create: 
-      average: 
-        one: "%{count} vote"
-        other: "%{count} votes"
       flash_error: Vous ne pouvez pas voter
       flash_notice: Merci d'avoir voté !
       unauthenticated: Les utilisateurs anonymes ne peuvent pas voter.

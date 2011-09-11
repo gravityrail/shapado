@@ -128,12 +128,6 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.xml
   def show
-    if params[:language]
-      params.delete(:language)
-      head :moved_permanently, :location => url_for(params)
-      return
-    end
-
     if @question.reward && @question.reward.ends_at < Time.now
       Jobs::Questions.async.close_reward(@question.id).commit!(1)
     end
@@ -159,11 +153,16 @@ class QuestionsController < ApplicationController
     set_page_title(@question.title)
     add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
 
+    if current_user && (rl=ReadList.where(:user_id => current_user.id, :"questions.#{@question.id}" => {:$exists => true}).only(:"questions.#{@question.id}").first)
+      @last_read_at = rl.questions[@question.id]
+    end
+
     respond_to do |format|
       format.html {
         if @question.views_count >= 1000
           Jobs::Questions.async.on_view_question(@question.id).commit!(5)
         end
+        current_user.after_viewing(@question) if current_user
       }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }

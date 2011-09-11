@@ -18,10 +18,14 @@ es:
         description: Visita el sitio 20 días consecutivos
         name: Adicto
       altruist: 
+        description: Primera recompensa que has concedido manualmente en la pregunta de otra persona
         name: Altruista
       autobiographer: 
         description: completed all user profile fields
         name: Autobiógrafo
+      benefactor: 
+        description: Primera recompensa que has concedido manualmente en tu propia pregunta
+        name: Benefactor
       celebrity: 
         description: Tiene mas de 100 seguidores
         name: Celebridad
@@ -50,7 +54,7 @@ es:
         description: Recibir 100 votos positivos
         name: Insignia del esfuerzo
       enlightened: 
-        description: primera respuesta aceptada con al menos 10 votos positivos
+        description: Tiene una respuesta aceptada con al menos 10 votos positivos
         name: Iluminado
       famous_question: 
         description: Hace una pregunta con 10000 visitas
@@ -68,13 +72,13 @@ es:
         description: Sigue a alguien por primera vez
         name: Amistoso
       good_answer: 
-        description: Tener una respuesta que alcanzo un promedio de más de 25 votos
+        description: Tiene una respuesta que alcanzo un promedio de más de 25 votos
         name: Buena respuesta
       good_question: 
-        description: Haber hecho una pregunta que alcanzo el promedio de 10 votos
+        description: Ha hecho una pregunta que alcanzo un promedio de mas de 10 votos
         name: Buena pregunta
       great_answer: 
-        description: respuesta votada 10 veces
+        description: Tiene una respuesta con mas de 100 votos positivos
         name: great answer
       great_question: 
         description: Pregunta votada 100 veces
@@ -89,6 +93,7 @@ es:
         description: Tiene mas de 10 seguidores
         name: Persona interesante
       investor: 
+        description: " Primera recompensa que has ofrecido en la pregunta de otra persona"
         name: Inversor
       merit_medal: 
         description: Recibir 200 votos positivos
@@ -97,16 +102,16 @@ es:
         description: Contesta una pregunta mas de 60 dias despues con al menos 5 votos positivos
         name: Nigromante
       nice_answer: 
-        description: Respuesta votada 10 veces
+        description: Tiene una respuesta con 10 votos positivos
         name: Respuesta bonita
       nice_question: 
-        description: Pregunta votada 10 veces
+        description: Tiene una pregunta con 10 votos positivos
         name: Pregunta bonita
       notable_question: 
         description: Hace una pregunta con 2500 visitas
         name: Pregunta memorable
       organizer: 
-        description: Primer re-etiquetado
+        description: Ha modificado etiquetas por la primera vez
         name: Organizador
       peer_pressure: 
         description: borra su propio post con puntaje menor igual a -3
@@ -115,7 +120,7 @@ es:
         description: Ser de los primeros usuarios registrados
         name: Pionero
       popstar: 
-        description: 500 votos positivos, máximo 10 negativos
+        description: Tiene 500 votos positivos, con un máximo de 10 votos negativos
         name: Popstar
       popular_person: 
         description: Tiene mas de 50 seguidores
@@ -123,11 +128,14 @@ es:
       popular_question: 
         description: hace una pregunta con 1000 visitas
         name: Pregunta popular
+      promoter: 
+        description: Primera recompensa que has ofrecido en tu propia pregunta
+        name: Promotor
       rockstar: 
         description: Tiene 1.000 votos positivos, máximo 10 votos negativos
         name: Rockstar
       scholar: 
-        description: Primera respuesta aceptada en tu propia pregunta
+        description: Ha aceptado su repuesta a su propia pregunta por la primera vez
         name: Erudito
       self-learner: 
         description: Contestó una pregunta propia con al menos 3 votos positivos
@@ -138,6 +146,7 @@ es:
       shapado: 
         description: Visita el sitio 8 días consecutivos
       stellar_answer: 
+        description: Tiene una respuesta que ha sido agregada como favorita por mas de 100 usuarios
         name: Respuesta estelar
       stellar_question: 
         description: Hecha una pregunta seguida por 100 usuarios

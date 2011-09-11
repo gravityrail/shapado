@@ -14,7 +14,6 @@
                 var tags = [];
                 input.parent().find('.added-tag').map(function(){tags.push($(this).attr('data-caption'))})
                 input.parent().next('.ac-tags').val($.unique(tags).join(','));
-                input.focus();
               }
             }
       $(".remove-tag").live('click',function(){

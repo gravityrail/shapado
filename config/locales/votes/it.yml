@@ -23,9 +23,6 @@ it:
       to_vote_down: Clicca per voto negativo
       to_vote_up: Clicca per voto positivo
     create: 
-      average: 
-        one: "%{count} voti"
-        other: "%{count} voti"
       flash_error: Impossibile votare questo
       flash_notice: Grazie per il voto!
       unauthenticated: Gli utenti anonimi non possono votare

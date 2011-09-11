@@ -88,7 +88,7 @@ class AnswersController < ApplicationController
         @user = User.where(:email => params[:user][:email]).first
         if @user.present?
           if !@user.anonymous
-            flash[:notice] = "The user is already registered, please log in" #i18n
+            flash[:notice] = I18n.t('answers.create.annon_notice')
             return create_draft!
           else
             @answer.user = @user

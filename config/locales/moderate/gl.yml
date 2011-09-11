@@ -14,3 +14,12 @@ gl:
         item_title: Título
         need_tags: necesita etiquetas
         title: moderar
+  moderate: 
+    questions: 
+      flagged: 
+        banned: Prohibida
+        filters: "Filtros:"
+      subtabs: 
+        flagged: Marcado
+        to_close: Solicitudes de peche
+        to_open: Solicitudes de reapertura
