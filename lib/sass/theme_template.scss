@@ -997,3 +997,7 @@ input[type=submit], input.save, .add_attachment {
 .themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
   border: 1px solid darken($view_bg_color, 10%);
 }
+.devise-passwords-controller #main-content-wrap .errorExplanation{
+	background-color: #fdecec;
+	border: 1px solid #c00;
+}
