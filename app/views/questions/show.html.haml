@@ -54,7 +54,7 @@
     %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
 
     .comments
-      =link_to "show NN hidden comments", "#", :class => "toggle_comments"
+      =link_to "NN comments", "#", :class => "toggle_comments"
       -@question.comments.each do |comment|
         -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
         = render :partial => "comments/comment", :object => comment, :locals => {:source => @question, :mini => true, :read => read}

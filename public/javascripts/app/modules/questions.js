@@ -63,15 +63,17 @@ var Questions = {
     }
     prettyPrint();
 
-    $("article.read").hide();
     $.each($("a.toggle_comments"), function() {
       var l = $(this);
-      var s = l.nextAll("article.read").length;
-      if(s == 0) {
+      var n = l.nextAll("article.read");
+      var s = n.length;
+      if(s < 5) {
         l.hide();
       } else {
         var t = l.text().replace("NN", s);
         l.text(t);
+        n.hide();
+        l.next("article.comment:last").show();
       }
     });
 
