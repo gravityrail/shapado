@@ -201,7 +201,6 @@ form
 input[type=submit], input.save, .add_attachment
   display: inline-block
   background-repeat: repeat-x
-
   padding: 4px 14px
   +normal-radius
   overflow: hidden
@@ -215,13 +214,30 @@ input[type=submit], input.save, .add_attachment
 // Main questions forms
 //-------------------------------------------------------------------------------------------------------------------
 .questions
-  form.question_comment_form, form.answer_comment_form
-    padding: 5px 15px
+  form.question_comment_form, 
+  form.answer_comment_form
+    padding: 5px 20px 1px 20px
+    margin: 0 0 10px 35px
     textarea
-      width: 500px
+      width: 420px
       height: 100px
       margin: 0 0 10px 0
+  .edit_comment_form
+    padding: 0 20px 1px 20px
+    margin: 10px -10px 10px 0 !important
+    textarea
+      width: 395px
 
+.edit_answer
+  padding: 20px
+  width: auto !important
+  overflow: hidden
+  margin-top: 10px
+  .field
+    margin: 0
+    input
+      margin-bottom: 10px
+    
 // Ask question header
 //-------------------------------------------------------------------------------------------------------------------
 .ask_question, .edit .questions
@@ -468,6 +484,21 @@ input[type=submit], input.save, .add_attachment
     .buttons
       padding: 30px
 
+.searches-controller
+  #main-content-wrap
+    .search-form
+      overflow: hidden
+      .buttons
+        margin-top: -60px
+    ul
+      border-top: 1px solid #e5e5e5	
+    .save-search
+      overflow: hidden
+      margin-top: 30px
+      padding: 20px 0 0 0
+      .buttons
+        margin: -40px 20px 0 0
+        
 // Settings form
 //-------------------------------------------------------------------------------------------------------------------
 .users-controller 
