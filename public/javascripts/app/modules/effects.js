@@ -1,13 +1,13 @@
 // Efects
 var Effects = {
   initialize: function() {
-    $('ul.sf-menu').droppy({
+    $('ul.menubar').droppy({
       className:    'dropHover',
       autoArrows:    false,
       trigger: 'click'
     });
 
-    $('ul.sf-menu .has-subnav').click(function(e) {
+    $('ul.menubar .has-subnav').click(function(e) {
       e.preventDefault();
     })
 

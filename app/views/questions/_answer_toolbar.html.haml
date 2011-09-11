@@ -3,7 +3,7 @@
 
 
 .toolbar
-  %ul.sf-menu
+  %ul.menubar
     - if logged_in?
       %li
         = link_to t("questions.answer.add_comment"), new_question_comment_path(question, answer), :class => "Answer-commentable", "data-commentable"=>answer.id

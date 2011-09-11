@@ -39,7 +39,7 @@
           = link_to t('.retag'), retag_question_path(question), :id => 'retag'
 
     .toolbar
-      %ul.sf-menu
+      %ul.menubar
         %li.answers
           = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
