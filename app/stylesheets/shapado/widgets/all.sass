@@ -1,6 +1,6 @@
 //_wikis.sass, customLinks.sass
 //-------------------------------------------------------------------------------------------------------------------
-.widget-pages ul, .widget-links ul 
+.widget-pages ul, .widget-links ul, .widget-tag_cloud ul 
   li
     margin: 0 0 2px 0
     a
@@ -51,7 +51,6 @@
 //-------------------------------------------------------------------------------------------------------------------
 .widget-tag_cloud
   .active-tags
-    margin-bottom: 5px
     padding-bottom: 5px
     a
       line-height: 22px
@@ -60,6 +59,7 @@
       padding: 0 4px
       line-height: 12px
       +huge-radius
+      
   .tag_cloud, .list_cloud
     span
       a
@@ -87,9 +87,6 @@
       .xxl
         font-size: 26px
         
-  .list_cloud
-    span a, span
-      display: block
 
 
 //_top_groups.sass

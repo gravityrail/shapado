@@ -506,7 +506,7 @@ form.history {
 //------------------------------------------------------------------------------
 //_wikis.sass, customLinks.sass
 //------------------------------------------------------------------------------
-.widget-pages ul, .widget-links ul {
+.widget-pages ul, .widget-links ul, .widget-tag_cloud ul {
   li {
     a {
       &:hover {
@@ -520,7 +520,6 @@ form.history {
 //------------------------------------------------------------------------------
 .widget-tag_cloud {
   .active-tags {
-    border-bottom: 1px dotted darken($view_bg_color, 5%);
     a {
       color: #cc0000; }
     .remove_tag {

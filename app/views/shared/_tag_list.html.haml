@@ -1,9 +1,10 @@
 %div.list_cloud
-  -tags.each do |tag|
-    -unless current_tags.include? tag["name"]
-      -url = tag_url(:id => (current_tags + [tag["name"]]).join("+"))
-      %span
-        =link_to tag["name"], url, :class => tag_class, :rel => "tag",:title => t("questions.tags.tooltip")
-        %span.count
-          = tag["count"].to_i
-.clear
+  %ul
+    -tags.each do |tag|
+      -unless current_tags.include? tag["name"]
+        -url = tag_url(:id => (current_tags + [tag["name"]]).join("+"))
+        %li{:class => tag_class,}
+          %a{ :href => url, :rel => "tag",:title => t("questions.tags.tooltip")}
+            = tag["name"]
+            %span.count
+              = tag["count"].to_i
