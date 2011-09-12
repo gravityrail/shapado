@@ -163,7 +163,7 @@ Rails.application.routes.draw do
     member do
       get :allow_custom_ads
       get :disallow_custom_ads
-      get :close
+      post :close
       get :accept
       get :upgrade
 
@@ -213,6 +213,7 @@ Rails.application.routes.draw do
       match 'invitations' => :invitations
       match 'appearance' => :appearance
       match 'access' => :access
+      match 'close_group' => :close_group
     end
   end
   match '/manage/properties/:tab' => 'admin/manage#properties', :as => :manage_properties_tab

@@ -66,6 +66,9 @@ class Admin::ManageController < ApplicationController
   def access
   end
 
+  def close_group
+  end
+
   protected
   def check_permissions
     @group = current_group
