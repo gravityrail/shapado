@@ -59,6 +59,10 @@
       %small{:style => "margin-bottom: 20px;"}
         = t(".analytics_legend")
 
+.field
+  =form.label :layout, t('layout', :scope => "activerecord.attributes.group"), :class => "label"
+  =form.select :layout, [['Default', 'application'], ['2-Columns', 'classic']]
+
 -if !@group.new?
   - if @group.has_custom_analytics
     .field

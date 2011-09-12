@@ -1,10 +1,10 @@
 %h1
-  Mapa your app with your own domain
+  = t('admin.manage.properties.domain.title')
 %p
   =t(".description")
 
 %ol.manage-domain
-  %li=raw t(".instruction1", :subdomain => @group.domain)
+  %li=raw t(".instruction1", :subdomain => @group.subdomain)
   %li=raw t(".instruction2")
   %li=raw t(".instruction3")
   %li=raw t(".instruction4", :domain=> "#{@group.subdomain}.#{AppConfig.domain}")

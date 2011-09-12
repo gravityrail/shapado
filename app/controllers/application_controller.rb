@@ -160,6 +160,8 @@ class ApplicationController < ActionController::Base
       'sessions'
     elsif params["format"] == "mobile"
       'mobile'
+    elsif current_group.layout.present?
+      current_group.layout
     else
       'application'
     end

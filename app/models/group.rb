@@ -66,6 +66,7 @@ class Group
   field :custom_favicon_version, :type => Integer, :default => 0
 
   field :sso_url, :type => String
+  field :layout, :type => String, :default => 'application'
 
   # can be:
   # * 'all': email, openid, oauth
