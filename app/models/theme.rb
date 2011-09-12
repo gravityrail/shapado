@@ -22,6 +22,8 @@ class Theme
   field :has_js, :type => Boolean, :default => false
   field :version, :type => Integer, :default => 0
 
+  field :last_error, :type => String
+
   file_key :javascript, :max_length => 256.kilobytes
   file_key :stylesheet, :max_length => 256.kilobytes
   file_key :bg_image, :max_length => 256.kilobytes

@@ -6,13 +6,39 @@ module Jobs
       theme = Theme.find(theme_id)
       css = StringIO.new
       template_file = File.join(Rails.root,"lib","sass","theme_template.scss")
-      template = Sass::Engine.new(self.define_vars(theme) << File.read(template_file) << "\n" << theme.custom_css || "",
-                        {:style => Sass::Plugin.options[:style], :syntax => :scss, :cache => false, :load_paths => []})
-      if Rails.env == "production"
-        css << YUI::CssCompressor.new.compress(template.render)
-      else
-        css << template.render
+
+      buffer = self.define_vars(theme) << File.read(template_file) << "\n" << theme.custom_css || ""
+
+      theme.last_error = ""
+      2.times do
+        template = Sass::Engine.new(buffer,
+                                   {:style => Sass::Plugin.options[:style],
+                                    :syntax => :scss,
+                                    :cache => false,
+                                    :load_paths => []})
+
+        compiled_css = ""
+        begin
+          compiled_css = template.render
+        rescue => e
+          last_error = e.to_s
+          puts "Error processing #{theme_id}: #{last_error}"
+          theme.last_error = last_error
+
+          buffer = self.define_vars(theme) << File.read(template_file) << "\n"
+        end
+
+        if theme.last_error.empty?
+          if Rails.env == "production"
+            css << YUI::CssCompressor.new.compress(compiled_css)
+          else
+            css << compiled_css
+          end
+
+          break
+        end
       end
+
       theme.stylesheet = css
       theme.stylesheet["extension"] = "css"
       theme.stylesheet["content_type"] = "text/css"

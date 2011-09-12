@@ -50,7 +50,7 @@ namespace :setup do
     default_group.save
   end
 
-  task :default_theme do
+  task :default_theme => :environment do
     Theme.destroy_all
     theme = Theme.create_default
 
