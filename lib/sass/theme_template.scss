@@ -53,28 +53,31 @@ $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $
 //------------------------------------------------------------------------------
 @if($fluid) {
   #container #columns {
-    max-width: 100%;
-    min-width: 700px;
+    width: 95%;
+    min-width: 1000px;
     section#column1 {
-      width: 14%;
+      width: 13.7%;
     }
     section#column2 {
-      width: 59%;
+      width: 54.5%;
       &.nosidebar {
-        width: 84.5%;
+        width: 86%;
       }
     }
     section#column3 {
-      width: 25.5%;
+      width: 31%;
+    }
+    #main-content-wrap article h2 {
+      width: 100%;
     }
   }
 
   .footer-widgets {
-    max-width: 99%;
+    max-width: 95%;
   }
 
   .header-widgets {
-    width: 85%;
+    width: 86%;
   }
 }
 
