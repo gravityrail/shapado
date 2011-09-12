@@ -381,7 +381,7 @@ GEM
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
     tzinfo (0.3.29)
-    unicorn (4.1.0)
+    unicorn (4.1.1)
       kgio (~> 2.4)
       rack
       raindrops (~> 0.6)
@@ -461,7 +461,7 @@ DEPENDENCIES
   twitter (= 1.5.0)
   twitter-text (= 1.1.8)
   twitter_oauth
-  unicorn (= 4.1.0)
+  unicorn (= 4.1.1)
   uuidtools (~> 2.1.1)
   whatlanguage (= 1.0.0)
   whenever
