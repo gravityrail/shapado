@@ -997,16 +997,20 @@ input[type=submit], input.save, .add_attachment {
   border: 1px solid darken($view_bg_color, 10%);
 }
 .devise-passwords-controller #main-content-wrap .errorExplanation{
-	background-color: #fdecec;
-	border: 1px solid #c00;
+  background-color: #fdecec;
+  border: 1px solid #c00;
 }
 
-.top-classic
-  background-color: #fff
-  .menubar
-    a
-      background-color: #f9f9f9
-      color: #000
-      &:hover
-        background-color: #c00
-        color: #fff
+.top-classic {
+  background-color: #fff;
+  .menubar {
+    a {
+      background-color: #f9f9f9;
+      color: #000;
+      &:hover {
+        background-color: #c00;
+        color: #fff;
+      }
+    }
+  }
+}
