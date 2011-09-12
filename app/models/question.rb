@@ -19,6 +19,11 @@ class Question
   track_activities :user, :title, :language, :scope => [:group_id]
 
   index :tags
+  index [
+    [:group_id, Mongo::ASCENDING],
+    [:banned, Mongo::ASCENDING],
+    [:language, Mongo::ASCENDING]
+  ]
 
   identity :type => String
 
