@@ -35,3 +35,5 @@ en:
       new_theme: "You can build your own theme here."
     edit:
       title: Edit theme
+    ready:
+      success: "Your theme is ready!"

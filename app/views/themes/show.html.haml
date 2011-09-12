@@ -10,7 +10,8 @@
     = link_to t("themes.show.apply"), apply_theme_path(@theme), :method => :put
 
 -if !@theme.ready
-  = I18n.t('themes.show.not_ready')
+  #not_ready
+    = I18n.t('themes.show.not_ready')
 
 %ul.details-theme
   %li

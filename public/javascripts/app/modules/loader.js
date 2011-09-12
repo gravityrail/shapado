@@ -34,6 +34,8 @@ var Loader = {
       Members.initialize($body);
     } else if($body.hasClass("groups-controller")) {
       Groups.initialize($body);
+    } else if($body.hasClass("themes-controller")) {
+      Themes.initialize($body);
     } else if($body.hasClass("searches-controller")) {
       Searches.initialize($body);
     }
