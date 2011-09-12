@@ -506,7 +506,7 @@ form.history {
 //------------------------------------------------------------------------------
 //_wikis.sass, customLinks.sass
 //------------------------------------------------------------------------------
-.widget-pages ul, .widget-links ul {
+.widget-pages ul, .widget-links ul, .widget-tag_cloud ul {
   li {
     a {
       &:hover {
@@ -520,7 +520,6 @@ form.history {
 //------------------------------------------------------------------------------
 .widget-tag_cloud {
   .active-tags {
-    border-bottom: 1px dotted darken($view_bg_color, 5%);
     a {
       color: #cc0000; }
     .remove_tag {
@@ -1001,3 +1000,13 @@ input[type=submit], input.save, .add_attachment {
 	background-color: #fdecec;
 	border: 1px solid #c00;
 }
+
+.top-classic
+  background-color: #fff
+  .menubar
+    a
+      background-color: #f9f9f9
+      color: #000
+      &:hover
+        background-color: #c00
+        color: #fff
