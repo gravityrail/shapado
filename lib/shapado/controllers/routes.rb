@@ -14,26 +14,26 @@ module Shapado
       end
 
       def javascript_group_path(group, theme_id, theme_version)
-        "/_files/themes/javascript/#{group.id}/#{theme_id}/#{theme_version}.js"
+        "/_files/themes/javascript/#{CGI.escape(group.id)}/#{theme_id}/#{theme_version}.js"
       end
 
       def css_group_path(group, theme_id, theme_version)
-        "/_files/themes/css/#{group.id}/#{theme_id}/#{theme_version}.css"
+        "/_files/themes/css/#{CGI.escape(group.id)}/#{theme_id}/#{theme_version}.css"
       end
 
       def bg_image_path(group, theme_id, theme_version)
-        "/_files/themes/bg_image/#{group.id}/#{theme_id}/#{theme_version}.png"
+        "/_files/themes/bg_image/#{CGI.escape(group.id)}/#{theme_id}/#{theme_version}.png"
       end
 
       def favicon_group_path(group)
-        "/_files/groups/favicon/#{group.id}/#{group.custom_favicon_version}.png"
+        "/_files/groups/favicon/#{CGI.escape(group.id)}/#{group.custom_favicon_version}.png"
       end
 
       def tag_icon_path(group,tag_name)
         if tag_name.is_a?(Tag)
           tag_name = tag_name.name
         end
-        "/_files/tags/icon/#{group.id}/#{tag_name}.png"
+        "/_files/tags/icon/#{CGI.escape(group.id)}/#{tag_name}.png"
       end
 
       def avatar_user_path(user, size = nil)
@@ -41,7 +41,7 @@ module Shapado
         if !size.nil? && ["big", "medium", "small"].include?(size)
           prefix = size
         end
-        "/_files/users/#{prefix}/#{user.id}.png"
+        "/_files/users/#{prefix}/#{CGI.escape(user.id)}.png"
       end
 
       def logo_path(group, size = nil)
@@ -49,11 +49,11 @@ module Shapado
         if !size.nil? && ["big", "medium", "small"].include?(size)
           prefix = size
         end
-        "/_files/groups/#{prefix}/#{group.id}/#{group.logo_version}.png"
+        "/_files/groups/#{prefix}/#{CGI.escape(group.id)}/#{group.logo_version}.png"
       end
 
       def question_attachment_path(group,question, file, attach_id)
-        "/_files/questions/attachment/#{group.slug}/#{question.id}/#{attach_id}/#{file.name}"
+        "/_files/questions/attachment/#{group.slug}/#{CGI.escape(question.id)}/#{attach_id}/#{file.name}"
       end
     end
   end
