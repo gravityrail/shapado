@@ -220,4 +220,8 @@ class ApplicationController < ActionController::Base
     end
 
   end
+
+  def close
+
+  end
 end

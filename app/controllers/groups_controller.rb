@@ -171,6 +171,12 @@ class GroupsController < ApplicationController
 
   def close
     @group.state = "closed"
+    if !params[:feedback].blank?
+      Notifier.new_feedback(current_user,
+                            "Closing group", params[:feedback],
+                            current_user.email,
+                            request.remote_ip).deliver
+    end
     @group.save
     redirect_to group_path(@group)
   end
