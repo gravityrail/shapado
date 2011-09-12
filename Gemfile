@@ -31,7 +31,7 @@ gem 'bson', '1.3.0'
 gem 'bson_ext', '1.3.0'
 
 gem 'mongo', '1.3.0'
-gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :branch => '2.0.2'
+gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :ref => "eb41dd0e"
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 # utils
