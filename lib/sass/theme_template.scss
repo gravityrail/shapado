@@ -71,6 +71,9 @@ $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $
       width: 100%;
     }
   }
+  body.classic #container #columns section#column2 {
+    width: 68.5%;
+  }
 
   .footer-widgets {
     max-width: 95%;
@@ -1005,14 +1008,15 @@ input[type=submit], input.save, .add_attachment {
 }
 
 .top-classic {
-  background-color: #fff;
+  background-color: $view_bg_color;
+  color: $fg_color;
   .menubar {
     a {
-      background-color: #f9f9f9;
+      background-color: darken($view_bg_color, 10%);
       color: #000;
       &:hover {
-        background-color: #c00;
-        color: #fff;
+        background-color: $brand_color;
+        color: $fg_brand_color;
       }
     }
   }
