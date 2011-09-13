@@ -18,6 +18,7 @@ var Questions = {
     var extraParams = Utils.url_vars();
     extraParams['format'] = 'js';
 
+//     FIXME:filter is blocking mongodb
 //     $(".quick_question #ask_question").searcher({
 //       url : "/questions/related_questions.js",
 //       target : $(".questions-index"),
@@ -85,7 +86,7 @@ var Questions = {
   initialize_on_new: function($body) {
     $("#related_questions").hide();
     Editor.initialize();
-
+//     FIXME:filter is blocking mongodb
 //     $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
 //       target : $("#related_questions"),
 //       fields : $("form#ask_question input[type=text][name*=question]"),

@@ -30,9 +30,12 @@ class SearchesController < ApplicationController
       @search = Search.new(:query => pharse)
 
       if !@search_text.blank?
-        @questions = Question.filter(@search_text, options)
+#         FIXME:filter is blocking mongodb
+#         @questions = Question.filter(@search_text, options)
+        @questions = Question.where(options).page(params["page"])
 
-        @highlight = @questions.parsed_query[:tokens].to_a
+        @highlight = ""
+#         @highlight = @questions.parsed_query[:tokens].to_a
       else
         @questions = Question.where(options).page(params["page"])
       end
@@ -43,8 +46,7 @@ class SearchesController < ApplicationController
     respond_to do |format|
       format.html
       format.js do
-        render :json => {:html => render_to_string(:partial => "questions/question",
-                                                   :collection  => @questions)}.to_json
+        render :json => {:html => render_to_string(:partial => "questions/question", :collection  => @questions)}.to_json
       end
       format.json { render :json => @questions.to_json(:except => %w[_keywords slugs watchers]) }
     end
