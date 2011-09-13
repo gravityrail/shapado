@@ -17,7 +17,8 @@ en:
       text_color: Text color
       apply: Apply
       try: Try
-      fluid: Fluid (this will make the layout elastic as the browser window gets resized)
+      fluid: 'Fluid (this will make the layout elastic as the browser window gets resized)'
+      brand_color: 'Brand color'
     form:
       update: Update theme
       colors_and_bg: Colors and backgrounds

@@ -7,7 +7,7 @@
       %p
         - announcements.each do |announcement|
           = markdown(announcement.message)
-      = link_to "Close", hide_announcements_path, :id => "hide_announcement"
+      = link_to t('scaffold.close'), hide_announcements_path, :id => "hide_announcement"
 
   - if !(params[:controller] =~ /moderate\//) || (logged_in? && current_user.can_ask_on?(current_group))
     = render "shared/quick_question_box"
