@@ -8,6 +8,8 @@
 User-agent: *
 Allow: /
 
+Disallow: /announcements/hide
+Disallow: /announcements/hide/
 Disallow: /questions/random/
 Disallow: /questions/random
 Disallow: /questions/activities
