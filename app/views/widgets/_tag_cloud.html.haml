@@ -5,7 +5,7 @@
       - self.current_tags.each do |tag|
 
         %span.tag{:class => "tag_#{h(tag)}"}
-          = link_to tag.name, tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
+          = link_to tag, tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag)
           - tags = (self.current_tags - [tag])
 
           - if tags.empty?
