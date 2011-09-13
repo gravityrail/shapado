@@ -17,7 +17,7 @@
       .field
         .checkbox
           = f.label :signup_type, t('signup_type', :scope => "activerecord.attributes.group"), :class => "label"
-          = f.select :signup_type, [[t('.signup_all'),'all'],[t('.signup_noemail'), 'noemail'],[t('.signup_social'), 'social'],[t('.signup_email'),'email only']], :selected => 'all', :class => "select"
+          = f.select :signup_type, [[t('.signup_all'),'all'],[t('.signup_noemail'), 'noemail'],[t('.signup_social'), 'social'],[t('.signup_email'),'email']], :selected => 'all', :class => "select"
       .field
         .checkbox
           = f.label :registered_only, t('registered_only', :scope => "activerecord.attributes.group"), :class => "radio"

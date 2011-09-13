@@ -18,7 +18,8 @@ var Auth = {
     window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
     $('#login_dialog').dialog('close');
   },
-  startLoginDialog: function(){
+  startLoginDialog: function(title){
+    if(!title)
     var title = $('#login_dialog').attr('data-title');
     $('#login_dialog').dialog({title: title,
                              modal: true,
