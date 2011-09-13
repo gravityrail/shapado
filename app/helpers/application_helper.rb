@@ -84,7 +84,7 @@ module ApplicationHelper
       tags = Tag.all(:sort=> [[ :count, :desc ]]).
         where({:group_id => current_group.id}).limit(limit)
     end
-    return '' if tags.count <= 2
+    return '' if tags.size <= 2 #tags.count return all tags instead of using .limit
 
     tag_class = options.delete(:tag_class) || "tag"
     if style == "tag_cloud"
@@ -92,8 +92,8 @@ module ApplicationHelper
       css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
       max_size = 5
       min_size = 1
-      lowest_value = tags[limit-1]
-      highest_value = tags[0]
+      lowest_value = tags[tags.size-1] #tags.last returns the last tags without taking the .limit into account (mongoid bug?)
+      highest_value = tags.first
 
       spread = (highest_value.count - lowest_value.count)
       spread = 1 if spread == 0
