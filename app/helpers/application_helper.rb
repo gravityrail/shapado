@@ -79,13 +79,12 @@ module ApplicationHelper
     roles
   end
 
-  def tag_cloud(tags = [], options = {}, limit = nil, style = "tag_cloud")
+  def tag_cloud(tags = [], options = {}, limit = 15, style = "tag_cloud")
     if tags.empty?
-      tags = Question.tag_cloud({:group_id => current_group.id, :banned => false}.
-                        merge(language_conditions.merge(language_conditions)), limit)
+      tags = Tag.all(:sort=> [[ :count, :desc ]]).
+        where({:group_id => current_group.id}).limit(limit)
     end
-
-    return '' if tags.size <= 2
+    return '' if tags.count <= 2
 
     tag_class = options.delete(:tag_class) || "tag"
     if style == "tag_cloud"
@@ -93,10 +92,10 @@ module ApplicationHelper
       css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
       max_size = 5
       min_size = 1
-      lowest_value = tags.min { |a, b| a["count"].to_i <=> b["count"].to_i }
-      highest_value = tags.max { |a, b| a["count"].to_i <=> b["count"].to_i }
+      lowest_value = tags[limit-1]
+      highest_value = tags[0]
 
-      spread = (highest_value["count"] - lowest_value["count"])
+      spread = (highest_value.count - lowest_value.count)
       spread = 1 if spread == 0
       ratio = (max_size - min_size) / spread
 

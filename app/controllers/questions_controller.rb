@@ -132,7 +132,6 @@ class QuestionsController < ApplicationController
       Jobs::Questions.async.close_reward(@question.id).commit!(1)
     end
 
-    @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:banned => false}
     options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
     @answers = @question.answers.where(options).
@@ -392,7 +391,6 @@ class QuestionsController < ApplicationController
         format.html { redirect_to question_path(@question) }
         format.json  { head :ok }
       else
-        @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).page(params["page"]).order_by(current_order)
@@ -428,7 +426,6 @@ class QuestionsController < ApplicationController
         format.html { redirect_to question_path(@question) }
         format.json  { head :ok }
       else
-        @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
