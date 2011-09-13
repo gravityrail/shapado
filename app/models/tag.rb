@@ -24,6 +24,8 @@ class Tag
 
   validates_uniqueness_of :name, :scope => :group_id, :allow_blank => false
 
+  validates_length_of       :name,     :minimum => 1
+
   def self.find_file_from_params(params, request)
     if request.path =~ %r{/(icon)/([^/\.\?]+)/([^\/\.\?]+)}
       @group = Group.find($2)
