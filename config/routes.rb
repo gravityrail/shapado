@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
   mount BugHunter.app => ENV["BUGHUNTER_PATH"]
 
+  match '/users/:id/:slug' => redirect("/users/%{slug}"), :as => :user_se_url, :id => /\d+/
   resources :users do
     collection do
       get :autocomplete_for_user_login
