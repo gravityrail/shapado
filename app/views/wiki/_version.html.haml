@@ -13,8 +13,9 @@
 
   = render "changes", :post => post, :version => version, :scope => scope
 
-  %p.author
-    = render "users/user_data", :user => version.owner
+  -if version.owner
+    %p.author
+      = render "users/user_data", :user => version.owner
 
   .version-nav
     - if @question.versions.count > 0
