@@ -342,7 +342,7 @@ class Group
   end
 
   def has_facebook_login?
-    (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || self.share.fb_active
+    (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || (self.share && self.share.fb_active)
   end
 
   def version_expired?
