@@ -445,7 +445,12 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
+    if tag.is_a? Tag
+      tag = tag.name
+    elsif tag.is_a? Array
+      tag.join('+')
+    end
+    link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
   end
 
   def widgets_context(controller, action)
