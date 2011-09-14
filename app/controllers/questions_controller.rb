@@ -702,6 +702,7 @@ class QuestionsController < ApplicationController
         return
       elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1)).only(:_id, :slug).first
         head :moved_permanently, :location => question_url(@question)
+        return
       else
         raise Error404
       end
