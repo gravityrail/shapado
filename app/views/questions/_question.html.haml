@@ -33,7 +33,7 @@
         = t('global.tags_label')
       - question.tags.each do |tag|
         %li
-          = link_to h(tag), tag_path(:id => tag), :rel => "tag", :class => 'tag'
+          = tag_link(tag)
       - if logged_in? && (current_user.can_modify?(question) || current_user.can_retag_others_questions_on?(current_group))
         %li.retag
           = link_to t('.retag'), retag_question_path(question), :id => 'retag'
