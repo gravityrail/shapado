@@ -15,8 +15,7 @@ class WelcomeController < ApplicationController
         order = "hotness desc"
         conditions[:updated_at] = {:$gt => 5.days.ago}
     end
-
-    @langs_conds = conditions[:language][:$in]
+    @langs_conds = @languages
     if logged_in?
       feed_params = { :feed_token => current_user.feed_token }
     else
