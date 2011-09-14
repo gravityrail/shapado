@@ -696,11 +696,11 @@ class QuestionsController < ApplicationController
     @question = current_group.questions.by_slug(params[:id])
 
     if @question.nil?
-      @question = current_group.questions.where(:slugs => params[:id]).only(:_id, :slug).first
+      @question = current_group.questions.where(:slugs.in => [params[:id]]).only(:_id, :slug).first
       if @question.present?
         head :moved_permanently, :location => question_url(@question)
         return
-      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1)).only(:_id, :slug).first
+      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1).only(:_id, :slug).first)
         head :moved_permanently, :location => question_url(@question)
         return
       else
