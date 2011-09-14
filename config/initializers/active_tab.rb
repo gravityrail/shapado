@@ -69,10 +69,11 @@ module ActiveTab
 
         if @store_subtab
           subtab = [@active_subtab, @current_order]
-          key = "#{request.env['action_dispatch.request.path_parameters'].symbolize_keys![:action]}"
+          key = "#{params[:controller]}/#{request.env['action_dispatch.request.path_parameters'].symbolize_keys![:action]}"
+
           (session[:subtab] ||= {})[key] = subtab
           if logged_in?
-            current_user.override({"default_subtab.#{key}" => subtab})
+            current_user.override({:"default_subtab.#{key}" => subtab})
           end
         end
       end
