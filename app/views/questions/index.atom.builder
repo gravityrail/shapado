@@ -1,5 +1,5 @@
 atom_feed do |feed|
-  title = "#{current_group.name} - #{t("activerecord.models.questions").capitalize} #{t("feeds.feed")}"
+  title = @title || "#{current_group.name} - #{t("activerecord.models.questions").capitalize} #{t("feeds.feed")}"
 
   tags = params[:tags]
   if tags && !tags.empty?
