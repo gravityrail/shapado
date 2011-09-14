@@ -15,7 +15,7 @@
 
   - if !(['noemail','social'].include? current_group.signup_type) && params[:controller] != 'invitations'
     %li
-      = link_to t('.with_user_pass'), '/users/login', :class => 'auth-provider login', :id => 'login'
+      = link_to t('.with_user_pass'), '/users/login', :class => 'auth-provider login', :id => 'login', 'data-href' => '/users/new'
   -elsif params[:controller] == 'invitations'
     %li
       = link_to t('.with_user_pass'), "/users/new?invitation_id=#{params[:id]}", :class => 'login', :id => 'login'

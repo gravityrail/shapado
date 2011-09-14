@@ -18,7 +18,16 @@ var Auth = {
     window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
     $('#login_dialog').dialog('close');
   },
-  startLoginDialog: function(title){
+  startLoginDialog: function(title,join){
+    if(typeof(join)!='undefined') {
+      var newhref = $('li a.login').attr('data-href');
+      var oldhref = $('li a.login').attr('href');
+      $('li a.login').attr({href: newhref, 'data-href': oldhref, 'data-changed': 1});
+    } else if($('li a.login').attr('data-changed')==1){
+        var newhref = $('li a.login').attr('data-href');
+        var oldhref = $('li a.login').attr('href');
+        $('li a.login').attr({href: newhref, 'data-href': oldhref, 'data-changed': 0})
+    }
     if(!title)
     var title = $('#login_dialog').attr('data-title');
     $('#login_dialog').dialog({title: title,
