@@ -1021,3 +1021,14 @@ input[type=submit], input.save, .add_attachment {
     }
   }
 }
+
+.filters.newest ul li.newest a,
+.filters.hot ul li.hot a,
+.filters.votes ul li.votes a,
+.filters.activity ul li.activity a,
+.filters.all ul li.all a,
+.filters.questions ul li.questions a,
+.filters.answers ul li.answers a,
+.filters.pages ul li.pages a,{
+  border-bottom: 2px solid $brand_color;
+}
