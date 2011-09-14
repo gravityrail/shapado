@@ -16,7 +16,7 @@
       %ul.actions-bar
         -if logged_in? && current_user.can_edit_wiki_post_on?(current_group)
           %li
-            = pjax_link_to t("scaffold.edit"), "pages", page_path(page)
+            = pjax_link_to t("scaffold.edit"), "pages", edit_page_path(page)
           -if current_user.mod_of?(current_group)
             %li
               =link_to t("scaffold.destroy"), page_path(page.id), :class => "important", :method => :delete, :confirm => t("scaffold.sure", :model => t("activerecord.models.page"))

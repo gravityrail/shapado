@@ -14,7 +14,7 @@
         %li
           = pjax_link_to t("pages.actions.create_page"), "pages", new_page_path
         %li
-          = pjax_link_to t("pages.actions.edit_page"), "pages", page_path(@page)
+          = pjax_link_to t("scaffold.edit"), "pages", edit_page_path(@page)
   .markdown
     -if safe_page?(@page)
       -body = current_group.wysiwyg_editor ? CGI.unescapeHTML(@page.body) : @page.body
