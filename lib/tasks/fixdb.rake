@@ -604,4 +604,12 @@ namespace :fixdb do
       i+=1
     end
   end
+
+  task :set_default_theme => [:init] do
+    Group.all.map do |g|
+      if g.current_theme.nil?
+        g.set_default_theme
+      end
+    end
+  end
 end

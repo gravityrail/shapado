@@ -30,6 +30,7 @@ class Theme
 
   belongs_to :group
   before_create :js_mime
+  before_destroy :set_default_theme
 
   validates_uniqueness_of :name, :allow_blank => false
   validates_presence_of :name
@@ -75,5 +76,12 @@ class Theme
   def js_mime
     self.javascript["extension"] = "js"
     self.javascript["content_type"] = "text/javascript"
+  end
+
+  def set_default_theme
+    if self.group && self.group.current_theme_id == self.id
+      self.group.set_default_theme
+      self.group.save
+    end
   end
 end
