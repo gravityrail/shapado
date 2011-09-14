@@ -12,10 +12,11 @@ class QuestionsController < ApplicationController
   tabs :default => :questions, :tags => :tags,
        :new => :ask_question
 
-  subtabs :index => [[:newest, [:created_at, Mongo::DESCENDING]],
+  subtabs :index => [[:activity, [:activity_at, :desc]],
+                     [:newest, [:created_at, Mongo::DESCENDING]],
                      [:hot, [[:hotness, Mongo::DESCENDING], [:views_count, Mongo::DESCENDING]]],
                      [:votes, [:votes_average, Mongo::DESCENDING]],
-                     [:activity, [:activity_at, :desc]], [:expert, [:created_at, Mongo::DESCENDING]]],
+                     [:expert, [:created_at, Mongo::DESCENDING]]],
           :show => [[:votes, [:votes_average, Mongo::DESCENDING]], [:oldest, [:created_at, Mongo::ASCENDING]], [:newest, [:created_at, Mongo::DESCENDING]]]
   helper :votes
 
