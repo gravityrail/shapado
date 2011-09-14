@@ -30,7 +30,7 @@ var Ui = {
 
     $(document.body).delegate(".join_group", "click", function(event) {
       if(!$(this).hasClass('email')){
-        Auth.startLoginDialog($(this).text());
+        Auth.startLoginDialog($(this).text(),1);
         return false;
       } else {document.location=$(this).attr('href')}
     })
