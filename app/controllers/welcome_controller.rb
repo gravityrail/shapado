@@ -21,8 +21,7 @@ class WelcomeController < ApplicationController
     else
       feed_params = { :lang => I18n.locale, :mylangs => current_languages }
     end
-    add_feeds_url(url_for({:controller => 'questions', :action => 'index',
-                            :format => "atom"}.merge(feed_params)), t("feeds.questions"))
+    add_feeds_url(url_for({:controller => 'questions', :action => 'index', :format => "atom"}.merge(feed_params)), t("feeds.questions"))
 
     @questions = Question.minimal.where(conditions).order_by(order).page(params["page"])
   end

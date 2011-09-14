@@ -15,7 +15,8 @@
 
   %p.author
     - owner = User.find(version.user_id)
-    = render "users/user_data", :user => owner
+    - if owner
+      = render "users/user_data", :user => owner
 
   .version-nav
     - if @question.versions.count > 0

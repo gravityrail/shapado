@@ -58,7 +58,7 @@ class AnnouncementsController < ApplicationController
     session[:announcement_hide_time] = Time.zone.now
 
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to request.env["HTTP_REFERER"] ? :back : root_path }
       format.js { render :json => {:status => "ok"} }
     end
   end
