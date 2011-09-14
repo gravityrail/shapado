@@ -1,6 +1,26 @@
 var Comments = {
   initialize_on_question: function(data) {
     $('.comment-votes form').hide();
+
+    $.each($("a.toggle_comments"), function() {
+      var l = $(this);
+      var n = l.nextAll("article.read");
+      var s = n.length;
+      if(s < 5) {
+        l.hide();
+      } else {
+        var t = l.text().replace("NN", s);
+        l.text(t);
+        n.hide();
+        l.next("article.comment:last").show();
+      }
+    });
+
+    $("a.toggle_comments").click(function() {
+      $(this).nextAll("article.read").slideToggle();
+      return false;
+    });
+
     $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
       $(this).find(".comment-votes form").toggle();
     });

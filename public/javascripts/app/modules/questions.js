@@ -49,6 +49,7 @@ var Questions = {
     Votes.initialize_on_question();
     Comments.initialize_on_question();
     Answers.initialize_on_question();
+
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
 
@@ -63,25 +64,6 @@ var Questions = {
       $('html,body').animate({scrollTop: flag_question.offset().top-100}, 1000);
     }
     prettyPrint();
-
-    $.each($("a.toggle_comments"), function() {
-      var l = $(this);
-      var n = l.nextAll("article.read");
-      var s = n.length;
-      if(s < 5) {
-        l.hide();
-      } else {
-        var t = l.text().replace("NN", s);
-        l.text(t);
-        n.hide();
-        l.next("article.comment:last").show();
-      }
-    });
-
-    $("a.toggle_comments").click(function() {
-      $(this).nextAll("article.read").slideToggle();
-      return false;
-    });
   },
   initialize_on_new: function($body) {
     $("#related_questions").hide();
