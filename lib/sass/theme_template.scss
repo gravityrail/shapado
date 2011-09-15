@@ -883,6 +883,15 @@ input[type=submit], input.save, .add_attachment {
 
 // shapado/other/markdown
 .markdown {
+  color: lighten($fg_color, 15%);
+  a {
+    border-bottom: 1px dotted $fg_color;
+    &:hover {
+      color: $brand_color;
+      border-bottom: 1px dotted $brand_color;
+    }
+  }
+
   textarea {
     border: 1px solid #cccccc; }
   pre {
@@ -951,7 +960,9 @@ input[type=submit], input.save, .add_attachment {
 .toolbar ul li a {
   &:hover {
     background-color: $brand_color;
-    color: white; } }
+    color: white; }
+  &:visited {
+    color: $fg_color; }}
 
 .index .toolbar .answers a {
   color: $brand_color;

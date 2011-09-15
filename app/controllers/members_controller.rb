@@ -1,8 +1,8 @@
 
 class MembersController < ApplicationController
   layout "manage"
-  before_filter :login_required, :except => [:index, :show]
-  before_filter :check_permissions, :only => [:index, :create, :update, :edit, :destroy]
+  before_filter :login_required
+  before_filter :check_permissions
   tabs :default => :members
 
   def index
