@@ -25,6 +25,7 @@ var Questions = {
 //       fields : $(".quick_question #ask_question input#question_title"),
 //       behaviour : "live",
 //       timeout : 500,
+//       minLength: 5,
 //       extraParams : extraParams,
 //       success: function(data) {
 //         $('#additional_info .pagination').html(data.pagination);
