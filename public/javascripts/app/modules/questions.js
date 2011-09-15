@@ -19,17 +19,17 @@ var Questions = {
     extraParams['format'] = 'js';
 
 //     FIXME:filter is blocking mongodb
-//     $(".quick_question #ask_question").searcher({
-//       url : "/questions/related_questions.js",
-//       target : $(".questions-index"),
-//       fields : $(".quick_question #ask_question input#question_title"),
-//       behaviour : "live",
-//       timeout : 500,
-//       extraParams : extraParams,
-//       success: function(data) {
-//         $('#additional_info .pagination').html(data.pagination);
-//       }
-//     });
+    $(".quick_question #ask_question").searcher({
+      url : "/questions/related_questions.js",
+      target : $(".questions-index"),
+      fields : $(".quick_question #ask_question input#question_title"),
+      behaviour : "live",
+      timeout : 500,
+      extraParams : extraParams,
+      success: function(data) {
+        $('#additional_info .pagination').html(data.pagination);
+      }
+    });
 
     $(".flag-link-index").live("click", function(event) {
       var link = $(this).parents("article.Question").find("h2 a");
@@ -69,26 +69,26 @@ var Questions = {
     $("#related_questions").hide();
     Editor.initialize();
 //     FIXME:filter is blocking mongodb
-//     $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
-//       target : $("#related_questions"),
-//       fields : $("form#ask_question input[type=text][name*=question]"),
-//       behaviour : "focusout",
-//       timeout : 2500,
-//       extraParams : { 'format' : 'js',
-//                       'per_page' : 5,
-//                       mini: true
-//       },
-//       before_query: function(target) {
-//         target.show();
-//       },
-//       success: function(data) {
-//         if(!data.html) {
-//           $("#related_questions").hide();
-//           // TODO: show a message
-//         }
-//         $("label#rqlabel").show();
-//       }
-//     });
+    $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
+      target : $("#related_questions"),
+      fields : $("form#ask_question input[type=text][name*=question]"),
+      behaviour : "focusout",
+      timeout : 2500,
+      extraParams : { 'format' : 'js',
+                      'per_page' : 5,
+                      mini: true
+      },
+      before_query: function(target) {
+        target.show();
+      },
+      success: function(data) {
+        if(!data.html) {
+          $("#related_questions").hide();
+          // TODO: show a message
+        }
+        $("label#rqlabel").show();
+      }
+    });
 
     var fields = $("#attachments #fields");
     var template = fields.find(".template");
