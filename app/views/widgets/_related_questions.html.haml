@@ -1,4 +1,6 @@
--related_questions = Question.related_questions(@question, :language => find_languages, :per_page => widget.settings['limit']||10)
+-# FIXME:filter is blocking mongodb
+-#related_questions = Question.related_questions(@question, :language => find_languages, :per_page => widget.settings['limit']||10)
+- related_questions = []
 
 - if !related_questions.empty?
   .module.widget.block{:class => 'widget-related_questions'}

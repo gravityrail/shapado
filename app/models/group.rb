@@ -66,6 +66,7 @@ class Group
   field :custom_favicon_version, :type => Integer, :default => 0
 
   field :sso_url, :type => String
+  field :layout, :type => String, :default => 'application'
 
   # can be:
   # * 'all': email, openid, oauth
@@ -341,7 +342,7 @@ class Group
   end
 
   def has_facebook_login?
-    (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || self.share.fb_active
+    (self.auth_providers.include?("Facebook") && self.domain.index(AppConfig.domain)) || (self.share && self.share.fb_active)
   end
 
   def version_expired?

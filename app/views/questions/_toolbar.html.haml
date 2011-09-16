@@ -19,7 +19,7 @@
   - @close_request = @question.close_requests.detect{ |rq| rq.user_id == current_user.id } || CloseRequest.new(:reason => "dupe")
 
 .toolbar
-  %ul.sf-menu
+  %ul.menubar
     -if !logged_in? || current_user.can_answer_on?(current_group)
       %li.answer
         = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"

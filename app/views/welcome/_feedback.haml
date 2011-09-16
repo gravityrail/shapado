@@ -11,12 +11,9 @@
     = text_field_tag "feedback[email]", feedback[:email], :class=> "text_field"
     %small
       = t(".email_description")
-  .field
-    - n1 = rand(10); n2 = rand(10)
-    = hidden_field_tag "n1", n1
-    = hidden_field_tag "n2", n2
-    = label_tag "result", "#{n1} * #{n2}="
-    = text_field_tag "result", "", :class=> "text_field"
+  .field.capcha
+    -if AppConfig.recaptcha["activate"] && !logged_in?
+      = recaptcha_tag(:challenge, :width => 600, :rows => 5, :display => {:lang => I18n.locale}).html_safe
   .buttons
     = submit_tag(t("scaffold.send"), :class => "save")
     = t("global.or")

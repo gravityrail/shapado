@@ -24,7 +24,7 @@ module Shapado
               end
             elsif params[:mylangs]
               languages = params[:mylangs].split(' ')
-            elsif params[:feed_token] && (feed_user = User.find_by_feed_token(params[:feed_token]))
+            elsif params[:feed_token] && (feed_user = User.where(:feed_token => params[:feed_token]).first)
               languages = feed_user.languages_to_filter(current_group)
             end
             languages
@@ -55,7 +55,7 @@ module Shapado
           if logged_in?
             locale = current_user.language
             Time.zone = current_user.timezone || "UTC"
-          elsif params[:feed_token] && (feed_user = User.find_by_feed_token(params[:feed_token]))
+          elsif params[:feed_token] && (feed_user = User.where(:feed_token => params[:feed_token]).first)
             locale = feed_user.language
           elsif params[:lang] =~ /^(\w\w)/
             locale = find_valid_locale($1)

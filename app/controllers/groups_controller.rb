@@ -103,8 +103,8 @@ class GroupsController < ApplicationController
     @group.languages = params[:languages].split(',') if params[:languages]
     @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex
                           custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
-                          has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor
-                          fb_button notification_opts auth_providers], params[:group])
+                          has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor layout
+                          fb_button notification_opts auth_providers allow_any_openid], params[:group])
     @group.share.safe_update(%w[fb_app_id fb_secret_key fb_active starts_with ends_with enable_twitter twitter_user twitter_pattern], params[:group][:share]) if params[:group][:share]
     @group.safe_update(%w[isolate domain private has_custom_analytics has_custom_html has_custom_js], params[:group]) #if current_user.admin?
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
@@ -171,6 +171,12 @@ class GroupsController < ApplicationController
 
   def close
     @group.state = "closed"
+    if !params[:feedback].blank?
+      Notifier.new_feedback(current_user,
+                            "Closing group", params[:feedback],
+                            current_user.email,
+                            request.remote_ip).deliver
+    end
     @group.save
     redirect_to group_path(@group)
   end

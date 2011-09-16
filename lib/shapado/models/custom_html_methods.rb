@@ -34,6 +34,8 @@ module Models
     end
 
     def footer
+      return "" if !self.custom_html.footer
+
       self.custom_html.footer[I18n.locale.to_s.split("-").first] ||
       self.custom_html.footer[self.language] || ""
     end

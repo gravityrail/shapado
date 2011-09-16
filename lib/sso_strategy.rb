@@ -13,7 +13,7 @@ module OmniAuth
       def call!(env)
         host = env["HTTP_HOST"].split(':').first
         group = Group.where(:domain => host).first
-        @sso_url = group.sso_url
+        @sso_url = group.sso_url if group
 
         super
       end

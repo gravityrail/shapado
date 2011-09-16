@@ -1,12 +1,12 @@
 // Generals
 //-------------------------------------------------------------------------------------------------------------------
-.sf-menu li ul
+.menubar li ul
   display: none
-.sf-menu, .sf-menu *
+.menubar, .menubar *
   margin:       0
   padding:      0
   list-style:   none
-.sf-menu, .drop-menu
+.menubar, .drop-menu
   line-height:  1.0
   .sf-sub-indicator
     position: absolute
@@ -57,11 +57,11 @@
       top: 0
 
 // arrows
-.sf-menu a.sf-with-ul
+.menubar a.sf-with-ul
   min-width: 1px
   // trigger IE7 hasLayout so spans position accurately
 
-.sf-menu  a > .sf-sub-indicator
+.menubar  a > .sf-sub-indicator
   // give all except IE6 the correct values
   top: .8em
   background-position: 0 -100px
@@ -77,14 +77,14 @@ li.sfHover > a > .sf-sub-indicator
   // arrow hovers for modern browsers
 
 // point right for anchors in subs
-.sf-menu ul
+.menubar ul
   .sf-sub-indicator
     background-position:  -10px 0
   a > .sf-sub-indicator
     background-position:  0 0
 
 // apply hovers to modern browsers
-.sf-menu  ul
+.menubar  ul
   a:focus > .sf-sub-indicator,
   a:hover > .sf-sub-indicator,
   a:active > .sf-sub-indicator,
@@ -102,7 +102,7 @@ li.sfHover > a > .sf-sub-indicator
 // HEADER - dropdowns for groups, user link, and admin/moderate
 //-------------------------------------------------------------------------------------------------------------------
 .top-bar
-  .sf-menu
+  .menubar
     float: left
     li
       float: left

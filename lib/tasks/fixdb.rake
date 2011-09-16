@@ -1,8 +1,22 @@
-
+## fixall0 and fixall1 can be ran in parallel, fixall2 must be ran at the end
 desc "Fix all"
-task :fixall => [:init, "fixdb:create_thumbnails", "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type", "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite", "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_tag_followers_count", "fixdb:update_reputation_keys", "fixdb:votes_to_followers"] do
+
+task :fixall => [:init, :fixall0, :fixall1, :fixall2, :fixall3, :fixall4] do
 end
 
+task :fixall0 => [:init, "fixdb:create_thumbnails"] do
+end
+
+task :fixall1 => [:init, "fixdb:questions", "fixdb:contributions", "fixdb:dates", "fixdb:openid", "fixdb:relocate", "fixdb:votes", "fixdb:counters", "fixdb:sync_counts", "fixdb:last_target_type"] do
+end
+
+task :fixall2 => [:init, "fixdb:fix_moved_comments_and_set_comment_count", "fixdb:comments", "fixdb:widgets", "fixdb:tags", "fixdb:update_answers_favorite"] do
+end
+
+task :fixall3 => [:init, "fixdb:groups", "fixdb:remove_retag_other_tag", "setup:create_reputation_constrains_modes", "fixdb:update_group_notification_config", "fixdb:set_follow_ids", "fixdb:set_friends_lists", "fixdb:fix_twitter_users", "fixdb:fix_facebook_users", "fixdb:set_invitations_perms", "fixdb:set_signup_type", "fixdb:versions", "fixdb:ads", "fixdb:wiki_booleans", "fixdb:themes", "fixdb:update_reputation_keys", "fixdb:votes_to_followers"]
+
+task :fixall4 => [:init, "fixdb:memberships", "fixdb:update_tag_followers_count"] do
+end
 
 task :init => [:environment] do
   class Question
@@ -318,7 +332,7 @@ namespace :fixdb do
     i=0
     Group.all.each do |g|
       g.reset_widgets!
-      g.save
+      g.save(:validate => false)
       p "(#{i+=1}/#{c}) Updated widgets for group #{g.name}"
     end
   end
@@ -588,6 +602,14 @@ namespace :fixdb do
         q.add_follower(User.find(u))
       end
       i+=1
+    end
+  end
+
+  task :set_default_theme => [:init] do
+    Group.all.map do |g|
+      if g.current_theme.nil?
+        g.set_default_theme
+      end
     end
   end
 end

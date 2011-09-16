@@ -23,7 +23,7 @@ module OmniAuth
       def call!(env)
         host = env["HTTP_HOST"].split(':').first
 
-        if (group = Group.where(:domain => host).only(:share).first) && group.share.fb_app_id.present? && group.share.fb_secret_key.present?
+        if (group = Group.where(:domain => host).only(:share).first) && group.share && group.share.fb_app_id.present? && group.share.fb_secret_key.present?
           self.client_id = group.share.fb_app_id
           self.client_secret = group.share.fb_secret_key
 

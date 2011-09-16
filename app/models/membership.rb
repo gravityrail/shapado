@@ -42,6 +42,14 @@ class Membership
   index :user_id
   index :reputation
   index :state
+  index [
+    [:user_id, Mongo::ASCENDING],
+    [:group_id, Mongo::ASCENDING]
+  ]
+  index [
+    [:state, Mongo::ASCENDING],
+    [:group_id, Mongo::ASCENDING]
+  ]
 
   before_save :update_user_info
   after_create :add_to_user

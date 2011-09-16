@@ -16,7 +16,7 @@
           = tab_entry "li", t('layouts.application.collaborate'), expertise_user_path(current_user), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
           = tab_entry "li", t('layouts.application.search'), '/search', :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
         %li
-          = link_to t('layouts.application.faq'), :class => "pjax", :"data-layout" => "index"
+          = link_to t('layouts.application.faq'), page_path('faq'), :class => "pjax", :"data-layout" => "index"
 
   -if user_signed_in? && current_user.searches.count > 0
     .widget-links.module
@@ -24,18 +24,20 @@
         %ul
           -current_user.searches.each do |search|
             %li
-              = tab_entry "li", search.name, search_path(search), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+              = tab_entry "li", search.name, search_path(search), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index", :rel => 'nofollow'}
 
   .widget-links.module
     %nav
       %ul
         %li
-          = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true), :class => "pjax", :"data-layout" => "question"
+          = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true), :class => "pjax", :"data-layout" => "question", :rel => 'nofollow'
         %li
-          = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges"
+          = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges", :rel => 'nofollow'
         %li
           = link_to t('layouts.application.pages'), pages_path, :class => "pjax", :"data-layout" => "pages"
         %li
           =link_to t('layouts.application.users'), users_path
+        %li
+          = link_to t('layouts.application.tags'), tags_path, :class => "pjax", :"data-layout" => "tags"
 
   = render "shared/widgets", :context => 'mainlist', :position => 'navbar'

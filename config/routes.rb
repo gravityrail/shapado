@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
   mount BugHunter.app => ENV["BUGHUNTER_PATH"]
 
+  match '/users/:id/:slug' => redirect("/users/%{slug}"), :as => :user_se_url, :id => /\d+/
   resources :users do
     collection do
       get :autocomplete_for_user_login
@@ -163,7 +164,7 @@ Rails.application.routes.draw do
     member do
       get :allow_custom_ads
       get :disallow_custom_ads
-      get :close
+      post :close
       get :accept
       get :upgrade
 
@@ -195,6 +196,7 @@ Rails.application.routes.draw do
       member do
         get :remove_bg_image
         put :apply
+        get :ready
       end
     end
     resources :constrains_configs
@@ -213,6 +215,7 @@ Rails.application.routes.draw do
       match 'invitations' => :invitations
       match 'appearance' => :appearance
       match 'access' => :access
+      match 'close_group' => :close_group
     end
   end
   match '/manage/properties/:tab' => 'admin/manage#properties', :as => :manage_properties_tab

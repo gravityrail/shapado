@@ -113,9 +113,32 @@ module MultiauthSupport
     def merge_user(user)
       #TODO merge friendlist, facebook friend lists and maybe more
       #TODO merging is broken
-      [Question, Answer, Badge, UserStat, Membership].each do |m|
+      [Question, Answer, Badge, UserStat].each do |m|
         m.override({:user_id => user.id}, {:user_id => self.id})
       end
+      user.memberships.each do |m|
+        if self_membership = Membership.where(:user_id=>self.id,
+                                              :group_id => m.group_id).first
+          if m.role == 'owner'
+            self_membership.role = 'owner'
+          elsif m.role == 'moderator' && self_membership.role != 'owner'
+            self_membership.role = 'moderator'
+          end
+          if m.is_editor
+            self_membership.is_reditor = true
+          end
+          self_membership.reputation += m.reputation
+          self_membership.votes_up += m.votes_up
+          self_membership.votes_down += m.votes_down
+          self_membership.views_count += m.views_count
+          self_membership.preferred_tags =
+            self_membership.preferred_tags &&
+            m.preferred_tags
+          self_membership.save
+          m.destroy
+        end
+      end
+      Membership.override({:user_id => user.id}, {:user_id => self.id})
       begin
         if user.facebook_login?
           self.update({ :facebook_id => user.facebook_id, :facebook_token => user.facebook_token })

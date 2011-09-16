@@ -1,5 +1,11 @@
 class ActivitiesController < ApplicationController
   tabs :default => :activities
+  subtabs :index => [[:all, [:created_at, :desc]],
+                    [:questions, [:created_at, :desc]],
+                    [:answers, [:created_at, :desc]],
+                    [:pages, [:created_at, :desc]],
+                    [:users, [:created_at, :desc]]],
+          :default => :all
   def index
     conds = {}
     if params[:context] == "by_me" && logged_in?
@@ -17,6 +23,7 @@ class ActivitiesController < ApplicationController
       conds[:trackable_type] = "Page"
     end
 
+    @active_subtab ||= params[:tab] || "all"
     @activities = current_group.activities.where(conds).order(:created_at.desc).
                                            page(params[:page].to_i)
 

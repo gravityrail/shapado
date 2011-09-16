@@ -28,6 +28,12 @@ var Ui = {
     Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
     Ui.sort_values('select#question_language', 'option', false, 'text', null);
 
+    $(document.body).delegate(".join_group", "click", function(event) {
+      if(!$(this).hasClass('email')){
+        Auth.startLoginDialog($(this).text(),1);
+        return false;
+      } else {document.location=$(this).attr('href')}
+    })
     $(document.body).delegate(".toggle-action", "click", function(event) {
       if(Ui.offline()){
         Auth.startLoginDialog();

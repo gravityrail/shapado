@@ -79,31 +79,32 @@ module ApplicationHelper
     roles
   end
 
-  def tag_cloud(tags = [], options = {}, limit = nil, style = "tag_cloud")
+  def tag_cloud(tags = [], options = {}, limit = 15, style = "tag_cloud")
     if tags.empty?
-      tags = Question.tag_cloud({:group_id => current_group.id, :banned => false}.
-                        merge(language_conditions.merge(language_conditions)), limit)
+      tags = Tag.all(:sort=> [[ :count, :desc ]]).
+        where({:group_id => current_group.id}).limit(limit)
     end
-
-    return '' if tags.size <= 2
-
-    # Sizes: xxs xs s l xl xxl
-    css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
-    max_size = 5
-    min_size = 1
+    return '' if tags.size <= 2 #tags.count return all tags instead of using .limit
 
     tag_class = options.delete(:tag_class) || "tag"
+    if style == "tag_cloud"
+      # Sizes: xxs xs s l xl xxl
+      css = {1 => "xxs", 2 => "xs", 3 => "s", 4 => "l", 5 => "xl" }
+      max_size = 5
+      min_size = 1
+      lowest_value = tags[tags.size-1] #tags.last returns the last tags without taking the .limit into account (mongoid bug?)
+      highest_value = tags.first
 
-    lowest_value = tags.min { |a, b| a["count"].to_i <=> b["count"].to_i }
-    highest_value = tags.max { |a, b| a["count"].to_i <=> b["count"].to_i }
+      spread = (highest_value.count - lowest_value.count)
+      spread = 1 if spread == 0
+      ratio = (max_size - min_size) / spread
 
-    spread = (highest_value["count"] - lowest_value["count"])
-    spread = 1 if spread == 0
-    ratio = (max_size - min_size) / spread
-
-    render 'shared/tag_cloud', :tags => tags, :css => css,
-                               :lowest_value => lowest_value, :ratio => ratio,
-                               :min_size => min_size, :tag_class => tag_class, :style => style
+      render 'shared/tag_cloud', :tags => tags, :css => css,
+                                :lowest_value => lowest_value, :ratio => ratio,
+                                :min_size => min_size, :tag_class => tag_class, :style => style
+    else
+      render 'shared/tag_list', :tags => tags, :tag_class => tag_class, :style => style
+    end
   end
 
   def country_flag(code, name)
@@ -444,7 +445,12 @@ module ApplicationHelper
   end
 
   def tag_link(tag)
-    link_to h(tag), tag_path(:id => tag), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
+    if tag.is_a? Tag
+      tag = tag.name
+    elsif tag.is_a? Array
+      tag.join('+')
+    end
+    link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
   end
 
   def widgets_context(controller, action)

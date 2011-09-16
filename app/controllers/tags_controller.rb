@@ -21,6 +21,17 @@ class TagsController < ApplicationController
     @current_tags = @tag_names = params[:id].split("+")
     @tags =  current_scope.where(:name.in => @tag_names)
     @questions = current_group.questions.where(:tags.in => @tag_names).page(params["page"])
+    @title = I18n.t('tags.show.title', :tags => @tag_names.join(', '))
+    #add_feeds_url(url_for(:format => "atom"), t("feeds.question"))
+
+    set_page_title(@title)
+
+    respond_to do |format|
+      format.html
+      format.atom do
+        render '/questions/index', :format => 'atom'
+      end
+    end
   end
 
   def new

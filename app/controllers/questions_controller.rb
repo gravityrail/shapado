@@ -12,10 +12,11 @@ class QuestionsController < ApplicationController
   tabs :default => :questions, :tags => :tags,
        :new => :ask_question
 
-  subtabs :index => [[:newest, [:created_at, Mongo::DESCENDING]],
+  subtabs :index => [[:activity, [:activity_at, :desc]],
+                     [:newest, [:created_at, Mongo::DESCENDING]],
                      [:hot, [[:hotness, Mongo::DESCENDING], [:views_count, Mongo::DESCENDING]]],
                      [:votes, [:votes_average, Mongo::DESCENDING]],
-                     [:activity, [:activity_at, :desc]], [:expert, [:created_at, Mongo::DESCENDING]]],
+                     [:expert, [:created_at, Mongo::DESCENDING]]],
           :show => [[:votes, [:votes_average, Mongo::DESCENDING]], [:oldest, [:created_at, Mongo::ASCENDING]], [:newest, [:created_at, Mongo::DESCENDING]]]
   helper :votes
 
@@ -132,7 +133,6 @@ class QuestionsController < ApplicationController
       Jobs::Questions.async.close_reward(@question.id).commit!(1)
     end
 
-    @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
     options = {:banned => false}
     options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
     @answers = @question.answers.where(options).
@@ -392,7 +392,6 @@ class QuestionsController < ApplicationController
         format.html { redirect_to question_path(@question) }
         format.json  { head :ok }
       else
-        @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).page(params["page"]).order_by(current_order)
@@ -428,7 +427,6 @@ class QuestionsController < ApplicationController
         format.html { redirect_to question_path(@question) }
         format.json  { head :ok }
       else
-        @tag_cloud = Question.tag_cloud(:_id => @question.id, :banned => false)
         options = {:banned => false}
         options[:_id] = {:$ne => @question.answer_id} if @question.answer_id
         @answers = @question.answers.where(options).
@@ -698,12 +696,13 @@ class QuestionsController < ApplicationController
     @question = current_group.questions.by_slug(params[:id])
 
     if @question.nil?
-      @question = current_group.questions.where(:slugs => params[:id]).only(:_id, :slug).first
+      @question = current_group.questions.where(:slugs.in => [params[:id]]).only(:_id, :slug).first
       if @question.present?
         head :moved_permanently, :location => question_url(@question)
         return
-      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1)).only(:_id, :slug).first
+      elsif params[:id] =~ /^(\d+)/ && (@question = current_group.questions.where(:se_id => $1).only(:_id, :slug).first)
         head :moved_permanently, :location => question_url(@question)
+        return
       else
         raise Error404
       end

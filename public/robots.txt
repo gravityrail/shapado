@@ -8,6 +8,13 @@
 User-agent: *
 Allow: /
 
+Disallow: /announcements/hide
+Disallow: /announcements/hide/
+Disallow: /questions/random/
+Disallow: /questions/random
+Disallow: /questions/activities
+Disallow: /questions/activities/
+
 Disallow: /users/login
 Disallow: /users/login/
 Disallow: /users/logout

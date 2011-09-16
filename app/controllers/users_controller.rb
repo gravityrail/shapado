@@ -409,7 +409,7 @@ class UsersController < ApplicationController
   protected
   def check_signup_type
     if current_group.is_social_only_signup? ||
-        current_group.is_email_only_signup?
+        current_group.is_noemail_signup?
       redirect_to '/'
     end
   end

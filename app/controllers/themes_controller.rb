@@ -125,6 +125,21 @@ class ThemesController < ApplicationController
     redirect_to theme_url(@theme)
   end
 
+  def ready
+    @theme = Theme.find(params[:id])
+    respond_to do |format|
+      result = {:ready => @theme.ready}
+      if @theme.ready
+        if !@theme.last_error.blank?
+          result[:last_error] = @theme.last_error
+        else
+          result[:message] = t("themes.ready.success")
+        end
+      end
+      format.js{render :json => result}
+    end
+  end
+
   protected
   def check_permissions
     @group = current_group
