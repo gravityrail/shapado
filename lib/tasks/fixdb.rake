@@ -38,6 +38,22 @@ task :init => [:environment] do
 end
 
 namespace :fixdb do
+
+  task :clean_memberhips => [:init] do
+    User.all.each do |u|
+      count = 0
+      u.memberships.each do |membership|
+        if membership.last_activity_at.nil? && membership.reputation == 0.0
+          membership.destroy
+          count += 1
+        end
+      end
+      if count > 0
+        p "#{u.login}: #{count}"
+      end
+    end
+  end
+
   task :memberships => [:init] do
     user_count= User.count
     user_count_i = 0
