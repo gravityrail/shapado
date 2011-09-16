@@ -90,12 +90,12 @@ javascripts:
   jqueryautovideo:
     - public/javascripts/vendor/jquery.autovideo.js
   mobile:
-    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/jquery-1.6.4.js
     - public/javascripts/rails.js
     - public/javascripts/app/initializers/mobile.js
 
   facebook:
-    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/jquery-1.6.4.js
     - public/javascripts/rails.js
     - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/vendor/jquery.notifyBar.js
