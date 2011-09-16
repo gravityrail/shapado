@@ -1,0 +1,12 @@
+
+.module.widget.block{:class => 'widget-about'}
+  -#i18n
+  %h3= I18n.t(:"widgets.#{widget.name}.welcome", :default => "Welcome")
+
+  %aside
+    = current_group.description
+
+  %footer
+    =link_to t('layouts.application.faq'), page_path('faq')
+    =link_to t("scaffold.more"), group_path(current_group)
+.clear
