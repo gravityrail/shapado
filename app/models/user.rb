@@ -357,7 +357,7 @@ Time.zone.now ? 1 : 0)
     now = Time.zone.now
 
     if group
-      unless member_of?(group)
+      if !member_of?(group) && !group.private
         join!(group)
       end
 
