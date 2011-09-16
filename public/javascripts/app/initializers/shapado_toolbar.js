@@ -38,6 +38,7 @@
               var nform = $(data.html);
               formContainer.prepend(nform);
               nform.slideDown("slow");
+              nform.show();
               link.removeClass('busy');
               options.afterFetchForm.call(toolbar, link, nform);
               actionsContent.find("li a").removeClass("active");

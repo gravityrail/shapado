@@ -4,7 +4,7 @@ var Questions = {
       Questions.initialize_on_show($body);
     } else if($body.hasClass("index")) {
       Questions.initialize_on_index($body);
-    } else if($body.hasClass("new")) {
+    } else if($body.hasClass("new") || $body.hasClass("edit")) {
       Questions.initialize_on_new($body);
     } else if($body.hasClass("move")) {
       Questions.initialize_on_move($body);
@@ -41,7 +41,10 @@ var Questions = {
     });
   },
   initialize_on_show: function($body) {
-    $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
+    $("main-question .toolbar").shapadoToolbar({formContainer: "#panel-forms"});
+    $("article.answer .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm : function(link, form) {
+      Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
+    }});
     $(".answer .toolbar, .comment .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
     }});
