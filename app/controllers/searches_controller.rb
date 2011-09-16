@@ -30,12 +30,8 @@ class SearchesController < ApplicationController
       @search = Search.new(:query => pharse)
 
       if !@search_text.blank?
-#         FIXME:filter is blocking mongodb
-#         @questions = Question.filter(@search_text, options)
-        @questions = Question.where(options).page(params["page"])
-
-        @highlight = ""
-#         @highlight = @questions.parsed_query[:tokens].to_a
+        @questions = Question.filter(@search_text, options)
+        @highlight = @questions.parsed_query[:tokens].to_a
       else
         @questions = Question.where(options).page(params["page"])
       end

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 9b500ab577e9b1c3a057b8c25f8fc4c3dccc40fb
+  revision: bda85a5f1bf91e233bd4ff4020268b382b6c9ec1
   specs:
     mongoid_ext (0.6.2)
       differ (>= 0.1.2)
@@ -123,7 +123,7 @@ GEM
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     chronic (0.6.4)
-    chunky_png (1.2.1)
+    chunky_png (1.2.4)
     columnize (0.3.4)
     compass (0.11.1)
       chunky_png (~> 1.1)
@@ -353,10 +353,10 @@ GEM
     sass (3.1.7)
     sexp_processor (3.0.6)
     simple_oauth (0.1.5)
-    simplecov (0.5.2)
+    simplecov (0.5.3)
       multi_json (~> 1.0.3)
-      simplecov-html (~> 0.5.0)
-    simplecov-html (0.5.0)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     sinatra (1.2.6)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
