@@ -558,7 +558,11 @@ namespace :fixdb do
           custom_css = g.custom_css.read
           if !custom_css.blank?
             theme = Theme.create(:name => "#{g.name}'s theme", :custom_css => custom_css)
-            Jobs::Themes.generate_stylesheet(theme.id)
+            begin
+              Jobs::Themes.generate_stylesheet(theme.id)
+            rescue
+              p g.name
+            end
           end
           g.delete_file("custom_css")
         rescue
@@ -570,7 +574,13 @@ namespace :fixdb do
   end
 
   task :regenerate_themes => [:init] do
-    Theme.all.each {|theme| Jobs::Themes.generate_stylesheet(theme.id)}
+    Theme.all.each do |theme|
+      begin
+        Jobs::Themes.generate_stylesheet(theme.id)
+      rescue
+        p g.name
+      end
+    end
   end
 
   task :update_tag_followers_count => [:init] do
