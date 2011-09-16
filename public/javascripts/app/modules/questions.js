@@ -41,7 +41,10 @@ var Questions = {
     });
   },
   initialize_on_show: function($body) {
-    $(".toolbar").shapadoToolbar({formContainer: "#panel-forms"});
+    $("main-question .toolbar").shapadoToolbar({formContainer: "#panel-forms"});
+    $("article.answer .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm : function(link, form) {
+      Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
+    }});
     $(".answer .toolbar, .comment .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm: function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
     }});
