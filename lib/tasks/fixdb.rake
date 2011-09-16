@@ -638,4 +638,15 @@ namespace :fixdb do
       end
     end
   end
+
+  task :create_about_widget => [:init] do
+    Group.all.each do |g|
+      w = AboutWidget.new
+      g.mainlist_widgets.sidebar << w
+      g.save
+      g.reload
+      g.mainlist_widgets.move_to(0, w.id, "sidebar")
+
+    end
+  end
 end
