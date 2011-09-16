@@ -11,7 +11,7 @@ javascripts:
   modernizrdev:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets_dev.js
-    - public/javascripts/vendor/jquery.js
+    - public/javascripts/vendor/jquery-1.6.4.js
     - public/javascripts/app/modules/jqmath.js
   init_dev:
     - public/javascripts/app/initializers/init_dev.js
