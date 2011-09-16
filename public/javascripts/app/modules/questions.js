@@ -4,7 +4,7 @@ var Questions = {
       Questions.initialize_on_show($body);
     } else if($body.hasClass("index")) {
       Questions.initialize_on_index($body);
-    } else if($body.hasClass("new")) {
+    } else if($body.hasClass("new") || $body.hasClass("edit")) {
       Questions.initialize_on_new($body);
     } else if($body.hasClass("move")) {
       Questions.initialize_on_move($body);

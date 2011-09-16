@@ -38,6 +38,8 @@ var Loader = {
       Themes.initialize($body);
     } else if($body.hasClass("searches-controller")) {
       Searches.initialize($body);
+    } else if($body.hasClass("answers-controller")) {
+      Answers.initialize($body);
     }
 
     Invitations.initialize(); //FIXME: empty function
