@@ -4,7 +4,8 @@
   %h3= I18n.t(:"widgets.#{widget.name}.welcome", :default => "Welcome")
 
   %aside
-    = current_group.description
+    .markdown
+      = find_and_preserve(shapado_auto_link(markdown(current_group.description)))
 
   %footer
     =link_to t('layouts.application.faq'), page_path('faq')
