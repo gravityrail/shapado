@@ -28,7 +28,7 @@ class PagesController < ApplicationController
   # GET /pages/1.json
   def show
     @page = current_group.pages.by_slug(params[:id], :language => Page.current_language) || current_group.pages.by_slug(params[:id])
-
+    @no_ads = (@page.no_ads.nil?) ? false : @page.no_ads
     respond_to do |format|
       format.html do
         if @page.nil?

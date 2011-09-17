@@ -16,6 +16,7 @@ class Page
   field :title, :type => String
   field :body, :type => String
   field :wiki, :type => Boolean, :default => false
+  field :no_ads, :type => Boolean, :default => false
   field :language, :type => String
   field :adult_content, :type => Boolean, :default => false
 

@@ -357,7 +357,7 @@ Time.zone.now ? 1 : 0)
     now = Time.zone.now
 
     if group
-      unless member_of?(group)
+      if !member_of?(group) && !group.private
         join!(group)
       end
 
@@ -519,15 +519,15 @@ Time.zone.now ? 1 : 0)
   end
 
   def followers(scope = {})
+    return []  if self.friend_list.follower_ids.blank?
     conditions = {}
 
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
 
     conditions[:group_ids] = {:$in => [scope[:group_id]]} if scope[:group_id]
 
-    if !self.friend_list.follower_ids.blank?
-      conditions.merge!(:_id => {:$in => self.friend_list.follower_ids})
-    end
+    conditions.merge!(:_id => {:$in => self.friend_list.follower_ids})
+
     User.where(conditions)
   end
 

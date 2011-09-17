@@ -131,11 +131,15 @@ a {
         color: $fg_color !important; }
       a {
         background-image: none;
-        color: lighten($fg_color, 40%);;
+        color: lighten($fg_color, 40%);
         border-right: 1px solid darken($view_bg_color, 73%);
         border-left: 1px solid $fg_color;
         &:hover, &:hover a {
-          background-color: darken($view_bg_color, 70%); } } }
+          color: lighten($fg_color, 40%);
+          background-color: darken($view_bg_color, 70%); }
+        &:visited a {
+          color: lighten($fg_color, 40%);
+        } } }
     ul {
       background-color: $view_bg_color !important;
       li {
@@ -883,6 +887,15 @@ input[type=submit], input.save, .add_attachment {
 
 // shapado/other/markdown
 .markdown {
+  color: lighten($fg_color, 15%);
+  a {
+    border-bottom: 1px dotted $fg_color;
+    &:hover {
+      color: $brand_color;
+      border-bottom: 1px dotted $brand_color;
+    }
+  }
+
   textarea {
     border: 1px solid #cccccc; }
   pre {
@@ -951,7 +964,9 @@ input[type=submit], input.save, .add_attachment {
 .toolbar ul li a {
   &:hover {
     background-color: $brand_color;
-    color: white; } }
+    color: white; }
+  &:visited {
+    color: $fg_color; }}
 
 .index .toolbar .answers a {
   color: $brand_color;

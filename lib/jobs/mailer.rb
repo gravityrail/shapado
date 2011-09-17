@@ -13,13 +13,13 @@ module Jobs
 
       (users.to_a - followers.to_a).each do |u|
         if !u.email.blank?
-          Notifier.give_advice(u, group, question, false).deliver
+#           Notifier.give_advice(u, group, question, false).deliver
         end
       end
 
       followers.each do |u|
         if !u.email.blank?
-          Notifier.give_advice(u, group, question, true).deliver
+#           Notifier.give_advice(u, group, question, true).deliver
         end
       end
     end

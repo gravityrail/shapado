@@ -21,7 +21,9 @@ module Shapado
 #             if cookie = cookie[:accept_invitation] FIXME
 #               current_user.accept_invitation(cookie)
 #             end
-            raise Goalie::Forbidden
+            cookies["pp"] = nil
+            redirect_to '/users/logout'
+            #raise Goalie::Forbidden
           end
         else
           respond_to do |format|

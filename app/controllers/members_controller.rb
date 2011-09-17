@@ -1,8 +1,8 @@
 
 class MembersController < ApplicationController
   layout "manage"
-  before_filter :login_required, :except => [:index, :show]
-  before_filter :check_permissions, :only => [:index, :create, :update, :edit, :destroy]
+  before_filter :login_required
+  before_filter :check_permissions
   tabs :default => :members
 
   def index
@@ -35,9 +35,9 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member = @group.users(:_id => params[:id]).first
-    if (@member.user_id != current_user.id) || current_user.admin?
-      @member.destroy
+    @member = @group.memberships.find(params[:id])
+    if (@member.user_id != current_user.id)
+      @member.leave(@group)
     else
       flash[:error] = "Sorry, you cannot destroy the **#{@member.user.login}'s** membership"
     end

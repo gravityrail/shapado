@@ -34,6 +34,7 @@
           = select_tag :role, options_for_select(locales_roles, membership.role)
         .buttons
           = submit_tag t("scaffold.update"), :class => "save"
+          = link_to t("scaffold.destroy"), member_path(membership), :method => :delete, :confirm => t("members.form.destroy_confirm")
     -else
       .role
         &= membership.role

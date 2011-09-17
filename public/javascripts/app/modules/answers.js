@@ -1,4 +1,9 @@
 var Answers = {
+  initialize: function($body) {
+    if($body.hasClass("edit")) {
+      Editor.setup($(".markdown_editor, .wysiwyg_editor"));
+    }
+  },
   initialize_on_question: function() {
     var answers = $('article.answer').length;
     if(answers == 0){

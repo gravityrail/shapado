@@ -38,6 +38,22 @@ task :init => [:environment] do
 end
 
 namespace :fixdb do
+
+  task :clean_memberhips => [:init] do
+    User.all.each do |u|
+      count = 0
+      u.memberships.each do |membership|
+        if membership.last_activity_at.nil? && membership.reputation == 0.0
+          membership.destroy
+          count += 1
+        end
+      end
+      if count > 0
+        p "#{u.login}: #{count}"
+      end
+    end
+  end
+
   task :memberships => [:init] do
     user_count= User.count
     user_count_i = 0
@@ -542,7 +558,11 @@ namespace :fixdb do
           custom_css = g.custom_css.read
           if !custom_css.blank?
             theme = Theme.create(:name => "#{g.name}'s theme", :custom_css => custom_css)
-            Jobs::Themes.generate_stylesheet(theme.id)
+            begin
+              Jobs::Themes.generate_stylesheet(theme.id)
+            rescue
+              p g.name
+            end
           end
           g.delete_file("custom_css")
         rescue
@@ -554,7 +574,13 @@ namespace :fixdb do
   end
 
   task :regenerate_themes => [:init] do
-    Theme.all.each {|theme| Jobs::Themes.generate_stylesheet(theme.id)}
+    Theme.all.each do |theme|
+      begin
+        Jobs::Themes.generate_stylesheet(theme.id)
+      rescue
+        p g.name
+      end
+    end
   end
 
   task :update_tag_followers_count => [:init] do
@@ -610,6 +636,17 @@ namespace :fixdb do
       if g.current_theme.nil?
         g.set_default_theme
       end
+    end
+  end
+
+  task :create_about_widget => [:init] do
+    Group.all.each do |g|
+      w = AboutWidget.new
+      g.mainlist_widgets.sidebar << w
+      g.save
+      g.reload
+      g.mainlist_widgets.move_to(0, w.id, "sidebar")
+
     end
   end
 end

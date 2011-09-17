@@ -1,10 +1,10 @@
 //needed for IE
 fix_html5_on_ie();
 Modernizr.load([{
-  load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
+  load: '//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js',
   callback: function() {
     if (!window.jQuery) {
-      Modernizr.load('/javascripts/vendor/jquery.js');
+      Modernizr.load('/javascripts/vendor/jquery-1.6.4.js');
     }
   },
   complete: function() {

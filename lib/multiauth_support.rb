@@ -125,7 +125,7 @@ module MultiauthSupport
             self_membership.role = 'moderator'
           end
           if m.is_editor
-            self_membership.is_reditor = true
+            self_membership.is_editor = true
           end
           self_membership.reputation += m.reputation
           self_membership.votes_up += m.votes_up

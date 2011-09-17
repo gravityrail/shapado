@@ -32,12 +32,15 @@ var Loader = {
       Tags.initialize($body);
     } else if($body.hasClass("members-controller")) {
       Members.initialize($body);
-    } else if($body.hasClass("groups-controller")) {
+    } else if($body.hasClass("groups-controller") ||
+      $body.hasClass("admin-manage-controller")) {
       Groups.initialize($body);
     } else if($body.hasClass("themes-controller")) {
       Themes.initialize($body);
     } else if($body.hasClass("searches-controller")) {
       Searches.initialize($body);
+    } else if($body.hasClass("answers-controller")) {
+      Answers.initialize($body);
     }
 
     Invitations.initialize(); //FIXME: empty function
