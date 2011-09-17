@@ -35,9 +35,9 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member = @group.users(:_id => params[:id]).first
-    if (@member.user_id != current_user.id) || current_user.admin?
-      @member.destroy
+    @member = @group.memberships.find(params[:id])
+    if (@member.user_id != current_user.id)
+      @member.leave(@group)
     else
       flash[:error] = "Sorry, you cannot destroy the **#{@member.user.login}'s** membership"
     end
