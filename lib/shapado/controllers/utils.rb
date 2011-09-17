@@ -81,7 +81,9 @@ module Shapado
         if params['tab']
           out << params['tab']
         end
-        out
+        if current_group && current_group.layout
+          out << current_group.layout
+        end
       end
     end
   end
