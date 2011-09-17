@@ -327,7 +327,9 @@ module ApplicationHelper
 
   def include_latex
     if current_group.enable_latex
-      raw('<meta data-jqmath>')
+      require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
+      jqmath_tags = %{<meta data-jqmath data-jsassets="cssassets.jqmath" data-cssassets="jsassets.jqmath">}
+      raw(jqmath_tags)
     end
   end
 

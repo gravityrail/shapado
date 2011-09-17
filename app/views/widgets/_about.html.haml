@@ -1,6 +1,7 @@
 
 .module.widget.block{:class => 'widget-about'}
-  %h3= I18n.t(:"devise.mailer.confirm_account.welcome")
+  -#i18n
+  %h3= I18n.t(:"widgets.#{widget.name}.welcome", :default => "Welcome")
 
   %aside
     .markdown
