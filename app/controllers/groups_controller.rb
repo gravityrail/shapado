@@ -73,7 +73,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new
     @group.languages = params[:languages].split(',') if params[:languages]
-    @group.safe_update(%w[name legend description default_tags subdomain logo forum enable_latex
+    @group.safe_update(%w[name legend description default_tags subdomain logo forum enable_mathjax enable_latex
                           custom_favicon language theme signup_type custom_css wysiwyg_editor], params[:group])
 
     @group.safe_update(%w[isolate domain private], params[:group]) if current_user.admin?
@@ -101,7 +101,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group.languages = params[:languages].split(',') if params[:languages]
-    @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex
+    @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
                           custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
                           has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor layout
                           fb_button notification_opts auth_providers allow_any_openid], params[:group])
