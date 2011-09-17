@@ -9,6 +9,7 @@ var Comments = {
       if(s < 5) {
         l.hide();
       } else {
+        l.show();
         var t = l.text().replace("NN", s);
         l.text(t);
         n.hide();
