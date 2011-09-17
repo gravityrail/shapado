@@ -326,8 +326,12 @@ module ApplicationHelper
   end
 
   def include_latex
-    if current_group.enable_latex
-      raw('<meta data-jqmath>')
+    if current_group.enable_mathjax
+      return raw('<meta data-mathjax>')
+    elsif current_group.enable_latex
+      require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
+      jqmath_tags = %{<meta data-jqmath data-jsassets="cssassets.jqmath" data-cssassets="jsassets.jqmath">}
+      raw(jqmath_tags)
     end
   end
 

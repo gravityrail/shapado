@@ -62,6 +62,7 @@ class Group
   field :fb_button, :type => Boolean, :default => true
 
   field :enable_latex, :type => Boolean, :default => false
+  field :enable_mathjax, :type => Boolean, :default => false
   field :logo_version, :type => Integer, :default => 0
   field :custom_favicon_version, :type => Integer, :default => 0
 
@@ -155,6 +156,7 @@ class Group
   before_create :disallow_javascript
   before_update :disallow_javascript
   before_save :modify_attributes
+  before_save :check_latex
   before_create :create_widget_lists
   before_create :set_default_theme
   after_create :create_default_tags
@@ -352,6 +354,12 @@ class Group
   end
 
   protected
+  # don't enable both latex
+  def check_latex
+    if self.enable_latex && self.enable_mathjax
+      self.enable_mathjax = false
+    end
+  end
   #validations
   def initialize_fields
     self["subdomain"] ||= self["slug"]
