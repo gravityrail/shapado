@@ -139,20 +139,23 @@ var Ui = {
     });
 
     $(document).keydown(function(ev){
-      current_element = $(container.find(element_selector+'.active'));
 
-      moved = false;
-      next = null;
-      if(ev.keyCode == 74){
-        next = current_element.next(element_selector);
-      } else if(ev.keyCode == 75){
-        next = current_element.prev(element_selector);
-      }
+      if(container.is(':visible')){
+        current_element = $(container.find(element_selector+'.active'));
 
-      if(next && next.length > 0) {
-        current_element.removeClass("active");
-        next.addClass("active");
-        Ui.center_scroll(next);
+        moved = false;
+        next = null;
+        if(ev.keyCode == 74){
+          next = current_element.next(element_selector);
+        } else if(ev.keyCode == 75){
+          next = current_element.prev(element_selector);
+        }
+
+        if(next && next.length > 0) {
+          current_element.removeClass("active");
+          next.addClass("active");
+          Ui.center_scroll(next);
+        }
       }
     });
   }
