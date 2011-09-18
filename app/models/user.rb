@@ -519,7 +519,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def followers(scope = {})
-    return []  if self.friend_list.follower_ids.blank?
+    return Kaminari.paginate_array([])  if self.friend_list.follower_ids.blank?
     conditions = {}
 
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]

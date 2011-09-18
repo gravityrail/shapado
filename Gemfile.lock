@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: git://github.com/ricodigo/bug_hunter.git
-  revision: ccbbbc57d99cb63424a5cbdd413d1f96841c80f6
+  revision: 28b7212d0d9211ef3c03088bf554037490b289ee
   specs:
     bug_hunter (0.1.1)
       haml
@@ -184,7 +184,7 @@ GEM
     i18n (0.5.0)
     jammit (0.6.3)
       yui-compressor (>= 0.9.3)
-    json (1.6.0)
+    json (1.6.1)
     kaminari (0.12.4)
       rails (>= 3.0.0)
     kgio (2.6.0)
