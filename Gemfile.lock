@@ -37,7 +37,7 @@ GIT
 
 GIT
   remote: git://github.com/ricodigo/bug_hunter.git
-  revision: 28b7212d0d9211ef3c03088bf554037490b289ee
+  revision: 19715a57ef9a0acb741c896952aa194f3a2cd844
   specs:
     bug_hunter (0.1.1)
       haml
