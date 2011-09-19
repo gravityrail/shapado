@@ -15,6 +15,15 @@ Disallow: /questions/random
 Disallow: /questions/activities
 Disallow: /questions/activities/
 
+Disallow: /questions/*/follow
+Disallow: /questions/*/watch
+Disallow: /questions/*/follow
+Disallow: /questions/*/flags/new
+Disallow: /answers/*/flags/new
+
+Disallow: /users/*/follow
+Disallow: /users/auth/*
+Disallow: /users/auth/
 Disallow: /users/login
 Disallow: /users/login/
 Disallow: /users/logout
@@ -26,8 +35,6 @@ Disallow: /signup/
 Disallow: /welcome
 Disallow: /welcome/
 
-Disallow: /*flags/
-Disallow: /*flags
 Disallow: /votes
 Disallow: /votes/
 Disallow: /settings
