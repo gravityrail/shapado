@@ -846,7 +846,8 @@ Time.zone.now ? 1 : 0)
 
   protected
   def update_languages
-    self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }
+    languages = self.preferred_languages.map { |e| e.split("-").first }
+    self.preferred_languages = languages
   end
 
   def password_required?
