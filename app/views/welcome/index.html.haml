@@ -37,14 +37,3 @@
     = link_to t("questions.index.unanswered_questions"), unanswered_questions_path, :rel => 'nofollow'
 
   .clear
-
--content_for :sidebar do
-  .block.notice
-    = render :partial => "shared/layout/notice"
-
-  = render "shared/widgets", :context => 'welcome'
-
-  -if !current_group.isolate && AppConfig.enable_groups
-    .block{:style => "background: transparent"}
-      .content
-        = link_to t(".create_own_site").html_safe, new_group_path, :id => "create_own_site"
