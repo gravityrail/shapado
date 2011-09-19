@@ -847,6 +847,14 @@ Time.zone.now ? 1 : 0)
   protected
   def update_languages
     languages = self.preferred_languages.map { |e| e.split("-").first }
+    # HACK
+    languages.map! do |l|
+      if l =~ /.+:(.+)/
+        $1
+      else
+        l
+      end
+    end
     self.preferred_languages = languages
   end
 

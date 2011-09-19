@@ -432,6 +432,15 @@ class Group
     if !self.language.blank? && !self.languages.include?(self.language)
       self.languages << self.language
     end
+
+    # HACK
+    self.languages = self.languages.map! do |l|
+      if l =~ /.+:(.+)/
+        $1
+      else
+        l
+      end
+    end
   end
 
   def disallow_javascript
