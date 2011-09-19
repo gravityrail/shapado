@@ -48,7 +48,7 @@ module Models
                   unless self.address["city"].blank?
                     "#{self.address["city"]}, #{self.address["country"]}"
                   else
-                    self.address["country"]
+                    self.address["country"] || I18n.t('global.unknown_place')
                   end
                 else
                   I18n.t('global.unknown_place')
