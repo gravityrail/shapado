@@ -649,4 +649,30 @@ namespace :fixdb do
 
     end
   end
+
+  task :fix_languages => [:init] do
+    User.where(:preferred_languages => {:$in => [/:/] }).each do |u|
+      languages = u.preferred_languages.map do |l|
+        if l =~ /.+:(.+)/
+          $1
+        else
+          l
+        end
+      end
+      u.preferred_languages = languages
+      u.save
+    end
+
+    Group.where(:languages => {:$in => [/:/] }).each do |g|
+      languages = g.languages.map do |l|
+        if l =~ /.+:(.+)/
+          $1
+        else
+          l
+        end
+      end
+      g.languages = languages
+      g.save
+    end
+  end
 end
