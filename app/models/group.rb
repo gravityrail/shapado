@@ -383,6 +383,16 @@ class Group
           return false
         end
       end
+
+      if self.reputation_constrains["ask"] > 0
+        self.errors.add(:reputation_constrains, I18n.t('activerecord.models.reputation_rewards_ask_constrain'))
+        return false
+      end
+
+      if self.reputation_constrains["answer"] > 0
+        self.errors.add(:reputation_constrains, I18n.t('activerecord.models.reputation_rewards_answer_constrain'))
+        return false
+      end
     end
 
     if self.reputation_rewards_changed?
@@ -409,16 +419,6 @@ class Group
           self.errors.add(:reputation_rewards, I18n.t('activerecord.models.reputation_rewards_key'))
           return false
         end
-      end
-
-      if self.reputation_rewards["ask"] > 0
-        self.errors.add(:reputation_rewards, I18n.t('activerecord.models.reputation_rewards_ask_constrain'))
-        return false
-      end
-
-      if self.reputation_rewards["answer"] > 0
-        self.errors.add(:reputation_rewards, I18n.t('activerecord.models.reputation_rewards_answer_constrain'))
-        return false
       end
     end
 

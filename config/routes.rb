@@ -150,9 +150,9 @@ Rails.application.routes.draw do
     resources :open_requests
   end
 
-
-
   match 'questions/tags/:tags' => 'tags#show', :as => :question_tag
+  match 'questions/tagged/:tags' => redirect("/questions/tags/%{tags}") #support se url
+
 #   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
 
   resources :groups do
