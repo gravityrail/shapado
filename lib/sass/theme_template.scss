@@ -341,13 +341,13 @@ form.history {
   .answer_vote_box {
     .vote_box button {
       &.negative {
-        background-color: lighten($view_bg_color, 10%) !important;
-        &:hover {
+        background-color: lighten($view_bg_color, 10%);
+        &:hover, &.checked {
           background-color: #cc0000 !important; } }
       &.positive {
-        background-color: lighten($view_bg_color, 10%) !important;
-        &:hover {
-          background-color: #a2c538 !important; } } } }
+        background-color: lighten($view_bg_color, 10%);
+        &:hover, &.checked {
+          background-color: #a2c538 } } } }
   .answer {
     .author {
       * {
