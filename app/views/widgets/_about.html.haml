@@ -4,7 +4,7 @@
 
   %aside
     .markdown
-      = find_and_preserve(shapado_auto_link(markdown(current_group.description)))
+      = find_and_preserve(shapado_auto_link(markdown(widget.content)))
 
   %footer
     =link_to t('layouts.application.faq'), page_path('faq')

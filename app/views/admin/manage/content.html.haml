@@ -30,7 +30,7 @@
   -elsif %w[question_help question_prompt head top_bar footer]
     .field
       =form.label "_#{@active_subtab}[#{default_lang}]", language_desc(default_lang), :class => "label"
-      =text_field_tag "group[custom_html][#{@active_subtab}[#{default_lang}]]", @group.custom_html.send(@active_subtab)[default_lang], :class => "text_field"
+      =text_area_tag "group[custom_html][#{@active_subtab}[#{default_lang}]]", @group.custom_html.send(@active_subtab)[default_lang], :class => "text_field"
     .lang-fields
       %ul
         -langs.each do |lang|
@@ -38,7 +38,7 @@
             = link_to language_desc(lang), "##{@active_subtab}-#{lang}"
       -langs.each do |lang|
         .field{:id => "#{@active_subtab}-#{lang}"}
-          =text_field_tag "group[custom_html][#{@active_subtab}[#{lang}]]", @group.custom_html.send(@active_subtab)[lang], :class => "text_field"
+          =text_area_tag "group[custom_html][#{@active_subtab}[#{lang}]]", @group.custom_html.send(@active_subtab)[lang], :class => "text_field"
 
 
   .buttons
