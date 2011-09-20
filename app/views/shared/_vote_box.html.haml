@@ -15,12 +15,12 @@
       %ul.vote_box
         %li.votes_average
           = calculate_votes_average(voteable)
-- elsif !current_user.has_voted?(voteable)
-  %form{:action=> url, :method=>'post', :class => 'comment-form'}
+- else
+  %form.comment-form{:action=> url, :method=>'post', :class => ''}
     = token_tag
     = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-    %button{:type=>"submit", :name=>"vote_up", :value=>"1", :class => 'upvote-comment', :title=>comment_vote_title(false, voteable)}
+    %button.upvote-comment{:type=>"submit", :name=>"vote_up", :value=>"1", :class => !current_user.has_voted?(voteable) && "vote", :title=>comment_vote_title(current_user.has_voted?(voteable), voteable)}
       ✓
-- else
-  %span{:title=>comment_vote_title(true, voteable), :class => 'upvoted-comment'}
-    ✓
+
+  -#%span{:title=>comment_vote_title(true, voteable), :class => 'upvoted-comment'}
+  -#  ✓

@@ -34,6 +34,10 @@
   %article.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
     .user-avatar
       = avatar_img(comment.user, :size => "small")
+    -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
+      %span.comment-votes
+        = vote_box(comment, request.path, comment.find_question.closed)
+
     .comment-body
       = pjax_link_to comment.user.login, "user", user_path(comment.user), {:class => 'user-login'}
       %span='-'
@@ -42,9 +46,6 @@
       %div
         %time{:datetime => comment.created_at.iso8601, :title => article_date(comment, false)}
           = article_date comment
-        -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
-          %span.comment-votes
-            = vote_box(comment, request.path, comment.find_question.closed)
 
       .controls
         .actions

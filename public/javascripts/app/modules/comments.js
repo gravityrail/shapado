@@ -1,6 +1,6 @@
 var Comments = {
   initialize_on_question: function(data) {
-    $('.comment-votes form').hide();
+    $('.comment-votes form.comment-form button.vote').hide();
 
     $.each($("a.toggle_comments"), function() {
       var l = $(this);
@@ -24,7 +24,7 @@ var Comments = {
 
     $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
       var show = (handlerIn.type == "mouseenter");
-      $(this).find(".comment-votes form.comment-form").toggle(show);
+      $(this).find(".comment-votes form.comment-form button.vote").toggle(show);
     });
 
     $(".content-panel").delegate(".comment-form", "submit", function(event) {
@@ -33,10 +33,12 @@ var Comments = {
       btn.hide();
       $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
         if(data.success){
-          if(data.vote_state == "deleted") {
+          if(data.vote_state == "destroyed") {
+            btn.addClass("vote");
+            btn.hide();
           } else {
-            btn.after('<span class="upvoted-comment">✓</span>');
-            btn.remove();
+            btn.removeClass("vote");
+            btn.show();
           }
           btn.parents(".comment-votes").children(".votes_average").html(data.average);
           Messages.show(data.message, "notice");
