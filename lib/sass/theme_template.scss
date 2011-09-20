@@ -347,7 +347,7 @@ form.history {
       &.positive {
         background-color: lighten($view_bg_color, 10%);
         &:hover, &.checked {
-          background-color: #a2c538 } } } }
+          background-color: #a2c538 !important} } } }
   .answer {
     .author {
       * {
