@@ -1,7 +1,7 @@
 - if !voteable.is_a?(Comment)
   .answer_vote_box
     - if !closed && (logged_in? && (voteable.user != current_user)) || !logged_in?
-      - vote = current_user.vote_on(voteable)
+      - vote = logged_in? ? current_user.vote_on(voteable) : nil
       %form{:action=> url, :method=>'post', :class=>'vote_form'}
         = token_tag
         %ul.vote_box
