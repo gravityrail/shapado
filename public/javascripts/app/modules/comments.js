@@ -30,6 +30,7 @@ var Comments = {
     $(".content-panel").delegate(".comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button');
+      btn.attr('disabled', true);
       btn.hide();
       $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
         if(data.success){
@@ -45,6 +46,7 @@ var Comments = {
         } else {
           Messages.show(data.message, "error");
         }
+        btn.attr('disabled', false);
         btn.show();
       }, "json");
       return false;
@@ -56,7 +58,8 @@ var Comments = {
       var button = form.find("input[type=submit]");
       if($(".wysiwyg_editor").length > 0 )
         $(".wysiwyg_editor").htmlarea('updateTextArea');
-      button.attr('disabled', true)
+
+      button.attr('disabled', true);
       $.ajax({ url: form.attr("action"),
               data: form.serialize()+"&format=js",
               dataType: "json",
