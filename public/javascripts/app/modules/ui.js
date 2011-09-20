@@ -158,5 +158,11 @@ var Ui = {
         }
       }
     });
+  },
+  initialize_lang_fields: function(container){
+    var fields = (container||$('body')).find('.lang-fields');
+    if(fields.length > 0){
+      fields.tabs();
+    }
   }
 };
