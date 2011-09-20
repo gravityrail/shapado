@@ -23,7 +23,8 @@ var Comments = {
     });
 
     $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
-      $(this).find(".comment-votes form").toggle();
+      var show = (handlerIn.type == "mouseenter");
+      $(this).find(".comment-votes form.comment-form").toggle(show);
     });
 
     $(".content-panel").delegate(".comment-form", "submit", function(event) {
