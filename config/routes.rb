@@ -97,13 +97,14 @@ Rails.application.routes.draw do
     resources :tags, :constraints => { :id => /\S+/ }
   end
 
+  match 'questions/unanswered' => redirect("/questions?unanswered=1")
+
   resources :questions do
     resources :votes
     resources :flags
 
     collection do
       get :tags_for_autocomplete
-      get :unanswered
       get :related_questions
       get :random
     end
@@ -151,9 +152,7 @@ Rails.application.routes.draw do
   end
 
   match 'questions/tags/:tags' => 'tags#show', :as => :question_tag
-  match 'questions/tagged/:tags' => redirect("/questions/tags/%{tags}") #support se url
-
-#   match 'questions/unanswered/tags/:tags' => 'questions#unanswered'
+  match 'questions/tagged/:tags' => redirect("/questions/tags/%{tags}"), :tags => /.+/ #support se url
 
   resources :groups do
     collection do
