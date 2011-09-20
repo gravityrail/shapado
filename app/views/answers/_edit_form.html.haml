@@ -2,13 +2,11 @@
   = render :partial => "answers/form", :locals => {:f => f, :markdown => true,:question => question}
 
   .field
-    .check_box
-
-  .field
     .checkbox
       = f.check_box :wiki
       = f.label :wiki, "Wiki"
-  .buttons
-    = f.submit t("scaffold.update"), :class => "buttton save"
-    = t("global.or")
-    = link_to t('scaffold.cancel'), question_path(question), :class => "button cancel"
+  .field.form-options
+    .buttons
+      = f.submit t("scaffold.update"), :class => "save"
+      = t("global.or")
+      = link_to t('scaffold.cancel'), question_path(question), :class => "cancel"
