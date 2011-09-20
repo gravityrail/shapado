@@ -3,7 +3,7 @@
 -source = question_path(question)
 
 -cache_for(:answers, question.id, answer.id, answer.user == current_user ? "owner" : "") do
-  %article{:class => "answer #{answer.id} #{solution ? "solution" : ""}", :item_scope => '', :itemtype => "http://schema.org/Article"}
+  %article.answer{:class => " #{answer.id} #{solution && "solution"}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     %a{:name => "answer#{answer.id}"}
 
     = vote_box(answer, question_path(@question), @question.closed)
