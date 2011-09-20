@@ -255,6 +255,7 @@ class Question
     if !follower?(user)
       self.push_uniq(:follower_ids => user.id)
       self.increment(:followers_count => 1)
+      Jobs::Questions.async.on_question_followed(self.id, user.id).commit!
     end
   end
 
@@ -262,6 +263,7 @@ class Question
     if follower?(user)
       self.pull(:follower_ids => user.id)
       self.decrement(:followers_count => 1)
+      self.user.update_reputation(:question_undo_follow, self.group)
     end
   end
 

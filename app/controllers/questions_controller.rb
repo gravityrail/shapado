@@ -14,7 +14,9 @@ class QuestionsController < ApplicationController
 
   subtabs :index => [[:activity, [:activity_at, :desc]],
                      [:newest, [:created_at, Mongo::DESCENDING]],
-                     [:hot, [[:hotness, Mongo::DESCENDING], [:views_count, Mongo::DESCENDING]]],
+                     [:hot, [[:hotness, Mongo::DESCENDING],
+                             [:views_count, Mongo::DESCENDING]]],
+                     [:followers, [:followers_count, Mongo::DESCENDING]],
                      [:votes, [:votes_average, Mongo::DESCENDING]],
                      [:expert, [:created_at, Mongo::DESCENDING]]],
           :show => [[:votes, [:votes_average, Mongo::DESCENDING]], [:oldest, [:created_at, Mongo::ASCENDING]], [:newest, [:created_at, Mongo::DESCENDING]]]
@@ -443,7 +445,6 @@ class QuestionsController < ApplicationController
   def follow
     @question = current_group.questions.by_slug(params[:id])
     @question.add_follower(current_user)
-    Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
 
     sweep_question(@question)
@@ -462,6 +463,7 @@ class QuestionsController < ApplicationController
   def unfollow
     @question = current_group.questions.by_slug(params[:id])
     @question.remove_follower(current_user)
+
     flash[:notice] = t("questions.unwatch.success")
 
     sweep_question(@question)

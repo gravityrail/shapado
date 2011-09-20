@@ -16,6 +16,7 @@ Disallow: /questions/activities
 Disallow: /questions/activities/
 
 Disallow: /questions/*/follow
+Disallow: /questions/*/history
 Disallow: /questions/*/watch
 Disallow: /questions/*/follow
 Disallow: /questions/*/flags/new

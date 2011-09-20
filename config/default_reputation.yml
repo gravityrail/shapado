@@ -14,6 +14,8 @@ vote_down_question:              -1
 undo_vote_down_question:          1
 question_receives_up_vote:        2
 question_undo_up_vote:           -2
+question_receives_follow:         2
+question_undo_follow:            -2
 question_receives_down_vote:     -1
 question_undo_down_vote:          1
 vote_up_answer:                   0

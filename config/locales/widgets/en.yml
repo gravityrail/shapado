@@ -114,3 +114,6 @@ en:
     share:
       title: "Share in"
       description: "This widget displays various buttons to share the current page to social networks."
+    about:
+      title: About
+      description: "This widget displays a short discription of your group."
