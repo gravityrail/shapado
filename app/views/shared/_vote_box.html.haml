@@ -1,16 +1,17 @@
 - if !voteable.is_a?(Comment)
   .answer_vote_box
     - if !closed && (logged_in? && (voteable.user != current_user)) || !logged_in?
+      - vote = current_user.vote_on(voteable)
       %form{:action=> url, :method=>'post', :class=>'vote_form'}
         = token_tag
         %ul.vote_box
           %li
-            %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1"}
+            %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1", :class => (vote && vote > 0) && "checked" }
           %li.votes_average
             = calculate_votes_average(voteable)
           %li
             = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-            %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1"}
+            %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1", :class => (vote && vote < 0) && "checked"}
     - else
       %ul.vote_box
         %li.votes_average
