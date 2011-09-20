@@ -675,4 +675,14 @@ namespace :fixdb do
       g.save
     end
   end
+
+  task :add_follow_reward => [:init] do
+    Group.all.each do |g|
+      g.reputation_rewards = g.
+        reputation_rewards.
+        merge({ "question_receives_follow" => 2,
+              "question_undo_follow" => -2})
+      g.save
+    end
+  end
 end

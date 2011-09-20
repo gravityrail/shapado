@@ -400,6 +400,7 @@ class Group
       [["vote_up_question", "undo_vote_up_question"],
        ["vote_down_question", "undo_vote_down_question"],
        ["question_receives_up_vote", "question_undo_up_vote"],
+       ["question_receives_follow", "question_undo_follow"],
        ["question_receives_down_vote", "question_undo_down_vote"],
        ["vote_up_answer", "undo_vote_up_answer"],
        ["vote_down_answer", "undo_vote_down_answer"],

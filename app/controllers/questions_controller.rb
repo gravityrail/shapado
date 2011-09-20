@@ -445,7 +445,6 @@ class QuestionsController < ApplicationController
   def follow
     @question = current_group.questions.by_slug(params[:id])
     @question.add_follower(current_user)
-    Jobs::Questions.async.on_question_followed(@question.id).commit!
     flash[:notice] = t("questions.watch.success")
 
     sweep_question(@question)
@@ -464,6 +463,7 @@ class QuestionsController < ApplicationController
   def unfollow
     @question = current_group.questions.by_slug(params[:id])
     @question.remove_follower(current_user)
+
     flash[:notice] = t("questions.unwatch.success")
 
     sweep_question(@question)
