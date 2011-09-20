@@ -152,7 +152,7 @@ Rails.application.routes.draw do
   end
 
   match 'questions/tags/:tags' => 'tags#show', :as => :question_tag
-  match 'questions/tagged/:tags' => redirect("/questions/tags/%{tags}"), :tags => /.+/ #support se url
+  match 'questions/tagged/:tags' => redirect { |params| "/questions/tags/#{params[:tags].gsub(' ', '+')}" }, :tags => /.+/ #support se url
 
   resources :groups do
     collection do
