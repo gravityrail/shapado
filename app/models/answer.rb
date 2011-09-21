@@ -57,7 +57,7 @@ class Answer
   after_destroy :update_question_last_target
 
   def update_question_last_target
-    self.question.update_last_target
+    self.question.update_last_target if self.question
   end
 
   def self.minimal
