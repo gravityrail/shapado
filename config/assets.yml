@@ -10,12 +10,11 @@ javascripts:
 
   modernizrdev:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
-    - public/javascripts/app/initializers/assets_dev.js
     - public/javascripts/vendor/jquery-1.6.4.js
     - public/javascripts/app/modules/jqmath.js
-  init_dev:
+  initdev:
     - public/javascripts/app/initializers/init_dev.js
-  modernizr:
+  modernizr_1:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/modules/jqmath.js
@@ -29,7 +28,7 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  base:
+  base_1:
     - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
     - public/javascripts/vendor/jqueryui.ricodigoComplete.js
