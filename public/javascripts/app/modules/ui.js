@@ -23,6 +23,13 @@ var Ui = {
         return false;
     });
 
+    $('#openid_url').parents('form').submit(function(){
+      var openid = $('#openid_url').val();
+      openid = openid.replace('http://','');
+      openid = openid.replace('https://','');
+      $('#openid_url').val(openid)
+    })
+
     Ui.sort_values('#group_language', 'option', ':last', 'text', null);
     Ui.sort_values('#user_language', 'option',  false, 'text', null);
     Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
