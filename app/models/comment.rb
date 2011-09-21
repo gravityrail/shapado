@@ -25,7 +25,7 @@ class Comment
   after_destroy :update_question_last_target
 
   def update_question_last_target
-    self.find_question.update_last_target
+    self.find_question.update_last_target  if self.find_question
   end
 
   def group
