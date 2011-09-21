@@ -685,4 +685,31 @@ namespace :fixdb do
       g.save
     end
   end
+
+  task :fix_last_target => [:init] do
+    total = Question.count
+    i=0
+    Question.all.each do |q|
+      p "#{i+=1}/#{total}"
+      last = q
+      q.answers.each do |a|
+        if last.updated_at < a.updated_at
+          last = a
+        end
+
+        a.comments.each do |c|
+          if last.updated_at < c.updated_at
+            last = c
+          end
+        end
+      end
+
+      q.comments.each do |c|
+        if last.updated_at < c.updated_at
+          last = c
+        end
+      end
+      Question.update_last_target(q.id, last)
+    end
+  end
 end
