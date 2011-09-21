@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   match '/change_language_filter' => 'welcome#change_language_filter', :as => :change_language_filter
   match '/register' => 'users#create', :as => :register
   match '/signup' => 'users#new', :as => :signup
-  match '/facts' => 'welcome#facts', :as => :facts
   match '/plans' => 'doc#plans', :as => :plans
   match '/chat' => 'doc#chat', :as => :chat
   match '/feedback' => 'welcome#feedback', :as => :feedback
@@ -39,6 +38,7 @@ Rails.application.routes.draw do
   mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
   mount BugHunter.app => ENV["BUGHUNTER_PATH"]
 
+  match '/facts' => redirect("/")
   match '/users/:id/:slug' => redirect("/users/%{slug}"), :as => :user_se_url, :id => /\d+/
   resources :users do
     collection do
