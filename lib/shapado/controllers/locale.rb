@@ -23,7 +23,7 @@ module Shapado
                 languages = [session["user.language_filter"]]
               end
             elsif params[:mylangs]
-              languages = params[:mylangs].split(' ')
+              languages = params[:mylangs].split('+')
             elsif params[:feed_token] && (feed_user = User.where(:feed_token => params[:feed_token]).first)
               languages = feed_user.languages_to_filter(current_group)
             end
