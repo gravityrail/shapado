@@ -14,7 +14,7 @@ javascripts:
     - public/javascripts/app/modules/jqmath.js
   initdev:
     - public/javascripts/app/initializers/init_dev.js
-  modernizr_2:
+  modernizr_3:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/modules/jqmath.js
@@ -28,7 +28,7 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  base_2:
+  base_3:
     - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
     - public/javascripts/vendor/jqueryui.ricodigoComplete.js
