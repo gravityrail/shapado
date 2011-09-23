@@ -1,7 +1,7 @@
 package_assets:         on          # (on, off, always)
 embed_assets:           datauri          # (on, off, datauri)
-compress_assets:        on         # (on, off)
-gzip_assets:            on         # (on, off)
+compress_assets:        off         # (on, off)
+gzip_assets:            off         # (on, off)
 template_function:      _.template  # (defaults to the built-in micro-templating)
 package_path:           packages    # (defaults to assets)
 javascript_compressor:  closure     # (yui, closure)
@@ -49,6 +49,7 @@ javascripts:
     - public/javascripts/app/modules/utils.js
     - public/javascripts/app/modules/votes.js
     - public/javascripts/app/modules/websocket.js
+    - public/javascripts/app/modules/groups.js
     - public/javascripts/app/modules/loader.js
     - public/javascripts/app/modules/updater.js
     - public/javascripts/app/modules/layout_editor.js
@@ -80,7 +81,6 @@ javascripts:
 
   extra:
     - public/javascripts/app/initializers/retag.js
-    - public/javascripts/app/modules/groups.js
     - public/javascripts/app/modules/users.js
     - public/javascripts/app/modules/members.js
     - public/javascripts/app/modules/searches.js
