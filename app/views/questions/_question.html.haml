@@ -1,4 +1,4 @@
--title = h(question.title)
+-title = question.title
 -if question.closed
   -title += " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
@@ -64,7 +64,7 @@
 
         -if question.accepted && question.answer
           %li.solution
-            = link_to t('questions.question.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'
+            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'
 
         -if !logged_in? || !current_user.mod_of?(current_group) && (current_user != question.user && current_user.has_flagged?(question).nil?)
           %li.spam
