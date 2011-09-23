@@ -1,7 +1,7 @@
 package_assets:         on          # (on, off, always)
 embed_assets:           datauri          # (on, off, datauri)
-compress_assets:        off         # (on, off)
-gzip_assets:            off         # (on, off)
+compress_assets:        on          # (on, off)
+gzip_assets:            on          # (on, off)
 template_function:      _.template  # (defaults to the built-in micro-templating)
 package_path:           packages    # (defaults to assets)
 javascript_compressor:  closure     # (yui, closure)
@@ -14,7 +14,7 @@ javascripts:
     - public/javascripts/app/modules/jqmath.js
   initdev:
     - public/javascripts/app/initializers/init_dev.js
-  modernizr_3:
+  modernizr_4:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/modules/jqmath.js
@@ -28,7 +28,7 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  base_3:
+  base_4:
     - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
     - public/javascripts/vendor/jqueryui.ricodigoComplete.js
@@ -79,7 +79,7 @@ javascripts:
     - public/javascripts/app/modules/themes.js
     - public/javascripts/application.js
 
-  extra:
+  extra_1:
     - public/javascripts/app/initializers/retag.js
     - public/javascripts/app/modules/users.js
     - public/javascripts/app/modules/members.js
