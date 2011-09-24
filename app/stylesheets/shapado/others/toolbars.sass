@@ -22,9 +22,17 @@
 
 // Article actions for home/lists/main content
 //-------------------------------------------------------------------------------------------------------------------
-.index .toolbar .answers a
-  font-weight: bold
-  margin: 0 5px 0 0
+.index 
+  .toolbar 
+    .solution a
+      background: url("/images/answer-winner-small.png") 5px 4px  no-repeat
+      padding-left: 25px
+      &:hover
+        background-color: #e9f4c7
+        color: #000
+    .answers a
+      font-weight: bold
+      margin: 0 5px 0 0
 
 // Question actions triggers for show/hide panbels into question show
 //-------------------------------------------------------------------------------------------------------------------

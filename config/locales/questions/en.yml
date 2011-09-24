@@ -38,7 +38,7 @@ en:
       more_actions: More actions
       answers: Answers
       another_answers: Other answers
-      solution: '✓ Solution'
+      solution: 'Solution'
       share: "Share this question on"
       share_on: "Share this question on %{site}"
       related_questions: Related questions
