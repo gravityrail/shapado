@@ -46,9 +46,9 @@
 
     .toolbar
       %ul.menubar
-        -if question.accepted && question.answer
+        -if question.accepted && question.answered
           %li.solution
-            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'      
+            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'
         %li.answers
           = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
@@ -69,7 +69,7 @@
           %li.spam
             = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
         = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
-        
+
       .panel-forms
 
     .clear
