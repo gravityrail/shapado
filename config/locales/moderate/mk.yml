@@ -5,6 +5,8 @@
 mk: 
   admin: 
     moderate: 
+      closing: 
+        title: Затвори прашање
       index: 
         all: сите
         ban: забрани
@@ -14,6 +16,8 @@ mk:
         item_title: наслов
         need_tags: преозначи
         title: модерирање
+      opening: 
+        title: Отвори прашање
   moderate: 
     questions: 
       flagged: 

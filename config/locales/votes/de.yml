@@ -22,6 +22,9 @@ de:
       to_vote_down: Hier für eine negative Bewertung klicken
       to_vote_up: Hier für eine positive Bewertung klicken
     create: 
+      average: 
+        one: Eine Stimme
+        other: "%{count} Stimmen"
       flash_error: Du kannst dies nicht bewerten
       flash_notice: Vielen Dank für Deine Bewertung!
       unauthenticated: Anonyme Nutzer können nicht bewerten

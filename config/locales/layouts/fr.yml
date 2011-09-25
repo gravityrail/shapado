@@ -9,13 +9,18 @@
 fr: 
   layouts: 
     application: 
+      all: Toutes
       ask_question: Posez une question
       badges: Insignes
       by_me: Par moi
+      collaborate: Collaborez
       contributed: Contribué
       faq: FAQ
+      follow_us_and_share: Suivez-nous et à partagez
+      followed: Suivie
       forgot: Oublié ?
       home: Accueil
+      join_group: Rejoignez %{group}
       languages: Langues
       log_in: Se connecter
       logged: Connecté %{login}
@@ -41,6 +46,7 @@ fr:
       users: Utilisateurs
       welcome_from: Bienvenue ! Vous pouvez
     manage: 
+      access: Accès
       actions: Actions
       announcements: Annonces
       appearance: Apparence
@@ -48,12 +54,19 @@ fr:
       content: Contenu
       dashboard: Dashboard
       domain: Domaine
+      edit_layout: Modifier la mise en page
       general: Général
+      group_features: Fonctionnalités
+      group_look_and_feel: Look & feel
+      group_user_management: Gestion des utilisateurs
+      invitations: Invitations
+      invoices: Factures
       members: Membres
       pages: Pages
       properties: Propriétés
       reputation: Réputation
       rewards: Récompenses
+      social: Social
       stats: États
       theme: Thème
       themes: Thèmes

@@ -55,6 +55,7 @@ fi:
       legend_legend: Sitä käytetään otsakkeessa. Käytettävissä on 40 merkkiä.
       logo_legend: Voit kopioida palvelimelle ryhmän logon. Tiedoston enimmäiskoko on 2 megatavua.
       members_only: Vain ryhmän jäsenet voivat käyttää tätä ryhmää
+      signup_email: Vain sähköpostiosoite (käyttäjät voivat kirjautua sisään sähköpostiosoite / salasana -yhdistelmällä)
       signup_noemail: Ei sähköpostiosoitetta eikä salasanaa (käyttäjät kirjautuvat OpenID:llä, Facebookilla tai Twitterillä)
       website_analytics_id: Verkkosivun analytiikkatunnus
     group: 

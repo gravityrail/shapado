@@ -53,7 +53,6 @@ el:
       title: Όλες οι ερωτήσεις
       unanswered_questions: αναπάντητες ερωτήσεις
       votes: Ψήφοι
-      votes_tooltip: Ερωτήσεις με τις περισσότερες ψήφους
     model: 
       messages: 
         empty_tags: Λυπούμαστε αλλά πρέπει να βάλετε τουλάχιστον μία ετικέτα.

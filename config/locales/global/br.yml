@@ -18,14 +18,18 @@ br:
     anonymous: Dizanv
     blog: Blog
     by: gant
+    by_semi: "Gant :"
     chat: Flap
     current: Red
+    edited: Kemmet
+    feedback: Sonjoù
     follow: Heuliañ
     following: O Heuliañ
     from: eus %{site}
     group_not_found: N'eus ket eus ar bajenn %{url}
     home: Degemer
     next_button: War-lerc'h
+    open: Digor
     or: pe
     permission_denied: Aotre nac'het
     please_login: Mar plij kevreit
@@ -41,13 +45,17 @@ br:
     unfollow: Chom hep heuliañ
     unknown_place: Dianav
     view: Gwelet
+    what_to_do: Petra hoc'h eus c'hoant d'ober ?
   models: 
     question: Ar goulenn
+  preferred_languages: 
+    user: Ma yezhoù karetañ
   roles: 
     moderator: Habasker
     owner: Perc'henn
   scaffold: 
     add: Ouzhpennañ
+    are_you_sure: Ha sur oc'h ?
     back: Distreiñ
     cancel: Nullañ
     close: Serriñ
@@ -66,3 +74,8 @@ br:
   time: 
     ago: "%{time} zo"
     today: hiziv
+    yesterday: dec'h
+  views: 
+    pagination: 
+      next: War-lerc'h &raquo;
+      previous: "&laquo; Kent"

@@ -25,11 +25,19 @@ be-TARASK:
   questions: 
     answer: 
       add_comment: Дадаць камэнтар…
+      favorite: Захаваць
+      favorite_tooltip: Дадаць гэты адказ у Вашыя ўлюблёныя
       flag: Пазначыць
       pick_answer: Выбраць у якасьці рашэньня
+      unfavorite: Незахаванае
+      unfavorite_tooltip: Выдаліць гэты адказ з Вашых улюблёных
       unset_answer: Адмяніць рашэньне?
+    answer_toolbar: 
+      flagged_by_you: Пазначаныя Вамі
     create: 
       flash_notice: Пытаньне было створанае пасьпяхова.
+    disallow_spam: 
+      error: Вам неабходна пачакаць 20 сэкундаў перад тым, як задаць іншае пытаньне.
     edit: 
       title: Рэдагаваньне пытаньня
     flag: 
@@ -39,6 +47,8 @@ be-TARASK:
       body_tip: Якое Вашае пытаньне? Зрабіце яго больш зразумелым.
       language_tip: Выберыце мову, на якой будзе задавацца пытаньне.
       tags_tip: Выкарыстоўвайце тэгі для дадатковай інфармацыі пра Вашае пытаньне.
+    history: 
+      back: ← вярнуцца да пытаньня
     index: 
       active: Актыўныя
       active_tooltip: Апошнія абноўленыя пытаньні
@@ -53,7 +63,6 @@ be-TARASK:
       title: Усе пытаньні
       unanswered_questions: Пытаньні без адказаў
       votes: Галасы
-      votes_tooltip: Пытаньні з найвялікшай колькасьцю галасоў
     model: 
       messages: 
         empty_tags: Прабачце, Вы павінны выкарыстаць хаця б адзін тэг.
@@ -72,6 +81,7 @@ be-TARASK:
       title: Задаць пытаньне
     question: 
       accepted_tooltip: Гэтае пытаньне мае прыняты адказ
+      wiki_title: "Вікі: %{title}"
     retag: 
       title: Зьмяніць тэг
     retag_form: 
@@ -93,11 +103,19 @@ be-TARASK:
       ban: Заблякаваць
       close: Закрыць
       close_reason: "Пытаньне было закрытае па наступнай прычыне:"
+      create_reward: Стварыць узнагароду
+      create_reward_description: Узнагародзіць лепшы адказ каб палепшыць Вашую карму.
       edit_request: Рэдагаваць запыт
       flag: Пазначыць
       flagged_as: Пазначанае як
       flags: Памечанае як
+      follow_tooltip: Сачыць за гэтым пытаньнем
+      follow_up: Сачыць
+      follow_up_description: Стварыць новае пытаньне заснаванае на гэтым паведамленьні.
+      follow_up_of: Гэтае пытаньне ўзьнікла пасьля
+      history: Гісторыя
       last_activity: Апошняя актыўнасьць
+      more_actions: Болей дзеяньняў
       open: Адкрыць
       related_questions: Зьвязаныя пытаньні
       request_closing: Запыт на закрыцьцё
@@ -113,6 +131,8 @@ be-TARASK:
       solution: Рашэньне
       to_answer_question: адказаць на гэтае пытаньне
       unauthenticated_retag: Вам неабходна мець рахунак каб зьмяняць тэгі пытаньняў
+      unban: Разблякаваць
+      unfollow_tooltip: Спыніць сачэньне за гэтым пытаньнем
       viewed: прагледжанае
     solve: 
       flash_notice: Пытаньне было вырашанае.
@@ -120,6 +140,11 @@ be-TARASK:
       filter: Пошук тэгаў
       title: Тэгі
       tooltip: Паказаць пытаньні з тэгам %{tag}
+    toolbar: 
+      answer_by_mail: Адказаць па электроннай пошце
+      more_actions: Болей дзеяньняў
+      requests: Запыты
+      your_close_request: Вашыя запыты на закрыцьцё
     unanswered: 
       empty: У гэтай групе няма пытаньняў без адказу.
       expert: Экспэрты

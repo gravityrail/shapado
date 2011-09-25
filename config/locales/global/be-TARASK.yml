@@ -19,6 +19,7 @@ be-TARASK:
     anonymous: Ананім
     blog: Блёг
     by: ад
+    by_semi: "Ад:"
     chat: Чат
     current: Цяперашняя
     edited: Рэдагаваны
@@ -30,6 +31,7 @@ be-TARASK:
     group_not_found: Старонка %{url} не існуе
     home: Пачатак
     next_button: Наступнае
+    open: Адкрыць
     or: ці
     permission_denied: Доступ забаронены
     please_login: Калі ласка, увайдзіце ў сыстэму
@@ -40,7 +42,6 @@ be-TARASK:
     sign_up: Зарэгістравацца
     size: Памер
     sort_by: "Сартаваць па:"
-    subjetive: суб’ектыўны
     tags_label: "Тэгі:"
     tos: Умовы абслугоўваньня
     unfollow: Не сачыць

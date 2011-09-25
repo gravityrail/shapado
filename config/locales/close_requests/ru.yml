@@ -18,6 +18,7 @@ ru:
       not_relevant: Несущественно
       ot: Не по теме
       request_closing_details: Запрос на закрытие этого вопроса
+      retract: Отозвать
       spam: спам
     index: 
       title: Список запросов на закрытие

@@ -5,6 +5,8 @@
 de: 
   admin: 
     moderate: 
+      closing: 
+        title: Frage schließen
       index: 
         all: alle
         ban: verbieten
@@ -14,6 +16,8 @@ de:
         item_title: Titel
         need_tags: Stichwörter ändern
         title: moderieren
+      opening: 
+        title: Frage öffnen
   moderate: 
     questions: 
       flagged: 

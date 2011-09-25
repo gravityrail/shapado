@@ -14,6 +14,9 @@ nl:
       appearance: 
         logo_legend: Een logo voor uw groep uploaden. Het moet kleiner zijn dan 2 MB.
         title: Kies uw thema en past het aan
+      close_group: 
+        description: Door de groep te sluiten kan niemand behave u er nog gebruik van maken.
+        feedback: "Geef aan waarom u de groep sluit:"
       content: 
         description: Maak aangepaste teksten en vormgevingen voor uw groep
         footer: Voettekst
@@ -41,14 +44,14 @@ nl:
           reputation_constrains_subtitle: Lijst van reputatiebeperkingen voor iedere handeling
           title: Beperkingen
         domain: 
-          description: "U kunt uw site zo inrichten dat deze toegankelijk is via uw eigen domein. Dat werkt zo:"
+          description: "U kunt een ander domein aan uw Shapadosite toewijzen zodat het toegankelijk zijn via uw eigen aangepaste domein. Dat werkt zo:"
           instruction1: Meld u eerst aan bij uw domeinprovider - dat is de site waar u uw domein zoals bijvoorbeeld %{subdomain}.com hebt gekocht
           instruction2: Ga daar naar de DNS-instellingen en maak aan wat een CNAME heet.
           instruction3: Kies "www" of wat u wilt als de naam van uw CNAME.
           instruction4: "Voer dan in het veld bestemming uw huidige Shapado-domein in: %{domain}."
           instruction5: Als dit is gedaan, dat duurt een uurtje of zo, wijst uw domein www.%{subdomain} naar %{appdomain}.
           instruction6: Als dit het geval is, kom hier dan terug en voer uw domeinnaan www.%{subdomain} in het veld hieronder in en klik op de knop "Bijwerken". Als u vragen hebt, stel die dan aan ons in de %{chat_url} of in het ondersteunigsforum.
-          title: Uw domein instellen
+          title: Uw aangepaste domein instellen
           warning: Weet u zeker dat u uw domein wilt wijzigen?
         facebook_app: 
           application_id: Applicatie-ID

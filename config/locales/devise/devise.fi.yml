@@ -26,6 +26,7 @@ fi:
         subject: Vahvistusohjeet
       hello: Hei
       reset_password: 
+        instruction1: Joku on pyytänyt linkin salasanan vaihtamiseksi. Voit tehdä tämän käyttämällä alla olevaa linkkiä.
         link: Salasanan vaihto
         nonrequested: Jos et pyytänyt tätä, älä reagoi tähän viestiin.
         warning: Salasanasi ei muutu ennen kuin käytät yllä olevaa linkkiä ja luot uuden salasanan.

@@ -72,7 +72,6 @@ de:
       title: Alle Fragen
       unanswered_questions: offener Fragen.
       votes: Bewertungen
-      votes_tooltip: Fragen mit den meisten Bewertungen
     model: 
       messages: 
         empty_tags: Du musst mindestens ein Stichwort verwenden.

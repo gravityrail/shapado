@@ -1,0 +1,8 @@
+# Messages for French (Français)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Patcito
+fr: 
+  activemodel: 
+    models: 
+      constrains_config: Configuration des contraintes de réputation

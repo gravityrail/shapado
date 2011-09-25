@@ -11,7 +11,7 @@ gl:
     shared: 
       add_comment: engadir un comentario...
       comment_submit: Comentar
-      reply: responder
+      reply: Responder
       said: dixo
     update: 
       flash_notice: O comentario actualizouse correctamente.

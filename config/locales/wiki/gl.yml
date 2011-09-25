@@ -15,7 +15,7 @@ gl:
       current_version: versión actual
       previous_versions: versións anteriores
       title: historial (%{count})
-      version: versión
+      version: Versión
       version_summary: resumo da versión
     model: 
       attributes: 

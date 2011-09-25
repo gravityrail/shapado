@@ -19,4 +19,5 @@ fi:
     create: 
       success: Ilmoituksen luonti onnistui.
     index: 
+      description: Hallitse ja luo uusia ilmoituksia, jotka näytetään kaikille sivuston kävijöille.
       title: Ilmoitukset

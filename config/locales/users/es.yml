@@ -60,18 +60,25 @@ es:
       submit: Guardar
       title: Configuración
     follow: 
-      flash_notice: El usuario %{user} fue añadido a su lista de amigos
+      flash_error: No se puede seguir a sí mismo.
+      flash_notice: Ya esta siguiendo a %{user}.
     form: 
       activities_notification: Recibir notificaciones via correo electronico sobre actividades del sistema tales como insignias ganadas, nuevos seguidores, etc.
       avatar_tip: Cambia tu imagen del perfil usando gravatar
+      desktop_notification: Notificaciones de escritorio
       give_advice_notification: Obtener notificaciones via correo electrónico sobre preguntas en su campo de experiencia.
       information: Información
       language: Idioma usado para la interfaz de la pagina
       new_answer_notification: Obtener notificaciones de nuevas respuestas por correo electrónico
       notifications: Notificaciones
       reports_notification: Recibir un reporte con las ultimas actividades del grupo (solo para administradores de grupo)
+      send_answers_to_twitter: Publicar mis respuestas en Twitter
+      send_badges_to_twitter: Publicar todas mis insignias recién ganadas en Twitter
       send_comments_to_twitter: Enviar mis comentarios a Twitter
+      send_favorites_to_twitter: Publicar mis respuestas favoritas en Twitter
+      send_questions_to_twitter: Publicar mis preguntas en Twitter
       show_more_lang: Mostrar más idiomas
+      social_interaction: Interacción por los medios sociales
     index: 
       empty: Este grupo no tiene miembros, participe para unirse a este grupo.
       filter: Busca usuarios
@@ -89,6 +96,8 @@ es:
       errors: 
         reputation_needed: Necesitas una reputación de %{min_reputation} para %{action}
     new: 
+      description: Sea parte de esta comunidad para preguntar, responder y aprender!
+      join_group: Únase a %{group}
       submit: Registrarse
       title: Registrar un nuevo usuario
     show: 
@@ -101,6 +110,7 @@ es:
       views: vistas
     top_user: 
       connect: Conectar
+      my_karma: "Mi karma: %{karma}"
       profile: Perfil
     unfollow: 
       flash_notice: Ya no estás siguiendo a %{user}.
@@ -109,3 +119,11 @@ es:
         flash_notice: Ahora estás siguiendo la etiqueta %{tag}.
       unfollowed: 
         flash_notice: Ya no estás siguiendo la etiqueta %{tag}.
+    user_bar: 
+      create_account: Crear una cuenta
+      not_logged_in: No ha iniciado sesión
+      signed_as: Conectase como
+    user_mini: 
+      admin: "[ Administrador ]"
+      editor: "[ Editor ]"
+      mod: "[ Moderador ]"

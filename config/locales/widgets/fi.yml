@@ -19,6 +19,8 @@ fi:
       title: Kysymyksen avustajat
     create: 
       notice: Vimpaimen luominen onnistui.
+    custom_html: 
+      description: Lisää mitä tahansa HTML:ää tänne.
     edit: 
       title: Muokkaa Widgetiä
     group_networks: 
@@ -27,6 +29,7 @@ fi:
       description: Tämä ikkunaolio näyttää äskettäiset ryhmät
       title: Äskettäiset ryhmät
     index: 
+      add_new: Lisää uusi widget
       description: Käytä nuolinäppäimiä ikkunaolioitesi siirtämiseen
       external_widgets: Ulkoinen
       footer: Alatunniste
@@ -49,13 +52,16 @@ fi:
       title: Aiheeseen liittyvät kysymykset
     settings: 
       code: "Kopioi ja liitä tämä koodi sivustoosi tai blogiin, kuten text widgetiin Wordpressissä:"
+      custom_html: "Mukautettu HTML:"
       limit: "Määrä:"
       on_welcome: Näytä Tervetuloa-sivulla
+      preview: "Widgetin esikatselu:"
     share: 
       title: jaa
     sharing_buttons: 
       title: Jaa tämä
     suggestions: 
+      follow_tag: + Seuraa tunnistetta
       follow_user: + Seuraa käyttäjää
       followed_by: Seuraaja %{user}
     tag_cloud: 

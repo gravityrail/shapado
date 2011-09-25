@@ -49,7 +49,6 @@ it:
       title: Gestione widget della barra laterale
       type: "Tipo:"
       welcome_widgets: Benvenuto
-      welcome_widgets_title: Widget che appariranno sulla pagina di benvenuto /
       zone: "Sezione della pagina:"
     mod_info: 
       description: Questo widget mostra le informazioni utili ai moderatori, come le bandiere e le richieste di reporting.

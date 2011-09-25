@@ -17,6 +17,7 @@ fi:
       answers: Vastaukset
   answers: 
     create: 
+      annon_notice: Käyttäjä on jo rekisteröitynyt, kirjaudu sisään.
       flash_error: "Vastauksen lisääminen epäonnistui.\nMuistathan, että:\n- Tyhjiä ja toistuvia vastauksia ei sallita\n- Sinun on odotettava 20 sekuntia ennen toisen vastauksen lähettämistä.\n- Voit vain lähettää yhden vastauksen per kysymys."
       flash_notice: Kiitos!
     edit: 

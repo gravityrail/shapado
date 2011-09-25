@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
 # Author: Raspi
 fi: 
   searches: 
@@ -12,6 +13,7 @@ fi:
     index: 
       advanced_search: Laajennettu haku
       empty: Hakusi ei täsmää mihinkään kysymykseen.
+      found_results: "%{quantity} tulosta löytyi."
       input_title: "Tallenna hakusi:"
       search_text: Kysymykset, jotka sisältävät
       tags: näiden tunnisteiden sisällä

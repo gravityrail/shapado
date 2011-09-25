@@ -75,7 +75,6 @@ it:
       title: Tutte le domande
       unanswered_questions: Senza risposta
       votes: Voti
-      votes_tooltip: Domande con più voti
     model: 
       messages: 
         empty_tags: È necessario aggiungere almeno un tag.

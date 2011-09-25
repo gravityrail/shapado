@@ -104,6 +104,11 @@ fi:
       profile: Profiili
     unfollow: 
       flash_notice: Käyttäjä %{user} poistettiin ystävistäsi
+    update_followed_tags: 
+      followed: 
+        flash_notice: Seuraat nyt tunnistetta %{tag}
+      unfollowed: 
+        flash_notice: Et enää seuraa tunnistetta %{tag}
     user_bar: 
       create_account: Luo käyttäjätunnus
       not_logged_in: Et ole kirjautunut sisään

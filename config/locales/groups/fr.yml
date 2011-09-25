@@ -8,6 +8,7 @@ fr:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Limite quotidienne
         default_tags: Tags par défaut
         description: Description
         domain: Domaine
@@ -23,6 +24,7 @@ fr:
         name: Name
         owner: ce groupe a été crée par %{login}
         registered_only: Seules les personnes autorisées ont accès au site
+        signup_type: Quelles méthodes vos utilisateurs peuvent utiliser s'inscrire
         state: État
         subdomain: URL
         wysiwyg_editor: Activer l'éditeur de texte convivial (présente à l'écran tel qu'à l'écrit)
@@ -30,10 +32,17 @@ fr:
       default_tags_message: Vous ne pouvez pas utiliser plus de 10 tags par défaut.
       group: Groupe
       groups: Groupes
+      reputation_rewards_answer_constrain: La contrainte pour répondre à une récompense doit être négative
+      reputation_rewards_ask_constrain: La contrainte pour poser une question devrait être négative.
       reputation_rewards_key: Clé invalide
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Désolé, quelque chose s'est mal passé. Essayez à nouveau s'il vous plaît.
+      success_twitter_connection: Félicitations, vous avez connecté votre compte Twitter avec succès !
     create: 
       flash_notice: Votre groupe a été créé avec succès, vous pouvez maintenant commencer à le configurer.
+    edit: 
+      title: Modifier votre groupe
     form: 
       access: Configuration de l'accès
       analytics_engine: Moteur d’analyse
@@ -48,6 +57,10 @@ fr:
       legend_legend: Ceci sera utilisé dans l'entête, vous disposez de 40 caractères
       logo_legend: Vous pouvez télécharger le logo du groupe. la taille maximum est de 2mb.
       members_only: Seuls les membres du groupe pourront accéder à ce groupe
+      signup_all: Toute (les utilisateurs peuvent s'inscrire avec une adresse e-mail, OpenID, Facebook, Twitter, etc)
+      signup_email: Courrier électronique uniquement (les utilisateurs ne peuvent se connecter qu'avec leur adresse email / mot de passe)
+      signup_noemail: Toute sauf adresse email / mot de passe (les utilisateurs peuvent se connecter avec OpenID, Facebook, Twitter)
+      signup_social: Sociale seulement (les utilisateurs ne peuvent s'inscrire qu'avec Facebook, Twitter, LinkedIn et Identica)
       website_analytics_id: Identifiant d’analyse du site web
     group: 
       about: À propos
@@ -58,6 +71,8 @@ fr:
       disallow_ads: Interdire la publicité
     index: 
       actives: Actifs
+      create_your_own: créer votre propre groupe
+      description: Ceci est la liste des groupes publics qui ont été créés. Utilisez l'entrée de recherche ci-dessous pour filtrer les groupes. Vous pouvez aussi %{link}.
       filter: Chercher les groupes
       most_active: Plus actifs
       name: Nom
@@ -74,3 +89,7 @@ fr:
       group_closed: Ce groupe a été fermé.
       title: À propos de %{name}
       visit_group: Visiter ce groupe
+    top_grouplist: 
+      active_site: "Site actif :"
+    update: 
+      notice: Votre groupe a été actualisé avec succès.
