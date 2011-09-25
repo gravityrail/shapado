@@ -6,7 +6,9 @@ en:
       flash_notice: "Your invitation has been revoked successfully."
     create:
       flash_notice: "Your invitations were sent successfully."
-      limit_notice: "Sorry, you cannot send more then %{limit} invitations at a time."
+      limit_notice:
+        one: "Sorry, you cannot send more then %{limit} invitation at a time."
+        other: "Sorry, you cannot send more then %{limit} invitations at a time."
     accept:
       welcome: Welcome
       description: %{group} is an ever improving collection of questions and answers about any topic.
