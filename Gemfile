@@ -7,7 +7,7 @@ gem 'rails', '3.0.10'
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
 
-  # gem "ruby-stemmer", "~> 0.8.2", :require => "lingua/stemmer"
+  gem "ruby-stemmer", "~> 0.8.2", :require => "lingua/stemmer"
   gem "sanitize", "1.2.1"
 
   gem 'magic'
