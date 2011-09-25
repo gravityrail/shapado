@@ -18,6 +18,7 @@ fr:
       not_relevant: N'est pas pertinente
       ot: Hors sujet
       request_closing_details: Demander la fermeture de cette question
+      retract: Rétractez-vous
       spam: spam
     index: 
       title: Liste des demandes de fermeture

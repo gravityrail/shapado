@@ -53,7 +53,6 @@ es-419:
       title: Todas las preguntas
       unanswered_questions: Preguntas sin contestar
       votes: Votos
-      votes_tooltip: Preguntas más votadas
     model: 
       messages: 
         empty_tags: Disculpa, debes usar al menos una etiqueta.

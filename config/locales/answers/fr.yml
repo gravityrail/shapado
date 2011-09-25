@@ -17,6 +17,7 @@ fr:
       answers: Réponses
   answers: 
     create: 
+      annon_notice: L'utilisateur est déjà enregistré, veuillez s'il vous plait vous connecter.
       flash_error: "Une erreur s'est produite lors de l'ajout de votre question. \n  N'oubliez pas que : \n - Les réponses vides de contenu ou les doublons ne sont pas autorisés. \n - Vous devez attendre au moins 20 secondes avant de poster une autre réponse. \n - Vous ne pouvez poster qu'une réponse par question."
       flash_notice: Merci !
     edit: 

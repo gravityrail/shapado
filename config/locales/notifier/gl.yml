@@ -4,12 +4,22 @@
 # Author: Toliño
 gl: 
   notifier: 
+    admin_login: 
+      message1: O usuario %{user} conectouse como administrador o %{time} co enderezo IP %{ip}.
+      subject: "Alerta: Conexión de administrador"
+    created_flag: 
+      message1: Recibiu esta mensaxe porque é moderador de %{group}.
+      message2: "Informouse dunha mensaxe polo seguinte motivo:"
+      message2bis: Pode ler aquí a mensaxe da que se informou.
+      message2bistext: "Pode ler a mensaxe marcada premendo na seguinte ligazón:"
+      message3: "Ir á páxina de moderación para ver a lista de elementos marcados:"
+      message4: Visitar a páxina de moderación para ver a lista de elementos marcados.
     earned_badge: 
       message1: Conseguiu unha insignia %{badge} en %{app}
       message2: "Descrición da insignia:"
       message3: Pode ollar todas as insignias que ten na súa %{user_page}
     favorited: 
-      message1: "%{user} engadiu a súa pregunta de %{group} aos favoritos"
+      message1: "%{user} gardou a pregunta que fixo en %{group} nos favoritos"
       message2: "A pregunta era:"
       message3: "Pode vela aquí:"
     follow: 
@@ -34,6 +44,9 @@ gl:
       message3: "Enderezo de correo electrónico: %{email}"
       message4: "Asunto: %{subject}"
     new_invitation: 
+      message1: Prema aquí para aceptar a invitación %{link}
+      message2: O equipo %{group}.
+      message3: "Unha mensaxe da persoa que o convidou:"
       subject: "%{user} convidouno a unirse a %{group}"
     report: 
       message1: Informe sobre o grupo %{group}

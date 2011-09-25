@@ -7,9 +7,14 @@ gl:
     manage: 
       access: 
         title: Acceso
+      answers: 
+        banning: 
+          title: Prohibir unha resposta
       appearance: 
         logo_legend: Suba un logo para o seu grupo. Non pode exceder os 2MB.
+        title: Escolla e personalice o seu tema visual
       content: 
+        description: Configure o seu grupo con texto e estilo personalizados
         footer: Pé de páxina
         head: cabeceira
         question_help: Axuda sobre as preguntas
@@ -19,6 +24,7 @@ gl:
         top_bar_tip: Insira unha ligazón por liña
       invitations: 
         invitations: Invitacións enviadas
+        invitations_title: Lista de todas as invitacións que enviou
         invite: Convidar xente
         invite_title: Convidar xente por correo electrónico
         title: Invitacións
@@ -46,6 +52,7 @@ gl:
         facebook_app: 
           application_id: ID da aplicación
           facebook_app: Configuración da aplicación do Facebook
+          legend: Pode configurar a súa aplicación do Facebook. Isto usarase para rexistrar aos seus usuarios mediante as súas contas do Facebook. Teña en conta que isto é só necesario se está a empregar un dominio personalizado.
           secret_key: Clave secreta
         general: 
           title: Propiedades do grupo
@@ -53,10 +60,22 @@ gl:
           resend_button: Reenviar
           revoke_button: Revogar
         invite: 
+          body_instructions: Escriba unha mensaxe ás persoas que está convidando (opcional)
+          body_length_warning: O corpo non pode superar os 400 caracteres
+          emails_instructions: Escriba os enderezos de correo electrónico separados por comas
           invitations: Invitacións enviadas
           invite: Convidar xente
           title: Convidar xente por correo electrónico
           user_role: Convidar usuarios como
+        post_to_twitter: 
+          legend: Esta páxina permite configurar o que envía ao Twitter. A conta usada é <a href="http://twitter.com/%{twitter_account}">@%{twitter_account}</a>; se quere utilizar outra conta, prema <a href="%{link}">aquí</a>.
+          legend_connect: Esta páxina permite configurar o que envía ao Twitter. Ten que especificar unha conta do Twitter primeiro, prema <a href="%{link}">aquí</a> para facelo.
+          post_to_twitter: Publicar a miña actividade no Twitter
+          send_answers_to_twitter: Enviar todas as respostas ao Twitter
+          send_badges_to_twitter: Enviar todas as novas insignias ao Twitter
+          send_comments_to_twitter: Enviar todos os comentarios ao Twitter
+          send_favorites_to_twitter: Enviar todas as respostas favoritas ao Twitter
+          send_questions_to_twitter: Enviar todas as preguntas ao Twitter
         rewards: 
           reputation_rewards_description: Este formulario permítelle configurar o xeito de que os usuarios gañen e perdan puntos de reputación por unha determinada acción
           reputation_rewards_subtitle: Lista de recompensas por reputación
@@ -72,16 +91,32 @@ gl:
           tweet_starts_with: Antepor unha etiqueta aos seus chíos
         title: Propiedades do grupo
         twitter_account: 
+          connect_to_other_twitter: Prema aquí para conectar unha conta do Twitter diferente co seu grupo
+          connect_to_twitter: Prema aquí para conectar unha conta do Twitter co seu grupo
+          disconnect_twitter_group: Desconectar este grupo do Twitter
+          legend: Esta conta empregarase para publicar as novas preguntas e respostas no Twitter.
+          legend_with_account: A súa conta do Twitter <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> usarase para enviar as novas preguntas e respostas ao Twitter. Pode configurar o que se envía ao Twitter <a href="%{link}">aquí</a>.
           twitter_account: Conta do Twitter
         twitter_app: 
           key: Clave da aplicación
+          secret: Segredo da aplicación
+          twitter_app: Aplicación do Twitter
       questions: 
         banning: 
           title: Prohibir a pregunta
       social: 
+        ask_from_twitter: Preguntar desde o Twitter
+        ask_from_twitter_title: Permite que os seus usuarios fagan preguntas desde o Twitter
+        description: Conecte o seu grupo coas súas redes sociais
+        facebook_app: Aplicación do Facebook
+        facebook_app_title: Configure a aplicación do Facebook que se usará para permitir aos seus usuarios acceder coas súas contas do Facebook
+        post_to_twitter: Publicar no Twitter
+        post_to_twitter_title: Publicar automaticamente todas as preguntas e respostas no Twitter
         tag_your_tweets: Etiquetar os seus chíos
         tag_your_tweets_title: Engadir etiquetas aos seus chíos
+        title: Interacción coas redes sociais
         twitter_account: Conta do Twitter
+        twitter_account_title: Configure a conta do Twitter que se usará para publicar no Twitter
       top_admin: 
         site: Sitio
         title: Administrador

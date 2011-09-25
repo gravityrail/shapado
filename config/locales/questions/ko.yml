@@ -52,7 +52,6 @@ ko:
       title: 모든 질문들
       unanswered_questions: 답변이 없는 질문들
       votes: 투표
-      votes_tooltip: 표를 많이 받은 질문들
     model: 
       messages: 
         empty_tags: 죄송합니다. 태그를 사용해야 합니다.

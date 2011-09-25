@@ -12,7 +12,9 @@ fi:
   votes: 
     comments: 
       title: 
+        more_votes_user: Sinä ja %{votes} muuta käyttäjää on äänestänyt tätä kommenttia.
         no_user_no_vote: Äänestä tätä kommenttia napsauttamalla.
+        one_vote_two_users: Sinä ja yksi muu käyttäjä on äänestänyt tätä kommenttia.
         one_vote_user: Vain sinä olet äänestänyt tätä kommenttia.
     control: 
       have_voted_down: Peru hylkäämisäänesi napsauttamalla
@@ -20,6 +22,9 @@ fi:
       to_vote_down: Anna hylkäämisääni napsauttamalla
       to_vote_up: Anna kannatusääni napsauttamalla
     create: 
+      average: 
+        one: "%{count} ääni"
+        other: "%{count} ääntä"
       flash_error: Et voi äänestää tässä
       flash_notice: Kiitos äänestäsi!
       unauthenticated: Anonyymit käyttäjät eivät voi äänestää

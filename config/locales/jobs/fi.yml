@@ -1,0 +1,16 @@
+# Messages for Finnish (Suomi)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Raspi
+fi: 
+  jobs: 
+    answers: 
+      on_create_answer: 
+        group_send_twitter: "%{user} vastasi: %{question}"
+        send_twitter: Vastaukseni kysymykseen %{question}
+      on_favorite_answer: 
+        send_twitter: "Pidin käyttäjän %{author} vastauksesta kysymykseen: %{question}"
+    comments: 
+      on_comment: 
+        group_on_comment: "%{user} kommentoi kysymykseen: %{question}"
+        send_twitter: Kommenttini kysymykseen %{question}

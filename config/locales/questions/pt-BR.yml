@@ -54,7 +54,6 @@ pt-BR:
       title: Todas as perguntas
       unanswered_questions: Perguntas sem resposta
       votes: Votos
-      votes_tooltip: Perguntas com mais votos
     model: 
       messages: 
         empty_tags: Desculpe, você tem que usar pelo menos uma tag.

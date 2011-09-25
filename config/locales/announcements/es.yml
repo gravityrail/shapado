@@ -18,4 +18,5 @@ es:
     create: 
       success: Tu anuncio se ha creado correctamente.
     index: 
+      description: Manejar y crear nuevos anuncios que se mostrarán en todo el sitio a sus visitantes.
       title: Anuncios

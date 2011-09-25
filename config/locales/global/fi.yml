@@ -33,6 +33,7 @@ fi:
     group_not_found: Sivua %{url} ei ole olemassa
     home: Etusivu
     next_button: Seuraava
+    open: Avaa
     or: tai
     permission_denied: Käyttö estetty
     please_login: Kirjaudu sisään
@@ -43,7 +44,6 @@ fi:
     sign_up: Rekisteröidy
     size: Koko
     sort_by: "Lajitteluperuste:"
-    subjetive: subjektiivinen
     tags_label: "Tunnisteet:"
     tos: Palvelun säännöt
     unfollow: Lopeta seuraaminen

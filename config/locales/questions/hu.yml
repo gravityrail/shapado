@@ -52,7 +52,6 @@ hu:
       title: Az összes kérdés
       unanswered_questions: Megválaszolatlan kérdések
       votes: szavazat
-      votes_tooltip: A legtöbb szavazattal rendelkező kérdések
     model: 
       messages: 
         empty_tags: Sajnáljuk, legalább egy címkét használnod kell.

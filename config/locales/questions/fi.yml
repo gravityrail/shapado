@@ -67,7 +67,6 @@ fi:
       title: Kaikki kysymykset
       unanswered_questions: Vastaamattomat kysymykset
       votes: Äänet
-      votes_tooltip: Kysymykset, joilla on eniten ääniä
     model: 
       messages: 
         empty_tags: Anteeksi, sinun täytyy käyttää vähintään yhtä tunnistetta.

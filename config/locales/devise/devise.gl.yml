@@ -17,16 +17,22 @@ gl:
       unconfirmed: Debe confirmar a súa conta antes de continuar.
     mailer: 
       confirm_account: 
+        instruction1: "Pode confirmar a súa conta a través da seguinte ligazón:"
         link: Confirmar a conta
         welcome: Benvido
       confirmation_instructions: 
         subject: Instrucións de confirmación
       hello: Ola
       reset_password: 
+        instruction1: Alguén pediu unha ligazón para cambiar o seu contrasinal; pode facelo a través da seguinte.
         link: Cambiar o contrasinal
+        nonrequested: Se non solicitou isto, ignore este correo.
+        warning: O seu contrasinal non vai cambiar ata que acceda á ligazón anterior e cree un novo.
       reset_password_instructions: 
         subject: Instrucións de restablecemento do contrasinal
       unlock: 
+        instruction1: A súa conta foi bloqueada debido a unha cantidade excesiva de intentos de rexistro sen éxito.
+        instruction2: "Prema na seguinte ligazón para desbloquear a súa conta:"
         link: Desbloquear a miña conta
       unlock_instructions: 
         subject: Instrucións de desbloqueo

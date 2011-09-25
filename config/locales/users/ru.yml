@@ -85,11 +85,12 @@ ru:
       submit: Зарегистрироваться
       title: Зарегистрироваться как новый пользователь
     show: 
-      follow: Следить
-      followers: Последователи
-      following: Отслеживание
+      edit_profile: Изменить профиль
+      follow: Подписаться
+      followers: Подписчики
+      following: Подписки
       title: Пользователь %{user}
-      unfollow: Не следить
+      unfollow: Отменить подписку
       views: просмотры
     unfollow: 
       flash_notice: Пользователь %{user} удалён из списка ваших друзей

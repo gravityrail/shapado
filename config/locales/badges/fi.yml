@@ -126,6 +126,7 @@ fi:
         description: Kysyi kysymyksen, jota on katsottu 1000 kertaa
         name: Suosittu kysymys
       promoter: 
+        description: Ensimmäinen palkinto, jonka tarjosit omaan kysymykseesi
         name: Edistäjä
       rockstar: 
         description: On 100 myönteistä ääntä, enintään 10 kielteistä

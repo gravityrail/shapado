@@ -33,7 +33,6 @@ ia:
       question_widgets_title: Widgets que apparera in cata pagina de question
       title: Administrar widgets del barra lateral
       welcome_widgets: Benvenite
-      welcome_widgets_title: Widgets que apparera in le pagina de benvenita /
     mod_info: 
       description: Iste widget monstra information relevante al moderatores como marcationes e requestas de reportage.
     pages: 

@@ -61,7 +61,6 @@ ia:
       title: Tote le questiones
       unanswered_questions: Questiones sin responsa
       votes: Votos
-      votes_tooltip: Questiones con le plus grande numero de votos
     model: 
       messages: 
         empty_tags: Es obligatori usar al minus un etiquetta.

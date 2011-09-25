@@ -5,6 +5,8 @@
 ms: 
   admin: 
     moderate: 
+      closing: 
+        title: Soalan tertutup
       index: 
         all: Semua
         ban: Larang
@@ -14,6 +16,8 @@ ms:
         item_title: Tajuk
         need_tags: Tag semula
         title: Kawal selia
+      opening: 
+        title: Soalan terbuka
   moderate: 
     questions: 
       flagged: 

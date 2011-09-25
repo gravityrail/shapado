@@ -14,6 +14,7 @@ ms:
       answers: Jawapan
   answers: 
     create: 
+      annon_notice: Pengguna inin sudah berdaftar, sila log masuk.
       flash_error: "Ada yang tak kena dengan jawapan anda.\nIngat:\n- Jawapan yang kosong atau diulang tidak dibenarkan\n- Anda perlu menunggu 20 saat sebelum mengirim soalan lagi.\n- Anda hanya boleh mengirim satu jawapan untuk satu soalan."
       flash_notice: Terima kasih!
     edit: 

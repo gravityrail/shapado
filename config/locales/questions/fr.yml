@@ -61,7 +61,6 @@ fr:
       title: Toutes les questions
       unanswered_questions: Questions sans réponse
       votes: Votes
-      votes_tooltip: Les questions les plus votées
     model: 
       messages: 
         empty_tags: Désolé, vous devez utiliser au moins un tag.
@@ -81,6 +80,9 @@ fr:
     question: 
       accepted_tooltip: Cette question a été répondu correctement
       answer_verb: Répondre
+      has_answers: 
+        one: "%{count} réponse"
+        other: "%{count} réponses"
       wiki_title: "Wiki : %{title}"
     retag: 
       title: Modifier les tags

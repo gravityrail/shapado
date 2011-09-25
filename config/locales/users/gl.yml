@@ -56,17 +56,25 @@ gl:
       submit: Gardar
       title: Configuracións
     follow: 
+      flash_error: Non pode seguirse a si mesmo.
       flash_notice: Agora xa está seguindo a %{user}.
     form: 
       activities_notification: Recibir notificacións por correo electrónico sobre as actividades do sistema, como ganancia de insignias, novos seguidores etc.
       avatar_tip: Cambiar a imaxe do seu perfil usando o gravatar
+      desktop_notification: Notificacións no escritorio
       give_advice_notification: Recibir notificacións por correo electrónico sobre as preguntas ligadas co seu campo de experiencia
       information: Información
       language: Lingua empregada na interface do sitio
       new_answer_notification: Recibir notificacións por correo electrónico sobre novas respostas
       notifications: Notificacións
       reports_notification: Recibir un informe coas últimas actividades do grupo (soamente para o administrador do grupo)
+      send_answers_to_twitter: Enviar as miñas respostas ao meu Twitter
+      send_badges_to_twitter: Enviar as miñas novas insignias ao meu Twitter
+      send_comments_to_twitter: Enviar os meus comentarios ao meu Twitter
+      send_favorites_to_twitter: Enviar as miñas respostas favoritas ao meu Twitter
+      send_questions_to_twitter: Enviar as miñas preguntas ao meu Twitter
       show_more_lang: Mostrar máis linguas
+      social_interaction: Interacción coas redes sociais
     index: 
       empty: Este grupo aínda non conta con ningún membro. Únase a el.
       filter: Procurar usuarios
@@ -84,6 +92,7 @@ gl:
       errors: 
         reputation_needed: Necesita unha reputación de %{min_reputation} para poder %{action}
     new: 
+      description: Sexa parte desta comunidade para preguntar, responder e aprender!
       join_group: Unirse a %{group}
       submit: Rexístrese
       title: Rexístrese como novo usuario
@@ -101,6 +110,11 @@ gl:
       profile: Perfil
     unfollow: 
       flash_notice: Xa non está seguindo a %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Agora xa está seguindo a etiqueta %{tag}.
+      unfollowed: 
+        flash_notice: Xa non está seguindo a etiqueta %{tag}.
     user_bar: 
       create_account: Crear unha conta
       not_logged_in: Non accedeu ao sistema

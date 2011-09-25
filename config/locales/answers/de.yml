@@ -15,6 +15,7 @@ de:
       answers: Antworten
   answers: 
     create: 
+      annon_notice: Der Nutzer ist bereits registriert. Bitte anmelden.
       flash_error: "Beim Antworten ist ein Fehler aufgetreten. Bitte beachte:\n- leere Antwortfelder sowie identische Antworttexte sind nicht möglich\n- bevor eine weitere Antwort gespeichert werden kann, muss 20 Sekunden gewartet werden\n- es kann von einer einzelnen Person nur eine Antwort pro Frage erstellt werden"
       flash_notice: Vielen Dank!
     edit: 

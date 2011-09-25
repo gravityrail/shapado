@@ -55,7 +55,6 @@ ru:
       title: Все вопросы
       unanswered_questions: Вопросы без ответов
       votes: Голоса
-      votes_tooltip: Вопросы с наибольшим числом голосов
     model: 
       messages: 
         empty_tags: Необходимо указать хотя бы один тег.

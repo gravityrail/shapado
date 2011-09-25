@@ -74,9 +74,12 @@ fi:
         share: 
           title: Jaa
         tag_your_tweets: 
+          add_tags: Lisää tunnisteet twitter-sanomiisi
           ends_with_example: "esim. #shapado"
           starts_with_example: "esim. #qa"
           title: Merkitse tweettisi
+          tweet_ends_with: Liitä tunniste twitter-viestiesi loppuun
+          tweet_starts_with: Liitä tunniste twitter-viestiesi alkuun
         title: Ryhmän ominaisuudet
         twitter_account: 
           connect_to_twitter: Kytke Twitter-tili ryhmään napsauttamalla tästä
@@ -90,6 +93,7 @@ fi:
         ask_from_twitter: Kysy Twitterissä
         facebook_app: Facebook-ohjelma
         post_to_twitter: Lähetä Twitteriin
+        tag_your_tweets: Merkitse tweettisi tunnisteilla
         twitter_account: Twitter-tili
       top_admin: 
         site: Sivusto
