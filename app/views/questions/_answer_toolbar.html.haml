@@ -14,7 +14,10 @@
         %li
           - unless question.accepted && !question.subjetive
             = link_to t("questions.answer.pick_answer"), solve_question_path(question, :answer_id => answer)
-    
+          - else
+            = link_to t("questions.answer.unset_answer"), unsolve_question_path(question, :answer_id => answer)
+
+
 
       - if answer.favorite_for?(current_user)
         %li
