@@ -11,7 +11,7 @@
               %b
                 = link_to h(user.login), user_path(user), :class => "pjax", :"data-layout" => "user"
               %small
-                Reputation:
+                = t(:reputation, :scope => "activerecord.attributes.user")
                 ==#{user.reputation_on(current_group)}
 
   %footer
