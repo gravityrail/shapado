@@ -3,15 +3,15 @@
   - url_options = {"controller" => "activities", "action" => "index"}
   %li.all
     -#i18n
-    = pjax_link_to "All", "index", activities_path(:context => params[:context]), {:rel => "nofollow"}
+    = pjax_link_to t('layouts.application.all'), "index", activities_path(:context => params[:context]), {:rel => "nofollow"}
   %li.questions
-    = pjax_link_to "Questions", "index", activities_path(:tab=>"questions", :context => params[:context]), {:rel => "nofollow"}
+    = pjax_link_to t('layouts.application.questions'), "index", activities_path(:tab=>"questions", :context => params[:context]), {:rel => "nofollow"}
   %li.answers
-    = pjax_link_to "Answers", "index", activities_path(:tab=>"answers", :context => params[:context]), {:rel => "nofollow"}
+    = pjax_link_to t('activerecord.models.answers'), "index", activities_path(:tab=>"answers", :context => params[:context]), {:rel => "nofollow"}
   %li.users
-    = pjax_link_to "Users", "index", activities_path(:tab=>"users", :context => params[:context]), {:rel => "nofollow"}
+    = pjax_link_to t('layouts.application.users'), "index", activities_path(:tab=>"users", :context => params[:context]), {:rel => "nofollow"}
   %li.pages
-    = pjax_link_to "Pages", "index", activities_path(:tab=>"pages", :context => params[:context]), {:rel => "nofollow"}
+    = pjax_link_to t('layouts.application.pages'), "index", activities_path(:tab=>"pages", :context => params[:context]), {:rel => "nofollow"}
 
 .activities
   - questions_link =  questions_link_for(params[:context])
