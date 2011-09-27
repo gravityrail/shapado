@@ -29,8 +29,6 @@
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
     .description.markdown
-
-
       %div{:itemprop => "articleBody"}
         = question_body
       = render "reward_info"
@@ -56,7 +54,7 @@
       =link_to "NN comments", "#", :class => "toggle_comments"
       -@question.comments.each do |comment|
         -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => @question, :mini => true, :read => read}
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => question_path(@question), :mini => true, :read => read}
 
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|

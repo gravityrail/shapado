@@ -4,9 +4,9 @@ var Ui = {
       Effects.initialize();
     }
 
-     var languages_filter = $(".languages_filter form")
-      languages_filter.find(".buttons").hide();
-      languages_filter.find("#language_filter").change(function(){
+    var languages_filter = $(".languages_filter form")
+    languages_filter.find(".buttons").hide();
+    languages_filter.find("#language_filter").change(function(){
       submit = languages_filter.find(".buttons .change_language");
       submit.trigger("click");
     });
@@ -22,6 +22,13 @@ var Ui = {
         $('.langbox.jshide').toggle();
         return false;
     });
+
+    $('#openid_url').parents('form').submit(function(){
+      var openid = $('#openid_url').val();
+      openid = openid.replace('http://','');
+      openid = openid.replace('https://','');
+      $('#openid_url').val(openid)
+    })
 
     Ui.sort_values('#group_language', 'option', ':last', 'text', null);
     Ui.sort_values('#user_language', 'option',  false, 'text', null);
@@ -139,21 +146,30 @@ var Ui = {
     });
 
     $(document).keydown(function(ev){
-      current_element = $(container.find(element_selector+'.active'));
 
-      moved = false;
-      next = null;
-      if(ev.keyCode == 74){
-        next = current_element.next(element_selector);
-      } else if(ev.keyCode == 75){
-        next = current_element.prev(element_selector);
-      }
+      if(container.is(':visible')){
+        current_element = $(container.find(element_selector+'.active'));
 
-      if(next && next.length > 0) {
-        current_element.removeClass("active");
-        next.addClass("active");
-        Ui.center_scroll(next);
+        moved = false;
+        next = null;
+        if(ev.keyCode == 74){
+          next = current_element.next(element_selector);
+        } else if(ev.keyCode == 75){
+          next = current_element.prev(element_selector);
+        }
+
+        if(next && next.length > 0) {
+          current_element.removeClass("active");
+          next.addClass("active");
+          Ui.center_scroll(next);
+        }
       }
     });
+  },
+  initialize_lang_fields: function(container){
+    var fields = (container||$('body')).find('.lang-fields');
+    if(fields.length > 0){
+      fields.tabs();
+    }
   }
 };

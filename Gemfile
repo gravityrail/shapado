@@ -34,13 +34,15 @@ gem 'mongo', '1.3.0'
 gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :ref => "eb41dd0e"
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
+gem 'mongo_store', :git => 'https://github.com/Houdini/mongo_store.git'
+
 # utils
 
 gem 'jammit'
 gem "whatlanguage", "1.0.0"
 gem "uuidtools", "~> 2.1.1"
 gem "magent", "0.6.2"
-gem "bug_hunter", "0.1.0"
+gem "bug_hunter", :git => "git://github.com/ricodigo/bug_hunter.git"
 
 gem 'goalie', '~> 0.0.4'
 gem 'dynamic_form'

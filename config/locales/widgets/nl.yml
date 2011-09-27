@@ -5,6 +5,9 @@
 # Author: Siebrand
 nl: 
   widgets: 
+    about: 
+      description: Dit widget geeft een korte beschrijving van uw groep weer.
+      title: Over
     adsense: 
       description: Met dit widget kunt u advertenties van Google AdSense weergeven.
       title: AdSense
@@ -51,7 +54,6 @@ nl:
       title: Menubalkwidgets beheren
       type: "Type:"
       welcome_widgets: Welkom
-      welcome_widgets_title: Widget die op de welkomstpagina verschijnen /
       zone: "Sectie van de pagina:"
     mod_info: 
       description: Dit widget geeft gegevens weer die relevant zijn voor moderatoren, zoals markeringen en probleemrapporten.

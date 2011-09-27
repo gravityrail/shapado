@@ -7,6 +7,8 @@ fi:
     edit: 
       title: Muokkaa teemaa
     form: 
+      colors_and_bg: Värit ja taustat
+      submit_update: Päivitä teema
       update: Päivitä teema
     index: 
       new_theme: Voit luoda oman teeman täällä.
@@ -15,7 +17,14 @@ fi:
       bg_color: Taustaväri
       bg_image: Taustakuva
       button_bg: Painikkeiden taustaväri
+      button_fg: Painikkeiden taustaväri
+      fg_color: Taustaväri
       link_bg: Linkkien taustaväri
+      link_fg: Linkkien taustaväri
+      main_color: Pääasiallinen väri
+      modules_color: Moduulien väri
+      not_ready: Tämä teema ei ole valmis käytettäväksi, tarkista pian uudestaan.
+      text_color: Tekstin väri
       try: Kokeile
       use_link_bg: Käytä taustaa linkeissä
       view_bg: Näkymän taustaväri

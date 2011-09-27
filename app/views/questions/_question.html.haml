@@ -1,4 +1,4 @@
--title = h(question.title)
+-title = question.title
 -if question.closed
   -title += " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
@@ -8,6 +8,11 @@
     - last_target_id = question.last_target_id
     - last_target_date = question.last_target_date || question.updated_at
     - owner = question.last_target_user
+    - if question.last_target_type != 'Question'
+      - @updated = true
+    - else
+      - @updated = false
+
   -else
     - last_target = question
     - last_target_date = question.updated_at
@@ -41,6 +46,9 @@
 
     .toolbar
       %ul.menubar
+        -if question.accepted && question.answered
+          %li.solution
+            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'
         %li.answers
           = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
@@ -61,6 +69,7 @@
           %li.spam
             = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
         = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
+
       .panel-forms
 
     .clear

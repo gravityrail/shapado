@@ -60,7 +60,6 @@ pt-PT:
       title: Todas as perguntas
       unanswered_questions: Perguntas sem resposta
       votes: Votos
-      votes_tooltip: Perguntas com mais votos
     model: 
       messages: 
         empty_tags: Desculpe, tem de usar pelo menos uma categoria.

@@ -24,7 +24,7 @@ en:
       unanswered_questions: Unanswered questions
       hot_tooltip: Questions with the most activity over the last 5 days
       active_tooltip: Questions that have been updated recently
-      votes_tooltip:  Questions with the most votes
+      followers_tooltip:  Questions with the most followers
       newest_tooltip: The most recently asked questions
       has_followers:
         one: "%{count} follower"
@@ -38,7 +38,7 @@ en:
       more_actions: More actions
       answers: Answers
       another_answers: Other answers
-      solution: Solution
+      solution: 'Solution'
       share: "Share this question on"
       share_on: "Share this question on %{site}"
       related_questions: Related questions

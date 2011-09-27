@@ -14,6 +14,7 @@ ia:
       answers: Responsas
   answers: 
     create: 
+      annon_notice: Le usator es jam registrate. Per favor aperi session.
       flash_error: "Alique vadeva mal addente tu responsa. \n  Memora que: \n - Responsas vacue e repetite non es permittite.\n - Tu debe attender 20 secundas ante de publicar un altere responsa. \n - Tu pote solmente publicar un responsa per question."
       flash_notice: Gratias!
     edit: 

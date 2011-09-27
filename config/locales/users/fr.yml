@@ -103,3 +103,7 @@ fr:
       profile: Profil
     unfollow: 
       flash_notice: L'utilisateur %{user} a été ajouté à votre liste d'amis
+    user_mini: 
+      admin: "[ Admin ]"
+      editor: "[ Éditeur ]"
+      mod: "[ Modérateur ]"

@@ -72,7 +72,6 @@ mk:
       title: сите прашања
       unanswered_questions: неодговорени прашања
       votes: Гласови
-      votes_tooltip: прашања со највеќе гласови
     model: 
       messages: 
         empty_tags: Нажалост, мора да употребите барем една ознака.

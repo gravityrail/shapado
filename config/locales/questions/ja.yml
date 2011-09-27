@@ -51,7 +51,6 @@ ja:
       title: 全ての質問
       unanswered_questions: まだ回答のない質問
       votes: 投票数
-      votes_tooltip: 最も多く投票を受けている質問
     model: 
       messages: 
         empty_tags: タグは必須です。必ず一つは入力してください

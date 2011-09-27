@@ -70,7 +70,6 @@ ms:
       title: Semua soalan
       unanswered_questions: Soalan yang tak terjawab
       votes: Undian
-      votes_tooltip: Soalan yang paling banyak undian
     model: 
       messages: 
         empty_tags: Maaf, anda perlu menggunakan sekurang-kurangnya satu tag.

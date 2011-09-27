@@ -29,7 +29,6 @@ pl:
       question_widgets: Pytanie
       question_widgets_title: Widgety, które pojawią się na każdej stronie pytań
       welcome_widgets: Witamy
-      welcome_widgets_title: Widgety, które pojawią się na stronie powitalnej
     pages: 
       description: Ten widget wyświetla listę stron wiki.
       new: Dodaj nową stronę

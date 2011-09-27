@@ -43,7 +43,9 @@ fi:
       message4: "Aihe: %{subject}"
     new_invitation: 
       message1: Napsauta tästä hyväksyäksesi kutsu %{link}
+      message2: Ryhmän %{group} tiimi.
       message3: "Viesti kutsujaltasi:"
+      subject: Käyttäjä %{user} on kutsunut sinut ryhmään %{group}
     report: 
       message1: Ilmoita ryhmälle %{group}
       message2: "%{date} lähtien"

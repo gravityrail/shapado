@@ -1,6 +1,6 @@
 var Comments = {
   initialize_on_question: function(data) {
-    $('.comment-votes form').hide();
+    $('.comment-votes form.comment-form button.vote').hide();
 
     $.each($("a.toggle_comments"), function() {
       var l = $(this);
@@ -23,25 +23,30 @@ var Comments = {
     });
 
     $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
-      $(this).find(".comment-votes form").toggle();
+      var show = (handlerIn.type == "mouseenter");
+      $(this).find(".comment-votes form.comment-form button.vote").toggle(show);
     });
 
     $(".content-panel").delegate(".comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button');
+      btn.attr('disabled', true);
       btn.hide();
       $.post(form.attr("action"), form.serialize()+"&"+btn.attr("name")+"=1", function(data){
         if(data.success){
-          if(data.vote_state == "deleted") {
+          if(data.vote_state == "destroyed") {
+            btn.addClass("vote");
+            btn.hide();
           } else {
-            btn.after('<span class="upvoted-comment">✓</span>');
-            btn.remove();
+            btn.removeClass("vote");
+            btn.show();
           }
           btn.parents(".comment-votes").children(".votes_average").html(data.average);
           Messages.show(data.message, "notice");
         } else {
           Messages.show(data.message, "error");
         }
+        btn.attr('disabled', false);
         btn.show();
       }, "json");
       return false;
@@ -53,7 +58,8 @@ var Comments = {
       var button = form.find("input[type=submit]");
       if($(".wysiwyg_editor").length > 0 )
         $(".wysiwyg_editor").htmlarea('updateTextArea');
-      button.attr('disabled', true)
+
+      button.attr('disabled', true);
       $.ajax({ url: form.attr("action"),
               data: form.serialize()+"&format=js",
               dataType: "json",

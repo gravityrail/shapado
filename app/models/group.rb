@@ -383,6 +383,16 @@ class Group
           return false
         end
       end
+
+      if self.reputation_constrains["ask"] > 0
+        self.errors.add(:reputation_constrains, I18n.t('activerecord.models.reputation_rewards_ask_constrain'))
+        return false
+      end
+
+      if self.reputation_constrains["answer"] > 0
+        self.errors.add(:reputation_constrains, I18n.t('activerecord.models.reputation_rewards_answer_constrain'))
+        return false
+      end
     end
 
     if self.reputation_rewards_changed?
@@ -390,6 +400,7 @@ class Group
       [["vote_up_question", "undo_vote_up_question"],
        ["vote_down_question", "undo_vote_down_question"],
        ["question_receives_up_vote", "question_undo_up_vote"],
+       ["question_receives_follow", "question_undo_follow"],
        ["question_receives_down_vote", "question_undo_down_vote"],
        ["vote_up_answer", "undo_vote_up_answer"],
        ["vote_down_answer", "undo_vote_down_answer"],
@@ -410,16 +421,6 @@ class Group
           return false
         end
       end
-
-      if self.reputation_rewards["ask"] > 0
-        self.errors.add(:reputation_rewards, I18n.t('activerecord.models.reputation_rewards_ask_constrain'))
-        return false
-      end
-
-      if self.reputation_rewards["answer"] > 0
-        self.errors.add(:reputation_rewards, I18n.t('activerecord.models.reputation_rewards_answer_constrain'))
-        return false
-      end
     end
 
     return true
@@ -431,6 +432,15 @@ class Group
     self.subdomain.downcase!
     if !self.language.blank? && !self.languages.include?(self.language)
       self.languages << self.language
+    end
+
+    # HACK
+    self.languages = self.languages.map! do |l|
+      if l =~ /.+:(.+)/
+        $1
+      else
+        l
+      end
     end
   end
 

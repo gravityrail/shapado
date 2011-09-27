@@ -27,6 +27,7 @@ be-TARASK:
     index: 
       create_page: Стварыць новую старонку
       title: Сьпіс старонак
+      wiki: Вікі
       written_in: Напісана на %{language}
     new: 
       title: Новая старонка

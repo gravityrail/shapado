@@ -53,7 +53,6 @@ br:
       title: An holl goulennoù
       unanswered_questions: Goulennoù direspont
       votes: Mouezhioù
-      votes_tooltip: Goulennet zo bet votet ar muiañ evito
     model: 
       messages: 
         empty_tags: Digarezit, rankout a rit implijout ur balizenn d'an nebeutañ.

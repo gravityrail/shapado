@@ -12,6 +12,7 @@ nl:
       error: De gebruiker **%{user_id}** bestaat niet.
       notice: "%{login} is toegevoegd als %{role}."
     form: 
+      destroy_confirm: Weet u het zeker? Deze gebruiker is dan niet langer lid van deze groep.
       login_tip: Zoeken tijdens het invoeren
     index: 
       manage_members_title: Leden beheren

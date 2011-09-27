@@ -52,7 +52,6 @@ da:
       title: Alle spørgsmål
       unanswered_questions: Ubesvarede spørgsmål
       votes: Stemmer
-      votes_tooltip: Spørgsmål med flest stemmer
     model: 
       messages: 
         empty_tags: Beklager, du skal bruge mindst en tag.

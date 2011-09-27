@@ -52,7 +52,6 @@ zh-CN:
       title: 所有的问题
       unanswered_questions: 悬而未决的问题
       votes: 投票
-      votes_tooltip: 最多选票的问题
     model: 
       messages: 
         empty_tags: 对不起，您需要使用至少一个标签。

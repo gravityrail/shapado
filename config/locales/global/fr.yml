@@ -17,14 +17,25 @@ fr:
     tag: Souscrite au tag
     user: Inscrivez-vous aux questions de l'utilisateur
   global: 
+    actions: Actions
     active: Activer
+    alphabetically: Par ordre alphabétique
     anonymous: Anonyme
+    blog: Blog
     by: par
+    by_semi: "Par :"
+    chat: Tchat
     current: Actuel
+    edited: Modifié
+    feedback: Feedback
     follow: Suivre
+    followed_by: "Suivie par :"
+    following: Suit
     from: depuis %{site}
     group_not_found: La page %{url} n'existe pas
+    home: Accueil
     next_button: Suivant
+    open: Ouvrir
     or: ou
     permission_denied: Permission refusée
     please_login: Ouvrez une session s'il vous plait
@@ -32,16 +43,30 @@ fr:
     previous: Précédent
     privacy: Confidentialité
     share: Partager
+    sign_up: S'inscrire
     size: Taille
     sort_by: "Trier par :"
+    tags_label: "Tags:"
     tos: CGU
     unfollow: Ne plus suivre
+    unknown_place: Inconnu
+    view: Voir
+    view_question: Voir la question
     what_to_do: Que voulez-vous faire ?
   models: 
     question: La question
+  number: 
+    x_time: 
+      one: "%{count} fois"
+      other: "%{count} fois"
+      zero: Jamais
+  preferred_languages: 
+    any: Toute
+    user: Les langues que je connais
   roles: 
     moderator: Modérateur
     owner: Propriétaire
+    user: Utilisateur normal
   scaffold: 
     add: Ajouter
     are_you_sure: Êtes-vous sûr ?

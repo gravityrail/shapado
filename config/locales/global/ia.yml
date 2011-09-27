@@ -18,6 +18,7 @@ ia:
     anonymous: Anonyme
     blog: Blog
     by: per
+    by_semi: "Per:"
     chat: Conversar
     current: Actual
     edited: Modificate
@@ -39,7 +40,6 @@ ia:
     sign_up: Crear conto
     size: Dimension
     sort_by: "Ordinar per:"
-    subjetive: subjective
     tags_label: "Etiquettas:"
     tos: CdS
     unfollow: Non plus sequer
@@ -49,6 +49,11 @@ ia:
     what_to_do: Que vole tu facer?
   models: 
     question: Le question
+  number: 
+    x_time: 
+      one: "%{count} vice"
+      other: "%{count} vices"
+      zero: Nunquam
   preferred_languages: 
     any: Qualcunque
     user: Mi linguas preferite

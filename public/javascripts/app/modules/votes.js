@@ -37,11 +37,17 @@ var Votes = {
         $.post(form.attr("action")+'.js', form.serialize()+"&"+btn_name+"=1", function(data){
           if(data.success){
             form.find(".votes_average").text(data.average);
-            if(data.vote_state == "deleted") {
+            if(data.vote_state == "destroyed") {
+              form.find("button").removeClass("checked");
             }
             else {
+              if(data.vote_state == "updated") {
+                form.find("button").removeClass("checked");
+              }
               if(data.vote_type == "vote_down") {
+                form.find("button.negative").addClass("checked");
               } else {
+                form.find("button.positive").addClass("checked");
               }
             }
             Messages.show(data.message, "notice");

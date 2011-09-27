@@ -85,6 +85,8 @@ class Moderate::QuestionsController < ApplicationController
       @question.ban
     end
 
+    sweep_question(@question)
+
     respond_to do |format|
       format.html {redirect_to question_path(@question)}
 

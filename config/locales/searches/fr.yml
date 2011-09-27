@@ -11,5 +11,6 @@ fr:
       tags_tip: Utiliser [tag] pour décrire vos tags.
     index: 
       empty: Aucune question ne correspond aux termes de recherche spécifiés.
+      found_results: "%{quantity} résultats ont été trouvés."
       search_text: Questions contenant
       tags: parmi ces tags

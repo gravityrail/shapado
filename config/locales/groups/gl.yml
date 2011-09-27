@@ -6,11 +6,12 @@ gl:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Límite diario
         default_tags: Etiquetas por defecto
         description: Descrición
         domain: Dominio
         enable_latex: Activar o LaTeX
-        fb_button: Activar o botón "Like" do Facebook (non protexe o anonimato)
+        fb_button: Activar o botón "Gústame" do Facebook (non protexe o anonimato)
         forum: Permitir máis dunha resposta por usuario
         group_created_by: creado por
         language: Lingua por defecto
@@ -21,6 +22,7 @@ gl:
         name: Nome
         owner: Este grupo foi creado por %{login}
         registered_only: Só as persoas rexistradas poden acceder ao sitio
+        signup_type: Os métodos que os seus usuarios poden empregar para rexistrárense
         state: Estado
         subdomain: URL
         wysiwyg_editor: Activar o editor sinxelo
@@ -28,8 +30,13 @@ gl:
       default_tags_message: Non pode empregar máis de 10 etiquetas por defecto
       group: Grupo
       groups: Grupos
+      reputation_rewards_answer_constrain: A restrición fronte a responder con recompensas debería ser negativa
+      reputation_rewards_ask_constrain: A restrición fronte a pedir debería ser negativa
       reputation_rewards_key: Clave inválida
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Sentímolo, algo foi mal. Inténteo de novo.
+      success_twitter_connection: Parabéns, conectou a súa conta do Twitter con éxito!
     create: 
       flash_notice: A creación do seu grupo rematou correctamente. Agora, xa pode comezar a configuralo.
     edit: 
@@ -48,6 +55,10 @@ gl:
       legend_legend: Usarase na cabeceira. Ten 40 caracteres.
       logo_legend: Podes cargar o logo do grupo. O tamaño máximo é de 2MB.
       members_only: Só os membros do grupo poderán acceder a este grupo
+      signup_all: Todos (os usuarios poden rexistrarse cun enderezo de correo electrónico, OpenId, Facebook, Twitter etc.)
+      signup_email: Só enderezo de correo electrónico (os usuarios só poden rexistrarse co seu enderezo de correo electrónico/contrasinal)
+      signup_noemail: Sen enderezo de correo electrónico/contrasinal (os usuarios rexístranse co OpenId, Facebook ou Twitter)
+      signup_social: Social só (os usuarios só poden rexistrarse co Facebook, Twitter, LinkedIn e Identica)
       website_analytics_id: ID das análises da páxina web
     group: 
       about: Acerca de
@@ -58,7 +69,8 @@ gl:
       disallow_ads: Desactivar os anuncios
     index: 
       actives: Activos
-      create_your_own: cree o seu propio grupo
+      create_your_own: crear o seu propio grupo
+      description: Esta é a lista de grupos públicos que foron creados. Use a caixa de procura para filtrar os grupos. Tamén pode %{link}.
       filter: Procurar un grupo
       most_active: Máis activos
       name: Nome

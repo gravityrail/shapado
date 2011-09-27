@@ -1,0 +1,29 @@
+# Messages for French (Français)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Hashar
+fr: 
+  themes: 
+    form: 
+      colors_and_bg: Couleurs et arrière-plans
+      fluid_layout: Mise en page fluide
+      fluid_layout_legend: Avec une mise en page fluide, la largeur de chaque élément de la page dépend de la taille de la page et non de l'élément initial. En d'autres termes, lorsque l'utilisateur redimensionne la fenêtre de son navigateur ou utilise un écran plus petit, la mise en page s'adapte aux nouvelles dimensions.
+      update: Mettre à jour le thème
+    show: 
+      apply: Appliquer
+      bg_color: Couleur d'arrière-plan
+      bg_image: Image d'arrière-plan
+      button_bg: Couleur d'arrière-plan des boutons.
+      button_fg: Couleur de premier plan des boutons.
+      fg_color: Couleur de premier plan
+      fluid: Fluide (ce qui rendra le thème élastique lorsque la fenêtre du navigateur est redimensionnée)
+      link_bg: Couleur d'arrière-plan des liens
+      link_fg: Couleur de premier plan des liens
+      main_color: Couleur principale
+      modules_color: Couleur des modules
+      not_ready: Ce thème n'est pas encore prêt à être utilisé, revenez plus tard.
+      text_color: Couleur du texte
+      try: Essayer
+      use_link_bg: Utiliser un arrière plan pour les liens
+      view_bg: Couleur d'arrière-plan de la vue
+      view_fg: Couleur de premier plan de la vue

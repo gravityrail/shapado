@@ -4,8 +4,57 @@
 # Author: Patcito
 es: 
   shared: 
+    any_lang: Cualquier idioma
+    by_anon: Por anónimo
     current_tags: 
       title: Etiquetas seleccionadas
+    description: Descripción
+    empty: 
+      activities: 
+        description: 
+          text: Este lugar se llena de forma automática una vez que la gente comienza a usar el sitio.
+        title: No hay actividades hasta el momento.
+      answers: 
+        description: 
+          text: ¡Sea el primero!
+        title: Nadie ha respondido a esta pregunta.
+      default: 
+        description: 
+          text: ¡Sé el primero en %{action_link}!
+        title: ¡Lo siento! No hay mucho que ver aquí.
+      questions: 
+        description: 
+          action_link: Pregunte
+      themes: 
+        description: 
+          action_link: ahora
+          text: crear uno %{action_link}
+        title: No ha creado ningun tema por ahora.
+    layout: 
+      footer: 
+        cc_footer: Todo el contenido Shapado.com y los datos están disponibles bajo la licencia %{cc_link}
+        powered_by: Desarrollado por %{source_link} %{version} bajo la %{agpl_link}
+    login_drop_down: 
+      with_facebook: con Facebook
+      with_google: con Google
+      with_identica: con Identi.ca
+      with_linked_in: con LinkedIn
+      with_openid: OpenID
+      with_twitter: con Twitter
+      with_user_pass: usuario/contraseña
+    manage_navigation: 
+      title_content: Contenido del grupo
+      title_features: Funcionalidades del grupo
+      title_options: Opciones del grupo
+    name: Nombre
+    preferred_lang: Idiomas que conozco
+    quick_question: 
+      random_question: Responder a una pregunta al azar
+    social_connect: 
+      find_friends_facebook: Encontrar amigos con Facebook
+      find_friends_identica: Encontrar amigos con Identi.ca
+      find_friends_linked_in: Encontrar amigos con LinkedIn
+      find_friends_twitter: Encontrar amigos con Twitter
     topbar: 
       admin: Administrar
       logged_as: Conectado como %{login}

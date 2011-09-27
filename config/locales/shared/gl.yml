@@ -11,6 +11,8 @@ gl:
     description: Descrición
     empty: 
       activities: 
+        description: 
+          text: Este lugar encherase automaticamente unha vez que a xente empece a usar o sitio.
         title: Non hai ningunha actividade ata agora.
       answers: 
         description: 

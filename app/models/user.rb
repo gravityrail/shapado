@@ -519,7 +519,7 @@ Time.zone.now ? 1 : 0)
   end
 
   def followers(scope = {})
-    return []  if self.friend_list.follower_ids.blank?
+    return Kaminari.paginate_array([])  if self.friend_list.follower_ids.blank?
     conditions = {}
 
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
@@ -846,7 +846,16 @@ Time.zone.now ? 1 : 0)
 
   protected
   def update_languages
-    self.preferred_languages = self.preferred_languages.map { |e| e.split("-").first }
+    languages = self.preferred_languages.map { |e| e.split("-").first }
+    # HACK
+    languages.map! do |l|
+      if l =~ /.+:(.+)/
+        $1
+      else
+        l
+      end
+    end
+    self.preferred_languages = languages
   end
 
   def password_required?

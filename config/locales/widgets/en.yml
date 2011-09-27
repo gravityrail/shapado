@@ -15,7 +15,6 @@ en:
       mainlist_widgets: Main list
       question_widgets: Question
       external_widgets: External
-      welcome_widgets_title: Widgets that will appear on the welcome page /
       mainlist_widgets_title: Widgets that will appear on the main list of questions
       question_widgets_title: Widgets that will appear on each question page
       external_widgets_title: Widgets that you will be able to embed on your own site
@@ -114,3 +113,6 @@ en:
     share:
       title: "Share in"
       description: "This widget displays various buttons to share the current page to social networks."
+    about:
+      title: About
+      description: "This widget displays a short description of your group."

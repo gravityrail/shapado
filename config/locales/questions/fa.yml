@@ -53,7 +53,6 @@ fa:
       title: همه سوالات
       unanswered_questions: سوالات بی پاسخ
       votes: رای
-      votes_tooltip: سوالات دارای بیشترین رای
     model: 
       messages: 
         empty_tags: با عرض پوزش، شما باید حداقل یک برچسب استفاده کنید.

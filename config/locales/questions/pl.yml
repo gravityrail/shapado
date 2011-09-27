@@ -54,7 +54,6 @@ pl:
       oldest: Najstarsze
       title: Wszystkie pytania
       unanswered_questions: Pytania bez odpowiedzi
-      votes_tooltip: Pytania z największą liczbą głosów
     model: 
       messages: 
         empty_tags: Należy użyć co najmniej jednej etykiety.

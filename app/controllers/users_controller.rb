@@ -258,14 +258,14 @@ class UsersController < ApplicationController
     @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
     @current_tags = tags = @user.preferred_tags_on(current_group)
 
-    find_questions(:tags.in => tags)
+    find_questions(:tags => {:$in => tags})
   end
 
   def expertise
     @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
     @current_tags = tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
 
-    find_questions(:tags.in => tags)
+    find_questions(:tags => {:$in => tags})
   end
 
   def contributed

@@ -85,6 +85,7 @@ class Question
   field :last_target_type, :type => String
   field :last_target_id, :type => String
   field :last_target_date, :type => Time
+  field :last_target_parent, :type => Hash
 
   file_list :attachments
 
@@ -255,6 +256,7 @@ class Question
     if !follower?(user)
       self.push_uniq(:follower_ids => user.id)
       self.increment(:followers_count => 1)
+      Jobs::Questions.async.on_question_followed(self.id, user.id).commit!
     end
   end
 
@@ -262,6 +264,7 @@ class Question
     if follower?(user)
       self.pull(:follower_ids => user.id)
       self.decrement(:followers_count => 1)
+      self.user.update_reputation(:question_undo_follow, self.group)
     end
   end
 
@@ -300,12 +303,19 @@ class Question
   end
 
   def self.update_last_target(question_id, target)
+    return if target.nil?
     data = {:last_target_id => target.id,
             :last_target_user_id => target.user_id,
-            :last_target_type => target.class.to_s}
+            :last_target_type => target.class.to_s
+    }
+    if target.class == Comment && target.commentable
+      data.merge({ :last_target_parent => { :type => target.commentable.class,
+                     :id => target.commentable.id}})
+    end
     if target.respond_to?(:updated_at) && target.updated_at.present?
       data[:last_target_date] = target.updated_at.utc
     end
+
     self.override({:_id => question_id}, data)
   end
 
@@ -367,6 +377,30 @@ class Question
     when "destroy"
       "deleted"
     end
+  end
+
+  def update_last_target
+    q = self
+    last = q
+    q.answers.each do |a|
+      if last.updated_at < a.updated_at
+        last = a
+      end
+
+      a.comments.each do |c|
+        if last.updated_at < c.updated_at
+          last = c
+        end
+      end
+    end
+
+    q.comments.each do |c|
+      if last.updated_at < c.updated_at
+        last = c
+      end
+    end
+    Question.update_last_target(q.id, last)
+    last
   end
 
   protected

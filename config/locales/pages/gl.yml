@@ -10,14 +10,14 @@ gl:
         js: javascript
     models: 
       page: páxina
-      pages: páxinas
+      pages: Páxinas
   pages: 
     actions: 
       create_page: Crear unha nova páxina
       edit_page: Editar a páxina
       title: Accións
     create: 
-      success: a páxina creouse correctamente.
+      success: A páxina creouse correctamente.
     edit: 
       title: Editando a páxina
     form: 

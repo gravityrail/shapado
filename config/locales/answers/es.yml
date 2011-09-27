@@ -15,6 +15,7 @@ es:
       answers: Respuestas
   answers: 
     create: 
+      annon_notice: El usuario ya está registrado, por favor inicia una nueva sesión.
       flash_error: "algo fue mal añadiendo tu respuesta. \n  recuerda que: \n - no se permiten respuestas vacias ni repetidas. \n - debes esperar 20 segundos antes de volver a contestar. \n - solo puede hacer una sola respuesta por cada pregunta."
       flash_notice: ¡gracias!
     edit: 

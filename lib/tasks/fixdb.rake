@@ -649,4 +649,67 @@ namespace :fixdb do
 
     end
   end
+
+  task :fix_languages => [:init] do
+    User.where(:preferred_languages => {:$in => [/:/] }).each do |u|
+      languages = u.preferred_languages.map do |l|
+        if l =~ /.+:(.+)/
+          $1
+        else
+          l
+        end
+      end
+      u.preferred_languages = languages
+      u.save
+    end
+
+    Group.where(:languages => {:$in => [/:/] }).each do |g|
+      languages = g.languages.map do |l|
+        if l =~ /.+:(.+)/
+          $1
+        else
+          l
+        end
+      end
+      g.languages = languages
+      g.save
+    end
+  end
+
+  task :add_follow_reward => [:init] do
+    Group.all.each do |g|
+      g.reputation_rewards = g.
+        reputation_rewards.
+        merge({ "question_receives_follow" => 2,
+              "question_undo_follow" => -2})
+      g.save
+    end
+  end
+
+  task :fix_last_target => [:init] do
+    total = Question.count
+    i=0
+    Question.all.each do |q|
+      p "#{i+=1}/#{total}"
+      last = q
+      q.answers.each do |a|
+        if last.updated_at < a.updated_at
+          last = a
+        end
+
+        a.comments.each do |c|
+          if last.updated_at < c.updated_at
+            last = c
+          end
+        end
+      end
+
+      q.comments.each do |c|
+        if last.updated_at < c.updated_at
+          last = c
+        end
+      end
+      Question.update_last_target(q.id, last)
+    end
+  end
 end

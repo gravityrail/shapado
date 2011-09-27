@@ -50,7 +50,6 @@ ms:
       title: Uruskan widget bar sisi
       type: "Jenis:"
       welcome_widgets: Selamat Datang
-      welcome_widgets_title: Widget yang muncul di laman selamat datang /
       zone: "Bahagian halaman:"
     mod_info: 
       description: Widget ini menunjukkan maklumat yang relevan kepada pengawal selia seperti bendera dan permohonan laporan.

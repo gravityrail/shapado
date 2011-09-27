@@ -6,6 +6,8 @@
 fi: 
   admin: 
     moderate: 
+      closing: 
+        title: Sulje kysymys
       index: 
         all: Kaikki
         ban: Porttikielto
@@ -15,6 +17,8 @@ fi:
         item_title: Otsikko
         need_tags: Uudelleenmerkintä
         title: Valvo
+      opening: 
+        title: Avaa kysymys
   moderate: 
     questions: 
       flagged: 
@@ -27,6 +31,7 @@ fi:
         title: Hallitse kysymyksiä
       subtabs: 
         flagged: Merkitty
+        flagged_tooltip: Käyttäjien merkkaamat kysymykset
         retag: Tarvitsee tunnisteita
         retag_tooltip: Kysymykset ilman tunnisteita
         to_close: Sulkemispyynnöt

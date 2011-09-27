@@ -25,6 +25,7 @@ nl:
       welcome: Welkom
     create: 
       flash_notice: Uw uitnodigingen zijn verzonden
+      limit_notice: U kunt niet meer dan %{limit} uitnodigingen tegelijk verzenden.
     resend: 
       flash_notice: Uw uitnodiging is opnieuw verzonden.
     revoke: 

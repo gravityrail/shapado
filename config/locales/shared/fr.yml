@@ -6,6 +6,7 @@
 # Author: Peter17
 fr: 
   shared: 
+    any_lang: N’importe quelle langue
     current_tags: 
       title: Étiquettes sélectionnées
     description: Description
@@ -31,6 +32,8 @@ fr:
       with_twitter: avec Twitter
     name: Nom
     preferred_lang: Mes langues préférées
+    quick_question: 
+      random_question: Répondre à une question aléatoire
     social_connect: 
       find_friends_facebook: Trouver des amis sur Facebook
       find_friends_identica: Trouver des amis sur Identi.ca

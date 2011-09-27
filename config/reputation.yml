@@ -26,3 +26,5 @@ answer_undo_down_vote:            1
 day_with_activity:                0
 day_without_activity:             0
 post_banned:                   -100
+question_receives_follow:         2
+question_undo_follow:            -2

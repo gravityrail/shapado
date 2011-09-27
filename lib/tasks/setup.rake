@@ -189,5 +189,15 @@ namespace :setup do
   task :versions => [:environment] do
     ShapadoVersion.reload!
   end
+
+  task :index_tags => [:environment] do
+    Tag.all.each do |tag|
+      count = tag.group.questions.where(:tags.in => [tag.name]).count
+      p "#{tag.name}: #{count}"
+      if tag.count != tag
+        tag.override(count: count)
+      end
+    end
+  end
 end
 

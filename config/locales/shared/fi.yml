@@ -21,14 +21,20 @@ fi:
           text: Ole ensimmäinen!
         title: Kukaan ei ole vastannut tähän kysymykseen vielä.
       default: 
+        description: 
+          text: Ole ensimmäinen, joka %{action_link}!
         title: Anteeksi! Ei ole paljon nähtävää.
       questions: 
         description: 
-          action_link: Kysy kysymys
+          action_link: kysyy kysymyksen
       themes: 
         description: 
           action_link: nyt
+          text: luo %{action_link}
         title: Et ole vielä luonut teemoja.
+    layout: 
+      footer: 
+        cc_footer: Kaikki Shapado.comin sisältö ja tiedot ovat käytettävissä %{cc_link} -lisenssin alaisuudessa
     login_drop_down: 
       with_facebook: Facebookilla
       with_google: Googlella

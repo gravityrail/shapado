@@ -34,6 +34,9 @@ var Loader = {
       Members.initialize($body);
     } else if($body.hasClass("groups-controller") ||
       $body.hasClass("admin-manage-controller")) {
+      if($body.hasClass("content")) {
+        Ui.initialize_lang_fields();
+      }
       Groups.initialize($body);
     } else if($body.hasClass("themes-controller")) {
       Themes.initialize($body);

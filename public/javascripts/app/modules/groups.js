@@ -1,5 +1,9 @@
 var Groups = {
   initialize: function($body) {
+    $(document).ready(function() {
+      if($('.autocomplete_for_tags').length >0)
+        $('.autocomplete_for_tags').ricodigoComplete();
+    });
     if($body.hasClass("index")) {
       Groups.initialize_on_index($body);
     }

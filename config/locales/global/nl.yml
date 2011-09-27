@@ -25,6 +25,7 @@ nl:
     chat: Chat
     current: huidige
     edited: Bewerkt
+    edited_by_semi: "Bewerkt door:"
     feedback: Terugkoppeling
     follow: Volgen
     followed_by: "Gevolgd door:"
@@ -44,7 +45,6 @@ nl:
     sign_up: Registreren
     size: Grootte
     sort_by: "Sorteren op:"
-    subjetive: subjectief
     tags_label: "Labels:"
     tos: Gebruiksvoorwaarden
     unfollow: Niet langer volgen

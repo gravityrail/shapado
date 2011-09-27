@@ -11,6 +11,7 @@ fi:
         role: Rooli
   members: 
     create: 
+      error: Olemme pahoillamme, käyttäjää **%{user_id}** ei ole olemassa.
       notice: "%{login} lisätty onnistuneesti rooliin %{role}."
     form: 
       login_tip: Etsi kirjoittamisen aikana

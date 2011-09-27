@@ -52,7 +52,6 @@ ca:
       title: Totes les preguntes
       unanswered_questions: Preguntes sense resposta
       votes: Vots
-      votes_tooltip: Preguntes amb més vots
     model: 
       messages: 
         empty_tags: Heu d'emprar una etiqueta com a mínim.

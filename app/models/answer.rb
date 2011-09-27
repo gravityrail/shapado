@@ -54,6 +54,11 @@ class Answer
   validate :check_unique_answer, :if => lambda { |a| (!a.group.forum && !a.disable_limits?) }
 
   before_destroy :unsolve_question
+  after_destroy :update_question_last_target
+
+  def update_question_last_target
+    self.question.update_last_target if self.question
+  end
 
   def self.minimal
     without(:_keywords, :flags, :votes, :versions)

@@ -103,10 +103,13 @@ module Jobs
       end
     end
 
-    def self.on_question_followed(question_id)
+    def self.on_question_followed(question_id, follower_id)
       question = Question.find(question_id)
       user = question.user
       group = question.group
+      if follower_id != user.id
+        user.update_reputation(:question_receives_follow, group)
+      end
       if question.followers_count >= 25
         create_badge(user, group, {:token => "favorite_question", :source => question}, {:unique => true, :source_id => question.id})
       end

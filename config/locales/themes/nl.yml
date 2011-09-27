@@ -21,10 +21,13 @@ nl:
     index: 
       description: Vind hier uw vormgevingen en wijzig het uiterlijk van uw app.
       new_theme: Hier kunt u uw eigen vormgeving maken.
+    ready: 
+      success: Uw vormgeving is klaar!
     show: 
       apply: Toepassen
       bg_color: Achtergrondkleur
       bg_image: Achtergrondafbeelding
+      brand_color: Merkkleur
       button_bg: Achtergrondkleur voor knoppen
       button_fg: Voorgrondkleur voor knoppen
       fg_color: Voorgrondkleur

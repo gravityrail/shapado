@@ -6,18 +6,18 @@
 
 -if @questions.empty?
   = render "shared/empty", :type => "questions", :url => new_question_path
-
--if params[:answers]
-  -cache_for(:questions, :answers, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do
-    /Answers
-    -@questions.each do |question|
-      -answer = find_answer(question)
-      = render "answers/answer", :question => question, :answer => answer if answer
-
 -else
-  -cache_for(:questions, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do
-    /Questions
-    -@questions.each do |question|
-      = render "questions/question", :question => question
+  -if params[:answers]
+    -cache_for(:questions, :answers, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do
+      /Answers
+      -@questions.each do |question|
+        -answer = find_answer(question)
+        = render "answers/answer", :question => question, :answer => answer if answer
 
-= paginate @questions
+  -else
+    -cache_for(:questions, current_order.to_s, params[:page].to_i, params[:per_page].to_i, @languages.sort, params[:unanswered] ? "unanswered" : "" ) do
+      /Questions
+      -@questions.each do |question|
+        = render "questions/question", :question => question
+
+  = paginate @questions

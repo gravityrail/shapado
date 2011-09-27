@@ -61,6 +61,7 @@ nl:
       active_tooltip: Vragen die recent zijn bijgewerkt
       ask_question: Vraag stellen
       empty: Niemand heeft nog vragen gesteld. Wees de eerste!
+      followers_tooltip: Vragen met de meeste volgers
       has_followers: 
         one: Eén volger
         other: "%{count} volgers"
@@ -73,7 +74,6 @@ nl:
       title: Alle vragen
       unanswered_questions: Onbeantwoorde vragen
       votes: Stemmen
-      votes_tooltip: Vragen met de meeste stemmen
     model: 
       messages: 
         empty_tags: U moet tenminste één label opgeven

@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
     current_scope << @comment
 
-    if @comment.valid? && saved = (@comment.save && scope.save)
+    if @comment.valid? && saved = @comment.save
       current_user.on_activity(:comment_question, current_group)
 
       current_user.membership_selector_for(current_group).first.increment(:comments_count => 1)

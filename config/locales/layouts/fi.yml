@@ -54,6 +54,7 @@ fi:
       edit_layout: Muokkaa ulkoasua
       general: Yleinen
       group_features: Ominaisuudet
+      group_look_and_feel: Näkymä ja tuntuma
       group_user_management: Käyttäjien hallinta
       invitations: Kutsut
       invoices: Laskut

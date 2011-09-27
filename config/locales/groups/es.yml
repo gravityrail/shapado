@@ -10,6 +10,7 @@ es:
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Límite diario
         default_tags: Etiquetas por omision
         description: Descripción
         domain: dominio
@@ -18,12 +19,14 @@ es:
         forum: Permitir más de una respuesta por usuario
         group_created_by: creado por
         language: Idioma predeterminado
+        languages: Idiomas adicionales
         legend: Leyenda
         logo: Logo
         may_contain_adult_content: Este sitio podria tener contenido para adultos
         name: Nombre
         owner: Este grupo fue creado por %{login}
         registered_only: Solo las personas registradas pueden entrar a este sitio
+        signup_type: Los métodos que pueden utilizar los usuarios para registrarse
         state: Estado
         subdomain: URL
         wysiwyg_editor: Habilitar un editor de texto mas amigable para el usuario
@@ -31,11 +34,17 @@ es:
       default_tags_message: No se puede tener mas de 10 tags por defecto.
       group: Grupo
       groups: Grupos
+      reputation_rewards_answer_constrain: La restricción para responder a las recompensas deben ser negativa
+      reputation_rewards_ask_constrain: La restricción para preguntar debe ser negativa
+      reputation_rewards_key: Clave inválida
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Lo sentimos, algo fue mal. Inténtelo de nuevo por favor.
+      success_twitter_connection: Felicitación, conecto su cuenta Twitter con éxito!
     create: 
       flash_notice: Tu grupo ha sido creado exitosamente, ahora puedes empezar a configurarlo.
+    edit: 
+      title: Modifica su grupo
     form: 
       access: Configuración de Acceso
       analytics_engine: Motor de análisis
@@ -50,6 +59,10 @@ es:
       legend_legend: Esto será usado en el titulo de la web, tienes 40 caracteres.
       logo_legend: Puedes subir el logo del grupo. Lo máximo es para el tamaño del archivo es de 2mb.
       members_only: Solamente los miembros del grupo serán capaces de acceder a este grupo
+      signup_all: Todos (los usuarios pueden registrarse con una dirección de correo electrónico, OpenID, Facebook, Twitter, etc)
+      signup_email: Únicamente con correo electrónico (los usuarios sólo pueden registrarse con su dirección de correo electrónico / contraseña)
+      signup_noemail: Sin correo electrónico/contraseña (los usuarios se registran con OpenID, Facebook, Twitter)
+      signup_social: Únicamente social (los usuarios sólo pueden registrarse con Facebook, Twitter, LinkedIn y Identica)
       website_analytics_id: ID de análisis de sitio web
     group: 
       about: Acerca de
@@ -60,6 +73,8 @@ es:
       disallow_ads: Prohibir propaganda
     index: 
       actives: Activos
+      create_your_own: crear su propio grupo
+      description: Esta es la lista de grupos públicos que se han creado. Utilice la entrada de búsqueda abajo para filtrar los grupos. Usted puede también %{link}.
       filter: Buscar grupos
       most_active: Más activos
       name: Nombre
@@ -76,3 +91,7 @@ es:
       group_closed: Este grupo ha sido cerrado.
       title: Sobre %{name}
       visit_group: Visitar este grupo
+    top_grouplist: 
+      active_site: "Sitio activo:"
+    update: 
+      notice: Su grupo se ha actualizado correctamente.

@@ -2,6 +2,9 @@ var Answers = {
   initialize: function($body) {
     if($body.hasClass("edit")) {
       Editor.setup($(".markdown_editor, .wysiwyg_editor"));
+    } else if($body.hasClass("show")) {
+      Votes.initialize_on_question();
+      Comments.initialize_on_question();
     }
   },
   initialize_on_question: function() {
@@ -13,7 +16,7 @@ var Answers = {
     $(document.body).delegate("form#new_answer .save", "click", function(event) {
       var form = $(this).parents("form");
       var answers = $("#answers-content-wrap .answers-list");
-      var button = $(this)
+      var button = $(this);
 
       button.attr('disabled', true)
       if($("form .wysiwyg_editor").length > 0 )

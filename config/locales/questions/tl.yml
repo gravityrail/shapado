@@ -52,7 +52,6 @@ tl:
       title: Lahat ng mga katanungan
       unanswered_questions: Mga tanong na hindi pa nasasagot
       votes: Mga boto
-      votes_tooltip: Mga tanong na may pinakamaraming mga boto
     model: 
       messages: 
         empty_tags: Paumanhin, kailangan mong gumamit ng kahit na isang tatak.

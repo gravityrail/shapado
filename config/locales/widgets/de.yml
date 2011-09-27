@@ -50,7 +50,6 @@ de:
       title: Widgets der Seitenleiste verwalten
       type: "Typ:"
       welcome_widgets: Herzlich willkommen
-      welcome_widgets_title: Widgets, die auf der Willkommensseite angezeigt werden
       zone: "Seitenabschnitt:"
     mod_info: 
       description: Dieses Widget zeigt Informationen an, die für Moderatoren hilfreich sind, wie bswp. Kennzeichnungen und Berichtsanfragen.
