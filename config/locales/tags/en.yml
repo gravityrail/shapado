@@ -2,3 +2,5 @@ en:
   tags:
     show:
       title: 'Questions tagged: %{tags}'
+    index:
+      filter: Filter
