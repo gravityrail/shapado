@@ -106,7 +106,8 @@ var Comments = {
         success: function(data) {
           comment = comment.append(data.html);
           link.hide()
-          var form = comment.find("form.form")
+          var form = comment.find("form");
+          Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
           form.find(".cancel_edit_comment").click(function() {
             form.remove();
             link.show();

@@ -59,7 +59,7 @@
     .panel-comments
       = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
         %fieldset
-          = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question)}
+          = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question), :markdown => true}
           .buttons
             = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
