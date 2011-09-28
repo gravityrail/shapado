@@ -38,10 +38,10 @@
       %span.comment-votes
         = vote_box(comment, request.path, comment.find_question.closed)
 
-    .comment-body
+    .comment-body.markdown
       = pjax_link_to comment.user.login, "user", user_path(comment.user), {:class => 'user-login'}
       %span='-'
-      .comment-content.markdown
+      .comment-content
         = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))
       %div
         %time{:datetime => comment.created_at.iso8601, :title => article_date(comment, false)}

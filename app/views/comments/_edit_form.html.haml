@@ -1,7 +1,7 @@
 
 = form_for full_scope+[@comment], :html => {:class => "edit_comment_form commentForm nestedAnswerForm addNestedAnswer"} do |f|
   %fieldset
-    = render :partial => "comments/form", :locals => local_assigns.merge(:f => f)
+    = render :partial => "comments/form", :locals => local_assigns.merge(:f => f, :markdown => true)
     .buttons
       = submit_tag t("scaffold.update")
       = t("global.or")

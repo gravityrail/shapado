@@ -8,10 +8,11 @@
   -else
     -opts[:class] = "markdown_editor"
 
-= f.text_area :body, opts
+.markdown
+  = f.text_area :body, opts
 
 -if local_assigns[:markdown] && !current_group.wysiwyg_editor
-  =markdown(@comment.body)
+  =#markdown(@comment.body)
 
 -elsif !logged_in?
   = render :partial => "users/anonymous_form"
