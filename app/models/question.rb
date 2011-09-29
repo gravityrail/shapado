@@ -133,8 +133,7 @@ class Question
 
   xapit do
     text :title, :body
-    field :group_id, :banned
-    facet :user_id, "author"
+    field :group_id, :banned, :id, :language, :tags
   end
 
   def self.minimal
@@ -170,12 +169,10 @@ class Question
   def self.related_questions(question, opts = {})
     opts[:group_id] = question.group_id
     opts[:banned] = false
-    opts[:_id] = {:$ne => question.id}
+    opts[:language] = question.language if question.language
+    opts[:tags] = question.tags if !question.tags.blank?
 
-    text_search = question.title || ""
-    text_search << (question.body || "")
-    text_search << question.tags.join
-    Question.filter(text_search, opts)
+    Question.search.similar_to(question).where(opts).not_where(:_id => question.id)
   end
 
   def viewed!(ip)

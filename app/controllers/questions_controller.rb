@@ -72,19 +72,12 @@ class QuestionsController < ApplicationController
       @question.group_id = current_group.id
     end
 
-    text_search = @question.title || ""
-    text_search << (@question.body || "")
-    text_search << @question.tags.join
-    conditions = {group_id: @question.group_id, banned: false}
+
     if params[:unanswers]
       conditions[:answered_with_id] = nil
     end
 
-    if params[:per_page]
-      conditions[:per_page] = params[:per_page]
-    end
-
-    @questions = Question.filter(text_search, conditions)
+    @questions = Question.related_questions(@question).page(params[:page])
 
     respond_to do |format|
       format.js do
