@@ -132,9 +132,14 @@ class Question
   validate :check_useful
 
   xapit do
-    text :title, :body
-    field :group_id, :banned
-    facet :user_id, "author"
+    text :title
+    text :body do |body|
+      body.gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") unless body.nil?
+    end
+    text :tags do |tags|
+       tags.join(" ") unless tags.nil?
+    end
+    field :group_id, :banned, :id, :language, :tags
   end
 
   def self.minimal
