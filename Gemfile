@@ -73,6 +73,9 @@ gem 'rack-ssl', :require => false
 
 gem 'state_machine', "0.10.4"
 
+gem "xapian-ruby"
+gem "xapit", :git => "git://github.com/dcu/xapit.git"
+
 group :deploy do
   gem 'capistrano', :require => false
   gem 'ricodigo-capistrano-recipes', "~> 0.1.3", :require => false

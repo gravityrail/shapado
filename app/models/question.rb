@@ -131,6 +131,12 @@ class Question
   validate :disallow_spam
   validate :check_useful
 
+  xapit do
+    text :title, :body
+    field :group_id, :banned
+    facet :user_id, "author"
+  end
+
   def self.minimal
     without(:_keywords, :close_requests, :open_requests, :versions)
   end
