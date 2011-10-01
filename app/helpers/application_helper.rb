@@ -84,9 +84,9 @@ module ApplicationHelper
 
   def tag_cloud(tags = [], options = {}, limit = 15, style = "tag_cloud")
     if tags.empty?
-      tags = Tag.all(:sort=> [[ :count, :desc ]]).
-        where({:group_id => current_group.id}).limit(limit)
+      tags = Tag.desc(:count).where({:group_id => current_group.id}).limit(limit).entries
     end
+
     return '' if tags.size <= 2 #tags.count return all tags instead of using .limit
 
     tag_class = options.delete(:tag_class) || "tag"
