@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.10'
+gem 'rails', '3.1.0'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
@@ -27,11 +27,11 @@ gem "fancy-buttons", "1.1.1"
 gem 'kaminari'
 
 # mongodb
-gem 'bson', '1.3.0'
-gem 'bson_ext', '1.3.0'
+gem 'bson', '1.4.0'
+gem 'bson_ext', '1.4.0'
 
-gem 'mongo', '1.3.0'
-gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :ref => "eb41dd0e"
+gem 'mongo', '1.4.0'
+gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :ref => "49e3c4eaa2b3137a52b086ed22317b71a0fbce10"
 gem 'mongoid_ext', :git => "git://github.com/dcu/mongoid_ext.git"
 
 gem 'mongo_store', :git => 'https://github.com/Houdini/mongo_store.git'
