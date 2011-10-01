@@ -1,5 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  include RailsRinku
+
   def known_languages(user, group)
     return group.languages unless logged_in?
     languages = user.preferred_languages & group.languages
