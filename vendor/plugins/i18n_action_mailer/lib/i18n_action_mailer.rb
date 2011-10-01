@@ -2,7 +2,7 @@ module I18nActionMailer
 
   def self.included(base)
     base.send :include, I18nActionMailer::InstanceMethods
-    base.send :alias_method_chain, :render_message, :i18n
+    base.send :alias_method_chain, :render, :i18n
     base.helper_method :locale, :l, :localize
     base.helper do
       def translate(key, options = {})
@@ -44,9 +44,9 @@ module I18nActionMailer
       @locale = locale
     end
 
-    def render_message_with_i18n(method_name, body)
+    def render_with_i18n(method_name, body)
       method_name = "#{method_name}_#{locale}" if locale and !Dir["#{template_path}/#{method_name}_#{locale}*"].empty?
-      render_message_without_i18n(method_name, body)
+      render_without_i18n(method_name, body)
     end
     
     private
