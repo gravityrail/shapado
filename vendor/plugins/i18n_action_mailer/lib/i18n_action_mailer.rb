@@ -44,20 +44,20 @@ module I18nActionMailer
       @locale = locale
     end
 
-    def render_with_i18n(method_name, body)
+    def render_with_i18n(method_name)
       method_name = "#{method_name}_#{locale}" if locale and !Dir["#{template_path}/#{method_name}_#{locale}*"].empty?
-      render_without_i18n(method_name, body)
+      render_without_i18n(method_name)
     end
-    
+
     private
       def scope_key_by_partial(key)
-        if key.to_s.first == "."   
+        if key.to_s.first == "."
           mailer_scope = self.class.mailer_name.gsub('/', '.')
           mailer_scope + "." + action_name + key.to_s
         else
           key
         end
-      end      
+      end
   end
 
 end
