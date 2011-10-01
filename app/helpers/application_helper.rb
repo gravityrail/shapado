@@ -98,6 +98,8 @@ module ApplicationHelper
       lowest_value = tags[tags.size-1] #tags.last returns the last tags without taking the .limit into account (mongoid bug?)
       highest_value = tags.first
 
+      return '' if highest_value.nil? || lowest_value.nil?
+
       spread = (highest_value.count - lowest_value.count)
       spread = 1 if spread == 0
       ratio = (max_size - min_size) / spread
