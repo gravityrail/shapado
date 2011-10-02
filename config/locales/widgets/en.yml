@@ -107,6 +107,7 @@ en:
       follow_tag: "+ Follow tag"
     contributors:
       title: "Question's Contributors"
+      description: "This widget displays the list of people who contributed to a question."
     group_networks:
       title: "Follow us"
       description: "This widget displays a list of social network links so that your users can follow you there."

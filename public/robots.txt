@@ -8,6 +8,10 @@
 User-agent: *
 Allow: /
 
+Disallow: /*/activity.atom
+Disallow: /*/answers.atom
+Disallow: /questions/*.atom
+
 Disallow: /announcements/hide
 Disallow: /announcements/hide/
 Disallow: /questions/random/

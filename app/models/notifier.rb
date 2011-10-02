@@ -234,4 +234,8 @@ class Notifier < ActionMailer::Base
                  I18n.locale
                end
   end
+
+  def set_locale(lang)
+    I18n.locale = lang
+  end
 end

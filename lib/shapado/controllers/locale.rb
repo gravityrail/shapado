@@ -27,7 +27,7 @@ module Shapado
             elsif params[:feed_token] && (feed_user = User.where(:feed_token => params[:feed_token]).first)
               languages = feed_user.languages_to_filter(current_group)
             end
-            languages
+            languages.to_a
           else
             [current_group.language || AppConfig.default_language]
           end

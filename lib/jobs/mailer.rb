@@ -49,7 +49,7 @@ module Jobs
       current_group = Group.find(current_group_id)
       user = User.find(user_id)
       if user.notification_opts.activities
-        Notifier.deliver_follow(current_user, user, current_group)
+        Notifier.follow(current_user, user, current_group).deliver
       end
     end
 

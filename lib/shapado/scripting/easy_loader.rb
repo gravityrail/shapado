@@ -36,7 +36,6 @@ Dir.chdir(Rails.root.to_s) do
   MongoidExt.init
 
   # initializers
-  require './vendor/plugins/i18n_action_mailer/lib/i18n_action_mailer'
   require './config/initializers/00_config'
   require './config/initializers/01_locales'
   require './config/initializers/constants'
