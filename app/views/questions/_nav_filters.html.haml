@@ -5,5 +5,5 @@
   = pjax_link_to t("questions.index.newest"), "index", url_for(params.merge(questions_link).merge(:sort=>"newest")), :title => t("questions.index.newest_tooltip"), :rel => "nofollow"
 %li.hot
   = pjax_link_to t("questions.index.hot"), "index", url_for(params.merge(questions_link).merge(:sort=>"hot")), :title => t("questions.index.hot_tooltip"), :rel => "nofollow"
-%li.votes
+%li.followers
   = pjax_link_to t("users.show.followers"), "index", url_for(params.merge(questions_link).merge(:sort=>"followers")), :title =>  t("questions.index.followers_tooltip"), :rel => "nofollow"

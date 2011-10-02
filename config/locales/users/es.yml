@@ -85,7 +85,7 @@ es:
       name: Por nombre de usuario
       name_tooltip: Usuarios ordenados alfabéticamente
       near: Cerca de ti
-      near_tooltop: Usuarios que estan cerca de ti
+      near_tooltip: Usuarios que estan cerca de ti
       newest: Recientes
       newest_tooltip: Usuarios que se acaban de unir
       oldest: Antiguos

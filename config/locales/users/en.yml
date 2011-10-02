@@ -21,7 +21,7 @@ en:
       oldest: Oldest
       name: Name
       near: Near you
-      near_tooltop: Users who are near you
+      near_tooltip: Users who are near you
       reputation_tooltip: Users sorted by higher reputation
       newest_tooltip: Users who just joined
       oldest_tooltip: Users who were the first to join
