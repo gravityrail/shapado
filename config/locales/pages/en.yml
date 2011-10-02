@@ -2,9 +2,10 @@ en:
   pages:
     title: Fixme
     index:
-      wiki: Wiki
-      title: List of pages
       create_page: Create new page
+      title: List of pages
+      wiki: Wiki
+      wiki_pages: Wiki Pages
       written_in: Written in %{language}
     edit:
       title: Editing page
