@@ -8,7 +8,7 @@ if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', '1.6.5'
 
   gem "ruby-stemmer", "~> 0.8.2", :require => "lingua/stemmer"
-  gem "sanitize", "1.2.1"
+  gem "sanitize", "2.0.3"
 
   gem 'magic'
   gem 'mini_magick', '~> 2.3'
@@ -51,7 +51,6 @@ gem 'rinku', '~> 1.2.2', :require => 'rails_rinku'
 gem "rack-recaptcha", "0.2.2", :require => "rack/recaptcha"
 
 gem "twitter-text", "1.1.8"
-gem 'sanitize', '1.2.1'
 gem "twitter_oauth"
 gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_widgets.git'
 gem 'activemerchant', '1.16.0'
@@ -60,9 +59,9 @@ gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkh
 gem 'geoip'
 
 # authentication
-gem 'omniauth', '~> 0.2.6'
-gem 'oa-openid', '~> 0.2.6', :require => 'omniauth/openid'
-gem "oa-oauth", '~> 0.2.6', :require => "omniauth/oauth"
+gem 'omniauth', '~> 0.3.0'
+gem 'oa-openid', '~> 0.3.0', :require => 'omniauth/openid'
+gem "oa-oauth", '~> 0.3.0', :require => "omniauth/oauth"
 
 gem 'multiauth', :git => "http://github.com/dcu/multiauth.git"
 
@@ -83,7 +82,7 @@ end
 group :scripts do
   gem 'eventmachine', '~> 0.12.10'
   gem 'em-websocket', '~> 0.3.0'
-  gem 'twitter', '1.5.0'
+  gem 'twitter', '1.7.2'
 end
 
 group :test do
