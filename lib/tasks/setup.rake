@@ -185,6 +185,17 @@ namespace :setup do
     end
   end
 
+  task :reindex_xapian => [:environment] do
+    raise "No Xapian database specified in config." if Xapit.config[:database_path].blank?
+    FileUtils.rm_rf("tmp/xapit") if File.exist? "tmp/xapit"
+
+    FileUtils.mv(Xapit.config[:database_path], "tmp/xapit") if File.exist? Xapit.config[:database_path]
+
+    models = [Question]
+    xapit_models = models.compact.uniq.select { |m| m.respond_to? :xapit_model_adapter }
+    Xapit.index(*xapit_models)
+  end
+
   desc "Create/Update Versions"
   task :versions => [:environment] do
     ShapadoVersion.reload!
