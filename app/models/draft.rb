@@ -3,8 +3,8 @@ class Draft
   include Mongoid::Timestamps
 
   identity :type => String
-  field :question, :type => Question
-  field :answer, :type => Answer
+  embeds_one :question
+  embeds_one :answer
 
   def self.cleanup!
     Draft.delete_all(:created_at.lt => 8.days.ago)

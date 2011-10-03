@@ -32,7 +32,7 @@ class User
   field :role,                      :type => String, :default => "user"
   field :last_logged_at,            :type => Time
 
-  field :preferred_languages,       :type => Array, :default => []
+  field :preferred_languages,       :type => Set, :default => []
 
   field :language,                  :type => String, :default => "en"
   index :language

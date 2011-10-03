@@ -183,6 +183,7 @@ module MultiauthSupport
     end
 
     def twitter_client
+      p "twitter_client I"
       if self.twitter_secret.present? && self.twitter_token.present? && (config = Multiauth.providers["Twitter"])
         TwitterOAuth::Client.new(
           :consumer_key => config["id"],
@@ -191,6 +192,7 @@ module MultiauthSupport
           :secret => self.twitter_secret
         )
       end
+      p "twitter_client E"
     end
 
     def facebook_client(property = 'friends', params = 'fields[]=name&fields[]=picture&fields[]=locale')
@@ -240,6 +242,8 @@ module MultiauthSupport
     end
 
     def check_user_info(fields, provider)
+
+      p "check_user_info I"
       user = self
       if provider == 'linked_in' && user.user_info["linked_in"].blank?
         user.user_info["linked_in"] = fields["user_info"]
@@ -257,6 +261,7 @@ module MultiauthSupport
         user.user_info["facebook"] = fields["user_info"]
         user.save(:validate => false)
       end
+      p "check_user_info E"
     end
 
     private
@@ -278,12 +283,14 @@ module MultiauthSupport
     # "extra"=>{"access_token"=>token_object, "user_hash"=>{"description"=>"desc", "screen_name"=>"nick", "geo_enabled"=>false, "profile_sidebar_border_color"=>"87bc44", "status"=>{}}},
     # "user_info"=>{"nickname"=>"nick", "name"=>"My Name", "location"=>"Here", "image"=>"http://a0.twimg.com/profile_images/path.png", "description"=>"desc", "urls"=>{"Website"=>nil}}}
     def handle_twitter(fields)
+      p "handle_twitter I"
       self.twitter_token = fields["credentials"]["token"].to_s
       self.twitter_secret = fields["credentials"]["secret"].to_s
       self.twitter_login = fields["user_info"]["nickname"].to_s
       self.twitter_id = fields["uid"].to_s
 
       self.login.blank? && self.login = fields["user_info"]["nickname"]
+      p "handle_twitter E"
     end
 
     def handle_identica(fields)

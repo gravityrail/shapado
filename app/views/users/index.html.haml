@@ -6,7 +6,7 @@
       .field
         = label_tag :q, t(".filter"), :class => "label"
         = text_field_tag "q", params[:q], :class => "text_field filter_field"
-        = submit_tag("filter", :class => "filter_input")
+        = submit_tag(t('layouts.application.search'), :class => "filter_input")
 
   %ul.filters
     %li
@@ -21,7 +21,7 @@
     %li.name
       = link_to t(".name"), users_path(:sort=>"name"), :title => t(".name_tooltip")
     %li.name
-      = link_to t(".near"), users_path(:sort=>"near"), :title => t(".name_tooltip")
+      = link_to t(".near"), users_path(:sort=>"near"), :title => t(".near_tooltip")
 
   /Users
   %ul.items#users

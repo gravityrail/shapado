@@ -1,19 +1,22 @@
 class GeoPosition
+  include Mongoid::Fields::Serializable
+
   attr_reader :lat, :long
 
-  def self.set(value)
+  def serialize(value)
     return if value.nil?
-    if value.is_a?(self)
+
+    if value.is_a?(self.class)
       {'lat' => value.lat.to_f, 'long' => value.long.to_f}
     elsif value.is_a?(Hash)
       {'lat' => value['lat'].to_f, 'long' => value['long'].to_f}
     end
   end
 
-  def self.get(value)
+  def deserialize(value)
     return if value.nil?
 
-    value.is_a?(self) ? value : GeoPosition.new(value['lat'], value['long'])
+    value.is_a?(self.class) ? value : GeoPosition.new(value['lat'], value['long'])
   end
 
   def initialize(lat, long)

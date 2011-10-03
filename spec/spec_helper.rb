@@ -5,6 +5,8 @@ SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'remarkable/mongoid'
+require 'capybara/rails'
+require 'capybara/rspec'
 require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -51,6 +53,12 @@ RSpec.configure do |config|
     group
   end
 
+  def create_group
+    theme = Theme.create_default
+    Jobs::Themes.generate_stylesheet(theme.id)
+    @group = Group.make(:group, :domain => AppConfig.domain, :current_theme => theme)
+  end
+
   require 'database_cleaner'
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
@@ -59,6 +67,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Sham.reset(:before_all)
+    Capybara.default_driver = :selenium
+    Capybara.javascript_driver = :selenium
+    Capybara.default_host = AppConfig.domain
 #     Sham.reset(:before_each)
     DatabaseCleaner.clean
   end

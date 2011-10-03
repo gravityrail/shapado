@@ -1,5 +1,7 @@
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper
+  include RailsRinku
+
   def known_languages(user, group)
     return group.languages unless logged_in?
     languages = user.preferred_languages & group.languages
@@ -49,6 +51,7 @@ module ApplicationHelper
 
   def language_select(f, question, opts = {})
     languages = current_group.languages
+
     selected = question.language
 
     f.select :language, languages_options(languages), {:selected => selected}, {:class => "select"}.merge(opts)
@@ -82,9 +85,9 @@ module ApplicationHelper
 
   def tag_cloud(tags = [], options = {}, limit = 15, style = "tag_cloud")
     if tags.empty?
-      tags = Tag.all(:sort=> [[ :count, :desc ]]).
-        where({:group_id => current_group.id}).limit(limit)
+      tags = Tag.desc(:count).where({:group_id => current_group.id}).limit(limit).entries
     end
+
     return '' if tags.size <= 2 #tags.count return all tags instead of using .limit
 
     tag_class = options.delete(:tag_class) || "tag"
@@ -95,6 +98,8 @@ module ApplicationHelper
       min_size = 1
       lowest_value = tags[tags.size-1] #tags.last returns the last tags without taking the .limit into account (mongoid bug?)
       highest_value = tags.first
+
+      return '' if highest_value.nil? || lowest_value.nil?
 
       spread = (highest_value.count - lowest_value.count)
       spread = 1 if spread == 0
