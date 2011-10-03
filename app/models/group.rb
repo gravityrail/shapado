@@ -260,11 +260,11 @@ class Group
       when "logo"
         logo
       when "big"
-        @group.thumbnails["big"] ? @group.thumbnails.get("big") : logo
+        @group.thumbnails.fetch("big", logo)
       when "medium"
-        @group.thumbnails["medium"] ? @group.thumbnails.get("medium") : logo
+        @group.thumbnails.fetch("medium", logo)
       when "small"
-        @group.thumbnails["small"] ? @group.thumbnails.get("small") : logo
+        @group.thumbnails.fetch("small", logo)
       when "css"
         css=@group.current_theme.stylesheet
         css.content_type = "text/css"
