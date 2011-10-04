@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: d2680f04c470ba6d5a28d674f9790ea8955fe995
+  revision: d8d3039caf196070b4fc592913c31dbb7e2a818d
   specs:
     mongoid_ext (0.7.0)
       differ (>= 0.1.2)
@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 49e3c4eaa2b3137a52b086ed22317b71a0fbce10
-  ref: 49e3c4eaa2b3137a52b086ed22317b71a0fbce10
+  revision: 8d320e294f24364bdb8051894ca18191d2ba5b09
+  branch: 2.3.0-stable
   specs:
     mongoid (2.3.0)
       activemodel (~> 3.1)
@@ -37,9 +37,9 @@ GIT
 
 GIT
   remote: git://github.com/ricodigo/bug_hunter.git
-  revision: 29bd4a6c3fa03b308f9b94ad2cafbbed803626b5
+  revision: 11285448f2ccafc4edee9f22d460318e1cd2b89e
   specs:
-    bug_hunter (0.1.1)
+    bug_hunter (0.2.0)
       haml
       launchy
       mongoid
@@ -383,10 +383,10 @@ GEM
     sinatra (1.2.7)
       rack (~> 1.1)
       tilt (< 2.0, >= 1.2.2)
-    sprockets (2.0.1)
+    sprockets (2.0.2)
       hike (~> 1.2)
       rack (~> 1.0)
-      tilt (!= 1.3.0, ~> 1.1)
+      tilt (~> 1.1, != 1.3.0)
     state_machine (0.10.4)
     subexec (0.0.4)
     systemu (2.2.0)
