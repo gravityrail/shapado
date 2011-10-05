@@ -665,7 +665,7 @@ Time.zone.now ? 1 : 0)
       avatar = @user.has_avatar? ? @user.avatar : Shapado::FileWrapper.new("#{Rails.root}/public/images/avatar-25.png", "image/png")
       case $1
       when "avatar"
-        @user.avatar
+        avatar
       when "big"
         @user.thumbnails["big"] ? @user.thumbnails.get("big") : avatar
       when "medium"

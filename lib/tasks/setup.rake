@@ -191,7 +191,7 @@ namespace :setup do
 
     FileUtils.mv(Xapit.config[:database_path], "tmp/xapit") if File.exist? Xapit.config[:database_path]
 
-    models = [Question]
+    models = Mongoid::Document.models.map{|m| m.constantize }
     xapit_models = models.compact.uniq.select { |m| m.respond_to? :xapit_model_adapter }
     Xapit.index(*xapit_models)
   end
