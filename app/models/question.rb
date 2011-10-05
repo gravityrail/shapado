@@ -175,7 +175,13 @@ class Question
   def self.related_questions(question, opts = {})
     opts[:group_id] = question.group_id
     opts[:banned] = false
-    opts[:language] = question.language if question.language
+
+    if question.new?
+      question.language = nil
+    elsif question.language
+      opts[:language] = question.language
+    end
+
     opts[:tags] = question.tags if !question.tags.blank?
 
     Question.search.similar_to(question).where(opts).not_where(:_id => question.id)
