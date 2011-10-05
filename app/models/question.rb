@@ -131,6 +131,17 @@ class Question
   validate :disallow_spam
   validate :check_useful
 
+  xapit do
+    text :title
+    text :body do |body|
+      body.gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") unless body.nil?
+    end
+    text :tags do |tags|
+       tags.join(" ") unless tags.nil?
+    end
+    field :group_id, :banned, :id, :language, :tags
+  end
+
   def self.minimal
     without(:_keywords, :close_requests, :open_requests, :versions)
   end
@@ -164,12 +175,10 @@ class Question
   def self.related_questions(question, opts = {})
     opts[:group_id] = question.group_id
     opts[:banned] = false
-    opts[:_id] = {:$ne => question.id}
+    opts[:language] = question.language if question.language
+    opts[:tags] = question.tags if !question.tags.blank?
 
-    text_search = question.title || ""
-    text_search << (question.body || "")
-    text_search << question.tags.join
-    Question.filter(text_search, opts)
+    Question.search.similar_to(question).where(opts).not_where(:_id => question.id)
   end
 
   def viewed!(ip)
