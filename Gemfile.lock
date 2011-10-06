@@ -34,10 +34,10 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 8d320e294f24364bdb8051894ca18191d2ba5b09
+  revision: b6ef680986a0bafe94daac169be7f5e443e2563e
   branch: 2.3.0-stable
   specs:
-    mongoid (2.3.0)
+    mongoid (2.3.1)
       activemodel (~> 3.1)
       mongo (~> 1.4)
       tzinfo (~> 0.3.22)
@@ -245,10 +245,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mechanize (2.0.1)
-      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-digest_auth (>= 1.1.1, ~> 1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (~> 0.0, >= 0.0.9)
+      webrobots (>= 0.0.9, ~> 0.0)
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)

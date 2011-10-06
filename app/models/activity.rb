@@ -155,7 +155,7 @@ class Activity
   end
 
   def target_name
-    self[:target_name] || trackable_name
+    self[:target_name] || (trackable_name ? trackable_name.gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, ""): "")
   end
 
   def has_target?
@@ -178,7 +178,8 @@ class Activity
     self[:trackable_param] = self.trackable.to_param if self.trackable.to_param != self.trackable.id
     if self.target.present?
       self[:target_param] = self.target.to_param
-      self[:target_name] = self.target["name"] || self.target["title"] || self.target["body"] || self.target["description"]
+      self[:target_name] = (self.target["name"] || self.target["title"] || self.target["body"] || self.target["description"])
+      self[:target_name] =  self[:target_name].gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") if  self[:target_name]
     end
   end
 end
