@@ -123,7 +123,7 @@ module ApplicationHelper
     raw = options.delete(:raw)
     body = render_page_links(txt.to_s, options)
     txt = if raw
-      (defined?(RDiscount) ? RDiscount.new(body) : Maruku.new(body)).to_html
+      (defined?(RDiscount) ? RDiscount.new(body, :protect_math) : Maruku.new(body)).to_html
     else
       (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) : Maruku.new(sanitize(body))).to_html
     end
@@ -333,7 +333,18 @@ module ApplicationHelper
 
   def include_latex
     if current_group.enable_mathjax
-      return raw("<script type='text/javascript' src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>")
+      return raw("<script type=\"text/x-mathjax-config\">
+  MathJax.Hub.Config({
+    extensions: [\"tex2jax.js\"],
+    jax: [\"input/TeX\", \"output/HTML-CSS\"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    \"HTML-CSS\": { availableFonts: [\"TeX\"] }
+  });
+</script><script type='text/javascript' src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>")
     elsif current_group.enable_latex
       require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
       jqmath_tags = %{<meta data-jqmath data-jsassets="cssassets.jqmath" data-cssassets="jsassets.jqmath">}
