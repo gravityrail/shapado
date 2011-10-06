@@ -125,7 +125,7 @@ module ApplicationHelper
     txt = if raw
       (defined?(RDiscount) ? RDiscount.new(body) : Maruku.new(body)).to_html
     else
-      (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict) : Maruku.new(sanitize(body))).to_html
+      (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) : Maruku.new(sanitize(body))).to_html
     end
 
     if options[:sanitize] != false

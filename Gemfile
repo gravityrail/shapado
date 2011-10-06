@@ -5,7 +5,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.0'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
-  gem 'rdiscount', '1.6.5'
+  gem 'rdiscount', :git => 'git://github.com/ricodigo/rdiscount.git'
 
   gem "ruby-stemmer", "~> 0.8.2", :require => "lingua/stemmer"
   gem "sanitize", "2.0.3"
