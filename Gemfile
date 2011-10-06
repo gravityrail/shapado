@@ -73,8 +73,8 @@ gem 'rack-ssl', :require => false
 
 gem 'state_machine', "0.10.4"
 
-gem "xapian-ruby"
-gem "xapit", :git => "git://github.com/dcu/xapit.git", :branch => "rack13"
+gem "xapian-ruby", '1.2.7'
+gem "xapit", :git => "git://github.com/dcu/xapit.git"
 
 group :deploy do
   gem 'capistrano', :require => false

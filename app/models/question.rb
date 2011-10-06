@@ -132,6 +132,7 @@ class Question
   validate :check_useful
 
   xapit do
+    language :language
     text :title
     text :body do |body|
       body.gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") unless body.nil?
