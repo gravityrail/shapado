@@ -35,7 +35,7 @@
           = link_to h(tag), url_for(:controller => "questions", :action => "index", :tags => tag), :rel => "tag"
     .right
       = t(:asked_by, :scope => "activerecord.attributes.question")
-      = link_to h(question.user.login), user_path(question.user), :class => "pjax", :"data-layout" => "user"
+      = link_to h(question.user.display_name), user_path(question.user), :class => "pjax", :"data-layout" => "user"
       %b
         = t("time.ago", :time => time_ago_in_words(question.created_at))
   .clear

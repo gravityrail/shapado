@@ -1,5 +1,5 @@
 .answer-body
-  =link_to answer.user.login, user_path(answer)
+  =link_to answer.user.display_name, user_path(answer)
   .markdown
     =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
   .small-info
