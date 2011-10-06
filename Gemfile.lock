@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/dcu/xapit.git
-  revision: cb2df2c861f250b58ee9dcf51ab6ddc75f32d97c
+  revision: b6a7a40c7fe2a381644899a56c3cd8253af8b966
   specs:
     xapit (0.3.0)
       rack (~> 1.3.4)
@@ -34,10 +34,10 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 8d320e294f24364bdb8051894ca18191d2ba5b09
+  revision: b6ef680986a0bafe94daac169be7f5e443e2563e
   branch: 2.3.0-stable
   specs:
-    mongoid (2.3.0)
+    mongoid (2.3.1)
       activemodel (~> 3.1)
       mongo (~> 1.4)
       tzinfo (~> 0.3.22)
