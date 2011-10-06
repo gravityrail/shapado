@@ -23,7 +23,7 @@
           %span
             %span.gravatar
               = avatar_img(current_user, :size => "small")
-              = link_to h(current_user.login), user_path(current_user), :class => "pjax", :"data-layout" => "user"
+              = link_to h(current_user.display_name), user_path(current_user), :class => "pjax", :"data-layout" => "user"
               %span{:style => "font-size: 12px; font-weight: bold"}
                 == (#{current_user.reputation_on(current_group)})
         %li
