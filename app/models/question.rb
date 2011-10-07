@@ -185,7 +185,7 @@ class Question
 
     opts[:tags] = question.tags if !question.tags.blank?
 
-    Question.search.similar_to(question).where(opts).not_where(:_id => question.id)
+    Question.search.where(opts).similar_to(question)
   end
 
   def viewed!(ip)
