@@ -17,7 +17,7 @@ if RUBY_PLATFORM !~ /mswin|mingw/
 else
   gem "maruku", "0.6.0"
 end
-
+gem "maruku"
 # ui
 gem "haml"
 gem "sass"
