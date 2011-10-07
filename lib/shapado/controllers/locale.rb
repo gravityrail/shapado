@@ -54,7 +54,11 @@ module Shapado
         if AppConfig.enable_i18n
           if logged_in?
             locale = current_user.language
-            Time.zone = current_user.timezone || "UTC"
+            begin
+              Time.zone = current_user.timezone || "UTC"
+            rescue ArgumentError
+              Time.zone = "UTC"
+            end
           elsif params[:feed_token] && (feed_user = User.where(:feed_token => params[:feed_token]).first)
             locale = feed_user.language
           elsif params[:lang] =~ /^(\w\w)/
