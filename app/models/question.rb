@@ -137,9 +137,6 @@ class Question
     text :body do |body|
       body.gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") unless body.nil?
     end
-    text :tags do |tags|
-       tags.join(" ") unless tags.nil?
-    end
     field :group_id, :banned, :id, :language, :tags
   end
 
@@ -182,8 +179,7 @@ class Question
     elsif question.language
       opts[:language] = question.language
     end
-
-    opts[:tags] = question.tags if !question.tags.blank?
+    opts[:tags] = question.tags
 
     Question.search.where(opts).similar_to(question)
   end
