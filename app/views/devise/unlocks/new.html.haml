@@ -3,7 +3,7 @@
 %p.description
   After several attempts to log who are not successful the account is locked for safety, here you can unlock.
 
-= form_for resource_name, resource, :url => unlock_path(resource_name) do |f|
+= form_for resource, :as => resource_name, :url => unlock_path(resource_name) do |f|
   = f.error_messages
   .field
     = f.label :email
