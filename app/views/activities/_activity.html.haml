@@ -1,7 +1,7 @@
 -# FIXME: use t('activity.humanized', :user=>user, :action=> action, :target=> target) after styling
 %article.activity
   %p
-    = pjax_link_to activity.display_name, "user", user_path(activity.user)
+    = pjax_link_to activity.user.display_name, "user", user_path(activity.user)
     = activity.humanize_action
   %h2
     - if activity.action == "destroy"
