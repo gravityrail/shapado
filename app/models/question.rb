@@ -179,7 +179,7 @@ class Question
     elsif question.language
       opts[:language] = question.language
     end
-    opts[:tags] = question.tags
+    opts[:tags] = question.tags if !question.tags.blank?
 
     Question.search.where(opts).similar_to(question)
   end
