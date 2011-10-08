@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 5052d72fa94a60447352a0ebdbc862b98a74d2a7
+  revision: 9e6b4cfc64c9909c74e14f26226e2015c12530af
   specs:
     mongoid_ext (0.7.0)
       differ (>= 0.1.2)
@@ -247,10 +247,10 @@ GEM
     maruku (0.6.0)
       syntax (>= 1.0.0)
     mechanize (2.0.1)
-      net-http-digest_auth (>= 1.1.1, ~> 1.1)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
       net-http-persistent (~> 1.8)
       nokogiri (~> 1.4)
-      webrobots (>= 0.0.9, ~> 0.0)
+      webrobots (~> 0.0, >= 0.0.9)
     mime-types (1.16)
     mini_magick (2.3)
       subexec (~> 0.0.4)
@@ -348,7 +348,8 @@ GEM
       thor (~> 0.14.6)
     raindrops (0.7.0)
     rake (0.9.2)
-    rdoc (3.9.4)
+    rdoc (3.10)
+      json (~> 1.4)
     remarkable (4.0.0.alpha4)
       rspec (>= 2.0.0.alpha11)
     remarkable_activemodel (4.0.0.alpha4)
