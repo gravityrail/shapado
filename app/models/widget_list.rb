@@ -36,7 +36,7 @@ class WidgetList
       pos = widgets.count-1
     end
 
-    self._parent.override("#{self._position}.#{context}.#{pos}" => widget.attributes)
-    self._parent.override("#{self._position}.#{context}.#{current_pos}" => widgets[pos].attributes)
+    self._parent.override("#{self.atomic_position}.#{context}.#{pos}" => widget.attributes)
+    self._parent.override("#{self.atomic_position}.#{context}.#{current_pos}" => widgets[pos].attributes)
   end
 end

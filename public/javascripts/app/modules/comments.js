@@ -27,7 +27,7 @@ var Comments = {
       $(this).find(".comment-votes form.comment-form button.vote").toggle(show);
     });
 
-    $(".content-panel").delegate(".comment-votes .comment-form", "submit[name=vote_up]", function(event) {
+    $(".content-panel").delegate(".comment-votes .comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button');
       btn.attr('disabled', true);
