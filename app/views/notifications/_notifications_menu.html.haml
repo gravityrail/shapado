@@ -1,10 +1,10 @@
-
+-activities = current_user.activities
 %ul.notifications-list.menubar
   %li
     %a{:href => "#"}
-      2
+      =activities.count
     %ul
       %li.notification
         %h3 Notifications
-      -10.times do
-        = render "notifications/notification_item"
+      -activities.each do |activity|
+        = render "notifications/notification_item", :activity => activity

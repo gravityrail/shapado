@@ -25,10 +25,11 @@ class Membership
   field :silver_badges_count,       :type => Integer, :default => 0
   field :gold_badges_count,         :type => Integer, :default => 0
   field :is_editor,                 :type => Boolean, :default => false
+  field :level,                     :type => Integer, :default => 1
 
   field :comments_count,            :type => Integer, :default => 0
-
   field :reputation_today, :type => Hash, :default => {}
+
 
   referenced_in :user
   referenced_in :group
