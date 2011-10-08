@@ -116,6 +116,8 @@ li.sfHover > a > .sf-sub-indicator
         padding: 14px 25px 13px 15px
     ul
       top: 40px !important
+      h3
+        padding: 5px
       li:first-child
         border: 0px
       a
@@ -132,7 +134,6 @@ li.sfHover > a > .sf-sub-indicator
       padding-left: 10px
     li.user
       position: relative
-      border: 0px
       a
         padding-left: 50px
       img
@@ -141,6 +142,35 @@ li.sfHover > a > .sf-sub-indicator
         left: 13px
         +normal-radius
         width: 25px
+
+  ul.notifications-list
+    float: right
+    &>li
+      width: 32px
+      a
+        &.hover
+          background: #fff
+          color: #000
+        text-align: center
+        padding-left: 0px
+        padding-right: 0px
+    ul
+      width: 320px
+      left: -288px
+      li.notification
+        .warp
+          padding: 5px
+        cursor: auto
+        &:hover
+          background: #fff
+          color: #000
+        a, time
+          display: inline
+          padding: 0
+          color: #000
+          &:hover
+            color: #666 !important
+            background: #fff !important
 
 
 // ARTICLE TOOLBAR - dropdown for moderate + ARTICLE TOOLBAR - dropdown for moderate

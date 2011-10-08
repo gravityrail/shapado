@@ -1,0 +1,10 @@
+
+%ul.notifications-list.menubar
+  %li
+    %a{:href => "#"}
+      2
+    %ul
+      %li.notification
+        %h3 Notifications
+      -10.times do
+        = render "notifications/notification_item"
