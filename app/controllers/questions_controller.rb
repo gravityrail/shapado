@@ -409,8 +409,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         sweep_question(@question)
-        sweep_answer(@answer_id)
-
+        @question.answers.each do |answer|
+          sweep_answer(answer)
+        end
         flash[:notice] = t(:flash_notice, :scope => "questions.unsolve")
         current_user.on_activity(:reopen_question, current_group)
         if current_user != @answer_owner

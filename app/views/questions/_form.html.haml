@@ -12,17 +12,17 @@
   %small
     = raw(current_group.question_prompt)
 
-.field.related_questions
-  %label
-    = t(".related_questions", :default => :"questions.show.related_questions" )
-  %ul#related_questions
-  %small= t(".related_questions", :default => :"questions.form.related_questions_desc" )
-
 .field
   = f.label :tags, "#{t(:tags, :scope => "activerecord.attributes.question")}", :class => "label"
   = f.text_field :tags, :value => @question.tags.join(", "), :class => "text_field autocomplete_for_tags"
   %small
     = t(".tags_tip")
+
+.field.related_questions
+  %label
+    = t(".related_questions", :default => :"questions.show.related_questions" )
+  %ul#related_questions
+  %small= t(".related_questions", :default => :"questions.form.related_questions_desc" )
 
 .field
   =render "editor.html.haml", local_assigns

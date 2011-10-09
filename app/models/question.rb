@@ -467,7 +467,7 @@ class Question
 
   def group_language
     if AppConfig.enable_i18n && self.group.present?
-      unless self.group.languages.include? self.language || self.language
+      unless (self.group.languages.include? self.language) || (self.language == self.group.language)
         self.errors.add :language, I18n.t("questions.model.messages.not_group_languages")
       end
     end
