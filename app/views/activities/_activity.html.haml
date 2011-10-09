@@ -1,5 +1,5 @@
 -# FIXME: use t('activity.humanized', :user=>user, :action=> action, :target=> target) after styling
--if self[:target_type] || self[:trackable_type]
+-if activity[:target_type] || activity[:trackable_type]
   %article.activity
     %p
       = pjax_link_to activity.user.display_name, "user", user_path(activity.user)
