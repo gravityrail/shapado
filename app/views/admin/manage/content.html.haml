@@ -22,7 +22,7 @@
   = form.error_messages
   =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "content", :tab=>@active_subtab)
   - langs = @group.languages.sort
-  - default_lang = langs.delete(@group.language)
+  - default_lang = langs.delete(@group.language) || @group.language
 
   -if @active_subtab == "head_tag"
     .field

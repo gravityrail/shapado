@@ -65,6 +65,7 @@ class QuestionsController < ApplicationController
   end
 
   def related_questions
+    @question = nil
     if params[:id]
       @question = current_group.questions.by_slug(params[:id])
     elsif params[:question]
@@ -72,6 +73,7 @@ class QuestionsController < ApplicationController
       @question.group_id = current_group.id
     end
 
+    return render_404 if @question.nil?
 
     if params[:unanswers]
       conditions[:answered_with_id] = nil

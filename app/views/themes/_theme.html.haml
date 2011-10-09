@@ -8,7 +8,7 @@
     %ul
       -if theme.ready
         %li
-          = link_to t("themes.show.try"), domain_url(custom: current_group.domain, theme: theme.id, controller: "questions", action: "index"), :target => "_blank"
+          = link_to t("themes.show.try"), domain_url(custom: current_group.domain, test_theme: theme.id, controller: "questions", action: "index"), :target => "_blank"
         %li
           = link_to t("themes.show.apply"), apply_theme_path(theme), :method => :put
       - if theme.group == current_group

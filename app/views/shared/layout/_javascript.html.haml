@@ -1,6 +1,6 @@
 - if current_group.has_custom_js
   -current_theme = current_group.current_theme || Theme.where(:is_default => true).first
-  %meta{'data-has-js'=> current_theme.has_js, 'data-theme-js' => javascript_group_path(current_group, params[:theme] || current_theme.id, current_theme.version)}
+  %meta{'data-has-js'=> current_theme.has_js, 'data-theme-js' => javascript_group_path(current_group, params[:test_theme] || current_theme.id, current_theme.version)}
 = include_javascripts(MODERNIZR)
 - if Rails.env == 'development'
   = include_javascripts(:websocket)
