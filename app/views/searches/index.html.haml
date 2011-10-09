@@ -23,7 +23,7 @@
 
     = paginate @questions unless @questions.blank?
 
-    -if params[:q]
+    -if !params[:q].blank?
       .save-search
         =form_for @search, :url => search_index_path, :html => {:class => "form"} do |f|
           =f.hidden_field :query

@@ -1,5 +1,5 @@
 - langs = current_group.languages.sort
-- default_lang = langs.delete(current_group.language)
+- default_lang = langs.delete(current_group.language) || current_group.language
 
 .field
   = label :content, t('widgets.settings.content'), :class => "label"
