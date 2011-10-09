@@ -123,11 +123,11 @@ module ApplicationHelper
     raw = options.delete(:raw)
     body = render_page_links(txt.to_s, options)
     txt = if raw
-      (defined?(RDiscount) ? RDiscount.new(body, :protect_math) : Maruku.new(body)).to_html
-    elsif current_group.enable_mathjax
-            Maruku.new(sanitize(body)).to_html
+            (defined?(RDiscount) ? RDiscount.new(body, :protect_math) :
+             Maruku.new(body)).to_html
           else
-            (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) : Maruku.new(sanitize(body))).to_html
+            (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) :
+             Maruku.new(sanitize(body))).to_html
     end
 
     if options[:sanitize] != false
