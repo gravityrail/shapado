@@ -29,18 +29,21 @@ class SearchesController < ApplicationController
 
       @search = Search.new(:query => pharse)
 
-      if !@search_text.blank?
+      if !@search_text.blank? #FIXME make tag search work with xapit || !@search_tags.empty?
         # FIXME:filter is blocking mongodb
-#         @questions = Question.(@search_text, options)
+        # @questions = Question.(@search_text, options)
 
         @questions = Question.search(@search_text).where(options).page(params["page"])
 
         # @questions = Question.filter(@search_text, options)
         # @highlight = @questions.parsed_query[:tokens].to_a
-#         @questions = Question.where(options).page(params["page"])
+        # @questions = Question.where(options).page(params["page"])
         @highlight = ""
       else
         @questions = Question.where(options).page(params["page"])
+        if !@search_tags.blank?
+          @questions = Question.where(options.merge({:tags=>{:$all =>@search_tags}})).page(params["page"])
+        end
       end
     else
       @questions = []
