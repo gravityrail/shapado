@@ -9,9 +9,9 @@ class SearchesController < ApplicationController
     options = {}
     unless params[:q].blank?
       pharse = params[:q]
-#       @search_tags = pharse.scan(/\[(\w+)\]/).flatten
+      @search_tags = pharse.scan(/\[(\w+)\]/).flatten
       @search_text = pharse.gsub(/\[(\w+)\]/, "")
-#       options[:tags] = {:$all => @search_tags} unless @search_tags.empty?
+      options[:tags] = @search_tags unless @search_tags.empty?
       options[:group_id] = current_group.id
       options[:banned] = false
 
