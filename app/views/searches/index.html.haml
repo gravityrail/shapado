@@ -2,7 +2,7 @@
   %section
     %h1
       -unless @questions.blank?
-        = t('.found_results', :quantity => @questions.total_entries)
+        = t('.found_results', :quantity => @questions.total_count)
       -else
         = t('.advanced_search')
 
@@ -23,7 +23,7 @@
 
     = paginate @questions unless @questions.blank?
 
-    -if params[:q]
+    -if !params[:q].blank?
       .save-search
         =form_for @search, :url => search_index_path, :html => {:class => "form"} do |f|
           =f.hidden_field :query

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: 5052d72fa94a60447352a0ebdbc862b98a74d2a7
+  revision: e1338a71841c1216850495180aa20edfb281d9da
   specs:
     mongoid_ext (0.7.0)
       differ (>= 0.1.2)
@@ -21,7 +21,7 @@ GIT
 
 GIT
   remote: git://github.com/dcu/xapit.git
-  revision: b6a7a40c7fe2a381644899a56c3cd8253af8b966
+  revision: f8fbce7aa38fdcdbfd90f0c1abdb18fe0de800cb
   specs:
     xapit (0.3.0)
       rack (~> 1.3.4)
@@ -348,7 +348,8 @@ GEM
       thor (~> 0.14.6)
     raindrops (0.7.0)
     rake (0.9.2)
-    rdoc (3.9.4)
+    rdoc (3.10)
+      json (~> 1.4)
     remarkable (4.0.0.alpha4)
       rspec (>= 2.0.0.alpha11)
     remarkable_activemodel (4.0.0.alpha4)

@@ -27,7 +27,7 @@ var Comments = {
       $(this).find(".comment-votes form.comment-form button.vote").toggle(show);
     });
 
-    $(".content-panel").delegate(".comment-form", "submit", function(event) {
+    $(".content-panel").delegate(".comment-votes .comment-form", "submit", function(event) {
       var form = $(this);
       var btn = form.find('button');
       btn.attr('disabled', true);
@@ -68,7 +68,7 @@ var Comments = {
                             if(data.success) {
                               var textarea = form.find("textarea");
                               window.onbeforeunload = null;
-                              var comment = $(data.html)
+                              var comment = $(data.html);
                               if(data.updated){
                                 Comments.update_on_show(data);
                               } else {
@@ -96,7 +96,7 @@ var Comments = {
 
     $(".content-panel").delegate(".edit_comment", "click", function() {
       var comment = $(this).parents(".comment")
-      var link = $(this)
+      var link = $(this);
       link.hide();
       $.ajax({
         url: $(this).attr("href"),
@@ -106,7 +106,7 @@ var Comments = {
         success: function(data) {
           comment = comment.append(data.html);
           link.hide()
-          var form = comment.find("form");
+          var form = comment.find("form.edit_comment_form");
           Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
           form.find(".cancel_edit_comment").click(function() {
             form.remove();
@@ -126,10 +126,10 @@ var Comments = {
                     data: form.serialize()+"&format=js",
                     success: function(data, textStatus) {
                                 if(data.success) {
-                                  comment.find(".markdown").html('<p>'+data.body+'</p>');
                                   form.remove();
                                   link.show();
                                   Effects.fade(comment);
+                                  comment.replaceWith(data.html);
                                   Messages.show(data.message, "notice");
                                   LocalStorage.remove(location.href, textarea.attr('id'));
                                   window.onbeforeunload = null;

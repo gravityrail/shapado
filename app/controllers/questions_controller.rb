@@ -65,6 +65,7 @@ class QuestionsController < ApplicationController
   end
 
   def related_questions
+    @question = nil
     if params[:id]
       @question = current_group.questions.by_slug(params[:id])
     elsif params[:question]
@@ -72,6 +73,7 @@ class QuestionsController < ApplicationController
       @question.group_id = current_group.id
     end
 
+    return render_404 if @question.nil?
 
     if params[:unanswers]
       conditions[:answered_with_id] = nil
@@ -409,8 +411,9 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       if @question.save
         sweep_question(@question)
-        sweep_answer(@answer_id)
-
+        @question.answers.each do |answer|
+          sweep_answer(answer)
+        end
         flash[:notice] = t(:flash_notice, :scope => "questions.unsolve")
         current_user.on_activity(:reopen_question, current_group)
         if current_user != @answer_owner
