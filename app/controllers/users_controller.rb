@@ -318,7 +318,7 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by_login_or_id(params[:id])
-    if @user != current_user
+    if @user != current_user && @user.member_of?(current_group)
       current_user.add_friend(@user)
 
       flash[:notice] = t("flash_notice", :scope => "users.follow", :user => @user.login)

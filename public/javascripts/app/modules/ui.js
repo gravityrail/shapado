@@ -56,27 +56,51 @@ var Ui = {
           var counter = $(link.attr('data-counter'));
           var text = link.text();
           var dataText = link.attr("data-text");
+          var dataMethod = link.attr("data-method");
+          var csrf = $('meta[name="csrf-token"]').attr('content');
+          if(dataMethod == 'post'){
+            $.ajax({url: href, headers:{'X-CSRF-Token': csrf}, data: {'authenticity_token': csrf}, dataType: "json", type: "post", success: function(data){
+              if(data.success){
+                link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
+                if(dataText && $.trim(dataText)!='')
+                  link.text(dataText);
+                img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
+                if(typeof(data.increment)!='undefined'){
+                  counter.text(parseFloat($.trim(counter.text()))+data.increment);
+                }
+                Messages.show(data.message, "notice");
+              } else {
+                Messages.show(data.message, "error");
 
-          $.getJSON(href, {format: "js"}, function(data){
-            if(data.success){
-              link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
-              if(dataText && $.trim(dataText)!='')
-                link.text(dataText);
-              img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
-              if(typeof(data.increment)!='undefined'){
-                counter.text(parseFloat($.trim(counter.text()))+data.increment);
+                if(data.status == "unauthenticate") {
+                  window.onbeforeunload = null;
+                  window.location="/users/login";
+                }
               }
-              Messages.show(data.message, "notice");
-            } else {
-              Messages.show(data.message, "error");
+              link.removeClass('busy');
+            }});
+          } else {
+            $.getJSON(href, {format: "js"}, function(data){
+              if(data.success){
+                link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
+                if(dataText && $.trim(dataText)!='')
+                  link.text(dataText);
+                img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
+                if(typeof(data.increment)!='undefined'){
+                  counter.text(parseFloat($.trim(counter.text()))+data.increment);
+                }
+                Messages.show(data.message, "notice");
+              } else {
+                Messages.show(data.message, "error");
 
-              if(data.status == "unauthenticate") {
-                window.onbeforeunload = null;
-                window.location="/users/login";
+                if(data.status == "unauthenticate") {
+                  window.onbeforeunload = null;
+                  window.location="/users/login";
+                }
               }
-            }
-            link.removeClass('busy');
-          }, "json");
+              link.removeClass('busy');
+            }, "json");
+          }
         }
       }
       return false;
