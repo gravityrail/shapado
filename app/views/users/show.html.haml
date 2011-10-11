@@ -30,6 +30,7 @@
         -if current_user == @user
           %p
             = link_to t('.edit_profile'), settings_path
+
       %ul.profile-stats
         %li
           %strong
@@ -53,7 +54,7 @@
             = @user.followers_count
           %small
             = link_to t('.followers'), follows_user_path(@user, :sort=>"followers")
-        -if current_user != @user
+        -if current_user != @user && @user.member_of?(current_group)
           -if logged_in? && current_user.following?(@user)
             %li.follow
               =link_to "- #{t(".unfollow")}", unfollow_user_path(@user), :class => "unfollow_link toggle-action", 'data-class' => "follow_link", 'data-text' => t(".follow"), 'data-undo' => follow_user_path(@user)
