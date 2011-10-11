@@ -126,7 +126,7 @@ module ApplicationHelper
       body = "<div>#{body}</div>"
     end
     txt = if raw
-            (defined?(RDiscount) ? RDiscount.new(body, :protect_math) :
+            (defined?(RDiscount) ? RDiscount.new(body) :
              Maruku.new(body)).to_html
           else
             (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) :
@@ -135,6 +135,9 @@ module ApplicationHelper
 
     if options[:sanitize] != false
       txt = defined?(Sanitize) ? Sanitize.clean(txt, SANITIZE_CONFIG) : sanitize(txt)
+    end
+    if current_group.enable_mathjax
+      txt = txt[5..-7]
     end
     txt.html_safe
   end
