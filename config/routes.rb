@@ -51,8 +51,8 @@ Rails.application.routes.draw do
     end
 
     member do
-      get :unfollow
-      get :follow
+      post :unfollow
+      post :follow
       get :feed
       get :expertise
       get :preferred
