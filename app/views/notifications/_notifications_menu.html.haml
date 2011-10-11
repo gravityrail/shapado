@@ -1,10 +1,11 @@
--activities = current_user.activities
+-activities = Activity.desc(:created_at).where(:group_id => current_group.id).page(1).per(10)
 %ul.notifications-list.menubar
   %li
     %a{:href => "#"}
       =activities.count
     %ul
       %li.notification
-        %h3 Notifications
+        %h3
+          Notifications
       -activities.each do |activity|
         = render "notifications/notification_item", :activity => activity

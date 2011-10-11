@@ -3,7 +3,7 @@ class OpenRequest
   include Mongoid::Document
   include Shapado::Models::Trackable
 
-  track_activities :user, :comment, :openable, :scope => [:group_id], :target => :openable
+  track_activities :user, :comment, :_parent, :scope => [:group_id], :target => :_parent
 
   identity :type => String
 
@@ -15,6 +15,7 @@ class OpenRequest
   embedded_in :openable, :inverse_of => :open_requests
 
   validates_presence_of :user
+  validates_presence_of :openable
 
   validate :should_be_unique
   validate :check_reputation

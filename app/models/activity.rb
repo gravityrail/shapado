@@ -2,6 +2,8 @@ class Activity
   include Mongoid::Document
   include Mongoid::Timestamps
 
+  paginates_per 10
+
   ACTIONS = %w[create update destroy]
 
   identity :type => String
