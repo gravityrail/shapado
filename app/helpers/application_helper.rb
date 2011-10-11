@@ -122,6 +122,9 @@ module ApplicationHelper
   def markdown(txt, options = {})
     raw = options.delete(:raw)
     body = render_page_links(txt.to_s, options)
+    if current_group.enable_mathjax
+      body = "<div>#{body}</div>"
+    end
     txt = if raw
             (defined?(RDiscount) ? RDiscount.new(body, :protect_math) :
              Maruku.new(body)).to_html
