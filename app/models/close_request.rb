@@ -3,7 +3,7 @@ class CloseRequest
   include Mongoid::Document
   include Shapado::Models::Trackable
 
-  track_activities :user, :reason, :comment, :closeable, :scope => [:group_id], :target => :closeable
+  track_activities :user, :reason, :comment, :_parent, :scope => [:group_id], :target => :_parent
 
   REASONS = %w{dupe ot no_question not_relevant spam}
 
@@ -15,6 +15,7 @@ class CloseRequest
   embedded_in :closeable, :inverse_of => :close_requests
 
   validates_presence_of :user
+  validates_presence_of :closable
   validates_inclusion_of :reason, :in => REASONS
 
 
