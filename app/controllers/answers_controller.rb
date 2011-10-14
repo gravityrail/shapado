@@ -127,10 +127,11 @@ class AnswersController < ApplicationController
                                        owner_id: @answer.user.id, owner_name: @answer.user.login,
                                        question_id: @question.id, question_title: @question.title,
                                        html: html})
-
         flash[:notice] = t(:flash_notice, :scope => "answers.create")
         format.html{redirect_to question_path(@question)}
-        format.mobile{redirect_to question_path(@question, :format => :mobile)}
+        format.mobile{
+          redirect_to question_path(@question, :format => :mobile)
+        }
         format.json { render :json => @answer.to_json(:except => %w[_keywords]) }
         format.js do
           render(:json => {:success => true, :message => flash[:notice],
