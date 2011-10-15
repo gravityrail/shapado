@@ -100,6 +100,7 @@ group :test do
 end
 
 group :development do
+  gem "pry"
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
   gem "rspec-rails", ">= 2.0.1"
