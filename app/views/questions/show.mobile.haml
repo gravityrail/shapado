@@ -55,13 +55,12 @@
           %span{:class=>"ui-li-count"}
             = @answers.total_count
 
+        - if @question.accepted
+          - solution = @question.answer
+          = render :partial => 'questions/answer', :locals => {:answer => solution}
+
         - @answers.each do |answer|
-          %div{:"data-role" => "content"}
-            = render "answered_by.html.haml", :answer => answer, :question => @question
-            %a{:href=>question_answer_path(@question, answer, :format => "mobile", :actions => true), :"data-role" => "button", :"data-rel" => "dialog", :"data-transition" => "flip", "data-icon" => "gear", :"data-inline" => "true"}
-              actions
-          .markdown
-            =find_and_preserve(shapado_auto_link(markdown(answer.body), :link_users => true))
+          = render :partial => 'questions/answer', :locals => {:answer => answer}
 
       - if !@question.closed
         = form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|

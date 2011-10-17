@@ -122,8 +122,9 @@ module ApplicationHelper
   def markdown(txt, options = {})
     raw = options.delete(:raw)
     body = render_page_links(txt.to_s, options)
+    #body = "<div>#{body}</div>"
     if current_group.enable_mathjax
-      body = "<div>#{body}</div>"
+      body = body.gsub(/\$\$(.+)\$\$/, "\r\n\r\n"+'<p class=mathjax> $$\1$$ </p class=mathjax>').gsub(/[^\$]\$([^\$]+)\$/, "\r\n\r\n"+'<p class=mathjax> $\1$ </p class=mathjax>')
     end
     txt = if raw
             (defined?(RDiscount) ? RDiscount.new(body) :
@@ -131,13 +132,15 @@ module ApplicationHelper
           else
             (defined?(RDiscount) ? RDiscount.new(body, :smart, :strict, :protect_math) :
              Maruku.new(sanitize(body))).to_html
+          end
+    if current_group.enable_mathjax
+      txt = txt.gsub("<span class=mathjax>", '')
+      txt = txt.gsub("<p class=mathjax>", '')
+      txt = txt.gsub("</span class=mathjax>", '')
+      txt = txt.gsub("</p class=mathjax>", '')
     end
-
     if options[:sanitize] != false
       txt = defined?(Sanitize) ? Sanitize.clean(txt, SANITIZE_CONFIG) : sanitize(txt)
-    end
-    if current_group.enable_mathjax
-      txt = txt[5..-7]
     end
     txt.html_safe
   end
@@ -341,18 +344,20 @@ module ApplicationHelper
 
   def include_latex
     if current_group.enable_mathjax
+      #return raw "<script type='text/javascript' src='/javascripts/vendor/markdown.js'></script>"
       return raw("<script type=\"text/x-mathjax-config\">
   MathJax.Hub.Config({
     extensions: [\"tex2jax.js\"],
     jax: [\"input/TeX\", \"output/HTML-CSS\"],
     tex2jax: {
-      inlineMath: [ ['$','$'] ],
+      inlineMath: [ ['$','$'], ['\\(','\\)']  ],
       displayMath: [ ['$$','$$'] ],
       processEscapes: true
     },
     \"HTML-CSS\": { availableFonts: [\"TeX\"] }
   });
-</script><script type='text/javascript' src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>")
+</script><script type='text/javascript' src='//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script type='text/javascript' src='/javascripts/vendor/markdown.js'></script>")
     elsif current_group.enable_latex
       require_css 'http://fonts.googleapis.com/css?family=UnifrakturMaguntia'
       jqmath_tags = %{<meta data-jqmath data-jsassets="cssassets.jqmath" data-cssassets="jsassets.jqmath">}

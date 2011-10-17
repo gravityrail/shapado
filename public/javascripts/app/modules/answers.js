@@ -32,14 +32,15 @@ var Answers = {
                       var answer = $(data.html);
                       answers.children(".empty_answers").remove();
                       answer.find("form.commentForm").hide();
-                      answers.append(answer);
-                      Effects.fade(answer);
+                      answers.prepend(answer);
+                      $('#add_answer').trigger('click');
+                      $(answer).effect('highlight',{}, 5000);
                       Messages.show(data.message, "notice")
                       form.find("textarea").val("");
                       form.find(".markdown_preview").html("");
                       if($(".wysiwyg_editor").length > 0 )
                         $(".wysiwyg_editor").htmlarea('updateHtmlArea');
-                      LocalStorage.remove(location.href, "markdown_editor"); // FIXME
+                      LocalStorage.remove(document.location.href, 'answer_body');
                     } else {
                       Messages.show(data.message, "error")
                       if(data.status == "unauthenticate") {

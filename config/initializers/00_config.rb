@@ -26,5 +26,5 @@ AppConfig.share_links = share_links[Rails.env]
 if Rails.env == "development" || ENV['debug_assets']
   MODERNIZR = :modernizrdev
 else
-  MODERNIZR = 'modernizr_5'
+  MODERNIZR = 'modernizr_6'
 end

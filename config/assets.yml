@@ -1,6 +1,6 @@
 package_assets:         on          # (on, off, always)
 embed_assets:           datauri          # (on, off, datauri)
-compress_assets:        off         # (on, off)
+compress_assets:        on         # (on, off)
 gzip_assets:            on          # (on, off)
 template_function:      _.template  # (defaults to the built-in micro-templating)
 package_path:           packages    # (defaults to assets)
@@ -14,7 +14,7 @@ javascripts:
     - public/javascripts/app/modules/jqmath.js
   initdev:
     - public/javascripts/app/initializers/init_dev.js
-  modernizr_5:
+  modernizr_6:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/modules/jqmath.js
@@ -28,7 +28,7 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  base_5:
+  base_6:
     - public/javascripts/rails.js
     - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
