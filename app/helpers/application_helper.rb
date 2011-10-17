@@ -140,7 +140,7 @@ module ApplicationHelper
       txt = txt.gsub("</p class=mathjax>", '')
     end
     if options[:sanitize] != false
-      #txt = defined?(Sanitize) ? Sanitize.clean(txt, SANITIZE_CONFIG) : sanitize(txt)
+      txt = defined?(Sanitize) ? Sanitize.clean(txt, SANITIZE_CONFIG) : sanitize(txt)
     end
     txt.html_safe
   end
