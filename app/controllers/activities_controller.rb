@@ -33,4 +33,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+
+    @activity.to_html(self)
+  end
+
 end

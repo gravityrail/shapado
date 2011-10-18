@@ -320,7 +320,6 @@ class QuestionsController < ApplicationController
           Jobs::Tags.async.question_retagged(@question.id, tags_changes.last, tags_changes.first, Time.now).commit!
         end
 
-        Rails.logger.info ">>>>>>>>>>>>>>>> #{changes.inspect}"
         Magent::WebSocketChannel.push({id: "updatequestion",
                                        object_id: @question.id,
                                        name: @question.title,

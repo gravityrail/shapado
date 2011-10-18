@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   match '/widgets/embedded/:id' => 'widgets#embedded', :as => :embedded_widget
   match '/suggestions' => 'users#suggestions', :as => :suggestions
   match '/activities' => 'activities#index', :as => :activities
+  match '/activities/:id' => 'activities#show', :as => :activity, :method => :get
+
   get "mobile/index"
 
   match '/users/auth/:provider' => 'users#auth', :as => :auth_users

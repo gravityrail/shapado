@@ -72,6 +72,10 @@ var ShapadoSocket = {
         ShapadoUI.update_comment(data);
       }
       break;
+      case 'newactivity': {
+        ShapadoUI.new_activity(data);
+      }
+      break;
     }
   },
   send: function(data) {

@@ -55,6 +55,9 @@ var ShapadoUI = {
       break;
     }
   },
+  new_activity: function(data) {
+    Activities.create_on_index(data);
+  },
   is_on_question_index: function() {
     return $("section.questions-index")[0] != null;
   },

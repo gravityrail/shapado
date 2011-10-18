@@ -38,6 +38,9 @@ class Activity
 
   validates_inclusion_of :action, :in => ACTIONS, :allow_blank => false
 
+
+  after_create :update_websocket
+
   def url_for_trackable(domain)
     url_helper = Rails.application.routes.url_helpers
 
@@ -172,6 +175,15 @@ class Activity
     end
   end
 
+  def to_html(view_renderer)
+    view_renderer.render(
+      :partial => 'activities/activity',
+      :layout => false,
+      :format => :haml,
+      :locals => { :activity => self}
+    )
+  end
+
   private
   def store_user_name
     u = User.only(:login, :name).where(:_id => self.user_id).first
@@ -183,5 +195,12 @@ class Activity
       self[:target_name] = (self.target["name"] || self.target["title"] || self.target["body"] || self.target["description"])
       self[:target_name] =  self[:target_name].gsub(/<\/?[^>]*>/, " ").gsub(/[\S]{245,}/, "") if  self[:target_name]
     end
+  end
+
+  def update_websocket
+    Magent::WebSocketChannel.push({id: "newactivity",
+                                   object_id: self.id,
+                                   name: self.target_name,
+                                   channel_id: self.group_id})
   end
 end

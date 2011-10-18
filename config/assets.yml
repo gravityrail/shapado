@@ -40,6 +40,7 @@ javascripts:
     - public/javascripts/app/modules/app_config.js
     - public/javascripts/app/modules/comments.js
     - public/javascripts/app/modules/answers.js
+    - public/javascripts/app/modules/activities.js
     - public/javascripts/app/modules/authentication.js
     - public/javascripts/app/modules/local_storage.js
     - public/javascripts/app/modules/messages.js
