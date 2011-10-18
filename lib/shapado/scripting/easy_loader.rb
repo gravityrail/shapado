@@ -22,6 +22,14 @@ require 'magent'
 require 'haml'
 require 'haml/template'
 require 'sass'
+require 'omniauth/strategy'
+require 'xapit'
+require 'rails_rinku'
+require 'kaminari'
+require 'kaminari/models/mongoid_extension'
+::Mongoid::Document.send :include, Kaminari::MongoidExtension::Document
+::Mongoid::Criteria.send :include, Kaminari::MongoidExtension::Criteria
+require 'kaminari/models/array_extension'
 
 Rails.logger = Logger.new("#{Rails.root}/log/#{File.basename($0).parameterize.to_s}.log")
 
@@ -40,6 +48,8 @@ Dir.chdir(Rails.root.to_s) do
   require './config/initializers/01_locales'
   require './config/initializers/constants'
   require './config/initializers/devise'
+
+  require 'kaminari'
 
   ActiveSupport::Dependencies.mechanism = :require
   ActiveSupport::Dependencies.autoload_paths << ::File.expand_path("lib")
