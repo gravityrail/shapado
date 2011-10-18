@@ -55,7 +55,7 @@ module Shapado
         end
 
         def __create_activity(action, opts = {})
-          Rails.logger.info "Adding #{action} activity for #{self.class}"
+          Rails.logger.info "Adding #{action} activity for #{self.class} with #{opts.inspect}"
 
           group_id = self[:group_id] || Thread.current[:current_group].try(:id)
           user_id = Thread.current[:current_user].try(:id) || self[:user_id]
@@ -76,7 +76,7 @@ module Shapado
           if activity
             activity.increment(:times => 1)
           else
-            Activity.create!(opts.merge({
+            opts.merge!({
               :action => action,
               :trackable_info => __generate_trackable_info,
               :target_info => __generate_target_info,
@@ -86,7 +86,9 @@ module Shapado
               :trackable => self,
               :target => target,
               :user_ip => Thread.current[:current_ip]
-            }))
+            })
+
+            Activity.new(opts).save!
           end
         end
       end

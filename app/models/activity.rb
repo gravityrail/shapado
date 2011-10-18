@@ -198,9 +198,13 @@ class Activity
   end
 
   def update_websocket
-    Magent::WebSocketChannel.push({id: "newactivity",
-                                   object_id: self.id,
-                                   name: self.target_name,
-                                   channel_id: self.group_id})
+    opts = {
+      id: "newactivity",
+      object_id: self._id,
+      name: self.target_name,
+      channel_id: self.group.slug
+    }
+    puts "POSTING NEW ACTIVITY: #{opts.inspect}"
+    Magent::WebSocketChannel.push(opts)
   end
 end
