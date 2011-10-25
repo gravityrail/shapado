@@ -13,7 +13,8 @@
       = render "questions/answered_by", local_assigns
       %time{ :datetime => answer.created_at.iso8601,  :itemprop=>"datePublished", :title => article_date(answer)}
         = link_to article_date(answer), question_answer_path(@question.id, answer.id), :itemprop => "url"
-        = link_to edited_date(answer), history_question_answer_path(@question.id, answer.id), :title => t("questions.show.history")+" (#{answer.versions_count})"
+        - if answer.created_at != answer.updated_at
+          = link_to edited_date(answer), history_question_answer_path(@question.id, answer.id), :title => t("questions.show.history")+" (#{answer.versions_count})"
 
 
 
