@@ -148,7 +148,9 @@ en:
       failure: "This question has an active reward and cannot be closed."
     model:
       messages:
-        too_short: "Sorry, your title needs to have more than %{count} words."
+        too_short:
+          one: "Sorry, your title needs to have more than %{count} word."
+          other: "Sorry, your title needs to have more than %{count} words."
         too_many_tags: Sorry, you can only enter 20 tags maximum.
         empty_tags: Sorry, you need to use at least one tag.
         title_too_long: "Sorry, the title cannot contain more than 100 characters."
