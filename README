@@ -22,8 +22,9 @@ sudo gem install bundler
 
     cp config/shapado.sample.yml config/shapado.yml
     cp config/mongoid.sample.yml config/mongoid.yml
+    cp config/auth_providers.sample.yml config/auth_providers.yml
 
-    edit shapado.yml
+    edit shapado.yml and auth_providers.yml
 
 3. Install dependencies
 
@@ -40,6 +41,10 @@ sudo gem install bundler
 6. Start the server
 
     rails server -e development
+
+7. When running shapado in production, you need to run:
+
+    jammit
 
 == Postfix config
 

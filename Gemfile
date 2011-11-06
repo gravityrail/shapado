@@ -73,7 +73,7 @@ gem 'rack-ssl', :require => false
 
 gem 'state_machine', "0.10.4"
 
-gem "xapian-ruby", '1.2.7'
+gem "xapian-ruby", '1.2.7.1'
 gem "xapit", :git => "git://github.com/dcu/xapit.git"
 
 group :deploy do
@@ -89,8 +89,8 @@ group :scripts do
 end
 
 group :test do
-  gem 'capybara', '1.0.0'
-  gem "capybara-webkit", '1.0.0.beta4'
+  gem 'capybara'
+  gem "capybara-webkit"
   gem 'launchy'
   gem 'machinist_mongo', :require => 'machinist/mongoid'
   gem 'ffaker'
