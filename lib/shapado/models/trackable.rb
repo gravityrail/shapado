@@ -71,9 +71,11 @@ module Shapado
             conds[:target_id] = target.id
           end
 
+          callback = self.class.trackable_opts[:callback] ? self.class.trackable_opts[:callback] : nil
           activity = Activity.where(conds).desc(:created_at).first
 
           if activity
+            callback && callback.call(activity, target||self)
             activity.increment(:times => 1)
           else
             opts.merge!({
@@ -88,18 +90,21 @@ module Shapado
               :user_ip => Thread.current[:current_ip]
             })
 
-            Activity.new(opts).save!
+            activity = Activity.new(opts)
+            callback && callback.call(activity, target||self)
+            activity.save!
           end
         end
       end
 
       module ClassMethods
-        def track_activities(*args)
+        def track_activities(*args, &cb)
           options = args.extract_options!
 
           trackable_opts[:fields] = args
           trackable_opts[:scope] = options[:scope]
           trackable_opts[:target] = options[:target]
+          trackable_opts[:callback] = cb
         end
 
         def __fields_for_class(object, fields)

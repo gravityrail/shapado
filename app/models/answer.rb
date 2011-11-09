@@ -9,7 +9,11 @@ class Answer
   include Shapado::Models::GeoCommon
   include Shapado::Models::Trackable
 
-  track_activities :user, :question, :body, :language, :scope => [:group_id]
+  track_activities :user, :question, :body, :language, :scope => [:group_id] do |activity, answer|
+    question = answer.question
+    follower_ids = question.follower_ids+question.contributor_ids+[activity.user_id]
+    activity.add_followers(*follower_ids)
+  end
 
   identity :type => String
 

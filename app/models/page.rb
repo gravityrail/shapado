@@ -9,8 +9,10 @@ class Page
   include Mongoid::Timestamps
   include Shapado::Models::Trackable
 
-  track_activities :user, :title, :language, :scope => [:group_id]
-
+  track_activities :user, :title, :language, :scope => [:group_id] do |activity, page|
+    follower_ids = [activity.user_id]
+    activity.add_followers(*follower_ids)
+  end
 
   identity :type => String
   field :title, :type => String

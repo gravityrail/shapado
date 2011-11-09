@@ -29,6 +29,8 @@ class Activity
   field :target_param, :type => String
   belongs_to :target, :polymorphic => true
 
+  field :follower_ids, :type => Array, :default => []
+
   index :action
 
   before_validation :store_user_name, :on => :create
@@ -182,6 +184,20 @@ class Activity
       :format => :haml,
       :locals => { :activity => self}
     )
+  end
+
+  def add_followers(*follower_ids)
+    if self.new?
+      self.follower_ids += follower_ids
+    else
+      self.follower_ids += follower_ids
+      self.push_uniq(:follower_ids => {:$each => follower_ids})
+    end
+  end
+
+  def remove_followers(*follower_ids)
+    self.pull(:follower_ids => {:$each => follower_ids})
+    self.follower_ids -= follower_ids
   end
 
   private
