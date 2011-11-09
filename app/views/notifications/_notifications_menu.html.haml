@@ -1,5 +1,5 @@
 -last_read_on = 2.days.ago
--activities = Activity.desc(:created_at).where(:group_id => current_group.id, :created_at.gte => last_read_on).page(1).per(10)
+-activities = Activity.desc(:created_at).where(:group_id => current_group.id, :created_at.gte => last_read_on, :follower_ids.in => [current_user.id]).page(1).per(10)
 %ul.notifications-list.menubar
   %li
     %a#notification-counter{:href => "#"}
