@@ -4,7 +4,8 @@ class OpenRequest
   include Shapado::Models::Trackable
 
   track_activities :user, :comment, :_parent, :scope => [:group_id], :target => :_parent do |activity, question|
-    follower_ids = question.follower_ids+question.contributor_ids+[activity.user_id]
+    follower_ids = question.follower_ids+question.contributor_ids
+    follower_ids.delete(activity.user_id)
     activity.add_followers(*follower_ids)
   end
 

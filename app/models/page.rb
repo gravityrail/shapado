@@ -10,7 +10,7 @@ class Page
   include Shapado::Models::Trackable
 
   track_activities :user, :title, :language, :scope => [:group_id] do |activity, page|
-    follower_ids = [activity.user_id]
+    follower_ids = []
     activity.add_followers(*follower_ids)
   end
 

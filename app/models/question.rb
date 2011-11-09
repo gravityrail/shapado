@@ -17,7 +17,8 @@ class Question
   paginates_per 25
 
   track_activities :user, :title, :language, :scope => [:group_id] do |activity, question|
-    follower_ids = question.follower_ids+question.contributor_ids+[activity.user_id]
+    follower_ids = question.follower_ids+question.contributor_ids
+    follower_ids.delete(activity.user_id)
     activity.add_followers(*follower_ids)
   end
 
