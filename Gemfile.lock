@@ -11,14 +11,6 @@ GIT
       uuidtools (>= 2.1.1)
 
 GIT
-  remote: git://github.com/dcu/poirot.git
-  revision: faf1b01e25abac6d772c77e13ffad96346db5c68
-  specs:
-    poirot (0.0.3)
-      mustache
-      rails (> 3)
-
-GIT
   remote: git://github.com/dcu/tunnlr_connector.git
   revision: cfb983ddb9a28b655e27ffa8c779498df34ded3a
   branch: patch-1
@@ -97,6 +89,13 @@ GIT
     mongo_store (0.3.1)
       activesupport (>= 2.2)
       mongo (>= 1.0)
+
+PATH
+  remote: vendor/gems2/poirot
+  specs:
+    poirot (0.0.3)
+      mustache
+      rails (> 3)
 
 GEM
   remote: http://rubygems.org/
