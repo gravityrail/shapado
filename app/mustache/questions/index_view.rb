@@ -5,7 +5,7 @@ module Questions
     end
 
     def foreach_question
-      Questions::CollectionRenderer.new(@questions, view_context)
+      CollectionWrapper.new(@questions, QuestionWrapper, view_context)
     end
 
     def add_paginator

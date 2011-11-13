@@ -12,7 +12,8 @@ class QuestionWrapper < ModelWrapper
   end
 
   def foreach_tag
-    current_group.tags.where(:name.in => @target.tags).map{|tag| TagWrapper.new(tag, view_context) }
+    tags = current_group.tags.where(:name.in => @target.tags)
+    CollectionWrapper.new(tags, TagWrapper, view_context)
   end
 
   def respond_to?(method, priv = false)
