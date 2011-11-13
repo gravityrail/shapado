@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
     end
 
     respond_to do |format|
-      format.html
+      format.html { render :layout => (@template_format != 'mustache') }
       format.mobile
       format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
       format.atom
