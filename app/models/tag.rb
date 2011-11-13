@@ -8,11 +8,11 @@ class Tag
 
   field :name,  :type => String
   field :description, :type => String
-  field :count, :type => Float, :default => 0.0
+  field :count, :type => Integer, :default => 0
   field :langs, :type => Array
   field :color, :type => String
   field :used_at, :type => Time
-  field :followers_count, :type => Float, :default => 0.0
+  field :followers_count, :type => Integer, :default => 0
 
   file_key :icon, :max_length => 256.kilobytes
 

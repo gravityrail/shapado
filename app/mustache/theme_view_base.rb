@@ -3,6 +3,10 @@ class ThemeViewBase < Poirot::View
     view_context.render
   end
 
+  def foreach_recent_tag
+    CollectionWrapper.new(current_group.tags.desc(:used_at).limit(50), TagWrapper, view_context)
+  end
+
   def add_header_widgets
     view_context.render "shared/widgets", :context => 'mainlist', :position => 'header'
   end
@@ -17,5 +21,9 @@ class ThemeViewBase < Poirot::View
 
   def add_sidebar_widgets
     view_context.render "shared/widgets", :context => 'mainlist', :position => 'sidebar'
+  end
+
+  def current_group
+    view_context.current_group
   end
 end
