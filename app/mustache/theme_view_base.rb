@@ -76,7 +76,23 @@ class ThemeViewBase < Poirot::View
     view_context.questions_url
   end
 
+  def questions_feed_url
+    view_context.questions_url(:format => "atom")
+  end
+
+  def hot_questions_url
+    view_context.questions_url(:tab => "hot")
+  end
+
+  def featured_questions_url
+    view_context.questions_url(:tab => "featured")
+  end
+
   def current_group
     view_context.current_group
+  end
+
+  def current_theme
+    @current_theme ||= current_group.current_theme
   end
 end

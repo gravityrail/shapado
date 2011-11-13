@@ -115,7 +115,7 @@ module UsersHelper
     when "medium"
       "60"
     else
-      "25"
+      "32"
     end
   end
 end
