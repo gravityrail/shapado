@@ -4,7 +4,11 @@ class ThemeViewBase < Poirot::View
   end
 
   def foreach_recent_tag
-    CollectionWrapper.new(current_group.tags.desc(:used_at).limit(50), TagWrapper, view_context)
+    CollectionWrapper.new(current_group.tags.desc(:used_at).limit(25), TagWrapper, view_context)
+  end
+
+  def foreach_recent_badge
+    CollectionWrapper.new(current_group.badges.desc(:created_at).limit(25), BadgeWrapper, view_context)
   end
 
   def add_header_widgets

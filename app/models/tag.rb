@@ -11,7 +11,7 @@ class Tag
   field :count, :type => Integer, :default => 0
   field :langs, :type => Array
   field :color, :type => String
-  field :used_at, :type => Time
+  field :used_at, :type => Time, :default => Time.now
   field :followers_count, :type => Integer, :default => 0
 
   file_key :icon, :max_length => 256.kilobytes
