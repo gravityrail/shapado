@@ -87,7 +87,7 @@ class ThemesController < ApplicationController
     respond_to do |format|
       if @theme.update_attributes(params[:theme])
         Jobs::Themes.async.generate_stylesheet(@theme.id).commit!(4)
-        format.html { redirect_to(@theme, :notice => 'Theme was successfully updated.') }
+        format.html { redirect_to(edit_theme_path(@theme), :notice => 'Theme was successfully updated.') }
         format.json  { head :ok }
       else
         format.html { render :action => "edit" }

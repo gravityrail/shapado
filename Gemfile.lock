@@ -176,8 +176,8 @@ GEM
     chunky_png (1.2.5)
     coderay (0.9.8)
     columnize (0.3.4)
-    compass (0.11.1)
-      chunky_png (~> 1.1)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
     compass-colors (0.9.0)
@@ -502,7 +502,7 @@ DEPENDENCIES
   capistrano
   capybara
   capybara-webkit
-  compass (= 0.11.1)
+  compass (>= 0.11.5)
   compass-colors (= 0.9.0)
   database_cleaner
   devise (~> 1.4.0)
@@ -513,7 +513,7 @@ DEPENDENCIES
   ffaker
   geoip
   goalie (~> 0.0.4)
-  haml
+  haml (>= 3.1.3)
   hpricot
   jammit
   kaminari
@@ -556,7 +556,7 @@ DEPENDENCIES
   ruby-stemmer (~> 0.8.2)
   ruby_parser
   sanitize (= 2.0.3)
-  sass
+  sass (>= 3.1.10)
   simplecov
   social_widgets!
   state_machine (= 0.10.4)

@@ -19,9 +19,9 @@ else
 end
 gem "maruku"
 # ui
-gem "haml"
-gem "sass"
-gem 'compass', '0.11.1'
+gem "haml", '>= 3.1.3'
+gem "sass", '>= 3.1.10'
+gem 'compass', '>= 0.11.5'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
 gem 'kaminari'
