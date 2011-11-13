@@ -1,4 +1,8 @@
 class ThemeViewBase < Poirot::View
+  def add_ask_question_box
+    view_context.render
+  end
+
   def add_header_widgets
     view_context.render "shared/widgets", :context => 'mainlist', :position => 'header'
   end
