@@ -1,3 +1,9 @@
+-content_for :js do
+  = include_javascripts(:codemirror)
+
+-content_for :css do
+  = include_stylesheets(:codemirror)
+
 .field
   = form.label t('shared.name')
   = form.text_field :name
@@ -52,7 +58,7 @@
 
 .field
   = form.label :custom_css
-  = form.text_area :custom_css
+  = form.text_area :custom_css, :class => "code", :data => {:lang => "css"}
   %small
     = I18n.t('themes.form.custom_css_legend')
   -if !@theme.last_error.blank?
@@ -62,9 +68,27 @@
   .field
     = form.label :javascript
     - if @theme.has_js
-      = form.text_area :javascript, :value => @theme.javascript.get.read
+      = form.text_area :javascript, :value => @theme.javascript.get.read, :class => "code", :data => {:lang => "javascript"}
     - else
-      = form.text_area :javascript, :value => ''
+      = form.text_area :javascript, :value => '', :class => "code", :data => {:lang => "javascript"}
+
+.field
+  = form.label :questions_index_html
+  - if @theme.has_questions_index_html?
+    = form.text_area :questions_index_html, :value => @theme.questions_index_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+  -else
+    = form.text_area :questions_index_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+  %small
+    = I18n.t('themes.form.questions_index_html')
+
+.field
+  = form.label :questions_show_html
+  - if @theme.has_questions_show_html?
+    = form.text_area :questions_show_html, :value => @theme.questions_show_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+  -else
+    = form.text_area :questions_show_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+  %small
+    = I18n.t('themes.form.questions_show_html')
 
 .form-options
   .buttons

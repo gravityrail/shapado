@@ -22,6 +22,10 @@ var Themes = {
           });
         });
       }
+    } else if( $body.hasClass("new") || $body.hasClass("edit") || $body.hasClass("create") || $body.hasClass("update")) {
+      $("textarea.code").each(function(i, e){
+        CodeMirror.fromTextArea(e, {lineNumbers: true, theme: "default", mode: $(e).data("lang")});
+      });
     }
   }
 }

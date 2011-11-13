@@ -77,6 +77,7 @@ javascripts:
     - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/vendor/jquery.smart-poll.js
+    - public/javascripts/vendor/codemirror/*
     - public/javascripts/app/modules/themes.js
     - public/javascripts/application.js
 
@@ -114,6 +115,13 @@ javascripts:
   jqmath:
     - public/javascripts/vendor/mathscribe/jqmath-etc-0.1.1.min.js
 
+  codemirror:
+    - public/codemirror/lib/codemirror.js
+    - public/codemirror/mode/javascript/javascript.js
+    - public/codemirror/mode/css/css.js
+    - public/codemirror/mode/xml/xml.js
+    - public/codemirror/mode/htmlmixed/htmlmixed.js
+
 
 stylesheets:
   base:
@@ -130,3 +138,7 @@ stylesheets:
 
   jqmath:
     - public/javascripts/vendor/mathscribe/jqmath-0.1.1.css
+
+  codemirror:
+    - public/codemirror/lib/codemirror.css
+    - public/codemirror/theme/default.css
