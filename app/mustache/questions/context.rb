@@ -1,11 +1,11 @@
 module Questions
   class Context
-    attr_reader :question, :view_renderer
+    attr_reader :question, :view_context
     alias :orig_respond_to? :respond_to?
 
-    def initialize(question, view_renderer)
+    def initialize(question, view_context)
       @question = question
-      @view_renderer = view_renderer
+      @view_context = view_context
     end
 
     def title
@@ -13,7 +13,7 @@ module Questions
     end
 
     def render_question
-      view_renderer.render "questions/question", :question => @question
+      view_context.render "questions/question", :question => @question
     end
 
     def respond_to?(method, priv = false)

@@ -26,7 +26,7 @@ gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
 gem 'kaminari'
 gem 'mustache'
-gem 'poirot', :path => "vendor/gems2/poirot" #:git => "git://github.com/dcu/poirot.git"
+gem 'poirot', :git => "git://github.com/dcu/poirot.git"
 
 
 # mongodb
