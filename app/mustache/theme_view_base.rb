@@ -1,4 +1,8 @@
 class ThemeViewBase < Poirot::View
+  def initialize(*args)
+    super(*args)
+  end
+
   def add_ask_question_box
     view_context.render
   end
@@ -36,11 +40,16 @@ class ThemeViewBase < Poirot::View
   end
 
   def search_form
-    view_context.form_tag(search_index_path, :method => :get, :id => "search") do
-      view_context.content_tag :div, :class => "field" do
-        view_context.text_field_tag :q, params[:q]
-      end
-    end
+    %@<form accept-charset="UTF-8" action="#{view_context.search_index_path}" id="search" method="get">
+      <div class='field'><input id="q" name="q" value="#{params[:q]}" type="text" class="textbox" /></div></form>@.html_safe
+  end
+
+  def signin_dropdown
+    view_context.multiauth_dropdown("Sign In")
+  end
+
+  def signin_url
+    view_context.link_to "Sign In", view_context.new_session_path(:user)
   end
 
   def unanswered_questions_url
