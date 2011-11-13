@@ -8,6 +8,6 @@ class BadgeWrapper < ModelWrapper
   end
 
   def user_name
-    @target.user.name
+    @target.user.display_name
   end
 end

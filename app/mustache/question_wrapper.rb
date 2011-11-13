@@ -4,7 +4,7 @@ class QuestionWrapper < ModelWrapper
   end
 
   def author_name
-    @target.user.name
+    @target.user.display_name
   end
 
   def author_url
@@ -13,6 +13,10 @@ class QuestionWrapper < ModelWrapper
 
   def url
     view_context.question_url(@target)
+  end
+
+  def views_count
+    view_context.format_number(@target.views_count)
   end
 
   def truncated_description
