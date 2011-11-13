@@ -25,6 +25,10 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
+    if current_group.current_theme.has_questions_index_html?
+      @template_format = 'mustache'
+    end
+
     find_questions
   end
 

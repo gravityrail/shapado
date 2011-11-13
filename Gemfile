@@ -25,6 +25,9 @@ gem 'compass', '0.11.1'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
 gem 'kaminari'
+gem 'mustache'
+gem 'poirot', :path => "vendor/gems2/poirot" #:git => "git://github.com/dcu/poirot.git"
+
 
 # mongodb
 gem 'bson', '1.4.0'
@@ -101,6 +104,7 @@ end
 
 group :development do
   gem "pry"
+  gem 'pry-rails'
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
   gem "rspec-rails", ">= 2.0.1"
@@ -111,5 +115,5 @@ group :development do
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
   gem 'tunnlr_connector', :git => "git://github.com/dcu/tunnlr_connector.git", :branch => "patch-1", :require => "tunnlr"
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :branch => 'mongoid-brute-force', :require => 'rails_development_boost'
 end
