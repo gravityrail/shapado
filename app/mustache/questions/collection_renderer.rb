@@ -9,7 +9,7 @@ module Questions
 
     def map(&block)
       @questions.map do |question|
-        c = Questions::Context.new(question, view_context)
+        c = QuestionWrapper.new(question, view_context)
 
         block.call(c)
       end
