@@ -21,5 +21,6 @@
     /=multiauth_menu("Sign In")
     = multiauth_dropdown("Sign In")
   -else
-    = render "users/top_user"
-    = render "notifications/notifications_menu"
+    %ul.user-list.menubar
+      = render "notifications/notifications_menu"
+      = render "users/top_user"

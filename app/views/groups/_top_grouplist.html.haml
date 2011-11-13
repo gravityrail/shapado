@@ -2,7 +2,7 @@
   %small
     = t('.active_site')
   = link_to current_group.name, domain_url(:custom => current_group.domain)
-  %ul
+  %ul.drop-menu
     -if logged_in?
       -current_user.groups.only(:name, :domain).limit(10).all.each do |group|
         %li

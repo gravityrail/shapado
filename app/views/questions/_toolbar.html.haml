@@ -72,7 +72,7 @@
     %li.more.current
       = link_to t("#{i18n_scope}.more_actions")
 
-      %ul
+      %ul.drop-menu
         %li.followUp
           = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description")
 

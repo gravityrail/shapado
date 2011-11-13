@@ -122,14 +122,14 @@ a {
   background-image: -webkit-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
   background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
-  .menubar {
+  ul.menubar {
     .active: darken($view_bg_color, 70%);
-    li {
+    &>li {
       small {
         color: lighten($fg_color, 40%); }
       &:hover small, &:hover a small, a:hover small {
         color: $fg_color !important; }
-      a {
+      &>a {
         background-image: none;
         color: lighten($fg_color, 40%);
         border-right: 1px solid darken($view_bg_color, 73%);
@@ -144,7 +144,7 @@ a {
       background-color: $view_bg_color !important;
       li {
         border-top: 1px solid darken($view_bg_color, 5%); }
-      a {
+      &.drop-menu a {
         color: lighten($fg_color, 40%);;
         &:hover {
           background-color: $brand_color;
@@ -718,19 +718,19 @@ ul.content-tabs {
   color: $fg_light_brand_color; }
 
 // shapado/others/drop-menu
-.menubar, .drop-menu {
-  ul {
-    background-color: $view_bg_color;
-    li {
-      border-top: 1px solid darken($view_bg_color, 5%);
-      &:hover {
-        background-color: $brand_color;
-        color: white;
-        a {
-          color: white; } }
-      a:hover {
-        background-color: $brand_color;
-        color: white; } } } }
+.menubar ul {
+  &.drop-menu {
+  background-color: $view_bg_color;
+  li {
+    border-top: 1px solid darken($view_bg_color, 5%);
+    &:hover {
+      background-color: $brand_color;
+      color: white;
+      a {
+        color: white; } }
+    a:hover {
+      background-color: $brand_color;
+      color: white; } } } }
 
 // shapado/others/editors
 .jHtmlArea, .ToolBar {
