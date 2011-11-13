@@ -77,7 +77,6 @@ javascripts:
     - public/javascripts/app/modules/networks.js
     - public/javascripts/app/modules/widgets.js
     - public/javascripts/vendor/jquery.smart-poll.js
-    - public/javascripts/vendor/codemirror/*
     - public/javascripts/app/modules/themes.js
     - public/javascripts/application.js
 

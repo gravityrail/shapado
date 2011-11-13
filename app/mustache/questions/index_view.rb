@@ -1,5 +1,5 @@
 module Questions
-  class IndexView < Poirot::View
+  class IndexView < ThemeViewBase
     def render_index
       render_buffer current_theme.questions_index_html.read
     end
@@ -8,6 +8,9 @@ module Questions
       Questions::CollectionRenderer.new(@questions, view_context)
     end
 
+    def add_paginator
+      paginate(@questions)
+    end
 
     protected
     def current_group
