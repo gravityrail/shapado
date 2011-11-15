@@ -118,7 +118,7 @@ class ApplicationController < ActionController::Base
     end
 
     respond_to do |format|
-      format.html { render :layout => (@template_format != 'mustache') }
+      format.html { render :layout => layout_for_theme }
       format.mobile
       format.json  { render :json => @questions.to_json(:except => %w[_keywords watchers slugs]) }
       format.atom
@@ -159,10 +159,20 @@ class ApplicationController < ActionController::Base
       'sessions'
     elsif params["format"] == "mobile"
       'mobile'
+    elsif current_group.current_theme.has_layout_html?
+      'theme_layout'
     elsif current_group.layout.present?
       current_group.layout
     else
       'application'
+    end
+  end
+
+  def layout_for_theme
+    if @template_format == 'mustache'
+      current_group.current_theme.has_layout_html?
+    else
+      true
     end
   end
 

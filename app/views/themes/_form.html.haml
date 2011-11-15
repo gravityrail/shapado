@@ -73,6 +73,15 @@
       = form.text_area :javascript, :value => '', :class => "code", :data => {:lang => "javascript"}
 
 .field
+  = form.label :layout_html
+  - if @theme.has_layout_html?
+    = form.text_area :layout_html, :value => @theme.layout_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+  -else
+    = form.text_area :layout_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+  %small
+    = I18n.t('themes.form.layout_index_html')
+
+.field
   = form.label :questions_index_html
   - if @theme.has_questions_index_html?
     = form.text_area :questions_index_html, :value => @theme.questions_index_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
