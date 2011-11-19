@@ -59,7 +59,7 @@ en:
       description: "Add any kind of HTML you want here."
     settings:
       limit: "Quantity to display:"
-      custom_html: "Custom html:"
+      custom_html: "Custom HTML:"
       on_welcome: "Show on Welcome page"
       on_questions: "Show on Questions main list page"
       on_show_question: "Show on showing a question"
