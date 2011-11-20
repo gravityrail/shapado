@@ -60,6 +60,7 @@ gem 'activemerchant', '1.16.0'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
 gem 'geoip'
+gem 'rubyzip', '0.9.4', :require => 'zip/zip'
 
 # authentication
 gem 'omniauth', '~> 0.3.0'

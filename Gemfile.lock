@@ -554,6 +554,7 @@ DEPENDENCIES
   ruby-prof
   ruby-stemmer (~> 0.8.2)
   ruby_parser
+  rubyzip (= 0.9.4)
   sanitize (= 2.0.3)
   sass (>= 3.1.10)
   simplecov

@@ -5,9 +5,11 @@
   - if @theme.group == current_group
     = link_to t("scaffold.edit"), edit_theme_path(@theme)
     = link_to t('scaffold.destroy'),  theme_path(@theme), :method => :delete, :confirm => t("scaffold.sure", :model => Theme.model_name.human)
+    = link_to t("themes.show.download"), download_theme_path(@theme)
   -if @theme.ready
     = link_to t("themes.show.try"), domain_url(custom: current_group.domain, test_theme: @theme.id, controller: "questions", action: "index"), :target => "_blank"
     = link_to t("themes.show.apply"), apply_theme_path(@theme), :method => :put
+    = link_to t("themes.show.download"), download_theme_path(@theme)
 
 -if !@theme.ready
   #not_ready
