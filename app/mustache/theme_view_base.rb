@@ -48,8 +48,12 @@ class ThemeViewBase < Poirot::View
     view_context.multiauth_dropdown("Sign In")
   end
 
-  def signin_url
+  def signin_link
     view_context.link_to "Sign In", view_context.new_session_path(:user)
+  end
+
+  def current_user_link
+    view_context.link_to current_user.name, current_user_url
   end
 
   def unanswered_questions_url
@@ -88,11 +92,27 @@ class ThemeViewBase < Poirot::View
     view_context.questions_url(:tab => "featured")
   end
 
+  def current_user_url
+    view_context.user_url(current_user)
+  end
+
   def current_group
     view_context.current_group
   end
 
   def current_theme
     @current_theme ||= current_group.current_theme
+  end
+
+  def if_anonymous
+    !is_bot? && !view_context.user_signed_in? && current_group.enable_anonymous
+  end
+
+  def if_not_logged_in
+    !view_context.user_signed_in?
+  end
+
+  def if_logged_in
+    view_context.user_signed_in?
   end
 end
