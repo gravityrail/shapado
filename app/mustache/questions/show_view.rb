@@ -33,5 +33,9 @@ module Questions
         super(name, *args, &block)
       end
     end
+
+    def answer_form
+      AnswerForm.new(view_context)
+    end
   end
 end
