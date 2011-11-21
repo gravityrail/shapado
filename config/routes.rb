@@ -200,6 +200,10 @@ Rails.application.routes.draw do
         get :ready
         get :download
       end
+
+      collection do
+        post :import
+      end
     end
     resources :constrains_configs
     resources :members

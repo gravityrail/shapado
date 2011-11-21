@@ -185,6 +185,45 @@ class ThemesController < ApplicationController
     FileUtils.rm_f(temp_file)
   end
 
+  def import
+    file = params[:theme_file]
+    @theme = Theme.new(:group => current_group)
+
+    Zip::ZipInputStream::open(file.path) do |io|
+      while entry = io.get_next_entry
+        content = io.read
+        next if content.strip.empty?
+
+        case entry.name
+        when 'theme.yml'
+          atts = %w[bg_color brand_color community created_at custom_css description
+                    fg_color fluid name updated_at version view_bg_color]
+          data = YAML.load(content)
+          data['name'] = "#{data['name']} #{Time.now.strftime("%F")}"
+          @theme.safe_update(atts, data)
+        when 'layout/layout.html'
+          @theme.layout_html = content
+        when 'layout/main.scss'
+          @theme.stylesheet = content
+        when 'layout/main.js'
+          @theme.javascript = content
+        when /layout\/background\.(.+)/
+          @theme.bg_image = content
+        when 'questions/index.html'
+          @theme.questions_index_html = content
+        when 'questions/show.html'
+          @theme.questions_show_html = content
+        end
+      end
+    end
+
+    if @theme.save
+      redirect_to theme_path(@theme)
+    else
+      redirect_to themes_path
+    end
+  end
+
   protected
   def check_permissions
     @group = current_group
