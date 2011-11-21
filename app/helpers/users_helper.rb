@@ -91,6 +91,10 @@ module UsersHelper
   end
 
   def avatar_img(user, options)
+    image_tag(avatar_url(user, options), options)
+  end
+
+  def avatar_url(user, options)
     size = options.delete(:size)
     options[:alt] = user.login
     options[:title] = user.login
@@ -100,10 +104,10 @@ module UsersHelper
         options[:size] = size_for_string(size)
       end
       # TODO: convert size's name to pixels
-      gravatar(user.email.to_s, options)
+      gravatar_url(user.email.to_s, options)
     else
       options[:class] ||= "gravatar"
-      image_tag(avatar_user_path(user, size), options)
+      avatar_user_path(user, size)
     end
   end
 

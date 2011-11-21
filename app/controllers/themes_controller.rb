@@ -140,6 +140,90 @@ class ThemesController < ApplicationController
     end
   end
 
+  def download
+    @theme = Theme.find(params[:id])
+
+    temp_file = "#{Dir.tmpdir}/theme-#{request.remote_ip}-#{Time.now.to_i}-#{rand(100)}-#{rand(100)}.zip"
+
+    Zip::ZipFile.open(temp_file, Zip::ZipFile::CREATE) do |zipfile|
+      zipfile.get_output_stream("theme.yml") do |f|
+        atts = Hash[@theme.raw_attributes]
+        %w[_id file_list group_id has_js last_error ready].each {|e| atts.delete(e) }
+        f.puts atts.to_yaml
+      end
+
+      zipfile.mkdir("layout")
+      zipfile.get_output_stream("layout/layout.html") do |f|
+        f.puts @theme.layout_html.read
+      end if @theme.has_layout_html?
+
+      zipfile.get_output_stream("layout/main.scss") do |f|
+        f.puts @theme.stylesheet.read
+      end if @theme.has_stylesheet?
+
+      zipfile.get_output_stream("layout/main.js") do |f|
+        f.puts @theme.javascript.read
+      end if @theme.has_javascript?
+
+      zipfile.get_output_stream("layout/background.#{@theme.bg_image.extension}") do |f|
+        f.puts @theme.bg_image.read
+      end if @theme.has_bg_image?
+
+      zipfile.mkdir("questions")
+      zipfile.get_output_stream("questions/index.html") do |f|
+        f.puts @theme.questions_index_html.read
+      end if @theme.has_questions_index_html?
+
+      zipfile.get_output_stream("questions/show.html") do |f|
+        f.puts @theme.questions_show_html.read
+      end if @theme.has_questions_show_html?
+    end
+
+    send_file temp_file, :filename => @theme.name.parameterize("-")+".zip",
+                      :type => 'application/zip',
+                      :disposition => "attachment"
+    FileUtils.rm_f(temp_file)
+  end
+
+  def import
+    file = params[:theme_file]
+    @theme = Theme.new(:group => current_group)
+
+    Zip::ZipInputStream::open(file.path) do |io|
+      while entry = io.get_next_entry
+        content = io.read
+        next if content.strip.empty?
+
+        case entry.name
+        when 'theme.yml'
+          atts = %w[bg_color brand_color community created_at custom_css description
+                    fg_color fluid name updated_at version view_bg_color]
+          data = YAML.load(content)
+          data['name'] = "#{data['name']} #{Time.now.strftime("%F")}"
+          @theme.safe_update(atts, data)
+        when 'layout/layout.html'
+          @theme.layout_html = content
+        when 'layout/main.scss'
+          @theme.stylesheet = content
+        when 'layout/main.js'
+          @theme.javascript = content
+        when /layout\/background\.(.+)/
+          @theme.bg_image = content
+        when 'questions/index.html'
+          @theme.questions_index_html = content
+        when 'questions/show.html'
+          @theme.questions_show_html = content
+        end
+      end
+    end
+
+    if @theme.save
+      redirect_to theme_path(@theme)
+    else
+      redirect_to themes_path
+    end
+  end
+
   protected
   def check_permissions
     @group = current_group

@@ -3,12 +3,29 @@ class QuestionWrapper < ModelWrapper
     view_context.render "questions/question", :question => @target
   end
 
-  def author_name
-    @target.user.display_name
+  def last_target_user_name
+    find_last_target[2].display_name
   end
 
-  def author_url
-    view_context.user_url(@target.user)
+  def last_target_url
+    lt_id = find_last_target[0]
+
+    case @target.last_target_type
+    when 'Answer'
+      view_context.question_url(@target, lt_id)
+    when 'Comment'
+      view_context.question_url(@target, lt_id)
+    else
+      view_context.question_url(@target)
+    end
+  end
+
+  def last_target_date
+    find_last_target[1].iso8601
+  end
+
+  def last_target_time_ago
+    I18n.t("time.ago", :time => view_context.time_ago_in_words(find_last_target[1]))
   end
 
   def url
@@ -84,7 +101,7 @@ class QuestionWrapper < ModelWrapper
   end
 
   def editor_reputation
-    @target.updated_by.config_for(current_group).reputation.to_i
+    view_context.format_number(@target.updated_by.config_for(current_group).reputation.to_i)
   end
 
   def editor_gold_badges_count
@@ -99,21 +116,30 @@ class QuestionWrapper < ModelWrapper
     @target.updated_by.config_for(current_group).bronze_badges_count
   end
 
-  def owner_url
+  def author_url
     view_context.user_url(@target.user)
   end
+  alias :owner_url :author_url
 
-  def owner_avatar
+  def author_avatar
     view_context.avatar_img(@target.user, :size => 'small')
   end
+  alias :owner_avatar :author_avatar
 
-  def owner_name
+  def author_avatar_url
+    view_context.avatar_url(@target.user, :size => 'small')
+  end
+  alias :owner_avatar_url :author_avatar_url
+
+  def author_name
     @target.user.display_name
   end
+  alias :owner_name:author_name
 
-  def owner_reputation
-    @target.user.config_for(current_group).reputation.to_i
+  def author_reputation
+    view_context.format_number(@target.user.config_for(current_group).reputation.to_i)
   end
+  alias :owner_reputation :author_reputation
 
   def owner_gold_badges_count
     @target.user.config_for(current_group).gold_badges_count
@@ -128,10 +154,14 @@ class QuestionWrapper < ModelWrapper
   end
 
   def respond_to?(method, priv = false)
-    self.orig_respond_to?(method, priv) || @target.respond_to?(method, priv)
+    self.orig_respond_to?(method, priv) || @target.respond_to?(method, priv) || method =~ /avatar_url_(\d+)/
   end
 
   def method_missing(name, *args, &block)
-    @target.send(name, *args, &block)
+    if name =~ /(.*avatar_url)_(\d+)/
+      self.send($1).sub("size=32", "size=#{$2}")
+    else
+      @target.send(name, *args, &block)
+    end
   end
 end

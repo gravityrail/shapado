@@ -29,14 +29,7 @@
   .clear
 
 .field
-  -if !@question.new_record?
-    = render "attachments", :question => @question, :attachments => @question.attachments, :editing => true
-  #attachments
-    #fields
-      .attachment_field.template
-        = f.file_field "attachments[0]"
-        = link_to t('.remove_attachment'), "#", :class => "remove_attachment"
-    = link_to t('.add_attachment'), "#", :class => "add_attachment"
+  =render "attachment_editor", local_assigns
 
 
 -if current_group.languages.size>1 && AppConfig.enable_i18n

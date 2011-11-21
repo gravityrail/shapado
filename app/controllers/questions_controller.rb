@@ -169,7 +169,7 @@ class QuestionsController < ApplicationController
         end
         current_user.after_viewing(@question) if current_user
 
-        render :layout => (@template_format != 'mustache')
+        render :layout => layout_for_theme
       }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }

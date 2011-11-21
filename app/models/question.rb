@@ -209,7 +209,9 @@ class Question
     self.inc(:flags_count, 1)
   end
 
-  def on_add_vote(v, voter)
+  def on_add_vote(v, voter_id)
+    voter = User.find(voter_id)
+
     if v > 0
       self.user.update_reputation(:question_receives_up_vote, self.group)
       voter.on_activity(:vote_up_question, self.group)
@@ -417,6 +419,16 @@ class Question
     end
     Question.update_last_target(q.id, last)
     last
+  end
+
+  def find_last_target
+    @last_target_data ||= begin
+      target_id = self.last_target_id || self.id
+      date = self.last_target_date || self.updated_at
+      owner = self.last_target_user || self.user
+
+      [target_id, date, owner]
+    end
   end
 
   protected

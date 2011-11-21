@@ -4,6 +4,10 @@ class AnswerWrapper < ModelWrapper
     CollectionWrapper.new(comments, CommentWrapper, view_context)
   end
 
+  def vote_box
+    view_context.vote_box(@target, view_context.question_path(@target.question), @target.question.closed)
+  end
+
   def if_has_votes
     self.votes_count > 0
   end

@@ -5,6 +5,11 @@
   You can build
   = link_to "your own", new_theme_path
 
+=form_tag import_themes_path, :method => :post, :multipart => true do |f|
+  =file_field_tag :theme_file
+  =submit_tag "import"
+.clear
+
 %ul.admin-nav
   %li
     = link_to t('themes.index.group_themes'), themes_path
