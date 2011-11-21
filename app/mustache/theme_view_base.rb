@@ -101,7 +101,7 @@ class ThemeViewBase < Poirot::View
   end
 
   def current_theme
-    @current_theme ||= current_group.current_theme
+    @current_theme ||= (current_group.current_theme || Theme.where(:is_default => true).first)
   end
 
   def if_anonymous
