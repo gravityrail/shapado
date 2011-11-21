@@ -10,7 +10,7 @@
 
       =f.text_field :title, :class => "text_area", :id => "question_title", :autocomplete => 'off'
       .buttons-quickq
-        =f.submit t(".ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
+        =f.submit t("questions.index.ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
 
       -if lang
         = f.hidden_field :language, :value => lang

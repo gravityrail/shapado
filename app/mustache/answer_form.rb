@@ -86,11 +86,11 @@ class AnswerForm
   end
 
   def question
-    view_context.instance_variable_get(:@question)
+    @question ||= view_context.instance_variable_get(:@question)
   end
 
   def answer
-    view_context.instance_variable_get(:@answer) || Answer.new
+    @answer ||= view_context.instance_variable_get(:@answer) || Answer.new
   end
 
   def method_missing(name, *args, &block)

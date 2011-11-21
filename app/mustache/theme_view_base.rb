@@ -115,4 +115,8 @@ class ThemeViewBase < Poirot::View
   def if_logged_in
     view_context.user_signed_in?
   end
+
+  def ask_form
+    AskForm.new(view_context)
+  end
 end
