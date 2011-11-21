@@ -209,7 +209,9 @@ class Question
     self.inc(:flags_count, 1)
   end
 
-  def on_add_vote(v, voter)
+  def on_add_vote(v, voter_id)
+    voter = User.find(voter_id)
+
     if v > 0
       self.user.update_reputation(:question_receives_up_vote, self.group)
       voter.on_activity(:vote_up_question, self.group)

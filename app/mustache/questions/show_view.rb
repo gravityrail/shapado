@@ -37,5 +37,9 @@ module Questions
     def answer_form
       AnswerForm.new(view_context)
     end
+
+    def vote_box
+      view_context.vote_box(@question, view_context.question_path(@question), @question.closed)
+    end
   end
 end
