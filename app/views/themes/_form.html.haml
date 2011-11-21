@@ -67,35 +67,29 @@
 - if current_group.has_custom_js
   .field
     = form.label :javascript
-    - if @theme.has_js
-      = form.text_area :javascript, :value => @theme.javascript.get.read, :class => "code", :data => {:lang => "javascript"}
-    - else
-      = form.text_area :javascript, :value => '', :class => "code", :data => {:lang => "javascript"}
+    = form.file_field :javascript
+
+    = link_to "edit", "#", class: "show_dialog", data: { target: "javascript" }
+
 
 .field
   = form.label :layout_html
-  - if @theme.has_layout_html?
-    = form.text_area :layout_html, :value => @theme.layout_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
-  -else
-    = form.text_area :layout_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
-  %small
-    = I18n.t('themes.form.layout_index_html')
+  = form.file_field :layout_html
+
+  = link_to "edit", "#", class: "show_dialog", data: { target: "layout_html" }
 
 .field
   = form.label :questions_index_html
-  - if @theme.has_questions_index_html?
-    = form.text_area :questions_index_html, :value => @theme.questions_index_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
-  -else
-    = form.text_area :questions_index_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+  = form.file_field :questions_index_html
+  = link_to "edit", "#", class: "show_dialog", data: { target: "questions_index_html" }
   %small
     = I18n.t('themes.form.questions_index_html')
 
 .field
   = form.label :questions_show_html
-  - if @theme.has_questions_show_html?
-    = form.text_area :questions_show_html, :value => @theme.questions_show_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
-  -else
-    = form.text_area :questions_show_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+  = form.file_field :questions_show_html
+  = link_to "edit", "#", class: "show_dialog", data: { target: "questions_show_html" }
+
   %small
     = I18n.t('themes.form.questions_show_html')
 
@@ -103,3 +97,43 @@
   .buttons
     = form.submit :value => I18n.t('themes.form.submit_update') , :class => "save"
 
+
+.javascript-code-editor{style: "display: none"}
+  = form_for @theme do |form|
+    - if @theme.has_js
+      = form.text_area :javascript, :value => @theme.javascript.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+    - else
+      = form.text_area :javascript, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+    .form-options
+      .buttons
+        = form.submit
+
+.questions_index_html-code-editor{style: "display: none"}
+  = form_for @theme do |form|
+    - if @theme.has_questions_index_html?
+      = form.text_area :questions_index_html, :value => @theme.questions_index_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+    - else
+      = form.text_area :questions_index_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+    .form-options
+      .buttons
+        = form.submit
+
+.questions_show_html-code-editor{style: "display: none"}
+  = form_for @theme do |form|
+    - if @theme.has_questions_show_html?
+      = form.text_area :questions_show_html, :value => @theme.questions_show_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+    - else
+      = form.text_area :questions_show_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+    .form-options
+      .buttons
+        = form.submit
+
+.layout_html-code-editor{style: "display: none"}
+  = form_for @theme do |form|
+    - if @theme.has_layout_html?
+      = form.text_area :layout_html, :value => @theme.layout_html.get.read, :class => "code", :data => {:lang => "htmlmixed"}
+    - else
+      = form.text_area :layout_html, :value => '', :class => "code", :data => {:lang => "htmlmixed"}
+    .form-options
+      .buttons
+        = form.submit
