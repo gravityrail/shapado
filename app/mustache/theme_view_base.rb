@@ -3,16 +3,32 @@ class ThemeViewBase < Poirot::View
     super(*args)
   end
 
+  def if_front_page
+    view_context.request.path == '/'
+  end
+
+  def if_questions_page
+    view_context.request.path == '/questions'
+  end
+
+  def random_question
+    QuestionWrapper.new(current_group.questions.random, view_context)
+  end
+
   def add_ask_question_box
     view_context.render
   end
 
   def foreach_recent_tag
-    CollectionWrapper.new(current_group.tags.desc(:used_at).limit(25), TagWrapper, view_context)
+    CollectionWrapper.new(current_group.tags.desc(:used_at).page(params[:tags_page]).per(25), TagWrapper, view_context)
   end
 
   def foreach_recent_badge
-    CollectionWrapper.new(current_group.badges.desc(:created_at).limit(25), BadgeWrapper, view_context)
+    CollectionWrapper.new(current_group.badges.desc(:created_at).page(params[:badges_page]).per(25), BadgeWrapper, view_context)
+  end
+
+  def foreach_recent_activity
+    CollectionWrapper.new(current_group.activities.desc(:created_at).page(params[:activity_page]).per(25), ActivityWrapper, view_context)
   end
 
   def add_header_widgets

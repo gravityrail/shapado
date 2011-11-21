@@ -3,20 +3,11 @@
   -title += " [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
 -if !local_assigns[:mini]
-  -owner = nil
-  - if question.last_target_id.present?
-    - last_target_id = question.last_target_id
-    - last_target_date = question.last_target_date || question.updated_at
-    - owner = question.last_target_user
-    - if question.last_target_type != 'Question'
-      - @updated = true
-    - else
-      - @updated = false
-
-  -else
-    - last_target = question
-    - last_target_date = question.updated_at
-    - owner = question.user unless question.anonymous
+  -last_target_id, last_target_date, owner = question.find_last_target
+  - if question.last_target_type != 'Question'
+    - @updated = true
+  - else
+    - @updated = false
 
   %article{:class => class_for_question(question), :id => question.id}
 

@@ -8,8 +8,9 @@ module Questions
       CollectionWrapper.new(@questions, QuestionWrapper, view_context)
     end
 
-    def add_paginator
+    def paginate_questions
       paginate(@questions)
     end
+    alias :add_paginator :paginate_questions
   end
 end
