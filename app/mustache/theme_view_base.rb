@@ -3,14 +3,17 @@ class ThemeViewBase < Poirot::View
     super(*args)
   end
 
+  # returns true if the current page is the front page '/'
   def if_front_page
     view_context.request.path == '/'
   end
 
+  # returns true if current page is /questions
   def if_questions_page
     view_context.request.path == '/questions'
   end
 
+  # returns a random question
   def random_question
     QuestionWrapper.new(current_group.questions.random, view_context)
   end
