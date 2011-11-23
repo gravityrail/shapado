@@ -3,6 +3,10 @@ class QuestionWrapper < ModelWrapper
     view_context.render "questions/question", :question => @target
   end
 
+  def last_target_user
+    UserWrapper.new(find_last_target[2], view_context)
+  end
+
   def last_target_user_name
     find_last_target[2].display_name
   end
@@ -88,80 +92,11 @@ class QuestionWrapper < ModelWrapper
     self.comments.count > 0
   end
 
-  def editor_url
-    view_context.user_url(@target.updated_by)
+  def editor
+    @editor ||= UserWrapper.new(self.updated_by, view_context)
   end
 
-  def editor_avatar
-    view_context.avatar_img(@target.updated_by, :size => 'small')
-  end
-
-  def editor_name
-    @target.updated_by.display_name
-  end
-
-  def editor_reputation
-    view_context.format_number(@target.updated_by.config_for(current_group).reputation.to_i)
-  end
-
-  def editor_gold_badges_count
-    @target.updated_by.config_for(current_group).gold_badges_count
-  end
-
-  def editor_silver_badges_count
-    @target.updated_by.config_for(current_group).silver_badges_count
-  end
-
-  def editor_bronze_badges_count
-    @target.updated_by.config_for(current_group).bronze_badges_count
-  end
-
-  def author_url
-    view_context.user_url(@target.user)
-  end
-  alias :owner_url :author_url
-
-  def author_avatar
-    view_context.avatar_img(@target.user, :size => 'small')
-  end
-  alias :owner_avatar :author_avatar
-
-  def author_avatar_url
-    view_context.avatar_url(@target.user, :size => 'small')
-  end
-  alias :owner_avatar_url :author_avatar_url
-
-  def author_name
-    @target.user.display_name
-  end
-  alias :owner_name:author_name
-
-  def author_reputation
-    view_context.format_number(@target.user.config_for(current_group).reputation.to_i)
-  end
-  alias :owner_reputation :author_reputation
-
-  def owner_gold_badges_count
-    @target.user.config_for(current_group).gold_badges_count
-  end
-
-  def owner_silver_badges_count
-    @target.user.config_for(current_group).silver_badges_count
-  end
-
-  def owner_bronze_badges_count
-    @target.user.config_for(current_group).bronze_badges_count
-  end
-
-  def respond_to?(method, priv = false)
-    self.orig_respond_to?(method, priv) || @target.respond_to?(method, priv) || method =~ /avatar_url_(\d+)/
-  end
-
-  def method_missing(name, *args, &block)
-    if name =~ /(.*avatar_url)_(\d+)/
-      self.send($1).sub("size=32", "size=#{$2}")
-    else
-      @target.send(name, *args, &block)
-    end
+  def author
+    @author ||= UserWrapper.new(self.user, view_context)
   end
 end

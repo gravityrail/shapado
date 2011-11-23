@@ -10,4 +10,8 @@ class BadgeWrapper < ModelWrapper
   def user_name
     @target.user.display_name
   end
+
+  def user
+    UserWrapper.new(@target.user, view_context)
+  end
 end

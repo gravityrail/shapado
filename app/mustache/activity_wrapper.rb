@@ -3,6 +3,10 @@ class ActivityWrapper < ModelWrapper
     @target.humanize_action
   end
 
+  def user
+    UserWrapper.new(@target.user, view_context)
+  end
+
   def user_url
     view_context.user_url(@target.user)
   end

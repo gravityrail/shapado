@@ -10,4 +10,8 @@ class TagWrapper < ModelWrapper
   def followers_count
     @target.followers_count.to_i
   end
+
+  def follow_button
+    view_renderer.follow_tag_link(@target)
+  end
 end
