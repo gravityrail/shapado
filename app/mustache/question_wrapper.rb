@@ -120,7 +120,8 @@ class QuestionWrapper < ModelWrapper
     @editor ||= UserWrapper.new(self.updated_by, view_context)
   end
 
-  # returns the user who created a question
+  # returns the user who created a question, use it like this:
+  # {{#author}} {{name}} {{/author}}
   def author
     @author ||= UserWrapper.new(self.user, view_context)
   end

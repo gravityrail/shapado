@@ -36,7 +36,8 @@ class AnswerWrapper < ModelWrapper
     view_context.shapado_auto_link(md).html_safe
   end
 
-  # returns the user who created the post
+  # returns the user who created the post, use it like this:
+  # {{#author}} {{name}} {{/author}}
   def author
     UserWrapper.new(@target.user, view_context)
   end

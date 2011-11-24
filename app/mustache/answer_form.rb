@@ -62,7 +62,7 @@ class AnswerForm
     end
   end
 
-  # returns a checkbox to allow user to post their answers as anonymous users
+  # returns a checkbox to allow users to post their answers as anonymous users
   def anonymous_checkbox
     adding_field do |f|
       f.check_box :anonymous, :class => "checkbox"
