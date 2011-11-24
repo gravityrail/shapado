@@ -49,6 +49,7 @@ class AnswerWrapper < ModelWrapper
 
   # returns link to the history url
   def history_url
+    history_question_answer_path(question.id, @target.id)
   end
 
   # returns the date on which the post was created
@@ -64,5 +65,24 @@ class AnswerWrapper < ModelWrapper
   # returns true if an answer has been updated
   def if_has_editor
     @target.updated_by.present?
+  end
+
+  def pick_as_solution_url
+    unless question.accepted && !question.subjetive
+      view_context.link_to(I18n.t("questions.answer.pick_answer"), view_context.solve_question_path(question, :answer_id => @target))
+    elsif question.answer == answer
+      view_context.link_to(I18n.t("questions.answer.unset_answer"), view_context.unsolve_question_path(question, :answer_id => @target))
+    end
+  end
+
+  def render_toolbar
+    solution = question.accepted && question.answer_id == answer.id
+    view_context.render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
+  end
+
+
+  protected
+  def question
+    @target.question
   end
 end

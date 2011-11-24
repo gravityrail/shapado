@@ -125,4 +125,8 @@ class QuestionWrapper < ModelWrapper
   def author
     @author ||= UserWrapper.new(self.user, view_context)
   end
+
+  def render_toolbar
+    view_context.render "questions/toolbar"
+  end
 end
