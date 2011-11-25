@@ -18,6 +18,8 @@ module Questions
       end
     end
 
+    # returns the show page of a question
+    # this contains the HTML of a question with all its answers and comments
     def render_show_page
       render_buffer current_theme.questions_show_html.read
     end
@@ -34,10 +36,12 @@ module Questions
       end
     end
 
+    # retuns the HTML form to answer a question
     def answer_form
       AnswerForm.new(view_context)
     end
 
+    # retuns the widget to vote up or down on an answer
     def vote_box
       view_context.vote_box(@question, view_context.question_path(@question), @question.closed)
     end

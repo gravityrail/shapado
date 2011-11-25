@@ -4,6 +4,8 @@ module Layouts
       render_buffer current_theme.layout_html.read
     end
 
+    # returns the content that will displayed inside of the layout
+    # the content can be the list of question or a question and its answers
     def content
       view_context.content_for(:layout)
     end

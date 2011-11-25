@@ -126,6 +126,8 @@ class QuestionWrapper < ModelWrapper
     @author ||= UserWrapper.new(self.user, view_context)
   end
 
+  # returns the question toolbar
+  # the toolbar display the action menu to edit/delete etc the question
   def render_toolbar
     view_context.render "questions/toolbar"
   end
