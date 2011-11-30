@@ -19,7 +19,6 @@ var Loader = {
       Ui.initialize();
       Messages.initialize();
     }
-
     if($body.hasClass("questions-controller")) {
       Questions.initialize($body);
     } else if($body.hasClass("widgets-controller")) {
@@ -45,7 +44,12 @@ var Loader = {
     } else if($body.hasClass("answers-controller")) {
       Answers.initialize($body);
     }
-
+    if($body.is(".users-controller.edit.application")) {
+      Users.initialize_on_show($body);
+    }
+    if($body.is(".admin-manage-controller.properties.application.manage-layout")) {
+      Groups.initialize_on_manage_properties($body);
+    }
     Invitations.initialize(); //FIXME: empty function
   }
 }

@@ -9,7 +9,7 @@ task :jsassets do
   assets["javascripts"].keys.each do |k|
     file = "public/packages/#{k}.js"
     digest = Digest::MD5.hexdigest(File.read(file))[0..9]
-    assets["javascripts"][k.split('_').first] = ["/packages/#{k}.js?#{digest[0..9]}"]
+    assets["javascripts"][k.split('_').first] = ["/packages/#{k}.js"]
     assets["javascripts"].delete(k) if k.include?('_')
   end
   assets["stylesheets"].keys.each do |k|

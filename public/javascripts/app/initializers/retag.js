@@ -1,8 +1,7 @@
 $(document).ready(function() {
-  $('#retag').live('click',function(){
+  $('.retag-link').live('click',function(){
     var link = $(this);
     link.parent('.retag').hide();
-
     $.ajax({
       dataType: "json",
       type: "GET",
@@ -10,10 +9,21 @@ $(document).ready(function() {
       extraParams : { 'format' : 'js'},
       success: function(data) {
         if(data.success){
-          var form = $('<li>'+data.html+'</li>');
-          link.parents("ul.tag-list").find('li a.tag').hide();
           link.parents(".tag-list").find('.title').after(data.html);
-          link.parents(".tag-list").find('.autocomplete_for_tags').ricodigoComplete();
+          $(".chosen-retag").ajaxChosen({
+            method: 'GET',
+            url: '/questions/tags_for_autocomplete.js',
+            dataType: 'json'
+          }, function (data) {
+            var terms = {};
+            $.each(data, function (i, val) {
+              console.log('i: '+i)
+              console.log('val: '+val)
+              terms[val["value"]] = val["caption"];
+            });
+
+          return terms;
+        });
         } else {
             Messages.show(data.message, "error");
             if(data.status == "unauthenticate") {

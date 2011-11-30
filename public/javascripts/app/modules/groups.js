@@ -1,9 +1,5 @@
 var Groups = {
   initialize: function($body) {
-    $(document).ready(function() {
-      if($('.autocomplete_for_tags').length >0)
-        $('.autocomplete_for_tags').ricodigoComplete();
-    });
     if($body.hasClass("index")) {
       Groups.initialize_on_index($body);
     }
@@ -17,6 +13,10 @@ var Groups = {
       $('#group_enable_mathjax').change(function(){
         $('#group_enable_latex').removeAttr('checked')
       })
+  },
+  initialize_on_manage_properties: function($body) {
+    $('#group_language').chosen();
+    $('#group_languages').chosen();
   },
   initialize_on_index: function($body) {
     $("#filter_groups").find("input[type=submit]").hide();

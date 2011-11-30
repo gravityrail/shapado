@@ -14,7 +14,7 @@ javascripts:
     - public/javascripts/app/modules/jqmath.js
   initdev:
     - public/javascripts/app/initializers/init_dev.js
-  modernizr_6:
+  modernizr_7:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
     - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/modules/jqmath.js
@@ -28,12 +28,12 @@ javascripts:
   json:
     - public/javascripts/vendor/polyfills/json2.js
 
-  base_6:
+  base_7:
     - public/javascripts/rails.js
     - public/javascripts/vendor/jquery-ui-1.8.14.custom.min.js
     - public/javascripts/app/modules/effects.js
-    - public/javascripts/vendor/jqueryui.ricodigoComplete.js
-
+    - public/javascripts/vendor/chosen.jquery.min.js
+    - public/javascripts/vendor/ajax-chosen.js
     - public/javascripts/vendor/jquery.cookie.js
     - public/javascripts/vendor/jquery.pjax.js
 
@@ -125,6 +125,7 @@ javascripts:
 stylesheets:
   base:
     - public/stylesheets/compiled/application.css
+    - public/stylesheets/chosen/chosen.css
   jqueryui:
     - public/stylesheets/ui-lightness/jquery-ui.css
     - public/stylesheets/jquery.ui.tabs.css

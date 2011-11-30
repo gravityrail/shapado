@@ -25,7 +25,7 @@
         settings.fields = $(this).find("input[type=text],textarea");
       }
 
-       //HACK?
+       /*HACK?*/
       for(var property in settings.extraParams) {
         extraParams.push({ name : property, value : settings.extraParams[property]});
       }

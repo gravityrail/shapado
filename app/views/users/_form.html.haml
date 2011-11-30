@@ -74,7 +74,8 @@
 -if AppConfig.enable_i18n
   .field
     = f.label :preferred_languages, t(:preferred_languages, :scope => "activerecord.attributes.user"), :class => "label"
-    = text_field_tag :preferred_languages, preferred_languages_code(@user, 'preferred_languages').join(','), :class => "text_field autocomplete_for_tags", 'data-opts'=> "{\"allowNewTags\": false, \"source\":#{language_json}}"
+    = f.select :preferred_languages, AVAILABLE_LANGUAGES.collect{|lang| [language_desc(lang), lang]}, {:selected => @user.preferred_languages.to_a},{:multiple => true}
+
 
 -else
   = hidden_field_tag "user[preferred_languages][]", (current_group.language || AppConfig.default_language)

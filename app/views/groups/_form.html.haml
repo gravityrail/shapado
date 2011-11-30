@@ -110,7 +110,7 @@
     = form.select :language, AVAILABLE_LANGUAGES.collect {|lang| [ language_desc(lang), lang ] }, :selected => @group.language || 'en', :class => "select"
   .field
     = form.label :language, t(:languages, :scope => "activerecord.attributes.group"), :class => "label"
-    = text_field_tag :languages, preferred_languages_code(@group, 'languages').join(','), :class => "text_field autocomplete_for_tags", 'data-opts'=> "{\"allowNewTags\": false, \"source\":#{language_json}}"
+    = form.select :languages, AVAILABLE_LANGUAGES.collect{|lang| [language_desc(lang), lang]}, {:selected => @group.languages.to_a},{:multiple => true}
 -else
   = form.hidden_field :language, :value => (AppConfig.default_language || 'en')
 
