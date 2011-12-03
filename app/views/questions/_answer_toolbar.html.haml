@@ -35,7 +35,7 @@
         %li.flagged
           %span.flag-link
             = t('questions.answer_toolbar.flagged_by_you')
-          %ul
+          %ul.drop-menu
             %li
               %p
                 = "#{t('questions.show.flagged_as')} #{t(@aflag.reason, :scope=>'flags.form')}"
@@ -48,7 +48,7 @@
     - if logged_in?
       %li.more.current
         = link_to t('layouts.manage.actions'), "#"
-        %ul
+        %ul.drop-menu
           %li
             = link_to t("questions.show.follow_up"), new_question_path(:original_question_id => question.id, :original_answer_id => @answer.id), :class => "pjax", :"data-layout" => "new-question"
           - if (current_user.can_modify?(answer) || current_user.mod_of?(question.group))

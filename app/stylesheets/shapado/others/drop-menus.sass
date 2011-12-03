@@ -6,7 +6,7 @@
   margin:       0
   padding:      0
   list-style:   none
-.menubar, .drop-menu
+.menubar
   line-height:  1.0
   .sf-sub-indicator
     position: absolute
@@ -17,11 +17,26 @@
     height: 10px
     text-indent: -999em
     overflow: hidden
-    background:	 url('../images/arrows-ffffff.png') no-repeat -10px -100px //8-bit indexed alpha png. IE6 gets solid image only
-  a
-    display: block
-    position: relative
-    white-space: nowrap
+    background: url('../images/arrows-ffffff.png') no-repeat -10px -100px //8-bit indexed alpha png. IE6 gets solid image only
+
+  .drop-menu
+    a
+      display: block
+      position: relative
+      white-space: nowrap
+    ul
+      li
+        &:hover
+          visibility: inherit // fixes IE7 'sticky bug'
+          cursor: pointer
+        a
+          display: block
+          position: relative
+          border-right: 0px !important
+          border-left: 0px !important
+          &:hover
+            cursor: pointer
+
   ul
     position: absolute
     top: -999em
@@ -30,18 +45,9 @@
     li
       width: 100%
       display: block
-      &:hover
-        visibility: inherit // fixes IE7 'sticky bug'
-        cursor: pointer
-      a
-        display: block
-        position: relative
-        border-right: 0px !important
-        border-left: 0px !important
-        &:hover
-          cursor: pointer
+
   li
-    float:	 left
+    float: left
     position: relative
     &:hover ul, &.sfHover ul, &.dropHover ul
       left:  0
@@ -50,10 +56,10 @@
     &:hover li ul, &.sfHover li ul, &.dropHover li ul
       top: -999em
     li:hover ul, li.sfHover ul, li.dropHover ul
-      left:	 auto // match ul width
+      left:  auto // match ul width
       top: 0
     li li:hover ul, li li.sfHover ul, li li.dropHover ul
-      left:	 auto // match ul width
+      left: auto // match ul width
       top: 0
 
 // arrows
@@ -104,24 +110,24 @@ li.sfHover > a > .sf-sub-indicator
 .top-bar
   .menubar
     float: left
-    li
-      float: left
-      display: inline
+    &>li
       small
         position: absolute
         top: 2px
         left: 15px
-      a
+      &>a
         display: block
         padding: 14px 25px 13px 15px
     ul
+      &.drop-menu
+        a
+          padding: 8px 10px
       top: 40px !important
       h3
         padding: 5px
       li:first-child
         border: 0px
       a
-        padding: 8px 10px
         border: 0
         &.sf-with-ul
           padding-right: 30px
@@ -143,35 +149,19 @@ li.sfHover > a > .sf-sub-indicator
         +normal-radius
         width: 25px
 
-  ul.notifications-list
-    float: right
-    &>li
-      width: 32px
+    li.notifications-list
+      width: 2em
       a
-        &.hover
-          background: #fff
-          color: #000
         text-align: center
         padding-left: 0px
         padding-right: 0px
-    ul
-      width: 320px
-      left: -288px
-      li.notification
-        .warp
-          padding: 5px
-        cursor: auto
-        &:hover
-          background: #fff
-          color: #000
-        a, time
-          display: inline
-          padding: 0
-          color: #000
-          &:hover
-            color: #666 !important
-            background: #fff !important
-
+      ul
+        width: 320px
+        left: -288px
+        li.notification
+          .warp
+            padding: 5px
+          cursor: auto
 
 // ARTICLE TOOLBAR - dropdown for moderate + ARTICLE TOOLBAR - dropdown for moderate
 //-------------------------------------------------------------------------------------------------------------------

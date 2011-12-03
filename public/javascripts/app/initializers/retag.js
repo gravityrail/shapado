@@ -1,8 +1,7 @@
 $(document).ready(function() {
-  $('#retag').live('click',function(){
+  $('.retag-link').live('click',function(){
     var link = $(this);
     link.parent('.retag').hide();
-
     $.ajax({
       dataType: "json",
       type: "GET",
@@ -10,10 +9,21 @@ $(document).ready(function() {
       extraParams : { 'format' : 'js'},
       success: function(data) {
         if(data.success){
-          var form = $('<li>'+data.html+'</li>');
-          link.parents("ul.tag-list").find('li a.tag').hide();
-          link.parents(".tag-list").find('.title').after(data.html);
-          link.parents(".tag-list").find('.autocomplete_for_tags').ricodigoComplete();
+          link.parents(".tag-list").before(data.html);
+          $(".chosen-retag").ajaxChosen({
+            method: 'GET',
+            url: '/questions/tags_for_autocomplete.js',
+            dataType: 'json'
+          }, function (data) {
+            var terms = {};
+            $.each(data, function (i, val) {
+              console.log('i: '+i)
+              console.log('val: '+val)
+              terms[val["value"]] = val["caption"];
+            });
+
+          return terms;
+        });
         } else {
             Messages.show(data.message, "error");
             if(data.status == "unauthenticate") {
@@ -41,8 +51,8 @@ $(document).ready(function() {
                     var tags = $.map(data.tags, function(n){
                         return '<li><a class="tag" rel="tag" href="/questions/tags/'+n+'">'+n+'</a></li>'
                     })
-                    form.parents('.tag-list').find('li a.tag').remove();
-                    form.before($.unique(tags).join(''));
+                    form.next('.tag-list').find('li a.tag').remove();
+                    form.next('.tag-list').find('.title').after($.unique(tags).join(''));
                     form.remove();
                     $('.retag').show();
                     Messages.show(data.message, "notice");
@@ -64,9 +74,9 @@ $(document).ready(function() {
   $('.cancel-retag').live('click', function(){
       var link = $(this);
       var form = link.parents('form');
-      link.parents('.tag-list').find('.tag').show();
-      link.parents('.tag-list').find('.retag').show();
-      link.parents('.tag-list').find('form').remove();
+      form.next('.tag-list').find('.tag').show();
+      form.next('.tag-list').find('.retag').show();
+      form.remove();
       return false;
   });
 });

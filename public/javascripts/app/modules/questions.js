@@ -72,6 +72,22 @@ var Questions = {
   initialize_on_new: function($body) {
     $("#related_questions").hide();
     Editor.initialize();
+    $("#question_tags").ajaxChosen({
+      method: 'GET',
+      url: '/questions/tags_for_autocomplete.js',
+      dataType: 'json'
+    }, function (data) {
+      var terms = {};
+      $.each(data, function (i, val) {
+          console.log('i: '+i)
+          console.log('val: '+val)
+        terms[val["value"]] = val["caption"];
+      });
+
+      return terms;
+    });
+
+
 //     FIXME:filter is blocking mongodb
     $(".ask_question #ask_question").searcher({url : "/questions/related_questions.js",
       target : $("#related_questions"),

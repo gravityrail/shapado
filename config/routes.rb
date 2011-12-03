@@ -198,6 +198,11 @@ Rails.application.routes.draw do
         get :remove_bg_image
         put :apply
         get :ready
+        get :download
+      end
+
+      collection do
+        post :import
       end
     end
     resources :constrains_configs

@@ -15,7 +15,7 @@
 -elsif logged_in? && current_user.can_view_offensive_counts_on?(current_group)
   %li.more.requests
     = link_to I18n.t('questions.toolbar.requests')
-    %ul
+    %ul.drop-menu
       - unless question.flags.count == 0
         %li
           = t(:flags, :scope => "activerecord.models")

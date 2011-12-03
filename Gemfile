@@ -2,7 +2,7 @@
 # This preamble is the current preamble for Rails 3 apps; edit as needed.
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.1'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', :git => 'git://github.com/ricodigo/rdiscount.git'
@@ -19,12 +19,15 @@ else
 end
 gem "maruku"
 # ui
-gem "haml"
-gem "sass"
-gem 'compass', '0.11.1'
+gem "haml", '>= 3.1.3'
+gem "sass", '>= 3.1.10'
+gem 'compass', '>= 0.11.5'
 gem "compass-colors", "0.9.0"
 gem "fancy-buttons", "1.1.1"
 gem 'kaminari'
+gem 'mustache'
+gem 'poirot', :git => "git://github.com/dcu/poirot.git"
+
 
 # mongodb
 gem 'bson', '1.4.0'
@@ -57,6 +60,7 @@ gem 'activemerchant', '1.16.0'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
 gem 'geoip'
+gem 'rubyzip', '0.9.4', :require => 'zip/zip'
 
 # authentication
 gem 'omniauth', '~> 0.3.0'
@@ -101,6 +105,7 @@ end
 
 group :development do
   gem "pry"
+  gem 'pry-rails'
   gem "database_cleaner"
   gem "rspec", ">= 2.0.1"
   gem "rspec-rails", ">= 2.0.1"
@@ -111,5 +116,5 @@ group :development do
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
   gem 'tunnlr_connector', :git => "git://github.com/dcu/tunnlr_connector.git", :branch => "patch-1", :require => "tunnlr"
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :require => 'rails_development_boost'
+  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :branch => 'mongoid-brute-force', :require => 'rails_development_boost'
 end

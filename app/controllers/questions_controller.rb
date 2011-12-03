@@ -25,6 +25,10 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
+    if current_group.current_theme.has_questions_index_html?
+      @template_format = 'mustache'
+    end
+
     find_questions
   end
 
@@ -126,6 +130,10 @@ class QuestionsController < ApplicationController
   # GET /questions/1
   # GET /questions/1.xml
   def show
+    if current_group.current_theme.has_questions_show_html?
+      @template_format = 'mustache'
+    end
+
     if @question.reward && @question.reward.ends_at < Time.now
       Jobs::Questions.async.close_reward(@question.id).commit!(1)
     end
@@ -160,6 +168,8 @@ class QuestionsController < ApplicationController
           Jobs::Questions.async.on_view_question(@question.id).commit!(5)
         end
         current_user.after_viewing(@question) if current_user
+
+        render :layout => layout_for_theme
       }
       format.mobile
       format.json  { render :json => @question.to_json(:except => %w[_keywords slug watchers]) }

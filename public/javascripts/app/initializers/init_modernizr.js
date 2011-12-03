@@ -19,10 +19,6 @@ Modernizr.load([{
       complete: function(){
         if(typeof(Jqmath)!='undefined')
           Jqmath.initialize();
-        $(document).ready(function() {
-          if($('.autocomplete_for_tags').length >0)
-          $('.autocomplete_for_tags').ricodigoComplete();
-        });
       }
     }, {
         load: cssassets.jqueryui

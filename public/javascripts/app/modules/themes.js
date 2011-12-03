@@ -22,6 +22,21 @@ var Themes = {
           });
         });
       }
+    } else if( $body.hasClass("new") || $body.hasClass("edit") || $body.hasClass("create") || $body.hasClass("update")) {
+
+      $(".show_dialog").click(function(e){
+        var self = $(this);
+        var target = $('.'+self.data('target')+"-code-editor");
+        target.dialog({width: ($body.width()-50)});
+        if(self.data("actived") != "1") {
+          target.find("textarea.code").each(function(i, e){
+            CodeMirror.fromTextArea(e, {lineNumbers: true, theme: "default", mode: $(e).data("lang")});
+          });
+          self.attr({"data-actived": "1"});
+        }
+
+        return false;
+      });
     }
   }
 }

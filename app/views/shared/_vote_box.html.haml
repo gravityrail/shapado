@@ -1,20 +1,18 @@
 - if !voteable.is_a?(Comment)
   .answer_vote_box
-    - if !closed && (logged_in? && (voteable.user != current_user)) || !logged_in?
+    - if !closed && (user_signed_in? && (voteable.user != current_user)) || !user_signed_in?
       - vote = logged_in? ? current_user.vote_on(voteable) : nil
       %form{:action=> url, :method=>'post', :class=>'vote_form'}
         = token_tag(nil)
-        %ul.vote_box
-          %li
-            %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1", :class => (vote && vote > 0) && "checked" }
-          %li.votes_average
+        .vote_box.vote
+          %button.positive{:type=>"submit", :name=>"vote_up", :value=>"1", :class => (vote && vote > 0) ? "vote-up-on checked" : "vote-up-off" }
+          %span.votes_average.vote-count-post
             = calculate_votes_average(voteable)
-          %li
-            = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
-            %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1", :class => (vote && vote < 0) && "checked"}
+          = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
+          %button.negative{:type=>"submit", :name=>"vote_down", :value=>"-1", :class => (vote && vote < 0) ? "vote-down-on checked" : "vote-down-off"}
     - else
-      %ul.vote_box
-        %li.votes_average
+      .vote_box.vote
+        .votes_average.vote-count-post
           = calculate_votes_average(voteable)
 - else
   %form.comment-form{:action=> url, :method=>'post', :class => ''}
@@ -22,6 +20,3 @@
     = hidden_field_tag "source", source, :id => "source_#{class_name}_#{voteable.id}"
     %button.upvote-comment{:type=>"submit", :name=>"vote_up", :value=>"1", :class => !current_user.has_voted?(voteable) && "vote", :title=>comment_vote_title(current_user.has_voted?(voteable), voteable)}
       ✓
-
-  -#%span{:title=>comment_vote_title(true, voteable), :class => 'upvoted-comment'}
-  -#  ✓

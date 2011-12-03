@@ -72,7 +72,7 @@
     %li.more.current
       = link_to t("#{i18n_scope}.more_actions")
 
-      %ul
+      %ul.drop-menu
         %li.followUp
           = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description")
 
@@ -115,30 +115,7 @@
     = render "reward_form"
 
     -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
-      =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer markdown"} do |f|
-
-        = render :partial => "answers/form", :locals => {:f => f, :markdown => true, :question => @question}
-
-        .field.form-options
-          .column
-            .checkbox
-              = f.label :wiki, "Wiki"
-              = f.check_box :wiki, :class => "checkbox"
-          - if logged_in? && current_group.enable_anonymous
-            .column
-              .checkbox
-                = f.label :anonymous, t("scaffold.post_as_anonymous"), :class => "radio"
-                = f.check_box :anonymous, {:class => "checkbox"}, true, false
-
-          -if AppConfig.mailing && AppConfig.mailing["activate"]
-            .column.by_mail
-              %a{:href => "mailto:#{@question.email}"}
-                = I18n.t('questions.toolbar.answer_by_mail')
-
-          .buttons
-            = submit_tag t('answers.form.submit'), :class => "save"
-            = t("global.or")
-            = link_to t('scaffold.cancel'), '', :class => 'cancel'
+      = render :partial => "answers/form", :locals => {:f => f, :markdown => true, :question => @question}
 
     =form_tag "", :class => "share_question" do
       %h1
