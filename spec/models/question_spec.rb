@@ -5,6 +5,7 @@ describe Question do
     @current_user = User.make
     Thread.current[:current_user] = @current_user
     @question = Question.make(:votes => {})
+    @question.group.add_member(@current_user, "owner")
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -22,9 +23,9 @@ describe Question do
     end
 
     it "question slug should unique" do
-      question = Question.make_unsaved(:title => @question.title)
-      question.slug = @question.slug
-      question.group = @question.group
+      question = Question.new(title: @question.title,
+                                       slug: @question.slug,
+                                       group: @question.group)
       question.valid?.should == false
     end
 
@@ -90,6 +91,7 @@ describe Question do
       it "should unban the question" do
         @question.ban
         @question.reload
+        Question.stub(:new).with(anything).and_return(@question)
         Question.unban([@question.id])
         @question.reload
         @question.banned.should be_false
@@ -378,10 +380,11 @@ describe Question do
     describe "Question#update_last_target" do
       before(:each) do
         @target = Answer.make(:question => @question, :group => @question.group)
+        @question.answers << @target
       end
 
       it "should set the las target propieties" do
-        @question.update_last_target(@target)
+        @question.update_last_target
         @question.reload
         @question.last_target_id.should == @target.id
         @question.last_target_user_id.should == @target.user_id
@@ -518,20 +521,6 @@ describe Question do
         @question.save
         @question.reload
         @question.close_reason.id.should == @close_request.id
-      end
-    end
-
-    describe "Question#last_target=" do
-      before(:each) do
-        @target = Answer.make(:question => @question, :group => @question.group)
-      end
-
-      it "should set the las target propieties" do
-        @question.last_target = @target
-        @question.last_target_id.should == @target.id
-        @question.last_target_user_id.should == @target.user_id
-        @question.last_target_type.should == @target.class.to_s
-        @question.last_target_date == @target.updated_at.utc
       end
     end
   end

@@ -209,7 +209,13 @@ class Question
     self.inc(:flags_count, 1)
   end
 
-  def on_add_vote(v, voter)
+  def on_add_vote(v, voter_id)
+    if voter_id.is_a? User
+      voter = voter_id
+    else
+      voter = User.find(voter_id)
+    end
+
     if v > 0
       self.user.update_reputation(:question_receives_up_vote, self.group)
       voter.on_activity(:vote_up_question, self.group)
@@ -312,10 +318,6 @@ class Question
 
   def answered
     self.answered_with_id.present?
-  end
-
-  def update_last_target(target)
-    self.class.update_last_target(self._id, target)
   end
 
   def self.update_last_target(question_id, target)

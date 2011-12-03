@@ -70,14 +70,14 @@ class User
 
   referenced_in :friend_list
 
-  references_many :memberships, :class_name => "Membership"
-  references_many :owned_groups, :inverse_of => :user, :class_name => "Group"
-  references_many :questions, :dependent => :destroy
-  references_many :answers, :dependent => :destroy
-  references_many :badges, :dependent => :destroy
-  references_many :searches, :dependent => :destroy
-  references_many :activities, :dependent => :destroy
-  references_many :invitations, :dependent => :destroy
+  references_many :memberships, :class_name => "Membership", :validate => false
+  references_many :owned_groups, :inverse_of => :user, :class_name => "Group", :validate => false
+  references_many :questions, :dependent => :destroy, :validate => false
+  references_many :answers, :dependent => :destroy, :validate => false
+  references_many :badges, :dependent => :destroy, :validate => false
+  references_many :searches, :dependent => :destroy, :validate => false
+  references_many :activities, :dependent => :destroy, :validate => false
+  references_many :invitations, :dependent => :destroy, :validate => false
   references_one :external_friends_list, :dependent => :destroy
 
   references_one :read_list, :dependent => :destroy
@@ -142,7 +142,7 @@ class User
     where(conds.merge(:login => login)).first || where(conds.merge(:_id => login)).first
   end
 
-  def self.find_experts(tags, langs = AVAILABLE_LANGUAGES, options = {})
+  def self.find_experts(tags, langs = nil, options = {})
     opts = {}
 
     if except = options[:except]
@@ -153,8 +153,11 @@ class User
     user_ids = UserStat.only(:user_id).where(opts.merge({:answer_tags => {:$in => tags}})).all.map(&:user_id)
 
     conditions = {:"notification_opts.give_advice" => {:$in => ["1", true]},
-                  :preferred_languages.in => langs,
-                  :_id.in => user_ids}
+                  :_id => {:$in => user_ids}}
+
+    if langs
+      conditions[:preferred_languages] = {:$in => langs}
+    end
 
     if group_id = options[:group_id]
       conditions[:"group_ids"] = {:$in => [group_id]}
