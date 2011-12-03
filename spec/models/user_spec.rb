@@ -43,7 +43,7 @@ describe User do
         @user.preferred_languages = ["en", "es", "fr"]
         @user.save
         @stat = UserStat.make(:user => @user, :answer_tags => ["tag1"] )
-        User.find_experts(["tag1"]).first.should == @user
+        User.find_experts(["tag1"],["en", "es", "fr"]).first.should == @user
       end
 
       it("should not return @user") do

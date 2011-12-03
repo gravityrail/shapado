@@ -12,7 +12,7 @@ describe ActivitiesController do
 
   describe "GET index" do
     it "assigns all activities as @activities" do
-      activities = @group.activities
+      activities = @group.activities.order(:created_at.desc).page
       get :index
       assigns(:activities).should eq(activities)
     end

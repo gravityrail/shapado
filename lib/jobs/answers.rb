@@ -54,7 +54,7 @@ module Jobs
 
         users = question.followers.only(:email, :name).where(search_opts).all.to_a # TODO: optimize!!
         users.push(question.user) if !question.user.nil? && question.user != answer.user
-        followers = answer.user.followers.where(:languages => [question.language], :group_id => group.id).only(:email, :name).to_a
+        followers = answer.user.followers(:languages => [question.language], :group_id => group.id).only(:email, :name).to_a
 
         users ||= []
         followers ||= []
