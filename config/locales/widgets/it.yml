@@ -5,6 +5,9 @@
 # Author: Giallu
 it: 
   widgets: 
+    about: 
+      description: Questo widget visualizza una breve descrizione del tuo gruppo.
+      title: About
     adsense: 
       description: Questo widget permette di visualizzare gli annunci di Google AdSense.
       title: AdSense
@@ -19,11 +22,14 @@ it:
       see_all: Vedi tutti i badge
       title: Badge recenti
     contributors: 
+      description: Questo widget visualizza l'elenco delle persone che hanno contribuito a una domanda.
       title: Contributori della domanda
     create: 
       notice: Il widget è stato creato con successo.
     current_tags: 
       description: Questo widget mostra i tag seguita da parte dell'utente corrente.
+    custom_html: 
+      description: Aggiungere qualsiasi tipo di HTML che si desidera qui.
     edit: 
       title: Modifica Widget
     group_networks: 

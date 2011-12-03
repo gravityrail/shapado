@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -67,7 +68,7 @@ nl:
       social: Sociaal
       stats: Statistieken
       theme: Thema
-      themes: Thema 's
+      themes: Thema's
       widgets: Widgets
     notifications: 
       message: Als u geen automatische meldingen van %{group} meer wilt ontvangen, wijzig dan uw voorkeuren in het scherm voor meldingen.

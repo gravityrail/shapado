@@ -24,6 +24,9 @@ es:
       welcome: Bienvenido
     create: 
       flash_notice: Sus invitaciones fueron enviadas con éxito.
+      limit_notice: 
+        one: Lo sentimos, no se puede enviar más de %{limit} invitación a la vez.
+        other: Lo sentimos, no se puede enviar más de %{limit} invitaciones a la vez.
     resend: 
       flash_notice: Su invitación ha sido enviada con éxito.
     revoke: 

@@ -22,6 +22,7 @@ nl:
       see_all: Alle speldjes bekijken
       title: Recente speldjes
     contributors: 
+      description: Deze widget toont de lijst van mensen die hebben bijgedragen aan een vraag.
       title: Medewerkers voor de vraag
     create: 
       notice: De widget is aangemaakt.

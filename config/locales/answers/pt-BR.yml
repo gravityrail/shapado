@@ -2,18 +2,20 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Giro720
+# Author: Pedroca cerebral
 pt-BR: 
   activerecord: 
     attributes: 
       answer: 
         body: Conteúdo
-        created_at: Respondida
+        created_at: Criado em
         link: Link
     models: 
       answer: Resposta
       answers: Respostas
   answers: 
     create: 
+      annon_notice: O usuário já está registrado, efetue login.
       flash_error: "Algo correu mal ao adicionar a sua resposta.\n  Lembre-se que:\n - Respostas vazias e repetidas não são permitidas.\n - Você deve esperar 20 segundos antes de postar outra resposta.\n - Você só pode postar uma resposta por pergunta."
       flash_notice: Obrigado!
     edit: 

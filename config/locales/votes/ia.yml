@@ -22,6 +22,9 @@ ia:
       to_vote_down: Clicca pro votar negativemente
       to_vote_up: Clicca pro votar positivemente
     create: 
+      average: 
+        one: "%{count} voto"
+        other: "%{count} votos"
       flash_error: Tu non pote votar isto
       flash_notice: Gratias pro votar!
       unauthenticated: Usatores anonyme non pote votar

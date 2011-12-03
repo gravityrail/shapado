@@ -9,7 +9,7 @@ pl:
       under_18: Mam poniżej 18 lat
       warning: "UWAGA: Ta strona może zawierać materiały tylko dla dorosłych."
     feedback: 
-      captcha_error: Proszę rozwiązać proste działanie matematyczne
+      captcha_error: Proszę upewnić się, że przepisano poprawnie kod z obrazka oraz podano prawidłowy adres e-mail.
       email_description: Proszę podać adres e-mail, abyśmy mogli odpowiedzieć na Twoją wiadomość
       feedback_description: Opis
       feedback_title: Tytuł

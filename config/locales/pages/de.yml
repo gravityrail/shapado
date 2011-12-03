@@ -27,6 +27,7 @@ de:
       create_page: Neue Seite erstellen
       title: Liste der Seiten
       wiki: Wiki
+      wiki_pages: Wiki-Seiten
       written_in: auf %{language} geschrieben
     new: 
       title: neue Seite

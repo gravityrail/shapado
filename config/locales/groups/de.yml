@@ -11,7 +11,8 @@ de:
         default_tags: Standard-Stichwörter
         description: Beschreibung
         domain: Domain
-        enable_latex: LaTeX aktivieren
+        enable_latex: LaTeX mit jqmath aktivieren (schnell, aber ohne vollständige Funktionsunterstützung)
+        enable_mathjax: LaTeX mit mathjax aktivieren (langsam, aber mit vollständiger Funktionsunterstützung)
         fb_button: Aktiviere eine Schaltfläche, ähnlich wie bei Facebook (nicht privatsphärenfreundlich)
         forum: Mehr als eine Antwort pro Nutzer zulassen
         group_created_by: erstellt von
@@ -23,7 +24,7 @@ de:
         name: Name
         owner: Diese Gruppe wurde erstellt von %{login}
         registered_only: Diese Website ist nur für registrierte Nutzer zugänglich
-        signup_type: Welche Methode können die Benutzer verwenden, um sich zu registrieren?
+        signup_type: "Welche Methode dürfen die Nutzer verwenden, um sich zu registrieren:"
         state: Land
         subdomain: URL
         wysiwyg_editor: Nutzerfreundlichen Editor aktivieren
@@ -56,10 +57,10 @@ de:
       legend_legend: Es wird in der Kopfzeile verwendet werden. Sie haben 40 Zeichen.
       logo_legend: Du kannst ein Gruppenlogo hochladen. Die maximale Dateigröße beträgt 2 MB.
       members_only: Nur Gruppenmitglieder haben Zugriff auf diese Gruppe.
-      signup_all: Alle (Nutzer können sich mit E-Mail-Adresse, OpenID, Facebook, Twitter, etc. anmelden)
-      signup_email: Nur mit E-Mail-Adresse (Nutzer können sich nur mit E-Mail-Adresse und Passwort anmelden)
-      signup_noemail: Nicht mit E-Mail-Adresse (Nutzer können sich mit OpenID, Facebook  und Twitter anmelden)
-      signup_social: Nur mit sozialen Plattformen (Nutzer können sich nur mit Facebook, Twitter, LinkedIn und Identica anmelden)
+      signup_all: Alle ausgewählten Anbieter über Nutzername und Passwort
+      signup_email: Nur mit Nutzername und Passwort
+      signup_noemail: Alle ausgewählten Anbieter ohne Nutzername und Passwort
+      signup_social: Die Nutzer müssen entweder Facebook, Twitter, LinkedIn oder Identica benutzen
       website_analytics_id: Webanalytik-ID der Website
     group: 
       about: Über

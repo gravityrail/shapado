@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
 # Author: Ric
@@ -63,6 +64,7 @@ it:
       active_tooltip: Domande aggiornate di recente
       ask_question: Fai una domanda
       empty: Ancora nessuno ha fatto domande. Sii il primo!
+      followers_tooltip: Domande con più interessati
       has_followers: 
         one: "%{count} seguace"
         other: "%{count} seguaci"
@@ -81,7 +83,9 @@ it:
         tags_not_added: Impossibile aggiungere il tag '%{tags}'. Avete bisogno di una reputazione di %{reputation_required} per creare nuovi tag
         title_too_long: Siamo spiacenti, il titolo non può contenere più di 100 caratteri.
         too_many_tags: Ci dispiace, è possibile inserire al massimo 20 tag.
-        too_short: Siamo spiacenti, il titolo deve contenere più di %{count} parole.
+        too_short: 
+          one: Siamo spiacenti, il titolo deve contenere più di %{count} parola.
+          other: Siamo spiacenti, il titolo deve contenere più di %{count} parole.
     move: 
       group_label: "Passare al gruppo con descrizione:"
       submit: Sposta!

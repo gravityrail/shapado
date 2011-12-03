@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -12,7 +13,8 @@ fr:
         default_tags: Tags par défaut
         description: Description
         domain: Domaine
-        enable_latex: Activer LaTeX
+        enable_latex: Activer le LaTeX avec jqmath (rapide mais pas complet)
+        enable_mathjax: Activer le LaTeX avec mathjax (lent mais complet)
         fb_button: Activer le boutton Like de Facebook (ne protège pas la vie privée)
         forum: Permettre plus d'une réponse par utilisateur
         group_created_by: crée par

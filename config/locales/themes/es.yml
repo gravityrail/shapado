@@ -21,10 +21,13 @@ es:
     index: 
       description: Encuentre aquí sus temas y cambiar el aspecto de su sitio.
       new_theme: Usted puede construir su propio tema aquí.
+    ready: 
+      success: Su tema está listo!
     show: 
       apply: Aplicar
       bg_color: Color de fondo
       bg_image: Imagen de fondo
+      brand_color: Color de marca
       button_bg: Color de fondo de los botones
       button_fg: Color de primer plano de los botones
       fg_color: Color de primer plano

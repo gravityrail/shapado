@@ -14,6 +14,9 @@ it:
       appearance: 
         logo_legend: Carica un logo per il gruppo. Può essere al massimo 2MB.
         title: Scegli e personalizza il tema
+      close_group: 
+        description: La chiusura del gruppo lo renderà inaccessibile a tutti tranne te.
+        feedback: "Per favore, specifica perché stai chiudendo il tuo gruppo:"
       content: 
         description: Configura il tuo gruppo con testo e stile personalizzati
         footer: Piè di pagina
@@ -41,14 +44,14 @@ it:
           reputation_constrains_subtitle: Elenco della reputazione richiesta per ogni azione
           title: Requisiti
         domain: 
-          description: "E' possibile configurare il sito in modo che sia accessibile attraverso il vostro dominio personale. Di seguito la procedura da seguire:"
+          description: "E' possibile mappare un dominio diverso al tuo sito Shapado in modo che sia accessibile attraverso il tuo dominio personale. Di seguito la procedura da seguire:"
           instruction1: Per farlo è necessario configurare il dominio con il proprio provider, ovvero dal sito presso il quale è stato acquistato il dominio, es. %{subdomain}.com.
           instruction2: Lì va configurato il DNS creando un nuovo CNAME.
           instruction3: Si può usare 'www' o qualunque altra cosa come CNAME.
           instruction4: "Poi, nel campo host o destinazione, inserire il dominio attualmente usato su Shapado: %{domain}."
           instruction5: Una volta eseguito, dopo un'ora o poco più, il dominio www.%{subdomain} dovrebbe puntare a %{appdomain}.
           instruction6: A modifica avvenuta, sarà possibile immettere in questa pagina il dominio scelto (es. www.%{subdomain}) e premere il tasto "Aggiorna". Per qualunque dubbio, si può chiedere su %{chat_url} oppure nei forum di supporto.
-          title: Imposta il dominio
+          title: Configura il tuo dominio personale
           warning: Si è sicuri di voler cambiare i dati del dominio?
         facebook_app: 
           application_id: ID applicazione

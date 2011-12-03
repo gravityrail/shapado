@@ -24,6 +24,7 @@ it:
     chat: Chat
     current: Attuale
     edited: Modificato
+    edited_by_semi: "Modificato da:"
     feedback: Feedback
     follow: Segui
     followed_by: "Seguito da:"
@@ -32,6 +33,7 @@ it:
     group_not_found: La pagina %{url} non esiste
     home: Pagina principale
     next_button: Successivo
+    open: Apri
     or: o
     permission_denied: Permesso negato
     please_login: Accedi
@@ -87,5 +89,8 @@ it:
     yesterday: ieri
   views: 
     pagination: 
+      first: Prima pagina
+      last: Ultima
       next: Successivo &raquo;
       previous: "&laquo; Precedente"
+      truncate: ...

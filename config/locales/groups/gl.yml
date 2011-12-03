@@ -10,19 +10,20 @@ gl:
         default_tags: Etiquetas por defecto
         description: Descrición
         domain: Dominio
-        enable_latex: Activar o LaTeX
+        enable_latex: Activar o LaTeX con jqmath (rápido pero sen algunhas características)
+        enable_mathjax: Activar o LaTeX con mathjax (lento pero con máis características)
         fb_button: Activar o botón "Gústame" do Facebook (non protexe o anonimato)
         forum: Permitir máis dunha resposta por usuario
         group_created_by: creado por
         language: Lingua por defecto
         languages: Linguas adicionais
         legend: Lenda
-        logo: Logo
+        logo: Logotipo
         may_contain_adult_content: Este sitio pode posuír contidos para adultos
         name: Nome
         owner: Este grupo foi creado por %{login}
         registered_only: Só as persoas rexistradas poden acceder ao sitio
-        signup_type: Os métodos que os seus usuarios poden empregar para rexistrárense
+        signup_type: "Os métodos que os seus usuarios poden empregar para rexistrárense:"
         state: Estado
         subdomain: URL
         wysiwyg_editor: Activar o editor sinxelo
@@ -55,10 +56,10 @@ gl:
       legend_legend: Usarase na cabeceira. Ten 40 caracteres.
       logo_legend: Podes cargar o logo do grupo. O tamaño máximo é de 2MB.
       members_only: Só os membros do grupo poderán acceder a este grupo
-      signup_all: Todos (os usuarios poden rexistrarse cun enderezo de correo electrónico, OpenId, Facebook, Twitter etc.)
-      signup_email: Só enderezo de correo electrónico (os usuarios só poden rexistrarse co seu enderezo de correo electrónico/contrasinal)
-      signup_noemail: Sen enderezo de correo electrónico/contrasinal (os usuarios rexístranse co OpenId, Facebook ou Twitter)
-      signup_social: Social só (os usuarios só poden rexistrarse co Facebook, Twitter, LinkedIn e Identica)
+      signup_all: Todos os provedores seleccionados máis o usuario/contrasinal
+      signup_email: Só o usuario/contrasinal
+      signup_noemail: Todos os provedores seleccionados menos o usuario/contrasinal
+      signup_social: Os usuarios teñen que usar Facebook, Twitter, LinkedIn ou Identica
       website_analytics_id: ID das análises da páxina web
     group: 
       about: Acerca de

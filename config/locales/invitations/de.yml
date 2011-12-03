@@ -24,6 +24,9 @@ de:
       welcome: Willkommen
     create: 
       flash_notice: Deine Einladungen wurden erfolgreich versandt.
+      limit_notice: 
+        one: Du kannst leider nicht mehr als eine Einladung auf einmal versenden.
+        other: Du kannst leider nicht mehr als %{limit} Einladungen auf einmal versenden.
     resend: 
       flash_notice: Deine Einladung wurde erfolgreich erneut versandt.
     revoke: 

@@ -14,6 +14,9 @@ de:
       appearance: 
         logo_legend: Lade ein Logo für Deine Gruppe hoch. Es muss kleiner als 2 MB sein.
         title: Wähle Deine Benutzeroberfläche und passe sie an
+      close_group: 
+        description: Das Schließen der Gruppe macht sie, mit Ausnahme von Dir selbst, unzugänglich.
+        feedback: "Bitte teile uns mit, warum Du die Gruppe schließt:"
       content: 
         description: Konfiguriere Deine Gruppe mit benutzerdefinierten Texten und individueller Anmutung
         footer: Fußbereich
@@ -41,14 +44,14 @@ de:
           reputation_constrains_subtitle: Liste der Mindestreputation, die für jede Aktion benötigt wird
           title: Voraussetzungen
         domain: 
-          description: "Du kannst Deine Website katalogisieren, so dass sie über Deine eigene Domain aufgerufen werden kann. So wird es gemacht:"
+          description: "Du kannst eine abweichende Domain auf Deine Website bei Shapado umleiten, so dass diese über Deine eigene Domain aufgerufen werden kann. So wird es gemacht:"
           instruction1: Hierzu musst Du Dich zunächst bei Deinem Hoster anmelden. Dies ist die Seite bei der Deine Domain wie bspw. %{subdomain}.de gehostet wird.
           instruction2: Dort musst Du im DNS-Abschnitt einen kanonischen Namen (CNAME) erstellen.
           instruction3: Wähle „www“ oder irgendetwas anderes als kanonischen Namen (CNAME).
           instruction4: Füge hernach Deine aktuelle %{domain} für Shapado in das Feld für das Domainziel ein.
           instruction5: Sobald dies erledigt ist, sollte Deine Domain www.%{subdomain} nach ca. einer Stunde auf %{appdomain} weiterleiten.
           instruction6: Sobald dies der Fall ist, kannst Du im folgenden Feld den Namen Deiner www.%{subdomain} angeben und die Schaltfläche „aktualisieren“ anklicken. Sofern Du Fragen hast, kannst Du uns im Chat %{chat_url} oder in unserem Hilfeforum kontaktieren.
-          title: Domain festlegen
+          title: Konfiguriere Deine eigene nutzerdefinierte Domain
           warning: Bist Du sicher, dass Du Deine Domain ändern möchtest?
         facebook_app: 
           application_id: Kennung der App

@@ -5,6 +5,7 @@
 # Author: Hashar
 # Author: Od1n
 # Author: Patcito
+# Author: Peter17
 # Author: Verdy p
 fr: 
   layouts: 
@@ -50,6 +51,7 @@ fr:
       actions: Actions
       announcements: Annonces
       appearance: Apparence
+      close_group: Fermer le groupe
       constrains: Contraintes
       content: Contenu
       dashboard: Dashboard

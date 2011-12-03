@@ -6,7 +6,9 @@
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
+# Author: Sherbrooke
 # Author: Verdy p
+# Author: Zcqsc06
 fr: 
   feeds: 
     feed: Flux
@@ -27,6 +29,7 @@ fr:
     chat: Tchat
     current: Actuel
     edited: Modifié
+    edited_by_semi: "Modifié par :"
     feedback: Feedback
     follow: Suivre
     followed_by: "Suivie par :"
@@ -91,5 +94,8 @@ fr:
     yesterday: hier
   views: 
     pagination: 
+      first: Première
+      last: Dernière
       next: Suivant &raquo;
       previous: "&laquo; Précédent"
+      truncate: ...

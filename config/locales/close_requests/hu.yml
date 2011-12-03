@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   close_requests: 
     create: 
@@ -17,6 +18,7 @@ hu:
       not_relevant: Nem releváns
       ot: Nem témába vágó
       request_closing_details: Kérés lezárásának kérelmezése
+      retract: Visszavon
       spam: Spam
     index: 
       title: Lezárási kérelmek listája

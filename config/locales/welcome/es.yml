@@ -12,7 +12,8 @@ es:
       under_18: Soy menor de edad
       warning: "ATENCION: Esta pagina puede contener material explicito para adultos."
     feedback: 
-      captcha_error: Por favor, resuelve una simple operación matemática
+      captcha_error: Por favor, asegúrese de llenar el captcha correctamente y ingresar una dirección de correo electrónico válida.
+      captcha_notice: Gracias por tus comentarios, nos pondremos en contacto con usted lo mas antes posible.
       email_description: Por favor, proporciona tu dirección de correo electrónico para que podamos responder a tu mensaje
       feedback_description: Descripción
       feedback_title: Título

@@ -45,6 +45,8 @@ ia:
       access: Accesso
       actions: Actiones
       announcements: Avisos
+      appearance: Apparentia
+      close_group: Clauder gruppo
       constrains: Requisitos
       content: Contento
       dashboard: Pannello de instrumentos
@@ -52,8 +54,10 @@ ia:
       edit_layout: Modificar disposition
       general: General
       group_features: Functiones
+      group_look_and_feel: Look & feel
       group_user_management: Gestion de usatores
       invitations: Invitationes
+      invoices: Facturas
       members: Membros
       pages: Paginas
       properties: Proprietates
@@ -62,6 +66,7 @@ ia:
       social: Social
       stats: Statisticas
       theme: Thema
+      themes: Themas
       widgets: Widgets
     notifications: 
       message: Si tu non vole plus reciper notificationes automatic de %{group}, cambia tu preferentias in le scheda pro notificationes.

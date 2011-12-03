@@ -31,7 +31,7 @@ ms:
       message3: "Ataupun, jika anda kenal sesiapa yang mungkin boleh menjawabnya, sila hantar pautan rujukan ini kepada mereka:"
       message4: Jika kami tidak menerima jawapan anda secepat mungkin, kami akan menanya orang lain. Anda masih boleh menjawabnya pada bila-bila masa.
     global: 
-      hi: Hai %{user},
+      hi: Apa khabar %{user},
       hi_no_user: Salam sejahtera,
       user_page: laman pengguna
     new_answer: 

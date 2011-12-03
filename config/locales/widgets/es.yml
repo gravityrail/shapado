@@ -1,9 +1,13 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: Patcito
 es: 
   widgets: 
+    about: 
+      description: Este widget muestra una descripción corta de su grupo.
+      title: Acerca de
     adsense: 
       description: Este widget te permite mostrar anuncios de Google AdSense.
       title: AdSense
@@ -18,6 +22,7 @@ es:
       see_all: Ver todas las insignias
       title: Insignias recientes
     contributors: 
+      description: Este widget muestra la lista de personas que han contribuido a una pregunta.
       title: Contribuyentes de esta pregunta
     create: 
       notice: El widget se ha creado correctamente.
@@ -86,8 +91,8 @@ es:
       title: Comparte este artículo en
     suggestions: 
       description: Sugerencias de amigos y etiquetas a seguir para el usuario.
-      follow_tag: Seguir etiqueta
-      follow_user: Seguir usuario
+      follow_tag: + Seguir etiqueta
+      follow_user: + Seguir usuario
       followed_by: Seguido por %{user}
       title: Las personas y etiquetas para seguir
     tag_cloud: 

@@ -4,12 +4,20 @@
 # Author: Rancher
 sr: 
   close_requests: 
+    create: 
+      flash_notice: Захтев за затварање је направљен
+    destroy: 
+      flash_notice: Захтев за затварање је обрисан
+    edit: 
+      title: Уређивање захтева за затварање
     form: 
+      close_with_reason: Затварање питања користећи овај разлог
       dupe: Дупликат
       no_question: Није питање
-      not_relevant: Није релевантно
+      not_relevant: Нерелевантно
       ot: Ван теме
-      request_closing_details: Затражи затварање овог питања
+      request_closing_details: Захтевај затварање овог питања
+      retract: Повуци
       spam: непожељно
     index: 
       title: Списак захтева за затварање
@@ -18,5 +26,9 @@ sr:
         comment: Коментар
         reason: Разлог
         user: Корисник
+      messages: 
+        already_requested: Већ сте захтевали затварање овог питања
       name: Захтев за затварање
       prural_name: Захтеви за затварање
+    update: 
+      flash_notice: Захтев за затварање је ажуриран

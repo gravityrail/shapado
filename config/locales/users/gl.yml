@@ -81,6 +81,7 @@ gl:
       name: Nome
       name_tooltip: Usuarios ordenados alfabeticamente
       near: Preto de vostede
+      near_tooltip: Usuarios que están preto de vostede
       newest: Os máis novos
       newest_tooltip: Os usuarios que acaban de unirse
       oldest: Os máis antigos

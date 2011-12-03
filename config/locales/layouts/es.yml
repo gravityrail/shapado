@@ -4,6 +4,7 @@
 # Author: Crazymadlover
 # Author: Mor
 # Author: Patcito
+# Author: Vivaelcelta
 es: 
   layouts: 
     application: 
@@ -48,13 +49,14 @@ es:
       actions: Acciones
       announcements: Anuncios
       appearance: Apariencia
+      close_group: Cerrar el grupo
       constrains: Restricciones
       content: Contenido
       dashboard: Panel de control
       domain: Dominio
       edit_layout: Editar diseño
       general: General
-      group_features: Funcionalidades
+      group_features: Características
       group_look_and_feel: Look & feel
       group_user_management: Administración de usuarios
       invitations: Invitaciones

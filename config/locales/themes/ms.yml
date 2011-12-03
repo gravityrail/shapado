@@ -21,10 +21,13 @@ ms:
     index: 
       description: Cari tema anda di sini dan ubah penampilan aplikasi anda.
       new_theme: Anda boleh membuat tema sendiri di sini.
+    ready: 
+      success: Tema ada sudah sedia!
     show: 
       apply: Gunakan
       bg_color: Warna latar belakang
       bg_image: Imej latar belakang
+      brand_color: Warna jenama
       button_bg: Warna latar belakang butang
       button_fg: Warna latar depan butang
       fg_color: Warna latar depan

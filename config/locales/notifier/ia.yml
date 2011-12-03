@@ -19,7 +19,7 @@ ia:
       message2: "Description del insignia:"
       message3: Tu pote vider tote tu insignias in tu %{user_page}
     favorited: 
-      message1: "%{user} addeva tu responsa como favorite in %{group}"
+      message1: "%{user} salveguardava tu responsa in %{group} como favorite"
       message2: "Le question esseva:"
       message3: "Tu pote vider lo hic:"
     follow: 
@@ -37,7 +37,7 @@ ia:
     new_answer: 
       message: "%{user} respondeva %{new_answer} al question %{question}"
     new_comment: 
-      message: "%{user} commentava %{new_comment} al question %{link}"
+      message: "%{user} commentava %{new_comment} sur le question %{link}"
     new_feedback: 
       message1: Le usator %{user} <%{email}> ha inviate un retroaction
       message2: Un usator anonyme ha inviate un retroaction ab le adresse IP %{ip}

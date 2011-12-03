@@ -21,10 +21,13 @@ de:
     index: 
       description: Hier kannst Du Deine Benutzeroberflächen finden und die Anmutung Deiner Anwendung ändern.
       new_theme: Du kannst hier Deine eigene Benutzeroberfläche erstellen.
+    ready: 
+      success: Die Benutzeroberfläche ist bereit zur Nutzung.
     show: 
       apply: Anwenden
       bg_color: Hintergrundfarbe
       bg_image: Hintergrundbild
+      brand_color: Farbe für die Marke
       button_bg: Hintergrundfarbe für Schaltflächen
       button_fg: Vordergrundfarbe für Schaltflächen
       fg_color: Vordergrundfarbe

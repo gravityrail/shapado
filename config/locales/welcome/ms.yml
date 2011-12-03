@@ -10,7 +10,8 @@ ms:
       under_18: Saya berusia di bawah 18 tahun
       warning: "AMARAN: Laman ini mungkin mengandungi kandungan yang tidak sesuai untuk golongan bawah umur 18 tahun."
     feedback: 
-      captcha_error: Sila jawab soalan matematik yang mudah ini
+      captcha_error: Sila isikan captcha dengan tepat dan berikan alamat e-mel yang sah.
+      captcha_notice: Terima kasih atas maklum balas anda, kami akan membalas anda secepat mungkin.
       email_description: Sila nyatakan alamat e-mel anda supaya kami boleh membalas pesanan anda
       feedback_description: Keterangan
       feedback_title: Tajuk

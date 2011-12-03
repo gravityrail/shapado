@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Danmaz74
 # Author: Giallu
 # Author: Ric
 it: 
@@ -11,7 +12,8 @@ it:
       under_18: Ho meno di 18 anni
       warning: "Attenzione: questa pagina potrebbe contenere materiale per adulti esplicito."
     feedback: 
-      captcha_error: Risolvere questa semplice operazione matematica
+      captcha_error: Per favore, assicurati di compilare il captcha correttamente e usa un indirizzo email valido.
+      captcha_notice: Grazie per i vostri commenti, vi risponderemo al più presto possibile.
       email_description: Inserire l'indirizzo email a cui inviare la risposta al vostro messaggio
       feedback_description: Descrizione
       feedback_title: Titolo

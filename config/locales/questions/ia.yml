@@ -32,8 +32,15 @@ ia:
       unfavorite: Non plus salveguardar
       unfavorite_tooltip: Remover iste responsa de tu favorites
       unset_answer: Dismarcar como solution?
+    answer_toolbar: 
+      flagged_by_you: Marcate per te
+    close: 
+      failure: Iste question ha un recompensa active e non pote esser claudite.
     create: 
+      already_registered: Un usator con le adresse electronic %{email} es jam registrate. Per favor aperi session con iste adresse.
       flash_notice: Le question ha essite create.
+    disallow_spam: 
+      error: Es necessari attender 20 secundas ante de poner un altere question.
     edit: 
       title: Modifica question
     flag: 
@@ -43,6 +50,7 @@ ia:
       adult_content: Iste question contine material pro adultos.
       body_tip: Que es tu question? Sia descriptive.
       language_tip: Selige le lingua de tu question.
+      related_questions_desc: Hic essera monstrate similar questiones.
       remove_attachment: Remover
       tags_tip: Usa etiquettas pro adder plus information super le question.
     history: 
@@ -52,6 +60,10 @@ ia:
       active_tooltip: Questiones que ha essite actualisate recentemente
       ask_question: Poner question
       empty: Nemo ha ancora ponite un question. Sia le prime!
+      followers_tooltip: Questiones con le plus grande numero de sequitores
+      has_followers: 
+        one: "%{count} sequitor"
+        other: "%{count} sequitores"
       help_to_answer: Adjuta nos a responder
       hot: Popular
       hot_tooltip: Le questiones le plus active in le ultime 5 dies
@@ -67,7 +79,9 @@ ia:
         tags_not_added: Le etiquettas '%{tags}' non poteva esser addite. Es necessari haber un reputation de %{reputation_required} pro crear nove etiquettas.
         title_too_long: Le titulo non pote continer plus de 100 characteres.
         too_many_tags: Non es possibile entrar plus de 20 etiquettas.
-        too_short: Es necessari que le titulo ha plus de %{count} parolas.
+        too_short: 
+          one: Es necessari que le titulo ha plus de %{count} parola.
+          other: Es necessari que le titulo ha plus de %{count} parolas.
     move: 
       group_label: "Transferer al gruppo con le limace:"
       submit: Transferer!
@@ -82,6 +96,9 @@ ia:
     question: 
       accepted_tooltip: Iste question ha un responsa que ha essite acceptate
       answer_verb: Responsa
+      has_answers: 
+        one: "%{count} responsa"
+        other: "%{count} responsas"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquettar
@@ -114,6 +131,7 @@ ia:
       follow_up: Prosequer
       follow_up_description: Crear un nove question a base de iste message.
       follow_up_of: Iste question es un continuation de
+      history: Historia
       last_activity: Ultime activitate
       more_actions: Plus actiones
       open: Aperte
@@ -131,6 +149,7 @@ ia:
       solution: Solution
       to_answer_question: pro responder a iste question
       unauthenticated_retag: Tu debe haber un conto pro re-etiquettar questiones
+      unban: Disbannir
       unfollow_tooltip: Cessar de sequer iste question
       viewed: vidite
     solve: 
@@ -139,6 +158,11 @@ ia:
       filter: Cercar etiquettas
       title: Etiquettas
       tooltip: Monstrar questiones con etiquetta %{tag}
+    toolbar: 
+      answer_by_mail: Responder per e-mail
+      more_actions: Plus actiones
+      requests: Requestas
+      your_close_request: Vostre requesta de clausura
     unanswered: 
       empty: Iste gruppo non ha questiones sin responsa.
       expert: Expertos

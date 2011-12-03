@@ -2,12 +2,13 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: Tjernobyl
 da: 
   activerecord: 
     attributes: 
       answer: 
         body: Brødtekst
-        created_at: Besvaret
+        created_at: Oprettet den
         link: Link
     models: 
       answer: Svar

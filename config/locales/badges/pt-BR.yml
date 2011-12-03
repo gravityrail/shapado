@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Giro720
+# Author: Pedroca cerebral
 # Author: Vgeorge
 pt-BR: 
   activerecord: 
@@ -16,9 +17,15 @@ pt-BR:
       addict: 
         description: Visitou o site em 20 dias consecutivos
         name: Viciado
+      altruist: 
+        description: Primeira recompensa que você concedeu manualmente na pergunta de outra pessoa
+        name: Altruísta
       autobiographer: 
         description: Preencheu todos os campos do perfil de usuário
         name: Autobiógrafo
+      benefactor: 
+        description: Primeira recompensa que você concedeu manualmente em sua própria pergunta
+        name: Benfeitor
       celebrity: 
         description: Obteve mais de 100 seguidores
         name: Celebridade
@@ -55,8 +62,11 @@ pt-BR:
       fanatic: 
         description: Visitou o site em 100 dias consecutivos
         name: Fanático
+      favorite_answer: 
+        description: Tem uma resposta eleita favorita por 25 usuários
+        name: Resposta favorita
       favorite_question: 
-        description: Fez uma pergunta adicionada aos favoritos por 25 usuários
+        description: Fez uma pergunta seguida por 25 usuários
         name: Pergunta favorita
       friendly: 
         description: Seguir alguém pela primeira vez
@@ -82,6 +92,9 @@ pt-BR:
       interesting_person: 
         description: Obteve mais de 10 seguidores
         name: Pessoa interessante
+      investor: 
+        description: Primeira recompensa oferecida na questão de outra pessoa
+        name: Investidor
       merit_medal: 
         description: Obter 200 votos positivos
         name: Medalha de mérito
@@ -115,6 +128,9 @@ pt-BR:
       popular_question: 
         description: Fez uma pergunta com 1.000 visualizações
         name: Pergunta popular
+      promoter: 
+        description: Primeira recompensa oferecida em sua própria pergunta
+        name: Promotor
       rockstar: 
         description: Tem 1000 votos positivos, máximo de 10 votos negativos
         name: Rockstar
@@ -129,8 +145,11 @@ pt-BR:
         name: Medalha de serviço
       shapado: 
         description: Visitou o site em 8 dias consecutivos
+      stellar_answer: 
+        description: Tem uma resposta eleita favorita por 100 usuários
+        name: Resposta estelar
       stellar_question: 
-        description: Fez uma pergunta adicionada aos favoritos por 100 usuários
+        description: Fez uma pergunta seguida por 100 usuários
         name: Pergunta extraordinária
       student: 
         description: Fez a primeira pergunta com pelo menos um voto positivo

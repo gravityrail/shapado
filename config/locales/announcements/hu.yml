@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     attributes: 
@@ -15,6 +16,7 @@ hu:
       delete: Eltávolítás
       title: Műveletek
     create: 
-      success: Közlemény sikeresen létrejött.
+      success: Közleményed sikeresen létrejött.
     index: 
+      description: Közlemények létrehozása és kezelése, amely a látogatóid számára a honlapon mindig megjelenik.
       title: Közlemények

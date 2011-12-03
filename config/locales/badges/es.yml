@@ -4,6 +4,7 @@
 # Author: Crazymadlover
 # Author: Mor
 # Author: Patcito
+# Author: Vivaelcelta
 es: 
   activerecord: 
     models: 
@@ -27,7 +28,7 @@ es:
         description: Primera recompensa que has concedido manualmente en tu propia pregunta
         name: Benefactor
       celebrity: 
-        description: Tiene mas de 100 seguidores
+        description: Tiene más de 100 seguidores
         name: Celebridad
       citizen_patrol: 
         description: Primer post reportado
@@ -75,7 +76,7 @@ es:
         description: Tiene una respuesta que alcanzo un promedio de más de 25 votos
         name: Buena respuesta
       good_question: 
-        description: Ha hecho una pregunta que alcanzo un promedio de mas de 10 votos
+        description: Ha hecho una pregunta que alcanzó un promedio de más de 25 votos
         name: Buena pregunta
       great_answer: 
         description: Tiene una respuesta con mas de 100 votos positivos
@@ -90,7 +91,7 @@ es:
         description: Preguntar por primera vez
         name: Investigador
       interesting_person: 
-        description: Tiene mas de 10 seguidores
+        description: Tiene más de 10 seguidores
         name: Persona interesante
       investor: 
         description: " Primera recompensa que has ofrecido en la pregunta de otra persona"
@@ -123,7 +124,7 @@ es:
         description: Tiene 500 votos positivos, con un máximo de 10 votos negativos
         name: Popstar
       popular_person: 
-        description: Tiene mas de 50 seguidores
+        description: Tiene más de 50 seguidores
         name: Persona popular
       popular_question: 
         description: hace una pregunta con 1000 visitas
@@ -146,7 +147,7 @@ es:
       shapado: 
         description: Visita el sitio 8 días consecutivos
       stellar_answer: 
-        description: Tiene una respuesta que ha sido agregada como favorita por mas de 100 usuarios
+        description: Tiene una respuesta que ha sido agregada como favorita por 100 usuarios
         name: Respuesta estelar
       stellar_question: 
         description: Hecha una pregunta seguida por 100 usuarios
@@ -164,7 +165,7 @@ es:
         description: Dar solución a una pregunta con promedio de votos superior a 2
         name: Tutor
     show: 
-      description: "Usuarios que ganaron esta insignia. recientemente otorgada a:"
+      description: "Usuarios que ganaron esta insignia. Recientemente otorgada a:"
       earned: Otorgada
       for_tag_bronze: 200 votos en la etiqueta %{tag}
       for_tag_gold: 1000 votos en la etiqueta %{tag}

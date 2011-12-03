@@ -4,6 +4,9 @@
 # Author: Kghbln
 de: 
   widgets: 
+    about: 
+      description: Dieses Widget zeigt eine kurze Beschreibung Ihrer Gruppe an.
+      title: Über
     adsense: 
       description: Mit diesem Widget kannst Du „Google Adsense“-Anzeigen anzeigen lassen.
       title: AdSense
@@ -18,6 +21,7 @@ de:
       see_all: Alle Abzeichen ansehen
       title: Kürzlich vergebene Abzeichen
     contributors: 
+      description: Dieses Widget zeigt die Liste der Personen an, die zu einer Frage etwas beigetragen haben.
       title: Nutzer, die zur Frage beigetragen haben
     create: 
       notice: Das Widget wurde erfolgreich erstellt.

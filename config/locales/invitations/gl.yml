@@ -24,6 +24,9 @@ gl:
       welcome: Benvido
     create: 
       flash_notice: As súas invitacións enviáronse correctamente.
+      limit_notice: 
+        one: Sentímolo, non pode enviar máis de %{limit} convite á vez.
+        other: Sentímolo, non pode enviar máis de %{limit} convites á vez.
     resend: 
       flash_notice: A súa invitación reenviouse correctamente.
     revoke: 

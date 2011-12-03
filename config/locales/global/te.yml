@@ -13,20 +13,35 @@ te:
     tag: ట్యాగుకి చందా చేరండి
     user: ఈ వాడుకరి ప్రశ్నలకి చందా చేరండి
   global: 
+    actions: చర్యలు
     active: చేతనంచేయి
+    alphabetically: అక్షరక్రమంలో
     anonymous: అజ్ఞాత
+    blog: బ్లాగు
     by: చే
     current: ప్రస్తుత
+    feedback: ప్రతిస్పందన
     from: "%{site} నుంచి"
     group_not_found: "%{url}  అనే పుట లేనే లేదు"
+    home: ముంగిలి
+    next_button: తదుపరి
     or: లేదా
     permission_denied: అనుమతిని నిరాకరించారు
     please_login: దయచేసి ప్రవేశించండి
     preview: మునుజూపు
     previous: మునుపటి
-    share: పంచుకో
+    privacy: గోప్యత
+    share: పంచుకోండి
+    size: పరిమాణం
+    tos: సేవా నియమాలు
+    view_question: ప్రశ్నను చూడండి
   models: 
     question: ప్రశ్న
+  preferred_languages: 
+    any: ఏదైనా
+  roles: 
+    owner: యజమాని
+    user: సామాన్య వాడుకరి
   scaffold: 
     add: చేర్చు
     back: వెనక్కి
@@ -47,3 +62,11 @@ te:
   time: 
     ago: "%{time} క్రితం"
     today: ఈరోజు
+    yesterday: నిన్న
+  views: 
+    pagination: 
+      first: మొదటి
+      last: చివరి
+      next: తదుపరి &raquo;
+      previous: "&laquo; గత"
+      truncate: …

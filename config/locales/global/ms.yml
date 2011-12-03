@@ -22,6 +22,7 @@ ms:
     chat: Sembang
     current: Kini
     edited: Disunting
+    edited_by_semi: "Disunting oleh:"
     feedback: Maklum Balas
     follow: Ikuti
     followed_by: "Diikuti oleh:"
@@ -86,5 +87,8 @@ ms:
     yesterday: semalam
   views: 
     pagination: 
+      first: Pertama
+      last: Terakhir
       next: Berikutnya &raquo;
       previous: "&laquo; Sebelumnya"
+      truncate: ...

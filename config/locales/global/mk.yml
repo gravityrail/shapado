@@ -22,6 +22,7 @@ mk:
     chat: Разговор
     current: тековно
     edited: Уредено
+    edited_by_semi: "Уредил:"
     feedback: Мислења
     follow: Следи
     followed_by: "Следбеници:"
@@ -86,5 +87,8 @@ mk:
     yesterday: вчера
   views: 
     pagination: 
+      first: Прва
+      last: Последна
       next: Следна &raquo;
       previous: "&laquo; Претходна"
+      truncate: ...

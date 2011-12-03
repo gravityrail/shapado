@@ -3,13 +3,14 @@
 # Export driver: syck-pecl
 # Author: Crazymadlover
 # Author: Danke7
+# Author: Fitoschido
 # Author: Mor
 # Author: Ovruni
 # Author: Patcito
-es:
-  activerecord:
-    attributes:
-      user:
+es: 
+  activerecord: 
+    attributes: 
+      user: 
         activated_at: activado en
         activation_code: Código de activación
         age: Edad
@@ -33,12 +34,12 @@ es:
         reputation: Reputación
         timezone: Zona horaria
         updated_at: actualizado en
-        website: Sitio Web
-    models:
+        website: Sitio web
+    models: 
       user: Usuario
       users: Usuarios
-  users:
-    actions:
+  users: 
+    actions: 
       edit_others_posts: Editar preguntas o respuestas de otros usuarios
       edit_wiki_post: Editar wikis
       flag: Reportar como abuso
@@ -47,22 +48,22 @@ es:
       vote_to_close_any_question: " Solicitar el cierre de cualquiera pregunta"
       vote_to_close_own_question: Pedir cerrar su propia pregunta
       vote_up: Votar positivo
-    anonymous_form:
+    anonymous_form: 
       never_shown: Nunca mostrado
-    change_password:
+    change_password: 
       submit: Cambiar mi contraseña
       title: Cambiar contraseña
-    create:
+    create: 
       flash_error: No hemos podido crear tu cuenta, lo sentimos. Por favor intentalo otra vez, o contacta a un administrador (el enlace esta arriba).
       flash_notice: ¡Gracias por registrarse!
-    edit:
+    edit: 
       enable_twitter: Habilita tus cuentas twitter y facebook
       submit: Guardar
       title: Configuración
-    follow:
+    follow: 
       flash_error: No se puede seguir a sí mismo.
       flash_notice: Ya esta siguiendo a %{user}.
-    form:
+    form: 
       activities_notification: Recibir notificaciones via correo electronico sobre actividades del sistema tales como insignias ganadas, nuevos seguidores, etc.
       avatar_tip: Cambia tu imagen del perfil usando gravatar
       desktop_notification: Notificaciones de escritorio
@@ -79,13 +80,12 @@ es:
       send_questions_to_twitter: Publicar mis preguntas en Twitter
       show_more_lang: Mostrar más idiomas
       social_interaction: Interacción por los medios sociales
-    index:
+    index: 
       empty: Este grupo no tiene miembros, participe para unirse a este grupo.
       filter: Busca usuarios
       name: Por nombre de usuario
       name_tooltip: Usuarios ordenados alfabéticamente
       near: Cerca de ti
-      near_tooltip: Usuarios que estan cerca de ti
       newest: Recientes
       newest_tooltip: Usuarios que se acaban de unir
       oldest: Antiguos
@@ -93,15 +93,15 @@ es:
       reputation: Reputación
       reputation_tooltip: Usuarios ordenados por reputación
       title: Todos los usuarios
-    messages:
-      errors:
+    messages: 
+      errors: 
         reputation_needed: Necesitas una reputación de %{min_reputation} para %{action}
-    new:
+    new: 
       description: Sea parte de esta comunidad para preguntar, responder y aprender!
       join_group: Únase a %{group}
       submit: Registrarse
       title: Registrar un nuevo usuario
-    show:
+    show: 
       edit_profile: Editar perfil
       follow: Seguir
       followers: Seguidores
@@ -109,22 +109,22 @@ es:
       title: Usuario %{user}
       unfollow: Dejar de seguir
       views: vistas
-    top_user:
+    top_user: 
       connect: Conectar
       my_karma: "Mi karma: %{karma}"
       profile: Perfil
-    unfollow:
+    unfollow: 
       flash_notice: Ya no estás siguiendo a %{user}.
-    update_followed_tags:
-      followed:
+    update_followed_tags: 
+      followed: 
         flash_notice: Ahora estás siguiendo la etiqueta %{tag}.
-      unfollowed:
+      unfollowed: 
         flash_notice: Ya no estás siguiendo la etiqueta %{tag}.
-    user_bar:
+    user_bar: 
       create_account: Crear una cuenta
       not_logged_in: No ha iniciado sesión
       signed_as: Conectase como
-    user_mini:
+    user_mini: 
       admin: "[ Administrador ]"
       editor: "[ Editor ]"
       mod: "[ Moderador ]"

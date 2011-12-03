@@ -14,7 +14,8 @@ es:
         default_tags: Etiquetas por omision
         description: Descripción
         domain: dominio
-        enable_latex: Habilitar LaTeX
+        enable_latex: Habilitar LaTeX con jqmath (rápido, pero no tiene todas las funcionalidades)
+        enable_mathjax: Habilitar LaTeX con mathjax (lento pero con mas funcionalidades)
         fb_button: Activar el boton Like de Facebook (no muy amigable para la privacidad)
         forum: Permitir más de una respuesta por usuario
         group_created_by: creado por
@@ -26,7 +27,7 @@ es:
         name: Nombre
         owner: Este grupo fue creado por %{login}
         registered_only: Solo las personas registradas pueden entrar a este sitio
-        signup_type: Los métodos que pueden utilizar los usuarios para registrarse
+        signup_type: "Los métodos que pueden utilizar los usuarios para registrarse:"
         state: Estado
         subdomain: URL
         wysiwyg_editor: Habilitar un editor de texto mas amigable para el usuario
@@ -59,10 +60,10 @@ es:
       legend_legend: Esto será usado en el titulo de la web, tienes 40 caracteres.
       logo_legend: Puedes subir el logo del grupo. Lo máximo es para el tamaño del archivo es de 2mb.
       members_only: Solamente los miembros del grupo serán capaces de acceder a este grupo
-      signup_all: Todos (los usuarios pueden registrarse con una dirección de correo electrónico, OpenID, Facebook, Twitter, etc)
-      signup_email: Únicamente con correo electrónico (los usuarios sólo pueden registrarse con su dirección de correo electrónico / contraseña)
-      signup_noemail: Sin correo electrónico/contraseña (los usuarios se registran con OpenID, Facebook, Twitter)
-      signup_social: Únicamente social (los usuarios sólo pueden registrarse con Facebook, Twitter, LinkedIn y Identica)
+      signup_all: Todos los proveedores seleccionados, además de usuario / contraseña
+      signup_email: Sólo usuario / contraseña
+      signup_noemail: Todos los proveedores seleccionados menos el de usuario / contraseña
+      signup_social: Los usuarios se ven obligados a usar Facebook, Twitter, LinkedIn o Identica
       website_analytics_id: ID de análisis de sitio web
     group: 
       about: Acerca de

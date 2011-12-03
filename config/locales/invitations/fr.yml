@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
 # Author: Patcito
 fr: 
   invitations: 
@@ -24,6 +25,9 @@ fr:
       welcome: Bienvenue
     create: 
       flash_notice: Vos invitations ont été envoyées avec succès.
+      limit_notice: 
+        one: Désolé, vous ne pouvez pas envoyer plus d’%{limit} invitation à un moment.
+        other: Désolé, vous ne peut pas envoyer plus de %{limit} invitations à un moment.
     resend: 
       flash_notice: Votre invitation a été renvoyé avec succès.
     revoke: 

@@ -14,7 +14,7 @@ ms:
       reply: Balas
       said: berkata
     update: 
-      flash_notice: Ulasan berjaya dikemas kini.
+      flash_notice: Ulasan berjaya dikemaskinikan.
   models: 
     comment: Ulasan
     comments: Ulasan

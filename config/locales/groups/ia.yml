@@ -10,7 +10,8 @@ ia:
         default_tags: Etiquettas predefinite
         description: Description
         domain: Dominio
-        enable_latex: Activar LaTeX
+        enable_latex: Activar LaTeX con jqmath (rapide, ma con functionalitate incomplete)
+        enable_mathjax: Activar LaTeX con mathjax (lente, ma con functionalitate complete)
         fb_button: Activar le button Like de Facebook (non protege le vita private)
         forum: Permitter plus de un responsa per usator
         group_created_by: create per
@@ -22,7 +23,7 @@ ia:
         name: Nomine
         owner: Iste gruppo esseva create per %{login}
         registered_only: Solo le personas registrate pote acceder al sito
-        signup_type: Qual methodo pote tu usatores usar pro crear un conto
+        signup_type: "Le methodos que tu usatores pote usar pro crear un conto:"
         state: Stato
         subdomain: URL
         wysiwyg_editor: Activar le editor facile a usar
@@ -55,10 +56,10 @@ ia:
       legend_legend: Isto essera usate in le titulo. Tu ha 40 characteres.
       logo_legend: Tu pote incargar le logotypo del gruppo. Le grandor maxime del file es 2MB.
       members_only: Solmente le membros del gruppo potera acceder a iste gruppo
-      signup_all: Totes (usatores pote crear un conto per e-mail, OpenID, Facebook, Twitter, etc.)
-      signup_email: E-mail solmente (le usatores pote solmente crear un conto con lor adresse de e-mail e contrasigno)
-      signup_noemail: Sin e-mail/contrasigno (le usatores crea un conto con OpenID, Facebook, Twitter)
-      signup_social: Rete social solmente (le usatores pote solmente crear un conto con Facebook, Twitter, LinkedIn e Identica)
+      signup_all: Tote le fornitores seligite plus nomine de usator e contrasigno
+      signup_email: Nomine de usator e contrasigno solmente
+      signup_noemail: Tote le fornitores seligite minus nomine de usator e contrasigno
+      signup_social: Le usatores pote solmente usar Facebook, Twitter, LinkedIn o Identica
       website_analytics_id: ID de analyse de sito web
     group: 
       about: A proposito

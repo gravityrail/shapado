@@ -5,18 +5,18 @@
 gl: 
   wiki: 
     actions: 
-      all_history: volver ao historial
-      back_to_question: volver á pregunta
-      revert: reverter ata esta versión
-      show_diff: comparar as versións seleccionadas
+      all_history: Volver ao historial
+      back_to_question: Volver á pregunta
+      revert: Reverter ata esta versión
+      show_diff: Comparar as versións seleccionadas
     diff: 
-      title: diferenzas entre %{prev} e %{curr}
+      title: Diferenzas entre %{prev} e %{curr}
     history: 
-      current_version: versión actual
-      previous_versions: versións anteriores
-      title: historial (%{count})
+      current_version: Versión actual
+      previous_versions: Versións anteriores
+      title: Historial (%{count})
       version: Versión
-      version_summary: resumo da versión
+      version_summary: Resumo da versión
     model: 
       attributes: 
-        message: resumo
+        message: Resumo

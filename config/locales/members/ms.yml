@@ -12,6 +12,7 @@ ms:
       error: Maaf, pengguna **%{user_id}** tidak wujud
       notice: "%{login} berjaya ditambahkan sebagai %{role}."
     form: 
+      destroy_confirm: Adakah anda pasti? Pengguna ini tidak akan menjadi ahli kumpulan ini lagi.
       login_tip: Cari sambil taip
     index: 
       manage_members_title: Uruskan ahli

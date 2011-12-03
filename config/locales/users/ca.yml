@@ -1,6 +1,7 @@
 # Messages for Catalan (Català)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gemmaa
 # Author: Martorell
 # Author: Papapep
 # Author: SMP
@@ -47,6 +48,9 @@ ca:
       vote_up: Vot positiu
     anonymous_form: 
       never_shown: mai mostrat
+    change_password: 
+      submit: Canviar la meva contrasenya
+      title: Canviar la contrasenya
     create: 
       flash_error: No s'ha pogut crear el compte. Torneu-ho a provar o contacteu amb un administrador (teniu l'enllaç més amunt).
       flash_notice: Gràcies per registrar-vos!
@@ -55,7 +59,7 @@ ca:
       submit: Desa
       title: Paràmetres
     follow: 
-      flash_notice: S'ha afegit l'usuari %{user} a les vostres amistats
+      flash_notice: Ara estan seguint %(user).
     form: 
       activities_notification: Rebre notificacions per correu electrònic sobre activitat del sistema com atorgament de distintius, nous seguidors, etc.
       avatar_tip: Canvieu la imatge del vostre perfil emprant Gravatar
@@ -71,6 +75,8 @@ ca:
       filter: Cerca per usuari
       name: Nom
       name_tooltip: Usuaris per ordre alfabètic
+      near: A prop teu
+      near_tooltip: Usuaris que estan a prop teu
       newest: Les més noves
       newest_tooltip: Usuaris que se n'acaben de fer
       oldest: Les més antigues
@@ -82,14 +88,32 @@ ca:
       errors: 
         reputation_needed: Necessiteu una reputació de %{min_reputation} per a poder %{action}
     new: 
+      description: Convertir-se en una part d'aquesta comunitat per preguntar, respondre i aprendre!
+      join_group: Uneix-te a %{group}
       submit: Registreu-vos
       title: Registreu-vos com a nou usuari
     show: 
+      edit_profile: Editar perfil
       follow: Seguir-lo/la
       followers: Seguidors
       following: Seguint
       title: Usuari %{user}
       unfollow: Deixar de seguir-lo/la
       views: Visualitzacions
+    top_user: 
+      connect: Connecta't
+      my_karma: "El meu karma: %{karma}"
+      profile: Perfil
     unfollow: 
       flash_notice: S'ha esborrat l'usuari %{user} de la vostra llista d'amistats
+    update_followed_tags: 
+      followed: 
+        flash_notice: Ara estan seguint la tag %{tag}.
+    user_bar: 
+      create_account: Crear un compte
+      not_logged_in: No connectat
+      signed_as: Com
+    user_mini: 
+      admin: "[Admin]"
+      editor: "[Editor]"
+      mod: "[Moderador]"

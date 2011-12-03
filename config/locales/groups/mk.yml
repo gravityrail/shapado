@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Bjankuloski06
 # Author: McDutchie
+# Author: Rancher
 mk: 
   activerecord: 
     attributes: 
@@ -11,8 +12,9 @@ mk:
         default_tags: основно зададени ознаки
         description: опис
         domain: домен
-        enable_latex: Овозможи LaTeX
-        fb_button: Овозможи Facebook-овидно копче (не е погодно за приватност)
+        enable_latex: Овозможи LaTeX со jqmath (брзо, но ги нема сите можности)
+        enable_mathjax: Овозможи LaTeX со mathjax (бавно, но ги има сите можности)
+        fb_button: Овозможи копче „Ми се допаѓа“ на Facebook (не е погодно за приватност)
         forum: дозволи повеќе од еден одговор по корисник
         group_created_by: создадена од
         language: Основен јазик
@@ -23,10 +25,10 @@ mk:
         name: име
         owner: групава е создадена од %{login}
         registered_only: само регистрирани корисници можат да пристапат на местото
-        signup_type: На кој начин може да се регистрираат вашите корисници
+        signup_type: "На кој начин може да се регистрираат вашите корисници:"
         state: држава
         subdomain: URL
-        wysiwyg_editor: Овозможи згоден кориснички уредувач
+        wysiwyg_editor: Овозможи згоден кориснички уредник
     models: 
       default_tags_message: не може да имате повеќе од 10 основно зададени ознаки
       group: група
@@ -56,10 +58,10 @@ mk:
       legend_legend: ова ќе се користи во заглавието. имате 40 знаци
       logo_legend: можете да подигнете лого на групата. максималната дозволена големина изнесува 2 Мб
       members_only: Само членовите на групата ќе имаат пристап до неа
-      signup_all: Сите (корисниците можат да се регистрираат со е-пошта, OpenId, Facebook, Twitter и тн.)
-      signup_email: Само е-пошта (корисниците можат да се регистрираат само со е-пошта/лозинка)
-      signup_noemail: Без е-пошта/лозинка (корисниците можат да се регистрираат со OpenId, Facebook, Twitter)
-      signup_social: Само друштвени (корисниците можат да се регистрираат само со Facebook, Twitter, LinkedIn и Identica)
+      signup_all: Сите одбрани добавувачи, плус корисник/лозинка
+      signup_email: Само корисник/лозинка
+      signup_noemail: Сите одбрани добавувачи, минус корисник/лозинка
+      signup_social: Корисниците се приморани да користат Facebook, Twitter, LinkedIn или Identica
       website_analytics_id: ID на аналитика на мреж. место
     group: 
       about: за групата

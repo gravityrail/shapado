@@ -6,7 +6,8 @@ ps:
   activerecord: 
     attributes: 
       answer: 
-        created_at: ځوب شوي
+        body: جوسه
+        created_at: جوړ شوی په
         link: تړنه
     models: 
       answer: ځواب
@@ -18,6 +19,7 @@ ps:
       title: ځواب سمول
     form: 
       answer_label: پوښتنه ځوابول
+      comment_label: په دې ځواب تبصره کول
       comment_submit: تبصره
       submit: ځواب
     update: 

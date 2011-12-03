@@ -22,7 +22,7 @@ be-TARASK:
   moderate: 
     questions: 
       flagged: 
-        banned: Заблякаванныя
+        banned: Заблякаваныя
         banned_tooltip: Паказаць толькі заблякаваныя пытаньні
         filters: "Фільтры:"
         title: Мадэрацыя пытаньняў

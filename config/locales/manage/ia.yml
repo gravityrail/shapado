@@ -5,9 +5,17 @@
 ia: 
   admin: 
     manage: 
+      access: 
+        title: Accesso
+      answers: 
+        banning: 
+          title: Bannir iste responsa
       appearance: 
         logo_legend: Incarga un logotypo pro le gruppo. Illo debe haber minus de 2MB.
         title: Seliger e personalisar tu apparentia
+      close_group: 
+        description: Le clausura del gruppo lo rendera inaccessibile a totes minus te.
+        feedback: "Per favor, specifica proque tu vole clauder iste gruppo:"
       content: 
         description: Configurar tu gruppo con texto e apparentia personalisate
         footer: Pede
@@ -35,14 +43,14 @@ ia:
           reputation_constrains_subtitle: Lista de requisitos de reputation pro cata action
           title: Requisitos
         domain: 
-          description: "Tu pote configurar tu sito de sorta que illo es accessibile per tu proprie dominio. Ecce como facer lo:"
+          description: "Es possibile assignar un altere dominio a tu sito de Shapado, de sorta que illo es accessibile per tu proprie dominio. Ecce le procedura:"
           instruction1: Pro facer lo, tu debe prima authenticar te al providitor de tu dominio. Isto es le sito ubi tu ha acquirite tu dominio como %{subdomain}.com.
           instruction2: Ibi, tu debe vader al section DNS e crear un cosa appellate CNAME.
           instruction3: Selige 'www' o altere cosa como le nomine de tu CNAME.
           instruction4: "Postea, in le campo de host o de destination, insere tu dominio actual de Shapado: %{domain}."
           instruction5: Quando isto es facite, post circa un hora, tu dominio www.%{subdomain} deberea punctar verso %{appdomain}.
           instruction6: Si isto es le caso, reveni hic e insere tu nomine de dominio www.%{subdomain} in le campo hic infra e preme le button 'actualisar'. Si tu ha questiones, pone los in le %{chat_url} o in nostre foro de supporto.
-          title: Configurar tu dominio
+          title: Configurar tu dominio personalisate
           warning: Es tu secur de voler cambiar tu dominio?
         facebook_app: 
           application_id: ID de application
@@ -96,6 +104,9 @@ ia:
           key: Clave del application
           secret: Secreto del application
           twitter_app: App de Twitter
+      questions: 
+        banning: 
+          title: Bannir iste question
       social: 
         ask_from_twitter: Demandar de Twitter
         ask_from_twitter_title: Permitter que tu usatores pone questiones ab Twitter

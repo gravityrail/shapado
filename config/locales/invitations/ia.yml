@@ -24,6 +24,9 @@ ia:
       welcome: Benvenite
     create: 
       flash_notice: Le invitationes ha essite inviate.
+      limit_notice: 
+        one: Tu non pote inviar plus de %{limit} invitation al mesme tempore.
+        other: Tu non pote inviar plus de %{limit} invitationes al mesme tempore.
     resend: 
       flash_notice: Tu invitation ha essite inviate de novo.
     revoke: 

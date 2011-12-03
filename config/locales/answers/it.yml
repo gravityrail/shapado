@@ -15,6 +15,7 @@ it:
       answers: Risposte
   answers: 
     create: 
+      annon_notice: L'utente è già registrato, per favore effettua il log in.
       flash_error: "Qualcosa non ha funzionato nell'aggiunta della risposta.\n  Da notare:\n - Non sono ammesse riposte vuote o ripetute\n - Bisogna attendere almeno 20 secondi prima di immettere una nuova risposta.\n - Si può immettere una sola risposta per ogni domanda."
       flash_notice: Grazie!
     edit: 

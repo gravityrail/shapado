@@ -6,15 +6,16 @@ sr:
   activerecord: 
     attributes: 
       announcement: 
-        ends_at: Завршава се у
+        ends_at: Важи до
         message: Порука
         only_anonymous: Само за анонимне кориснике
-        starts_at: Почиње у
+        starts_at: Важи од
   announcements: 
     actions: 
       delete: Уклони
       title: Радње
     create: 
-      success: Саопштење је успешно направљено.
+      success: Саопштење је направљено.
     index: 
+      description: Направите саопштења која ће бити приказана на целом сајту и управљајте њима.
       title: Саопштења

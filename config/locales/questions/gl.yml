@@ -60,6 +60,7 @@ gl:
       active_tooltip: As preguntas que foron actualizadas recentemente
       ask_question: Facer unha pregunta
       empty: Ninguén fixo ningunha pregunta aínda. Sexa o primeiro!
+      followers_tooltip: Preguntas con máis seguidores
       has_followers: 
         one: "%{count} seguidor"
         other: "%{count} seguidores"
@@ -78,7 +79,9 @@ gl:
         tags_not_added: As etiquetas "%{tags}" non se poden engadir. Necesita unha reputación de %{reputation_required} para crear etiquetas novas
         title_too_long: Sentímolo, o título non pode conter máis de 100 caracteres.
         too_many_tags: Sentímolo, soamente pode introducir un máximo de 20 etiquetas.
-        too_short: Sentímolo, o título debe ter máis de %{count} palabras.
+        too_short: 
+          one: Sentímolo, o título debe ter máis dunha palabra.
+          other: Sentímolo, o título debe ter máis de %{count} palabras.
     move: 
       group_label: "Mover ao grupo de nome:"
       submit: Mover!

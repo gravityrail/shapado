@@ -28,6 +28,7 @@ nl:
       create_page: Nieuwe pagina aanmaken
       title: Paginalijst
       wiki: Wiki
+      wiki_pages: Wikipagina's
       written_in: Geschreven in %{language}
     new: 
       title: Nieuwe pagina

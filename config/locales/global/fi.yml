@@ -25,6 +25,7 @@ fi:
     chat: Keskustelu
     current: Nykyinen
     edited: muokattu
+    edited_by_semi: "Muokkaaja:"
     feedback: Palaute
     follow: Seuraa
     followed_by: "Seuraaja:"
@@ -84,5 +85,7 @@ fi:
     yesterday: eilen
   views: 
     pagination: 
+      first: Ensimmäinen
+      last: Viimeinen
       next: Seuraava &raquo;
       previous: "&laquo; Edellinen"

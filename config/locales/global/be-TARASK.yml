@@ -23,6 +23,7 @@ be-TARASK:
     chat: Чат
     current: Цяперашняя
     edited: Рэдагаваны
+    edited_by_semi: "Рэдагавалася:"
     feedback: Водгук
     follow: Сачыць
     followed_by: "Сочаць:"
@@ -82,5 +83,8 @@ be-TARASK:
     yesterday: учора
   views: 
     pagination: 
+      first: Першая
+      last: Апошняя
       next: Наступная &raquo;
       previous: "&laquo; Папярэдняя"
+      truncate: …

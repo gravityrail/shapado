@@ -27,6 +27,7 @@ mk:
       create_page: создај нова страница
       title: списоци на страници
       wiki: Вики
+      wiki_pages: Вики-страници
       written_in: напишано на %{language}
     new: 
       title: нова страница

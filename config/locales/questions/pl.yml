@@ -60,7 +60,9 @@ pl:
         tags_not_added: Etykiety '%{tags}' nie mogą zostać dodane. Wymagane jest posiadanie reputacji %{reputation_required} aby tworzyć nowe etykiety
         title_too_long: Niestety, tytuł nie może zawierać więcej niż 100 znaków.
         too_many_tags: Możesz wprowadzić maksimum 20 etykiet
-        too_short: Tytuł musi zawierać więcej niż %{count} słów.
+        too_short: 
+          one: Tytuł musi zawierać więcej niż %{count} słowo.
+          other: Tytuł musi zawierać więcej niż %{count} słów.
     move: 
       submit: Przenieś!
       title: "Przenieś pytanie: %{title}"

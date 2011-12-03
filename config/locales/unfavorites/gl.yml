@@ -9,5 +9,5 @@ gl:
       favorites: Favoritos
   unfavorites: 
     create: 
-      success: eliminouse a pregunta dos seus favoritos
-      unauthenticated: necesita unha conta para eliminar un favorito
+      success: Eliminouse a pregunta dos seus favoritos
+      unauthenticated: Necesita unha conta para eliminar un favorito

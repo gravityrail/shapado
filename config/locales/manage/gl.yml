@@ -13,6 +13,9 @@ gl:
       appearance: 
         logo_legend: Suba un logo para o seu grupo. Non pode exceder os 2MB.
         title: Escolla e personalice o seu tema visual
+      close_group: 
+        description: Ao pechar o grupo farao inaccesible para todos agás para vostede.
+        feedback: "Díganos por que está a pechar o seu grupo:"
       content: 
         description: Configure o seu grupo con texto e estilo personalizados
         footer: Pé de páxina
@@ -40,14 +43,14 @@ gl:
           reputation_constrains_subtitle: Lista de requirimentos de reputación para cada acción
           title: Requirimentos
         domain: 
-          description: "Pode configurar o seu sitio de xeito que se poida consultar a través do seu propio dominio personalizado. Faise así:"
+          description: "Pode configurar un dominio diferente para o seu sitio de Shapado de xeito que se poida consultar a través do seu propio dominio personalizado. Faise así:"
           instruction1: Para facer isto, primeiro necesita acceder ao sistema do seu provedor de dominios. Ese é o lugar onde comprou o seu dominio, como %{subdomain}.com.
           instruction2: Alí terá que ir ata a sección DNS e crear unha cousa chamada CNAME.
           instruction3: Escolla "www" ou calquera outra cousa para o seu CNAME.
           instruction4: "A continuación, no campo de destino, introduza o seu dominio Shapado actual: %{domain}."
           instruction5: Unha vez feito isto, ao que pase unha ou dúas horas, o seu www.%{subdomain} debería apuntar cara a %{appdomain}.
           instruction6: Cando se dea este caso, volva aquí e poña o nome do seu dominio, www.%{subdomain}, no campo de embaixo e prema o botón "actualizar". Se ten algunha dúbida, pregunte no %{chat_url} ou no noso foro de axuda.
-          title: Configurar o seu dominio
+          title: Configurar o seu dominio personalizado
           warning: Está seguro de querer cambiar o seu dominio?
         facebook_app: 
           application_id: ID da aplicación
@@ -99,7 +102,7 @@ gl:
           twitter_account: Conta do Twitter
         twitter_app: 
           key: Clave da aplicación
-          secret: Segredo da aplicación
+          secret: Frase secreta da aplicación
           twitter_app: Aplicación do Twitter
       questions: 
         banning: 

@@ -84,6 +84,7 @@ nl:
       name: Naam
       name_tooltip: Alfabetisch gesorteerde gebruikerslijst
       near: In uw buurt
+      near_tooltip: Gebruikers in uw buurt
       newest: Nieuwste
       newest_tooltip: Recent geregistreerde gebruikers
       oldest: Oudste

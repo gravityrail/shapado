@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     models: 
@@ -15,6 +16,8 @@ hu:
       addict: 
         description: Meglátogatta az oldalt 20 egymást követő napon
         name: Függő
+      altruist: 
+        name: Önzetlen
       autobiographer: 
         description: Kitöltötte a felhasználói profil összes mezőjét
         name: Önkéntes életrajzíró
@@ -54,6 +57,9 @@ hu:
       fanatic: 
         description: Meglátogatta az oldalt 100 egymást követő napon
         name: Fanatikus
+      favorite_answer: 
+        description: Van olyan válasz, ami 25 felhasználó kedvence
+        name: Kedvenc válasz
       favorite_question: 
         description: Feltett egy kérdést, amit több, mint 25 felhasználó helyezett a kedvencei közé
         name: Kedvenc kérdés
@@ -128,6 +134,9 @@ hu:
         name: Érdemérem
       shapado: 
         description: Meglátogatta az oldalt 8 egymást követő napon
+      stellar_answer: 
+        description: Van olyan válasz, ami 100 felhasználó kedvence
+        name: Csillagos válasz
       stellar_question: 
         description: Feltett egy olyan kérdést, amit 100 felhasználó helyezett a kedvencei közé
         name: Népszerű kérdés

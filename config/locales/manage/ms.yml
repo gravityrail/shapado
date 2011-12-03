@@ -13,6 +13,9 @@ ms:
       appearance: 
         logo_legend: Muat naik logo kumpulan anda, asalkan tidak melebihi 2MB.
         title: Pilih dan suaikan tema anda
+      close_group: 
+        description: Kumpulan yang ditutup akan tidak boleh diakses oleh sesiapa melainkan anda.
+        feedback: "Sila beritahu kami sebab anda hendak menutup kumpulan anda:"
       content: 
         description: Konfigurasi kumpulan anda dengan teks dan gaya yang tersuai
         footer: Pembawah
@@ -40,14 +43,14 @@ ms:
           reputation_constrains_subtitle: Senarai keperluan reputasi untuk setiap tindakan
           title: Keperluan
         domain: 
-          description: "Anda boleh memetakan tapak anda supaya ia boleh dicapai melalui domain tempahan anda sendiri. Inilah caranya:"
+          description: "Anda boleh memetakan domain yang berlainan pada tapak Shapado anda supaya ia boleh dicapai melalui domain tersuai anda sendiri. Inilah caranya:"
           instruction1: Untuk berbuat demikian, mula-mula anda perlu log masuk ke dalam penyedia domain anda, iaitu tempat anda membeli domain anda seperti %{subdomain}.com.
           instruction2: Di situ, anda perlu pergi ke bahagian DNS dan membuat sesuatu yang dipanggil CNAME.
           instruction3: Pilih 'www' atau apa sahaja sebagai nama CNAME anda.
           instruction4: "Kemudian, dalam ruangan hos atau destinasi, nyatakan domain Shapado anda sekarang: %{domain}."
           instruction5: Sebaik sahaja ini selesai, selepas lebih kurang sejam, domain anda www.%{subdomain} sewajarnya menghala ke %{appdomain}.
           instruction6: Selepas itu, kembali ke sini dan taipkan nama domain anda, www.%{subdomain} dalam ruangan di bawah, kemudian tekan butang 'kemas kini. Jika anda ada apa-apa soalan, tanya kami di %{chat_url} ataupun forum bantuan kami.
-          title: Setkan domain anda
+          title: Konfigurasi domain tersuai anda
           warning: Adakah anda benar-benar ingin menukar domain anda?
         facebook_app: 
           application_id: ID Aplikasi

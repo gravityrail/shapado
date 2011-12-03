@@ -24,6 +24,9 @@ it:
       welcome: Benvenuto
     create: 
       flash_notice: Gli inviti sono stati inviati con successo.
+      limit_notice: 
+        one: "Siamo spiacenti, non è possibile inviare più di %{limit} invito alla volta. "
+        other: Siamo spiacenti, non è possibile inviare più di %{limit} inviti alla volta.
     resend: 
       flash_notice: Il tuo invito è stato reinviato con successo.
     revoke: 

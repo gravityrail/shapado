@@ -5,6 +5,8 @@
 ia: 
   admin: 
     moderate: 
+      closing: 
+        title: Clauder question
       index: 
         all: Totes
         ban: Bannir
@@ -14,6 +16,8 @@ ia:
         item_title: Titulo
         need_tags: Re-etiquettar
         title: Moderate
+      opening: 
+        title: Aperir question
   moderate: 
     questions: 
       flagged: 

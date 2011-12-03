@@ -6,6 +6,7 @@
  */
 
 var I18n = {
-	on_leave_page: "Uw wijzigingen kunnen verloren gaan."
+	on_leave_page: "Uw wijzigingen kunnen verloren gaan.",
+	loading: "Bezig met laden…"
 };
 

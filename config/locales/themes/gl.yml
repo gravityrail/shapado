@@ -1,6 +1,7 @@
 # Messages for Galician (Galego)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: Toliño
 gl: 
   themes: 
@@ -21,21 +22,24 @@ gl:
     index: 
       description: Atope aquí os seus temas visuais e cambie a aparencia da súa aplicación.
       new_theme: Pode construír o seu propio tema visual aquí.
+    ready: 
+      success: O seu tema visual está listo!
     show: 
       apply: Aplicar
       bg_color: Cor de fondo
       bg_image: Imaxe de fondo
-      button_bg: Cor dos botóns de fondo
-      button_fg: Cor dos botóns de primeiro plano
+      brand_color: Cor da marca
+      button_bg: Cor de fondo dos botóns
+      button_fg: Cor de primeiro plano dos botóns
       fg_color: Cor de primeiro plano
       fluid: Fluído (isto fará que o esquema sexa elástico se a ventá do navegador cambia de tamaño)
-      link_bg: Cor das ligazóns de fondo
-      link_fg: Cor das ligazóns de primeiro plano
+      link_bg: Cor de fondo das ligazóns
+      link_fg: Cor de primeiro plano das ligazóns
       main_color: Cor principal
       modules_color: Cor dos módulos
       not_ready: Este tema visual non está listo para o seu uso; volva noutro momento.
       text_color: Cor do texto
       try: Intentar
       use_link_bg: Utilizar un fondo para as ligazóns
-      view_bg: Ver a cor de fondo
-      view_fg: Ver a cor de primeiro plano
+      view_bg: Cor de fondo da vista
+      view_fg: Cor de primeiro plano da vista

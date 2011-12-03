@@ -1,6 +1,7 @@
 # Messages for Catalan (Català)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gemmaa
 # Author: Papapep
 # Author: SMP
 ca: 
@@ -18,6 +19,7 @@ ca:
       not_relevant: No és rellevant
       ot: Fora de tema
       request_closing_details: Petició per tancar aquesta pregunta
+      retract: Retractar
       spam: correu brossa
     index: 
       title: Llistat de peticions de tancament

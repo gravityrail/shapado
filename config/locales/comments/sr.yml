@@ -9,7 +9,8 @@ sr:
     edit: 
       title: Уређивање коментара
     shared: 
-      add_comment: Додај коментар...
+      add_comment: Додај коментар…
+      comment_submit: Прокоментариши
       reply: Одговори
       said: рече
     update: 

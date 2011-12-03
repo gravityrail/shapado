@@ -1,0 +1,8 @@
+# Messages for Serbian (Latin script) (‪Srpski (latinica)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr-LATN: 
+  activemodel: 
+    models: 
+      constrains_config: Postavke ograničavanja ugleda

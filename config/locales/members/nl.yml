@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: Siebrand
 nl: 
   activerecord: 
@@ -19,4 +20,4 @@ nl:
       title: Leden van de groep %{name}
       title_isolate: Leden van %{name}
     update: 
-      error: U kunt het lidmaatschap van **%{login}** niet aanpassen.
+      error: U bent niet gemachtigd om het lidmaatschap van **%{login}** aan te passen.

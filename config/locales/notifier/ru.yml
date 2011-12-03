@@ -1,6 +1,7 @@
 # Messages for Russian (Русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Adata80
 # Author: Grigol
 # Author: Lockal
 # Author: Александр Сигачёв
@@ -24,11 +25,12 @@ ru:
       message4: Если мы не получим от вас ответа в ближайшее время, мы спросим кого-нибудь ещё. Вы по прежнему сможете ответить, когда захотите.
     global: 
       hi: Здравствуйте, %{user},
+      hi_no_user: Здравствуйте,
       user_page: странице пользователя
     new_answer: 
       message: "%{user} добавил ответ %{new_answer} на вопрос %{question}"
     new_comment: 
-      message: "%{user} оставил комментарий %{new_comment} к вопросу %{link}"
+      message: "%{user} оставил комментарий %{new_comment} на вопрос %{link}"
     new_feedback: 
       message1: Пользователь %{user} <%{email}> отправил отзыв
       message2: Анонимный пользователь отправил отзыв с IP-адреса %{ip}

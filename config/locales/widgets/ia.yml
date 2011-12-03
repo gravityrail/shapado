@@ -4,6 +4,12 @@
 # Author: McDutchie
 ia: 
   widgets: 
+    about: 
+      description: Iste widget presenta un curte description de tu gruppo.
+      title: A proposito
+    adsense: 
+      description: Iste widget permitte presentar annuncios de Google AdSense.
+      title: AdSense
     ask_question: 
       ask: Demandar
       description: Iste widget permitte que usatores pone questiones ab ubicunque.
@@ -15,24 +21,40 @@ ia:
       see_all: Vider tote le insignias
       title: Insignias recente
     contributors: 
+      description: Iste widget monstra le lista de personas qui ha contribuite a un question.
       title: Contributores al question
+    create: 
+      notice: Le widget ha essite create con successo.
     current_tags: 
       description: Iste widget monstra etiquettas sequite per le usator actual.
+    custom_html: 
+      description: Adde hic qualcunque typo de HTML que tu desira.
+    edit: 
+      title: Modificar widget
     group_networks: 
+      description: Iste widget monstra un lista de ligamines a retes social, de sorta que le usatores pote sequer in illos.
       title: Sequer nos
     groups: 
       description: Iste widgets monstra le ultime gruppos
       title: Gruppos recente
     index: 
+      add_new: Adder nove widget
       description: Usa le sagittas pro displaciar tu widgets
       external_widgets: Externe
       external_widgets_title: Widgets que tu pote incorporar in tu proprie sito
+      footer: Pede del pagina
+      header: Titulo
       mainlist_widgets: Lista principal
       mainlist_widgets_title: Widgets que apparera in le lista principal de questiones
+      name: Nomine del widget
+      navbar: Barra de navigation
       question_widgets: Question
       question_widgets_title: Widgets que apparera in cata pagina de question
+      sidebar: Barra lateral
       title: Administrar widgets del barra lateral
+      type: "Typo:"
       welcome_widgets: Benvenite
+      zone: "Section del pagina:"
     mod_info: 
       description: Iste widget monstra information relevante al moderatores como marcationes e requestas de reportage.
     pages: 
@@ -61,12 +83,15 @@ ia:
       on_welcome: Monstrar in pagina de benvenita
       preview: "Previsualisation del widget:"
     share: 
+      description: Iste widget monstra varie buttones pro divulgar le pagina presente in retes social.
       title: Divider in
     sharing_buttons: 
       description: Iste widget monstrara buttones de diffusion social
       title: Diffunder isto sur
     suggestions: 
       description: Suggestion de amicos e etiquettas que le usator pote sequer
+      follow_tag: + Sequer etiquetta
+      follow_user: + Sequer usator
       followed_by: Sequite per %{user}
       title: Personas e etiquettas a sequer
     tag_cloud: 
@@ -77,10 +102,17 @@ ia:
       title: Etiquettas
     top_groups: 
       description: Iste widget monstra le prime cinque gruppos
+      has_members: 
+        one: "%{count} membro"
+        other: "%{count} membros"
       title: Prime 5 gruppos
     top_users: 
       description: Iste widget monstra le prime cinque usatores
       title: Prime 5 usatores
+    update: 
+      notice: Le widget ha essite actualisate con successo.
     users: 
       description: Iste widget monstra le membros registrate recentemente
       title: Usatores recente
+    widget: 
+      change_position: "Cambiar le position del widget:"

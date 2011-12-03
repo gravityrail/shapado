@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Fryed-peach
 # Author: 青子守歌
 ja: 
   activerecord: 
@@ -20,7 +21,7 @@ ja:
         language: 表示言語
         language_filter: 言語でフィルタリング
         last_logged_at: 最新ログイン時間
-        login: ログインID
+        login: 利用者名
         name: 名前（表示名）
         password: パスワード
         password_confirmation: パスワード（確認入力）

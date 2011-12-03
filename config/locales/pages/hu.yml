@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     attributes: 
@@ -26,6 +27,8 @@ hu:
     index: 
       create_page: Új lap létrehozása
       title: Lapok listája
+      wiki: Wiki
+      wiki_pages: Wiki lapok
       written_in: "%{language} nyelven íródott"
     new: 
       title: Új lap

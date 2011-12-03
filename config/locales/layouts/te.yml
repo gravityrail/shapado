@@ -5,6 +5,7 @@
 te: 
   layouts: 
     application: 
+      all: అన్నీ
       ask_question: ప్రశ్నని అడగండి
       badges: బాడ్జీలు
       forgot: మర్చిపోయారా?
@@ -32,10 +33,13 @@ te:
       content: విషయం
       dashboard: డాష్&zwnj;బోర్డ్
       general: సాధారణం
+      group_user_management: వాడుకరుల నిర్వహణ
+      invitations: ఆహ్వానాలు
       members: సభ్యులు
       pages: పుటలు
       properties: లక్షణాలు
       reputation: ఖ్యాతి
       stats: గణాంకాలు
       theme: అలంకారం
+      themes: అలంకారాలు
       widgets: విడ్జెట్లు

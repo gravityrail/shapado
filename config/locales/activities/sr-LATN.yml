@@ -1,0 +1,18 @@
+# Messages for Serbian (Latin script) (‪Srpski (latinica)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr-LATN: 
+  activerecord: 
+    models: 
+      activities: Aktivnosti
+      activity: Aktivnost
+  activity: 
+    asked: postavljeno
+    changed: promenjeno
+    created: napravljeno
+    deleted: obrisano
+    flagged: označeno
+    requested_to_close: zahtevano da se zatvori
+    requested_to_open: zahtevano da se otvori
+    updated: ažurirano

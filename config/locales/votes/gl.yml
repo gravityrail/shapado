@@ -5,8 +5,8 @@
 gl: 
   activerecord: 
     models: 
-      vote: voto
-      votes: votos
+      vote: Voto
+      votes: Votos
   votes: 
     comments: 
       title: 
@@ -17,20 +17,20 @@ gl:
         one_vote_two_users: Vostede e outro usuario votaron favorablemente este comentario.
         one_vote_user: Soamente vostede votou favorablemente este comentario.
     control: 
-      have_voted_down: prema para anular a súa desaprobación
-      have_voted_up: prema para anular a súa aprobación
-      to_vote_down: prema para desaprobar
-      to_vote_up: prema para aprobar
+      have_voted_down: Prema para anular a súa desaprobación
+      have_voted_up: Prema para anular a súa aprobación
+      to_vote_down: Prema para desaprobar
+      to_vote_up: Prema para aprobar
     create: 
       average: 
         one: "%{count} voto"
         other: "%{count} votos"
-      flash_error: non pode votar nisto
-      flash_notice: grazas polo seu voto!
-      unauthenticated: os usuarios anónimos non poden votar
+      flash_error: Non pode votar nisto
+      flash_notice: Grazas por votar!
+      unauthenticated: Os usuarios anónimos non poden votar
     destroy: 
       flash_notice: O seu voto riscouse correctamente.
     model: 
       messages: 
-        closed_question: non pode votar nas entradas pertencentes a unha pregunta pechada
-        vote_down_comment: os comentarios non se poden desaprobar
+        closed_question: Non pode votar nas entradas pertencentes a unha pregunta pechada
+        vote_down_comment: Os comentarios non se poden desaprobar

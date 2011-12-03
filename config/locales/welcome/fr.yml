@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
 # Author: Od1n
 # Author: Patcito
 fr: 
@@ -11,7 +12,7 @@ fr:
       under_18: J'ai moins de 18 ans
       warning: "ATTENTION : Cette page peut contenir du contenu explicite pour adultes."
     feedback: 
-      captcha_error: S'il vous plait, veuillez résoudre cette simple opération mathématique
+      captcha_error: S’il vous plaît, assurez-vous de remplir le captcha correctement et fournir une adresse électronique valide.
       email_description: S'il vous plait, donnez-nous votre email afin que nous puissions répondre à votre message.
       feedback_description: Description
       feedback_title: Titre

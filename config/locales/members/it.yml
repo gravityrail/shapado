@@ -13,6 +13,7 @@ it:
       error: Spiacente, l'utente **%{user_id}** non esiste
       notice: "%{login} è stato aggiunto come %{role}."
     form: 
+      destroy_confirm: Sei sicuro? Questo utente non sarà più un membro di questo gruppo.
       login_tip: Ricerca mentre si digita
     index: 
       manage_members_title: Gestione membri

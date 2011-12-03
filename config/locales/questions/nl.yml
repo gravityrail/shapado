@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -80,7 +81,9 @@ nl:
         tags_not_added: De labels "%{tags}" konden niet worden toegevoegd. U hebt een reputatie van %{reputation_required} nodig om nieuwe labels te kunnen aanmaken.
         title_too_long: Sorry, de titel mag niet meer dan honderd tekens bevatten.
         too_many_tags: Sorry, u kunt maximaal 20 labels opgeven.
-        too_short: Sorry, de titel moet meer dan %{count} woorden hebben.
+        too_short: 
+          one: Uw titel moet meer dan één woord bevatten.
+          other: Uw titel moet meer dan %{count} woorden bevatten.
     move: 
       group_label: "Verplaatsen naar de groep:"
       submit: Verplaatsen!
@@ -161,7 +164,7 @@ nl:
       answer_by_mail: Per e-mail beantwoorden
       more_actions: Meer handelingen
       requests: Verzoeken
-      your_close_request: Uw sluitingsverzoeken
+      your_close_request: Uw sluitingsverzoek
     unanswered: 
       empty: Deze groep heeft geen onbeantwoorde vragen.
       expert: Experts

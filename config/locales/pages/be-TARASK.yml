@@ -28,6 +28,7 @@ be-TARASK:
       create_page: Стварыць новую старонку
       title: Сьпіс старонак
       wiki: Вікі
+      wiki_pages: Вікі-старонкі
       written_in: Напісана на %{language}
     new: 
       title: Новая старонка

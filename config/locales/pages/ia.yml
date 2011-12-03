@@ -26,6 +26,8 @@ ia:
     index: 
       create_page: Crear nove pagina
       title: Lista de paginas
+      wiki: Wiki
+      wiki_pages: Paginas wiki
       written_in: Scribite in %{language}
     new: 
       title: Nove pagina

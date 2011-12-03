@@ -2,18 +2,21 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Napi limit
         default_tags: Alapértelmezett címkék
         description: Leírás
         domain: Domainnév
-        enable_latex: LaTeX engedélyezése
+        enable_latex: LaTeX engedélyezése jqmath segítségével (gyors, de nem teljes értékű)
         fb_button: Facebookos Tetszik gomb engedélyezése (a titoktartásnak nem felel meg)
         forum: Több, mint egy válasz engedélyezése egy felhasználótól
         group_created_by: "létrehozta:"
-        language: Nyelv
+        language: Alapértelmezett nyelv
+        languages: Extra nyelvek
         legend: Jelmagyarázat
         logo: Logó
         may_contain_adult_content: Ez az oldal felnőtteknek szóló tartalommal is rendelkezhet
@@ -27,9 +30,12 @@ hu:
       default_tags_message: Nem lehet tíznél több alapértelmezett címkéd
       group: csoport
       groups: csoportok
+      reputation_rewards_key: Érvénytelen kulcs
   groups: 
     create: 
       flash_notice: A csoportod sikeresen létrejött. Elkezdheted a konfigurálását.
+    edit: 
+      title: A csoportod szerkesztése
     form: 
       access: Hozzáférési beállítások
       analytics_engine: Analitikai motor
@@ -70,3 +76,5 @@ hu:
       group_closed: Ez a csoport le volt zárva.
       title: A(z) %{name} célja
       visit_group: Csoport megtekintése
+    update: 
+      notice: A csoportod sikeresen frissítve.

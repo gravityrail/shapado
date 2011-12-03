@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   doc: 
     chat: 
@@ -25,9 +26,12 @@ hu:
       huge_sites: Óriási forgalmú oldalaknak
       month: hónap
       page_views: Kicsi/privát oldalaknak
+      plans: Díjcsomagok
       private_site: Privát/nyilvános hozzáférés engedélyezése
       small_private: Kicsi/privát oldalaknak
+      start_monetizing: kezdj pénzt keresni
       support: Támogatás
+      title: Díjcsomagok és árak
       unlimited: Korlátlan forgalom havonta
       we_offer: Kínálunk
       web_support: Webalapú támogatás

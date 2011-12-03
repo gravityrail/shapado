@@ -7,7 +7,7 @@ gl:
     any_lang: Calquera lingua
     by_anon: Por anónimo
     current_tags: 
-      title: etiquetas seleccionadas
+      title: Etiquetas seleccionadas
     description: Descrición
     empty: 
       activities: 
@@ -56,6 +56,6 @@ gl:
       find_friends_linked_in: Atopar amigos no LinkedIn
       find_friends_twitter: Atopar amigos no Twitter
     topbar: 
-      admin: administrador
-      logged_as: conectado como %{login}
-      user_page: a miña páxina
+      admin: Administrador
+      logged_as: Conectado como %{login}
+      user_page: A miña páxina

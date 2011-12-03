@@ -11,7 +11,8 @@ it:
         default_tags: tag predefiniti
         description: Descrizione
         domain: Dominio
-        enable_latex: Abilita LaTeX
+        enable_latex: Abilita LaTeX con jqmath (veloce ma non completo)
+        enable_mathjax: Abilita LaTeX con mathjax (lento ma completo)
         fb_button: Abilita pulsante "Mi piace" di Facebook (diminuisce la privacy)
         forum: Permetti più risposte per ogni utente
         group_created_by: creato da
@@ -23,7 +24,7 @@ it:
         name: Nome
         owner: Questo gruppo è stato creato da %{login}
         registered_only: Solo gli utenti registrati possono accedere al sito
-        signup_type: Quali metodi gli utenti possono utilizzare per iscriversi
+        signup_type: "Quali metodi i tuoi utenti possono utilizzare per iscriversi:"
         state: Stato
         subdomain: URL
         wysiwyg_editor: Attiva editor semplificato
@@ -56,10 +57,10 @@ it:
       legend_legend: Sarà utilizzata nell'intestazione. Massimo 40 caratteri.
       logo_legend: È possibile caricare il logo del gruppo. La dimensione massima del file è di 2MB.
       members_only: Solo i membri del gruppo saranno in grado di accedere a questo gruppo
-      signup_all: Tutti (gli utenti possono registrarsi con indirizzo e-mail, OpenID, Facebook, Twitter, ecc)
-      signup_email: Solo indirizzo e-mail (gli utenti possono registrarsi solo con il proprio indirizzo email/password)
-      signup_noemail: Niente indirizzo email/password (gli utenti si iscrivono con OpenID, Facebook, Twitter)
-      signup_social: Solo sociale (gli utenti possono iscriversi solo con Facebook, Twitter, LinkedIn e Identica)
+      signup_all: Tutti i servizi selezionati più nome utente e password
+      signup_email: Solo utente/password
+      signup_noemail: Tutti i servizi selezionati tranne nome utente e password
+      signup_social: Gli utenti devono per forza identificarsi con Facebook, Twitter, LinkedIn o Identica
       website_analytics_id: Analytics ID
     group: 
       about: Informazioni

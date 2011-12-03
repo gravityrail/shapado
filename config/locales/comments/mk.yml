@@ -14,7 +14,7 @@ mk:
       reply: Одговори
       said: рече
     update: 
-      flash_notice: коментарот е успешно подновен.
+      flash_notice: Коментарот е успешно подновен.
   models: 
     comment: коментар
     comments: коментари

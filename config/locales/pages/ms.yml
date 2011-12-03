@@ -27,6 +27,7 @@ ms:
       create_page: Cipta laman baru
       title: Senarai laman
       wiki: Wiki
+      wiki_pages: Laman Wiki
       written_in: Ditulis dalam %{language}
     new: 
       title: Laman baru

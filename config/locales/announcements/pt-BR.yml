@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Giro720
+# Author: Pedroca cerebral
 pt-BR: 
   activerecord: 
     attributes: 
@@ -15,6 +16,7 @@ pt-BR:
       delete: Remover
       title: Ações
     create: 
-      success: A notificação foi criada com sucesso.
+      success: Seu anúncio foi criado com sucesso.
     index: 
+      description: Gerenciar e criar novos anúncios que serão exibidos em todo o site para todos os seus visitantes.
       title: Notificações do site

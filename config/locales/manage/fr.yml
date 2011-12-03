@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -72,6 +73,8 @@ fr:
           title: Récompenses
         share: 
           title: Partagez
+        tag_your_tweets: 
+          tweet_starts_with: Précéder vos tweets d’un tag
         title: Propriétés du groupe
       questions: 
         banning: 

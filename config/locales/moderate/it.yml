@@ -6,6 +6,8 @@
 it: 
   admin: 
     moderate: 
+      closing: 
+        title: Chiudi domanda
       index: 
         all: Tutti
         ban: Ban
@@ -15,6 +17,8 @@ it:
         item_title: Titolo
         need_tags: Modifica tag
         title: Modera
+      opening: 
+        title: Apri una domanda
   moderate: 
     questions: 
       flagged: 

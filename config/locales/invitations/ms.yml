@@ -24,6 +24,7 @@ ms:
       welcome: Selamat Datang
     create: 
       flash_notice: Jemputan anda berjaya dihantar.
+      limit_notice: Maaf, anda tidak boleh menghantar lebih daripada %{limit} jemputan sekali.
     resend: 
       flash_notice: Jemputan anda berjaya dihantar semula.
     revoke: 

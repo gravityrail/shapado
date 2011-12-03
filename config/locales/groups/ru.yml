@@ -1,6 +1,7 @@
 # Messages for Russian (Русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Adata80
 # Author: Lockal
 # Author: Shemerey
 # Author: Александр Сигачёв
@@ -12,7 +13,7 @@ ru:
         default_tags: Теги по умолчанию
         description: Описание
         domain: Домен
-        enable_latex: Включить LaTeX
+        enable_latex: Включить LaTeX с jqmath (быстро но не с полной функциональностью)
         fb_button: Включить кнопку Facebook (отрицательно влияет на защиту личной информации)
         forum: Разрешить больше одного варианта ответа на пользователя
         group_created_by: кем создано
@@ -57,7 +58,7 @@ ru:
       legend_legend: Оно будет использоваться в заголовке. Максимальный размер — 40 символов.
       logo_legend: Вы можете загрузить логотип группы. Максимальный размер файла составляет 2 МБ.
       members_only: Только участники группы будут иметь доступ к этой группе
-      signup_all: Все (пользователи могут зарегистрироваться с адресом электронной почты, OpenID, Facebook, Twitter и т. д.)
+      signup_all: Все выбранные провайдеры плюс имя / пароль
       signup_email: Только адрес электронной почты (пользователи могут войти только через электронную почту и пароль)
       signup_noemail: Без адреса электронной почты и пароля (пользователи входят через OpenID, Facebook, Twitter)
       signup_social: Только социальные сети (пользователи могут войти только через Facebook, Twitter, LinkedIn и Identica)

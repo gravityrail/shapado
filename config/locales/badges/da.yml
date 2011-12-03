@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: Tjernobyl
 da: 
   activerecord: 
     models: 
@@ -54,6 +55,8 @@ da:
       fanatic: 
         description: Besøgte siden hver dag 100 dage i træk
         name: Fanatiker
+      favorite_answer: 
+        name: Yndlingssvar
       favorite_question: 
         description: Stillede et spørgsmål der blev favorit for 25 brugere
         name: Favorit spørgsmål

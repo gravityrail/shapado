@@ -46,6 +46,7 @@ mk:
       actions: дејства
       announcements: соопштенија
       appearance: Изглед
+      close_group: Затвори група
       constrains: ограничувања
       content: содржина
       dashboard: Контролна табла

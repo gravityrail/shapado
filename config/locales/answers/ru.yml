@@ -1,6 +1,7 @@
 # Messages for Russian (Русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Adata80
 # Author: Lockal
 # Author: Александр Сигачёв
 ru: 
@@ -8,7 +9,7 @@ ru:
     attributes: 
       answer: 
         body: Текст
-        created_at: С ответами
+        created_at: Создан в
         link: Ссылка
     models: 
       answer: Ответ

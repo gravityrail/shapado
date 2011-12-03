@@ -28,6 +28,7 @@ it:
       create_page: Crea nuova pagina
       title: Lista delle pagine
       wiki: Wiki
+      wiki_pages: Pagine wiki
       written_in: Scritto in %{language}
     new: 
       title: Nuova pagina

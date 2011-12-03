@@ -34,7 +34,7 @@ nl:
     group_not_found: De pagina %{url} bestaat niet
     home: Hoofdmenu
     next_button: Volgende
-    open: Open
+    open: Openen
     or: of
     permission_denied: Geen toegang
     please_login: Meld u aan
@@ -90,5 +90,8 @@ nl:
     yesterday: gisteren
   views: 
     pagination: 
+      first: Eerste
+      last: Laatste
       next: Volgende &raquo;
       previous: "&laquo; Vorige"
+      truncate: ...

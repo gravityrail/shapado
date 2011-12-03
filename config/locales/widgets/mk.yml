@@ -4,6 +4,9 @@
 # Author: Bjankuloski06
 mk: 
   widgets: 
+    about: 
+      description: Овој посреднички елемент прикажува краток опис на вашата група.
+      title: За додатокот
     adsense: 
       description: Овој елемент ви овозможува да прикажувате реклами со Google AdSense.
       title: AdSense
@@ -18,6 +21,7 @@ mk:
       see_all: Сите значки
       title: скорешни значки
     contributors: 
+      description: Овој елемент прикажува список на луѓе што учествувале во извесно прашање.
       title: Учесници во прашањето
     create: 
       notice: Елеметот е создаден успешно.

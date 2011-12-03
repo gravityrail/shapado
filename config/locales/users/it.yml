@@ -83,6 +83,7 @@ it:
       name: Nome
       name_tooltip: Utenti in ordine alfabetico
       near: Vicino a te
+      near_tooltip: Utenti che sono vicini a te
       newest: più recente
       newest_tooltip: Utenti iscritti da meno tempo
       oldest: più datato

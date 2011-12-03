@@ -1,0 +1,18 @@
+# Messages for Serbian (Cyrillic script) (‪Српски (ћирилица)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr: 
+  activerecord: 
+    models: 
+      activities: Активности
+      activity: Активност
+  activity: 
+    asked: постављено
+    changed: промењено
+    created: направљено
+    deleted: обрисано
+    flagged: означено
+    requested_to_close: захтевано да се затвори
+    requested_to_open: захтевано да се отвори
+    updated: ажурирано

@@ -6,6 +6,7 @@
  */
 
 var I18n = {
-	on_leave_page: "Anda mungkin kehilangan pengubahan anda"
+	on_leave_page: "Anda mungkin kehilangan pengubahan anda",
+	loading: "Sedang dimuatkan..."
 };
 

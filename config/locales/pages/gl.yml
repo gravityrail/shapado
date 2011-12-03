@@ -6,10 +6,10 @@ gl:
   activerecord: 
     attributes: 
       page: 
-        css: follas de estilo
-        js: javascript
+        css: Follas de estilo
+        js: JavaScript
     models: 
-      page: páxina
+      page: Páxina
       pages: Páxinas
   pages: 
     actions: 
@@ -21,15 +21,16 @@ gl:
     edit: 
       title: Editando a páxina
     form: 
-      language_tip: lingua da páxina
+      language_tip: Lingua da páxina
       title_tip: "Título da páxina, use isto para facer referencia á páxina. Por exemplo: [[FAQ|olle as preguntas máis frecuentes]]"
     index: 
-      create_page: crear unha nova páxina
-      title: lista de páxinas
+      create_page: Crear unha nova páxina
+      title: Lista de páxinas
       wiki: Wiki
-      written_in: escrito en %{language}
+      wiki_pages: Páxinas wiki
+      written_in: Escrito en %{language}
     new: 
-      title: páxina nova
-    title: arránxeme
+      title: Páxina nova
+    title: Arránxeme
     update: 
       success: A páxina actualizouse correctamente.

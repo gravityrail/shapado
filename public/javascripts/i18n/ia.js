@@ -6,6 +6,7 @@
  */
 
 var I18n = {
-	on_leave_page: "Tu poterea perder tu modificationes"
+	on_leave_page: "Tu poterea perder tu modificationes",
+	loading: "Cargamento in curso…"
 };
 

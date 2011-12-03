@@ -22,6 +22,7 @@ ia:
     chat: Conversar
     current: Actual
     edited: Modificate
+    edited_by_semi: "Modificate per:"
     feedback: Commentos
     follow: Sequer
     followed_by: "Sequite per:"
@@ -30,6 +31,7 @@ ia:
     group_not_found: Le pagina %{url} non existe
     home: Initio
     next_button: Sequente
+    open: Aperir
     or: o
     permission_denied: Permission refusate
     please_login: Per favor aperi un session
@@ -85,5 +87,8 @@ ia:
     yesterday: heri
   views: 
     pagination: 
+      first: Prime
+      last: Ultime
       next: Sequente &raquo;
       previous: "&laquo; Precedente"
+      truncate: ...

@@ -60,6 +60,7 @@ ms:
       active_tooltip: Soalan yang dikemas kini baru-baru ini
       ask_question: Tanyakan soalan
       empty: Di sini belum ada yang tanyakan apa-apa soalan lagi. Jadilah orang pertama!
+      followers_tooltip: Soalan yang paling ramai pengikut
       has_followers: "%{count} pengikut"
       help_to_answer: Bantu kami menjawabnya
       hot: Hangat

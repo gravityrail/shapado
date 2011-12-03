@@ -4,6 +4,9 @@
 # Author: Anakmalaysia
 ms: 
   widgets: 
+    about: 
+      description: Widget ini memaparkan keterangan ringkas tentang kumpulan anda.
+      title: Perihal
     adsense: 
       description: Widget ini membolehkan anda untuk memaparkan iklan Google AdSense.
       title: AdSense
@@ -18,6 +21,7 @@ ms:
       see_all: Lihat semua rencana
       title: Lencana terkini
     contributors: 
+      description: Widget ini memaparkan senarai orang yang menyumbang kepada soalan.
       title: Penyumbang Soalan
     create: 
       notice: Widget berjaya dicipta.

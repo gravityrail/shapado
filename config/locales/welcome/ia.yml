@@ -10,7 +10,8 @@ ia:
       under_18: Io ha minus de 18 annos
       warning: "AVISO: Iste pagina pote continer material explicite pro adultos."
     feedback: 
-      captcha_error: Per favor, resolve un simple operation mathematic
+      captcha_error: Per favor plena le "captcha" correctemente e specifica un adresse de e-mail valide.
+      captcha_notice: Gratias pro tu commentario. Nos respondera le plus tosto possibile.
       email_description: Per favor forni tu adresse de e-mail a fin que nos pote responder a tu message
       feedback_description: Description
       feedback_title: Titulo

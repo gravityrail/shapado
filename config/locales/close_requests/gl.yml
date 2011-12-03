@@ -5,30 +5,30 @@
 gl: 
   close_requests: 
     create: 
-      flash_notice: a solicitude de peche creouse correctamente
+      flash_notice: A solicitude de peche creouse correctamente
     destroy: 
-      flash_notice: a solicitude de peche borrouse correctamente
+      flash_notice: A solicitude de peche borrouse correctamente
     edit: 
       title: Editar a solicitude de peche
     form: 
-      close_with_reason: pechar esta pregunta por este motivo
-      dupe: duplicado
-      no_question: non é unha pregunta
-      not_relevant: non é relevante
-      ot: fóra do tema
-      request_closing_details: solicitar o peche desta pregunta
+      close_with_reason: Pechar esta pregunta por este motivo
+      dupe: Duplicado
+      no_question: Non é unha pregunta
+      not_relevant: Non é relevante
+      ot: Fóra do tema
+      request_closing_details: Solicitar o peche desta pregunta
       retract: Retraer
       spam: spam
     index: 
-      title: lista de solicitudes de peche
+      title: Lista de solicitudes de peche
     model: 
       attributes: 
         comment: Comentario
         reason: Motivo
         user: Usuario
       messages: 
-        already_requested: xa solicitou o peche desta pregunta
+        already_requested: Xa solicitou o peche desta pregunta
       name: Solicitude de peche
       prural_name: Solicitudes de peche
     update: 
-      flash_notice: a solicitude de peche actualizouse correctamente
+      flash_notice: A solicitude de peche actualizouse correctamente

@@ -1,0 +1,10 @@
+# Messages for Serbian (Latin script) (‪Srpski (latinica)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr-LATN: 
+  imports: 
+    subtabs: 
+      need_confirmation: 
+        name: Potrebna je potvrda
+        title: Slanje potvrdnih poruka

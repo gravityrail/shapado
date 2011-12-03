@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Crt
 # Author: Nike
 # Author: Raspi
 fi: 
@@ -91,7 +92,7 @@ fi:
     retag: 
       title: Uudelleenmerkintä
     retag_form: 
-      cancel: Peru
+      cancel: Peruuta
       submit: Päivitä tunnisteet!
       title: Päivitä tunnisteet!
     retag_to: 

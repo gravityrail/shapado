@@ -19,9 +19,10 @@ gl:
     blog: Blogue
     by: por
     by_semi: "Por:"
-    chat: Conversa
+    chat: Chat
     current: Actual
     edited: Editado
+    edited_by_semi: "Editado por:"
     feedback: Comentarios
     follow: Seguir
     followed_by: "Seguido por:"
@@ -86,5 +87,8 @@ gl:
     yesterday: onte
   views: 
     pagination: 
+      first: Primeiro
+      last: Último
       next: Seguinte &raquo;
       previous: "&laquo; Anterior"
+      truncate: ...

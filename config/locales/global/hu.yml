@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   feeds: 
     feed: Hírcsatorna
@@ -12,22 +13,59 @@ hu:
     tag: Feliratkozás a címkére
     user: Feliratkozás a felhasználó kérdéseire
   global: 
+    actions: Műveletek
     active: Aktiválás
+    alphabetically: Betűrendben
     anonymous: Nem bejelentkezett
+    blog: Blog
     by: "írta:"
+    by_semi: "Írta:"
+    chat: Chat
     current: Jelenlegi
+    edited: Szerkesztve
+    edited_by_semi: "Szerkesztette:"
+    feedback: Visszajelzés
+    follow: Követés
+    followed_by: "Követők:"
+    following: Követed
     from: "a következő oldalról: %{site}"
     group_not_found: "A következő lap nem létezik: %{url}"
+    home: Kezdőlap
+    next_button: Következő
+    open: Nyitott
     or: vagy
     permission_denied: Hozzáférés megtagadva
     please_login: Kérlek, jelentkezz be
     preview: Előnézet
     previous: Előző
+    privacy: Adatvédelem
     share: Megosztás
+    sign_up: Regisztráció
+    size: Méret
+    sort_by: "Rendezés:"
+    tags_label: "Címkék:"
+    tos: Felhasználási feltételek
+    unfollow: Követés vége
+    unknown_place: Ismeretlen
+    view: Megtekintés
+    view_question: Kérdés megtekintése
+    what_to_do: Mit szeretnél tenni?
   models: 
     question: A kérdés
+  number: 
+    x_time: 
+      other: o%{count} alkalommal
+      zero: Sosem
+  preferred_languages: 
+    any: Bármelyik
+    user: Előnyben részesített nyelveim
+  roles: 
+    moderator: Moderátor
+    owner: Tulajdonos
+    user: Normál felhasználó
   scaffold: 
     add: Hozzáadás
+    are_you_sure: Biztos vagy benne?
     back: Vissza
     cancel: Mégse
     close: Bezárás
@@ -46,3 +84,11 @@ hu:
   time: 
     ago: "%{time} ezelőtt"
     today: ma
+    yesterday: tegnap
+  views: 
+    pagination: 
+      first: Első
+      last: Utolsó
+      next: Következő &raquo;
+      previous: "&laquo; Előző"
+      truncate: ...

@@ -9,5 +9,5 @@ gl:
       favorites: Favoritos
   favorites: 
     create: 
-      success: engadiuse a pregunta aos seus favoritos
-      unauthenticated: necesita unha conta para engadir favoritos
+      success: Engadiuse a pregunta aos seus favoritos.
+      unauthenticated: Necesita unha conta para engadir favoritos.

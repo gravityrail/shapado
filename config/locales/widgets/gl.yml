@@ -4,6 +4,9 @@
 # Author: Toliño
 gl: 
   widgets: 
+    about: 
+      description: Este widget mostra unha pequena descrición do seu grupo.
+      title: Acerca de
     adsense: 
       description: Este widget permite mostrar anuncios do Google AdSense.
       title: AdSense
@@ -18,6 +21,7 @@ gl:
       see_all: Ver todas as insignias
       title: Insignias recentes
     contributors: 
+      description: Este widget mostra a lista de persoas que colaboraron nunha pregunta.
       title: Persoas que colaboraron na pregunta
     create: 
       notice: O widget creouse correctamente.

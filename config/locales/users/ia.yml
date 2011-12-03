@@ -61,6 +61,7 @@ ia:
     form: 
       activities_notification: Reciper notificationes per e-mail super activitates de systema como insignias ganiate, nove sequitores, etc.
       avatar_tip: Cambiar le imagine de tu profilo usante Gravatar
+      desktop_notification: Notificationes de scriptorio
       give_advice_notification: Reciper notificationes per e-mail super questiones in tu campo de expertise
       information: Information
       language: Lingua usate pro le interfacie del sito
@@ -80,6 +81,7 @@ ia:
       name: Nomine
       name_tooltip: Usatores per ordine alphabetic
       near: Proxime a te
+      near_tooltip: Usatores in tu vicinitate
       newest: Le plus nove
       newest_tooltip: Usatores qui justo se registrava
       oldest: Le plus ancian
@@ -118,3 +120,7 @@ ia:
       create_account: Crear un conto
       not_logged_in: Non identificate
       signed_as: Identificate como
+    user_mini: 
+      admin: "[ Admin ]"
+      editor: "[ Redactor ]"
+      mod: "[ Moderator ]"

@@ -81,6 +81,7 @@ ms:
       name: Nama
       name_tooltip: Pengguna disusun mengikut turutan abjad
       near: Dekat anda
+      near_tooltip: Pengguna yang berdekatan dengan anda
       newest: Terbaru
       newest_tooltip: Pengguna yang baru menyertai
       oldest: Terlama
