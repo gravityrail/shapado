@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: DavidL
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -64,9 +65,12 @@ fr:
     model: 
       messages: 
         empty_tags: Désolé, vous devez utiliser au moins un tag.
-        title_too_long: Le titre est trop long, il ne doit pas contenir plus de 100 caractères
-        too_many_tags: Désolé, vous ne pouvez utiliser que 9 tags maximum.
-        too_short: Semble trop court. S'il vous plait, veuillez utiliser plus de mots que %{count} pour être plus specific
+        tags_not_added: Les balises '%{tags}' ne pas peuvent être ajoutées. Vous avez besoin d'une réputation de %{reputation_required} pour créer de nouvelles balises
+        title_too_long: Désolé, le titre ne peut pas contenir plus de 100 caractères.
+        too_many_tags: Désolé, vous ne pouvez utiliser que 20 balises maximum.
+        too_short: 
+          one: Désolé, votre titre doit avoir plus de %{count} mot.
+          other: Désolé, votre titre doit avoir plus de %{count} mots.
     move: 
       group_label: "Transférer au groupe du nom :"
       submit: Transférer !

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     attributes: 
@@ -45,6 +46,9 @@ hu:
       vote_up: Felszavazás
     anonymous_form: 
       never_shown: soha sem látható
+    change_password: 
+      submit: Jelszó megváltoztatása
+      title: Jelszócsere
     create: 
       flash_error: Sajnáljuk, de nem sikerült létrehozni a fiókot. Próbáld újra, vagy lépj kapcsolatba az adminisztrátorral (link fentebb).
       flash_notice: Köszönjük a regisztrációt!
@@ -53,22 +57,32 @@ hu:
       submit: Mentés
       title: Beállítások
     follow: 
-      flash_notice: "%{user} hozzáadva a barátaidhoz"
+      flash_error: Nem követheted magad.
+      flash_notice: "Most már követed őt:  %{user}."
     form: 
       activities_notification: E-mailes értesítések a rendszer tevékenységeiről, például a szerzett jelvényekről, új követőkről stb.
       avatar_tip: A profilképed a Gravatar használatával változtatható meg
+      desktop_notification: Asztali értesítések
       give_advice_notification: E-mailes értesítések a szakterületedhez tartozó kérdésekről
       information: Információ
       language: Az oldal felületén használt nyelv
       new_answer_notification: E-mailes értesítések az új kérdésekről
       notifications: Értesítések
       reports_notification: Jelentés kérése a legújabb csoportbeli tevékenységekről (csak csoportadminisztrátoroknak)
+      send_answers_to_twitter: Válaszom küldése a Twiteremre
+      send_badges_to_twitter: Az újonnan megnyert kitüntetésem küldése a Twitteremre
+      send_comments_to_twitter: Hozzászólásom küldése a Twitteremre
+      send_favorites_to_twitter: Kedvenc válaszom küldése a Twitteremre
+      send_questions_to_twitter: Kérdésem küldése Twitteremre
       show_more_lang: További nyelvek megjelenítése
+      social_interaction: Közösségi média kapcsolatok
     index: 
       empty: Ennek a csoportnak nincs egyetlen tagja sem. Működj közre, csatlakozz a csoporthoz!
       filter: Felhasználók keresése
       name: Név
       name_tooltip: Felhasználók betűrendben
+      near: Közeledben
+      near_tooltip: Felhasználók, akik közeledben vannak
       newest: Legújabb
       newest_tooltip: Legutóbb csatlakozott felhasználók
       oldest: Legrégebbi
@@ -80,14 +94,34 @@ hu:
       errors: 
         reputation_needed: "Legalább %{min_reputation} hírnévre van szükséged a következő művelet végrehajtásához: %{action}"
     new: 
+      description: Légy ennek a közösségnek a tagja, hogy kérdezz, felelj és tanulj!
+      join_group: "Belépés ide: %{group}"
       submit: Regisztráció
       title: Regisztráció új felhasználóként
     show: 
+      edit_profile: Profil szerkesztése
       follow: Követés
       followers: Követők
       following: Követed
       title: "Felhasználó: %{user}"
       unfollow: Követés vége
       views: megtekintés
+    top_user: 
+      connect: Csatlakozás
+      my_karma: "Karmám: %{karma}"
+      profile: Profil
     unfollow: 
-      flash_notice: "%{user} eltávolítva a barátaid közül"
+      flash_notice: "Most már nem követed őt: %{user}."
+    update_followed_tags: 
+      followed: 
+        flash_notice: Mostantól követed a %{tag} címkét.
+      unfollowed: 
+        flash_notice: Most már nem követed %{tag} címkét.
+    user_bar: 
+      create_account: Fiók létrehozása
+      not_logged_in: Nem vagy bejelentkezve.
+      signed_as: "Belépve a következőként:"
+    user_mini: 
+      admin: "[ Admin ]"
+      editor: "[ Szerkesztő ]"
+      mod: "[ Moderátor ]"

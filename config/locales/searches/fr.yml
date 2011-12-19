@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DavidL
 # Author: Od1n
 # Author: Patcito
 fr: 
@@ -10,6 +11,7 @@ fr:
       search_box_title: Vérifiez que votre question n'ait pas déjà été posée
       tags_tip: Utiliser [tag] pour décrire vos tags.
     index: 
+      advanced_search: recherche avancée
       empty: Aucune question ne correspond aux termes de recherche spécifiés.
       found_results: "%{quantity} résultats ont été trouvés."
       search_text: Questions contenant

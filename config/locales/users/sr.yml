@@ -29,7 +29,7 @@ sr:
         reputation: Углед
         timezone: Временска зона
         updated_at: "ажурирано:"
-        website: Мрежно место
+        website: Сајт
     models: 
       user: Корисник
       users: Корисници

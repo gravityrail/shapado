@@ -20,7 +20,7 @@ sr:
       active: Активно
       browse_all_or_by_tags: Погледајте %{full_list_of_questions} или %{browse_by_tags}
       browse_by_tags: потражите по ознакама
-      create_own_site: Направите сопствено мрежно место за питања и одговоре за осам секунди, и то бесплатно
+      create_own_site: Направите сопствени сајт за питања и одговоре за осам секунди, и то бесплатно
       full_list_of_questions: цео списак питања
       hot: Занимљиво
       quick_question: Поставите питање а ми ћемо наћи некога ко ће вам одговорити

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   welcome: 
     confirm_age: 
@@ -10,7 +11,8 @@ hu:
       under_18: Fiatalabb vagyok 18-nál
       warning: "FIGYELMEZTETÉS: Ez az oldal tartalmazhat kifejezetten felnőtteknek szánt tartalmat."
     feedback: 
-      captcha_error: Kérjük, oldd meg ezt az egyszerű matematikai műveletet
+      captcha_error: Kérjük győződjön meg, hogy jól írta be a feladat megoldását, és érvényes email címet adott meg!
+      captcha_notice: Köszönjük a visszajelzését, a lehető legrövidebb időn belül válaszolunk.
       email_description: Kérjük, add meg az e-mail címedet, hogy válaszolhassunk az üzenetedre
       feedback_description: Leírás
       feedback_title: Cím
@@ -21,5 +23,6 @@ hu:
       browse_by_tags: böngészés címkék szerint
       create_own_site: Készítsd el saját kérdés és válasz-oldaladat 8 másodperc alatt, ingyen
       full_list_of_questions: A kérdések teljes listájának
+      hot: Legaktívabbak
       quick_question: Kérdezz, és mi találunk valakit, aki megválaszolja
       recent_questions: Friss kérdések

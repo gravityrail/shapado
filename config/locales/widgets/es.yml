@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: McDutchie
 # Author: Patcito
+# Author: Vivaelcelta
 es: 
   widgets: 
     about: 
@@ -61,7 +62,7 @@ es:
     pages: 
       description: Este widget muestra las paginas wiki
       new: Añadir una página nueva
-      title: Paginas wiki
+      title: Páginas wiki
     question_badges: 
       description: Este widget muestra insignias ganadas con esa pregunta.
       title: Insignias de la pregunta
