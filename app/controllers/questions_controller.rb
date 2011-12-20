@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
   def index
     if current_group.current_theme.has_questions_index_html?
       @template_format = 'mustache'
+      request.format = :mustache
     end
 
     find_questions
@@ -132,6 +133,7 @@ class QuestionsController < ApplicationController
   def show
     if current_group.current_theme.has_questions_show_html?
       @template_format = 'mustache'
+      request.format = :mustache
     end
 
     if @question.reward && @question.reward.ends_at < Time.now
