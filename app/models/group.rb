@@ -161,6 +161,14 @@ class Group
   before_create :set_default_theme
   after_create :create_default_tags
 
+  # use for export script, slow
+  def members(only=nil)
+    fields = [:user_id]
+    fields << only if only
+    ids = self.memberships.only(fields).map(&:user_id)
+    users = User.where(:_id.in => ids)
+  end
+
   # TODO: store this variable
   def has_custom_domain?
     @has_custom_domain ||= self[:domain].to_s !~ /#{AppConfig.domain}/
