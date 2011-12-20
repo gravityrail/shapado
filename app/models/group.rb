@@ -162,9 +162,8 @@ class Group
   after_create :create_default_tags
 
   # use for export script, slow
-  def members(only=nil)
-    fields = [:user_id]
-    fields << only if only
+  def members(*fields)
+    fields += [:user_id]
     ids = self.memberships.only(fields).map(&:user_id)
     users = User.where(:_id.in => ids)
   end
