@@ -49,11 +49,11 @@ if options[:method] == :zip
     exporter.to_zip(Question, zf)
     exporter.to_zip(Answer, zf)
     exporter.to_zip(Badge, zf)
-    exporter.to_zip(Ad, zf)
     exporter.to_zip(User, zf, :selector => {:"membership_list.#{group.id}" => {:$exists => true}},
                            :except => exclude)
-    friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
-    exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
+    friend_list_ids = group.members(:friend_list_id).map(&:friend_list_id)
+    puts friend_list_ids
+    exporter.to_file(FriendList, :selector => {:_id => friend_list_ids})
   end
 else
   FileUtils.mkpath(group.subdomain)
@@ -65,10 +65,9 @@ else
   exporter.to_file(Question)
   exporter.to_file(Answer)
   exporter.to_file(Badge)
-  exporter.to_file(Ad)
   exporter.to_file(User, :selector => {"membership_list.#{group.id}" => {:$exists => true}},
                          :except => exclude)
-  friend_list_ids = group.members.only(:friend_list_id).map(&:friend_list_id)
+  friend_list_ids = group.members(:friend_list_id).map(&:friend_list_id)
   exporter.to_file(FriendList, :selector => {:_id.in => friend_list_ids})
 end
 
