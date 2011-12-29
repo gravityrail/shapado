@@ -4,12 +4,10 @@
 
 = raw(current_group.head_tag)
 = render "shared/layout/meta"
-<!--[if lt IE 8]><link type="text/css" rel="stylesheet" media="screen" href="/stylesheets/ie7.css"><![endif]-->
 = render "shared/layout/javascript"
 
 -if @feed_urls && !@feed_urls.empty?
   -@feed_urls.each do |title, url|
     %link{:rel=>"alternate", :type=>"application/atom+xml", :title => title, :href=> url}
 
-= csrf_meta_tag
 = render "shared/analytics"

@@ -12,4 +12,6 @@
   = include_javascripts(:jpicker)
   = include_javascripts(:initdev)
 
+=javascript_include_tag "i18n/#{I18n.locale}"
+
 = yield :js
