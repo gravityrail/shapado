@@ -13,6 +13,7 @@ javascripts:
     - public/javascripts/vendor/jquery-1.6.4.js
     - public/javascripts/app/modules/jqmath.js
   initdev:
+    - public/javascripts/app/initializers/assets.js
     - public/javascripts/app/initializers/init_dev.js
   modernizr_7:
     - public/javascripts/vendor/modernizr.custom.geo.load.js
