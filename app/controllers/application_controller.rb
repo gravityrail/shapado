@@ -152,7 +152,6 @@ class ApplicationController < ActionController::Base
   helper_method :scoped_conditions
 
   def set_layout
-
     if env && env['HTTP_X_PJAX'].present? && !params[:_refresh]
       nil
     elsif devise_controller? || (action_name == "new" && controller_name == "users")
@@ -160,7 +159,7 @@ class ApplicationController < ActionController::Base
     elsif params["format"] == "mobile"
       'mobile'
     elsif current_group.current_theme.has_layout_html?
-      'theme_layout'
+      'theme_layout.mustache.mustache'
     elsif current_group.layout.present?
       current_group.layout
     else
