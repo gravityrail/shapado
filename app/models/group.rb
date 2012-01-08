@@ -23,7 +23,7 @@ class Group
   field :legend, :type => String
   field :description, :type => String
   field :default_tags, :type => Array, :default => []
-  field :has_custom_ads, :type => Boolean, :default => true
+  field :has_custom_ads, :type => Boolean, :default => false
   field :state, :type => String, :default => "pending" #pending, active, closed
   field :isolate, :type => Boolean, :default => false
   field :private, :type => Boolean, :default => false
