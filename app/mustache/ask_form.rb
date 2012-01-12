@@ -8,11 +8,7 @@ class AskForm
   # returns the action menu of the ask form
   # this menu contains links to edit, delete, follow up and more.
   def action_url
-    if question.new?
-      view_context.questions_url
-    else
-      view_context.question_url(question)
-    end
+    view_context.url_for(question)
   end
 
   # returns a hidden text field with coordinates of the user
@@ -20,8 +16,8 @@ class AskForm
   def geolocalization
     output = "".html_safe
     if question && question.position
-      output << hidden_field_tag("question[position][lat]", @question.position["lat"], :class => "lat_input")
-      output << hidden_field_tag("question[position][long]", @question.position["long"], :class => "long_input")
+      output << hidden_field_tag("question[position][lat]", question.position["lat"], :class => "lat_input")
+      output << hidden_field_tag("question[position][long]", question.position["long"], :class => "long_input")
     end
     output
   end
@@ -29,7 +25,7 @@ class AskForm
   # returns the autocomplete tagging input widget
   def tags_input
     adding_field do |f|
-      f.text_field :tags, :value => @question.tags.join(", "), :class => "text_field autocomplete_for_tags"
+      f.text_field :tags, :value => question.tags.join(", "), :class => "text_field autocomplete_for_tags"
     end
   end
 
@@ -97,7 +93,7 @@ class AskForm
   protected
   def adding_field(&block)
     output = ""
-    view_context.form_for([question, answer], :html => {:class => "add_answer markdown"}) do |f|
+    view_context.form_for([question], :html => {:class => "add_question markdown"}) do |f|
       output = block.call(f)
     end
 
