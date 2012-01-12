@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: DavidL
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -26,7 +27,7 @@ fr:
         name: Name
         owner: ce groupe a été crée par %{login}
         registered_only: Seules les personnes autorisées ont accès au site
-        signup_type: Quelles méthodes vos utilisateurs peuvent utiliser s'inscrire
+        signup_type: "Quelles méthodes vos utilisateurs peuvent-ils utiliser pour s'inscrire :"
         state: État
         subdomain: URL
         wysiwyg_editor: Activer l'éditeur de texte convivial (présente à l'écran tel qu'à l'écrit)
@@ -59,10 +60,10 @@ fr:
       legend_legend: Ceci sera utilisé dans l'entête, vous disposez de 40 caractères
       logo_legend: Vous pouvez télécharger le logo du groupe. la taille maximum est de 2mb.
       members_only: Seuls les membres du groupe pourront accéder à ce groupe
-      signup_all: Toute (les utilisateurs peuvent s'inscrire avec une adresse e-mail, OpenID, Facebook, Twitter, etc)
-      signup_email: Courrier électronique uniquement (les utilisateurs ne peuvent se connecter qu'avec leur adresse email / mot de passe)
-      signup_noemail: Toute sauf adresse email / mot de passe (les utilisateurs peuvent se connecter avec OpenID, Facebook, Twitter)
-      signup_social: Sociale seulement (les utilisateurs ne peuvent s'inscrire qu'avec Facebook, Twitter, LinkedIn et Identica)
+      signup_all: Tous les fournisseurs sélectionnés et utilisateur/mot de passe
+      signup_email: Utilisateur/mot de passe seulement
+      signup_noemail: Tous les fournisseurs sélectionnés sans utilisateur/mot de passe
+      signup_social: Les utilisateurs sont obligés d'utiliser Facebook, Twitter, LinkedIn ou Identica
       website_analytics_id: Identifiant d’analyse du site web
     group: 
       about: À propos

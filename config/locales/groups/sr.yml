@@ -19,7 +19,7 @@ sr:
         languages: Додатни језици
         legend: Легенда
         logo: Логотип
-        may_contain_adult_content: Ово мрежно место може имати садржај за одрасле
+        may_contain_adult_content: Овај сајт може да има садржај за одрасле
         name: Назив
         owner: Ову групу је направио %{login}
         registered_only: Само уписани корисници могу да приступе мрежном месту

@@ -61,7 +61,7 @@ hu:
         description: Van olyan válasz, ami 25 felhasználó kedvence
         name: Kedvenc válasz
       favorite_question: 
-        description: Feltett egy kérdést, amit több, mint 25 felhasználó helyezett a kedvencei közé
+        description: Olyan kérdést tett fel, amit több mint 25 felhasználó követ
         name: Kedvenc kérdés
       friendly: 
         description: Első alkalommal követett valakit
@@ -138,7 +138,7 @@ hu:
         description: Van olyan válasz, ami 100 felhasználó kedvence
         name: Csillagos válasz
       stellar_question: 
-        description: Feltett egy olyan kérdést, amit 100 felhasználó helyezett a kedvencei közé
+        description: Olyan kérdést tett fel, amit több mint 100 felhasználó követ
         name: Népszerű kérdés
       student: 
         description: Feltett egy olyan kérdést, aminél legalább egy felszavazás történt

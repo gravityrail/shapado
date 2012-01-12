@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: The real emj
 # Author: Tjernobyl
 da: 
   activerecord: 
@@ -149,7 +150,7 @@ da:
     show: 
       description: "Brugere, der optjente denne badge. Nylig tildelt til:"
       earned: optjent
-      for_tag_bronze: 2000 stemmer i tag %{tag}
+      for_tag_bronze: 200 stemmer i tag %{tag}
       for_tag_gold: 1000 stemmer i tag %{tag}
       for_tag_silver: 400 stemmer i tag %{tag}
       title: Badge %{type}

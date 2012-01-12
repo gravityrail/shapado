@@ -1,6 +1,7 @@
 # Messages for Swedish (Svenska)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: The real emj
 # Author: Tobulos1
 sv: 
   feeds: 
@@ -12,20 +13,46 @@ sv:
     tag: Prenumerera på tagg
     user: Prenumerera på frågor från användare
   global: 
+    actions: Åtgärder
     active: Aktivera
     anonymous: Anonym
+    blog: Blogg
     by: av
+    chat: Chatt
     current: Nuvarande
+    edited: Ändrad
+    feedback: Återkoppling
+    follow: Följ
+    followed_by: "Följd av:"
+    following: Följer
     from: från %{site}
     group_not_found: Sidans %{url} existerar inte
+    next_button: Nästa
     or: eller
     permission_denied: Tillgång nekad
     please_login: Vänligen logga in
     preview: Förhandsgranska
     previous: Föregående
     share: Dela
+    sign_up: Registrera dig
+    sort_by: "Sortera på:"
+    tags_label: "Taggar:"
+    tos: Användarvilkor
+    unfollow: Sluta följ
+    unknown_place: okänd
+    view: Visa
+    view_question: Visa fråga
+    what_to_do: Vad vill du göra
   models: 
     question: Frågan
+  number: 
+    x_time: 
+      one: "en gång "
+      other: "%{count} gånger"
+      zero: Aldrig
+  preferred_languages: 
+    any: Alla
+    user: Min föredragna språk
   scaffold: 
     add: Lägg till
     back: Tillbaka

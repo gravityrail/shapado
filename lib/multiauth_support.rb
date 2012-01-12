@@ -183,7 +183,6 @@ module MultiauthSupport
     end
 
     def twitter_client
-      p "twitter_client I"
       if self.twitter_secret.present? && self.twitter_token.present? && (config = Multiauth.providers["Twitter"])
         TwitterOAuth::Client.new(
           :consumer_key => config["id"],
@@ -192,7 +191,6 @@ module MultiauthSupport
           :secret => self.twitter_secret
         )
       end
-      p "twitter_client E"
     end
 
     def facebook_client(property = 'friends', params = 'fields[]=name&fields[]=picture&fields[]=locale')

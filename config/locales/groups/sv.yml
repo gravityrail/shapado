@@ -1,16 +1,19 @@
 # Messages for Swedish (Svenska)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: The real emj
 # Author: Tobulos1
 # Author: WikiPhoenix
 sv: 
   activerecord: 
     attributes: 
       group: 
+        daily_cap: Daglig maxgräns
         default_tags: Standard-taggar
         description: Beskrivning
         domain: Domän
-        enable_latex: Aktivera LaTeX
+        enable_latex: Aktivera LaTeX med jqmath (snabb men har inte alla funktioner)
+        enable_mathjax: Aktivera LaTeX med mathjax (långsam men komplett)
         fb_button: Aktivera Facebooks Gilla-knapp (inte i privatlivet)
         forum: Tillåt mer än ett svar från användare
         group_created_by: skapad av

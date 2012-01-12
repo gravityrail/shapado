@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Patcito
+# Author: Vivaelcelta
 es: 
   activerecord: 
     attributes: 
@@ -27,6 +28,7 @@ es:
       create_page: Crear una nueva página
       title: Lista de páginas
       wiki: Wiki
+      wiki_pages: Páginas wiki
       written_in: Escrita en %{language}
     new: 
       title: Nueva página

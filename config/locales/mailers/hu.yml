@@ -2,9 +2,12 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: "Új üzenet megjelölve az alábbi csoportban: %{group}"
       earned_badge: 
         subject: "Jelvényt szereztél a következő csoportban: %{group}!"
       favorited: 
@@ -20,5 +23,7 @@ hu:
         subject_owner: "%{login} megválaszolta a következő kérdésedet: %{title}"
       new_comment: 
         subject: "%{login} hozzászólt a következő csoportban: %{group}"
+      new_invitation: 
+        subject: "%{user} meghívott az alábbi csoportba: %{group}"
       report: 
         subject: Jelentés a(z) %{app} %{group} csoportjáról
