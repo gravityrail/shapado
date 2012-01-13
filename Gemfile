@@ -81,6 +81,7 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'uglifier'
 end
+gem 'yui-compressor'
 gem 'jquery-rails'
 
 group :deploy do

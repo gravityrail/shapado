@@ -1,8 +1,9 @@
 
 %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
 
+- jq = "#{javascript_include_tag("jquery.js")}".gsub('</script>', '<\/script>')
 :javascript
-  window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')
+  window.jQuery || document.write('#{jq}')
 
 - if current_group.has_custom_js
   -current_theme = current_group.current_theme || Theme.where(:is_default => true).first
