@@ -1,8 +1,4 @@
-= include_stylesheets(:base)
-
-- if Rails.env == 'development'
-  = include_stylesheets(:jqueryui)
-  = include_stylesheets(:jpicker)
+= stylesheet_link_tag('application')
 
 = yield :css
 -current_theme = current_group.current_theme || Theme.where(:is_default => true).first

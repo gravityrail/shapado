@@ -32,6 +32,8 @@
       = link_to('& mathjax', 'http://www.mathjax.org')
       = raw("<script type='text/javascript'>$('[data-layout=question]').removeClass('pjax')</script>")
 
+  = render "shared/layout/javascript"
   .feedback{:style => "display:none"}
     = render :partial => "welcome/feedback"
   = render "shared/layout/websocket"
+  = render "shared/analytics"

@@ -1,0 +1,181 @@
+@import "shapado/setup"
+
+// Main Question
+//-------------------------------------------------------------------------------------------------------------------
+.main-question
+  width: 100%
+  h1
+    font-size: 25px
+    margin: 0 15px 5px 15px
+    &:first-letter
+      text-transform: uppercase
+  .author, .stats
+    span
+      margin: 0px 5px 0px 15px
+  .author
+    padding: 15px 15px 5px 15px
+    font-style: italic
+
+  .stats
+    margin: 0 15px 10px 15px
+    a
+      font-weight: bold
+  #panel-forms
+    clear: both
+    form
+      width: 96% !important
+      padding: 2%
+      display: none
+      margin: 0
+
+// Main Question - Answers
+//-------------------------------------------------------------------------------------------------------------------
+#answers-content-wrap
+  clear: both
+  h2
+    padding: 10px 15px 10px 15px
+
+  .filters
+    padding-left: 1%
+    width: 99%
+
+  .answers-list
+    clear: both
+    .empty
+      display: block
+      clear: both
+      padding: 20px 30px
+      overflow: hidden
+      img
+        float: left
+        margin: 0 10px 0 0
+      h2
+        background: none
+        border: 0px
+        padding: 0
+
+
+    article.solution
+      background: image-url("answer-winner.png") 490px 20px no-repeat
+      h4.author
+        width: 460px
+    .answer_vote_box
+      float: left
+      margin: 0 10px 0 0
+
+      .votes_average
+        padding: 5px 0
+        text-align: center
+      .vote_box button
+        height: 25px
+        width: 24px
+        border: 0px
+        +small-radius
+        &.negative
+          background-image: image-url("question-toolbar-icons-small.png")
+          background-position:  5px -402px
+          background-repeat: no-repeat
+          &:hover, &.checked
+            background-position: 5px -417px
+        &.positive
+          background-image: image-url("question-toolbar-icons-small.png")
+          background-position: 5px -449px
+          background-repeat: no-repeat
+          &:hover, &.checked
+            background-position: 5px -434px
+
+    .answer
+      .author
+        margin: 0 0 5px 0
+        *
+          font-size: 11px
+          font-weight: normal
+          font-style: italic
+        .user-data a
+          font-size: 12px
+          font-weight: bold
+          font-style: normal
+        img
+          float: left
+          margin: 0 10px 0 0
+
+// Main Question - Answers messages
+//-------------------------------------------------------------------------------------------------------------------
+.followUp-content
+  display: block
+  clear: both
+  padding: 20px 30px
+  overflow: hidden
+
+#close_reason
+  padding: 10px
+  clear: both
+  float: none
+  display: block
+  text-align: center
+  font-size: 14px
+
+// Main Question - Action Panels
+//-------------------------------------------------------------------------------------------------------------------
+#panel-forms
+  height: 100%
+  clear: both
+  padding: 0
+
+  form
+    display: none
+    margin: 0 auto
+    padding: 20px
+    width: 90%
+    overflow: hidden
+
+.share_question
+  h1
+    font-size: 14px
+    margin: 0 0 5px 0
+    padding: 0
+    border: none
+  ul
+    overflow: hidden
+    width: 345px
+    margin: 0 auto
+
+    li
+      width: 24px
+      height: 24px
+      display: inline
+      a
+        text-indent: -9999px
+        display: block
+        overflow: hidden
+        width: 24px
+        height: 24px
+        padding: 0 !important
+        margin: 0 5px 0 0
+        border: none
+        float: left
+        &:hover
+          background-color: transparent !important
+
+    li.facebook a
+      background: image-url("share/facebook.png") 0 0 no-repeat
+    li.twitter a
+      background: image-url("share/twitter.png") 0 0 no-repeat
+    li.identica a
+      background: image-url("share/identi.png") 0 0 no-repeat
+    li.digg a
+      background: image-url("share/digg.png") 0 0 no-repeat
+    li.blogger a
+      background: image-url("share/blogger.png") 0 0 no-repeat
+    li.delicious a
+      background: image-url("share/delicious.png") 0 0 no-repeat
+    li.linkedin a
+      background: image-url("share/linkedin.png") 0 0 no-repeat
+    li.misterwong a
+      background: image-url("share/mister-wong.png") 0 0 no-repeat
+    li.stumbleupon a
+      background: image-url("share/stumbleupon.png") 0 0 no-repeat
+    li.googlebuzz a
+      background: image-url("share/google-buzz.png") 0 0 no-repeat
+    li.friendster a
+      background: image-url("share/frinedster.png") 0 0 no-repeat

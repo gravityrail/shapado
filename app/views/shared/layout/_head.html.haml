@@ -2,12 +2,12 @@
   &= page_title
 = render "shared/layout/css"
 
+= javascript_include_tag "vendor/modernizr.custom.geo.load.js"
+
 = raw(current_group.head_tag)
 = render "shared/layout/meta"
-= render "shared/layout/javascript"
 
 -if @feed_urls && !@feed_urls.empty?
   -@feed_urls.each do |title, url|
     %link{:rel=>"alternate", :type=>"application/atom+xml", :title => title, :href=> url}
 
-= render "shared/analytics"

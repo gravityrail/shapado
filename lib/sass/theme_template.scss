@@ -153,9 +153,7 @@ a {
       background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat; } }
   .searcher {
     border-right: 1px solid darken($view_bg_color, 73%);
-    border-left: 1px solid $fg_color;
-    form#search input {
-      background: white url(/images/search-icon.png) 5px 50% no-repeat; } }
+    border-left: 1px solid $fg_color; }
   .languages_filter {
     border-left: 1px solid $fg_color; } }
 

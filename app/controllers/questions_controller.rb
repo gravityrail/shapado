@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.xml
   def index
-    if current_group.current_theme.has_questions_index_html?
+    if current_group.current_theme.has_questions_index_html? && current_group.current_theme.questions_index_html.size > 0
       @template_format = 'mustache'
       request.format = :mustache
     end

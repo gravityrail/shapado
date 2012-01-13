@@ -42,7 +42,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 04c3870624f8a10329be63898287854cb3cc1b19
+  revision: 5e90bdd2813611a53a84f5207ee0bb0ef489e112
   branch: 2.3.0-stable
   specs:
     mongoid (2.3.4)
@@ -101,10 +101,6 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
-    POpen4 (0.1.4)
-      Platform (>= 0.4.0)
-      open4
-    Platform (0.4.0)
     XMLCanonicalizer (1.0.1)
       log4r (>= 1.0.4)
     ZenTest (4.6.2)
@@ -147,7 +143,7 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (3.0.1)
-    braintree (2.13.1)
+    braintree (2.13.2)
       builder (>= 2.0.0)
     bson (1.4.0)
     bson_ext (1.4.0)
@@ -169,13 +165,13 @@ GEM
       xpath (~> 0.1.4)
     capybara-webkit (0.7.2)
       capybara (>= 1.0.0, < 1.2)
-    childprocess (0.2.4)
+    childprocess (0.2.9)
       ffi (~> 1.0.6)
     chronic (0.6.6)
     chunky_png (1.2.5)
     coderay (0.9.8)
     columnize (0.3.6)
-    compass (0.11.6)
+    compass (0.11.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
@@ -199,6 +195,8 @@ GEM
     encryptor (1.1.3)
     erubis (2.7.0)
     eventmachine (0.12.10)
+    execjs (1.2.13)
+      multi_json (~> 1.0)
     fancy-buttons (1.1.1)
       compass (>= 0.11)
     faraday (0.7.5)
@@ -207,9 +205,9 @@ GEM
       rack (>= 1.1.0, < 2)
     faraday_middleware (0.7.0)
       faraday (~> 0.7.3)
-    ffaker (1.10.1)
+    ffaker (1.12.1)
     ffi (1.0.11)
-    fssm (0.2.7)
+    fssm (0.2.8.1)
     gem_plugin (0.2.3)
     geoip (1.1.1)
     goalie (0.0.4)
@@ -221,17 +219,19 @@ GEM
     hike (1.2.1)
     hpricot (0.8.5)
     i18n (0.6.0)
-    jammit (0.6.5)
-      yui-compressor (>= 0.9.3)
+    jquery-rails (1.0.19)
+      railties (~> 3.0)
+      thor (~> 0.14)
     json (1.6.4)
     kaminari (0.13.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
       railties (>= 3.0.0)
-    kgio (2.7.0)
+    kgio (2.7.2)
     launchy (0.4.0)
       configuration (>= 0.0.5)
       rake (>= 0.8.1)
+    libv8 (3.3.10.4)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
     log4r (1.1.10)
@@ -286,7 +286,7 @@ GEM
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
       net-ssh (>= 2.0.9)
-    net-ssh (2.2.1)
+    net-ssh (2.3.0)
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     niftier-generators (0.1.2)
@@ -321,9 +321,9 @@ GEM
       rack-openid (~> 1.3.1)
       ruby-openid-apps-discovery (~> 1.2.0)
     oauth (0.4.5)
-    oauth2 (0.5.1)
-      faraday (~> 0.7.4)
-      multi_json (~> 1.0.3)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
     omniauth (0.3.2)
       oa-basic (= 0.3.2)
       oa-core (= 0.3.2)
@@ -331,20 +331,15 @@ GEM
       oa-more (= 0.3.2)
       oa-oauth (= 0.3.2)
       oa-openid (= 0.3.2)
-    open4 (1.3.0)
-    orm_adapter (0.0.5)
+    orm_adapter (0.0.6)
     polyglot (0.3.3)
     pry (0.9.7.4)
       coderay (~> 0.9.8)
       method_source (~> 0.6.7)
       ruby_parser (>= 2.3.1)
       slop (~> 2.1.0)
-    pry-doc (0.3.0)
-      pry (>= 0.9.0)
-      yard (>= 0.6.4)
-    pry-rails (0.1.0)
+    pry-rails (0.1.1)
       pry
-      pry-doc
     pyu-ruby-sasl (0.0.3.3)
     rack (1.3.6)
     rack-cache (1.1)
@@ -396,19 +391,19 @@ GEM
       net-ssh
       unicorn
     rinku (1.2.2)
-    rspec (2.7.0)
-      rspec-core (~> 2.7.0)
-      rspec-expectations (~> 2.7.0)
-      rspec-mocks (~> 2.7.0)
-    rspec-core (2.7.1)
-    rspec-expectations (2.7.0)
+    rspec (2.8.0)
+      rspec-core (~> 2.8.0)
+      rspec-expectations (~> 2.8.0)
+      rspec-mocks (~> 2.8.0)
+    rspec-core (2.8.0)
+    rspec-expectations (2.8.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.7.0)
-    rspec-rails (2.7.0)
-      actionpack (~> 3.0)
-      activesupport (~> 3.0)
-      railties (~> 3.0)
-      rspec (~> 2.7.0)
+    rspec-mocks (2.8.0)
+    rspec-rails (2.8.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec (~> 2.8.0)
     ruby-debug-base19 (0.11.25)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -431,12 +426,17 @@ GEM
     sanitize (2.0.3)
       nokogiri (>= 1.4.4, < 1.6)
     sass (3.1.12)
-    selenium-webdriver (2.15.0)
-      childprocess (>= 0.2.1)
+    sass-rails (3.1.5)
+      actionpack (~> 3.1.0)
+      railties (~> 3.1.0)
+      sass (~> 3.1.10)
+      tilt (~> 1.3.2)
+    selenium-webdriver (2.16.0)
+      childprocess (>= 0.2.5)
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
-    sexp_processor (3.0.9)
+    sexp_processor (3.0.10)
     simple_oauth (0.1.5)
     simplecov (0.5.4)
       multi_json (~> 1.0.3)
@@ -454,6 +454,8 @@ GEM
     subexec (0.0.4)
     syntax (1.0.0)
     systemu (2.4.2)
+    therubyracer (0.9.9)
+      libv8 (~> 3.3.10)
     thor (0.14.6)
     tilt (1.3.3)
     treetop (1.4.10)
@@ -473,6 +475,9 @@ GEM
       mime-types (>= 1.16)
       oauth (>= 0.4.1)
     tzinfo (0.3.31)
+    uglifier (1.2.1)
+      execjs (>= 0.3.0)
+      multi_json (>= 1.0.2)
     unf (0.0.4)
       unf_ext
     unf_ext (0.0.4)
@@ -494,9 +499,6 @@ GEM
     xapian-ruby (1.2.7.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
-    yard (0.7.4)
-    yui-compressor (0.9.6)
-      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -523,7 +525,7 @@ DEPENDENCIES
   goalie (~> 0.0.4)
   haml (>= 3.1.3)
   hpricot
-  jammit
+  jquery-rails
   kaminari
   launchy
   machinist_mongo
@@ -566,13 +568,16 @@ DEPENDENCIES
   rubyzip (= 0.9.4)
   sanitize (= 2.0.3)
   sass (>= 3.1.10)
+  sass-rails (~> 3.1.0)
   simplecov
   social_widgets!
   state_machine (= 0.10.4)
+  therubyracer
   tunnlr_connector!
   twitter (= 1.7.2)
   twitter-text (= 1.1.8)
   twitter_oauth
+  uglifier
   unicorn (= 4.1.1)
   uuidtools (~> 2.1.1)
   whatlanguage (= 1.0.0)
