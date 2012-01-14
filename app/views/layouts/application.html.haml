@@ -10,11 +10,10 @@
     = render :partial => "shared/topbar"
     #container{:class => @current_class}
       #columns
+        = render "shared/layout/header"
         = show_flash_messages(:class => "flash", :markdown => true)
-        -(current_group.columns||["column1", "column2", "column3"]).each do |c|
+        -["column3", "column2"].each do |c|
           =render "shared/layout/#{c}"
-          -if c == "column1"
-            = render "shared/widgets", :context => 'mainlist', :position => 'header'
       = render "shared/widgets", :context => 'mainlist', :position => 'footer'
 
       = render "shared/layout/footer"

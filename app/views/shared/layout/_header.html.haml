@@ -1,0 +1,18 @@
+%header
+  = render "shared/widgets", :context => 'mainlist', :position => 'header'
+  -announcements = current_announcements(session[:announcement_hide_time])
+  -unless announcements.empty?
+    .announcement
+      %p
+        - announcements.each do |announcement|
+          = markdown(announcement.message)
+      = link_to t('scaffold.close'), hide_announcements_path, :id => "hide_announcement"
+
+  %h1.brand
+    = link_to(group_logo_img(current_group, :class => "group_logo"), domain_url(:custom => current_group.domain))
+
+  - if !(params[:controller] =~ /moderate\//) || (logged_in? && current_user.can_ask_on?(current_group))
+    = render "shared/quick_question_box"
+
+  - questions_link =  questions_link_for(params[:context])
+  = render "shared/content-nav", :questions_link => questions_link

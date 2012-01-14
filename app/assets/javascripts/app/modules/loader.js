@@ -2,7 +2,7 @@
 var Loader = {
   //only for ready
   initialize: function($body, refreshed) {
-    Updater.initialize();
+    Updater.initialize($body);
     Ui.initialize();
     Messages.initialize();
     Auth.initialize();

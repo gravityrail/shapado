@@ -1,5 +1,5 @@
 var Updater = {
-  initialize: function() {
+  initialize: function($body) {
     var $main_content_wrap = $("#main-content-wrap");
 
     var current, prev, refreshed;
@@ -7,8 +7,8 @@ var Updater = {
 
     current = Updater.guess_current_layout();
 
-    $(document.body).delegate("a.pjax", "click", function(ev) {
-      var link = $(this);
+    $body.delegate("a.pjax", "click", function(ev) {
+     var link = $(this);
 
       prev = current;
       current = link.attr("data-layout");
@@ -35,6 +35,7 @@ var Updater = {
 
       // adsense is incompatible with pjax http://goo.gl/ieq2u
       // TODO remove this once adsense is compatible with html5 history
+
       if($('.widget-adsense').length > 0 && refreshed){
         return true;
       }

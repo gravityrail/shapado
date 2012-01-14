@@ -1,0 +1,179 @@
+@import "setup"
+// HEADER
+header
+  h1.brand
+    float: left
+    a
+      display: block
+      padding: 15px 0
+      margin: 0 0 -10px 0
+
+      img
+        margin: 0 auto
+        max-width: 100%
+
+  .quick_question
+    +normal-radius
+    padding: 15px 0 15px 15px
+    margin-bottom: 3px
+    h2
+      margin: 0 0 5px 0
+      font-weight: normal
+      font-style: italic
+      +text-shadow
+      &:first-letter
+        text-transform: uppercase
+
+    form
+      margin: 0
+      input.text_area
+        float: left
+        width: 385px
+        margin-right: 5px
+      input.ask_question
+        float: left
+
+// TobBar
+.top-bar
+  height: 40px
+  width: 100%
+  top: 0px
+  position: fixed
+  z-index: 1000
+  +outer-shadow
+  .searcher
+    float: left
+    height: 40px
+
+    form#search
+      padding: 0
+      margin: 0 10px
+      overflow: hidden
+      width: auto
+
+      .field
+        float: left
+        margin: 6px 0 0 0
+
+        input
+          margin: 0
+          float: left
+          width: 150px
+          padding: 2px 5px 2px 25px
+
+      input
+        background: white image-url('search-icon.png') 5px 50% no-repeat
+
+  .languages_filter
+    float: left
+    padding: 6px 6px 6px 10px
+    height: 28px
+    .field
+      margin: 0
+    input
+      display: none
+    select
+      width: auto
+      padding: 2px !important
+      height: 22px !important
+
+//NAVIGATION
+ul.content-tabs
+  zoom: 1
+  width: 100%
+  &:before, &:after
+    display: table
+    content: ""
+  &:after
+    clear: both
+  li
+    display: inline
+    a
+      float: left
+      width: auto
+      padding: 0 15px 0 36px
+      display: block
+      line-height: 35px
+      text-transform: uppercase
+      font-size: $s
+      background-position: 7px 50%
+      background-repeat: no-repeat
+
+    &.questions a
+      background-image: image-url('q-icon-medium.png')
+    &.answers a
+      background-image: image-url('ans-icon-medium.png')
+    &.unanswered a
+      background-image: image-url('noans-icon-medium.png')
+    &.activities a
+      background-image: image-url('activity-iacon.png')
+
+
+// FILTERS
+.filters
+  zoom: 1
+  width: 100%
+  ul
+    header
+      float: left
+      display: inline
+      font-size: 13px
+      line-height: 30px
+      font-weight: bold
+      margin: 0 10px
+    li
+      display: inline
+      a
+        float: left
+        display: block
+        padding: 0 12px 0 12px
+        font-size: 13px
+        line-height: 30px
+
+.admin-nav
+  overflow: hidden
+  margin: 0 0 30px 0
+  +normal-radius
+  li
+    float:left
+    display: inline
+    margin: 0 0 -1px 0
+    a
+      padding: 10px 15px
+      display: block
+      float: left
+      font-size: 11px
+      text-transform: uppercase
+
+//FOOTER
+footer
+  display: block
+  padding: 20px
+  text-align: center
+  ul
+    width: 555px
+    margin: 0 auto
+    li:first-child
+      a
+        margin: 0 20px 0 0
+    li:last-child
+      border: none
+      a
+        margin-right: 0
+    li
+      float: left
+      display: inline
+
+      margin: 0 0 10px 0
+      a
+        margin: 0 10px
+        font-size: 12px
+      a:hover
+        border-bottom: 1px dotted
+  p
+    clear: both
+    float: none
+    margin: 0 0 3px 0
+    font-size: 12px
+    a:hover
+      border-bottom: 1px dotted

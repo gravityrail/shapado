@@ -1,20 +1,9 @@
 - context = widgets_context(params[:controller], params[:action])
 
+
 %section.content-panel#column2{:class => current_group.send(:"#{context}_widgets").sidebar.count == 0 ? "nosidebar" : "" }
-  - announcements = current_announcements(session[:announcement_hide_time])
-  -unless announcements.empty?
-    .announcement
-      %p
-        - announcements.each do |announcement|
-          = markdown(announcement.message)
-      = link_to t('scaffold.close'), hide_announcements_path, :id => "hide_announcement"
-
-  - if !(params[:controller] =~ /moderate\//) || (logged_in? && current_user.can_ask_on?(current_group))
-    = render "shared/quick_question_box"
-
   #main-content-wrap{:class => @active_tab}
     - if params[:controller] =~ /moderate\//
       = render "shared/moderate_navigation"
-
     = yield
     .clear

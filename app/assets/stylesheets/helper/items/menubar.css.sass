@@ -1,7 +1,3 @@
-@import "shapado/setup"
-
-// Generals
-//-------------------------------------------------------------------------------------------------------------------
 .menubar li ul
   display: none
 .menubar, .menubar *
@@ -124,6 +120,8 @@ li.sfHover > a > .sf-sub-indicator
       &.drop-menu
         a
           padding: 8px 10px
+      &.auth-list ul li a
+        padding: 8px 10px
       top: 40px !important
       h3
         padding: 5px
@@ -165,8 +163,6 @@ li.sfHover > a > .sf-sub-indicator
             padding: 5px
           cursor: auto
 
-// ARTICLE TOOLBAR - dropdown for moderate + ARTICLE TOOLBAR - dropdown for moderate
-//-------------------------------------------------------------------------------------------------------------------
 .index .toolbar .dropHover  ul,
 .main-question .toolbar .dropHover ul
   top: 22px
@@ -175,4 +171,14 @@ li.sfHover > a > .sf-sub-indicator
 .main-question .toolbar .dropHover ul
   top: 27px
 
+#login_dialog
+  display: none
 
+.ui-dialog
+  .auth-list
+    border: 0px !important
+    ul
+      margin: 0 10px 0 0 !important
+      li
+        display: block !important
+        float: none !important
