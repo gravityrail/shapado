@@ -17,23 +17,23 @@
     overflow: hidden
     background: url('../images/arrows-ffffff.png') no-repeat -10px -100px //8-bit indexed alpha png. IE6 gets solid image only
 
-  .drop-menu
+  ul.drop-menu
     a
       display: block
       position: relative
       white-space: nowrap
-    ul
-      li
+    li
+      &:hover
+        visibility: inherit // fixes IE7 'sticky bug'
+        cursor: pointer
+      a
+        width 100%
+        display: block
+        position: relative
+        border-right: 0px !important
+        border-left: 0px !important
         &:hover
-          visibility: inherit // fixes IE7 'sticky bug'
           cursor: pointer
-        a
-          display: block
-          position: relative
-          border-right: 0px !important
-          border-left: 0px !important
-          &:hover
-            cursor: pointer
 
   ul
     position: absolute

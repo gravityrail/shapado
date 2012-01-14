@@ -33,7 +33,6 @@
       - if logged_in? && (current_user.can_modify?(question) || current_user.can_retag_others_questions_on?(current_group))
         %li.retag
           = link_to t('.retag'), retag_question_path(question), :class => 'retag-link'
-    .clear
 
     .toolbar
       %ul.menubar

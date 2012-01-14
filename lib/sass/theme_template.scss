@@ -1045,3 +1045,7 @@ input[type=submit], input.save, .add_attachment {
 .filters.pages ul li.pages a,{
   border-bottom: 2px solid $brand_color;
 }
+
+#columns {
+  background-color: $view_bg_color;
+}

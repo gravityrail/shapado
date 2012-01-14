@@ -1,6 +1,28 @@
 @import "setup"
 
 @import "helper/items/menubar"
+@import "helper/items/widgets"
+@import "helper/items/tags"
+
+.toolbar
+  display: block
+  ul
+    zoom: 1
+    width: 100%
+    &:before, &:after
+      display: table
+      content: ""
+    &:after
+      clear: both
+    li
+      display: inline
+      line-height: 24px
+      a
+        float: left
+        padding: 0 5px
+        display: block
+        line-height: 24px
+        +small-radius
 
 .pagination
   text-align: center
