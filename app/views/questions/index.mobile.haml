@@ -23,7 +23,7 @@
     %ul{:data => {:role => "listview", :filter => "true"}}
       -@questions.each do |question|
         %li
-          %a{:href => question_path(question, :format => "mobile")}
+          %a{:href => question_path(question, :format => "mobile"), :class => 'normal-whitespace'}
             = question.title
             -if question.closed
               %strong
