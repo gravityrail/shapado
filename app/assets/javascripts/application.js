@@ -48,8 +48,7 @@
 //= require vendor/jquery.smart-poll.js
 //= require app/modules/themes.js
 
+//= require app/main.js
 
-$(document).ready(function() {
-  var $body = $(document.body);
-  Loader.initialize($body, true);
-});
+
+
