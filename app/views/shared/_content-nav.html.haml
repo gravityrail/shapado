@@ -9,8 +9,6 @@
     %li
       = link_to t('layouts.application.tags'), tags_path, :class => "pjax", :"data-layout" => "tags"
 
-    -#%li.unanswered
-      -#= pjax_link_to t('layouts.application.unanswered'), "index", url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
     %li.activities
       = pjax_link_to t('activerecord.models.activity'), "index", activities_path('context' => (params[:context]||params[:action])), :rel => 'nofollow'
 
