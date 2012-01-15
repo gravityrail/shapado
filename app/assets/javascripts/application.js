@@ -22,6 +22,7 @@
 //= require app/modules/votes.js
 //= require app/modules/websocket.js
 //= require app/modules/groups.js
+//= require app/modules/users.js
 //= require app/modules/loader.js
 //= require app/modules/updater.js
 //= require app/modules/layout_editor.js

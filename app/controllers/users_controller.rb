@@ -72,9 +72,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
     @user.safe_update(%w[login email name password_confirmation password  website
-                         language timezone identity_url bio hide_country], params[:user])
+                         language timezone identity_url bio hide_country
+                         preferred_languages], params[:user])
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
     end
@@ -202,9 +202,12 @@ class UsersController < ApplicationController
     end
 
     @user.networks = params[:networks]
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
-    @user.safe_update(%w[login email name language timezone bio hide_country website avatar use_gravatar], params[:user])
-    @user.notification_opts.safe_update(%w[new_answer give_advice activities reports questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter comments_to_twitter], params[:user][:notification_opts]) if params[:user][:notification_opts]
+    @user.safe_update(%w[preferred_languages login email name
+                         language timezone bio hide_country
+                         website avatar use_gravatar], params[:user])
+    @user.notification_opts.safe_update(%w[new_answer give_advice activities reports
+       questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter
+       comments_to_twitter], params[:user][:notification_opts]) if params[:user][:notification_opts]
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
     end

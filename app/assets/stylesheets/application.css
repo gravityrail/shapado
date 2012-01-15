@@ -19,6 +19,8 @@
 //= require components/doc
 //= require components/users
 
+//= require chosen/chosen
+
 //= require h5bp/helpers.css
 //= require h5bp/media.css
 //= require h5bp/print.css
