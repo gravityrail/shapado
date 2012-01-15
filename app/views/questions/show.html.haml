@@ -12,16 +12,15 @@
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
     .author
       %p
-        %span
-          = I18n.t('global.by_semi')
         = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
+        -if !@question.user.hide_country && @question.address.present?
+          %span
+            = t("global.from", :site => CGI.escape_html(@question.address_name))
         %span
           = t('activerecord.attributes.question.created_at')
         %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
-        -if !@question.user.hide_country && @question.address.present?
-          %span
-            = t("global.from", :site => CGI.escape_html(@question.address_name))
+
 
     %h1{:itemprop => "name"}
       = @question.title
@@ -35,6 +34,16 @@
       = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
       .clear
 
+    %ul.tag-list
+      %li.title
+        = t('global.tags_label')
+      - @question.tags.each do |tag|
+        %li
+          = tag_link(tag)
+      - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
+        %li.retag
+          = link_to t('.retag'), retag_question_path(@question), :class => 'retag-link'
+
     .stats
       %p
         = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
@@ -43,7 +52,7 @@
         = t('number.x_time', :count => number_with_delimiter(@question.views_count))
         %span
           = t("questions.show.last_activity")
-        = t("time.ago", :time => time_ago_in_words(@question.activity_at))
+        = link_to t("time.ago", :time => time_ago_in_words(@question.activity_at)), history_question_path(@question.id), :title => t("questions.show.history")+" (#{@question.versions_count})"
 
     %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
     %meta{:itemprop=>"inLanguage", :content=>@question.language}
@@ -64,16 +73,6 @@
             = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-
-    %ul.tag-list
-      %li.title
-        = t('global.tags_label')
-      - @question.tags.each do |tag|
-        %li
-          = tag_link(tag)
-      - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
-        %li.retag
-          = link_to t('.retag'), retag_question_path(@question), :class => 'retag-link'
 
     = render "toolbar"
 
