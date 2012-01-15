@@ -46,7 +46,7 @@ namespace :setup do
     end
     default_group.save!
     default_group.add_member(admin, "owner")
-    default_group.logo = File.open(Rails.root+"public/images/logo.png")
+    default_group.logo = File.open(Rails.root+"app/assets/images/logo.png")
     default_group.save
   end
 
@@ -54,7 +54,7 @@ namespace :setup do
     Theme.destroy_all
     theme = Theme.create_default
 
-    theme.bg_image = File.open(Rails.root+"public/images/back-site.gif")
+    theme.bg_image = File.open(Rails.root+"app/assets/images/back-site.gif")
     Jobs::Themes.generate_stylesheet(theme.id)
     Group.override({}, {:current_theme_id => theme.id})
   end
