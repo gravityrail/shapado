@@ -4,12 +4,16 @@
   %head
     %title
       &= page_title
+      %script{ src: "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" }
 
-    %link{:rel=>"stylesheet", :href=>"/stylesheets/jquery.mobile-1.0b1pre.min.css"}
-    = include_javascripts(:mobile)
-    %script{:src=>"/javascripts/jquery.mobile-1.0b1pre.min.js", :type => "text/javascript"}
+    - jq = "#{javascript_include_tag("jquery.js")}".gsub('</script>', '<\/script>')
+    :javascript
+      window.jQuery || document.write('#{jq}')
+    %link{:rel=>"stylesheet", :href=>"//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css"}
+    %script{:src=>"//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js", :type => "text/javascript"}
 
-    =include_stylesheets(:mobile)
+    /= stylesheet_link_tag(:mobile)
+    = javascript_include_tag(:mobile)
 
     = csrf_meta_tag
   %body
