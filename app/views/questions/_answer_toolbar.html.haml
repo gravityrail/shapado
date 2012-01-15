@@ -6,10 +6,10 @@
   %ul.menubar
     - if logged_in?
       %li
-        = link_to t("questions.answer.add_comment"), new_question_comment_path(question, answer), :class => "Answer-commentable", "data-commentable"=>answer.id
+        = link_to t("questions.answer.add_comment"), new_question_comment_path(question, answer), :class => "Answer-commentable action", "data-commentable"=>answer.id
       - if (answer.wiki || current_user.can_edit_others_posts_on?(answer.group) || current_user.can_modify?(answer))
         %li
-          = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form", "data-lazy-form" => "edit_answer"
+          = link_to t("scaffold.edit"), edit_question_answer_path(question, answer), "data-lazy" => "1", :class => "show_form action", "data-lazy-form" => "edit_answer"
       - if current_user.mod_of?(question.group) || current_user.can_modify?(question)
         %li
           - unless question.accepted && !question.subjetive

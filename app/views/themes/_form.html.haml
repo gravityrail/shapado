@@ -1,8 +1,8 @@
 -content_for :js do
-  = include_javascripts(:codemirror)
+  = javascript_include_tag(:codemirror)
 
 -content_for :css do
-  = include_stylesheets(:codemirror)
+  = stylesheet_link_tag(:codemirror)
 
 .field
   = form.label t('shared.name')

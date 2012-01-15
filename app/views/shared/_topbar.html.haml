@@ -1,22 +1,23 @@
 %nav.top-bar
-  %ul.group-list.menubar
-    -if !current_group.isolate
-      = render "groups/top_grouplist"
-    -if logged_in?
-      -if current_user.admin_of?(current_group)
-        = render "admin/manage/top_admin"
-      -if current_user.mod_of?(current_group)
-        = render "admin/moderate/top_moderate"
+  .warp
+    %ul.group-list.menubar
+      -if !current_group.isolate
+        = render "groups/top_grouplist"
+      -if logged_in?
+        -if current_user.admin_of?(current_group)
+          = render "admin/manage/top_admin"
+        -if current_user.mod_of?(current_group)
+          = render "admin/moderate/top_moderate"
 
-  -#.searcher
-    -#= form_tag search_index_path, :method => :get, :id => "search" do
-      -#.field
-        -#= text_field_tag :q, params[:q]
+    -#.searcher
+      -#= form_tag search_index_path, :method => :get, :id => "search" do
+        -#.field
+          -#= text_field_tag :q, params[:q]
 
-  -if !logged_in?
-    /=multiauth_menu("Sign In")
-    = multiauth_dropdown("Sign In")
-  -else
-    %ul.user-list.menubar
-      = render "notifications/notifications_menu"
-      = render "users/top_user"
+    -if !logged_in?
+      /=multiauth_menu("Sign In")
+      = multiauth_dropdown("Sign In")
+    -else
+      %ul.user-list.menubar
+        = render "notifications/notifications_menu"
+        = render "users/top_user"

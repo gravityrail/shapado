@@ -84,9 +84,10 @@
       %h2
         = t("questions.question.has_answers", :count => @question.answers_count)
 
-    %section.filters
-      %ul{:class => @active_subtab.to_s}
-        %header= t('global.sort_by')
+    .filters
+      %ul.menubar{:class => @active_subtab.to_s}
+        %li
+          %label=t('global.sort_by')
         %li.newest-active
           = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
         %li.votes-active

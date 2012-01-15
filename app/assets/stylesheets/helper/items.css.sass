@@ -17,7 +17,7 @@
     li
       display: inline
       line-height: 24px
-      a
+      a.action
         float: left
         padding: 0 5px
         display: block
@@ -35,3 +35,62 @@
     padding: 7px 7px 7px 10px
     margin: 0 3px
     +small-radius
+
+.badges
+  h1
+    margin: 30px 0 10px 30px
+  p
+    margin: 0 30px 30px 30px
+  .content
+    padding: 0 30px 30px 30px
+
+  ul li
+    margin-bottom: 5px
+    overflow: hidden
+
+    .badge_item
+      width: 40%
+      float: left
+
+    .badge_description
+      width: 55%
+      float: left
+      margin: 5px
+
+    .badge
+      width: 65%
+      float: left
+      padding: 5px 10px
+      display: block
+      +big-radius
+
+    .counter
+      float: left
+      width: 15%
+      font-size: 12px
+      margin: 5px
+      font-style: italic
+
+.vote_box
+  button
+    height: 25px
+    width: 24px
+    border: 0px
+    +small-radius
+    &.negative
+      background-image: image-url("question-toolbar-icons-small.png")
+      background-position:  5px -402px
+      background-repeat: no-repeat
+      &:hover, &.checked
+        background-position: 5px -417px
+    &.positive
+      background-image: image-url("question-toolbar-icons-small.png")
+      background-position: 5px -449px
+      background-repeat: no-repeat
+      &:hover, &.checked
+        background-position: 5px -434px
+  .votes_average
+    padding: 5px 0
+    text-align: center
+    width: 24px
+    margin: 0px auto

@@ -1,4 +1,4 @@
--i18n_scope = "questions.show"
+- i18n_scope = "questions.show"
 - show_close_request_form = !@question.closed && logged_in? && @question.can_be_requested_to_close_by?(current_user)
 
 - show_open_request_form = @question.closed && logged_in? && @question.can_be_requested_to_open_by?(current_user)
@@ -22,19 +22,19 @@
   %ul.menubar
     -if !logged_in? || current_user.can_answer_on?(current_group)
       %li.answer
-        = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form"
+        = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form action"
 
 
 
     %li.follow
       - if current_user && @question.follower?(current_user)
-        = link_to t('global.unfollow'), unfollow_question_path(@question), :class => 'unfollow-q toggle-action', "data-undo" =>  follow_question_path(@question), "data-title" => t("#{i18n_scope}.follow_tooltip"), :title => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.follow'), "rel" => 'nofollow'
+        = link_to t('global.unfollow'), unfollow_question_path(@question), :class => 'unfollow-q toggle-action action', "data-undo" =>  follow_question_path(@question), "data-title" => t("#{i18n_scope}.follow_tooltip"), :title => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.follow'), "rel" => 'nofollow'
       - else
-        = link_to t('global.follow'), follow_question_path(@question), :title => t("#{i18n_scope}.follow_tooltip"), :class => 'follow-q toggle-action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.unfollow'), "rel" => 'nofollow'
+        = link_to t('global.follow'), follow_question_path(@question), :title => t("#{i18n_scope}.follow_tooltip"), :class => 'follow-q toggle-action action', "data-undo" =>  unfollow_question_path(@question), "data-title" => t("#{i18n_scope}.unfollow_tooltip"), 'data-text' => t('global.unfollow'), "rel" => 'nofollow'
 
 
     %li.share_on
-      = link_to t('global.share'), "#", :id => "share_question", :class => "show_form"
+      = link_to t('global.share'), "#", :id => "share_question", :class => "show_form action"
 
 
     - if !@flag.new_record?
@@ -50,7 +50,7 @@
     - elsif current_user != @question.user
       %li.no-spam
         - if !logged_in? || !current_user.mod_of?(current_group)
-          = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
+          = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link action", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
 
     - if logged_in?
       = render "requests_menu", :question => @question, :i18n_scope => i18n_scope
@@ -68,20 +68,19 @@
               = link_to t('close_requests.form.retract'), question_close_request_path(@question,@close_request), :id => "destroy_question_close_request_link", :rel => 'nofollow', :confirm => t('scaffold.are_you_sure'), :method => :delete
 
 
-
     %li.more.current
       = link_to t("#{i18n_scope}.more_actions")
 
       %ul.drop-menu
         %li.followUp
-          = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description")
+          = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description"), :class => "action"
 
         - if logged_in?
           %li.activity
             = link_to t("#{i18n_scope}.history")+" (#{@question.versions_count})", history_question_path(@question), "rel" => 'nofollow'
           -if current_user.can_create_reward?(@question)
             %li.add_reward
-              = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :class => "show_form", :title => t("#{i18n_scope}.create_reward_description")
+              = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :class => "show_form action", :title => t("#{i18n_scope}.create_reward_description")
 
 
           - if show_close_request_form && @close_request.new_record?

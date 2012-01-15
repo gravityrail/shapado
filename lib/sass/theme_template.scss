@@ -959,7 +959,7 @@ input[type=submit], input.save, .add_attachment {
   background-color: $view_bg_color; }
 
 // shapado/others/toolbars.toolbar
-.toolbar ul li a {
+.toolbar ul li a.action {
   &:hover {
     background-color: $brand_color;
     color: white; }
