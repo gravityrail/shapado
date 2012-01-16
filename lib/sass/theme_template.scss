@@ -956,7 +956,9 @@ input[type=submit], input.save, .add_attachment {
 
 // shapado/others/quick-question
 .quick_question {
-  background-color: $view_bg_color; }
+  background-color: $view_bg_color;
+  .search-feedback: {
+    color: #999999; }}
 
 // shapado/others/toolbars.toolbar
 .toolbar ul li a.action {

@@ -9,6 +9,9 @@
       =f.text_field :title, :class => "text_area", :id => "question_title", :autocomplete => 'off', :placeholder => raw(current_group.question_prompt) || t(".quick_question")
       .buttons-quickq
         =f.submit t("questions.index.ask_question", :default => :"layouts.application.ask_question"), :class => "ask_question"
+        .search-feedback
+          type to search
+
 
       -if lang
         = f.hidden_field :language, :value => lang

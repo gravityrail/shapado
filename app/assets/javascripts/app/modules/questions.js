@@ -27,9 +27,17 @@ var Questions = {
       timeout : 500,
 //       minLength: 5,
       extraParams : extraParams,
+      before_query: function() {
+        $('.quick_question .search-feedback').text("searching questions");
+      },
       success: function(data) {
+        $('.quick_question .search-feedback').text(data.message);
         $('#additional_info .pagination').html(data.pagination);
-      }
+      },
+      after_reset: function(data) {
+        $('.quick_question .search-feedback').text("type to search");
+        $('.content-tabs').show();
+      },
     });
 
     $(".flag-link-index").live("click", function(event) {

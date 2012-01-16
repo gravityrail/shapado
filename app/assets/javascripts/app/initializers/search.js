@@ -8,7 +8,8 @@
       target: $("body"),
       behaviour : "live",
       success: function(data) {},
-      before_query: function() {}
+      before_query: function(target) {},
+      after_reset: function(target) {},
     }
 
     var options =  $.extend(defaults, options);
@@ -68,6 +69,7 @@
             } else {
               settings.target.empty();
               settings.target.append(cache);
+              settings.after_reset.call(self, settings.target);
             }
           });
         });
@@ -83,6 +85,7 @@
             } else {
               settings.target.empty();
               settings.target.append(cache);
+              settings.after_reset.call(self, settings.target);
             }
           });
         });
