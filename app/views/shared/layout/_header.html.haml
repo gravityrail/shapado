@@ -17,5 +17,6 @@
       -if !(params[:controller] =~ /moderate\//)
         = render "shared/quick_question_box"
 
-  - questions_link =  questions_link_for(params[:context])
-  = render "shared/content-nav", :questions_link => questions_link
+  -if !(params[:controller] =~ /moderate\//)
+    - questions_link =  questions_link_for(params[:context])
+    = render "shared/content-nav", :questions_link => questions_link

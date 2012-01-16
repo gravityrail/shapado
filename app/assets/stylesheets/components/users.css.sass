@@ -46,7 +46,6 @@
 
 
 // User profile
-// ------------------------------------------------------------------------------------------------------
 .userHistory
   .userDescription
     padding: 20px
@@ -177,8 +176,13 @@
 .list-users
   .top
     overflow: hidden
-    padding: 30px
+    padding-bottom: 10px
+    h1
+      display: inline
+      float: left
     form
+      float: left
+      margin-left: 10px
       .field
         width: 100%
         margin: 0
@@ -194,8 +198,10 @@
           width: auto
           float: left
           border: 0px
+
   .filters
     overflow: hidden
+    margin: 0px
     li
       float: left
       display: inline
@@ -209,6 +215,7 @@
         border-bottom: 2px solid transparent
         &:hover, a.active
   ul.items
+    list-style: none
     li
       padding: 5px
       .stats

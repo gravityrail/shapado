@@ -10,6 +10,11 @@
 
 -cache_for(:question, @question.id, @question.user == current_user ? "owner" : "" ) do
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
+
+    %h1{:itemprop => "name"}
+      = @question.title
+      - if @question.closed
+        =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
     .author
       %p
         = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
@@ -20,12 +25,6 @@
           = t('activerecord.attributes.question.created_at')
         %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
-
-
-    %h1{:itemprop => "name"}
-      = @question.title
-      - if @question.closed
-        =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
     .description.markdown
       %div{:itemprop => "articleBody"}
