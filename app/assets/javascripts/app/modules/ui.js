@@ -3,14 +3,11 @@ var Ui = {
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }
-
-    var languages_filter = $(".languages_filter form")
-    languages_filter.find(".buttons").hide();
-    languages_filter.find("#language_filter").change(function(){
-      submit = languages_filter.find(".buttons .change_language");
-      submit.trigger("click");
+    var quick_question = $('.quick_question');
+    quick_question.find('.buttons-quickq').hide();
+    quick_question.find('form input[type=text]').focus(function(){
+      quick_question.find('.buttons-quickq').show();
     });
-
     Ui.hide_comments_form();
 
     if(Ui.supports_input_placeholder()) {
