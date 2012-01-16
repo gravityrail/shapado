@@ -28,6 +28,7 @@
 //= require app/modules/layout_editor.js
 
 //= require app/initializers/search.js
+//= require app/initializers/retag.js
 //= require app/initializers/shapado_toolbar.js
 //= require vendor/jquery.droppy.js
 //= require app/modules/invitations.js
