@@ -1,19 +1,18 @@
 %nav.top-bar
   .warp
-    %ul.group-list.menubar
-      -if !current_group.isolate
-        = render "groups/top_grouplist"
+    %ul.menubar
+      %li.logo
+        %h1.brand
+          = link_to(group_logo_img(current_group, :class => "group_logo"), domain_url(:custom => current_group.domain))
+      %li.searcher
+        = form_tag search_index_path, :method => :get, :id => "search" do
+          .field
+            = text_field_tag :q, params[:q]
       -if logged_in?
         -if current_user.admin_of?(current_group)
           = render "admin/manage/top_admin"
         -if current_user.mod_of?(current_group)
           = render "admin/moderate/top_moderate"
-
-    -#.searcher
-      -#= form_tag search_index_path, :method => :get, :id => "search" do
-        -#.field
-          -#= text_field_tag :q, params[:q]
-
     -if !logged_in?
       /=multiauth_menu("Sign In")
       = multiauth_dropdown("Sign In")
@@ -21,3 +20,7 @@
       %ul.user-list.menubar
         = render "notifications/notifications_menu"
         = render "users/top_user"
+
+    %ul.menubar.group-list
+      -if !current_group.isolate
+        = render "groups/top_grouplist"

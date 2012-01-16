@@ -6,7 +6,7 @@ module GroupsHelper
     begin
       if group.has_logo?
         if options[:size].nil?
-          options.merge!(:width => group.logo_info["width"], :height => group.logo_info["height"])
+#           options.merge!(:width => group.logo_info["width"], :height => group.logo_info["height"])
         end
         image_tag(logo_path(current_group), options)
       else

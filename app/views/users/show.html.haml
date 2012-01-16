@@ -1,6 +1,6 @@
 #users_show{:item_scope => '', :itemtype => "http://schema.org/Person"}
   %section.userHistory
-    .userDescription
+    .userDescription.clearfix
       .basicInfo
         = avatar_img @user, :size => "medium"
         %h2{:itemprop => "name"}
@@ -61,7 +61,6 @@
           -else
             %li.follow
               =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user), :method => 'post'
-      .clear
 
     .badges
       %h3= t("activerecord.models.badges")
