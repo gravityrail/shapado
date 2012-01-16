@@ -614,6 +614,42 @@ class QuestionsController < ApplicationController
     end
   end
 
+  # My feed, this returns:
+  # - all the questions I asked
+  # - all the questions I follow
+  # - all the questions followed by people I follow
+  #   (questions followed by people I find interesting must be interesting to me)
+  # - all the questions tagged with one of the tag I follow_up
+
+  def feed
+    tags = current_user.preferred_tags_on(current_group)
+    user_ids = current_user.friend_list.following_ids
+    user_ids << current_user.id
+    find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
+                                    {:tags.in => tags},
+                                    {:user_id => user_ids}])
+  end
+
+  def by_me
+    find_questions(:user_id => current_user.id)
+  end
+
+  def preferred
+    @current_tags = tags = current_user.preferred_tags_on(current_group)
+
+    find_questions(:tags => {:$in => tags})
+  end
+
+  def expertise
+    @current_tags = tags = current_user.stats(:expert_tags).expert_tags # TODO: optimize
+
+    find_questions(:tags => {:$in => tags})
+  end
+
+  def contributed
+    find_questions(:contributor_ids.in => [current_user.id])
+  end
+
   protected
   def check_permissions
     @question = current_group.questions.by_slug(params[:id])

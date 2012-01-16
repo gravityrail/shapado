@@ -55,11 +55,6 @@ Rails.application.routes.draw do
     member do
       post :unfollow
       post :follow
-      get :feed
-      get :expertise
-      get :preferred
-      get :by_me
-      get :contributed
       get :answers
       get :follows
       get :activity
@@ -109,6 +104,11 @@ Rails.application.routes.draw do
       get :tags_for_autocomplete
       get :related_questions
       get :random
+      get :by_me
+      get :preferred
+      get :feed
+      get :expertise
+      get :contributed
     end
 
     member do

@@ -234,49 +234,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # My feed, this returns:
-  # - all the questions I asked
-  # - all the questions I follow
-  # - all the questions followed by people I follow
-  #   (questions followed by people I find interesting must be interesting to me)
-  # - all the questions tagged with one of the tag I follow
-  def feed
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    return render_404 if @user.nil?
-
-    tags = @user.preferred_tags_on(current_group)
-    user_ids = @user.friend_list.following_ids
-    user_ids << @user.id
-    find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
-                                    {:tags.in => tags},
-                                    {:user_id => user_ids}])
-  end
-
-  def by_me
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    find_questions(:user_id => @user.id)
-  end
-
-  def preferred
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    @current_tags = tags = @user.preferred_tags_on(current_group)
-
-    find_questions(:tags => {:$in => tags})
-  end
-
-  def expertise
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    @current_tags = tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
-
-    find_questions(:tags => {:$in => tags})
-  end
-
-  def contributed
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-
-    find_questions(:contributor_ids.in => [@user.id])
-  end
-
   def connect
     authenticate_user!
     warden.authenticate!(:scope => :openid_identity, :recall => "show")

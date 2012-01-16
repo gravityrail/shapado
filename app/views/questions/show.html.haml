@@ -52,7 +52,7 @@
         = t('number.x_time', :count => number_with_delimiter(@question.views_count))
         %span
           = t("questions.show.last_activity")
-        = link_to t("time.ago", :time => time_ago_in_words(@question.activity_at)), history_question_path(@question.id), :title => t("questions.show.history")+" (#{@question.versions_count})"
+        = link_to t("time.ago", :time => time_ago_in_words(@question.activity_at)), history_question_path(@question), :title => t("questions.show.history")+" (#{@question.versions_count})"
 
     %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
     %meta{:itemprop=>"inLanguage", :content=>@question.language}

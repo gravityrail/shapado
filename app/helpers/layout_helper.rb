@@ -49,15 +49,15 @@ module LayoutHelper
   def questions_link_for(action)
     case action
     when "by_me"
-      {"controller" => "users", "action" => "by_me", :id => current_user.to_param}
+      {"controller" => "questions", "action" => "by_me"}
     when "feed"
-      {"controller" => "users", "action" => "feed", :id => current_user.to_param}
+      {"controller" => "questions", "action" => "feed"}
     when "preferred"
-      {"controller" => "users", "action" => "preferred", :id => current_user.to_param}
+      {"controller" => "questions", "action" => "preferred"}
     when "expertise"
-      {"controller" => "users", "action" => "expertise", :id => current_user.to_param}
+      {"controller" => "questions", "action" => "expertise"}
     when "contributed"
-      {"controller" => "users", "action" => "contributed", :id => current_user.to_param}
+      {"controller" => "questions", "action" => "contributed"}
     else
       {"controller" => "questions", "action" => "index"}
     end
