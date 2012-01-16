@@ -28,17 +28,22 @@
 %li
   %label Filter:
 %li
-  = link_to t('layouts.application.unanswered'), url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
+  - if session[:filter]
+    = link_to t("layouts.application.#{session[:filter]}"), url_for(questions_link_for(session[:filter])), :rel => 'nofollow'
+  - elsif params[:unanswered]
+    = link_to t('layouts.application.unanswered'), url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
+  - else
+    = link_to t('layouts.application.all'), questions_path, :rel => 'nofollow'
   %ul.drop-menu
     %li
-      = tab_entry "li", t('layouts.application.all'), questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+      = tab_entry "li", t('layouts.application.all'), filtered_questions_path(filter: 'all'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
       = link_to t('layouts.application.unanswered'), url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
       -if logged_in?
-        = tab_entry "li", t('layouts.application.followed'), feed_questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
-        = tab_entry "li", t('layouts.application.by_me'), by_me_questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
-        = tab_entry "li", t('layouts.application.preferred'), preferred_questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
-        = tab_entry "li", t('layouts.application.contributed'), contributed_questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
-        = tab_entry "li", t('layouts.application.collaborate'), expertise_questions_path, :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+        = tab_entry "li", t('layouts.application.followed'),  filtered_questions_path(filter: 'feed'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+        = tab_entry "li", t('layouts.application.by_me'), filtered_questions_path(filter: 'by_me'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+        = tab_entry "li", t('layouts.application.preferred'), filtered_questions_path(filter: 'preferred'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+        = tab_entry "li", t('layouts.application.contributed'), filtered_questions_path(filter: 'contributed'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
+        = tab_entry "li", t('layouts.application.collaborate'), filtered_questions_path(filter: 'expertise'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
 
 %li
   %label
