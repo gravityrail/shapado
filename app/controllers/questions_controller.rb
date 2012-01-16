@@ -622,6 +622,7 @@ class QuestionsController < ApplicationController
   # - all the questions tagged with one of the tag I follow_up
 
   def feed
+    session[:filter] = 'feed'
     tags = current_user.preferred_tags_on(current_group)
     user_ids = current_user.friend_list.following_ids
     user_ids << current_user.id
@@ -631,22 +632,26 @@ class QuestionsController < ApplicationController
   end
 
   def by_me
+    session[:filter] = 'by_me'
     find_questions(:user_id => current_user.id)
   end
 
   def preferred
+    session[:filter] = 'preferred'
     @current_tags = tags = current_user.preferred_tags_on(current_group)
 
     find_questions(:tags => {:$in => tags})
   end
 
   def expertise
+    session[:filter] = 'expertise'
     @current_tags = tags = current_user.stats(:expert_tags).expert_tags # TODO: optimize
 
     find_questions(:tags => {:$in => tags})
   end
 
   def contributed
+    session[:filter] = 'contributed'
     find_questions(:contributor_ids.in => [current_user.id])
   end
 
