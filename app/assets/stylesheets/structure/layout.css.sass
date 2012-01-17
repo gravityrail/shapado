@@ -9,7 +9,6 @@
     float: left
 
   #columns
-    margin-top: 10px
     overflow: hidden
     #column2
       width: 650px
@@ -23,15 +22,37 @@
       display: inline
 
 .manage-layout
-  #container #columns
-    margin-top: 10px
-    overflow: hidden
-    #column1
-      width: 215px
-      float: left
-    #column2
-      width: 735px
-      float: right
+  #container
+    #columns
+      #column1
+        width: 215px
+        float: left
+      #column2
+        width: 735px
+        float: right
+
+  #main-content-wrap
+    padding: 30px
+    h1
+      margin: 0 0 10px 0
+    p
+      margin: 0 0 30px 0
+
+    .ui-tabs, .ui-tabs-nav
+      background: transparent
+      border: 0px
+      .ui-tabs-nav
+        li
+          a
+            font-size: 13px
+            font-weight: normal
+          &.ui-tabs-selected a
+            font-weight: bold
+      .field
+        margin: 0
+        padding: 20px
+        input
+          width: 100%
 
 .doc-layout
   .top-page

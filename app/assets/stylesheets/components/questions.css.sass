@@ -92,8 +92,54 @@
   text-align: center
   font-size: 14px
 
+//forms
+.questions-controller
+  form.question_comment_form,
+  form.answer_comment_form
+    padding: 5px 20px 1px 20px
+    margin: 0 0 10px 35px
+    textarea
+      width: 420px
+      height: 100px
+      margin: 0 0 10px 0
+
+  .edit_comment_form
+    padding: 0 20px 1px 20px
+    margin: 10px -10px 10px 0 !important
+    textarea
+      width: 395px
+
+  .edit_answer
+    padding: 20px
+    width: auto !important
+    overflow: hidden
+    margin-top: 10px
+    .field
+      margin: 0
+      input
+        margin-bottom: 10px
+
+  .related_questions
+    #related_questions
+      *
+        border: 0px
+      .toolbar
+        display: none
+      article
+        padding: 0
+        margin: 0
+        h3
+          font-size: 12px
+          font-weight: normal
+          a
+            background-color: $lightOrange
+            padding: 5px 10px
+            border: 0px !important
+            display: block
+            &:first-letter
+              text-transform: uppercase
+
 // Main Question - Action Panels
-//-------------------------------------------------------------------------------------------------------------------
 #panel-forms
   height: 100%
   clear: both

@@ -18,6 +18,10 @@
 //= require components/pages
 //= require components/doc
 //= require components/users
+//= require components/widgets
+//= require components/announcements
+//= require components/devise
+//= require components/invitations
 
 //= require chosen/chosen
 //= require jquery-ui/jquery-ui
