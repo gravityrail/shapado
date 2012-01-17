@@ -90,8 +90,6 @@ Rails.application.routes.draw do
 
   match '/answers(.format)' => 'answers#index', :as => :answers
 
-  match 'questions/:filter' => 'questions#index', :as => :filtered_questions
-
   scope('questions') do
     resources :tags, :constraints => { :id => /\S+/ }
   end
@@ -101,11 +99,12 @@ Rails.application.routes.draw do
   resources :questions do
     resources :votes
     resources :flags
-
     collection do
       get :tags_for_autocomplete
       get :related_questions
       get :random
+
+      match '/:filter' => 'questions#index', :as => :filtered, :constraints => { :filter => /all|unanswered|by_me|feed|preferred|contributed|expertise/ }
     end
 
     member do
