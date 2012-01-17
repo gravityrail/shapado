@@ -1,31 +1,40 @@
 @import 'setup'
 
+//Index
+article.Question.accepted
+  border-left: 5px solid #A2C538
+
+.empty_questions
+  padding: 20px
+  overflow: hidden
+  margin: 0
+  width: 505px
+  img
+    float: left
+    margin: 0 20px
+
 // Main Question
-// .main-question
-//   width: 100%
-//   h1
-//     font-size: 25px
-//     margin: 0 15px 5px 15px
-//     &:first-letter
-//       text-transform: uppercase
-//   .author, .stats
-//     span
-//       margin: 0px 5px 0px 15px
-//   .author
-//     padding: 15px 15px 5px 15px
-//     font-style: italic
-//
-//   .stats
-//     margin: 0 15px 10px 15px
-//     a
-//       font-weight: bold
-//   #panel-forms
-//     clear: both
-//     form
-//       width: 96% !important
-//       padding: 2%
-//       display: none
-//       margin: 0
+.main-question
+  width: 100%
+  h1
+    font-size: 25px
+    margin: 0 15px 5px 15px
+    &:first-letter
+      text-transform: uppercase
+
+  .author
+    font-style: italic
+  .stats
+    margin: 0 15px 10px 15px
+    a
+      font-weight: bold
+  #panel-forms
+    clear: both
+    form
+      width: 96% !important
+      padding: 2%
+      display: none
+      margin: 0
 
 // Main Question - Answers
 #answers-content-wrap
