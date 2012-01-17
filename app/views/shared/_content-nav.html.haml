@@ -12,6 +12,3 @@
     %li.activities
       = pjax_link_to t('activerecord.models.activity'), "index", activities_path('context' => (params[:context]||params[:action])), :rel => 'nofollow'
 
-  .filters{:class => @active_subtab }
-    %ul.menubar
-      = yield :nav_filters

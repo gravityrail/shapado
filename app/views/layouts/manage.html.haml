@@ -10,11 +10,9 @@
       = show_flash_messages(:class => "flash", :markdown => true)
       #columns
         %section#column1.left-panel
-
-          .brand
-            %h1
-              = link_to(group_logo_img(current_group, :class => "group_logo"), domain_url(:custom => current_group.domain))
           .widget-links.module
+            %h3
+              Site management
             %nav
               %ul
                 = pjax_tab_entry "li", t('.site'), "manage", manage_properties_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}

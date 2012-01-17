@@ -1050,4 +1050,14 @@ input[type=submit], input.save, .add_attachment {
 
 #columns {
   background-color: $view_bg_color;
+  #column2, header {
+    border-left: 1px solid darken($view_bg_color, 5%);
+    border-right: 1px solid darken($view_bg_color, 5%);
+  }
+  #column3 {
+    border-right: 1px solid darken($view_bg_color, 5%);
+  }
+  #column1 {
+    border-left: 1px solid darken($view_bg_color, 5%);
+  }
 }
