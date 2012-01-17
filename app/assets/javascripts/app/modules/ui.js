@@ -102,6 +102,7 @@ var Ui = {
       }
       return false;
     });
+    Form.initialize();
   },
   hide_comments_form: function() {
     $("form.nestedAnswerForm").hide();

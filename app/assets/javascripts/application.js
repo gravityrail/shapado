@@ -6,6 +6,7 @@
 //= require vendor/ajax-chosen.js
 //= require vendor/jquery.cookie.js
 //= require vendor/jquery.pjax.js
+//= require jpicker.js
 
 //= require app/modules/app_config.js
 //= require app/modules/comments.js
