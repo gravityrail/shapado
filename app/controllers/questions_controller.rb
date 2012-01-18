@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
   before_filter :check_update_permissions, :only => [:edit, :update, :revert, :remove_attachment]
   before_filter :set_active_tag
   before_filter :check_age, :only => [:show]
+  before_filter :add_member, :only => [:create, :new]
   before_filter :check_create_permissions, :only => [:create, :new]
   before_filter :check_retag_permissions, :only => [:retag, :retag_to]
 

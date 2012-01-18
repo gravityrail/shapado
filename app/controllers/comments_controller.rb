@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_filter :login_required, :except => [:index]
   before_filter :find_scope
   before_filter :check_permissions, :except => [:create, :index]
+  before_filter :add_member, :only => [:create]
 
   def index
     @comments = @answer ? @answer.comments : @question.comments
