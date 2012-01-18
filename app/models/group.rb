@@ -69,6 +69,8 @@ class Group
   field :sso_url, :type => String
   field :layout, :type => String, :default => 'application'
 
+  field :track_users, :type => Boolean, :default => true
+
   # can be:
   # * 'all': email, openid, oauth
   # * 'noemail': openid and oauth only
@@ -207,6 +209,10 @@ class Group
         membership.reputation = 5
       end
       membership.role = role
+    end
+    if user.memberships.count == 1 && !user.memberships.first.group.track_users
+      user.hide_country = true
+      user.save
     end
   end
 

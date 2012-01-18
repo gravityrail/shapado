@@ -101,7 +101,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group.languages = params[:languages].split(',') if params[:languages]
-    @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
+    @group.safe_update(%w[track_users name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
                           custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
                           has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor layout
                           fb_button notification_opts auth_providers allow_any_openid], params[:group])
