@@ -37,12 +37,6 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def add_member
-    if !current_group.private && logged_in? && !current_group.is_member?(current_user)
-      current_group.add_member(current_user, 'user')
-    end
-  end
-
   def check_social
     if logged_in? && current_group.is_social_only_signup? &&
         !current_user.is_socially_connected?
