@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :join]
   before_filter :check_permissions, :only => [:edit, :update, :close,
                                               :connect_group_to_twitter,
                                               :disconnect_twitter_group, :set_columns]
@@ -285,6 +285,15 @@ class GroupsController < ApplicationController
     @invoice.save!
 
     render :layout => 'invitations'
+  end
+
+  def join
+    current_group.add_member(current_user, 'user')
+    flash[:notice] = t('layouts.application.success_joining_group', :group => current_group.name)
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json  { render :json => { :message=> flash[:notice] } }
+    end
   end
 
   protected

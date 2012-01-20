@@ -156,6 +156,7 @@ Rails.application.routes.draw do
     collection do
       get :autocomplete_for_group_slug
       get :add_to_facebook
+      post :join
     end
 
     member do

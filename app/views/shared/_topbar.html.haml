@@ -16,10 +16,15 @@
     -if !logged_in?
       /=multiauth_menu("Sign In")
       = multiauth_dropdown("Sign In")
-    -else
+    -elsif current_group.is_member?(current_user)
       %ul.user-list.menubar
         = render "notifications/notifications_menu"
         = render "users/top_user"
+    - else
+      %ul.user-list.menubar.not_member
+        %li
+          = link_to t('layouts.application.join_group', :group => current_group.name), new_user_path, :class => "signed_in_join_group #{current_group.signup_type} has-subnav"
+
 
     %ul.menubar.group-list
       -if !current_group.isolate

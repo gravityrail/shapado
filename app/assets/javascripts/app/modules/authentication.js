@@ -19,25 +19,29 @@ var Auth = {
     $('#login_dialog').dialog('close');
   },
   startLoginDialog: function(title,join){
-    var changed = $('#login_dialog').find('li a.login').attr('data-changed');
-    console.log(changed)
-    if(typeof(join)!='undefined' && changed != 1) {
-      var newhref = $('li a.login').attr('data-href');
-      var oldhref = $('li a.login').attr('href');
+    if(Ui.not_member()){
+        var title = $('#join_dialog').attr('data-title');
+        $('#join_dialog').dialog({title: title, modal: true, resizable: false})
+    } else {
+      var changed = $('#login_dialog').find('li a.login').attr('data-changed');
+      if(typeof(join)!='undefined' && changed != 1) {
+        var newhref = $('li a.login').attr('data-href');
+        var oldhref = $('li a.login').attr('href');
 
-      $('#login_dialog').find('li a.login').attr({href: newhref, 'data-href': oldhref, 'data-changed': 1});
-    }
-    if(!title)
-    var title = $('#login_dialog').attr('data-title');
-    $('#login_dialog').dialog({title: title,
-                             modal: true,
-                             width: "150px",
-                             resizable: false,
-                             beforeClose:function(){
-                               var changed = $('#login_dialog').find('li a.login').attr('data-changed');
-                               if(changed==1)
-                               $('#login_dialog').find('li a.login').attr({href: newhref,
-                                                                           'data-href': oldhref, 'data-changed': 0});
-                             }});
+        $('#login_dialog').find('li a.login').attr({href: newhref, 'data-href': oldhref, 'data-changed': 1});
+      }
+      if(!title)
+      var title = $('#login_dialog').attr('data-title');
+      $('#login_dialog').dialog({title: title,
+                               modal: true,
+                               width: "150px",
+                               resizable: false,
+                               beforeClose:function(){
+                                 var changed = $('#login_dialog').find('li a.login').attr('data-changed');
+                                 if(changed==1)
+                                 $('#login_dialog').find('li a.login').attr({href: newhref,
+                                                                             'data-href': oldhref, 'data-changed': 0});
+                               }});
+      }
   }
 };

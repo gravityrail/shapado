@@ -30,5 +30,17 @@ var Groups = {
                                   $('#additional_info .pagination').html(data.pagination);
                                 }
     });
+  },
+  join: function(link){
+          var href = $(link).attr('href');
+          $.ajax({type: 'POST', url: href, dataType: 'json',
+                  success: function(data){
+                      Messages.show(data.message, "notice");
+                      $('#join_dialog').dialog('close');
+                      $('.not_member').remove();
+                  }
+
+                 });
+          return false;
   }
 }
