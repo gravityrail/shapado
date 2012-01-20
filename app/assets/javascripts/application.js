@@ -9,25 +9,26 @@
 //= require jpicker.js
 
 //= require app/modules/app_config.js
-//= require app/modules/comments.js
-//= require app/modules/answers.js
-//= require app/modules/activities.js
+//= require app/modules/ui.js
+//= require app/modules/shapado_ui.js
+//= require app/modules/websocket.js
 //= require app/modules/authentication.js
 //= require app/modules/local_storage.js
 //= require app/modules/messages.js
-//= require app/modules/questions.js
-//= require app/modules/shapado_ui.js
-//= require app/modules/tags.js
-//= require app/modules/ui.js
-//= require app/modules/utils.js
+
 //= require app/modules/votes.js
-//= require app/modules/websocket.js
+//= require app/modules/questions.js
+//= require app/modules/answers.js
+//= require app/modules/comments.js
+//= require app/modules/rewards.js
+//= require app/modules/activities.js
+//= require app/modules/tags.js
+//= require app/modules/utils.js
 //= require app/modules/groups.js
 //= require app/modules/users.js
 //= require app/modules/loader.js
 //= require app/modules/updater.js
 //= require app/modules/layout_editor.js
-
 //= require app/initializers/search.js
 //= require app/initializers/retag.js
 //= require app/initializers/shapado_toolbar.js
