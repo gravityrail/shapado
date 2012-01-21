@@ -32,13 +32,23 @@ var Ui = {
     Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
     Ui.sort_values('select#question_language', 'option', false, 'text', null);
 
+    $(document.body).delegate("#ask_question", "submit", function(event) {
+        if(Ui.offline()){
+            Auth.startLoginDialog();
+            return false;
+        }
+    });
+    $(document.body).delegate("#join_dialog_link", "click", function(event) {
+      Groups.join(this);
+      return false;
+    });
     $(document.body).delegate(".join_group", "click", function(event) {
       if(!$(this).hasClass('email')){
         Auth.startLoginDialog($(this).text(),1);
         return false;
       } else {document.location=$(this).attr('href')}
     })
-    $(document.body).delegate(".toggle-action", "click", function(event) {
+    $(document.body).delegate(".toggle-action,.not_member", "click", function(event) {
       if(Ui.offline()){
         Auth.startLoginDialog();
       } else {
@@ -142,7 +152,10 @@ var Ui = {
     $(selectID).val($(selectID+' '+child+'[selected=selected]').val());
   },
   offline: function(){
-    return $('.offline').length>0
+    return $('.offline').length>0 || Ui.not_member()
+  },
+  not_member: function(){
+    return $('.not_member').length>0
   },
   center_scroll: function(tag, container){
     container = container || $('html,body');

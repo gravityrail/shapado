@@ -91,6 +91,10 @@
     .checkbox
       = form.label :fb_button, t('fb_button', :scope => "activerecord.attributes.group"), :class => "radio"
       = form.check_box :fb_button, :class => "checkbox"
+  .field
+    .checkbox
+      = form.label :track_users, t('track_users', :scope => "activerecord.attributes.group"), :class => "radio"
+      = form.check_box :track_users, :class => "checkbox"
 
   .field
     = form.label :legend, t('legend', :scope => "activerecord.attributes.group"), :class => "label"

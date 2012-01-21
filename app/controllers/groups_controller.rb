@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_filter :login_required, :except => [:index, :show]
+  before_filter :login_required, :except => [:index, :show, :join]
   before_filter :check_permissions, :only => [:edit, :update, :close,
                                               :connect_group_to_twitter,
                                               :disconnect_twitter_group, :set_columns]
@@ -101,7 +101,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1.json
   def update
     @group.languages = params[:languages].split(',') if params[:languages]
-    @group.safe_update(%w[name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
+    @group.safe_update(%w[track_users name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
                           custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
                           has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor layout
                           fb_button notification_opts auth_providers allow_any_openid], params[:group])
@@ -285,6 +285,15 @@ class GroupsController < ApplicationController
     @invoice.save!
 
     render :layout => 'invitations'
+  end
+
+  def join
+    current_group.add_member(current_user, 'user')
+    flash[:notice] = t('layouts.application.success_joining_group', :group => current_group.name)
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json  { render :json => { :message=> flash[:notice] } }
+    end
   end
 
   protected
