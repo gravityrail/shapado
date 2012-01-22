@@ -1,7 +1,7 @@
 -related_questions = Question.related_questions(@question).page(1).per(widget.settings['limit']||10)
 
 - if !related_questions.blank?
-  .module.widget.block{:class => 'widget-related_questions'}
+  .module.clearfix.widget.block{:class => 'widget-related_questions'}
     = render "widgets/header", :widget => widget
     %aside
       %ul.list
@@ -9,4 +9,4 @@
           - if !rq.nil?
             %li
               = link_to h(rq.title), question_path(rq), :title => truncate(strip_tags(rq.body), :length => 200)
-  .clear
+

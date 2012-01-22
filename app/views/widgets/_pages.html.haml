@@ -1,4 +1,4 @@
-.module.widget.block{:class => 'widget-pages'}
+.module.clearfix.widget.block{:class => 'widget-pages'}
   = render "widgets/header", :widget => widget
   %aside
     %ul.list
@@ -9,5 +9,3 @@
     - if logged_in? && current_user.mod_of?(current_group)
       = link_to t(".new"), new_page_path, :class => "pjax add", :"data-layout" => "pages"
       = link_to t("scaffold.more"), pages_path, :class => "pjax more", :"data-layout" => "pages"
-  .clear
-.clear

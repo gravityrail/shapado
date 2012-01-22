@@ -1,4 +1,4 @@
-.module.widget.block{:class => 'widget-top_groups'}
+.module.clearfix.widget.block{:class => 'widget-top_groups'}
   = render "widgets/header", :widget => widget
   - widget.top_groups.each do |group|
     %aside
@@ -16,4 +16,3 @@
 
   %footer
     =link_to t("scaffold.more"), groups_path
-.clear
