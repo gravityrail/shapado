@@ -1,7 +1,7 @@
 var Rewards = {
   initialize: function() {
     $("#reward_reputation" ).hide();
-    $('.offline').is(':visible', function(){
+    if(Ui.offline) {
       $("#reward_reputation" ).hide();
       var slider_div = $("#reward_slider");
       slider_div.slider({
@@ -14,6 +14,6 @@ var Rewards = {
           $("#reward_reputation").val( ui.value );
         }
       });
-    });
+    }
   }
 };

@@ -1,6 +1,17 @@
 var Comments = {
   initialize_on_question: function(data) {
     $('.comment-votes form.comment-form button.vote').hide();
+    var forms = $('.question_comment_form, .answer_comment_form');
+    forms.find('.buttons').hide();
+
+    forms.delegate('textarea', 'focus', function() {
+      var form = $(this).parents('form');
+      form.find('.buttons').show();
+      if(!form.find('textarea').hasClass(form.data('editor'))) {
+        form.find('textarea').addClass(form.data('editor'));
+        Editor.setup(form.find('textarea'));
+      }
+    });
 
     $.each($("a.toggle_comments"), function() {
       var l = $(this);
@@ -160,9 +171,17 @@ var Comments = {
     $(".Question-commentable").click(Comments.showCommentForm);
 
     $(".content-panel").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
-
     $('.cancel_comment').live('click', function(){
-      $(this).parents('form').slideUp();
+      var form = $(this).parents('form');
+      form.find('.buttons').hide();
+      var htmlarea = form.find('.jHtmlArea')
+      if(htmlarea.length > 0) {
+        htmlarea.remove();
+        form.find('.markdown').append('<textarea class="text_area" cols="auto" id="comment_body" name="comment[body]" placeholder="Add comment" rows="auto"></textarea>');
+      } else {
+        form.find('.markdown_toolbar').remove();
+        form.find('textarea').removeClass('markdown_editor')
+      }
       return false;
     });
   },

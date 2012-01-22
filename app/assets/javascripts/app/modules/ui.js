@@ -8,7 +8,6 @@ var Ui = {
     quick_question.find('form input[type=text]').focus(function(){
       quick_question.find('.buttons-quickq').show();
     });
-    Ui.hide_comments_form();
 
     if(Ui.supports_input_placeholder()) {
       $('.hideifplaceholder').remove();
@@ -113,9 +112,6 @@ var Ui = {
       return false;
     });
     Form.initialize();
-  },
-  hide_comments_form: function() {
-    $("form.nestedAnswerForm").hide();
   },
   initialize_feedback: function() {
     $("#feedbackform").dialog({ title: "Feedback", autoOpen: false, modal: true, width:"420px" });

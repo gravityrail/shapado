@@ -47,16 +47,14 @@
         - if !logged_in? || !current_user.mod_of?(current_group)
           = link_to t("#{i18n_scope}.flag"), new_question_flag_path(@question), :id => "flag_question", :class => "flag-link action", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
 
-
-    %li.followUp
-      = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description"), :class => "action"
-
     - if logged_in?
       -if current_user.can_create_reward?(@question)
         %li.add_reward
           = link_to t("#{i18n_scope}.create_reward"), "#", :rel => "nofollow", :id => "add_reward", :class => "show_form action", :title => t("#{i18n_scope}.create_reward_description")
       = render "requests_menu", :question => @question, :i18n_scope => i18n_scope
 
+    %li.followUp
+      = link_to t("#{i18n_scope}.follow_up"), new_question_path(:from_question => @question.id), :rel => "nofollow", :title => t("#{i18n_scope}.follow_up_description"), :class => "action"
 
     - if show_close_request_form && !@close_request.new_record?
       %li.more.request-close
