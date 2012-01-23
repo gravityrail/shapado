@@ -1,14 +1,15 @@
-%li
-  %label
-    Language:
-%li
-  -if logged_in?
-    = link_to language_desc(current_user.language_filter), "#"
-  -else
-    = link_to language_desc(logged_out_language_filter), "#"
-  %ul.drop-menu
+#lang-select
+  = form_tag change_language_filter_path do
+    = hidden_field_tag :source, request.path
     -langs_options = languages_options(current_group.languages)
     -langs_options.unshift([t('shared.any_lang'), "any"])
-    -langs_options.each do |k,v|
-      %li
-        = link_to k, "#"
+
+    -if logged_in?
+      .field
+        -langs_options.unshift([t('shared.preferred_lang'), "user"])
+        = select :language, :filter, langs_options, {:selected => current_user.language_filter}
+        = submit_tag t('scaffold.save'), :class => "save change_language"
+    -else
+      .field
+        = select :language, :filter, langs_options, {:selected => logged_out_language_filter}
+        = submit_tag t('scaffold.save'), :class => "save change_language"

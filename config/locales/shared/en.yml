@@ -1,9 +1,12 @@
 en:
   shared:
+    view_mode: "View mode:"
+    languages: "Languages..."
     name: Name
     description: Description
     by_anon: "By anonymous"
     preferred_lang: "My preferred languages"
+    language: "Language:"
     any_lang: Any language
     quick_question:
       random_question: "Answer a random question"
