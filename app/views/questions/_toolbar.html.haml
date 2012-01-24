@@ -100,10 +100,8 @@
               = link_to t("scaffold.destroy"), question_path(@question.id), :confirm => t('scaffold.are_you_sure'), :method => :delete
 
 
-  #panel-forms
+  #panel-forms.clearfix
     = render "reward_form"
 
     -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
       = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}
-
-    .clear

@@ -8,7 +8,7 @@
         = text_field_tag "q", params[:q], :class => "text_field filter_field"
         = submit_tag(t('layouts.application.search'), :class => "filter_input")
 
-  %ul.filters
+  %ul.filters.clearfix
     %li
       %strong
         = t('global.sort_by')

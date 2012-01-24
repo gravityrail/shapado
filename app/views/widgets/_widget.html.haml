@@ -1,4 +1,4 @@
-.container.widget-container{:class => widget.name}
+.container.clearfix.widget-container{:class => widget.name}
   - if widget.valid?
     .top
       = widget.name.titleize
@@ -19,4 +19,3 @@
         = render :partial => widget.partial_name, :locals => {:widget => widget}
   - else
     = widget.errors.full_messages.join(", ")
-  .clear

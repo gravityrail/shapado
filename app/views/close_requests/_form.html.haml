@@ -1,13 +1,12 @@
 
 
 = form_for [question, close_request], :html => {:class => "close_form form  #{local_assigns[:hide] ? "hide": ""}"} do |form|
-  .field
+  .field.cleafix
     = form.label :reason, t(:reason, :scope=>"activerecord.attributes.flag"), :class => "label"
     -CloseRequest::REASONS.each do |reason|
       .column.radio
         = form.radio_button :reason, reason, :class => "radio_button"
         = t(reason, :scope=>"close_requests.form")
-    .clear
   .field
     = form.label :comment, t(:comment, :scope=>"models"), :class => "label"
     = form.text_field :comment, :class => "text_field"

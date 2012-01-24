@@ -32,4 +32,3 @@
       %strong
         = t(:created_at, :scope => "activerecord.attributes.user")
         = t("time.ago", :time => time_ago_in_words(membership.joined_at || membership.created_at))
-  .clear

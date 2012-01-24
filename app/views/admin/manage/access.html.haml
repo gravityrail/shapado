@@ -7,7 +7,7 @@
     = f.error_messages
     =hidden_field_tag :source, domain_url(:custom => @group.domain, :controller => "admin/manage", :action => "access", :tab => @active_subtab)
 
-    .settings
+    .settings.clearfix
       %h2= t("groups.form.access")
       .field
         .checkbox
@@ -31,9 +31,8 @@
         .checkbox
           = f.label :has_adult_content, t('may_contain_adult_content', :scope => "activerecord.attributes.group"), :class => "radio"
           = f.check_box :has_adult_content, :class => "checkbox"
-      .clear
 
-    .providers
+    .providers.clearfix
       %h2=t("groups.form.auth_providers")
       .field
         .checkbox
@@ -45,7 +44,6 @@
           .checkbox
             =label_tag provider, provider.titleize, :class => "radio"
             =check_box_tag :"group[auth_providers][]", provider, current_group.auth_providers.include?(provider), :class => "checkbox"
-      .clear
 
     -if current_group.domain !~ /#{Regexp.escape(AppConfig.domain)}/
       %br
