@@ -1,4 +1,4 @@
-ul.tag-list
+.tag-list
   padding-left: 10px
   margin: 0px
   float: left
@@ -17,10 +17,8 @@ ul.tag-list
     height: 25px
     a
       background: image-url("tag-back-lt.png") left 0 no-repeat
-      margin: 0 0 0 7px
       font-size: 11px
-      padding: 3px 7px 4px 18px
-      display: block
+      padding: 3px 4px 4px 18px
       &:hover
         background: image-url("tag-back-lt-hover.png") left 0 no-repeat
     &.title
@@ -29,6 +27,18 @@ ul.tag-list
       padding: 2px 0 0 0
     &.retag a
       background: image-url("tag-back-lt-retag.png") left 0 no-repeat
+    .count
+      margin: 0px 0px 0px -3px
+      font-size: 11px
+      padding: 2px
+      background-color: #E1E1E1
+      border-top: 1px solid #aaa
+ul.tag-list
+  li
+    margin-left: 5px
+
+table.tag-list
+  margin-top: 5px
 
 .main-question
   ul.tag-list
