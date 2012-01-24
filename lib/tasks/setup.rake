@@ -203,7 +203,7 @@ namespace :setup do
 
   task :index_tags => [:environment] do
     Tag.all.each do |tag|
-      count = tag.group.questions.where(:tags.in => [tag.name]).count
+      count = tag.group.questions.where(:tags.in => [tag.name], :banned => false).count
       p "#{tag.name}: #{count}"
       if tag.count != tag
         tag.override(count: count)
