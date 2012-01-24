@@ -1,6 +1,8 @@
-%h1
-  = t(".title")
-%p.description= t(".description")
+.top
+  %h1
+    = t(".title")
+  %p.description= t(".description")
+
 .content
   %ul
     - @badges.each do |badge|
