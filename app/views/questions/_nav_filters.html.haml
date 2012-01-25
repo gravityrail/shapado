@@ -57,7 +57,5 @@
       = pjax_link_to t('activerecord.models.answers'), "index", url_for(questions_link.merge(:answers => 1)), :rel => 'nofollow'
 -if current_group.languages.count > 1
   %li
-    %label#lang-select-toggle
-      = t('shared.languages')
-
-= render "shared/language_filter"
+    %label#lang-select-toggle{"data-language"=>change_language_filter_path}
+      = render "shared/language_filter"

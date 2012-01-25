@@ -1,7 +1,7 @@
 en:
   shared:
     view_mode: "View mode:"
-    languages: "Languages..."
+    languages: "Languages:"
     name: Name
     description: Description
     by_anon: "By anonymous"
