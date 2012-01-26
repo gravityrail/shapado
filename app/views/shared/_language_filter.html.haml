@@ -1,7 +1,7 @@
 %li#lang-select-toggle{"data-language"=>change_language_filter_path}
   %label
     = t('shared.languages')
-%li
+%li.current_language{"rel"=>'tipsy', "title" => t('shared.language_filter_tooltip')}
   -if logged_in?
     = link_to language_desc(current_user.language_filter), "#"
   -else
