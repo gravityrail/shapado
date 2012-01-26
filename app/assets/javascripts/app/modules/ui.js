@@ -19,6 +19,16 @@ var Ui = {
         return false;
     });
 
+      $('.lang-option').click(function(){
+        var path = $('#lang-select-toggle').data('language');
+        var language = $(this).data('language');
+        console.log(path, language)
+        $.ajax({type: 'POST', url: path,
+                data: {'language[filter]': language},
+                success: function(){window.location.reload()}
+               });
+      });
+
     $('#openid_url').parents('form').submit(function(){
       var openid = $('#openid_url').val();
       openid = openid.replace('http://','');

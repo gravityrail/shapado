@@ -1,6 +1,6 @@
-%li
+%li#lang-select-toggle{"data-language"=>change_language_filter_path}
   %label
-    Language:
+    = t('shared.languages')
 %li
   -if logged_in?
     = link_to language_desc(current_user.language_filter), "#"
@@ -11,4 +11,4 @@
     -langs_options.unshift([t('shared.any_lang'), "any"])
     -langs_options.each do |k,v|
       %li
-        = link_to k, "#"
+        = link_to k, "#", :class => 'lang-option', "data-language" => v
