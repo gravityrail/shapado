@@ -15,7 +15,7 @@
         = pjax_link_to t('.wiki_title', :title => title), "question", question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
       -else
         = pjax_link_to title, "question", question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
-    %ul.tag-list
+    %ul.tag-list.clearfix
       %li.title
         = t('global.tags_label')
       - question.tags.each do |tag|

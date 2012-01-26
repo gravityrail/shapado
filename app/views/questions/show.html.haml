@@ -33,7 +33,7 @@
       = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
 
 
-    %ul.tag-list
+    %ul.tag-list.clearfix
       %li.title
         = t('global.tags_label')
       - @question.tags.each do |tag|
