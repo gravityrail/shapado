@@ -66,11 +66,7 @@ var Questions = {
       Jqmath.initialize();
 
     var anchor = document.location.hash;
-    if(anchor == "#to_answer") {
-      var add_answer = $("a#add_answer")
-      add_answer.trigger('click');
-      $('html,body').animate({scrollTop: add_answer.offset().top-100}, 1000);
-    } else if(anchor == "#to_flag") {
+    if(anchor == "#to_flag") {
       var flag_question = $("a#flag_question")
       flag_question.trigger('click');
       $('html,body').animate({scrollTop: flag_question.offset().top-100}, 1000);

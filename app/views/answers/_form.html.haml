@@ -1,6 +1,6 @@
 -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
   =form_for [@question, @answer ||= Answer.new], :html => {:class => "add_answer markdown"} do |f|
-    = render 'answers/editor', :f => f
+    = render 'shared/editor', :f => f, markdown: true
     -if @answer.position
       = hidden_field_tag "answer[position][lat]", @answer.position["lat"], :class => "lat_input"
       = hidden_field_tag "answer[position][long]", @answer.position["long"], :class => "long_input"
@@ -29,5 +29,3 @@
 
       .buttons
         = submit_tag t('answers.form.submit'), :class => "save"
-        = t("global.or")
-        = link_to t('scaffold.cancel'), '', :class => 'cancel'

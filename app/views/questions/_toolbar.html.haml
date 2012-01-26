@@ -22,8 +22,7 @@
   %ul.menubar
     -if !logged_in? || current_user.can_answer_on?(current_group)
       %li.answer
-        = link_to t("questions.question.answer_verb"), "#", :id => "add_answer", :class => "show_form action"
-
+        = link_to t("questions.question.answer_verb"), "#to_answer", :id => "add_answer", :class => "action"
 
 
     %li.follow
@@ -102,6 +101,3 @@
 
   #panel-forms.clearfix
     = render "reward_form"
-
-    -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
-      = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}

@@ -1,4 +1,5 @@
--opts = {:class => "text_area", :rows => '15', :cols => '92'}
+-opts = (local_assigns[:opts]||{}).merge({:class => "textarea"})
+
 -if local_assigns[:markdown]
   -if current_group.wysiwyg_editor
     -opts[:class] = "wysiwyg_editor"
@@ -8,9 +9,9 @@
 
 .field.editor
   .markdown
-    = f.text_area :body, opts
-  -if !current_group.wysiwyg_editor
+    = f.text_area local_assigns.fetch(:field, :body), opts
+  -if local_assigns[:markdown] && !current_group.wysiwyg_editor
     .markdown_preview
 
 -if local_assigns[:markdown] && !current_group.wysiwyg_editor
-  =markdown(@answer.body)
+  = markdown(@answer.body)

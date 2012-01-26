@@ -77,54 +77,53 @@
 
 
 #answers-content-wrap
-  -cache_for(:question_answers, @question.id) do
-    %header
-      %h2
-        = t("questions.question.has_answers", :count => @question.answers_count)
+  - if !@answers.empty? || @question.accepted
+    -cache_for(:question_answers, @question.id) do
+      %header
+        %h2
+          = t("questions.question.has_answers", :count => @question.answers_count)
 
-    .filters
-      %ul.menubar{:class => @active_subtab.to_s}
-        %li
-          %label=t('global.sort_by')
-        %li.newest-active
-          = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li.votes-active
-          = link_to t("questions.index.votes"), question_path(@question, :sort=>"votes", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li.oldest-active
-          = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li
-          = link_to t('.solution')
+      .filters
+        %ul.menubar{:class => @active_subtab.to_s}
+          %li
+            %label=t('global.sort_by')
+          %li.newest-active
+            = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li.votes-active
+            = link_to t("questions.index.votes"), question_path(@question, :sort=>"votes", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li.oldest-active
+            = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li
+            = link_to t('.solution')
 
-    .error
-      - source = question_path(@question)
-      = error_messages_for 'answer'
+      .error
+        - source = question_path(@question)
+        = error_messages_for 'answer'
 
-    - if @question.closed && @question.close_reason.present?
-      #close_reason
-        = t(".close_reason")
-        = t(@question.close_reason.reason, :scope=>"close_requests.form")
-        - if !@question.close_reason.comment.empty?
+      - if @question.closed && @question.close_reason.present?
+        #close_reason
+          = t(".close_reason")
+          = t(@question.close_reason.reason, :scope=>"close_requests.form")
+          - if !@question.close_reason.comment.empty?
 
-          .comment
-            =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
+            .comment
+              =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
-      -if @question.follow_up
-        .followUp-content
-          %h1
-            = t("questions.show.follow_up_of")
-          = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
+        -if @question.follow_up
+          .followUp-content
+            %h1
+              = t("questions.show.follow_up_of")
+            = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
 
-      -if @question.followed_up_by.limit(1).count > 0
-        %h1= t('global.followed_by')
-        %ul
-          -@question.followed_up_by.all.each do |child|
-            %li
-              = link_to child.title, question_path(child)
+        -if @question.followed_up_by.limit(1).count > 0
+          %h1= t('global.followed_by')
+          %ul
+            -@question.followed_up_by.all.each do |child|
+              %li
+                = link_to child.title, question_path(child)
 
-  .answers-list
-    - if @answers.empty? && !@question.accepted
-      = render "shared/empty", :type => "answers", :url => ""
-    - else
+  - if !@answers.empty? || @question.accepted
+    .answers-list
       - if @question.accepted
         - solution = @question.answer
         = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
@@ -133,4 +132,9 @@
         - next if answer.id == @question.answer_id
         = render "answer", {:question => @question, :answer => answer}
 
-  = paginate(@answers)
+      = paginate(@answers)
+  %header#to_answer
+    %h2
+      Your answer
+  -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
+    = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}

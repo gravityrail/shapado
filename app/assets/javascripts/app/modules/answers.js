@@ -8,11 +8,6 @@ var Answers = {
     }
   },
   initialize_on_question: function() {
-    var answers = $('article.answer').length;
-    if(answers == 0){
-      $('#new_answer').slideDown('slow');
-      $('a#add_answer').addClass('active');
-    }
     $(document.body).delegate("form#new_answer .save", "click", function(event) {
       var form = $(this).parents("form");
       var answers = $("#answers-content-wrap .answers-list");
