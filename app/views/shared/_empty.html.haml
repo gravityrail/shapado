@@ -5,3 +5,6 @@
   %p
     - link = link_to t("shared.empty.#{type}.description.action_link"), url, :class => "empty_#{type}_text"
     = raw t("shared.empty.#{type}.description.text", :action_link => link, :default => :"shared.empty.default.description.text")
+  - if current_group.languages.count > 1 && current_group
+    %p
+      = link_to t('shared.languages_link'), '#', :class => 'lang-option', "data-language" => 'any'
