@@ -15,7 +15,7 @@ module Jobs
                                    {:style => Sass::Plugin.options[:style],
                                     :syntax => :scss,
                                     :cache => false,
-                                    :load_paths => []})
+                                    :load_paths => [File.join(Rails.root,"lib","sass")]})
 
         compiled_css = ""
         begin

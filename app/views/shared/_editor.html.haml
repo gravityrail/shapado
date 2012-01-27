@@ -3,7 +3,7 @@
 -if local_assigns[:markdown]
   -if current_group.wysiwyg_editor
     -opts[:class] = "wysiwyg_editor"
-    -opts[:value] = markdown(@answer.body)
+    -opts[:value] = markdown(f.object.body)
   -else
     -opts[:class] = "markdown_editor"
 
@@ -14,4 +14,4 @@
     .markdown_preview
 
 -if local_assigns[:markdown] && !current_group.wysiwyg_editor
-  = markdown(@answer.body)
+  = markdown(f.object.body)

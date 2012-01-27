@@ -6,6 +6,61 @@
 @import "helper/items/editors"
 @import "helper/items/comments"
 
+// TobBar
+.top-bar
+  height: 40px
+  width: 100%
+  min-width: 960px
+  top: 0px
+  position: fixed
+  z-index: 1000
+  +outer-shadow
+  .warp
+    max-width: 1020px
+    margin: 0 auto
+
+  .group_logo
+    height: 35px
+    margin: 4px 10px 0px 10px
+  li.group
+    a
+      border: 0px
+  .searcher
+    float: left
+    height: 40px
+
+    form#search
+      padding: 0
+      margin: 0 10px
+      overflow: hidden
+      width: auto
+
+      .field
+        float: left
+        margin: 6px 0 0 0
+
+        input
+          margin: 0
+          float: left
+          width: 150px
+          padding: 2px 5px 2px 25px
+
+      input
+        background: white image-url('search-icon.png') 5px 50% no-repeat
+
+  .languages_filter
+    float: left
+    padding: 6px 6px 6px 10px
+    height: 28px
+    .field
+      margin: 0
+    input
+      display: none
+    select
+      width: auto
+      padding: 2px !important
+      height: 22px !important
+
 .editor
   textarea
     width: 100%
@@ -121,3 +176,42 @@
           width: auto
           float: left
           border: 0px
+
+.gold .badge
+  color: #121314
+  border: 1px solid #fbd65f
+  background-color: #fbd65f
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c))
+  background-image: -moz-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -ms-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c))
+  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c)
+  background-image: -o-linear-gradient(#fbd65f, #ffff7c)
+  background-image: linear-gradient(#fbd65f, #ffff7c)
+
+.silver .badge
+  color: #121314
+  border: 1px solid #c6c6c6
+  background-color: #c6c6c6
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5))
+  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5))
+  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5)
+  background-image: linear-gradient(#c6c6c6, #e5e5e5)
+
+.bronze .badge
+  color: white
+  border: 1px solid #e67347
+  background-color: #e67347
+  background-repeat: repeat-x
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273))
+  background-image: -moz-linear-gradient(#e67347, #f3a273)
+  background-image: -ms-linear-gradient(#e67347, #f3a273)
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273))
+  background-image: -webkit-linear-gradient(#e67347, #f3a273)
+  background-image: -o-linear-gradient(#e67347, #f3a273)
+  background-image: linear-gradient(#e67347, #f3a273)

@@ -2,11 +2,11 @@
   %ul.content-tabs
     %li.questions
       = pjax_link_to t('layouts.application.questions'), "index", url_for(questions_link)
-    %li
+    %li.badges
       = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges", :rel => 'nofollow'
-    %li
+    %li.users
       =link_to t('layouts.application.users'), users_path
-    %li
+    %li.tags
       = link_to t('layouts.application.tags'), tags_path, :class => "pjax", :"data-layout" => "tags"
 
     %li.activities

@@ -2,7 +2,7 @@
 - if recent_badges.count > 0
   .module.clearfix.widget.block{:class => 'widget-badges'}
     = render "widgets/header", :widget => widget
-    %section.badges
+    %aside.badges
       %ul
         - recent_badges.each do |badge|
           %li

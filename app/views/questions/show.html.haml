@@ -79,9 +79,8 @@
 #answers-content-wrap
   - if !@answers.empty? || @question.accepted
     -cache_for(:question_answers, @question.id) do
-      %header
-        %h2
-          = t("questions.question.has_answers", :count => @question.answers_count)
+      %h2
+        = t("questions.question.has_answers", :count => @question.answers_count)
 
       .filters
         %ul.menubar{:class => @active_subtab.to_s}
@@ -133,7 +132,7 @@
         = render "answer", {:question => @question, :answer => answer}
 
       = paginate(@answers)
-  %header#to_answer
+  #to_answer
     %h2
       Your answer
   -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
