@@ -3,7 +3,8 @@ en:
     view_mode: "View mode:"
     languages: "Languages:"
     language_filter_tooltip: "Try with another language."
-    languages_link: "Or try to see questions in other languages."
+    languages_notice: "Sorry, no questions are available in this language."
+    languages_link: "Click here to see questions in all languages."
     name: Name
     description: Description
     by_anon: "By anonymous"
