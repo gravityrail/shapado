@@ -16,15 +16,19 @@
       - if @question.closed
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
     .author
-      %p
-        = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
-        -if !@question.user.hide_country && @question.address.present?
-          %span
-            = t("global.from", :site => CGI.escape_html(@question.address_name))
+      %small
         %span
-          = t('activerecord.attributes.question.created_at')
+          Asked by
+        = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
         %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
+          ,
+        - if @question.updated_by
+          Edited by
+          = render :partial => "users/user_mini", :locals => {:user => @question.updated_by}
+
+          %time{:datetime => @question.updated_at.iso8601, :itemprop => "dateModified"}
+            = link_to t("time.ago", :time => time_ago_in_words(@question.updated_at)), history_question_path(@question), :title => t("questions.show.history")+" (#{@question.versions_count})"
 
     .description.markdown.clearfix
       %div{:itemprop => "articleBody"}
@@ -42,15 +46,6 @@
       - if logged_in? && (current_user.can_modify?(@question) || current_user.can_retag_others_questions_on?(current_group))
         %li.retag
           = link_to t('.retag'), retag_question_path(@question), :class => 'retag-link'
-
-    .stats
-      %p
-        %span
-          = t('questions.show.viewed')
-        = t('number.x_time', :count => number_with_delimiter(@question.views_count))
-        %span
-          = t("questions.show.last_activity")
-        = link_to t("time.ago", :time => time_ago_in_words(@question.activity_at)), history_question_path(@question), :title => t("questions.show.history")+" (#{@question.versions_count})"
 
     %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
     %meta{:itemprop=>"inLanguage", :content=>@question.language}
@@ -77,6 +72,18 @@
 
 
 #answers-content-wrap
+  .error
+    - source = question_path(@question)
+    = error_messages_for 'answer'
+
+  - if @question.closed && @question.close_reason.present?
+    #close_reason
+      = t(".close_reason")
+      = t(@question.close_reason.reason, :scope=>"close_requests.form")
+      - if !@question.close_reason.comment.empty?
+
+        .comment
+          =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
   - if !@answers.empty? || @question.accepted
     -cache_for(:question_answers, @question.id) do
       %h2
@@ -94,19 +101,6 @@
             = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
           %li
             = link_to t('.solution')
-
-      .error
-        - source = question_path(@question)
-        = error_messages_for 'answer'
-
-      - if @question.closed && @question.close_reason.present?
-        #close_reason
-          = t(".close_reason")
-          = t(@question.close_reason.reason, :scope=>"close_requests.form")
-          - if !@question.close_reason.comment.empty?
-
-            .comment
-              =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
 
         -if @question.follow_up
           .followUp-content
@@ -132,8 +126,9 @@
         = render "answer", {:question => @question, :answer => answer}
 
       = paginate(@answers)
-  #to_answer
-    %h2
-      Your answer
+
   -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
-    = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}
+    #to_answer
+      %h2
+        Your answer
+      = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}
