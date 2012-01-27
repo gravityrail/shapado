@@ -1,5 +1,7 @@
 /*items.scss: style for common  */
 
+@import "compass/css3";
+
 //NOTIFICATIONS
 .notice {
   color: $light_brand_color; }
@@ -32,34 +34,47 @@
     color: white; } }
 
 //TOPBAR
+$fg_topbar_color: $topbar_color;
+@if lightness($fg_topbar_color) > 60% {
+  $fg_topbar_color: darken($fg_topbar_color, lightness($fg_topbar_color) - 60%); }
+@else {
+  $fg_topbar_color: lighten($fg_topbar_color, 60% - lightness($fg_topbar_color));}
+
+
+$dark_topbar_color: $topbar_color;
+@if lightness($topbar_color) > 90% {
+  $dark_topbar_color: darken($topbar_color, lightness($topbar_color) - 90%); }
+@else {
+  $dark_topbar_color: lighten($topbar_color, 20%);}
+
 .top-bar {
-  background: darken($view_bg_color, 83%);
-  background-color: darken($view_bg_color, 83%);
+  background: $topbar_color;
+  background-color: $topbar_color;
   background-repeat: repeat-x;
-  background-image: -khtml-gradient(linear, left top, left bottom, from(darken($view_bg_color, 80%)), to(darken($view_bg_color, 83%)));
-  background-image: -moz-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
-  background-image: -ms-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, darken($view_bg_color, 80%)), color-stop(100%, darken($view_bg_color, 83%)));
-  background-image: -webkit-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
-  background-image: -o-linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
-  background-image: linear-gradient(darken($view_bg_color, 80%), darken($view_bg_color, 83%));
+
+  @if lightness($topbar_color) > 90% {
+    @include background-image(linear-gradient($topbar_color, darken($topbar_color, lightness($topbar_color) - 90%) 75%, darken($topbar_color, lightness($topbar_color) - 90%)));}
+  @else {
+    @include background-image(linear-gradient(lighten($topbar_color, 20%), $topbar_color 75%, $topbar_color));
+  }
+
   ul.menubar {
     .active: darken($view_bg_color, 70%);
+    #notification-counter {
+      border-left: 1px solid $fg_topbar_color;
+    }
     &>li {
-      small {
-        color: lighten($fg_color, 40%); }
       &:hover small, &:hover a small, a:hover small {
-        color: $fg_color !important; }
+        color: $fg_topbar_color }
       &>a {
         background-image: none;
-        color: lighten($fg_color, 40%);
-        border-right: 1px solid darken($view_bg_color, 73%);
-        border-left: 1px solid $fg_color;
+        color: $fg_topbar_color;
+        border-right: 1px solid $fg_topbar_color;
         &:hover, &:hover a {
-          color: lighten($fg_color, 40%);
-          background-color: darken($view_bg_color, 70%); }
+          color: $fg_topbar_color;
+          background-color: $topbar_color; }
         &:visited a {
-          color: lighten($fg_color, 40%);
+          color: $fg_topbar_color;
         } } }
     ul {
       background-color: $view_bg_color !important;
@@ -73,10 +88,7 @@
     .sf-sub-indicator {
       background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat; } }
   .searcher {
-    border-right: 1px solid darken($view_bg_color, 73%);
-    border-left: 1px solid $fg_color; }
-  .languages_filter {
-    border-left: 1px solid $fg_color; } }
+    border-right: 1px solid $fg_topbar_color; } }
 
 //NAVIGATION
 ul.content-tabs {

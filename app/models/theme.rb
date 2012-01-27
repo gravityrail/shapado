@@ -12,6 +12,7 @@ class Theme
 
   field :view_bg_color, :type => String, :default => "ffffff"
   field :brand_color, :type => String, :default => "ee681f"
+  field :topbar_color, :type => String, :default => "ffffff"
 
   field :fluid, :type => Boolean, :default => false
 

@@ -56,6 +56,12 @@
     %small
       = I18n.t('themes.form.text_color_legend')
 
+  .field
+    = form.label I18n.t('themes.show.topbar_color')
+    = form.text_field :topbar_color, :type => "color"
+    %small
+      = I18n.t('themes.form.topbar_color_legend')
+
 .field
   = form.label :custom_css
   = form.text_area :custom_css, :class => "code", :data => {:lang => "css"}
