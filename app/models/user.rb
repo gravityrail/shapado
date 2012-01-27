@@ -807,7 +807,8 @@ Time.zone.now ? 1 : 0)
                         :email => email,
                         :group_id => group.id,
                         :user_role => user_role,
-                        :body => body)
+                        :body => body,
+                        :state => 'pending')
     end
   end
 
