@@ -283,3 +283,13 @@ div.jHtmlArea {
 //COLOR FIELD
 .display-color {
   border: 1px solid border_color; }
+
+
+.badge {
+  background-color: $light_brand_color;
+  @include border-radius(4px);
+  border: 1px solid darken($light_brand_color, 20%);
+  &:hover {
+    background-color: darken($light_brand_color, 20%);
+  }
+}

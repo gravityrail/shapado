@@ -23,12 +23,20 @@
 
         .badge_item
           margin: 0 0 15px 0
-          height: 38px
+          height: 64px
           a
-            padding: 10px 30px
-            font-size: 24px
+            padding: 10px 64px
+            font-size: 32px
             +huge-radius
             +menu-shadow
+          .badge
+            background-image: image-url("ribbons-big.png")
+            &.silver
+              background-position: 0px 0px
+            &.gold
+              background-position: 0px -64px
+            &.bronze
+              background-position: 0px -128px
 
       .counter
         text-align: center

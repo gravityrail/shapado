@@ -1,4 +1,5 @@
 @import "setup"
+@import "compass/utilities/sprites"
 
 @import "helper/items/menubar"
 @import "helper/items/widgets"
@@ -99,13 +100,21 @@
     +small-radius
 
 .badges
+  .badge
+    line-height: 30px
+    padding: 0px 5px 0px 32px
+    background-repeat: no-repeat
+    background-image: image-url("ribbons.png")
+    &.silver
+      background-position: 0px 0px
+    &.gold
+      background-position: 0px -32px
+    &.bronze
+      background-position: 0px -64px
+
   ul li
     margin-bottom: 5px
     overflow: hidden
-
-    .badge_item
-      width: 40%
-      float: left
 
     .badge_description
       width: 55%
@@ -113,13 +122,16 @@
       margin: 5px
 
     .badge
-      width: 65%
       float: left
-      padding: 5px 10px
       display: block
-      +big-radius
+
+    .user
+      float: left
+      line-height: 30px
+      margin-left: 5px
 
     .counter
+      line-height: 30px
       float: left
       width: 15%
       font-size: 12px
@@ -177,42 +189,3 @@
           width: auto
           float: left
           border: 0px
-
-.gold .badge
-  color: #121314
-  border: 1px solid #fbd65f
-  background-color: #fbd65f
-  background-repeat: repeat-x
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#fbd65f), to(#ffff7c))
-  background-image: -moz-linear-gradient(#fbd65f, #ffff7c)
-  background-image: -ms-linear-gradient(#fbd65f, #ffff7c)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffff7c), color-stop(100%, #ffff7c))
-  background-image: -webkit-linear-gradient(#fbd65f, #ffff7c)
-  background-image: -o-linear-gradient(#fbd65f, #ffff7c)
-  background-image: linear-gradient(#fbd65f, #ffff7c)
-
-.silver .badge
-  color: #121314
-  border: 1px solid #c6c6c6
-  background-color: #c6c6c6
-  background-repeat: repeat-x
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#c6c6c6), to(#e5e5e5))
-  background-image: -moz-linear-gradient(#c6c6c6, #e5e5e5)
-  background-image: -ms-linear-gradient(#c6c6c6, #e5e5e5)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c6c6), color-stop(100%, #e5e5e5))
-  background-image: -webkit-linear-gradient(#c6c6c6, #e5e5e5)
-  background-image: -o-linear-gradient(#c6c6c6, #e5e5e5)
-  background-image: linear-gradient(#c6c6c6, #e5e5e5)
-
-.bronze .badge
-  color: white
-  border: 1px solid #e67347
-  background-color: #e67347
-  background-repeat: repeat-x
-  background-image: -khtml-gradient(linear, left top, left bottom, from(#e67347), to(#f3a273))
-  background-image: -moz-linear-gradient(#e67347, #f3a273)
-  background-image: -ms-linear-gradient(#e67347, #f3a273)
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e67347), color-stop(100%, #f3a273))
-  background-image: -webkit-linear-gradient(#e67347, #f3a273)
-  background-image: -o-linear-gradient(#e67347, #f3a273)
-  background-image: linear-gradient(#e67347, #f3a273)

@@ -7,8 +7,8 @@
   %ul
     - @badges.each do |badge|
       %li.clearfix
-        .badge_item{:class => badge.type}
-          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge", :title => badge.description}
+        .badge_item
+          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge #{badge.type}", :title => badge.description}
 
           .counter
             == × #{badge["count"]}
