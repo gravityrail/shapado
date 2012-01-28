@@ -1,12 +1,12 @@
 .empty{:class => "empty_#{type}"}
-  - if current_user.language_filter == 'any' || current_user.language_filter == current_group.language
+  - if current_group.languages.count == 0
     = image_tag("empty.png")
     %h2
       = t("shared.empty.#{type}.title", :default => :"shared.empty.default.title")
     %p
       - link = link_to t("shared.empty.#{type}.description.action_link"), url, :class => "empty_#{type}_text"
     = raw t("shared.empty.#{type}.description.text", :action_link => link, :default => :"shared.empty.default.description.text")
-  - if current_group.languages.count > 1 && current_group.questions.count > 0
+  - else
     %h2
       = t('shared.languages_notice')
     %h2
