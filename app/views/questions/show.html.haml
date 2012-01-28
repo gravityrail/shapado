@@ -38,8 +38,6 @@
 
 
     %ul.tag-list.clearfix
-      %li.title
-        = t('global.tags_label')
       - @question.tags.each do |tag|
         %li
           = tag_link(tag)

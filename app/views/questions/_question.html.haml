@@ -16,8 +16,6 @@
       -else
         = pjax_link_to title, "question", question_path(question), :title => truncate(strip_tags(question.body), :length => 200)
     %ul.tag-list.clearfix
-      %li.title
-        = t('global.tags_label')
       - question.tags.each do |tag|
         %li
           = tag_link(tag)
@@ -28,23 +26,23 @@
     .toolbar
       %ul.menubar
         -if question.accepted && question.answered
-          %li.solution
-            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow', :class => "action"
-        %li.answers
-          = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question), :class => "action"
+          %li.solution.action
+            = link_to I18n.t('questions.show.solution'), question_path(question, :anchor => "answer#{question.answer_id}"), :rel => 'nofollow'
+        %li.answers.action
+          = link_to t('questions.question.has_answers', :count => question.answers_count), question_path(question)
 
         -if question.followers_count.to_i > 0
-          %li.followers
+          %li.followers.action
             = t('questions.index.has_followers', :count => question.followers_count)
 
-        %li
+        %li.action
           - if logged_in? && question.follower?(current_user)
-            = link_to t('global.unfollow'), unfollow_question_path(question), :class => 'unfollow-q toggle-action action', "data-undo" =>  follow_question_path(question), "data-title" => t("questions.show.follow_tooltip"), :title => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.follow')
+            = link_to t('global.unfollow'), unfollow_question_path(question), :class => 'unfollow-q toggle-action', "data-undo" =>  follow_question_path(question), "data-title" => t("questions.show.follow_tooltip"), :title => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.follow')
           - elsif !logged_in? || !question.follower?(current_user)
-            = link_to t('global.follow'), follow_question_path(question), :title => t("questions.show.follow_tooltip"), :class => 'follow-q toggle-action action', "data-undo" =>  unfollow_question_path(question), "data-title" => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.unfollow'), "rel" => 'nofollow'
+            = link_to t('global.follow'), follow_question_path(question), :title => t("questions.show.follow_tooltip"), :class => 'follow-q toggle-action', "data-undo" =>  unfollow_question_path(question), "data-title" => t("questions.show.unfollow_tooltip"), 'data-text' => t('global.unfollow'), "rel" => 'nofollow'
 
-        %li
-          =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer"), :class => "action"
+        %li.action
+          =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
 
         -if !logged_in? || !current_user.mod_of?(current_group) && (current_user != question.user && current_user.has_flagged?(question).nil?)
           %li.spam

@@ -1,6 +1,6 @@
 -if logged_in? && current_user.mod_of?(current_group)
-  %li.more.moderate
-    = link_to I18n.t('questions.toolbar.moderate', :default => "Moderate"), "#", :class => "action"
+  %li.more.moderate.action
+    = link_to I18n.t('questions.toolbar.moderate', :default => "Moderate"), "#"
     %ul.drop-menu
       %li
         = link_to question.banned ? t("#{i18n_scope}.unban", :default => "Unban") : t("#{i18n_scope}.ban"), banning_moderate_question_path(question), :id => "ban_question", :class => "ban-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"

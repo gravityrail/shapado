@@ -67,7 +67,9 @@
 
 .toolbar
   display: block
+  clear: both
   ul
+    +small-radius
     zoom: 1
     width: 100%
     &:before, &:after
@@ -78,13 +80,12 @@
     li
       display: inline
       line-height: 24px
-      a.action
-        float: left
-        padding: 0 5px
-        display: block
-        line-height: 24px
-        +small-radius
-
+      &.action
+        a
+          float: left
+          padding: 0 5px
+          display: block
+          line-height: 24px
 .pagination
   text-align: center
   overflow: hidden

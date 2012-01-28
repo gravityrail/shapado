@@ -84,9 +84,7 @@ $dark_topbar_color: $topbar_color;
         color: lighten($fg_color, 40%);;
         &:hover {
           background-color: $brand_color;
-          color: white !important; } } }
-    .sf-sub-indicator {
-      background: url(/images/question-toolbar-icons-small.png) 0 -387px no-repeat; } }
+          color: white !important; } } } }
   .searcher {
     border-right: 1px solid $fg_topbar_color; } }
 
@@ -161,29 +159,33 @@ input[type=submit], input.save, .add_attachment {
     li {
       border-top: 1px solid darken($view_bg_color, 5%);
       &:hover {
-        background-color: $brand_color;
-        color: white;
+        background-color: $light_brand_color;
+        color: $fg_light_brand_color;
         a {
-          color: white; } }
+          color: $fg_light_brand_color; } }
           a:hover {
-            background-color: $brand_color;
-            color: white; } } } }
+            background-color: $light_brand_color;
+            color: $fg_light_brand_color; } } } }
 
 //TOOLBAR
-.toolbar ul li a.action {
-  &:visited {
-    color: $fg_color;
-  }
-  &:hover {
-    background-color: $brand_color;
-    color: $light_brand_color; } }
-
-.main-question .toolbar {
-  li {
+.toolbar ul {
+  li.action {
+    border: 1px solid $border_color;
+    @if lightness($view_bg_color) > 90% {
+      @include background-image(linear-gradient($view_bg_color, lighten($border_color, 4%) 75%, lighten($border_color, 2%)));}
+    @else {
+      @include background-image(linear-gradient(lighten($view_bg_color, 10%), $view_bg_color 75%, $view_bg_color));}
     a {
-      &:hover, &.active {
-        background-color: $brand_color;
-        color: white; } } } }
+      &:visited {
+        color: $fg_color;
+      }
+      &:hover {
+        background-color: $view_bg_color;
+        color: $fg_color;
+      }
+    }
+  }
+}
 
 .answers-list article .toolbar {
   background-color: lighten($view_bg_color, 10%); }
@@ -191,7 +193,7 @@ input[type=submit], input.save, .add_attachment {
 // PAGINATION
 .pagination {
   span a {
-    background-color: border_color;
+    background-color: $border_color;
     &:hover {
       background-color: $brand_color;
       color: $light_brand_color; } }
