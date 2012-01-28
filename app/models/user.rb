@@ -219,6 +219,10 @@ class User
   def languages_to_filter(group)
     @languages_to_filter ||= begin
       languages = nil
+      if group.languages.empty?
+        languages = group.languages
+        return languages
+      end
       case self.language_filter
       when "any"
         languages = group.languages
@@ -807,7 +811,8 @@ Time.zone.now ? 1 : 0)
                         :email => email,
                         :group_id => group.id,
                         :user_role => user_role,
-                        :body => body)
+                        :body => body,
+                        :state => 'pending')
     end
   end
 

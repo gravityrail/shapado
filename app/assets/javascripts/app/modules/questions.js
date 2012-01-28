@@ -202,6 +202,11 @@ var Questions = {
 
     }
   },
+    is_index_empty: function() {
+      var empty = $('.empty_questions').length;
+      return empty > 0
+    }
+  ,
   update_widgets: function(data) {
 
   }

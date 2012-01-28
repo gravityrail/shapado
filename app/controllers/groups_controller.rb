@@ -100,7 +100,6 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
-    @group.languages = params[:languages].split(',') if params[:languages]
     @group.safe_update(%w[track_users name legend description default_tags subdomain logo logo_info forum enable_latex enable_mathjax
                           custom_favicon language languages current_theme_id reputation_rewards daily_cap reputation_constrains
                           has_adult_content registered_only enable_anonymous signup_type custom_css wysiwyg_editor layout
@@ -110,7 +109,9 @@ class GroupsController < ApplicationController
     @group.safe_update(%w[analytics_id analytics_vendor], params[:group]) if @group.has_custom_analytics
     @group.custom_html.update_attributes(params[:group][:custom_html] || {}) if @group.has_custom_html
     @group.notification_opts.safe_update(%w[questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter comments_to_twitter], params[:group][:notification_opts]) if params[:group][:notification_opts]
-
+    if params[:group][:language] && !params[:group]['languages']
+      @group.languages = []
+    end
     if @group.domain == AppConfig.domain ||
         @group.domain.index(AppConfig.domain).nil? ||
         @group.user.role == 'admin'

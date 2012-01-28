@@ -19,15 +19,22 @@ var Ui = {
         return false;
     });
 
-      $('.lang-option').click(function(){
-        var path = $('#lang-select-toggle').data('language');
-        var language = $(this).data('language');
-        console.log(path, language)
-        $.ajax({type: 'POST', url: path,
-                data: {'language[filter]': language},
-                success: function(){window.location.reload()}
-               });
-      });
+    if(Questions.is_index_empty()){
+      var current_language = $('.current_language > a').data('language');
+      if(current_language!='any'){
+        $('.current_language').tipsy({trigger: 'manual', gravity: 'w'});
+        $('.current_language').tipsy('show');
+      }
+    }
+
+    $('.lang-option').click(function(){
+      var path = $('#lang-select-toggle').data('language');
+      var language = $(this).data('language');
+      $.ajax({type: 'POST', url: path,
+              data: {'language[filter]': language},
+              success: function(){window.location.reload()}
+             });
+    });
 
     $('#openid_url').parents('form').submit(function(){
       var openid = $('#openid_url').val();
