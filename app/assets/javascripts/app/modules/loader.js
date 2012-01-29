@@ -29,6 +29,8 @@ var Loader = {
       Editor.initialize($body);
     } else if($body.hasClass("tags-controller")) {
       Tags.initialize($body);
+    } else if($body.hasClass("pages-controller")) {
+      Pages.initialize($body);
     } else if($body.hasClass("members-controller")) {
       Members.initialize($body);
     } else if($body.hasClass("groups-controller") ||

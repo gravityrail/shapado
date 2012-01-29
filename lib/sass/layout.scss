@@ -35,15 +35,10 @@
 
 #container #columns {
   background-color: $view_bg_color;
+  border-left: 1px solid $border_color;
+  border-right: 1px solid $border_color;
   #column2, header {
-    border-left: 1px solid $border_color;
     border-right: 1px solid $border_color;
-  }
-  #column3 {
-    border-right: 1px solid $border_color;
-  }
-  #column1 {
-    border-left: 1px solid $border_color;
   }
 }
 
