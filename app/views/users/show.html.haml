@@ -64,10 +64,15 @@
 
     .badges
       %h3= t("activerecord.models.badges")
-      %ul
-        -@badges.each do |badge|
+      %ul.clearfix
+        - @badges.each do |badge|
           %li
-            = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => true}
+            .badge_item
+              = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge #{badge.type}", :title => badge.description}
+
+              -if badge["count"] > 1
+                .counter
+                  × #{badge["count"].to_i}
 
     #main-content-wrap{:class => @active_tab}
       %nav{:class => @active_subtab }

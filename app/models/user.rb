@@ -497,7 +497,14 @@ Time.zone.now ? 1 : 0)
   end
 
   def badges_on(group, opts = {})
-    self.badges.where(opts.merge(:group_id => group.id)).order_by(:created_at.desc)
+    grouped = opts.delete(:grouped)
+    if grouped
+      Badge.collection.master.group({key: [:token, :type], initial: {count: 0}, reduce: "function(doc, prev) { prev.count += 1}", cond: {group_id: group.id, user_id: self.id}}).map do |attributes|
+        Badge.new(attributes)
+      end
+    else
+      self.badges.where(opts.merge(group_id: group.id)).order_by(:created_at.desc)
+    end
   end
 
   def find_badge_on(group, token, opts = {})

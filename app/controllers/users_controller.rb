@@ -396,8 +396,8 @@ class UsersController < ApplicationController
     @user = User.find_by_login_or_id(params[:id], conds)
     raise Error404 unless @user
     set_page_title(t("users.show.title", :user => @user.login))
-    @badges = @user.badges.where(:group_id => current_group.id).
-                           page(params["page"])
+    @badges = @user.badges_on(current_group, grouped: true);
+
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
 
     @user.viewed_on!(current_group, request.remote_ip) if @user != current_user && !is_bot?

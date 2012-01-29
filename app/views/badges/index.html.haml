@@ -3,14 +3,42 @@
     = t(".title")
   %p.description= t(".description")
 
-.content
-  %ul
-    - @badges.each do |badge|
-      %li.clearfix
-        .badge_item
-          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge #{badge.type}", :title => badge.description}
+-#i18n
+.filters
+  %ul.menubar.clearfix
+    %li
+      %label
+        = t('.type')
+    %li.general
+      = link_to t(".general"), badges_path(:tab=>"general"), :title => t(".general_tooltip", :default => "general")
+    %li.tags
+      = link_to t(".tags"), badges_path(:tab=>"tags"), :title => t(".tags_tooltip", :default => "tags")
+    %li
+      %label
+        = t('.filter')
+    %li.all
+      = link_to t(".all"), badges_path(:filter=>"all"), :title => t(".all_tooltip", :default => "all")
+    %li.gold
+      = link_to t(".gold"), badges_path(:filter=>"gold"), :title => t(".gold_tooltip", :default => "gold")
+    %li.silver
+      = link_to t(".silver"), badges_path(:filter=>"silver"), :title => t(".silver_tooltip", :default => "silver")
+    %li.bronze
+      = link_to t(".bronze"), badges_path(:filter=>"bronze"), :title => t(".bronze_tooltip", :default => "bronze")
 
-          .counter
-            == × #{badge["count"]}
-        .badge_description
-          =badge.description
+.badges
+  %table
+    - @badges.sort_by{|b| b.name}.each do |badge|
+      %tr
+        %td
+          .badge_item
+            -link_params = {:id => badge.token}
+            -if badge.for_tag
+              -link_params[:type] = badge.type
+
+            = pjax_link_to badge.name, "badges", badge_path(link_params), {:class => "badge #{badge.type}", :title => badge.description}
+            -if badge["count"].to_i > 1
+              .counter
+                == × #{badge["count"].to_i}
+        %td
+          .badge_description
+            =badge.description

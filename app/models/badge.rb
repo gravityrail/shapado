@@ -65,7 +65,11 @@ class Badge
   end
 
   def description
-    @description ||= I18n.t("badges.shared.#{self.token}.description") if self.token
+    if self.for_tag
+      @description ||= I18n.t("badges.show.for_tag_#{self.type}", tag: self.token)
+    else
+      @description ||= I18n.t("badges.shared.#{self.token}.description") if self.token
+    end
   end
 
   def type
