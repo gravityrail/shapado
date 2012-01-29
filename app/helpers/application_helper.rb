@@ -2,6 +2,30 @@
 module ApplicationHelper
   include RailsRinku
 
+  def display_default_adsense?(position)
+    default_adsense = AppConfig.default_adsense["activate"]
+    !(position == 'navbar' || !default_adsense ||
+      current_group.has_custom_ads || current_group.has_adult_content)
+  end
+
+  def default_adsense(position)
+    return if position == 'navbar'
+    settings = AppConfig.default_adsense[position]
+    client = AppConfig.default_adsense["client"]
+    Rails.logger.info(position)
+    ad = "<script type=\"text/javascript\"><!-- \
+        google_ad_client = \"#{client}\"; \
+        google_ad_slot = \"#{settings['slot']}\"; \
+        google_ad_width = #{settings['width']}; \
+        google_ad_height = #{settings['height']}; \
+        //--> \
+        </script> \
+        <script type=\"text/javascript\" \
+        src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\"> \
+        </script>"
+    ad
+  end
+
   def known_languages(user, group)
     return group.languages unless logged_in?
     languages = user.preferred_languages & group.languages
