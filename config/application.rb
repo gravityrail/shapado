@@ -87,6 +87,7 @@ module Shapado
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    config.assets.precompile += ["modernizr.custom.geo.load.js", "codemirror.css", "codemirror.js"]
 
     config.sass.load_paths << "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"
     config.assets.css_compressor = :yui
