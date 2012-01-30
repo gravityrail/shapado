@@ -1,29 +1,25 @@
 .top
   %h1
-    = t(".title")
-  %p.description= t(".description")
+    = t("badges.index.title")
+  %p.description= t("badges.index.description")
 
--#i18n
 .filters
   %ul.menubar.clearfix
-    %li
-      %label
-        = t('.type')
     %li.general
-      = link_to t(".general"), badges_path(:tab=>"general"), :title => t(".general_tooltip", :default => "general")
+      = link_to t("badges.index.general"), badges_path(:tab=>"general"), :title => t("badges.index.general_tooltip"), :rel => 'tipsy'
     %li.tags
-      = link_to t(".tags"), badges_path(:tab=>"tags"), :title => t(".tags_tooltip", :default => "tags")
+      = link_to t("badges.index.tags"), badges_path(:tab=>"tags"), :title => t("badges.index.tags_tooltip"), :rel => 'tipsy'
     %li
       %label
-        = t('.filter')
-    %li.all
-      = link_to t(".all"), badges_path(:filter=>"all"), :title => t(".all_tooltip", :default => "all")
+        = t('shared.filter')
+    %li.general
+      = link_to t("badges.index.all"), badges_path(:filter=>"all"), :title => t("badges.index.all_tooltip"), :rel => 'tipsy'
     %li.gold
-      = link_to t(".gold"), badges_path(:filter=>"gold"), :title => t(".gold_tooltip", :default => "gold")
+      = link_to t("badges.index.gold"), badges_path(:filter=>"gold"), :title => t("badges.index.gold_tooltip"), :rel => 'tipsy'
     %li.silver
-      = link_to t(".silver"), badges_path(:filter=>"silver"), :title => t(".silver_tooltip", :default => "silver")
+      = link_to t("badges.index.silver"), badges_path(:filter=>"silver"), :title => t("badges.index.silver_tooltip"), :rel => 'tipsy'
     %li.bronze
-      = link_to t(".bronze"), badges_path(:filter=>"bronze"), :title => t(".bronze_tooltip", :default => "bronze")
+      = link_to t("badges.index.bronze"), badges_path(:filter=>"bronze"), :title => t("badges.index.bronze_tooltip"), :rel => 'tipsy'
 
 .badges
   %table

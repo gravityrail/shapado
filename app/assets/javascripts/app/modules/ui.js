@@ -26,7 +26,7 @@ var Ui = {
         $('.current_language').tipsy('show');
       }
     }
-
+    $('[rel=tipsy]').tipsy();
     $('.lang-option').click(function(){
       var path = $('#lang-select-toggle').data('language');
       var language = $(this).data('language');

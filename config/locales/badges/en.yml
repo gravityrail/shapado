@@ -2,7 +2,19 @@ en:
   badges:
     index:
       title: Badges
-      description: "All badges that you can earn. Share your knowledge earn badges."
+      description: "The more you contribute by asking or answering questions, the more badges you will be rewarded. These will show up on your profile page."
+      general: Available badges
+      general: Regular badges
+      tags: Tag badges
+      gold: Gold
+      silver: Silver
+      bronze: Bronze
+      general_tooltip: "Show all pre-defined badges."
+      all_tooltip: "Show all gold, silver and bronze badges."
+      tags_tooltip: "When questions tagged with X get answers of more than 100 upvotes, a badge X is created with the name of that tag."
+      gold_tooltip: "Gold badges are the greatest kind of reward, they are also the hardest to obtain. Only the most dedicated users get these rewards."
+      silver_tooltip: "Silver badges are won by active users who have been involved for a pretty long time."
+      bronze_tooltip: "Bronze badges are easy to win and encourage users to participate."
     show:
       title: Badge %{type}
       description: "Users who earned this badge. Recently awarded to:"

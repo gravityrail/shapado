@@ -1,5 +1,6 @@
 en:
   shared:
+    filter: "Filter:"
     view_mode: "View mode:"
     languages: "Languages:"
     language_filter_tooltip: "Try with another language."
