@@ -35,6 +35,7 @@ fi:
     layout: 
       footer: 
         cc_footer: Kaikki Shapado.comin sisältö ja tiedot ovat käytettävissä %{cc_link} -lisenssin alaisuudessa
+        powered_by: Käyttövoimana %{source_link} %{version} sovelluksen %{agpl_link} alaisena
     login_drop_down: 
       with_facebook: Facebookilla
       with_google: Googlella

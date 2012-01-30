@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: Od1n
 # Author: Patcito
 fr: 
   invitations: 
@@ -9,7 +10,7 @@ fr:
       create_account: Créer un compte (1 de 2)
       create_account_step2: Créer un compte
       description: "%{group} est une collection de question et réponses en constante évolution sur n'importe quel sujet."
-      done: Terminé!
+      done: Terminé !
       facebook_connect: Connectez-vous avec votre compte Facebook
       final_step: Dernière étape (2 de 2)
       find_friends: "Trouver des amis et connecter-vous :"

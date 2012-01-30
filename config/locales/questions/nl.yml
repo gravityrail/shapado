@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -32,7 +33,7 @@ nl:
       flag: Markeren
       pick_answer: Als correct antwoord instellen
       unfavorite: Opslaan ongedaan maken
-      unfavorite_tooltip: Dit antwoord uit uw favorieten verwijderen
+      unfavorite_tooltip: Dit antwoord verwijderen uit uw favorieten
       unset_answer: Als correct antwoorden verwijderen?
     answer_toolbar: 
       flagged_by_you: Door u gemarkeerd
@@ -50,7 +51,7 @@ nl:
     form: 
       add_attachment: Bijlage toevoegen
       adult_content: Deze vraag bevat inhoud alleen voor volwassenen.
-      body_tip: Wat is uw vraag? Zorg dat deze beschrijvend is.
+      body_tip: Wat is uw vraag? Formuleer duidelijk en beknopt.
       language_tip: Selecteer de taal voor de vraag.
       related_questions_desc: Gelijksoortige vragen worden hier weergegeven.
       remove_attachment: Verwijderen
@@ -79,7 +80,7 @@ nl:
       messages: 
         empty_tags: U moet tenminste één label opgeven
         tags_not_added: De labels "%{tags}" konden niet worden toegevoegd. U hebt een reputatie van %{reputation_required} nodig om nieuwe labels te kunnen aanmaken.
-        title_too_long: Sorry, de titel mag niet meer dan honderd tekens bevatten.
+        title_too_long: Sorry, de titel mag niet meer dan 100 tekens bevatten.
         too_many_tags: Sorry, u kunt maximaal 20 labels opgeven.
         too_short: 
           one: Uw titel moet meer dan één woord bevatten.
@@ -92,7 +93,7 @@ nl:
       group_dont_exists: De groep %{group} bestaat niet.
       success: Vraag verplaatst naar %{group}
     new: 
-      description: Zorg dat uit beschrijvend bent en zorg ervoor dat u gerelateerde labels toevoegt zodat uw vraag makkelijk gevonden kan worden.
+      description: Formuleer duidelijk en voeg passende labels toe, zodat uw vraag gemakkelijk gevonden kan worden.
       how_to_ask: Hoe vragen
       title: Stel vraag
     question: 
@@ -116,7 +117,7 @@ nl:
     shared: 
       flag: Markeren
     show: 
-      accepted_tooltip: Een van de antwoorden is geaccepteerd als juist antwoord.
+      accepted_tooltip: Een van de antwoorden is geaccepteerd als het juiste antwoord.
       another_answers: Andere antwoorden
       answers: Antwoorden
       asked_on: Gesteld op
@@ -174,7 +175,7 @@ nl:
     unsolve: 
       flash_notice: De vraag is nu niet beantwoord
     unwatch: 
-      success: U ontvangt vanaf nu geen berichten per e-mail meer voor ieder nieuw antwoord op deze vraag.
+      success: U ontvangt vanaf nu geen berichten per e-mail meer voor nieuwe antwoorden op deze vraag.
     update: 
       flash_notice: De vraag is bijgewerkt.
     watch: 

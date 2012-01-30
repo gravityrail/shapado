@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -11,12 +12,12 @@ nl:
   votes: 
     comments: 
       title: 
-        more_votes_user: U en een andere %{votes} gebruikers hebben deze reactie als positief aangemerkt.
-        no_user_more_votes: Meer dan %{votes} mensen hebben deze reactie als positief aangemerkt. Klik om dat ook te doen.
-        no_user_no_vote: Klik op deze reactie als positief aan te merken.
-        no_user_one_vote: Een gebruiker heeft deze reactie als positief aangemerkt. Klik om dat ook te doen.
-        one_vote_two_users: U en een andere gebruiker hebben deze reactie als positief aangemerkt.
-        one_vote_user: U bent de enige die deze reactie als positief heeft aangemerkt.
+        more_votes_user: U en %{votes} andere gebruikers hebben deze opmerking als positief beoordeeld.
+        no_user_more_votes: Meer dan %{votes} mensen hebben deze opmerking als positief beoordeeld. Klik om dat ook te doen.
+        no_user_no_vote: Klik om deze opmerking als positief te beoordelen.
+        no_user_one_vote: Eén gebruiker heeft deze opmerking als positief aangemerkt. Klik om dat ook te doen.
+        one_vote_two_users: U en een andere gebruiker hebben deze opmerking als positief beoordeeld.
+        one_vote_user: U bent de enige die deze opmerking als positief heeft beoordeeld.
     control: 
       have_voted_down: Klik om uw negatieve beoordeling te verwijderen
       have_voted_up: Klik om uw positieve beoordeling te verwijderen

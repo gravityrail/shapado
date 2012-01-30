@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Centerlink
+# Author: Nike
 # Author: Raspi
 fi: 
   activerecord: 
@@ -28,6 +29,7 @@ fi:
       create_page: Luo uusi sivu
       title: Sivuluettelo
       wiki: Wiki
+      wiki_pages: Wikisivut
       written_in: Kirjoitettu kielellä %{language}
     new: 
       title: Uusi sivu

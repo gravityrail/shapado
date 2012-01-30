@@ -18,11 +18,13 @@ fi:
         description: Vieraillut sivustolla päivittäin 20 peräkkäisenä päivänä
         name: Narkomaani
       altruist: 
+        description: Ensimmäinen palkinto, jonka manuaalisesti myönsit toisen henkilön kysymykselle
         name: Altruisti
       autobiographer: 
         description: Kaikki käyttäjäprofiilikentät tulivat valmiiksi
         name: Omaelämäkerta
       benefactor: 
+        description: Ensimmäinen palkinto, jonka itse manuaalisesti myönsit omalle kysymyksellesi
         name: Hyväntekijä
       celebrity: 
         description: Saanut yli 100 seuraajaa
@@ -64,7 +66,7 @@ fi:
         description: On 25 käyttäjän suosikkivastaus
         name: Suosikkivastaus
       favorite_question: 
-        description: 25 käyttäjän suosikkikysymys
+        description: Kysyi kysymyksen, jota seuraa 25 käyttäjää
         name: Suosikkikysymys
       friendly: 
         description: Alkoi seurata jotakuta ensimmäisen kerran
@@ -91,6 +93,7 @@ fi:
         description: Saanut yli 10 seuraajaa
         name: Mielenkiintoinen henkilö
       investor: 
+        description: Ensimmäinen palkinto, jonka tarjosit toisen henkilön kysymykseen
         name: Sijoittaja
       merit_medal: 
         description: Saanut 200 myönteistä ääntä
@@ -146,7 +149,7 @@ fi:
         description: 100 käyttäjää on merkinnyt tämän käyttäjän vastauksen suosikikseen
         name: Tähtivastaus
       stellar_question: 
-        description: Kysyi kysymyksen, jonka 100 käyttäjää lisäsi suosikkeihin
+        description: Kysyi kysymyksen, jota seuraa 100 käyttäjää
         name: Tähtikysymys
       student: 
         description: Kysyi kysymyksen, jolla on vähintään yksi kannatusääni

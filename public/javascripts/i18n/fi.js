@@ -6,6 +6,7 @@
  */
 
 var I18n = {
-	on_leave_page: "Saatat menettää tekemäsi muutokset"
+	on_leave_page: "Saatat menettää tekemäsi muutokset",
+	loading: "Ladataan…"
 };
 

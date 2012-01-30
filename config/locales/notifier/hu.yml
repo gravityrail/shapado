@@ -2,8 +2,11 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   notifier: 
+    admin_login: 
+      subject: "Figyelmeztetés: admin-kapcsolat"
     earned_badge: 
       message1: "%{badge} jelvényt szereztél itt: %{app}"
       message2: "A jelvény leírása:"

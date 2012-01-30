@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   activerecord: 
     models: 
@@ -14,6 +15,9 @@ hu:
       to_vote_down: Kattints ide a leszavazáshoz
       to_vote_up: Kattints ide a felszavazáshoz
     create: 
+      average: 
+        one: egy szavazat
+        other: "%{count} szavazat"
       flash_error: Erre nem szavazhatsz
       flash_notice: Köszönjük a szavazatodat!
       unauthenticated: Anonim felhasználók nem szavazhatnak

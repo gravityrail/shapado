@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Darkweasel
 # Author: Gufulo
+# Author: Yekrats
 eo: 
   layouts: 
     application: 
@@ -41,7 +42,7 @@ eo:
       general: Ĝenerala
       members: Anoj
       pages: Paĝoj
-      properties: Ecoj
+      properties: Atributoj
       reputation: Reputacio
       rewards: Rekompencoj
       stats: Statistikoj

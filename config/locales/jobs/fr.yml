@@ -11,7 +11,7 @@ fr:
         send_twitter: "Ma réponse à: %{question}"
       on_favorite_answer: 
         group_send_twitter: "%{user} a aimé une réponse par %{author} sur: %{question}"
-        send_twitter: "J'ai aimé une réponse par %{author} sur: %{question}"
+        send_twitter: "J'ai aimé une réponse par %{author} sur : %{question}"
     base: 
       create_badge: 
         group_send_twitter: "%{user} vient de gagner le badge %{token} sur %{group_name} %{link}"

@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -18,5 +19,5 @@ nl:
     create: 
       success: Uw aankondiging is aangemaakt.
     index: 
-      description: Nieuwe aankondigingen die sitebreed worden weergegeven aan bezoekers beheren en maken
+      description: Nieuwe aankondigingen maken en beheren, die sitebreed worden weergegeven aan bezoekers
       title: Aankondigingen

@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gomoko
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -61,23 +62,31 @@ fr:
       title: Configuration
     follow: 
       flash_error: Vous ne pouvez pas vous suivre vous-même.
-      flash_notice: L'utilisateur %{user} a été ajouté à votre liste d' amis
+      flash_notice: Vous suivez maintenant %{user}.
     form: 
       activities_notification: Recevoir des notifications via courrier électronique sur les activités système telles que les insignes gagnées, les nouveaux suiveurs, etc.
       avatar_tip: Changer l'image de votre profil en utilisant gravatar
+      desktop_notification: Notifications du bureau
       give_advice_notification: Recevoir des notifications via courrier électronique sur les questions liées à votre champ d'expertise
       information: Information
       language: Langue utilisée pour l'interface du site
       new_answer_notification: Obtenir des notifications via email de nouvelles réponses
       notifications: Notifications
       reports_notification: Recevoir un rapport avec les dernières activités du groupes (juste pour l'admin du groupe)
+      send_answers_to_twitter: Envoyer mes réponses sur mon Twitter
+      send_badges_to_twitter: Envoyer mes décorations récemment obtenues sur mon Twitter
+      send_comments_to_twitter: Envoyer mes commentaires sur Twitter
+      send_favorites_to_twitter: Envoyer mes réponses préférées sur mon Twitter
+      send_questions_to_twitter: Envoyer mes questions sur mon Twitter
       show_more_lang: Afficher plus de langues
+      social_interaction: Interaction avec les médias sociaux
     index: 
       empty: Ce groupe n'a pas de membres pour l'instant. Participez pour en devenir un.
       filter: Recherchez des utilisateurs
       name: Nom
       name_tooltip: Utilisateurs par ordre alphabétique
       near: Près de vous
+      near_tooltip: Utilisateurs qui sont proches de vous
       newest: Les plus récents
       newest_tooltip: Utilisateurs vennant d'ouvrir un compte
       oldest: Les plus anciens
@@ -89,6 +98,8 @@ fr:
       errors: 
         reputation_needed: Vous avez besoin d'une réputation de %{min_reputation} à fin de pouvoir %{action}
     new: 
+      description: Devenez membre de cette communauté pour poser des questions, répondre et apprendre!
+      join_group: Rejoignez %{group}
       submit: Inscrivez-vous
       title: Se connecter en tant que nouvel utilisateur
     show: 
@@ -100,9 +111,20 @@ fr:
       unfollow: Ne plus suivre
       views: vues
     top_user: 
+      connect: Se connecter
+      my_karma: "Mon karma: %{karma}"
       profile: Profil
     unfollow: 
-      flash_notice: L'utilisateur %{user} a été ajouté à votre liste d'amis
+      flash_notice: Vous ne suivez plus %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Vous suivez maintenant la balise %{tag}.
+      unfollowed: 
+        flash_notice: Vous ne suivez plus la balise %{tag}.
+    user_bar: 
+      create_account: Créer un compte
+      not_logged_in: Non connecté
+      signed_as: Connecté en tant que 
     user_mini: 
       admin: "[ Admin ]"
       editor: "[ Éditeur ]"

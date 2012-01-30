@@ -15,7 +15,7 @@ br:
       email_description: Merkit ur chomlec'h postel evit ma c'hallfemp respont d'ho kemennadenn
       feedback_description: deskrivadur
       feedback_title: titl
-      title: Kas hoc'h evezhiadennoù
+      title: Kasit hoc'h evezhiadennoù
     index: 
       active: oberiant
       browse_all_or_by_tags: Sellit %{full_list_of_questions} pe %{browse_by_tags}

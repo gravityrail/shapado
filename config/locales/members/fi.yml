@@ -14,6 +14,7 @@ fi:
       error: Olemme pahoillamme, käyttäjää **%{user_id}** ei ole olemassa.
       notice: "%{login} lisätty onnistuneesti rooliin %{role}."
     form: 
+      destroy_confirm: Oletko varma? Tämän jälkeen tämä käyttäjä ei ole enää tämän ryhmä jäsen.
       login_tip: Etsi kirjoittamisen aikana
     index: 
       manage_members_title: Hallinnoi jäseniä
