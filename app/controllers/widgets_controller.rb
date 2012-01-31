@@ -97,7 +97,7 @@ class WidgetsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(widgets_url) }
       format.json { head :ok }
-      format.js { render :json => {:success => true}}
+      format.js { render :nothing => true }
     end
   end
 
