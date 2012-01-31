@@ -37,6 +37,10 @@ var Themes = {
 
         return false;
       });
+    } else if($body.hasClass("index")) {
+      $(".import_theme").click(function() {
+        $(".import_dialog").dialog();
+      });
     }
   }
 }

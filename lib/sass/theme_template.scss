@@ -502,6 +502,11 @@ form.history {
 .themes-controller #main-content-wrap .themes .theme form .theme_colors .field .Icon{
   border: 1px solid darken($view_bg_color, 10%);
 }
+
+.themes-controller .theme {
+  .display-color { border: 1px solid $border_color }
+}
+
 .devise-passwords-controller #main-content-wrap .errorExplanation{
   background-color: #fdecec;
   border: 1px solid #c00;
