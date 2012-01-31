@@ -4,8 +4,6 @@ en:
     view_mode: "View mode:"
     languages: "Languages:"
     language_filter_tooltip: "Try with another language."
-    languages_notice: "Sorry, no questions are available in this language."
-    languages_link: "Click here to see questions in all languages."
     name: Name
     description: Description
     by_anon: "By anonymous"
@@ -45,6 +43,17 @@ en:
       questions:
         description:
           action_link: ask a question
+          text: Be the first to <a href="%{url}"> %{action_link}<a/>!
+      filtered_by_language_questions:
+        title: Sorry, no questions are available in this language.
+        description:
+          text: "<a href='%{url}' class='lang-option', data-language='any' > %{action_link}</a>"
+          action_link: Click here to see questions in all languages.
+      filtered_questions:
+        title: Sorry, no questions are available in this filter.
+        description:
+          text: "<a href='%{url}'>%{action_link}</a>"
+          action_link: Click here show all questions
       themes:
         title: You haven't created any themes for now.
         description:
