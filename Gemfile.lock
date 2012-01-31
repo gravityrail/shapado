@@ -42,10 +42,10 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 5e90bdd2813611a53a84f5207ee0bb0ef489e112
-  branch: 2.3.0-stable
+  revision: 75e19f99f3121ad34d96d57d51d534499d5509cb
+  branch: 2.4.0-stable
   specs:
-    mongoid (2.3.4)
+    mongoid (2.4.3)
       activemodel (~> 3.1)
       mongo (~> 1.3)
       tzinfo (~> 0.3.22)

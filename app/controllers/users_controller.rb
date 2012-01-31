@@ -138,9 +138,9 @@ class UsersController < ApplicationController
   def follows
     case @active_subtab.to_s
     when "following"
-      @resources = @user.following.page(params["page"])
+      @resources = @user.following(current_group).page(params["page"])
     when "followers"
-      @resources = @user.followers.page(params["page"])
+      @resources = @user.followers({:group_id => current_group.id}, true).page(params["page"])
     when "answers"
       @resources = Answer.where(:favoriter_ids.in => [@user.id],
                                 :banned => false,
