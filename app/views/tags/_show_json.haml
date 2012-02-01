@@ -11,7 +11,7 @@
       = tag.description
     - else
       - if logged_in? && current_user.mod_of?(current_group)
-        = t('tags.show_json.edit_it')
+        = link_to t('tags.show_json.edit_it'), edit_tag_path(tag)
       - else
         = t('tags.show_json.no_description')
 
