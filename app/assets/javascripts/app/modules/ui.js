@@ -9,6 +9,8 @@ var Ui = {
       quick_question.find('.buttons-quickq').show();
     });
 
+    Ui.initialize_ajax_tooltips();
+
     if(Ui.supports_input_placeholder()) {
       $('.hideifplaceholder').remove();
     };
@@ -219,5 +221,38 @@ var Ui = {
     if(fields.length > 0){
       fields.tabs();
     }
+  },
+  initialize_ajax_tooltips: function(){
+    $(document.body).delegate(".tooltip", "mouseleave", function(event) {
+      $(".tooltip").hide();
+    });
+
+    $(document.body).delegate(".tag-list", "mouseleave", function(event) {
+      $(".tooltip").hide();
+    });
+
+    $(document.body).delegate(".ajax-tooltip", "hover", function(event) {
+      var url = $(this).attr('href');
+      var tag_link = $(this);
+      $('.tooltip').hide();
+      if(tag_link.data('tooltip')==1){
+        var tooltip = tag_link.next('.tooltip');
+        tooltip.css('display', 'block');
+        return false;
+      }
+      $.ajax({
+        url: url,
+        dataType: 'json',
+        success: function(data){
+          tag_link.removeAttr('title');
+          tag_link.data('tooltip', 1);
+          tag_link.after(data.html)
+          var tooltip = tag_link.next('.tooltip');
+          tooltip.position({at: 'top center', of: tag_link, my: 'bottom', offset: '-75 0', collision: 'flip bottom'})
+          tooltip.css({'display': 'block', width: '160px'});
+        }})
+      return false;
+    })
+
   }
 };
