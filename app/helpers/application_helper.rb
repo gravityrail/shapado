@@ -482,7 +482,7 @@ module ApplicationHelper
     elsif tag.is_a? Array
       tag.join('+')
     end
-    link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
+    x=link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag ajax-tooltip" unless tag.blank?
   end
 
   def widgets_context(controller, action)
