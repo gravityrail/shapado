@@ -248,7 +248,7 @@ var Ui = {
           tag_link.data('tooltip', 1);
           tag_link.after(data.html)
           var tooltip = tag_link.next('.tooltip');
-          tooltip.position({at: 'top center', of: tag_link, my: 'bottom', offset: '-75 0', collision: 'flip bottom'})
+          tooltip.position({at: 'top center', of: tag_link, my: 'bottom', offset: '-75 0', collision: 'fit'})
           tooltip.css({'display': 'block', width: '160px'});
         }})
       return false;
