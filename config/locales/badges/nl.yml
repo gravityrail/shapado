@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Ewout124
 # Author: McDutchie
+# Author: Pinxnl
 # Author: Protozoan
 # Author: SPQRobin
 # Author: Siebrand
@@ -14,10 +15,10 @@ nl:
   badges: 
     index: 
       description: Alle speldjes die u kunt verdienen. Deel uw kennis, verdien speldjes.
-      title: speldjes
+      title: Speldjes
     shared: 
       addict: 
-        description: Heeft de site twintig dagen achter elkaar bezocht
+        description: Heeft de site 20 dagen achter elkaar bezocht
         name: Verslaafde
       altruist: 
         description: De eerste onderscheiding die u handmatig hebt toegekend aan de vraag van een ander
@@ -29,40 +30,40 @@ nl:
         description: De eerste onderscheiding die u handmatig hebt toegekend aan uw eigen vraag
         name: Weldoener
       celebrity: 
-        description: Heeftmeer dan honderd volgers
+        description: Heeft meer dan 100 volgers
         name: Beroemdheid
       citizen_patrol: 
         description: Eerste bericht gemarkeerd
-        name: Burgerpatrouille
+        name: Burgerwacht
       civic_duty: 
-        description: Heeft driehonderd keer gestemd
+        description: Heeft 300 keer gestemd
         name: Burgerplicht
       cleanup: 
         description: Heeft een eerste keer teruggedraaid
-        name: Opruimen
+        name: Schoonmaker
       commentator: 
-        description: Heeft tien opmerkingen achtergelaten
+        description: Heeft 10 opmerkingen achtergelaten
         name: Commentator
       critic: 
-        description: Heeft voor de eerste keer negatief beoordeeld
+        description: Heeft voor de eerste keer negatief gestemd
         name: Criticus
       disciplined: 
-        description: Heeft een eigen bericht met een score van drie of hoger verwijderd
+        description: Heeft een eigen bericht met een score van 3 of hoger verwijderd
         name: Gedisciplineerd
       editor: 
         description: Eerste bericht bewerkt
         name: Redacteur
       effort_medal: 
-        description: Heeft honderd positieve stemmen gekregen
+        description: Heeft 100 positieve stemmen gekregen
         name: Inspanningsmedaille
       enlightened: 
-        description: Heeft een antwoord gegeven dat tenminste tien keer positief is beoordeeld
+        description: Heeft een antwoord gegeven dat tenminste 10 keer positief is beoordeeld
         name: Verlicht
       famous_question: 
-        description: Heeft een vraag gesteld die tienduizend keer bekeken is
+        description: Heeft een vraag gesteld die 10.000 keer bekeken is
         name: Beroemde vraag
       fanatic: 
-        description: Heeft de site honderd dagen achter elkaar bezocht
+        description: Heeft de site 100 dagen achter elkaar bezocht
         name: Fanaticus
       favorite_answer: 
         description: Heeft een antwoord dat door 25 gebruikers als favoriet is aangegeven
@@ -74,17 +75,17 @@ nl:
         description: Is voor de eerste keer iemand gaan volgen
         name: Vriendelijk
       good_answer: 
-        description: Heeft een antwoord gegeven dat een gemiddelde van meer dan 25 stemmen bereikt
+        description: Heeft een antwoord gegeven met een gemiddeld aantal stemmen boven de 25
         name: Goed antwoord
       good_question: 
-        description: Heeft een vraag gesteld die een gemiddelde van meer dan 25 stemmen bereikt
+        description: Heeft een vraag gesteld met een gemiddeld aantal stemmen boven de 25
         name: Goede vraag
       great_answer: 
         description: Heeft een antwoord gegeven dat honderd keer positief is beoordeeld
         name: Perfect antwoord
       great_question: 
-        description: Vraag die honderd keer positief beoordeeld is
-        name: supervraag
+        description: Heeft vraag gesteld die 100 keer positief beoordeeld is
+        name: Supervraag
       guru: 
         description: Heeft een oplossing gegeven voor een vraag met een gemiddelde van meer dan 40 stemmen
         name: Goeroe
@@ -92,23 +93,23 @@ nl:
         description: Heeft voor de eerste keer een vraag gesteld
         name: Onderzoeker
       interesting_person: 
-        description: Heeft meer dan tien volgers
+        description: Heeft meer dan 10 volgers
         name: Interessant persoon
       investor: 
         description: De eerste onderscheiding die u hebt toegekend aan de vraag van een ander
         name: Investeerder
       merit_medal: 
-        description: Heeft tweehonderd positieve stemmen gekregen
+        description: Heeft 200 positieve stemmen gekregen
         name: Medaille van verdienste
       necromancer: 
-        description: Heeft een vraag beantwoord meer dan twee maanden na het stellen met tenminste vijf stemmen
+        description: Heeft een vraag beantwoord meer dan twee maanden na het stellen met tenminste 5 stemmen
         name: Geestenbezweerder
       nice_answer: 
-        description: Heeft een antwoord gegeven dat tien keer positief is beoordeeld
+        description: Heeft een antwoord gegeven dat 10 keer positief is beoordeeld
         name: Mooi antwoord
       nice_question: 
-        description: Heeft een vraag gesteld die tien keer positief beoordeeld is
-        name: goede vraag
+        description: Heeft een vraag gesteld die 10 keer positief beoordeeld is
+        name: Goede vraag
       notable_question: 
         description: Heeft een vraag gesteld die 2500 keer bekeken is
         name: Vermeldenswaardige vraag
@@ -125,10 +126,10 @@ nl:
         description: Heeftvijfhonderd positieve stemmen en maximaal tien negatieve stemmen
         name: Popster
       popular_person: 
-        description: Heeft meer dan vijftig volgers
+        description: Heeft meer dan 50 volgers
         name: Populaire gebruiker
       popular_question: 
-        description: Heeft een vraag gesteld die duizend keer bekeken is
+        description: Heeft een vraag gesteld die 1000 keer bekeken is
         name: Populaire vraag
       promoter: 
         description: De eerste onderscheiding die u hebt toegekend aan uw eigen vraag
@@ -140,35 +141,35 @@ nl:
         description: Heeft voor het eerst een zelfgestelde vraag beantwoord met een geaccepteerd antwoord
         name: Geleerde
       self-learner: 
-        description: Heeft een eigen vraag beantwoord met tenminste drie positieve beoordelingen
+        description: Heeft een eigen vraag beantwoord met tenminste 3 positieve beoordelingen
         name: Zelflerend
       service_medal: 
-        description: Heeft driehonderd positieve stemmen
+        description: Heeft 300 positieve stemmen
         name: Dienstmedaille
       shapado: 
-        description: Heeft de site acht dagen achter elkaar bezocht
+        description: Heeft de site 8 dagen achter elkaar bezocht
       stellar_answer: 
         description: Heeft een antwoord dat door 100 gebruikers als favoriet is aangegeven
         name: Fantastisch antwoord
       stellar_question: 
-        description: Heeft een vraag gesteld die door honderd gebruikers gevolgd wordt
+        description: Heeft een vraag gesteld die door 100 gebruikers gevolgd wordt
         name: Bovennatuurlijk goede vraag
       student: 
         description: Heeft een vraag gesteld met tenminste één positieve stem
         name: Student
       supporter: 
-        description: Heeft de eerste keer positief gestemd
+        description: Heeft voor de eerste keer positief gestemd
         name: Supporter
       troubleshooter: 
         description: Heeft voor de eerste keer antwoord gegeven
         name: Probleemoplosser
       tutor: 
-        description: geef een antwoord op een vraag met een gemiddelde van meer dan twee stemmen
+        description: Gaf een antwoord op een vraag met een gemiddelde van meer dan 2 stemmen
         name: Leermeester
     show: 
       description: "Gebruikers die dit speldje hebben verdiend. Onlangs uitgereikt aan:"
       earned: verdiend
       for_tag_bronze: tweehonderd stemmen in label %{tag}
       for_tag_gold: duizend stemmen in label %{tag}
-      for_tag_silver: Vierhonderd stemmen in label %{tag}
+      for_tag_silver: 400 stemmen in label %{tag}
       title: Speldje %{type}

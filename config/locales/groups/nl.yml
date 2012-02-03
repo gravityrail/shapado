@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -28,9 +29,9 @@ nl:
         signup_type: "Via welke methoden kunnen uw gebruikers registreren:"
         state: Status
         subdomain: URL
-        wysiwyg_editor: Gebruikersvriendelijke tekstverwerker inschakelen
+        wysiwyg_editor: Gebruiksvriendelijke tekstverwerker inschakelen
     models: 
-      default_tags_message: U kunt niet meer dan tien standaardlabels hebben.
+      default_tags_message: U kunt maximaal 10 standaardlabels hebben.
       group: Groep
       groups: Groepen
       reputation_rewards_answer_constrain: De beperking voor antwoordonderscheidingen moet negatief zijn
@@ -52,10 +53,10 @@ nl:
       custom_analytics: Aangepaste gebruiksanalyse toestaan
       custom_html: Aangepaste HTML toestaan
       custom_js: Aangepaste JavaScript toestaan
-      default_tags_legend: Scheid labels met komma's. Er zijn maximaal tien labels toegestaan.
+      default_tags_legend: Scheid labels met komma's. Er zijn maximaal 10 labels toegestaan.
       description_legend: Beschrijf de groep in vierhonderd tekens of minder.
       isolate_group: De groep van andere groepen isoleren
-      legend_legend: Dit wordt gebruikt als kop. Gebruik maximaal veertig tekens
+      legend_legend: Dit wordt gebruikt als kop. Gebruik maximaal 40 tekens
       logo_legend: U kunt het groepslogo uploaden. De maximale grootte is 2MB.
       members_only: Alleen leden van de groep hebben toegang tot deze groep
       signup_all: Alle geselecteerde aanbieders en gebruikersnaam en wachtwoord

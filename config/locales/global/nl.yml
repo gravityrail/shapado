@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: Protozoan
 # Author: SPQRobin
 # Author: Siebrand
@@ -23,13 +24,13 @@ nl:
     by: door
     by_semi: "Door:"
     chat: Chat
-    current: huidige
+    current: Huidige
     edited: Bewerkt
     edited_by_semi: "Bewerkt door:"
     feedback: Terugkoppeling
     follow: Volgen
     followed_by: "Gevolgd door:"
-    following: Abonnementen
+    following: Wordt gevolgd
     from: uit %{site}
     group_not_found: De pagina %{url} bestaat niet
     home: Hoofdmenu

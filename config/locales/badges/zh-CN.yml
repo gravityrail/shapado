@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Hzy980512
 zh-CN: 
   activerecord: 
     models: 
@@ -55,7 +56,7 @@ zh-CN:
         description: 访问站点连续 100 天的每一天
         name: 狂热
       favorite_question: 
-        description: 问了一个问题并由 25 个用户
+        description: 问了一个被25个用户关注的问题
         name: 最喜欢的问题
       friendly: 
         description: 启动后的第一次有人
@@ -129,7 +130,7 @@ zh-CN:
       shapado: 
         description: 访问站点连续 8 天的每一天
       stellar_question: 
-        description: 问了一个问题，由 100 个用户添加到收藏夹
+        description: 问了一个25个用户关注的问题
         name: 恒星的问题
       student: 
         description: 问了一个问题，至少一个投票了

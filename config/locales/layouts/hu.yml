@@ -2,11 +2,14 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Dani
+# Author: Dj
 hu: 
   layouts: 
     application: 
       ask_question: Kérdés feltevése
       badges: Jelvények
+      faq: GyIK
+      forgot: Elfelejtette?
       home: Kezdőlap
       languages: Nyelvek
       log_in: Bejelentkezés
@@ -14,6 +17,7 @@ hu:
       logout: Kijelentkezés
       manage_ads: Hirdetések kezelése
       moderate: Moderálás
+      now: most!
       openid: 
         explaination: "Ha regisztrálni szeretnél, vagy csak bejelentkezni, válaszd ki az OpenID-szolgáltatódat:"
       pages: Lapok
@@ -41,6 +45,7 @@ hu:
       rewards: Jutalmak
       stats: Statisztikák
       theme: Téma
+      themes: Témák
       widgets: Minialkalmazások
     notifications: 
       message: Ha nem akarsz további automatikus értesítéseket a(z) %{group} oldalról, módosítsd a beállításaidat az értesítések képernyőn.

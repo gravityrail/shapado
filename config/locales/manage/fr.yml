@@ -3,6 +3,8 @@
 # Export driver: syck-pecl
 # Author: Crochet.david
 # Author: DavidL
+# Author: Gomoko
+# Author: Jean-Frédéric
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -16,7 +18,7 @@ fr:
         banning: 
           title: Reporter un abus
       appearance: 
-        logo_legend: Télécharger un logo pour votre groupe. Il doit être inférieure à 2Mo.
+        logo_legend: Télécharger un logo pour votre groupe. Il doit être inférieur à 2Mo.
         title: Choisissez et personnalisez votre thème
       close_group: 
         description: La fermeture du groupe le rendra inaccessible à personne d'autre que vous.
@@ -41,13 +43,14 @@ fr:
           asking_from_twitter: Poser des questions depuis Twitter
           question_asked_to: Question posée à
           question_must_include: La question doit inclure le tag suivant pour être envoyé sur Twitter
+          question_must_include_example: "par exemple #iAsk"
           twitter_account: Le compte Twitter auquel vos utilisateurs poseront leurs questions.
         constrains: 
           reputation_constrains_description: Ce formulaire permet de configurer la quantité de points de réputation requise pour effectuer une action donnée
           reputation_constrains_subtitle: Liste des contraintes pour chaque action
           title: Contraintes
         domain: 
-          description: "Vous pouvez configurer votre nom de domaine à fin de le faire pointer vers votre site de la manière suivante:"
+          description: "Vous pouvez associer un domaine différent à votre site Shapado, afin qu’il soit accessible via votre propre domaine. Cela se fait de la manière suivante :"
           instruction1: Vous devez tout d'abord vous rendre sur le site où vous avez acheter votre nom de de domaine tel que %{subdomain}.com.
           instruction2: Là, vous devez vous rendre dans la section DNS pour y créer un CNAME.
           instruction3: Choisissez 'www' ou tout autre nom pour votre CNAME.
@@ -55,7 +58,7 @@ fr:
           instruction5: Après une heure ou deux, votre domaine www.%{subdomain} devrait pointer vers %{appdomain}.
           instruction6: Vous pouvez maintenant revenir sur cette page et tapez le nom de domaine que vous avez choisi tel que www.%{subdomain} dans le champs de texte ci-dessous et confirmer. Si vous avez des questions, posez-les sur le %{chat_url} ou sur notre forum
           title: Configurer votre nom de domaine
-          warning: Êtes-vous sûr de vouloir changer votre domaine?
+          warning: Êtes-vous sûr de vouloir changer votre domaine ?
         facebook_app: 
           application_id: Identifiant de l'application
           facebook_app: Paramètres de l'application Facebook
@@ -105,6 +108,8 @@ fr:
           legend_with_account: Votre compte Twitter <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> sera utilisé pour poster de nouvelles questions et réponses sur Twitter. Vous pouvez configurer ce qui sera envoyé sur Twitter <a href="%{link}">ici</a>.
           twitter_account: Compte Twitter
         twitter_app: 
+          key: Clé de l'application
+          secret: Phrase secrète de l'application
           twitter_app: Application Twiter
       questions: 
         banning: 

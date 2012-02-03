@@ -12,7 +12,8 @@ fi:
         default_tags: Oletustunnisteet
         description: Kuvaus
         domain: Toimialue
-        enable_latex: Ota käyttöön LaTex
+        enable_latex: Ota käyttöön LaTex yhdessä jqmath:n kanssa (nopea, mutta ei täysin ominaisuuksin)
+        enable_mathjax: Ota käyttöön LaTeX yhdessä mathjax:in kanssa (hidas, mutta täysillä ominaisuuksilla)
         fb_button: Ota käyttöön Facebookin Tykkää-painike (ei yksityisyystävällinen)
         forum: Salli käyttäjälle useampia kuin yhden vastauksen
         group_created_by: "luotu:"
@@ -24,7 +25,7 @@ fi:
         name: Nimi
         owner: "Tämän ryhmän loi: %{login}"
         registered_only: Vain rekisteröityneet käyttäjät voivat käyttää sivustoa
-        signup_type: Mitä menetelmiä käyttäjät voivat käyttää sisäänkirjautumiseen
+        signup_type: "Mitä menetelmiä käyttäjäsi voivat käyttää sisäänkirjautumiseen:"
         state: Tila
         subdomain: Verkko-osoite
         wysiwyg_editor: Ota käyttöön käyttäjäystävällinen editori
@@ -32,6 +33,8 @@ fi:
       default_tags_message: Et voi luoda yli 10 oletustunnistetta
       group: Ryhmä
       groups: Ryhmät
+      reputation_rewards_answer_constrain: Vastauksen palkitsemisen rajoitteen pitäisi olla negatiivinen
+      reputation_rewards_ask_constrain: Kysymisen rajoitteen pitäisi olla negatiivinen
       reputation_rewards_key: Virheellinen avain
   groups: 
     connect_group_to_twitter: 
@@ -55,8 +58,10 @@ fi:
       legend_legend: Sitä käytetään otsakkeessa. Käytettävissä on 40 merkkiä.
       logo_legend: Voit kopioida palvelimelle ryhmän logon. Tiedoston enimmäiskoko on 2 megatavua.
       members_only: Vain ryhmän jäsenet voivat käyttää tätä ryhmää
-      signup_email: Vain sähköpostiosoite (käyttäjät voivat kirjautua sisään sähköpostiosoite / salasana -yhdistelmällä)
-      signup_noemail: Ei sähköpostiosoitetta eikä salasanaa (käyttäjät kirjautuvat OpenID:llä, Facebookilla tai Twitterillä)
+      signup_all: Kaikki valitut tarjoajat lisättynä käyttäjä ja salasana
+      signup_email: Vain käyttäjä/salasana
+      signup_noemail: Kaikki valitut tarjoajat miinus käyttäjä/salasana
+      signup_social: Käyttäjien on pakko käyttää joko Facebookia, Twitteriä, LinkeIniä tai Identicaa
       website_analytics_id: Verkkosivun analytiikkatunnus
     group: 
       about: Tietoja

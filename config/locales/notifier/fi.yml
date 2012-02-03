@@ -7,18 +7,22 @@
 fi: 
   notifier: 
     admin_login: 
+      message1: Käyttäjä %{user} on yhdistetty hallinnoijana klo %{time} IP-osoitteesta %{ip}.
       subject: "Varoitus: pääkäyttäjäyhteys"
     created_flag: 
+      message1: Vastaanotit tämä viestin, koska olet ryhmän %{group} moderaattori.
       message2: "Viesti on raportoitu seuraavasta syystä:"
       message2bis: Voit lukea merkityn viestin täällä.
       message2bistext: "Voit lukea merkityn viestin napsauttamalla seuraavaa linkkiä:"
+      message3: "Siirry moderaattorisivulle nähdäksesi merkittyjen aiheiden luettelon:"
+      message4: Vieraile moderaattorisivulla nähdäksesi merkittyjen aiheiden luettelon.
     earned_badge: 
       message1: Ansaitsit rintanapin %{badge} sovelluksella %{app}
       message2: "Rintanappikuvaus:"
       message3: Voit nähdä kaikki rintanappisi käyttäjäsivullasi %{user_page}
     favorited: 
-      message1: "%{user} lisäsi kysymyksesi suosikkina ryhmään %{group}"
-      message2: "Kysymysteksti:"
+      message1: "%{user} tallensi vastauksesi ryhmään %{group} suosikkina"
+      message2: "Kysymys oli:"
       message3: "Näet sen täältä:"
     follow: 
       message1: "%{user} seuraa nyt kysymyksiäsi ja vastauksiasi sovelluksella %{app}"

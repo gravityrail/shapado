@@ -55,6 +55,8 @@ br:
       fanatic: 
         description: Gweladenniñ al lec'hienn bemdez e-pad 100 devezh da-heul
         name: Klañv-mik
+      favorite_answer: 
+        name: Respont kretañ
       favorite_question: 
         description: en deus savet ur goulenn sinedet gant ouzhpenn 25 implijer
         name: Goulenn a blij ar muiañ

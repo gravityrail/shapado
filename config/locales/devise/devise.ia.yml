@@ -33,7 +33,7 @@ ia:
       unlock: 
         instruction1: Tu conto ha essite serrate a causa de un excesso de tentativas fallite de apertura de session.
         instruction2: "Clicca super le ligamine sequente pro disserrar tu conto:"
-        link: Disserrar mi conto
+        link: Disblocar mi conto
       unlock_instructions: 
         subject: Instructiones pro disserrar
     passwords: 

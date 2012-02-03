@@ -32,6 +32,9 @@ hu:
       groups: csoportok
       reputation_rewards_key: Érvénytelen kulcs
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: Elnézést, valami hiba törtnét. Próbáld meg újra!
+      success_twitter_connection: Gratulálunk, sikeresen csatoltad a Twitter fiókodat.
     create: 
       flash_notice: A csoportod sikeresen létrejött. Elkezdheted a konfigurálását.
     edit: 
@@ -50,6 +53,8 @@ hu:
       legend_legend: Ez lesz használva a fejlécben. 40 karakter áll rendelkezésre.
       logo_legend: Feltölthetsz egy logót a csoportnak. A fájlméret maximum 2MB.
       members_only: Csak a csoport tagjai férhetnek hozzá a csoporthoz
+      signup_all: Az összes kiválasztott szolgáltató, valamint felhasználó/jelszó páros
+      signup_email: Csak a felhasználónév/jelszó páros
       website_analytics_id: A weboldal analitikai azonosítója
     group: 
       about: Célja

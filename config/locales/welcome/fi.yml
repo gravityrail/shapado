@@ -11,7 +11,8 @@ fi:
       under_18: Olen alle 18
       warning: "VAROITUS: Tämä sivu saattaa sisältää vain aikuisille materiaalia."
     feedback: 
-      captcha_error: Ratkaise yksinkertainen laskutoimitus
+      captcha_error: Varmista, että täytät epäselkotekstin oikein ja että sähköpostiosoite on toimiva.
+      captcha_notice: Kiitoksia palautteesta, palaamme asiaan niin pian kuin mahdollista.
       email_description: Anna sähköpostiosoitteesi, niin voimme vastata viestiin
       feedback_description: Kuvaus
       feedback_title: Otsikko

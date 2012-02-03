@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Manoillon
 # Author: McDutchie
+# Author: Od1n
 # Author: Patcito
 # Author: Peter17
 # Author: Zebulon84
@@ -13,7 +14,7 @@ fr:
         role: role
   members: 
     create: 
-      error: Désolè, l'utilisateur **%{user_id}** n'existe pas.
+      error: Désolé, l'utilisateur **%{user_id}** n'existe pas.
       notice: "%{login} a été ajouté à %{role} avec succès."
     form: 
       destroy_confirm: Êtes-vous sûr ? Cet utilisateur ne sera plus membre de ce groupe

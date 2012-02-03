@@ -5,6 +5,8 @@
 fi: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Uusi viesti merkitty ryhmässä %{group}
       earned_badge: 
         subject: Olet ansainnut rintanapin ryhmässä %{group}!
       favorited: 
@@ -20,5 +22,7 @@ fi:
         subject_owner: "%{login} vastasi kysymykseesi %{title}"
       new_comment: 
         subject: "%{login} kommentoi ryhmässä %{group}"
+      new_invitation: 
+        subject: "%{user} kutsuu sinut liittymään ryhmään %{group}"
       report: 
         subject: Ilmoita ryhmälle %{group} / %{app}

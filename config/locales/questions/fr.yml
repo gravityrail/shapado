@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Crochet.david
 # Author: DavidL
+# Author: Gomoko
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -29,19 +30,33 @@ fr:
   questions: 
     answer: 
       add_comment: Ajouter un commentaire...
+      favorite: Sauvegarder
+      favorite_tooltip: Ajouter cette réponse à vos favoris
       flag: Reporter un abus
       pick_answer: Choisir comme solution
+      unfavorite: Ne pas enregistrer
+      unfavorite_tooltip: Supprimer cette réponse de vos favoris.
       unset_answer: Annuler solution ?
+    answer_toolbar: 
+      flagged_by_you: Marqué par vous
+    close: 
+      failure: Cette question a une récompense active et ne peut pas être fermée.
     create: 
+      already_registered: Un utilisateur avec le courriel %{email} est déjà inscrit, veuillez vous connecter à l'aide de ce courriel.
       flash_notice: La question a été créée avec succès.
+    disallow_spam: 
+      error: Vous devrez attendre 20 secondes avant de poster une autre question.
     edit: 
       title: Modification de la question
     flag: 
       title: Reporter un abus
     form: 
+      add_attachment: Ajouter un fichier joint
       adult_content: Cette question possède du contenu pour adultes.
       body_tip: Quelle est votre question? soyez descriptif.
       language_tip: Sélectionnez la langue de votre question.
+      related_questions_desc: Ici seront affichées les questions similaires.
+      remove_attachment: Enlever
       tags_tip: Utilisez les tags pour ajouter plus d'information à question.
     history: 
       back: ← revenir à la question
@@ -50,6 +65,7 @@ fr:
       active_tooltip: Les questions actualisées le plus récemment
       ask_question: Poser une question
       empty: Aucune question n'a été posée pour le moment, soyez le premier à en poser une !
+      followers_tooltip: Les questions les plus suivies
       has_followers: 
         one: "%{count} suiveur"
         other: "%{count} suiveurs"
@@ -76,9 +92,10 @@ fr:
       submit: Transférer !
       title: "Transférer la question : %{title}"
     move_to: 
-      group_dont_exists: Le groupe %{group} n'éxiste pas
+      group_dont_exists: Le groupe %{group} n'existe pas
       success: Question transférée à %{group}
     new: 
+      description: Veuillez être explicite et assurez-vous d'ajouter les balises appropriées afin que votre question puisse être trouvée facilement.
       how_to_ask: Comment poser une question
       title: Posez une question
     question: 
@@ -92,7 +109,7 @@ fr:
       title: Modifier les tags
     retag_form: 
       cancel: Annuler
-      submit: Actualiser las tags!
+      submit: Actualiser les tags !
       title: Actualiser les tags
     retag_to: 
       failure: Désolé, les tags n'ont pas pu être actualisé.
@@ -109,11 +126,16 @@ fr:
       ban: Bannir
       close: Fermer
       close_reason: "Cette question a été fermée pour la raison suivante :"
+      create_reward: Créer une récompense
+      create_reward_description: Récompenser la meilleure réponse avec certains de votre propre karma.
       edit_request: Modifier la demande
       flag: Reporter un abus
       flagged_as: Reporté comme
       flags: Reporter en tant que
       follow_tooltip: Suivre cette question
+      follow_up: Suivre
+      follow_up_description: Créer une nouvelle question basée sur ce post.
+      follow_up_of: Cette Question est un Suivi de
       history: Historique
       last_activity: Dernières activités
       more_actions: Plus d’actions
@@ -132,6 +154,7 @@ fr:
       solution: Solution
       to_answer_question: pour répondre à cette question
       unauthenticated_retag: Vous devez avoir un compte utilisateur por modifier les tags
+      unban: Ré-autoriser
       unfollow_tooltip: Ne plus suivre cette question
       viewed: vues
     solve: 
@@ -141,7 +164,10 @@ fr:
       title: Balises
       tooltip: Montrer les questions avec le tag %{tag}
     toolbar: 
+      answer_by_mail: Répondre par courriel
       more_actions: Plus d’actions
+      requests: Requêtes
+      your_close_request: Votre demande clôturée
     unanswered: 
       empty: Ce groupe n'a aucune question sans réponses.
       expert: Experts

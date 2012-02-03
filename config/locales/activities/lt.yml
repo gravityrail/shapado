@@ -12,6 +12,7 @@ lt:
     changed: pakeistas
     created: sukurtas
     deleted: ištrintas
+    flagged: pažymėtas
     requested_to_close: paprašyta uždaryti
     requested_to_open: paprašyta atidaryti
     updated: atnaujintas

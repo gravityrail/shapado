@@ -32,11 +32,15 @@ fi:
       favorite_tooltip: Lisää tämä kysymys suosikkeihini
       flag: Merkintä
       pick_answer: Valitse ratkaisuna
+      unfavorite: Peru tallennus
       unfavorite_tooltip: Poista tämä kysymys suosikeistani
       unset_answer: Asettamaton ratkaisu?
     answer_toolbar: 
       flagged_by_you: Merkitsemäsi
+    close: 
+      failure: Tällä kysymyksellä on voimassa oleva palkinto ja kysymystä ei voida sulkea.
     create: 
+      already_registered: Käyttäjä sähköpostiosoiteella %{email} on jo rekisteröitynyt, kirjaudu sisään käyttäen tätä sähköpostiosoitetta.
       flash_notice: Kysymyksen luonti onnistui.
     disallow_spam: 
       error: Sinun täytyy odottaa 20 sekuntia ennen toisen kysymyksen lähettämistä.
@@ -59,6 +63,10 @@ fi:
       active_tooltip: Kysymykset, jotka on päivitetty äskettäin
       ask_question: Kysy kysymys
       empty: Kukaan ei ole vielä kysynyt yhtään kysymystä. Ole ensimmäinen!
+      followers_tooltip: Eniten seuratut kysymykset
+      has_followers: 
+        one: "%{count} seuraaja"
+        other: "%{count} seuraajaa"
       help_to_answer: Auta vastaamalla kysymyksiin
       hot: Suosittu
       hot_tooltip: Kysymykset, joissa on ollut eniten toimintaa viimeisen viiden päivän aikana
@@ -71,9 +79,12 @@ fi:
     model: 
       messages: 
         empty_tags: Anteeksi, sinun täytyy käyttää vähintään yhtä tunnistetta.
-        title_too_long: Otsikko on liian pitkä. Sen ei pitäisi olla enempää kuin 100 merkkiä.
-        too_many_tags: Voin valitettavasti kirjoittaa vain enintään 9 tunnistetta.
-        too_short: Tuntuu liian lyhyeltä. Käytä yli %{count} sanaa ollaksesi tarkempi.
+        tags_not_added: Tunnisteita '%{tags}' ei voitu lisätä. Tarvitset %{reputation_required} mainetta uusien tunnisteiden luomiseksi
+        title_too_long: Otsikko ei voi sisältää yli 100 merkkiä.
+        too_many_tags: Voit kirjoittaa enintään 20 tunnistetta.
+        too_short: 
+          one: Otsikossasi on oltava enemmän kuin %{count} sana.
+          other: Otsikossasi on oltava enemmän kuin %{count} sanaa.
     move: 
       group_label: Siirrä luettelomerkillä varustettuun ryhmään
       submit: Siirrä!
@@ -88,6 +99,9 @@ fi:
     question: 
       accepted_tooltip: Tällä kysymyksellä on  vastaus, joka on hyväksytty
       answer_verb: Vastaa
+      has_answers: 
+        one: "%{count} vastaus"
+        other: "%{count} vastausta"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Uudelleenmerkintä
@@ -111,6 +125,7 @@ fi:
       close: Sulje
       close_reason: "Kysymys on suljettu seuraavista syistä:"
       create_reward: Luo palkinto
+      create_reward_description: Palkitse paras vastaus jollakin, joka on omasta karmastasi.
       edit_request: Muokkaa pyyntöä
       flag: Merkintä
       flagged_as: Merkitty nimellä
@@ -137,6 +152,7 @@ fi:
       solution: Ratkaisu
       to_answer_question: tähän kysymykseen vastaamiseksi
       unauthenticated_retag: Tarvitset tilin kysymysten uudelleenmerkintää varten
+      unban: Poista kielto
       unfollow_tooltip: Lopeta tämän kysymyksen seuraaminen
       viewed: katsottu
     solve: 

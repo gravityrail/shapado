@@ -1,28 +1,43 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
+# Author: Gomoko
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
 fr: 
   shared: 
     any_lang: N’importe quelle langue
+    by_anon: Par anonyme
     current_tags: 
       title: Étiquettes sélectionnées
     description: Description
     empty: 
+      activities: 
+        description: 
+          text: Cet endroit sera rempli automatiquement une fois que les gens commenceront à utiliser le site.
+        title: Il n'y a aucune activité jusqu'à présent.
       answers: 
         description: 
           text: Soyez le premier !
+        title: Personne n'a encore répondu à cette question.
       default: 
         description: 
           text: Soyez le premier à %{action_link} !
+        title: Désolé ! Il n’y a pas grand chose à voir ici.
       questions: 
         description: 
           action_link: poser une question
       themes: 
         description: 
           action_link: maintenant
+          text: créer un %{action_link}
+        title: Vous n'avez créé aucun thème pour le moment.
+    layout: 
+      footer: 
+        cc_footer: Tout le contenu de Shapado.com et ses données sont disponibles sous la licence %{cc_link}
+        powered_by: Mû par %{source_link} %{version} sous le %{agpl_link}
     login_drop_down: 
       with_facebook: avec Facebook
       with_google: avec Google
@@ -30,6 +45,11 @@ fr:
       with_linked_in: avec LinkedIn
       with_openid: OpenID
       with_twitter: avec Twitter
+      with_user_pass: utilisateur/mot de passe
+    manage_navigation: 
+      title_content: Contenu du groupe
+      title_features: Fonctionnalités du groupe
+      title_options: Options du groupe
     name: Nom
     preferred_lang: Mes langues préférées
     quick_question: 

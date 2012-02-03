@@ -13,7 +13,9 @@ fi:
     comments: 
       title: 
         more_votes_user: Sinä ja %{votes} muuta käyttäjää on äänestänyt tätä kommenttia.
+        no_user_more_votes: Enemmän kuin %{votes} henkeä on äänestänyt kannattavansa tätä kommenttia. Äänestä napsauttamalla.
         no_user_no_vote: Äänestä tätä kommenttia napsauttamalla.
+        no_user_one_vote: Vain yksi käyttäjä pitää tästä kommentista. Kannata napsauttamalla.
         one_vote_two_users: Sinä ja yksi muu käyttäjä on äänestänyt tätä kommenttia.
         one_vote_user: Vain sinä olet äänestänyt tätä kommenttia.
     control: 

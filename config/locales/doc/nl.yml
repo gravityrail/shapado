@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Pinxnl
 # Author: Siebrand
 nl: 
   doc: 
@@ -11,7 +12,7 @@ nl:
       1million: 1 miljoen pageviews per maand
       247_all_support: Webgebaseerd, e-mail, chat en telefonische ondersteuning 24 uur per dag, 7 dagen per week
       5millions: 5 miljoen pageviews per maand
-      all_support: Webgebaseerd, e-mail, chat en telefonische ondersteuning
+      all_support: Webgebaseerde, e-mail-, chat- en telefonische ondersteuning
       basic_restrictions: Geen aangepaste advertenties en geen volledig aanpasbare UI
       beta_info: Op dit moment zijn alle sites gratis en alle sites hebben dezelfde mogelijkheden als het Optimum-pakket. Uitgezonderd is de ondersteuning. Alleen webgebaseerd, e-mail en chat zijn beschikbaar.
       big_sites: Sites met veel verkeer

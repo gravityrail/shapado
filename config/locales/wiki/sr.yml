@@ -15,7 +15,7 @@ sr:
       current_version: Текуће издање
       previous_versions: Претходна издања
       title: Историја (%{count})
-      version: Издање
+      version: Верзија
       version_summary: Опис издања
     model: 
       attributes: 

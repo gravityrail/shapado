@@ -47,6 +47,7 @@ fi:
       actions: Toimet
       announcements: Ilmoitukset
       appearance: Ulkoasu
+      close_group: Sulje ryhmä
       constrains: Vaatimukset
       content: Sisältö
       dashboard: Kojelauta

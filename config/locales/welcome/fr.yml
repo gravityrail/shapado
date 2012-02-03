@@ -2,8 +2,10 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Crochet.david
+# Author: Gomoko
 # Author: Od1n
 # Author: Patcito
+# Author: Verdy p
 fr: 
   welcome: 
     confirm_age: 
@@ -13,10 +15,11 @@ fr:
       warning: "ATTENTION : Cette page peut contenir du contenu explicite pour adultes."
     feedback: 
       captcha_error: S’il vous plaît, assurez-vous de remplir le captcha correctement et fournir une adresse électronique valide.
+      captcha_notice: Merci pour votre commentaire, nous reviendrons vers vous dès que possible.
       email_description: S'il vous plait, donnez-nous votre email afin que nous puissions répondre à votre message.
       feedback_description: Description
       feedback_title: Titre
-      title: Envoyer votre feedback
+      title: Envoyez votre avis
     index: 
       active: Actives
       browse_all_or_by_tags: Découvrez la %{full_list_of_questions} ou %{browse_by_tags}

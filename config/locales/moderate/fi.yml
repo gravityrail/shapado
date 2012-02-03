@@ -27,6 +27,7 @@ fi:
         filters: "Suodattimet:"
         title: Hallitse kysymyksiä
         unbanned: Sallinut
+        unbanned_tooltip: Näytä vain kysymykset, joita ei ole kielletty
       index: 
         title: Hallitse kysymyksiä
       subtabs: 
@@ -37,3 +38,4 @@ fi:
         to_close: Sulkemispyynnöt
         to_close_tooltip: Kysymyksiä, joita käyttäjät ovat pyytäneet suljettaviksi
         to_open: Avaamispyynnöt
+        to_open_tooltip: Suljettujen kysymysten käyttäjät pyysivät uudelleenavaamista
