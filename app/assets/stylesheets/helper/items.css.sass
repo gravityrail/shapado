@@ -209,8 +209,9 @@
   margin-right: 15px
 .tooltip-name
   height: 32px
-  p
+  p, a
     margin: 0
+    line-height: 15px
 .tooltip
   a
     color: white
@@ -220,15 +221,24 @@
     background-color: #FFF
 
 .tooltip-description
-  margin-top: 15px
   clear: both
-
+  line-height: 15px
+  a
+    font-weight: normal
+    color: #FFF !important
+  a:hover
+    background-color: #FFF !important
+    color: black !important
+    font-weight: normal !important
+.tooltip-header
+  margin-bottom: 0px
+  height: 35px
 .tooltip
   display: none
   background: transparent image-url('jquerytools/black_arrow.png')
   font-size: 12px
   height: 70px
-  width: 0px
+  width: 160px
   padding: 25px
   color: #fff
   position: absolute

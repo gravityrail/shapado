@@ -1,5 +1,5 @@
 .tooltip
-  - if tag.has_icon?
+  - if tag && tag.has_icon?
     .tooltip-avatar
       = image_tag(tag_icon_path(current_group,tag.name))
 

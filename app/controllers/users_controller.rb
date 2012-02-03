@@ -109,7 +109,12 @@ class UsersController < ApplicationController
       format.html
       format.atom { @questions = @resources }
       format.json {
-        render :json => @user.to_json(:only => %w[name login bio website location language])
+        if params[:tooltip]
+          html = render_to_string(:partial => "users/show/show_json", :object => @user)
+          render :json => {:success => true, :html => html}
+        else
+          render :json => @user.to_json(:only => %w[name login bio website location language])
+        end
       }
       format.js do
         html = ""

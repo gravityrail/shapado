@@ -5,7 +5,7 @@
 
 -bronze, silver, gold = user.badges_count_on(current_group)
 -unless user.nil?
-  =link_to h(user.display_name), user_path(user), :class => "user-link pjax", :"data-layout" => "user"
+  =link_to h(user.display_name), user_path(user), :class => "user-link pjax ajax-tooltip", :"data-layout" => "user"
   -if user.owner_of?(current_group)
     %i.owner{:title => "admin"}
       = t('users.user_mini.admin')

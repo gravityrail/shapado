@@ -223,15 +223,15 @@ var Ui = {
     }
   },
   initialize_ajax_tooltips: function(){
-    $(document.body).delegate(".tooltip", "mouseleave", function(event) {
+    $(document.body).on("mouseleave",".tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).delegate(".tag-list", "mouseleave", function(event) {
+    $(document.body).on("mouseenter", ".comment-content", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).delegate(".ajax-tooltip", "hover", function(event) {
+    $(document.body).on("hover", ".ajax-tooltip", function(event) {
       var url = $(this).attr('href');
       var tag_link = $(this);
       $('.tooltip').hide();
@@ -241,15 +241,15 @@ var Ui = {
         return false;
       }
       $.ajax({
-        url: url,
+        url: url+'?tooltip=1',
         dataType: 'json',
         success: function(data){
           tag_link.removeAttr('title');
           tag_link.data('tooltip', 1);
           tag_link.after(data.html)
           var tooltip = tag_link.next('.tooltip');
-          tooltip.position({at: 'top center', of: tag_link, my: 'bottom', offset: '-75 0', collision: 'fit'})
-          tooltip.css({'display': 'block', width: '160px'});
+          tooltip.css({'display': 'block'});
+          tooltip.position({at: 'top center', of: tag_link, my: 'bottom', collision: 'fit fit'})
         }})
       return false;
     })

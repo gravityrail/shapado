@@ -38,7 +38,7 @@
         = vote_box(comment, request.path, comment.find_question.closed)
 
     .comment-body.markdown
-      = pjax_link_to comment.user.display_name, "user", user_path(comment.user), {:class => 'user-login'}
+      = pjax_link_to comment.user.display_name, "user", user_path(comment.user), {:class => 'user-login ajax-tooltip'}
       %span='-'
       .comment-content
         = find_and_preserve(shapado_auto_link(markdown(comment.body), :link_users => true))
