@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.1'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', :git => 'git://github.com/ricodigo/rdiscount.git'
@@ -34,6 +34,7 @@ gem 'bson_ext', '1.4.0'
 
 gem 'mongo', '1.4.0'
 gem 'mongoid', :git => 'git://github.com/mongoid/mongoid.git', :branch => '2.4.0-stable'
+
 gem 'mongoid_ext', :git => 'git://github.com/dcu/mongoid_ext.git'
 
 gem 'mongo_store', :git => 'https://github.com/Houdini/mongo_store.git'
@@ -72,13 +73,12 @@ gem 'devise', '~> 1.4.0'
 gem 'whenever', :require => false
 gem 'rack-ssl', :require => false
 
-gem 'state_machine', '0.10.4'
+gem 'state_machine', '1.1.2'
 
 gem 'xapian-ruby', '1.2.7.1'
-gem 'xapit', :git => 'git://github.com/dcu/xapit.git'
-
+gem 'xapit', :git => 'git://github.com/kuadrosx/xapit.git'
 group :assets do
-  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'sass-rails', "  ~> 3.2.0"
   gem 'uglifier'
 end
 gem 'yui-compressor'
@@ -105,7 +105,6 @@ group :test do
   gem 'ffaker'
   gem 'simplecov'
   gem 'autotest'
-  gem 'ruby-debug19', '0.11.6', :require => 'ruby-debug'
 end
 
 group :development do
@@ -117,9 +116,7 @@ group :development do
   gem 'remarkable_mongoid', '>= 0.5.0'
   gem 'hpricot'
   gem 'ruby_parser'
-  gem 'mongrel', '1.2.0.pre2'
   gem 'niftier-generators', '0.1.2'
   gem 'ruby-prof'
   gem 'tunnlr_connector', :git => 'git://github.com/dcu/tunnlr_connector.git', :branch => 'patch-1', :require => 'tunnlr'
-  gem 'rails-dev-boost', :git => 'git://github.com/thedarkone/rails-dev-boost.git', :branch => 'mongoid-brute-force', :require => 'rails_development_boost'
 end

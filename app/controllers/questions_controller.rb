@@ -136,7 +136,7 @@ class QuestionsController < ApplicationController
                                        :for_answers => params[:answers]})
           end
         end
-        render :json => {:html => content, :message => t('searches.index.found_results', :quantity => @questions.total_count) }.to_json
+        render :json => {:html => content, :message => t('searches.index.found_results', :quantity => @questions.total_count, :spelling_suggestion => @questions.spelling_suggestion) }.to_json
       end
     end
   end
