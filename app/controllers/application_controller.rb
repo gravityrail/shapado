@@ -27,6 +27,7 @@ class ApplicationController < ActionController::Base
   before_filter :share_variables
   before_filter :check_social
   before_filter :set_custom_headers
+  before_filter :check_sidebar
 
   layout :set_layout
 
@@ -165,6 +166,19 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
+  end
+
+  def check_sidebar
+    @widget_context = widgets_context(params[:controller], params[:action])
+    @show_sidebar = !( params[:controller] == "users")
+
+    if @show_sidebar
+      @show_sidebar = current_group.send(:"#{@widget_context}_widgets").sidebar.count > 0
+    end
+  end
+
+  def widgets_context(controller, action)
+    @widgets_context ||= (controller == "questions" && action == "show" && @question.present?) ? 'question' : 'mainlist'
   end
 
   def layout_for_theme

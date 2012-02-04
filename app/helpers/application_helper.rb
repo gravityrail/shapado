@@ -530,10 +530,6 @@ module ApplicationHelper
     x=link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag ajax-tooltip" unless tag.blank?
   end
 
-  def widgets_context(controller, action)
-    @widgets_context ||= (controller == "questions" && action == "show" && @question.present?) ? 'question' : 'mainlist'
-  end
-
   def cache_for(name, *args, &block)
     cache(cache_key_for(name, *args), &block)
   end
