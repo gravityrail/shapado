@@ -27,8 +27,8 @@
 
     - if !logged_in? || !current_user.mod_of?(current_group)
       - if @aflag.new_record? && current_user != answer.user
-        %li
-          = link_to t("questions.answer.flag"), new_question_answer_flag_path(question,answer), :class => "flag-link show_form", :rel => 'nofollow', :rel => 'nofollow', "data-lazy" => "1", "data-lazy-form" => "flag_answer"
+        %li.action
+          = link_to t('questions.answer.flag'), new_question_answer_flag_path(question,answer), :class => 'flag-link show_form', :rel => 'nofollow', :rel => 'nofollow', "data-lazy" => "1", "data-lazy-form" => "flag_answer"
       - elsif !@aflag.new_record?
         %li.flagged
           %span.flag-link
