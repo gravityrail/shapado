@@ -1,8 +1,8 @@
 en:
   users:
     show_json:
-      edit_it: "Click here to add a description to your profile."
-      no_description: "This user has not added a description yet."
+      edit_it: "Click here to fill your bio on your profile."
+      no_description: "This user has not filled his bio yet."
     user_mini:
       admin: '[ Admin ]'
       mod: '[ Moderator ]'
