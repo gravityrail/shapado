@@ -2,16 +2,17 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Patcito
-es: 
-  activerecord: 
-    models: 
+es:
+  activerecord:
+    models:
       activities: Actividades
       activity: Actividad
-  activity: 
+  activity:
     asked: ha preguntado
     changed: ha cambiado
     created: ha creado
     deleted: ha borrado
+    destroyed: ha borrado
     flagged: ha marcado
     requested_to_close: ha pedido cerrar
     requested_to_open: ha pedido reabrir
