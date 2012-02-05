@@ -184,8 +184,7 @@ class Question
       opts[:language] = question.language
     end
     opts[:tags] = question.tags if !question.tags.blank?
-
-    Question.search.where(opts).similar_to(question)
+    Question.search(question.title).where(opts).similar_to(question)
   end
 
   def viewed!(ip)
