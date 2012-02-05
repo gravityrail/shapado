@@ -223,11 +223,11 @@ var Ui = {
     }
   },
   initialize_ajax_tooltips: function(){
-    $(document.body).on("mouseleave",".tag-list, .user-data, .tooltip", function(event) {
+    $(document.body).on("mouseleave",".toolbar, .Question, .tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).on("mouseenter", ".comment-content", function(event) {
+    $(document.body).on("mouseenter", ".Question, .comment-content", function(event) {
       $(".tooltip").hide();
     });
 
