@@ -127,6 +127,15 @@
 
   -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
     #to_answer
-      %h2
-        Your answer
+      -if logged_in? && @question.answers.where(user_id: current_user.id).count > 0
+        %h2
+        .toolbar
+          %ul.menubar
+            %li.action
+              = link_to "Add another answer", "#", id: "add_another_answer"
+      -else
+        %h2
+          -#i18n
+          Your answer
+
       = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}
