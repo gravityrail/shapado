@@ -55,19 +55,20 @@
           %small
             = link_to t('.followers'), follows_user_path(@user, :sort=>"followers")
         -if current_user != @user && @user.member_of?(current_group)
-          -if logged_in? && current_user.following?(@user)
-            %li.follow
-              =link_to "- #{t(".unfollow")}", unfollow_user_path(@user), :class => "unfollow_link toggle-action", 'data-class' => "follow_link", 'data-text' => t(".follow"), 'data-undo' => follow_user_path(@user), :method => 'post'
-          -else
-            %li.follow
-              =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user), :method => 'post'
+          %li.follow
+            = follow_user_link(@user)
 
     .badges
       %h3= t("activerecord.models.badges")
-      %ul
-        -@badges.each do |badge|
+      %ul.clearfix
+        - @badges.each do |badge|
           %li
-            = render :partial => "badges/badge", :object => badge, :locals => {:hide_user => true}
+            .badge_item
+              = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge #{badge.type}", :title => badge.description}
+
+              -if badge["count"] > 1
+                .counter
+                  × #{badge["count"].to_i}
 
     #main-content-wrap{:class => @active_tab}
       %nav{:class => @active_subtab }

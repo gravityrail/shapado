@@ -58,7 +58,8 @@ fi:
       submit: Tallenna
       title: Asetukset
     follow: 
-      flash_notice: Käyttäjä %{user} lisättiin ystäviisi
+      flash_error: Et voi seurata itseäsi.
+      flash_notice: Seuraat nyt käyttäjää %{user}.
     form: 
       activities_notification: Lähetä sähköposti-ilmoituksia järjestelmän toiminnasta, kuten ansaituista rintanapeista, uusista seuraajista, jne.
       avatar_tip: Muuta profiilikuvaasi käyttäen Gravatar-ohjelmaa
@@ -69,13 +70,20 @@ fi:
       new_answer_notification: Lähetä sähköposti-ilmoitukset uusille vastauksille
       notifications: Ilmoitukset
       reports_notification: Lähetä ilmoitus viimeisimmistä tapahtumista ryhmässä (vain ryhmän ylläpitäjille)
+      send_answers_to_twitter: Lähetä vastaukseni Twitteriin
+      send_badges_to_twitter: Lähetä voitetut rintamerkkini Twitteriin
+      send_comments_to_twitter: Lähetä kommenttini Twitteriin
+      send_favorites_to_twitter: Lähetä suosikkivastaukseni Twitteriin
+      send_questions_to_twitter: Lähetä kysymykseni Twitteri-tililleni
       show_more_lang: Näytä lisää kieliä
+      social_interaction: Sosiaalisen median vuorovaikutus
     index: 
       empty: Tässä ryhmässä ei ole jäseniä. Osallistu liittymällä tähän ryhmään.
       filter: Etsi käyttäjiä
       name: Nimi
       name_tooltip: Käyttäjät aakkosjärjestyksessä
       near: Lähellä sinua
+      near_tooltip: Sinulle läheisiä käyttäjiä
       newest: Uusin
       newest_tooltip: Käyttäjät, jotka juuri liittyivät
       oldest: Vanhin
@@ -87,6 +95,7 @@ fi:
       errors: 
         reputation_needed: Tarvitset %{min_reputation} mainepistettä, jotta voisit %{action}.
     new: 
+      description: Tule osaksi yhteisöä kysymään, vastaamaan ja oppimaan!
       join_group: Liity ryhmään %{group}
       submit: Rekisteröidy
       title: Rekisteröidy uutena käyttäjänä
@@ -103,7 +112,7 @@ fi:
       my_karma: "Karmani: %{karma}"
       profile: Profiili
     unfollow: 
-      flash_notice: Käyttäjä %{user} poistettiin ystävistäsi
+      flash_notice: Et enää seuraa käyttäjää %{user}.
     update_followed_tags: 
       followed: 
         flash_notice: Seuraat nyt tunnistetta %{tag}
@@ -115,3 +124,5 @@ fi:
       signed_as: Olet sisäänkirjautuneena käyttäjätunnuksella
     user_mini: 
       admin: "[ Pääkäyttäjä ]"
+      editor: "[ Toimittaja ]"
+      mod: "[ Moderaattori ]"

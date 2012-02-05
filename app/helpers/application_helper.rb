@@ -472,10 +472,31 @@ module ApplicationHelper
 
   def follow_suggestion_link(suggestion)
     if suggestion.class == User
-      link_to t('widgets.suggestions.follow_user'), follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("users.show.unfollow"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
+      link_to t('widgets.suggestions.follow_user'), follow_user_path(suggestion), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t("widgets.suggestions.unfollow_user"), 'data-undo' => unfollow_user_path(suggestion), :rel => "nofollow"
     else
       follow_tag_link(Tag.where(:name => suggestion[0], :group_id => current_group.id).first)
     end
+  end
+
+  def follow_user_link(user)
+    if logged_in?
+      if current_user.following?(user)
+        follow_class = 'unfollow_link toggle-action'
+        follow_data = 'follow_link'
+        data_title = t('widgets.suggestions.follow_user')
+        title = t('widgets.suggestions.unfollow_user')
+        path = unfollow_user_path(user)
+        data_undo = follow_user_path(user)
+      else
+        follow_data = 'unfollow_link'
+        follow_class = 'follow_link toggle-action'
+        title = t('widgets.suggestions.follow_user')
+        data_title = t('widgets.suggestions.unfollow_user')
+        data_undo = unfollow_user_path(user)
+        path = follow_user_path(user)
+      end
+      link_to title, path, :class => follow_class, 'data-class' => follow_data, 'data-text' => data_title, 'data-undo' => data_undo, :method => 'post'
+      end
   end
 
   def follow_tag_link(tag)
@@ -483,14 +504,14 @@ module ApplicationHelper
       if current_user.preferred_tags_on(current_group).include?(tag.name)
         follow_class = 'unfollow-tag toggle-action'
         follow_data = 'follow-tag'
-        data_title = t("global.follow")
-        title = t("global.unfollow")
+        data_title = t('widgets.suggestions.follow_tag')
+        title = t('widgets.suggestions.unfollow_tag')
         path = unfollow_tags_users_path(:tags => tag.name)
         data_undo = follow_tags_users_path(:tags => tag.name)
       else
         follow_data = 'unfollow-tag'
         follow_class = 'follow-tag toggle-action'
-        data_title = t("global.unfollow")
+        data_title = t('widgets.suggestions.unfollow_tag')
         title = t('widgets.suggestions.follow_tag')
         opt = 'add'
         path = follow_tags_users_path(:tags => tag.name)
@@ -506,11 +527,7 @@ module ApplicationHelper
     elsif tag.is_a? Array
       tag.join('+')
     end
-    link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag" unless tag.blank?
-  end
-
-  def widgets_context(controller, action)
-    @widgets_context ||= (controller == "questions" && action == "show" && @question.present?) ? 'question' : 'mainlist'
+    x=link_to h(tag), tag_path(:id => CGI.escape(tag)), :rel => "tag", :title => t("questions.tags.tooltip", :tag => tag), :class => "tag ajax-tooltip" unless tag.blank?
   end
 
   def cache_for(name, *args, &block)

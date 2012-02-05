@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -38,7 +39,7 @@ nl:
           question_asked_to: Vraag gesteld aan
           question_must_include: De vraag moet het volgende label bevatten om getweet te worden.
           question_must_include_example: "bijvoorbeeld #durftevragen"
-          twitter_account: D Twittergebruiker waar uw gebruikers vragen aan stellen.
+          twitter_account: De Twittergebruiker aan wie uw gebruikers vragen stellen.
         constrains: 
           reputation_constrains_description: Via dit formulier kunt u instellen hoeveel reputatiepunten gebruikers nodig hebben om een bepaalde handeling uit te voeren.
           reputation_constrains_subtitle: Lijst van reputatiebeperkingen voor iedere handeling
@@ -109,8 +110,8 @@ nl:
         banning: 
           title: Vraag verbannen
       social: 
-        ask_from_twitter: Vanop Twitter vragen
-        ask_from_twitter_title: Uw gebruikers toestaan om vragen te stellen vanop Twitter
+        ask_from_twitter: Vanaf Twitter vragen
+        ask_from_twitter_title: Uw gebruikers toestaan om vragen te stellen vanaf Twitter
         description: Uw groep verbinden met uw sociale netwerken
         facebook_app: Facebook App
         facebook_app_title: Stel uw Facebookapp in die wordt gebruikt om gebruikers te laten aanmelden met hun Facebookgebruiker

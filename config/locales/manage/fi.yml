@@ -9,10 +9,17 @@ fi:
     manage: 
       access: 
         title: Käyttöoikeus
+      answers: 
+        banning: 
+          title: Kiellä vastaus
       appearance: 
         logo_legend: Lataa logo ryhmällesi. Kuvan on oltava alle 2 megatavua.
         title: Poimi ja mukauta teemaa
+      close_group: 
+        description: Ryhmän sulkeminen estää pääsyn siihen kaikilta muilta kuin sinulta.
+        feedback: "Kerro meille, miksi olet sulkemassa ryhmäsi:"
       content: 
+        description: Aseta ryhmäsi omalla tekstillä ja tyylillä
         footer: Alatunniste
         head: Otsake
         question_help: Kysymysopaste
@@ -28,26 +35,29 @@ fi:
         title: Kutsut
       properties: 
         ask_from_twitter: 
+          asking_from_twitter: Kysymysten kysyminen Twitteristä
           question_asked_to: Kysymys kysytty kohteeseen
           question_must_include: Kysymyksen tulee sisältää seuraava tunniste, jotta se voidaan lähettää Twitterissä
           question_must_include_example: "esim. #iAsk"
+          twitter_account: Twitter-tili. jolle käyttäjäsi lähettävät kysymykset.
         constrains: 
           reputation_constrains_description: Tämä lomake sallii sinun asettaa, kuinka monta mainepistettä käyttäjien tarvitsee tehdä tíetylle toimelle
           reputation_constrains_subtitle: Jokaisen toimen mainepisteiden luettelo
           title: Vaatimukset
         domain: 
-          description: "Voit määrittää sivustosi siten, että sitä voi käyttää mukautetun toimialueen kautta. Se tehdään näin:"
+          description: "Voit kuvata eri verkko-osoitteet omaan Shapado-sivustoon niin, että sitä voidaan kutsua oman verkko-osoitteesi kautta. Se tehdään näin:"
           instruction1: Tehdäksesi näin sinun on ensin kirjauduttava toimialuepalveluntarjoajaasi. Se on sivusto, josta ostit toimialueesi kuten %{subdomain}.com.
           instruction2: Siellä sinun on mentävä DNS-kohtaan ja luotava jotain jota kutsutaan nimellä CNAME.
           instruction3: Valitse "www" tai jotain muuta kuin oma CNAME-nimesi.
           instruction4: "Laita sitten host- tai destination-kenttään nykyinen Shapado-toimialueesi: %{domain}."
           instruction5: Kun tämä on tehty, niin noin tunnin kuluttua toimialueesi www.%{subdomain} pitäisi osoittaa kohteeseen %{appdomain}.
           instruction6: Kun näin on tapahtunut, palaa tänne ja laita toimialuenimesi www.%{subdomain} alla olevaan kenttään ja paina painiketta 'update'. Jos sinulla on kysymyksiä, kysy meiltä verkkojuttelussa %{chat_url} tai tukifoorumillamme.
-          title: Aseta toimialueesi
+          title: Aseta oma verkko-osoitteesi
           warning: Oletko varma, että haluat muuttaa toimialueesi?
         facebook_app: 
           application_id: Sovellustunniste
           facebook_app: Facebook-sovellusasetukset
+          legend: Voit asettaa Facebook-tilisi. Tätä käyttäjäsi käyttävät kirjautuessaan sisään omalla Facebook-tilillään. Huomaa, että sitä tarvitaan vain, jos käytät omaa verkko-osoitetta.
           secret_key: Salainen avain
         general: 
           title: Ryhmän ominaisuudet
@@ -55,6 +65,7 @@ fi:
           resend_button: Lähetä uudelleen
           revoke_button: Peruuta
         invite: 
+          body_instructions: Kirjoita viesti ihmisille, joita kutsut (valinnainen)
           body_length_warning: Sisältö voi sisältää enintään 400 merkkiä
           emails_instructions: Anna sähköpostiosoitteet pilkulla erotettuna
           invitations: Lähetetyt kutsut
@@ -62,8 +73,11 @@ fi:
           title: Kutsu sähköpostitse
           user_role: Kutsu käyttäjiä
         post_to_twitter: 
+          legend: Tämä sivu sallii sinun asettaa, mitä lähetetään Twitteriin. Käytettävä tili on <a href="http://twitter.com/%{twitter_account}">@%{twitter_account}</a>, jos haluat käyttää jotain toista tiliä, napsauta hiiripainikeella <a href="%{link}">tätä</a>.
+          legend_connect: Tämä sivu sallii sinun asettaa, mitä lähetetään Twitteriin. Ensin on määriteltävä Twitter-tili, niin tehdäksesi napsauta hiiripainikkeella <a href="%{link}">tänne</a>.
           post_to_twitter: Lähetä Twitteriin
           send_answers_to_twitter: Lähetä kaikki vastaukset Twitteriin
+          send_badges_to_twitter: Lähetä kaikki vasta voitetut rintamerkit Twitteriin
           send_comments_to_twitter: Lähetä kaikki kommentit Twitteriin
           send_favorites_to_twitter: Lähetä kaikki suosikkivastaukset Twitteriin
           send_questions_to_twitter: Lähetä kaikki kysymykset Twitteriin
@@ -82,19 +96,32 @@ fi:
           tweet_starts_with: Liitä tunniste twitter-viestiesi alkuun
         title: Ryhmän ominaisuudet
         twitter_account: 
+          connect_to_other_twitter: Napsauta tänne eri Twitter-tilin yhdistämiseksi ryhmääsi
           connect_to_twitter: Kytke Twitter-tili ryhmään napsauttamalla tästä
           disconnect_twitter_group: Irrota tämä ryhmä Twitteristä
+          legend: Tätä tiliä käytetään uusien kysymysten ja vastausten lähettämiseksi Twitteriin.
+          legend_with_account: Twitter-tiliäsi <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> käytetään uusien kysymysten ja vastausten lähettämiseksi Twitteriin. Voit asettaa mitä lähetetään Twitteriin <a href="%{link}">täällä</a>.
           twitter_account: Twitter-tili
         twitter_app: 
           key: Sovellustunniste
           secret: Sovelluksen avain
           twitter_app: Twitter-ohjelma
+      questions: 
+        banning: 
+          title: Kiellä kysymys
       social: 
         ask_from_twitter: Kysy Twitterissä
+        ask_from_twitter_title: Salli käyttäjäsi kysyä kysymyksiä Twitteristä
+        description: Yhdistä ryhmäsi sosiaalisiin verkkoihisi
         facebook_app: Facebook-ohjelma
+        facebook_app_title: Aseta Facebook-sovelluksesi, joka sallii käyttäjäsi kirjautua sisään omilla Facebook-tileillään
         post_to_twitter: Lähetä Twitteriin
+        post_to_twitter_title: Lähetä kaikki kysymykset ja vastaukset automaattisesti Twitteriin.
         tag_your_tweets: Merkitse tweettisi tunnisteilla
+        tag_your_tweets_title: Lisää tagit twitter-viestiisi
+        title: Sosiaalisen median keskustelu
         twitter_account: Twitter-tili
+        twitter_account_title: Aseta oma Twitter-tilisi, jota käytetään Twitter-viestien lähettämiseen
       top_admin: 
         site: Sivusto
         title: Ylläpitäjä

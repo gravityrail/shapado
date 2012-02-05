@@ -3,6 +3,10 @@
 # Export driver: syck-pecl
 # Author: Y-M D
 br: 
+  activerecord: 
+    models: 
+      activities: Obererezhioù
+      activity: Obererezh
   activity: 
     asked: goulennet
     changed: kemmet

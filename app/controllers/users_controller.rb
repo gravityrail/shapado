@@ -109,7 +109,12 @@ class UsersController < ApplicationController
       format.html
       format.atom { @questions = @resources }
       format.json {
-        render :json => @user.to_json(:only => %w[name login bio website location language])
+        if params[:tooltip]
+          html = render_to_string(:partial => "users/show/show_json", :object => @user)
+          render :json => {:success => true, :html => html}
+        else
+          render :json => @user.to_json(:only => %w[name login bio website location language])
+        end
       }
       format.js do
         html = ""
@@ -138,9 +143,9 @@ class UsersController < ApplicationController
   def follows
     case @active_subtab.to_s
     when "following"
-      @resources = @user.following.page(params["page"])
+      @resources = @user.following(current_group).page(params["page"])
     when "followers"
-      @resources = @user.followers.page(params["page"])
+      @resources = @user.followers({:group_id => current_group.id}, true).page(params["page"])
     when "answers"
       @resources = Answer.where(:favoriter_ids.in => [@user.id],
                                 :banned => false,
@@ -396,8 +401,8 @@ class UsersController < ApplicationController
     @user = User.find_by_login_or_id(params[:id], conds)
     raise Error404 unless @user
     set_page_title(t("users.show.title", :user => @user.login))
-    @badges = @user.badges.where(:group_id => current_group.id).
-                           page(params["page"])
+    @badges = @user.badges_on(current_group, grouped: true);
+
     add_feeds_url(url_for(:format => "atom"), t("feeds.user"))
 
     @user.viewed_on!(current_group, request.remote_ip) if @user != current_user && !is_bot?

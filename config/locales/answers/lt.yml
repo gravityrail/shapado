@@ -6,6 +6,7 @@ lt:
   activerecord: 
     attributes: 
       answer: 
+        body: Tekstas
         created_at: Sukurta
         link: Nuoroda
     models: 

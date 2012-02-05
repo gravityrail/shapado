@@ -1,6 +1,7 @@
 # Messages for Simplified Chinese (‪中文(简体)‬)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Anakmalaysia
 # Author: Hydra
 # Author: ZhengYiFeng
 zh-CN: 
@@ -8,7 +9,7 @@ zh-CN:
     attributes: 
       answer: 
         body: 正文
-        created_at: 回答
+        created_at: 创建于
         link: 链接
     models: 
       answer: 答案

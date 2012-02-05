@@ -2,6 +2,7 @@
   .top
     %h1
       = t('activerecord.models.users')
+      (#{current_group.members.count})
     .filter
       = form_tag "/users", :class => "form", :id => "filter_users", :method => "get" do
         .field

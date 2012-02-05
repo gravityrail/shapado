@@ -5,7 +5,7 @@
   %small
     = t(".title_tip")
 
-.field
+.field.editor
   = f.label :body, t(:body, :scope => "activerecord.attributes.question"), :class => "label"
   -if current_group.wysiwyg_editor
     = f.text_area :body, :class => "text_area wysiwyg_editor", :value => markdown(@page.body)
@@ -16,12 +16,12 @@
       =markdown(@page.body)
 
 -if !@page.new?
-  .field
+  .field.editor
     = f.label :css, t(:css, :scope => "activerecord.attributes.page"), :class => "label"
     = f.text_area :css, :class => "text_area", :value => @page.has_css? ? @page.css.read : ""
 
   -if current_group.has_custom_js && current_user.role_on(current_group) == "owner"
-    .field
+    .field.editor
       = f.label :js, t(:js, :scope => "activerecord.attributes.page"), :class => "label"
       = f.text_area :js, :class => "text_area", :value => @page.has_js? ? @page.js.read : ""
 

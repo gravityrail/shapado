@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -9,7 +10,7 @@ nl:
       closing: 
         title: Vraag sluiten
       index: 
-        all: alle
+        all: Alle
         ban: Verbergen
         banned: Verborgen vragen
         content: Inhoud

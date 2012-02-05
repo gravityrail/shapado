@@ -1,6 +1,7 @@
 # Messages for Polish (Polski)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: BeginaFelicysym
 # Author: Sp5uhe
 pl: 
   activerecord: 
@@ -14,6 +15,7 @@ pl:
       answers: Odpowiedzi
   answers: 
     create: 
+      annon_notice: Użytkownik jest już zarejestrowany, zaloguj się.
       flash_error: "Coś poszło nie tak z dodaniem odpowiedzi. \nPamiętaj, że: \n– puste i powtarzające się odpowiedzi nie są akceptowane\n– trzeba odczekać 20 sekund przed opublikowaniem kolejnej odpowiedzi\n– można tylko raz odpowiedzieć na pytanie"
       flash_notice: Dziękujemy!
     edit: 

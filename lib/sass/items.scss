@@ -290,6 +290,7 @@ div.jHtmlArea {
   @include border-radius(4px);
   border: 1px solid darken($light_brand_color, 20%);
   &:hover {
+    border: 1px solid darken($light_brand_color, 20%);
     background-color: darken($light_brand_color, 20%);
   }
 }

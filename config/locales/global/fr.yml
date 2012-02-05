@@ -30,7 +30,7 @@ fr:
     current: Actuel
     edited: Modifié
     edited_by_semi: "Modifié par :"
-    feedback: Feedback
+    feedback: Avis
     follow: Suivre
     followed_by: "Suivie par :"
     following: Suit
@@ -73,7 +73,7 @@ fr:
   scaffold: 
     add: Ajouter
     are_you_sure: Êtes-vous sûr ?
-    back: Retour
+    back: Arrière
     cancel: Annuler
     close: Fermer
     create: Créer

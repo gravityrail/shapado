@@ -1,18 +1,25 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crochet.david
+# Author: Gomoko
 # Author: IAlex
 # Author: Jean-Frédéric
+# Author: Od1n
 # Author: Peter17
 # Author: Zebulon84
 fr: 
   notifier: 
+    admin_login: 
+      message1: L'utilisateur %{user} s'est connecté comme administrateur à %{time} depuis l'adresse IP %{ip}.
+      subject: "Alerte : connexion d'administrateur"
     created_flag: 
       message1: Vous recevez ce message car vous êtes un modérateur de %{group}.
       message2: "Un message a été signalé pour la raison suivante :"
-      message2bis: vous pouvez lire le message signalé ici.
+      message2bis: Vous pouvez lire le message signalé ici.
       message2bistext: "Vous pouvez lire le message signalé en cliquant sur le lien suivant :"
       message3: Allez sur la page de modération pour voir la liste des messages signalé.
+      message4: Allez sur la page de modération pour voir la liste des éléments repérés.
     earned_badge: 
       message1: Vous avez gagné un %{badge} sur %{app}
       message2: "Description du badge :"
@@ -42,6 +49,11 @@ fr:
       message2: Un utilisateur anonyme a envoyé un retour depuis l’adresse IP %{ip}
       message3: "Adresse électronique : %{email}"
       message4: "Objet : %{objet}"
+    new_invitation: 
+      message1: Cliquez ici pour accepter l'invitation %{link}
+      message2: L'équipe %{group}.
+      message3: "Un message de votre sponsor :"
+      subject: "%{user} vous a invité dans %{group}"
     report: 
       message1: Rapport pour le groupe %{group}
       message2: Depuis %{date}

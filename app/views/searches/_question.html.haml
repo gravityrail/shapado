@@ -20,7 +20,7 @@
   - last_target_date = question.updated_at
   - owner = question.user unless question.anonymous
 
-%article{:class => class_for_question(question)}
+%article.cleafix{:class => class_for_question(question)}
   %h2
     = question.last_target_type
     = link_to highlight(title, @highlight), question_path(question), :title => truncate(strip_tags(question.body), :length => 200)

@@ -31,6 +31,11 @@ class TagsController < ApplicationController
       format.atom do
         render '/questions/index', :format => 'atom'
       end
+      format.json do
+        html = render_to_string(:partial => "tags/show_json",
+                                  :locals => {:tag => @tags.first})
+        render :json => { :html => html }
+      end
     end
   end
 

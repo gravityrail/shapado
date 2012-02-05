@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: SPQRobin
 # Author: Siebrand
 nl: 
@@ -9,7 +10,7 @@ nl:
     application: 
       all: Alle
       ask_question: Vraag stellen
-      badges: speldjes
+      badges: Speldjes
       by_me: Door mij
       collaborate: Samenwerken
       contributed: Bijgedragen

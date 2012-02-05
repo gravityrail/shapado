@@ -5,7 +5,18 @@
   %link{:rel=>"alternate", :type=>"application/atom+xml", :title => "atom", :href=> url_for(:format => "atom")}
 
 -if @questions.empty?
-  = render "shared/empty", :type => "questions", :url => new_question_path
+  -empty_box_type = "questions"
+  -empty_box_url = new_question_path
+
+  -if !session["filter"].nil? && session[:filter] != "all"
+    -empty_box_type = "filtered_questions"
+    -empty_box_url = filtered_questions_path(filter: 'all')
+  -elsif current_group.languages.count > 0 && ((logged_in? && current_user.language_filter != "any") || session["user.language_filter"] != "any")
+    -empty_box_type = "filtered_by_language_questions"
+    -empty_box_url = "#"
+
+  = render "shared/empty", :type => empty_box_type, :url => empty_box_url
+
 -else
   -if params[:answers]
     -cache_for(:questions, :answers, current_order.to_s, params[:page].to_i, params[:per_page].to_i) do

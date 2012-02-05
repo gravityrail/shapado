@@ -1,4 +1,4 @@
--related_questions = Question.related_questions(@question).page(1).per(widget.settings['limit']||10)
+-related_questions = Question.related_questions(@question).page(1).per_page(widget.settings['limit']||10)
 
 - if !related_questions.blank?
   .module.clearfix.widget.block{:class => 'widget-related_questions'}

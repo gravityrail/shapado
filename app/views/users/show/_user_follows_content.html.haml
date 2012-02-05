@@ -3,7 +3,8 @@
   -if ["followers", "following"].include? @active_subtab.to_s
     .list-users
       %ul.items#users
-        = render :partial => "users/user", :object => resource
+        = render :partial => "membership", :object => resource
+
   -elsif "answers" == @active_subtab.to_s
     = render "answers/answer", :question => resource.question, :answer => resource
   -else

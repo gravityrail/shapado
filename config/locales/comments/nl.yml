@@ -2,11 +2,12 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: Siebrand
 nl: 
   comments: 
     create: 
-      flash_notice: Bedankt voor uw reactie
+      flash_notice: Bedankt voor uw opmerking
     edit: 
       title: Opmerking bewerken
     shared: 

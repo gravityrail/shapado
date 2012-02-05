@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: McDutchie
+# Author: Pinxnl
 # Author: Siebrand
 nl: 
   themes: 
@@ -13,14 +14,14 @@ nl:
       colors_and_bg: Kleuren en achtergronden
       custom_css_legend: Als u overweg kunt met CSS, dan kunt u hier de vormgeving van uw site aanpassen. U kunt gewone CSS gebruiken of SCSS.
       fluid_layout: Vloeibare vormgeving
-      fluid_layout_legend: Een vloeibare vormgeving maakt de breedte van iedere element op de pagina afhankelijk van de breedte van het scherm van de gebruiker. Door een venster van grootte te veranderen, of door een apparaat met een kleinere schermresolutie te gebruiken, wordt de vormgeving uitgerekt of kleiner gemaakt.
+      fluid_layout_legend: Een vloeiende vormgeving maakt de breedte van iedere element op de pagina afhankelijk van de breedte van het scherm van de gebruiker. Als een venster van grootte verandert, of als een mobiel apparaat wordt gebruikt, wordt de vormgeving uitgerekt of kleiner gemaakt.
       main_color_legend: Dit is één van de meest gebruikte kleuren op iedere pagina. Zorg dat u een goede kleur selecteer voor uw merk of gemeenschap.
       modules_color_legend: Zorg ervoor dat deze kleur en de hoofdkleur bij elkaar passen.
       submit_update: Vormgeving bijwerken
       text_color_legend: Zorg ervoor dat uw tekst leesbaar is en past bij de achtergrondkleur.
       update: Vormgeving bijwerken
     index: 
-      description: Vind hier uw vormgevingen en wijzig het uiterlijk van uw app.
+      description: Hier vindt u uw vormgevingen en kunt u het uiterlijk van uw app wijzigen.
       new_theme: Hier kunt u uw eigen vormgeving maken.
     ready: 
       success: Uw vormgeving is klaar!
