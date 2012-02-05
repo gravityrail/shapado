@@ -171,6 +171,7 @@ var Comments = {
     $(".Question-commentable").click(Comments.showCommentForm);
 
     $(".content-panel").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
+
     $('.cancel_comment').live('click', function(){
       var form = $(this).parents('form');
       form.find('.buttons').hide();
