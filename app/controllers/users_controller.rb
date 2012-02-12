@@ -72,9 +72,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
     @user.safe_update(%w[login email name password_confirmation password  website
-                         language timezone identity_url bio hide_country], params[:user])
+                         language timezone identity_url bio hide_country
+                         preferred_languages], params[:user])
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
     end
@@ -202,9 +202,12 @@ class UsersController < ApplicationController
     end
 
     @user.networks = params[:networks]
-    @user.preferred_languages = params[:preferred_languages].split(',') if params[:preferred_languages]
-    @user.safe_update(%w[login email name language timezone bio hide_country website avatar use_gravatar], params[:user])
-    @user.notification_opts.safe_update(%w[new_answer give_advice activities reports questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter comments_to_twitter], params[:user][:notification_opts]) if params[:user][:notification_opts]
+    @user.safe_update(%w[preferred_languages login email name
+                         language timezone bio hide_country
+                         website avatar use_gravatar], params[:user])
+    @user.notification_opts.safe_update(%w[new_answer give_advice activities reports
+       questions_to_twitter badges_to_twitter favorites_to_twitter answers_to_twitter
+       comments_to_twitter], params[:user][:notification_opts]) if params[:user][:notification_opts]
     if params[:user]["birthday(1i)"]
       @user.birthday = build_date(params[:user], "birthday")
     end
@@ -229,49 +232,6 @@ class UsersController < ApplicationController
     else
       render :action => "edit"
     end
-  end
-
-  # My feed, this returns:
-  # - all the questions I asked
-  # - all the questions I follow
-  # - all the questions followed by people I follow
-  #   (questions followed by people I find interesting must be interesting to me)
-  # - all the questions tagged with one of the tag I follow
-  def feed
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    return render_404 if @user.nil?
-
-    tags = @user.preferred_tags_on(current_group)
-    user_ids = @user.friend_list.following_ids
-    user_ids << @user.id
-    find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
-                                    {:tags.in => tags},
-                                    {:user_id => user_ids}])
-  end
-
-  def by_me
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    find_questions(:user_id => @user.id)
-  end
-
-  def preferred
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    @current_tags = tags = @user.preferred_tags_on(current_group)
-
-    find_questions(:tags => {:$in => tags})
-  end
-
-  def expertise
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-    @current_tags = tags = @user.stats(:expert_tags).expert_tags # TODO: optimize
-
-    find_questions(:tags => {:$in => tags})
-  end
-
-  def contributed
-    @user = params[:id] ? User.find_by_login_or_id(params[:id]) : current_user
-
-    find_questions(:contributor_ids.in => [@user.id])
   end
 
   def connect

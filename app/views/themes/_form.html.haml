@@ -1,8 +1,8 @@
 -content_for :js do
-  = include_javascripts(:codemirror)
+  = javascript_include_tag(:codemirror)
 
 -content_for :css do
-  = include_stylesheets(:codemirror)
+  = stylesheet_link_tag(:codemirror)
 
 .field
   = form.label t('shared.name')
@@ -55,6 +55,12 @@
     = form.text_field :fg_color, :type => "color"
     %small
       = I18n.t('themes.form.text_color_legend')
+
+  .field
+    = form.label I18n.t('themes.show.topbar_color')
+    = form.text_field :topbar_color, :type => "color"
+    %small
+      = I18n.t('themes.form.topbar_color_legend')
 
 .field
   = form.label :custom_css

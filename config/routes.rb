@@ -55,11 +55,6 @@ Rails.application.routes.draw do
     member do
       post :unfollow
       post :follow
-      get :feed
-      get :expertise
-      get :preferred
-      get :by_me
-      get :contributed
       get :answers
       get :follows
       get :activity
@@ -104,11 +99,12 @@ Rails.application.routes.draw do
   resources :questions do
     resources :votes
     resources :flags
-
     collection do
       get :tags_for_autocomplete
       get :related_questions
       get :random
+
+      match '/:filter' => 'questions#index', :as => :filtered, :constraints => { :filter => /all|unanswered|by_me|feed|preferred|contributed|expertise/ }
     end
 
     member do
@@ -160,6 +156,7 @@ Rails.application.routes.draw do
     collection do
       get :autocomplete_for_group_slug
       get :add_to_facebook
+      post :join
     end
 
     member do

@@ -11,12 +11,10 @@
     -@tags.each do |tag|
       .each
         = render "tag", :tag => tag
-        .clear
         -if tag.has_icon?
           = image_tag tag_icon_path(current_group,tag.name)
         %p
           = tag.description
-        .clear
 
   %section
     -if @questions.empty?

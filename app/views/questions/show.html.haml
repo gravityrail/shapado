@@ -10,64 +10,34 @@
 
 -cache_for(:question, @question.id, @question.user == current_user ? "owner" : "" ) do
   %section#question{:class => "main-question #{@question.id}", :item_scope => '', :itemtype => "http://schema.org/Article"}
-    .author
-      %p
-        %span
-          = I18n.t('global.by_semi')
-        = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
-        %span
-          = t('activerecord.attributes.question.created_at')
-        %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
-          = t("time.ago", :time => time_ago_in_words(@question.created_at))
-        -if !@question.user.hide_country && @question.address.present?
-          %span
-            = t("global.from", :site => CGI.escape_html(@question.address_name))
 
     %h1{:itemprop => "name"}
       = @question.title
       - if @question.closed
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
+    .author
+      %small
+        %span
+          Asked by
+        = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
+        %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
+          = t("time.ago", :time => time_ago_in_words(@question.created_at))
+          ,
+        - if @question.updated_by
+          Edited by
+          = render :partial => "users/user_mini", :locals => {:user => @question.updated_by}
 
-    .description.markdown
+          %time{:datetime => @question.updated_at.iso8601, :itemprop => "dateModified"}
+            = link_to t("time.ago", :time => time_ago_in_words(@question.updated_at)), history_question_path(@question), :title => t("questions.show.history")+" (#{@question.versions_count})"
+
+    .description.markdown.clearfix
       %div{:itemprop => "articleBody"}
         = question_body
       = render "reward_info"
       = render "attachments", :question => @question, :attachments => @question.attachments, :editing => false
-      .clear
 
-    .stats
-      %p
-        = link_to t("questions.answer.add_comment"), "#", :class => "reply Question-commentable", 'data-commentable' => @question.id
-        %span
-          = t('questions.show.viewed')
-        = t('number.x_time', :count => number_with_delimiter(@question.views_count))
-        %span
-          = t("questions.show.last_activity")
-        = t("time.ago", :time => time_ago_in_words(@question.activity_at))
 
-    %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
-    %meta{:itemprop=>"inLanguage", :content=>@question.language}
-    %meta{:itemprop=>"interactionCount", :content=>"UserComments:#{@question.answers_count}"}
-    %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
-
-    .comments
-      =link_to "NN comments", "#", :class => "toggle_comments"
-      -@question.comments.each do |comment|
-        -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => question_path(@question), :mini => true, :read => read}
-
-    .panel-comments
-      = form_for [@question, @comment ||= Comment.new], :html => {:class => "question_comment_form nestedAnswerForm", "data-commentable" => @question.id} do |f|
-        %fieldset
-          = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question), :markdown => true}
-          .buttons
-            = submit_tag t("comments.shared.comment_submit")
-            = t("global.or")
-            = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-
-    %ul.tag-list
-      %li.title
-        = t('global.tags_label')
+    %ul.tag-list.clearfix
       - @question.tags.each do |tag|
         %li
           = tag_link(tag)
@@ -75,57 +45,76 @@
         %li.retag
           = link_to t('.retag'), retag_question_path(@question), :class => 'retag-link'
 
+    %meta{:itemprop=>"keywords", :content=>@question.tags.join(",")}
+    %meta{:itemprop=>"inLanguage", :content=>@question.language}
+    %meta{:itemprop=>"interactionCount", :content=>"UserComments:#{@question.answers_count}"}
+    %meta{:itemprop=>"interactionCount", :content=>"UserPageVisits:#{@question.views_count}"}
+
     = render "toolbar"
+
+    .comments
+      =link_to "NN comments", "#", :class => "toggle_comments"
+      -@question.comments.each do |comment|
+        -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
+        = render :partial => "comments/comment", :object => comment, :locals => {:source => question_path(@question), :mini => true, :read => read}
+
+      .panel-comments
+        = form_for [@question, @comment ||= Comment.new], html: {class: "question_comment_form", data: {commentable: @question.id, editor: current_group.wysiwyg_editor ? 'wysiwyg_editor' : 'markdown_editor'}} do |f|
+          %fieldset
+            = render :partial => "comments/form", :locals => {:f => f, :commentable => @question, :source => question_url(@question)}
+            .buttons
+              = submit_tag t("comments.shared.comment_submit")
+              = t("global.or")
+              = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
+
 
 
 #answers-content-wrap
-  -cache_for(:question_answers, @question.id) do
-    %header
+  .error
+    - source = question_path(@question)
+    = error_messages_for 'answer'
+
+  - if @question.closed && @question.close_reason.present?
+    #close_reason
+      = t(".close_reason")
+      = t(@question.close_reason.reason, :scope=>"close_requests.form")
+      - if !@question.close_reason.comment.empty?
+
+        .comment
+          =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
+  - if !@answers.empty? || @question.accepted
+    -cache_for(:question_answers, @question.id) do
       %h2
         = t("questions.question.has_answers", :count => @question.answers_count)
 
-    %section.filters
-      %ul{:class => @active_subtab.to_s}
-        %header= t('global.sort_by')
-        %li.newest-active
-          = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li.votes-active
-          = link_to t("questions.index.votes"), question_path(@question, :sort=>"votes", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li.oldest-active
-          = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
-        %li
-          = link_to t('.solution')
+      .filters
+        %ul.menubar{:class => @active_subtab.to_s}
+          %li
+            %label=t('global.sort_by')
+          %li.newest-active
+            = link_to t("questions.index.newest"), question_path(@question, :sort=>"newest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li.votes-active
+            = link_to t("questions.index.votes"), question_path(@question, :sort=>"votes", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li.oldest-active
+            = link_to t("questions.index.oldest"), question_path(@question, :sort=>"oldest", :anchor => "answers"), :rel => "nofollow", :class => "pjax", :"data-layout" => "question"
+          %li
+            = link_to t('.solution')
 
-    .error
-      - source = question_path(@question)
-      = error_messages_for 'answer'
+        -if @question.follow_up
+          .followUp-content
+            %h1
+              = t("questions.show.follow_up_of")
+            = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
 
-    - if @question.closed && @question.close_reason.present?
-      #close_reason
-        = t(".close_reason")
-        = t(@question.close_reason.reason, :scope=>"close_requests.form")
-        - if !@question.close_reason.comment.empty?
+        -if @question.followed_up_by.limit(1).count > 0
+          %h1= t('global.followed_by')
+          %ul
+            -@question.followed_up_by.all.each do |child|
+              %li
+                = link_to child.title, question_path(child)
 
-          .comment
-            =find_and_preserve(shapado_auto_link(@question.close_reason.comment))
-
-      -if @question.follow_up
-        .followUp-content
-          %h1
-            = t("questions.show.follow_up_of")
-          = link_to @question.follow_up.original_question.title, question_path(@question.follow_up.original_question)+"##{@question.follow_up.original_answer_id}", "rel" => 'nofollow'
-
-      -if @question.followed_up_by.limit(1).count > 0
-        %h1= t('global.followed_by')
-        %ul
-          -@question.followed_up_by.all.each do |child|
-            %li
-              = link_to child.title, question_path(child)
-
-  .answers-list
-    - if @answers.empty? && !@question.accepted
-      = render "shared/empty", :type => "answers", :url => ""
-    - else
+  - if !@answers.empty? || @question.accepted
+    .answers-list
       - if @question.accepted
         - solution = @question.answer
         = render :partial=> "answer", :locals=> {:question => @question, :answer => solution} unless solution.nil?
@@ -134,4 +123,10 @@
         - next if answer.id == @question.answer_id
         = render "answer", {:question => @question, :answer => answer}
 
-  = paginate(@answers)
+      = paginate(@answers)
+
+  -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
+    #to_answer
+      %h2
+        Your answer
+      = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}

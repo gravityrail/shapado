@@ -27,7 +27,7 @@
           = t(:flags, :scope => "activerecord.models")
           = render :partial => "flags/list", :locals => {:flaggeable => answer}
 
-
+    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 
     .comments
       =link_to "NN comments", "#", :class => "toggle_comments"
@@ -36,16 +36,13 @@
         = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true, :read => read}
 
     .panel-comments
-      = form_for [@question, answer, @comment ||= Comment.new], :html => {:class => "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", "data-commentable"=>answer.id} do |f|
+      = form_for [@question, answer, @comment ||= Comment.new], html: {class: "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", data: {commentable: answer.id, editor: current_group.wysiwyg_editor ? 'wysiwyg_editor' : 'markdown_editor'}} do |f|
         %fieldset
           = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
           .buttons
             = submit_tag t("comments.shared.comment_submit")
             = t("global.or")
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
-
-
-    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 
 
     .article-forms

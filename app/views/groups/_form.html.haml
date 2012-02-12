@@ -11,7 +11,6 @@
       = form.text_field :subdomain, :class=>"text_field"
       %small
         = ".#{request.domain}"
-      .clear
 
 -if current_user.admin?
   .field
@@ -20,7 +19,6 @@
       %small
         =request.protocol
       = form.text_field :domain, :class=> "text_field"
-      .clear
 
   .field
     = form.label :description,  t('description', :scope => "activerecord.attributes.group"), :class => "label"
@@ -59,7 +57,7 @@
       %small{:style => "margin-bottom: 20px;"}
         = t(".analytics_legend")
 
-.field
+.field{style: "clear: both"}
   =form.label :layout, t('layout', :scope => "activerecord.attributes.group"), :class => "label"
   =form.select :layout, [['Default', 'application'], ['2-Columns', 'classic']]
 
@@ -91,6 +89,10 @@
     .checkbox
       = form.label :fb_button, t('fb_button', :scope => "activerecord.attributes.group"), :class => "radio"
       = form.check_box :fb_button, :class => "checkbox"
+  .field
+    .checkbox
+      = form.label :track_users, t('track_users', :scope => "activerecord.attributes.group"), :class => "radio"
+      = form.check_box :track_users, :class => "checkbox"
 
   .field
     = form.label :legend, t('legend', :scope => "activerecord.attributes.group"), :class => "label"

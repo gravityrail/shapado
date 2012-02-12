@@ -1,7 +1,13 @@
 .empty{:class => "empty_#{type}"}
-  = image_tag("empty.png")
-  %h2
-    = t("shared.empty.#{type}.title", :default => :"shared.empty.default.title")
-  %p
-    - link = link_to t("shared.empty.#{type}.description.action_link"), url, :class => "empty_#{type}_text"
+  - if current_group.languages.count == 0
+    = image_tag("empty.png")
+    %h2
+      = t("shared.empty.#{type}.title", :default => :"shared.empty.default.title")
+    %p
+      - link = link_to t("shared.empty.#{type}.description.action_link"), url, :class => "empty_#{type}_text"
     = raw t("shared.empty.#{type}.description.text", :action_link => link, :default => :"shared.empty.default.description.text")
+  - else
+    %h2
+      = t('shared.languages_notice')
+    %h2
+      = link_to t('shared.languages_link'), '#', :class => 'lang-option', "data-language" => 'any'

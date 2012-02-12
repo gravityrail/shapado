@@ -1,4 +1,4 @@
-.module.widget.block{:class => 'widget-ask_question'}
+.module.clearfix.widget.block{:class => 'widget-ask_question'}
   = render "widgets/header", :widget => widget
   - @question = Question.new
   = show_flash_messages(:class => "flash", :markdown => true)
@@ -15,5 +15,3 @@
         = f.submit t('.ask'), :class => "save"
     %footer
       =link_to t('.footer', :group => current_group.name), questions_path
-  .clear
-.clear

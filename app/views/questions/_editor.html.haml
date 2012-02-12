@@ -1,7 +1,8 @@
 
 -if local_assigns[:markdown] && !current_group.wysiwyg_editor
-  =markdown(@answer.body)
+  =markdown(@question.body)
   = f.label :body, t(:body, :scope => "activerecord.attributes.question"), :class => "label", :for =>"editor"
+
 -if current_group.wysiwyg_editor
   = f.text_area :body, :class => "text_area wysiwyg_editor", :value => markdown(@question.body)
 -else

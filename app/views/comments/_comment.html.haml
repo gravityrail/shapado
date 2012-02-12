@@ -1,5 +1,5 @@
 -if !local_assigns[:mini]
-  %article.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
+  %article.clear.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
     %a{:name => "comment#{comment.id}"}
     %h4
       = avatar_img(comment.user, :size => "small")
@@ -28,10 +28,9 @@
               = link_to t("scaffold.destroy"), question_comment_path(:question_id =>  comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
             -when Answer
               = link_to t("scaffold.destroy"), question_answer_comment_path(:question_id =>  comment.commentable.question.id, :answer_id => comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
-    .clear
 
 -else
-  %article.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
+  %article.clearfix.comment{:id=>comment.id, :class => local_assigns[:read] ? "read" : "unread"}
     .user-avatar
       = avatar_img(comment.user, :size => "small")
     -if logged_in? && current_user.can_vote_up_on?(current_group) && current_user != comment.user
@@ -64,5 +63,4 @@
                 = link_to t("scaffold.destroy"), question_comment_path(:question_id =>  comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
               -when Answer
                 = link_to t("scaffold.destroy"), question_answer_comment_path(:question_id =>  comment.commentable.question.id, :answer_id => comment.commentable.id, :id => comment.id, :source => source), :confirm => t("scaffold.sure", :model => "comment"), :method => :delete
-    .clear
 

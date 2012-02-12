@@ -3,4 +3,4 @@ en:
     show:
       title: 'Questions tagged: %{tags}'
     index:
-      filter: Filter
+      filter: Search for tags

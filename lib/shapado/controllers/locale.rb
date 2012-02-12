@@ -29,7 +29,7 @@ module Shapado
             end
             languages.to_a
           else
-            [current_group.language || AppConfig.default_language]
+            [(current_group.language.blank? ? "en" : current_group.language) || AppConfig.default_language]
           end
         end
       end

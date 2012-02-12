@@ -7,6 +7,7 @@
     -opts[:value] = markdown(@comment.body)
   -else
     -opts[:class] = "markdown_editor"
+-opts[:placeholder] = t("questions.answer.add_comment")
 
 .markdown
   = f.text_area :body, opts

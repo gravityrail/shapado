@@ -1,8 +1,9 @@
-%header
-  = number_with_delimiter(@resources.total_count)
-  = t(:activities, :scope => "activerecord.models")
-  \-
-  = t('global.filter_by')
+%li
+  %label
+    = number_with_delimiter(@resources.total_count)
+    = t(:activities, :scope => "activerecord.models")
+    \-
+    = t('global.filter_by')
 
 %li.all
   = link_to "All", activity_user_path(@user, params), :rel => "nofollow", :class => "pjax", :"data-layout" => "index"

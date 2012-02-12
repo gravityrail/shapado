@@ -6,9 +6,11 @@
   -else
     -opts[:class] = "markdown_editor"
 
-.field
+.field.editor
   .markdown
     = f.text_area :body, opts
+  -if !current_group.wysiwyg_editor
+    .markdown_preview
 
 -if local_assigns[:markdown] && !current_group.wysiwyg_editor
   =markdown(@answer.body)

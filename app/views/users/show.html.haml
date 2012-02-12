@@ -1,6 +1,6 @@
 #users_show{:item_scope => '', :itemtype => "http://schema.org/Person"}
   %section.userHistory
-    .userDescription
+    .userDescription.clearfix
       .basicInfo
         = avatar_img @user, :size => "medium"
         %h2{:itemprop => "name"}
@@ -61,7 +61,6 @@
           -else
             %li.follow
               =link_to "+ #{t(".follow")}", follow_user_path(@user), :class => "follow_link toggle-action", 'data-class' => "unfollow_link", 'data-text' => t(".unfollow"), 'data-undo' => unfollow_user_path(@user), :method => 'post'
-      .clear
 
     .badges
       %h3= t("activerecord.models.badges")
@@ -77,7 +76,7 @@
           = tab_entry "li", t(:answers, :scope => "activerecord.models"), answers_user_path(@user), {:selected => "active"}, {:class => "answers"}
           = tab_entry "li", t('global.following'), follows_user_path(@user), {:selected => "active"}, {:class => "follow"}
           = tab_entry "li", t(:activity, :scope => "activerecord.models"), activity_user_path(@user), {:selected => "active"}, {:class => "activity"}
-      %section.filters{:class => @active_subtab }
+      %section.filters.clearfix{:class => @active_subtab }
         %ul
           = render "users/show/user_#{params[:action]}_filters"
 
@@ -87,14 +86,13 @@
       = paginate @resources
 
 -content_for :sidebar do
-  .networks
+  .networks.clearfix
     -if username = @user.networks["flickr"]
       -username = username["nickname"]
       .one-net.flickr.module
         %h3 Flickr Feed
         %section
           = widget_for(:flickr, {:photos_number=>6, :horizontal=>true, :user=> username,:background  => "#E5DDFF"})
-        .clear
 
     -if username = @user.networks["youtube"]
       -username = username["nickname"]
@@ -102,7 +100,6 @@
         %h3 Youtube  Feed
         %section
           = widget_for(:youtube, {:channel => username, :vertical => false, :large => false, :height =>   "260px", :width => "320px" })
-        .clear
 
     -if username = @user.networks["twitter"]
       -username = username["nickname"]
@@ -110,14 +107,14 @@
         %h3 Twitter  Feed
         %section
           = widget_for(:twitter, {:user => username, :interval => "10000", :shell_background => "#3e4953", :shell_color => "#fff", :tweets_background=> "#fff" , :tweets_color=> "#666" ,:tweets_links => "#cc6600", })
-        .clear
+
     -if username = @user.networks["linkedin"]
       -username = username["nickname"]
       .one-net.linkedin.module
         %h3 LinkedIn  Feed
         %section
           = widget_for(:linked_in, {:user => username})
-        .clear
+
 
     -if username = @user.networks["github"]
       -username = username["nickname"]
@@ -125,7 +122,7 @@
         %h3 GitHub  Feed
         %section
           = widget_for(:github, {:user => username, :theme => "white", :title => "Github Projects", :list_length => 6, :show_all => "Show All", :head => "h2"})
-        .clear
+
 
     -if username = @user.networks["ohloh"]
       -username = username["nickname"]
@@ -133,4 +130,4 @@
         %h3 Ohloh  Feed
         %section
           = widget_for(:ohloh, {:user => username})
-        .clear
+

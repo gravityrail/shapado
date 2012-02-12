@@ -1,6 +1,5 @@
 
 %li.user
-  //= link_to "#{avatar_img(current_user, {:size =>24})} #{current_user.display_name}", user_path(current_user)
   = link_to current_user.display_name, user_path(current_user)
   = avatar_img(current_user, {:size =>"small"})
   %ul.drop-menu

@@ -88,3 +88,5 @@ en:
         enable_latex: 'Enable LaTeX with jqmath (fast but not full featured)'
         enable_mathjax: 'Enable LaTeX with mathjax (slow but full featured)'
         daily_cap: Daily Cap
+        track_users: Ask users for their physical location
+

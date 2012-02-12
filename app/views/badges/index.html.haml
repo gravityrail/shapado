@@ -1,15 +1,16 @@
-%h1
-  = t(".title")
-%p.description= t(".description")
+.top
+  %h1
+    = t(".title")
+  %p.description= t(".description")
+
 .content
   %ul
     - @badges.each do |badge|
-      %li
-        .badge_item{:class => badge.type}
-          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge", :title => badge.description}
+      %li.clearfix
+        .badge_item
+          = pjax_link_to badge.name, "badges", badge_path(:id => badge.token), {:class => "badge #{badge.type}", :title => badge.description}
 
           .counter
             == × #{badge["count"]}
         .badge_description
           =badge.description
-        .clear

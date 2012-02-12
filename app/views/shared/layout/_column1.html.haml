@@ -1,9 +1,4 @@
 %section.left-panel#column1
-  .brand
-    %h1
-      = link_to(group_logo_img(current_group, :class => "group_logo"), domain_url(:custom => current_group.domain))
-
-  //= render "shared/user-zone"
   .widget-links.module
     %nav
       %ul
@@ -31,13 +26,6 @@
       %ul
         %li
           = link_to t('layouts.application.random_question'), random_questions_path(:unanswered => true), :class => "pjax", :"data-layout" => "question", :rel => 'nofollow'
-        %li
-          = link_to t('layouts.application.badges'), badges_path, :class => "pjax", :"data-layout" => "badges", :rel => 'nofollow'
-        %li
-          = link_to t('layouts.application.pages'), pages_path, :class => "pjax", :"data-layout" => "pages"
-        %li
-          =link_to t('layouts.application.users'), users_path
-        %li
-          = link_to t('layouts.application.tags'), tags_path, :class => "pjax", :"data-layout" => "tags"
+
 
   = render "shared/widgets", :context => 'mainlist', :position => 'navbar'

@@ -26,7 +26,7 @@
           = hidden_field_tag "widget[position]", "sidebar"
       .buttons
         =submit_tag t("scaffold.add"), :class => "save"
-      .clear
+
     .type
       %p
         %strong= t('widgets.index.type')
@@ -48,7 +48,6 @@
           = link_to t('widgets.index.add_new'), "#"
         -@widget_list.header.each do |widget|
           = render "widget", :widget => widget, :position => "header"
-        .clear
 
       .container.navbar
         .header
@@ -56,7 +55,6 @@
           = link_to t('widgets.index.add_new'), "#"
         -@widget_list.navbar.each do |widget|
           = render "widget", :widget => widget, :position => "navbar"
-        .clear
 
       .container.sidebar
         .header
@@ -64,7 +62,6 @@
           = link_to t('widgets.index.add_new'), "#"
         -@widget_list.sidebar.each do |widget|
           = render "widget", :widget => widget, :position => "sidebar"
-        .clear
 
       .container.footer
         .header
@@ -72,10 +69,8 @@
           = link_to t('widgets.index.add_new'), "#"
         -@widget_list.footer.each do |widget|
           = render "widget", :widget => widget, :position => "footer"
-        .clear
 
       -else
 
         -@widget_list.sidebar.each do |widget|
           = render "widget", :widget => widget, :position => "sidebar"
-        .clear

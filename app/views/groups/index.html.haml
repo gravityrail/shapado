@@ -14,9 +14,6 @@
   %ul.items#groups
     = render :partial => "group", :collection => @groups
 
-  #additional_info
+  #additional_info.clearfix
     = paginate @groups
-    .clear
 
-
-  .clear

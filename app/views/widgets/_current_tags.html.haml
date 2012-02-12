@@ -1,5 +1,5 @@
 - unless self.current_tags.empty?
-  .module.widget.block{:class => 'widget-current_tags'}
+  .module.clearfix.widget.block{:class => 'widget-current_tags'}
     = render "widgets/header", :widget => widget
     %aside.tag-list
       - self.current_tags.each do |tag|
@@ -10,4 +10,3 @@
             = link_to "-", tag_path(:id => self.current_tags.map{|t| CGI.escape(t)}.join("+")), :class => "remove_tag"
           - else
             = link_to "-", tag_path(:id => tags.map{|t| CGI.escape(t)}.join("+")), :class => "remove_tag"
-  .clear

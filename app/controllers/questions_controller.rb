@@ -24,13 +24,48 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   # GET /questions.xml
+
+  # My feed, this returns:
+  # - all the questions I asked
+  # - all the questions I follow
+  # - all the questions followed by people I follow
+  #   (questions followed by people I find interesting must be interesting to me)
+  # - all the questions tagged with one of the tag I follow_up
+
   def index
-    if current_group.current_theme.has_questions_index_html?
+    if current_group.current_theme.has_questions_index_html? && current_group.current_theme.questions_index_html.size > 0
       @template_format = 'mustache'
       request.format = :mustache
     end
 
-    find_questions
+    if params[:filter] || session[:filter]
+      filter = params[:filter] || session[:filter]
+      session[:filter] = filter
+      case filter
+      when 'feed'
+        tags = current_user.preferred_tags_on(current_group)
+        user_ids = current_user.friend_list.following_ids
+        user_ids << current_user.id
+        find_questions({ }, :any_of => [{:follower_ids.in => user_ids},
+                                        {:tags.in => tags},
+                                        {:user_id => user_ids}])
+      when 'by_me'
+        find_questions(:user_id => current_user.id)
+      when 'preferred'
+        @current_tags = tags = current_user.preferred_tags_on(current_group)
+        find_questions(:tags => {:$in => tags})
+      when 'expertise'
+        @current_tags = tags = current_user.stats(:expert_tags).expert_tags # TODO: optimize
+        find_questions(:tags => {:$in => tags})
+      when 'contributed'
+        find_questions(:contributor_ids.in => [current_user.id])
+      else
+        session.delete :filter
+        find_questions
+      end
+    else
+      find_questions
+    end
   end
 
 
@@ -101,7 +136,7 @@ class QuestionsController < ApplicationController
                                        :for_answers => params[:answers]})
           end
         end
-        render :json => {:html => content}.to_json
+        render :json => {:html => content, :message => t('searches.index.found_results', :quantity => @questions.total_count, :spelling_suggestion => @questions.spelling_suggestion) }.to_json
       end
     end
   end

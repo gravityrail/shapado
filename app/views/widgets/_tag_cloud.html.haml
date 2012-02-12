@@ -1,4 +1,4 @@
-.module.widget.block{:class => 'widget-tag_cloud'}
+.module.clearfix.widget.block{:class => 'widget-tag_cloud'}
   = render "widgets/header", :widget => widget
   %aside
     .active-tags
@@ -15,5 +15,4 @@
 
     %div{:style => widget.settings["style"]}
       = tag_cloud([], {}, widget.settings["limit"], widget.settings["style"])
-.clear
 

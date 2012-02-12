@@ -15,7 +15,7 @@ module Jobs
                                    {:style => Sass::Plugin.options[:style],
                                     :syntax => :scss,
                                     :cache => false,
-                                    :load_paths => []})
+                                    :load_paths => [File.join(Rails.root,"lib","sass"), "#{Gem.loaded_specs['compass'].full_gem_path}/frameworks/compass/stylesheets"]})
 
         compiled_css = ""
         begin
@@ -54,6 +54,7 @@ $has_bg_image: #{theme.has_bg_image?};
 $bg_color: ##{theme.bg_color};
 $fg_color: ##{theme.fg_color};
 $bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}/#{theme.version}.png';
+$topbar_color: ##{theme.topbar_color};
 $logo_url: '/_files/groups/logo/#{theme.group_id}/#{theme.version}.png';
 $view_bg_color: ##{theme.view_bg_color};
 $brand_color: ##{theme.brand_color};

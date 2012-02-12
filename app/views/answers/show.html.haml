@@ -20,9 +20,8 @@
         =" [#{t("closed", :scope => "activerecord.attributes.question").upcase}]"
 
     .description.markdown
-      %div{:itemprop => "articleBody"}
+      .clearfix{:itemprop => "articleBody"}
         = question_body
-      .clear
 
 #answers-content-wrap
   .answers-list

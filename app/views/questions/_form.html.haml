@@ -25,8 +25,7 @@
   %small= t(".related_questions", :default => :"questions.form.related_questions_desc" )
 
 .field
-  =render "editor.html.haml", local_assigns
-  .clear
+  =render "shared/editor", local_assigns.merge(markdown: true)
 
 .field
   =render "attachment_editor", local_assigns

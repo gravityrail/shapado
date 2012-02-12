@@ -1,6 +1,6 @@
 - recent_users = widget.recent_users(current_group)
 - if recent_users.count > 0
-  .module.widget.block{:class => 'widget-users'}
+  .module.clearfix.widget.block{:class => 'widget-users'}
     = render "widgets/header", :widget => widget
     %aside
       %ul.list
@@ -15,4 +15,3 @@
                 = t("time.ago", :time => time_ago_in_words(user.created_at))
     %footer
       = link_to t("scaffold.more"), users_path
-  .clear
