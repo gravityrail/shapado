@@ -2,9 +2,6 @@
 
 .badges-controller
   &.index
-    p.description
-      margin: 0 30px 30px 30px
-      clear: both
     .content
       padding: 0 30px 30px 30px
   &.show
@@ -21,22 +18,22 @@
           margin: 0
           padding: 0
 
-        .badge_item
-          margin: 0 0 15px 0
-          height: 64px
-          a
-            padding: 10px 64px
-            font-size: 32px
-            +huge-radius
-            +menu-shadow
-          .badge
-            background-image: image-url("ribbons-big.png")
-            &.silver
-              background-position: 0px 0px
-            &.gold
-              background-position: 0px -64px
-            &.bronze
-              background-position: 0px -128px
+      .badge_item
+        margin: 0 0 15px 0
+        height: 64px
+        a
+          padding: 10px 64px
+          font-size: 32px
+          +huge-radius
+          +menu-shadow
+        .badge
+          background-image: image-url("ribbons-big.png")
+          &.silver
+            background-position: 0px 0px
+          &.gold
+            background-position: 0px -64px
+          &.bronze
+            background-position: 0px -128px
 
       .counter
         text-align: center

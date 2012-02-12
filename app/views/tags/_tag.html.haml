@@ -1,5 +1,7 @@
-%h2 
+%h2
   = tag.name
+  -if local_assigns[:show_counter]
+    (#{tag.count})
 .tools
   -if logged_in? && current_user.mod_of?(current_group)
     = link_to t("scaffold.edit"), edit_tag_path(tag)

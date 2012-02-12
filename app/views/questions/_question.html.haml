@@ -45,7 +45,7 @@
           =link_to t('.answer_verb'), question_path(question, :anchor => "to_answer")
 
         -if !logged_in? || !current_user.mod_of?(current_group) && (current_user != question.user && current_user.has_flagged?(question).nil?)
-          %li.spam
+          %li.spam.action
             = link_to t(".flag", :default => :"questions.show.flag"), new_question_flag_path(question), :class => "flag-link-index", :rel => 'nofollow'
         = render "questions/requests_menu", :question => question, :i18n_scope => "questions.show"
 

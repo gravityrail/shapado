@@ -18,13 +18,13 @@
     .author
       %small
         %span
-          Asked by
+          = t('activerecord.attributes.question.asked_by')
         = render :partial => "users/user_mini", :locals => {:user => @question.user, :author => true}
         %time{:datetime => @question.created_at.iso8601, :itemprop => "datePublished"}
           = t("time.ago", :time => time_ago_in_words(@question.created_at))
-          ,
         - if @question.updated_by
-          Edited by
+          ,
+          = t('global.edited_by')
           = render :partial => "users/user_mini", :locals => {:user => @question.updated_by}
 
           %time{:datetime => @question.updated_at.iso8601, :itemprop => "dateModified"}
@@ -127,6 +127,15 @@
 
   -if !@question.closed || !(logged_in? && current_user.can_answer_on?(current_group))
     #to_answer
-      %h2
-        Your answer
+      -if logged_in? && @question.answers.where(user_id: current_user.id).count > 0
+        %h2
+        .toolbar
+          %ul.menubar
+            %li.action
+              = link_to "Add another answer", "#", id: "add_another_answer"
+      -else
+        %h2
+          -#i18n
+          Your answer
+
       = render :partial => "answers/form", :locals => {:markdown => true, :question => @question}

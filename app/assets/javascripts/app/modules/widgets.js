@@ -2,21 +2,11 @@ var Widgets = {
   initialize: function(data) {
     Networks.initialize();
     var widget = $('.widget-container');
-    widget.delegate('a.delete-widget', 'click', function(event) {
+
+    $('a.delete-widget').bind('ajax:success', function() {
       var link = $(this);
       var parent = link.parents('.widget-container');
-      var message = link.attr('data-confirm');
-      if(confirm(message)) {
-        parent.hide();
-        $.ajax( link.attr('href'), {
-          dataType: 'json',
-          type: 'post',
-          data: {'_method': 'delete', format: 'js'},
-          success: function(data) {
-            parent.remove();
-          }
-        });
-      };
+      parent.remove();
       return false;
     });
 

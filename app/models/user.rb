@@ -497,7 +497,14 @@ Time.zone.now ? 1 : 0)
   end
 
   def badges_on(group, opts = {})
-    self.badges.where(opts.merge(:group_id => group.id)).order_by(:created_at.desc)
+    grouped = opts.delete(:grouped)
+    if grouped
+      Badge.collection.master.group({key: [:token, :type], initial: {count: 0}, reduce: "function(doc, prev) { prev.count += 1}", cond: {group_id: group.id, user_id: self.id}}).map do |attributes|
+        Badge.new(attributes)
+      end
+    else
+      self.badges.where(opts.merge(group_id: group.id)).order_by(:created_at.desc)
+    end
   end
 
   def find_badge_on(group, token, opts = {})
@@ -525,21 +532,34 @@ Time.zone.now ? 1 : 0)
     true
   end
 
-  def followers(scope = {})
+  def followers(scope = {}, memberships=false)
     return Kaminari.paginate_array([])  if self.friend_list.follower_ids.blank?
     conditions = {}
 
     conditions[:preferred_languages] = {:$in => scope[:languages]}  if scope[:languages]
 
-    conditions[:group_ids] = {:$in => [scope[:group_id]]} if scope[:group_id]
+    # FIXME
+    if !memberships
+      conditions[:group_ids] = {:$in => [scope[:group_id]]} if scope[:group_id]
 
-    conditions.merge!(:_id => {:$in => self.friend_list.follower_ids})
+      conditions.merge!(:_id => {:$in => self.friend_list.follower_ids})
 
-    User.where(conditions)
+      User.where(conditions)
+    else
+      conditions.merge!(:user_id => {:$in => self.friend_list.follower_ids})
+      if scope[:group_id]
+        conditions[:group_id] = scope[:group_id]
+      end
+      Membership.where(conditions)
+    end
   end
 
-  def following
-    User.where(:_id.in => self.friend_list.following_ids)
+  def following(group=nil)
+    if group.nil?
+      User.where(:_id.in => self.friend_list.following_ids)
+    else
+      Membership.where(:user_id => {:$in => self.friend_list.following_ids}, :group_id => group.id)
+    end
   end
 
   def following?(user)

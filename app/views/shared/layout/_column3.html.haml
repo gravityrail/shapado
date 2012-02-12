@@ -1,8 +1,6 @@
 
-%section.right-panel#column3
-  - context = widgets_context(params[:controller], params[:action])
-  = render "shared/widgets", :context => context, :position => 'sidebar'
+-if @show_sidebar
+  %section.right-panel#column3
+    = render "shared/widgets", :context => @widget_context, :position => 'sidebar'
 
-  = yield :sidebar
-
-  .clear
+    = yield :sidebar

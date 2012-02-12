@@ -1,9 +1,8 @@
-- context = widgets_context(params[:controller], params[:action])
 
 
-%section.content-panel#column2{:class => current_group.send(:"#{context}_widgets").sidebar.count == 0 ? "nosidebar" : "" }
+
+%section.content-panel#column2
   #main-content-wrap{:class => @active_tab}
     - if params[:controller] =~ /moderate\//
       = render "shared/moderate_navigation"
     = yield
-    .clear

@@ -27,6 +27,7 @@
 //= require app/modules/utils.js
 //= require app/modules/groups.js
 //= require app/modules/users.js
+//= require app/modules/pages.js
 //= require app/modules/loader.js
 //= require app/modules/updater.js
 //= require app/modules/layout_editor.js

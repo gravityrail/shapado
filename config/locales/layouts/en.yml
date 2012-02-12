@@ -1,6 +1,7 @@
 en:
   layouts:
     application:
+      feed: Followed
       not_member_join_dialog: "You need to join %{group} to complete this action"
       success_joining_group: "You are now a member of %{group}, thanks for joining!"
       join_group: "Join %{group}"

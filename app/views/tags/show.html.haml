@@ -10,7 +10,7 @@
   .tags
     -@tags.each do |tag|
       .each
-        = render "tag", :tag => tag
+        = render "tag", :tag => tag, :show_counter => true
         -if tag.has_icon?
           = image_tag tag_icon_path(current_group,tag.name)
         %p
