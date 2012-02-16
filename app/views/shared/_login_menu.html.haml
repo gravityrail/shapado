@@ -7,6 +7,3 @@
   - else
     %li
       = link_to t('devise.sessions.link'), new_user_session_path
-  %li
-    = link_to t('layouts.application.join_group', :group => current_group.name), new_user_path, :class => "join_group #{current_group.signup_type} has-subnav"
-

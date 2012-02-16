@@ -9,6 +9,7 @@ var Ui = {
       quick_question.find('.buttons-quickq').show();
     });
 
+    Auth.dropdown_toggle();
     Ui.initialize_ajax_tooltips();
     Ui.initialize_smooth_scroll_to_top();
     if(Ui.supports_input_placeholder()) {

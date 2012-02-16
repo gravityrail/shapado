@@ -22,7 +22,7 @@ en:
       sign_out: 'Sign out'
       registered_only: You must be signed in to see the content.
       new:
-        remember_me: 'Keep me logged in'
+        remember_me: 'Remember me'
         openid_url: 'Your OpenID URL'
     passwords:
       send_button: Send me the reset password instructions
