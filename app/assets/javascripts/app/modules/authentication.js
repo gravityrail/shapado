@@ -16,7 +16,8 @@ var Auth = {
       var toggleClass = $(this).data('toggle-dropdown');
       $('.dropdown-form').addClass('hidden');
       var toggleEle = $('.'+toggleClass).toggleClass('hidden');
-
+      Auth.position_dropdown();
+      $('.providers-list').show();
       return false;
     })
     }
