@@ -21,6 +21,7 @@
 //= require app/modules/questions.js
 //= require app/modules/answers.js
 //= require app/modules/comments.js
+//= require app/modules/members.js
 //= require app/modules/rewards.js
 //= require app/modules/activities.js
 //= require app/modules/tags.js
