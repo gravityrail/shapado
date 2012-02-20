@@ -10,7 +10,7 @@ var Ui = {
     });
 
     Ui.initialize_ajax_tooltips();
-
+    Ui.initialize_smooth_scroll_to_top();
     if(Ui.supports_input_placeholder()) {
       $('.hideifplaceholder').remove();
     };
@@ -222,12 +222,20 @@ var Ui = {
       fields.tabs();
     }
   },
+  initialize_smooth_scroll_to_top: function(){
+    $(".top-bar").click(function(e) {
+      var isTopBar = $(e.target).hasClass('top-bar');
+      if(isTopBar)
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    });
+  }
+  ,
   initialize_ajax_tooltips: function(){
-    $(document.body).on("mouseleave",".tag-list, .user-data, .tooltip", function(event) {
+    $(document.body).on("mouseleave",".markdown, .toolbar, .Question, .tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).on("mouseenter", ".comment-content", function(event) {
+    $(document.body).on("mouseenter", ".markdown, .Question, .comment-content", function(event) {
       $(".tooltip").hide();
     });
 
