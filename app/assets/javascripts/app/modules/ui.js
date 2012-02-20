@@ -10,6 +10,7 @@ var Ui = {
     });
 
     Auth.dropdown_toggle();
+    Auth.position_dropdown();
     Ui.initialize_ajax_tooltips();
     Ui.initialize_smooth_scroll_to_top();
     if(Ui.supports_input_placeholder()) {

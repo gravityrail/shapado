@@ -8,6 +8,9 @@ var Auth = {
       return false;
     });
   },
+  position_dropdown: function(){
+    $('.providers-list').show().offset({left: $('.offline').offset().left+$('.offline').width()-$('.providers-list').width()}).hide()
+  },
   dropdown_toggle: function(){
     $('[data-toggle-dropdown]').click(function(){
       var toggleClass = $(this).data('toggle-dropdown');

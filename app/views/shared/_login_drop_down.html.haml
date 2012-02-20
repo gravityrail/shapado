@@ -1,4 +1,4 @@
-%ul.drop-menu
+%ul.drop-menu.providers-list
   - current_group.auth_providers.each do |provider|
     - next if params[:controller] == 'invitations' && ['Twitter','Facebook'].include?(provider)
     - dprovider = provider.downcase
