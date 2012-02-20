@@ -8,6 +8,16 @@ var Auth = {
       return false;
     });
   },
+  dropdown_toggle: function(){
+    $('[data-toggle-dropdown]').click(function(){
+      var toggleClass = $(this).data('toggle-dropdown');
+      $('.dropdown-form').addClass('hidden');
+      var toggleEle = $('.'+toggleClass).toggleClass('hidden');
+
+      return false;
+    })
+    }
+  ,
   open_popup: function(authUrl) {
     $.cookie('pp', 1);
     var pparg;

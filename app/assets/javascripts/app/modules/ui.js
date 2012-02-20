@@ -9,6 +9,7 @@ var Ui = {
       quick_question.find('.buttons-quickq').show();
     });
 
+    Auth.dropdown_toggle();
     Ui.initialize_ajax_tooltips();
     Ui.initialize_smooth_scroll_to_top();
     if(Ui.supports_input_placeholder()) {
@@ -231,11 +232,11 @@ var Ui = {
   }
   ,
   initialize_ajax_tooltips: function(){
-    $(document.body).on("mouseleave",".markdown, .toolbar, .Question, .tag-list, .user-data, .tooltip", function(event) {
+    $(document.body).on("mouseleave, scroll",".markdown, .toolbar, .Question, .comment-content, .tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).on("mouseenter", ".markdown, .Question, .comment-content", function(event) {
+    $(document.body).on("mouseenter", ".toolbar, .markdown, .Question, .comment-content, .tag-list, .user-data", function(event) {
       $(".tooltip").hide();
     });
 
@@ -245,13 +246,14 @@ var Ui = {
       $('.tooltip').hide();
       if(tag_link.data('tooltip')==1){
         var tooltip = tag_link.next('.tooltip');
-        tooltip.css('display', 'block');
+        tooltip.show(); //.delay(1800).fadeIn(400).delay(1800);
         return false;
       }
       $.ajax({
         url: url+'?tooltip=1',
         dataType: 'json',
         success: function(data){
+          $(".tooltip").hide();
           tag_link.removeAttr('title');
           tag_link.data('tooltip', 1);
           tag_link.after(data.html)

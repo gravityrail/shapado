@@ -19,7 +19,9 @@ en:
       with_linked_in: with LinkedIn
       with_identica: with Identi.ca
       with_openid: OpenID
-      with_user_pass: user/password
+      with_email_pass: 'email/password'
+      sign_up_user_pass: 'Sign up with an email/password'
+
     social_connect:
       find_friends_facebook: Find friends on Facebook
       find_friends_twitter: Find friends on Twitter
