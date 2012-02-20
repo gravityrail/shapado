@@ -205,7 +205,9 @@ class UsersController < ApplicationController
       @user.password = params[:user][:password]
       @user.password_confirmation = params[:user][:password_confirmation]
     end
-
+    if params[:user][:preferred_languages]
+      params[:user][:preferred_languages].reject! { |lang| lang.blank? }
+    end
     @user.networks = params[:networks]
     @user.safe_update(%w[preferred_languages login email name
                          language timezone bio hide_country
