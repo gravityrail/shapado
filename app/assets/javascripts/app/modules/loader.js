@@ -50,7 +50,8 @@ var Loader = {
       Users.initialize_on_show($body);
     }
     if($body.is(".admin-manage-controller.properties.application.manage-layout") ||
-      $body.is(".groups-controller.new.application")) {
+      $body.is(".groups-controller.new.application") ||
+      $body.is(".users-controller.edit.application")) {
       Groups.initialize_on_manage_properties($body);
     }
     Invitations.initialize(); //FIXME: empty function
