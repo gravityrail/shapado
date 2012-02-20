@@ -72,7 +72,11 @@ class GroupsController < ApplicationController
   # POST /groups.json
   def create
     @group = Group.new
-    @group.languages = params[:languages].split(',') if params[:languages]
+    if params[:group][:languages]
+      params[:group][:languages].reject! { |lang| lang.blank? }
+    end
+
+    @group.languages = params[:languages].split(',') if params[:languages] && params[:languages].is_a? Array
     @group.safe_update(%w[name legend description default_tags subdomain logo forum enable_mathjax enable_latex
                           custom_favicon language theme signup_type custom_css wysiwyg_editor], params[:group])
 
