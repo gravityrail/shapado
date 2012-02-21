@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  layout false, :only => 'check_custom_domain'
   before_filter :login_required, :only => [:edit, :update,
                                            :follow, :follow_tags, :leave,
                                            :unfollow_tags, :connect, :social_connect]
@@ -371,6 +372,18 @@ class UsersController < ApplicationController
   end
 
   def social_connect
+  end
+
+  def check_custom_domain
+    @group = Group.find(params[:group_id])
+  end
+
+  def reset_custom_domain
+    group = Group.find(params[:group_id])
+    if current_user.owner_of?(group)
+      group.reset_custom_domain!
+    end
+    redirect_to :back
   end
 
   protected

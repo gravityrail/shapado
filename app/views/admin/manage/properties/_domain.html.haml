@@ -15,6 +15,7 @@
   %span
     =request.protocol
   = f.text_field :domain, :class=> "text_field", :style => "width: 85% !important"
+  = f.hidden_field :custom_domain, :value => true
 
 .buttons
   = f.submit t('scaffold.update'), :class => "save"

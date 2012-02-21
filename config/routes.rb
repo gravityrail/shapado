@@ -10,6 +10,10 @@ Rails.application.routes.draw do
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
     match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
+  match '/users/groups/:group_id/check_custom_domain' => 'users#check_custom_domain',
+  :as => 'check_custom_domain'
+  match '/users/groups/:group_id/reset_custom_domain' => 'users#reset_custom_domain',
+   :method => :post, :as => 'reset_custom_domain'
   match '/connect' => 'users#social_connect', :method => :get, :as => :social_connect
   match '/invitations/accept' => 'invitations#accept', :method => :get, :as => :accept_invitation
   match '/disconnect_twitter_group' => 'groups#disconnect_twitter_group', :method => :get

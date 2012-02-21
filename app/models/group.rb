@@ -165,6 +165,11 @@ class Group
   before_create :set_default_theme
   after_create :create_default_tags
 
+  def reset_custom_domain!
+    self.domain = "#{self.slug}.#{AppConfig.domain}"
+    self.save
+  end
+
   # use for export script, slow
   def members(*fields)
     fields += [:user_id]

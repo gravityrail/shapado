@@ -135,7 +135,13 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         flash[:notice] = I18n.t('groups.update.notice')
-        format.html { redirect_to(params[:source] ? params[:source] : group_path(@group)) }
+        format.html {
+          if params[:group][:custom_domain] && @group.has_custom_domain?
+            redirect_to "#{request.protocol}#{AppConfig.domain}:#{request.port}#{check_custom_domain_path(@group.id)}"
+          else
+            redirect_to(params[:source] ? params[:source] : group_path(@group))
+          end
+        }
         format.json  { head :ok }
       else
         format.html { render :action => "edit" }

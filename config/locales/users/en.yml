@@ -59,7 +59,13 @@ en:
         flash_notice: "You are now following the tag %{tag}."
       unfollowed:
         flash_notice: "You are not following the tag %{tag} anymore."
+    check_custom_domain:
+      title: "Is your new custom domain working?"
+      reset_domain_button: "No, please reset custom domain to %{domain}"
+      working_domain_link: 'Yes, I can see my new domain is working below.'
     form:
+      check_domain_title: Check your groups custom domains
+      check_domain: "Check %{domain}"
       desktop_notification: Desktop notifications
       information: Information
       notifications: Notifications

@@ -115,4 +115,3 @@
     = form.select :languages, AVAILABLE_LANGUAGES.collect{|lang| [language_desc(lang), lang]}, {:selected => @group.languages.to_a},{:multiple => true}
 -else
   = form.hidden_field :language, :value => (AppConfig.default_language || 'en')
-

@@ -114,6 +114,13 @@ class User
 
   attr_accessible :remember_me
 
+  def custom_domain_owned_groups
+    groups = Group.where(:owner_id => self.id)
+    customs = []
+    groups.each { |group| customs << group if group.has_custom_domain? }
+    customs
+  end
+
   def display_name
     name.blank? ? login : name
   end
