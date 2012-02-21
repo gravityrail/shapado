@@ -1,12 +1,2 @@
 = form_for(:answer, :url => question_answer_path(question, answer), :html => {:method => :put, :class => "form edit_answer"}) do |f|
   = render :partial => "answers/form", :locals => {:f => f, :markdown => true,:question => question}
-
-  .field
-    .checkbox
-      = f.check_box :wiki
-      = f.label :wiki, "Wiki"
-  .field.form-options
-    .buttons
-      = f.submit t("scaffold.update"), :class => "save"
-      = t("global.or")
-      = link_to t('scaffold.cancel'), question_path(question), :class => "cancel"

@@ -1,12 +1,9 @@
 %ul.user-list.menubar.offline
   - unless current_group.is_email_only_signup?
     %li
-      %a
+      %a.signin-dropdown
         = t('devise.sessions.link')
       = render "shared/login_drop_down"
   - else
     %li
-      = link_to t('devise.sessions.link'), new_user_session_path
-  %li
-    = link_to t('layouts.application.join_group', :group => current_group.name), new_user_path, :class => "join_group #{current_group.signup_type} has-subnav"
-
+      = link_to t('devise.sessions.link'), new_user_session_path, :class => 'signin-dropdown'

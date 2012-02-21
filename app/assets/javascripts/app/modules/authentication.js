@@ -8,6 +8,20 @@ var Auth = {
       return false;
     });
   },
+  position_dropdown: function(){
+    $('.providers-list').show().offset({left: $('.offline').offset().left+$('.offline').width()-$('.providers-list').width()}).hide()
+  },
+  dropdown_toggle: function(){
+    $('[data-toggle-dropdown]').click(function(){
+      var toggleClass = $(this).data('toggle-dropdown');
+      $('.dropdown-form').addClass('hidden');
+      var toggleEle = $('.'+toggleClass).toggleClass('hidden');
+      Auth.position_dropdown();
+      $('.providers-list').show();
+      return false;
+    })
+    }
+  ,
   open_popup: function(authUrl) {
     $.cookie('pp', 1);
     var pparg;

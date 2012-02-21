@@ -9,8 +9,10 @@ var Ui = {
       quick_question.find('.buttons-quickq').show();
     });
 
+    Auth.dropdown_toggle();
+    Auth.position_dropdown();
     Ui.initialize_ajax_tooltips();
-
+    Ui.initialize_smooth_scroll_to_top();
     if(Ui.supports_input_placeholder()) {
       $('.hideifplaceholder').remove();
     };
@@ -28,7 +30,7 @@ var Ui = {
         $('.current_language').tipsy('show');
       }
     }
-    $('[rel=tipsy]').tipsy();
+    $('[rel=tipsy]').tipsy({gravity: 's'});
     $('.lang-option').click(function(){
       var path = $('#lang-select-toggle').data('language');
       var language = $(this).data('language');
@@ -222,12 +224,20 @@ var Ui = {
       fields.tabs();
     }
   },
+  initialize_smooth_scroll_to_top: function(){
+    $(".top-bar").click(function(e) {
+      var isTopBar = $(e.target).hasClass('top-bar');
+      if(isTopBar)
+        $("html, body").animate({ scrollTop: 0 }, "fast");
+    });
+  }
+  ,
   initialize_ajax_tooltips: function(){
-    $(document.body).on("mouseleave",".tag-list, .user-data, .tooltip", function(event) {
+    $(document.body).on("mouseleave, scroll",".markdown, .toolbar, .Question, .comment-content, .tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
 
-    $(document.body).on("mouseenter", ".comment-content", function(event) {
+    $(document.body).on("mouseenter", ".toolbar, .markdown, .Question, .comment-content, .tag-list, .user-data", function(event) {
       $(".tooltip").hide();
     });
 
@@ -237,13 +247,14 @@ var Ui = {
       $('.tooltip').hide();
       if(tag_link.data('tooltip')==1){
         var tooltip = tag_link.next('.tooltip');
-        tooltip.css('display', 'block');
+        tooltip.show(); //.delay(1800).fadeIn(400).delay(1800);
         return false;
       }
       $.ajax({
         url: url+'?tooltip=1',
         dataType: 'json',
         success: function(data){
+          $(".tooltip").hide();
           tag_link.removeAttr('title');
           tag_link.data('tooltip', 1);
           tag_link.after(data.html)
