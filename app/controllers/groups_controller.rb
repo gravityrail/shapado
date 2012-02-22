@@ -146,7 +146,10 @@ class GroupsController < ApplicationController
         }
         format.json  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html {
+          flash[:error] =  @group.errors.messages.first[1]
+          redirect_to :back
+        }
         format.json  { render :json => @group.errors, :status => :unprocessable_entity }
       end
     end

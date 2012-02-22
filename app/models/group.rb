@@ -140,7 +140,8 @@ class Group
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :in => 3..32
 
-  validates_uniqueness_of   :domain
+  validates_uniqueness_of   :domain,
+      :message => I18n.t('activerecord.models.duplicate_domain_message')
 
   validates_inclusion_of :language, :in => AVAILABLE_LANGUAGES, :allow_blank => true
   #validates_inclusion_of :theme, :in => AVAILABLE_THEMES

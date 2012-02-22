@@ -3,8 +3,6 @@
 @import "compass/css3";
 
 //NOTIFICATIONS
-.notice {
-  color: $light_brand_color; }
 
 .error {
   background-color: #cc0000;
@@ -16,8 +14,7 @@
   background-image: linear-gradient(#cc0000, #aa0000);
   background-image: -khtml-gradient(linear, left top, left bottom, from(#cc0000), to(#aa0000)); }
 
-.message {
-  background-color: #00cc00;
+.notice {
   background-image: -khtml-gradient(linear, left top, left bottom, from(#00cc00), to(#00aa00));
   background-image: -moz-linear-gradient(#00cc00, #00aa00);
   background-image: -ms-linear-gradient(#00cc00, #00aa00);
