@@ -33,7 +33,8 @@
 
         -if question.followers_count.to_i > 0
           %li.followers.action
-            = t('questions.index.has_followers', :count => question.followers_count)
+            %span
+              = t('questions.index.has_followers', :count => question.followers_count)
 
         %li.action
           - if logged_in? && question.follower?(current_user)
