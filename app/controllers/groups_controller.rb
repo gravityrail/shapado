@@ -1,8 +1,10 @@
 class GroupsController < ApplicationController
+  layout false, :only => 'check_custom_domain'
   before_filter :login_required, :except => [:index, :show, :join]
   before_filter :check_permissions, :only => [:edit, :update, :close,
                                               :connect_group_to_twitter,
-                                              :disconnect_twitter_group, :set_columns]
+                                              :disconnect_twitter_group, :set_columns,
+                                              :check_custom_domain, :reset_custom_domain]
   before_filter :admin_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
                       [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
@@ -306,6 +308,18 @@ class GroupsController < ApplicationController
       format.html { redirect_to :back }
       format.json  { render :json => { :message=> flash[:notice] } }
     end
+  end
+
+  def check_custom_domain
+    @group = Group.find(params[:group_id])
+  end
+
+  def reset_custom_domain
+    group = Group.find(params[:group_id])
+    if current_user.owner_of?(group)
+      group.reset_custom_domain!
+    end
+    redirect_to :back
   end
 
   protected
