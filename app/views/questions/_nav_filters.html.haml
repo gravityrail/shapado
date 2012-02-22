@@ -4,13 +4,13 @@
 %li
   -case @active_subtab.to_s
     -when "activity"
-      = link_to t("questions.index.active"), "#"
+      = link_to "#{t("questions.index.active")} ▾", "#"
     -when "newest"
-      = link_to t("questions.index.newest"), "#"
+      = link_to "#{t("questions.index.newest")} ▾", "#"
     -when "hot"
-      = link_to t("questions.index.hot"), "#"
+      = link_to "#{t("questions.index.hot")} ▾", "#"
     -when "followers"
-      = link_to t("users.show.followers"), "#"
+      = link_to "#{t("users.show.followers")} ▾", "#"
 
   %ul.drop-menu
     %li
@@ -26,11 +26,11 @@
   %label= t("shared.filter")
 %li
   - if session[:filter]
-    = link_to t("layouts.application.#{session[:filter]}"), url_for(questions_link_for(session[:filter])), :rel => 'nofollow'
+    = link_to "#{t("layouts.application.#{session[:filter]}")} ▾", url_for(questions_link_for(session[:filter])), :rel => 'nofollow'
   - elsif params[:unanswered]
-    = link_to t('layouts.application.unanswered'), url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
+    = link_to "#{t('layouts.application.unanswered')} ▾", url_for(questions_link.merge(:unanswered => 1)), :rel => 'nofollow'
   - else
-    = link_to t('layouts.application.all'), questions_path, :rel => 'nofollow'
+    = link_to "#{t('layouts.application.all')} ▾", questions_path, :rel => 'nofollow'
   %ul.drop-menu
     %li
       = tab_entry "li", t('layouts.application.all'), filtered_questions_path(filter: 'all'), :selected => "active", :link_opts => {:"class" => "pjax", :"data-layout" => "index"}
@@ -47,9 +47,9 @@
     = t('shared.view_mode')
 %li
   -if params[:answers] == "1"
-    = link_to t('activerecord.models.answers'), "#"
+    = link_to "#{t('activerecord.models.answers')} ▾", "#"
   -else
-    = link_to t('activerecord.models.questions'), "#"
+    = link_to "#{t('activerecord.models.questions')} ▾", "#"
   %ul.drop-menu
     %li
       = pjax_link_to t('layouts.application.questions'), "index", url_for(questions_link)

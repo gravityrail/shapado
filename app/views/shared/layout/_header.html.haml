@@ -22,6 +22,6 @@
         = render "shared/quick_question_box"
 
   %nav
-    .filters{:class => @active_subtab }
+    .filters.clearfix{:class => @active_subtab }
       %ul.menubar
         = yield :nav_filters
