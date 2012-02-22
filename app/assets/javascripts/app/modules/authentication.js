@@ -50,7 +50,7 @@ var Auth = {
       var title = $('#login_dialog').attr('data-title');
       $('#login_dialog').dialog({title: title,
                                modal: true,
-                               width: "150px",
+                               width: "250px",
                                resizable: false,
                                beforeClose:function(){
                                  var changed = $('#login_dialog').find('li a.login').attr('data-changed');
