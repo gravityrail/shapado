@@ -19,7 +19,7 @@ en:
       with_linked_in: with LinkedIn
       with_identica: with Identi.ca
       with_openid: OpenID
-      with_email_pass: 'email/password'
+      with_email_pass: 'Sign in with your email'
       sign_up_user_pass: 'Sign up with an email/password'
 
     social_connect:
