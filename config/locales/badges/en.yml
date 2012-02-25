@@ -11,7 +11,7 @@ en:
       bronze: Bronze
       general_tooltip: "Show all pre-defined badges."
       all_tooltip: "Show all gold, silver and bronze badges."
-      tags_tooltip: "When questions tagged with X get answers of more than 100 upvotes, a badge X is created with the name of that tag."
+      tags_tooltip: "When questions tagged with X get answers with more than 100 upvotes, a badge X is created with the name of that tag."
       gold_tooltip: "Gold badges are the greatest kind of reward, they are also the hardest to obtain. Only the most dedicated users get these rewards."
       silver_tooltip: "Silver badges are won by active users who have been involved for a pretty long time."
       bronze_tooltip: "Bronze badges are easy to win and encourage users to participate."
