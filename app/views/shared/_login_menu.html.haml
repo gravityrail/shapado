@@ -1,4 +1,4 @@
-%ul.user-list.menubar.offline
+%ul.user-list.menubar.offline{'data-signin-notice' => t('layouts.application.need_to_signin')}
   - unless current_group.is_email_only_signup?
     %li
       %a.signin-dropdown

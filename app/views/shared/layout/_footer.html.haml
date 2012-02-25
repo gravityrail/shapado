@@ -3,7 +3,7 @@
     %li
       = render "shared/login_drop_down"
 #join_dialog.hide{'data-title' => t('layouts.application.join_group', :group => current_group.name)}
-  = link_to  t('layouts.application.not_member_join_dialog', :group => current_group.name), join_groups_path , :id => 'join_dialog_link'
+  = link_to t('layouts.application.not_member_join_dialog', :group => current_group.name), join_groups_path , :id => 'join_dialog_link'
 %footer
   %nav
     %ul
