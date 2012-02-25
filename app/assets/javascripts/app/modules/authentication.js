@@ -25,14 +25,19 @@ var Auth = {
     }
   ,
   open_popup: function(authUrl) {
-    $.cookie('pp', 1);
+
     var pparg;
     if(authUrl.indexOf('{')!=-1){
-      authUrl = '/users/login?open_id=1&url='+authUrl.split('=')[1]
+      authUrl = authUrl.split('=')[1];
+      $('[data-toggle-dropdown=dropdown-signin-openid]').trigger('click');
+      $('#openid_url').val(authUrl);
+      return false;
+    } else {
+      $.cookie('pp', 1);
+      (authUrl.indexOf('?')==-1)? pparg = '?pp=1' : pparg = '&pp=1'
+      window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
+      $('#login_dialog').dialog('close');
     }
-    (authUrl.indexOf('?')==-1)? pparg = '?pp=1' : pparg = '&pp=1'
-    window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
-    $('#login_dialog').dialog('close');
   },
   startLoginDialog: function(title,join){
     if(Ui.not_member()){
