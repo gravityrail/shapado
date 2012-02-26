@@ -18,7 +18,7 @@ describe ThemesController do
     it "assigns all themes as @themes" do
       themes = @group.themes
       get :index
-      assigns(:themes).should eq(themes)
+      assigns(:themes).to_a.should eq(themes)
     end
   end
 

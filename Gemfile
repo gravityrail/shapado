@@ -101,7 +101,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'launchy'
-  gem 'machinist_mongo', :require => 'machinist/mongoid'
+  gem 'fabrication'
   gem 'ffaker'
   gem 'simplecov'
   gem 'autotest'

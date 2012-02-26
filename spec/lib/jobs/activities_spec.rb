@@ -33,8 +33,7 @@ describe Jobs::Activities do
 
       @answer.stub!(:updated_by).and_return(@answer.user)
       @twitter.should_receive(:update).twice.with(anything)
-
-      lambda {Jobs::Activities.on_activity(Jobs::Activities.on_update_answer(@answer.id))}.should_not raise_error
+      lambda {Jobs::Activities.on_update_answer(@answer.id)}.should_not raise_error
     end
   end
 
@@ -52,14 +51,13 @@ describe Jobs::Activities do
 
   describe "on_comment" do
     before(:each) do
-      @comment = Comment.make(:commentable => @answer, :user => @current_user)
-      @answer.comments << @comment
-      @answer.save
-
-      @comment.user.join!(@question.group)
+      @current_user.join!(@question.group)
+      @comment = Comment.make!(:commentable => @answer, :user => @current_user)
 
       Answer.stub!(:find).with(@answer.id).and_return(@answer)
 
+      @answer.reload
+      p @answer.comments.count
       @answer.comments.stub!(:find).with{@comment.id}.and_return @comment
       @answer.stub!(:group).and_return(@question.group)
 

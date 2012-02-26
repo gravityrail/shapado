@@ -8,7 +8,6 @@ require 'rspec/expectations'
 require 'remarkable/mongoid'
 require 'capybara/rails'
 require 'capybara/rspec'
-require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -67,7 +66,7 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    Sham.reset(:before_all)
+#     Sham.reset(:before_all)
     Capybara.default_driver = :selenium
     Capybara.javascript_driver = :selenium
     Capybara.default_host = AppConfig.domain
