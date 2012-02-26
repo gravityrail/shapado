@@ -87,7 +87,7 @@
       %h2
         = t("questions.question.has_answers", :count => @question.answers_count)
 
-      .filters
+      .filters.clearfix
         %ul.menubar{:class => @active_subtab.to_s}
           %li
             %label=t('global.sort_by')

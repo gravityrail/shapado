@@ -1,3 +1,4 @@
+
 // $has_bg_image boolean
 // $bg_color color
 // $fg_color color
@@ -7,36 +8,32 @@
 // $brand_color color
 // $fluid boolean
 
-$fg_brand_color: $brand_color;
-@if(lightness($brand_color) > 50%) {
-  $fg_brand_color: #222;
-} @else {
-  $fg_brand_color: #f2f2f2;
+$fg_brand_color: scale-lightness($brand_color, 80%);
+@if(lightness($fg_brand_color) == 100%) {
+  $fg_brand_color: darken($fg_brand_color, 60%);
 }
 
-$dark_brand_color: $brand_color;
-@if lightness($brand_color) > 35% {
-  $dark_brand_color: darken($brand_color, lightness($brand_color) - 35%); }
-@else {
-  $dark_brand_color: lighten($brand_color, 35% - lightness($brand_color));}
 
-$light_brand_color: $brand_color;
-@if lightness($brand_color) < 96% {
-  $light_brand_color: lighten($brand_color, 96% - lightness($brand_color)); }
-@else {
-  $light_brand_color: darken($brand_color, lightness($brand_color) - 96%); }
+$dark_brand_color: scale-lightness($brand_color, -35%);
+@if(lightness($dark_brand_color) == 0%) {
+  $dark_brand_color: scale-lightness($dark_brand_color, 35%);
+}
 
-$fg_light_brand_color: $fg_color;
-@if lightness($fg_color) > 20% {
-  $fg_light_brand_color: darken($fg_color, lightness($fg_color) - 20%); }
-@else {
-  $fg_light_brand_color: lighten($fg_color, 20% - lightness($fg_color));}
+$light_brand_color: scale-lightness($brand_color, 90%);
+@if(lightness($fg_brand_color) == 100%) {
+  $fg_brand_color: darken($fg_brand_color, 60%);
+}
+
+$fg_light_brand_color: scale-lightness($fg_color, 20%);
+@if lightness($fg_light_brand_color) == 100% {
+  $fg_light_brand_color: scale-lightness($fg_color, -20%);
+}
 
 $border_color: $view_bg_color;
-@if lightness($border_color) > 90% {
-  $border_color: darken($border_color, lightness($border_color) - 90%); }
-@else {
-  $border_color: lighten($border_color, 90% - lightness($border_color));}
+$border_color: scale-lightness($view_bg_color, -10%);
+@if lightness($border_color) == 0% {
+  $border_color: scale-lightness($border_color, 10%);
+}
 
 $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $blue: -66);
 
@@ -63,8 +60,8 @@ $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $
     -o-box-shadow: 0 2px 7px $bg_shadow;
     -khtml-box-shadow: 0 2px 7px $bg_shadow;
     -box-shadow: 0 2px 7px $bg_shadow;
-    border: 3px solid $view_bg_color;
-    color: $light_brand_color; } }
+    border: 3px solid darken($brand_color, 10%);
+    color: $fg_brand_color; } }
 
 // shapado/modules/comments
 .comments {
@@ -72,10 +69,6 @@ $highlighted_view_bg_color: adjust-color($view_bg_color, $red: 11, $green: 11, $
     .comment-body {
       .user-login {
         color: $brand_color; } }
-    time {
-      color: ligthen($fg_light_brand_color, 20%); }
-    p {
-      color: $fg_light_brand_color; }
     .actions {
       a {
         color: $brand_color; } } } }
@@ -144,10 +137,7 @@ form.history {
     color: $brand_color; }
   #panel-forms {
     form {
-      background-color: $light_brand_color;
-      color: $fg_light_brand_color;
-      a, label {
-        color: $fg_light_brand_color; } } } }
+      background-color: $light_brand_color; } } }
 
 #answers-content-wrap {
   h2 {

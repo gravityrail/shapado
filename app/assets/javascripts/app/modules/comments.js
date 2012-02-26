@@ -24,12 +24,12 @@ var Comments = {
         var t = l.text().replace("NN", s);
         l.text(t);
         n.hide();
-        l.next("article.comment:last").show();
+        l.parents('.comments').find("article.comment:last").show();
       }
     });
 
     $("a.toggle_comments").click(function() {
-      $(this).nextAll("article.read").slideToggle();
+      $(this).nextAll("article.read").toggle();
       return false;
     });
 
