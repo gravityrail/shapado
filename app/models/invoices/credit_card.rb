@@ -17,7 +17,7 @@ class CreditCard
   field :remember, :type => Boolean, :default => false
   field :credit_card_type, :type => String
 
-  has_many :invoices, :class_name => "Invoice"
+  has_many :invoices, :class_name => "Invoice", :validate => false
 
   referenced_in :group
 

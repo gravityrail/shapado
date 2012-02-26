@@ -14,7 +14,7 @@ class ReputationStat
   include Mongoid::Document
   identity :type => String
 
-  references_many :events, :class_name => "ReputationEvent"
+  references_many :events, :class_name => "ReputationEvent", :validate => false
 
   field :user_id, :type => String
   referenced_in :user

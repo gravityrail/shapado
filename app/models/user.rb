@@ -78,9 +78,9 @@ class User
   references_many :searches, :dependent => :destroy, :validate => false
   references_many :activities, :dependent => :destroy, :validate => false
   references_many :invitations, :dependent => :destroy, :validate => false
-  references_one :external_friends_list, :dependent => :destroy
+  references_one :external_friends_list, :dependent => :destroy, :validate => false
 
-  references_one :read_list, :dependent => :destroy
+  references_one :read_list, :dependent => :destroy, :validate => false
 
   before_create :initialize_fields
   after_create :create_lists

@@ -14,7 +14,7 @@ class ShapadoVersion
   field :phone_support, :type => Boolean
 
 
-  references_many :groups
+  references_many :groups, :validate => false
 
   validates_presence_of :token, :price
   validates_uniqueness_of :token
