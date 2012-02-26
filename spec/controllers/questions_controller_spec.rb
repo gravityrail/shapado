@@ -54,6 +54,7 @@ describe QuestionsController do
 
   describe "GET 'related_questions'" do
     before (:each) do
+      Xapit.enable
       @question = Question.make(:question)
       stub_group(@question.group)
     end

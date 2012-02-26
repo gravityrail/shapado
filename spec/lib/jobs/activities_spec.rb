@@ -33,7 +33,8 @@ describe Jobs::Activities do
 
       @answer.stub!(:updated_by).and_return(@answer.user)
       @twitter.should_receive(:update).twice.with(anything)
-      lambda {Jobs::Activities.on_update_answer(@answer.id)}.should_not raise_error
+
+      lambda {Jobs::Activities.on_activity(Jobs::Activities.on_update_answer(@answer.id))}.should_not raise_error
     end
   end
 

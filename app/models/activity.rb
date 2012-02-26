@@ -220,7 +220,7 @@ class Activity
       name: self.target_name,
       channel_id: self.group.slug
     }
-    puts "POSTING NEW ACTIVITY: #{opts.inspect}"
+    # "POSTING NEW ACTIVITY: #{opts.inspect}"
     Magent::WebSocketChannel.push(opts)
   end
 end

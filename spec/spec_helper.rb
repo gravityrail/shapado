@@ -4,6 +4,7 @@ require 'simplecov'
 SimpleCov.start 'rails'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'rspec/expectations'
 require 'remarkable/mongoid'
 require 'capybara/rails'
 require 'capybara/rspec'
@@ -70,6 +71,7 @@ RSpec.configure do |config|
     Capybara.default_driver = :selenium
     Capybara.javascript_driver = :selenium
     Capybara.default_host = AppConfig.domain
+    Xapit.reload
 #     Sham.reset(:before_each)
     DatabaseCleaner.clean
   end
