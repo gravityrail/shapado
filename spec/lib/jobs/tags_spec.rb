@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Jobs::Tags do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @question = Question.make
+    @question = Fabricate(:question)
   end
 
   describe "question_retagged" do

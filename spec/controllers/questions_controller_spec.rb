@@ -5,7 +5,7 @@ describe QuestionsController do
 
   before(:each) do
     stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     stub_authentication @user
   end
 
@@ -18,7 +18,7 @@ describe QuestionsController do
 
   describe "GET 'history'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -30,7 +30,7 @@ describe QuestionsController do
 
   describe "GET 'diff'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -42,7 +42,7 @@ describe QuestionsController do
 
   describe "GET 'revert'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -55,7 +55,7 @@ describe QuestionsController do
   describe "GET 'related_questions'" do
     before (:each) do
       Xapit.enable
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -67,7 +67,7 @@ describe QuestionsController do
 
   describe "GET 'tags_for_autocomplete'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -79,7 +79,7 @@ describe QuestionsController do
 
   describe "GET 'show'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -99,7 +99,7 @@ describe QuestionsController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -116,7 +116,7 @@ describe QuestionsController do
     end
 
     it "should be successful" do
-      attrs = Question.plan(:question, :user => @user)
+      attrs = Fabricate.attributes_for(:question, :user => @user)
       post 'create', :question => attrs
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
@@ -126,7 +126,7 @@ describe QuestionsController do
       @group.enable_anonymous = true
       controller.stub!(:current_user).and_return(nil)
       controller.should_receive(:recaptcha_valid?).twice.and_return(true)
-      post 'create', :question => Question.plan(:question),
+      post 'create', :question => Fabricate.attributes_for(:question),
                      :user => {:email => "anonimous@example.com"}
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
@@ -134,8 +134,8 @@ describe QuestionsController do
 
   describe "PUT 'update'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
-      @question_attrs = Question.plan(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
+      @question_attrs = Fabricate.attributes_for(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -148,7 +148,7 @@ describe QuestionsController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -160,8 +160,8 @@ describe QuestionsController do
 
   describe "GET 'solve'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
-      @answer = Answer.make(:answer, :question => @question)
+      @question = Fabricate(:question, :user => @user)
+      @answer = Fabricate(:answer, :question => @question)
       @question.answers << @answer
       @question.save
       stub_group(@question.group)
@@ -175,10 +175,8 @@ describe QuestionsController do
 
   describe "GET 'unsolve'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
-      @answer = Answer.make(:answer, :question => @question)
-      @question.answers << @answer
-      @question.answer = @answer
+      @question = Fabricate(:question, :user_id => @user.id)
+      @answer = Fabricate(:answer, :question_id => @question.id)
       @question.accepted = true
       @question.save
       stub_group(@question.group)
@@ -192,7 +190,7 @@ describe QuestionsController do
 
   describe "GET 'close'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
       @user.stub(:mod_of?).with{@question.group}.and_return(true)
     end
@@ -205,7 +203,7 @@ describe QuestionsController do
 
   describe "GET 'open'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -217,7 +215,7 @@ describe QuestionsController do
 
   describe "GET 'follow'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -229,7 +227,7 @@ describe QuestionsController do
 
   describe "GET 'unfollow'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -241,7 +239,7 @@ describe QuestionsController do
 
   describe "PUT 'retag_to'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       @question_attrs = {:tags => ["x","y","z"]}
       stub_group(@question.group)
     end
@@ -254,7 +252,7 @@ describe QuestionsController do
 
   describe "GET 'retag'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -267,7 +265,7 @@ describe QuestionsController do
 
   describe "GET 'twitter_share'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -281,7 +279,7 @@ describe QuestionsController do
 
   describe "GET 'random'" do
     before (:each) do
-      @question = Question.make(:question)
+      @question = Fabricate(:question)
       stub_group(@question.group)
     end
 
@@ -294,7 +292,7 @@ describe QuestionsController do
 
   describe "GET 'remove_attachment'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       stub_group(@question.group)
     end
 
@@ -308,7 +306,7 @@ describe QuestionsController do
 
   describe "GET 'move'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       @user.stub!(:admin?).and_return(true)
       stub_group(@question.group)
     end
@@ -321,9 +319,9 @@ describe QuestionsController do
 
   describe "GET 'move_to'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
+      @question = Fabricate(:question, :user => @user)
       @user.stub!(:admin?).and_return(true)
-      @new_group = Group.make(:group)
+      @new_group = Fabricate(:group)
 
       Group.stub!(:by_slug).with(@new_group.id).and_return(@new_group)
       stub_group(@question.group)

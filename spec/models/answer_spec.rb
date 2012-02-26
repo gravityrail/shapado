@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Answer do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @answer = Answer.make(:votes => {}, :question => Question.make)
+    @answer = Fabricate(:answer)
   end
 
   after(:each) do
@@ -18,22 +18,22 @@ describe Answer do
 
   describe "validations" do
     it "the answer of a user in a question should be unique" do
-      answer = Answer.make_unsaved(:question => @answer.question,
-                                   :created_at => @answer.created_at+1.day,
-                                   :user => @answer.user,
-                                   :group_id => @answer.group_id,
-                                   :votes => {})
+      answer = Fabricate.build(:answer,
+                               :question => @answer.question,
+                               :created_at => @answer.created_at+1.day,
+                               :user => @answer.user,
+                               :group_id => @answer.group_id)
 
       answer.valid?.should be_false
       answer.errors[:limitation].should_not be_nil
     end
 
     it "elapsed time between two answers by the same user should be greater than 20 secs" do
-      answer = Answer.make_unsaved(:question => @answer.question,
-                                   :created_at => @answer.created_at+1,
-                                   :user => @answer.user,
-                                   :group => @answer.group,
-                                   :votes => {})
+      answer = Fabricate.build(:answer,
+                               :question => @answer.question,
+                               :created_at => @answer.created_at+1,
+                               :user => @answer.user,
+                               :group => @answer.group)
       answer.valid?.should be_false
     end
   end
@@ -117,7 +117,7 @@ describe Answer do
 
     describe "Answer#can_be_deleted_by?" do
       before(:each) do
-        @user = User.make
+        @user = Fabricate(:user)
         @answer.question.closed = true
       end
 

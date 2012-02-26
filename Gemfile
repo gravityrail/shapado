@@ -101,10 +101,10 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'launchy'
-  gem 'fabrication'
   gem 'ffaker'
   gem 'simplecov'
   gem 'autotest'
+  gem 'fabrication'
 end
 
 group :development do

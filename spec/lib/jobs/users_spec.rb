@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Jobs::Users do
   before(:each) do
-    @user = User.make
-    @group = Group.make
+    @user = Fabricate(:user)
+    @group = Fabricate(:group)
   end
 
   describe "post_to_twitter" do

@@ -4,7 +4,7 @@ describe "Actions for Questions", :type => :request do
   describe "Ask a questions" do
     before :each do
       create_group
-      @user = User.make(:user)
+      @user = Fabricate(:user)
       @group.add_member(@user, "owner")
     end
     it "with data valid" do

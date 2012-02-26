@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Jobs::Activities do
   before(:each) do
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:question, :votes => {})
-    @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
+    @question = Fabricate(:question)
+    @answer = Fabricate(:answer, :question => @question, :group => @question.group)
 
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     @current_user.join!(@question.group)
     @answer.user.join!(@question.group)
-    @moderator = User.make
+    @moderator = Fabricate(:user)
     @question.group.add_member(@moderator, "moderator")
 
     @twitter = mock("Twitter client")
@@ -52,12 +52,10 @@ describe Jobs::Activities do
   describe "on_comment" do
     before(:each) do
       @current_user.join!(@question.group)
-      @comment = Comment.make!(:commentable => @answer, :user => @current_user)
+      @comment = Fabricate(:comment, :commentable => @answer, :user => @current_user)
 
       Answer.stub!(:find).with(@answer.id).and_return(@answer)
 
-      @answer.reload
-      p @answer.comments.count
       @answer.comments.stub!(:find).with{@comment.id}.and_return @comment
       @answer.stub!(:group).and_return(@question.group)
 

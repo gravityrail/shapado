@@ -1,4 +1,4 @@
 Fabricator(:theme) do
-  name { Faker::Name.name }
-  group {Group.make}
+  name { sequence(:name) { |i| "Theme #{i}" } }
+  group
 end

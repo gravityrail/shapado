@@ -1,6 +1,6 @@
 Fabricator(:search) do
-  name { Faker::Name.name }
+  name {sequence(:name) {|i| "search #{i}" }}
   query {Faker::Lorem.sentence}
-  group {Group.make}
-  user {User.make}
+  group
+  user
 end

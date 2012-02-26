@@ -39,7 +39,7 @@ RSpec.configure do |config|
   end
 
   def stub_authentication(user = nil)
-    @user = user || User.make(:user)
+    @user = user || Fabricate(:user)
     Thread.current[:current_user] = @user
     sign_in @user
     controller.stub!(:current_user).and_return(@user)
@@ -47,7 +47,7 @@ RSpec.configure do |config|
   end
 
   def stub_group(group = nil)
-    group ||= Group.make(:group)
+    group ||= Fabricate(:group)
     @controller.stub!(:find_group)
     @controller.stub!(:current_group).and_return(group)
     group
@@ -56,13 +56,18 @@ RSpec.configure do |config|
   def create_group
     theme = Theme.create_default
     Jobs::Themes.generate_stylesheet(theme.id)
-    @group = Group.make(:group, :domain => AppConfig.domain, :current_theme => theme)
+    @group = Fabricate(:group, :domain => AppConfig.domain, :current_theme => theme)
   end
 
   require 'database_cleaner'
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongoid"
+  end
+
+  RSpec.configure do |config|
+    config.include Mongoid::Matchers
+    config.include Devise::TestHelpers, :type => :controller
   end
 
   config.before(:each) do

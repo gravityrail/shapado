@@ -5,9 +5,9 @@ describe CommentsController do
 
   before (:each) do
     @group = stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     Thread.current[:current_user] = @user
-    @question = Question.make(:question, :group => @group)
+    @question = Fabricate(:question, :group => @group)
     stub_authentication @user
   end
 
@@ -20,11 +20,7 @@ describe CommentsController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @comment = Comment.make_unsaved(:comment,
-                              :group_id => @group.id,
-                              :user_id => @user.id)
-      @question.comments << @comment
-      @comment.save
+      @comment = Fabricate(:comment, :commentable => @question, :group_id => @group.id, :user_id => @user.id)
       stub_group(@question.group)
     end
 
@@ -36,29 +32,27 @@ describe CommentsController do
 
   describe "POST 'create'" do
     before (:each) do
-      @comment = Comment.make(:comment,
-                              :group_id => @group.id,
-                              :user_id => @user.id)
-      @question.comments << @comment
-      @comment.save
+      @comment = Fabricate(:comment,
+                           :commentable => @question,
+                           :group_id => @group.id,
+                           :user_id => @user.id)
       stub_group(@group)
     end
 
     it "should be successful" do
-      post 'create', :question_id => @question.id, :comment => Comment.plan(:comment, :user => @user)
+      post 'create', :question_id => @question.id, :comment => Fabricate.attributes_for(:comment, :user => @user)
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
   end
 
   describe "PUT 'update'" do
     before (:each) do
-      @comment = Comment.make(:comment,
+      @comment = Fabricate(:comment,
+                           :commentable => @question,
                               :group_id => @group.id,
                               :user_id => @user.id)
-      @question.comments << @comment
-      @comment.save
 
-      @comment_attrs = Comment.plan(:comment, :user => @user)
+      @comment_attrs = Fabricate.attributes_for(:comment, :user => @user)
       stub_group(@question.group)
     end
 
@@ -71,11 +65,7 @@ describe CommentsController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @comment = Comment.make(:comment,
-                              :group_id => @group.id,
-                              :user_id => @user.id)
-      @question.comments << @comment
-      @comment.save
+      @comment = Fabricate(:comment, :commentable => @question, :group_id => @group.id, :user_id => @user.id)
       stub_group(@question.group)
     end
 

@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @user = User.make
+    @user = Fabricate(:user)
+    Thread.current[:current_user] = @user
   end
 
   describe "module/plugin inclusions (optional)" do
@@ -42,14 +43,14 @@ describe User do
       it("should return @user") do
         @user.preferred_languages = ["en", "es", "fr"]
         @user.save
-        @stat = UserStat.make(:user => @user, :answer_tags => ["tag1"] )
+        @stat = Fabricate(:user_stat, :user => @user, :answer_tags => ["tag1"])
         User.find_experts(["tag1"],["en", "es", "fr"]).first.should == @user
       end
 
       it("should not return @user") do
         @user.preferred_languages = ["en", "es", "fr"]
         @user.save
-        @stat = UserStat.make( :user => @user, :answer_tags => ["tag1"] )
+        @stat = Fabricate(:user_stat, :user => @user, :answer_tags => ["tag1"])
         User.find_experts(["tag1"], ["en"], {:except => @user.id}).first.should_not == @user
       end
     end
@@ -100,7 +101,7 @@ describe User do
 
     describe "User#add_preferred_tags" do
       it "should add unique tags" do
-        @group = Group.make( :owner => @user)
+        @group = Fabricate(:group, :owner => @user)
         @user.join!(@group)
         @user.add_preferred_tags(["a", "a", "b", "c"], @group)
         @user = User.find(@user.id)
@@ -111,7 +112,7 @@ describe User do
 
     describe "User#remove_preferred_tags" do
       it "remove the tags a, b" do
-        @group = Group.make(:owner => @user)
+        @group = Fabricate(:group, :owner => @user)
         @user.add_preferred_tags(["a", "b", "c"], @group)
         @user.reload
         @user.remove_preferred_tags(["a", "b"], @group)
@@ -123,7 +124,7 @@ describe User do
 
     describe "User#preferred_tags_on" do
       it "should return a,b,c tags" do
-        @group = Group.make(:owner => @user)
+        @group = Fabricate(:group, :owner => @user)
         @user.add_preferred_tags(["a", "b", "c"], @group)
         @user = User.find(@user.id)
         @user.preferred_tags_on(@group).should == ["a", "b", "c"]
@@ -147,7 +148,7 @@ describe User do
 
     describe "User#languages_to_filter" do
       before(:each) do
-        @group = Group.make(:languages => ["en","es","fr"])
+        @group = Fabricate(:group, :languages => ["en","es","fr"])
       end
 
       it "should return the AVAILABLE_LANGUAGES" do
@@ -169,7 +170,7 @@ describe User do
 
     describe "User#is_preferred_tag?" do
       it "should return the tag" do
-        @group = Group.make(:owner => @user)
+        @group = Fabricate(:group, :owner => @user)
         @user.add_preferred_tags(["a", "b", "c"], @group)
         @user = User.find(@user.id)
         @user.is_preferred_tag?(@group, "a").should == "a"
@@ -199,7 +200,7 @@ describe User do
     describe "User#can_modify?" do
       it "should can modify the question" do
         Activity.stub!(:create!)
-        @question = Question.make(:user => @user)
+        @question = Fabricate(:question, :user => @user)
         @user.can_modify?(@question)
       end
     end
@@ -207,7 +208,7 @@ describe User do
     describe "User#can_create_reward?" do
       it "return true when the question was created more than 2 days ago" do
         Activity.stub!(:create!)
-        @question = Question.make(:user => @user, :created_at => 3.days.ago)
+        @question = Fabricate(:question, :user => @user, :created_at => 3.days.ago)
         @user.update_reputation(76, @question.group)
         @user.reload
         @user.can_create_reward?(@question).should == true
@@ -220,7 +221,7 @@ describe User do
       end
 
       it "should return @group" do
-        @group = Group.make(:group)
+        @group = Fabricate(:group)
         @user.join!(@group)
         @user.groups.map(&:id).should include @group.id
       end
@@ -228,7 +229,7 @@ describe User do
 
     describe "User#member_of?" do
       before(:each) do
-        @group = Group.make(:group)
+        @group = Fabricate(:group)
       end
 
       it "should return false when @user is not a member of @group" do
@@ -243,7 +244,7 @@ describe User do
 
     describe "User#role_on" do
       before(:each) do
-        @group = Group.make(:group)
+        @group = Fabricate(:group)
       end
 
       it "should return " do
@@ -293,7 +294,7 @@ describe User do
 
     describe "User#activity_on" do
       it "should increment activity days for @user on @group" do
-        @group = Group.make
+        @group = Fabricate(:group)
         @user.join!(@group)
 
         date = Time.now
@@ -307,7 +308,7 @@ describe User do
       end
 
       it "should reset activity days for @user on @group" do
-        @group = Group.make
+        @group = Fabricate(:group)
         @user.join!(@group)
         date = Time.now
         21.times do |i|
@@ -358,14 +359,14 @@ describe User do
 
     describe "User#followers" do
       it "When the user does not have followers" do
-        friend = User.make
+        friend = Fabricate(:user)
         @user.followers.count.should == 0
       end
 
       it "When the user have followers" do
-        @group = Group.make(:owner => @user)
+        @group = Fabricate(:group, :owner => @user)
         @user.join!(@group)
-        friend = User.make
+        friend = Fabricate(:user)
         friend.join!(@group)
         friend.add_friend(@user)
         @user.friend_list.reload

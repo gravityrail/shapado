@@ -103,9 +103,9 @@ class Question
   references_many :answers, :dependent => :destroy
   references_many :badges, :as => "source", :validate => false
 
-  embeds_many :comments, :as => "commentable"#, :order => "created_at asc"
+  embeds_many :comments, :as => :commentable#, :order => "created_at asc"
   embeds_many :flags, :as => "flaggable", :validate => false
-  embeds_many :close_requests, :as => "closeable", :validate => false
+  embeds_many :close_requests, :as => :closeable, :validate => false
   embeds_many :open_requests, :as => "openable", :validate => false
 
   embeds_one :follow_up

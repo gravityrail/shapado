@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Jobs::Votes do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:votes => {}, :user => User.make)
-    @answer = Answer.make(:votes => {}, :question => @question,
-                          :group => @question.group, :user => User.make)
+    @question = Fabricate(:question)
+    @answer = Fabricate(:answer, :question => @question,
+                        :group => @question.group)
     @group = @question.group
 
     User.stub!(:find).with(@current_user.id).and_return(@current_user)

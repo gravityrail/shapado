@@ -16,7 +16,7 @@ class CloseRequest
   field :comment, :type => String
 
   referenced_in :user
-  embedded_in :closeable, :inverse_of => :close_requests
+  embedded_in :closeable, polymorphic: true
 
   validates_presence_of :user
   validates_presence_of :closeable

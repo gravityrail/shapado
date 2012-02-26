@@ -5,11 +5,15 @@ describe CloseRequestsController do
 
   before (:each) do
     @group = stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     stub_authentication @user
     Activity.stub!(:create!)
-    @question = Question.make(:question)
+    @question = Fabricate(:question)
     @group.questions.stub!(:find_by_slug_or_id).with(@question.id).and_return(@question)
+  end
+
+  def valid_attributes
+    Fabricate.attributes_for(:close_request, :user_id => @user.id)
   end
 
   describe "GET 'index'" do
@@ -32,15 +36,15 @@ describe CloseRequestsController do
     end
 
     it "should be successful" do
-      post 'create', :question_id => @question.id, :close_request => CloseRequest.plan(:close_request, :user => @user)
+      post 'create', :question_id => @question.id, :close_request => valid_attributes
       response.should redirect_to question_path(:id => @question.slug)
     end
   end
 
   describe "PUT 'update'" do
     before (:each) do
-      @close_request = CloseRequest.make(:close_request, :user => @user, :question => @question)
-      @close_request_attrs = CloseRequest.plan(:close_request, :user => @user)
+      @close_request = Fabricate(:close_request, :user => @user, :question => @question)
+      @close_request_attrs = valid_attributes
       stub_group(@question.group)
     end
 
@@ -52,7 +56,7 @@ describe CloseRequestsController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @close_request = CloseRequest.make(:close_request, :user => @user, :question => @question)
+      @close_request = Fabricate(:close_request, :user => @user, :question => @question)
     end
 
     it "should be successful" do
