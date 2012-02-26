@@ -357,6 +357,20 @@ describe User do
     end
 
     describe "User#followers" do
+      it "When the user does not have followers" do
+        friend = User.make
+        @user.followers.count.should == 0
+      end
+
+      it "When the user have followers" do
+        @group = Group.make(:owner => @user)
+        @user.join!(@group)
+        friend = User.make
+        friend.join!(@group)
+        friend.add_friend(@user)
+        @user.friend_list.reload
+        @user.followers.count.should == 1
+      end
     end
 
     describe "User#following" do
