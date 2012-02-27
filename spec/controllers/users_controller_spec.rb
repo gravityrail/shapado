@@ -61,6 +61,7 @@ describe UsersController do
   describe "PUT 'update'" do
     before (:each) do
       @user_attrs = Fabricate.attributes_for(:user)
+      @user_attrs.delete('avatar')
     end
 
     it "should be successful" do

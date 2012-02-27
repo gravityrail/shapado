@@ -400,7 +400,6 @@ Time.zone.now ? 1 : 0)
       if last_day
         if last_day.utc.between?(day.yesterday - 12.hours, day.tomorrow)
           membership.increment(:activity_days => 1)
-
           Jobs::Activities.async.on_activity(group.id, self.id).commit!
         elsif !last_day.utc.today? && (last_day.utc != Time.now.utc.yesterday)
           Rails.logger.info ">> Resetting act days!! last known day: #{last_day}"

@@ -72,9 +72,9 @@ describe Question do
 
   describe "class methods" do
     describe "Question#related_questions" do
-      it "should get the related questions with for a question with tag generate" do
+      it "should get the related questions with a question with tag generate" do
         Xapit.enable
-        Question.related_questions(Fabricate.build(:tags => ["generate"]))
+        Question.related_questions(Fabricate.build(:question, :tags => ["generate"]))
       end
     end
 

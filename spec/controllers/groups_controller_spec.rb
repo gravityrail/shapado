@@ -53,7 +53,9 @@ describe GroupsController do
     end
 
     it "should be successful" do
-      post 'create', :group => Fabricate.attributes_for(:group, :user => @user)
+      attributes = Fabricate.attributes_for(:group, :user => @user)
+      attributes.delete('languages')
+      post 'create', :group => attributes
       response.should redirect_to "http://#{assigns[:group].domain}/manage/properties"
     end
   end

@@ -313,7 +313,7 @@ describe User do
         date = Time.now
         21.times do |i|
           @user.reload
-          date += 1.day
+          date += 1.day+1
           @user.activity_on(@group, date)
           @user.config_for(@group, false).activity_days.should == i+1
         end

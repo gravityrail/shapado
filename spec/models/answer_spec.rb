@@ -45,9 +45,9 @@ describe Answer do
     describe "Answer#unsolve_question" do
       it "should set the answer's question as unsolved when the question is deleted" do
         question = @answer.question
-        question.answer = @answer
-        question.accepted = true
-        question.save
+
+        question.override(answer_id: @answer.id, accepted: true)
+
         question.reload
 
         question.accepted.should be_true

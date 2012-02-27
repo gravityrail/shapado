@@ -63,7 +63,7 @@ describe Jobs::Activities do
     end
 
     it "should be successful" do
-      @twitter.should_receive(:update).twice.with(anything)
+      @twitter.should_receive(:update).with(anything)
 
       Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")
       lambda {Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")}.should_not raise_error
@@ -90,7 +90,7 @@ describe Jobs::Activities do
     end
 
     it "should be successful" do
-      @twitter.should_receive(:update).with(anything).twice
+      @twitter.should_receive(:update).with(anything)
       Group.stub!(:find).with(@question.group.id).and_return(@question.group)
       lambda {Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")}.should_not raise_error
     end
@@ -102,7 +102,7 @@ describe Jobs::Activities do
       @group = @question.group
       @question.stub!(:group).and_return(@group)
       @question.stub!(:updated_by).and_return(@question.user)
-      @twitter.should_receive(:update).with(anything).twice
+      @twitter.should_receive(:update).with(anything)
       Jobs::Activities.on_rollback(@question.id)
       lambda {Jobs::Activities.on_rollback(@question.id)}.should_not raise_error
     end
