@@ -54,7 +54,7 @@ gem 'rack-recaptcha', '0.2.2', :require => 'rack/recaptcha'
 gem 'twitter-text', '1.1.8'
 gem 'twitter_oauth'
 gem 'social_widgets', :git => 'https://git.gitorious.org/social_widgets/social_widgets.git'
-gem 'activemerchant', '1.16.0'
+gem 'stripe'
 gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkhtmltopdf
 
 gem 'geoip'

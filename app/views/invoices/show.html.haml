@@ -12,7 +12,8 @@
         =@invoice.order_number
       %p
         %strong Order Placed:
-        =@invoice.payed_at.to_s(:ymd)
+        -if @invoice.payed_at
+          =@invoice.payed_at.to_s(:ymd)
 
       .clear
 

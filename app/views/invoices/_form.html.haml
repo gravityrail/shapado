@@ -1,15 +1,10 @@
+-content_for :js do
+  = javascript_include_tag "https://js.stripe.com/v1/"
+  = javascript_include_tag "payments/application"
+
 .invoices
-
-  =form_for @invoice do |f|
-
-    =error_messages_for @invoice.credit_card||@cc
+  =form_for @invoice, :html => {:id => "payment-form", :"data-token" => "#{PaymentsConfig['public']}" } do |f|
     =error_messages_for @invoice
-
-    -@credit_card = (@invoice.credit_card||current_group.credit_card||@cc||CreditCard.new)
-    -if @credit_card.remember
-      Using credit card ending in
-      = @credit_card.ending_in
-      = link_to "change", "#", :id => "show_credit_card_info"
 
     .invoice_info
       .brand
@@ -44,84 +39,32 @@
           %br
           =link_to "I want to change this plan", plans_path
 
-    .credit_card_form{:style => "display: #{@credit_card.remember ? 'none' : 'inline'}"}
-      %h2 Contact Details
+    .credit_card_form
+      %h2
+        Credit Card Details
 
-      =fields_for "credit_card", @credit_card do |ff|
-
-        .contact-details
-          .field
-            .name
-              %label First Name
-              =ff.text_field :first_name
-            .lastname
-              %label Last Name
-              =ff.text_field :last_name
-
+      =fields_for :credit_card do |ff|
         .field
           %label
-            Email
-          =ff.text_field :email
+            Credit Card Number
+          =ff.text_field :number, :class => "card-number", :autocomplete => false, :size => 20
+          %small Exactly as it appears on the card
 
-        %h2
-          Credit Card Details
-
-
-        .half
-          .field.credit-cards
-            %label
-              Credit card type
-            .visa
-              =ff.radio_button :credit_card_type, "visa"
-            .master
-              =ff.radio_button :credit_card_type, "master"
-            .amex
-              =ff.radio_button :credit_card_type, "amax"
-
-          .field
-            %label
-              Credit Card Number
-            =ff.text_field :number
-            %small Exactly as it appears on the card
-
-        .half.cc-info
+        .cc-info
           .field
             %label
               Verification Code
-            =ff.text_field :verification_code
+            =ff.text_field :verification_code, :size => 4, :class => "card-cvc", :autocomplete => "off"
             %small The CVV code is a 3 or 4 digit number on the front or back of the card.
 
           .field.date
             %label
               Expiration Date
             -index = -1
-            =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}
-            =ff.select :year, (Time.now.year..Time.now.year+15).to_a
-
-        .half
-          .field
-            %label
-              Billing Address
-            =ff.text_field :address1
-
-          .field
-            %label
-              Billing Address line 2(optional)
-            =ff.text_field :address2
-
-        .half
-          .field
-            %label
-              Country
-            =ff.text_field :country
-
-          .field
-            .checkbox
-              %label
-                Please remember this card later
-              =ff.check_box :remember
+            =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}, {}, :class => "card-expiry-month"
+            =ff.select :year, (Time.now.year..Time.now.year+15).to_a, {}, :class => "card-expiry-year"
 
     =render "invoices/invoice", :invoice => @invoice
 
     .buttons
-      =f.submit "Checkout", :class => "save"
+      =f.submit "Checkout", :class => "save submit-button"

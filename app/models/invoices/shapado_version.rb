@@ -34,6 +34,14 @@ class ShapadoVersion
       version = ShapadoVersion.where(:token => token).first
       if version.nil?
         version = ShapadoVersion.create!(data.merge(:token => token))
+        Stripe.api_key = PaymentsConfig['secret']
+        Stripe::Plan.create(
+          :amount => version.price,
+          :interval => 'month',
+          :name => version.token.titleize,
+          :currency => 'usd',
+          :id => version.token
+        )
       else
         version.update_attributes(data)
       end

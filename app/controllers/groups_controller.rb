@@ -285,6 +285,11 @@ class GroupsController < ApplicationController
   end
 
   def upgrade
+    if current_group.shapado_version && current_group.shapado_version.token == params[:plan]
+      flash[:error] = 'You are already subscribed to this plan'
+      redirect_to root_path and return
+    end
+
     version = ShapadoVersion.where(:token => params[:plan]).first
 
     @invoice = current_group.invoices.where(:payed => false,
@@ -293,7 +298,7 @@ class GroupsController < ApplicationController
     if !@invoice
       @invoice = current_group.invoices.create!(:action => "upgrade_plan",
                                                 :version => version.token,
-                                                :credit_card => current_group.credit_card)
+                                                :user => current_user)
     end
 
     @invoice.reset!

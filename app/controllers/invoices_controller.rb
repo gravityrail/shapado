@@ -18,29 +18,16 @@ class InvoicesController < ApplicationController
   end
 
   def update
+    Stripe.api_key = PaymentsConfig['secret']
+    token = params[:stripeToken]
+
     @invoice = current_group.invoices.find(params[:id])
-
-    @cc = current_group.credit_card
-
-    cc_params = params[:credit_card] || {}
-    if cc_params.empty?
-      @cc = current_group.credit_card
-    else
-      @cc = CreditCard.new(cc_params)
-    end
+    @invoice.stripe_token = params[:stripeToken]
 
     @invoice.safe_update(%w[version], params[:invoice]||{})
-    @invoice.credit_card = @cc
 
-    if @cc.remember || cc_params["remember"] == "1"
-      @cc.group = current_group
-      @cc.save
-    end
-
-    @invoice.copy_info_from_cc(@cc)
-
-    if @cc.valid? && @invoice.save
-      if process_payment(@invoice.charge!(request.remote_ip, @cc), @invoice)
+    if @invoice.save
+      if @invoice.charge!
         redirect_to success_invoice_path(@invoice)
       else
         flash[:error] = I18n.t("invoices.flash.cannot_pay")

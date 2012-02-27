@@ -3,46 +3,62 @@ basic:
   custom_ads: false
   custom_js: false
   custom_domain: true
-  private: true
+  private: false
   custom_themes: true
   basic_support: true
   phone_support: false
   price: 900
+  per_user: false
 
 plus:
   page_views: 1000000
   custom_ads: true
   custom_js: true
   custom_domain: true
-  private: true
+  private: false
   custom_themes: true
   basic_support: true
   phone_support: true
   price: 4900
+  per_user: false
 
 premium:
   page_views: 5000000
   custom_ads: true
   custom_js: true
   custom_domain: true
-  private: true
+  private: false
   custom_themes: true
   basic_support: true
   phone_support: true
   price: 24900
+  per_user: false
 
 maximium:
   page_views: 15000000
   custom_ads: true
   custom_js: true
   custom_domain: true
-  private: true
+  private: false
   custom_themes: true
   basic_support: true
   phone_support: true
   price: 74900
+  per_user: false
 
 optimum:
+  page_views: 0
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: false
+  custom_themes: true
+  basic_support: true
+  phone_support: true
+  price: 99900
+  per_user: false
+
+private:
   page_views: 0
   custom_ads: true
   custom_js: true
@@ -51,4 +67,5 @@ optimum:
   custom_themes: true
   basic_support: true
   phone_support: true
-  price: 99900
+  price: 0
+  per_user: true
