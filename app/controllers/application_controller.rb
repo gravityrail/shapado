@@ -169,6 +169,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_sidebar
+    return if !current_group
+
     @widget_context = widgets_context(params[:controller], params[:action])
     @show_sidebar = !( params[:controller] == "users")
 

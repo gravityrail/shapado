@@ -12,6 +12,8 @@ module Shapado
       end
 
       def find_languages
+        return if !current_group
+
         @languages ||= begin
           if AppConfig.enable_i18n
             languages = current_group.languages
@@ -50,6 +52,8 @@ module Shapado
       def available_locales; AVAILABLE_LOCALES; end
 
       def set_locale
+        return if !current_group
+
         locale = AppConfig.default_language || 'en'
         if AppConfig.enable_i18n
           if logged_in?

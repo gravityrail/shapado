@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   match '/activities' => 'activities#index', :as => :activities
   match '/activities/:id' => 'activities#show', :as => :activity, :method => :get
 
+  match '/update_stripe' => 'invoices#webhook', :method => :post
+
   get "mobile/index"
 
   match '/users/auth/:provider' => 'users#auth', :as => :auth_users

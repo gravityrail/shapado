@@ -8,7 +8,7 @@ basic:
   basic_support: true
   phone_support: false
   price: 900
-  per_user: false
+
 
 plus:
   page_views: 1000000
@@ -20,7 +20,7 @@ plus:
   basic_support: true
   phone_support: true
   price: 4900
-  per_user: false
+
 
 premium:
   page_views: 5000000
@@ -32,7 +32,7 @@ premium:
   basic_support: true
   phone_support: true
   price: 24900
-  per_user: false
+
 
 maximium:
   page_views: 15000000
@@ -44,7 +44,7 @@ maximium:
   basic_support: true
   phone_support: true
   price: 74900
-  per_user: false
+
 
 optimum:
   page_views: 0
@@ -56,7 +56,6 @@ optimum:
   basic_support: true
   phone_support: true
   price: 99900
-  per_user: false
 
 private:
   page_views: 0
@@ -68,4 +67,4 @@ private:
   basic_support: true
   phone_support: true
   price: 0
-  per_user: true
+  per_user: 300
