@@ -60,6 +60,8 @@ gem 'pdfkit', :git => 'git://github.com/jdpace/PDFKit.git' # apt-get install wkh
 gem 'geoip'
 gem 'rubyzip', '0.9.4', :require => 'zip/zip'
 
+gem 'newrelic_rpm'
+
 # authentication
 gem 'omniauth', '~> 0.3.0'
 gem 'oa-openid', '~> 0.3.0', :require => 'omniauth/openid'
