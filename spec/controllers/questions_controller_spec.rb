@@ -4,8 +4,9 @@ describe QuestionsController do
   include Devise::TestHelpers
 
   before(:each) do
-    stub_group
+    @group = stub_group
     @user = Fabricate(:user)
+    @user.join!(@group)
     stub_authentication @user
   end
 
@@ -111,10 +112,6 @@ describe QuestionsController do
   end
 
   describe "POST 'create'" do
-    before (:each) do
-      @group = stub_group
-    end
-
     it "should be successful" do
       attrs = Fabricate.attributes_for(:question, :user => @user)
       post 'create', :question => attrs
@@ -177,6 +174,7 @@ describe QuestionsController do
     before (:each) do
       @question = Fabricate(:question, :user_id => @user.id)
       @answer = Fabricate(:answer, :question_id => @question.id)
+      @question.answer = @answer
       @question.accepted = true
       @question.save
       stub_group(@question.group)
@@ -184,31 +182,6 @@ describe QuestionsController do
 
     it "should be successful" do
       get 'unsolve', :id => @question.id
-      response.should redirect_to question_path(:id => assigns[:question].slug)
-    end
-  end
-
-  describe "GET 'close'" do
-    before (:each) do
-      @question = Fabricate(:question, :user => @user)
-      stub_group(@question.group)
-      @user.stub(:mod_of?).with{@question.group}.and_return(true)
-    end
-
-    it "should be successful" do
-      get 'close', :id => @question.id
-      response.should redirect_to question_path(:id => assigns[:question].slug)
-    end
-  end
-
-  describe "GET 'open'" do
-    before (:each) do
-      @question = Fabricate(:question, :user => @user)
-      stub_group(@question.group)
-    end
-
-    it "should be successful" do
-      get 'open', :id => @question.id
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
   end
