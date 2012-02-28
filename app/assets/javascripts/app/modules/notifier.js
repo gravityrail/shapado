@@ -33,7 +33,7 @@ Notifier = function() {
   function updateCheckbox() {
     var cbox = $("#desktop_notifs");
     var v = window.webkitNotifications.checkPermission();
-    if(v == 0) {
+    if(v == 0 && $("#desktop_notifs").is(':not:checked')) {
       cbox.attr("checked", true)
     } else {
       cbox.attr("checked", false)
