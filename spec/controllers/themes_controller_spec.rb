@@ -5,20 +5,20 @@ describe ThemesController do
 
   before(:each) do
     @group = stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     @group.add_member(@user, "owner")
     stub_authentication @user
   end
 
   def valid_attributes
-    Theme.plan
+    Fabricate.attributes_for(:theme)
   end
 
   describe "GET index" do
     it "assigns all themes as @themes" do
       themes = @group.themes
       get :index
-      assigns(:themes).should eq(themes)
+      assigns(:themes).to_a.should eq(themes)
     end
   end
 
@@ -39,7 +39,7 @@ describe ThemesController do
 
   describe "GET edit" do
     it "assigns the requested theme as @theme" do
-      theme = Theme.make(:group => @group)
+      theme = Fabricate(:theme, :group => @group)
       get :edit, :id => theme.id.to_s
       assigns(:theme).should eq(theme)
     end
@@ -128,14 +128,14 @@ describe ThemesController do
 
   describe "DELETE destroy" do
     it "destroys the requested theme" do
-      theme = Theme.make(valid_attributes.merge(:group => @group))
+      theme = Fabricate(:theme, valid_attributes.merge(:group => @group))
       expect {
         delete :destroy, :id => theme.id.to_s
       }.to change(Theme, :count).by(-1)
     end
 
     it "redirects to the themes list" do
-      theme = Theme.make(valid_attributes.merge(:group => @group))
+      theme = Fabricate(:theme, valid_attributes.merge(:group => @group))
       delete :destroy, :id => theme.id.to_s
       response.should redirect_to(themes_url)
     end

@@ -5,8 +5,8 @@ describe GroupsController do
 
   before (:each) do
     stub_group
-    @group = Group.make(:group)
-    @user = User.make(:user)
+    @group = Fabricate(:group)
+    @user = Fabricate(:user)
     stub_authentication @user
   end
 
@@ -53,14 +53,16 @@ describe GroupsController do
     end
 
     it "should be successful" do
-      post 'create', :group => Group.plan(:group, :user => @user)
+      attributes = Fabricate.attributes_for(:group, :user => @user)
+      attributes.delete('languages')
+      post 'create', :group => attributes
       response.should redirect_to "http://#{assigns[:group].domain}/manage/properties"
     end
   end
 
   describe "PUT 'update'" do
     before (:each) do
-      @group_attrs = Group.plan(:group, :user => @user)
+      @group_attrs = Fabricate.attributes_for(:group, :user => @user)
     end
 
     it "should be successful" do

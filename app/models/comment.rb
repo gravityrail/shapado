@@ -17,7 +17,7 @@ class Comment
   field :user_id, :type => String
   referenced_in :user
 
-  embedded_in :commentable, :inverse_of => :comments
+  embedded_in :commentable, polymorphic: true
 
   validates_presence_of :body
   validates_presence_of :user
@@ -32,10 +32,10 @@ class Comment
     self._parent.group
   end
 
-  ## FIXME quick fix for mongoid bug returning nil
-  def commentable
-    self._parent
-  end
+#   ## FIXME quick fix for mongoid bug returning nil
+#   def commentable
+#     self._parent
+#   end
 
   def can_be_deleted_by?(user)
     ok = (self.user_id == user.id && user.can_delete_own_comments_on?(self.group)) || user.mod_of?(self.group)

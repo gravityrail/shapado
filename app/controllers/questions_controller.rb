@@ -703,6 +703,7 @@ class QuestionsController < ApplicationController
                                :min_reputation => reputation,
                                :action => I18n.t("users.actions.retag_others_questions"))
       end
+      response.should be_success
       respond_to do |format|
         format.html {redirect_to @question}
         format.js {

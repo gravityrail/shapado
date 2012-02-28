@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Jobs::Questions do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:votes => {})
+    @question = Fabricate(:question)
     @group = @question.group
 
     Question.stub!(:find).with(@question.id).and_return(@question)
@@ -16,14 +16,14 @@ describe Jobs::Questions do
 
   describe "on_question_solved" do
     it "should be successful" do
-      answer = Answer.make(:votes => {}, :question => @question)
+      answer = Fabricate(:answer, :question => @question)
       lambda {Jobs::Questions.on_question_solved(@question.id, answer.id)}.should_not raise_error
     end
   end
 
   describe "on_question_unsolved" do
     it "should be successful" do
-      answer = Answer.make(:votes => {}, :question => @question)
+      answer = Fabricate(:answer, :question => @question)
       lambda {Jobs::Questions.on_question_unsolved(@question.id, answer.id)}.should_not raise_error
     end
   end
@@ -67,7 +67,7 @@ describe Jobs::Questions do
 
   describe "on_close_reward" do
     it "should be successful" do
-      answer = Answer.make(:votes => {}, :question => @question)
+      answer = Fabricate(:answer, :question => @question)
       user = @question.user
       User.stub(:find).with(user.id).and_return(user)
       user.stub(:twitter_client).and_return(@twitter)

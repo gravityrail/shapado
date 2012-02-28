@@ -8,7 +8,6 @@ require 'rspec/expectations'
 require 'remarkable/mongoid'
 require 'capybara/rails'
 require 'capybara/rspec'
-require File.expand_path(File.dirname(__FILE__) + "/blueprints")
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -40,7 +39,7 @@ RSpec.configure do |config|
   end
 
   def stub_authentication(user = nil)
-    @user = user || User.make(:user)
+    @user = user || Fabricate(:user)
     Thread.current[:current_user] = @user
     sign_in @user
     controller.stub!(:current_user).and_return(@user)
@@ -48,7 +47,7 @@ RSpec.configure do |config|
   end
 
   def stub_group(group = nil)
-    group ||= Group.make(:group)
+    group ||= Fabricate(:group)
     @controller.stub!(:find_group)
     @controller.stub!(:current_group).and_return(group)
     group
@@ -57,7 +56,7 @@ RSpec.configure do |config|
   def create_group
     theme = Theme.create_default
     Jobs::Themes.generate_stylesheet(theme.id)
-    @group = Group.make(:group, :domain => AppConfig.domain, :current_theme => theme)
+    @group = Fabricate(:group, :domain => AppConfig.domain, :current_theme => theme)
   end
 
   require 'database_cleaner'
@@ -66,8 +65,13 @@ RSpec.configure do |config|
     DatabaseCleaner.orm = "mongoid"
   end
 
+  RSpec.configure do |config|
+    config.include Mongoid::Matchers
+    config.include Devise::TestHelpers, :type => :controller
+  end
+
   config.before(:each) do
-    Sham.reset(:before_all)
+#     Sham.reset(:before_all)
     Capybara.default_driver = :selenium
     Capybara.javascript_driver = :selenium
     Capybara.default_host = AppConfig.domain

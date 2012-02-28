@@ -5,8 +5,8 @@ describe UsersController do
 
   before (:each) do
     stub_group
-    @group = Group.make(:group)
-    @user = User.make(:user)
+    @group = Fabricate(:group)
+    @user = Fabricate(:user)
     stub_authentication @user
   end
 
@@ -53,14 +53,15 @@ describe UsersController do
     end
 
     it "should be successful" do
-      post 'create', :user => User.plan
+      post 'create', :user => Fabricate.attributes_for(:user)
       response.should redirect_to "http://test.host/"
     end
   end
 
   describe "PUT 'update'" do
     before (:each) do
-      @user_attrs = User.plan
+      @user_attrs = Fabricate.attributes_for(:user)
+      @user_attrs.delete('avatar')
     end
 
     it "should be successful" do

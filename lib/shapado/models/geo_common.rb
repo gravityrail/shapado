@@ -16,7 +16,7 @@ module Models
       end
     end
 
-    module InstanceMethods
+    #InstanceMethods
 
     def set_address(ip)
       lat = self["position"]["lat"]
@@ -55,9 +55,8 @@ module Models
                 end
     end
 
-      def point(max_distance=6)
-        @_point ||= self.position.merge({:$maxDistance=>6})
-      end
+    def point(max_distance=6)
+      @_point ||= self.position.merge({:$maxDistance=>6})
     end
   end
 end

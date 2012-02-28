@@ -3,13 +3,13 @@ require 'spec_helper'
 describe Jobs::Activities do
   before(:each) do
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:question, :votes => {})
-    @answer = Answer.make(:votes => {}, :question => @question, :group => @question.group)
+    @question = Fabricate(:question)
+    @answer = Fabricate(:answer, :question => @question, :group => @question.group)
 
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     @current_user.join!(@question.group)
     @answer.user.join!(@question.group)
-    @moderator = User.make
+    @moderator = Fabricate(:user)
     @question.group.add_member(@moderator, "moderator")
 
     @twitter = mock("Twitter client")
@@ -33,8 +33,7 @@ describe Jobs::Activities do
 
       @answer.stub!(:updated_by).and_return(@answer.user)
       @twitter.should_receive(:update).twice.with(anything)
-
-      lambda {Jobs::Activities.on_activity(Jobs::Activities.on_update_answer(@answer.id))}.should_not raise_error
+      lambda {Jobs::Activities.on_update_answer(@answer.id)}.should_not raise_error
     end
   end
 
@@ -52,11 +51,8 @@ describe Jobs::Activities do
 
   describe "on_comment" do
     before(:each) do
-      @comment = Comment.make(:commentable => @answer, :user => @current_user)
-      @answer.comments << @comment
-      @answer.save
-
-      @comment.user.join!(@question.group)
+      @current_user.join!(@question.group)
+      @comment = Fabricate(:comment, :commentable => @answer, :user => @current_user)
 
       Answer.stub!(:find).with(@answer.id).and_return(@answer)
 
@@ -67,7 +63,7 @@ describe Jobs::Activities do
     end
 
     it "should be successful" do
-      @twitter.should_receive(:update).twice.with(anything)
+      @twitter.should_receive(:update).with(anything)
 
       Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")
       lambda {Jobs::Activities.on_comment(@answer.id, @answer.class.to_s, @comment.id, "a_link")}.should_not raise_error
@@ -94,7 +90,7 @@ describe Jobs::Activities do
     end
 
     it "should be successful" do
-      @twitter.should_receive(:update).with(anything).twice
+      @twitter.should_receive(:update).with(anything)
       Group.stub!(:find).with(@question.group.id).and_return(@question.group)
       lambda {Jobs::Activities.on_flag(@question.user.id, @question.group.id, "spam", "path")}.should_not raise_error
     end
@@ -106,7 +102,7 @@ describe Jobs::Activities do
       @group = @question.group
       @question.stub!(:group).and_return(@group)
       @question.stub!(:updated_by).and_return(@question.user)
-      @twitter.should_receive(:update).with(anything).twice
+      @twitter.should_receive(:update).with(anything)
       Jobs::Activities.on_rollback(@question.id)
       lambda {Jobs::Activities.on_rollback(@question.id)}.should_not raise_error
     end

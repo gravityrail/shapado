@@ -5,7 +5,7 @@ describe SearchesController do
 
   before (:each) do
     @group = stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     stub_authentication @user
   end
 
@@ -18,7 +18,7 @@ describe SearchesController do
 
   describe "GET 'show'" do
     before (:each) do
-      @search = Search.make(:user => @user, :group => @group)
+      @search = Fabricate(:search, :user => @user, :group => @group)
     end
 
     it "should be successful" do
@@ -34,14 +34,14 @@ describe SearchesController do
     end
 
     it "should be successful" do
-      post 'create', :search => Search.plan(:search, :user => @user)
+      post 'create', :search => Fabricate.attributes_for(:search, :user => @user)
       response.should redirect_to search_path(assigns[:search])
     end
   end
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @search = Search.make(:user => @user, :group => @group)
+      @search = Fabricate(:search,:user => @user, :group => @group)
     end
 
     it "should be successful" do

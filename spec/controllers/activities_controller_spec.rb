@@ -5,7 +5,7 @@ describe ActivitiesController do
 
   before(:each) do
     @group = stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     @group.add_member(@user, "owner")
     stub_authentication @user
   end

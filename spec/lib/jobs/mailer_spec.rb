@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe Jobs::Mailer do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:votes => {})
+    @question = Fabricate(:question)
     @group = @question.group
-    @answer = Answer.make(:votes => {}, :question => @question)
+    @answer = Fabricate(:answer, :question => @question)
   end
 
   describe "on_ask_question" do
@@ -14,7 +14,7 @@ describe Jobs::Mailer do
 
   describe "on_new_comment" do
     it "should not raise an error" do
-      comment = Comment.make(:commentable => @question, :user => @current_user)
+      comment = Fabricate(:comment, :commentable => @question, :user => @current_user)
       expect {Jobs::Mailer.on_new_comment(@question.id, 'Question', comment.id)}.to_not raise_error
     end
   end

@@ -5,7 +5,7 @@ describe AnswersController do
 
   before (:each) do
     stub_group
-    @user = User.make(:user)
+    @user = Fabricate(:user)
     stub_authentication @user
   end
 
@@ -18,8 +18,8 @@ describe AnswersController do
 
   describe "GET 'history'" do
     before (:each) do
-      @question = Question.make(:question)
-      @answer = Answer.make(:answer, :question => @question, :group => @question.group)
+      @question = Fabricate(:question)
+      @answer = Fabricate(:answer, :question => @question, :group => @question.group)
       stub_group(@question.group)
     end
 
@@ -51,8 +51,8 @@ describe AnswersController do
 
   describe "GET 'show'" do
     before (:each) do
-      @question = Question.make(:question)
-      @answer = Answer.make(:answer, :question => @question, :group => @question.group)
+      @question = Fabricate(:question)
+      @answer = Fabricate(:answer, :question => @question, :group => @question.group)
       stub_group(@question.group)
     end
 
@@ -65,7 +65,7 @@ describe AnswersController do
 
 #   describe "GET 'new'" do
 #     before (:each) do
-#       @question = Question.make(:question)
+#       @question = Fabricate(:question)
 #       stub_group(@question.group)
 #     end
 #
@@ -77,8 +77,8 @@ describe AnswersController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @question = Question.make(:question)
-      @answer = Answer.make(:answer,
+      @question = Fabricate(:question)
+      @answer = Fabricate(:answer,
                             :question => @question,
                             :group => @question.group)
       stub_group(@question.group)
@@ -94,26 +94,27 @@ describe AnswersController do
 
   describe "POST 'create'" do
     before (:each) do
-      @question = Question.make(:question)
-      @answer = Answer.make(:answer,
+      @question = Fabricate(:question)
+      @answer = Fabricate(:answer,
                             :question => @question,
                             :group => @question.group)
       stub_group(@question.group)
     end
 
     it "should be successful" do
-      post 'create', :question_id => @question.id, :answer => Answer.plan(:answer, :user => @user)
+      post 'create', :question_id => @question.id, :answer => Fabricate.attributes_for(:answer, :user => @user)
       response.should redirect_to question_path(:id => assigns[:question].slug)
     end
   end
 
   describe "PUT 'update'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
-      @answer = Answer.make(:answer,
+      @question = Fabricate(:question, :user => @user)
+      @answer = Fabricate(:answer,
                             :question => @question,
                             :group => @question.group)
-      @answer_attrs = Answer.plan(:answer, :user => @user)
+      @answer_attrs = Fabricate.attributes_for(:answer)
+      @answer_attrs[:user_id] = @user.id
       stub_group(@question.group)
     end
 
@@ -125,8 +126,8 @@ describe AnswersController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @question = Question.make(:question, :user => @user)
-      @answer = Answer.make(:answer,
+      @question = Fabricate(:question, :user => @user)
+      @answer = Fabricate(:answer,
                             :question => @question,
                             :group => @question.group)
       stub_group(@question.group)

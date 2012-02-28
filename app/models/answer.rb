@@ -46,8 +46,8 @@ class Answer
   referenced_in :question
   index :question_id
 
-  embeds_many :flags, :as => "flaggable"
-  embeds_many :comments, :as => "commentable"
+  embeds_many :flags, :as => :flaggable
+  embeds_many :comments, :as => :commentable
 
   validates_presence_of :user_id
   validates_presence_of :question_id

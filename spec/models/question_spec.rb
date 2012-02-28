@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe Question do
   before(:each) do
-    @current_user = User.make
+    @current_user = Fabricate(:user)
     Thread.current[:current_user] = @current_user
-    @question = Question.make(:votes => {})
+    @question = Fabricate(:question)
     @question.group.add_member(@current_user, "owner")
   end
 
@@ -53,8 +53,7 @@ describe Question do
       end
 
       it "should be invalid when the have ask a question 20 seconds ago" do
-        new_question = Question.make_unsaved( :user => @question.user,
-                                              :group => @question.group)
+        new_question = Fabricate.build(:question, :user => @question.user, :group => @question.group)
         new_question.stub!(:disable_limits?).and_return(false)
         new_question.valid?.should be_false
         new_question.errors[:body].should_not be_nil
@@ -73,8 +72,9 @@ describe Question do
 
   describe "class methods" do
     describe "Question#related_questions" do
-      it "should get the related questions with for a question with tag generate" do
-        Question.related_questions(Question.make(:tags => ["generate"]))
+      it "should get the related questions with a question with tag generate" do
+        Xapit.enable
+        Question.related_questions(Fabricate.build(:question, :tags => ["generate"]))
       end
     end
 
@@ -171,7 +171,7 @@ describe Question do
     describe "Question#on_add_vote" do
       before(:each) do
         @question.stub!(:on_activity)
-        @voter = User.make_unsaved
+        @voter = Fabricate.build(:user)
         @voter.stub!(:on_activity)
         @question.user.stub!(:update_reputation)
       end
@@ -206,7 +206,7 @@ describe Question do
     describe "Question#on_remove_vote" do
       before(:each) do
         @question.stub!(:on_activity)
-        @voter = User.make_unsaved
+        @voter = Fabricate.build(:user)
         @voter.stub!(:on_activity)
         @question.user.stub!(:update_reputation)
       end
@@ -294,7 +294,7 @@ describe Question do
 
     describe "Question#add_follower" do
       before(:each) do
-        @follower = User.make
+        @follower = Fabricate(:user)
         @question.stub(:follower?).and_return(false)
       end
 
@@ -321,7 +321,7 @@ describe Question do
 
     describe "Question#remove_follower" do
       before(:each) do
-        @follower = User.make
+        @follower = Fabricate(:user)
         @question.add_follower(@follower)
         @question.reload
         @question.stub(:follower?).and_return(true)
@@ -337,7 +337,7 @@ describe Question do
 
     describe "Question#follower?" do
       before(:each) do
-        @follower = User.make
+        @follower = Fabricate(:user)
         @question.add_follower(@follower)
         @question.reload
       end
@@ -351,7 +351,7 @@ describe Question do
       end
 
       it "should return false for a new user" do
-        @question.follower?(User.make).should be_false
+        @question.follower?(Fabricate(:user)).should be_false
       end
     end
 
@@ -371,15 +371,14 @@ describe Question do
 
     describe "Question#answered" do
       it "should return true if answered_with_id is present" do
-        @question.answered_with = Answer.make( :question => @question,
-                                               :group => @question.group)
+        @question.answered_with = Fabricate(:answer, :question => @question, :group => @question.group)
         @question.answered.should be_true
       end
     end
 
     describe "Question#update_last_target" do
       before(:each) do
-        @target = Answer.make(:question => @question, :group => @question.group)
+        @target = Fabricate(:answer, :question => @question, :group => @question.group)
         @question.answers << @target
       end
 
@@ -401,7 +400,7 @@ describe Question do
 
       describe "should return true when the user " do
         before(:each) do
-          @user = User.make
+          @user = Fabricate(:user)
         end
 
         after(:each) do
@@ -432,7 +431,7 @@ describe Question do
 
       describe "should return true when the user " do
         before(:each) do
-          @user = User.make
+          @user = Fabricate(:user)
           @question.closed = true
         end
 
@@ -458,7 +457,7 @@ describe Question do
 
     describe "Question#can_be_deleted_by?" do
       before(:each) do
-        @user = User.make
+        @user = Fabricate(:user)
         @question.closed = true
       end
 
@@ -468,7 +467,7 @@ describe Question do
 
       describe "should return false when " do
         it "the user is the question owner and the question have answers" do
-          @target = Answer.make(:question => @question, :group => @question.group)
+          @target = Fabricate(:answer, :question => @question, :group => @question.group)
           @question.can_be_deleted_by?(@question.user).should == false
         end
 
@@ -513,8 +512,7 @@ describe Question do
         @question.user.stub!(:can_vote_to_close_any_question_on?).
                                                             with(anything).
                                                             and_return(true)
-        @close_request = CloseRequest.make( :user => @question.user,
-                                            :reason => "dupe")
+        @close_request = Fabricate(:close_request, :user => @question.user, :reason => "dupe")
         @close_request.closeable = @question
         @close_request.save
         @question.close_reason_id = @close_request.id

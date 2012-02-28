@@ -5,14 +5,14 @@ describe VotesController do
 
   before (:each) do
     stub_group
-    @group = Group.make(:group)
-    @user = User.make(:user)
+    @group = Fabricate(:group)
+    @user = Fabricate(:user)
     @user.join!(@group)
     @user.update_reputation(120, @group)
     @user.reload
     stub_authentication @user
-    @question = Question.make(:question, :group => @group)
-    @voteable = Answer.make(:answer, :group => @group, :question => @question)
+    @question = Fabricate(:question, :group => @group)
+    @voteable = Fabricate(:answer, :group => @group, :question => @question)
   end
 
   describe "GET 'index'" do
@@ -40,7 +40,7 @@ describe VotesController do
       body = JSON.load(response.body)
       body["average"].should == 1
 
-      other_user = User.make
+      other_user = Fabricate(:user)
       other_user.join!(@group)
       other_user.update_reputation(60, @group)
       stub_authentication(other_user)
