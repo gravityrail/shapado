@@ -81,9 +81,11 @@ $dark_topbar_color: $topbar_color;
         color: lighten($fg_color, 40%);;
         &:hover {
           background-color: $brand_color;
-          color: white !important; } } } }
+          color: $fg_brand_color; } } } }
   .searcher {
-    border-right: 1px solid darken($topbar_color, 20%); } }
+    border-right: 1px solid darken($topbar_color, 20%); }
+  .signin-dropdown {
+    border-left: 1px solid darken($topbar_color, 20%); } }
 
 //NAVIGATION
 ul.content-tabs {
@@ -279,8 +281,10 @@ div.jHtmlArea {
 
 //COLOR FIELD
 .display-color {
-  border: 1px solid border_color; }
+  border: 1px solid $border_color; }
 
+.toggle_comments {
+  background: $border_color; }
 
 .badge {
   background-color: $light_brand_color;

@@ -3,7 +3,7 @@
     = t("badges.index.title")
   %p.description= t("badges.index.description")
 
-.filters
+.filters.clearfix
   %ul.menubar.clearfix
     %li.general
       = link_to t("badges.index.general"), badges_path(:tab=>"general"), :title => t("badges.index.general_tooltip"), :rel => 'tipsy'
