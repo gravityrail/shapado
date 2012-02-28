@@ -57,6 +57,9 @@ module Shapado
       def __create_activity(action, opts = {})
         Rails.logger.info "Adding #{action} activity for #{self.class} with #{opts.inspect}"
 
+        callback = self.class.trackable_opts[:callback] ? self.class.trackable_opts[:callback] : nil
+        activity = Activity.where(conds).desc(:created_at).first
+
         group_id = self[:group_id] || Thread.current[:current_group].try(:id)
         user_id = Thread.current[:current_user].try(:id) || self[:user_id]
         target = __resolve_target
@@ -67,12 +70,14 @@ module Shapado
           :user_id => user_id,
           :trackable_id => self.id
         }
+
         if target
           conds[:target_id] = target.id
         end
 
-        callback = self.class.trackable_opts[:callback] ? self.class.trackable_opts[:callback] : nil
-        activity = Activity.where(conds).desc(:created_at).first
+        return if group_id.nil? || user_id.nil?
+
+        target = __resolve_target
 
         if activity
           callback && callback.call(activity, target||self)
