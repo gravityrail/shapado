@@ -78,7 +78,7 @@ class Question
   index([
     [:group_id, Mongo::ASCENDING],
     [:slug, Mongo::ASCENDING],
-  ], :unique => true)
+  ], :unique => true, :sparse => true)
 
   field :followers_count, :type => Integer, :default => 0
   references_and_referenced_in_many :followers, :class_name => "User", :validate => false
