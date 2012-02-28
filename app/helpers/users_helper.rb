@@ -96,6 +96,7 @@ module UsersHelper
   end
 
   def avatar_url(user, options)
+    return "" if user.nil?
     size = options.delete(:size)
     options[:alt] = user.login
     options[:title] = user.login
