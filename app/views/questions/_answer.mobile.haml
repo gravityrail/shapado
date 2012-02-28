@@ -45,7 +45,7 @@
             = link_to t('scaffold.cancel'), '', :class => 'cancel cancel_comment'
 
 
-    = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
+    = render "questions/answer_toolbar.html.haml", :question => @question, :answer => answer, :solution => solution
 
 
     .article-forms
