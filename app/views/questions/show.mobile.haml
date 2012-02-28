@@ -57,10 +57,10 @@
 
         - if @question.accepted
           - solution = @question.answer
-          = render :partial => 'questions/answer', :locals => {:answer => solution}
+          = render :partial => 'questions/answer', :locals => {:answer => solution, :question => @question}
 
         - @answers.each do |answer|
-          = render :partial => 'questions/answer', :locals => {:answer => answer}
+          = render :partial => 'questions/answer', :locals => {:answer => answer, :question => @question}
 
       - if !@question.closed
         = form_for @answer, :url => question_answers_path(@question.id, :format => :mobile), :html => {:class => "add_answer"} do |f|
