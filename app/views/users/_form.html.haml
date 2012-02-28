@@ -147,9 +147,10 @@
             = f.label t(".send_comments_to_twitter"), :class => "label"
             = f.check_box "notification_opts[comments_to_twitter]", :checked => @user.notification_opts.comments_to_twitter
 
-    %fieldset
-      %legend
-        = t('users.form.check_domain_title')
-        %ul
-          - current_user.custom_domain_owned_groups.each do |group|
-            %li= link_to t('users.form.check_domain', :domain => group.domain), check_custom_domain_path(group.id)
+    - if @user.owns_custom_domain_groups?
+      %fieldset
+        %legend
+          = t('users.form.check_domain_title')
+          %ul
+            - current_user.custom_domain_owned_groups.each do |group|
+              %li= link_to t('users.form.check_domain', :domain => group.domain), check_custom_domain_path(group.id)

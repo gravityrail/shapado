@@ -121,6 +121,10 @@ class User
     customs
   end
 
+  def owns_custom_domain_groups?
+    custom_domain_owned_groups.count > 0
+  end
+
   def display_name
     name.blank? ? login : name
   end
