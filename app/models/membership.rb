@@ -46,7 +46,7 @@ class Membership
   index [
     [:user_id, Mongo::ASCENDING],
     [:group_id, Mongo::ASCENDING]
-  ]
+  ], :unique => true
   index [
     [:state, Mongo::ASCENDING],
     [:group_id, Mongo::ASCENDING]

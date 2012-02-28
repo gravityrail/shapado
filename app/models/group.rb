@@ -135,6 +135,7 @@ class Group
       :message =>  I18n.t('activerecord.models.default_tags_message')
   validates_uniqueness_of   :name
   validates_uniqueness_of   :subdomain
+  validates_uniqueness_of   :domain
   validates_presence_of     :subdomain
   validates_format_of       :subdomain, :with => /^[a-z0-9\-]+$/i
   validates_length_of       :subdomain, :in => 3..32
@@ -176,6 +177,11 @@ class Group
     ids = self.memberships.only(fields).map(&:user_id)
     users = User.where(:_id.in => ids)
   end
+
+  index([
+    [:state, Mongo::ASCENDING],
+    [:domain, Mongo::ASCENDING],
+  ], :unique => true)
 
   # TODO: store this variable
   def has_custom_domain?

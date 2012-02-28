@@ -6,4 +6,6 @@ class ReadList
   field :questions, :type => Hash, :default => {} # "id" => date
 
   belongs_to :user
+
+  index :user_id
 end
