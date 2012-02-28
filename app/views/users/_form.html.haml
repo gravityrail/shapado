@@ -97,27 +97,27 @@
     %fieldset
       %legend
         = t(".notifications")
-    .field
-      .checkbox
-        = f.label t(".new_answer_notification"), :class => "label"
-        = f.check_box "notification_opts[new_answer]", :checked => @user.notification_opts["new_answer"], :class => "checkbox"
-    .field
-      .checkbox
-        = f.label t(".give_advice_notification"), :class => "label"
-        = f.check_box "notification_opts[give_advice]", :checked => @user.notification_opts["give_advice"]
-    .field
-      .checkbox
-        = f.label t(".activities_notification"), :class => "label"
-        = f.check_box "notification_opts[activities]", :checked => @user.notification_opts["activities"]
-    .field
-      .checkbox
-        = f.label t(".reports_notification"), :class => "label"
-        = f.check_box "notification_opts[reports]", :checked => @user.notification_opts["reports"]
-    -if request.user_agent =~ /webkit/i
       .field
         .checkbox
-          = f.label t(".desktop_notification"), :class => "label"
-          = check_box_tag "notification_opts[desktop_notifs]", true, false, {:id => "desktop_notifs"}
+          = f.label t(".new_answer_notification"), :class => "label"
+          = f.check_box "notification_opts[new_answer]", :checked => @user.notification_opts["new_answer"], :class => "checkbox"
+      .field
+        .checkbox
+          = f.label t(".give_advice_notification"), :class => "label"
+          = f.check_box "notification_opts[give_advice]", :checked => @user.notification_opts["give_advice"]
+      .field
+        .checkbox
+          = f.label t(".activities_notification"), :class => "label"
+          = f.check_box "notification_opts[activities]", :checked => @user.notification_opts["activities"]
+      .field
+        .checkbox
+          = f.label t(".reports_notification"), :class => "label"
+          = f.check_box "notification_opts[reports]", :checked => @user.notification_opts["reports"]
+      - if request.user_agent =~ /webkit/i
+        .field
+          .checkbox
+            = f.label t(".desktop_notification"), :class => "label"
+            = f.check_box "notification_opts[desktop_notifs]", :checked => @user.notification_opts["desktop_notifs"], :id => "desktop_notifs"
 
     %a{:name => "social"}
 
