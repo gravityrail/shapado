@@ -76,10 +76,10 @@ class Question
   index :group_id
 
   field :followers_count, :type => Integer, :default => 0
-  references_and_referenced_in_many :followers, :class_name => "User"
+  references_and_referenced_in_many :followers, :class_name => "User", :validate => false
 
   field :contributors_count, :type => Integer, :default => 0
-  references_and_referenced_in_many :contributors, :class_name => "User"
+  references_and_referenced_in_many :contributors, :class_name => "User", :validate => false
 
   field :updated_by_id, :type => String
   referenced_in :updated_by, :class_name => "User"
@@ -100,7 +100,7 @@ class Question
   field :last_target_user_id, :type => String
   referenced_in :last_target_user, :class_name => "User"
 
-  references_many :answers, :dependent => :destroy
+  references_many :answers, :dependent => :destroy, :validate => false
   references_many :badges, :as => "source", :validate => false
 
   embeds_many :comments, :as => "commentable"#, :order => "created_at asc"

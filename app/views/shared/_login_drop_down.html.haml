@@ -11,8 +11,17 @@
 
   -if current_group.allow_any_openid
     %li
-      = link_to t('.with_openid'), '/users/login?open_id=1', :class => 'auth-provider OpenID', :id => 'openid'
-
+      = link_to t('.with_openid'), '/users/login?open_id=1', :class => 'auth-provider OpenID', :id => 'openid', 'data-toggle-dropdown' => 'dropdown-signin-openid'
+    %li.hidden.dropdown-signin-openid.dropdown-form
+      = form_for :user, :url => '/users/auth/open_id', :html => {:class => "form"}, :method => :get do |f|
+        .drop-down-field
+          = label_tag "OpenID", t(".openid_url")
+        .drop-down-field
+          = text_field_tag :openid_url, params[:url], :class => "text_field drop-down-input"
+          - if params[:pp] && params[:format] != 'mobile'
+            = hidden_field_tag :pp, 1
+        .buttons
+          = f.submit t('devise.sessions.link'), :class => "save save-login-dropdown"
   - if !(['noemail','social'].include? current_group.signup_type) && params[:controller] != 'invitations'
     %li
       = link_to t('.with_email_pass'), '/users/login', :class => 'login', :id => 'login', 'data-href' => '/users/new', 'data-toggle-dropdown' => 'dropdown-signin'
@@ -44,7 +53,7 @@
         .buttons
           = f.submit t('users.new.submit'), :class => "save save-login-dropdown"
 
-    %li
+    %li.dropdown-signin.dropdown-form.hidden
       = link_to t('devise.passwords.link'), new_password_path(:user)
     %li
       = link_to t('shared.login_drop_down.sign_up_user_pass'), new_user_path, :class => 'auth-provider login', :id => 'login', 'data-href' => '/users/new', 'data-toggle-dropdown' => 'dropdown-signup'

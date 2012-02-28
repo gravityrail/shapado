@@ -2,7 +2,8 @@ en:
   layouts:
     application:
       feed: Followed
-      not_member_join_dialog: "You need to join %{group} to complete this action"
+      need_to_signin: "You need to sign in first."
+      not_member_join_dialog: "You need to join %{group} to complete this action, click here to do so."
       success_joining_group: "You are now a member of %{group}, thanks for joining!"
       join_group: "Join %{group}"
       title: "Questions & Answers"

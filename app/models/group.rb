@@ -102,8 +102,8 @@ class Group
   referenced_in :shapado_version, :class_name => "ShapadoVersion"
   field :plan_expires_at, :type => Time
 
-  references_many :tags, :dependent => :destroy
-  references_many :activities, :dependent => :destroy
+  references_many :tags, :dependent => :destroy, :validate => false
+  references_many :activities, :dependent => :destroy, :validate => false
 
   embeds_one :mainlist_widgets, :class_name => "WidgetList", :as => "group_mainlist_widgets"
   embeds_one :question_widgets, :class_name => "WidgetList", :as => "group_questions"
@@ -112,15 +112,15 @@ class Group
   references_many :badges, :dependent => :destroy, :validate => false
   references_many :questions, :dependent => :destroy, :validate => false
   references_many :answers, :dependent => :destroy, :validate => false
-  references_many :pages, :dependent => :destroy
-  references_many :announcements, :dependent => :destroy
-  references_many :constrains_configs, :dependent => :destroy
-  references_many :invitations, :dependent => :destroy
-  references_many :themes, :dependent => :destroy
-  references_many :memberships, :dependent => :destroy
+  references_many :pages, :dependent => :destroy, :validate => false
+  references_many :announcements, :dependent => :destroy, :validate => false
+  references_many :constrains_configs, :dependent => :destroy, :validate => false
+  references_many :invitations, :dependent => :destroy, :validate => false
+  references_many :themes, :dependent => :destroy, :validate => false
+  references_many :memberships, :dependent => :destroy, :validate => false
   referenced_in :current_theme, :class_name => "Theme"
 
-  references_many :invoices, :dependent => :destroy
+  references_many :invoices, :dependent => :destroy, :validate => false
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
