@@ -536,11 +536,11 @@ module ApplicationHelper
   end
 
   def cache_key_for(name, *args)
-    args.unshift([name, current_group.id, params[:controller], params[:action], I18n.locale])
+    args.unshift(name.to_s, current_group.id, params[:controller], params[:action], I18n.locale)
     if user_signed_in?
-      args += [current_user.role_on(current_group.to_s)]
+      args += [current_user.role_on(current_group.to_s).to_s]
     else
-      args << current_group.language
+      args << current_group.language.to_s
     end
     args += @languages.sort if @languages
 
