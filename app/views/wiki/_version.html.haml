@@ -14,7 +14,7 @@
   = render "changes", :post => post, :version => version, :scope => scope
 
   %p.author
-    - owner = User.find(version.owner_id)
+    - owner = User.find(version.owner_id) rescue nil
     - if owner.nil? || version.respond_to?(:user_id)
       - owner = User.find(version.user_id)
     -if !owner.nil?
