@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   devise_for(:users,
              :path_names => {:sign_in => 'login', :sign_out => 'logout'},
              :controllers => {:registrations => 'users', :omniauth_callbacks => "multiauth/sessions"}) do
-    match '/users/connect' => 'users#connect', :method => :post, :as => :connect
   end
   match '/groups/:group_id/check_custom_domain' => 'groups#check_custom_domain',
   :as => 'check_custom_domain'
@@ -56,6 +55,7 @@ Rails.application.routes.draw do
       get :unfollow_tags
       get :leave
       get :join
+      post :connect
     end
 
     member do

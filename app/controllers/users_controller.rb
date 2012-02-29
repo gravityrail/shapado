@@ -242,13 +242,21 @@ class UsersController < ApplicationController
   end
 
   def connect
-    authenticate_user!
-    warden.authenticate!(:scope => :openid_identity, :recall => "show")
-    current_openid_identity.user = current_user
-    current_openid_identity.save!
-    sign_out :openid_identity
+    target = User.find(params[:target_id])
 
-    redirect_to settings_path
+    if target.email != current_user.email
+      flash[:error] = "you can't merge this account"
+      redirect_to social_connect_path and return
+    end
+
+
+    if current_user.merge_user(target)
+      flash[:notice] = "#{target.login} account was merged"
+      redirect_to social_connect_path
+    else
+      flash[:error] = "there was a problem while merging the account #{target.login}"
+      redirect_to social_connect_path
+    end
   end
 
   def follow_tags

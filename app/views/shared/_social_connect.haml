@@ -8,4 +8,6 @@
     %li= link_to t('.find_friends_identica'),'/users/auth/identica', :class => 'identica', :id => 'identica_auth' unless current_user.identica_login?
 
 %p
-  = link_to 'merge google openid account','/users/auth/open_id?openid_url=https://www.google.com/accounts/o8/id', :class => 'google', :id => 'google_openid_auth'
+  /= link_to 'merge google openid account', '/users/auth/open_id?openid_url=https://www.google.com/accounts/o8/id', :class => 'google', :id => 'google_openid_auth'
+  -User.where(:email => current_user.email, :_id.ne => current_user.id).each do |same_user|
+    =link_to "merge #{same_user.login} into this account", connect_users_path(:target_id => same_user.id), :method => :post
