@@ -15,7 +15,7 @@ module VotesHelper
       end
     end
 
-    render 'shared/vote_box.html.haml', :url => url, :voteable => voteable,
+    render 'shared/vote_box', :handlers => [:haml], :url => url, :voteable => voteable,
                                         :class_name => class_name, :source => source,
                                         :closed => closed
   end

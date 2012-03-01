@@ -29,6 +29,6 @@
     -cache_for(:questions, current_order.to_s, params[:page].to_i, params[:per_page].to_i, @languages.sort, params[:unanswered] ? "unanswered" : "" ) do
       /Questions
       -@questions.each do |question|
-        = render "questions/question", :question => question
+        = render "questions/question", :handers => [:haml], :question => question
 
   = paginate @questions

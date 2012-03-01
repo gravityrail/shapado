@@ -41,6 +41,10 @@ class CloseRequest
     end
   end
 
+  def group
+    self._parent.group
+  end
+
   protected
   def should_be_unique
     valid = true

@@ -53,7 +53,7 @@ describe GroupsController do
     end
 
     it "should be successful" do
-      attributes = Fabricate.attributes_for(:group, :user => @user)
+      attributes = Fabricate.attributes_for(:group, :owner => @user)
       attributes.delete('languages')
       post 'create', :group => attributes
       response.should redirect_to "http://#{assigns[:group].domain}/manage/properties"
@@ -62,7 +62,7 @@ describe GroupsController do
 
   describe "PUT 'update'" do
     before (:each) do
-      @group_attrs = Fabricate.attributes_for(:group, :user => @user)
+      @group_attrs = Fabricate.attributes_for(:group, :owner => @user)
     end
 
     it "should be successful" do

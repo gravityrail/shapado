@@ -37,7 +37,7 @@ class CloseRequestsController < ApplicationController
 
     respond_to do |format|
       if @close_request.valid?
-        @question.save #FIXME: use modifiers
+        @question.save
         @question.increment(:close_requests_count => 1)
         if @question.closed
           flash[:notice] = "question closed successfully"

@@ -20,7 +20,7 @@ describe CommentsController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @comment = Fabricate(:comment, :commentable => @question, :group_id => @group.id, :user_id => @user.id)
+      @comment = Fabricate(:comment, :commentable => @question, :user_id => @user.id)
       stub_group(@question.group)
     end
 
@@ -34,7 +34,6 @@ describe CommentsController do
     before (:each) do
       @comment = Fabricate(:comment,
                            :commentable => @question,
-                           :group_id => @group.id,
                            :user_id => @user.id)
       stub_group(@group)
     end
@@ -49,7 +48,6 @@ describe CommentsController do
     before (:each) do
       @comment = Fabricate(:comment,
                            :commentable => @question,
-                              :group_id => @group.id,
                               :user_id => @user.id)
 
       @comment_attrs = Fabricate.attributes_for(:comment, :user => @user)
@@ -65,7 +63,7 @@ describe CommentsController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @comment = Fabricate(:comment, :commentable => @question, :group_id => @group.id, :user_id => @user.id)
+      @comment = Fabricate(:comment, :commentable => @question, :user_id => @user.id)
       stub_group(@question.group)
     end
 

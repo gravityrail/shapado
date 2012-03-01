@@ -57,6 +57,7 @@ RSpec.configure do |config|
     theme = Theme.create_default
     Jobs::Themes.generate_stylesheet(theme.id)
     @group = Fabricate(:group, :domain => AppConfig.domain, :current_theme => theme)
+    Thread.current[:current_group] = @group
   end
 
   require 'database_cleaner'
@@ -71,12 +72,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-#     Sham.reset(:before_all)
     Capybara.default_driver = :selenium
     Capybara.javascript_driver = :selenium
     Capybara.default_host = AppConfig.domain
     Xapit.reload
-#     Sham.reset(:before_each)
     DatabaseCleaner.clean
   end
 end

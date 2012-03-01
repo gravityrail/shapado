@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/dcu/mongoid_ext.git
-  revision: edcb64748380ddf6f6b7e621bec81ba7ddf7097c
+  revision: f5c5659260aef321befb19c94bb4b3ca21e97a3e
   specs:
     mongoid_ext (0.7.0)
       differ (>= 0.1.2)
@@ -36,7 +36,7 @@ GIT
 
 GIT
   remote: git://github.com/mongoid/mongoid.git
-  revision: 305a6af10bc594a10034c478497b50126627adc5
+  revision: a99f4aebbe1c3214d114809d45f46d887771bc04
   branch: 2.4.0-stable
   specs:
     mongoid (2.4.5)
@@ -46,7 +46,7 @@ GIT
 
 GIT
   remote: git://github.com/ricodigo/bug_hunter.git
-  revision: 103ec83b35100328b3fa91eb89d961fe5e62a85f
+  revision: b5bfc8420dc8c2a8ca3ea5a2874a9dec2e6fb624
   specs:
     bug_hunter (0.2.0)
       haml

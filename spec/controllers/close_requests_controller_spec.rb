@@ -44,7 +44,7 @@ describe CloseRequestsController do
 
   describe "PUT 'update'" do
     before (:each) do
-      @close_request = Fabricate(:close_request, :user_id => @user.id, :question_id => @question.id)
+      @close_request = Fabricate(:close_request, :user_id => @user.id, :closeable => @question)
       @close_request_attrs = valid_attributes
       stub_group(@question.group)
     end
@@ -57,7 +57,7 @@ describe CloseRequestsController do
 
   describe "DELETE 'destroy'" do
     before (:each) do
-      @close_request = Fabricate(:close_request, :user_id => @user.id, :question_id => @question.id)
+      @close_request = Fabricate(:close_request, :user_id => @user.id, :closeable => @question)
     end
 
     it "should be successful" do
