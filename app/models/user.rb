@@ -345,6 +345,10 @@ Time.zone.now ? 1 : 0)
     user_info && !user_info["facebook"].blank? && facebook_id
   end
 
+  def openid_login?
+    user_info && !user_info["open_id"].blank?
+  end
+
   def social_connections
     connections = []
     connections << "linked_in" if linked_in_login?

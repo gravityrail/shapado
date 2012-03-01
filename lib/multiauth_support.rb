@@ -111,11 +111,45 @@ module MultiauthSupport
   end
 
   def merge_user(user)
-    #TODO merge friendlist, facebook friend lists and maybe more
-    #TODO merging is broken
-    [Question, Answer, Badge, UserStat].each do |m|
+    [Answer, Question].each do |class_name|
+      class_name.relations.each do |relation|
+        relation_name = relation[0]
+        relation_kind = relation[1][:relation]
+        if [Mongoid::Relations::Embedded::Many,
+            Mongoid::Relations::Embedded::One].include? relation_kind
+          objects = class_name.
+            any_of([:"#{relation_name}.user_id" => user.id],
+                   [:"#{relation_name}.created_by" => user.id],
+                   [:"#{relation_name}.updated_by" => user.id])
+
+          objects.each do |object|
+            object.send(relation_name).each do |embedded_doc|
+              %w(user_id created_by updated_by).each do |attr|
+                if embedded_doc.respond_to?(attr) &&
+                    embedded_doc.send(attr) == user.id
+                  embedded_doc.public_send("#{attr}=", self.id)
+                end
+              end
+              object.save if object.changed?
+            end
+          end
+        end
+      end
+    end
+    [Badge, UserStat, ReadList, Search, Activity, Invitation,
+     ReputationStat, Page, Tag, Question, Answer].each do |m|
       m.override({:user_id => user.id}, {:user_id => self.id})
     end
+    Question.override({:updated_by_id => user.id},
+                      {:updated_by_id => self.id})
+    Question.override({:last_target_user_id => user.id},
+                      {:last_target_user_id => self.id})
+    Group.override({:owner_id => user.id},
+                   {:owner_id => self.id})
+    self.friend_list.follower_ids = self.friend_list.follower_ids &&
+                                   user.friend_list.follower_ids.delete(self.id)
+    self.friend_list.following_ids = self.friend_list.following_ids &&
+                                   user.friend_list.following_ids.delete(self.id)
     user.memberships.each do |m|
       if self_membership = Membership.where(:user_id=>self.id,
                                             :group_id => m.group_id).first
