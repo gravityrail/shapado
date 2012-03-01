@@ -251,6 +251,7 @@ class UsersController < ApplicationController
 
 
     if current_user.merge_user(target)
+      target.destroy
       flash[:notice] = "#{target.login} account was merged"
       redirect_to social_connect_path
     else

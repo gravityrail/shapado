@@ -140,15 +140,28 @@ module MultiauthSupport
      ReputationStat, Page, Tag, Question, Answer].each do |m|
       m.override({:user_id => user.id}, {:user_id => self.id})
     end
+
+    Activity.where(:"follower_ids" => user.id).each do |activity|
+      activity.follower_ids.delete(user.id)
+      activity.follower_ids = activity.follower_ids && [self.id]
+      activity.save
+    end
+
+    Activity.where(:"trackable_info.user_id" => user.id).each do |activity|
+      activity.trackable_info["user_id"] = self.id
+      activity.user_param = self.login
+      activity.save
+    end
+
     Question.override({:updated_by_id => user.id},
                       {:updated_by_id => self.id})
     Question.override({:last_target_user_id => user.id},
                       {:last_target_user_id => self.id})
     Group.override({:owner_id => user.id},
                    {:owner_id => self.id})
-    self.friend_list.follower_ids = self.friend_list.follower_ids &&
+    self.friend_list.follower_ids = self.friend_list.follower_ids.delete(user.id) &&
                                    user.friend_list.follower_ids.delete(self.id)
-    self.friend_list.following_ids = self.friend_list.following_ids &&
+    self.friend_list.following_ids = self.friend_list.following_ids.delete(user.id) &&
                                    user.friend_list.following_ids.delete(self.id)
     user.memberships.each do |m|
       if self_membership = Membership.where(:user_id=>self.id,
