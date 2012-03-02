@@ -27,6 +27,7 @@ en:
       find_friends_twitter: Find friends on Twitter
       find_friends_linked_in: Find friends on LinkedIn
       find_friends_identica: Find friends on Identi.ca
+      or_connect: 'Or connect with:'
     topbar:
       logged_as: "Logged in as %{login}"
       admin: Admin

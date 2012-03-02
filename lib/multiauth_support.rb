@@ -149,7 +149,7 @@ module MultiauthSupport
 
     Activity.where(:"trackable_info.user_id" => user.id).each do |activity|
       activity.trackable_info["user_id"] = self.id
-      activity.user_param = self.login
+      activity.trackable_info["user_param"] = self.login
       activity.save
     end
 
