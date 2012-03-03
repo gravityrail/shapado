@@ -106,7 +106,7 @@ module UsersHelper
         options[:size] = size_for_string(size)
       end
       # TODO: convert size's name to pixels
-      gravatar_url(user.email.to_s, options)
+      gravatar_url(user.email.to_s, options)+"&d=#{default_avatar_url(size)}"
     else
       options[:class] ||= "gravatar"
       if !size.is_a? Integer
@@ -117,6 +117,9 @@ module UsersHelper
     end
   end
 
+  def default_avatar_url(size='small')
+    "#{request.protocol}#{AppConfig.domain}:#{request.port.to_s}/assets/default-avatar-#{size}.png"
+  end
   private
   def size_for_string(str)
     case str.to_s
