@@ -239,7 +239,7 @@ module ApplicationHelper
   end
 
   def shapado_auto_link(text, options = {})
-    text = auto_link(text, :all,  { "rel" => 'nofollow', :class => 'auto-link' })
+    text = auto_link(text, :all, { "rel" => 'nofollow', :class => 'auto-link' }, :sanitize => false)
     if options[:link_users]
       text = TwitterRenderer.auto_link_usernames_or_lists(text, :username_url_base => "#{users_path}/", :suppress_lists => true)
     end
