@@ -1,22 +1,21 @@
 #main-content-wrap
   .top
     %h1=t('.title')
-    %p= t(".beta_info")
 
   .plans-table
     .each.first
       .header
-        %h2 Optimum
+        %h2= t('.optimum')
         %p= t('.huge_sites')
       .features
         %ul
           %li= t('.unlimited')
-          %li= t('.custom_ads')
-          %li= t('.custom_ui')
-          %li= t('.custom_domain')
-          %li= t('.private_site')
-          %li= t('.custom_analytics')
-          %li= t('.custom_themes')
+          %li.tipsy-plans{title: t('.custom_domain_tip')}= t('.custom_domain')
+          %li.tipsy-plans{title: t('.basic_styling_tip')}= t('.basic_styling')
+          %li.tipsy-plans{title: t('.custom_html_tip')}= t('.custom_html')
+          %li.tipsy-plans{title: t('.custom_js_tip')}= t('.custom_js')
+          %li.tipsy-plans{title: t('.custom_ads_tip')}= t('.custom_ads')
+          %li.tipsy-plans{title: t('.custom_analytics_tip')}= t('.custom_analytics')
           %li= t('.247_all_support')
       .bottom
         .price== $999/#{t('.month')}
@@ -26,17 +25,17 @@
 
     .each
       .header
-        %h2 Maximum
+        %h2= t('.maximum')
         %p= t('.big_sites')
       .features
         %ul
           %li= t('.15millions')
-          %li= t('.custom_ads')
-          %li= t('.custom_ui')
-          %li= t('.custom_domain')
-          %li= t('.private_site')
-          %li= t('.custom_analytics')
-          %li= t('.custom_themes')
+          %li.tipsy-plans{title: t('.custom_domain_tip')}= t('.custom_domain')
+          %li.tipsy-plans{title: t('.basic_styling_tip')}= t('.basic_styling')
+          %li.tipsy-plans{title: t('.custom_html_tip')}= t('.custom_html')
+          %li.tipsy-plans{title: t('.custom_js_tip')}= t('.custom_js')
+          %li.tipsy-plans{title: t('.custom_ads_tip')}= t('.custom_ads')
+          %li.tipsy-plans{title: t('.custom_analytics_tip')}= t('.custom_analytics')
           %li= t('.all_support')
       .bottom
         .price== $749/#{t('.month')}
@@ -45,17 +44,17 @@
 
     .each
       .header
-        %h2 Premium
+        %h2= t('.premium')
         %p= t('.getting_popular')
       .features
         %ul
           %li= t('.5millions')
-          %li= t('.custom_ads')
-          %li= t('.custom_ui')
           %li= t('.custom_domain')
-          %li= t('.private_site')
+          %li= t('.basic_styling')
+          %li= t('.custom_html')
+          %li= t('.custom_js')
+          %li= t('.custom_ads')
           %li= t('.custom_analytics')
-          %li= t('.custom_themes')
           %li= t('.all_support')
       .bottom
         .price==$249/#{t('.month')}
@@ -64,41 +63,56 @@
 
     .each.selected
       .header
-        %h2  Plus
+        %h2= t('.plus')
         %p= t('.start_monetizing')
       .features
         %ul
           %li= t('.1million')
-          %li= t('.custom_ads')
-          %li= t('.custom_ui')
-          %li= t('.custom_domain')
-          %li= t('.private_site')
-          %li= t('.custom_analytics')
-          %li= t('.custom_themes')
+          %li.tipsy-plans{title: t('.custom_domain_tip')}= t('.custom_domain')
+          %li.tipsy-plans{title: t('.basic_styling_tip')}= t('.basic_styling')
+          %li.tipsy-plans{title: t('.custom_html_tip')}= t('.custom_html')
+          %li.tipsy-plans{title: t('.custom_js_tip')}= t('.custom_js')
+          %li.tipsy-plans{title: t('.custom_ads_tip')}= t('.custom_ads')
+          %li.tipsy-plans{title: t('.custom_analytics_tip')}= t('.custom_analytics')
           %li= t('.all_support')
       .bottom
         .price==$49/#{t('.month')}
         .button
           = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "plus"), :class => "sign_up"
 
-    .each.last
+    .each
       .header
-        %h2  Basic
-        %p= t('.small_private')
+        %h2= t('.basic')
+        %p= t('.small_basic')
       .features
         %ul
           %li= t('.unlimited')
           %li= t('.custom_domain')
-          %li= t('.private_site')
+          %li= t('.basic_styling')
           %li= t('.custom_analytics')
-          %li= t('.custom_themes')
-          %li= t('.basic_restrictions')
           %li= t('.web_support')
       .bottom
         .price==$9/#{t('.month')}
         .button
           = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "basic"), :class => "sign_up"
-
+    .each.last
+      .header.tipsy-plans{title: t('.private_tip')}
+        %h2.private= t('.private')
+        %p= t('.private_private')
+      .features
+        %ul
+          %li= t('.unlimited')
+          %li= t('.custom_domain')
+          %li= t('.basic_styling')
+          %li= t('.custom_html')
+          %li= t('.custom_js')
+          %li= t('.custom_ads')
+          %li= t('.custom_analytics')
+          %li= t('.web_support')
+      .bottom
+        .price==$2/#{t('.month')}/#{t('.user')}
+        .button
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "basic"), :class => "sign_up"
 
   %p.free-offer
     = t(".we_offer")
