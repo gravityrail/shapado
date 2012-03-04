@@ -6,41 +6,41 @@
     .references
       %p
         -if params[:print] != "1"
-          =link_to "Download as pdf", invoice_path(@invoice, :print => "1", :format => "pdf")
+          =link_to t('invoices.show.pdf_download'), invoice_path(@invoice, :print => "1", :format => "pdf")
       %p.reference
-        %strong Order number:
+        %strong= t('invoices.show.order_number')
         =@invoice.order_number
       %p
-        %strong Order Placed:
+        %strong= t('invoices.show.order_placed')
         -if @invoice.payed_at
           =@invoice.payed_at.to_s(:ymd)
 
       .clear
 
-    %h2 Contact Details
+    %h2= t('invoices.show.contact_details')
     %p
-      %strong Name:
+      %strong= t('invoices.show.contact_name')
       ="#{@invoice.first_name} #{@invoice.last_name}"
     %p
-      %strong Email:
+      %strong= t('invoices.show.contact_email')
       =@invoice.email
 
-    %h2 Payment Details
+    %h2= t('invoices.show.payment_details')
     %p
-      %strong Payment Method:
+      %strong= t('invoices.show.payment_method')
       =I18n.t("versions.#{@invoice.payment_method||'credit_card'}")
     %p
-      %strong Credit Card type:
+      %strong= t('invoices.show.cc_type')
       =I18n.t("versions.#{@invoice.cc_type||'unknown'}")
     %p
-      %strong Credit Card #:
+      %strong= t('invoices.form.cc_number')
       XXXXXXXXXXX -
       =@invoice.cc_ending
     %p
-      %strong Name:
+      %strong= t('invoices.show.contact_name')
       == #{@invoice.first_name} #{@invoice.last_name}
     %p
-      %strong Billing Addres
+      %strong= t('invoices.show.billing_address')
       %br
       == #{@invoice.billing_address1}
       %br
@@ -49,10 +49,10 @@
       =@invoice.country
 
     %h2
-      Product Details
+      = t('invoices.show.product_details')
     %p
       %strong
-        Order Total:
+        = t('invoices.show.order_total')
       ==$#{@invoice.total_in_dollars}
 
     =render "invoices/invoice", :invoice => @invoice

@@ -12,13 +12,16 @@
 
       .references
         %p.reference
-          %strong Invoice reference:
+          %strong
+            = t('invoices.form.invoice_reference')
           =@invoice.order_number
         %p
-          %strong Date:
+          %strong
+            = t('invoices.form.creation_date')
           =@invoice.created_at
         %p
-          %strong Valid until:
+          %strong
+            = t('invoices.form.valid_until')
           =@invoice.created_at+1.month
       .clear
 
@@ -26,40 +29,34 @@
       -version = ShapadoVersion.find(@invoice.items.first["item_id"])
       .thanks
         %p.action
-          You're upgrading your
-          %em
-            = current_group.name
-          Shapado account
-          %br located at
-          %em
-            ==#{current_group.domain}.
+          =raw t('invoices.form.upgrading_group', :group => current_group.name, :group_domain => current_group.name)
 
         %p
-          == Once you click the checkout button below you'll be upgraded to the #{version.name} plan. You'll be charged the new rate of $#{version.in_dollars}/month starting on your next bill as shows.
+          = t('invoices.form.charging_explanation', :version_name => version.name, :version_price => version.in_dollars)
           %br
-          =link_to "I want to change this plan", plans_path
+          =link_to t('invoices.form.want_to_change_plan'), plans_path
 
     .credit_card_form
       %h2
-        Credit Card Details
+        = t('invoices.form.cc_details')
 
       =fields_for :credit_card do |ff|
         .field
           %label
-            Credit Card Number
+            = t('invoices.form.cc_number')
           =ff.text_field :number, :class => "card-number", :autocomplete => false, :size => 20
-          %small Exactly as it appears on the card
+          %small= t('invoices.form.as_it_appears')
 
         .cc-info
           .field
             %label
-              Verification Code
+              = t('invoices.form.ccv_code')
             =ff.text_field :verification_code, :size => 4, :class => "card-cvc", :autocomplete => "off"
-            %small The CVV code is a 3 or 4 digit number on the front or back of the card.
+            %small= t('invoices.form.ccv_explanation')
 
           .field.date
             %label
-              Expiration Date
+              = t('invoices.form.expiration_date')
             -index = -1
             =ff.select :month, I18n.t("date.month_names").map{|e| [e, index+=1]}, {}, :class => "card-expiry-month"
             =ff.select :year, (Time.now.year..Time.now.year+15).to_a, {}, :class => "card-expiry-year"
@@ -67,4 +64,4 @@
     =render "invoices/invoice", :invoice => @invoice
 
     .buttons
-      =f.submit "Checkout", :class => "save submit-button"
+      =f.submit t('invoices.form.checkout'), :class => "save submit-button"

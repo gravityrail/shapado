@@ -5,7 +5,7 @@
         %td=item["name"]
         %td
           -if item["value"] == 0.0
-            free
+            = t('invoices.invoice.free')
           -else
             =item["value"].to_f / 100.0
         %td=item["description"]
@@ -13,7 +13,7 @@
   %tfoot
     %tr
       %td
-        TOTAL
+        = t('invoices.invoice.total')
       %td
         =@invoice.total / 100.0
       %td
