@@ -45,8 +45,7 @@ en:
           text: Be the first to %{action_link}!
       questions:
         description:
-          action_link: ask a question
-          text: Be the first to <a href="%{url}"> %{action_link}<a/>!
+          text: Be the first to <a href="%{url}">ask a question<a/>!
       filtered_by_language_questions:
         title: Sorry, no questions are available in this language.
         description:
