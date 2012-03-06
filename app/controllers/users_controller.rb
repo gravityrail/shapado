@@ -380,6 +380,11 @@ class UsersController < ApplicationController
   def social_connect
   end
 
+  def new_password
+    sign_out(current_user)
+    redirect_to new_user_password_path
+  end
+
   protected
   def check_signup_type
     if current_group.is_social_only_signup? ||
