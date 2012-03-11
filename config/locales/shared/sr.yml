@@ -22,26 +22,40 @@ sr:
         description: 
           text: Будите први који ће %{action_link}!
         title: Нажалост, нема много тога да се види.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Кликните овде да погледате питања на свим језицима.
+        title: Нажалост, нема питања на том језику.
+      filtered_questions: 
+        description: 
+          action_link: Кликните овде да прикажете сва питања
+        title: Нажалост, нема питања у овом филтеру.
       questions: 
         description: 
           action_link: поставити питање
+          text: Будите први који ће <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 
           action_link: сада
           text: направите %{action_link}
         title: Засад нисте направили ниједну тему.
+    filter: "Филтер:"
+    language: "Језик:"
+    language_filter_tooltip: Пробајте с другим језиком.
+    languages: "Језици:"
     layout: 
       footer: 
         cc_footer: Сви подаци и садржај на Шападу су доступни под лиценцом %{cc_link}
         powered_by: Покреће %{source_link} %{version} под %{agpl_link}
     login_drop_down: 
+      sign_up_user_pass: Отворите налог с е-адресом/лозинком
+      with_email_pass: Пријавите се преко е-поште
       with_facebook: преко Фејсбука
       with_google: преко Гугла
       with_identica: преко Идентике
       with_linked_in: преко Линкедина
       with_openid: OpenID
       with_twitter: преко Твитера
-      with_user_pass: корисник/лозинка
     manage_navigation: 
       title_content: Садржај групе
       title_features: Могућности групе
@@ -59,3 +73,4 @@ sr:
       admin: Администратор
       logged_as: Пријављен као %{login}
       user_page: Моја страница
+    view_mode: "Режим приказа:"

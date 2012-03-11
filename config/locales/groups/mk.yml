@@ -28,9 +28,11 @@ mk:
         signup_type: "На кој начин може да се регистрираат вашите корисници:"
         state: држава
         subdomain: URL
+        track_users: Побарај им ја физичката местоположба на корисниците
         wysiwyg_editor: Овозможи згоден кориснички уредник
     models: 
       default_tags_message: не може да имате повеќе од 10 основно зададени ознаки
+      duplicate_domain_message: Нажалост, доменот е зафатен.
       group: група
       groups: групи
       reputation_rewards_answer_constrain: Ограничувањето за наградување одговори треба да биде негативно

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Hzy980512
 zh-CN: 
   activerecord: 
     attributes: 
@@ -111,6 +112,7 @@ zh-CN:
       solution: 解决方案
       to_answer_question: 要回答这个问题
       unauthenticated_retag: 您需要一个帐户重新添加问题
+      unban: 解封
       viewed: 查看
     solve: 
       flash_notice: 解决了这个问题。

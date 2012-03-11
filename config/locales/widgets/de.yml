@@ -93,11 +93,13 @@ de:
       description: Dieses Widget wird Schaltflächen Sozialer Dienste anzeigen.
       title: Darauf aufmerksam machen bei
     suggestions: 
-      description: Vorschläge von Freunden und Schlagwärter für den zu beachtenden Nutzer
+      description: Vorschläge von Freunden und Schlagwörter für den zu beachtenden Nutzer.
       follow_tag: + Stichwort beobachten
-      follow_user: + Benutzer folgen
+      follow_user: + Nutzer folgen
       followed_by: Beachtet von %{user}
       title: Zu beachtende Nutzer und Stichwörter
+      unfollow_tag: "- Stichwort nicht mehr beobachten"
+      unfollow_user: "- Nutzer nicht mehr folgen"
     tag_cloud: 
       description: Dieses Widget zeigt die Stichwortwolke an
       title: Stichwortwolke

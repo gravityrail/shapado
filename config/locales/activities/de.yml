@@ -12,6 +12,7 @@ de:
     changed: änderte
     created: erstellte
     deleted: löschte
+    destroyed: löschte
     flagged: kennzeichnete
     requested_to_close: bat um Schießung
     requested_to_open: bat um Öffnung

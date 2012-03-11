@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Crazymadlover
 # Author: Danke7
 # Author: Fitoschido
@@ -54,6 +55,10 @@ es:
     change_password: 
       submit: Cambiar mi contraseña
       title: Cambiar contraseña
+    check_custom_domain: 
+      reset_domain_button: No, por favor restablezca el dominio personalizado en %{domain}
+      title: ¿Está funcionando su nuevo dominio personalizado?
+      working_domain_link: Sí, puedo ver de que mi nuevo dominio está funcionando debajo.
     create: 
       flash_error: No hemos podido crear tu cuenta, lo sentimos. Por favor intentalo otra vez, o contacta a un administrador (el enlace esta arriba).
       flash_notice: ¡Gracias por registrarse!
@@ -67,6 +72,8 @@ es:
     form: 
       activities_notification: Recibir notificaciones via correo electronico sobre actividades del sistema tales como insignias ganadas, nuevos seguidores, etc.
       avatar_tip: Cambia tu imagen del perfil usando gravatar
+      check_domain: Compruebe %{domain}
+      check_domain_title: Compruebe los dominios personalizados de su grupo
       desktop_notification: Notificaciones de escritorio
       give_advice_notification: Obtener notificaciones via correo electrónico sobre preguntas en su campo de experiencia.
       information: Información
@@ -111,6 +118,9 @@ es:
       title: Usuario %{user}
       unfollow: Dejar de seguir
       views: vistas
+    show_json: 
+      edit_it: Haga clic aquí para completar su biografía en su perfil.
+      no_description: Este usuario no ha completado aún su biografía.
     top_user: 
       connect: Conectar
       my_karma: "Mi karma: %{karma}"

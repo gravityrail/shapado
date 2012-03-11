@@ -12,6 +12,7 @@ ia:
       collaborate: Collaborar
       contributed: Contribuite
       faq: FAQ
+      feed: Sequite
       follow_us_and_share: Seque nos e diffunde le parola
       followed: Sequite
       forgot: Oblidate?
@@ -23,6 +24,8 @@ ia:
       logout: Clauder session
       manage_ads: Gerer annuncios
       moderate: Moderar
+      need_to_signin: Tu debe aperir session primo.
+      not_member_join_dialog: Es necessari devenir membro del gruppo "%{group}" pro completar iste action. Clicca hic pro facer lo.
       now: ora!
       openid: 
         explaination: "Si tu vole crear un conto o solmente aperir un session, per favor selige tu providitor OpenID:"
@@ -36,6 +39,7 @@ ia:
       settings: Configurationes
       signup: Crear un conto
       subscribe: Subscriber
+      success_joining_group: Tu es ora membro de %{group}, gratias!
       tags: Etiquettas
       title: Questiones & responsas
       unanswered: Sin responsa

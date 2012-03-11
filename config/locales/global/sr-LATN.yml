@@ -22,6 +22,7 @@ sr-LATN:
     chat: Ćaskanje
     current: Tekuće
     edited: Uređeno
+    edited_by: "Uredio:"
     edited_by_semi: "Uredio:"
     feedback: Mišljenja
     follow: Prati

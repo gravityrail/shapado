@@ -22,6 +22,7 @@ gl:
     chat: Chat
     current: Actual
     edited: Editado
+    edited_by: Editado por
     edited_by_semi: "Editado por:"
     feedback: Comentarios
     follow: Seguir

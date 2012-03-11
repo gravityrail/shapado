@@ -48,6 +48,10 @@ ms:
     change_password: 
       submit: Tukar kata laluan saya
       title: Tukar kata laluan
+    check_custom_domain: 
+      reset_domain_button: Tidak, tolong setkan balik domain tersuai kepada %{domain}
+      title: Adakah domain tersuai anda berjalan dengan lancar?
+      working_domain_link: Ya, saya mendapati domain baru saya berjalan dengan lancar.
     create: 
       flash_error: Maaf, kami tidak dapat membuka akaun itu. Sila cuba lagi atau hubungi pentadbir (melalui pautan di atas).
       flash_notice: Terima kasih kerana mendaftar diri!
@@ -61,6 +65,8 @@ ms:
     form: 
       activities_notification: Terima pemberitahuan e-mel mengenai kegiatan sistem seperti lencana yang diraih, pengikut baru, dsb.
       avatar_tip: Tukar gambar profil anda dengan menggunakan Gravatar
+      check_domain: Periksa %{domain}
+      check_domain_title: Periksa domain tersuai kumpulan anda
       desktop_notification: Pemberitahuan desktop
       give_advice_notification: Terima pemberitahuan e-mel mengenai soalan-soalan dalam bidang anda
       information: Maklumat
@@ -105,6 +111,9 @@ ms:
       title: Pengguna %{user}
       unfollow: Berhenti mengikut
       views: kunjungan
+    show_json: 
+      edit_it: Klik di sini untuk mengisikan biodata anda dalam profil anda.
+      no_description: Pengguna ini belum mengisikan biodatanya.
     top_user: 
       connect: Sambung
       my_karma: "Karma saya: %{karma}"

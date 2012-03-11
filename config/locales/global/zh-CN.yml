@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Hzy980512
 zh-CN: 
   feeds: 
     feed: 饲料
@@ -24,10 +25,16 @@ zh-CN:
     preview: 预览
     previous: 前
     share: 共享
+    size: 大小
+    view: 查看
+    view_question: 查看问题
   models: 
     question: 问题
+  roles: 
+    moderator: 版主
   scaffold: 
     add: 添加
+    are_you_sure: 你确定？
     back: 返回
     cancel: 取消
     close: 关闭
@@ -46,3 +53,4 @@ zh-CN:
   time: 
     ago: "%{time} 前"
     today: 今天
+    yesterday: 昨天

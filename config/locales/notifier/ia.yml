@@ -39,8 +39,8 @@ ia:
     new_comment: 
       message: "%{user} commentava %{new_comment} sur le question %{link}"
     new_feedback: 
-      message1: Le usator %{user} <%{email}> ha inviate un retroaction
-      message2: Un usator anonyme ha inviate un retroaction ab le adresse IP %{ip}
+      message1: Le usator %{user} <%{email}> ha inviate un commentario
+      message2: Un usator anonyme ha inviate un commentario ab le adresse IP %{ip}
       message3: "Adresse de e-mail: %{email}"
       message4: "Subjecto: %{subject}"
     new_invitation: 

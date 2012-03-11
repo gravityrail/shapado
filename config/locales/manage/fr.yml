@@ -8,6 +8,7 @@
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
+# Author: Verdy p
 # Author: Zebulon84
 fr: 
   admin: 
@@ -129,4 +130,4 @@ fr:
         twitter_account_title: Configurez votre compte Twitter qui sera utilisé pour publier sur Twitter
       top_admin: 
         site: Site
-        title: Admin
+        title: Administrateur

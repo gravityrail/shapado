@@ -43,7 +43,6 @@ it:
       with_linked_in: con LinkedIn
       with_openid: OpenID
       with_twitter: con Twitter
-      with_user_pass: utente/password
     manage_navigation: 
       title_content: Contenuti del gruppo
       title_features: Caratteristiche del gruppo

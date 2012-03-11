@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Crochet.david
 # Author: DavidL
+# Author: Gomoko
 # Author: Od1n
 # Author: Patcito
 # Author: Peter17
@@ -30,9 +31,11 @@ fr:
         signup_type: "Quelles méthodes vos utilisateurs peuvent-ils utiliser pour s'inscrire :"
         state: État
         subdomain: URL
+        track_users: Demander aux utilisateurs leur emplacement physique
         wysiwyg_editor: Activer l'éditeur de texte convivial (présente à l'écran tel qu'à l'écrit)
     models: 
       default_tags_message: Vous ne pouvez pas utiliser plus de 10 tags par défaut.
+      duplicate_domain_message: Désolé, ce domaine a déjà été pris.
       group: Groupe
       groups: Groupes
       reputation_rewards_answer_constrain: La contrainte pour répondre à une récompense doit être négative

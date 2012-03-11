@@ -48,6 +48,10 @@ gl:
     change_password: 
       submit: Cambiar o contrasinal
       title: Cambiar o contrasinal
+    check_custom_domain: 
+      reset_domain_button: Non, restablecer o dominio personalizado a %{domain}
+      title: Funciona correctamente o seu novo dominio personalizado?
+      working_domain_link: Si, podo ver que o meu novo dominio funciona.
     create: 
       flash_error: Por desgraza, non podemos crear a conta. Inténteo de novo ou póñase en contacto cun administrador (a ligazón está enriba).
       flash_notice: Grazas por se rexistrar!
@@ -61,6 +65,8 @@ gl:
     form: 
       activities_notification: Recibir notificacións por correo electrónico sobre as actividades do sistema, como ganancia de insignias, novos seguidores etc.
       avatar_tip: Cambiar a imaxe do seu perfil usando o gravatar
+      check_domain: Comprobar %{domain}
+      check_domain_title: Comprobe os dominios personalizados dos seus grupos
       desktop_notification: Notificacións no escritorio
       give_advice_notification: Recibir notificacións por correo electrónico sobre as preguntas ligadas co seu campo de experiencia
       information: Información
@@ -105,6 +111,9 @@ gl:
       title: Usuario %{user}
       unfollow: Deixar de vixiar
       views: visitas
+    show_json: 
+      edit_it: Prema aquí para encher a súa biografía no seu perfil.
+      no_description: Este usuario aínda non encheu a súa biografía.
     top_user: 
       connect: Conectar
       my_karma: "O meu karma: %{karma}"

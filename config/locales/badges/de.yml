@@ -10,7 +10,18 @@ de:
       badges: Abzeichen
   badges: 
     index: 
-      description: Alle Abzeichen die man erhalten kann. Teile Dein Wissen und erhalte dafür Abzeichen.
+      all_tooltip: Alle goldenen, silbernen und bronzenen Abzeichen anzeigen.
+      bronze: Bronze
+      bronze_tooltip: Bronzene Abzeichen kann man einfach erhalten und sollen die Nutzer dazu ermutigen, sich zu beteiligen.
+      description: Je mehr Du beiträgst, indem Du Fragen stellst oder beantwortest, desto mehr Abzeichen wirst Du erhalten. Diese werden auf Deiner Profilseite angezeigt.
+      general: Normale Abzeichen
+      general_tooltip: Alle vordefinierten Abzeichen anzeigen.
+      gold: Gold
+      gold_tooltip: Goldene Abzeichen stellen die größte Belohnung dar und sind zudem die am schwierigsten zu erhaltenden. Nur die engagiertesten Nutzer erhalten diese Abzeichen.
+      silver: Silber
+      silver_tooltip: Silberne Abzeichen erhalten aktive Nutzer, die für eine ziemlich lange Zeit mitgewirkt haben.
+      tags: Markierungsabzeichen
+      tags_tooltip: Sofern Fragen mit X erhaltene Antworten markiert werden oder mehr als 100 positive Bewertungen erhalten haben, wird das Abzeichen X mit dem Namen der Markierung erstellt.
       title: Abzeichen
     shared: 
       addict: 

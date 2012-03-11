@@ -9,7 +9,18 @@ sr-LATN:
       badges: Značke
   badges: 
     index: 
-      description: Sve značke koje možete osvojiti. Delite svoje znanje i zaradite značke.
+      all_tooltip: Prikaži sve zlatne, srebrne i bronzane značke.
+      bronze: Bronza
+      bronze_tooltip: Bronzane značke se lako dobijaju i služe da podstaknu korisnike da učestvuju.
+      description: Što više učestvujete s pitanjima i odgovorima, to dobijate više znački. Značke će biti istaknute na vašem profilu.
+      general: Obične značke
+      general_tooltip: Prikaži sve zadate značke.
+      gold: Zlato
+      gold_tooltip: Zlatne značke su najvrednije nagrade, i zato se najteže dobijaju. Ovakve značke dobijaju samo najposvećeniji korisnici.
+      silver: Srebro
+      silver_tooltip: Srebrne značke dobijaju aktivni korisnici koji rade prilično dugo vremena.
+      tags: Označi značke
+      tags_tooltip: Kada pitanja označena sa X dobiju odgovore s više od 100 pozitivnih glasova, onda se stvara značka X s imenom te oznake.
       title: Značke
     shared: 
       addict: 

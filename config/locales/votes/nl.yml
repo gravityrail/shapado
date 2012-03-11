@@ -16,7 +16,7 @@ nl:
         no_user_more_votes: Meer dan %{votes} mensen hebben deze opmerking als positief beoordeeld. Klik om dat ook te doen.
         no_user_no_vote: Klik om deze opmerking als positief te beoordelen.
         no_user_one_vote: Eén gebruiker heeft deze opmerking als positief aangemerkt. Klik om dat ook te doen.
-        one_vote_two_users: U en een andere gebruiker hebben deze opmerking als positief beoordeeld.
+        one_vote_two_users: U en één andere gebruiker hebben deze opmerking als positief beoordeeld.
         one_vote_user: U bent de enige die deze opmerking als positief heeft beoordeeld.
     control: 
       have_voted_down: Klik om uw negatieve beoordeling te verwijderen

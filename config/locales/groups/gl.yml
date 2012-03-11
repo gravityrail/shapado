@@ -26,9 +26,11 @@ gl:
         signup_type: "Os métodos que os seus usuarios poden empregar para rexistrárense:"
         state: Estado
         subdomain: URL
+        track_users: Preguntar aos usuarios a súa localización física
         wysiwyg_editor: Activar o editor sinxelo
     models: 
       default_tags_message: Non pode empregar máis de 10 etiquetas por defecto
+      duplicate_domain_message: Sentímolo, o dominio xa está en uso.
       group: Grupo
       groups: Grupos
       reputation_rewards_answer_constrain: A restrición fronte a responder con recompensas debería ser negativa

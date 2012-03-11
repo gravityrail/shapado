@@ -29,9 +29,11 @@ nl:
         signup_type: "Via welke methoden kunnen uw gebruikers registreren:"
         state: Status
         subdomain: URL
+        track_users: Gebruikers vragen naar hun locatie
         wysiwyg_editor: Gebruiksvriendelijke tekstverwerker inschakelen
     models: 
-      default_tags_message: U kunt maximaal 10 standaardlabels hebben.
+      default_tags_message: U kunt maximaal 10 standaardlabels hebben
+      duplicate_domain_message: Dit domein is wordt al gebruikt.
       group: Groep
       groups: Groepen
       reputation_rewards_answer_constrain: De beperking voor antwoordonderscheidingen moet negatief zijn

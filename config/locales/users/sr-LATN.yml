@@ -48,6 +48,10 @@ sr-LATN:
     change_password: 
       submit: Promeni lozinku
       title: Promena lozinke
+    check_custom_domain: 
+      reset_domain_button: Ne radi. Koristi domen %{domain}
+      title: Da li radi vaš novi prilagođeni domen?
+      working_domain_link: Da. Ispod mogu da vidim kako novi domen radi.
     create: 
       flash_error: Nažalost, ne mogu da otvorim nalog. Pokušajte ponovo ili se obratite administratoru (veza je iznad).
       flash_notice: Hvala vam na upisu!
@@ -61,6 +65,8 @@ sr-LATN:
     form: 
       activities_notification: Primaj e-obaveštenja o sistemskim aktivnostima kao što su osvojene značke, novi pratioci itd.
       avatar_tip: Promenite sliku na profilu pomoću Gravatara
+      check_domain: Proveri %{domain}
+      check_domain_title: Proverite prilagođene domene vaše grupe
       desktop_notification: Obaveštenja na radnoj površini
       give_advice_notification: Primaj e-obaveštenja o pitanjima iz moje stručne oblasti
       information: Podaci
@@ -105,6 +111,9 @@ sr-LATN:
       title: Korisnik %{user}
       unfollow: Prestani s praćenjem
       views: pregleda
+    show_json: 
+      edit_it: Kliknite ovde da popunite biografiju na vašem profilu.
+      no_description: Korisnik još nije popunio svoju biografiju.
     top_user: 
       connect: Poveži me
       my_karma: "Moja karma: %{karma}"

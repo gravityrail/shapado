@@ -26,9 +26,11 @@ sr:
         signup_type: "На који начин се ваши корисници могу уписати:"
         state: Држава
         subdomain: Адреса
+        track_users: Захтевај физичко место корисника
         wysiwyg_editor: Омогући згодан кориснички уређивач
     models: 
       default_tags_message: Не можете имати више од десет подразумеваних ознака
+      duplicate_domain_message: Нажалост, домен је заузет.
       group: Група
       groups: Групе
       reputation_rewards_answer_constrain: Ограничење за награђивање одговора треба да буде негативно

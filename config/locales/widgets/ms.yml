@@ -94,6 +94,8 @@ ms:
       follow_user: + Ikuti pengguna
       followed_by: Diikuti oleh %{user}
       title: Orang dan Tag untuk Diikuti
+      unfollow_tag: "- Berhenti ikut tag"
+      unfollow_user: "- Berhenti ikut pengguna"
     tag_cloud: 
       description: Widget ini memaparkan awan tag
       title: Awan tag

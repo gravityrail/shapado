@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Mor
 # Author: Patcito
 # Author: Translationista
@@ -24,6 +25,7 @@ es:
     chat: Chat
     current: Actual
     edited: Editado
+    edited_by: Editado por
     edited_by_semi: "Editado por:"
     feedback: Feedback
     follow: Seguir

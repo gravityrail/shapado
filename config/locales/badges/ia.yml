@@ -9,7 +9,18 @@ ia:
       badges: Insignias
   badges: 
     index: 
-      description: Tote le insignias que tu pote ganiar. Reparti tu cognoscentia e merita insignias.
+      all_tooltip: Monstrar tote le insignias de auro, argento e bronzo.
+      bronze: Bronzo
+      bronze_tooltip: Le insignias de bronzo es facile a ganiar e incoragia le usatores a participar.
+      description: Quanto plus tu contribue per poner o responder a questiones, tanto plus insignias tu ganiara. Illos apparera in le pagina de tu profilo.
+      general: Insignias ordinari
+      general_tooltip: Monstrar tote le insignias predefinite.
+      gold: Auro
+      gold_tooltip: Le insignias de auro es le typo de recompensa le plus grande; illos es anque le plus difficile a obtener. Solmente le usatores le plus dedicate recipe iste recompensas.
+      silver: Argento
+      silver_tooltip: Le insignias de argento es ganiate per usatores active qui ha participate durante un assatis longe tempore.
+      tags: Insignias de etiquetta
+      tags_tooltip: Quando un question con etiquetta X recipe responsas con plus de 100 votos positive, un insignia X es create con le nomine de iste etiquetta.
       title: insignias
     shared: 
       addict: 

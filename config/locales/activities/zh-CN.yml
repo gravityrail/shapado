@@ -4,6 +4,10 @@
 # Author: Anakmalaysia
 # Author: Hzy980512
 zh-CN: 
+  activerecord: 
+    models: 
+      activities: 活动
+      activity: 活动
   activity: 
     asked: 已问
     changed: 已更改

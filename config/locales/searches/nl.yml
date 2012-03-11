@@ -7,7 +7,7 @@
 nl: 
   searches: 
     form: 
-      clear: Leegmaken
+      clear: Wissen
       search_box_title: Controleer of uw vraag al eerder gesteld is
       tags_tip: Gebruik [label] om labels aan te geven.
     index: 

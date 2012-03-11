@@ -48,6 +48,10 @@ sr:
     change_password: 
       submit: Промени лозинку
       title: Промена лозинке
+    check_custom_domain: 
+      reset_domain_button: Не ради. Користи домен %{domain}
+      title: Да ли ради ваш нови прилагођени домен?
+      working_domain_link: Да. Испод могу да видим како нови домен ради.
     create: 
       flash_error: Нажалост, не могу да отворим налог. Покушајте поново или се обратите администратору (веза је изнад).
       flash_notice: Хвала вам на упису!
@@ -61,6 +65,8 @@ sr:
     form: 
       activities_notification: Примај е-обавештења о системским активностима као што су освојене значке, нови пратиоци итд.
       avatar_tip: Промените слику на профилу помоћу Граватара
+      check_domain: Провери %{domain}
+      check_domain_title: Проверите прилагођене домене ваше групе
       desktop_notification: Обавештења на радној површини
       give_advice_notification: Примај е-обавештења о питањима из моје стручне области
       information: Подаци
@@ -85,7 +91,7 @@ sr:
       newest: Најновији
       newest_tooltip: Тек уписани корисници
       oldest: Најстарији
-      oldest_tooltip: Први учлањени корисници
+      oldest_tooltip: Први регистровани корисници
       reputation: Углед
       reputation_tooltip: Корисници поређани по највишем угледу
       title: Сви корисници
@@ -105,6 +111,9 @@ sr:
       title: Корисник %{user}
       unfollow: Престани с праћењем
       views: прегледа
+    show_json: 
+      edit_it: Кликните овде да попуните биографију на вашем профилу.
+      no_description: Корисник још није попунио своју биографију.
     top_user: 
       connect: Повежи ме
       my_karma: "Моја карма: %{karma}"

@@ -12,6 +12,7 @@ sr-LATN:
     changed: promenjeno
     created: napravljeno
     deleted: obrisano
+    destroyed: obrisano
     flagged: označeno
     requested_to_close: zahtevano da se zatvori
     requested_to_open: zahtevano da se otvori

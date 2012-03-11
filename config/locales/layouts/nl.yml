@@ -15,6 +15,7 @@ nl:
       collaborate: Samenwerken
       contributed: Bijgedragen
       faq: Veel gestelde vragen
+      feed: Gevolgd
       follow_us_and_share: Volg ons en delen
       followed: Gevolgd
       forgot: Vergeten?
@@ -26,6 +27,8 @@ nl:
       logout: Afmelden
       manage_ads: Advertenties beheren
       moderate: Modereren
+      need_to_signin: U moet eerst aanmelden.
+      not_member_join_dialog: U moet lid worden van %{group} om deze handeling te voltooien. Klik hier om dat te doen.
       now: Nu!
       openid: 
         explaination: "Als u wilt registreren of aanmelden, kies dan uw OpenID-provider:"
@@ -39,6 +42,7 @@ nl:
       settings: Voorkeuren
       signup: Registreren
       subscribe: Abonneren
+      success_joining_group: U bent nu lid van %{group}. Dank u wel!
       tags: Labels
       title: Vragen en antwoorden
       unanswered: Onbeantwoord

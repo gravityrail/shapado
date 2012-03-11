@@ -12,6 +12,7 @@ mk:
     changed: сменето
     created: создадено
     deleted: избришано
+    destroyed: избришано
     flagged: означено
     requested_to_close: побарано да се затвори
     requested_to_open: побарано да се отвори

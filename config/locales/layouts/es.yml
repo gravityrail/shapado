@@ -1,6 +1,8 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
+# Author: Bernardom
 # Author: Crazymadlover
 # Author: Mor
 # Author: Patcito
@@ -15,6 +17,7 @@ es:
       collaborate: Colabore
       contributed: Contribuido
       faq: Preguntas frecuentes
+      feed: Seguido
       follow_us_and_share: Siganos y comparta
       followed: Seguido
       forgot: ¿La olvidó?
@@ -26,6 +29,8 @@ es:
       logout: Salir
       manage_ads: Gestionar propagandas
       moderate: Moderar
+      need_to_signin: Primero debes iniciar sesión.
+      not_member_join_dialog: Necesita unirse a %{group} para completar esta acción, haga clic aquí para hacerlo.
       now: ya!
       openid: 
         explaination: "Si deseas abrir una cuenta o solamente conectarte, por favor seleccione tu provedor openid:"
@@ -39,6 +44,7 @@ es:
       settings: Configuración
       signup: Registrarse
       subscribe: Subscribirse
+      success_joining_group: Ahora eres un participante de %{group}, ¡gracias por unirte!
       tags: Etiquetas
       title: Preguntas & respuestas
       unanswered: Sin contestar

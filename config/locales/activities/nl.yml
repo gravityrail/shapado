@@ -12,6 +12,7 @@ nl:
     changed: gewijzigd
     created: aangemaakt
     deleted: verwijderd
+    destroyed: verwijderd
     flagged: gemarkeerd
     requested_to_close: verzocht om te sluiten
     requested_to_open: verzocht om te openen

@@ -26,6 +26,7 @@ nl:
     chat: Chat
     current: Huidige
     edited: Bewerkt
+    edited_by: Bewerkt door
     edited_by_semi: "Bewerkt door:"
     feedback: Terugkoppeling
     follow: Volgen

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Ebraminio
+# Author: Huji
 # Author: MindHammerGames
 fa: 
   layouts: 
@@ -19,7 +20,7 @@ fa:
       now: حالا!
       openid: 
         explaination: "اگر می‌خواهید ثبت نام کنید و یا وارد شوید لطفاً ارائه‌دهنده OpenID خود را انتخاب کنید:"
-      pages: صفحات
+      pages: صفحه‌ها
       questions: سوال‌ها
       questions_in: سوالات در
       questions_tagged: برچسب خورده با
@@ -41,7 +42,7 @@ fa:
       domain: دامنه
       general: عمومی
       members: اعضا
-      pages: صفحات
+      pages: صفحه‌ها
       properties: ویژگی‌ها
       reputation: شهرت
       rewards: پاداش

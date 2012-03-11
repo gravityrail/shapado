@@ -94,6 +94,8 @@ sr:
       follow_user: + Прати корисника
       followed_by: "Прати: %{user}"
       title: Људи и ознаке за праћење
+      unfollow_tag: – престаните да пратите ознаку
+      unfollow_user: – престаните да пратите корисника
     tag_cloud: 
       description: Овај елемент приказује облачић ознака.
       title: Облачић ознака

@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Crazymadlover
 # Author: Diego Grez
 # Author: McDutchie
@@ -30,9 +31,11 @@ es:
         signup_type: "Los métodos que pueden utilizar los usuarios para registrarse:"
         state: Estado
         subdomain: URL
+        track_users: Pedir a los usuarios su ubicación física
         wysiwyg_editor: Habilitar un editor de texto mas amigable para el usuario
     models: 
       default_tags_message: No se puede tener mas de 10 tags por defecto.
+      duplicate_domain_message: Lo sentimos, este dominio ya ha sido tomado.
       group: Grupo
       groups: Grupos
       reputation_rewards_answer_constrain: La restricción para responder a las recompensas deben ser negativa

@@ -48,6 +48,10 @@ ia:
     change_password: 
       submit: Cambiar mi contrasigno
       title: Cambiar contrasigno
+    check_custom_domain: 
+      reset_domain_button: No, per favor reinitialisa le dominio personalisate a %{domain}
+      title: Esque tu nove dominio personalisate functiona?
+      working_domain_link: Si, io pote vider que mi nove dominio functiona hic infra.
     create: 
       flash_error: Infelicemente, nos non poteva crear iste conto. Per favor reproba, o contacta un administrator (le ligamine es hic supra).
       flash_notice: Gratias pro registrar te!
@@ -61,6 +65,8 @@ ia:
     form: 
       activities_notification: Reciper notificationes per e-mail super activitates de systema como insignias ganiate, nove sequitores, etc.
       avatar_tip: Cambiar le imagine de tu profilo usante Gravatar
+      check_domain: Verificar %{domain}
+      check_domain_title: Verificar le dominios personalisate de tu gruppo
       desktop_notification: Notificationes de scriptorio
       give_advice_notification: Reciper notificationes per e-mail super questiones in tu campo de expertise
       information: Information
@@ -105,6 +111,9 @@ ia:
       title: Usator %{user}
       unfollow: Non plus sequer
       views: visitas
+    show_json: 
+      edit_it: Clicca hic pro completar le biographia in tu profilo.
+      no_description: Iste usator non ha ancora completate su biographia.
     top_user: 
       connect: Connecter
       my_karma: "Mi karma: %{karma}"

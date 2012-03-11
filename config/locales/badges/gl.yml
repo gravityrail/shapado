@@ -9,7 +9,18 @@ gl:
       badges: Insignias
   badges: 
     index: 
-      description: Todas as insignias que pode gañar. Comparta os seus coñecementos para conseguilas.
+      all_tooltip: Mostrar todas as insignias de ouro, prata e bronce.
+      bronze: Bronce
+      bronze_tooltip: As insignias de bronce son fáciles de gañar e animan aos usuarios a participar.
+      description: Canto máis contribúa formulando preguntas ou respondéndoas, máis insignias gañará. Todas elas aparecerán na páxina do seu perfil.
+      general: Insignias ordinarias
+      general_tooltip: Mostrar todas as insignias predefinidas.
+      gold: Ouro
+      gold_tooltip: As insignias de ouro son a mellor recompensa, pero tamén as máis difíciles de obter. Unicamente os usuarios máis dedicados consiguen esta recompensa.
+      silver: Prata
+      silver_tooltip: As insignias de prata gáñanas os usuarios activos que se implican durante un longo período de tempo.
+      tags: Insignias de etiquetas
+      tags_tooltip: Cando unha pregunta etiquetada con X recibe respostas con máis de 100 votos positivos, créase unha insignia X co nome desa etiqueta.
       title: Insignias
     shared: 
       addict: 

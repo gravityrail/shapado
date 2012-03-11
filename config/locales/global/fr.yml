@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gomoko
 # Author: Hashar
 # Author: McDutchie
 # Author: Od1n
@@ -29,11 +30,12 @@ fr:
     chat: Tchat
     current: Actuel
     edited: Modifié
+    edited_by: Modifié par
     edited_by_semi: "Modifié par :"
     feedback: Avis
     follow: Suivre
     followed_by: "Suivie par :"
-    following: Suit
+    following: Suivi
     from: depuis %{site}
     group_not_found: La page %{url} n'existe pas
     home: Accueil
@@ -49,7 +51,7 @@ fr:
     sign_up: S'inscrire
     size: Taille
     sort_by: "Trier par :"
-    tags_label: "Tags:"
+    tags_label: "Balises :"
     tos: CGU
     unfollow: Ne plus suivre
     unknown_place: Inconnu

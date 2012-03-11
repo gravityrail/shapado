@@ -43,7 +43,6 @@ fi:
       with_linked_in: LinkedInillä
       with_openid: OpenID
       with_twitter: Twitterillä
-      with_user_pass: käyttäjä / salasana
     manage_navigation: 
       title_content: Ryhmän sisältöä
       title_features: Ryhmän ominaisuudet

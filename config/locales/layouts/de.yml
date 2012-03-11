@@ -12,6 +12,7 @@ de:
       collaborate: Mitmachen
       contributed: Bearbeitet
       faq: Häufige Fragen
+      feed: Gefolgt
       follow_us_and_share: Folge uns und mache auf uns aufmerksam
       followed: Beobachtet
       forgot: Vergessen?
@@ -23,6 +24,8 @@ de:
       logout: Abmelden
       manage_ads: Anzeigen verwalten
       moderate: Moderieren
+      need_to_signin: Du musst Dich zuerst anmelden.
+      not_member_join_dialog: Du musst der Gruppe %{group} beitreten, um diese Aktion ausführen zu können. Klicke hier, um dies zu tun.
       now: jetzt!
       openid: 
         explaination: "Sofern Du Dich nicht registrieren oder anmelden möchtest, kannst Du auch Deinen OpenID-Anbieter auswählen:"
@@ -36,6 +39,7 @@ de:
       settings: Einstellungen
       signup: Registrieren
       subscribe: Abonnieren
+      success_joining_group: Du bist nun Mitglied der Gruppe %{group}. Vielen Dank für Deinen Beitritt.
       tags: Stichwörter
       title: Fragen und Antworten
       unanswered: Unbeantwortet

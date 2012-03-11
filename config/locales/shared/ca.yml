@@ -43,7 +43,6 @@ ca:
       with_linked_in: amb LinkedIn
       with_openid: OpenID
       with_twitter: amb Twitter
-      with_user_pass: l'usuari/contrasenya
     manage_navigation: 
       title_content: Grup de contingut
       title_features: Trets de grup

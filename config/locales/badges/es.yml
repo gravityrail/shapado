@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Crazymadlover
 # Author: Mor
 # Author: Patcito
@@ -12,7 +13,18 @@ es:
       badges: insignias
   badges: 
     index: 
-      description: Todas las insignias que puedes ganar. comparte tu conocimiento, gana placas.
+      all_tooltip: Mostrar todas las insignias de oro, plata y bronce.
+      bronze: Bronce
+      bronze_tooltip: Las insignias de bronce son fáciles de ganar y animan a los usuarios a participar.
+      description: Cuantas más contribuciones realices, preguntando o respondiendo a preguntas, serás recompensado con más insignias. Estas aparecerán en tu página de perfil.
+      general: Insignias regulares
+      general_tooltip: Mostrar todas las insignias predefinidas.
+      gold: Oro
+      gold_tooltip: Las insignias de oro son el mayor tipo de recompensa, también son las más difíciles de obtener. Sólo los usuarios más dedicados obtienen estas recompensas.
+      silver: Plata
+      silver_tooltip: Las insignias de plata son ganadas por usuarios activos que han participado durante bastante tiempo.
+      tags: Insignias de etiqueta
+      tags_tooltip: Cuando las preguntas etiquetadas con X obtienen respuestas de más de 100 votos positivos (upvotes), se crea una insignia X con el nombre de esa etiqueta.
       title: Insignias
     shared: 
       addict: 

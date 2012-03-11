@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Hzy980512
 zh-CN: 
   activerecord: 
     attributes: 
@@ -13,7 +14,7 @@ zh-CN:
         fb_button: 启用 Facebook 类似按钮（不隐私友好）
         forum: 允许用户通过多个答案
         group_created_by: 通过创建
-        language: 语言
+        language: 默认语言
         legend: 图例
         logo: 徽标
         may_contain_adult_content: 此网站可能包含成人内容
@@ -28,6 +29,8 @@ zh-CN:
       group: 集团
       groups: 组
   groups: 
+    connect_group_to_twitter: 
+      failed_twitter_connection: 抱歉，出了点问题。请再试试。
     create: 
       flash_notice: 已成功创建您的组。您现在可以开始配置它。
     form: 

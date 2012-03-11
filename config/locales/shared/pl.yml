@@ -27,7 +27,6 @@ pl:
       with_linked_in: z LinkedIn
       with_openid: OpenID
       with_twitter: z Twittera
-      with_user_pass: użytkownik/hasło
     manage_navigation: 
       title_content: Zawartość grupy
     name: Nazwa

@@ -22,6 +22,7 @@ sr:
     chat: Ћаскање
     current: Текуће
     edited: Уређено
+    edited_by: "Уредио:"
     edited_by_semi: "Уредио:"
     feedback: Повратне информације
     follow: Прати

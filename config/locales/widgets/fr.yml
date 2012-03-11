@@ -96,6 +96,8 @@ fr:
       follow_user: + Suivre l'utilisateur
       followed_by: Suivi par %{user}
       title: Personnes et balises à suivre
+      unfollow_tag: "- Balise ne plus suivre"
+      unfollow_user: "- Ne plus suivre l'utilisateur"
     tag_cloud: 
       description: Ce widget montre un nuage de tags
       title: Nuage de tags

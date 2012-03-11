@@ -50,6 +50,10 @@ de:
     change_password: 
       submit: Mein Passwort ändern
       title: Passwort ändern
+    check_custom_domain: 
+      reset_domain_button: Nein, bitte die benutzerdefinierte Domain auf %{domain} zurückstellen.
+      title: Ist Deine neue benutzerdefinierte Domain funktionsfähig?
+      working_domain_link: Ja, ich kann unten erkennen, dass meine neue Domain funktionsfähig ist.
     create: 
       flash_error: Wir konnten dieses Nutzerkonto leider nicht einrichten. Versuche es erneut oder kontaktiere einen Administrator (Link s.o.).
       flash_notice: Vielen Dank für die Anmeldung!
@@ -63,6 +67,8 @@ de:
     form: 
       activities_notification: E-Mail-Benachrichtigungen zu Aktivitäten, z. B. zu erhaltenen Auszeichnungen, neuen Anhängern, etc.
       avatar_tip: Ändere Dein Profilbild mit „Gravatar“
+      check_domain: Überprüfe %{domain}
+      check_domain_title: Überprüfe die benutzerdefinierten Domains meiner Gruppe
       desktop_notification: Desktop-Benachrichtigungen
       give_advice_notification: E-Mail-Benachrichtigungen zu Fragen in Deinem Fachgebiet
       information: Nutzerinformationen
@@ -107,6 +113,9 @@ de:
       title: Nutzer %{user}
       unfollow: Nicht mehr beachten
       views: Aufrufe
+    show_json: 
+      edit_it: Klicke hier, um Deinen Lebenslauf auf Deinem Profil anzugeben.
+      no_description: Dieser Nutzer hat seinen Lebenslauf noch nicht angegeben.
     top_user: 
       connect: Verbinden
       my_karma: "Mein Karma: %{karma}"

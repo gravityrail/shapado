@@ -95,6 +95,8 @@ nl:
       follow_user: + Gebruiker volgen
       followed_by: Gevolgd door %{user}
       title: Mensen en labels om te volgen
+      unfollow_tag: "- Label niet langer volgen"
+      unfollow_user: "- Gebruiker niet langer volgen"
     tag_cloud: 
       description: In deze widget wordt de woordenwolk weergegeven
       title: Woordwolk

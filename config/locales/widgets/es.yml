@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: McDutchie
 # Author: Patcito
 # Author: Vivaelcelta
@@ -96,6 +97,8 @@ es:
       follow_user: + Seguir usuario
       followed_by: Seguido por %{user}
       title: Las personas y etiquetas para seguir
+      unfollow_tag: Dejar de seguir etiqueta
+      unfollow_user: -Dejar de seguir al usuario
     tag_cloud: 
       description: Este widget muestra una nube de etiquetas
       title: Nube de etiquetas

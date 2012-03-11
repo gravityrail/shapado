@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Ebraminio
+# Author: Huji
 # Author: MindHammerGames
 fa: 
   errors: 
@@ -17,7 +18,7 @@ fa:
       explanation: ممکن است آدرس صفحه را اشتباه نوشته باشید یا آدرس صفحه تغییر کرده باشد.
       title: صفحه یافت نشد
     options_label: چند چیز دیگر برای امتحان کردن
-    search: جست و جو
+    search: جستجو
     unprocessable_entity: 
       explanation: ممکن است سعی کرده باشید چیزی را تغییر دهید که حق دسترسی به آن را نداشتید.
       title: تغییری که می‌خواستید اعمال کنید رد شد.

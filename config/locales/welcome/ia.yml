@@ -15,7 +15,7 @@ ia:
       email_description: Per favor forni tu adresse de e-mail a fin que nos pote responder a tu message
       feedback_description: Description
       feedback_title: Titulo
-      title: Invia tu retroaction
+      title: Inviar tu commentario
     index: 
       active: Active
       browse_all_or_by_tags: Vide le %{full_list_of_questions} o %{browse_by_tags}

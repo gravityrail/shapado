@@ -94,6 +94,8 @@ gl:
       follow_user: + Seguir o usuario
       followed_by: Seguido por %{user}
       title: Persoas e etiquetas a seguir
+      unfollow_tag: "- Deixar de seguir a etiqueta"
+      unfollow_user: "- Deixar de seguir o usuario"
     tag_cloud: 
       description: Este widget mostra unha nube de etiquetas
       title: Nube de etiquetas

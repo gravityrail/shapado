@@ -9,7 +9,18 @@ ms:
       badges: Lencana
   badges: 
     index: 
-      description: Semua lencana yang boleh anda raih. Kongsi pengetahuan untuk meraih lencana.
+      all_tooltip: Tunjukkan semua lencana emas, perak dan gangsa.
+      bronze: Gangsa
+      bronze_tooltip: Lencana gangsa mudah diraih dan mendorong penyertaan pengguna.
+      description: Makin kerap anda menyumbang dengan menanyakan atau menjawab soalan, makin banyak lencana yang anda raih. Ini akan ditunjukkan pada laman profil anda.
+      general: Lencana biasa
+      general_tooltip: Tunjukkan semua lencana pratakrif.
+      gold: Emas
+      gold_tooltip: Lencana emas adalah ganjaran yang paling besar, dan juga paling susah untuk diraih. Ganjaran ini adalah untuk pengguna yang paling berdedikasi sahaja.
+      silver: Perak
+      silver_tooltip: Lencana perak diraih oleh pengguna aktif yang cukup lama melibatkan diri.
+      tags: Lencana teg
+      tags_tooltip: Apabila soalan-soalan yang bertag X menerima jawapan yang diberi lebih daripada 100 undi setuju, maka terhasilnya lencana X bersama nama tag berkenaan.
       title: lencana
     shared: 
       addict: 
@@ -86,7 +97,7 @@ ms:
         name: Tok Guru
       inquirer: 
         description: Menanyakan soalan buat julung kalinya
-        name: Penanya
+        name: Penyoal
       interesting_person: 
         description: Diikuti oleh lebih daripada 10 pengikut
         name: Baik orangnya

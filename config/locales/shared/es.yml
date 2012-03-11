@@ -1,6 +1,7 @@
 # Messages for Spanish (Español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Patcito
 es: 
   shared: 
@@ -22,26 +23,42 @@ es:
         description: 
           text: ¡Sé el primero en %{action_link}!
         title: ¡Lo siento! No hay mucho que ver aquí.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Haga clic aquí para ver las preguntas en todos los idiomas.
+          text: <a href='%{url}' class='lang-option', data-language='any' > %{action_link}</a>
+        title: Lo sentimos, no hay preguntas disponibles en este idioma.
+      filtered_questions: 
+        description: 
+          action_link: Haga clic aquí mostrar todas las preguntas
+          text: <a href='%{url}'>%{action_link}</a>
+        title: Lo sentimos, no hay preguntas disponibles con este filtro.
       questions: 
         description: 
           action_link: Pregunte
+          text: ¡Sea el primero en <a href="%{url}"> %{action_link}</a>!
       themes: 
         description: 
           action_link: ahora
           text: crear uno %{action_link}
         title: No ha creado ningun tema por ahora.
+    filter: "Filtro:"
+    language: "Idioma:"
+    language_filter_tooltip: Pruebe con otro idioma.
+    languages: "Idiomas:"
     layout: 
       footer: 
         cc_footer: Todo el contenido Shapado.com y los datos están disponibles bajo la licencia %{cc_link}
         powered_by: Desarrollado por %{source_link} %{version} bajo la %{agpl_link}
     login_drop_down: 
+      sign_up_user_pass: Regístrese con un correo electrónico y contraseña
+      with_email_pass: Identifíquese con su correo electrónico
       with_facebook: con Facebook
       with_google: con Google
       with_identica: con Identi.ca
       with_linked_in: con LinkedIn
       with_openid: OpenID
       with_twitter: con Twitter
-      with_user_pass: usuario/contraseña
     manage_navigation: 
       title_content: Contenido del grupo
       title_features: Funcionalidades del grupo
@@ -59,3 +76,4 @@ es:
       admin: Administrar
       logged_as: Conectado como %{login}
       user_page: Mi página
+    view_mode: "Modo de visualización:"

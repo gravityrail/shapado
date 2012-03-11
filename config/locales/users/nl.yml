@@ -51,6 +51,10 @@ nl:
     change_password: 
       submit: Mijn wachtwoord wijzigen
       title: Wachtwoord wijzigen
+    check_custom_domain: 
+      reset_domain_button: Nee, stel mijn domein opnieuw in op %{domain}
+      title: Werkt uw eigen domein?
+      working_domain_link: Ja, ik zie hier beneden dat mijn nieuwe domein werkt.
     create: 
       flash_error: Het was niet mogelijk die gebruiker aan te maken. Probeer het opnieuw of neem contact op met een beheerder via de verwijzing hierboven.
       flash_notice: Bedankt voor uw aanmelding!
@@ -64,6 +68,8 @@ nl:
     form: 
       activities_notification: E-mails ontvangen over systeemactiviteiten zoals verdiende speldjes, nieuwe volgers, enzovoort.
       avatar_tip: Uw profielafbeelding wijzigen via gravatar
+      check_domain: Controleer %{domain}
+      check_domain_title: Controleer het domein van uw groep
       desktop_notification: Desktopmeldingen
       give_advice_notification: E-mail ontvangen over vragen in uw expertisegebied
       information: Gegevens
@@ -108,6 +114,9 @@ nl:
       title: Gebruiker %{user}
       unfollow: Niet langer volgen
       views: x bekeken
+    show_json: 
+      edit_it: Klik hier om uw profielpagina in te vullen.
+      no_description: Deze gebruiker heeft nog geen profielpagina aangemaakt.
     top_user: 
       connect: Koppelen
       my_karma: "Mijn karma: %{karma}"

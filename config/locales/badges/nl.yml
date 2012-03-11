@@ -14,7 +14,18 @@ nl:
       badges: Speldjes
   badges: 
     index: 
-      description: Alle speldjes die u kunt verdienen. Deel uw kennis, verdien speldjes.
+      all_tooltip: Alle gouden, zilveren en bronzen speldjes weergeven.
+      bronze: Brons
+      bronze_tooltip: Bronzen speldjes zijn redelijk gemakkelijk te verkrijgen en moedigen gebruikers aan om deel te nemen.
+      description: Hoe meer u bijdraagt door vragen te stellen en vragen te beantwoorden, hoe meer speldjes u verdient. Deze worden weergegeven op uw profielpagina.
+      general: Gewone speldjes
+      general_tooltip: Alle voorgedefinieerde speldjes weergeven.
+      gold: Goud
+      gold_tooltip: Gouden speldjes zijn de hoogste beloning en het moeilijkst te verkrijgen. Alleen de meest toegewijde gebruikers krijgen deze beloningen.
+      silver: Zilver
+      silver_tooltip: Zilver speldjes worden toegekend aan actieve gebruikers die een vrij lange tijd betrokken zijn geweest.
+      tags: Labelspeldjes
+      tags_tooltip: Als vragen die gelabeld zijn met X antwoorden krijgen met meer dan 100 positieve beoordelingen, dan wordt een speldje X aangemaakt met de naam van dat label.
       title: Speldjes
     shared: 
       addict: 

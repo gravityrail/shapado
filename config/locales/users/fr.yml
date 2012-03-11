@@ -53,6 +53,10 @@ fr:
     change_password: 
       submit: Changer mon mot de passe
       title: Changer le mot de passe
+    check_custom_domain: 
+      reset_domain_button: Non, veuillez réinitialiser le domaine personnalisé en %{domain}
+      title: Votre nouveau domaine personnalisé fonctionne-t-il?
+      working_domain_link: Oui, je peux voir que mon nouveau domaine fonctionne ci-dessous.
     create: 
       flash_error: Désolé, nous n'avons pas pu configurer votre compte. Essayez encore s'il vous plait, ou contactez un administrateur (le lien est ci-dessus).
       flash_notice: Merci de vous être enregistré !
@@ -66,6 +70,8 @@ fr:
     form: 
       activities_notification: Recevoir des notifications via courrier électronique sur les activités système telles que les insignes gagnées, les nouveaux suiveurs, etc.
       avatar_tip: Changer l'image de votre profil en utilisant gravatar
+      check_domain: Vérifier %{domain}
+      check_domain_title: Vérifiez vos domaines de groupes personnalisées
       desktop_notification: Notifications du bureau
       give_advice_notification: Recevoir des notifications via courrier électronique sur les questions liées à votre champ d'expertise
       information: Information
@@ -110,6 +116,9 @@ fr:
       title: Utilisateur %{user}
       unfollow: Ne plus suivre
       views: vues
+    show_json: 
+      edit_it: Cliquez ici pour remplir votre bio sur votre profil.
+      no_description: Cet utilisateur n'a pas encore rempli sa biographie.
     top_user: 
       connect: Se connecter
       my_karma: "Mon karma: %{karma}"

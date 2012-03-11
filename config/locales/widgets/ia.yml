@@ -94,6 +94,8 @@ ia:
       follow_user: + Sequer usator
       followed_by: Sequite per %{user}
       title: Personas e etiquettas a sequer
+      unfollow_tag: "- Non plus sequer iste etiquetta"
+      unfollow_user: "- Non plus sequer iste usator"
     tag_cloud: 
       description: Iste widget monstra un nube de etiquettas
       title: Etiquettario

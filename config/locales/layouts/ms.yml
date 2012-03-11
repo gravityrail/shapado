@@ -12,6 +12,7 @@ ms:
       collaborate: Kerjasama
       contributed: Disumbangkan
       faq: Soalan Lazim
+      feed: Diikuti
       follow_us_and_share: Ikuti kami dan berkongsi
       followed: Diikuti
       forgot: Lupa?
@@ -23,6 +24,8 @@ ms:
       logout: Log keluar
       manage_ads: Uruskan iklan
       moderate: Kawal selia
+      need_to_signin: Anda perlu mendaftar diri terlebih dahulu.
+      not_member_join_dialog: Anda perlu menyertai %{group} untuk melengkapkan tindakan ini; klik di sini untuk berbuat demikian.
       now: sekarang!
       openid: 
         explaination: "Jika anda ingin mendaftar atau sekadar log masuk, sila pilih pembekal OpenID anda:"
@@ -36,6 +39,7 @@ ms:
       settings: Tetapan
       signup: Daftar diri
       subscribe: Langgan
+      success_joining_group: Anda kini menganggotai %{group}; terima kasih atas penyertaan anda!
       tags: Tag
       title: Soalan & Jawapan
       unanswered: Tak terjawab

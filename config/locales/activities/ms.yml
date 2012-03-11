@@ -12,6 +12,7 @@ ms:
     changed: diubah
     created: dicipta
     deleted: dihapuskan
+    destroyed: dihapuskan
     flagged: dibenderakan
     requested_to_close: diminta supaya ditutup
     requested_to_open: diminta supaya dibuka

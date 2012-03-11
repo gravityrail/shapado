@@ -22,26 +22,42 @@ ms:
         description: 
           text: Jadilah yang pertama untuk %{action_link}!
         title: Maaf! Tidak banyak perkara untuk dilihat di sini.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Klik di sini untuk membaca soalan-soalan dalam semua bahasa.
+          text: <a href='%{url}' class='lang-option', data-language='any' > %{action_link}</a>
+        title: Maaf, tiada soalan yang ada dalam bahasa ini.
+      filtered_questions: 
+        description: 
+          action_link: Klik di sini untuk memaparkan semua soalan
+          text: <a href='%{url}'>%{action_link}</a>
+        title: Maaf, tiada soalan yang ada dalam tapisan ini.
       questions: 
         description: 
           action_link: tanyakan soalan
+          text: Jadilah yang pertama untuk <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 
           action_link: sekarang
           text: buat satu %{action_link}
         title: Anda belum mencipta apa-apa tema buat sekarang.
+    filter: "Penapis:"
+    language: "Bahasa:"
+    language_filter_tooltip: Cuba versi bahasa lain.
+    languages: "Bahasa:"
     layout: 
       footer: 
         cc_footer: Segala kandungan dan data Shapado.com disediakan di bawah lesen %{cc_link}
         powered_by: Dikuasakan oleh %{source_link} %{version} di bawah %{agpl_link}
     login_drop_down: 
+      sign_up_user_pass: Daftar diri dengan e-mel/kata laluan
+      with_email_pass: Daftar masuk dengan e-mel anda
       with_facebook: dengan Facebook
       with_google: dengan Google
       with_identica: dengan Identi.ca
       with_linked_in: dengan LinkedIn
       with_openid: OpenID
       with_twitter: dengan Twitter
-      with_user_pass: pengguna/kata laluan
     manage_navigation: 
       title_content: Kandungan kumpulan
       title_features: Ciri-ciri kumpulan
@@ -59,3 +75,4 @@ ms:
       admin: Pentadbir
       logged_as: Log masuk sebagai %{login}
       user_page: Laman saya
+    view_mode: "Ragam paparan:"

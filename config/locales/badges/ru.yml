@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Eleferen
+# Author: Express2000
 # Author: Lockal
 ru: 
   activerecord: 
@@ -10,7 +11,7 @@ ru:
       badges: Беджи
   badges: 
     index: 
-      description: Все беджи, которые можно заработать. Делитесь своими знаниями — получайте беджи.
+      description: Чем больше твой вклад в задавании и ответах на вопросы, тем больше у тебя значков. Значки будут отображаться на странице твоего профиля.
       title: беджи
     shared: 
       addict: 

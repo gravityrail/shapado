@@ -3,9 +3,11 @@
  *
  * Translators:
  *  - Hydra
+ *  - Hzy980512
  */
 
 var I18n = {
-	on_leave_page: "您可能会丢失所做的更改"
+	on_leave_page: "您可能会丢失所做的更改",
+	loading: "载入中..."
 };
 

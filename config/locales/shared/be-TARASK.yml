@@ -42,7 +42,6 @@ be-TARASK:
       with_linked_in: з LinkedIn
       with_openid: OpenID
       with_twitter: з Twitter
-      with_user_pass: карыстальнік/пароль
     manage_navigation: 
       title_content: Склад групы
       title_features: Магчымасьці групы

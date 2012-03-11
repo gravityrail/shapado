@@ -12,6 +12,7 @@ gl:
     changed: modificou
     created: creou
     deleted: borrou
+    destroyed: borrou
     flagged: marcou
     requested_to_close: solicitou o peche
     requested_to_open: solicitou a apertura

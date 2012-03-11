@@ -26,9 +26,11 @@ ms:
         signup_type: "Kaedah-kaedah yang boleh digunakan oleh pengguna anda untuk mendaftar:"
         state: Negara
         subdomain: URL
+        track_users: Tanyakan lokasi fizikal pengguna
         wysiwyg_editor: Hidupkan alat sunting mesra pengguna
     models: 
       default_tags_message: Anda tidak boleh mempunyai lebih daripada 10 tag sediaan
+      duplicate_domain_message: Maaf, domain ini sudah pun diambil
       group: Kumpulan
       groups: Kumpulan
       reputation_rewards_answer_constrain: Had ganjaran menjawab mestilah negatif

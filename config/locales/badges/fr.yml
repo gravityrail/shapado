@@ -1,6 +1,7 @@
 # Messages for French (Français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gomoko
 # Author: Hashar
 # Author: IAlex
 # Author: Od1n
@@ -15,7 +16,18 @@ fr:
       badges: Insignes
   badges: 
     index: 
-      description: Liste des insignes que vous pouvez gagner. Partagez votre connaissance, gagnez des insignes.
+      all_tooltip: Afficher toutes les décorations or, argent et bronze.
+      bronze: Bronze
+      bronze_tooltip: Les décorations de bronze sont facile à gagner et encouragent les utilisateurs à participer.
+      description: Plus vous contribuez en posant des questions ou en y répondant, plus vous obtiendrez de décorations en récompense. Elles seront affichées sur votre page de profil.
+      general: Décorations ordinaires
+      general_tooltip: Afficher toutes les décorations prédéfinies.
+      gold: Or
+      gold_tooltip: Les décorations d'or sont la plus grande forme de récompense, elles sont aussi les plus difficiles à obtenir. Seuls les utilisateurs les plus assidus obtiendront ces récompenses.
+      silver: Argent
+      silver_tooltip: Les décorations d'argent sont gagnées par des utilisateurs actifs qui ont été impliqués depuis un assez long temps.
+      tags: Balise de décorations
+      tags_tooltip: Quand les questions marquées avec X obtiennent des réponses de plus de 100 votants, une décoration X est créée avec le nom de cette balise.
       title: insignes
     shared: 
       addict: 

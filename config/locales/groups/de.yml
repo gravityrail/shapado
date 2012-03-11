@@ -27,9 +27,11 @@ de:
         signup_type: "Welche Methode dürfen die Nutzer verwenden, um sich zu registrieren:"
         state: Land
         subdomain: URL
+        track_users: Frage Nutzer nach ihrem Standort
         wysiwyg_editor: Nutzerfreundlichen Editor aktivieren
     models: 
       default_tags_message: Du kannst nicht mehr als 10 Standard-Stichwörter verwenden
+      duplicate_domain_message: Diese Domain wird leider schon genutzt.
       group: Gruppe
       groups: Gruppen
       reputation_rewards_answer_constrain: Die Einschränkung Auszeichnungen beantworten zu können sollte negativ sein

@@ -94,6 +94,8 @@ sr-LATN:
       follow_user: + Prati korisnika
       followed_by: "Prati: %{user}"
       title: Ljudi i oznake za praćenje
+      unfollow_tag: – prestanite da pratite oznaku
+      unfollow_user: – prestanite da pratite korisnika
     tag_cloud: 
       description: Ovaj element prikazuje oblačić oznaka.
       title: Oblačić oznaka

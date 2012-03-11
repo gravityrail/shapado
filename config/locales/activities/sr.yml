@@ -12,6 +12,7 @@ sr:
     changed: промењено
     created: направљено
     deleted: обрисано
+    destroyed: обрисано
     flagged: означено
     requested_to_close: захтевано да се затвори
     requested_to_open: захтевано да се отвори

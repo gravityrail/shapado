@@ -26,9 +26,11 @@ ia:
         signup_type: "Le methodos que tu usatores pote usar pro crear un conto:"
         state: Stato
         subdomain: URL
+        track_users: Demandar al usatores lor ubication physic
         wysiwyg_editor: Activar le editor facile a usar
     models: 
       default_tags_message: Tu non pote haber plus de 10 etiquettas predefinite
+      duplicate_domain_message: Iste dominio es jam in uso.
       group: Gruppo
       groups: Gruppos
       reputation_rewards_answer_constrain: Le restriction pro premios de responsa debe esser negative

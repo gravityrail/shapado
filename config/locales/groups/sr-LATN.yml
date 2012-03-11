@@ -26,9 +26,11 @@ sr-LATN:
         signup_type: "Na koji način se vaši korisnici mogu upisati:"
         state: Država
         subdomain: Adresa
+        track_users: Zahtevaj fizičko mesto korisnika
         wysiwyg_editor: Omogući zgodan korisnički uređivač
     models: 
       default_tags_message: Ne možete imati više od deset podrazumevanih oznaka
+      duplicate_domain_message: Nažalost, domen je zauzet.
       group: Grupa
       groups: Grupe
       reputation_rewards_answer_constrain: Ograničenje za nagrađivanje odgovora treba da bude negativno
