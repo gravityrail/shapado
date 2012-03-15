@@ -58,7 +58,6 @@ module Shapado
         Rails.logger.info "Adding #{action} activity for #{self.class} with #{opts.inspect}"
 
         callback = self.class.trackable_opts[:callback] ? self.class.trackable_opts[:callback] : nil
-        activity = Activity.where(conds).desc(:created_at).first
 
         group_id = self[:group_id] || Thread.current[:current_group].try(:id)
         user_id = Thread.current[:current_user].try(:id) || self[:user_id]
@@ -70,6 +69,8 @@ module Shapado
           :user_id => user_id,
           :trackable_id => self.id
         }
+
+        activity = Activity.where(conds).desc(:created_at).first
 
         if target
           conds[:target_id] = target.id
