@@ -17,7 +17,7 @@ Auth = function() {
   }
 
   function positionDropdown() {
-    if(Ui.offline()){
+    if(Ui.offline() && !Ui.notMember()){
       $('.providers-list').show().offset({left: $('.offline').offset().left+$('.offline').width()-$('.providers-list').width()}).hide();
         //$('.providers-list').show().offset({left: $('body').width()/2-$('#column2').width()/2}).css({width: '290px'});
     }
