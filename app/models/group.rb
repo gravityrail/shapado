@@ -281,7 +281,7 @@ class Group
     if request.path =~ /\/(logo|big|medium|small|css|favicon)\/([^\/\.?]+)/
       @group = Group.find($2)
 
-      logo = @group.has_logo? ? @group.logo : Shapado::FileWrapper.new("#{Rails.root}/public/images/logo.png", "image/png")
+      logo = @group.has_logo? ? @group.logo : Shapado::FileWrapper.new("#{Rails.root}/app/assets/images/logo.png", "image/png")
       case $1
       when "logo"
         logo

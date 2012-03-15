@@ -8,7 +8,7 @@ module ApplicationHelper
     t = Time.utc(2012,4,1)
     !(position == 'navbar' || !default_adsense ||
       current_group.has_custom_ads || current_group.has_adult_content ||
-      current_group.created_at < t)
+      current_group.created_at > t)
   end
 
   def default_adsense(position)
