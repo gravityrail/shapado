@@ -3,6 +3,7 @@ class AdsenseWidget < Widget
   validate :has_ads
 
   def ad
+    return if !has_ads
     return "<script type=\"text/javascript\"><!--
     google_ad_client = \"#{settings['client']}\";
     google_ad_slot = \"#{settings['slot']}\";
