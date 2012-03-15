@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       get :leave
       get :join
       post :connect
+      get :new_password
     end
 
     member do
