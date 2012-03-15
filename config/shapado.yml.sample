@@ -26,7 +26,7 @@ base: &common
       height: 90
     sidebar:
       slot: 1075654054
-      width: 250
+      width: 300
       height: 250
     footer:
       slot: 2473302587
