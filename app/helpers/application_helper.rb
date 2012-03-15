@@ -4,8 +4,11 @@ module ApplicationHelper
 
   def display_default_adsense?(position)
     default_adsense = AppConfig.default_adsense["activate"]
+    # don't show ads on old groups for now
+    t = Time.utc(2012,4,1)
     !(position == 'navbar' || !default_adsense ||
-      current_group.has_custom_ads || current_group.has_adult_content)
+      current_group.has_custom_ads || current_group.has_adult_content ||
+      current_group.created_at < t)
   end
 
   def default_adsense(position)
