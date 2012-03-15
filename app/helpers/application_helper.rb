@@ -16,16 +16,16 @@ module ApplicationHelper
     settings = AppConfig.default_adsense[position]
     client = AppConfig.default_adsense["client"]
     Rails.logger.info(position)
-    ad = "<script type=\"text/javascript\"><!-- \
-        google_ad_client = \"#{client}\"; \
-        google_ad_slot = \"#{settings['slot']}\"; \
-        google_ad_width = #{settings['width']}; \
-        google_ad_height = #{settings['height']}; \
-        //--> \
-        </script> \
-        <script type=\"text/javascript\" \
-        src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\"> \
-        </script>"
+    ad = "<script type=\"text/javascript\"><!--
+        google_ad_client = \"#{client}\";
+        google_ad_slot = \"#{settings['slot']}\";
+        google_ad_width = #{settings['width']};
+        google_ad_height = #{settings['height']};
+        //-->
+        </script>
+        <script type=\"text/javascript\"
+        src=\"http://pagead2.googlesyndication.com/pagead/show_ads.js\">
+        </script>".html_safe
     ad
   end
 
