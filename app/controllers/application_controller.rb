@@ -141,6 +141,13 @@ class ApplicationController < ActionController::Base
     @current_group
   end
   helper_method :current_group
+  
+  def current_version
+    @current_version ||= begin
+      current_group.shapado_version ? current_group.shapado_version : ShapadoVersion.libre
+    end
+  end
+  helper_method :current_version
 
   def scoped_conditions(conditions = {})
     unless current_tags.empty?

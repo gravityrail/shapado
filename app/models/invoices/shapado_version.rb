@@ -54,6 +54,12 @@ class ShapadoVersion
   def in_dollars
     self.price / 100.0
   end
+  
+  def self.libre
+    @libre ||= ShapadoVersion.new(:page_views => 0, :custom_ads => true, :custom_js => true, 
+                                  :custom_domain => true, :private => false, :custom_themes => true, 
+                                  :basic_support => false, :phone_support => false)
+  end
 
   def self.reload!
     versions_data = YAML.load_file("#{Rails.root}/config/versions.yml")
