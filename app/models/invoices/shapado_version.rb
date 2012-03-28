@@ -18,6 +18,34 @@ class ShapadoVersion
 
   validates_presence_of :token, :price
   validates_uniqueness_of :token
+  
+  def can_use_custom_ads?
+    self.custom_ads
+  end
+  
+  def can_use_custom_js?
+    self.custom_js
+  end
+  
+  def can_use_custom_domain?
+    self.custom_domain
+  end
+  
+  def is_private?
+    self.private
+  end
+  
+  def can_use_custom_themes?
+    self.custom_themes
+  end
+  
+  def have_basic_support?
+    self.basic_support
+  end
+  
+  def have_phone_support?
+    self.phone_support
+  end
 
   def name
     I18n.t("versions.#{token}")
