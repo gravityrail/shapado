@@ -19,15 +19,15 @@ class ShapadoVersion
   validates_presence_of :token, :price
   validates_uniqueness_of :token
   
-  def can_use_custom_ads?
+  def has_custom_ads?
     self.custom_ads
   end
   
-  def can_use_custom_js?
+  def has_custom_js?
     self.custom_js
   end
   
-  def can_use_custom_domain?
+  def has_custom_domain?
     self.custom_domain
   end
   
@@ -35,15 +35,15 @@ class ShapadoVersion
     self.private
   end
   
-  def can_use_custom_themes?
+  def has_custom_themes?
     self.custom_themes
   end
   
-  def have_basic_support?
+  def has_basic_support?
     self.basic_support
   end
   
-  def have_phone_support?
+  def has_phone_support?
     self.phone_support
   end
 
