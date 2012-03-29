@@ -39,4 +39,14 @@ namespace "shapado40to41" do
       print "."
     end
   end
+
+  task :stats => [:init] do
+    Group.all.each do |g|
+      if g.stats.blank?
+        g.stats = GroupStat.new
+        g.save
+        print "."
+      end
+    end
+  end
 end

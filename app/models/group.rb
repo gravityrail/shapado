@@ -124,6 +124,7 @@ class Group
 
   referenced_in :owner, :class_name => "User"
   embeds_many :comments
+  embeds_one :stats, :class_name => "GroupStat"
 
   validates_presence_of     :owner
   validates_presence_of     :name
@@ -392,6 +393,7 @@ class Group
     self.custom_html = CustomHtml.new
     self.share = Share.new if self.share.nil?
     self.notification_opts = NotificationConfig.new
+    self.group_stats = GroupStats.new
   end
 
   def check_domain
