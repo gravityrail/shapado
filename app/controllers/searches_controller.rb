@@ -1,5 +1,6 @@
 class SearchesController < ApplicationController
   before_filter :login_required, :except => %w[index]
+  before_filter :track_pageview
 
   subtabs :index => [[:newest, %w(created_at desc)], [:hot, [%w(hotness desc), %w(views_count desc)]], [:votes, %w(votes_average desc)], [:activity, %w(activity_at desc)], [:expert, %w(created_at desc)]],
           :unanswered => [[:newest, %w(created_at desc)], [:votes, %w(votes_average desc)], [:mytags, %w(created_at desc)]],

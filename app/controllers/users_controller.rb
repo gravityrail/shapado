@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   tabs :default => :users
 
   before_filter :check_signup_type, :only => [:new]
+  before_filter :track_pageview
 
   tab_config = [[:newest, [:created_at, Mongo::DESCENDING]],
                 [:hot, [:hotness, Mongo::DESCENDING]],

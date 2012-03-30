@@ -1,4 +1,5 @@
 class BadgesController < ApplicationController
+  before_filter :track_pageview
 
   tabs :default => :badges
 

@@ -1,6 +1,7 @@
 class TagsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
   before_filter :moderator_required, :except => [:index, :show]
+  before_filter :track_pageview
 
   def index
     @tags = current_scope.page(params["page"])

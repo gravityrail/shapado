@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   before_filter :login_required, :except => [:show, :index, :js, :css]
   before_filter :check_page_permissions, :only => [:new, :create, :edit, :update]
   before_filter :moderator_required, :only => [:destroy]
+  before_filter :track_pageview
 
   tabs :default => :pages
 

@@ -53,6 +53,12 @@ module Shapado
         feed_urls << [title, url]
       end
 
+      def track_pageview
+        if !(!request.get? || current_group.nil? || is_bot?)
+          current_group.stats.viewed!
+        end
+      end
+
       def is_bot?
         request.user_agent =~ /\b(Baidu|Gigabot|Googlebot|libwww-perl|lwp-trivial|msnbot|SiteUptime|Slurp|WordPress|ZIBB|ZyBorg|Java|Yandex|Linguee|LWP::Simple|Exabot|ia_archiver|Purebot|Twiceler|StatusNet|Baiduspider)\b/i
       end

@@ -71,10 +71,6 @@ class ApplicationController < ActionController::Base
       end
       _current_group
     end
-
-    unless is_bot?
-      @current_group.stats.viewed!
-    end
     @current_group
   end
 

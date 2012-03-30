@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   before_filter :check_age, :only => [:show]
   before_filter :check_create_permissions, :only => [:create, :new]
   before_filter :check_retag_permissions, :only => [:retag, :retag_to]
+  before_filter :track_pageview
 
   tabs :default => :questions, :tags => :tags,
        :new => :ask_question
