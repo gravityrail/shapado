@@ -10,7 +10,7 @@ sr:
       earned_badge: 
         subject: У групи %{group} сте освојили значку!
       favorited: 
-        subject: "%{login} додаде ваше питање као омиљено"
+        subject: "%{login} је додао ваше питање као омиљено"
       follow: 
         subject: "%{login} вас сада прати на %{app}"
       give_advice: 

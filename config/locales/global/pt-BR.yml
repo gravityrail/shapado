@@ -5,6 +5,7 @@
 # Author: Luckas Blade
 # Author: Pedroca cerebral
 # Author: Vgeorge
+# Author: 555
 pt-BR: 
   feeds: 
     feed: Feed
@@ -81,7 +82,7 @@ pt-BR:
     post_as_anonymous: Publicar como anônimo
     save: Salvar
     send: Enviar
-    show: Mostrar
+    show: Exibir
     sure: Você tem certeza de que pretende apagar este %{model}?
     update: Atualizar
   time: 

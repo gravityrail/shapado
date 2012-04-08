@@ -12,6 +12,7 @@ it:
     changed: modificato
     created: creato
     deleted: eliminato
+    destroyed: eliminato
     flagged: contrassegnato
     requested_to_close: richiesta di chiusura
     requested_to_open: richiesta di aprire

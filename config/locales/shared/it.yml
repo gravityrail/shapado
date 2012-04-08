@@ -24,19 +24,34 @@ it:
         description: 
           text: Sii il primo a %{action_link}!
         title: Ci dispiace! Non c'è molto da vedere qui.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Clicca qui per vedere le domande in tutte le lingue.
+        title: Siamo spiacenti, nessuna domanda è disponibile in questa lingua.
+      filtered_questions: 
+        description: 
+          action_link: Clicca qui per visualizzare tutte le domande
+        title: Siamo spiacenti, nessuna domanda corrisponde a questo filtro.
       questions: 
         description: 
           action_link: fai una domanda
+          text: Diventa il primo a <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 
           action_link: ora
           text: crea un %{action_link}
         title: Non hai creato alcun tema per ora.
+    filter: "Filtro:"
+    language: "Lingua:"
+    language_filter_tooltip: Prova con un'altra lingua.
+    languages: Lingue
     layout: 
       footer: 
         cc_footer: Tutti i contenuti di Shapado.com e i dati sono disponibili sotto licenza %{cc_link}
         powered_by: Powered by %{source_link} %{version} sotto il %{agpl_link}
     login_drop_down: 
+      sign_up_user_pass: Iscriviti con un'e-mail/password
+      with_email_pass: Accedi con il tuo indirizzo email
       with_facebook: con Facebook
       with_google: con Google
       with_identica: con Identi. ca
@@ -60,3 +75,4 @@ it:
       admin: Amministrazione
       logged_as: Collegato come %{login}
       user_page: La mia pagina
+    view_mode: "Modalità di visualizzazione:"

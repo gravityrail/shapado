@@ -147,8 +147,8 @@ nl:
       requested_reopening: U hebt een heropeningsverzoek ingediend
       retag: Labels wijzigen
       retract_request: Verzoek intrekken
-      share: Deze vragen delen op
-      share_on: Deze vragen delen op %{site}
+      share: Deze vraag delen op
+      share_on: Vraag delen op %{site}
       solution: Correct antwoord
       to_answer_question: Om deze vraag te beantwoorden
       unauthenticated_retag: U moet een gebruiker hebben om labels voor vragen te kunnen wijzigen.

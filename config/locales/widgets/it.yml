@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Danmaz74
 # Author: Giallu
+# Author: Nemo bis
 it: 
   widgets: 
     about: 
@@ -27,7 +28,7 @@ it:
     create: 
       notice: Il widget è stato creato con successo.
     current_tags: 
-      description: Questo widget mostra i tag seguita da parte dell'utente corrente.
+      description: Questo widget mostra i tag seguiti dall'utente attuale.
     custom_html: 
       description: Aggiungere qualsiasi tipo di HTML che si desidera qui.
     edit: 
@@ -68,10 +69,10 @@ it:
     question_stats: 
       description: Questo widget mostra statistiche su una domanda come la data di creazione e numero di visualizzazioni.
     question_tags: 
-      description: Questo widget mostra i tag relativi alla pagina corrente.
+      description: Questo widget mostra i tag relativi alla pagina attuale.
       title: Tag della domanda
     related_questions: 
-      description: Questo widget mostra un elenco di domande relative alla domanda corrente.
+      description: Questo widget mostra un elenco di domande relative alla domanda attuale.
       title: Domande correlate
     settings: 
       code: "Copia e incolla questo codice sul tuo sito o blog, come un widget in Wordpress:"
@@ -84,7 +85,7 @@ it:
       on_welcome: Mostra sulla pagina di benvenuto
       preview: "Anteprima del widget:"
     share: 
-      description: Questo widget mostra vari pulsanti per condividere la pagina corrente sui social network.
+      description: Questo widget mostra vari pulsanti per condividere la pagina attuale sui social network.
       title: Condividi in
     sharing_buttons: 
       description: Questo widget mostrerà pulsanti condivisione sociale.
@@ -95,11 +96,13 @@ it:
       follow_user: + Segui l'utente
       followed_by: Seguito da %{user}
       title: Persone e Tag da Seguire
+      unfollow_tag: "- Non seguire più il tag"
+      unfollow_user: "- Non seguire più l'utente"
     tag_cloud: 
       description: Questo widget visualizza una tag cloud
       title: Tag cloud
     tag_list: 
-      description: Questo widget mostra i tag relativi alla pagina corrente.
+      description: Questo widget mostra i tag relativi alla pagina attuale.
       title: Tag
     top_groups: 
       description: Questo widget mostra i primi cinque gruppi

@@ -50,6 +50,10 @@ it:
     change_password: 
       submit: Cambia la password
       title: Cambia la password
+    check_custom_domain: 
+      reset_domain_button: No, per favore resetta il dominio personalizzato a %{domain}
+      title: Sta funzionando il tuo nuovo dominio custom?
+      working_domain_link: Sì, posso vedere che il mio nuovo dominio sta funzionando qua sotto.
     create: 
       flash_error: Creazione account non riuscita. Riprovare o contattare un amministratore (link sopra).
       flash_notice: Grazie per esserti iscritto!
@@ -63,6 +67,8 @@ it:
     form: 
       activities_notification: "Ricevi email di notifica per eventi come: nuovi follow, bagde conquistati, etc."
       avatar_tip: Cambia l'immagine del profilo utilizzando Gravatar
+      check_domain: Controlla %{domain}
+      check_domain_title: Controlla i domini personalizzati del vostro gruppo
       desktop_notification: Notifiche desktop
       give_advice_notification: Ricevi email di notifica su domande nel tuo campo di competenza
       information: Informazione
@@ -107,6 +113,9 @@ it:
       title: Utente %{user}
       unfollow: Annulla follow
       views: visualizzazioni
+    show_json: 
+      edit_it: Clicca qui per compilare la tua biografia sul tuo profilo.
+      no_description: Questo utente non ha ancora inserito la sua biografia.
     top_user: 
       connect: Collegati
       my_karma: "Il mio karma: %{karma}"

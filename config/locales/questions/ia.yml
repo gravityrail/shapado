@@ -144,8 +144,8 @@ ia:
       requested_reopening: Tu requestava le reapertura de iste question
       retag: Re-etiquettar
       retract_request: Retraher requesta
-      share: Condivider iste question in
-      share_on: Condivider iste question in %{site}
+      share: Divider iste question in
+      share_on: Divider iste question in %{site}
       solution: Solution
       to_answer_question: pro responder a iste question
       unauthenticated_retag: Tu debe haber un conto pro re-etiquettar questiones

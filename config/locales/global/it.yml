@@ -24,6 +24,7 @@ it:
     chat: Chat
     current: Attuale
     edited: Modificato
+    edited_by: Modificato da
     edited_by_semi: "Modificato da:"
     feedback: Feedback
     follow: Segui

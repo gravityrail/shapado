@@ -15,6 +15,7 @@ br:
   global: 
     actions: Oberoù
     active: Gweredekaat
+    alphabetically: Dre urzh al lizherenneg
     anonymous: Dizanv
     blog: Blog
     by: gant
@@ -22,8 +23,11 @@ br:
     chat: Flap
     current: Red
     edited: Kemmet
+    edited_by: Aozet gant
+    edited_by_semi: "Aozet gant :"
     feedback: Sonjoù
     follow: Heuliañ
+    followed_by: "Heuliet gant :"
     following: O Heuliañ
     from: eus %{site}
     group_not_found: N'eus ket eus ar bajenn %{url}
@@ -45,10 +49,12 @@ br:
     unfollow: Chom hep heuliañ
     unknown_place: Dianav
     view: Gwelet
+    view_question: Gwelet ar goulenn
     what_to_do: Petra hoc'h eus c'hoant d'ober ?
   models: 
     question: Ar goulenn
   preferred_languages: 
+    any: Forzh pehini
     user: Ma yezhoù karetañ
   roles: 
     moderator: Habasker
@@ -77,5 +83,8 @@ br:
     yesterday: dec'h
   views: 
     pagination: 
+      first: Kentañ
+      last: Diwezhañ
       next: War-lerc'h &raquo;
       previous: "&laquo; Kent"
+      truncate: ...

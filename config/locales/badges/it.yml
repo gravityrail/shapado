@@ -11,7 +11,18 @@ it:
       badges: Badge
   badges: 
     index: 
-      description: Tutti i badge che si possono guadagnare. Condividi le tue conoscenze, guadagna badge.
+      all_tooltip: Visualizza tutti i distintivi oro, argento e bronzo.
+      bronze: Bronzo
+      bronze_tooltip: Distintivi di bronzo sono facili da vincere e incoraggiano gli utenti a partecipare.
+      description: Più contribuisci facendo o rispondendo a domande, più distintivi guadagnerai. Questi saranno visibili sulla tua pagina di profilo.
+      general: Distintivi normali
+      general_tooltip: Visualizza tutti i distintivi predefiniti.
+      gold: Oro
+      gold_tooltip: I distintivi oro sono la massima ricompensa, ma sono anche i più difficili da ottenere. Solo gli utenti più dedicati ottengono queste ricompense.
+      silver: Argento
+      silver_tooltip: I distintivi d'argento sono assegnati a utenti attivi che sono stati coinvolti per un tempo abbastanza lungo.
+      tags: Distintivi per i tag
+      tags_tooltip: Quando domande taggate con X ottengono risposte con più di 100 voti, un distintivo X viene creato con il nome di quel tag.
       title: badge
     shared: 
       addict: 

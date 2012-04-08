@@ -27,9 +27,11 @@ it:
         signup_type: "Quali metodi i tuoi utenti possono utilizzare per iscriversi:"
         state: Stato
         subdomain: URL
+        track_users: Chiedere agli utenti la loro località
         wysiwyg_editor: Attiva editor semplificato
     models: 
       default_tags_message: Non si pososno avere più di 10 tag predefiniti
+      duplicate_domain_message: Siamo spiacenti, questo dominio è già stato preso.
       group: Group
       groups: Gruppi
       reputation_rewards_answer_constrain: Il vincolo per le ricompense per le domande dovrebbe essere negativo

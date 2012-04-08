@@ -13,6 +13,7 @@ it:
       collaborate: Collabora
       contributed: Contribuito
       faq: FAQ
+      feed: Seguito
       follow_us_and_share: Seguici e condivi
       followed: Seguito
       forgot: Dimenticato?
@@ -24,6 +25,8 @@ it:
       logout: Esci
       manage_ads: Gestisci annunci
       moderate: Modera
+      need_to_signin: Prima è necessario fare login.
+      not_member_join_dialog: È necessario unirsi al %{group} per completare questa azione, clicca qui per farlo.
       now: ora!
       openid: 
         explaination: "Per iscriversi o accedere, selezionare il provider OpenID:"
@@ -37,6 +40,7 @@ it:
       settings: Impostazioni
       signup: Iscriviti
       subscribe: Iscriviti
+      success_joining_group: Ora sei un membro di %{group}, grazie per esserti unito!
       tags: Tag
       title: Domande & Risposte
       unanswered: Senza risposta

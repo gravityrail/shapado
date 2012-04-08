@@ -4,6 +4,7 @@
 # Author: Centerlink
 # Author: Nike
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   activerecord: 
     models: 
@@ -11,7 +12,14 @@ fi:
       badges: Rintanapit
   badges: 
     index: 
-      description: Kaikki rintanapit, jotka voit ansaita. Jaa tietämystäsi rintanappien ansaitsemiseksi.
+      all_tooltip: Näytä kaikki kulta-, hopea- ja pronssirintanapit.
+      bronze: Pronssi
+      description: Mitä enemmän osallistut kysymällä kysymyksiä tai vastaamalla niihin, sitä enemmän rinanappeja sinulle myönnetään. Nämä tulevat näkyviin käyttäjäprofiilisivullasi.
+      general: Tavalliset rintanapit
+      general_tooltip: Näytä kaikki määritellyt rintanapit.
+      gold: Kulta
+      silver: Hopea
+      tags: Tagien rintanapit
       title: rintanapit
     shared: 
       addict: 
