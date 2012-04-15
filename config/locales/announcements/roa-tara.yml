@@ -1,0 +1,18 @@
+# Messages for Tarandíne (Tarandíne)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Joetaras
+roa-tara: 
+  activerecord: 
+    attributes: 
+      announcement: 
+        ends_at: Spicce 'u
+        message: Messàgge
+        starts_at: Accumenze 'u
+  announcements: 
+    actions: 
+      delete: Live
+      title: Aziune
+    index: 
+      description: Gestisce e ccreje annuge nuève ca avènene fatte vedè sus a 'u site a le visitature.
+      title: Annunge

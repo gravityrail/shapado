@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Hydra
+# Author: Yfdyh000
 zh-CN: 
   layouts: 
     application: 
@@ -38,7 +39,7 @@ zh-CN:
       content: 内容
       dashboard: 仪表板
       domain: 域
-      general: 一般
+      general: 常规
       members: 成员
       pages: 页
       properties: 属性

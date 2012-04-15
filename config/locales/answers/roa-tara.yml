@@ -1,0 +1,20 @@
+# Messages for Tarandíne (Tarandíne)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Joetaras
+roa-tara: 
+  activerecord: 
+    attributes: 
+      answer: 
+        body: Cuèrpe
+        link: Collegamende
+    models: 
+      answer: Resposte
+      answers: Resposte
+  answers: 
+    create: 
+      flash_notice: Grazie!
+    form: 
+      comment_label: Commende sus a sta resposte
+      comment_submit: Commende
+      submit: Resposte
