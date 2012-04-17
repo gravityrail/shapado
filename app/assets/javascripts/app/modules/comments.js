@@ -1,5 +1,7 @@
-var Comments = {
-  initialize_on_question: function(data) {
+Comments = function() {
+  var self = this;
+
+  function initializeOnQuestion(data) {
     $('.comment-votes form.comment-form button.vote').hide();
     var forms = $('.question_comment_form, .answer_comment_form');
     forms.find('.buttons').hide();
@@ -81,9 +83,9 @@ var Comments = {
                               window.onbeforeunload = null;
                               var comment = $(data.html);
                               if(data.updated){
-                                Comments.update_on_show(data);
+                                updateOnShow(data);
                               } else {
-                                Comments.create_on_show(data);
+                                createOnShow(data);
                               }
                               Messages.show(data.message, "notice")
                               form.hide();
@@ -168,9 +170,9 @@ var Comments = {
       return false;
     });
 
-    $(".Question-commentable").click(Comments.showCommentForm);
+    $(".Question-commentable").click(showCommentForm);
 
-    $(".content-panel").delegate(".Answer-commentable, .Comment-commentable", "click", Comments.showCommentForm);
+    $(".content-panel").delegate(".Answer-commentable, .Comment-commentable", "click", showCommentForm);
 
     $('.cancel_comment').live('click', function(){
       var form = $(this).parents('form');
@@ -185,8 +187,9 @@ var Comments = {
       }
       return false;
     });
-  },
-  showCommentForm: function() {
+  }
+
+  function showCommentForm() {
       var link = $(this);
       var answer_id = link.attr('data-commentable');
       var form = $('form[data-commentable='+answer_id+']');
@@ -198,10 +201,12 @@ var Comments = {
 
       $('html,body').animate({scrollTop: top}, 1000);
       return false;
-  },
-  create_on_index: function(data) {
-  },
-  create_on_show: function(data) {
+  }
+
+  function createOnIndex(data) {
+  }
+
+  function createOnShow(data) {
     var comment = $('#'+data.object_id);
     if(comment.length==0){
       var commentable = $('.'+data.commentable_id);
@@ -209,17 +214,30 @@ var Comments = {
       comments.append(data.html);
       Effects.fade(comment);
     }
-  },
-  update_on_index: function(data) {
+  }
 
-  },
-  update_on_show: function(data) {
+  function updateOnIndex(data) {
+
+  }
+
+  function updateOnShow(data) {
     var comment = $('#'+data.object_id);
     if($.trim(comment.html()) != data.html){
       comment.replaceWith(data.html);
       Effects.fade(comment);
     }
-  },
-  vote: function(data) {
   }
-};
+
+  function vote(data) {
+  }
+
+  return {
+    initializeOnQuestion:initializeOnQuestion,
+    showCommentForm:showCommentForm,
+    createOnIndex:createOnIndex,
+    createOnShow:createOnShow,
+    updateOnIndex:updateOnIndex,
+    updateOnShow:updateOnShow,
+    vote:vote
+  }
+}();

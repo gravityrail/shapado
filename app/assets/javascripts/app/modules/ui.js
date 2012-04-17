@@ -1,5 +1,7 @@
-var Ui = {
-  initialize: function() {
+Ui = function() {
+  var self = this;
+
+  function initialize() {
     if(typeof(Effects) !== 'undefined'){
       Effects.initialize();
     }
@@ -9,11 +11,11 @@ var Ui = {
       quick_question.find('.buttons-quickq').show();
     });
 
-    Auth.dropdown_toggle();
-    Auth.position_dropdown();
-    Ui.initialize_ajax_tooltips();
-    Ui.initialize_smooth_scroll_to_top();
-    if(Ui.supports_input_placeholder()) {
+    Auth.dropdownToggle();
+    Auth.positionDropdown();
+    Ui.initializeAjaxTooltips();
+    Ui.initializeSmoothScrollToTop();
+    if(Ui.supportsInputPlaceholder()) {
       $('.hideifplaceholder').remove();
     };
 
@@ -23,7 +25,7 @@ var Ui = {
         return false;
     });
 
-    if(Questions.is_index_empty()){
+    if(Questions.isIndexEmpty()){
       var current_language = $('.current_language > a').data('language');
       if(current_language!='any'){
         $('.current_language').tipsy({trigger: 'manual', gravity: 'w'});
@@ -47,27 +49,31 @@ var Ui = {
       $('#openid_url').val(openid)
     })
 
-    Ui.sort_values('#group_language', 'option', ':last', 'text', null);
-    Ui.sort_values('#user_language', 'option',  false, 'text', null);
-    Ui.sort_values('#lang_opts', '.radio_option', false, 'attr', 'id');
-    Ui.sort_values('select#question_language', 'option', false, 'text', null);
+    Ui.sortValues('#group_language', 'option', ':last', 'text', null);
+    Ui.sortValues('#user_language', 'option',  false, 'text', null);
+    Ui.sortValues('#lang_opts', '.radio_option', false, 'attr', 'id');
+    Ui.sortValues('select#question_language', 'option', false, 'text', null);
 
+    //TODO: delegate is deprecated use on
     $(document.body).delegate("#ask_question", "submit", function(event) {
         if(Ui.offline()){
             Auth.startLoginDialog();
             return false;
         }
     });
+    //TODO: delegate is deprecated use on
     $(document.body).delegate("#join_dialog_link", "click", function(event) {
       Groups.join(this);
       return false;
     });
+    //TODO: delegate is deprecated use on
     $(document.body).delegate(".join_group", "click", function(event) {
       if(!$(this).hasClass('email')){
         Auth.startLoginDialog($(this).text(),1);
         return false;
       } else {document.location=$(this).attr('href')}
-    })
+    });
+    //TODO: delegate is deprecated use on
     $(document.body).delegate(".toggle-action,.not_member", "click", function(event) {
       if(Ui.offline()){
         Auth.startLoginDialog();
@@ -133,8 +139,9 @@ var Ui = {
       return false;
     });
     Form.initialize();
-  },
-  initialize_feedback: function() {
+  }
+
+  function initializeFeedback() {
     $("#feedbackform").dialog({ title: "Feedback", autoOpen: false, modal: true, width:"420px" });
     $('#feedbackform .cancel-feedback').click(function(){
       $("#feedbackform").dialog('close');
@@ -149,12 +156,14 @@ var Ui = {
       }
       return false;
     });
-  },
-  supports_input_placeholder: function() {
+  }
+
+  function supportsInputPlaceholder() {
     var i = document.createElement('input');
     return 'placeholder' in i;
-  },
-  sort_values: function(selectID, child, keepers, method, arg) {
+  }
+
+  function sortValues(selectID, child, keepers, method, arg) {
     if(keepers){
       var any = $(selectID+' '+child+keepers);
       any.remove();
@@ -167,14 +176,17 @@ var Ui = {
       $(selectID).prepend(any);
     // needed for firefox:
     $(selectID).val($(selectID+' '+child+'[selected=selected]').val());
-  },
-  offline: function(){
-    return $('.offline').length>0 || Ui.not_member()
-  },
-  not_member: function(){
-    return $('.not_member').length>0
-  },
-  center_scroll: function(tag, container){
+  }
+
+  function offline() {
+    return $('.offline').length>0 || notMember();
+  }
+
+  function notMember() {
+    return $('.not_member').length>0;
+  }
+
+  function centerScroll(tag, container) {
     container = container || $('html,body');
     viewportHeight = $(window).height();
     if(window.innerHeight)
@@ -183,8 +195,9 @@ var Ui = {
     var top = tag.offset().top - (viewportHeight/2.0);
 
     container.scrollTop(top);
-  },
-  navigate_shortcuts: function(container, element_selector){
+  }
+
+  function navigateShortcuts(container, element_selector) {
     elements = container.find(element_selector);
     var first_element = elements[0];
     if(first_element) {
@@ -197,9 +210,9 @@ var Ui = {
       next.addClass("active");
     });
 
-    $(document).keydown(function(ev){
+    $(document).keydown(function(ev) {
 
-      if(container.is(':visible')){
+      if(container.is(':visible')) {
         current_element = $(container.find(element_selector+'.active'));
 
         moved = false;
@@ -217,22 +230,24 @@ var Ui = {
         }
       }
     });
-  },
-  initialize_lang_fields: function(container){
+  }
+
+  function initializeLangFields(container) {
     var fields = (container||$('body')).find('.lang-fields');
     if(fields.length > 0){
       fields.tabs();
     }
-  },
-  initialize_smooth_scroll_to_top: function(){
+  }
+
+  function initializeSmoothScrollToTop() {
     $(".top-bar").click(function(e) {
       var isTopBar = $(e.target).hasClass('top-bar');
       if(isTopBar)
         $("html, body").animate({ scrollTop: 0 }, "fast");
     });
   }
-  ,
-  initialize_ajax_tooltips: function(){
+
+  function initializeAjaxTooltips() {
     $(document.body).on("mouseleave, scroll",".markdown, .toolbar, .Question, .comment-content, .tag-list, .user-data, .tooltip", function(event) {
       $(".tooltip").hide();
     });
@@ -266,4 +281,18 @@ var Ui = {
     })
 
   }
-};
+
+  return {
+    initialize:initialize,
+    initializeFeedback:initializeFeedback,
+    supportsInputPlaceholder:supportsInputPlaceholder,
+    sortValues:sortValues,
+    offline:offline,
+    notMember:notMember,
+    centerScroll:centerScroll,
+    navigateShortcuts:navigateShortcuts,
+    initializeLangFields:initializeLangFields,
+    initializeSmoothScrollToTop:initializeSmoothScrollToTop,
+    initializeAjaxTooltips:initializeAjaxTooltips
+  }
+}();

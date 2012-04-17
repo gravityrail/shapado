@@ -1,18 +1,20 @@
-var Updater = {
-  initialize: function($body) {
+Updater = function() {
+  var self = this;
+
+  function initialize($body) {
     var $main_content_wrap = $("#main-content-wrap");
 
     var current, prev, refreshed;
-    Updater.setup_loading_icon();
+    setupLoadingIcon();
 
-    current = Updater.guess_current_layout();
+    current = guessCurrentLayout();
 
-    $body.delegate("a.pjax", "click", function(ev) {
+    $(document.body).on("click", "a.pjax", function(ev) {
      var link = $(this);
 
       prev = current;
-      current = link.attr("data-layout");
-      var current_page_layout = link.attr("data-page-layout");
+      current = link.data("layout");
+      var current_page_layout = link.data("page-layout");
 
       var parent = link.parent();
       var gparent = parent.parent();
@@ -60,8 +62,33 @@ var Updater = {
 
       return false;
     });
-  },
-  guess_current_layout: function() {
+  }
+
+  function setupLoadingIcon() {
+    var text = 'Loading...';
+    if(typeof I18n.loading !== 'undefined'){
+      text = I18n.loading;
+    }
+
+    $("#main-content-wrap").bind('start.pjax', function() {
+      var h = $( "<div class='loading-box'>" +
+                 "<span class='loading-box-icon'></span>" +
+                 "<h1>" + text + "</h1>" + "</div>" );
+
+      $("body").prepend(h);
+      h.css({
+        top: $(window).scrollTop() + $(window).height() / 2
+      });
+
+      h.show();
+    });
+
+    $("#main-content-wrap").bind('end.pjax', function() {
+      $(".loading-box").remove();
+    });
+  }
+
+  function guessCurrentLayout() {
     var layout = '';
     var page = $(document.body);
 
@@ -86,28 +113,11 @@ var Updater = {
     }
 
     return layout;
-  },
-  setup_loading_icon: function() {
-    var text = 'Loading...';
-    if(typeof I18n.loading !== 'undefined'){
-      text = I18n.loading;
-    }
-
-    $("#main-content-wrap").bind('start.pjax', function() {
-      var h = $( "<div class='loading-box'>" +
-                 "<span class='loading-box-icon'></span>" +
-                 "<h1>" + text + "</h1>" + "</div>" );
-
-      $("body").prepend(h);
-      h.css({
-        top: $(window).scrollTop() + $(window).height() / 2
-      });
-
-      h.show();
-    });
-
-    $("#main-content-wrap").bind('end.pjax', function() {
-      $(".loading-box").remove();
-    });
   }
-};
+
+  return {
+    initialize:initialize,
+    setupLoadingIcon:setupLoadingIcon,
+    guessCurrentLayout:guessCurrentLayout
+  }
+}();

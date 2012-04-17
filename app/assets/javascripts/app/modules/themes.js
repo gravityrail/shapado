@@ -1,5 +1,6 @@
-var Themes = {
-  initialize: function($body) {
+Themes = function() {
+  var self = this;
+  function initialize($body) {
     if($body.hasClass("show")) {
       var message = $body.find("#not_ready")
       if(message.length > 0) {
@@ -32,7 +33,7 @@ var Themes = {
           target.find("textarea.code").each(function(i, e){
             CodeMirror.fromTextArea(e, {lineNumbers: true, theme: "default", mode: $(e).data("lang")});
           });
-          self.attr({"data-actived": "1"});
+          self.data({"actived": "1"});
         }
 
         return false;
@@ -43,4 +44,8 @@ var Themes = {
       });
     }
   }
-}
+
+  return {
+    initialize:initialize
+  }
+}();

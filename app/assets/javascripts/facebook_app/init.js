@@ -2,13 +2,13 @@ var FbQuestions = {
   initialize: function() {
     if($(".unauthenticated").length > 0) {
       $("input, textarea").focus(function() {
-        Auth.open_popup('/users/auth/facebook');
+        Auth.openPopup('/users/auth/facebook');
         $(this).blur();
         return false;
       });
 
       $(".require_login").click(function() {
-        Auth.open_popup('/users/auth/facebook');
+        Auth.openPopup('/users/auth/facebook');
         return false;
       });
     }
@@ -54,7 +54,7 @@ var FbQuestions = {
               Messages.show(data.message, "error");
 
               if(data.status == "unauthenticate") {
-                Auth.open_popup("/users/auth/facebook");
+                Auth.openPopup("/users/auth/facebook");
               }
             }
           },
@@ -83,7 +83,7 @@ var FbQuestions = {
             Messages.show(data.message, "error");
 
             if(data.status == "unauthenticate") {
-              Auth.open_popup("/users/auth/facebook");
+              Auth.openPopup("/users/auth/facebook");
             }
           }
         },

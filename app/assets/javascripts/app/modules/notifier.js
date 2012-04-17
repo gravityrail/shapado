@@ -1,28 +1,36 @@
-var Notifier = {
-  initialize: function() {
-    if (this.is_valid()) {
-      this.update_checkbox();
+Notifier = function() {
+  var self = this;
+
+  function initialize() {
+    if(isValid()) {
+      updateCheckbox();
 
       $("#desktop_notifs").click(function() {
         window.webkitNotifications.requestPermission();
-        Notifier.update_checkbox();
+        updateCheckbox();
       })
     }
-  },
-  send_message: function(title, message, icon) {
+  }
+
+  function sendMessage(title, message, icon) {
     if(!icon)
       icon = "/images/rails.png"
-    if(this.is_valid() && this.is_allowed()) {
+
+    if(isValid() && isAllowed()) {
       window.webkitNotifications.createNotification(icon, title, message).show();
     }
-  },
-  is_valid: function() {
+  }
+
+  function isValid() {
     return window.webkitNotifications != null;
-  },
-  is_allowed: function() {
+  }
+
+  function isAllowed() {
     return window.webkitNotifications.checkPermission() == 0;
-  },
-  update_checkbox: function() {
+  }
+
+  //private
+  function updateCheckbox() {
     var cbox = $("#desktop_notifs");
     var v = window.webkitNotifications.checkPermission();
     if(v == 0) {
@@ -31,5 +39,10 @@ var Notifier = {
       cbox.attr("checked", false)
     }
   }
-};
 
+  return {
+    initialize:initialize,
+    sendMessage:sendMessage,
+    isValid:isAllowed
+  }
+}();

@@ -1,5 +1,7 @@
-var Form = {
-  initialize: function() {
+Form = function() {
+  var self = this;
+
+  function initialize() {
     $("input[type=color]").jPicker({
     window: {
               expandable: true,
@@ -9,4 +11,8 @@ var Form = {
     });
     $("input[type=color]").hide();
   }
-};
+
+  return {
+    initialize:initialize
+  }
+}();

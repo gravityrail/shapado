@@ -1,5 +1,6 @@
-var Utils = {
-  url_vars: function() {
+Utils = function() {
+  var self=this;
+  function urlVars() {
     var vars = {}, hash;
     var hashes = {}
     if(window.location.href.indexOf('?') > 0) {
@@ -11,16 +12,24 @@ var Utils = {
       vars[hash[0]] = hash[1];
     }
     return vars;
-  },
-  append_params: function(url, params) {
+  }
+
+  function appendParams(url, params) {
     if(url.indexOf('?')==-1)
       url += '?'+params;
     else
       url += '&'+params;
 
     return url;
-  },
-  log: function(data) {
+  }
+
+  function log(data) {
     window.console && window.console.log(data);
   }
-};
+
+  return {
+    urlVars:urlVars,
+    appendParams:appendParams,
+    log:log
+  }
+}();

@@ -1,50 +1,59 @@
-var ShapadoUI = {
-  new_question: function(data) {
-    if(ShapadoUI.is_on_question_index()){
-      Questions.create_on_index(data);
-    } else if(ShapadoUI.is_on_question_show()) {
-      Questions.create_on_show(data);
+ShapadoUI = function() {
+  var self = this;
+
+  function newQuestion(data) {
+    if(isOnQuestionIndex()){
+      Questions.createOnIndex(data);
+    } else if(isOnQuestionShow()) {
+      Questions.createOnShow(data);
     } else {
       // update widgets?
     }
-  },
-  update_question: function(data) {
-    if(ShapadoUI.is_on_question_index()){
-      Questions.update_on_index(data);
-    } else if(ShapadoUI.is_on_question_show()) {
-      Questions.update_on_show(data);
+  }
+
+  function updateQuestion(data) {
+    if(isOnQuestionIndex()){
+      Questions.updateOnIndex(data);
+    } else if(isOnQuestionShow()) {
+      Questions.updateOnShow(data);
     } else {
       // update widgets?
     }
-  },
-  delete_question: function(data) {
+  }
+
+  function deleteQuestion(data) {
     $("article.Question#"+data.object_id).fadeOut();
-  },
-  new_answer: function(data) {
-    if(ShapadoUI.is_on_question_index()){
-      Answers.create_on_index(data);
-    } else if(ShapadoUI.is_on_question_show()) {
-      Answers.create_on_show(data);
+  }
+
+  function newAnswer(data) {
+    if(isOnQuestionIndex()){
+      Answers.updateOnIndex(data);
+    } else if(isOnQuestionShow()) {
+      Answers.createOnShow(data);
     }
-  },
-  update_answer: function(data) {
-    if(ShapadoUI.is_on_question_index()){
-      Answers.update_on_index(data);
-    } else if(ShapadoUI.is_on_question_show()) {
-      Answers.update_on_show(data);
+  }
+
+  function updateAnswer(data) {
+    if(isOnQuestionIndex()){
+      Answers.updateOnIndex(data);
+    } else if(isOnQuestionShow()) {
+      Answers.updateOnShow(data);
     }
-  },
-  new_comment: function(data) {
-    if(ShapadoUI.is_on_question_show()) {
-      Comments.create_on_show(data);
+  }
+
+  function newComment(data) {
+    if(isOnQuestionShow()) {
+      Comments.createOnShow(data);
     }
-  },
-  update_comment: function(data) {
-    if(ShapadoUI.is_on_question_show()) {
-      Comments.update_on_show(data);
+  }
+
+  function updateComment(data) {
+    if(isOnQuestionShow()) {
+      Comments.updateOnShow(data);
     }
-  },
-  vote: function(data) {
+  }
+
+  function vote(data) {
     switch(data.on) {
       case 'Question': {
       }
@@ -54,16 +63,34 @@ var ShapadoUI = {
       }
       break;
     }
-  },
-  new_activity: function(data) {
-    Activities.create_on_index(data);
-  },
-  is_on_question_index: function() {
+  }
+
+  function newActivity(data) {
+    Activities.createOnIndex(data);
+  }
+
+  //PRIVATE
+  function isOnQuestionIndex() {
+    // TODO: Use body class
     return $("section.questions-index")[0] != null;
-  },
-  is_on_question_show: function() {
+  }
+
+  function isOnQuestionShow() {
+    // TODO: Use body class
     return $("section.main-question#question")[0] != null;
   }
-};
+
+  return {
+    newQuestion:newQuestion,
+    updateQuestion:updateQuestion,
+    deleteQuestion:deleteQuestion,
+    newAnswer:newAnswer,
+    updateAnswer:updateAnswer,
+    newComment:newComment,
+    updateComment:updateComment,
+    vote:vote,
+    newActivity:newActivity
+  }
+}();
 
 

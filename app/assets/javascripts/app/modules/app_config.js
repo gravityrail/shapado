@@ -1,7 +1,9 @@
-var AppConfig = {
-  initialize: function() {
+AppConfig = function(){
+  var self = this;
+
+  function initialize() {
     var config = $("#appconfig");
-    if(config.length>0){
+    if(config.length > 0) {
       $.each(config[0].attributes, function() {
         var att = this;
         var m = att.name.match("^data-(.+)");
@@ -11,4 +13,8 @@ var AppConfig = {
       });
     }
   }
-};
+
+  return {
+    initialize:initialize
+  }
+}();

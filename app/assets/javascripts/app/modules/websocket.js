@@ -1,10 +1,11 @@
-var ShapadoSocket = {
-  initialize: function() {
+ShapadoSocket = function() {
+  var self=this, $config;
+  function initialize() {
     WEB_SOCKET_SWF_LOCATION = "/javascripts/web-socket-js/WebSocketMain.swf";
 
-    var config = $("#websocket");
+    $config = $("#websocket");
     this.error_count = 0;
-    this.ws = new WebSocket("ws://"+config.attr("data-host")+":34567/");
+    this.ws = new WebSocket("ws://"+$config.data("host")+":34567/");
     this.socket_key = null;
 
 
@@ -23,13 +24,15 @@ var ShapadoSocket = {
     };
 
     this.ws.onopen = function() {
-      ShapadoSocket.send({id: 'start', key: config.attr("data-key"), channel_id: config.attr("data-group")});
+      ShapadoSocket.send({id: 'start', key: $config.data("key"), channel_id: $config.data("group")});
     };
-  },
-  add_chat_message: function(from, message) {
+  }
+
+  function addChatMessage(from, message) {
     $("#chat_div").chatbox("option", "boxManager").addMsg(from, message);
-  },
-  parse: function(data) {
+  }
+
+  function parse(data) {
     var data = JSON.parse(data);
 
     window.console && console.log("received: ");
@@ -37,27 +40,27 @@ var ShapadoSocket = {
 
     switch(data.id) {
       case 'chatmessage': {
-        ShapadoSocket.add_chat_message(data.from, data.message);
+        addChatMessage(data.from, data.message);
       }
       break;
       case 'newquestion': {
-        ShapadoUI.new_question(data);
+        ShapadoUI.newQuestion(data);
       }
       break;
       case 'updatequestion': {
-        ShapadoUI.update_question(data);
+        ShapadoUI.updateQuestion(data);
       }
       break;
       case 'destroyquestion': {
-        ShapadoUI.delete_question(data);
+        ShapadoUI.deleteQuestion(data);
       }
       break;
       case 'newanswer': {
-        ShapadoUI.new_answer(data);
+        ShapadoUI.newAnswer(data);
       }
       break;
       case 'updateanswer': {
-        ShapadoUI.update_answer(data);
+        ShapadoUI.updateAnswer(data);
       }
       break;
       case 'vote': {
@@ -65,20 +68,28 @@ var ShapadoSocket = {
       }
       break;
       case 'newcomment': {
-        ShapadoUI.new_comment(data);
+        ShapadoUI.newComment(data);
       }
       break;
       case 'updatedcomment': {
-        ShapadoUI.update_comment(data);
+        ShapadoUI.updateComment(data);
       }
       break;
       case 'newactivity': {
-        ShapadoUI.new_activity(data);
+        ShapadoUI.newActivity(data);
       }
       break;
     }
-  },
-  send: function(data) {
+  }
+
+  function send(data) {
     this.ws.send(JSON.stringify(data))
   }
-};
+
+  return {
+    initialize:initialize,
+    addChatMessage:addChatMessage,
+    parse:parse,
+    send:send
+  }
+}();

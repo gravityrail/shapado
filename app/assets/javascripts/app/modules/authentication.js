@@ -1,32 +1,33 @@
-var Auth = {
-  initialize: function() {
+Auth = function() {
+  var self = this;
+
+  function initialize() {
     $('.auth-provider').live("click", function(){
       var authUrl = $(this).attr('href');
-
-      Auth.open_popup(authUrl);
-
+      openPopup(authUrl);
       return false;
     });
-  },
-  position_dropdown: function(){
+  }
+
+  function positionDropdown() {
     if(Ui.offline()){
       $('.providers-list').show().offset({left: $('.offline').offset().left+$('.offline').width()-$('.providers-list').width()}).hide();
         //$('.providers-list').show().offset({left: $('body').width()/2-$('#column2').width()/2}).css({width: '290px'});
     }
-  },
-  dropdown_toggle: function(){
+  }
+
+  function dropdownToggle() {
     $('[data-toggle-dropdown]').click(function(){
       var toggleClass = $(this).data('toggle-dropdown');
       $('.dropdown-form').addClass('hidden');
       var toggleEle = $('.'+toggleClass).toggleClass('hidden');
-      Auth.position_dropdown();
+      position_dropdown();
       $('.providers-list').show();
       return false;
     })
-    }
-  ,
-  open_popup: function(authUrl) {
+  }
 
+  function openPopup(authUrl) {
     var pparg;
     if(authUrl.indexOf('{')!=-1){
       authUrl = authUrl.split('=')[1];
@@ -39,8 +40,9 @@ var Auth = {
       window.open(authUrl+pparg, 'openid_popup', 'width=700,height=500');
       $('#login_dialog').dialog('close');
     }
-  },
-  startLoginDialog: function(title,join){
+  }
+
+  function startLoginDialog(title,join){
     if(Ui.not_member()){
         var title = $('#join_dialog').attr('data-title');
         $('#join_dialog').dialog({title: title, modal: true, resizable: false})
@@ -50,4 +52,12 @@ var Auth = {
         return false;
     }
   }
-};
+
+  return {
+    initialize:initialize,
+    positionDropdown:positionDropdown,
+    dropdownToggle:dropdownToggle,
+    openPopup:openPopup,
+    startLoginDialog:startLoginDialog
+  }
+}();

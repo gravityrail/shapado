@@ -1,5 +1,7 @@
-var Rewards = {
-  initialize: function() {
+Rewards = function() {
+  var self = this;
+
+  function initialize() {
     $("#reward_reputation" ).hide();
     if(Ui.offline) {
       $("#reward_reputation" ).hide();
@@ -7,7 +9,7 @@ var Rewards = {
       slider_div.slider({
         value:50,
         min: 50,
-        max: slider_div.attr("data-max"),
+        max: slider_div.data("max"),
         step: 50,
         slide: function( event, ui ) {
           $("#reward_value").text(ui.value);
@@ -16,4 +18,8 @@ var Rewards = {
       });
     }
   }
-};
+
+  return {
+    initialize:initialize
+  }
+}();

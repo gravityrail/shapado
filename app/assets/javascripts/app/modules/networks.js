@@ -1,5 +1,7 @@
-var Networks = {
-  initialize: function(form) {
+Networks = function() {
+  var self = this;
+
+  function initialize(form) {
     form = form || $('form')
     form.find(".network-config").hide();
 
@@ -72,4 +74,8 @@ var Networks = {
         });
     });
   }
-};
+
+  return {
+    initialize:initialize,
+  }
+}();

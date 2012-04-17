@@ -1,21 +1,24 @@
-var Questions = {
-  initialize: function($body) {
-    if($body.hasClass("show")) {
-      Questions.initialize_on_show($body);
-    } else if($body.hasClass("index")) {
-      Questions.initialize_on_index($body);
-    } else if($body.hasClass("new") || $body.hasClass("edit")) {
-      Questions.initialize_on_new($body);
-    } else if($body.hasClass("move")) {
-      Questions.initialize_on_move($body);
-    }
-  },
-  initialize_on_index: function($body) {
-    Ui.navigate_shortcuts($(".questions-index"), ".Question");
-    $(".Question .toolbar").shapadoToolbar();
-    Votes.initialize_on_questions();
+Questions = function() {
+  var self = this;
 
-    var extraParams = Utils.url_vars();
+  function initialize($body) {
+    if($body.hasClass("show")) {
+      initializeOnShow($body);
+    } else if($body.hasClass("index")) {
+      initializeOnIndex($body);
+    } else if($body.hasClass("new") || $body.hasClass("edit")) {
+      initializeOnNew($body);
+    } else if($body.hasClass("move")) {
+      initializeOnMove($body);
+    }
+  }
+
+  function initializeOnIndex($body) {
+    Ui.navigateShortcuts($(".questions-index"), ".Question");
+    $(".Question .toolbar").shapadoToolbar();
+    Votes.initializeOnQuestions();
+
+    var extraParams = Utils.urlVars();
     extraParams['format'] = 'js';
 
 //     FIXME:filter is blocking mongodb
@@ -47,8 +50,9 @@ var Questions = {
       }
       return false;
     });
-  },
-  initialize_on_show: function($body) {
+  }
+
+  function initializeOnShow($body) {
     $(".main-question .toolbar").shapadoToolbar({formContainer: "#panel-forms"});
     $("article.answer .toolbar").shapadoToolbar({formContainer: ".article-forms", afterFetchForm : function(link, form) {
       Editor.setup(form.find(".markdown_editor, .wysiwyg_editor"));
@@ -58,9 +62,9 @@ var Questions = {
     }});
     Rewards.initialize();
     Editor.initialize();
-    Votes.initialize_on_question();
-    Comments.initialize_on_question();
-    Answers.initialize_on_question();
+    Votes.initializeOnQuestion();
+    Comments.initializeOnQuestion();
+    Answers.initializeOnQuestion();
 
     if(typeof(Jqmath)!='undefined')
       Jqmath.initialize();
@@ -72,8 +76,9 @@ var Questions = {
       $('html,body').animate({scrollTop: flag_question.offset().top-100}, 1000);
     }
     prettyPrint();
-  },
-  initialize_on_new: function($body) {
+  }
+
+  function initializeOnNew($body) {
     $("#related_questions").hide();
     Editor.initialize();
     $("#question_tags").ajaxChosen({
@@ -150,8 +155,9 @@ var Questions = {
 
       return false;
     });
-  },
-  initialize_on_move: function(data) {
+  }
+
+  function initializeOnMove(data) {
     if($('#groups_slug').length){
       $('#groups_slug').autocomplete({
         source: "/groups/autocomplete_for_group_slug.json",
@@ -168,14 +174,17 @@ var Questions = {
           .appendTo( ul );
       };
     }
-  },
-  create_on_index: function(data) {
+  }
+
+  function createOnIndex(data) {
     var section = $("section.questions-index");
     section.prepend(data.html).hide().slideToggle();
-  },
-  create_on_show: function(data) {
-  },
-  update_on_index: function(data) {
+  }
+
+  function createOnShow(data) {
+  }
+
+  function updateOnIndex(data) {
     var key = "article.Question#"+data.object_id;
     for(var prop in data.changes) {
       if(prop == "title") {
@@ -183,8 +192,9 @@ var Questions = {
         $(key+" h2 a").text(n);
       }
     }
-  },
-  update_on_show: function(data) {
+  }
+
+  function updateOnShow(data) {
     var key = "section#question.main-question."+data.object_id;
     for(var prop in data.changes) {
       switch(prop) {
@@ -199,15 +209,28 @@ var Questions = {
         }
         break;
       }
-
     }
-  },
-    is_index_empty: function() {
-      var empty = $('.empty_questions').length;
-      return empty > 0
-    }
-  ,
-  update_widgets: function(data) {
-
   }
-};
+
+  function isIndexEmpty() {
+    var empty = $('.empty_questions').length;
+    return empty > 0
+  }
+
+  function updateWidgets(data) {
+  }
+
+  return {
+    initialize:initialize,
+    initializeOnIndex:initializeOnIndex,
+    initializeOnShow:initializeOnShow,
+    initializeOnNew:initializeOnNew,
+    initializeOnMove:initializeOnMove,
+    createOnIndex:createOnIndex,
+    createOnShow:createOnShow,
+    updateOnIndex:updateOnIndex,
+    updateOnShow:updateOnShow,
+    isIndexEmpty:isIndexEmpty,
+    updateWidgets:updateWidgets
+  }
+}();

@@ -1,7 +1,10 @@
-var Activities = {
-  initialize: function() {
-  },
-  create_on_index: function(data) {
+Activities = function(){
+  var self = this;
+
+  function initialize() {
+  }
+
+  function createOnIndex(data) {
     Utils.log("[create] activity");
 
     $.get('/activities/'+data.object_id, {notif: 1}, function(data) {
@@ -11,4 +14,9 @@ var Activities = {
       counter.text(parseInt(counter.text())+1);
     });
   }
-};
+
+  return {
+    initialize:initialize,
+    createOnIndex:createOnIndex
+  }
+}();

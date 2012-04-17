@@ -1,7 +1,7 @@
-
-var Loader = {
+Loader = function() {
+  var self = this;
   //only for ready
-  initialize: function($body, refreshed) {
+  function initialize($body, refreshed) {
     Updater.initialize($body);
     Ui.initialize();
     Messages.initialize();
@@ -12,9 +12,10 @@ var Loader = {
     Notifier.initialize();
     LayoutEditor.initialize();
     Loader.refresh($body, false);
-  },
+  }
+
   //for Updater
-  refresh: function($body, refreshed) {
+  function refresh($body, refreshed) {
     if(refreshed) {
       Ui.initialize();
       Messages.initialize();
@@ -36,7 +37,7 @@ var Loader = {
     } else if($body.hasClass("groups-controller") ||
       $body.hasClass("admin-manage-controller")) {
       if($body.hasClass("content")) {
-        Ui.initialize_lang_fields();
+        Ui.initializeLangFields();
       }
       Groups.initialize($body);
     } else if($body.hasClass("themes-controller")) {
@@ -47,13 +48,18 @@ var Loader = {
       Answers.initialize($body);
     }
     if($body.is(".users-controller.edit.application")) {
-      Users.initialize_on_show($body);
+      Users.initializeOnShow($body);
     }
     if($body.is(".admin-manage-controller.properties.application.manage-layout") ||
       $body.is(".groups-controller.new.application") ||
       $body.is(".users-controller.edit.application")) {
-      Groups.initialize_on_manage_properties($body);
+      Groups.initializeOnManageProperties($body);
     }
     Invitations.initialize(); //FIXME: empty function
   }
-}
+
+  return {
+    initialize:initialize,
+    refresh:refresh
+  }
+}();

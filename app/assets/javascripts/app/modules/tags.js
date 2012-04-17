@@ -1,10 +1,14 @@
-var Tags = {
-  initialize: function($body) {
+Tags = function() {
+  var self = this;
+
+  function initialize($body) {
     if($body.hasClass("index")) {
-      Tags.initialize_on_index($body);
+      Tags.initializeOnIndex($body);
     }
-  },
-  initialize_on_index: function($body) {
+  }
+
+  function initializeOnIndex($body) {
+    // TODO: Use data-foo
     $("#filter_tags").find("input[type=submit]").hide();
     $("#filter_tags").searcher({ url : "/questions/tags.js",
                                 target : $("#tag_table"),
@@ -14,4 +18,9 @@ var Tags = {
                                 success: function(data) { $('#tags').hide() }
     });
   }
-};
+
+  return {
+    initialize:initialize,
+    initializeOnIndex:initializeOnIndex
+  }
+}();

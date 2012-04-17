@@ -1,7 +1,9 @@
-var Editor = {
-  initialize: function() {
-    Editor.setup_editor();
-    Editor.setup_wysiwyg();
+Editor = function() {
+  var self = this;
+
+  function initialize() {
+    setupEditor();
+    setupWysiwyg();
     $(".markdown code").addClass("prettyprint");
 
     $("textarea").focus(function() {
@@ -18,15 +20,17 @@ var Editor = {
         }
       }
     });
-  },
-  setup: function(editor) {
+  }
+
+  function setup(editor) {
     if(editor.hasClass("wysiwyg_editor")) {
-      Editor.setup_wysiwyg(editor);
+      setup_wysiwyg(editor);
     } else if(editor.hasClass("markdown_editor")) {
-      Editor.setup_editor(editor);
+      setup_editor(editor);
     }
-  },
-  setup_wysiwyg: function(editor) {
+  }
+
+  function setupWysiwyg(editor) {
     var editor = editor || $(".wysiwyg_editor");
     if(!editor || editor.length == 0)
       return;
@@ -50,8 +54,9 @@ var Editor = {
         }]
       ]
     });
-  },
-  setup_editor: function(editor) {
+  }
+
+  function setupEditor(editor) {
     var editor = editor || $(".markdown_editor");
     if(!editor || editor.length == 0){
       return;
@@ -174,5 +179,11 @@ var Editor = {
     });
   }
 
-};
+  return {
+    initialize:initialize,
+    setup:setup,
+    setupWysiwyg:setupWysiwyg,
+    setupEditor:setupEditor
+  }
+}();
 

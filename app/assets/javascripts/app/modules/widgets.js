@@ -1,5 +1,7 @@
-var Widgets = {
-  initialize: function(data) {
+Widgets = function() {
+  var self=this;
+
+  function initialize(data) {
     Networks.initialize();
     var widget = $('.widget-container');
 
@@ -24,7 +26,7 @@ var Widgets = {
         data: {format: 'js'},
         success: function(data) {
           var form = $(data.html);
-          Ui.initialize_lang_fields(form);
+          Ui.initializeLangFields(form);
 
           dialogContainer.html(form);
           var dialog = dialogContainer.dialog({modal: true, minWidth: 620, title: link.data('title')});
@@ -48,15 +50,27 @@ var Widgets = {
       $('.zone .name').text(opt.text())
 
     });
-  },
-  create_on_index: function(data) {
-  },
-  create_on_show: function(data) {
-  },
-  update_on_index: function(data) {
+  }
 
-  },
-  update_on_show: function(data) {
+  function createOnIndex(data) {
+  }
+
+  function createOnShow(data) {
+  }
+
+  function updateOnIndex(data) {
 
   }
-};
+
+  function updateOnShow(data) {
+
+  }
+
+  return {
+    initialize:initialize,
+    createOnIndex:createOnIndex,
+    createOnShow:createOnShow,
+    updateOnIndex:updateOnIndex,
+    updateOnShow:updateOnShow
+  }
+}();

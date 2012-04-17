@@ -1,7 +1,10 @@
-var Votes = {
-  initialize: function() {
-  },
-  initialize_on_questions: function() {
+Votes = function() {
+  var self=this;
+
+  function initialize() {
+  }
+
+  function initializeOnQuestions() {
     $(".quick-vote-button").live("click", function(event) {
       var btn = $(this);
       btn.hide();
@@ -26,8 +29,9 @@ var Votes = {
       }
       return false;
     });
-  },
-  initialize_on_question: function() {
+  }
+
+  function initializeOnQuestion() {
     $(".answer").delegate("form.vote_form button", "click", function(event) {
       if(Ui.offline()){
         Auth.startLoginDialog();
@@ -62,9 +66,19 @@ var Votes = {
       }
       return false;
     });
-  },
-  update_on_index: function(data) {
-  },
-  update_on_show: function(data) {
   }
-};
+
+  function updateOnIndex(data) {
+  }
+
+  function updateOnShow(data) {
+  }
+
+  return {
+    initialize:initialize,
+    initializeOnQuestions:initializeOnQuestions,
+    initializeOnQuestion:initializeOnQuestion,
+    updateOnIndex:updateOnIndex,
+    updateOnShow:updateOnShow
+  }
+}();

@@ -1,13 +1,16 @@
-var Answers = {
-  initialize: function($body) {
+Answers = function(){
+  var self = this;
+
+  function initialize($body) {
     if($body.hasClass("edit")) {
       Editor.setup($(".markdown_editor, .wysiwyg_editor"));
     } else if($body.hasClass("show")) {
       Votes.initialize_on_question();
       Comments.initialize_on_question();
     }
-  },
-  initialize_on_question: function() {
+  }
+
+  function initializeOnQuestion() {
     var add_another_answer = $('#add_another_answer');
     if(add_another_answer.length > 0){
       var form = $('.add_answer');
@@ -18,10 +21,12 @@ var Answers = {
         return false;
       });
     }
-  },
-  create_on_index: function(data) {
-  },
-  create_on_show: function(data) {
+  }
+
+  function createOnIndex(data) {
+  }
+
+  function createOnShow(data) {
     var is_there = $('.'+data.object_id).length;
     if(is_there==0){
       alert(is_there);
@@ -29,15 +34,28 @@ var Answers = {
       $("article.answer."+data.object_id).effect("highlight", {}, 3000);
       Ui.hide_comments_form();
     }
-  },
-  update_on_index: function(data) {
+  }
 
-  },
-  update_on_show: function(data) {
+  function updateOnIndex(data) {
+
+  }
+
+  function updateOnShow(data) {
     $("article.answer."+data.object_id).html(data.html);
     $("article.answer."+data.object_id).effect("highlight", {}, 3000);
-  },
-  vote: function(data) {
+  }
+
+  function vote(data) {
     $("article.answer."+data.object_id+" li.votes_average").text(data.average);
   }
-};
+
+  return {
+    initialize:initialize,
+    initializeOnQuestion:initializeOnQuestion,
+    createOnIndex:createOnIndex,
+    createOnShow:createOnShow,
+    updateOnIndex:updateOnIndex,
+    updateOnShow:updateOnShow,
+    vote:vote
+  }
+}();
