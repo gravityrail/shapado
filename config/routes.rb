@@ -188,6 +188,9 @@ Rails.application.routes.draw do
     member do
       get :success
     end
+    collection do
+      get :auto_update
+    end
   end
 
   scope '/manage' do

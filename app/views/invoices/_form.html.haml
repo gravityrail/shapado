@@ -5,25 +5,25 @@
 .invoices
   =form_for @invoice, :html => {:id => "payment-form", :"data-token" => "#{PaymentsConfig['public']}" } do |f|
     =error_messages_for @invoice
-
+    = hidden_field_tag :token, params[:plan]
     .invoice_info
       .brand
         =image_tag "logo.png"
-
-      .references
-        %p.reference
-          %strong
-            = t('invoices.form.invoice_reference')
-          =@invoice.order_number
-        %p
-          %strong
-            = t('invoices.form.creation_date')
-          =@invoice.created_at
-        %p
-          %strong
-            = t('invoices.form.valid_until')
-          =@invoice.created_at+1.month
-      .clear
+      - unless @invoice.new?
+        .references
+          %p.reference
+            %strong
+              = t('invoices.form.invoice_reference')
+            = @invoice.order_number
+          %p
+            %strong
+              = t('invoices.form.creation_date')
+            = @invoice.created_at
+          %p
+            %strong
+              = t('invoices.form.valid_until')
+            = @invoice.created_at+1.month
+        .clear
 
     -if @invoice.items.first["item_class"] == "ShapadoVersion"
       -version = ShapadoVersion.find(@invoice.items.first["item_id"])

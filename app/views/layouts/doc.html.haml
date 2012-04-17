@@ -9,6 +9,7 @@
     = render_app_config
     = render :partial => "shared/topbar"
     #container{:class => @current_class}
+      = show_flash_messages(:class => "flash", :markdown => true)
       #columns
         #main-content-wrap
           = current_group.head

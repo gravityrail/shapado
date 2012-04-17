@@ -15,6 +15,12 @@ class Invoice
 
   field :stripe_token, :type => String
   field :stripe_customer, :type => String
+  field :stripe_invoice_id, :type => String
+
+  field :last4, :type => String
+  field :cc_type, :type => String
+  field :exp_year, :type => Integer
+  field :country, :type => Integer
 
   referenced_in :group
   referenced_in :user
@@ -25,25 +31,6 @@ class Invoice
   attr_protected :payed, :total, :items
 
   before_create :generate_order_number
-
-  def charge!
-    # create a Customer
-    begin
-      customer = Stripe::Customer.create(
-        :card => self.stripe_token,
-        :plan => self.version,
-        :email => self.user.email
-      )
-
-      self.override(:stripe_customer => customer.id)
-      self.group.override(:shapado_version_id => ShapadoVersion.where(:token => self.version).first.id)
-
-      return true
-    rescue => e
-      Rails.logger.error "ERROR: while charging customer: #{e}"
-      return false
-    end
-  end
 
   def reset!
     self.items = []
@@ -63,6 +50,14 @@ class Invoice
 
   def total_in_dollars
     self.total / 100.0
+  end
+
+  def display_name
+    self.user.display_name
+  end
+
+  def email
+    self.user.email
   end
 
   protected

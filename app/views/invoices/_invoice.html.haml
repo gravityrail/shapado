@@ -1,20 +1,20 @@
 %table
-  -invoice.items.each do |item|
+  - invoice.items.each do |item|
     %tbody
       %tr
-        %td=item["name"]
+        %td= item["name"]
         %td
-          -if item["value"] == 0.0
+          - if item["value"] == 0.0
             = t('invoices.invoice.free')
-          -else
-            =item["value"].to_f / 100.0
-        %td=item["description"]
+          - else
+            = item["value"].to_f / 100.0
+        %td= item["description"]
 
   %tfoot
     %tr
       %td
         = t('invoices.invoice.total')
       %td
-        =@invoice.total / 100.0
+        = @invoice.total / 100.0
       %td
 

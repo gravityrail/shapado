@@ -18,31 +18,31 @@ class ShapadoVersion
 
   validates_presence_of :token, :price
   validates_uniqueness_of :token
-  
+
   def has_custom_ads?
     self.custom_ads
   end
-  
+
   def has_custom_js?
     self.custom_js
   end
-  
+
   def has_custom_domain?
     self.custom_domain
   end
-  
+
   def is_private?
     self.private
   end
-  
+
   def has_custom_themes?
     self.custom_themes
   end
-  
+
   def has_basic_support?
     self.basic_support
   end
-  
+
   def has_phone_support?
     self.phone_support
   end
@@ -54,11 +54,11 @@ class ShapadoVersion
   def in_dollars
     self.price / 100.0
   end
-  
+
   def self.libre
-    @libre ||= ShapadoVersion.new(:page_views => 0, :custom_ads => true, :custom_js => true, 
-                                  :custom_domain => true, :private => false, :custom_themes => true, 
-                                  :basic_support => false, :phone_support => false)
+    @libre ||= ShapadoVersion.new(:page_views => 0, :custom_ads => true, :custom_js => true,
+                                  :custom_domain => true, :private => false, :custom_themes => true,
+                                  :basic_support => false, :phone_support => false, :price => 0)
   end
 
   def self.reload!

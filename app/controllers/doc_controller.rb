@@ -10,6 +10,7 @@ class DocController < ApplicationController
 
   def plans
     set_page_title(t('doc.plans.title'))
+    render :layout => 'plans'
   end
 
   def chat

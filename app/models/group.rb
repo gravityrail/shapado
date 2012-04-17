@@ -100,7 +100,10 @@ class Group
   filterable_keys :name
 
   referenced_in :shapado_version, :class_name => "ShapadoVersion"
-  field :plan_expires_at, :type => Time
+  field :next_recurring_charge, :type => Time
+
+  field :stripe_customer_id, :type => String
+  index :stripe_customer_id
 
   references_many :tags, :dependent => :destroy, :validate => false
   references_many :activities, :dependent => :destroy, :validate => false
@@ -379,6 +382,81 @@ class Group
 
     Time.now > self.plan_expires_at
   end
+  def is_stripe_customer?
+    self.stripe_customer_id && !self.stripe_customer_id.empty?
+  end
+
+  def upgrade!(group, version)
+    user = self.owner
+    if self.is_stripe_customer?
+      begin
+        Stripe.api_key = PaymentsConfig['secret']
+        customer = Stripe::Customer.retrieve(self.stripe_customer_id)
+        customer.update_subscription(:plan => version.token)
+        Invoice.update_group!(group,version.token,customer)
+      rescue => e
+        Rails.logger.error "ERROR: while retrieving customer: #{e}"
+        customer = nil
+      end
+    end
+  end
+
+  def charge!(token,stripe_token)
+    # create a Customer
+    begin
+      if true
+        customer = Stripe::Customer.create(
+                                           :card => stripe_token,
+                                           :plan => token,
+                                           :email => self.owner.email
+                                           )
+      end
+      # check setting payed to true for private plan
+      self.update_group!(token,customer)
+      return true
+    rescue => e
+      Rails.logger.error "ERROR: while charging customer: #{e}"
+      return false
+    end
+  end
+
+  def update_group!(token,customer)
+    self.override(:shapado_version_id => ShapadoVersion.where(:token => token).
+                  first.id, :next_recurring_charge => Time.
+                  parse(customer.next_recurring_charge["date"]),
+                  :stripe_customer_id => customer.id)
+    self.create_invoices(customer)
+  end
+
+  def create_invoices(customer=nil)
+    if customer.nil?
+      customer = Stripe::Customer.retrieve(self.stripe_customer_id)
+    end
+
+    invoices = Stripe::Invoice.
+      all(:customer => customer.id)
+    # invoice_ids = invoices
+    existing_invoices = self.invoices.
+      map(&:stripe_version_id)
+    invoices.data.each do |invoice|
+      if !(existing_invoices.include? invoice.id)
+        version = ShapadoVersion.where(:token => invoice.lines.subscriptions.first.plan.id).first
+        i = self.invoices.new(:version => version.token,
+                       :stripe_customer => customer.id,
+                       :payed => true, :last4 => customer.active_card.last4,
+                       :cc_type => customer.active_card.type,
+                       :exp_year => customer.active_card.exp_year,
+                       :country => customer.active_card.country,
+                       :stripe_invoice_id => invoice.id,
+                       :action => "upgrade_plan",
+                       :user_id => self.owner_id,
+                       :payed_at => Time.at(1334016985))
+        i.payed = true
+        i.add_item(version.name, "", version.price, version)
+        i.save
+      end
+    end
+  end
 
   protected
   # don't enable both latex
@@ -393,7 +471,7 @@ class Group
     self.custom_html = CustomHtml.new
     self.share = Share.new if self.share.nil?
     self.notification_opts = NotificationConfig.new
-    self.group_stats = GroupStats.new
+    self.stats = GroupStat.new
   end
 
   def check_domain

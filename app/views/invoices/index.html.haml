@@ -17,9 +17,9 @@
       %tr
         %td=link_to invoice.order_number, invoice_path(invoice)
         %td
-          =invoice.created_at.to_s(:yml)
+          =invoice.created_at.to_s
         %td
-          =invoice.payed_at.to_s(:yml)
+          =invoice.payed_at.to_s
         %td
           =current_group.name
         %td

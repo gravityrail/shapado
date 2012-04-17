@@ -287,16 +287,21 @@ class GroupsController < ApplicationController
   def upgrade
     if current_group.shapado_version && current_group.shapado_version.token == params[:plan]
       flash[:error] = 'You are already subscribed to this plan'
-      redirect_to root_path and return
+      redirect_to '/plans' and return
     end
 
     version = ShapadoVersion.where(:token => params[:plan]).first
+
+    if current_group.is_stripe_customer?
+      redirect_to auto_update_invoices_path(:plan => params[:plan])
+      return
+    end
 
     @invoice = current_group.invoices.where(:payed => false,
                                             :version => version.token,
                                             :action => "upgrade_plan").last
     if !@invoice
-      @invoice = current_group.invoices.create!(:action => "upgrade_plan",
+      @invoice = current_group.invoices.new(:action => "upgrade_plan",
                                                 :version => version.token,
                                                 :user => current_user)
     end
@@ -304,7 +309,7 @@ class GroupsController < ApplicationController
     @invoice.reset!
     @invoice.add_item(version.name, "", version.price, version)
 
-    @invoice.save!
+    # @invoice.save!
 
     render :layout => 'invitations'
   end
