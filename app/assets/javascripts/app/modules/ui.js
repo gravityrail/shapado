@@ -2,36 +2,14 @@ Ui = function() {
   var self = this;
 
   function initialize() {
-    if(typeof(Effects) !== 'undefined'){
-      Effects.initialize();
-    }
-    var quick_question = $('.quick_question');
-    quick_question.find('.buttons-quickq').hide();
-    quick_question.find('form input[type=text]').focus(function(){
-      quick_question.find('.buttons-quickq').show();
-    });
-
+    initDropdowns();
+    initQuickQuestion();
     Auth.dropdownToggle();
     Auth.positionDropdown();
-    Ui.initializeAjaxTooltips();
-    Ui.initializeSmoothScrollToTop();
-    if(Ui.supportsInputPlaceholder()) {
-      $('.hideifplaceholder').remove();
-    };
+    initializeAjaxTooltips();
+    initializeSmoothScrollToTop();
+    Form.initialize();
 
-    $('.langbox.jshide').hide();
-    $('.show-more-lang').click(function(){
-        $('.langbox.jshide').toggle();
-        return false;
-    });
-
-    if(Questions.isIndexEmpty()){
-      var current_language = $('.current_language > a').data('language');
-      if(current_language!='any'){
-        $('.current_language').tipsy({trigger: 'manual', gravity: 'w'});
-        $('.current_language').tipsy('show');
-      }
-    }
     $('[rel=tipsy]').tipsy({gravity: 's'});
     $('.lang-option').click(function(){
       var path = $('#lang-select-toggle').data('language');
@@ -42,125 +20,77 @@ Ui = function() {
              });
     });
 
-    $('#openid_url').parents('form').submit(function(){
-      var openid = $('#openid_url').val();
-      openid = openid.replace('http://','');
-      openid = openid.replace('https://','');
-      $('#openid_url').val(openid)
-    })
+    sortValues('#group_language', 'option', ':last', 'text', null);
+    sortValues('#user_language', 'option',  false, 'text', null);
+    sortValues('#lang_opts', '.radio_option', false, 'attr', 'id');
+    sortValues('select#question_language', 'option', false, 'text', null);
 
-    Ui.sortValues('#group_language', 'option', ':last', 'text', null);
-    Ui.sortValues('#user_language', 'option',  false, 'text', null);
-    Ui.sortValues('#lang_opts', '.radio_option', false, 'attr', 'id');
-    Ui.sortValues('select#question_language', 'option', false, 'text', null);
+    if(offline()) {
+      $("a[data-login-required], .toggle-action, .not_member").on('click', function(e) {
+        e.preventDefault();
+        Auth.startLoginDialog();
+      });
 
-    //TODO: delegate is deprecated use on
-    $(document.body).delegate("#ask_question", "submit", function(event) {
-        if(Ui.offline()){
-            Auth.startLoginDialog();
-            return false;
-        }
-    });
-    //TODO: delegate is deprecated use on
-    $(document.body).delegate("#join_dialog_link", "click", function(event) {
+      $("form[data-login-required]").on('submit', function(e) {
+        e.preventDefault();
+        Auth.startLoginDialog();
+      });
+    }
+
+    $(document.body).delegate("click", "#join_dialog_link", function(event) {
+      event.preventDefault();
       Groups.join(this);
-      return false;
     });
-    //TODO: delegate is deprecated use on
-    $(document.body).delegate(".join_group", "click", function(event) {
+
+    $(document.body).delegate("click",  ".join_group", function(event) {
       if(!$(this).hasClass('email')){
         Auth.startLoginDialog($(this).text(),1);
         return false;
       } else {document.location=$(this).attr('href')}
     });
-    //TODO: delegate is deprecated use on
-    $(document.body).delegate(".toggle-action,.not_member", "click", function(event) {
-      if(Ui.offline()){
-        Auth.startLoginDialog();
-      } else {
+
+    $(".toggle-action").on("ajax:success", function(xhr, data, status) {
+      if(data.success) {
         var link = $(this);
-        if(!link.hasClass('busy')){
-          link.addClass('busy');
-          var href = link.attr("href");
-          var dataUndo = link.attr("data-undo");
-          var title = link.attr("title");
-          var dataTitle = link.attr("data-title");
-          var img = link.children('img');
-          var counter = $(link.attr('data-counter'));
-          var text = link.text();
-          var dataText = link.attr("data-text");
-          var dataMethod = link.attr("data-method");
-          var csrf = $('meta[name="csrf-token"]').attr('content');
-          if(dataMethod == 'post'){
-            $.ajax({url: href, headers:{'X-CSRF-Token': csrf}, data: {'authenticity_token': csrf}, dataType: "json", type: "post", success: function(data){
-              if(data.success){
-                link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
-                if(dataText && $.trim(dataText)!='')
-                  link.text(dataText);
-                img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
-                if(typeof(data.increment)!='undefined'){
-                  counter.text(parseFloat($.trim(counter.text()))+data.increment);
-                }
-                Messages.show(data.message, "notice");
-              } else {
-                Messages.show(data.message, "error");
+        var href = link.attr('href'), title = link.attr('title'), text = link.data('ujs:enable-with');
+        var dataUndo = link.data('undo'), dataTitle = link.data('title'), dataText = link.data('text');
 
-                if(data.status == "unauthenticate") {
-                  window.onbeforeunload = null;
-                  window.location="/users/login";
-                }
-              }
-              link.removeClass('busy');
-            }});
-          } else {
-            $.getJSON(href, {format: "js"}, function(data){
-              if(data.success){
-                link.attr({href: dataUndo, 'data-undo': href, title: dataTitle, 'data-title': title, 'data-text': text });
-                if(dataText && $.trim(dataText)!='')
-                  link.text(dataText);
-                img.attr({src: img.attr('data-src'), 'data-src': img.attr('src')});
-                if(typeof(data.increment)!='undefined'){
-                  counter.text(parseFloat($.trim(counter.text()))+data.increment);
-                }
-                Messages.show(data.message, "notice");
-              } else {
-                Messages.show(data.message, "error");
+        var img = link.children('img');
+        var counter = $(link.data('counter'));
 
-                if(data.status == "unauthenticate") {
-                  window.onbeforeunload = null;
-                  window.location="/users/login";
-                }
-              }
-              link.removeClass('busy');
-            }, "json");
-          }
+        link.attr({href: dataUndo, title: dataTitle });
+        link.data({'undo': href, 'title': title, 'text': text});
+
+        if(dataText && $.trim(dataText)!=''){
+          link.text(dataText);
+          link.data('ujs:enable-with', dataText);
         }
+
+        img.attr({src: img.data('src'), 'data-src': img.attr('src')});
+        if(typeof(link.data('increment'))!='undefined') {
+          counter.text(parseFloat($.trim(counter.text()))+link.data('increment'));
+        }
+        Messages.show(data.message, "notice");
       }
-      return false;
     });
-    Form.initialize();
   }
 
   function initializeFeedback() {
-    $("#feedbackform").dialog({ title: "Feedback", autoOpen: false, modal: true, width:"420px" });
+    var feedback = $("#feedbackform");
+    feedback.dialog({ title: "Feedback", autoOpen: false, modal: true, width:"420px" });
     $('#feedbackform .cancel-feedback').click(function(){
       $("#feedbackform").dialog('close');
       return false;
     });
     $('#feedback').click(function(){
-      var isOpen = $("#feedbackform").dialog('isOpen');
+      var isOpen = feedback.dialog('isOpen');
       if (isOpen){
-        $("#feedbackform").dialog('close');
+        feedback.dialog('close');
       } else {
-        $("#feedbackform").dialog('open');
+        feedback.dialog('open');
       }
       return false;
     });
-  }
-
-  function supportsInputPlaceholder() {
-    var i = document.createElement('input');
-    return 'placeholder' in i;
   }
 
   function sortValues(selectID, child, keepers, method, arg) {
@@ -204,7 +134,7 @@ Ui = function() {
       $(first_element).addClass("active");
     }
 
-    container.delegate(element_selector, "click", function(ev) {
+    container.on("click", element_selector, function(ev) {
       elements.removeClass("active");
       next = $(this);
       next.addClass("active");
@@ -282,10 +212,30 @@ Ui = function() {
 
   }
 
+  //Private
+  function initDropdowns() {
+    $('ul.menubar').droppy({
+      className:    'dropHover',
+      autoArrows:    false,
+      trigger: 'click'
+    });
+
+    $('ul.menubar .has-subnav').click(function(e) {
+      e.preventDefault();
+    });
+  }
+
+  function initQuickQuestion() {
+    var quick_question = $('.quick_question');
+    quick_question.find('.buttons-quickq').hide();
+    quick_question.find('form input[type=text]').focus(function(){
+      quick_question.find('.buttons-quickq').show();
+    });
+  }
+
   return {
     initialize:initialize,
     initializeFeedback:initializeFeedback,
-    supportsInputPlaceholder:supportsInputPlaceholder,
     sortValues:sortValues,
     offline:offline,
     notMember:notMember,

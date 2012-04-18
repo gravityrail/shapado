@@ -35,12 +35,12 @@ Comments = function() {
       return false;
     });
 
-    $(".content-panel").delegate(".comment", "hover", function(handlerIn, handlerOut) {
+    $(".content-panel").on("hover", ".comment",  function(handlerIn, handlerOut) {
       var show = (handlerIn.type == "mouseenter");
       $(this).find(".comment-votes form.comment-form button.vote").toggle(show);
     });
 
-    $(".content-panel").delegate(".comment-votes .comment-form", "submit", function(event) {
+    $(".content-panel").on("submit", ".comment-votes .comment-form",  function(event) {
       var form = $(this);
       var btn = form.find('button');
       btn.attr('disabled', true);

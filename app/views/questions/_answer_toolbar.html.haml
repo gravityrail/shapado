@@ -20,10 +20,10 @@
 
       - if answer.favorite_for?(current_user)
         %li.action
-          = link_to t('questions.answer.unfavorite'), unfavorite_question_answer_path(question, answer), :title => t('questions.answer.unfavorite_tooltip'), :class => 'answer-action unfavorite-link toggle-action', "data-undo" => favorite_question_answer_path(question, answer), "data-title" => t('questions.answer.favorite_tooltip'), 'data-counter' => '.favorites_count', 'data-text' => t('questions.answer.favorite')
+          = link_to t('questions.answer.unfavorite'), unfavorite_question_answer_path(question, answer), title: t('questions.answer.unfavorite_tooltip'), class: 'answer-action unfavorite-link toggle-action', data: {undo: favorite_question_answer_path(question, answer), title: t('questions.answer.favorite_tooltip'), counter: '.favorites_count', text: t('questions.answer.favorite'), 'login-require' => true}, remote: true
       - else
         %li.action
-          = link_to t('questions.answer.favorite'), favorite_question_answer_path(question, answer), :title => t('questions.answer.favorite_tooltip'), :class => 'answer-action favorite-link toggle-action', "data-undo" =>  unfavorite_question_answer_path(question, answer), "data-title" => t('questions.answer.unfavorite_tooltip'), 'data-counter' => '.favorites_count', 'data-text' => t('questions.answer.unfavorite')
+          = link_to t('questions.answer.favorite'), favorite_question_answer_path(question, answer), :title => t('questions.answer.favorite_tooltip'), :class => 'answer-action favorite-link toggle-action', data: {undo: unfavorite_question_answer_path(question, answer), title: t('questions.answer.unfavorite_tooltip'), counter: '.favorites_count', text: t('questions.answer.unfavorite'), 'login-require' => true}, remote: true
 
     - if !logged_in? || !current_user.mod_of?(current_group)
       - if @aflag.new_record? && current_user != answer.user

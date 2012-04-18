@@ -481,24 +481,23 @@ module ApplicationHelper
   end
 
   def follow_user_link(user)
-    if logged_in?
-      if current_user.following?(user)
-        follow_class = 'unfollow_link toggle-action'
-        follow_data = 'follow_link'
-        data_title = t('widgets.suggestions.follow_user')
-        title = t('widgets.suggestions.unfollow_user')
-        path = unfollow_user_path(user)
-        data_undo = follow_user_path(user)
-      else
-        follow_data = 'unfollow_link'
-        follow_class = 'follow_link toggle-action'
-        title = t('widgets.suggestions.follow_user')
-        data_title = t('widgets.suggestions.unfollow_user')
-        data_undo = unfollow_user_path(user)
-        path = follow_user_path(user)
-      end
-      link_to title, path, :class => follow_class, 'data-class' => follow_data, 'data-text' => data_title, 'data-undo' => data_undo, :method => 'post'
-      end
+    if current_user.following?(user)
+      follow_class = 'unfollow_link toggle-action'
+      follow_data = 'follow_link'
+      data_title = t('widgets.suggestions.follow_user')
+      title = t('widgets.suggestions.unfollow_user')
+      path = unfollow_user_path(user)
+      data_undo = follow_user_path(user)
+    else
+      follow_data = 'unfollow_link'
+      follow_class = 'follow_link toggle-action'
+      title = t('widgets.suggestions.follow_user')
+      data_title = t('widgets.suggestions.unfollow_user')
+      data_undo = unfollow_user_path(user)
+      path = follow_user_path(user)
+    end
+    #i18n
+    link_to title, path, :class => follow_class, 'data-class' => follow_data, 'data-text' => data_title, 'data-undo' => data_undo, :method => 'post', 'data-login-required' => true, :remote => true, 'data-disable-with'=>"Following...", 'data-type'=>'json'
   end
 
   def follow_tag_link(tag)

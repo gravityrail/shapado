@@ -6,7 +6,7 @@
     %h3
       = t(".title")
     %section
-      = form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true}) do |f|
+      = form_for(@question, :html=>{:class => "question-form", :id => "ask_question", :multipart => true, data: {'login-required' => true}}) do |f|
         .field
           = f.text_field :title, :class => "text_field"
         = f.hidden_field :language, :value => (current_group.language || AppConfig.default_language)

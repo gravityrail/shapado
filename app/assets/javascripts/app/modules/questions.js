@@ -18,6 +18,14 @@ Questions = function() {
     $(".Question .toolbar").shapadoToolbar();
     Votes.initializeOnQuestions();
 
+    if(Questions.isIndexEmpty()){
+      var current_language = $('.current_language > a').data('language');
+      if(current_language!='any'){
+        $('.current_language').tipsy({trigger: 'manual', gravity: 'w'});
+        $('.current_language').tipsy('show');
+      }
+    }
+
     var extraParams = Utils.urlVars();
     extraParams['format'] = 'js';
 

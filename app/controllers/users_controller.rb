@@ -285,6 +285,7 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by_login_or_id(params[:id])
+
     if @user != current_user && @user.member_of?(current_group)
       current_user.add_friend(@user)
 
@@ -298,13 +299,13 @@ class UsersController < ApplicationController
       flash[:error] = t("flash_error", :scope => "users.follow", :user => @user.login)
       message = flash[:error]
     end
+
     respond_to do |format|
       format.html do
         redirect_to user_path(@user)
       end
-      format.js {
-        render(:json => {:success => success,
-                 :message => message }.to_json)
+      format.json {
+        render(json: {success: success, message: message }.to_json)
       }
     end
   end
@@ -321,10 +322,7 @@ class UsersController < ApplicationController
       format.html do
         redirect_to user_path(@user)
       end
-      format.js {
-        render(:json => {:success => true,
-                 :message => flash[:notice] }.to_json)
-      }
+      format.js { render(json: {success: true, message: flash[:notice] }.to_json) }
     end
   end
 

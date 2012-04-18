@@ -2,10 +2,17 @@ Auth = function() {
   var self = this;
 
   function initialize() {
-    $('.auth-provider').live("click", function(){
+    $('.auth-provider').live("click", function(e){
+      e.preventDefault();
       var authUrl = $(this).attr('href');
       openPopup(authUrl);
-      return false;
+    });
+
+    $('#openid_url').parents('form').submit(function(){
+      var openid = $('#openid_url').val();
+      openid = openid.replace('http://','');
+      openid = openid.replace('https://','');
+      $('#openid_url').val(openid)
     });
   }
 
@@ -21,7 +28,7 @@ Auth = function() {
       var toggleClass = $(this).data('toggle-dropdown');
       $('.dropdown-form').addClass('hidden');
       var toggleEle = $('.'+toggleClass).toggleClass('hidden');
-      position_dropdown();
+      positionDropdown();
       $('.providers-list').show();
       return false;
     })
@@ -43,7 +50,7 @@ Auth = function() {
   }
 
   function startLoginDialog(title,join){
-    if(Ui.not_member()){
+    if(Ui.notMember()){
         var title = $('#join_dialog').attr('data-title');
         $('#join_dialog').dialog({title: title, modal: true, resizable: false})
     } else {
