@@ -1,12 +1,13 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   activerecord: 
     attributes: 
       answer: 
         body: 本文
-        created_at: 回答
+        created_at: 作成日時：
         link: リンク
     models: 
       answer: 回答

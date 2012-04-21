@@ -84,5 +84,7 @@ ru:
     yesterday: вчера
   views: 
     pagination: 
+      first: Первая
+      last: Последняя
       next: Вперёд &raquo;
       previous: "&laquo; Назад"

@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   activerecord: 
     models: 
@@ -8,13 +9,13 @@ ja:
       badges: バッジ
   badges: 
     index: 
-      description: あなたが得られるバッジの全てです。知識を共有することでバッジが手に出来ます！
+      description: あなたが得られるバッジのすべてです。知識を共有することでバッジが手に出来ます！
       title: バッジ
     shared: 
       addict: 
         description: 20日連続でサイトに訪問する
       autobiographer: 
-        description: プロフィールの全ての項目を入力
+        description: プロフィールのすべての項目を入力
         name: アピール
       celebrity: 
         description: 100人以上のフォロワーがいる
@@ -64,7 +65,7 @@ ja:
       guru: 
         description: 質問への回答に平均40以上の投票があったら
       inquirer: 
-        description: 最初に質問した人
+        description: 最初に質問した
       interesting_person: 
         description: 10人以上のフォロワーがいる
         name: 人気者
@@ -82,7 +83,7 @@ ja:
       notable_question: 
         description: 質問に2,500アクセスあったら
       organizer: 
-        description: 最初にタグ編集したら
+        description: 最初にタグを編集した
         name: 主催者
       peer_pressure: 
         description: 自分のポストが-3以下のスコアで削除された

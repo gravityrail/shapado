@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   activerecord: 
     attributes: 
@@ -42,13 +43,13 @@ ja:
       active_tooltip: 最近更新されている質問
       ask_question: 質問する
       empty: まだ質問がありません。ぜひ最初の質問を！
-      help_to_answer: 全ての質問
+      help_to_answer: すべての質問
       hot: ホット
       hot_tooltip: 最近5日間での最もアクティブな質問
       newest: 最新
       newest_tooltip: 最新の質問
       oldest: 投稿順
-      title: 全ての質問
+      title: すべての質問
       unanswered_questions: まだ回答のない質問
       votes: 投票数
     model: 

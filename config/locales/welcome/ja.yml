@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   welcome: 
     confirm_age: 
@@ -13,7 +14,7 @@ ja:
       email_description: 返信ができるよう、あなたのメールアドレスを入力してください
       feedback_description: 内容
       feedback_title: タイトル
-      title: フィードバックを送信する
+      title: フィードバックを送信
     index: 
       active: アクティブ
       create_own_site: 自分のQ&amp;Aサイトを作ってみませんか？たった10秒で作成、しかも無料！

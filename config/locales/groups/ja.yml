@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 # Author: 青子守歌
 ja: 
   activerecord: 
@@ -33,7 +34,7 @@ ja:
       access: アクセス設定
       analytics_engine: analytics Engine
       analytics_legend: the group will be able to use its own tracking code
-      any_language: 全ての言語
+      any_language: すべての言語
       custom_analytics: allow Custom Analytics
       custom_html: allow custom html
       custom_js: allow custom javascript

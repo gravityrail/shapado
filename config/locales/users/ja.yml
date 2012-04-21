@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Fryed-peach
+# Author: Shirayuki
 # Author: 青子守歌
 ja: 
   activerecord: 
@@ -49,7 +50,7 @@ ja:
       flash_notice: アカウントを作成しました。登録ありがとうございます！
     edit: 
       enable_twitter: Enable your facebook or twitter accounts
-      submit: 設定を変更する
+      submit: 保存
       title: 設定
     follow: 
       flash_notice: "%{user}があなたの友達になりました"
@@ -73,7 +74,7 @@ ja:
       oldest_tooltip: 登録時間順にユーザを表示します
       reputation: 評価の高い順
       reputation_tooltip: 評価の高い順にユーザを表示します
-      title: 全てのユーザ
+      title: すべてのユーザ
     messages: 
       errors: 
         reputation_needed: "%{action}をするには%{min_reputation}の評価が必要です"

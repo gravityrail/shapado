@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: Eleferen
 # Author: Lockal
 # Author: Shemerey
 # Author: Александр Сигачёв
@@ -25,7 +26,7 @@ ru:
         name: Имя
         owner: Эта группа создана %{login}
         registered_only: Только зарегистрированные люди могут зайти на сайт
-        signup_type: Какие методы могут использовать пользователи для регистрации
+        signup_type: "Какие методы могут использовать пользователи для регистрации:"
         state: Состояние
         subdomain: URL
         wysiwyg_editor: Включить удобный для пользования редактор

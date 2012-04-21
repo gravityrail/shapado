@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 # Author: 青子守歌
 ja: 
   activerecord: 
@@ -14,6 +15,9 @@ ja:
       to_vote_down: マイナスの投票をします
       to_vote_up: プラスの投票をします
     create: 
+      average: 
+        one: "%{count}票"
+        other: "%{count}票"
       flash_error: 投票はできません
       flash_notice: 投票してくれてありがとうございます！
       unauthenticated: ユーザでないと投票できません
