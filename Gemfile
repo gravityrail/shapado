@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.3'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', :git => 'git://github.com/ricodigo/rdiscount.git'
