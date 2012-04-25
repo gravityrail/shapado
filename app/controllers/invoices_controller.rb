@@ -21,9 +21,16 @@ class InvoicesController < ApplicationController
     render ropts
   end
 
+  def upcoming
+    if current_group.is_stripe_customer?
+      @upcoming_invoice = current_group.upcoming_invoice
+    end
+
+  end
+
   def auto_update
     version = ShapadoVersion.where(:token => params[:plan]).first
-    Invoice.upgrade!(current_group, current_user, version)
+    current_group.upgrade!(current_user, version)
     redirect_to invoices_path, :notice => "Your plan has been upgraded to #{current_group.reload.shapado_version.token}, you will be charged on your upcoming invoice due in #{distance_of_time_in_words_to_now(current_group.next_recurring_charge)}."
   end
 
@@ -66,6 +73,7 @@ class InvoicesController < ApplicationController
   end
   protected
   def check_new_invoice
+    return unless current_group.is_stripe_customer?
     if (current_group.next_recurring_charge &&
         current_group.next_recurring_charge <= Time.now) ||
         current_group.invoices.count == 0

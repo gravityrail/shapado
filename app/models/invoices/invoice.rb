@@ -1,7 +1,8 @@
 class Invoice
   include Mongoid::Document
   include Mongoid::Timestamps
-
+  field :stripe_invoice, :type => Hash
+  field :stripe_customer, :type => Hash
   field :payed, :type => Boolean, :default => false
   field :payed_at, :type => Time
 
@@ -14,7 +15,6 @@ class Invoice
   field :order_number, :type => String
 
   field :stripe_token, :type => String
-  field :stripe_customer, :type => String
   field :stripe_invoice_id, :type => String
 
   field :last4, :type => String
@@ -49,7 +49,7 @@ class Invoice
   end
 
   def total_in_dollars
-    self.total / 100.0
+    self.stripe_invoice["total"] / 100.0
   end
 
   def display_name

@@ -190,6 +190,7 @@ Rails.application.routes.draw do
     end
     collection do
       get :auto_update
+      get :upcoming
     end
   end
 

@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.2'
 
 if RUBY_PLATFORM !~ /mswin|mingw/
   gem 'rdiscount', :git => 'git://github.com/ricodigo/rdiscount.git'
@@ -20,7 +20,6 @@ gem 'maruku'
 # ui
 gem 'haml', '>= 3.1.3'
 gem 'sass', '>= 3.1.10'
-gem 'compass', '>= 0.11.5'
 gem 'compass-colors', '0.9.0'
 gem 'fancy-buttons', '1.1.1'
 gem 'kaminari'
@@ -80,6 +79,8 @@ gem 'state_machine', '1.1.2'
 gem 'xapian-ruby', '1.2.7.1'
 gem 'xapit', :git => 'git://github.com/kuadrosx/xapit.git'
 group :assets do
+  gem 'compass-rails'
+  gem 'compass'
   gem 'sass-rails', "  ~> 3.2.0"
   gem 'uglifier'
 end

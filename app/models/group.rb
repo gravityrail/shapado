@@ -105,6 +105,8 @@ class Group
   field :stripe_customer_id, :type => String
   index :stripe_customer_id
 
+  field :upcoming_invoice, :type => Hash
+
   references_many :tags, :dependent => :destroy, :validate => false
   references_many :activities, :dependent => :destroy, :validate => false
 
@@ -386,19 +388,26 @@ class Group
     self.stripe_customer_id && !self.stripe_customer_id.empty?
   end
 
-  def upgrade!(group, version)
-    user = self.owner
+  def upgrade!(user, version)
+    group = self
     if self.is_stripe_customer?
       begin
         Stripe.api_key = PaymentsConfig['secret']
         customer = Stripe::Customer.retrieve(self.stripe_customer_id)
         customer.update_subscription(:plan => version.token)
-        Invoice.update_group!(group,version.token,customer)
+        self.update_plan!(version.token,customer)
+        self.set_incoming_invoice
       rescue => e
         Rails.logger.error "ERROR: while retrieving customer: #{e}"
         customer = nil
       end
     end
+  end
+
+  def set_incoming_invoice
+    upcoming = Stripe::Invoice.
+      upcoming(:customer => self.stripe_customer_id)
+    self.override(:upcoming_invoice => JSON.parse(upcoming.to_json))
   end
 
   def charge!(token,stripe_token)
@@ -412,7 +421,7 @@ class Group
                                            )
       end
       # check setting payed to true for private plan
-      self.update_group!(token,customer)
+      self.update_plan!(token,customer)
       return true
     rescue => e
       Rails.logger.error "ERROR: while charging customer: #{e}"
@@ -420,7 +429,7 @@ class Group
     end
   end
 
-  def update_group!(token,customer)
+  def update_plan!(token,customer)
     self.override(:shapado_version_id => ShapadoVersion.where(:token => token).
                   first.id, :next_recurring_charge => Time.
                   parse(customer.next_recurring_charge["date"]),
@@ -429,30 +438,25 @@ class Group
   end
 
   def create_invoices(customer=nil)
-    if customer.nil?
+   # if customer.nil?
       customer = Stripe::Customer.retrieve(self.stripe_customer_id)
-    end
-
+    #end
+    customer_hash = JSON.parse(customer.to_json)
     invoices = Stripe::Invoice.
-      all(:customer => customer.id)
+      all(:customer => customer["id"])
     # invoice_ids = invoices
     existing_invoices = self.invoices.
-      map(&:stripe_version_id)
+      map(&:stripe_invoice_id)
     invoices.data.each do |invoice|
       if !(existing_invoices.include? invoice.id)
         version = ShapadoVersion.where(:token => invoice.lines.subscriptions.first.plan.id).first
-        i = self.invoices.new(:version => version.token,
-                       :stripe_customer => customer.id,
-                       :payed => true, :last4 => customer.active_card.last4,
-                       :cc_type => customer.active_card.type,
-                       :exp_year => customer.active_card.exp_year,
-                       :country => customer.active_card.country,
-                       :stripe_invoice_id => invoice.id,
-                       :action => "upgrade_plan",
-                       :user_id => self.owner_id,
-                       :payed_at => Time.at(1334016985))
+        invoice = JSON.parse(invoice.to_json)
+        i = self.invoices.new(:stripe_invoice_id => invoice["id"],
+                              :stripe_invoice => invoice,
+                              :action => "upgrade_plan",
+                              :user_id => self.owner_id,
+                              :stripe_customer =>customer_hash)
         i.payed = true
-        i.add_item(version.name, "", version.price, version)
         i.save
       end
     end
