@@ -4,6 +4,7 @@
 # Author: Centerlink
 # Author: Nike
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   shared: 
     any_lang: Mikä tahansa kieli
@@ -24,19 +25,34 @@ fi:
         description: 
           text: Ole ensimmäinen, joka %{action_link}!
         title: Anteeksi! Ei ole paljon nähtävää.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Napsauta tästä nähdäksesi kysymykset kaikilla kielillä.
+        title: Kysymyksiä ei ole saatavilla tällä kielellä.
+      filtered_questions: 
+        description: 
+          action_link: Napsauta tästä nähdäksesi kaikki kysymykset.
+        title: Valitettavasti tälle suodattimelle ei ole kysymyksiä saatavilla.
       questions: 
         description: 
           action_link: kysyy kysymyksen
+          text: Ole ensimmäinen, joka <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 
           action_link: nyt
           text: luo %{action_link}
         title: Et ole vielä luonut teemoja.
+    filter: "Suodatin:"
+    language: "Kieli:"
+    language_filter_tooltip: Kokeile toista kieltä.
+    languages: "Kielet:"
     layout: 
       footer: 
         cc_footer: Kaikki Shapado.comin sisältö ja tiedot ovat käytettävissä %{cc_link} -lisenssin alaisuudessa
         powered_by: Käyttövoimana %{source_link} %{version} sovelluksen %{agpl_link} alaisena
     login_drop_down: 
+      sign_up_user_pass: Kirjaudu sisään sähköpostilla/salasanalla
+      with_email_pass: Kirjaudu sisään sähköpostillasi
       with_facebook: Facebookilla
       with_google: Googlella
       with_identica: Identi.calla
@@ -60,3 +76,4 @@ fi:
       admin: Ylläpitäjä
       logged_as: Kirjautunut nimellä %{login}
       user_page: Oma sivu
+    view_mode: "Näyttötila:"

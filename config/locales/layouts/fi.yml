@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   layouts: 
     application: 
@@ -13,6 +14,7 @@ fi:
       collaborate: Tee yhteistyötä
       contributed: Muokkaajat
       faq: UKK
+      feed: Seuraajat
       follow_us_and_share: Seuraa meitä ja jaa
       followed: Seuraajat
       forgot: Unohditko?
@@ -24,6 +26,8 @@ fi:
       logout: Kirjaudu ulos
       manage_ads: Hallitse mainoksia
       moderate: Valvo
+      need_to_signin: Sinun täytyy kirjautua ensin sisään.
+      not_member_join_dialog: Sinun täytyy liittyä ryhmään %{group} tehdäksesi tämän toiminnon, napsauta tästä tehdäksesi niin.
       now: nyt!
       openid: 
         explaination: "Jos haluat rekisteröityä tai vain kirjautua sisään, valitse OpenID-palveluntarjoaja:"
@@ -37,6 +41,7 @@ fi:
       settings: Asetukset
       signup: Rekisteröidy
       subscribe: Tilaa
+      success_joining_group: Olet nyt ryhmän %{group} jäsen, kiitos liittymisestä!
       tags: Tunnisteet
       title: Kysymykset ja vastaukset
       unanswered: Vastaamaton

@@ -4,6 +4,7 @@
 # Author: Centerlink
 # Author: Nike
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   widgets: 
     about: 
@@ -96,6 +97,8 @@ fi:
       follow_user: + Seuraa käyttäjää
       followed_by: Seuraaja %{user}
       title: Seurattavat ihmiset ja tunnisteet
+      unfollow_tag: Lopeta tagin seuraaminen
+      unfollow_user: Lopeta käyttäjän seuraaminen
     tag_cloud: 
       description: Tämä ikkunaolio näyttää painotetun luettelon
       title: Painotettu luettelo

@@ -23,7 +23,7 @@ br:
         owner: Krouet eo bet ar strollad gant %{login}
         registered_only: N'eus nemet an dud enrollet a c'hall mont war al lec'hienn
         state: Stad
-        subdomain: Url
+        subdomain: URL
         wysiwyg_editor: Gweredekaat ar skridaozer testennoù aes da implijout
     models: 
       default_tags_message: N'hallit ket lakaat en tu all da 10 tikedenn dre ziouer

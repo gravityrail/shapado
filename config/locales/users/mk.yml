@@ -27,7 +27,7 @@ mk:
         preferred_languages: "Сакате да читате прашања на следниве јазици:"
         preferred_tags: претпочитани ознаки
         reputation: углед
-        timezone: часовна зона
+        timezone: Часовен појас
         updated_at: подновено во
         website: Мреж. место
     models: 

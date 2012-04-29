@@ -14,12 +14,16 @@ fi:
     index: 
       all_tooltip: Näytä kaikki kulta-, hopea- ja pronssirintanapit.
       bronze: Pronssi
+      bronze_tooltip: Pronssisia ansiomerkkejä on helppo voittaa. Ne kannustavat käyttäjiä osallistumaan.
       description: Mitä enemmän osallistut kysymällä kysymyksiä tai vastaamalla niihin, sitä enemmän rinanappeja sinulle myönnetään. Nämä tulevat näkyviin käyttäjäprofiilisivullasi.
       general: Tavalliset rintanapit
       general_tooltip: Näytä kaikki määritellyt rintanapit.
       gold: Kulta
+      gold_tooltip: Kultaiset ansiomerkit ovat suurin palkinto, mutta ne on myös vaikeinta saada. Vain kaikkein omistautuneimmat käyttäjät saavat näitä palkintoja.
       silver: Hopea
+      silver_tooltip: Hopeisia ansiomerkkejä saavat aktiiviset käyttäjät, jotka ovat olleet mukana melko pitkään.
       tags: Tagien rintanapit
+      tags_tooltip: Kun tagilla X merkityt kysymykset saavat yli 100 ääntä, tälle tagille luodaan merkki X.
       title: rintanapit
     shared: 
       addict: 

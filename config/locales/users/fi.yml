@@ -4,6 +4,7 @@
 # Author: Centerlink
 # Author: Nike
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   activerecord: 
     attributes: 
@@ -50,6 +51,10 @@ fi:
     change_password: 
       submit: Vaihda salasanani
       title: Vaihda salasana
+    check_custom_domain: 
+      reset_domain_button: Ei, ole hyvä ja palauta mukautetuksi toimialueeksi %{domain}
+      title: Toimiiko uusi mukautettu toimialueesi?
+      working_domain_link: Kyllä, näen uuden toimialueeni toimivan alla.
     create: 
       flash_error: Emme valitettavasti voineet perustaa kyseistä tiliä. Yritä uudelleen tai ota yhteyttä järjestelmänvalvojaan (linkki yllä).
       flash_notice: Kiitos rekisteröitymisestä!
@@ -63,6 +68,8 @@ fi:
     form: 
       activities_notification: Lähetä sähköposti-ilmoituksia järjestelmän toiminnasta, kuten ansaituista rintanapeista, uusista seuraajista, jne.
       avatar_tip: Muuta profiilikuvaasi käyttäen Gravatar-ohjelmaa
+      check_domain: Tarkasta %{domain}
+      check_domain_title: Tarkasta ryhmäsi mukautetut toimialueet
       desktop_notification: Työpöytäilmoitukset
       give_advice_notification: Lähetä sähköposti-ilmoitukset kysymyksistä omalta erikoisalaltani
       information: Tiedot
@@ -107,6 +114,9 @@ fi:
       title: Käyttäjä %{user}
       unfollow: Älä seuraa
       views: näyttökertaa
+    show_json: 
+      edit_it: Muokkaa profiiliasi tästä.
+      no_description: Tämä käyttäjä ei ole vielä kirjoittanut profiiliaan.
     top_user: 
       connect: Yhdistä
       my_karma: "Karmani: %{karma}"

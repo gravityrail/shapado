@@ -12,7 +12,7 @@ ja:
     feedback: 
       captcha_error: スパム防止のため、簡単な計算を行ってください
       email_description: 返信ができるよう、あなたのメールアドレスを入力してください
-      feedback_description: 内容
+      feedback_description: 説明
       feedback_title: タイトル
       title: フィードバックを送信
     index: 

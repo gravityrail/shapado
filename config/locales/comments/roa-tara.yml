@@ -1,0 +1,14 @@
+# Messages for Tarandíne (Tarandíne)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Joetaras
+roa-tara: 
+  comments: 
+    shared: 
+      add_comment: Aggiunge 'nu commende...
+      comment_submit: Commende
+      reply: Respunne
+      said: ditte
+  models: 
+    comment: Commende
+    comments: Commende

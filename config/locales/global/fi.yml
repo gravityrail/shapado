@@ -5,6 +5,7 @@
 # Author: Crt
 # Author: Raspi
 # Author: Str4nd
+# Author: Tomi Toivio
 fi: 
   feeds: 
     feed: Syöte
@@ -25,6 +26,7 @@ fi:
     chat: Keskustelu
     current: Nykyinen
     edited: muokattu
+    edited_by: Muokkaaja
     edited_by_semi: "Muokkaaja:"
     feedback: Palaute
     follow: Seuraa

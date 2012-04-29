@@ -4,6 +4,7 @@
 # Author: Centerlink
 # Author: Nike
 # Author: Raspi
+# Author: Tomi Toivio
 fi: 
   activerecord: 
     attributes: 
@@ -28,9 +29,11 @@ fi:
         signup_type: "Mitä menetelmiä käyttäjäsi voivat käyttää sisäänkirjautumiseen:"
         state: Tila
         subdomain: Verkko-osoite
+        track_users: Kysy käyttäjiltä fyysistä sijaintia.
         wysiwyg_editor: Ota käyttöön käyttäjäystävällinen editori
     models: 
       default_tags_message: Et voi luoda yli 10 oletustunnistetta
+      duplicate_domain_message: Valitettavasti tämä domain on jo viety.
       group: Ryhmä
       groups: Ryhmät
       reputation_rewards_answer_constrain: Vastauksen palkitsemisen rajoitteen pitäisi olla negatiivinen

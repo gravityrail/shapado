@@ -8,7 +8,7 @@ ja:
     attributes: 
       group: 
         default_tags: デフォルトタグ
-        description: 詳細
+        description: 説明
         domain: ドメイン
         fb_button: フェイスブックのようなボタンを有効化（プライバシーには不都合）
         forum: 1ユーザの2回以上の回答を許可する

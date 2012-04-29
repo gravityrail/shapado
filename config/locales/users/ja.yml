@@ -19,7 +19,7 @@ ja:
         email: メールアドレス
         fullname: フルネーム
         hide_country: 国を表示しない
-        language: 表示言語
+        language: 言語
         language_filter: 言語でフィルタリング
         last_logged_at: 最新ログイン時間
         login: 利用者名
@@ -68,9 +68,9 @@ ja:
       filter: ユーザを検索する
       name: 名前順
       name_tooltip: 名前順にユーザを表示します
-      newest: 登録の新しい順
+      newest: 新しい順
       newest_tooltip: 登録時間の新しい順にユーザを表示します
-      oldest: 登録順
+      oldest: 古い順
       oldest_tooltip: 登録時間順にユーザを表示します
       reputation: 評価の高い順
       reputation_tooltip: 評価の高い順にユーザを表示します

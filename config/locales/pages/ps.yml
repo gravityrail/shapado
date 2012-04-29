@@ -14,6 +14,7 @@ ps:
     actions: 
       create_page: يو نوی مخ جوړول
       edit_page: مخ سمول
+      title: چارې
     form: 
       language_tip: د مخ ژبه
     index: 

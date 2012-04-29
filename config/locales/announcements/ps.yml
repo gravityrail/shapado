@@ -11,5 +11,8 @@ ps:
         only_anonymous: يوازې د ورکنومه کارنانو لپاره
         starts_at: پېلېږي په
   announcements: 
+    actions: 
+      delete: غورځول
+      title: چارې
     index: 
       title: خبرتياوې
