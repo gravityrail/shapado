@@ -35,7 +35,7 @@
     %p
       %strong= t('invoices.form.cc_number')
       XXXXXXXXXXX -
-      = @invoice.stripe_customer["active_card"]["type"]
+      = @invoice.stripe_customer["active_card"]["last4"]
     %p
       %strong= t('invoices.show.exp_month')
       = @invoice.stripe_customer["active_card"]["exp_month"]
