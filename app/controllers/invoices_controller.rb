@@ -23,9 +23,8 @@ class InvoicesController < ApplicationController
 
   def upcoming
     if current_group.is_stripe_customer?
-      @upcoming_invoice = current_group.upcoming_invoice
+      @invoice = current_group.upcoming_invoice
     end
-
   end
 
   def auto_update

@@ -4,6 +4,10 @@ class InvitationsController < ApplicationController
   def index
   end
 
+  def upcoming
+    @invoice = current_group.upcoming_invoice
+  end
+
   def create
     emails = params[:invitations][:emails].split(',')
     user_role = params[:invitations][:user_role]

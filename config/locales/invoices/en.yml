@@ -1,0 +1,52 @@
+en:
+  invoices:
+    success:
+      welcome: "Thank you for signing up and welcome to Shapado!"
+    invoice:
+      total: TOTAL
+      free: free
+    index:
+      id: "Invoice's ID"
+      date: "Creation date"
+      payed_at: 'Payed on'
+      group_domain: "Group's domain"
+      details: "Details"
+      amount: "Amount"
+      title: "Invoices"
+      description: "List of all your invoices"
+    form:
+      invoice_reference: 'Invoice reference:'
+      creation_date: 'Creation date:'
+      valid_until: 'Valid until:'
+      upgrading_group: "You are upgrading your <em>%{group}</em> Shapado account located <br>at <em>%{group_domain}</em>."
+      charging_explanation: "Once you click the checkout button below you'll be upgraded to the %{version_name} plan. You'll be charged the new rate of $%{version_price}/month starting on your next bill as shows."
+      want_to_change_plan: 'I want to change this plan'
+      cc_details: 'Credit card details:'
+      cc_number: 'Credit card number:'
+      as_it_appears: 'Exactly as it appears on the card'
+      ccv_code: 'Verification Code:'
+      ccv_explanation: 'The CVV code is a 3 or 4 digit number on the front or back of the card.'
+      expiration_date: 'Expiration Date'
+      checkout: Checkout
+    upcoming:
+      due_date: "Due date"
+      amount: Amount
+      invoice_total: Invoice total
+      amount_due: Amount due
+    show:
+      pdf_download: "Download as pdf"
+      order_number: "Order number"
+      order_placed: "Order placed"
+      contact_details: "Contact details"
+      payment_details: "Payment details"
+      payment_method: "Payment method"
+      cc_type: "Credit card type:"
+      billing_address: "Billing address"
+      product_details: "Product details"
+      order_total: "Order total"
+      contact_name: "Name:"
+      contact_email: "Email:"
+      credit_card: Credit card
+      country: "Country:"
+      exp_year: "Expiration year:"
+      exp_month: "Expiration month:"

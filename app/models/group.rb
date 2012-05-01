@@ -462,6 +462,10 @@ class Group
     end
   end
 
+  def upcoming_invoice_date
+    Time.at(self.upcoming_invoice["date"])
+  end
+
   protected
   # don't enable both latex
   def check_latex

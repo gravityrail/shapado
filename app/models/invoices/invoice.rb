@@ -49,7 +49,8 @@ class Invoice
   end
 
   def total_in_dollars
-    self.stripe_invoice["total"] / 100.0
+    return self.stripe_invoice["total"] / 100.0 if self.stripe_invoice
+    self.total / 100.0
   end
 
   def display_name

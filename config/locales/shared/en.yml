@@ -1,5 +1,6 @@
 en:
   shared:
+    date: "Date"
     filter: "Filter:"
     view_mode: "View mode:"
     languages: "Languages:"
