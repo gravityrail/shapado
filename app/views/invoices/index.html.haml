@@ -3,8 +3,9 @@
 %p.description
   = t('invoices.index.description')
 
-%p
-  Click here to see your upcoming invoice
+- if current_group.upcoming_invoice
+  %p
+    = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
 
 %table
   %thead

@@ -6,6 +6,7 @@ en:
       total: TOTAL
       free: free
     index:
+      upcoming_invoice: "Click here to see your upcoming invoice."
       id: "Invoice's ID"
       date: "Creation date"
       payed_at: 'Payed on'
