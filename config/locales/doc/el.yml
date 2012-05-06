@@ -1,6 +1,7 @@
 # Messages for Greek (Ελληνικά)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Crazymadlover
 el: 
   doc: 
     chat: 
@@ -22,7 +23,7 @@ el:
       free_plan: free plan
       getting_popular: getting popular
       huge_sites: huge traffic sites
-      month: month
+      month: μήνας
       page_views: for small/private sites
       plans: plans
       private_site: Enable private/public access
