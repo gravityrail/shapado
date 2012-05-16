@@ -110,6 +110,14 @@
           %li= t('.custom_analytics')
           %li= t('.web_support')
       .bottom
+        .users-qty
+          %p
+            %label.label= "Number of users:"
+          = number_field_tag :users_qty, 5, :min => 1
+          %p.total_private_container
+            = "Total:"
+            %span.total_private
+              $10
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
           = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "basic"), :class => "sign_up"

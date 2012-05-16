@@ -18,6 +18,7 @@
 //= require app/modules/messages.js
 
 //= require app/modules/votes.js
+//= require app/modules/plans.js
 //= require app/modules/questions.js
 //= require app/modules/answers.js
 //= require app/modules/comments.js

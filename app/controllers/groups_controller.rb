@@ -302,14 +302,9 @@ class GroupsController < ApplicationController
                                             :action => "upgrade_plan").last
     if !@invoice
       @invoice = current_group.invoices.new(:action => "upgrade_plan",
-                                                :version => version.token,
-                                                :user => current_user)
+                                            :version => version.token,
+                                            :user => current_user)
     end
-
-    @invoice.reset!
-    @invoice.add_item(version.name, "", version.price, version)
-
-    # @invoice.save!
 
     render :layout => 'invitations'
   end
