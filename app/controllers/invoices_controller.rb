@@ -56,18 +56,21 @@ class InvoicesController < ApplicationController
 
   def webhook
     if params[:type] == 'invoice.created'
-      @invoice = Invoice.where(:stripe_customer => params[:data][:object][:customer]).first
-
-      if @invoice && @invoice.group.shapado_version && @invoice.group.shapado_version.token == 'private'
+      group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
+      if group && group.shapado_version && group.shapado_version.token == 'private'
         Stripe.api_key = PaymentsConfig['secret']
         Stripe::InvoiceItem.create(
-          :customer => @invoice.stripe_customer,
-          :amount => @invoice.group.memberships.count*@invoice.group.shapado_version.per_user,
+          :customer => group.stripe_customer_id,
+          :amount => group.memberships.count*group.shapado_version.per_user,
           :currency => "usd",
-          :description => "fee for #{@invoice.group.memberships.count} users"
+          :description => "fee for #{group.memberships.count} users"
         )
 
       end
+    end
+
+    respond_to do |format|
+      format.xml {  head :no_content }
     end
   end
   protected
