@@ -34,7 +34,7 @@ nl:
     following: Wordt gevolgd
     from: uit %{site}
     group_not_found: De pagina %{url} bestaat niet
-    home: Hoofdmenu
+    home: Startpagina
     next_button: Volgende
     open: Openen
     or: of

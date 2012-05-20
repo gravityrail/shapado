@@ -4,6 +4,8 @@
 # Author: Joetaras
 roa-tara: 
   comments: 
+    edit: 
+      title: Cange 'u commende
     shared: 
       add_comment: Aggiunge 'nu commende...
       comment_submit: Commende
