@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Centerlink
 # Author: Crt
+# Author: Nike
 # Author: Raspi
 # Author: Str4nd
 # Author: Tomi Toivio
@@ -58,7 +59,7 @@ fi:
     question: Kysymys
   number: 
     x_time: 
-      one: "%{count} kerta"
+      one: "%{count} kerran"
       other: "%{count} kertaa"
       zero: Ei koskaan
   preferred_languages: 

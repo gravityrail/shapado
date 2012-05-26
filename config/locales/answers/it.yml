@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
 it: 
@@ -8,7 +9,7 @@ it:
     attributes: 
       answer: 
         body: Corpo
-        created_at: "Creato il:"
+        created_at: Creato il
         link: Collegamento
     models: 
       answer: Risposta

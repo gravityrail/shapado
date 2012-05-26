@@ -1,6 +1,7 @@
 # Messages for Italian (Italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
 # Author: HalphaZ
@@ -44,7 +45,7 @@ it:
     filter: "Filtro:"
     language: "Lingua:"
     language_filter_tooltip: Prova con un'altra lingua.
-    languages: Lingue
+    languages: "Lingue:"
     layout: 
       footer: 
         cc_footer: Tutti i contenuti di Shapado.com e i dati sono disponibili sotto licenza %{cc_link}

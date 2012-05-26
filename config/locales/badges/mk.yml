@@ -46,7 +46,7 @@ mk:
         name: граѓанска должност
       cleanup: 
         description: Направил прво враќање
-        name: расчистување
+        name: Расчистување
       commentator: 
         description: даде 10 коментари
         name: Коментатор

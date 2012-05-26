@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Anakmalaysia
+# Author: Hydra
 # Author: Hzy980512
 zh-CN: 
   activerecord: 
@@ -13,6 +14,7 @@ zh-CN:
     changed: 已更改
     created: 建立了
     deleted: 已删除
+    destroyed: 已删除
     flagged: 已标记
     requested_to_close: 被要求关闭
     requested_to_open: 被要求开放
