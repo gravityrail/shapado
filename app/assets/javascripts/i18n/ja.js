@@ -2,10 +2,10 @@
  *  Exported from translatewiki.net
  *
  * Translators:
- *  - 青子守歌
+ *  - Shirayuki
  */
 
 var I18n = {
-	on_leave_page: "変更が失われることがあります。"
+	on_leave_page: "変更内容を失う恐れがあります"
 };
 

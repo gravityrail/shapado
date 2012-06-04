@@ -19,10 +19,10 @@ ja:
         one: "%{count}票"
         other: "%{count}票"
       flash_error: 投票はできません
-      flash_notice: 投票してくれてありがとうございます！
+      flash_notice: 投票していただいてありがとうございます！
       unauthenticated: ユーザでないと投票できません
     destroy: 
-      flash_notice: あなたの投票は削除されました
+      flash_notice: あなたの投票を削除しました。
     model: 
       messages: 
         closed_question: 閉じられた質問に属する記事には投票できません

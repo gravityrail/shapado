@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   activerecord: 
     models: 
@@ -8,5 +9,5 @@ ja:
       favorites: お気に入り
   favorites: 
     create: 
-      success: この質問はお気に入りに登録されました
-      unauthenticated: ログインしないとお気に入り登録はできません
+      success: 質問をお気に入りに登録しました。
+      unauthenticated: お気に入りに登録するには、ログインする必要があります。

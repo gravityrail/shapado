@@ -7,11 +7,11 @@ ja:
     confirm_age: 
       notice: ここから先は18歳以上のみがアクセスできます。18歳未満のアクセスは禁止されていますので、必ず正直に答えてください。
       over_18: 私は18歳以上です
-      under_18: 私は18歳以下です
-      warning: 警告：このページはアダルトな内容を含みます！
+      under_18: 私は18歳未満です
+      warning: 警告：このページは成人向けの内容を含んでいます。
     feedback: 
       captcha_error: スパム防止のため、簡単な計算を行ってください
-      email_description: 返信ができるよう、あなたのメールアドレスを入力してください
+      email_description: 返信できるように、あなたのメールアドレスを入力してください
       feedback_description: 説明
       feedback_title: タイトル
       title: フィードバックを送信

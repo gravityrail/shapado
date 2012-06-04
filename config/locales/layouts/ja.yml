@@ -1,10 +1,12 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 # Author: 青子守歌
 ja: 
   layouts: 
     application: 
+      all: すべて
       ask_question: 質問する
       badges: バッジ
       forgot: 忘れた？
@@ -46,6 +48,7 @@ ja:
       rewards: 報酬
       stats: ステータス
       theme: テーマ
+      themes: テーマ
       widgets: ウィジェット
     notifications: 
       message: これ以上%{group}からの自動通知を受け取りたくない場合、通知画面の設定を変更してください。

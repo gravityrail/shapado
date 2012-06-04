@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   wiki: 
     actions: 
@@ -12,7 +13,7 @@ ja:
       title: 差分表示：%{prev} と %{curr}
     history: 
       current_version: 現在のバージョン
-      previous_versions: 前のバージョン
+      previous_versions: 以前のバージョン
       title: 履歴 (%{count})
       version: バージョン
       version_summary: バージョンサマリー

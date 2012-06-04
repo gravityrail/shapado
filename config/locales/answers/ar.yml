@@ -1,6 +1,7 @@
 # Messages for Arabic (العربية)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DRIHEM
 # Author: Meno25
 # Author: Mutarjem horr
 # Author: OsamaK
@@ -17,6 +18,7 @@ ar:
       answers: إجابات
   answers: 
     create: 
+      annon_notice: تم تسجيل المستخدم مسبقاً، يرجى تسجيل الدخول.
       flash_error: "حدث شيئا ما أثناء إضافة جوابك.\nتذكر أن:\n- الأجوبة الفارغة والمكررة غير مسموحة\n- يجب عليك الانتظار 20 ثانية قبل إضافة إجابة أخرى.\n- لا يمكنك إضافة أكثر من إجابة واحدة لنفس السؤال."
       flash_notice: شكرا لك!
     edit: 

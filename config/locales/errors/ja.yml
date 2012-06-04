@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   errors: 
     forbidden: 
@@ -13,7 +14,7 @@ ja:
       title: 申し訳ありません。何かのエラーが発生しました。
     not_found: 
       explanation: アドレスを確認してください。またはページは別な場所に移動した可能性があります。
-      title: ページがありません
+      title: ページがありません。
     options_label: "他の方法を試してください:"
     search: 検索
     unprocessable_entity: 

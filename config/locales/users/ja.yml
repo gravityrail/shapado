@@ -10,9 +10,9 @@ ja:
       user: 
         activated_at: 認証時間
         activation_code: 認証コード
-        age: Age
+        age: 年齢
         asked_by: asked by
-        avatar: プロフィールイメージ
+        avatar: プロフィール画像
         birthday: 誕生日
         created_at: 参加した時間
         current_password: 現在のパスワード
@@ -22,7 +22,7 @@ ja:
         language: 言語
         language_filter: 言語でフィルタリング
         last_logged_at: 最新ログイン時間
-        login: 利用者名
+        login: ユーザ名
         name: 名前（表示名）
         password: パスワード
         password_confirmation: パスワード（確認入力）
@@ -44,7 +44,7 @@ ja:
       vote_down: マイナスの投票
       vote_to_close_any_question: 任意の質問について終了リクエストを出す
       vote_to_close_own_question: 自分の質問について終了リクエストを出す
-      vote_up: ＋の投票
+      vote_up: プラスの投票
     create: 
       flash_error: アカウントの作成に失敗しました。以下のエラーメッセージを確認して修正してもらうか、管理者にご連絡ください。
       flash_notice: アカウントを作成しました。登録ありがとうございます！

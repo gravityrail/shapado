@@ -46,9 +46,9 @@ ja:
       help_to_answer: すべての質問
       hot: ホット
       hot_tooltip: 最近5日間での最もアクティブな質問
-      newest: 最新
+      newest: 新しい順
       newest_tooltip: 最新の質問
-      oldest: 投稿順
+      oldest: 古い順
       title: すべての質問
       unanswered_questions: まだ回答のない質問
       votes: 投票数
@@ -75,7 +75,7 @@ ja:
     retag_form: 
       cancel: キャンセル
       submit: タグを更新する
-      title: タグの更新
+      title: タグを更新
     retag_to: 
       failure: タグの更新に失敗しました
       success: タグを更新しました！

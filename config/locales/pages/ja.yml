@@ -1,19 +1,20 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   activerecord: 
     attributes: 
       page: 
-        css: stylesheets
-        js: javascript
+        css: スタイルシート
+        js: JavaScript
     models: 
       page: ページ
       pages: ページ
   pages: 
     actions: 
-      create_page: 新しいページを作成する
-      edit_page: ページを編集する
+      create_page: 新しいページを作成
+      edit_page: ページを編集
       title: アクション
     create: 
       success: ページが作成されました
@@ -23,7 +24,7 @@ ja:
       language_tip: ページの言語
       title_tip: ページタイトルです。[[タイトル|Slug]]のように作成するとSlugがURLとして使われるようになります
     index: 
-      create_page: 新しいページを作成する
+      create_page: 新しいページを作成
       title: ページ一覧
       written_in: 作成言語：%{language}
     new: 

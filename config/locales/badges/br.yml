@@ -1,4 +1,4 @@
-# Messages for Breton (Brezhoneg)
+# Messages for Breton (brezhoneg)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Fulup
@@ -30,7 +30,7 @@ br:
         name: Dever keodedel
       cleanup: 
         description: en deus graet e zistaoladenn gentañ
-        name: Naetaerezh
+        name: Tamm kempenn
       commentator: 
         description: Bez skrivet 10 evezhiadenn
         name: Displeger

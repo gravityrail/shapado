@@ -38,6 +38,7 @@ ja:
         name: 懲戒処分
       editor: 
         description: 最初にポストを編集した
+        name: 編集者
       effort_medal: 
         description: 100以上のプラス投票を受け取ったら
       enlightened: 

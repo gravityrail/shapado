@@ -1,4 +1,4 @@
-# Messages for Breton (Brezhoneg)
+# Messages for Breton (brezhoneg)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Fulup
@@ -52,7 +52,7 @@ br:
     edit: 
       enable_twitter: Gweredekaat ho kont facebook pe twitter
       submit: Enrollañ
-      title: Penndibaboù
+      title: Arventennoù
     follow: 
       flash_notice: Ouzhpennet eo bet an implijer %{user} d'ho mignoned
     form: 

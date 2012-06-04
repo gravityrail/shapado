@@ -1,4 +1,4 @@
-# Messages for Macedonian (Македонски)
+# Messages for Macedonian (македонски)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Bjankuloski06
@@ -110,7 +110,7 @@ mk:
       failure: Нажалост, оваа ознака не може да се поднови.
       success: Ознаките се успешно подновени.
     revert: 
-      title: враќање на прашање
+      title: Отповикај прашање
     shared: 
       flag: знаменце
     show: 

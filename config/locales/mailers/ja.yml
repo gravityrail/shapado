@@ -1,11 +1,12 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   mailers: 
     notifications: 
       earned_badge: 
-        subject: バッヂをゲットしました！ %{group}!
+        subject: バッジをゲットしました！ %{group}!
       favorited: 
         subject: "%{login}があなたの質問をお気に入りに登録しました"
       follow: 

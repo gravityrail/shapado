@@ -1,6 +1,7 @@
 # Messages for Japanese (日本語)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Shirayuki
 ja: 
   comments: 
     create: 
@@ -8,12 +9,12 @@ ja:
     edit: 
       title: コメントの編集
     shared: 
-      add_comment: コメントする
+      add_comment: コメントを追加...
       comment_submit: コメントする
       reply: 返信
       said: のコメント
     update: 
-      flash_notice: コメントは更新されました
+      flash_notice: コメントを更新しました。
   models: 
     comment: コメント
     comments: コメント

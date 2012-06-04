@@ -1,4 +1,4 @@
-# Messages for Danish (Dansk)
+# Messages for Danish (dansk)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
@@ -12,6 +12,7 @@ da:
   badges: 
     index: 
       description: Alle badges, som du kan tjene. Del din viden og optjen badges.
+      gold: Guld
       title: badges
     shared: 
       addict: 

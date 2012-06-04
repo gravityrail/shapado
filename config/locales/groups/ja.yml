@@ -10,8 +10,8 @@ ja:
         default_tags: デフォルトタグ
         description: 説明
         domain: ドメイン
-        fb_button: フェイスブックのようなボタンを有効化（プライバシーには不都合）
-        forum: 1ユーザの2回以上の回答を許可する
+        fb_button: Facebook の「いいね!」ボタンを有効化（プライバシーには不都合）
+        forum: 1ユーザの2回以上の回答を許可
         group_created_by: 作成者
         language: 言語
         legend: 概要
@@ -22,7 +22,7 @@ ja:
         registered_only: 登録したユーザのみアクセス可能とする
         state: ステータス
         subdomain: URL
-        wysiwyg_editor: WYSIWYGエディタを利用する
+        wysiwyg_editor: WYSIWYGエディタを有効化
     models: 
       default_tags_message: デフォルトタグは10個までです
       group: グループ
