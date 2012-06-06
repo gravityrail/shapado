@@ -55,7 +55,8 @@ class InvoicesController < ApplicationController
   end
 
   def webhook
-    if params[:type] == 'invoice.created'
+    group = group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
+    if params[:type] == 'customer.subscription.updated'
       group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
       if group && group.shapado_version && group.shapado_version.token == 'private'
         Stripe.api_key = PaymentsConfig['secret']
@@ -67,12 +68,16 @@ class InvoicesController < ApplicationController
         )
 
       end
+    elsif ['invoice.created','invoiceitem.created'].include?(params[:type]) &&
+        group.shapado_version.token == 'private'
+      group.set_incoming_invoice
     end
 
     respond_to do |format|
       format.xml {  head :no_content }
     end
   end
+
   protected
   def check_new_invoice
     return unless current_group.is_stripe_customer?

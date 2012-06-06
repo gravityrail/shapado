@@ -120,10 +120,9 @@
               $10
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
-          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "basic"), :class => "sign_up"
+          = link_to t('global.sign_up'), upgrade_group_path(current_group, :plan => "private"), :class => "sign_up"
 
   %p.free-offer
     = t(".we_offer")
     = link_to t(".free_plan"), new_group_path
     = t(".with_unlimited")
-

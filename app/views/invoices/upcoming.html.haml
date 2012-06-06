@@ -21,7 +21,7 @@
         %th
           = t('invoices.upcoming.amount')
     %tbody
-      - @invoice["lines"]["invoiceitems"].each do |line|
+      - @invoice["lines"]["invoiceitems"].to_a.each do |line|
         %tr
           %td
             = line["description"]
