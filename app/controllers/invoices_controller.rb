@@ -30,7 +30,11 @@ class InvoicesController < ApplicationController
   def auto_update
     version = ShapadoVersion.where(:token => params[:plan]).first
     current_group.upgrade!(current_user, version)
-    redirect_to invoices_path, :notice => "Your plan has been upgraded to #{current_group.reload.shapado_version.token}, you will be charged on your upcoming invoice due in #{distance_of_time_in_words_to_now(current_group.next_recurring_charge)}."
+    redirect_to invoices_path, :notice =>
+      I18n.t("invoices.auto_update.notice", :plan_name => current_group.
+             reload.shapado_version.token,
+             :amount_of_time => distance_of_time_in_words_to_now(current_group.next_recurring_charge))
+
   end
 
   def create
@@ -64,7 +68,8 @@ class InvoicesController < ApplicationController
           :customer => group.stripe_customer_id,
           :amount => group.memberships.count*group.shapado_version.per_user,
           :currency => "usd",
-          :description => "fee for #{group.memberships.count} users"
+          :description => I18n.t("invoices.webhook.has_users_fees",
+                                 :count => group.memberships.count)
         )
 
       end
@@ -86,21 +91,6 @@ class InvoicesController < ApplicationController
         current_group.invoices.count == 0
       Stripe.api_key = PaymentsConfig['secret']
       current_group.create_invoices
-    end
-  end
-
-  def save_and_charge
-    if @invoice.save
-      if @invoice.charge!
-        redirect_to success_invoice_path(@invoice)
-      else
-        flash[:error] = I18n.t("invoices.flash.cannot_pay")
-
-        render 'edit'
-      end
-    else
-      flash[:error] = I18n.t("invoices.flash.cannot_pay")
-      render 'edit'
     end
   end
 end

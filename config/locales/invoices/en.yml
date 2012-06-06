@@ -1,7 +1,14 @@
 en:
   invoices:
+    webhook:
+      has_users_fees:
+        one: "fee for %{count} user"
+        other: "fee for %{count} users"
+    auto_update:
+      notice: "Your plan has been upgraded to %{plan_name}, you will be charged on your upcoming invoice due in %{amount_of_time}."
     success:
       welcome: "Thank you for signing up and welcome to Shapado!"
+      show_invoice: "Show invoice."
     invoice:
       total: TOTAL
       free: free
