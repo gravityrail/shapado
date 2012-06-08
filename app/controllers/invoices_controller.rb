@@ -27,30 +27,12 @@ class InvoicesController < ApplicationController
     end
   end
 
-  def auto_update
-    version = ShapadoVersion.where(:token => params[:plan]).first
-    current_group.upgrade!(current_user, version)
-    redirect_to invoices_path, :notice =>
-      I18n.t("invoices.auto_update.notice", :plan_name => current_group.
-             reload.shapado_version.token,
-             :amount_of_time => distance_of_time_in_words_to_now(current_group.next_recurring_charge))
-
-  end
-
   def create
     Stripe.api_key = PaymentsConfig['secret']
     stripe_token = params[:stripeToken]
     token = params[:token]
 
     current_group.charge!(token,stripe_token)
-    redirect_to invoices_path
-  end
-
-  def update
-    Stripe.api_key = PaymentsConfig['secret']
-    stripe_token = params[:stripeToken]
-    token = params[:plan]
-    current_user.charge!(token,stripe_token)
     redirect_to invoices_path
   end
 

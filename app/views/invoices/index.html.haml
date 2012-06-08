@@ -9,7 +9,9 @@
 - if current_group.upcoming_invoice
   %p
     = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
-
+- elsif current_group.is_stripe_customer?
+  %p
+    = t("invoices.index.credit", :amount => -current_group.stripe_balance.to_f/100)
 %table
   %thead
     %tr

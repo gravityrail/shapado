@@ -102,6 +102,7 @@ class Group
   referenced_in :shapado_version, :class_name => "ShapadoVersion"
   field :next_recurring_charge, :type => Time
 
+  field :stripe_balance, :type => String
   field :stripe_customer_id, :type => String
   index :stripe_customer_id
 
@@ -385,8 +386,26 @@ class Group
 
     Time.now > self.plan_expires_at
   end
+
   def is_stripe_customer?
     self.stripe_customer_id && !self.stripe_customer_id.empty?
+  end
+
+  def set_stripe_balance!
+    Stripe.api_key = PaymentsConfig['secret']
+    cu = Stripe::Customer.retrieve(self.stripe_customer_id)
+    self.stripe_balance = cu.account_balance
+    self.save
+  end
+
+  def downgrade!
+    Stripe.api_key = PaymentsConfig['secret']
+    cu = Stripe::Customer.retrieve(self.stripe_customer_id)
+    cu.cancel_subscription
+    self.set_shapado_version
+    self.upcoming_invoice = nil
+    self.save
+    self.set_stripe_balance!
   end
 
   def upgrade!(user, version)

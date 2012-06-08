@@ -1,5 +1,9 @@
 en:
   groups:
+    downgrade:
+      notice: "You have unsubscribed successfully, you are now using our free plan."
+    upgrade:
+      error: 'You are already subscribed to this plan'
     update:
       notice: "Your group was successfully updated."
     top_grouplist:
@@ -90,4 +94,3 @@ en:
         enable_mathjax: 'Enable LaTeX with mathjax (slow but full featured)'
         daily_cap: Daily Cap
         track_users: Ask users for their physical location
-

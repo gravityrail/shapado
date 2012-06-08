@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  include ActionView::Helpers::DateHelper
   layout false, :only => 'check_custom_domain'
   before_filter :login_required, :except => [:index, :show, :join]
   before_filter :check_permissions, :only => [:edit, :update, :close,
@@ -284,16 +285,27 @@ class GroupsController < ApplicationController
     redirect_to url
   end
 
+  def downgrade
+    current_group.downgrade!
+    redirect_to invoices_path, :notice =>
+      I18n.t('groups.downgrade.notice')
+  end
+
   def upgrade
     if current_group.shapado_version && current_group.shapado_version.token == params[:plan]
-      flash[:error] = 'You are already subscribed to this plan'
+      flash[:error] = I18n.t('groups.upgrade.error')
       redirect_to '/plans' and return
     end
 
     version = ShapadoVersion.where(:token => params[:plan]).first
 
     if current_group.is_stripe_customer?
-      redirect_to auto_update_invoices_path(:plan => params[:plan])
+      version = ShapadoVersion.where(:token => params[:plan]).first
+      current_group.upgrade!(current_user, version)
+      redirect_to invoices_path, :notice =>
+        I18n.t("invoices.auto_update.notice", :plan_name => current_group.
+               reload.shapado_version.token,
+               :amount_of_time => distance_of_time_in_words_to_now(current_group.next_recurring_charge))
       return
     end
 

@@ -17,7 +17,7 @@ en:
       huge_sites: Huge traffic sites
       big_sites: Big traffic sites
       getting_popular: Getting popular
-      start_monetizing: start monetizing
+      start_monetizing: Start monetizing
       small_basic: Getting started
       private_private: Restricted access
       page_views: For Small/Private sites
@@ -43,9 +43,8 @@ en:
       custom_html: Custom HTML
       custom_html_tip: Completely revamp the whole HTML code of your site and make it look like whatever you want.
       custom_js_tip: Add your own custom Javascript code, such as multimedia widgets or jquery plugins.
-      custom_ads_tip: Use your own ads ands start making money!
+      custom_ads_tip: Use your own ads and start making money!
       custom_analytics_tip: Use Google anaylitcs and get to know your visitors better.
       custom_js: Add your own Javascript
       user: user
       private_tip: 'Only you and users you invite to your site are granted access. Perfect for the enterprise.'
-

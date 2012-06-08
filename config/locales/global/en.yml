@@ -35,6 +35,8 @@ en:
   models:
     question: The question
   global:
+    downgrade_to_free: Downgrade to free
+    upgrade: Upgrade
     open: Open
     size: Size
     alphabetically: Alphabetically
