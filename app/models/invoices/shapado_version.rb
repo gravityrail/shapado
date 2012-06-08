@@ -12,12 +12,16 @@ class ShapadoVersion
   field :custom_themes, :type => Boolean
   field :basic_support, :type => Boolean
   field :phone_support, :type => Boolean
-
+  field :uses_stripe, :type => Boolean
 
   references_many :groups, :validate => false
 
   validates_presence_of :token, :price
   validates_uniqueness_of :token
+
+  def uses_stripe?
+    self.uses_stripe
+  end
 
   def has_custom_ads?
     self.custom_ads
@@ -68,16 +72,37 @@ class ShapadoVersion
       version = ShapadoVersion.where(:token => token).first
       if version.nil?
         version = ShapadoVersion.create!(data.merge(:token => token))
-        Stripe.api_key = PaymentsConfig['secret']
-        Stripe::Plan.create(
-          :amount => version.price,
-          :interval => 'month',
-          :name => version.token.titleize,
-          :currency => 'usd',
-          :id => version.token
-        )
+        if version.uses_stripe?
+          Stripe.api_key = PaymentsConfig['secret']
+          plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
+          if plan
+            puts "Plan #{version.token} already exists."
+            plan.amount = version.price
+            plan.name = version.token.titleize
+            plan.save
+          else
+            Stripe::Plan.create(
+                                :amount => version.price,
+                                :interval => 'month',
+                                :name => version.token.titleize,
+                                :currency => 'usd',
+                                :id => version.token
+                                )
+          end
+        else
+          puts "#{version.token} not a Stripe plan"
+        end
       else
         version.update_attributes(data)
+        if version.uses_stripe?
+          Stripe.api_key = PaymentsConfig['secret']
+          plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
+          if plan
+            puts "Plan #{version.token} already exists."
+            plan.name = version.token.titleize
+            plan.save
+          end
+        end
       end
     end
   end

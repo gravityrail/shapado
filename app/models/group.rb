@@ -170,6 +170,7 @@ class Group
   before_save :check_latex
   before_create :create_widget_lists
   before_create :set_default_theme
+  before_create :set_shapado_version
   after_create :create_default_tags
 
   def reset_custom_domain!
@@ -591,4 +592,9 @@ class Group
       Tag.create(:name => tag, :group_id => self.id)
     end
   end
+
+  def set_shapado_version
+    self.shapado_version_id = ShapadoVersion.where(:token => 'free').first.id
+  end
+
 end

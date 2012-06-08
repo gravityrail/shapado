@@ -1,0 +1,9 @@
+en:
+  versions:
+    free: 'Free'
+    basic: 'Basic'
+    plus: 'Plus'
+    premium: 'Premium'
+    maximum: 'Maximum'
+    optimum: 'Optimum'
+    private: 'Private'

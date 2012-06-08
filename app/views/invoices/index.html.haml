@@ -3,6 +3,9 @@
 %p.description
   = t('invoices.index.description')
 
+%p.upgrade
+  = raw t('invoices.index.upgrade', :current_plan => current_group.shapado_version.name)
+
 - if current_group.upcoming_invoice
   %p
     = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
