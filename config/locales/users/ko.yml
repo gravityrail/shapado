@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Linkr
+# Author: 아라
 ko: 
   activerecord: 
     attributes: 
@@ -68,7 +69,7 @@ ko:
       name_tooltip: 알파벳 순서로 사용자 정렬
       newest: 최신
       newest_tooltip: 최근 가입한 사용자들
-      oldest: oldest
+      oldest: 가장 오래됨
       oldest_tooltip: users who were the first to join
       reputation: 명성
       reputation_tooltip: 명성 순서로 사용자 정렬

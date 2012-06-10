@@ -9,15 +9,32 @@ tl:
       badges: mga tsapa
   badges: 
     index: 
-      description: Lahat ng mga tsapang makakamit mo. Ibahagi ang kaalaman mo, magkamit ng mga tsapa.
+      all_tooltip: Ipakita ang lahat ng mga tsapang ginto, pilak at tansong pula.
+      bronze: Tansong pula
+      bronze_tooltip: Ang mga tsapang tansong pula ay madaling mapanalunan at nakahihikayat sa mga tagagamit na makilahok.
+      description: Mas maraming ambag sa pamamagitan ng pagtatanong o pagsagot sa mga tanong, mas maraming mga tsapa ang makakamtan mo. Makikita ito sa pahina mo ng bista ng katangian.
+      general: Regular na mga tsapa
+      general_tooltip: Ipakita ang mga tsapang nabigyan na ng paglalarawan.
+      gold: Ginto
+      gold_tooltip: Ang mga tsapang ginto ang pinakamahusay na uri ng gantimpala, ang mga ito rin ang pinakamahirap makamit. Ang mga tagagamit na pinakadedikado lamang ang nakakakuha ng ganitong mga gantimpala.
+      silver: Pilak
+      silver_tooltip: Ang mga tsapang pilak ay napagwawagian ng masisiglang mga tagagamit na nakikisangkot sa loob ng talagang matagal na panahon.
+      tags: Tatakan ang mga tsapa
+      tags_tooltip: Kapag ang mga tanong na natatakan ng X ay nakakuha ng mga sagot na mayroong mahigit sa 100 mga botong pataas, isang tsapang X ang nalilikha na may pangalan ng ganyang tatak.
       title: mga tsapa
     shared: 
       addict: 
         description: Dumalaw sa sityo bawat araw sa loob ng 20 magkakasunod na mga araw
         name: Sugapa
+      altruist: 
+        description: Unang gantimpala na kinakamay mong iginawad sa tanong ng ibang tao
+        name: Altruista
       autobiographer: 
         description: Napunan na ang lahat ng mga hanay ng balangkas na pangtagagamit
         name: Manunulat ng sariling talambuhay
+      benefactor: 
+        description: Unang gantimpala na kinakamay mong iginawad sa sarili mong tanong
+        name: Tagatangkilik
       celebrity: 
         description: Nakakuha ng mahigit kaysa 100 mga tagasunod
         name: Tanyag na tao
@@ -54,8 +71,11 @@ tl:
       fanatic: 
         description: Dumalaw sa sityo bawat araw sa loob ng 100 magkakasunod na mga araw
         name: Masugid na tagpagtangkilik
+      favorite_answer: 
+        description: Mayroong sagot na paborito ng 25 mga tagagamit
+        name: Paboritong sagot
       favorite_question: 
-        description: Nagtanong ng isang tanong na kinahiligan ng 25 mga tagagamit
+        description: Nagtanong ng isang tanong na sinusubaybayan ng 25 mga tagagamit
         name: Hilig na katanungan
       friendly: 
         description: Nagsimulang sumunod sa isang tao sa unang pagkakataon
@@ -81,6 +101,9 @@ tl:
       interesting_person: 
         description: Nakakakuha ng mahigit kaysa 10 mga tagasunod
         name: Taong nakakatawag ng pansin
+      investor: 
+        description: Unang gantimpalang inalok mo sa tanong ng ibang tao
+        name: Mamumuhunan
       merit_medal: 
         description: Nakakuha ng 200 mga botong positibo
         name: Medalya ng kahalagahan
@@ -114,6 +137,9 @@ tl:
       popular_question: 
         description: Nagtanong ng isang tanong na may 1000 mga pagtanaw
         name: Sikat na tanong
+      promoter: 
+        description: Unang gantimpalang inalok mo sa sarili mong tanong
+        name: Tagataguyod
       rockstar: 
         description: May 1,000 positibong mga pagboto, 10 negatibong mga pagboto ang pinakamataas
         name: Mang-aawit ng Tugtuging Pangyugyog
@@ -128,8 +154,11 @@ tl:
         name: Medalya ng Paglilingkod
       shapado: 
         description: Dumalaw sa sityo bawat araw sa loob ng 8 magkakasunod na mga araw
+      stellar_answer: 
+        description: Mayroong sagot na paborito ng 100 mga tagagamit
+        name: Namumukod-tanging sagot
       stellar_question: 
-        description: Nagtanong ng isang tanong na naidagdag sa mga nakahiligan ng 100 mga tagagamit
+        description: Nagtanong ng isang tanong na sinusubaybayan ng 100 mga tagagamit
         name: Namumukod-tanging tanong
       student: 
         description: Nagtanong ng isang tanong na hindi bababa sa isang pataas na pagboto

@@ -15,6 +15,7 @@ tl:
       delete: tanggalin
       title: mga galaw
     create: 
-      success: matagumpay na nalikha ang pahayag.
+      success: Matagumpay na nalikha ang patalastas mo.
     index: 
+      description: Pamahalaan at lumikha ng bagong mga anunsiyo na ipapakita sa mga panauhin mo sa buong sityo.
       title: mga pahayag

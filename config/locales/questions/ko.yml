@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Linkr
+# Author: 아라
 ko: 
   activerecord: 
     attributes: 
@@ -48,7 +49,7 @@ ko:
       hot_tooltip: 지난 5 일 동안 가장 활발한 질문과 답변
       newest: 최신
       newest_tooltip: 가장 최근 질문들
-      oldest: oldest
+      oldest: 가장 오래됨
       title: 모든 질문들
       unanswered_questions: 답변이 없는 질문들
       votes: 투표
