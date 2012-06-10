@@ -425,6 +425,7 @@ class Group
   end
 
   def set_incoming_invoice
+    Stripe.api_key = PaymentsConfig['secret']
     upcoming = Stripe::Invoice.
       upcoming(:customer => self.stripe_customer_id)
     self.override(:upcoming_invoice => JSON.parse(upcoming.to_json))
@@ -435,13 +436,15 @@ class Group
     begin
       if true
         customer = Stripe::Customer.create(
-                                           :card => stripe_token,
-                                           :plan => token,
-                                           :email => self.owner.email
-                                           )
+          :card => stripe_token,
+          :plan => token,
+          :email => self.owner.email
+        )
+        self.update_plan!(token,customer)
+        self.set_incoming_invoice
       end
       # check setting payed to true for private plan
-      self.update_plan!(token,customer)
+
       return true
     rescue => e
       Rails.logger.error "ERROR: while charging customer: #{e}"
@@ -458,9 +461,9 @@ class Group
   end
 
   def create_invoices(customer=nil)
-   # if customer.nil?
+    if customer.nil?
       customer = Stripe::Customer.retrieve(self.stripe_customer_id)
-    #end
+    end
     customer_hash = JSON.parse(customer.to_json)
     invoices = Stripe::Invoice.
       all(:customer => customer["id"])

@@ -7,8 +7,6 @@
     =error_messages_for @invoice
     = hidden_field_tag :token, params[:plan]
     .invoice_info
-      .brand
-        =image_tag "logo.png"
       - unless @invoice.new?
         .references
           %p.reference
@@ -25,8 +23,8 @@
             = @invoice.created_at+1.month
         .clear
 
-    -if @invoice.items.first["item_class"] == "ShapadoVersion"
-      -version = ShapadoVersion.find(@invoice.items.first["item_id"])
+    - if !@invoice.items.empty?&& @invoice.items.first["item_class"] == "ShapadoVersion"
+      - version = ShapadoVersion.find(@invoice.items.first["item_id"])
       .thanks
         %p.action
           =raw t('invoices.form.upgrading_group', :group => current_group.name, :group_domain => current_group.name)
@@ -35,6 +33,34 @@
           = t('invoices.form.charging_explanation', :version_name => version.name, :version_price => version.in_dollars)
           %br
           =link_to t('invoices.form.want_to_change_plan'), plans_path
+    - if !current_user
+      %h2
+        A little about you:
+      .field
+        = text_field_tag :login, nil, :class => "text_field -input", :placeholder => t(:login, :scope => "activerecord.attributes.user")
+      .field
+        = text_field_tag :name, nil,:class => "text_field -input", :placeholder => t(:name, :scope => "activerecord.attributes.user")
+      .field
+        = text_field_tag :email, nil, :class => "text_field -input", :placeholder => t("email", :scope => "activerecord.attributes.user")
+      .field
+        = password_field_tag :password, nil, :class => "password -input", :placeholder => t("password", :scope => "activerecord.attributes.user")
+      .field
+        = password_field_tag :password_confirmation, nil, :class => "password -input", :placeholder => t(:password_confirmation, :scope => "activerecord.attributes.user")
+    - if !current_user || !current_user.owner_of?(current_group)
+      %h2
+        How do you want to call your site?
+      .field
+        = label_tag :name, t('name', :scope => "activerecord.attributes.group"), :class => "label"
+        = text_field_tag :group_name, nil,:class => "text_field"
+      .field
+        = label_tag :subdomain, "URL", :class => "label"
+        .domain
+          %small
+            ="#{request.protocol}"
+          = text_field_tag :subdomain, nil, :class=>"text_field"
+          %small
+            = ".#{request.domain}"
+
 
     .credit_card_form
       %h2

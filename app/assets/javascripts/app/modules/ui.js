@@ -9,6 +9,7 @@ Ui = function() {
     initializeAjaxTooltips();
     initializeSmoothScrollToTop();
     Form.initialize();
+    }
 
     $('[rel=tipsy]').tipsy({gravity: 's'});
     $('.tipsy-plans').tipsy({gravity: 'e', opacity: 1});
@@ -32,14 +33,14 @@ Ui = function() {
         Auth.startLoginDialog();
       });
 
-      $("form[data-login-required]").on('submit', function(e) {
-        e.preventDefault();
-        Auth.startLoginDialog();
-      });
-    }
-
-    $(document.body).delegate("click", "#join_dialog_link", function(event) {
-      event.preventDefault();
+//    $(document.body).delegate("#ask_question,.plans-form,.downgrade-form", "submit", function(event) {
+    $(document.body).delegate("#ask_question", "submit", function(event) {
+        if(Ui.offline()){
+            Auth.startLoginDialog();
+            return false;
+        }
+    });
+    $(document.body).delegate("#join_dialog_link", "click", function(event) {
       Groups.join(this);
     });
 

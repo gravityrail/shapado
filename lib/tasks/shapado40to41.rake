@@ -8,6 +8,10 @@ namespace "shapado40to41" do
   end
 
   task :activities => [:init] do
+    sid = ShapadoVersion.where(:token => 'free').first.id
+    Group.override({}, {:shapado_version_id => sid})
+  end
+  task :activities => [:init] do
     puts "Updating #{Activity.count} activities"
 
     Activity.all.each do |activity|

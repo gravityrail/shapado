@@ -77,7 +77,6 @@ class ShapadoVersion
           plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
           if plan
             puts "Plan #{version.token} already exists."
-            plan.amount = version.price
             plan.name = version.token.titleize
             plan.save
           else

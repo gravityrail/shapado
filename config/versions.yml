@@ -71,6 +71,7 @@ optimum:
   custom_themes: true
   basic_support: true
   phone_support: true
+  uses_stripe: true
   price: 99900
 
 private:

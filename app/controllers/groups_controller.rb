@@ -1,11 +1,12 @@
 class GroupsController < ApplicationController
   include ActionView::Helpers::DateHelper
   layout false, :only => 'check_custom_domain'
-  before_filter :login_required, :except => [:index, :show, :join]
-  before_filter :check_permissions, :only => [:edit, :update, :close,
-                                              :connect_group_to_twitter,
-                                              :disconnect_twitter_group, :set_columns,
-                                              :check_custom_domain, :reset_custom_domain]
+  before_filter :login_required, :except => [:upgrade, :index, :show, :join]
+  before_filter :check_permissions, :only => [:edit,
+    :update, :close,
+    :connect_group_to_twitter,
+    :disconnect_twitter_group, :set_columns,
+    :check_custom_domain, :reset_custom_domain]
   before_filter :admin_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
                       [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
@@ -292,14 +293,17 @@ class GroupsController < ApplicationController
   end
 
   def upgrade
-    if current_group.shapado_version && current_group.shapado_version.token == params[:plan]
+    user_is_owner = user_signed_in? && current_user.owner_of?(current_group)
+    if current_group.shapado_version &&
+      current_group.shapado_version.token == params[:plan] &&
+      user_is_owner
       flash[:error] = I18n.t('groups.upgrade.error')
       redirect_to '/plans' and return
     end
 
     version = ShapadoVersion.where(:token => params[:plan]).first
 
-    if current_group.is_stripe_customer?
+    if current_group.is_stripe_customer? && user_is_owner
       version = ShapadoVersion.where(:token => params[:plan]).first
       current_group.upgrade!(current_user, version)
       redirect_to invoices_path, :notice =>
@@ -315,9 +319,10 @@ class GroupsController < ApplicationController
     if !@invoice
       @invoice = current_group.invoices.new(:action => "upgrade_plan",
                                             :version => version.token,
-                                            :user => current_user)
+                                            :user => current_user,
+                                            :total => version.price)
     end
-
+    @invoice.total = version.price
     render :layout => 'invitations'
   end
 
@@ -345,7 +350,6 @@ class GroupsController < ApplicationController
   protected
   def check_permissions
     @group = Group.find_by_slug_or_id(params[:id]) || current_group
-
     if @group.nil?
       redirect_to groups_path
     elsif !current_user.owner_of?(@group)

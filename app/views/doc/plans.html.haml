@@ -27,7 +27,7 @@
       .bottom
         .price== $999/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "optimum")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "optimum"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
 
@@ -48,7 +48,7 @@
       .bottom
         .price== $749/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "maximum")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "maximum"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each
@@ -68,7 +68,7 @@
       .bottom
         .price==$249/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "premium")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "premium"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each.selected
@@ -88,7 +88,7 @@
       .bottom
         .price==$49/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "plus")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "plus"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each
@@ -105,7 +105,7 @@
       .bottom
         .price==$9/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "basic")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "basic"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
 
@@ -134,7 +134,7 @@
               $10
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "private")) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "private"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
   - if current_group.shapado_version.token != 'free'

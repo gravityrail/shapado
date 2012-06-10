@@ -1,5 +1,6 @@
 desc "Setup application"
 task :bootstrap => [:environment, "db:drop",
+                    "setup:versions",
                     "setup:create_admin",
                     "setup:default_theme",
                     "setup:default_group",
@@ -198,7 +199,7 @@ namespace :setup do
 
   desc "Create/Update Versions"
   task :versions => [:environment] do
-    ShapadoVersion.reload!
+    ShapadoVersion.reload! if ShapadoVersion.count == 0
   end
 
   task :index_tags => [:environment] do
