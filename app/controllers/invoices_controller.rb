@@ -93,8 +93,13 @@ class InvoicesController < ApplicationController
     elsif ['invoice.created','invoiceitem.created'].include?(params[:type]) &&
         group.shapado_version.token == 'private'
       group.set_incoming_invoice
+    elsif ['charge.failed','invoice.payment_failed'].include?(params[:type])
+      group.set_late_payment
     end
 
+    if ['charge.succeeded','invoice.payment_succeeded'].include?(params[:type])
+      group.unset_late_payment
+    end
     respond_to do |format|
       format.xml {  head :no_content }
     end

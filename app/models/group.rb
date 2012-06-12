@@ -106,6 +106,7 @@ class Group
   field :stripe_customer_id, :type => String
   index :stripe_customer_id
 
+  field :has_late_payment, :type => Boolean, :default => false
   field :upcoming_invoice, :type => Hash
 
   references_many :tags, :dependent => :destroy, :validate => false
@@ -422,6 +423,14 @@ class Group
         customer = nil
       end
     end
+  end
+
+  def unset_late_payment
+    self.override(:has_late_payment => false)
+  end
+
+  def set_late_payment
+    self.override(:has_late_payment => true)
   end
 
   def set_incoming_invoice
