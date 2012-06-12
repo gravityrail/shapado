@@ -25,6 +25,8 @@ en:
       title: "Invoices"
       description: "List of all your invoices"
     form:
+      about_you: "A little about you:"
+      about_site: "How do you want to call your site?"
       invoice_reference: 'Invoice reference:'
       creation_date: 'Creation date:'
       valid_until: 'Valid until:'

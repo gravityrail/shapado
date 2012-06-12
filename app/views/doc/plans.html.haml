@@ -124,23 +124,23 @@
           %li= t('.custom_analytics')
           %li= t('.web_support')
       .bottom
-        .users-qty
-          %p
-            %label.label= "Number of users:"
-          = number_field_tag :users_qty, 5, :min => 1
-          %p.total_private_container
-            = "Total:"
-            %span.total_private
-              $10
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
           = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "private"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
-  - if current_group.shapado_version.token != 'free'
+  - if current_group.shapado_version.token != 'free' && user_signed_in? && current_user.owner_of?(current_group)
     %p.free-offer
       = t(".we_offer")
       = t(".free_plan")
       = t(".with_unlimited")
     = form_for(:invoice, :url => downgrade_group_path(current_group), :html => {:class => 'downgrade-form'}) do |f|
       = button_tag downgrade
+  - elsif !user_signed_in? || !current_user.owner_of?(current_group)
+    %p.free-offer
+      = t(".we_offer")
+      = t(".free_plan")
+      = t(".with_unlimited")
+    = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "free"), :html => {:class => 'downgrade-form'}) do |f|
+      = f.button upgrade
+

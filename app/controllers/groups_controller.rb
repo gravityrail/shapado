@@ -323,6 +323,7 @@ class GroupsController < ApplicationController
                                             :total => version.price)
     end
     @invoice.total = version.price
+    @version = version
     render :layout => 'invitations'
   end
 

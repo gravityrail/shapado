@@ -61,10 +61,13 @@ class InvoicesController < ApplicationController
     end
     group = @group || current_group
     return unless current_user.owner_of?(group)
-    Stripe.api_key = PaymentsConfig['secret']
-    stripe_token = params[:stripeToken]
     token = params[:token]
-    group.charge!(token,stripe_token)
+    shapado_version = ShapadoVersion.where(:token=>token).first
+    if shapado_version && shapado_version.uses_stripe?
+      Stripe.api_key = PaymentsConfig['secret']
+      stripe_token = params[:stripeToken]
+      group.charge!(token,stripe_token)
+    end
     redirect_to("#{request.protocol}#{group.domain}:#{request.port}#{invoices_path}")
   end
 
