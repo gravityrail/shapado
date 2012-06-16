@@ -1,3 +1,15 @@
+special:
+  page_views: 0
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: false
+  custom_themes: true
+  basic_support: false
+  phone_support: false
+  uses_stripe: false
+  price: 0
+
 free:
   page_views: 0
   custom_ads: false

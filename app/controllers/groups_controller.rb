@@ -293,6 +293,7 @@ class GroupsController < ApplicationController
   end
 
   def upgrade
+    return if params[:plan] == 'special'
     user_is_owner = user_signed_in? && current_user.owner_of?(current_group)
     if current_group.shapado_version &&
       current_group.shapado_version.token == params[:plan] &&
