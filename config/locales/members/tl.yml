@@ -8,7 +8,10 @@ tl:
       member: 
         role: gampanin
   members: 
+    create: 
+      notice: Ang %{login} ay matagumpay na naidagdag bilang %{role}.
     form: 
+      destroy_confirm: Nakakatiyak ka ba? Ang tagagamit na ito ay hindi na magiging isang kasapi sa pangkat na ito.
       login_tip: maghanap habang nagmamakinilya
     index: 
       manage_members_title: pamahalaan ang mga kasapi

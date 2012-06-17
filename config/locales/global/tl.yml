@@ -12,22 +12,61 @@ tl:
     tag: Magpasipi sa tatak
     user: Magpasipi sa mga tanong ng tagagamit
   global: 
+    actions: Mga galaw
     active: Pasiglahin
+    alphabetically: Naka-abakada
     anonymous: Hindi nagpapakilala
+    blog: Blog
     by: sa pamamagitan ng
+    by_semi: "Ni:"
+    chat: Makipagtalastasan
     current: Pangkasalukuyan
+    edited: Nabago na
+    edited_by: "Binago ni:"
+    edited_by_semi: "Binago ni:"
+    feedback: Tugon
+    follow: Sundan
+    followed_by: "Sinusundan ni:"
+    following: Sinusundan si
     from: mula sa %{site}
     group_not_found: Hindi umiiral ang pahinang %{url}
+    home: Tahanan
+    next_button: Susunod
+    open: Buksan
     or: o
     permission_denied: Tinanggihang pahintulutan
     please_login: Mangyaring lumagda
     preview: Paunang tingin
     previous: Nakaraan
+    privacy: Pagsasarilinan
     share: Ibahagi
+    sign_up: Magpatala
+    size: Sukat
+    sort_by: "Pagsama-samahin ayon sa:"
+    tags_label: "Mga tatak:"
+    tos: Mga Panuntunan ng Paglilingkod
+    unfollow: Huwag sundan
+    unknown_place: Hindi nalalaman
+    view: Tingnan
+    view_question: Tingnan ang katanungan
+    what_to_do: Ano ang nais mong gawin?
   models: 
     question: Ang katanungan
+  number: 
+    x_time: 
+      one: "%{count} ulit"
+      other: "%{count} mga ulit"
+      zero: Huwag kailanman
+  preferred_languages: 
+    any: Alin man
+    user: Mga wikang nais ko
+  roles: 
+    moderator: Tagapamagitan
+    owner: May-ari
+    user: Karaniwang tagagamit
   scaffold: 
     add: Idagdag
+    are_you_sure: Natitiyak mo ba?
     back: Bumalik
     cancel: Huwag ituloy
     close: Isara
@@ -46,3 +85,11 @@ tl:
   time: 
     ago: "%{time} ang nakalipas"
     today: ngayon
+    yesterday: kahapon
+  views: 
+    pagination: 
+      first: Una
+      last: Huli
+      next: Susunod &raquo;
+      previous: "&laquo; Sinundan"
+      truncate: ...

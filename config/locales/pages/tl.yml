@@ -26,6 +26,8 @@ tl:
     index: 
       create_page: lumikha ng bagong pahina
       title: talaan ng mga pahina
+      wiki: Wiki
+      wiki_pages: Mga Pahina ng Wiki
       written_in: nakasulat sa %{language}
     new: 
       title: bagong pahina

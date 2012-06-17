@@ -6,6 +6,7 @@
  */
 
 var I18n = {
-	on_leave_page: "Maaari mawala ang mga binago mo"
+	on_leave_page: "Maaari mawala ang mga binago mo",
+	loading: "Ikinakarga..."
 };
 

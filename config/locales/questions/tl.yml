@@ -118,6 +118,10 @@ tl:
       filter: Maghanap ng mga tatak
       title: Mga tatak
       tooltip: Ipakita ang mga tanong na tinatakan ng %{tag}
+    toolbar: 
+      answer_by_mail: Sumagot sa pamamagitan ng e-liham
+      requests: Mga kahilingan
+      your_close_request: Ang hiling mo ng pagsasara
     unanswered: 
       empty: Ang pangkat na ito ay wala ng anumang mga tanong na hindi pa nasasagot.
       expert: Mga dalubhasa

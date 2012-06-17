@@ -19,7 +19,7 @@ ko:
         fullname: 이름
         hide_country: 국가를 표시하지 않음
         language: 언어
-        language_filter: 언어별 필터링
+        language_filter: 언어별 필터
         last_logged_at: seen
         login: 사용자 ID
         name: 실명
