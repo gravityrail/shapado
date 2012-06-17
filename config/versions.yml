@@ -1,3 +1,27 @@
+legacy_public:
+  page_views: 0
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: false
+  custom_themes: true
+  basic_support: false
+  phone_support: false
+  uses_stripe: false
+  price: 0
+
+legacy_private:
+  page_views: 0
+  custom_ads: true
+  custom_js: true
+  custom_domain: true
+  private: true
+  custom_themes: true
+  basic_support: false
+  phone_support: false
+  uses_stripe: false
+  price: 0
+
 special:
   page_views: 0
   custom_ads: true
