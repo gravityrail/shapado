@@ -9,7 +9,7 @@ class InvoicesController < ApplicationController
 
 
   def index
-    if current_group.shapado_version.token != 'free' &&
+    if current_group.shapado_version.uses_stripe &&
       current_group.upcoming_invoice.nil?
       current_group.set_incoming_invoice
     end
@@ -32,7 +32,6 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    p params.inspect
     if !current_user
       @user = User.new
       @user.login = params[:login]

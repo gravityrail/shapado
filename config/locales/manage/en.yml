@@ -1,6 +1,8 @@
 en:
   admin:
     manage:
+      edit_card:
+        button: 'Update your credit card'
       close_group:
         description: Closing the group will make it inaccessible to anyone but you.
         feedback: "Please, tell us why are your closing your group:"

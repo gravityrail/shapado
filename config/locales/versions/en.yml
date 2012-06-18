@@ -1,5 +1,7 @@
 en:
   versions:
+    legacy_public: 'Legacy public'
+    legacy_private: 'Legacy private'
     free: 'Free'
     basic: 'Basic'
     plus: 'Plus'

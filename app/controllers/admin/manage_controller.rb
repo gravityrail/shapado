@@ -29,6 +29,10 @@ class Admin::ManageController < ApplicationController
   def dashboard
   end
 
+  def edit_card
+
+  end
+
   def properties
     @active_subtab ||= "general"
   end

@@ -440,6 +440,18 @@ class Group
     self.override(:upcoming_invoice => JSON.parse(upcoming.to_json))
   end
 
+  def update_card!(stripe_token)
+    begin
+      Stripe.api_key = PaymentsConfig['secret']
+      cu = Stripe::Customer.retrieve(self.stripe_customer_id)
+      cu.card = stripe_token # obtained with Stripe.js
+      cu.save
+      return true
+    rescue => e
+      return e.to_s
+    end
+  end
+
   def charge!(token,stripe_token)
     # create a Customer
     begin

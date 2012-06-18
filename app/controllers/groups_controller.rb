@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
     :update, :close,
     :connect_group_to_twitter,
     :disconnect_twitter_group, :set_columns,
-    :check_custom_domain, :reset_custom_domain]
+    :check_custom_domain, :reset_custom_domain, :update_card]
   before_filter :admin_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
                       [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
@@ -293,7 +293,7 @@ class GroupsController < ApplicationController
   end
 
   def upgrade
-    return if params[:plan] == 'special'
+    return if ['special', 'legacy_public', 'legacy_private'].include? params[:plan]
     user_is_owner = user_signed_in? && current_user.owner_of?(current_group)
     if current_group.shapado_version &&
       current_group.shapado_version.token == params[:plan] &&
@@ -326,6 +326,19 @@ class GroupsController < ApplicationController
     @invoice.total = version.price
     @version = version
     render :layout => 'invitations'
+  end
+
+  def update_card
+      Stripe.api_key = PaymentsConfig['secret']
+      stripe_token = params[:stripeToken]
+      result = current_group.update_card!(stripe_token)
+      if result == true
+        flash[:notice] = 'Credit card updated successfully.'
+      else
+        flash[:error] = "Credit card failed \n
+          to update for the following reason: #{result}"
+      end
+      redirect_to invoices_path
   end
 
   def join

@@ -5,11 +5,14 @@
 
 %p.upgrade
   = raw t('invoices.index.upgrade', :current_plan => current_group.shapado_version.name)
-
+- if current_group.is_stripe_customer?
+  %p.update_card
+    %u
+      = link_to t('invoices.index.update_cc_link'), manage_edit_card_path
 - if current_group.upcoming_invoice
   %p
     = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
-- elsif current_group.is_stripe_customer?
+- elsif current_group.is_stripe_customer? && current_group.stripe_balance.to_f != 0.0
   %p
     = t("invoices.index.credit", :amount => -current_group.stripe_balance.to_f/100)
 %table

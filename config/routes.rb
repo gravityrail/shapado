@@ -170,6 +170,7 @@ Rails.application.routes.draw do
       get :allow_custom_ads
       get :disallow_custom_ads
       post :close
+      post :update_card
       get :accept
 
       post :upgrade
@@ -220,6 +221,7 @@ Rails.application.routes.draw do
 
   scope '/manage', :as => 'manage' do
     controller 'admin/manage' do
+      match 'edit_card' => :edit_card
       match 'social' => :social
       match 'properties' => :properties
       match 'theme' => :theme
