@@ -70,34 +70,36 @@
   -if !@theme.last_error.blank?
     =@theme.last_error
 
-- if current_group.has_custom_js
+- if current_group.shapado_version.has_custom_themes?
+  - if current_group.shapado_version.has_custom_js?
+    .field
+      = form.label :javascript
+      = form.file_field :javascript
+
+      = link_to "edit", "#", class: "show_dialog", data: { target: "javascript" }
+
+
   .field
-    = form.label :javascript
-    = form.file_field :javascript
+    = form.label :layout_html
+    = form.file_field :layout_html
+    = link_to "edit", "#", class: "show_dialog", data: { target: "layout_html" }
+    %small
+      = I18n.t('themes.form.layout_html')
 
-    = link_to "edit", "#", class: "show_dialog", data: { target: "javascript" }
+  .field
+    = form.label :questions_index_html
+    = form.file_field :questions_index_html
+    = link_to "edit", "#", class: "show_dialog", data: { target: "questions_index_html" }
+    %small
+      = I18n.t('themes.form.questions_index_html')
 
+  .field
+    = form.label :questions_show_html
+    = form.file_field :questions_show_html
+    = link_to "edit", "#", class: "show_dialog", data: { target: "questions_show_html" }
 
-.field
-  = form.label :layout_html
-  = form.file_field :layout_html
-
-  = link_to "edit", "#", class: "show_dialog", data: { target: "layout_html" }
-
-.field
-  = form.label :questions_index_html
-  = form.file_field :questions_index_html
-  = link_to "edit", "#", class: "show_dialog", data: { target: "questions_index_html" }
-  %small
-    = I18n.t('themes.form.questions_index_html')
-
-.field
-  = form.label :questions_show_html
-  = form.file_field :questions_show_html
-  = link_to "edit", "#", class: "show_dialog", data: { target: "questions_show_html" }
-
-  %small
-    = I18n.t('themes.form.questions_show_html')
+    %small
+      = I18n.t('themes.form.questions_show_html')
 
 .form-options
   .buttons

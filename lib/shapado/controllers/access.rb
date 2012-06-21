@@ -14,7 +14,7 @@ module Shapado
       def check_group_access
         return if !current_group
 
-        if ((!current_group.registered_only || is_bot?) && !current_group.private) || devise_controller? || (params[:controller] == "users" && action_name == "new" )
+        if ((!current_group.registered_only || is_bot?) && !current_group.shapado_version.is_private?) || devise_controller? || (params[:controller] == "users" && action_name == "new" )
           return
         end
 

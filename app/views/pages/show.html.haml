@@ -4,7 +4,7 @@
   -if @page.has_css?
     %link{:href => css_page_path(@page),  :rel => "stylesheet", :media => "screen", :type => "text/css"}
 
-  -if current_group.has_custom_js && @page.has_js?
+  -if current_group.shapado_version.has_custom_js?
     %script{:src => js_page_path(@page), :type => "text/javascript"}
 
 #pages_show

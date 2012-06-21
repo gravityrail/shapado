@@ -379,7 +379,7 @@ Time.zone.now ? 1 : 0)
     now = Time.zone.now
 
     if group
-      if !member_of?(group) && !group.private
+      if !member_of?(group) && !group.shapado_version.is_private?
         join!(group)
       end
 

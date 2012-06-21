@@ -20,6 +20,9 @@ en:
       fluid: 'Fluid (this will make the layout elastic as the browser window gets resized)'
       brand_color: 'Brand color'
     form:
+      layout_html: Add your custom template for the layout
+      questions_index_html: Add your custom template for the questions index
+      questions_show_html: Add your custom template for the question show
       update: Update theme
       colors_and_bg: Colors and backgrounds
       fluid_layout: Fluid layout

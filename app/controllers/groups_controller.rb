@@ -75,6 +75,7 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
+    params[:group].delete(:domain) unless current_group.shapado_version.has_custom_domain?
     @group = Group.new
     if params[:group][:languages]
       params[:group][:languages].reject! { |lang| lang.blank? }
@@ -105,6 +106,7 @@ class GroupsController < ApplicationController
   # PUT /groups/1
   # PUT /groups/1.json
   def update
+    params[:group].delete(:domain) unless current_group.shapado_version.has_custom_domain?
     if params[:group][:languages]
       params[:group][:languages].reject! { |lang| lang.blank? }
     end

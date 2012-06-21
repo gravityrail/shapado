@@ -2,7 +2,7 @@
   = form.label :name, t('name', :scope => "activerecord.attributes.group"), :class => "label"
   = form.text_field :name, :class => "text_field"
 
--if @group.new? || !@group.has_custom_domain?
+-if @group.new? || !@group.shapado_version.has_custom_domain?
   .field
     = form.label :subdomain, "URL", :class => "label"
     .domain
@@ -38,18 +38,6 @@
     .checkbox
       = form.label :isolate, t(".isolate_group"), :class => "radio"
       = form.check_box :isolate, :class => "checkbox"
-  .field
-    .checkbox
-      = form.label :private, t(".members_only"), :class => "radio"
-      = form.check_box :private, :class => "checkbox"
-  .field
-    .checkbox
-      = form.label :has_custom_html, t(".custom_html"), :class => "radio"
-      = form.check_box :has_custom_html, :class => "checkbox"
-  .field
-    .checkbox
-      = form.label :has_custom_js, t(".custom_js"), :class => "radio"
-      = form.check_box :has_custom_js, :class => "checkbox"
   .field
     .checkbox
       = form.label :private, t(".custom_analytics"), :class => "radio"

@@ -60,6 +60,15 @@ class ThemesController < ApplicationController
   # POST /themes
   # POST /themes.json
   def create
+    if !current_group.shapado_version.has_custom_js?
+      params[:theme].delete(:javascript)
+    end
+    if !current_group.shapado_version.has_custom_themes?
+      params[:theme].delete(:javascript)
+      params[:theme].delete(:layout_html)
+      params[:theme].delete(:questions_index_html)
+      params[:theme].delete(:questions_show_html)
+    end
     @theme = Theme.new(params[:theme])
     @theme.group = current_group
     @theme.ready = false
@@ -80,6 +89,15 @@ class ThemesController < ApplicationController
   # PUT /themes/1
   # PUT /themes/1.json
   def update
+    if !current_group.shapado_version.has_custom_js?
+      params[:theme].delete(:javascript)
+    end
+    if !current_group.shapado_version.has_custom_themes?
+      params[:theme].delete(:javascript)
+      params[:theme].delete(:layout_html)
+      params[:theme].delete(:questions_index_html)
+      params[:theme].delete(:questions_show_html)
+    end
     @theme = Theme.find(params[:id])
     @theme.ready = false
     @theme.set_has_js(params[:theme][:javascript])
