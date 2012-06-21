@@ -19,7 +19,7 @@
     = form_tag widgets_path(:tab => @active_subtab), :class => "add-widget" do
       .field
         = label :limit, t(".new_widget", :default => "Add new widget"), :class => "label"
-        = select :widget, "_type", Widget.types(params[:tab],current_group.has_custom_ads).map {|w| [w.sub("Widget", "").titleize, w]}
+        = select :widget, "_type", Widget.types(params[:tab],current_group.shapado_version.has_custom_ads?).map {|w| [w.sub("Widget", "").titleize, w]}
         -if @active_subtab == "mainlist"
           = select :widget, "position", WidgetList::POSITIONS.map {|ps| [ps.titleize, ps]}
         -else

@@ -20,7 +20,7 @@
           = link_to t(".close"), close_group_path(group), :class => "cancel"
       -if current_user.admin?
         = link_to t("scaffold.destroy"), group, :confirm => t('scaffold.are_you_sure'), :method => :delete
-        - if group.has_custom_ads
+        - if group.shapado_version.has_custom_ads?
           = link_to t(".disallow_ads"), disallow_custom_ads_group_path(group)
         -else
           = link_to t(".allow_ads"), allow_custom_ads_group_path(group)

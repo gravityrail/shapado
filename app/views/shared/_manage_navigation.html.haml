@@ -41,7 +41,7 @@
       -if current_group.has_custom_html
       %li.announcements
         = link_to t("layouts.manage.announcements"), announcements_path
-      -if current_group.has_custom_ads
+      -if current_group.shapado_version.has_custom_ads?
         %li.ads
           =link_to t("layouts.application.manage_ads"), ads_path
   .clear
