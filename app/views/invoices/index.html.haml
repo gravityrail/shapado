@@ -7,8 +7,12 @@
   = raw t('invoices.index.upgrade', :current_plan => current_group.shapado_version.name)
 - if current_group.is_stripe_customer?
   %p.update_card
-    %u
-      = link_to t('invoices.index.update_cc_link'), manage_edit_card_path
+    - if current_group.has_late_payment
+      %h2
+        %u= link_to t('invoices.index.late_update_cc_link'), manage_edit_card_path
+    - else
+      %u
+        = link_to t('invoices.index.update_cc_link'), manage_edit_card_path
 - if current_group.upcoming_invoice
   %p
     = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path

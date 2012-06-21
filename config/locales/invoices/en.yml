@@ -13,6 +13,7 @@ en:
       total: TOTAL
       free: free
     index:
+      late_update_cc_link: 'Your are late on your latest payment, please update your credit card information.'
       update_cc_link: 'Update your credit card information'
       credit: "Credit: $%{amount}"
       upgrade: "You are currently using the %{current_plan} plan, <u><a href='/plans'>click here to upgrade</a></u>."
