@@ -129,7 +129,7 @@
           = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "private"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
-  - if current_group.shapado_version.token != 'free' && user_signed_in? && current_user.owner_of?(current_group)
+  - if !['free', 'legacy_public', 'legacy_private'].include?(current_group.shapado_version.token) && user_signed_in? && current_user.owner_of?(current_group)
     %p.free-offer
       = t(".we_offer")
       = t(".free_plan")

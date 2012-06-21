@@ -42,6 +42,7 @@ en:
       openid:
         explaination: "If you would like to register or just log in, please select your OpenID provider:"
     manage:
+      site_management: Site management
       close_group: Close group
       edit_layout: Edit layout
       group_user_management: User management

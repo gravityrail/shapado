@@ -12,13 +12,14 @@
         %section#column1.left-panel
           .widget-links.module
             %h3
-              Site management
+              = t('layouts.manage.site_management')
             %nav
               %ul
                 = pjax_tab_entry "li", t('.site'), "manage", manage_properties_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
                 - if current_user.owner_of? current_group
                   = pjax_tab_entry "li", t('layouts.manage.invoices'), "manage", invoices_path, :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
-                = pjax_tab_entry "li", t('layouts.manage.domain'), "manage",  manage_properties_tab_path(:tab => "domain"), :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
+                - if current_group.shapado_version.has_custom_domain?
+                  = pjax_tab_entry "li", t('layouts.manage.domain'), "manage",  manage_properties_tab_path(:tab => "domain"), :selected => "active", :link_opts => {'data-page-layout' => "manage-layout"}
 
           .widget-links.module
             %h3
