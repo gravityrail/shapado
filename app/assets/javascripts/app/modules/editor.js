@@ -24,9 +24,9 @@ Editor = function() {
 
   function setup(editor) {
     if(editor.hasClass("wysiwyg_editor")) {
-      setup_wysiwyg(editor);
+      setupWysiwyg(editor);
     } else if(editor.hasClass("markdown_editor")) {
-      setup_editor(editor);
+      setupEditor(editor);
     }
   }
 

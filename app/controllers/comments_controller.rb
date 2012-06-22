@@ -35,39 +35,33 @@ class CommentsController < ApplicationController
         Question.update_last_target(question_id, @comment)
       end
 
-      flash[:notice] = t("comments.create.flash_notice")
-    else
-      flash[:error] = @comment.errors.full_messages.join(", ")
-    end
-
-    html = render_to_string(:partial => "comments/comment",
+      html = render_to_string(:partial => "comments/comment",
                                       :object => @comment,
                                       :locals => {:source => params[:source], :mini => true})
 
-    Magent::WebSocketChannel.push({:id => "newcomment",
-                                    :object_id => @comment.id,
-                                    :commentable_id => @comment.commentable.id,
-                                    :name => @comment.body,
-                                    :html => html,
-                                    :channel_id => current_group.slug})
+      Magent::WebSocketChannel.push({:id => "newcomment",
+                                  :object_id => @comment.id,
+                                  :commentable_id => @comment.commentable.id,
+                                  :name => @comment.body,
+                                  :html => html,
+                                  :channel_id => current_group.slug})
+
+    end
 
     respond_to do |format|
       if saved
-        format.html {redirect_to params[:source]||question_path(:id => @question.slug)}
-        format.json {render :json => @comment.to_json, :status => :created}
-        format.js do
-          render(:json => {
-                   :success => true,
-                   :message => flash[:notice],
-                   :html => html,
-                   :object_id => @comment.id,
-                   :commentable_id => @comment.commentable.id
-                 }.to_json)
+        format.html do
+          flash[:notice] = t("comments.create.flash_notice")
+          redirect_to params[:source]||question_path(:id => @question.slug)
         end
+        format.json {render json: @comment.to_json, status: :created}
+        format.js
       else
-        format.html {redirect_to params[:source]||question_path(:id => @question.slug)}
-        format.json {render :json => @comment.errors.to_json, :status => :unprocessable_entity }
-        format.js {render :json => {:success => false, :message => flash[:error] }.to_json }
+        format.html do
+          redirect_to params[:source]||question_path(id: @question.slug)
+        end
+        format.json {render json: @comment.errors.to_json, status: :unprocessable_entity }
+        format.js { render 'show_errors' }
       end
     end
   end
@@ -75,13 +69,7 @@ class CommentsController < ApplicationController
   def edit
     respond_to do |format|
       format.html
-      format.js do
-        render :json => {:status => :ok,
-         :html => render_to_string(:partial => "comments/edit_form",
-                                   :locals => {:source => params[:source],
-                                               :commentable => @comment.commentable})
-        }
-      end
+      format.js
     end
   end
 
@@ -110,19 +98,12 @@ class CommentsController < ApplicationController
         flash[:notice] = t(:flash_notice, :scope => "comments.update")
         format.html { redirect_to(params[:source]||question_path(:id => @question.slug)) }
         format.json { render :json => @comment.to_json, :status => :ok}
-        format.js { render :json => {
-            :message => flash[:notice],
-            :success => true,
-            :html => html,
-            :updated => 1,
-            :object_id => @comment.id,
-            :commentable_id => @comment.commentable.id
-          } }
+        format.js
       else
         flash[:error] = @comment.errors.full_messages.join(", ")
         format.html { render :action => "edit" }
         format.json { render :json => @comment.errors, :status => :unprocessable_entity }
-        format.js { render :json => { :success => false, :message => flash[:error]}.to_json }
+        format.js { render 'show_errors' }
       end
     end
   end

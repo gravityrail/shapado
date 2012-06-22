@@ -3,7 +3,7 @@
 -source = question_path(question)
 
 -cache_for(:answers, question.id, answer.id, answer.user == current_user ? "owner" : "") do
-  %article.answer{:class => " #{answer.id} #{solution && "solution"}", :item_scope => '', :itemtype => "http://schema.org/Article"}
+  %article.answer{class: "#{answer.id} #{solution && "solution"}", id: "answer-#{answer.id}", item_scope: '', itemtype: "http://schema.org/Article"}
     %a{:name => "answer#{answer.id}"}
 
     = vote_box(answer, question_path(@question), @question.closed)
@@ -30,13 +30,13 @@
     = render "questions/answer_toolbar", :question => @question, :answer => answer, :solution => solution
 
     .comments
-      = link_to "NN comments", "#", :class => "toggle_comments"
+      =link_to "#{content_tag(:span, "NN", class: "counter")} comments".html_safe, "#", class: "toggle_comments"
       -answer.comments.each do |comment|
         -read = (@last_read_at && @last_read_at > comment.created_at && comment.votes_average < 2)
-        = render :partial => "comments/comment", :object => comment, :locals => {:source => source, :mini => true, :read => read}
+        = render "comments/comment", comment: comment, source: question_path(@question), mini: true, read: read
 
     .panel-comments
-      = form_for [@question, answer, @comment ||= Comment.new], html: {class: "answer_comment_form commentForm nestedAnswerForm addNestedAnswer", data: {commentable: answer.id, editor: current_group.wysiwyg_editor ? 'wysiwyg_editor' : 'markdown_editor'}} do |f|
+      = form_for [@question, answer, @comment ||= Comment.new], remote: true, html: {class: "answer_comment_form", data: {commentable: answer.id, editor: current_group.wysiwyg_editor ? 'wysiwyg_editor' : 'markdown_editor', "login-required" => true}} do |f|
         %fieldset
           = render :partial => "comments/form", :locals => {:f => f, :source => source, :commentable => answer }
           .buttons

@@ -1,6 +1,6 @@
-= hidden_field_tag "source", source, :id => "source_#{commentable.id}"
+= hidden_field_tag "source", source, id: "source_#{commentable.id}"
 
--opts = {:class => "text_area", :rows => 'auto', :cols => 'auto'}
+-opts = {class: "text_area", rows: 'auto', cols: 'auto'}
 -if local_assigns[:markdown]
   -if current_group.wysiwyg_editor
     -opts[:class] = "wysiwyg_editor"

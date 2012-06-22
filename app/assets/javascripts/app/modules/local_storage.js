@@ -2,18 +2,10 @@ LocalStorage = function() {
   var self = this;
 
   function initialize() {
-    if(Modernizr.localstorage){
-      Storage.prototype.setObject = function(key, value) {
-          this.setItem(key, JSON.stringify(value));
-      }
-
-      Storage.prototype.getObject = function(key) {
-          return JSON.parse(this.getItem(key));
-      }
+    if(Modernizr.localstorage) {
+      loadTextareas();
+      initializeTextAreas();
     }
-
-    loadTextareas();
-    initializeTextAreas();
   }
 
   function remove(key, id) {
@@ -90,6 +82,17 @@ LocalStorage = function() {
         setObject(key, storageArr);
       }
       } else {remove(key, id);}
+    }
+  }
+
+  //private
+  if(Modernizr.localstorage) {
+    function setObject(key, value) {
+      this.setItem(key, JSON.stringify(value));
+    }
+
+    function getObject(key) {
+      return JSON.parse(this.getItem(key));
     }
   }
 
