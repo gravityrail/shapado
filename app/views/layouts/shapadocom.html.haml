@@ -52,7 +52,7 @@
           = image_tag('/images/landing/shapafrontall.png')
 
       / Example row of columns
-      .row
+      .row.features
         .span4
           %h2 Public or private
           %p Make your site either public or private so that only you and users can ask and answer questions.
@@ -84,8 +84,6 @@
         .span4
           %h2 Build a community
           %p Shapado offers you the possibility to build a passionate, engaged and diverse community thanks to all our social features such as upvoting, reputation points, badges and translation features.
-          %p
-            %a.btn{:href => "#"} View details &raquo;
         .span4
           %h2 Offer great content
           %p As your community will grow, so will the content of your site. Thanks to our wiki built-in features, your content will not only grow in quantity but also in quality.
@@ -93,7 +91,18 @@
           %h2 Social and you
           %p It all comes down the community of humans, and this is you. Shapado allows you to follow specific people and tags so you only see questions and answers on people and topics that actually interest you. All the upvotes and badges you will receive and give with time will make you feel the love of being part of a passionate and knowledge hungry community. Have fun!
           %p
-            %a.btn{:href => "#"} View details &raquo;
+            %a.btn{:href => "#", "data-toggle"=>"modal", :href=>"#social"} View details &raquo;
+      #social.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Customize
+        .modal-body
+          = image_tag('/images/landing/socialsignin.png')
+          = image_tag('/images/landing/filters.png', :class => 'pull-right')
+          %p
+            Sign in using your favorite social network account and start following your friends. You can also filter questions that are asked people and tags you follow so you get to see the content that is the most relevant to you.
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Close
       #themes.modal.hide
         .modal-header
           %button.close{"data-dismiss" => "modal", :type => "button"} ×

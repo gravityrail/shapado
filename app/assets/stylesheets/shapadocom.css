@@ -37,3 +37,7 @@ body {
 #pitch {margin-top: 15px; font-size: 20px; font-weight: 500;}
 #pitchy {margin-top: 15px; font-size: 20px; font-weight: 500;}
 .pitches {font-size: 15px}
+
+.features{
+  margin-top: 20px;
+}
