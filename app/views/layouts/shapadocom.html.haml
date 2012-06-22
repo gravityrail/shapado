@@ -49,41 +49,37 @@
           %p
             = link_to "See plans and pricing!", '/plans', :class => 'btn btn-success btn-large'
         .span8
-          = image_tag('/images/shapafrontall.png')
+          = image_tag('/images/landing/shapafrontall.png')
 
       / Example row of columns
       .row
         .span4
           %h2 Public or private
           %p Make your site either public or private so that only you and users can ask and answer questions.
-          %p
-            %a.btn{:href => "#"} View details &raquo;
         .span4
           %h2 Answer by mail
           %p You can use Shapado without leaving your favorite mail client, just subscribe to people or tag and you will receive your question by mail so you can just answer from there
           %p
-            %a.btn{:href => "#"} View details &raquo;
+            %a.btn{:href => "#", "data-toggle"=>"modal", :href=>"#answer-by-email"} View details &raquo;
         .span4
           %h2 Improve
           %p Don't like an answer? Edit it and correct it. Not sure your answer is the best? Mark it as wiki so others can improve it too. You can also upvote and downvote answers to highlight relevant answers so they appear on top of threads.
           %p
-            %a.btn{:href => "#"} View details &raquo;
+            %a.btn{:href => "#", "data-toggle"=>"modal", :href=>"#improve"} View details &raquo;
       .row
         .span4
           %h2 Customize
           %p You can easily change the color set of shapado and upload your own with just a few clicks, no coding needed. If you know a bit of web programming, you can also modify the whole CSS, html and also add your own Javascript plugins. Shapado also comes with a set of widgets to add more information on the sidebar such as top contributers, related questions and more.
           %p
-            %a.btn{:href => "#"} View details &raquo;
+            %a.btn{:href => "#", "data-toggle"=>"modal", :href=>"#themes"} View details &raquo;
         .span4
           %h2 Monetize
           %p Shapado allows you to add your own ads so you can start making money with your site and enjoy passive revenue from your site.
           %p
-            %a.btn{:href => "#"} View details &raquo;
+            %a.btn{:href => "#", "data-toggle"=>"modal", :href=>"#ads"} View details &raquo;
         .span4
           %h2 SEO
           %p Shapado is optimized for SEO using among other things Google's schema.org markup and a mobile version of the site. We also compress and cache all our assets to make the site fast.
-          %p
-            %a.btn{:href => "#"} View details &raquo;
       .row
         .span4
           %h2 Build a community
@@ -93,14 +89,50 @@
         .span4
           %h2 Offer great content
           %p As your community will grow, so will the content of your site. Thanks to our wiki built-in features, your content will not only grow in quantity but also in quality.
-          %p
-            %a.btn{:href => "#"} View details &raquo;
         .span4
-          %h2 You
-          %p It all comes down the community of humans, and this is you. Shapado allows you to follow specific people and tags so you only see questions and answers on people and topics that actally interest you. All the upvotes and badges you will receive and give with time will make you feel the love of being part of a passionate and knowledge hungry community. Have fun!
+          %h2 Social and you
+          %p It all comes down the community of humans, and this is you. Shapado allows you to follow specific people and tags so you only see questions and answers on people and topics that actually interest you. All the upvotes and badges you will receive and give with time will make you feel the love of being part of a passionate and knowledge hungry community. Have fun!
           %p
             %a.btn{:href => "#"} View details &raquo;
-
+      #themes.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Customize
+        .modal-body
+          = image_tag('/images/landing/themes.png')
+          %p
+            Simply change the main colors and logo or write your own css and javascript code.
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Close
+      #ads.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Monetize
+        .modal-body
+          = image_tag('/images/landing/ads.png')
+          %p
+            Place ads wherever you want and start making money!
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Close
+      #improve.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Improve the content
+        .modal-body
+          = image_tag('/images/landing/upvote.png')
+          %p
+            Upvote or downvote answers, edit them, pick them as solution so they appear on top of each threads. Create wiki pages so that the community may improve the information.
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Close
+      #answer-by-email.modal.hide
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h3 Answer by mail
+        .modal-body
+          = image_tag('/images/landing/byemail.png')
+          %p Each question has an "Answer by email" link. Just click on it and you will be taken to your mail client. You will also be able to reply by mail when you receive a question in your mailbox.
+        .modal-footer
+          %a.btn{"data-dismiss" => "modal", :href => "#"} Close
       %hr/
       %footer
         %p &copy; Ricodigo 2012

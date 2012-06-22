@@ -316,14 +316,11 @@ class GroupsController < ApplicationController
       return
     end
 
-    @invoice = current_group.invoices.where(:payed => false,
-                                            :version => version.token,
-                                            :action => "upgrade_plan").last
     if !@invoice
-      @invoice = current_group.invoices.new(:action => "upgrade_plan",
-                                            :version => version.token,
-                                            :user => current_user,
-                                            :total => version.price)
+      @invoice = Invoice.new(:action => "upgrade_plan",
+                             :version => version.token,
+                             :user => current_user,
+                             :total => version.price)
     end
     @invoice.total = version.price
     @version = version
