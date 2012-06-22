@@ -141,7 +141,7 @@ class ApplicationController < ActionController::Base
     @current_group
   end
   helper_method :current_group
-  
+
   def current_version
     @current_version ||= begin
       current_group.shapado_version ? current_group.shapado_version : ShapadoVersion.libre
@@ -160,7 +160,9 @@ class ApplicationController < ActionController::Base
   helper_method :scoped_conditions
 
   def set_layout
-    if env && env['HTTP_X_PJAX'].present? && !params[:_refresh]
+    if !user_signed_in? && request.host == AppConfig.domain && request.path == '/'
+      'shapadocom'
+    elsif env && env['HTTP_X_PJAX'].present? && !params[:_refresh]
       nil
     elsif devise_controller? || (action_name == "new" && controller_name == "users")
       'sessions'
