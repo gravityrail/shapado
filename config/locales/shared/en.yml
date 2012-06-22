@@ -22,7 +22,7 @@ en:
       with_openid: OpenID
       with_email_pass: 'Sign in with your email'
       sign_up_user_pass: 'Sign up with an email/password'
-
+      openid_url: Openid URL
     social_connect:
       find_friends_facebook: Find friends on Facebook
       find_friends_twitter: Find friends on Twitter

@@ -81,6 +81,7 @@ en:
       favorite_tooltip: "Add this answer to your favorites"
       unfavorite_tooltip: "Remove this answer from your favorites"
     question:
+      retag: Retag
       accepted_tooltip: This question has an answer that has been accepted
       wiki_title: 'Wiki: %{title}'
       has_answers:

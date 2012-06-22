@@ -9,7 +9,7 @@
           = link_to t("#{i18n_scope}.open"), opening_moderate_question_path(question), :rel => 'nofollow', :id => "open_question", :class => "open-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
       -else
         %li.close
-          = link_to t('#{i18n_scope}.close'), closing_moderate_question_path(question), :id => "close_question", :class => "close-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
+          = link_to t("#{i18n_scope}.close"), closing_moderate_question_path(question), :id => "close_question", :class => "close-link", "data-lazy" => "1", :rel => 'nofollow', :class => "show_form"
 
 
 -elsif logged_in? && current_user.can_view_offensive_counts_on?(current_group)
