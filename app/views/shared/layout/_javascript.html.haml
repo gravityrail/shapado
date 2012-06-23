@@ -9,7 +9,7 @@
   -current_theme = current_group.current_theme || Theme.where(:is_default => true).first
   %meta{'data-has-js'=> current_theme.has_js, 'data-theme-js' => javascript_group_path(current_group, params[:test_theme] || current_theme.id, current_theme.version)}
 
-= javascript_include_tag "application", :debug => Rails.env.development?
+= javascript_include_tag "application", :debug => Rails.env.development? && params[:debugjs]
 = javascript_include_tag "i18n/#{I18n.locale}"
 
 = yield :js
