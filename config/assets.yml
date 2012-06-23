@@ -1,4 +1,4 @@
-package_assets:         on          # (on, off, always)
+package_assets:         off          # (on, off, always)
 embed_assets:           datauri          # (on, off, datauri)
 compress_assets:        on         # (on, off)
 gzip_assets:            on          # (on, off)
