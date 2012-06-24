@@ -9,7 +9,10 @@ ja:
       badges: バッジ
   badges: 
     index: 
+      bronze: ブロンズ
       description: あなたが得られるバッジのすべてです。知識を共有することでバッジを入手できます！
+      gold: ゴールド
+      silver: シルバー
       title: バッジ
     shared: 
       addict: 

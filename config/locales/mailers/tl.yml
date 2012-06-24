@@ -5,6 +5,8 @@
 tl: 
   mailers: 
     notifications: 
+      created_flag: 
+        subject: Binandilaan ang bagong paskil sa %{group}
       earned_badge: 
         subject: Nagkamit ka ng isang tsapa sa %{group}!
       favorited: 
@@ -20,5 +22,7 @@ tl:
         subject_owner: Sinagot ni %{login} ang tanong mong %{title}
       new_comment: 
         subject: Pumuna si %{login} sa %{group}
+      new_invitation: 
+        subject: Inaanyayahan ka ni %{user} na sumali sa %{group}
       report: 
         subject: Ulat para sa pangkat na %{group} ng %{app}

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Fryed-peach
+# Author: Shirayuki
 ja: 
   activerecord: 
     models: 
@@ -12,6 +13,7 @@ ja:
     changed: 変更
     created: 作成
     deleted: 削除
+    destroyed: 削除
     flagged: フラグ付け
     requested_to_close: 完了申請
     requested_to_open: 未了申請

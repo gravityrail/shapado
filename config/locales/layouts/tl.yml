@@ -9,9 +9,11 @@ tl:
       ask_question: Itanong
       badges: Mga tsapa
       by_me: Ko
+      collaborate: Makipagtulungan
       contributed: Naiambag
       faq: Mga malimit itanong
       feed: Sinundan ang
+      follow_us_and_share: Sundan kami at mambahagi
       followed: Sinundan
       forgot: Nakalimutan?
       home: Tahanan
@@ -32,6 +34,7 @@ tl:
       questions: Mga katanungan
       questions_in: Mga katanungan sa loob ng
       questions_tagged: tinatakan ng
+      random_question: Kahit na anong tanong
       search: Hanapin
       settings: Mga pagtatakda
       signup: Magpatala
@@ -43,20 +46,31 @@ tl:
       users: Mga tagagamit
       welcome_from: Maligayang pagdating! Maaari kang
     manage: 
+      access: Pagpunta
       actions: Mga galaw
       announcements: Mga pahayag
+      appearance: Kaanyuan
+      close_group: Isara ang pangkat
       constrains: Mga kinakailangan
       content: Nilalaman
       dashboard: Kabitang-pisara
       domain: Nasasakupan
+      edit_layout: Baguhin ang latag
       general: Pangkalahatan
+      group_features: Mga tampok
+      group_look_and_feel: Tingnan at damahin
+      group_user_management: Pamamahala ng tagagamit
+      invitations: Mga paanyaya
+      invoices: Talaan ng pagbili at babayaran
       members: Mga kasapi
       pages: Mga pahina
       properties: Mga pag-aari
       reputation: Dangal
       rewards: Mga gantimpala
+      social: Pangpakikipagkapuwa
       stats: Estadistika
       theme: Tema
+      themes: Mga tema
       widgets: Mga widyet
     notifications: 
       message: Kung ayaw mo nang makatanggap ng kusang mga pagpapabatid mula sa %{group}, baguhin ang mga nais mo na nasa loob ng tanawan ng mga pabatid.
