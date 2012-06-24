@@ -77,14 +77,6 @@ GIT
     social_widgets (0.1.0)
       rails
 
-GIT
-  remote: https://github.com/Houdini/mongo_store.git
-  revision: 46d8edc81c42110c4091d600722c8352a412a51f
-  specs:
-    mongo_store (0.3.1)
-      activesupport (>= 2.2)
-      mongo (>= 1.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -526,6 +518,9 @@ DEPENDENCIES
   rack-ssl
   rails (= 3.2.2)
   rdiscount!
+  redis
+  redis-rails
+  redis-store
   remarkable_mongoid (>= 0.5.0)
   ricodigo-capistrano-recipes (~> 0.1.3)
   rinku (~> 1.2.2)
