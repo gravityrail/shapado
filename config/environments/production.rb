@@ -36,7 +36,7 @@ Shapado::Application.configure do
   config.serve_static_assets = ENV["serve_assets"] ? true : false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  config.action_controller.asset_host = AppConfig.site
+  # config.action_controller.asset_host =
 
   # Compress JavaScripts and CSS
   config.assets.compress = true

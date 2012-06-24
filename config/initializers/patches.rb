@@ -36,3 +36,6 @@ module OmniAuth
   end
 end
 
+ActionController::Base.asset_host = Proc.new { |source, request|
+  "#{request.protocol}#{AppConfig.domain}:#{request.port}"
+}
