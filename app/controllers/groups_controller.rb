@@ -6,7 +6,7 @@ class GroupsController < ApplicationController
     :update, :close,
     :connect_group_to_twitter,
     :disconnect_twitter_group, :set_columns,
-    :check_custom_domain, :reset_custom_domain, :update_card]
+    :update_card]
   before_filter :admin_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
                       [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
@@ -351,14 +351,19 @@ class GroupsController < ApplicationController
 
   def check_custom_domain
     @group = Group.find(params[:group_id])
+    if !logged_in? || !current_user.owner_of?(@group)
+      redirect_to '/'
+    end
   end
 
   def reset_custom_domain
     group = Group.find(params[:group_id])
-    if current_user.owner_of?(group)
+    if logged_in? && (current_user.role == 'admin' || current_user.owner_of?(group))
       group.reset_custom_domain!
+      redirect_to "#{domain_url(:custom => group.domain)}/manage/properties/domain"
+    else
+      redirect_to :back
     end
-    redirect_to :back
   end
 
   protected

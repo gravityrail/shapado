@@ -63,6 +63,7 @@ en:
       title: "Is your new custom domain working?"
       reset_domain_button: "No, please reset custom domain to %{domain}"
       working_domain_link: 'Yes, I can see my new domain is working below.'
+      refresh: "Refresh this page to try again."
     form:
       check_domain_title: "Check your group's custom domains"
       check_domain: "Check %{domain}"
