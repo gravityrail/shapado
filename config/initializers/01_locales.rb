@@ -1,4 +1,4 @@
-I18n.backend.store_translations 'be-TARASK', {}
+I18n.backend.store_translations 'be-Tarask', {}
 I18n.backend.store_translations 'br', {}
 I18n.backend.store_translations 'ca', {}
 I18n.backend.store_translations 'da', {}
@@ -25,6 +25,8 @@ I18n.backend.store_translations 'pl', {}
 I18n.backend.store_translations 'pt-BR', {}
 I18n.backend.store_translations 'pt-PT', {}
 I18n.backend.store_translations 'ru', {}
+I18n.backend.store_translations 'sr', {}
+I18n.backend.store_translations 'sr-Latn', {}
 I18n.backend.store_translations 'sv', {}
 I18n.backend.store_translations 'te', {}
 I18n.backend.store_translations 'tl', {}
@@ -35,7 +37,7 @@ I18n.load_path += Dir[ File.join(Rails.root, 'config', 'locales', '**', '*.{rb,y
 # You need to "force-initialize" loaded locales
 I18n.backend.send(:init_translations)
 
-AVAILABLE_LOCALES = ["be-TARASK", "br" "ca", "da", "de", "el", "en", "eo", "es", "es-419", "fa", "fi", "fr", "gl", "hu", "ia", "id", "it", "ja", "ko", "mk", "ms", "nl", "pl", "pt-BR", "pt-PT", "ru", "sv", "te", "tl", "zh-CN"] #I18n.backend.available_locales.map { |l| l.to_s }
+AVAILABLE_LOCALES = ["be-Tarask", "br" "ca", "da", "de", "el", "en", "eo", "es", "es-419", "fa", "fi", "fr", "gl", "hu", "ia", "id", "it", "ja", "ko", "mk", "ms", "nl", "pl", "pt-BR", "pt-PT", "ru", "sr", "sr-Latn", "sv", "te", "tl", "zh-CN"] #I18n.backend.available_locales.map { |l| l.to_s }
 
 AVAILABLE_LANGUAGES =  I18n.t('languages').map {|k,v| k.to_s }
 
