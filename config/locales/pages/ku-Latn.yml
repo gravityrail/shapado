@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: George Animal
-ku-latn: 
+ku-Latn: 
   activerecord: 
     attributes: 
       page: 

@@ -4,7 +4,7 @@
 # Author: EugeneZelenko
 # Author: Jim-by
 # Author: Wizardist
-be-TARASK: 
+be-Tarask: 
   activerecord: 
     attributes: 
       answer: 

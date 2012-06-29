@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   notifier: 
     admin_login: 
       message1: Карыстальнік %{user} далучыўся як адміністратар у %{time} з IP-адрасу %{ip}.

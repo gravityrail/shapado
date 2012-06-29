@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   invitations: 
     accept: 
       create_account: Стварыць рахунак (1 з 2)

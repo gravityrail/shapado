@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Rancher
-sr-LATN: 
+sr-Latn: 
   open_requests: 
     create: 
       flash_notice: Zahtev za ponovno otvaranje je napravljen

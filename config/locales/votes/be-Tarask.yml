@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   activerecord: 
     models: 
       vote: Голас

@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   welcome: 
     confirm_age: 
       notice: Вы можаце ўвайсьці на гэтую старонку, калі Вам ня меней 18 гадоў, ці, хаця б дасягнулі ўзросту паўналецьця па заканадаўству той краіны, у якой жывяце, ці з якой адкрываеце гэтую старонку.

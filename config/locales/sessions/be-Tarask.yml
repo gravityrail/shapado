@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   sessions: 
     create: 
       flash_error: Немагчыма ўвайсьці ў сыстэму як «%{login}»

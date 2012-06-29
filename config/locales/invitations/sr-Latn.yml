@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Rancher
-sr-LATN: 
+sr-Latn: 
   invitations: 
     accept: 
       create_account: Otvorite nalog (1 od 2)

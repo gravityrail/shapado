@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Rancher
-sr-LATN: 
+sr-Latn: 
   jobs: 
     answers: 
       on_create_answer: 

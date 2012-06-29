@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Rancher
-sr-LATN: 
+sr-Latn: 
   close_requests: 
     create: 
       flash_notice: Zahtev za zatvaranje je napravljen

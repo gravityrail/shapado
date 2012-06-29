@@ -3,7 +3,7 @@
 # Export driver: syck-pecl
 # Author: EugeneZelenko
 # Author: Jim-by
-be-TARASK: 
+be-Tarask: 
   rewards: 
     close: 
       error: Вам неабходна пачакаць %{time} перад тым, як узнагароджваць гэтай узнагародай.

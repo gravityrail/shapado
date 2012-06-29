@@ -2,7 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Rancher
-sr-LATN: 
+sr-Latn: 
   welcome: 
     confirm_age: 
       notice: Stranicu smete da gledate samo ako imate 18 godina ili više, odnosno ako ste punoletni prema propisima zemlje u kojoj boravite.
