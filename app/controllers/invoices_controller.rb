@@ -32,7 +32,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    if !current_user
+    if !current_user && !params[:group_id]
       @user = User.new
       @user.login = params[:login]
       @user.name = params[:name]
@@ -41,9 +41,18 @@ class InvoicesController < ApplicationController
       @user.password_confirmation = params[:password_confirmation]
       return if !@user.save
       sign_in @user
+    elsif !current_user && params[:group_id]
+      @user = User.where(email: params[:email]).first
+      if @user.valid_password?(params[:password])
+        sign_in(@user)
+      else
+        @user = nil
+        return
+      end
     end
     user = @user || current_user
-    if user && !user.owner_of?(current_group)
+    if user && !user.owner_of?(current_group) &&
+      !params[:group_id]
       @group = Group.new(:language => 'en',
         :subdomain => params[:subdomain],
         :name => params[:group_name],
@@ -58,8 +67,14 @@ class InvoicesController < ApplicationController
         @group.add_member(user, "owner")
       end
     end
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group ||= current_group
+    end
+    return unless @group
     group = @group || current_group
-    return unless current_user.owner_of?(group)
+    return unless user.owner_of?(group)
     token = params[:token]
     shapado_version = ShapadoVersion.where(:token=>token).first
     if shapado_version && shapado_version.uses_stripe?
@@ -67,7 +82,11 @@ class InvoicesController < ApplicationController
       stripe_token = params[:stripeToken]
       group.charge!(token,stripe_token)
     end
-    redirect_to("#{request.protocol}#{group.domain}:#{request.port}#{invoices_path}")
+    if group.has_custom_domain?
+      redirect_to("http://#{group.domain}#{invoices_path}")
+    else
+      redirect_to("#{request.protocol}#{group.domain}#{invoices_path}")
+    end
   end
 
   def success
@@ -75,7 +94,7 @@ class InvoicesController < ApplicationController
   end
 
   def webhook
-    group = group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
+    group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
     if params[:type] == 'customer.subscription.updated'
       group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
       if group && group.shapado_version && group.shapado_version.token == 'private'

@@ -9,6 +9,11 @@ class DocController < ApplicationController
   end
 
   def plans
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group = current_group
+    end
     set_page_title(t('doc.plans.title'))
     render :layout => 'plans'
   end
@@ -21,7 +26,13 @@ class DocController < ApplicationController
 
   def check_ssl
     if request.protocol == 'http://'
-      redirect_to "https://#{AppConfig.domain}/plans"
+      if current_group.has_custom_domain? && !current_group.is_stripe_customer?
+        redirect_to "https://#{AppConfig.domain}/plans?group_id=#{current_group.id}"
+      elsif current_group.has_custom_domain? && current_group.is_stripe_customer?
+        return
+      else
+        redirect_to "https://#{current_group.domain}/plans"
+      end
     end
   end
 

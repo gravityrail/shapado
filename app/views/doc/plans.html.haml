@@ -1,4 +1,4 @@
-- if current_group.owner == current_user
+- if @group.owner == current_user
   - upgrade = t('global.upgrade')
   - downgrade = t('global.downgrade_to_free')
 - else
@@ -27,7 +27,7 @@
       .bottom
         .price== $999/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "optimum"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "optimum"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
 
@@ -48,7 +48,7 @@
       .bottom
         .price== $749/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "maximum"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "maximum"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each
@@ -68,7 +68,7 @@
       .bottom
         .price==$249/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "premium"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "premium"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each.selected
@@ -88,7 +88,7 @@
       .bottom
         .price==$49/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "plus"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "plus"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
     .each
@@ -105,7 +105,7 @@
       .bottom
         .price==$9/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "basic"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "basic"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
 
@@ -126,21 +126,21 @@
       .bottom
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "private"), :html => {:class => 'plans-form'}) do |f|
+          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "private"), :html => {:class => 'plans-form'}) do |f|
             = f.button upgrade
 
-  - if !['free', 'legacy_public', 'legacy_private'].include?(current_group.shapado_version.token) && user_signed_in? && current_user.owner_of?(current_group)
+  - if !['free', 'legacy_public', 'legacy_private'].include?(@group.shapado_version.token) && user_signed_in? && current_user.owner_of?(@group)
     %p.free-offer
       = t(".we_offer")
       = t(".free_plan")
       = t(".with_unlimited")
-    = form_for(:invoice, :url => downgrade_group_path(current_group), :html => {:class => 'downgrade-form'}) do |f|
+    = form_for(:invoice, :url => downgrade_group_path(@group, :group_id => params[:group_id]), :html => {:class => 'downgrade-form'}) do |f|
       = button_tag downgrade
-  - elsif !user_signed_in? || !current_user.owner_of?(current_group)
+  - elsif !user_signed_in? || !current_user.owner_of?(@group)
     %p.free-offer
       = t(".we_offer")
       = t(".free_plan")
       = t(".with_unlimited")
-    = form_for(:invoice, :url => upgrade_group_path(current_group, :plan => "free"), :html => {:class => 'downgrade-form'}) do |f|
+    = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "free"), :html => {:class => 'downgrade-form'}) do |f|
       = f.button upgrade
 

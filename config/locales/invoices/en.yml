@@ -17,6 +17,7 @@ en:
       update_cc_link: 'Update your credit card information'
       credit: "Credit: $%{amount}"
       upgrade: "You are currently using the %{current_plan} plan, <u><a href='/plans'>click here to upgrade</a></u>."
+      upgrade_custom_domain: "You are currently using the %{current_plan} plan, <u><a href='/plans?group_id=%{group_id}'>click here to upgrade</a></u>."
       upcoming_invoice: "Click here to see your upcoming invoice."
       id: "Invoice's ID"
       date: "Creation date"
@@ -27,6 +28,8 @@ en:
       title: "Invoices"
       description: "List of all your invoices"
     form:
+      upgrade_group: "Upgrade %{group}"
+      credentials: "Your credentials:"
       about_you: "A little about you:"
       about_site: "How do you want to call your site?"
       invoice_reference: 'Invoice reference:'

@@ -9,6 +9,8 @@
   =form_for @invoice, :html => {:id => "payment-form", :"data-token" => "#{PaymentsConfig['public']}" } do |f|
     =error_messages_for @invoice
     = hidden_field_tag :token, params[:plan]
+    - if params[:group_id]
+      = hidden_field_tag :group_id, params[:group_id]
     .invoice_info
       - unless @invoice.new?
         .references
@@ -30,13 +32,16 @@
       - version = ShapadoVersion.find(@invoice.items.first["item_id"])
       .thanks
         %p.action
-          =raw t('invoices.form.upgrading_group', :group => current_group.name, :group_domain => current_group.name)
+          =raw t('invoices.form.upgrading_group', :group => @group.name, :group_domain => @group.name)
 
         %p
           = t('invoices.form.charging_explanation', :version_name => version.name, :version_price => version.in_dollars)
           %br
           =link_to t('invoices.form.want_to_change_plan'), plans_path
-    - if !current_user
+    - if params[:group_id]
+      %h2
+        = t('invoices.form.upgrade_group', :group => @group.name)
+    - if !current_user && !params[:group_id]
       %h2
         = t('invoices.form.about_you')
       .field
@@ -49,7 +54,14 @@
         = password_field_tag :password, nil, :class => "password -input", :placeholder => t("password", :scope => "activerecord.attributes.user")
       .field
         = password_field_tag :password_confirmation, nil, :class => "password -input", :placeholder => t(:password_confirmation, :scope => "activerecord.attributes.user")
-    - if !current_user || !current_user.owner_of?(current_group)
+    - elsif !current_user
+      %h2
+        = t('invoices.form.credentials')
+      .field
+        = text_field_tag :email, nil, :class => "text_field -input", :placeholder => t("email", :scope => "activerecord.attributes.user")
+      .field
+        = password_field_tag :password, nil, :class => "password -input", :placeholder => t("password", :scope => "activerecord.attributes.user")
+    - if (!current_user || !current_user.owner_of?(@group)) && !params[:group_id]
       %h2
         = t('invoices.form.about_site')
       .field

@@ -144,6 +144,8 @@ class GroupsController < ApplicationController
         format.html {
           if params[:group][:custom_domain] && @group.has_custom_domain?
             redirect_to "#{request.protocol}#{AppConfig.domain}:#{request.port}#{check_custom_domain_path(@group.id)}"
+          elsif params[:group][:custom_domain]
+            redirect_to "#{request.protocol}#{@group.domain}:#{request.port}/manage/properties/domain"
           else
             redirect_to(params[:source] ? params[:source] : group_path(@group))
           end
@@ -289,16 +291,34 @@ class GroupsController < ApplicationController
   end
 
   def downgrade
-    current_group.downgrade!
-    redirect_to invoices_path, :notice =>
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group = current_group
+    end
+    return unless @group && current_user.owner_of?(@group)
+    @group.downgrade!
+    if @group.has_custom_domain?
+      redirect_to "http://#{@group.domain}#{invoices_path}", :notice =>
       I18n.t('groups.downgrade.notice')
+
+    else
+      redirect_to "https://#{@group.domain}#{invoices_path}", :notice =>
+      I18n.t('groups.downgrade.notice')
+    end
   end
 
   def upgrade
     return if ['special', 'legacy_public', 'legacy_private'].include? params[:plan]
-    user_is_owner = user_signed_in? && current_user.owner_of?(current_group)
-    if current_group.shapado_version &&
-      current_group.shapado_version.token == params[:plan] &&
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group = current_group
+    end
+    return unless @group
+    user_is_owner = user_signed_in? && current_user.owner_of?(@group)
+    if @group.shapado_version &&
+      @group.shapado_version.token == params[:plan] &&
       user_is_owner
       flash[:error] = I18n.t('groups.upgrade.error')
       redirect_to '/plans' and return
@@ -306,13 +326,13 @@ class GroupsController < ApplicationController
 
     version = ShapadoVersion.where(:token => params[:plan]).first
 
-    if current_group.is_stripe_customer? && user_is_owner
+    if @group.is_stripe_customer? && user_is_owner
       version = ShapadoVersion.where(:token => params[:plan]).first
-      current_group.upgrade!(current_user, version)
-      redirect_to invoices_path, :notice =>
-        I18n.t("invoices.auto_update.notice", :plan_name => current_group.
+      @group.upgrade!(current_user, version)
+      redirect_to "http://#{@group.domain}#{invoices_path}", :notice =>
+        I18n.t("invoices.auto_update.notice", :plan_name => @group.
                reload.shapado_version.token,
-               :amount_of_time => distance_of_time_in_words_to_now(current_group.next_recurring_charge))
+               :amount_of_time => distance_of_time_in_words_to_now(@group.next_recurring_charge))
       return
     end
 

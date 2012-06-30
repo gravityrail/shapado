@@ -4,7 +4,10 @@
   = t('invoices.index.description')
 
 %p.upgrade
-  = raw t('invoices.index.upgrade', :current_plan => current_group.shapado_version.name)
+  - if current_group.has_custom_domain?
+    = raw t('invoices.index.upgrade_custom_domain', :group_id => current_group.id, :current_plan => current_group.shapado_version.name)
+  -else
+    = raw t('invoices.index.upgrade', :current_plan => current_group.shapado_version.name)
 - if current_group.is_stripe_customer?
   %p.update_card
     - if current_group.has_late_payment
