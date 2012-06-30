@@ -25,6 +25,7 @@ ko:
   questions: 
     answer: 
       add_comment: 코멘트 추가 ...
+      favorite: 저장
       flag: 플래그
       pick_answer: 해법으로 선택
       unset_answer: unset as solution?
