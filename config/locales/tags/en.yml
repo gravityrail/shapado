@@ -5,5 +5,5 @@ en:
     index:
       filter: Search for tags
     show_json:
-      no_description: No description is availave for this tag yet.
-      edit_it: Add a description to this tag.
+      no_description: This tags does not yet have a description.
+      edit_it: Add a description for this tag.
