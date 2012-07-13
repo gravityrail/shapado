@@ -9,10 +9,23 @@ class InvoicesController < ApplicationController
 
 
   def index
+    if params[:ccsuccess] == '1'
+      flash[:notice] = 'Credit card updated successfully.'
+    elsif params[:ccsuccess] == '0'
+      flash[:error] = "Credit card failed \n
+          to update for the following reason: #{result}"
+    end
+
     if current_group.shapado_version.uses_stripe &&
       current_group.upcoming_invoice.nil?
       current_group.set_incoming_invoice
     end
+    @domain = if current_group.has_custom_domain?
+                @group_id = current_group.id
+                AppConfig.domain
+              else
+                current_group.domain
+              end
     @invoices = current_group.invoices.where(:payed => true).page(params["page"])
   end
 
@@ -94,11 +107,12 @@ class InvoicesController < ApplicationController
   end
 
   def webhook
-    group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
-    if params[:type] == 'customer.subscription.updated'
-      group = Group.where(:stripe_customer_id => params[:data][:object][:customer]).first
-      if group && group.shapado_version && group.shapado_version.token == 'private'
-        Stripe.api_key = PaymentsConfig['secret']
+    group = Group.where(:stripe_customer_id => params["data"]["object"]["customer"]).first
+    if ['invoice.payment_succeeded','customer.subscription.updated'].include? params["type"]
+      if group && group.shapado_version && group.shapado_version.token == 'private' &&
+        ((params["data"] && params["data"]["object"] && params["data"]["object"]["total"] == 0) ||
+        params["type"] == 'customer.subscription.updated')
+        Stripe.api_key = PaymentsConfig["secret"]
         Stripe::InvoiceItem.create(
           :customer => group.stripe_customer_id,
           :amount => group.memberships.count*group.shapado_version.per_user,
@@ -108,18 +122,18 @@ class InvoicesController < ApplicationController
         )
 
       end
-    elsif ['invoice.created','invoiceitem.created'].include?(params[:type]) &&
-        group.shapado_version.token == 'private'
+    elsif ['invoice.created','invoiceitem.created','invoice.payment_succeeded'].include?(params["type"]) &&
+      group.shapado_version.token == 'private'
       group.set_incoming_invoice
-    elsif ['charge.failed','invoice.payment_failed'].include?(params[:type])
+    elsif ['charge.failed','invoice.payment_failed'].include?(params["type"])
       group.set_late_payment
     end
 
-    if ['charge.succeeded','invoice.payment_succeeded'].include?(params[:type])
+    if ['charge.succeeded','invoice.payment_succeeded'].include?(params["type"])
       group.unset_late_payment
     end
     respond_to do |format|
-      format.xml {  head :no_content }
+      format.xml {  head :accepted }
     end
   end
 

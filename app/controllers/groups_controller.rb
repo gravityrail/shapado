@@ -5,8 +5,7 @@ class GroupsController < ApplicationController
   before_filter :check_permissions, :only => [:edit,
     :update, :close,
     :connect_group_to_twitter,
-    :disconnect_twitter_group, :set_columns,
-    :update_card]
+    :disconnect_twitter_group, :set_columns]
   before_filter :admin_required , :only => [:accept, :destroy]
   subtabs :index => [ [:most_active, [:activity_rate, Mongo::DESCENDING]], [:newest, [:created_at, Mongo::DESCENDING]],
                       [:oldest, [:created_at, Mongo::ASCENDING]], [:name, [:name, Mongo::ASCENDING]]]
@@ -348,16 +347,25 @@ class GroupsController < ApplicationController
   end
 
   def update_card
-      Stripe.api_key = PaymentsConfig['secret']
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      cc_notice = 2
+      @group = current_group
+    end
+    return unless current_user.owner_of?(@group)
+    Stripe.api_key = PaymentsConfig['secret']
       stripe_token = params[:stripeToken]
-      result = current_group.update_card!(stripe_token)
+      result = @group.update_card!(stripe_token)
       if result == true
         flash[:notice] = 'Credit card updated successfully.'
+        cc_notice = 1 unless cc_notice
       else
         flash[:error] = "Credit card failed \n
           to update for the following reason: #{result}"
+        cc_notice = 0 unless cc_notice
       end
-      redirect_to invoices_path
+      redirect_to "http://#{@group.domain}#{invoices_path(:ccsuccess=>cc_notice)}"
   end
 
   def join

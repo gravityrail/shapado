@@ -1,6 +1,6 @@
 class Admin::ManageController < ApplicationController
   before_filter :login_required
-  before_filter :check_permissions
+  before_filter :check_permissions, :except => [:edit_card]
   layout "manage"
   tabs :dashboard => :dashboard,
        :properties => :properties,
@@ -30,7 +30,13 @@ class Admin::ManageController < ApplicationController
   end
 
   def edit_card
-
+    if params[:group_id]
+      @group = Group.find(params[:group_id])
+    else
+      @group = current_group
+    end
+    return unless current_user.owner_of?(@group)
+    render :layout => 'invitations'
   end
 
   def properties

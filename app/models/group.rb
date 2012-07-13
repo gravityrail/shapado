@@ -434,6 +434,7 @@ class Group
   end
 
   def set_incoming_invoice
+    return unless self.is_stripe_customer?
     Stripe.api_key = PaymentsConfig['secret']
     upcoming = Stripe::Invoice.
       upcoming(:customer => self.stripe_customer_id)
