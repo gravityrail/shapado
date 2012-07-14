@@ -297,7 +297,7 @@ class GroupsController < ApplicationController
     end
     return unless @group && current_user.owner_of?(@group)
     @group.downgrade!
-    if @group.has_custom_domain? || RAILS_ENV != 'production'
+    if @group.has_custom_domain? && AppConfig.force_ssl_on_plans
       redirect_to "http://#{@group.domain}#{invoices_path}", :notice =>
       I18n.t('groups.downgrade.notice')
 
