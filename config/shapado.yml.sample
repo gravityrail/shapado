@@ -68,12 +68,15 @@ base: &common
 
 development:
   <<: *common
+  force_ssl_on_plans: false
   domain: localhost.lan
 production:
   <<: *common
   domain: example.com
+  force_ssl_on_plans: true
   googlean_domain: .shapado.com
 test:
   <<: *common
   domain: test.loc
+  force_ssl_on_plans: false
 
