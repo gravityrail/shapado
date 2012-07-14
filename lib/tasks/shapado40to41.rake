@@ -1,3 +1,6 @@
+task "upgrade40to41" => [:init, :"shapado40to41:levels", :"shapado40to41:update_versions", :"shapado40to41:activities", :"shapado40to41:stats", :"shapado3to4:regenerate_themes", :"assets:precompile"] do
+end
+
 namespace "shapado40to41" do
   task :levels => [:init] do
     Membership.all.each do |ms|
