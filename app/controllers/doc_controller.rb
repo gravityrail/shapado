@@ -25,6 +25,7 @@ class DocController < ApplicationController
   protected
 
   def check_ssl
+    return unless RAILS_ENV == 'production'
     if request.protocol == 'http://'
       if current_group.has_custom_domain? && !current_group.is_stripe_customer?
         redirect_to "https://#{AppConfig.domain}/plans?group_id=#{current_group.id}"
