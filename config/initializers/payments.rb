@@ -4,4 +4,7 @@ if AppConfig.is_shapadocom
   if ShapadoVersion.count == 0
     ShapadoVersion.reload!
   end
+else
+  PaymentsConfig = {}
 end
+

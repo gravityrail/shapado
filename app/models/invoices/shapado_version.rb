@@ -66,6 +66,8 @@ class ShapadoVersion
   end
 
   def self.reload!
+    return unless AppConfig.is_shapadocom
+
     versions_data = YAML.load_file("#{Rails.root}/config/versions.yml")
 
     versions_data.each do |token, data|
