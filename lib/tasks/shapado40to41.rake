@@ -8,6 +8,7 @@ namespace "shapado40to41" do
   end
 
   task :update_versions => [:init] do
+    ShapadoVersion.reload!
     legacy_public_id = ShapadoVersion.where(:token => 'legacy_public').first.id
     legacy_private_id = ShapadoVersion.where(:token => 'legacy_private').first.id
     Group.override({:private => false}, {:shapado_version_id => legacy_public_id})
