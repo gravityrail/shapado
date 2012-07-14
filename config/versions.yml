@@ -121,4 +121,4 @@ private:
   phone_support: true
   uses_stripe: true
   price: 0
-  per_user: 300
+  per_user: 200
