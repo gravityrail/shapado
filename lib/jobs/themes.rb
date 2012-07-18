@@ -1,3 +1,4 @@
+require "yui/compressor"
 module Jobs
   class Themes
     extend Jobs::Base
