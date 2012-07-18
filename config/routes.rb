@@ -60,6 +60,11 @@ Rails.application.routes.draw do
     end
 
     member do
+      get :feed
+      get :expertise
+      get :preferred
+      get :by_me
+      get :contributed
       post :unfollow
       post :follow
       get :answers

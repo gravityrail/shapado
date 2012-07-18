@@ -51,13 +51,13 @@ module Jobs
     def self.define_vars(theme)
 %@
 $has_bg_image: #{theme.has_bg_image?};
-$bg_color: ##{theme.bg_color};
-$fg_color: ##{theme.fg_color};
+$bg_color: ##{theme.bg_color.to_s.gsub(/#/, "")};
+$fg_color: ##{theme.fg_color.to_s.gsub(/#/, "")};
 $bg_image_url: '/_files/themes/bg_image/#{theme.group_id}/#{theme.id}/#{theme.version}.png';
-$topbar_color: ##{theme.topbar_color};
+$topbar_color: ##{theme.topbar_color.to_s.gsub(/#/, "")};
 $logo_url: '/_files/groups/logo/#{theme.group_id}/#{theme.version}.png';
-$view_bg_color: ##{theme.view_bg_color};
-$brand_color: ##{theme.brand_color};
+$view_bg_color: ##{theme.view_bg_color.to_s.gsub(/#/, "")};
+$brand_color: ##{theme.brand_color.to_s.gsub(/#/, "")};
 $fluid: #{theme.fluid};
 $bg_shadow:      #999;
 @

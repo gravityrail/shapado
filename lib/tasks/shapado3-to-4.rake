@@ -559,7 +559,7 @@ namespace "shapado3to4" do
       begin
         Jobs::Themes.generate_stylesheet(theme.id)
       rescue
-        p g.name
+        p theme.group.name rescue 'no group'
       end
     end
   end
