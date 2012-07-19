@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
   before_filter :check_social
   before_filter :set_custom_headers
   before_filter :check_sidebar
+  before_filter :check_mobile_logout
 
   layout :set_layout
 
@@ -37,6 +38,13 @@ class ApplicationController < ActionController::Base
   rescue_from Mongoid::Errors::DocumentNotFound, :with => :render_404
 
   protected
+
+  def check_mobile_logout
+    if request.path == '/users/logout.mobile'
+      sign_out current_user
+      redirect_to '/questions.mobile'
+    end
+  end
 
   def check_social
     if logged_in? && current_group.is_social_only_signup? &&
@@ -48,7 +56,7 @@ class ApplicationController < ActionController::Base
   def check_cookies
     if params[:format] == 'mobile'
       cookies.delete(:pp)
-      session[:user_return_to] = '/mobile'
+      session[:user_return_to] = '/questions.mobile'
     end
   end
 
@@ -216,8 +224,8 @@ class ApplicationController < ActionController::Base
   end
 
   # override from devise
-  def after_sign_out_path_for(resource)
-    params[:format] == "mobile" ? "/mobile" : root_path
+  def after_sign_out_path_for(resource_or_scope)
+    params[:format] == "mobile" ? "/questions.mobile" : root_path
   end
 
   def after_sign_in_path_for(resource_or_scope)

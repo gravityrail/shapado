@@ -66,6 +66,10 @@ module Shapado
         end
       end
 
+      def after_sign_out_path_for(resource)
+        params[:format] == "mobile" ? "/questions.mobile" : root_path
+      end
+
       def after_sign_in_path_for(resource)
         if current_user.admin?
           Jobs::Activities.async.on_admin_connect(request.remote_ip, current_user.id).commit!
@@ -77,6 +81,8 @@ module Shapado
         if cookies["pp"] && params[:format] != 'mobile'
           cookies.delete :pp
           '/close_popup.html'
+        elsif params[:format] == 'mobile'
+          '/questions.mobile'
         else
           cookies.delete :pp
           if return_to = stored_location_for(:user)
