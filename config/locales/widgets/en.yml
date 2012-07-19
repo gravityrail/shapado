@@ -58,6 +58,7 @@ en:
     custom_html:
       description: "Add any kind of HTML you want here."
     settings:
+      content: "Put any html you want here:"
       limit: "Quantity to display:"
       custom_html: "Custom HTML:"
       on_welcome: "Show on Welcome page"
