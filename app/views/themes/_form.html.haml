@@ -24,7 +24,7 @@
   = I18n.t('themes.form.colors_and_bg')
 
 %fieldset.theme_colors
-  .field
+  .field.color_field
     = form.label I18n.t('themes.show.bg_color')
     = form.text_field :bg_color, :type => "color", :value => "##{@theme.bg_color.to_s.gsub(/#/, "")}"
 
