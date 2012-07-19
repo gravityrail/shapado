@@ -102,6 +102,15 @@ class ShapadoVersion
             puts "Plan #{version.token} already exists."
             plan.name = version.token.titleize
             plan.save
+          else
+            Stripe::Plan.create(
+              :amount => version.price,
+              :interval => 'month',
+              :name => version.token.titleize,
+              :currency => 'usd',
+              :id => version.token
+            )
+            puts "Plan #{version.token} created."
           end
         end
       end
