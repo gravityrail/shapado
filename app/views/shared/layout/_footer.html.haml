@@ -43,3 +43,7 @@
 
   = render "shared/layout/javascript"
   = render "shared/layout/websocket"
+  - if current_group.shapado_version.has_custom_js?
+    - if current_group.current_theme.has_js
+      %script{type: 'text/javascript'}
+        =raw current_group.current_theme.javascript.read
