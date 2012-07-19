@@ -37,7 +37,7 @@ class Theme
   belongs_to :group
   before_create :js_mime
   before_destroy :set_default_theme
-
+  before_save :check_colors
   validates_uniqueness_of :name, :allow_blank => false
   validates_presence_of :name
 
@@ -89,5 +89,13 @@ class Theme
       self.group.set_default_theme
       self.group.save
     end
+  end
+
+  def check_colors
+    self[:bg_color].to_s.gsub!(/#/, "")
+    self[:fg_color].to_s.gsub!(/#/, "")
+    self[:view_bg_color].to_s.gsub!(/#/, "")
+    self[:brand_color].to_s.gsub!(/#/, "")
+    self[:topbar_color].to_s.gsub!(/#/, "")
   end
 end

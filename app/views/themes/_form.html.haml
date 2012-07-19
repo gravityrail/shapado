@@ -26,7 +26,8 @@
 %fieldset.theme_colors
   .field
     = form.label I18n.t('themes.show.bg_color')
-    = form.text_field :bg_color, :type => "color"
+    = form.text_field :bg_color, :type => "color", :value => "##{@theme.bg_color.to_s.gsub(/#/, "")}"
+
     %small
       = I18n.t('themes.form.bg_color_legend')
 
@@ -41,24 +42,27 @@
 
   .field
     = form.label  I18n.t('themes.show.main_color')
-    = form.text_field :brand_color, :type => "color"
+    = form.text_field :brand_color, :type => "color", :value => "##{@theme.brand_color.to_s.gsub(/#/, "")}"
     %small
       = I18n.t('themes.form.main_color_legend')
   .field
     = form.label  I18n.t('themes.show.modules_color')
-    = form.text_field :view_bg_color, :type => "color"
+    = form.text_field :view_bg_color, :type => "color", :value => "##{@theme.view_bg_color.to_s.gsub(/#/, "")}"
+
     %small
       = I18n.t('themes.form.modules_color_legend')
 
   .field
     = form.label I18n.t('themes.show.text_color')
-    = form.text_field :fg_color, :type => "color"
+    = form.text_field :fg_color, :type => "color", :value => "##{@theme.fg_color.to_s.gsub(/#/, "")}"
+
     %small
       = I18n.t('themes.form.text_color_legend')
 
   .field
     = form.label I18n.t('themes.show.topbar_color')
-    = form.text_field :topbar_color, :type => "color"
+    = form.text_field :topbar_color, :type => "color", :value => "##{@theme.topbar_color.to_s.gsub(/#/, "")}"
+
     %small
       = I18n.t('themes.form.topbar_color_legend')
 
