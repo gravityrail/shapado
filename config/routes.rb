@@ -1,8 +1,8 @@
 ENV["MAGENT_WEB_PATH"] = "/magent"
 require 'magent_web'
 
-ENV["BUGHUNTER_PATH"] = "/errors"
-require 'bug_hunter'
+#ENV["BUGHUNTER_PATH"] = "/errors"
+#require 'bug_hunter'
 
 Rails.application.routes.draw do
   devise_for(:users,
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   match '/facebook/enable_page' => 'facebook#enable_page', :as => :enable_page_facebook
 
   mount MagentWeb.app => ENV["MAGENT_WEB_PATH"]
-  mount BugHunter.app => ENV["BUGHUNTER_PATH"]
+#  mount BugHunter.app => ENV["BUGHUNTER_PATH"]
 
   match '/facts' => redirect("/")
   match '/users/:id/:slug' => redirect("/users/%{slug}"), :as => :user_se_url, :id => /\d+/
