@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   match '/signup' => 'users#new', :as => :signup
   match '/plans' => 'doc#plans', :as => :plans
   match '/chat' => 'doc#chat', :as => :chat
-  match '/feedback' => 'welcome#feedback', :as => :feedback
+  match '/shapado_feedback' => 'welcome#feedback', :as => :feedback
   match '/send_feedback' => 'welcome#send_feedback', :as => :send_feedback
   match '/settings' => 'users#edit', :as => :settings
   match '/tos' => 'doc#tos', :as => :tos

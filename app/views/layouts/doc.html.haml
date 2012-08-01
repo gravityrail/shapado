@@ -5,7 +5,7 @@
 
   %body{:class => bodys_class(params) << "doc-layout"  }
     #feedback-btn
-      %p=link_to "Feedback", "/feedback"
+      %p=link_to "Feedback", feedback_path
     = render_app_config
     = render :partial => "shared/topbar"
     #container{:class => @current_class}

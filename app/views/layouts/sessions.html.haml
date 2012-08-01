@@ -5,15 +5,15 @@
 
   %body{:class => bodys_class(params) }
     #feedback-btn
-      %p=link_to "Feedback", "/feedback"
+      %p=link_to "Feedback", feedback_path
     = render_app_config
     = render :partial => "shared/topbar"
     #columns
       #main-content-wrap
         = show_flash_messages(:class => "flash", :markdown => true)
         = yield
-        
-      
+
+
 
       = render "shared/layout/footer"
       #login_dialog.top-bar{'data-title' => t('devise.sessions.link')}
