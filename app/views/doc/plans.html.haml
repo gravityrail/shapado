@@ -27,9 +27,7 @@
       .bottom
         .price== $999/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "optimum"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
+          Coming soon
 
     .each
       .header
@@ -48,9 +46,7 @@
       .bottom
         .price== $749/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "maximum"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
+          Coming soon
     .each
       .header
         %h2= t('.premium')
@@ -68,9 +64,7 @@
       .bottom
         .price==$249/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "premium"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
+          Coming soon
     .each.selected
       .header
         %h2= t('.plus')
@@ -88,9 +82,7 @@
       .bottom
         .price==$49/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "plus"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
+          Coming Soon
     .each
       .header
         %h2= t('.basic')
@@ -105,10 +97,7 @@
       .bottom
         .price==$9/#{t('.month')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "basic"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
-
+          Coming soon
     .each.last
       .header.tipsy-plans{title: t('.private_tip')}
         %h2.private= t('.private')
@@ -126,9 +115,7 @@
       .bottom
         .price==$2/#{t('.month')}/#{t('.user')}
         .button
-          = form_for(:invoice, :url => upgrade_group_path(@group, :group_id => params[:group_id], :plan => "private"), :html => {:class => 'plans-form'}) do |f|
-            = f.button upgrade
-
+          Coming soon
   - if !['free', 'legacy_public', 'legacy_private'].include?(@group.shapado_version.token) && user_signed_in? && current_user.owner_of?(@group)
     %p.free-offer
       = t(".we_offer")

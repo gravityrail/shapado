@@ -88,7 +88,7 @@ class InvoicesController < ApplicationController
     return unless @group
     group = @group || current_group
     return unless user.owner_of?(group)
-    token = params[:token]
+    token = 'free' #params[:token]
     shapado_version = ShapadoVersion.where(:token=>token).first
     if shapado_version && shapado_version.uses_stripe?
       Stripe.api_key = PaymentsConfig['secret']

@@ -13,23 +13,23 @@
     - if AppConfig.force_ssl_on_plans
       - if current_group.has_late_payment
         %h2
-          %u= link_to t('invoices.index.late_update_cc_link'), "https://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
+          /%u= link_to t('invoices.index.late_update_cc_link'), "https://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
       - else
         %u
-          = link_to t('invoices.index.update_cc_link'), "https://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
+          /= link_to t('invoices.index.update_cc_link'), "https://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
     - else
       - if current_group.has_late_payment
         %h2
-          %u= link_to t('invoices.index.late_update_cc_link'), "http://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
+          /%u= link_to t('invoices.index.late_update_cc_link'), "http://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
       - else
         %u
-          = link_to t('invoices.index.update_cc_link'), "http://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
+          /= link_to t('invoices.index.update_cc_link'), "http://#{@domain}#{manage_edit_card_path(:group_id => @group_id)}"
 - if current_group.upcoming_invoice
   %p
-    = link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
+    /= link_to t('invoices.index.upcoming_invoice'), upcoming_invoices_path
 - elsif current_group.is_stripe_customer? && current_group.stripe_balance.to_f != 0.0
   %p
-    = t("invoices.index.credit", :amount => -current_group.stripe_balance.to_f/100)
+    /= t("invoices.index.credit", :amount => -current_group.stripe_balance.to_f/100)
 %table
   %thead
     %tr

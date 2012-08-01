@@ -308,6 +308,7 @@ class GroupsController < ApplicationController
   end
 
   def upgrade
+    params[:plan] = 'free'
     return if ['special', 'legacy_public', 'legacy_private'].include? params[:plan]
     if params[:group_id]
       @group = Group.find(params[:group_id])
