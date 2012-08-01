@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   match '/plans' => 'doc#plans', :as => :plans
   match '/chat' => 'doc#chat', :as => :chat
   match '/shapado_feedback' => 'welcome#feedback', :as => :feedback
+  match '/feedback' => 'welcome#fake_feedback'
   match '/send_feedback' => 'welcome#send_feedback', :as => :send_feedback
   match '/settings' => 'users#edit', :as => :settings
   match '/tos' => 'doc#tos', :as => :tos

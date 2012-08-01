@@ -2,6 +2,10 @@ class WelcomeController < ApplicationController
   helper :questions
   tabs :default => :welcome
 
+  def fake_feedback
+    render text: 'no', status: 404
+  end
+
   def index
     @active_subtab = params.fetch(:tab, "activity")
 
