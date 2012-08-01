@@ -51,7 +51,10 @@ class WelcomeController < ApplicationController
         ok = ((words-links) > 4)
       end
     end
-    render text: 'no', status: 404 if params[:feedback][:description].include?("href") || params[:feedback][:description].size > 400
+    if params[:feedback][:description].include?("href") || params[:feedback][:description].size > 400
+      render text: 'no', status: 404
+      return
+    end
 
     if !ok
       flash[:error] = I18n.t("welcome.feedback.captcha_error")
