@@ -1,0 +1,13 @@
+# Messages for Tagalog (Tagalog)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: AnakngAraw
+tl: 
+  tags: 
+    index: 
+      filter: Maghanap ng mga tatak
+    show: 
+      title: "Natatakang mga tanong: %{tags}"
+    show_json: 
+      edit_it: Magdagdag ng isang paglalarawan para sa tatak na ito.
+      no_description: Wala pang paglalarawan ang tatak na ito.

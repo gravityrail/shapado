@@ -8,6 +8,7 @@ tl:
       question: 
         answers: Mga kasagutan
         asked_by: Itinanong ni
+        banned: Ipinagbawal
         body: Katawan
         closed: Isinara na
         created_at: Naitanong na
@@ -24,25 +25,45 @@ tl:
   questions: 
     answer: 
       add_comment: Magdagdag ng puna...
+      favorite: Sagipin
+      favorite_tooltip: Idagdag ang sagot na ito sa mga paborito mo
       flag: Watawat
       pick_answer: Piliin bilang katugunan
+      unfavorite: Huwag nang sagipin
+      unfavorite_tooltip: Alisin ang sagot na ito mula sa mga paborito mo
       unset_answer: Huwag itakda ang katugunan?
+    answer_toolbar: 
+      flagged_by_you: Iwinatawat mo
+    close: 
+      failure: Ang tanong na ito ay mayroon isang masiglang gantimpala at hindi maisasara.
     create: 
+      already_registered: Nakarehistro na ang isang tagagamit na may e-liham na %{email}, mangyaring lumagda na ginagamit ang e-liham na ito.
       flash_notice: Matagumpay na nalikha ang tanong.
+    disallow_spam: 
+      error: Kailangan mong maghintay ng 20 mga segundo bago magpaskil ng ibang tanong.
     edit: 
       title: Binabago ang tanong
     flag: 
       title: Iwatawat ang tanong
     form: 
+      add_attachment: Idagdag ang panlakip
       adult_content: Ang katanungang ito ay naglalaman ng bagay na pangtao na nasa wastong gulang.
       body_tip: Ano ba ang tanong mo? Maging mapaglarawan.
       language_tip: Piliin ang wikang ginamit sa pagtatanong.
+      related_questions_desc: Dito ipapakita ang kahalintulad na mga tanong.
+      remove_attachment: Alisin
       tags_tip: Gamitin ang mga tatak upang makapagdagdag ng mas marami pang mga kabatiran patungkol sa tanong mo.
+    history: 
+      back: ← bumalik sa tanong
     index: 
       active: Masigla
       active_tooltip: Mga tanong na naisapanahon kamakailan lamang
       ask_question: Itanong ang tanong
       empty: Wala pang nagtatanong ng anumang mga tanong.  Maging pinakauna!
+      followers_tooltip: Mga tanong na mayroong pinaka maraming mga tagasunod
+      has_followers: 
+        one: "%{count} tagasunod"
+        other: "%{count} mga tagasunod"
       help_to_answer: Tulungan kaming sumagot
       hot: Mainit
       hot_tooltip: Mga katanungan na may pinakamaraming paggalaw sa loob ng huling 5 mga araw
@@ -55,9 +76,12 @@ tl:
     model: 
       messages: 
         empty_tags: Paumanhin, kailangan mong gumamit ng kahit na isang tatak.
-        title_too_long: Napakahaba ng pamagat.  Hindi ito dapat maglaman ng mahigit kaysa 100 mga panitik.
-        too_many_tags: Paumanhin, makapagpapasok ka lamang ng pinakamataas ang 9 na mga tatak.
-        too_short: Tila napakaikli.  Mangyaring gumamit na mas marami pang mga salita kaysa sa %{count} upang maging mas tiyak.
+        tags_not_added: Hindi maidaragdag ang mga tatak na '%{tags}'. Kailangan mo ng isang reputasyon ng %{reputation_required} upang makalikha ng bagong mga tatak
+        title_too_long: Paumanhin, ang pamagat ay hindi makapaglalaman ng mas mahigit kaysa 100 mga panitik.
+        too_many_tags: Paumanhin, makapagpapasok ka lamang na 20 mga tatak ang pinaka mataas.
+        too_short: 
+          one: Paumanhin, ang pamagat mo ay nangangailangan ng mas marami kaysa sa %{count} na salita.
+          other: Paumanhin, ang pamagat mo ay nangangailangan ng mas marami kaysa sa %{count} na mga salita.
     move: 
       group_label: "Ilipat sa pangkat sa pamamagitan ng punglo:"
       submit: Ilipat!
@@ -66,10 +90,16 @@ tl:
       group_dont_exists: Hindi umiiral ang pangkat na %{group}
       success: Inilipat ang tanong papunta sa %{group}
     new: 
+      description: Mangyaring maging mas mapaglarawan at tiyakin ang pagdaragdag ng kaugnay na mga tatak upang ang tanong mo ay madaling matagpuan.
       how_to_ask: Paano magtanong
       title: Itanong ang katanungan
     question: 
       accepted_tooltip: Ang katanungang ito ay may isang sagot na tinanggap na
+      answer_verb: Kasagutan
+      has_answers: 
+        one: "%{count} sagot"
+        other: "%{count} mga sagot"
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Tatakang muli
     retag_form: 
@@ -91,11 +121,19 @@ tl:
       ban: Ipagbawal
       close: Isara
       close_reason: "Naisara na ang tanong dahil sa sumusunod na kadahilanan:"
+      create_reward: Lumikha ng gantimpala
+      create_reward_description: Gantimpalaan ang pinaka mahusay na sagot ng ilan sa sarili mong karma.
       edit_request: Baguhin ang kahilingan
       flag: Watawat
       flagged_as: Iwinatawat bilang
       flags: Iniulat bilang
+      follow_tooltip: Sundan ang tanong na ito
+      follow_up: Asikasuhing muli
+      follow_up_description: Lumikha ng isang bagong tanong na nakabatay sa paskil na ito.
+      follow_up_of: Ang Tanong Na Ito ay Isang Muling Pag-asikaso Sa
+      history: Kasaysayan
       last_activity: Pinakabagong paggalaw
+      more_actions: Marami pang mga kilos
       open: Buksan
       related_questions: Kaugnay na mga katanungan
       request_closing: Hilingin ang pagsasara
@@ -111,6 +149,8 @@ tl:
       solution: Katugunan
       to_answer_question: upang masagot ang tanong na ito
       unauthenticated_retag: Kailangan mo ng isang akawnt upang magtatak na muli ng mga katanungan
+      unban: Huwag pagbawalan
+      unfollow_tooltip: Huwag nang sundan ang tanong na ito
       viewed: natingnan na
     solve: 
       flash_notice: Nalutas na ang tanong.
@@ -120,6 +160,7 @@ tl:
       tooltip: Ipakita ang mga tanong na tinatakan ng %{tag}
     toolbar: 
       answer_by_mail: Sumagot sa pamamagitan ng e-liham
+      more_actions: Marami pang mga kilos
       requests: Mga kahilingan
       your_close_request: Ang hiling mo ng pagsasara
     unanswered: 

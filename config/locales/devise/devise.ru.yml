@@ -67,3 +67,4 @@ ru:
     messages: 
       already_confirmed: уже подтверждено
       not_found: не найдено
+      not_locked: не заблокирован

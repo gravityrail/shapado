@@ -34,7 +34,6 @@ de:
         title: Es sind leider keine Fragen zu dieser Filterung vorhanden.
       questions: 
         description: 
-          action_link: eine Frage stellt
           text: Sei der Erste der <a href="%{url}">%{action_link}<a/>!
       themes: 
         description: 

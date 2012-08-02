@@ -1,0 +1,13 @@
+# Messages for Italian (italiano)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Beta16
+it: 
+  tags: 
+    index: 
+      filter: Cerca per tag
+    show: 
+      title: "Tag domande: %{tags}"
+    show_json: 
+      edit_it: Aggiungi una descrizione per questo tag.
+      no_description: Questo tag non ha ancora una descrizione.

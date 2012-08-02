@@ -34,7 +34,6 @@ mk:
         title: Жалиме, но нема расположиви прашања во овој филтер.
       questions: 
         description: 
-          action_link: постави прашање
           text: Бидете први што ќе <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

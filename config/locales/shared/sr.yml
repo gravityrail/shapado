@@ -32,7 +32,6 @@ sr:
         title: Нажалост, нема питања у овом филтеру.
       questions: 
         description: 
-          action_link: поставити питање
           text: Будите први који ће <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

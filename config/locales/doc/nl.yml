@@ -13,8 +13,8 @@ nl:
       247_all_support: Webgebaseerd, e-mail, chat en telefonische ondersteuning 24 uur per dag, 7 dagen per week
       5millions: 5 miljoen pageviews per maand
       all_support: Webgebaseerde, e-mail-, chat- en telefonische ondersteuning
+      basic: Basis
       basic_restrictions: Geen aangepaste advertenties en geen volledig aanpasbare UI
-      beta_info: Op dit moment zijn alle sites gratis en alle sites hebben dezelfde mogelijkheden als het Optimum-pakket. Uitgezonderd is de ondersteuning. Alleen webgebaseerd, e-mail en chat zijn beschikbaar.
       big_sites: Sites met veel verkeer
       custom_ads: Gebruik uw eigen advertenties
       custom_analytics: Verkeersoverzicht
@@ -24,12 +24,18 @@ nl:
       free_plan: gratis pakket
       getting_popular: Populair worden
       huge_sites: Sites met heel veel verkeer
+      maximum: Maximaal
       month: maand
+      optimum: Optimaal
       page_views: Voor kleine / particuliere sites
       plans: Pakketten
+      plus: Plus
+      premium: Premie
+      private: Privé
+      private_private: Beperkte toegang
       private_site: Publieke / private toegang inschakelen
-      small_private: kleine / particuliere sites
-      start_monetizing: begin met verdienen
+      small_basic: Aan de slag
+      start_monetizing: Begin met verdienen
       support: Ondersteuning
       title: Pakketten en prijzen
       unlimited: Onbeperkt netwerkverkeer per maand

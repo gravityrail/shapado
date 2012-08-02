@@ -14,6 +14,7 @@ lt:
       answers: Atsakymai
   answers: 
     create: 
+      annon_notice: Vartotojas jau užregistruotas, prašome prisijungti.
       flash_error: "Kažkas nutiko, pridedant jūsų atsakymą. \n  Atminkite, kad:\n -Tušti ir pasikartojantis atsakymai neleidžiami\n -Jums reikia laukti 20 sekundžių prieš siunčiant kitą atsakymą. \n -Jūs galite rašyti tik viena atsakymą į klausimą."
       flash_notice: Ačiū!
     edit: 

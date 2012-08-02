@@ -1,0 +1,13 @@
+# Messages for Russian (русский)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Adata80
+# Author: DCamer
+ru: 
+  rewards: 
+    close: 
+      error: Вам нужно подождать %{time} до получения этой награды.
+    start: 
+      active_notice: Этот вопрос уже не имеет активной награды.
+      reputation_notice: У вас нет достаточно репутации для создания награды к этому вопросу.
+      wait_notice: Подождите 2 дня, прежде чем предлагать вознаграждение по этому вопросу.

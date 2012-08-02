@@ -2,8 +2,10 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Eleferen
 # Author: Lockal
+# Author: X0040h
 # Author: Александр Сигачёв
 ru: 
   admin: 
@@ -13,7 +15,14 @@ ru:
       answers: 
         banning: 
           title: Заблокировать ответ
+      appearance: 
+        logo_legend: Загрузите логотип для вашей группы. Она должна весить меньше, чем 2 МБ.
+        title: Выберите и настроите вашу тему
+      close_group: 
+        description: Закрытие группы сделает ее недоступной никому, кроме вас.
+        feedback: "Пожалуйста сообщите нам, почему вы закрыли свою группу:"
       content: 
+        description: Настройка вашей группы с пользовательским текстом и оформлением
         footer: Низ сайта
         head: заголовок
         question_help: Помощь по вопросу
@@ -21,6 +30,8 @@ ru:
         title: Настраиваемое содержимое
         top_bar: Верхняя панель
         top_bar_tip: Вводите по одной ссылке на строку
+      edit_card: 
+        button: Обновите данные вашей кредитной карты
       invitations: 
         invitations: Отправить приглашения
         invitations_title: Список отправленных вами приглашений
@@ -28,6 +39,12 @@ ru:
         invite_title: Пригласить участников по электронной почте
         title: Приглашения
       properties: 
+        ask_from_twitter: 
+          asking_from_twitter: Задавать вопросы через Twitter
+          question_asked_to: Вопрос для
+          question_must_include: Вопрос должен включать следующий тег, чтобы твитнуть его.
+          question_must_include_example: "например, #yaVopros"
+          twitter_account: Аккаунты Twitter ваших пользователи будут задавать вопросы.
         constrains: 
           reputation_constrains_description: Этот форма позволяет настроить количество очков репутации, начисляемых пользователям в ответ на заданные действия
           reputation_constrains_subtitle: Список ограничений по репутации для каждого действия
@@ -42,13 +59,33 @@ ru:
           instruction6: Если это так, возвратитесь сюда, укажите ваше доменное имя www.%{subdomain} в поле ниже и нажмите кнопку «Обновить». Если у вас есть вопросы, задайте их нам в %{chat_url} или на нашем форуме поддержки
           title: Настройка пользовательского домена
           warning: Вы действительно хотите изменить свой домен?
+        facebook_app: 
+          application_id: Идентификатор приложения
+          facebook_app: Настройки приложения Facebook
+          legend: Можно настроить приложение Facebook. Оно будет использовано для входа ваших пользователей, используя их учетную запись Facebook. Обратите внимание, что это необходимо, только если вы используете собственный домен.
+          secret_key: Секретный ключ
         general: 
           title: Свойства группы
         invitations: 
           resend_button: Переслать
           revoke_button: Отозвать
         invite: 
+          body_instructions: Напишите приглашение (необязательно)
+          body_length_warning: Текст не может содержать более чем 400 символов
+          emails_instructions: Введите адреса электронной почты, разделяя их запятыми
+          invitations: Отправить приглашения
+          invite: Пригласите людей
           title: Пригласить участников по электронной почте
+          user_role: Пригласить пользователей как
+        post_to_twitter: 
+          legend: Эта страница позволяет настроить, что отправляется в Twitter. Используемая учетная запись является <a href="http://twitter.com/%{twitter_account}">@%{twitter_account}</a>, если вы хотите использовать другую учетную запись, пожалуйста, нажмите <a href="%{link}">здесь</a>.
+          legend_connect: Эта страница позволяет настроить, что отправляется в Twitter. Сначала вам необходимо указать учетную запись Twitter, пожалуйста, нажмите <a href="%{link}">здесь</a>, чтобы сделать это.
+          post_to_twitter: Последующие мероприятия в Twitter
+          send_answers_to_twitter: Отправить все ответы на Twitter
+          send_badges_to_twitter: Отправить все недавно выигранные значки на Twitter
+          send_comments_to_twitter: Отправить все комментарии на Twitter
+          send_favorites_to_twitter: Отправить все любимые ответы на Twitter
+          send_questions_to_twitter: Отправить все вопросы на Twitter
         rewards: 
           reputation_rewards_description: Этот форма позволяет настроить получение или потерю очков репутации в ответ на заданные действия
           reputation_rewards_subtitle: Список вознаграждений к репутации
@@ -56,21 +93,40 @@ ru:
         share: 
           title: Распространение
         tag_your_tweets: 
+          add_tags: Добавьте теги к вашим твитам
           ends_with_example: "например, #shapado"
           starts_with_example: "например, #qa"
+          title: Теги для твитов
+          tweet_ends_with: Вставить тег в конец твитов
+          tweet_starts_with: Вставить тег в начало твитов
+        title: Свойства группы
+        twitter_account: 
+          connect_to_other_twitter: Нажмите здесь, чтобы подключить другой аккаунт Twitter для вашей группы
+          connect_to_twitter: Нажмите здесь, чтобы подключить учетную запись Twitter для вашей группы
+          disconnect_twitter_group: Отключить эту группу от Twitter
+          legend: Эта учетная запись будет использоваться для размещения новые вопросов и ответов на Twitter.
+          legend_with_account: Ваш аккаунт Twitter <a href="https://twitter.com/%{twitter_account}">@%{twitter_account}</a> будет использоваться для размещения новые вопросов и ответов на Twitter. Можно настроить, что отправлять на Twitter <a href="%{link}">здесь</a>.
+          twitter_account: Учётная запись Twitter
+        twitter_app: 
+          key: Ключ приложения
+          secret: Секрет приложения
+          twitter_app: Приложение Twitter
       questions: 
         banning: 
           title: Заблокировать вопрос
       social: 
         ask_from_twitter: Вопросы из Твиттера
+        ask_from_twitter_title: Разрешить пользователям задавать вопросы через Twitter
         description: Свяжите свою группу с социальными сетями
         facebook_app: Приложение Facebook
+        facebook_app_title: Настройте свое приложение Facebook, которое будет использоваться для разрешения пользователям входить с их аккаунтом на Facebook
         post_to_twitter: Отправка в Твиттер
         post_to_twitter_title: Автоматическая отправка всех вопросов и ответов в Твиттер
         tag_your_tweets: Теги для твитов
         tag_your_tweets_title: Добавьте теги к вашим твитам
         title: Взаимодействие с социальными сервисами
         twitter_account: Учётная запись Твиттер
+        twitter_account_title: Настройте ваш аккаунт Twitter, который будет использоваться для размещения сообщений на Twitter
       top_admin: 
         site: Сайт
         title: Администрирование

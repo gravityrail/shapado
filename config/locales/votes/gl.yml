@@ -8,14 +8,6 @@ gl:
       vote: Voto
       votes: Votos
   votes: 
-    comments: 
-      title: 
-        more_votes_user: Vostede e outros %{votes} usuarios votaron favorablemente este comentario.
-        no_user_more_votes: Máis de %{votes} persoas votaron favorablemente este comentario; prema para votalo favorablemente vostede tamén.
-        no_user_no_vote: Prema para votar favorablemente este comentario.
-        no_user_one_vote: Soamente un usuario votou favorablemente este comentario; prema para votalo favorablemente vostede tamén.
-        one_vote_two_users: Vostede e outro usuario votaron favorablemente este comentario.
-        one_vote_user: Soamente vostede votou favorablemente este comentario.
     control: 
       have_voted_down: Prema para anular a súa desaprobación
       have_voted_up: Prema para anular a súa aprobación

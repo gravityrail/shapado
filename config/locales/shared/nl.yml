@@ -9,6 +9,7 @@ nl:
     by_anon: Door anoniem
     current_tags: 
       title: Geselecteerde labels
+    date: Datum
     description: Beschrijving
     empty: 
       activities: 
@@ -33,8 +34,7 @@ nl:
         title: Helaas. Er zijn geen vragen beschikbaar met dit filter.
       questions: 
         description: 
-          action_link: een vraag stellen
-          text: <a href="%{url}">%{action_link}<a/> als eerste!
+          text: <a href="%{url}">Stel als eerste vragen<a/>!
       themes: 
         description: 
           action_link: nu
@@ -49,6 +49,7 @@ nl:
         cc_footer: Alle inhoud en gegevens van shapado.com zijn beschikbaar onder de licentie %{cc_link}
         powered_by: Aangeboden met %{source_link} %{version} onder de %{agpl_link}
     login_drop_down: 
+      openid_url: OpenID-URL
       sign_up_user_pass: Aanmelden met e-mailadres en wachtwoord
       with_email_pass: Aanmelden met uw e-mailadres
       with_facebook: met Facebook
@@ -70,6 +71,7 @@ nl:
       find_friends_identica: Vrienden op Identi.ca vinden
       find_friends_linked_in: Vrienden op LinkedIn vinden
       find_friends_twitter: Vrienden op Twitter vinden
+      or_connect: "Of koppelen met:"
     topbar: 
       admin: Beheer
       logged_as: Aangemeld als %{login}

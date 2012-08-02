@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Lockal
 # Author: Александр Сигачёв
 ru: 
@@ -11,7 +12,8 @@ ru:
       under_18: Мне меньше 18 лет
       warning: "Внимание: эта страница может содержать откровенные материалы для взрослых."
     feedback: 
-      captcha_error: Пожалуйста, выполните простую математическую операцию
+      captcha_error: Пожалуйста убедитесь, что правильно написали капчу и предоставили действующий адрес электронной почты.
+      captcha_notice: Спасибо за ваш отзыв, мы ответим вам как можно скорее.
       email_description: Пожалуйста, укажите адрес вашей электронной почты, чтобы мы могли ответить на ваше сообщение
       feedback_description: Описание
       feedback_title: Название

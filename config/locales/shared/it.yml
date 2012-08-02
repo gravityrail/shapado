@@ -35,7 +35,6 @@ it:
         title: Siamo spiacenti, nessuna domanda corrisponde a questo filtro.
       questions: 
         description: 
-          action_link: fai una domanda
           text: Diventa il primo a <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

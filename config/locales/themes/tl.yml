@@ -1,0 +1,44 @@
+# Messages for Tagalog (Tagalog)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: AnakngAraw
+tl: 
+  themes: 
+    edit: 
+      title: Baguhin ang tema
+    form: 
+      bg_color_legend: Ituring ang hungkag na kulay bilang panlikuran, tiyakan ang patungkol sa kaibahan sa pamamagitan ng aplikasyon mo.
+      bg_image_legend: Ang larawang ito ay ipapakita bilang isang papel na pandingding sa ibabaw ng bawat pahina. Ang sukat ay hindi ,maaaring lumampas sa 800K at dapat na maging isang GIF, JPG o PNG.
+      colors_and_bg: Mga kulay at mga panlikuran
+      custom_css_legend: Kung alam mo ang wikang CSS, gamitin ito upang maipasadya ang pag-eestilo ng pook mo. Maaari mong gamitin ang regular na CSS o kaya ang SCSS.
+      fluid_layout: Kalatagang pluwido
+      fluid_layout_legend: Ang isang kalatagang pluwido ay gagawa na ang lapad ng bawat isang elemento ng pahina ay nakasalalay sa daungan ng tanawin sa halip na sa paunang elementong naglalaman. Sa ibang pananalita, kapat binabago ang sukat ng pantingin-tingin mo o lumilipat sa isang maliit na aparatong panooran, ang kalatagan ay kikilos na palapit o palabas.
+      main_color_legend: Ito ang isa sa painaka ginagamit na kulay sa ibabaw ng bawat isang pahina, tiyaking piliin ang karapat dapat para sa katatakan o pamayanan mo.
+      modules_color_legend: Tiyakin na ang kulay na ito ang pangunahing kulay ay magkatugmang mabuti ang pagsasama.
+      submit_update: Isapanahon ang tema
+      text_color_legend: Siguraduhing nababasa ang iyong teksto at kabagay ng panlikurang kulay.
+      update: Isapanahon ang tema
+    index: 
+      description: Hanapin ang mga tema mo at baguhin ang hitsura ng aplikasyon mo.
+      new_theme: Dito mo magagawa ang sarili mong tema.
+    ready: 
+      success: Nakahanda na ang tema mo!
+    show: 
+      apply: Ilapat
+      bg_color: Panlikurang kulay
+      bg_image: Larawang panlikuran
+      brand_color: Tatak na kulay
+      button_bg: Panlikurang kulay ng mga pindutan
+      button_fg: Pangharapang kulay ng mga pindutan
+      fg_color: Pangharapang kulay
+      fluid: Pluwido (gagawin nitong nababanat ang kalatagan habang binabago ang sukat ng bintana ng pantingin-tingin)
+      link_bg: Panlikurang kulay ng mga kawing
+      link_fg: Pangharapang kulay ng mga kawing
+      main_color: Pangunahing kulay
+      modules_color: Kulay ng mga modyul
+      not_ready: Hindi pa handa upang gamitin ang temang ito, tingnan muli sa lalong madaling panahon.
+      text_color: Kulay ng teksto
+      try: Subukan
+      use_link_bg: Gumamit ng isang panlikuran para sa mga kawing
+      view_bg: Panlikurang kulay ng tanawin
+      view_fg: Pangharapang kulay ng tanawin

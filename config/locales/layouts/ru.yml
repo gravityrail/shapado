@@ -1,8 +1,10 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Eleferen
 # Author: Lockal
+# Author: X0040h
 # Author: Александр Сигачёв
 ru: 
   layouts: 
@@ -14,6 +16,7 @@ ru:
       collaborate: Совместное
       contributed: Мой вклад
       faq: ЧаВО
+      feed: Подписки
       follow_us_and_share: Следуйте за нами и делитесь информацией
       followed: Подписки
       forgot: Забыли?
@@ -25,6 +28,8 @@ ru:
       logout: Выход
       manage_ads: Управление рекламой
       moderate: Модерация
+      need_to_signin: Вам нужно сначала войти.
+      not_member_join_dialog: Вам нужно присоединиться к %{group} для завершения этого действия, нажмите здесь, чтобы сделать это.
       now: сейчас!
       openid: 
         explaination: "Если вы хотите зарегистрироваться или просто войти в систему, пожалуйста, выберите своего openid-провайдера:"
@@ -38,6 +43,7 @@ ru:
       settings: Настройки
       signup: Регистрация
       subscribe: Подписка
+      success_joining_group: Теперь вы являетесь участником %{group}, спасибо за вступление!
       tags: Теги
       title: Вопросы и ответы
       unanswered: Без ответов
@@ -48,6 +54,7 @@ ru:
       actions: Действия
       announcements: Объявления
       appearance: Внешний вид
+      close_group: Закрыть группу
       constrains: Ограничения
       content: Содержимое
       dashboard: Панель инструментов
@@ -64,6 +71,7 @@ ru:
       properties: Свойства
       reputation: Репутация
       rewards: Награды
+      site_management: Управление сайтом
       social: Социальное
       stats: Статистика
       theme: Оформление

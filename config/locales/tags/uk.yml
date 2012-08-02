@@ -1,0 +1,10 @@
+# Messages for Ukrainian (українська)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Pig1995z
+uk: 
+  tags: 
+    index: 
+      filter: Пошук по тегам
+    show: 
+      title: "Запитання із тегами: %{tags}"

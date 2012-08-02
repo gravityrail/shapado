@@ -2,9 +2,11 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Eleferen
 # Author: G0rn
 # Author: Lockal
+# Author: X0040h
 # Author: Александр Сигачёв
 ru: 
   activerecord: 
@@ -29,20 +31,28 @@ ru:
     answer: 
       add_comment: Добавить комментарий…
       favorite: Сохранить
+      favorite_tooltip: Добавить этот ответ в избранное
       flag: Отметить
       pick_answer: Выбрать в качестве решения
+      unfavorite_tooltip: Удалить этот ответ из избранного
       unset_answer: Аннулировать решение?
     create: 
       flash_notice: Вопрос успешно создан.
+    disallow_spam: 
+      error: Вам нужно подождать 20 секунд, перед отправкой ещё одного вопроса.
     edit: 
       title: Редактирование вопроса
     flag: 
       title: Отметить вопрос
     form: 
+      add_attachment: Добавить вложение
       adult_content: Этот вопрос содержит материалы для взрослых.
       body_tip: В чём состоит вопрос? Сделайте его более информативным.
       language_tip: Выберите язык вопроса.
+      remove_attachment: Удалить
       tags_tip: Используйте теги для добавления информации о вашем вопросе.
+    history: 
+      back: ← назад к вопросу
     index: 
       active: Активные
       active_tooltip: Недавно обновлённые вопросы
@@ -100,7 +110,9 @@ ru:
       flag: Отметить
       flagged_as: С отметкой
       flags: Отмечен как
+      history: История
       last_activity: Последние действия
+      more_actions: Ещё действия
       open: Открыть
       related_questions: Похожие вопросы
       request_closing: Запрос закрытия
@@ -123,6 +135,9 @@ ru:
       filter: Поиск по тегам
       title: Теги
       tooltip: Показать вопросы с тегом %{tag}
+    toolbar: 
+      answer_by_mail: Ответить по электронной почте
+      requests: Запросы
     unanswered: 
       empty: В этой группе нет вопросов без ответов.
       expert: Эксперты

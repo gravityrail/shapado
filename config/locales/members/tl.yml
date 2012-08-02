@@ -9,6 +9,7 @@ tl:
         role: gampanin
   members: 
     create: 
+      error: Paumanhin, ang tagagamit na si **%{user_id}** ay hindi umiiral.
       notice: Ang %{login} ay matagumpay na naidagdag bilang %{role}.
     form: 
       destroy_confirm: Nakakatiyak ka ba? Ang tagagamit na ito ay hindi na magiging isang kasapi sa pangkat na ito.
@@ -17,3 +18,5 @@ tl:
       manage_members_title: pamahalaan ang mga kasapi
       title: mga kasapi sa pangkat ni %{name}
       title_isolate: mga kasapi sa %{name}
+    update: 
+      error: Paumanhin, wala kang sapat na mga kapahintulutan upang baguhin ang kasapian ni **%{login}**.

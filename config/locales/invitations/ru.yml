@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Lockal
 ru: 
   invitations: 
@@ -24,6 +25,9 @@ ru:
       welcome: Добро пожаловать
     create: 
       flash_notice: Ваши приглашения успешно отправлены.
+      limit_notice: 
+        one: К сожаление, вы не можете отправлять более %{limit} приглашения за раз.
+        other: К сожаление, вы не можете отправлять более %{limit} приглашений за раз.
     resend: 
       flash_notice: Ваше приглашение успешно отправлено ещё раз.
     revoke: 

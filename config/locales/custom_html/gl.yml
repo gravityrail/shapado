@@ -1,0 +1,8 @@
+# Messages for Galician (galego)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Toliño
+gl: 
+  custom_html: 
+    question_help: Dea tantos detalles como sexa posible para ter máis posibilidades de obter unha resposta e non comezar unha conversa sen fin. Intente ser claro e simple.
+    question_prompt: Cal é a súa pregunta? Sexa descritivo.

@@ -1,0 +1,9 @@
+# Messages for Dutch (Nederlands)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: McDutchie
+# Author: Siebrand
+nl: 
+  custom_html: 
+    question_help: Geef zo veel mogelijk details zodat de kans groter is dat de vraag beantwoord kan worden, in plaats van dat er eindeloos om verduidelijking wordt gevraagd. Formuleer duidelijk en beknopt.
+    question_prompt: Wat is uw vraag? Formuleer duidelijk en beknopt.

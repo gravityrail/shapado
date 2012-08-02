@@ -1,0 +1,13 @@
+# Messages for Interlingua (interlingua)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: McDutchie
+ia: 
+  tags: 
+    index: 
+      filter: Cercar etiquettas
+    show: 
+      title: "Questiones con etiquettas: %{tags}"
+    show_json: 
+      edit_it: Adder un description pro iste etiquetta.
+      no_description: Iste etiquetta non ha ancora un description.

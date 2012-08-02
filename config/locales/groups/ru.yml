@@ -2,9 +2,11 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Eleferen
 # Author: Lockal
 # Author: Shemerey
+# Author: X0040h
 # Author: Александр Сигачёв
 ru: 
   activerecord: 
@@ -15,6 +17,7 @@ ru:
         description: Описание
         domain: Домен
         enable_latex: Включить LaTeX с jqmath (быстро но не с полной функциональностью)
+        enable_mathjax: Включить LaTeX с mathjax (медленно, но с полной функциональностью)
         fb_button: Включить кнопку Facebook (отрицательно влияет на защиту личной информации)
         forum: Разрешить больше одного варианта ответа на пользователя
         group_created_by: кем создано
@@ -29,9 +32,11 @@ ru:
         signup_type: "Какие методы могут использовать пользователи для регистрации:"
         state: Состояние
         subdomain: URL
+        track_users: Запросить физическое расположение пользователей
         wysiwyg_editor: Включить удобный для пользования редактор
     models: 
       default_tags_message: Нельзя установить более 10 тегов по умолчанию
+      duplicate_domain_message: К сожалению, этот домен уже занят.
       group: Группа
       groups: Группы
       reputation_rewards_answer_constrain: Ограничение на награды за ответы должно быть отрицательным
@@ -43,6 +48,8 @@ ru:
       success_twitter_connection: Поздравляем, вы подключили свой Twitter успешно!
     create: 
       flash_notice: Ваша группа успешно создана, теперь вы можете приступить к её настройке.
+    downgrade: 
+      notice: Подписка успешно отключена, теперь вы используете наш свободный план.
     edit: 
       title: Редактировать свою группу
     form: 
@@ -60,9 +67,9 @@ ru:
       logo_legend: Вы можете загрузить логотип группы. Максимальный размер файла составляет 2 МБ.
       members_only: Только участники группы будут иметь доступ к этой группе
       signup_all: Все выбранные провайдеры плюс имя / пароль
-      signup_email: Только адрес электронной почты (пользователи могут войти только через электронную почту и пароль)
-      signup_noemail: Без адреса электронной почты и пароля (пользователи входят через OpenID, Facebook, Twitter)
-      signup_social: Только социальные сети (пользователи могут войти только через Facebook, Twitter, LinkedIn и Identica)
+      signup_email: Только пользователь/пароль
+      signup_noemail: Все выбранные поставщики минус пользователь/пароль
+      signup_social: Пользователи вынуждены использовать Facebook, Twitter, LinkedIn или Identica
       website_analytics_id: Код Analytics сайта
     group: 
       about: О группе
@@ -91,5 +98,9 @@ ru:
       group_closed: Эта группа была закрыта.
       title: О %{name}
       visit_group: Перейти в эту группу
+    top_grouplist: 
+      active_site: "Активный сайт:"
     update: 
       notice: Ваша группа успешно обновлена.
+    upgrade: 
+      error: Вы уже подписаны на этот план

@@ -1,0 +1,8 @@
+# Messages for Russian (русский)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: DCamer
+ru: 
+  custom_html: 
+    question_help: Укажите как можно больше подробностей, тогда будет больше шансов получить ответ, а не бесконечное обсуждение. Постарайтесь быть ясным и простым.
+    question_prompt: В чём состоит вопрос? Сделайте его более информативным.

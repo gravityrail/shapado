@@ -35,7 +35,6 @@ fi:
         title: Valitettavasti tälle suodattimelle ei ole kysymyksiä saatavilla.
       questions: 
         description: 
-          action_link: kysyy kysymyksen
           text: Ole ensimmäinen, joka <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

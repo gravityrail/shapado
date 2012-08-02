@@ -1,0 +1,13 @@
+# Messages for Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr: 
+  tags: 
+    index: 
+      filter: Претражи ознаке
+    show: 
+      title: "Питања означена са: %{tags}"
+    show_json: 
+      edit_it: Додајте опис за ознаку.
+      no_description: Ове ознаке још немају опис.

@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Grigol
 # Author: Lockal
 # Author: Александр Сигачёв
@@ -12,7 +13,7 @@ ru:
       message2: "Описание беджа:"
       message3: Вы можете просмотреть все ваши беджи на вашей %{user_page}
     favorited: 
-      message1: "%{user} добавил ваш вопрос в список избранных в группе %{group}"
+      message1: "%{user} сохранил ваш ответ из %{group} в избранном"
       message2: "Текст вопроса:"
       message3: "Вы можете посмотреть здесь:"
     follow: 

@@ -32,7 +32,6 @@ ia:
         title: Regrettabilemente, nulle question es disponibile con iste filtro.
       questions: 
         description: 
-          action_link: poner un question
           text: Sia le prime a <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

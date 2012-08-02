@@ -1,6 +1,7 @@
-ja:
-  custom_html:
-    question_prompt:
-      "あなたの質問はなんですか？"
-    question_help:
-      "できるだけシンプルに、かつ明確にすることで論点が明確になって議論が発展します。そうすることで詳細な回答が受けられるようになります。"
+# Messages for Japanese (日本語)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+ja: 
+  custom_html: 
+    question_help: できるだけシンプルに、かつ明確にすることで論点が明確になって議論が発展します。そうすることで詳細な回答が受けられるようになります。
+    question_prompt: あなたの質問はなんですか？

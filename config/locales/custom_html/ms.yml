@@ -1,0 +1,8 @@
+# Messages for Malay (Bahasa Melayu)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Anakmalaysia
+ms: 
+  custom_html: 
+    question_help: Berikan sebanyak mana butiran yang boleh supaya lebih berpeluang untuk dijawab daripada dibincangkan tanpa henti sahaja. Cuba tanya dengan jelas dan ringkas.
+    question_prompt: Apakah soalan anda? Sila terangkan.

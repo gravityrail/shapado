@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Lockal
 ru: 
   activerecord: 
@@ -8,9 +9,15 @@ ru:
       member: 
         role: Роль
   members: 
+    create: 
+      error: К сожалению, участник **%{user_id}** не существует.
+      notice: "%{login} был успешно добавлен в качестве %{role}."
     form: 
+      destroy_confirm: Вы уверены? Этот участник больше не будет членом этой группы.
       login_tip: Поиск по мере ввода
     index: 
       manage_members_title: Управление участниками
       title: Участники группы %{name}
       title_isolate: Участники %{name}
+    update: 
+      error: К сожалению, у вас нет достаточных прав для изменения членства **%{login}**.

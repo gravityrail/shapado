@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Eleferen
 # Author: Lockal
 ru: 
@@ -18,4 +19,5 @@ ru:
     create: 
       success: Объявление успешно создано.
     index: 
+      description: Управлять и создавать новые объявления, которые будут показаны вашим посетителям.
       title: Объявления

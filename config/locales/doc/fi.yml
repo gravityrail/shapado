@@ -13,7 +13,6 @@ fi:
       5millions: 5 miljoonaa sivuatselua/kuukausi
       all_support: Web-perustainen, sähköposti, verkkojuttelu ja puhelintuki
       basic_restrictions: Ei mukautettuja mainoksia ja täysin mukautettavissa olevaa käyttöliittymää
-      beta_info: Tästä alkaen kaikki sivustot ovat vapaita ja kaikki sivustot hyötyvät samoista valitsimista kuin Optimisuunnitelma, paitsi tuki, joka on vain web-perustainen, sähköposti ja verkkojuttelu.
       big_sites: Suuriliikenteiset sivustot
       custom_ads: Käytä omia mainoksiasi
       custom_analytics: Liikenteen tilastot
@@ -27,7 +26,6 @@ fi:
       page_views: Pienille / Yksityisille sivustoille
       plans: Suunnitelmat
       private_site: Ota käyttöön yksityinen/julkinen pääsy
-      small_private: Pienet / Yksityiset sivustot
       start_monetizing: alkaa ansaita rahaa
       support: Tuki
       title: Suunnitelmat ja hinnoittelu

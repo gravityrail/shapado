@@ -13,7 +13,6 @@ nb:
       5millions: 5 millioner sidevisninger per måned
       all_support: Nettbasert, e-post-, nettprat- og telefonstøtte
       basic_restrictions: Ingen egendefinerte annonser og ikke fullt tilpassbart grensesnitt
-      beta_info: For nå er alle nettstedene gratis og alle nettstedene nyter godt av de samme alternativene som den optimale planen, foruten støtten som kun er nettbasert, e-post og lynmeldinger.
       big_sites: Stortrafikknettsteder
       custom_ads: Bruk dine egne annonser
       custom_analytics: Trafikkstatistikk
@@ -27,7 +26,6 @@ nb:
       page_views: For små/private nettsteder
       plans: Planer
       private_site: Aktiver privat/offentlig tilgang
-      small_private: Små/Private nettsteder
       start_monetizing: start å tjene penger
       support: Støtte
       title: Planer og priser

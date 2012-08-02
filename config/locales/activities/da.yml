@@ -1,0 +1,15 @@
+# Messages for Danish (dansk)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Sarrus
+# Author: Tjernobyl
+da: 
+  activerecord: 
+    models: 
+      activities: Aktiviteter
+  activity: 
+    changed: ændret
+    created: oprettet
+    deleted: slettet
+    destroyed: slettet
+    updated: opdateret

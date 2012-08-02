@@ -1,0 +1,8 @@
+# Messages for Interlingua (interlingua)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: McDutchie
+ia: 
+  custom_html: 
+    question_help: Specifica tante detalios como possibile pro haber plus chance de obtener un responsa e non un discussion sin fin. Essaya esser clar e simple.
+    question_prompt: Que es tu question? Sia descriptive.

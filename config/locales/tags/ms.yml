@@ -1,0 +1,13 @@
+# Messages for Malay (Bahasa Melayu)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Anakmalaysia
+ms: 
+  tags: 
+    index: 
+      filter: Cari tag
+    show: 
+      title: "Soalan yang ditag: %{tags}"
+    show_json: 
+      edit_it: Nyatakan keterangan bagi tag ini.
+      no_description: Tag ini belum ada keterangan.

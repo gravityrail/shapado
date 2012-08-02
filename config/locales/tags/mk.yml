@@ -1,0 +1,13 @@
+# Messages for Macedonian (македонски)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Bjankuloski06
+mk: 
+  tags: 
+    index: 
+      filter: Пребарај ознаки
+    show: 
+      title: "Прашања означени со: %{tags}"
+    show_json: 
+      edit_it: Додај опис за ознакава.
+      no_description: Овие ознаки сè уште немаат опис.

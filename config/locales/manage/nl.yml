@@ -50,8 +50,8 @@ nl:
           instruction2: Ga daar naar de DNS-instellingen en maak aan wat een CNAME heet.
           instruction3: Kies "www" of wat u wilt als de naam van uw CNAME.
           instruction4: "Voer dan in het veld bestemming uw huidige Shapado-domein in: %{domain}."
-          instruction5: Als dit is gedaan, dat duurt een uurtje of zo, wijst uw domein www.%{subdomain} naar %{appdomain}.
-          instruction6: Als dit het geval is, kom hier dan terug en voer uw domeinnaan www.%{subdomain} in het veld hieronder in en klik op de knop "Bijwerken". Als u vragen hebt, stel die dan aan ons in de %{chat_url} of in het ondersteunigsforum.
+          instruction5: Als dit is gedaan, dat duurt een uurtje of zo, wijst uw domein %{subdomain} naar %{appdomain}.
+          instruction6: Als dit het geval is, kom hier dan terug en voer uw domeinnaan %{subdomain} in het veld hieronder in en klik op de knop "Bijwerken". Als u vragen hebt, stel die dan aan ons in de %{chat_url} of in het ondersteunigsforum.
           title: Uw aangepaste domein instellen
           warning: Weet u zeker dat u uw domein wilt wijzigen?
         facebook_app: 

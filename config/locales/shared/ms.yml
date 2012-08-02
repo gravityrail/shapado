@@ -34,7 +34,6 @@ ms:
         title: Maaf, tiada soalan yang ada dalam tapisan ini.
       questions: 
         description: 
-          action_link: tanyakan soalan
           text: Jadilah yang pertama untuk <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

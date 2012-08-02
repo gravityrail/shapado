@@ -12,7 +12,6 @@ ja:
       5millions: 500万/PV月まで
       all_support: Webベース、メール、チャット、電話によるサポート
       basic_restrictions: 広告カスタム不可、UIのカスタマイズも基本的なもののみ
-      beta_info: 現在はベータ版のため、有料プランはありません（無料版のみ）
       big_sites: 大きなサイト向け
       custom_ads: 独自広告利用可能
       custom_analytics: アクセス解析
@@ -26,7 +25,6 @@ ja:
       page_views: 小規模/プライベート利用向け
       plans: 有料プラン
       private_site: プライベート/公開型の対応
-      small_private: 小規模/プライベートなサイト
       start_monetizing: マネタイズを開始
       support: サポート
       title: プランと価格

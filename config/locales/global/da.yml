@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: Sarrus
 # Author: Tjernobyl
 da: 
   feeds: 
@@ -21,8 +22,10 @@ da:
     by_semi: "Af:"
     current: Nuværende
     edited: Redigeret
+    edited_by: Redigeret af
     edited_by_semi: "Redigeret af:"
     feedback: Tilbagemelding
+    followed_by: "Efterfulgt af:"
     following: Følger
     from: fra %{site}
     group_not_found: Side %{url}'en eksisterer ikke
@@ -76,3 +79,4 @@ da:
       last: Sidste
       next: Næste &raquo;
       previous: "&laquo; Forrige"
+      truncate: ...

@@ -12,14 +12,6 @@ fr:
       vote: Vote
       votes: Votes
   votes: 
-    comments: 
-      title: 
-        more_votes_user: Vous et %{votes} autres utilisateurs avez voté sur ce commentaire.
-        no_user_more_votes: Plus de %{votes} personnes ont voté sur ce commentaire, cliquez pour voter aussi.
-        no_user_no_vote: Cliquez pour voter sur ce commentaire.
-        no_user_one_vote: Un seul utilisateur a voté sur ce commentaire, cliquez pour voter aussi.
-        one_vote_two_users: Vous et un autre utilisateur avez voté sur ce commentaire.
-        one_vote_user: Vous seul avez voté sur ce commentaire.
     control: 
       have_voted_down: Cliquez pour annuler votre désapprobation
       have_voted_up: Cliquez pour annuler votre approbation

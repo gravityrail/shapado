@@ -37,7 +37,6 @@ fr:
         title: Désolé, aucune question n'est disponible avec ce filtre.
       questions: 
         description: 
-          action_link: poser une question
           text: Soyez le premier à <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

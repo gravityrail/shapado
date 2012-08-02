@@ -4,9 +4,72 @@
 # Author: AnakngAraw
 tl: 
   shared: 
+    any_lang: Anumang wika
+    by_anon: Ng isang hindi nagpapakilala
     current_tags: 
       title: napiling mga tatak
+    description: Paglalarawan
+    empty: 
+      activities: 
+        description: 
+          text: Ang lugar ay mapupuno nang kusa kapag nagsimula nang gamitin ng mga tao ang pook na ito.
+        title: Wala pang mga paggalaw hanggang ngayon.
+      answers: 
+        description: 
+          text: Maging pinakauna!
+        title: Wala pang sumasagot sa tanong na ito.
+      default: 
+        description: 
+          text: Maging pinaka una sa %{action_link}!
+        title: Paumanhin! Wala namang gaanong makikita rito.
+      filtered_by_language_questions: 
+        description: 
+          action_link: Pindutin dito upang makita ang mga tanong na nasa lahat ng mga wika.
+        title: Paumanhin, walang makukuhang mga katanungan na nasa ganitong wika.
+      filtered_questions: 
+        description: 
+          action_link: Pindutin dito upang maipakita ang lahat ng mga tanong
+        title: Paumanhin, walang makukuhang mga katanungan na nasa pansalang ito.
+      questions: 
+        description: 
+          text: Maging pinaka una sa <a href="%{url}"> %{action_link}<a/>!
+      themes: 
+        description: 
+          action_link: ngayon na
+          text: lumikha ng isa %{action_link}
+        title: Hindi ka pa lumilikha ng anumang mga tema sa ngayon.
+    filter: "Pansala:"
+    language: "Wika:"
+    language_filter_tooltip: Subukan sa pamamagitan ng ibang wika.
+    languages: "Mga wika:"
+    layout: 
+      footer: 
+        cc_footer: Ang lahat ng nilalaman at dato ng Shapado.com ay makukuha sa ilalim ng lisensiyang %{cc_link}
+        powered_by: Pinaaandar ng %{source_link} %{version} sa ilalim ng %{agpl_link}
+    login_drop_down: 
+      sign_up_user_pass: Magparehistro sa pamamagitan ng isang e-liham/hudyat
+      with_email_pass: Lumagda sa pamamagitan ng e-liham mo
+      with_facebook: sa pamamagitan ng Facebook
+      with_google: sa pamamagitan ng Google
+      with_identica: sa pamamagitan ng Identi.ca
+      with_linked_in: sa pamamagitan ng LinkedIn
+      with_openid: OpenID
+      with_twitter: sa pamamagitan ng Twitter
+    manage_navigation: 
+      title_content: Nilalaman ng pangkat
+      title_features: Mga tampok ng pangkat
+      title_options: Mga mapipili ng pangkat
+    name: Pangalan
+    preferred_lang: Mga wikang nais ko
+    quick_question: 
+      random_question: Sagutin ang isa sa alin mang tanong
+    social_connect: 
+      find_friends_facebook: Maghanap ng mga kaibigan sa Facebook
+      find_friends_identica: Maghanap ng mga kaibigan sa Identi.ca
+      find_friends_linked_in: Maghanap ng mga kaibigan sa LinkedIn
+      find_friends_twitter: Maghanap ng mga kaibigan sa Twitter
     topbar: 
       admin: tagapangasiwa
       logged_as: Nakalagda bilang %{login}
       user_page: pahina ko
+    view_mode: "Paraan ng pagtanaw:"

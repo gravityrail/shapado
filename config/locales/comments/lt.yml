@@ -1,0 +1,20 @@
+# Messages for Lithuanian (lietuvių)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Eitvys200
+lt: 
+  comments: 
+    create: 
+      flash_notice: Ačiū už jūsų komentarą
+    edit: 
+      title: Redaguoti komentarą
+    shared: 
+      add_comment: Pridėti komentarą...
+      comment_submit: Komentuoti
+      reply: Atsakyti
+      said: sakė
+    update: 
+      flash_notice: Komentaras buvo sėkmingai atnaujintas.
+  models: 
+    comment: Komentaras
+    comments: Komentarai

@@ -22,6 +22,7 @@ lb:
     index: 
       create_page: Nei Säit uleeën
       title: Säitelëscht
+      wiki: Wiki
       written_in: op  %{language} geschriwwen
     new: 
       title: Nei Säit

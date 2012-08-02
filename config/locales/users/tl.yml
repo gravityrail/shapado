@@ -45,6 +45,13 @@ tl:
       vote_up: Bumotong paitaas
     anonymous_form: 
       never_shown: hindi ipinapakita kailanman
+    change_password: 
+      submit: Palitan ang hudyat ko
+      title: Palitan ang hudyat
+    check_custom_domain: 
+      reset_domain_button: Huwag, paki muling itakda ang nasasakupang ipinasadya upang maging %{domain}
+      title: Gumagana ba ang iyong bagong nasasakupang ipinasadya?
+      working_domain_link: Oo, nakikita ko sa ibaba na gumagana ang bago kong nasasakupan.
     create: 
       flash_error: Paumanhin, hindi namin maihanda ang akawnt na iyan.  Mangyaring subukan ulit, o makipag-ugnayan sa tagapangasiwa (nasa itaas ang kawing).
       flash_notice: Salamat sa pagpapatala!
@@ -53,22 +60,34 @@ tl:
       submit: Sagipin
       title: Mga katakdaan
     follow: 
-      flash_notice: Idinagdag ang tagagamit na si %{user} magmula sa mga kaibigan mo
+      flash_error: Hindi mo maaaring sundan ang sarili mo.
+      flash_notice: Sinusundan mo na ngayon si %{user}.
     form: 
       activities_notification: Tumanggap ng mga pabatid ng e-liham tungkol sa mga gawain ng sistema katulad ng nakamit na mga tsapa, bagong mga tagasunod, atbp.
       avatar_tip: Baguhin ang larawan mo ng balangkas na ginagamit ang Gravatar
+      check_domain: Suriin ang %{domain}
+      check_domain_title: Suriin ang ipinasadyang mga nasasakupan ng pangkat mo
+      desktop_notification: Mga pagpapabatid sa pang-ibabaw ng mesa
       give_advice_notification: Tumanggap ng mga pabatid ng e-liham tungkol sa mga katanungan na nasa loob ng iyong larangan ng kadalubhasaan
       information: Kabatiran
       language: Wikang ginagamit para sa ugnayang-mukha ng sityo
       new_answer_notification: Kumuha ng mga pabatid ng e-liham para sa bagong mga kasagutan
       notifications: Mga pagpapabatid
       reports_notification: Tumanggap ng isang ulat na may pinakabagong gawain ng pangkat (para lamang sa mga tagapangasiwa ng pangkat)
+      send_answers_to_twitter: Ipadala ang mga sagot ko sa aking Twitter
+      send_badges_to_twitter: Ipadala ang mga tsapang kapapanalo ko pa lamang papunta sa aking Twitter
+      send_comments_to_twitter: Ipadala ang mga puna ko sa Twitter
+      send_favorites_to_twitter: Ipadala ang paborito kong mga sagot sa aking Twitter
+      send_questions_to_twitter: Ipadala ang mga tanong ko sa aking Twitter
       show_more_lang: Magpakita ng marami pang mga wika
+      social_interaction: Interaksiyon ng midyang pangpakikipagkapuwa
     index: 
       empty: Walang mga kasapi ang pangkat na ito.  Lumahok sa pamamagitan ng pagsali sa pangkat na ito.
       filter: Maghanap ng mga tagagamit
       name: Pangalan
       name_tooltip: Mga tagagamit na inayos ayon sa abakada
+      near: Malapit sa iyo
+      near_tooltip: Mga tagagamit na malapit sa iyo
       newest: Pinakabago
       newest_tooltip: Mga tagagamit na kasasali pa lamang
       oldest: Pinakaluma
@@ -80,14 +99,37 @@ tl:
       errors: 
         reputation_needed: Kailangan mo ng isang dangal na %{min_reputation} upang %{action}
     new: 
+      description: Maging bahagi ng pamayanang ito upang makapagtanong, makasagot at matuto!
+      join_group: Sumali sa %{group}
       submit: Magpatala
       title: Magpatala bilang isang bagong tagagamit
     show: 
+      edit_profile: Baguhin ang balangkas ng katangian
       follow: Sundan
       followers: Mga tagasunod
       following: Sinusundan si
       title: Tagagamit %{user}
       unfollow: Huwag sundan
       views: mga tanawin
+    show_json: 
+      edit_it: Pindutin dito upang mapunuan ang talambuhay mo sa iyong balangkas-katangian.
+      no_description: Ang tagagamit na ito ay hindi pa pinupunan ang kanyang talambuhay.
+    top_user: 
+      connect: Kumabit
+      my_karma: "Karma ko: %{karma}"
+      profile: Balangkas-katangian
     unfollow: 
-      flash_notice: Tinanggal ang tagagamit na si %{user} magmula sa mga kaibigan mo
+      flash_notice: Hindi mo na sinusundan si %{user}.
+    update_followed_tags: 
+      followed: 
+        flash_notice: Sinusundan mo na ngayon ang tatak na %{tag}.
+      unfollowed: 
+        flash_notice: Hindi mo na sinusundan ang tatak na %{tag}.
+    user_bar: 
+      create_account: Lumikha ng isang akawnt
+      not_logged_in: Hindi nakalagda
+      signed_as: Nakalagda bilang si
+    user_mini: 
+      admin: "[ Tagapangasiwa ]"
+      editor: "[ Patnugot ]"
+      mod: "[ Tagapamagitan ]"

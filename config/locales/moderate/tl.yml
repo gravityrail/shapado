@@ -24,8 +24,11 @@ tl:
         banned: Ipinagbawal
         banned_tooltip: Ipakita lamang ang mga tanong na ipinagbabawal
         filters: "Mga pansala:"
+        title: Mamagitan ng mga Tanong
         unbanned: Hindi na pinagbabawalan
         unbanned_tooltip: Ipakita lamang ang mga tanong na hindi ipinagbabawal
+      index: 
+        title: Mamagitan ng mga Tanong
       subtabs: 
         flagged: Ibinandila
         flagged_tooltip: Mga tanong na ibinandila ng mga tagagamit

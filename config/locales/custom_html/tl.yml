@@ -1,0 +1,8 @@
+# Messages for Tagalog (Tagalog)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: AnakngAraw
+tl: 
+  custom_html: 
+    question_help: Magbigay ng maraming mga detalye hangga't maaari upang magkaroon ito ng mas maraming pagkakataon na masagot sa halip na maging tinatalakay nang walang katapusan. Subuking maging mas malinaw at payak.
+    question_prompt: ano ba ang tanong mo? maging mapaglarawan.

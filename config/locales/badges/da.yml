@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: Sarrus
 # Author: The real emj
 # Author: Tjernobyl
 da: 
@@ -11,8 +12,10 @@ da:
       badges: Badges
   badges: 
     index: 
+      bronze: Bronze
       description: Alle badges, som du kan tjene. Del din viden og optjen badges.
       gold: Guld
+      silver: Sølv
       title: badges
     shared: 
       addict: 

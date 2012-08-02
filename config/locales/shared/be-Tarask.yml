@@ -23,9 +23,6 @@ be-Tarask:
         description: 
           text: Будзь першым, хто %{action_link}!
         title: Прабачце! Тут няма чаго болей глядзець.
-      questions: 
-        description: 
-          action_link: задаць пытаньне
       themes: 
         description: 
           action_link: зараз

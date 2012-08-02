@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Lockal
 # Author: Александр Сигачёв
 ru: 
@@ -16,6 +17,7 @@ ru:
       answers: Ответы
   answers: 
     create: 
+      annon_notice: Пользователь уже зарегистрирован, войдите в систему.
       flash_error: "При добавления ответа что-то пошло не так.\n  Помните, что:\n - Не допускаются пустые и повторяющиеся ответы\n - Следует подождать 20 секунд, прежде чем отправлять следующий ответ\n - Вы можете дать только один ответ на каждый вопрос"
       flash_notice: Спасибо!
     edit: 

@@ -35,7 +35,6 @@ es:
         title: Lo sentimos, no hay preguntas disponibles con este filtro.
       questions: 
         description: 
-          action_link: Pregunte
           text: ¡Sea el primero en <a href="%{url}"> %{action_link}</a>!
       themes: 
         description: 

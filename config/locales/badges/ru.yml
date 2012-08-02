@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Eleferen
 # Author: Express2000
 # Author: Lockal
@@ -11,10 +12,18 @@ ru:
       badges: Беджи
   badges: 
     index: 
+      all_tooltip: Показать все золотые, серебряные и бронзовые значки.
       bronze: Бронза
+      bronze_tooltip: Бронзовый значки легко заполучить, и заодно поощрить участие.
       description: Чем больше твой вклад в задавании и ответах на вопросы, тем больше у тебя значков. Значки будут отображаться на странице твоего профиля.
+      general: Обычные значки
+      general_tooltip: Показать все предварительно определенные значки.
       gold: Золото
+      gold_tooltip: Золотые значки наиболее ценные, но их сложнее заполучить. Только самые преданные участники получают эти награды.
       silver: Серебро
+      silver_tooltip: Серебряные значки получают активные участники, которые долгое время с нами.
+      tags: Значки-теги
+      tags_tooltip: Когда вопросы, отмеченные X получит ответы с более чем 100 голосов, значок X создастся с название тега.
       title: беджи
     shared: 
       addict: 
@@ -65,6 +74,9 @@ ru:
       fanatic: 
         description: Посещал сайт каждый день 100 дней подряд
         name: Фанатик
+      favorite_answer: 
+        description: Выбран 25 участниками
+        name: Любимый ответ
       favorite_question: 
         description: Задал вопрос, который добавили в избранное 25 пользователей
         name: Любимый вопрос
@@ -145,6 +157,9 @@ ru:
         name: Памятная медаль
       shapado: 
         description: Посещал сайт каждый день 8 дней подряд
+      stellar_answer: 
+        description: Выбран 100 участниками
+        name: Звездный ответ
       stellar_question: 
         description: Задал вопрос, который добавили в избранное 100 пользователей
         name: Звёздный вопрос

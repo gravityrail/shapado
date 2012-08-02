@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Emilkris33
+# Author: Sarrus
 da: 
   activerecord: 
     attributes: 
@@ -13,7 +14,7 @@ da:
         fb_button: Aktiver Facebook "synes godt om"/like knap (ikke privatlivs venlig)
         forum: Tillad mere end ét svar af bruger
         group_created_by: oprettet af
-        language: Sprog
+        language: Standardsprog
         legend: Legende
         logo: Logo
         may_contain_adult_content: Dette site kan indeholde voksen indhold

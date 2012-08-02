@@ -1,0 +1,8 @@
+# Messages for Serbian (Latin script) (‪srpski (latinica)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr-Latn: 
+  custom_html: 
+    question_help: Navedite što više detalja. Tako ćete imati veće šanse da vam neko odgovori na pitanje, umesto da se diskutuje unedogled. Budite jasni i jednostavni.
+    question_prompt: Šta želite da pitate? Budite opisni.

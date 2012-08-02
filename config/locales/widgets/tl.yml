@@ -4,28 +4,117 @@
 # Author: AnakngAraw
 tl: 
   widgets: 
+    about: 
+      description: Ang widyet na ito ay nagpapakita ng isang maiksing paglalarawan ng pangkat mo.
+      title: Patungkol
+    adsense: 
+      description: Ang widyet na ito ay nagpapahintulot sa iyo na makapagpakita ng mga anunsiyo ng AdSense.
+      title: AdSense
+    ask_question: 
+      ask: Magtanong
+      description: Ang widyet na ito ay nagpapahintulot sa mga tagagamit na makapagtanong ng mga katanungan magmula sa kung saan man.
+      footer: Tingnan ang lahat ng mga tanong sa %{group}
+      title: "Magtanong ng isang tanong:"
+      view_question: <p>Matitingnan mo ito <a href="%{question}">rito</a> o magtanong na iba pa sa ibaba.</p>
     badges: 
-      description: Nagpapakita ang widyet na ito ng kamakailang mga tsapang nakamit ng mga tagagamit o mga katanungan
+      description: Nagpapakita ang widyet na ito ng kamakailang mga tsapang nakamit ng mga tagagamit.
+      see_all: Tingnan ang lahat ng mga tsapa
       title: Kamakailang mga tsapa
+    contributors: 
+      description: Ang widyet na ito ay nagpapakita ng listahan ng mga tao na nag-ambag sa isang tanong.
+      title: Mga Taga-ambag ng Tanong
+    create: 
+      notice: Matagumpay na nalikha ang widyet.
+    current_tags: 
+      description: Ang widyet na ito ay nagpapakita ng mga tatak na sinusundan ng pangkasalukuyang tagagamit.
+    custom_html: 
+      description: Magdagdag dito ng anumang uri ng HTML na nais mo.
+    edit: 
+      title: Baguhin ang Widyet
+    group_networks: 
+      description: Ang widyet na ito ay nagpapakita ng isang listahan ng kalambatang panghanapbuhay na panlipunan upang ang mga tagagamit mo ay makasunod sa iyo roon.
+      title: Sundan kami
     groups: 
       description: Nagpapakita ang widyet na ito ng pinakabagong mga pangkat
       title: Kamakailang mga pangkat
     index: 
+      add_new: Magdagdag ng bagong widyet
       description: Gamitin ang mga palaso upang mailipat ang mga widyet mo
+      external_widgets: Panlabas
+      external_widgets_title: Ang mga widyet na maibabaon mo sa sarili mong pook
+      footer: Pampaanan
+      header: Paulo
+      mainlist_widgets: Pangunahing listahan
+      mainlist_widgets_title: Ang widyet na lilitaw sa pangunahing listahan ng mga tanong.
+      name: Pangalan ng widyet
+      navbar: Baretang panglibot
+      question_widgets: Tanong
+      question_widgets_title: Mga widyet na lilitaw sa bawat isang pahina ng tanong
+      sidebar: Baretang panggilid
       title: Pamahalaan ang mga widyet ng panggilid na halang
+      type: "Uri:"
+      welcome_widgets: Maligayang pagdating
+      zone: "Bahagi ng pahina:"
+    mod_info: 
+      description: Ang widyet na ito ay nagpapakita ng kabatirang may kaugnayan sa mga tagapamagitan katulad ng mga watawat at mga kahilingan ng pag-uulat.
     pages: 
       description: Nagpapakita ang widyet na ito ng tala ng mga pahina ng wiki
       new: Magdagdag ng bagong pahina
       title: Mga pahina ng wiki
+    question_badges: 
+      description: Ang widyet na ito ay nagpapakita ng mga tsapang nakamit sa tanong na iyan.
+      title: Mga Tsapa ng Tanong
+    question_stats: 
+      description: Ang widyet na ito ay nagpapakita ng estadistika patungkol sa isang tanong katulad ng petsa ng paglikha at bilang ng mga pagtingin.
+    question_tags: 
+      description: Ang widyet na ito ay nagpapakita ng mga tatak na may kaugnayan sa pangkasalukuyang pahina.
+      title: Mga Tatak ng Tanong
+    related_questions: 
+      description: Ang widyet na ito ay nagpapakita ng isang lista ng mga tanong na may kaugnayan sa pangkasalukuyang tanong.
+      title: Kaugnay na mga Tanong
+    settings: 
+      code: "Kopyahin at idikit ang kodigong ito sa iyong pook o blog, katulad ng isang widyet ng teksto sa loob ng iyong Wordpress:"
+      custom_external_css: "Isama ang pasadyang CSS sa widyet mo (pagpapayuhan kapag hindi mo isinasama ang CSS ng Shapado):"
+      custom_html: "Pasadyang HTML:"
+      exclude_css_on_external: Huwag isama ang iyong CSS ng pook na Shapado mula sa iyong widyet
+      limit: "Ipapakitang dami:"
+      on_questions: Ipakita sa pahina ng pangunahing listahan ng mga Tanong
+      on_show_question: Ipakita sa pagpapakita ng isang tanong
+      on_welcome: Ipakita sa pahina ng Masayang Pagtanggap
+      preview: "Paunang patingin ng widyet:"
+    share: 
+      description: Ang widyet na ito ay nagpapakita ng sari-saring mga pindutan upang maibahagi ang pangkasalukuyang pahina sa mga kalambatang panghanapbuhay na panlipunan.
+      title: Ibahagi sa
+    sharing_buttons: 
+      description: Ang widyet na ito ay magpapakita ng mga pindutan ng pagbabahaging panlipunan.
+      title: Ibahagi ito sa
+    suggestions: 
+      description: Mungkahi ng mga kaibigan at mga tatak para sa tagagamit upang sundan.
+      follow_tag: + Sundan ang tatak
+      follow_user: + Sundan ang tagagamit
+      followed_by: Sinusundan ni %{user}
+      title: Mga Tao At Mga Tatak Na Susundan
+      unfollow_tag: "- Huwag sundan ang tatak"
+      unfollow_user: "- Huwag sundan ang tagagamit"
     tag_cloud: 
       description: Nagpapakita ang widyet na ito ng ulap ng tatak
       title: Ulap ng tatak
+    tag_list: 
+      description: Ang widyet na ito ay nagpapakita ng mga tatak na may kaugnayan sa pangkasalukuyang pahina.
+      title: Mga tatak
     top_groups: 
       description: Nagpapakita ang widyet na ito ng nangungunang limang mga pangkat
+      has_members: 
+        one: "%{count} kasapi"
+        other: "%{count} mga kasapi"
       title: Nangungunang 5 mga pangkat
     top_users: 
       description: Nagpapakita ang widyet na ito ng nangungunang limang mga tagagamit
       title: Nangungunang 5 mga tagagamit
+    update: 
+      notice: Matagumpay na naisapanahon ang widyet.
     users: 
       description: Nagpapakita ang widyet na ito ng bagong kapapatalang mga kasapi
       title: Kamakailang mga tagagamit
+    widget: 
+      change_position: "Baguhin ang puwesto ng widyet:"

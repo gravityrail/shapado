@@ -1,0 +1,20 @@
+# Messages for Russian (русский)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: DCamer
+# Author: Sabbah
+ru: 
+  activerecord: 
+    models: 
+      activities: Деятельность
+      activity: Деятельность
+  activity: 
+    asked: задано
+    changed: изменена
+    created: создана
+    deleted: удалена
+    destroyed: удалено
+    flagged: отмеченные
+    requested_to_close: запрошено закрыть
+    requested_to_open: запрошено открыть
+    updated: обновлена

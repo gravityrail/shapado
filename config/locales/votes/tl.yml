@@ -14,6 +14,9 @@ tl:
       to_vote_down: Pindutin upang makaboto ng pababa
       to_vote_up: Pindutin upang bumotong paitaas
     create: 
+      average: 
+        one: "%{count} boto"
+        other: "%{count} mga boto"
       flash_error: Hindi mo ito maiboboto
       flash_notice: Salamat sa pagboto!
       unauthenticated: Hindi makaboboto ang hindi nagpapakilalang mga tagagamit

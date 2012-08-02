@@ -1,0 +1,8 @@
+# Messages for Serbian (Cyrillic script) (‪српски (ћирилица)‬)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Rancher
+sr: 
+  custom_html: 
+    question_help: Наведите што више детаља. Тако ћете имати веће шансе да вам неко одговори на питање, уместо да се дискутује унедоглед. Будите јасни и једноставни.
+    question_prompt: Шта желите да питате? Будите описни.

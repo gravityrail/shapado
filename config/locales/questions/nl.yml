@@ -102,6 +102,7 @@ nl:
       has_answers: 
         one: Eén antwoord
         other: "%{count} antwoorden"
+      retag: Labels wijzigen
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Labels wijzigen

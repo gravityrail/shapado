@@ -24,9 +24,6 @@ ca:
         description: 
           text: Sigui el primer en %{action_link}!
         title: Ho sento! No hi ha molt per veure aquí.
-      questions: 
-        description: 
-          action_link: Feu una pregunta
       themes: 
         description: 
           action_link: ara

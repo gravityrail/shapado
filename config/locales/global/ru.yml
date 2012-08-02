@@ -1,10 +1,12 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: DCamer
 # Author: Eleferen
 # Author: G0rn
 # Author: Lockal
 # Author: Shemerey
+# Author: X0040h
 # Author: Александр Сигачёв
 ru: 
   feeds: 
@@ -24,7 +26,10 @@ ru:
     by_semi: "От:"
     chat: Чат
     current: Текущий
+    downgrade_to_free: Понизить до бесплатного
     edited: Отредактировано
+    edited_by: Отредактировал
+    edited_by_semi: "Отредактировал:"
     feedback: Обратная связь
     follow: Подписаться
     followed_by: "Подписчики:"
@@ -48,6 +53,7 @@ ru:
     tos: TOS
     unfollow: Отменить подписку
     unknown_place: Неизвестно
+    upgrade: Обновить
     view: Просмотр
     view_question: Посмотреть вопрос
     what_to_do: Что вы хотите сделать?
@@ -88,3 +94,4 @@ ru:
       last: Последняя
       next: Вперёд &raquo;
       previous: "&laquo; Назад"
+      truncate: ...

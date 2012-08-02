@@ -1,0 +1,9 @@
+# Messages for Luxembourgish (Lëtzebuergesch)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Robby
+lb: 
+  activerecord: 
+    models: 
+      favorite: Favorit
+      favorites: Favoriten

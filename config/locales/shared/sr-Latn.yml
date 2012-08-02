@@ -32,7 +32,6 @@ sr-Latn:
         title: Nažalost, nema pitanja u ovom filteru.
       questions: 
         description: 
-          action_link: postaviti pitanje
           text: Budite prvi koji će <a href="%{url}"> %{action_link}<a/>!
       themes: 
         description: 

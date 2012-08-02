@@ -48,7 +48,7 @@ ms:
     form: 
       add_attachment: Bubuh lampiran
       adult_content: Soalan ini mengandungi kandungan dewasa (18+).
-      body_tip: Apakah soalan anda? Sila nyatakan dengan deskriptif.
+      body_tip: Apakah soalan anda? Sila terangkan.
       language_tip: Pilih bahasa soalan yang anda tanyakan itu.
       related_questions_desc: Soalan yang serupa akan dipaparkan di sini.
       remove_attachment: Buang
@@ -86,7 +86,7 @@ ms:
       group_dont_exists: Kumpulan %{group} tidak wujud
       success: Soalan dipindahkan ke %{group}
     new: 
-      description: Sila pastikan soalan anda deskriptif, dan pastikan ia dibubuhi tag-tag yang berkenaan supaya mudah dicari.
+      description: Sila pastikan soalan anda cukup terang dan dibubuhi dengan tag-tag yang berkenaan supaya mudah dicari.
       how_to_ask: Cara menanya
       title: Tanyakan soalan
     question: 

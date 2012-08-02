@@ -1,0 +1,8 @@
+# Messages for Italian (italiano)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Beta16
+it: 
+  custom_html: 
+    question_help: Fornisci quanti più dettagli ti è possibile in modo da avere più possibilità di ottenere risposte invece di una discussione infinita. Cerca di essere chiaro e semplice.
+    question_prompt: qual è la tua domanda? Sii descrittivo.

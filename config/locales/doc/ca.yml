@@ -13,7 +13,6 @@ ca:
       5millions: 5 milions de pàgines vistes mensualment
       all_support: Basat en web, correu-e, xat i suport telefònic
       basic_restrictions: Sense anuncis personalitzats i no es pot configurar completament l'interfície d'usuari
-      beta_info: Per ara tots els llocs són gratuïts i es beneficien de les mateixes opcions com el pla Optimum, excepte per l'ajuda que només és via web, correu-e i xat.
       big_sites: Llocs amb molt de trànsit
       custom_ads: Empreu els vostres propis anuncis
       custom_analytics: Estadístiques de trànsit
@@ -27,7 +26,6 @@ ca:
       page_views: Per a llocs petits/privats
       plans: Plans
       private_site: Habilita l'accés privat/públic
-      small_private: Llocs petits/privats
       start_monetizing: empieza a hacer dinero
       support: Ajuda
       title: Plans i tarifes

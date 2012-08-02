@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Adata80
+# Author: DCamer
 # Author: Eleferen
 # Author: Lockal
 # Author: Александр Сигачёв
@@ -58,7 +59,8 @@ ru:
       submit: Сохранить
       title: Настройки
     follow: 
-      flash_notice: Пользователь %{user} добавлен в список ваших друзей
+      flash_error: Вы не можете добавить себя в подписки.
+      flash_notice: Вы теперь являетесь фаном %{user}.
     form: 
       activities_notification: Получить уведомления по электронной почте о системных действиях, таких как появление новых беджей, новых следящих и т. д.
       avatar_tip: Измените изображение в своём профиле с помощью Gravatar
@@ -96,7 +98,7 @@ ru:
       unfollow: Отменить подписку
       views: просмотры
     unfollow: 
-      flash_notice: Пользователь %{user} удалён из списка ваших друзей
+      flash_notice: Вы больше не фан %{user}.
     user_mini: 
       admin: "[Администратор]"
       editor: "[Редактор]"

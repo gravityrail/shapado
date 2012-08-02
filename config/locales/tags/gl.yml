@@ -1,0 +1,13 @@
+# Messages for Galician (galego)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Toliño
+gl: 
+  tags: 
+    index: 
+      filter: Procurar etiquetas
+    show: 
+      title: "Preguntas etiquetadas: %{tags}"
+    show_json: 
+      edit_it: Engadir unha descrición para esta etiqueta.
+      no_description: Esta etiqueta aínda non ten unha descrición.

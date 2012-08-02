@@ -1,0 +1,13 @@
+# Messages for Spanish (español)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Armando-Martin
+es: 
+  tags: 
+    index: 
+      filter: Buscar etiquetas
+    show: 
+      title: "Preguntas etiquetadas: %{tags}"
+    show_json: 
+      edit_it: Agregar una descripción para esta etiqueta.
+      no_description: Esta etiqueta aún no tiene una descripción.

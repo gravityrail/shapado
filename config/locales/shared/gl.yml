@@ -32,7 +32,6 @@ gl:
         title: Sentímolo, non hai dispoñible ningunha pregunta neste filtro.
       questions: 
         description: 
-          action_link: formular unha pregunta
           text: Sexa o primeiro en <a href="%{url}">%{action_link}<a/>!
       themes: 
         description: 

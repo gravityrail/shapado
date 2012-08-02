@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Lockal
+# Author: X0040h
 ru: 
   jobs: 
     answers: 
@@ -14,7 +15,7 @@ ru:
     base: 
       create_badge: 
         group_send_twitter: "%{user} только что заработал бэдж %{token} в группе %{group_name} %{link}"
-        send_twitter: Я только что заработал бэдж %{token} в группе %{group_name} %{link}
+        send_twitter: Я только что заработал бэйдж %{token} в группе %{group_name} %{link}
     comments: 
       on_comment: 
         group_on_comment: "Комментарий %{user} на: %{question}"

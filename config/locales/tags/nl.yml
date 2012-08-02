@@ -1,0 +1,14 @@
+# Messages for Dutch (Nederlands)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: McDutchie
+# Author: Siebrand
+nl: 
+  tags: 
+    index: 
+      filter: Zoeken naar labels
+    show: 
+      title: "Vragen met labels: %{tags}"
+    show_json: 
+      edit_it: Beschrijving voor dit label toevoegen.
+      no_description: Dit label heeft nog geen beschrijving.

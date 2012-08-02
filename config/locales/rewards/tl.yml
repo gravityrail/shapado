@@ -1,0 +1,12 @@
+# Messages for Tagalog (Tagalog)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: AnakngAraw
+tl: 
+  rewards: 
+    close: 
+      error: Kailangan mong maghintay ng %{time} bago igawad ang gantimpalang ito.
+    start: 
+      active_notice: Ang tanong na ito ay mayroon ang isang masiglang gantimpala.
+      reputation_notice: Wala kang sapat na karangalan upang lumikha ng isang gantimpala sa tanong na ito.
+      wait_notice: Kailangan mong maghintay ng 2 mga araw bago mag-alok ng isang gantimpala sa tanong na ito.

@@ -1,0 +1,8 @@
+# Messages for Macedonian (македонски)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Bjankuloski06
+mk: 
+  custom_html: 
+    question_help: Наведете што е можно повеќе подробности. Така е поверојатно дека прашањето ќе биде одговорено, наместо да се дискутира до недоглед. Бидете јасни и едноставни.
+    question_prompt: што сакате да прашате? бидете описни.

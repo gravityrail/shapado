@@ -1,0 +1,14 @@
+# Messages for Russian (русский)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: DCamer
+# Author: X0040h
+ru: 
+  tags: 
+    index: 
+      filter: Поиск по тегам
+    show: 
+      title: "Вопросы с тегами: %{tags}"
+    show_json: 
+      edit_it: Добавьте описание для этого тега.
+      no_description: Нет доступного описания для этих тегов.
