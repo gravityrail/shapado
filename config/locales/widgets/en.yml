@@ -58,7 +58,7 @@ en:
     custom_html:
       description: "Add any kind of HTML you want here."
     settings:
-      content: "Put any html you want here:"
+      content: "Put any HTML you want here:"
       limit: "Quantity to display:"
       custom_html: "Custom HTML:"
       on_welcome: "Show on Welcome page"
@@ -66,7 +66,7 @@ en:
       on_show_question: "Show on showing a question"
       exclude_css_on_external: "Exclude your shapado site CSS from your widget"
       custom_external_css: "Include custom CSS to your widget (advised if you are not including the Shapado CSS):"
-      code: "Copy and paste this code to your site or blog, such as a text widget in your Wordpress:"
+      code: "Copy and paste this code to your site or blog, such as a text widget in your WordPress:"
       preview: "Widget preview:"
       google_ad_client: google_ad_client
       google_ad_slot: google_ad_slot
