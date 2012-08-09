@@ -1,6 +1,7 @@
 # Messages for Spanish (español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Crazymadlover
 # Author: Patcito
 es: 
@@ -13,24 +14,43 @@ es:
       247_all_support: Soporte web, email, chat y telefono las 24/7
       5millions: 5 milliones de paginas vistas/mes
       all_support: Soporte web, email, chat y telefono
+      basic: Básico
       basic_restrictions: No propagandas ni interfaz personalizable
+      basic_styling: Aspecto y función personalizados
+      basic_styling_tip: Cambiar fácilmente el esquema de color de tu sitio, agregar tu propio logo e incluso cambiar el código CSS.
       big_sites: Sitios grandes
       custom_ads: Usa sus propias progandas
+      custom_ads_tip: ¡Utiliza tus propios anuncios y empieza a ganar dinero!
       custom_analytics: Estadísticas de trafico
+      custom_analytics_tip: Utiliza Google Analytics y aprende a conocer mejor a tus visitantes.
       custom_domain: Dominio propio
+      custom_domain_tip: Utiliza tu propio dominio como your-company.com en lugar de your-company.shapado.com
+      custom_html: HTML personalizado
+      custom_html_tip: Renovar completamente el código HTML completo de tu sitio y hacer que se vea como quieras.
+      custom_js: Añade tu propio código JavaScript
+      custom_js_tip: Agrega tu propio código JavaScript personalizado, como widgets multimedia o extensiones de jQuery.
       custom_themes: Usa nuestros temas pre-hechos
       custom_ui: Interfaz totalmente personalizable
       free_plan: plan gratis
       getting_popular: Sitios populares
       huge_sites: Sitios enormes
+      maximum: Máximo
       month: mes
+      optimum: Óptimo
       page_views: Para sitios privados/pequeños
       plans: Planes
+      plus: Plus
+      premium: Premium
+      private: Privado
+      private_private: Acceso restringido
       private_site: Activar acceso privado/publico
-      start_monetizing: empiezan a comercializar
+      private_tip: Sólo tu y los usuarios a los que invites a tu sitio tienen un acceso autorizado. Es perfecto para las empresas.
+      small_basic: Primeros pasos
+      start_monetizing: Comenzar a ganar dinero
       support: Soporte
       title: Planes de suscripcion y precios
       unlimited: Trafico ilimitado todos los meses
+      user: usuario
       we_offer: Ofrecemos tambien un
       web_support: Soporte  web
       with_unlimited: con trafico ilimitado y sin propagandas ni dominio personalizados.

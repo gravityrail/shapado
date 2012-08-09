@@ -99,6 +99,7 @@ tl:
       has_answers: 
         one: "%{count} sagot"
         other: "%{count} mga sagot"
+      retag: Tatakang muli
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Tatakang muli

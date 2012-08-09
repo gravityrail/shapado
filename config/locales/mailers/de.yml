@@ -10,19 +10,19 @@ de:
       earned_badge: 
         subject: Du hast ein Abzeichen in der Gruppe %{group} erhalten!
       favorited: 
-        subject: "%{login} hat Deine Frage als Favorit markiert!"
+        subject: "%{login} hat deine Frage als Favorit markiert!"
       follow: 
-        subject: "%{login} folgt Dir nun auf %{app}"
+        subject: "%{login} folgt dir nun auf %{app}"
       give_advice: 
         friend_subject: "Dein Freund benötigt Hilfe: %{question_title}"
-        subject: "Wir benötigen Deinen Rat: %{question_title}"
+        subject: "Wir benötigen deinen Rat: %{question_title}"
       new_answer: 
         subject_friend: Dein Freund %{login} hat die Frage „%{title}“ beantwortet
         subject_other: "%{login} hat die Frage „%{title}“ beantwortet"
-        subject_owner: "%{login} hat Deine Frage „%{title}“ beantwortet"
+        subject_owner: "%{login} hat deine Frage „%{title}“ beantwortet"
       new_comment: 
         subject: "%{login} hat einen Kommentar in Gruppe %{group} hinterlassen"
       new_invitation: 
-        subject: "%{user} läd Dich ein der Gruppe %{group} beizutreten."
+        subject: "%{user} läd dich ein der Gruppe %{group} beizutreten."
       report: 
         subject: Bericht für die Gruppe %{group} auf %{app}

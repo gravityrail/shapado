@@ -11,6 +11,7 @@ fi:
     by_anon: Nimettömän tekemä
     current_tags: 
       title: Valitut tunnisteet
+    date: Päivämäärä
     description: Kuvaus
     empty: 
       activities: 
@@ -35,7 +36,7 @@ fi:
         title: Valitettavasti tälle suodattimelle ei ole kysymyksiä saatavilla.
       questions: 
         description: 
-          text: Ole ensimmäinen, joka <a href="%{url}"> %{action_link}<a/>!
+          text: <a href="%{url}">Esitä kysymys<a/> ensimmäisenä!
       themes: 
         description: 
           action_link: nyt
@@ -50,6 +51,7 @@ fi:
         cc_footer: Kaikki Shapado.comin sisältö ja tiedot ovat käytettävissä %{cc_link} -lisenssin alaisuudessa
         powered_by: Käyttövoimana %{source_link} %{version} sovelluksen %{agpl_link} alaisena
     login_drop_down: 
+      openid_url: Openid-verkko-osoite
       sign_up_user_pass: Kirjaudu sisään sähköpostilla/salasanalla
       with_email_pass: Kirjaudu sisään sähköpostillasi
       with_facebook: Facebookilla
@@ -71,6 +73,7 @@ fi:
       find_friends_identica: Etsi ystäviä Identi.casta
       find_friends_linked_in: Etsi ystäviä LinkedInistä
       find_friends_twitter: Etsi ystäviä Twitteristä
+      or_connect: "Tai yhdistä seuraavalla tavalla:"
     topbar: 
       admin: Ylläpitäjä
       logged_as: Kirjautunut nimellä %{login}

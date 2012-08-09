@@ -15,10 +15,16 @@ nl:
       custom_css_legend: Als u overweg kunt met CSS, dan kunt u hier de vormgeving van uw site aanpassen. U kunt gewone CSS gebruiken of SCSS.
       fluid_layout: Vloeibare vormgeving
       fluid_layout_legend: Een vloeiende vormgeving maakt de breedte van iedere element op de pagina afhankelijk van de breedte van het scherm van de gebruiker. Als een venster van grootte verandert, of als een mobiel apparaat wordt gebruikt, wordt de vormgeving uitgerekt of kleiner gemaakt.
+      layout_html: Uw aangepaste vormgeving toevoegen
       main_color_legend: Dit is één van de meest gebruikte kleuren op iedere pagina. Zorg dat u een goede kleur selecteer voor uw merk of gemeenschap.
       modules_color_legend: Zorg ervoor dat deze kleur en de hoofdkleur bij elkaar passen.
+      questions_index_html: Voeg uw vormgeving voor de vragenindex toe
+      questions_show_html: Voeg uw vormgeving voor vragen toe
       submit_update: Vormgeving bijwerken
       text_color_legend: Zorg ervoor dat uw tekst leesbaar is en past bij de achtergrondkleur.
+      title: U bent een thema aan het bewerken. Zorg ervoor dat uw kleuren voor tekst en achtergrond bij elkaar passen.
+      topbar_color: Achtergrondkleur voor bovenbalk
+      topbar_color_legend: Kies de achtergrondkleur voor de bovenbalk.
       update: Vormgeving bijwerken
     index: 
       description: Hier vindt u uw vormgevingen en kunt u het uiterlijk van uw app wijzigen.

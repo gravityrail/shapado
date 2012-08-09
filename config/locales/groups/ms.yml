@@ -42,6 +42,8 @@ ms:
       success_twitter_connection: Syabas, anda berjaya menyambungkan akaun Twitter anda!
     create: 
       flash_notice: Kumpulan anda berjaya dicipta. Anda boleh mulai menentukan tatarajahnya.
+    downgrade: 
+      notice: Anda berjaya menamatkan langganan dan sedang menggunakan pelan percuma.
     edit: 
       title: Sunting kumpulan anda
     form: 
@@ -94,3 +96,5 @@ ms:
       active_site: "Tapak aktif:"
     update: 
       notice: Kumpulan anda berjaya dikemas kini.
+    upgrade: 
+      error: Anda sudah pun melanggan pelan ini

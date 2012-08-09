@@ -47,6 +47,8 @@ fr:
       success_twitter_connection: Félicitations, vous avez connecté votre compte Twitter avec succès !
     create: 
       flash_notice: Votre groupe a été créé avec succès, vous pouvez maintenant commencer à le configurer.
+    downgrade: 
+      notice: Vous vous êtes bien désinscrit, vous utilisez désormais notre plan libre.
     edit: 
       title: Modifier votre groupe
     form: 
@@ -99,3 +101,5 @@ fr:
       active_site: "Site actif :"
     update: 
       notice: Votre groupe a été actualisé avec succès.
+    upgrade: 
+      error: Vous êtes déjà abonné à ce plan

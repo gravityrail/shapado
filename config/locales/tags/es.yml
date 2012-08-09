@@ -10,4 +10,4 @@ es:
       title: "Preguntas etiquetadas: %{tags}"
     show_json: 
       edit_it: Agregar una descripción para esta etiqueta.
-      no_description: Esta etiqueta aún no tiene una descripción.
+      no_description: No hay ninguna descripción disponible para esta etiqueta todavía.

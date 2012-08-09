@@ -8,6 +8,7 @@ tl:
     by_anon: Ng isang hindi nagpapakilala
     current_tags: 
       title: napiling mga tatak
+    date: Petsa
     description: Paglalarawan
     empty: 
       activities: 
@@ -32,7 +33,7 @@ tl:
         title: Paumanhin, walang makukuhang mga katanungan na nasa pansalang ito.
       questions: 
         description: 
-          text: Maging pinaka una sa <a href="%{url}"> %{action_link}<a/>!
+          text: Maging pinaka una sa <a href="%{url}">pagtatanong ng isang katanungan<a/>!
       themes: 
         description: 
           action_link: ngayon na
@@ -47,6 +48,7 @@ tl:
         cc_footer: Ang lahat ng nilalaman at dato ng Shapado.com ay makukuha sa ilalim ng lisensiyang %{cc_link}
         powered_by: Pinaaandar ng %{source_link} %{version} sa ilalim ng %{agpl_link}
     login_drop_down: 
+      openid_url: URL ng OpenID
       sign_up_user_pass: Magparehistro sa pamamagitan ng isang e-liham/hudyat
       with_email_pass: Lumagda sa pamamagitan ng e-liham mo
       with_facebook: sa pamamagitan ng Facebook
@@ -68,6 +70,7 @@ tl:
       find_friends_identica: Maghanap ng mga kaibigan sa Identi.ca
       find_friends_linked_in: Maghanap ng mga kaibigan sa LinkedIn
       find_friends_twitter: Maghanap ng mga kaibigan sa Twitter
+      or_connect: "O kumabit sa:"
     topbar: 
       admin: tagapangasiwa
       logged_as: Nakalagda bilang %{login}

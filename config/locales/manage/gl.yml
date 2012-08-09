@@ -25,6 +25,8 @@ gl:
         title: Contido personalizado
         top_bar: Barra superior
         top_bar_tip: Insira unha ligazón por liña
+      edit_card: 
+        button: Actualizar a súa tarxeta de crédito
       invitations: 
         invitations: Invitacións enviadas
         invitations_title: Lista de todas as invitacións que enviou
@@ -48,8 +50,8 @@ gl:
           instruction2: Alí terá que ir ata a sección DNS e crear unha cousa chamada CNAME.
           instruction3: Escolla "www" ou calquera outra cousa para o seu CNAME.
           instruction4: "A continuación, no campo de destino, introduza o seu dominio Shapado actual: %{domain}."
-          instruction5: Unha vez feito isto, ao que pase unha ou dúas horas, o seu www.%{subdomain} debería apuntar cara a %{appdomain}.
-          instruction6: Cando se dea este caso, volva aquí e poña o nome do seu dominio, www.%{subdomain}, no campo de embaixo e prema o botón "actualizar". Se ten algunha dúbida, pregunte no %{chat_url} ou no noso foro de axuda.
+          instruction5: Unha vez feito isto, ao que pase unha ou dúas horas, o seu %{subdomain} debería apuntar cara a %{appdomain}.
+          instruction6: Cando se dea este caso, volva aquí e poña o nome do seu dominio, %{subdomain}, no campo inferior e prema no botón "actualizar". Se ten algunha dúbida, pregunte no %{chat_url} ou no noso foro de axuda.
           title: Configurar o seu dominio personalizado
           warning: Está seguro de querer cambiar o seu dominio?
         facebook_app: 

@@ -8,6 +8,16 @@ ms:
       vote: Undi
       votes: Undian
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Hanya seorang pengguna telah mengundi setuju komen ini; sila klik untuk mengundi setuju juga.
+          other: Lebih daripada %{count} orang telah mengundi setuju komen ini; sila klik untuk mengundi setuju juga.
+          zero: Sila klik untuk mengundi setuju komen ini.
+        has_user_vote: 
+          one: Anda dan seorang pengguna lain mengundi setuju komen ini.
+          other: Anda %{count} orang pengguna lain mengundi setuju komen ini.
+          zero: Hanya anda seorang yang mengundi setuju komen ini.
     control: 
       have_voted_down: Klik untuk menarik balik undian tak setuju anda
       have_voted_up: Klik untuk menarik balik undian setuju anda

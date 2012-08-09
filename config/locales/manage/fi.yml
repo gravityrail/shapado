@@ -27,6 +27,8 @@ fi:
         title: Mukautettu sisältö
         top_bar: Ylin palkki
         top_bar_tip: Kirjoita yksi linkki per rivi
+      edit_card: 
+        button: Päivitä luottokorttisi
       invitations: 
         invitations: Lähetetyt kutsut
         invitations_title: Lista lähettämistäsi kutsuista
@@ -50,8 +52,8 @@ fi:
           instruction2: Siellä sinun on mentävä DNS-kohtaan ja luotava jotain jota kutsutaan nimellä CNAME.
           instruction3: Valitse "www" tai jotain muuta kuin oma CNAME-nimesi.
           instruction4: "Laita sitten host- tai destination-kenttään nykyinen Shapado-toimialueesi: %{domain}."
-          instruction5: Kun tämä on tehty, niin noin tunnin kuluttua toimialueesi www.%{subdomain} pitäisi osoittaa kohteeseen %{appdomain}.
-          instruction6: Kun näin on tapahtunut, palaa tänne ja laita toimialuenimesi www.%{subdomain} alla olevaan kenttään ja paina painiketta 'update'. Jos sinulla on kysymyksiä, kysy meiltä verkkojuttelussa %{chat_url} tai tukifoorumillamme.
+          instruction5: Tämän tehtyäsi ehkä noin tunnin kuluttua verkko-osoitteesi %{subdomain} pitäisi osoittaa kohteeseen %{appdomain}.
+          instruction6: Kun näin on tapahtunut, palaa tänne ja laita verkko-osoitteesi %{subdomain} alla olevaan kenttään ja paina painiketta 'update'. Jos sinulla on kysymyksiä, kysy meiltä verkkojuttelussa %{chat_url} tai tukifoorumillamme.
           title: Aseta oma verkko-osoitteesi
           warning: Oletko varma, että haluat muuttaa toimialueesi?
         facebook_app: 
@@ -118,7 +120,7 @@ fi:
         post_to_twitter: Lähetä Twitteriin
         post_to_twitter_title: Lähetä kaikki kysymykset ja vastaukset automaattisesti Twitteriin.
         tag_your_tweets: Merkitse tweettisi tunnisteilla
-        tag_your_tweets_title: Lisää tagit twitter-viestiisi
+        tag_your_tweets_title: Lisää tunnisteet twitter-viestiisi
         title: Sosiaalisen median keskustelu
         twitter_account: Twitter-tili
         twitter_account_title: Aseta oma Twitter-tilisi, jota käytetään Twitter-viestien lähettämiseen

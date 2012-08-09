@@ -49,6 +49,7 @@ tl:
       submit: Palitan ang hudyat ko
       title: Palitan ang hudyat
     check_custom_domain: 
+      refresh: Sariwain ang pahinang ito upang muling masubukan.
       reset_domain_button: Huwag, paki muling itakda ang nasasakupang ipinasadya upang maging %{domain}
       title: Gumagana ba ang iyong bagong nasasakupang ipinasadya?
       working_domain_link: Oo, nakikita ko sa ibaba na gumagana ang bago kong nasasakupan.

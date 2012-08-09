@@ -42,6 +42,8 @@ gl:
       success_twitter_connection: Parabéns, conectou a súa conta do Twitter con éxito!
     create: 
       flash_notice: A creación do seu grupo rematou correctamente. Agora, xa pode comezar a configuralo.
+    downgrade: 
+      notice: Cancelou a subscrición correctamente. Agora usa o noso plan gratuíto.
     edit: 
       title: Edite o seu grupo
     form: 
@@ -94,3 +96,5 @@ gl:
       active_site: "Sitio activo:"
     update: 
       notice: O grupo actualizouse correctamente.
+    upgrade: 
+      error: Xa está subscrito a este plan

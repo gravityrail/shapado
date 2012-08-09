@@ -22,7 +22,7 @@ de:
         logo: Logo
         may_contain_adult_content: Diese Website enthält möglicherweise jugendgefährdende Inhalte
         name: Name
-        owner: Diese Gruppe wurde erstellt von %{login}
+        owner: Diese Gruppe wurde von %{login} erstellt
         registered_only: Diese Website ist nur für registrierte Nutzer zugänglich
         signup_type: "Welche Methode dürfen die Nutzer verwenden, um sich zu registrieren:"
         state: Land
@@ -30,7 +30,7 @@ de:
         track_users: Frage Nutzer nach ihrem Standort
         wysiwyg_editor: Nutzerfreundlichen Editor aktivieren
     models: 
-      default_tags_message: Du kannst nicht mehr als 10 Standard-Stichwörter verwenden
+      default_tags_message: Du kannst nicht mehr als 10 Standardstichwörter verwenden
       duplicate_domain_message: Diese Domain wird leider schon genutzt.
       group: Gruppe
       groups: Gruppen
@@ -40,20 +40,22 @@ de:
   groups: 
     connect_group_to_twitter: 
       failed_twitter_connection: Es ist leider ein Problem aufgetreten. Versuche es bitte erneut.
-      success_twitter_connection: Glückwunsch, Dein Twitter-Konto wurde erfolgreich verknüpft.
+      success_twitter_connection: Glückwunsch, dein Twitter-Konto wurde erfolgreich verknüpft.
     create: 
-      flash_notice: Deine Gruppe wurde erfolgreich erstellt. Du kannst jetzt beginnen, sie zu konfigurieren.
+      flash_notice: Deine Gruppe wurde erfolgreich erstellt. Du kannst jetzt anfangen, sie zu konfigurieren.
+    downgrade: 
+      notice: Du hast das Angebot erfolgreich aufgegeben. Du nutzt nun unser kostenfreies Angebot.
     edit: 
-      title: Bearbeite Deine Gruppe
+      title: Bearbeite deine Gruppe
     form: 
-      access: Zugangs-Einstellungen
-      analytics_engine: Webanalytik-System
+      access: Zugangseinstellungen
+      analytics_engine: Webanalytiksystem
       analytics_legend: Die Gruppe wird ihren eigenen Tracking-Code zu verwenden können
       any_language: Alle
       custom_analytics: Nutzerdefinierte Webanalytik erlauben
       custom_html: Erlaube nutzerdefiniertes HTML
       custom_js: Erlaube nutzerdefiniertes JavaScript
-      default_tags_legend: Stichwörter durch Kommas trennen. Es sind nur 10 Standard-Stichwörter zulässig.
+      default_tags_legend: Stichwörter durch Kommas trennen. Es sind nur 10 Standardstichwörter zulässig.
       description_legend: Beschreibe deine Gruppe mit max. 400 Zeichen.
       isolate_group: Diese Gruppe von anderen Gruppen isolieren
       legend_legend: Es wird in der Kopfzeile verwendet werden. Sie haben 40 Zeichen.
@@ -63,17 +65,17 @@ de:
       signup_email: Nur mit Nutzername und Passwort
       signup_noemail: Alle ausgewählten Anbieter ohne Nutzername und Passwort
       signup_social: Die Nutzer müssen entweder Facebook, Twitter, LinkedIn oder Identica benutzen
-      website_analytics_id: Webanalytik-ID der Website
+      website_analytics_id: Webanalytikkennummer der Website
     group: 
       about: Über
       accept_group: Diese Gruppe akzeptieren
-      allow_ads: Werbung erlauben
+      allow_ads: Werbung zulassen
       close: Schließen
       close_group: Diese Gruppe schließen
       disallow_ads: Werbung verbieten
     index: 
       actives: Aktiv
-      create_your_own: Erstelle Deine eigene Gruppe
+      create_your_own: Erstelle deine eigene Gruppe
       description: Dies ist die Liste öffentlicher Gruppen, die bislang erstellt wurden. Nutze das Suchfeld unten, um nach Gruppen zu filtern. Du kannst auch %{link}.
       filter: Nach Gruppen suchen
       most_active: Aktivste
@@ -95,3 +97,5 @@ de:
       active_site: "Aktive Website:"
     update: 
       notice: Deine Gruppe wurde erfolgreich aktualisiert.
+    upgrade: 
+      error: Du hast dieses Angebot bereits gebucht.

@@ -1,6 +1,7 @@
 # Messages for German (Deutsch)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Erdemaslancan
 # Author: Kghbln
 de: 
   doc: 
@@ -12,24 +13,43 @@ de:
       247_all_support: Webbasierter E-Mail-, Chat- und Telefonsupport (24/7)
       5millions: 5 Millionen Seitenabrufe/Monat
       all_support: Webbasierter E-Mail-, Chat- und Telefonsupport
+      basic: Basis
       basic_restrictions: Keine nutzerdefinierten Anzeigen und keine voll anpassbare Benutzeroberfläche
+      basic_styling: Individualisiere die Anmutung
+      basic_styling_tip: Ändere unkompliziert die Farbgebung deiner Website, füge dein eigenes Logo hinzu, oder ändere sogar den CSS-Code deiner Website.
       big_sites: Websites mit hohem Besucheraufkommen
-      custom_ads: Verwende Deine eigenen Anzeigen
+      custom_ads: Verwende deine eigenen Anzeigen
+      custom_ads_tip: Platziere deine eigene Werbung und fange an Geld zu verdienen!
       custom_analytics: Statistik zum Datenverkehr
+      custom_analytics_tip: Nutze Google Analytics und lerne deine Besucher besser kennen.
       custom_domain: Eigene Domain
+      custom_domain_tip: Verwende deine eigene Domain, wie bspw. deine-domain.de, anstatt deine-domain.shapado.com
+      custom_html: Nutzerdefiniertes HTML
+      custom_html_tip: Ändere den HTML-Code deiner Seite vollständig und lasse sie so aussehen, wie immer du es möchtest.
+      custom_js: Füge dein eigenes JavaScript hinzu
+      custom_js_tip: Füge dein eigenen nutzerdefinierten JavaScript-Code hinzu, wie bspw. Multimediawidgets oder jQuery-Modul.
       custom_themes: Verwende unsere vorbereiteten nutzerdefinierten Benutzeroberflächen
       custom_ui: Vollständig anpassbare Benutzeroberfläche
       free_plan: kostenloses Angebot
       getting_popular: Wird immer beliebter
       huge_sites: Websites mit riesigem Besucheraufkommen
+      maximum: Minimal
       month: Monat
+      optimum: Optimal
       page_views: Für kleine/private Websites
       plans: Pläne
+      plus: Plus
+      premium: Premium
+      private: Privat
+      private_private: Eingeschränkter Zugriff
       private_site: Richte privaten/öffentlichen Zugang ein
-      start_monetizing: Fange damit an Geld zu verdienen
+      private_tip: Nur du und von dir eingeladene Nutzer erhalten Zugriff auf deine Website. Ideal für Unternehmen.
+      small_basic: Erste Schritte
+      start_monetizing: Fange an Geld zu verdienen
       support: Support
       title: Angebote und Preise
       unlimited: Unbegrenzter Datenverkehr pro Monat
+      user: Nutzer
       we_offer: Wir bieten auch
       web_support: Webbasierter Support
       with_unlimited: mit unbegrenztem Datenverkehr, keinen nutzerdefinierten Anzeigen und keiner eigenen Domain.

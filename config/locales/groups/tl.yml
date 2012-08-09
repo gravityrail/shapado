@@ -42,6 +42,8 @@ tl:
       success_twitter_connection: Maligayang bati, matagumpay mong naikabit ang iyong akawnt ng Twitter!
     create: 
       flash_notice: Matagumpay na nalikha ang pangkat mo.  Maaari mo na ngayong simulan ang pagsasaayos nito.
+    downgrade: 
+      notice: Matagumpay kang hindi na nagpapasipi, ginagamit mo na sa ngayon ang aming malayang plano.
     edit: 
       title: Baguhin ang pangkat mo
     form: 
@@ -94,3 +96,5 @@ tl:
       active_site: "Masiglang pook:"
     update: 
       notice: Matagumpay na naisapanahon ang pangkat mo.
+    upgrade: 
+      error: Nagpapasipi ka na sa ganitong plano

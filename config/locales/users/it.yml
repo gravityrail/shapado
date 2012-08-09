@@ -1,6 +1,7 @@
 # Messages for Italian (italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
 # Author: Tuxwet
@@ -51,6 +52,7 @@ it:
       submit: Cambia la password
       title: Cambia la password
     check_custom_domain: 
+      refresh: Aggiorna questa pagina per provare di nuovo.
       reset_domain_button: No, per favore resetta il dominio personalizzato a %{domain}
       title: Sta funzionando il tuo nuovo dominio custom?
       working_domain_link: Sì, posso vedere che il mio nuovo dominio sta funzionando qua sotto.

@@ -77,6 +77,7 @@ es:
       title: Preguntas relacionadas
     settings: 
       code: "Copie y pegue este código en tu sitio o blog, como un widget de texto en su Wordpress:"
+      content: "Pon aquí el código HTML que desees:"
       custom_external_css: "Incluye CSS personalizado a su widget (se recomienda si usted no esta incluyendo el CSS Shapado):"
       custom_html: "Html personalizado:"
       exclude_css_on_external: Excluir su CSS de sitio shapado de su widget

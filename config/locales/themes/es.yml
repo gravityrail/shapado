@@ -1,22 +1,29 @@
 # Messages for Spanish (español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Patcito
 es: 
   themes: 
     edit: 
       title: Editar tema
     form: 
-      bg_color_legend: Definir el color de fondo, asegurase que el cambio combine bien con el resto de su aplicación.
+      bg_color_legend: Elige un color de fondo, asegúrate que contrasta bien con el resto de colores de tu aplicación.
       bg_image_legend: Esta imagen aparecerá como fondo de pantalla en cada página. El tamaño no puede exceder los 800K y debe ser un GIF, JPG o PNG.
       colors_and_bg: Colores y fondos
       custom_css_legend: Si conoce el lenguaje CSS, use esto para personalizar el diseño de su sitio. Usted puede utilizar ya sea cualquiera del CSS o del SCSS.
       fluid_layout: Diseño fluido
       fluid_layout_legend: Un diseño líquido hará que el ancho de cada elemento de la página depende del wiewport más que del elemento de contenedor inicial. En otras palabras, al cambiar el tamaño de su ventana del navegador o al cambiarse a un dispositivo de pantalla pequeña, el diseño se mueve de acuerdo con el tamaño de la pantalla.
+      layout_html: Agregar la plantilla personalizada para el diseño
       main_color_legend: Este es uno de los colores más utilizados en cada página, asegúrese de seleccionar el color más adecuado para su marca comercial o su comunidad.
       modules_color_legend: Asegúrese de que este color y el color principal combinen bien.
+      questions_index_html: Agregar tu plantilla personalizada para el índice de preguntas
+      questions_show_html: Agregar la plantilla personalizada para la presentación de preguntas
       submit_update: Actualizar el tema
       text_color_legend: Asegúrese de que su texto es legible y es compatible con el color de fondo.
+      title: Estás editando un tema, por favor asegúrate que tu conjunto de colores y el color de fondo combinan bien.
+      topbar_color: Color de fondo de la barra superior
+      topbar_color_legend: Elegir el color de fondo de la barra superior.
       update: Actualizar el tema
     index: 
       description: Encuentre aquí sus temas y cambiar el aspecto de su sitio.

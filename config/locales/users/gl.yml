@@ -49,6 +49,7 @@ gl:
       submit: Cambiar o contrasinal
       title: Cambiar o contrasinal
     check_custom_domain: 
+      refresh: Refresque esta páxina para intentalo de novo.
       reset_domain_button: Non, restablecer o dominio personalizado a %{domain}
       title: Funciona correctamente o seu novo dominio personalizado?
       working_domain_link: Si, podo ver que o meu novo dominio funciona.

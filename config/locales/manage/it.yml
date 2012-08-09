@@ -1,6 +1,7 @@
 # Messages for Italian (italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
 it: 
@@ -49,8 +50,8 @@ it:
           instruction2: Lì va configurato il DNS creando un nuovo CNAME.
           instruction3: Si può usare 'www' o qualunque altra cosa come CNAME.
           instruction4: "Poi, nel campo host o destinazione, inserire il dominio attualmente usato su Shapado: %{domain}."
-          instruction5: Una volta eseguito, dopo un'ora o poco più, il dominio www.%{subdomain} dovrebbe puntare a %{appdomain}.
-          instruction6: A modifica avvenuta, sarà possibile immettere in questa pagina il dominio scelto (es. www.%{subdomain}) e premere il tasto "Aggiorna". Per qualunque dubbio, si può chiedere su %{chat_url} oppure nei forum di supporto.
+          instruction5: Una volta eseguito, dopo un'ora o poco più, il dominio %{subdomain} dovrebbe puntare a %{appdomain}.
+          instruction6: A modifica avvenuta, sarà possibile immettere in questa pagina il dominio scelto (es. %{subdomain}) e premere il tasto "Aggiorna". Per qualunque dubbio, si può chiedere su %{chat_url} oppure nei forum di supporto.
           title: Configura il tuo dominio personale
           warning: Si è sicuri di voler cambiare i dati del dominio?
         facebook_app: 

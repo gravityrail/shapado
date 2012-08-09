@@ -8,6 +8,16 @@ gl:
       vote: Voto
       votes: Votos
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Só %{count} usuario aprobou este comentario; prema para aprobalo vostede tamén.
+          other: Máis de %{count} usuarios aprobaron este comentario; prema para aprobalo vostede tamén.
+          zero: Prema para aprobar este comentario.
+        has_user_vote: 
+          one: Vostede e outro usuario aprobaron este comentario.
+          other: Vostede e outros %{count} usuarios aprobaron este comentario.
+          zero: Só vostede aprobou este comentario.
     control: 
       have_voted_down: Prema para anular a súa desaprobación
       have_voted_up: Prema para anular a súa aprobación

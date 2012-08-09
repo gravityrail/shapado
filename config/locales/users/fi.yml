@@ -52,6 +52,7 @@ fi:
       submit: Vaihda salasanani
       title: Vaihda salasana
     check_custom_domain: 
+      refresh: Yritä uudelleen päivittämällä tämä sivu.
       reset_domain_button: Ei, ole hyvä ja palauta mukautetuksi toimialueeksi %{domain}
       title: Toimiiko uusi mukautettu toimialueesi?
       working_domain_link: Kyllä, näen uuden toimialueeni toimivan alla.

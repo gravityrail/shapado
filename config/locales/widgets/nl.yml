@@ -75,6 +75,7 @@ nl:
       title: Gerelateerde vragen
     settings: 
       code: "Kopieer deze code en plak die in uw website of blog, zoals een tekstwidget in Wordpress:"
+      content: "Plaats hier HTML-code naar uw keuze:"
       custom_external_css: "CSS van de Shapadosite toepassen op uw widget (gebruik dit als u de Shapado-CSS niet toevoegt):"
       custom_html: "Aangepaste HTML-code:"
       exclude_css_on_external: CSS van de Shapadosite niet toepassen op uw widget

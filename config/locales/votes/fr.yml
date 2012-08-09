@@ -12,6 +12,16 @@ fr:
       vote: Vote
       votes: Votes
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Seul %{count} utilsiateur a voté pour ce commentaire, cliquez pour voter pour aussi.
+          other: Plus de %{count} personnes ont voté pour ce commentaire, cliquez pour le faire aussi.
+          zero: Cliquez pour voter pour ce commentaire.
+        has_user_vote: 
+          one: Vous et %{count} autre utilisateur avez voté pour ce commentaire.
+          other: Vous et %{count} autres utilisateurs avez voté pour ce commentaire.
+          zero: Vous seul avez voté pour ce commentaire.
     control: 
       have_voted_down: Cliquez pour annuler votre désapprobation
       have_voted_up: Cliquez pour annuler votre approbation

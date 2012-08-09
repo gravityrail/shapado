@@ -74,6 +74,7 @@ tl:
       title: Kaugnay na mga Tanong
     settings: 
       code: "Kopyahin at idikit ang kodigong ito sa iyong pook o blog, katulad ng isang widyet ng teksto sa loob ng iyong Wordpress:"
+      content: "Ilagay dito ang anumang html na nais mo:"
       custom_external_css: "Isama ang pasadyang CSS sa widyet mo (pagpapayuhan kapag hindi mo isinasama ang CSS ng Shapado):"
       custom_html: "Pasadyang HTML:"
       exclude_css_on_external: Huwag isama ang iyong CSS ng pook na Shapado mula sa iyong widyet

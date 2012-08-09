@@ -7,16 +7,22 @@ tl:
     edit: 
       title: Baguhin ang tema
     form: 
-      bg_color_legend: Ituring ang hungkag na kulay bilang panlikuran, tiyakan ang patungkol sa kaibahan sa pamamagitan ng aplikasyon mo.
+      bg_color_legend: Pumili ng isang kulay na panlikuran, maging tiyak na ito ay mayroong mahusay na kaibahan sa iba pang bahagi ng iyong aplikasyon.
       bg_image_legend: Ang larawang ito ay ipapakita bilang isang papel na pandingding sa ibabaw ng bawat pahina. Ang sukat ay hindi ,maaaring lumampas sa 800K at dapat na maging isang GIF, JPG o PNG.
       colors_and_bg: Mga kulay at mga panlikuran
       custom_css_legend: Kung alam mo ang wikang CSS, gamitin ito upang maipasadya ang pag-eestilo ng pook mo. Maaari mong gamitin ang regular na CSS o kaya ang SCSS.
       fluid_layout: Kalatagang pluwido
       fluid_layout_legend: Ang isang kalatagang pluwido ay gagawa na ang lapad ng bawat isang elemento ng pahina ay nakasalalay sa daungan ng tanawin sa halip na sa paunang elementong naglalaman. Sa ibang pananalita, kapat binabago ang sukat ng pantingin-tingin mo o lumilipat sa isang maliit na aparatong panooran, ang kalatagan ay kikilos na palapit o palabas.
+      layout_html: Idagdag ang iyong pinasadyang suleras para sa kalatagan
       main_color_legend: Ito ang isa sa painaka ginagamit na kulay sa ibabaw ng bawat isang pahina, tiyaking piliin ang karapat dapat para sa katatakan o pamayanan mo.
       modules_color_legend: Tiyakin na ang kulay na ito ang pangunahing kulay ay magkatugmang mabuti ang pagsasama.
+      questions_index_html: Idagdag ang iyong pinasadyang suleras para sa talatuntunan ng mga katanungan.
+      questions_show_html: Idagdag ang iyong pinasadyang suleras para sa palabas ng tanong
       submit_update: Isapanahon ang tema
       text_color_legend: Siguraduhing nababasa ang iyong teksto at kabagay ng panlikurang kulay.
+      title: Binabago mo ang isang tema, paki tiyakin na nagtutugma ang iyong pangkat ng mga kulay at panlikurang tanawin.
+      topbar_color: Panlikurang kulay ng pang-itaas na bareta
+      topbar_color_legend: Piliin ang panlikurang kulay ng pang-itaas na bareta.
       update: Isapanahon ang tema
     index: 
       description: Hanapin ang mga tema mo at baguhin ang hitsura ng aplikasyon mo.

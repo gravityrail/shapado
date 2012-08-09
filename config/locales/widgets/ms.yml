@@ -74,6 +74,7 @@ ms:
       title: Soalan Berkaitan
     settings: 
       code: "Salin dan tampalkan kod ini pada tapak dan blog anda, seperti widget teks di Wordpress anda:"
+      content: "Isikan sebarang HTML yang anda ingini di sini:"
       custom_external_css: "Sertakan CSS tersuai pada widget anda (disaran jika anda tidak menyertakan CSS Shapado):"
       custom_html: "Html tersuai:"
       exclude_css_on_external: Kecualikan CSS tapak Shapado anda daripada widget anda

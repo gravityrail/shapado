@@ -12,21 +12,30 @@ sr:
       247_all_support: На страницама, преко е-поште, ћаскања и телефонски (24 ч. дневно)
       5millions: Пет милиона прегледа страница месечно
       all_support: На страницама, преко е-поште, ћаскања и телефонски
+      basic: Основни
       basic_restrictions: Без огласа по избору и прилагодљивог сучеља
       big_sites: Високопрометна мрежна места
       custom_ads: Користите сопствене огласе
       custom_analytics: Статистике промета
       custom_domain: Прилагођени домен
+      custom_domain_tip: Користите сопствени домен, нпр. vasa-firma.com уместо vasa-firma.shapado.com
       custom_themes: Користите наше прилагођене теме
       custom_ui: Потпуно прилагодљиво сучеље
       free_plan: бесплатан план
       getting_popular: Стицање популарности
       huge_sites: Мрежна места с огромним прометом
+      maximum: Максималан
       month: месец
+      optimum: Оптималан
       page_views: За мала/приватна мрежна места
       plans: Планови
+      plus: Плус
+      premium: Премијум
+      private: Приватан
+      private_private: Ограничен приступ
       private_site: Омогући приватни/јавни приступ
-      start_monetizing: почните да зарађујете
+      small_basic: Увод
+      start_monetizing: Почните да зарађујете
       support: Подршка
       title: Планови и цене
       unlimited: Неограничени месечни промет

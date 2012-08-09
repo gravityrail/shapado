@@ -8,9 +8,19 @@ de:
       vote: Bewertung
       votes: Bewertungen
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Nur ein Nutzer hat diesen Kommentar positiv bewertet. Klicke ihn an, um ihn auch positiv zu bewerten.
+          other: Mehr als %{count} haben diesen Kommentar positiv bewertet. Klicke ihn an, um ihn auch positiv zu bewerten.
+          zero: Klicke ihn an, um den Kommentar positiv zu bewerten.
+        has_user_vote: 
+          one: Du und ein weiterer Nutzer haben diesen Kommentar positiv bewertet.
+          other: Du und %{count} weitere Nutzer haben diesen Kommentar positiv bewertet.
+          zero: Nur du hast diese Kommentar positiv bewertet.
     control: 
-      have_voted_down: Klicke hier, um Deine negative Bewertung zurückzunehmen
-      have_voted_up: Klicke hier, um Deine positive Bewertung zurückzunehmen
+      have_voted_down: Klicke hier, um deine negative Bewertung zurückzunehmen
+      have_voted_up: Klicke hier, um deine positive Bewertung zurückzunehmen
       to_vote_down: Hier für eine negative Bewertung klicken
       to_vote_up: Hier für eine positive Bewertung klicken
     create: 
@@ -18,7 +28,7 @@ de:
         one: Eine Stimme
         other: "%{count} Stimmen"
       flash_error: Du kannst dies nicht bewerten
-      flash_notice: Vielen Dank für Deine Bewertung!
+      flash_notice: Vielen Dank für deine Bewertung!
       unauthenticated: Anonyme Nutzer können nicht bewerten
     destroy: 
       flash_notice: Deine Bewertung wurde erfolgreich zurückgenommen.

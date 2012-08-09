@@ -26,21 +26,21 @@ de:
     answer: 
       add_comment: Kommentar hinzufügen …
       favorite: Speichern
-      favorite_tooltip: Diese Antwort zu Deiner Favoritenliste hinzufügen
+      favorite_tooltip: Diese Antwort zu deiner Favoritenliste hinzufügen
       flag: Kennzeichnen
       pick_answer: Als Lösung auswählen
       unfavorite: Speichern rückgängig machen
-      unfavorite_tooltip: Diese Antwort aus Deiner Favoritenliste entfernen
+      unfavorite_tooltip: Diese Antwort aus deiner Favoritenliste entfernen
       unset_answer: Antwort in Frage stellen?
     answer_toolbar: 
-      flagged_by_you: Von Dir gekennzeichnet
+      flagged_by_you: Von dir gekennzeichnet
     close: 
       failure: Zu dieser Frage ist eine aktive Auszeichnung vorhanden. Sie kann daher nicht beendet werden.
     create: 
-      already_registered: Ein Nutzer mit der E-Mail-Adresse %{email} ist bereits registriert. Bitte melde Dich mit dieser E-Mail-Adresse an.
+      already_registered: Ein Nutzer mit der E-Mail-Adresse %{email} ist bereits registriert. Bitte melde dich mit dieser E-Mail-Adresse an.
       flash_notice: Die Frage wurde erfolgreich erstellt.
     disallow_spam: 
-      error: Bevor Du eine neue Frage stellen kannst, musst Du noch 20 Sekunden warten.
+      error: Bevor du eine neue Frage stellen kannst, musst du noch 20 Sekunden warten.
     edit: 
       title: Frage bearbeiten
     flag: 
@@ -48,11 +48,11 @@ de:
     form: 
       add_attachment: Anhang hinzufügen
       adult_content: Diese Frage enthält jugendgefährdende Angaben.
-      body_tip: Wie lautet Deine Frage? Sei aussagekräftig.
+      body_tip: Wie lautet deine Frage? Sei aussagekräftig.
       language_tip: Wähle die Sprache der Frage.
       related_questions_desc: Hier werden ähnliche Fragen angezeigt werden.
       remove_attachment: Entfernen
-      tags_tip: Verwende Stichwörter, um weitere Informationen zu Deiner Frage anzugeben.
+      tags_tip: Verwende Stichwörter, um weitere Informationen zu deiner Frage anzugeben.
     history: 
       back: ← zurück zur Frage
     index: 
@@ -90,7 +90,7 @@ de:
       group_dont_exists: Die Gruppe %{group} existiert nicht
       success: Frage wurde nach %{group} verschoben
     new: 
-      description: Bitte gebe eine ausführliche Beschreibung an und füge relevante Stichwörter hinzu, damit Deine Frage auch leicht gefunden werden kann.
+      description: Bitte gebe eine ausführliche Beschreibung an und füge relevante Stichwörter hinzu, damit deine Frage auch leicht gefunden werden kann.
       how_to_ask: Wie fragen
       title: Frage stellen
     question: 
@@ -99,6 +99,7 @@ de:
       has_answers: 
         one: Eine Antwort
         other: "%{count} Antworten"
+      retag: Stichwörter ändern
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Stichwörter ändern
@@ -122,7 +123,7 @@ de:
       close: Schließen
       close_reason: "Die Frage wurde aus folgenden Gründen beendet:"
       create_reward: Belohnung erstellen
-      create_reward_description: Belohne die beste Antwort mit etwas von Deinem eigenen Karma.
+      create_reward_description: Belohne die beste Antwort mit etwas von deinem eigenen Karma.
       edit_request: Bitte bearbeiten
       flag: Kennzeichen
       flagged_as: "Gekennzeichnet als:"

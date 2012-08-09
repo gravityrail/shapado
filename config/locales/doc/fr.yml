@@ -1,6 +1,7 @@
 # Messages for French (français)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gomoko
 # Author: IAlex
 # Author: Od1n
 # Author: Patcito
@@ -15,24 +16,43 @@ fr:
       247_all_support: Support 24/7 sur le web, email, tchat et téléphone
       5millions: 5 millions de pages vues/mois
       all_support: Support sur le web, email, tchat et téléphone
+      basic: Basique
       basic_restrictions: Pas de publicités ni d'interface personnalisées
+      basic_styling: Personnaliser l'apparence
+      basic_styling_tip: Modifiez facilement la palette de couleurs de votre site, ajoutez votre propre logo et modifiez même le code CSS.
       big_sites: Gros sites
       custom_ads: Vos propres publicités
+      custom_ads_tip: Utilisez vos propres publicités et commencez à gagner de l'argent!
       custom_analytics: Stats du trafic
+      custom_analytics_tip: Utilisez Google Analytics et apprenez à mieux connaître vos visiteurs.
       custom_domain: Domaine personnalisé
+      custom_domain_tip: Utilisez votre propre domaine, tel que votre-société.com, à la place de votre-société.shapado.com
+      custom_html: HTML personnalisé
+      custom_html_tip: Réorganisez complètement l'ensemble du code HTML de votre site et faites-le ressemblez à ce que vous voulez.
+      custom_js: Ajoutez votre propre JavaScript
+      custom_js_tip: Ajoutez votre propre code JavaScript personnalisé, comme des widgets multimédia ou des extensions jQuery.
       custom_themes: Utilisation de nos thèmes pré-faits
       custom_ui: Interface personnalisable
       free_plan: plan gratuit
       getting_popular: Sites populaires
       huge_sites: Énormes sites
+      maximum: Maximum
       month: mois
+      optimum: Optimal
       page_views: Pour les sites petits ou privés
       plans: Plans
+      plus: Plus
+      premium: Primeur
+      private: Privé
+      private_private: Accès restreint
       private_site: Activez accès privé/public
-      start_monetizing: commencez à commercialiser
+      private_tip: Seuls vous et les utilisateurs que vous invitez sur votre site ont un accès autorisé. Parfait pour l'entreprise.
+      small_basic: Pour commencer
+      start_monetizing: Commencez à monétiser
       support: Support
       title: Plans de souscription et prix
       unlimited: Trafic illimité tous les mois
+      user: utilisateur
       we_offer: Nous offrons aussi un
       web_support: Sur le web
       with_unlimited: avec trafic illimité et sans publicités personnalisées ni domaines personnalisés.

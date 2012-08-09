@@ -1,0 +1,13 @@
+# Messages for Finnish (suomi)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Centerlink
+fi: 
+  tags: 
+    index: 
+      filter: Tunnisteiden etsintä
+    show: 
+      title: "Tunnisteella merkityt kysymykset: %{tags}"
+    show_json: 
+      edit_it: Lisää kuvaus tähän tunnisteeseen.
+      no_description: Tälle tunnisteelle ei ole saatavilla vielä kuvausta.

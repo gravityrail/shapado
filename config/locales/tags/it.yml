@@ -10,4 +10,4 @@ it:
       title: "Tag domande: %{tags}"
     show_json: 
       edit_it: Aggiungi una descrizione per questo tag.
-      no_description: Questo tag non ha ancora una descrizione.
+      no_description: Nessuna descrizione disponibile per questo tag.

@@ -25,6 +25,8 @@ tl:
         title: Pasadyang nilalaman
         top_bar: Pang-itaas na halang
         top_bar_tip: Magpasok ng isang kawing bawat guhit
+      edit_card: 
+        button: Isapanahon ang iyong tarhetang pang-utang
       invitations: 
         invitations: Naipadalang mga paanyaya
         invitations_title: Listahan ng lahat ng mga paanyayang ipinadala mo
@@ -48,8 +50,8 @@ tl:
           instruction2: Doon ay kailangan mong pumunta sa bahagi ng DNS at lumikha ng bagay na tinatawag na isang CNAME.
           instruction3: Piliin ang 'www' o ibang anumang bagay bilang pangalan ng iyong CNAME.
           instruction4: "Pagkaraan ay ilagay ang pangkasalukuyan mong nasasakupan sa Shapado sa loob ng kahanayan ng tagapagpasinaya o kapupuntahan: %{domain}."
-          instruction5: Kapag nagawa na ito, pagkalipas ng isang oras o mahigit pa, ang nasasakupan mong www.%{subdomain} ay dapat na tumuro sa %{appdomain}.
-          instruction6: Kung ganito ang pangyayari, bumalik rito at ilagay ang iyong pangalan ng nasasakupan na www.%{subdomain} sa loob ng kahanayang nasa ibaba at pindutin ang pindutang 'isapanahon'.  Kung may mga katanungan ka, tanungin kami sa loob ng %{chat_url} o sa aming poro ng pagtangkilik.
+          instruction5: Kapag nagawa na ito, pagkalipas ng isang oras o mahigit pa, ang nasasakupan mong %{subdomain} ay dapat na tumuro sa %{appdomain}.
+          instruction6: Kung ganito ang pangyayari, bumalik rito at ilagay ang iyong pangalan ng nasasakupan na %{subdomain} sa loob ng kahanayang nasa ibaba at pindutin ang pindutang 'isapanahon'.  Kung may mga katanungan ka, tanungin kami sa loob ng %{chat_url} o sa aming poro ng pagtangkilik.
           title: Isaayos ang nasasakupan mong ipinasadya
           warning: Nakatitiyak ka bang nais mong baguhin ang nasasakupan mo?
         facebook_app: 

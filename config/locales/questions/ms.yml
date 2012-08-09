@@ -93,6 +93,7 @@ ms:
       accepted_tooltip: Soalan ini ada jawapan yang diterima
       answer_verb: Jawab
       has_answers: "%{count} jawapan"
+      retag: Tag semula
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Tag semula

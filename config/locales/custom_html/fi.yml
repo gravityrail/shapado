@@ -1,0 +1,8 @@
+# Messages for Finnish (suomi)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Centerlink
+fi: 
+  custom_html: 
+    question_help: Tarjoa yksityiskohtia niin paljon kuin mahdollista, jotta vastaamiseen on enemmän mahdollisuuksia eikä asiasta vain keskustella loputtomasti. Yritä kertoa selvästi ja yksinkertaisesti.
+    question_prompt: Mikä on kysymys? Ole kuvaileva.

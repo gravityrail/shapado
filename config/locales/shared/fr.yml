@@ -13,6 +13,7 @@ fr:
     by_anon: Par anonyme
     current_tags: 
       title: Étiquettes sélectionnées
+    date: Date
     description: Description
     empty: 
       activities: 
@@ -37,7 +38,7 @@ fr:
         title: Désolé, aucune question n'est disponible avec ce filtre.
       questions: 
         description: 
-          text: Soyez le premier à <a href="%{url}"> %{action_link}<a/>!
+          text: Soyez le premier à <a href="%{url}">poser une question<a/>!
       themes: 
         description: 
           action_link: maintenant
@@ -52,6 +53,7 @@ fr:
         cc_footer: Tout le contenu de Shapado.com et ses données sont disponibles sous la licence %{cc_link}
         powered_by: Mû par %{source_link} %{version} sous le %{agpl_link}
     login_drop_down: 
+      openid_url: URL Openid
       sign_up_user_pass: Connectez-vous avec un courriel/mot de passe
       with_email_pass: Connectez-vous avec votre adresse de courriel
       with_facebook: avec Facebook
@@ -73,6 +75,7 @@ fr:
       find_friends_identica: Trouver des amis sur Identi.ca
       find_friends_linked_in: Trouver des amis sur LinkedIn
       find_friends_twitter: Trouver des amis sur Twitter
+      or_connect: "Ou connectez-vous avec:"
     topbar: 
       admin: Administration
       logged_as: Connecté en tant que %{login}

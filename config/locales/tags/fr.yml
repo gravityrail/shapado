@@ -10,4 +10,4 @@ fr:
       title: "Questions étiquetées: %{tags}"
     show_json: 
       edit_it: Ajouter une description pour cette balise.
-      no_description: Cette balise n'a pas encore de description.
+      no_description: Aucune description n'est encore disponible pour cette balise.

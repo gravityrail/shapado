@@ -13,7 +13,7 @@ de:
       all_tooltip: Alle goldenen, silbernen und bronzenen Abzeichen anzeigen.
       bronze: Bronze
       bronze_tooltip: Bronzene Abzeichen kann man einfach erhalten und sollen die Nutzer dazu ermutigen, sich zu beteiligen.
-      description: Je mehr Du beiträgst, indem Du Fragen stellst oder beantwortest, desto mehr Abzeichen wirst Du erhalten. Diese werden auf Deiner Profilseite angezeigt.
+      description: Je mehr du beiträgst, indem du Fragen stellst oder beantwortest, desto mehr Abzeichen wirst du erhalten. Diese werden auf deiner Profilseite angezeigt.
       general: Normale Abzeichen
       general_tooltip: Alle vordefinierten Abzeichen anzeigen.
       gold: Gold
@@ -28,13 +28,13 @@ de:
         description: Hat die Website an zwanzig aufeinander folgenden Tagen besucht
         name: Süchtiger
       altruist: 
-        description: Das erste Abzeichen, das Du an die Frage eines anderen Nutzers vergeben hast
+        description: Das erste Abzeichen, das du an die Frage eines anderen Nutzers vergeben hast
         name: Altruist
       autobiographer: 
         description: Hat alle Felder des Nutzerprofils ausgefüllt
         name: Autobiograph
       benefactor: 
-        description: Das erste Abzeichen, das Du an Deine eigene Frage vergeben hast
+        description: Das erste Abzeichen, das du an deine eigene Frage vergeben hast
         name: Wohltäter
       celebrity: 
         description: Hat mehr als 100 Anhänger
@@ -103,7 +103,7 @@ de:
         description: Hat mehr als 10 Anhänger
         name: Interessante Person
       investor: 
-        description: Das erste Abzeichen, das Du für die Frage eines anderen Nutzers angeboten hast
+        description: Das erste Abzeichen, das du für die Frage eines anderen Nutzers angeboten hast
         name: Investor
       merit_medal: 
         description: Hat 200 positive Bewertungen erhalten
@@ -139,7 +139,7 @@ de:
         description: Hat eine Frage mit über 1000 Aufrufen gestellt
         name: Häufige Frage
       promoter: 
-        description: Das erste Abzeichen, das Du für Deine eigene Frage angeboten hast
+        description: Das erste Abzeichen, das du für deine eigene Frage angeboten hast
         name: Befürworter
       rockstar: 
         description: Hat 1000 positive und maximal 10 negative Bewertungen erhalten

@@ -99,9 +99,10 @@ gl:
       has_answers: 
         one: "%{count} resposta"
         other: "%{count} respostas"
+      retag: Cambiar as etiquetas
       wiki_title: "Wiki: %{title}"
     retag: 
-      title: Cambiar a etiqueta
+      title: Cambiar as etiquetas
     retag_form: 
       cancel: Cancelar
       submit: Actualizar as etiquetas!

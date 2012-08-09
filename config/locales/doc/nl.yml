@@ -15,10 +15,19 @@ nl:
       all_support: Webgebaseerde, e-mail-, chat- en telefonische ondersteuning
       basic: Basis
       basic_restrictions: Geen aangepaste advertenties en geen volledig aanpasbare UI
+      basic_styling: Gepersonaliseerd uiterlijk
+      basic_styling_tip: Wijzig eenvoudig het kleurschema van uw site, voeg uw eigen logo toe en wijzig zelfs de CSS-code.
       big_sites: Sites met veel verkeer
       custom_ads: Gebruik uw eigen advertenties
+      custom_ads_tip: Gebruik uw eigen advertenties en begin met geld verdienen!
       custom_analytics: Verkeersoverzicht
+      custom_analytics_tip: Gebruik Google Analytics om uw bezoekers beter te leren kennen.
       custom_domain: Aangepast domein
+      custom_domain_tip: Gebruik uw eigen domein zoals uwbedrijf.nl in plaats van of uwbedrijf.shapado.com
+      custom_html: Aangepaste HTML-code
+      custom_html_tip: Pas de HTML-code van uw site volledig aan aan uw voorkeuren.
+      custom_js: Voeg uw eigen JavaScript toe
+      custom_js_tip: Voeg uw eigen JavaScript-code toe, zoals multimediawidgets en jQuery plugins.
       custom_themes: Gebruik de kant-en-klare thema's
       custom_ui: Volledig aanpasbare UI
       free_plan: gratis pakket
@@ -34,11 +43,13 @@ nl:
       private: Privé
       private_private: Beperkte toegang
       private_site: Publieke / private toegang inschakelen
+      private_tip: Alleen u en gebruikers die u uitnodigt voor uw site hebben toegang. Perfect voor de enterprise.
       small_basic: Aan de slag
       start_monetizing: Begin met verdienen
       support: Ondersteuning
       title: Pakketten en prijzen
       unlimited: Onbeperkt netwerkverkeer per maand
+      user: gebruiker
       we_offer: We bieden ook een
       web_support: Webgebaseerde ondersteuning
       with_unlimited: Met onbeperkte netwerkverkeers zonder aangepaste advertenties en zonder aangepaste domeinnaam.

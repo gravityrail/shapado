@@ -54,6 +54,7 @@ fr:
       submit: Changer mon mot de passe
       title: Changer le mot de passe
     check_custom_domain: 
+      refresh: Actualiser cette page pour essayer à nouveau.
       reset_domain_button: Non, veuillez réinitialiser le domaine personnalisé en %{domain}
       title: Votre nouveau domaine personnalisé fonctionne-t-il?
       working_domain_link: Oui, je peux voir que mon nouveau domaine fonctionne ci-dessous.

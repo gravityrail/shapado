@@ -33,6 +33,8 @@ fr:
         title: Contenu personnalisé
         top_bar: Barre supérieure
         top_bar_tip: Saisissez un lien par ligne
+      edit_card: 
+        button: Mettez à jour votre carte de crédit
       invitations: 
         invitations: Invitations envoyées
         invitations_title: Liste de toutes les invitations que vous avez envoyé
@@ -56,8 +58,8 @@ fr:
           instruction2: Là, vous devez vous rendre dans la section DNS pour y créer un CNAME.
           instruction3: Choisissez 'www' ou tout autre nom pour votre CNAME.
           instruction4: "Ensuite, comme host ou destination, tapez le nom de votre site shapado actuel: %{domain}."
-          instruction5: Après une heure ou deux, votre domaine www.%{subdomain} devrait pointer vers %{appdomain}.
-          instruction6: Vous pouvez maintenant revenir sur cette page et tapez le nom de domaine que vous avez choisi tel que www.%{subdomain} dans le champs de texte ci-dessous et confirmer. Si vous avez des questions, posez-les sur le %{chat_url} ou sur notre forum
+          instruction5: Une fois ceci fait, après une heure ou deux, votre domaine %{subdomain} devrait pointer vers %{appdomain}.
+          instruction6: Quand c'est le cas, revenez ici et tapez votre nom de domaine %{subdomain} dans le champ texte ci-dessous et appuyez sur le bouton 'mise à jour'. Si vous avez des questions, posez-les-nous sur %{chat_url} ou sur notre forum de support.
           title: Configurer votre nom de domaine
           warning: Êtes-vous sûr de vouloir changer votre domaine ?
         facebook_app: 

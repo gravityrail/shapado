@@ -21,6 +21,7 @@ mk:
     by_semi: "Од:"
     chat: Разговор
     current: тековно
+    downgrade_to_free: Врати на бесплатно
     edited: Уредено
     edited_by: "Уредил:"
     edited_by_semi: "Уредил:"
@@ -47,6 +48,7 @@ mk:
     tos: Услови
     unfollow: Престани со следење
     unknown_place: Непознато
+    upgrade: Надгради
     view: Преглед
     view_question: Преглед на прашањето
     what_to_do: Што сакате да правите?

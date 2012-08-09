@@ -49,6 +49,7 @@ ms:
       submit: Tukar kata laluan saya
       title: Tukar kata laluan
     check_custom_domain: 
+      refresh: Muatkan semula halaman ini untuk mencuba lagi.
       reset_domain_button: Tidak, tolong setkan balik domain tersuai kepada %{domain}
       title: Adakah domain tersuai anda berjalan dengan lancar?
       working_domain_link: Ya, saya mendapati domain baru saya berjalan dengan lancar.

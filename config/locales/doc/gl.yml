@@ -12,24 +12,43 @@ gl:
       247_all_support: Apoio baseado na web, no correo electrónico, no chat e mais no teléfono con dispoñibilidade permanente
       5millions: 5 millóns de visitas por páxina ao mes
       all_support: Apoio baseado na web, no correo electrónico, no chat e mais no teléfono
+      basic: Básico
       basic_restrictions: Sen anuncios personalizados nin interface de usuario completamente personalizable
+      basic_styling: Aparencia personalizada
+      basic_styling_tip: Cambie facilmente o esquema de cores do seu sitio, engada o seu propio logotipo e modifique o código CSS.
       big_sites: Sitios cun alto tráfico
       custom_ads: Use os seus propios anuncios
+      custom_ads_tip: Use os seus propios anuncios e comece a gañar cartos!
       custom_analytics: Estatísticas de tráfico
+      custom_analytics_tip: Use o Google Analytics e coñeza mellor os seus visitantes.
       custom_domain: Dominio personalizado
+      custom_domain_tip: Use o seu dominio propio, como a-súa-compañía.com no canto de a-súa-compañía.shapado.com
+      custom_html: HTML personalizado
+      custom_html_tip: Reorganice por completo todo o código HTML do seu sitio e faga que teña a aparencia que vostede queira.
+      custom_js: Engada o seu propio JavaScript
+      custom_js_tip: Engada o seu propio código JavaScript personalizado, como widgets multimedia ou complementos jQuery.
       custom_themes: Utilice os nosos temas personalizados predefinidos
       custom_ui: Interface de usuario completamente personalizable
       free_plan: plan gratuíto
       getting_popular: Gañando popularidade
       huge_sites: Sitios cun enorme tráfico
+      maximum: Máximo
       month: mes
+      optimum: Óptimo
       page_views: Para os sitios privados ou pequenos
       plans: Planos
+      plus: Plus
+      premium: Premium
+      private: Privado
+      private_private: Acceso restrinxido
       private_site: Activar o acceso privado ou público
-      start_monetizing: comezar a gañar cartos
+      private_tip: Unicamente vostede e os usuarios que convide ao seu sitio teñen autorización para acceder. É perfecto para as empresas.
+      small_basic: Primeiros pasos
+      start_monetizing: Comezar a gañar cartos
       support: Axuda
       title: Planos e prezos
       unlimited: Tráfico ilimitado cada mes
+      user: usuario
       we_offer: Ofrecemos tamén un
       web_support: Apoio baseado na web
       with_unlimited: con tráfico ilimitado sen anuncios nin dominio personalizados.

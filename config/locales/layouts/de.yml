@@ -24,11 +24,11 @@ de:
       logout: Abmelden
       manage_ads: Anzeigen verwalten
       moderate: Moderieren
-      need_to_signin: Du musst Dich zuerst anmelden.
+      need_to_signin: Du musst dich zuerst anmelden.
       not_member_join_dialog: Du musst der Gruppe %{group} beitreten, um diese Aktion ausführen zu können. Klicke hier, um dies zu tun.
       now: jetzt!
       openid: 
-        explaination: "Sofern Du Dich nicht registrieren oder anmelden möchtest, kannst Du auch Deinen OpenID-Anbieter auswählen:"
+        explaination: "Sofern du dich nicht registrieren oder anmelden möchtest, kannst du auch deinen OpenID-Anbieter auswählen:"
       pages: Seiten
       preferred: Bevorzugt
       questions: Fragen
@@ -39,12 +39,12 @@ de:
       settings: Einstellungen
       signup: Registrieren
       subscribe: Abonnieren
-      success_joining_group: Du bist nun Mitglied der Gruppe %{group}. Vielen Dank für Deinen Beitritt.
+      success_joining_group: Du bist nun Mitglied der Gruppe %{group}. Vielen Dank für deinen Beitritt.
       tags: Stichwörter
       title: Fragen und Antworten
       unanswered: Unbeantwortet
       users: Nutzer
-      welcome_from: Herzlich Willkommen! Du kannst
+      welcome_from: Herzlich willkommen! Du kannst
     manage: 
       access: Zugriff
       actions: Aktionen
@@ -67,10 +67,11 @@ de:
       properties: Eigenschaften
       reputation: Reputation
       rewards: Auszeichnungen
+      site_management: Websiteverwaltung
       social: Sozial
       stats: Statistiken
       theme: Theme
       themes: Nutzeroberflächen
       widgets: Widgets
     notifications: 
-      message: Sofern Du keine automatischen Benachrichtigungen mehr von %{group} erhalten möchtest, musst Du Deine Einstellungen auf der Benachrichtigungsseite ändern. Siehe
+      message: Sofern du keine automatischen Benachrichtigungen mehr von %{group} erhalten möchtest, musst du deine Einstellungen auf der Benachrichtigungsseite ändern. Siehe

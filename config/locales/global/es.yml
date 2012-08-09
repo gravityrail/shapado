@@ -24,6 +24,7 @@ es:
     by_semi: "Por:"
     chat: Chat
     current: Actual
+    downgrade_to_free: Degradar a libre
     edited: Editado
     edited_by: Editado por
     edited_by_semi: "Editado por:"
@@ -50,6 +51,7 @@ es:
     tos: TDS
     unfollow: Dejar de seguir
     unknown_place: Desconocido
+    upgrade: Actualizar
     view: Ver
     view_question: Ver pregunta
     what_to_do: ¿Qué quieres hacer?

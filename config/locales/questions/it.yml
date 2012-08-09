@@ -103,6 +103,7 @@ it:
       has_answers: 
         one: "%{count} risposta"
         other: "%{count} risposte"
+      retag: Modifica tag
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Modifica tag

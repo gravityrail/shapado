@@ -21,6 +21,7 @@ de:
     by_semi: "Von:"
     chat: Chat
     current: Aktuell
+    downgrade_to_free: Downgrade zu kostenfrei
     edited: Bearbeitet
     edited_by: Bearbeitet von
     edited_by_semi: "Bearbeitet von:"
@@ -35,7 +36,7 @@ de:
     open: Öffnen
     or: oder
     permission_denied: Zugriff verweigert
-    please_login: Bitte melde Dich an
+    please_login: Bitte melde dich an
     preview: Vorschau betrachten
     previous: Vorherige
     privacy: Datenschutz
@@ -47,9 +48,10 @@ de:
     tos: AGB
     unfollow: Nicht mehr beachten
     unknown_place: Unbekannt
+    upgrade: Upgrade
     view: Ansehen
     view_question: Fragen ansehen
-    what_to_do: Was möchtest Du tun?
+    what_to_do: Was möchtest du tun?
   models: 
     question: Die Frage
   number: 
@@ -80,7 +82,7 @@ de:
     save: Speichern
     send: Senden
     show: Zeigen
-    sure: Bist Du sicher, dass Du diese %{model} löschen möchtest?
+    sure: Bist du sicher, dass du diese %{model} löschen möchtest?
     update: Aktualisieren
   time: 
     ago: vor %{time}

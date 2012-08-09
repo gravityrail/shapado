@@ -10,6 +10,16 @@ nl:
       vote: Stem
       votes: Stemmen
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Eén gebruiker steunt deze reactie. Klik om deze reactie ook te steunen.
+          other: Meer dan %{count} gebruikers steunen deze reactie. Klik om deze reactie ook te steunen.
+          zero: Klik om deze reactie te steunen.
+        has_user_vote: 
+          one: U en één andere gebruiker steunen deze reactie.
+          other: U en %{count} anderen steunen deze reactie.
+          zero: Alleen u steunt deze reactie.
     control: 
       have_voted_down: Klik om uw negatieve beoordeling te verwijderen
       have_voted_up: Klik om uw positieve beoordeling te verwijderen

@@ -11,6 +11,7 @@ it:
     by_anon: Da anonimo
     current_tags: 
       title: Tag selezionati
+    date: Data
     description: Descrizione
     empty: 
       activities: 
@@ -35,7 +36,7 @@ it:
         title: Siamo spiacenti, nessuna domanda corrisponde a questo filtro.
       questions: 
         description: 
-          text: Diventa il primo a <a href="%{url}"> %{action_link}<a/>!
+          text: Sii il primo a <a href="%{url}">fare una domanda<a/>!
       themes: 
         description: 
           action_link: ora
@@ -50,6 +51,7 @@ it:
         cc_footer: Tutti i contenuti di Shapado.com e i dati sono disponibili sotto licenza %{cc_link}
         powered_by: Powered by %{source_link} %{version} sotto il %{agpl_link}
     login_drop_down: 
+      openid_url: URL OpenID
       sign_up_user_pass: Iscriviti con un'e-mail/password
       with_email_pass: Accedi con il tuo indirizzo email
       with_facebook: con Facebook

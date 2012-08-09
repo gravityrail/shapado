@@ -9,18 +9,18 @@ de:
       create_account_step2: Konto erstellen
       description: "%{group} ist eine sich stets verbessernde Sammlung von Fragen und Antworten zu allen diesbezüglichen Themen."
       done: Fertig.
-      facebook_connect: Verbinde mit Deinem Facebook-Konto
+      facebook_connect: Verbinde mit deinem Facebook-Konto
       final_step: Letzter Schritt (2 von 2)
-      find_friends: "Finde Freunde auf und vernetze Dich mit ihnen:"
+      find_friends: "Finde Freunde auf und vernetze dich mit ihnen:"
       follow_things: Beobachte Stichwörter und folge Menschen
-      follow_things_description: Mit ihnen im Zusammenhang stehende Fragen werden auf Deinem Feed angezeigt.
+      follow_things_description: Mit ihnen im Zusammenhang stehende Fragen werden auf deinem Feed angezeigt.
       other_connect: oder verwende eines von ihnen.
       other_social_options: Du kannst auch %{linkedin} und %{identica} nutzen.
       point1: Frage Experten, die sich mit einem bestimmten Thema auskennen.
-      point2: Folge Themen und beantworte Fragen, die Dich interessieren.
-      point3: Bewerte und bearbeite Antworten und Wikiseiten, um sie so zu verbessern. Verdiene Dir Abzeichen.
-      point4: Antworte ohne Umstände aus Deinem E-Mail-Programm heraus.
-      twitter_connect: Verbinde mit Deinem Twitter-Konto
+      point2: Folge Themen und beantworte Fragen, die dich interessieren.
+      point3: Bewerte und bearbeite Antworten und Wikiseiten, um sie so zu verbessern. Verdiene dir Abzeichen.
+      point4: Antworte ohne Umstände aus deinem E-Mail-Programm heraus.
+      twitter_connect: Verbinde mit deinem Twitter-Konto
       welcome: Willkommen
     create: 
       flash_notice: Deine Einladungen wurden erfolgreich versandt.

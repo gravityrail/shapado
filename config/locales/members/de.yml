@@ -12,7 +12,7 @@ de:
       error: Der Nutzer **%{user_id}** ist leider nicht vorhanden.
       notice: "%{login} wurde erfolgreich als %{role} hinzugefügt."
     form: 
-      destroy_confirm: Bist Du sicher? Danach wird dieser Nutzer nicht mehr Mitglied dieser Gruppe sein.
+      destroy_confirm: Bist du sicher? Danach wird dieser Nutzer nicht mehr Mitglied dieser Gruppe sein.
       login_tip: Suche während der Eingabe
     index: 
       manage_members_title: Mitglieder verwalten

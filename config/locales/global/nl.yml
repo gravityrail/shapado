@@ -25,6 +25,7 @@ nl:
     by_semi: "Door:"
     chat: Chat
     current: Huidige
+    downgrade_to_free: Downgraden naar gratis
     edited: Bewerkt
     edited_by: Bewerkt door
     edited_by_semi: "Bewerkt door:"
@@ -51,6 +52,7 @@ nl:
     tos: Gebruiksvoorwaarden
     unfollow: Niet langer volgen
     unknown_place: Onbekend
+    upgrade: Upgraden
     view: Bekijken
     view_question: Vraag bekijken
     what_to_do: Wat wilt u doen?

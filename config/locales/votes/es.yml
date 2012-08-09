@@ -1,6 +1,7 @@
 # Messages for Spanish (español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Patcito
 es: 
   activerecord: 
@@ -8,6 +9,16 @@ es:
       vote: Voto
       votes: Votos
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Sólo %{count} usuario ha aprobado este comentario; haz clic para aprobarlo también.
+          other: Más de %{count} usuarios aprobaron este comentario; haz clic para aprobarlo también.
+          zero: Haz clic para aprobar este comentario.
+        has_user_vote: 
+          one: Tú y otro usuario aprobaron este comentario.
+          other: Tú y otros %{count} usuarios aprobaron este comentario.
+          zero: Sólo tú has aprobado este comentario.
     control: 
       have_voted_down: Clic para deshacer tu desaprobación
       have_voted_up: Clic para deshacer tu aprobación

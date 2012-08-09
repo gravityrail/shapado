@@ -17,5 +17,5 @@ de:
     create: 
       success: Deine Ankündigung wurde erfolgreich erstellt.
     index: 
-      description: Verwalte und erstelle neue Ankündigungen, die Deinen Besuchern auf der gesamten Website angezeigt werden.
+      description: Verwalte und erstelle neue Ankündigungen, die deinen Besuchern auf der gesamten Website angezeigt werden.
       title: Ankündigungen

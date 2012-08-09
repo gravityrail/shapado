@@ -8,6 +8,7 @@ ms:
     by_anon: Oleh tanpa nama
     current_tags: 
       title: Tag yang dipilih
+    date: Tarikh
     description: Keterangan
     empty: 
       activities: 
@@ -34,7 +35,7 @@ ms:
         title: Maaf, tiada soalan yang ada dalam tapisan ini.
       questions: 
         description: 
-          text: Jadilah yang pertama untuk <a href="%{url}"> %{action_link}<a/>!
+          text: Jadilah orang pertama yang <a href="%{url}">bertanya<a/>!
       themes: 
         description: 
           action_link: sekarang
@@ -49,6 +50,7 @@ ms:
         cc_footer: Segala kandungan dan data Shapado.com disediakan di bawah lesen %{cc_link}
         powered_by: Dikuasakan oleh %{source_link} %{version} di bawah %{agpl_link}
     login_drop_down: 
+      openid_url: URL OpenID
       sign_up_user_pass: Daftar diri dengan e-mel/kata laluan
       with_email_pass: Daftar masuk dengan e-mel anda
       with_facebook: dengan Facebook
@@ -70,6 +72,7 @@ ms:
       find_friends_identica: Cari rakan di Identi.ca
       find_friends_linked_in: Cari rakan di LinkedIn
       find_friends_twitter: Cari rakan di Twitter
+      or_connect: "Atau bersambung dengan:"
     topbar: 
       admin: Pentadbir
       logged_as: Log masuk sebagai %{login}

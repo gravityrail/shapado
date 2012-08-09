@@ -21,6 +21,7 @@ ms:
     by_semi: "Oleh:"
     chat: Sembang
     current: Kini
+    downgrade_to_free: Turun taraf kepada pelan percuma
     edited: Disunting
     edited_by: "Disunting oleh:"
     edited_by_semi: "Disunting oleh:"
@@ -47,6 +48,7 @@ ms:
     tos: Terma Perkhidmatan
     unfollow: Berhenti mengikut
     unknown_place: Tidak diketahui
+    upgrade: Naik taraf
     view: Lihat
     view_question: Lihat soalan
     what_to_do: Apakah yang ingin anda lakukan?

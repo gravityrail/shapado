@@ -47,6 +47,8 @@ es:
       success_twitter_connection: Felicitación, conecto su cuenta Twitter con éxito!
     create: 
       flash_notice: Tu grupo ha sido creado exitosamente, ahora puedes empezar a configurarlo.
+    downgrade: 
+      notice: Has cancelado correctamente la subscripción. Ahora usa nuestro plan gratuito.
     edit: 
       title: Modifica su grupo
     form: 
@@ -99,3 +101,5 @@ es:
       active_site: "Sitio activo:"
     update: 
       notice: Su grupo se ha actualizado correctamente.
+    upgrade: 
+      error: Ya estás suscrito a este plan

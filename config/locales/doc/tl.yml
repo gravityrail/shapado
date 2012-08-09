@@ -12,24 +12,43 @@ tl:
       247_all_support: Pagtangkilik na nakabatay sa web, e-liham, satsatan at telepono sa loob ng 24 na mga oras sa loob ng 7 mga araw
       5millions: 5 milyong mga pagtanaw sa pahina bawat buwan
       all_support: Pagtangkilik na nakabatay sa web, e-liham, satsatan at telepono
+      basic: Saligan
       basic_restrictions: Walang pasadyang mga patalastas at walang buong maipapasadyang UI
+      basic_styling: Hitsura at pakiramdam na ginawang pansarili
+      basic_styling_tip: Maginhawang baguhin ang plano ng kulay ng iyong pook, idagdag ang sarili mong logo at palitan din kahit na ang kodigo ng Mga Pilas ng Lumalagaslas na Estilo.
       big_sites: Malalaking mga lugar ng trapiko
       custom_ads: Gamitin ang sarili mong mga patalastas
+      custom_ads_tip: Gamitin ang sarili mong mga anunsiyo at magsimulang gumawa ng salapi!
       custom_analytics: Estadistika ng trapiko
+      custom_analytics_tip: Gamitin ang analitika ng Google at kilalanin nang mas mabuti pa ang mga panauhin mo.
       custom_domain: Pasadyang nasasakupan
+      custom_domain_tip: Gamitin ang sarili mong nasasakupan na katulad ng kumpanya-mo.com sa halip na kumpanya-mo.shapado.com
+      custom_html: Pinasadyang HTML
+      custom_html_tip: Baguhin nang buo ang pagkakatatag ng buong kodigo ng HTML ng iyong pook at gawin ang hitsura nito na kamukha ng anumang naisin mo.
+      custom_js: Idagdag ang sarili mong JavaScript
+      custom_js_tip: Idagdag ang iyong ipinasadyang kodigo ng JavaScript, katulad ng mga widyet ng multimidya o pampasak ng jquery.
       custom_themes: Gamitin ang aming paunang-nagawang pinasadyang mga tema
       custom_ui: Buong mapapasadyang UI
       free_plan: planong malaya
       getting_popular: Nagiging tanyag
       huge_sites: Dambuhalang mga sityo ng trapiko
+      maximum: Pinakamataas
       month: buwan
+      optimum: Pinakamabuting kalagayan
       page_views: Para sa Maliit/Pribadong mga sityo
       plans: Mga plano
+      plus: Dagdag
+      premium: Napakahalaga
+      private: Pribado
+      private_private: Pagpuntang may pagbabawal
       private_site: Paganahin ang pagpuntang pribado/pangmadla
-      start_monetizing: simulan ang pagtatalaga bilang salaping bayarin
+      private_tip: Ikaw lamang at ang mga tagagamit na inanyayahan mo sa iyong pook ang pinagkalooban ng pagka nakakapunta. Tamang-tama para sa pagsisigasig.
+      small_basic: Pagsisimula
+      start_monetizing: Simulan ang pagtatalaga bilang salaping bayarin
       support: Tangkilikin
       title: Mga balak at mga halaga
       unlimited: Walang hangganang trapiko bawat buwan
+      user: tagagamit
       we_offer: Nag-aalok rin kami ng isang
       web_support: Pagtangkilik na nakabatay sa web
       with_unlimited: may trapikong walang paghahangga na walang pasadyang mga patalastas o pasadyang nasasakupan.

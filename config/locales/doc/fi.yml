@@ -12,24 +12,43 @@ fi:
       247_all_support: Web-perustainen, sähköposti, verkkojuttelu ja 24/7 -puhelintuki
       5millions: 5 miljoonaa sivuatselua/kuukausi
       all_support: Web-perustainen, sähköposti, verkkojuttelu ja puhelintuki
+      basic: Perustiedot
       basic_restrictions: Ei mukautettuja mainoksia ja täysin mukautettavissa olevaa käyttöliittymää
+      basic_styling: Henkilökohtainen käyttötuntuma
+      basic_styling_tip: Webbisivusi värikaavion vaihtamiseksi helposti lisää oma logo ja vaihda jopa CSS-koodia.
       big_sites: Suuriliikenteiset sivustot
       custom_ads: Käytä omia mainoksiasi
+      custom_ads_tip: Käytä omia mainoksiasi ja aloita rahan tienaaminen!
       custom_analytics: Liikenteen tilastot
+      custom_analytics_tip: Käytä Google Analytics-palvelua ja opit tuntemaan vierailijasi paremmin.
       custom_domain: Mukautettu toimialue
+      custom_domain_tip: Käytä omaa verkko-osoitetta kuten omayritys.fi eikä omayritys.shapado.com
+      custom_html: Oma HTML
+      custom_html_tip: Paranna sivustosi koko HMTL-koodi kokonaan ja tee se sen näköiseksi kuin haluat.
+      custom_js: Lisää oma JavaScript
+      custom_js_tip: Lisää omaa JavaScript-koodia, kuten multimediakäyttöliittymäkomponentit tai jQuery-liitännäiset.
       custom_themes: Käytä esivalmistettuja räätälöityjä teemojamme
       custom_ui: Täysin muokattavissa oleva käyttöliittymä
       free_plan: vapaa suunnitelma
       getting_popular: Haetaan suositut
       huge_sites: Jättiliikenteiset sivustot
+      maximum: Maksimaalinen
       month: kuukausi
+      optimum: Optimaalinen
       page_views: Pienille / Yksityisille sivustoille
       plans: Suunnitelmat
+      plus: Myönteinen
+      premium: Palkkio
+      private: Yksityinen
+      private_private: Rajoitettu käyttöoikeus
       private_site: Ota käyttöön yksityinen/julkinen pääsy
-      start_monetizing: alkaa ansaita rahaa
+      private_tip: Vain sinulle ja kutsumillasi käyttäjillä on pääsy sivullesi. Täydellinen yrityksille.
+      small_basic: Aloittaminen
+      start_monetizing: Aloita lyödäksesi rahoiksi
       support: Tuki
       title: Suunnitelmat ja hinnoittelu
       unlimited: Rajoittamaton liikenne kuukaudessa
+      user: käyttäjä
       we_offer: Tarjoamme myös
       web_support: Web-pohjainen tuki
       with_unlimited: rajoittamattomalla liikenteellä ilman mukautettuja mainoksia ja ilman mukautettua toimialuetta.

@@ -21,6 +21,7 @@ gl:
     by_semi: "Por:"
     chat: Chat
     current: Actual
+    downgrade_to_free: Rebaixar ao plan gratuíto
     edited: Editado
     edited_by: Editado por
     edited_by_semi: "Editado por:"
@@ -47,6 +48,7 @@ gl:
     tos: Condicións do servizo
     unfollow: Deixar de seguir
     unknown_place: Descoñecido
+    upgrade: Actualizar
     view: Ver
     view_question: Ver a pregunta
     what_to_do: Que quere facer?

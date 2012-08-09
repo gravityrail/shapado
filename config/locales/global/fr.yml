@@ -29,6 +29,7 @@ fr:
     by_semi: "Par :"
     chat: Tchat
     current: Actuel
+    downgrade_to_free: Dégrader à libre
     edited: Modifié
     edited_by: Modifié par
     edited_by_semi: "Modifié par :"
@@ -55,6 +56,7 @@ fr:
     tos: CGU
     unfollow: Ne plus suivre
     unknown_place: Inconnu
+    upgrade: Améliorer
     view: Voir
     view_question: Voir la question
     what_to_do: Que voulez-vous faire ?

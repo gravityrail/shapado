@@ -8,16 +8,22 @@ gl:
     edit: 
       title: Editar o tema visual
     form: 
-      bg_color_legend: Establecer a cor de fondo; asegúrese de utilizar o contraste adecuado para a súa aplicación.
+      bg_color_legend: Escolla unha cor de fondo. Asegúrese de que contrasta adecuadamente co resto da súa aplicación.
       bg_image_legend: Esta imaxe aparecerá como fondo de cada páxina. O tamaño non pode superar os 800k e debe estar en formato GIF, JPG ou PNG.
       colors_and_bg: Cores e fondos
       custom_css_legend: Se coñece a linguaxe CSS, use isto para personalizar o estilo do seu sitio. Pode empregar CSS regular ou SCSS.
       fluid_layout: Esquema fluído
       fluid_layout_legend: Un esquema fluído fará que o largo de cada elemento da páxina dependa do tamaño da páxina e non do elemento inicial. Noutras palabras, ao cambiar o tamaño da ventá do navegador ou utilizar un dispositivo de pantalla pequena, o esquema adáptase ás novas dimensións.
-      main_color_legend: Esta é unha das cores máis usadas nas páxinas; asegúrese de seleccionar a adecuada para a súa comunidade.
-      modules_color_legend: Asegúrese de que esta cor e a cor principal quedan ben xuntas.
+      layout_html: Engada o seu modelo personalizado para o esquema
+      main_color_legend: Esta é unha das cores máis usadas nas páxinas. Asegúrese de seleccionar a adecuada para a súa comunidade.
+      modules_color_legend: Asegúrese de que esta cor e a cor principal quedan ben as dúas xuntas.
+      questions_index_html: Engada o seu modelo personalizado para o índice de preguntas
+      questions_show_html: Engada o seu modelo personalizado para a presentación das preguntas
       submit_update: Actualizar o tema visual
       text_color_legend: Asegúrese de que o seu texto se poida ler e que sexa compatible coa cor de fondo.
+      title: Está editando un tema visual. Asegúrese de que o conxunto de cores e o fondo coinciden.
+      topbar_color: Cor de fondo da barra superior
+      topbar_color_legend: Escolla a cor de fondo da barra superior.
       update: Actualizar o tema visual
     index: 
       description: Atope aquí os seus temas visuais e cambie a aparencia da súa aplicación.
@@ -37,7 +43,7 @@ gl:
       link_fg: Cor de primeiro plano das ligazóns
       main_color: Cor principal
       modules_color: Cor dos módulos
-      not_ready: Este tema visual non está listo para o seu uso; volva noutro momento.
+      not_ready: Este tema visual non está listo para o seu uso. Regrese noutro momento.
       text_color: Cor do texto
       try: Intentar
       use_link_bg: Utilizar un fondo para as ligazóns

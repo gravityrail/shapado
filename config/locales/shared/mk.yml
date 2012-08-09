@@ -8,6 +8,7 @@ mk:
     by_anon: Анонимно
     current_tags: 
       title: одбрани ознаки
+    date: Датум
     description: Опис
     empty: 
       activities: 
@@ -34,7 +35,7 @@ mk:
         title: Жалиме, но нема расположиви прашања во овој филтер.
       questions: 
         description: 
-          text: Бидете први што ќе <a href="%{url}"> %{action_link}<a/>!
+          text: Бидете први што ќе <a href="%{url}">поставите прашање<a/>!
       themes: 
         description: 
           action_link: сега
@@ -49,6 +50,7 @@ mk:
         cc_footer: Сите содржини и податоци на Shapado.com се достапни под лиценцата %{cc_link}
         powered_by: Овозможено од %{source_link} %{version} под %{agpl_link}
     login_drop_down: 
+      openid_url: URL на OpenID
       sign_up_user_pass: Најавете се со е-пошта/лозинка
       with_email_pass: Најава со е-пошта
       with_facebook: со Facebook
@@ -70,6 +72,7 @@ mk:
       find_friends_identica: Пронајди пријатели од Identi.ca
       find_friends_linked_in: Пронајди пријатели од LinkedIn
       find_friends_twitter: Пронајди пријатели од Twitter
+      or_connect: "Или пак поврзете се со:"
     topbar: 
       admin: админ
       logged_as: најавен како %{login}

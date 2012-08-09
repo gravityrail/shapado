@@ -102,6 +102,7 @@ fi:
       has_answers: 
         one: "%{count} vastaus"
         other: "%{count} vastausta"
+      retag: Merkitse uudelleen tunnisteella
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Uudelleenmerkintä

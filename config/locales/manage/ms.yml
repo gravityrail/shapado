@@ -25,6 +25,8 @@ ms:
         title: Kandungan tempahan
         top_bar: Bar atas
         top_bar_tip: Isikan satu pautan segaris
+      edit_card: 
+        button: Kemas kini kad kredit anda
       invitations: 
         invitations: Jemputan dihantar
         invitations_title: Senari semua jemputan yang telah anda hantar
@@ -48,8 +50,8 @@ ms:
           instruction2: Di situ, anda perlu pergi ke bahagian DNS dan membuat sesuatu yang dipanggil CNAME.
           instruction3: Pilih 'www' atau apa sahaja sebagai nama CNAME anda.
           instruction4: "Kemudian, dalam ruangan hos atau destinasi, nyatakan domain Shapado anda sekarang: %{domain}."
-          instruction5: Sebaik sahaja ini selesai, selepas lebih kurang sejam, domain anda www.%{subdomain} sewajarnya menghala ke %{appdomain}.
-          instruction6: Selepas itu, kembali ke sini dan taipkan nama domain anda, www.%{subdomain} dalam ruangan di bawah, kemudian tekan butang 'kemas kini. Jika anda ada apa-apa soalan, tanya kami di %{chat_url} ataupun forum bantuan kami.
+          instruction5: Sebaik sahaja ini selesai, selepas lebih kurang sejam, domain anda %{subdomain} sewajarnya menghala ke %{appdomain}.
+          instruction6: Selepas itu, kembali ke sini dan taipkan nama domain anda, %{subdomain} dalam ruangan di bawah, kemudian tekan butang 'kemas kini'. Jika anda ada apa-apa soalan, tanya kami di %{chat_url} ataupun forum bantuan kami.
           title: Konfigurasi domain tersuai anda
           warning: Adakah anda benar-benar ingin menukar domain anda?
         facebook_app: 

@@ -45,6 +45,8 @@ fi:
       success_twitter_connection: Onnea, olet yhdistänyt Twitter-tilisi onnistuneesti!
     create: 
       flash_notice: Ryhmäsi luotiin onnistuneesti. Voit aloittaa nyt asettamaan sen asetuksia.
+    downgrade: 
+      notice: Tilauksesi peruminen onnistui, käytät nyt vapaata suunnitelmaamme.
     edit: 
       title: Muokkaa ryhmääsi
     form: 
@@ -97,3 +99,5 @@ fi:
       active_site: "Aktiivinen sivusto:"
     update: 
       notice: Ryhmäsi päivittäminen onnistui.
+    upgrade: 
+      error: Olet jo tilannut tämän suunnitelman

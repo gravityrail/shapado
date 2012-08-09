@@ -1,6 +1,7 @@
 # Messages for Spanish (español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Danke7
 # Author: Od1n
 # Author: Patcito
@@ -102,6 +103,7 @@ es:
       has_answers: 
         one: "%{count} respuesta"
         other: "%{count} respuestas"
+      retag: Cambiar las etiquetas
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquetar

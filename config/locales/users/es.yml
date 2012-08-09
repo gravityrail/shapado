@@ -56,6 +56,7 @@ es:
       submit: Cambiar mi contraseña
       title: Cambiar contraseña
     check_custom_domain: 
+      refresh: Actualizar esta página para volver a intentarlo.
       reset_domain_button: No, por favor restablezca el dominio personalizado en %{domain}
       title: ¿Está funcionando su nuevo dominio personalizado?
       working_domain_link: Sí, puedo ver de que mi nuevo dominio está funcionando debajo.

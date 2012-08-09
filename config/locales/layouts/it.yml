@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Danmaz74
 # Author: Giallu
+# Author: Rippitippi
 it: 
   layouts: 
     application: 
@@ -68,6 +69,7 @@ it:
       properties: Proprietà
       reputation: Reputazione
       rewards: Ricompense
+      site_management: Gestione del sito
       social: Sociale
       stats: Statistiche
       theme: Tema

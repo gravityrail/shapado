@@ -21,6 +21,7 @@ tl:
     by_semi: "Ni:"
     chat: Makipagtalastasan
     current: Pangkasalukuyan
+    downgrade_to_free: Ibaba ang uri upang maging malaya
     edited: Nabago na
     edited_by: "Binago ni:"
     edited_by_semi: "Binago ni:"
@@ -47,6 +48,7 @@ tl:
     tos: Mga Panuntunan ng Paglilingkod
     unfollow: Huwag sundan
     unknown_place: Hindi nalalaman
+    upgrade: Itaas ang uri
     view: Tingnan
     view_question: Tingnan ang katanungan
     what_to_do: Ano ang nais mong gawin?

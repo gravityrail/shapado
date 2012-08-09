@@ -99,6 +99,7 @@ mk:
       has_answers: 
         one: "%{count} одговор"
         other: "%{count} одговори"
+      retag: Преозначи
       wiki_title: "Вики: %{title}"
     retag: 
       title: преозначи

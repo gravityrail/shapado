@@ -45,6 +45,8 @@ nl:
       success_twitter_connection: Proficiat, u hebt nu uw Twitter-account verbonden!
     create: 
       flash_notice: Uw groep is aangemaakt. U kunt nu de instellingen maken.
+    downgrade: 
+      notice: Uw abonnement is opgezegd. U gebruikt nu onze gratis versie.
     edit: 
       title: Uw groep bewerken
     form: 
@@ -97,3 +99,5 @@ nl:
       active_site: "Actieve site:"
     update: 
       notice: Uw groep is aangepast.
+    upgrade: 
+      error: U hebt dit abonnement al

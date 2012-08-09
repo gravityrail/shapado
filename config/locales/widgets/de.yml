@@ -8,7 +8,7 @@ de:
       description: Dieses Widget zeigt eine kurze Beschreibung Ihrer Gruppe an.
       title: Über
     adsense: 
-      description: Mit diesem Widget kannst Du „Google Adsense“-Anzeigen anzeigen lassen.
+      description: Mit diesem Widget kannst du „Google Adsense“-Anzeigen anzeigen lassen.
       title: AdSense
     ask_question: 
       ask: Fragen
@@ -28,20 +28,20 @@ de:
     current_tags: 
       description: Diese Widget zeigt die Stichwörter an, die vom aktuellen Nutzer beachtet werden.
     custom_html: 
-      description: Füge hier jede Art von HTML hinzu, die Du möchtest.
+      description: Füge hier jede Art von HTML hinzu, die du möchtest.
     edit: 
       title: Widget bearbeiten
     group_networks: 
-      description: Dieses Widget zeigt eine Liste mit Links zu sozialen Netzwerken an, so dass Deine Nutzer Dir auch dort folgen können.
+      description: Dieses Widget zeigt eine Liste mit Links zu sozialen Netzwerken an, so dass deine Nutzer dir auch dort folgen können.
       title: Folge uns
     groups: 
       description: Dieses Widget zeigt die fünf neuesten Gruppen an
       title: Kürzlich aktive Gruppen
     index: 
       add_new: Neues Widget hinzufügen
-      description: Verwende die Pfeile, um Deine Widgets zu verschieben
+      description: Verwende die Pfeile, um deine Widgets zu verschieben
       external_widgets: Extern
-      external_widgets_title: Widgets, die Du auf Deiner eigenen Website einbinden kannst
+      external_widgets_title: Widgets, die du auf deiner eigenen Website einbinden kannst
       footer: Fußbereich
       header: Kopfbereich
       mainlist_widgets: Hauptliste
@@ -73,10 +73,11 @@ de:
       description: Dieses Widget zeigt eine Liste der mit der aktuellen Frage zusammenhängenden Fragen an.
       title: Ähnliche Fragen
     settings: 
-      code: "Diesen Code kopieren und auf Deiner Website oder Deinem Blog einfügen - analog zu einem Textwidget bei Wordpress:"
-      custom_external_css: "Benutzerdefiniertes CSS auf Dein Widget anwenden (empfohlen, sofern das CSS von Shapado nicht angewendet werden soll):"
+      code: "Diesen Code kopieren und auf deiner Website oder deinem Blog einfügen - analog zu einem Textwidget bei Wordpress:"
+      content: "Füge das gewünschte HTML hier ein:"
+      custom_external_css: "Benutzerdefiniertes CSS auf dein Widget anwenden (empfohlen, sofern das CSS von Shapado nicht angewendet werden soll):"
       custom_html: "Benutzerdefiniertes HTML:"
-      exclude_css_on_external: Das CSS Deiner Shapado-Website nicht auf Dein Widget anwenden
+      exclude_css_on_external: Das CSS deiner Shapado-Website nicht auf dein Widget anwenden
       google_ad_client: google_ad_client
       google_ad_height: google_ad_height
       google_ad_slot: google_ad_slot

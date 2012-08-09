@@ -12,24 +12,43 @@ ms:
       247_all_support: Sokongan 24/7 berasaskan web, e-mel, sembang dan telefon
       5millions: 5 juta kunjungan sebulan
       all_support: Bantuan berasaskan web, e-mel, sembang dan telefon
+      basic: Asas
       basic_restrictions: Tiada iklan tempahan dan tiada UI yang boleh ditempah sepenuhnya
+      basic_styling: Wajah & suasana tersendiri
+      basic_styling_tip: Ubah skim warna tapak web anda dengan mudah, gunakan logo anda sendiri dan juga ubah kod CSS-nya.
       big_sites: Tapak trafik besar
       custom_ads: Gunakan iklan sendiri
+      custom_ads_tip: Tambahkan rezeki dengan menggunakan iklan sendiri!
       custom_analytics: Statistik trafik
+      custom_analytics_tip: Gunakan Google Analytics untuk lebih mengenali pengunjung-pengunjung anda.
       custom_domain: Domain tempahan
+      custom_domain_tip: Gunakan domain anda sendiri seperti syarikat-anda.com sebagai ganti syarikat-anda.shapado.com
+      custom_html: HTML suaian
+      custom_html_tip: Ubah suai seluruh kod HTML bagi tapak web anda agar penampilannya seperti yang anda inginkan.
+      custom_js: Tambahkan JavaScript sendiri
+      custom_js_tip: Gunakan kod JavaScript yang anda sesuaikan sendiri, seperti widget multimedia atau pemalam jQuery.
       custom_themes: Manfaatkan tema tempahan yang kami sediakan
       custom_ui: UI yang boleh ditempah sepenuhnya
       free_plan: pelan percuma
       getting_popular: Makin popular
       huge_sites: Tapak trafik besar
+      maximum: Maksimum
       month: bulan
+      optimum: Optimum
       page_views: Untuk tapak Kecil/Persendirian
       plans: Pelan
+      plus: Plus
+      premium: Premium
+      private: Persendirian
+      private_private: Akses terhad
       private_site: Bolehkan capaian persendirian/awam
-      start_monetizing: mulakan pengewangan
+      private_tip: Hanya anda dan pengguna-pengguna yang anda jemput ke tapak web anda dibenarkan akses. Sesuai sekali untuk perusahaan,
+      small_basic: Permulaan
+      start_monetizing: Mulakan pengewangan
       support: Bantuan
       title: Pelan dan harga
       unlimited: Trafik tanpa had setiap bulan
+      user: pengguna
       we_offer: Kami juga menawarkan
       web_support: Sokongan berasaskan web
       with_unlimited: dengan trafik tanpa had, tanpa iklan tempahan, tanpa domain tempahan.

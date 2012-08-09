@@ -27,6 +27,8 @@ nl:
         title: Aangepaste inhoud
         top_bar: Balk bovenaan
         top_bar_tip: Voer een verwijzing per regel in
+      edit_card: 
+        button: Creditcard bijwerken
       invitations: 
         invitations: Verzonden uitnodigingen
         invitations_title: Lijst met alle de uitnodigingen die u hebt verzonden

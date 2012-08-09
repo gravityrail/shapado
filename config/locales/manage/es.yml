@@ -1,6 +1,7 @@
 # Messages for Spanish (español)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Armando-Martin
 # Author: Crazymadlover
 # Author: Mor
 # Author: Patcito
@@ -27,6 +28,8 @@ es:
         title: Contenido personalizado
         top_bar: Barra superior
         top_bar_tip: Introduzca un enlace por línea
+      edit_card: 
+        button: Actualizar tu tarjeta de crédito
       invitations: 
         invitations: Invitaciones enviadas
         invitations_title: Lista de todas las invitaciones que ha enviado usted
@@ -50,8 +53,8 @@ es:
           instruction2: Ahi, tienes que ir a la seccion DNS y crear un CNAME.
           instruction3: Dale un nombre como 'www' a tu CNAME, puede ser cualquier cosa.
           instruction4: "Ahora en el campo 'host' o 'destinacion', ingresa tu dominio shapado actual: %{domain}."
-          instruction5: Despues de un par de horas, tu dominio www.%{subdomain} deberia apuntar a %{appdomain}.
-          instruction6: Si es que apunta bien, ahora regresa aqui y entra tu nombre de dominio www.%{subdomain} en el campo de texto aqui a bajo y presiona el boton para actualizar. Si tienes preguntas, puedes hablarnos en el %{chat_url} o en el foro de soporte
+          instruction5: En un par de horas, tu dominio %{subdomain} debería apuntar a %{appdomain}.
+          instruction6: Cuando esto suceda, regresa aquí y entra tu nombre de dominio %{subdomain} en el campo de texto de abajo y presiona el botón 'Actualizar'. Si tienes preguntas, puedes hablarnos en el %{chat_url} o en nuestro foro de ayuda.
           title: Configure su dominio personalizado
           warning: Estas seguro de querer cambiar tu dominio?
         facebook_app: 

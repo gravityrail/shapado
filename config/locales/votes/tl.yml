@@ -8,6 +8,16 @@ tl:
       vote: Boto
       votes: Mga boto
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Tanging %{count} tagagamit lamang ang bumoto nang paitaas sa punang ito, pindutin upang iboto rin ito nang paitaas.
+          other: Mahigit kaysa sa %{count} mga tao ang bumoto nang paitaas sa punang ito, pindutin upang iboto rin ito nang paitaas.
+          zero: Pindutin upang iboto nang paitaas ang punang ito.
+        has_user_vote: 
+          one: Ikaw at %{count} ibang tagagamit ang bumoto nang paitaas sa punang ito.
+          other: Ikaw at %{count} iba pang mga tagagamit ang bumoto nang paitaas sa punang ito.
+          zero: Ikaw lamang ang bumoto nang paitaas sa punang ito.
     control: 
       have_voted_down: Pindutin upang tanggalin ang pababa mong boto
       have_voted_up: Pindutin upang tanggalin ang boto mong paitaas

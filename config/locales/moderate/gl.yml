@@ -14,7 +14,7 @@ gl:
         content: Contido
         flagged: Preguntas marcadas
         item_title: Título
-        need_tags: Necesita etiquetas
+        need_tags: Cambiar as etiquetas
         title: Moderar
       opening: 
         title: Abrir unha pregunta

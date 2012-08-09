@@ -10,4 +10,4 @@ ms:
       title: "Soalan yang ditag: %{tags}"
     show_json: 
       edit_it: Nyatakan keterangan bagi tag ini.
-      no_description: Tag ini belum ada keterangan.
+      no_description: Keterangan belum tersedia untuk tag ini.

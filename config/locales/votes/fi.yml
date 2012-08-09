@@ -10,6 +10,16 @@ fi:
       vote: Ääni
       votes: Äänet
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Vain %{count} käyttäjää on kannattanut tätä kommenttia, napsauta sitä myös kannattamiseksi.
+          other: Yli %{count} henkilöä on kannattanut tätä kommenttia, napsauta sitä kannattaaksesi sitä myös.
+          zero: Napsauta tämän kommentin kannattamiseksi.
+        has_user_vote: 
+          one: Sinä ja %{count} muu käyttäjä on äänestänyt tämän kommentin puolesta.
+          other: Sinä ja %{count} muuta käyttäjää on äänestänyt tämän kommentin puolesta.
+          zero: Vain sinä olet äänestänyt tämän kommentin puolesta.
     control: 
       have_voted_down: Peru hylkäämisäänesi napsauttamalla
       have_voted_up: Peru kannatusäänesi napsauttamalla

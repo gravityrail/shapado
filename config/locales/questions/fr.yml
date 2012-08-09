@@ -104,6 +104,7 @@ fr:
       has_answers: 
         one: "%{count} réponse"
         other: "%{count} réponses"
+      retag: Marquer de nouveau
       wiki_title: "Wiki : %{title}"
     retag: 
       title: Modifier les tags

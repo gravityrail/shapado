@@ -26,6 +26,7 @@ fi:
     by_semi: "Tekijä:"
     chat: Keskustelu
     current: Nykyinen
+    downgrade_to_free: Downgrade ilmaiseksi
     edited: muokattu
     edited_by: Muokkaaja
     edited_by_semi: "Muokkaaja:"
@@ -52,6 +53,7 @@ fi:
     tos: Palvelun säännöt
     unfollow: Lopeta seuraaminen
     unknown_place: Tuntematon
+    upgrade: Päivitys
     view: Näytä
     view_question: Näytä kysymys
     what_to_do: Mitä haluat tehdä?

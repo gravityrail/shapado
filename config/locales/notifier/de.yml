@@ -8,28 +8,28 @@ de:
       message1: Nutzer %{user} hat sich um %{time} Uhr über die %{ip} als Administrator angemeldet.
       subject: "Warnung: Administratorverbindung"
     created_flag: 
-      message1: Du erhältst diese Nachricht, da Du ein Moderator bei %{group} bis.
+      message1: Du erhältst diese Nachricht, da du ein Moderator bei %{group} bist.
       message2: "Ein Beitrag wurde aus folgendem Grund gemeldet:"
       message2bis: Du kannst den gekennzeichneten Beitrag hier lesen.
-      message2bistext: "Du kannst den gekennzeichneten Beitrag lesen, indem Du den folgenden Link anklickst:"
+      message2bistext: "Du kannst den gekennzeichneten Beitrag lesen, indem du den folgenden Link anklickst:"
       message3: "Gehe zur Moderationsseite, um die Liste der gekennzeichneten Beiträge anzusehen:"
       message4: "Besuche die Moderationsseite, um die Liste der gekennzeichneten Beiträge anzusehen:"
     earned_badge: 
       message1: Du hast ein %{badge}-Abzeichen auf %{app} erhalten.
       message2: "Beschreibung des Abzeichens:"
-      message3: Du kannst alle Deine Abzeichen auf Deiner %{user_page} ansehen.
+      message3: Du kannst alle deine Abzeichen auf deiner %{user_page} ansehen.
     favorited: 
-      message1: "%{user} hat Deine Antwort in der Gruppe %{group} als Favorit gespeichert"
+      message1: "%{user} hat deine Antwort in der Gruppe %{group} als Favorit gespeichert"
       message2: "Die Frage lautete:"
       message3: "Du kannst es hier sehen:"
     follow: 
-      message1: "%{user} beachtet nun Deine Fragen und Antworten auf %{app}"
-      message2: Du kannst ihn beachten, indem Du auf die Schaltfläche „Beachten“ auf seiner %{user_page} klickst
+      message1: "%{user} beachtet nun deine Fragen und Antworten auf %{app}"
+      message2: Du kannst ihn beachten, indem du auf die Schaltfläche „Beachten“ auf seiner %{user_page} klickst
     give_advice: 
-      message1: "%{user} hat gerade eine Frage gestellt, die Du vielleicht beantworten kannst:"
+      message1: "%{user} hat gerade eine Frage gestellt, die du vielleicht beantworten kannst:"
       message2: "Um zu Antworten, erwidere die Nachricht hier:"
-      message3: "Oder, wenn Du jemanden kennst, der die Frage beantworten könnte, schicke ihm diesen Link:"
-      message4: Sofern wir von Dir nicht bald eine Antwort erhalten, werden wir jemand anderen fragen. Dennoch kannst Du antworten, wann immer Du möchtest.
+      message3: "Oder, wenn du jemanden kennst, der die Frage beantworten könnte, schicke ihm diesen Link:"
+      message4: Sofern wir von dir nicht bald eine Antwort erhalten, werden wir jemand anderen fragen. Dennoch kannst du antworten, wann immer du möchtest.
     global: 
       hi: Hallo %{user},
       hi_no_user: Hallo,
@@ -47,7 +47,7 @@ de:
       message1: "Klicke folgenden Link an, um die Einladung anzunehmen: %{link}"
       message2: Das %{group}-Team.
       message3: "Eine Nachricht vom Einladenden:"
-      subject: "%{user} hat Dich nach %{group} eingeladen"
+      subject: "%{user} hat dich nach %{group} eingeladen"
     report: 
       message1: Bericht für Gruppe %{group}
       message2: Seit %{date}
@@ -56,4 +56,4 @@ de:
       message5: "%{votes} Bewertungen wurden abgegeben"
       message6: "%{badges} Abzeichen wurden vergeben"
       message7: Das Konto hat %{users} Nutzer.
-      message8: Besuche Deine Gruppe unter %{link}
+      message8: Besuche deine Gruppe unter %{link}

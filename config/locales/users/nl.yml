@@ -52,6 +52,7 @@ nl:
       submit: Mijn wachtwoord wijzigen
       title: Wachtwoord wijzigen
     check_custom_domain: 
+      refresh: Vernieuw deze pagina om het opnieuw te proberen.
       reset_domain_button: Nee, stel mijn domein opnieuw in op %{domain}
       title: Werkt uw eigen domein?
       working_domain_link: Ja, ik zie hier beneden dat mijn nieuwe domein werkt.
