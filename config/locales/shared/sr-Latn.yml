@@ -8,11 +8,12 @@ sr-Latn:
     by_anon: Anonimno
     current_tags: 
       title: Izabrane oznake
+    date: Datum
     description: Opis
     empty: 
       activities: 
         description: 
-          text: Ovo mesto će biti samostalno popunjeno kada posetioci počnu da koriste mrežno mesto.
+          text: Ovo mesto će biti samostalno popunjeno kada posetioci počnu da koriste sajt.
         title: Zasad nema aktivnosti.
       answers: 
         description: 
@@ -32,7 +33,7 @@ sr-Latn:
         title: Nažalost, nema pitanja u ovom filteru.
       questions: 
         description: 
-          text: Budite prvi koji će <a href="%{url}"> %{action_link}<a/>!
+          text: Budite prvi koji će <a href="%{url}">postaviti pitanje<a/>!
       themes: 
         description: 
           action_link: sada
@@ -47,6 +48,7 @@ sr-Latn:
         cc_footer: Svi podaci i sadržaj na Šapadu su dostupni pod licencom %{cc_link}
         powered_by: Pokreće %{source_link} %{version} pod %{agpl_link}
     login_drop_down: 
+      openid_url: Adresa OpenID-ja
       sign_up_user_pass: Otvorite nalog s e-adresom/lozinkom
       with_email_pass: Prijavite se preko e-pošte
       with_facebook: preko Fejsbuka
@@ -68,6 +70,7 @@ sr-Latn:
       find_friends_identica: Pronađi prijatelje na Identici
       find_friends_linked_in: Pronađi prijatelje na Linkedinu
       find_friends_twitter: Pronađi prijatelje na Tviteru
+      or_connect: "Ili se povežite sa:"
     topbar: 
       admin: Administrator
       logged_as: Prijavljen kao %{login}

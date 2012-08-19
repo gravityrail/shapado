@@ -10,4 +10,4 @@ sr:
       title: "Питања означена са: %{tags}"
     show_json: 
       edit_it: Додајте опис за ознаку.
-      no_description: Ове ознаке још немају опис.
+      no_description: Ова ознака још нема опис.

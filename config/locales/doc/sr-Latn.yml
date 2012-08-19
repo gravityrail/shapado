@@ -12,24 +12,43 @@ sr-Latn:
       247_all_support: Na stranicama, preko e-pošte, ćaskanja i telefonski (24 č. dnevno)
       5millions: Pet miliona pregleda stranica mesečno
       all_support: Na stranicama, preko e-pošte, ćaskanja i telefonski
+      basic: Osnovni
       basic_restrictions: Bez oglasa po izboru i prilagodljivog sučelja
+      basic_styling: Lično prilagođen izgled i osećaj
+      basic_styling_tip: Lako promenite boju vašeg sajta. Možete da dodate i svoj logotip, pa i da izmenite CSS kôd.
       big_sites: Visokoprometna mrežna mesta
       custom_ads: Koristite sopstvene oglase
+      custom_ads_tip: Koristite sopstvene oglase i počnite da zarađujete!
       custom_analytics: Statistike prometa
+      custom_analytics_tip: Koristite Gugl analitiku da bolje upoznate vaše posetioce.
       custom_domain: Prilagođeni domen
+      custom_domain_tip: Koristite sopstveni domen, npr. vasa-firma.com umesto vasa-firma.shapado.com
+      custom_html: Prilagođeni HTML
+      custom_html_tip: Celokupna prepravka HTML koda vašeg sajta – tako da izgleda baš kako vi želite.
+      custom_js: Dodajte svoj javaskript
+      custom_js_tip: Dodajte prilagođeni javaskript kod kao što su multimedijalni elementi ili jQuery priključci.
       custom_themes: Koristite naše prilagođene teme
       custom_ui: Potpuno prilagodljivo sučelje
       free_plan: besplatan plan
       getting_popular: Sticanje popularnosti
       huge_sites: Mrežna mesta s ogromnim prometom
+      maximum: Maksimalan
       month: mesec
+      optimum: Optimalan
       page_views: Za mala/privatna mrežna mesta
       plans: Planovi
+      plus: Plus
+      premium: Premijum
+      private: Privatan
+      private_private: Ograničen pristup
       private_site: Omogući privatni/javni pristup
-      start_monetizing: počnite da zarađujete
+      private_tip: Pristup ćete imati samo vi i oni koje pozovete na sajt. Savršeno za preduzetništvo.
+      small_basic: Uvod
+      start_monetizing: Počnite da zarađujete
       support: Podrška
       title: Planovi i cene
       unlimited: Neograničeni mesečni promet
+      user: korisnik
       we_offer: Nudimo vam i
       web_support: Podrška na mrežnim stranicama
       with_unlimited: s neograničenim prometom, bez reklama i prilagođenih domena.

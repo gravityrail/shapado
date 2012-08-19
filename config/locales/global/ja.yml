@@ -14,7 +14,7 @@ ja:
     user: このユーザの質問をフィードで購読
   global: 
     active: 有効化
-    by: によって
+    by: by
     current: 現在
     from: "%{site}から"
     group_not_found: このページ%{url}はありません

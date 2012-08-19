@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Gemmaa
+# Author: Oç
 # Author: Papapep
 ca: 
   admin: 
@@ -85,7 +86,7 @@ ca:
           reputation_rewards_subtitle: Llista de recompenses de reputació
           title: Recompenses
         share: 
-          title: Comparteix
+          title: Compartiu
         tag_your_tweets: 
           add_tags: Afegeix etiquetes al seu tweets
           ends_with_example: "e.g. #shapado"

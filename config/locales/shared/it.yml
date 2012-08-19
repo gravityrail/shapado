@@ -4,6 +4,7 @@
 # Author: Beta16
 # Author: Danmaz74
 # Author: Giallu
+# Author: GreenFox
 # Author: HalphaZ
 it: 
   shared: 
@@ -73,6 +74,7 @@ it:
       find_friends_identica: Trova amici su Identi.ca
       find_friends_linked_in: Trova amici su LinkedIn
       find_friends_twitter: Trova amici su Twitter
+      or_connect: "Oppure connetti con:"
     topbar: 
       admin: Amministrazione
       logged_as: Collegato come %{login}

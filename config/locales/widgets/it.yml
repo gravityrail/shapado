@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Danmaz74
 # Author: Giallu
+# Author: GreenFox
 # Author: Nemo bis
 it: 
   widgets: 
@@ -76,6 +77,7 @@ it:
       title: Domande correlate
     settings: 
       code: "Copia e incolla questo codice sul tuo sito o blog, come un widget in Wordpress:"
+      content: "Inserisci il codice HTML che desideri qui:"
       custom_external_css: "Includi CSS personalizzati per il tuo widget (consigliato se stai escludendo il CSS Shapado):"
       custom_html: "Html personalizzato:"
       exclude_css_on_external: Escludi il CSS del sito shapado dal tuo widget

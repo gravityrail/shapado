@@ -8,6 +8,7 @@ sr:
     by_anon: Анонимно
     current_tags: 
       title: Изабране ознаке
+    date: Датум
     description: Опис
     empty: 
       activities: 
@@ -32,7 +33,7 @@ sr:
         title: Нажалост, нема питања у овом филтеру.
       questions: 
         description: 
-          text: Будите први који ће <a href="%{url}"> %{action_link}<a/>!
+          text: Будите први који ће <a href="%{url}">поставити питање<a/>!
       themes: 
         description: 
           action_link: сада
@@ -47,6 +48,7 @@ sr:
         cc_footer: Сви подаци и садржај на Шападу су доступни под лиценцом %{cc_link}
         powered_by: Покреће %{source_link} %{version} под %{agpl_link}
     login_drop_down: 
+      openid_url: Адреса OpenID-ја
       sign_up_user_pass: Отворите налог с е-адресом/лозинком
       with_email_pass: Пријавите се преко е-поште
       with_facebook: преко Фејсбука
@@ -68,6 +70,7 @@ sr:
       find_friends_identica: Пронађи пријатеље на Идентици
       find_friends_linked_in: Пронађи пријатеље на Линкедину
       find_friends_twitter: Пронађи пријатеље на Твитеру
+      or_connect: "Или се повежите са:"
     topbar: 
       admin: Администратор
       logged_as: Пријављен као %{login}

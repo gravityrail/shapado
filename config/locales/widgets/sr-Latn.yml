@@ -41,7 +41,7 @@ sr-Latn:
       add_new: Dodaj novi element
       description: Elemente pomerate uz pomoć strelica.
       external_widgets: Spoljašnje
-      external_widgets_title: Elementi koje ćete moći da ugradite na mrežno mesto
+      external_widgets_title: Elementi koje ćete moći da ugradite na sajt
       footer: Podnožje
       header: Zaglavlje
       mainlist_widgets: Glavni spisak
@@ -73,7 +73,8 @@ sr-Latn:
       description: Ovaj element prikazuje spisak pitanja koja su srodna s tekućim pitanjem.
       title: Srodna pitanja
     settings: 
-      code: "Umnožite kod na vaše mrežno mesto ili blog:"
+      code: "Umnožite kod na vaš sajt ili blog:"
+      content: "Ovde stavite HTML kod po želji:"
       custom_external_css: "Uključite prilagođeni CSS u vaš element (preoručuje se ako ne uključujete CSS iz Šapada):"
       custom_html: "Prilagođeni HTML:"
       exclude_css_on_external: Izuzmi CSS na Šapadu iz vašeg elementa

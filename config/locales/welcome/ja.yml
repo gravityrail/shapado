@@ -10,14 +10,18 @@ ja:
       under_18: 私は18歳未満です
       warning: 警告：このページは成人向けの内容を含んでいます。
     feedback: 
-      captcha_error: スパム防止のため、簡単な計算を行ってください
+      captcha_error: 正しい CAPTCHA と有効なメール アドレスを入力したことを確認してください。
+      captcha_notice: フィードバックをいただいてありがとうございます。できるだけ早くお返事します。
       email_description: 返信できるように、あなたのメールアドレスを入力してください
       feedback_description: 説明
       feedback_title: タイトル
       title: フィードバックを送信
     index: 
       active: アクティブ
+      browse_all_or_by_tags: "%{full_list_of_questions}または%{browse_by_tags}をご覧ください"
+      browse_by_tags: タグで参照
       create_own_site: 自分のQ&amp;Aサイトを作ってみませんか？たった10秒で作成、しかも無料！
+      full_list_of_questions: 質問の完全な一覧
       hot: ホット
       quick_question: 質問してみましょう、きっと誰かが教えてくれるはず！
       recent_questions: 最近の質問

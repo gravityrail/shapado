@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Gemmaa
 # Author: Martorell
+# Author: Oç
 # Author: Papapep
 # Author: SMP
 ca: 
@@ -41,7 +42,7 @@ ca:
     preview: Previsualització
     previous: Anterior
     privacy: Privacitat
-    share: compateix
+    share: compartiu
     sign_up: Registra't
     size: Mida
     sort_by: "Ordenar per:"

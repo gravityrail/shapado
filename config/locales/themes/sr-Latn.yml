@@ -7,16 +7,22 @@ sr-Latn:
     edit: 
       title: Uređivanje teme
     form: 
-      bg_color_legend: Zadajte boju pozadine. Budite sigurni za kontrast vašeg programa.
+      bg_color_legend: Izaberite boju pozadine. Obratite pažnju da se razlikuje od ostatka programa.
       bg_image_legend: "Ova slika će biti prikazana kao pozadina svake stranice. Veličina može biti najviše 800 kB. Dozvoljeni formati su: GIF, JPG i PNG."
       colors_and_bg: Boje i pozadine
       custom_css_legend: Ako vam je poznat jezik CSS, koristite ga da prilagodite izgled svog mrežnog mesta. Možete koristiti običan CSS ili SCSS.
       fluid_layout: Prilagodljivi raspored
       fluid_layout_legend: Prilagodljiv raspored menja širinu svakog elementa zavisno od toga kako vidite izvornu stranicu umesto sadržajnog elementa. Drugim rečima, kada menjate veličinu prozora ili se prebacite na uređaj s malim ekranom, veličina rasporeda će se prilagoditi situaciji.
+      layout_html: Dodajte svoj prilagođeni šablon za raspored
       main_color_legend: Ovo je najprisutnija boja na svim stranicama. Izaberite onu koja će odgovarati vašoj marki ili zajednici.
       modules_color_legend: Postarajte se da ova i glavna boja lepo stoje jedna uz drugu.
+      questions_index_html: Dodajte svoj prilagođeni šablon za popis pitanja
+      questions_show_html: Dodajte svoj prilagođeni šablon za prikaz pitanja
       submit_update: Ažuriraj temu
       text_color_legend: Tekst treba da bude čitljiv. Boja pozadine ne sme uticati na njegovu čitljivost.
+      title: Uređujete temu, pa zato obratite pažnju da li su boja i pozadina skladni.
+      topbar_color: Pozadinska boja gornje trake
+      topbar_color_legend: Izaberite pozadinsku boju gornje trake.
       update: Ažuriraj temu
     index: 
       description: Ovde pronađite teme i promenite izgled vašeg programa.

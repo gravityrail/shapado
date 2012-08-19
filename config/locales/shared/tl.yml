@@ -26,10 +26,12 @@ tl:
       filtered_by_language_questions: 
         description: 
           action_link: Pindutin dito upang makita ang mga tanong na nasa lahat ng mga wika.
+          text: <a href='%{url}' class='lang-option', data-language='any' > %{action_link}</a>
         title: Paumanhin, walang makukuhang mga katanungan na nasa ganitong wika.
       filtered_questions: 
         description: 
           action_link: Pindutin dito upang maipakita ang lahat ng mga tanong
+          text: <a href='%{url}'>%{action_link}</a>
         title: Paumanhin, walang makukuhang mga katanungan na nasa pansalang ito.
       questions: 
         description: 

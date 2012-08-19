@@ -24,7 +24,7 @@ sr-Latn:
       title: Značke
     shared: 
       addict: 
-        description: Posetio mrežno mesto dvadeset dana zaredom
+        description: Posetio sajt dvadeset dana zaredom
         name: Zavisnik
       altruist: 
         description: Prva nagrada koju ste ručno dodelili za nečije pitanje
@@ -69,7 +69,7 @@ sr-Latn:
         description: Postavio pitanje sa 10.000 pregleda
         name: Poznato pitanje
       fanatic: 
-        description: Posetio mrežno mesto 100 dana zaredom
+        description: Posetio sajt sto dana zaredom
         name: Fanatik
       favorite_answer: 
         description: Ima odgovor koji je omiljen za 25 korisnika
@@ -153,7 +153,7 @@ sr-Latn:
         description: Ima trista pozitivnih glasova
         name: Medalja za službu
       shapado: 
-        description: Posetio mrežno mesto osam dana zaredom
+        description: Posetio sajt osam dana zaredom
       stellar_answer: 
         description: Ima odgovor koji je omiljen za 100 korisnika
         name: Zvezdani odgovor

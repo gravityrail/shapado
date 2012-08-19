@@ -74,6 +74,7 @@ sr:
       title: Сродна питања
     settings: 
       code: "Умножите код на ваш сајт или блог:"
+      content: "Овде ставите HTML код по жељи:"
       custom_external_css: "Укључите прилагођени CSS у ваш елемент (преоручује се ако не укључујете CSS из Шапада):"
       custom_html: "Прилагођени HTML:"
       exclude_css_on_external: Изузми CSS на Шападу из вашег елемента

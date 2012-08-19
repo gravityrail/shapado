@@ -22,7 +22,7 @@ ja:
         language: 言語
         language_filter: 言語でフィルタリング
         last_logged_at: 最新ログイン時間
-        login: ユーザ名
+        login: ユーザー名
         name: 名前（表示名）
         password: パスワード
         password_confirmation: パスワード（確認入力）
@@ -60,7 +60,7 @@ ja:
       give_advice_notification: 自分の専門分野に対する質問が登録されたらメールで通知する
       information: 設定の編集
       new_answer_notification: 新しい回答を受け取ったらメールで通知する
-      notifications: 通知の設定
+      notifications: 通知
       reports_notification: グループに関する新しい活動レポートを受け取る（グループ管理者のみ）
       show_more_lang: 他の言語を表示
     index: 

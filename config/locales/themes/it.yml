@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Danmaz74
+# Author: GreenFox
 # Author: Rippitippi
 it: 
   themes: 
@@ -14,10 +15,13 @@ it:
       custom_css_legend: Se conosci il linguaggio CSS, usalo per personalizzare lo stile del tuo sito. È possibile utilizzare normale CSS o SCSS.
       fluid_layout: Layout fluido
       fluid_layout_legend: Un layout fluido renderà la larghezza di ogni elemento della pagina dipendente dalla viewport piurttosto che dall'elemento contenitore iniziale. In altre parole, quando viene ridimensionato il browser o si passa ad un apparecchio con schermo piccolo, il layout si muoverà dentro e fuori.
+      layout_html: Aggiungi il tuo template personale per il layout
       main_color_legend: Questo è uno dei colori più utilizzati su ogni pagina, assicurati di scegliere quello giusto per il tuo brand o comunità.
       modules_color_legend: Assicurati che questo colore e il colore principale stiano bene insieme.
       submit_update: Aggiorna il tema
       text_color_legend: Assicurati che il testo sia leggibile e compatibile con il colore di sfondo.
+      topbar_color: Colore di sfondo della barra superiore
+      topbar_color_legend: Scegli il colore di sfondo della barra superiore.
       update: Aggiorna il tema
     index: 
       description: Trova qui tutte il tema e cambia l'aspetto della tua applicazione.

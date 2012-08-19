@@ -21,7 +21,7 @@ ko:
         language: 언어
         language_filter: 언어별 필터
         last_logged_at: seen
-        login: 사용자 ID
+        login: 사용자 이름
         name: 실명
         password: 패스워드
         password_confirmation: 패스워드 확인

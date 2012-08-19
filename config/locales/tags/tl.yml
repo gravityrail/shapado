@@ -10,4 +10,4 @@ tl:
       title: "Natatakang mga tanong: %{tags}"
     show_json: 
       edit_it: Magdagdag ng isang paglalarawan para sa tatak na ito.
-      no_description: Wala pang paglalarawan ang tatak na ito.
+      no_description: Wala pang paglalarawan na makukuha para sa tatak na ito.

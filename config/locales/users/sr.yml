@@ -49,6 +49,7 @@ sr:
       submit: Промени лозинку
       title: Промена лозинке
     check_custom_domain: 
+      refresh: Покушајте да поново учитате ову страницу.
       reset_domain_button: Не ради. Користи домен %{domain}
       title: Да ли ради ваш нови прилагођени домен?
       working_domain_link: Да. Испод могу да видим како нови домен ради.

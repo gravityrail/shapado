@@ -99,6 +99,7 @@ sr-Latn:
       has_answers: 
         one: "%{count} odgovor"
         other: "%{count} odgovora"
+      retag: Ponovo označi
       wiki_title: "Viki: %{title}"
     retag: 
       title: Ponovno označavanje
@@ -138,11 +139,11 @@ sr-Latn:
       related_questions: Srodna pitanja
       request_closing: Zahtevaj zatvaranje
       request_closing_details: Zahtevajte zatvaranje ovog pitanja
-      request_opening: Zahtevaj ponovno otvaranje
+      request_opening: Zatraži ponovno otvaranje
       request_opening_details: Zahtevaj ponovno otvaranje pitanja
       requested_close_as: Zahtevali ste zatvaranje pitanja kao
       requested_reopening: Zahtevali ste ponovno otvaranje pitanja
-      retag: Preoznači
+      retag: Ponovo označi
       retract_request: Povuci zahtev
       share: Delite ovo pitanje na
       share_on: Delite ovo pitanje na %{site}

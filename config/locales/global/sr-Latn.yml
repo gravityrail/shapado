@@ -14,17 +14,18 @@ sr-Latn:
   global: 
     actions: Radnje
     active: Aktiviraj
-    alphabetically: Abecedno
+    alphabetically: Azbučno
     anonymous: Anonimno
     blog: Blog
     by: od
     by_semi: "Od:"
     chat: Ćaskanje
     current: Tekuće
+    downgrade_to_free: Vrati na besplatno
     edited: Uređeno
     edited_by: "Uredio:"
     edited_by_semi: "Uredio:"
-    feedback: Mišljenja
+    feedback: Povratne informacije
     follow: Prati
     followed_by: "Pratioci:"
     following: Pratim
@@ -47,6 +48,7 @@ sr-Latn:
     tos: Uslovi
     unfollow: Prestani s praćenjem
     unknown_place: Nepoznato
+    upgrade: Dogradi
     view: Pogledaj
     view_question: Pogledaj pitanje
     what_to_do: Šta želite da uradite?

@@ -1,6 +1,7 @@
 # Messages for Swedish (svenska)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Fader
 # Author: The real emj
 # Author: Tobulos1
 sv: 
@@ -18,15 +19,18 @@ sv:
     anonymous: Anonym
     blog: Blogg
     by: av
+    by_semi: "Av:"
     chat: Chatt
     current: Nuvarande
     edited: Ändrad
+    edited_by_semi: "Redigerad av:"
     feedback: Återkoppling
     follow: Följ
     followed_by: "Följd av:"
     following: Följer
     from: från %{site}
     group_not_found: Sidans %{url} existerar inte
+    home: Hem
     next_button: Nästa
     or: eller
     permission_denied: Tillgång nekad
@@ -35,11 +39,13 @@ sv:
     previous: Föregående
     share: Dela
     sign_up: Registrera dig
+    size: Storlek
     sort_by: "Sortera på:"
     tags_label: "Taggar:"
     tos: Användarvilkor
     unfollow: Sluta följ
     unknown_place: okänd
+    upgrade: Uppgradera
     view: Visa
     view_question: Visa fråga
     what_to_do: Vad vill du göra
@@ -53,8 +59,13 @@ sv:
   preferred_languages: 
     any: Alla
     user: Min föredragna språk
+  roles: 
+    moderator: Moderator
+    owner: Ägare
+    user: Vanlig användare
   scaffold: 
     add: Lägg till
+    are_you_sure: Är du säker?
     back: Tillbaka
     cancel: Avbryt
     close: Stäng
@@ -73,3 +84,7 @@ sv:
   time: 
     ago: "%{time} sedan"
     today: idag
+  views: 
+    pagination: 
+      next: Nästa &raquo;
+      previous: "&laquo; Föregående"

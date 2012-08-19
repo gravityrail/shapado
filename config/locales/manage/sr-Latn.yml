@@ -25,6 +25,8 @@ sr-Latn:
         title: Prilagođeni sadržaj
         top_bar: Gornja traka
         top_bar_tip: Unesite jednu vezu po redu
+      edit_card: 
+        button: Ažuriraj podatke kreditne kartice
       invitations: 
         invitations: Poslate pozivnice
         invitations_title: Spisak svih poslatih pozivnica
@@ -48,8 +50,8 @@ sr-Latn:
           instruction2: Tamo treba da idete na odeljak DNS i napravite nešto što se zove CNAME.
           instruction3: Izaberite „www“ ili bilo šta drugo kao naziv za vaš CNAME.
           instruction4: "Potom u polje za domaćina ili odredište unesite tekući domen na Šapadu: %{domain}."
-          instruction5: Kada završite s ovim, posle oko sat vremena, vaš domen www.%{subdomain} trebalo bi da vodi do %{appdomain}.
-          instruction6: Kada dođe do toga, vratite se ovde i unesite naziv domena www.%{subdomain} u polje ispod i kliknite na dugme „ažuriraj“. Ako imate pitanja, postavite ih na %{chat_url} ili na našem forumu za podršku.
+          instruction5: Kada završite s ovim, posle otprilike sat vremena, vaš domen %{subdomain} trebalo bi da vodi do %{appdomain}.
+          instruction6: Kada dođe do toga, vratite se ovde i unesite naziv domena %{subdomain} u polje ispod i kliknite na dugme „ažuriraj“. Ako imate pitanja, postavite ih na %{chat_url} ili na našem forumu za podršku.
           title: Podesite svoj domen
           warning: Želite li da promenite svoj domen?
         facebook_app: 
@@ -121,5 +123,5 @@ sr-Latn:
         twitter_account: Nalog na Tviteru
         twitter_account_title: Podesite nalog na Tviteru tako da objavljuje poruke na njega
       top_admin: 
-        site: Mrežno mesto
+        site: Sajt
         title: Administrator

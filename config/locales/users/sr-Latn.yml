@@ -18,7 +18,7 @@ sr-Latn:
         fullname: Ime i prezime
         hide_country: Ne prikazuj iz koje sam zemlje
         language: Jezik
-        language_filter: Svrstaj po jeziku
+        language_filter: Filtriraj po jeziku
         last_logged_at: viđen
         login: Korisničko ime
         name: Pravo ime
@@ -29,7 +29,7 @@ sr-Latn:
         reputation: Ugled
         timezone: Vremenska zona
         updated_at: "ažurirano:"
-        website: Mrežno mesto
+        website: Sajt
     models: 
       user: Korisnik
       users: Korisnici
@@ -49,6 +49,7 @@ sr-Latn:
       submit: Promeni lozinku
       title: Promena lozinke
     check_custom_domain: 
+      refresh: Pokušajte da ponovo učitate ovu stranicu.
       reset_domain_button: Ne radi. Koristi domen %{domain}
       title: Da li radi vaš novi prilagođeni domen?
       working_domain_link: Da. Ispod mogu da vidim kako novi domen radi.
@@ -85,13 +86,13 @@ sr-Latn:
       empty: Ova grupa nema članova. Učestvujte tako što ćete se pridružiti grupi.
       filter: Pretraži korisnike
       name: Ime
-      name_tooltip: Korisnici poređani po abecednom redu
+      name_tooltip: Korisnici poređani po azbučnom redu
       near: U vašoj blizini
       near_tooltip: Korisnici u vašoj blizini
       newest: Najnoviji
       newest_tooltip: Tek upisani korisnici
       oldest: Najstariji
-      oldest_tooltip: Prvi učlanjeni korisnici
+      oldest_tooltip: Prvi registrovani korisnici
       reputation: Ugled
       reputation_tooltip: Korisnici poređani po najvišem ugledu
       title: Svi korisnici

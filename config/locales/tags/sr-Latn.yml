@@ -10,4 +10,4 @@ sr-Latn:
       title: "Pitanja označena sa: %{tags}"
     show_json: 
       edit_it: Dodajte opis za oznaku.
-      no_description: Ove oznake još nemaju opis.
+      no_description: Ova oznaka još nema opis.

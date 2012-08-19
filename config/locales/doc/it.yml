@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Beta16
 # Author: Danmaz74
+# Author: GreenFox
 # Author: Rippitippi
 # Author: Tuxwet
 it: 
@@ -17,10 +18,17 @@ it:
       all_support: Supporto basato su web, email, chat e telefono
       basic: Base
       basic_restrictions: Niente pubblicità personalizzate e niente UI completamente personalizzabile
+      basic_styling_tip: Modifica facilmente la gamma dei colori del tuo sito, aggiungi il tuo logo personale e modifica anche il codice CSS.
       big_sites: Siti con grande traffico
       custom_ads: Usa i tuoi annunci pubblicitari
+      custom_ads_tip: Utilizza le tue pubblicità personali e comincia a guadagnare!
       custom_analytics: Statistiche di traffico
+      custom_analytics_tip: Utilizza Google Analytics ed impara a conoscere meglio i tuoi visitatori.
       custom_domain: Dominio personalizzato
+      custom_domain_tip: Utilizzate il vostro dominio personale, come vostra-società.com, anzichè vostra-società.shapado.com
+      custom_html: HTML personalizzato
+      custom_js: Aggiungi il tuo JavaScript personale
+      custom_js_tip: Aggiungi il tuo codice JavaScript personale, come dei widgets multimediali o delle estensioni jQuery.
       custom_themes: Utilizza i nostri temi personalizzati già fatti
       custom_ui: Interfaccia utente completamente personalizzabile
       free_plan: Piano gratuito
@@ -33,6 +41,7 @@ it:
       private: Privato
       private_private: Accesso limitato
       private_site: Abilitare accesso pubblico/privato
+      private_tip: Soltanto voi e gli utenti che voi invitate sul vostro sito hanno un accesso autorizzato. Perfetto per una società.
       small_basic: Guida introduttiva
       start_monetizing: Iniziare a monetizzare
       support: Supporto

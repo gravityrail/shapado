@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Discon
+# Author: Glavkos
 el: 
   activerecord: 
     attributes: 
@@ -15,6 +16,6 @@ el:
       delete: Κατάργηση
       title: Ενέργειες
     create: 
-      success: Η ανακοίνωση δημιουργήθηκε επιτυχώς.
+      success: Η ανακοίνωση σου δημιουργήθηκε επιτυχώς.
     index: 
       title: Ανακοινώσεις

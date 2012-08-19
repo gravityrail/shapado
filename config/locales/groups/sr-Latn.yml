@@ -19,7 +19,7 @@ sr-Latn:
         languages: Dodatni jezici
         legend: Legenda
         logo: Logotip
-        may_contain_adult_content: Ovo mrežno mesto može imati sadržaj za odrasle
+        may_contain_adult_content: Ovaj sajt može da ima sadržaj za odrasle
         name: Naziv
         owner: Ovu grupu je napravio %{login}
         registered_only: Samo upisani korisnici mogu da pristupe mrežnom mestu
@@ -42,12 +42,14 @@ sr-Latn:
       success_twitter_connection: Čestitamo! Povezali ste svoj nalog na Tviteru.
     create: 
       flash_notice: Vaša grupa je napravljena. Sada možete početi da je podešavate.
+    downgrade: 
+      notice: Uspešno ste otkazali pretplatu. Sada koristite besplatni plan.
     edit: 
       title: Uredite svoju grupu
     form: 
       access: Postavke pristupa
       analytics_engine: Analitički pogon
-      analytics_legend: Grupa će moći da koristi sopstveni kôd za praćenje
+      analytics_legend: Grupa će moći da koristi sopstveni kod za praćenje
       any_language: bilo koji
       custom_analytics: Dozvoli prilagođenu analitiku
       custom_html: Dozvoli prilagođeni HTML
@@ -94,3 +96,5 @@ sr-Latn:
       active_site: "Aktivno mr. mesto:"
     update: 
       notice: Vaša grupa je ažurirana.
+    upgrade: 
+      error: Već ste pretplaćeni na ovaj plan.

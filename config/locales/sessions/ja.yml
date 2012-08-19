@@ -13,7 +13,7 @@ ja:
       log_in: ログイン
       not_registered: 未登録の方はこちら
       registered: 登録済みの方はこちら
-      remember_me: 私を記憶
+      remember_me: ログイン状態を保持
       sign_in: サインイン
       signup: ユーザ登録
       with_authentication: iPhone Worldの認証システムを利用する

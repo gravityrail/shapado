@@ -10,7 +10,7 @@ sr-Latn:
       earned_badge: 
         subject: U grupi %{group} ste osvojili značku!
       favorited: 
-        subject: "%{login} dodade vaše pitanje kao omiljeno"
+        subject: "%{login} je dodao vaše pitanje kao omiljeno"
       follow: 
         subject: "%{login} vas sada prati na %{app}"
       give_advice: 

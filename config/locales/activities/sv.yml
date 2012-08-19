@@ -1,6 +1,7 @@
 # Messages for Swedish (svenska)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Fader
 # Author: WikiPhoenix
 sv: 
   activerecord: 
@@ -12,6 +13,7 @@ sv:
     changed: ändrad
     created: skapad
     deleted: raderad
+    destroyed: raderad
     flagged: flaggade
     requested_to_close: begärde att stänga
     requested_to_open: begärde att öppna

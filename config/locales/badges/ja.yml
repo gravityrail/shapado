@@ -13,6 +13,7 @@ ja:
       description: あなたが得られるバッジのすべてです。知識を共有することでバッジを入手できます！
       gold: ゴールド
       silver: シルバー
+      tags: タグ バッジ
       title: バッジ
     shared: 
       addict: 
@@ -94,6 +95,7 @@ ja:
         name: 内部圧力
       pioneer: 
         description: サイトのユーザ登録者
+        name: 開拓者
       popstar: 
         description: 500のプラス投票と最大10の反対票
       popular_person: 
@@ -118,6 +120,7 @@ ja:
         name: 素晴らしい質問
       student: 
         description: 1つの投票で最初に聞いた
+        name: 生徒
       supporter: 
         description: 最初の投票者
       troubleshooter: 

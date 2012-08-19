@@ -99,6 +99,7 @@ sr:
       has_answers: 
         one: "%{count} одговор"
         other: "%{count} одговора"
+      retag: Поново означи
       wiki_title: "Вики: %{title}"
     retag: 
       title: Поновно означавање
@@ -142,7 +143,7 @@ sr:
       request_opening_details: Захтевај поновно отварање питања
       requested_close_as: Захтевали сте затварање питања као
       requested_reopening: Захтевали сте поновно отварање питања
-      retag: Преозначи
+      retag: Поново означи
       retract_request: Повуци захтев
       share: Делите ово питање на
       share_on: Делите ово питање на %{site}

@@ -1,6 +1,7 @@
 # Messages for Swedish (svenska)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Fader
 # Author: Lokal Profil
 # Author: The real emj
 # Author: Tobulos1
@@ -12,7 +13,10 @@ sv:
       badges: Emblem
   badges: 
     index: 
+      bronze: Brons
       description: Alla emblem som du kan tjäna. Dela din kunskap och tjäna emblem.
+      gold: Guld
+      silver: Silver
       title: emblem
     shared: 
       addict: 
@@ -26,6 +30,8 @@ sv:
         name: Kändis
       civic_duty: 
         description: Röstade 300 gånger
+      cleanup: 
+        name: Rensning
       commentator: 
         description: Lämnat 10 kommentarer
         name: Kommentator
@@ -77,6 +83,8 @@ sv:
       interesting_person: 
         description: Fick mer än 10 anhängare
         name: Intressant person
+      investor: 
+        name: Investerare
       merit_medal: 
         description: Fick 200 positiva röster
       necromancer: 
