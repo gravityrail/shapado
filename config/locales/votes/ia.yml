@@ -8,6 +8,16 @@ ia:
       vote: Voto
       votes: Votos
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          one: Solmente %{count} usator ha approbate iste commento. Clicca pro approbar lo tamben.
+          other: Plus de %{count} usatores ha approbate iste commento. Clicca pro approbar lo tamben.
+          zero: Clicca pro approbar iste commento.
+        has_user_vote: 
+          one: Tu e %{count} altere usator ha approbate iste commento.
+          other: Tu e %{count} altere usatores ha approbate iste commento.
+          zero: Solmente tu ha approbate iste commento.
     control: 
       have_voted_down: Clicca pro disfacer tu voto negative
       have_voted_up: Clicca pro disfacer tu voto positive

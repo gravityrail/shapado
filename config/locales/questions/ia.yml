@@ -99,6 +99,7 @@ ia:
       has_answers: 
         one: "%{count} responsa"
         other: "%{count} responsas"
+      retag: Re-etiquettar
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Re-etiquettar

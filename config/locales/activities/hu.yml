@@ -12,6 +12,7 @@ hu:
     changed: megváltoztatva
     created: létrehozva
     deleted: törölve
+    destroyed: törölt
     flagged: megjelölve
     requested_to_close: lezárés kérése
     requested_to_open: megnyitás kérése

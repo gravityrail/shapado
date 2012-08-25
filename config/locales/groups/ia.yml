@@ -42,6 +42,8 @@ ia:
       success_twitter_connection: Felicitationes, tu ha connectite tu conto de Twitter con successo!
     create: 
       flash_notice: Tu gruppo ha essite create con successo. Tu pote ora comenciar a configurar lo.
+    downgrade: 
+      notice: Vostre subscription ha essite cancellate. Vos usa ora nostre plano gratuite.
     edit: 
       title: Modificar tu gruppo
     form: 
@@ -94,3 +96,5 @@ ia:
       active_site: "Sito active:"
     update: 
       notice: Le gruppo ha essite actualisate con successo.
+    upgrade: 
+      error: Vos es jam subscribite a iste plano.

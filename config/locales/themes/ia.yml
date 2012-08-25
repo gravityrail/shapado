@@ -7,16 +7,22 @@ ia:
     edit: 
       title: Modificar apparentia
     form: 
-      bg_color_legend: Defini un color plan de fundo. Assecura te que illo contrasta ben con tu application.
+      bg_color_legend: Selige un color de fundo. Assecura te que illo contrasta ben con le resto de tu application.
       bg_image_legend: Iste imagine apparera como fundo in cata pagina. Le dimension non pote exceder 800K e le formato debe esser GIF, JPG o PNG.
       colors_and_bg: Colores e fundos
       custom_css_legend: Si tu cognosce le linguage CSS, usa isto pro personalisar le stilo de tu sito. Es possibile usar CSS normal o SCSS.
       fluid_layout: Disposition fluide
       fluid_layout_legend: Con un disposition fluide, le latitude de cata elemento del pagina depende del dimension del fenestra e non del elemento contentor initial. In altere parolas, quando on redimensiona le fenestra del navigator o comencia a usar un apparato con schermo micre, le disposition se extende o se reduce.
+      layout_html: Adder tu patrono personalisate pro le disposition
       main_color_legend: Isto es un del colores le plus usate in cata pagina. Assecura te de seliger le color adequate pro tu marca o communitate.
       modules_color_legend: Assecura te que iste color e le color principal va ben insimul.
+      questions_index_html: Adder tu patrono personalisate pro le indice de questiones
+      questions_show_html: Adder tu patrono personalisate pro le presentation de questiones
       submit_update: Actualisar apparentia
       text_color_legend: Assecura te que le texto es legibile e va ben con le color de fundo.
+      title: Tu modifica un thema. Per favor assecura te que le paletta de colores e le fundo se combina ben.
+      topbar_color: Color de fundo del barra superior
+      topbar_color_legend: Selige le color de fundo del barra superior.
       update: Actualisar apparentia
     index: 
       description: Cerca hic tu themas visual e cambia le apparentia de tu application.

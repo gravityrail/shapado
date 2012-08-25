@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Gomoko
 # Author: IAlex
+# Author: McDutchie
 # Author: Od1n
 # Author: Patcito
 # Author: Y-M D
@@ -28,7 +29,7 @@ fr:
       custom_domain: Domaine personnalisé
       custom_domain_tip: Utilisez votre propre domaine, tel que votre-société.com, à la place de votre-société.shapado.com
       custom_html: HTML personnalisé
-      custom_html_tip: Réorganisez complètement l'ensemble du code HTML de votre site et faites-le ressemblez à ce que vous voulez.
+      custom_html_tip: Réorganisez complètement l'ensemble du code HTML de votre site et faites-le ressembler à ce que vous voulez.
       custom_js: Ajoutez votre propre JavaScript
       custom_js_tip: Ajoutez votre propre code JavaScript personnalisé, comme des widgets multimédia ou des extensions jQuery.
       custom_themes: Utilisation de nos thèmes pré-faits

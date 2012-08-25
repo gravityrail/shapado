@@ -25,6 +25,8 @@ ia:
         title: Contento personalisate
         top_bar: Barra superior
         top_bar_tip: Entra un ligamine per linea
+      edit_card: 
+        button: Actualisar vostre carta de credito
       invitations: 
         invitations: Invitationes inviate
         invitations_title: Listar tote le invitationes que tu ha inviate
@@ -48,8 +50,8 @@ ia:
           instruction2: Ibi, tu debe vader al section DNS e crear un cosa appellate CNAME.
           instruction3: Selige 'www' o altere cosa como le nomine de tu CNAME.
           instruction4: "Postea, in le campo de host o de destination, insere tu dominio actual de Shapado: %{domain}."
-          instruction5: Quando isto es facite, post circa un hora, tu dominio www.%{subdomain} deberea punctar verso %{appdomain}.
-          instruction6: Si isto es le caso, reveni hic e insere tu nomine de dominio www.%{subdomain} in le campo hic infra e preme le button 'actualisar'. Si tu ha questiones, pone los in le %{chat_url} o in nostre foro de supporto.
+          instruction5: Quando isto es facite, post circa un hora, tu dominio %{subdomain} deberea punctar verso %{appdomain}.
+          instruction6: Si isto es le caso, reveni hic e insere tu nomine de dominio %{subdomain} in le campo hic infra e preme le button 'actualisar'. Si tu ha questiones, pone los in le %{chat_url} o in nostre foro de supporto.
           title: Configurar tu dominio personalisate
           warning: Es tu secur de voler cambiar tu dominio?
         facebook_app: 

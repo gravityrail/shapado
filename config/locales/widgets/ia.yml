@@ -74,6 +74,7 @@ ia:
       title: Questiones connexe
     settings: 
       code: "Copiar e collar iste codice in tu sito o blog, como un widget de texto in tu Wordpress:"
+      content: "Mitte hic le codice HTML de tu preferentia:"
       custom_external_css: "Includer CSS personalisate in tu widget (recommendate si tu non include le CSS de Shapado):"
       custom_html: "HTML personalisate:"
       exclude_css_on_external: Excluder le CSS de tu sito Shapado de tu widget

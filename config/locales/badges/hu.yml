@@ -10,7 +10,12 @@ hu:
       badges: jelvény
   badges: 
     index: 
-      description: Ez az összes jelvény, ami megszerezhető. Oszd meg tudásodat, és szerezz jelvényeket!
+      bronze: Bronz
+      description: Minél többször kérdezel és válaszolsz a kérdésekre, annál több jelvényt szerezhetsz. Ezek megjelennek az adatlapodon.
+      general: Normál jelvények
+      gold: Arany
+      silver: Ezüst
+      tags: Címke jelvények
       title: Jelvények
     shared: 
       addict: 

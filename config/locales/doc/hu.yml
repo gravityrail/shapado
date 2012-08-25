@@ -13,6 +13,7 @@ hu:
       247_all_support: Webalapú, e-mailes, csevegéses és 24/7-es telefonos támogatás
       5millions: 5 millió oldalmegtekintés havonta
       all_support: Webalapú, e-mailes, csevegéses és telefonos támogatás
+      basic: Alap
       basic_restrictions: Egyedi hirdetések és teljesen átalakítható felület nélkül
       big_sites: Nagy forgalmú oldalaknak
       custom_ads: Saját hirdetések használata
@@ -23,11 +24,16 @@ hu:
       free_plan: ingyenes változatot
       getting_popular: Egyre népszerűbbeknek
       huge_sites: Óriási forgalmú oldalaknak
+      maximum: Maximális
       month: hónap
+      optimum: Optimális
       page_views: Kicsi/privát oldalaknak
       plans: Díjcsomagok
+      plus: Plusz
+      premium: Prémium
+      private: Privát
       private_site: Privát/nyilvános hozzáférés engedélyezése
-      start_monetizing: kezdj pénzt keresni
+      start_monetizing: Kezdj pénzt keresni
       support: Támogatás
       title: Díjcsomagok és árak
       unlimited: Korlátlan forgalom havonta

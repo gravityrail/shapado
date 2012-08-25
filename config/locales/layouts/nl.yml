@@ -39,7 +39,7 @@ nl:
       questions_tagged: Met label
       random_question: Willekeurige vraag
       search: Zoeken
-      settings: Voorkeuren
+      settings: Instellingen
       signup: Registreren
       subscribe: Abonneren
       success_joining_group: U bent nu lid van %{group}. Dank u wel!

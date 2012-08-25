@@ -1,6 +1,7 @@
 # Messages for Dutch (Nederlands)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: McDutchie
 # Author: Pinxnl
 # Author: Siebrand
 nl: 
@@ -43,7 +44,7 @@ nl:
       private: Privé
       private_private: Beperkte toegang
       private_site: Publieke / private toegang inschakelen
-      private_tip: Alleen u en gebruikers die u uitnodigt voor uw site hebben toegang. Perfect voor de enterprise.
+      private_tip: Alleen u en de gebruikers die u uitnodigt voor uw site hebben toegang. Perfect voor uw onderneming.
       small_basic: Aan de slag
       start_monetizing: Begin met verdienen
       support: Ondersteuning

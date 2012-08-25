@@ -85,6 +85,7 @@ ru:
       title: Задать вопрос
     question: 
       accepted_tooltip: На этот вопрос есть принятый ответ
+      wiki_title: "Wiki: %{title}"
     retag: 
       title: Изменить теги
     retag_form: 

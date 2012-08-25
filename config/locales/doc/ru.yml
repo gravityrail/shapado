@@ -1,6 +1,7 @@
 # Messages for Russian (русский)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Eleferen
 # Author: Lockal
 # Author: X0040h
 ru: 
@@ -26,14 +27,17 @@ ru:
       free_plan: бесплатный тариф
       getting_popular: Приобретение популярности
       huge_sites: Сайты с огромной посещаемостью
+      maximum: Максимум
       month: месяц
+      optimum: Оптимальный
       page_views: Для небольших и личных сайтов
       plans: Тарифы
+      premium: Премиум
       private_private: Ограниченный доступ
       private_site: Включение личного/открытого доступа
       private_tip: Доступ разрешен только вам и пользователям, которых вы пригласить на ваш сайт. Идеально подходит для предприятия.
       small_basic: Приступая к работе
-      start_monetizing: начало монетизации
+      start_monetizing: Начало монетизации
       support: Поддержка
       title: Тарифы и цены
       unlimited: Неограниченный трафик каждый месяц

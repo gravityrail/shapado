@@ -8,6 +8,20 @@ sr-Latn:
       vote: Glas
       votes: Glasovi
   votes: 
+    comments: 
+      title: 
+        has_no_user_vote: 
+          few: Više od %{count} korisnika su glasala u prilog ovom komentaru. Kliknite da biste glasali i vi.
+          many: Više od %{count} korisnika je glasalo u prilog ovom komentaru. Kliknite da biste glasali i vi.
+          one: Samo %{count} korisnik je glasao u prilog ovom komentaru. Kliknite da biste glasali i vi.
+          other: Više od %{count} korisnika je glasalo u prilog ovom komentaru. Kliknite da biste glasali i vi.
+          zero: Kliknite da glasate u prilog ovom komentaru.
+        has_user_vote: 
+          few: Vi i još %{count} korisnika su glasala u prilog ovom komentaru.
+          many: Vi i još %{count} korisnika je glasalo u prilog ovom komentaru.
+          one: Vi i još %{count} korisnik ste glasali u prilog ovom komentaru.
+          other: Vi i još %{count} korisnika je glasalo u prilog ovom komentaru.
+          zero: Samo ste vi glasali u prilog ovom komentaru.
     control: 
       have_voted_down: Kliknite da poništite glas „protiv“
       have_voted_up: Kliknite da poništite glas „za“

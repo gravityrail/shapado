@@ -49,6 +49,7 @@ ia:
       submit: Cambiar mi contrasigno
       title: Cambiar contrasigno
     check_custom_domain: 
+      refresh: Refresca iste pagina pro essayar de novo.
       reset_domain_button: No, per favor reinitialisa le dominio personalisate a %{domain}
       title: Esque tu nove dominio personalisate functiona?
       working_domain_link: Si, io pote vider que mi nove dominio functiona hic infra.

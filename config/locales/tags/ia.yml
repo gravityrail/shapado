@@ -10,4 +10,4 @@ ia:
       title: "Questiones con etiquettas: %{tags}"
     show_json: 
       edit_it: Adder un description pro iste etiquetta.
-      no_description: Iste etiquetta non ha ancora un description.
+      no_description: Nulle description es ancora disponibile pro iste etiquetta.

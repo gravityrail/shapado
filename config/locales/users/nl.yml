@@ -62,7 +62,7 @@ nl:
     edit: 
       enable_twitter: Facebook of Twitter inschakelen
       submit: Opslaan
-      title: Voorkeuren
+      title: Instellingen
     follow: 
       flash_error: U kunt uzelf niet volgen.
       flash_notice: U volgt nu %{user}.
