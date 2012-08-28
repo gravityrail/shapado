@@ -22,7 +22,7 @@ ja:
         description: プロフィールのすべての項目を入力
         name: アピール
       celebrity: 
-        description: 100人以上のフォロワーがいる
+        description: フォロワーが100人以上
         name: 偉人
       citizen_patrol: 
         description: 最初に報告されたポスト
@@ -53,14 +53,14 @@ ja:
       fanatic: 
         description: 100日間連続でサイトに訪問する
       favorite_question: 
-        description: 質問が25ユーザにお気に入り登録されたら
+        description: 質問が25ユーザからフォローされた
       friendly: 
         description: 最初に誰かをフォローした
         name: フレンドリー
       good_answer: 
-        description: 回答への平均投票が25以上になっている
+        description: 回答への投票数が平均25以上に到達
       good_question: 
-        description: 質問への平均投票が25以上になっている
+        description: 質問への投票数が平均25以上に到達
       great_answer: 
         description: 回答が100のプラス投票を得た
         name: 凄い答え
@@ -72,7 +72,7 @@ ja:
       inquirer: 
         description: 最初に質問した
       interesting_person: 
-        description: 10人以上のフォロワーがいる
+        description: フォロワーが10人以上
         name: 人気者
       merit_medal: 
         description: 200以上のプラス投票を受け取ったら
@@ -109,7 +109,7 @@ ja:
         description: 自分の質問に最初に受け入れられた回答
         name: 学者
       self-learner: 
-        description: 自分の質問に自分で答える（3回以下の投票）
+        description: 自分の質問(プラス投票数が3以上)に回答
         name: 自己学習
       service_medal: 
         description: 300のプラス投票

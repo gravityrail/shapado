@@ -58,6 +58,11 @@ ru:
       active_tooltip: Недавно обновлённые вопросы
       ask_question: Задать вопрос
       empty: Пока никто не задавал вопросы, станьте первыми!
+      has_followers: 
+        few: "%{count} подписчика"
+        many: "%{count} подписчиков"
+        one: "%{count} подписчик"
+        other: "%{count} подписчиков"
       help_to_answer: Помогите ответить на
       hot: Горячие
       hot_tooltip: Вопросы с наибольшей активностью за последние 5 дней
@@ -85,6 +90,11 @@ ru:
       title: Задать вопрос
     question: 
       accepted_tooltip: На этот вопрос есть принятый ответ
+      has_answers: 
+        few: "%{count} ответа"
+        many: "%{count} ответов"
+        one: "%{count} ответ"
+        other: "%{count} ответов"
       wiki_title: "Wiki: %{title}"
     retag: 
       title: Изменить теги

@@ -1,0 +1,13 @@
+# Messages for Japanese (日本語)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Shirayuki
+ja: 
+  tags: 
+    index: 
+      filter: タグを検索
+    show: 
+      title: タグ %{tags} が付いた質問
+    show_json: 
+      edit_it: このタグの説明を追加してください。
+      no_description: このタグには説明がまだありません。

@@ -52,6 +52,13 @@ be-Tarask:
     what_to_do: Што Вы жадаеце зрабіць?
   models: 
     question: Пытаньне
+  number: 
+    x_time: 
+      few: "%{count} разы"
+      many: "%{count} разоў"
+      one: "%{count} раз"
+      other: "%{count} разоў"
+      zero: Ніколі
   preferred_languages: 
     any: Любая
     user: Мае пажаданыя мовы
