@@ -3,6 +3,8 @@
 # Export driver: syck-pecl
 # Author: Ebraminio
 # Author: MindHammerGames
+# Author: ZxxZxxZ
+# Author: جواد
 fa: 
   feeds: 
     feed: خبر خوان
@@ -14,21 +16,30 @@ fa:
     user: اشتراک در سوالات این کاربر
   global: 
     active: فعال سازی
+    alphabetically: الفبایی
     anonymous: ناشناس
     by: توسط
+    by_semi: "توسط:"
     current: کنونی
     from: از %{site}
     group_not_found: صفحه %{url} موجود نیست
+    open: گشودن
     or: یا
     permission_denied: اجازه داده نشد.
     please_login: لطفا وارد شوید
     preview: پیش‌نمایش
     previous: قبلی
     share: به اشتراک گذاشتن
+    size: اندازه
+    upgrade: ارتقاء
   models: 
     question: سوال
+  roles: 
+    moderator: مدیر
+    owner: مالک
   scaffold: 
     add: اضافه کردن
+    are_you_sure: آیا مطمئن هستید؟
     back: بازگشت
     cancel: لغو
     close: بستن
@@ -41,9 +52,14 @@ fa:
     post_as_anonymous: ارسال به عنوان ناشناس
     save: ذخیره کردن
     send: ارسال
-    show: نشان دادن
+    show: نمایش
     sure: آیا اطمینان دارید که می‌خواهید این %{model} پاک کنید؟
     update: به روز رسانی
   time: 
     ago: "%{time} پیش"
     today: امروز
+    yesterday: دیروز
+  views: 
+    pagination: 
+      first: نخستین
+      last: واپسین

@@ -1,6 +1,7 @@
 # Messages for Italian (italiano)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Beta16
 # Author: Danmaz74
 # Author: GreenFox
 # Author: Rippitippi
@@ -9,7 +10,7 @@ it:
     edit: 
       title: Modifica tema
     form: 
-      bg_color_legend: Definisci un colore pieno come sfondo, controlla il contrasto con la tua applicazione
+      bg_color_legend: Scegli un colore come sfondo, controlla il contrasto con il resto della tua applicazione.
       bg_image_legend: Questa immagine verrà visualizzata come sfondo in ogni pagina. Le dimensioni non possono superare gli 800K e il tipo deve essere GIF, JPG o PNG.
       colors_and_bg: Colori e sfondi
       custom_css_legend: Se conosci il linguaggio CSS, usalo per personalizzare lo stile del tuo sito. È possibile utilizzare normale CSS o SCSS.

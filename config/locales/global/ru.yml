@@ -59,6 +59,13 @@ ru:
     what_to_do: Что вы хотите сделать?
   models: 
     question: Вопрос
+  number: 
+    x_time: 
+      few: "%{count} раза"
+      many: "%{count} раз"
+      one: "%{count} раз"
+      other: "%{count} раз"
+      zero: Никогда
   preferred_languages: 
     any: Любой
     user: Предпочитаемые языки

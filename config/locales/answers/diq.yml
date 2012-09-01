@@ -1,0 +1,20 @@
+# Messages for Zazaki (Zazaki)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Erdemaslancan
+diq: 
+  activerecord: 
+    attributes: 
+      answer: 
+        body: Mesac
+        created_at: Vıraşter
+        link: Gıre
+    models: 
+      answer: Cewab
+      answers: Cewabi
+  answers: 
+    create: 
+      flash_notice: Teşekur kena!
+    form: 
+      comment_submit: Vatış
+      submit: Cewab

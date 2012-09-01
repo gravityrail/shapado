@@ -4,6 +4,7 @@
 # Author: Ebraminio
 # Author: MindHammerGames
 # Author: Persianizer
+# Author: جواد
 fa: 
   activerecord: 
     models: 
@@ -11,7 +12,10 @@ fa:
       badges: نشان‌ها
   badges: 
     index: 
+      bronze: برنز
       description: تمام نشان‌هایی که می‌توانید به دست آورید. دانش خود را به اشتراک بگذارید و نشان به دست آورید.
+      gold: طلا
+      silver: نقره
       title: نشانها
     shared: 
       addict: 

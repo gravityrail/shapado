@@ -4,6 +4,7 @@
 # Author: Ebraminio
 # Author: Leyth
 # Author: MindHammerGames
+# Author: جواد
 fa: 
   devise: 
     confirmations: 
@@ -17,6 +18,12 @@ fa:
       timeout: نشست حساب شما منقضی شده‌است، لطفا برای ادامه دوباره به سامانه وارد شوید.
       unauthenticated: شما قبل از ادامه کار باید به سامانه وارد شوید و یا ثبت نام کنید.
       unconfirmed: شما قبل از ادامه کار باید حساب کاربری خود را تأیید کنید.
+    mailer: 
+      confirm_account: 
+        link: تأیید حساب کاربری
+        welcome: خوش آمدید
+      reset_password: 
+        link: تغییر کلمه عبور من
     passwords: 
       link: رمز خود را فراموش کرده اید؟
       send_instructions: در کمتر از چند دقیقه شما ایمیلی شامل دستورالعمل تنظیم مجدد رمز عبورتان دریافت خواهید کرد

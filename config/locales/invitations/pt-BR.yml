@@ -24,6 +24,9 @@ pt-BR:
       welcome: Bem-vindo
     create: 
       flash_notice: Os convites foram enviados com sucesso.
+      limit_notice: 
+        one: Desculpe, você não pode enviar mais de %{limit} convite por vez
+        other: Desculpe, você não pode enviar mais de %{limit} convites por vez
     resend: 
       flash_notice: Seu convite foi enviado com sucesso.
     revoke: 

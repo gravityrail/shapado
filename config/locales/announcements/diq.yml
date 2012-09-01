@@ -6,8 +6,10 @@ diq:
   activerecord: 
     attributes: 
       announcement: 
+        ends_at: Qedyayen
         message: Mesac
         only_anonymous: Tenya qandê anonim karberan
+        starts_at: Dest pêkerden
   announcements: 
     actions: 
       delete: Wedarne

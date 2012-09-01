@@ -1,0 +1,59 @@
+# Messages for Zazaki (Zazaki)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Erdemaslancan
+diq: 
+  global: 
+    actions: Kerdeni
+    active: Aktivite
+    anonymous: Anonim
+    blog: Blog
+    chat: Mıhebet
+    current: Nıkayên
+    edited: Vurneya
+    feedback: Peydrıstış
+    follow: Pıpaw
+    following: Pawêno
+    home: Keye
+    next_button: Bahdoyên
+    open: Ake
+    or: ya na
+    preview: Verqayt
+    previous: Verên
+    privacy: Nımıtış
+    share: Vıla ke
+    sign_up: Qeyd bı
+    size: Gırdiye
+    sort_by: "Raten:"
+    tags_label: "Etiketi:"
+    tos: ŞS
+    unfollow: Mepaw
+    view: Bıvin
+  roles: 
+    moderator: Moderator
+    owner: "Rıştayen:"
+  scaffold: 
+    add: Deke
+    are_you_sure: Vac welay?
+    back: Peyd şo
+    cancel: Bıterkne
+    close: Racnê
+    create: Vıraze
+    destroy: Besterne
+    details: Detayi
+    edit: Timar ke
+    more: Vêşêri...
+    save: Star ke
+    send: Bırşê
+    show: Bımocne
+    update: Noroc resn
+  time: 
+    today: noroc
+    yesterday: vızêr
+  views: 
+    pagination: 
+      first: Sıfteyên
+      last: Peyên
+      next: Peyên &raquo;
+      previous: "&laquo; Verên"
+      truncate: ...

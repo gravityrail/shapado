@@ -1,0 +1,14 @@
+# Messages for Zazaki (Zazaki)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Erdemaslancan
+diq: 
+  activerecord: 
+    models: 
+      activities: Aktivitey
+      activity: Aktivitey
+  activity: 
+    asked: Pers qı
+    created: vıraziya
+    deleted: esteriya
+    updated: Newenyaya

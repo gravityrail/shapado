@@ -15,6 +15,11 @@ ru:
       to_vote_down: Нажмите, чтобы проголосовать «против»
       to_vote_up: Нажмите, чтобы проголосовать «за»
     create: 
+      average: 
+        few: "%{count} голоса"
+        many: "%{count} голосов"
+        one: "%{count} голос"
+        other: "%{count} голосов"
       flash_error: Вы не можете голосовать здесь
       flash_notice: Спасибо за то, что проголосовали!
       unauthenticated: Анонимные пользователи не могут голосовать

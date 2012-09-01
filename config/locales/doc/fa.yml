@@ -3,6 +3,7 @@
 # Export driver: syck-pecl
 # Author: Ebraminio
 # Author: MindHammerGames
+# Author: جواد
 fa: 
   doc: 
     chat: 
@@ -13,6 +14,7 @@ fa:
       247_all_support: پشتیبانی ۷/۲۴ بر پایه وب، ایمیل، چت و تلفن
       5millions: ۵ میلیون بازدید صفحه/ماه
       all_support: پشتیبانی بر پایه وب، ایمیل، چت و تلفنی
+      basic: پایه
       basic_restrictions: بدون تبلیغات سفارشی و بدون رابط کاربر کاملا سفارشی
       big_sites: سایت‌های با ترافیک بالا
       custom_ads: از تبلیغات خودتان استفاده کنید.
@@ -23,14 +25,17 @@ fa:
       free_plan: طرح رایگان
       getting_popular: محبوب شدن
       huge_sites: سایتهای با ترافیک کلان
+      maximum: حداکثر
       month: ماه
       page_views: برای سایتهای کوچک/خصوصی
       plans: طرحها
+      private: خصوصی
       private_site: فعال بودن دسترسی خصوصی/عمومی
       start_monetizing: آغاز سودآور کردن
       support: پشتیبانی
       title: طرحها و قیمتها
       unlimited: ترافیک نامحدود برای همه ماهها
+      user: کاربر
       we_offer: ما همچنین یک پیشنهاد دیگر هم ارایه می‌دهیم
       web_support: پشتیبانی بر پایه وب
       with_unlimited: با ترافیک نا محدود و بدون تبلیغات سفارشی و دامنه سفارشی

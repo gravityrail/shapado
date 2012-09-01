@@ -1,0 +1,15 @@
+# Messages for Persian (فارسی)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: جواد
+fa: 
+  activerecord: 
+    models: 
+      activity: فعالیت
+  activity: 
+    asked: خواسته شده
+    changed: تغییر یافته
+    created: ایجاد شده
+    deleted: حذف شده
+    destroyed: حذف شده
+    updated: به روز شده

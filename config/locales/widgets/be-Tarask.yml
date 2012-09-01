@@ -102,6 +102,11 @@ be-Tarask:
       title: Тэгі
     top_groups: 
       description: Гэты элемэнт кіраваньня паказвае пяць лепшых групаў
+      has_members: 
+        few: "%{count} удзельнікі"
+        many: "%{count} удзельнікаў"
+        one: "%{count} удзельнік"
+        other: "%{count} удзельнікаў"
       title: 5 лепшых групаў
     top_users: 
       description: Гэты элемэнт кіраваньня паказвае пяць самых актыўных карыстальнікаў
