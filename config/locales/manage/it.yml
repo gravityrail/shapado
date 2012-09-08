@@ -27,6 +27,8 @@ it:
         title: Contenuto personalizzato
         top_bar: Barra superiore
         top_bar_tip: Inserire un link per riga
+      edit_card: 
+        button: Aggiornare la tua carta di credito
       invitations: 
         invitations: Inviti inviati
         invitations_title: Elenco di tutti gli inviti che hai inviato

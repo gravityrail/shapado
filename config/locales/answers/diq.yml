@@ -15,6 +15,12 @@ diq:
   answers: 
     create: 
       flash_notice: Teşekur kena!
+    edit: 
+      title: Cewabi timar kerê
     form: 
+      answer_label: Pers u cewab
+      comment_label: Nê cewabi rê vatış vacê
       comment_submit: Vatış
       submit: Cewab
+    revert: 
+      title: Ravêr cewabi

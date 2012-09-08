@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Erdemaslancan
+# Author: Mirzali
 diq: 
   global: 
     actions: Kerdeni
@@ -11,7 +12,7 @@ diq:
     chat: Mıhebet
     current: Nıkayên
     edited: Vurneya
-    feedback: Peydrıstış
+    feedback: Peydrışten
     follow: Pıpaw
     following: Pawêno
     home: Keye
@@ -35,7 +36,7 @@ diq:
   scaffold: 
     add: Deke
     are_you_sure: Vac welay?
-    back: Peyd şo
+    back: Peyser
     cancel: Bıterkne
     close: Racnê
     create: Vıraze

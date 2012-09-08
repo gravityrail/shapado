@@ -4,9 +4,12 @@
 # Author: Erdemaslancan
 diq: 
   activerecord: 
+    attributes: 
+      page: 
+        js: JavaScript
     models: 
-      page: Pela
-      pages: Peley
+      page: Per
+      pages: Peri
   pages: 
     actions: 
       create_page: Pelaya newi vırazê

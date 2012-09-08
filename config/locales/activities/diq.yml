@@ -8,7 +8,12 @@ diq:
       activities: Aktivitey
       activity: Aktivitey
   activity: 
-    asked: Pers qı
+    asked: pers kerd
+    changed: vurneya
     created: vıraziya
     deleted: esteriya
+    destroyed: esteriya
+    flagged: nışan biyo
+    requested_to_close: Waştışê cı racnê
+    requested_to_open: Waştışê cı ake
     updated: Newenyaya
