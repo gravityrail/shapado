@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Fulup
+# Author: Gwenn-Ael
 # Author: Y-M D
 br: 
   activerecord: 
@@ -10,15 +11,32 @@ br:
       badges: Badjoù
   badges: 
     index: 
-      description: An holl badjoù a c'hellit gounid. Rannit o anaoudegezhioù, gounezit badjoù.
+      all_tooltip: Diskwel an  holl vadjoù aour, arc'hant hag arem.
+      bronze: Arem
+      bronze_tooltip: Aes e vez gounit ar badjoù arem ha broudañ a reont an implijerien da gemer perzh.
+      description: Seul vui e tegasit ho lod dre sevel goulennoù pe ur respont dezho, seul vui e vo roet badjoù deoc'h evit garedonañ ac'hanoc'h. Diskwelet e vint war ho pajenn brofil.
+      general: Badjoù ordinal
+      general_tooltip: Diskwel an holl vadjoù raktermenet.
+      gold: Aour
+      gold_tooltip: Ar badjoù aour zo ar garedonoù gwellañ, an diaesañ da gaout int ivez. N'eus nemet an implijerien aketusañ o do ar garedonoù-se.
+      silver: Arc'hant
+      silver_tooltip: Ar badjoù arc'hant a vez gounezet gant an implijerien oberiant a bled ganti abaoe pell a-walc'h.
+      tags: Balizennoù badjoù
+      tags_tooltip: Pa vez merket ar goulennoù gant X a zo degaset dezho respontoù ouzhpenn 100 voter, ur badj X zo krouet gant anv ar valizenn-se.
       title: badjoù
     shared: 
       addict: 
         description: Gweladenniñ al lec'hienn bemdez e-pad 20 devezh da-heul
         name: Sod-nay
+      altruist: 
+        description: Ar garedon kentañ eo ho peus roet evit goulenn un den all.
+        name: Arallgarour
       autobiographer: 
         description: en deus leuniet e holl maeziennoù implijer
         name: Emvuhezskriver
+      benefactor: 
+        description: Ar garedon kentañ ho peus roet evit ho koulenn
+        name: Madoberour
       celebrity: 
         description: En deus muioc'h eget 100 heulier
         name: Den brudet
@@ -84,6 +102,9 @@ br:
       interesting_person: 
         description: En deus ouzhpenn 10 heulier
         name: Den dedennus
+      investor: 
+        description: Ar garedon emgefreek kentañ ho peus roet evit goulenn un den all
+        name: Poster
       merit_medal: 
         description: Kaout 200 mouezh pozitivel
         name: Medalenn a enor
@@ -117,6 +138,9 @@ br:
       popular_question: 
         description: Goulenn gant 1 000 gweladenn
         name: Goulenn a ra berzh
+      promoter: 
+        description: Ar garedon emgefreek kentañ ho peus roet evit ho koulenn
+        name: Penngaser
       rockstar: 
         description: En deus 1 000 vot pozitivel, 10 negativel d'ar muiañ
         name: Rockstar

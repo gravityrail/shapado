@@ -1,0 +1,7 @@
+# Messages for Breton (brezhoneg)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Gwenn-Ael
+br: 
+  custom_html: 
+    question_prompt: Pehini eo ho koulenn ? Roit un deskrivadur.

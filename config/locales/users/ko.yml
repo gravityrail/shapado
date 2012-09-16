@@ -28,7 +28,7 @@ ko:
         preferred_languages: 언어를 선택하십시오
         preferred_tags: 선호하는 태그
         reputation: 명성
-        timezone: 타임존
+        timezone: 시간대
         updated_at: 업데이트 날짜
         website: 웹사이트
     models: 

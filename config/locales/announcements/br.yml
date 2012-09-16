@@ -1,6 +1,7 @@
 # Messages for Breton (brezhoneg)
 # Exported from translatewiki.net
 # Export driver: syck-pecl
+# Author: Gwenn-Ael
 # Author: Y-M D
 br: 
   activerecord: 
@@ -15,6 +16,7 @@ br:
       delete: Dilemel
       title: Oberoù
     create: 
-      success: Kemennadenn krouet.
+      success: Krouet mat eo ho kemenn.
     index: 
+      description: a ver hag a grou kemennoù nevez a vo diskwelet el lec'hienn en he fezh.
       title: Kemennoù

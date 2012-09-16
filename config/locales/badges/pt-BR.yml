@@ -2,6 +2,7 @@
 # Exported from translatewiki.net
 # Export driver: syck-pecl
 # Author: Giro720
+# Author: Luckas Blade
 # Author: Pedroca cerebral
 # Author: Vgeorge
 pt-BR: 
@@ -11,7 +12,10 @@ pt-BR:
       badges: Medalhas
   badges: 
     index: 
+      bronze: Bronze
       description: Todas as medalhas que você pode ganhar. Compartilhe o seu conhecimento, ganhe medalhas.
+      gold: Ouro
+      silver: Prata
       title: medalhas
     shared: 
       addict: 
