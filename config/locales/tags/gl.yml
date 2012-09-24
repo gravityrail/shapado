@@ -9,5 +9,5 @@ gl:
     show: 
       title: "Preguntas etiquetadas: %{tags}"
     show_json: 
-      edit_it: Engadir unha descrición para esta etiqueta.
-      no_description: Esta etiqueta aínda non ten unha descrición.
+      edit_it: Engadir unha descrición a esta etiqueta.
+      no_description: A descrición desta etiqueta aínda non está dispoñible.

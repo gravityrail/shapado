@@ -1,0 +1,9 @@
+# Messages for Colognian (Ripoarisch)
+# Exported from translatewiki.net
+# Export driver: syck-pecl
+# Author: Purodha
+ksh: 
+  activerecord: 
+    models: 
+      favorite: Bei de leevßte Belder donn
+      favorites: Leevßte Belder
