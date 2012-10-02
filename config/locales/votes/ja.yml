@@ -19,7 +19,7 @@ ja:
         one: "%{count}票"
         other: "%{count}票"
       flash_error: 投票はできません
-      flash_notice: 投票していただいてありがとうございます！
+      flash_notice: ご投票ありがとうございます!
       unauthenticated: ユーザでないと投票できません
     destroy: 
       flash_notice: あなたの投票を削除しました。
