@@ -13,22 +13,39 @@ ja:
     tag: このタグの質問をフィードで購読
     user: このユーザの質問をフィードで購読
   global: 
+    actions: 操作
     active: 有効化
+    anonymous: 匿名
+    blog: ブログ
     by: by
+    chat: チャット
     current: 現在
+    feedback: フィードバック
     from: "%{site}から"
     group_not_found: このページ%{url}はありません
+    home: ホーム
+    next_button: 次へ
+    open: 開く
     or: または
     permission_denied: 権限がありません
     please_login: ログインしてください
     preview: プレビュー
-    previous: 前
-    share: share
+    previous: 前へ
+    privacy: プライバシー
+    share: 共有
+    size: サイズ
+    sort_by: "並び順:"
+    tags_label: "タグ:"
+    tos: サービス利用規約
     unknown_place: 不明
+    upgrade: アップグレード
+    view: 閲覧
+    view_question: 質問を閲覧
   models: 
     question: 質問
   roles: 
     moderator: モデレータ
+    owner: 所有者
     user: 通常ユーザ
   scaffold: 
     add: 追加
@@ -42,6 +59,7 @@ ja:
     edit: 編集
     more: " もっと見る"
     new: "%{model}を追加"
+    post_as_anonymous: 匿名で投稿
     save: 保存
     send: 送信
     show: 表示
@@ -53,4 +71,8 @@ ja:
     yesterday: 昨日
   views: 
     pagination: 
+      first: 先頭
+      last: 末尾
+      next: 次へ &raquo;
+      previous: "&laquo; 前へ"
       truncate: ...

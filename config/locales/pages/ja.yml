@@ -26,6 +26,8 @@ ja:
     index: 
       create_page: 新しいページを作成
       title: ページ一覧
+      wiki: ウィキ
+      wiki_pages: ウィキ ページ
       written_in: 作成言語：%{language}
     new: 
       title: 新しいページ

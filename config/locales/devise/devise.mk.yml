@@ -50,7 +50,7 @@ mk:
       link: Најава
       new: 
         openid_url: URL-адреса на Вашиот OpenID
-        remember_me: Чувај ме најавен
+        remember_me: Запомни ме
       registered_only: Мора да сте најавени за да ви се прикаже содржината.
       sign_out: Одјава
       signed_in: Успешно сте најавени.
