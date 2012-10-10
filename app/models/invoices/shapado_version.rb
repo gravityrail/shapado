@@ -66,51 +66,65 @@ class ShapadoVersion
   end
 
   def self.reload!
-    return unless AppConfig.is_shapadocom
-
-    versions_data = YAML.load_file("#{Rails.root}/config/versions.yml")
-
-    versions_data.each do |token, data|
-      version = ShapadoVersion.where(:token => token).first
-      if version.nil?
-        version = ShapadoVersion.create!(data.merge(:token => token))
-        if version.uses_stripe?
-          Stripe.api_key = PaymentsConfig['secret']
-          plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
-          if plan
-            puts "Plan #{version.token} already exists."
-            plan.name = version.token.titleize
-            plan.save
+    if !AppConfig.is_shapadocom
+      return if ShapadoVersion.where(:token => 'free').exists?
+      ShapadoVersion.create!(
+        token: 'free',
+        page_views: 0,
+        custom_ads: false,
+        custom_js: false,
+        custom_domain: false,
+        private: false,
+        custom_themes: false,
+        basic_support: false,
+        phone_support: false,
+        uses_stripe: false,
+        price: 0
+      )
+    else
+      versions_data = YAML.load_file("#{Rails.root}/config/versions.yml")
+      versions_data.each do |token, data|
+        version = ShapadoVersion.where(:token => token).first
+        if version.nil?
+          version = ShapadoVersion.create!(data.merge(:token => token))
+          if version.uses_stripe?
+            Stripe.api_key = PaymentsConfig['secret']
+            plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
+            if plan
+              puts "Plan #{version.token} already exists."
+              plan.name = version.token.titleize
+              plan.save
+            else
+              Stripe::Plan.create(
+                                  :amount => version.price,
+                                  :interval => 'month',
+                                  :name => version.token.titleize,
+                                  :currency => 'usd',
+                                  :id => version.token
+                                  )
+            end
           else
-            Stripe::Plan.create(
-                                :amount => version.price,
-                                :interval => 'month',
-                                :name => version.token.titleize,
-                                :currency => 'usd',
-                                :id => version.token
-                                )
+            puts "#{version.token} not a Stripe plan"
           end
         else
-          puts "#{version.token} not a Stripe plan"
-        end
-      else
-        version.update_attributes(data)
-        if version.uses_stripe?
-          Stripe.api_key = PaymentsConfig['secret']
-          plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
-          if plan
-            puts "Plan #{version.token} already exists."
-            plan.name = version.token.titleize
-            plan.save
-          else
-            Stripe::Plan.create(
-              :amount => version.price,
-              :interval => 'month',
-              :name => version.token.titleize,
-              :currency => 'usd',
-              :id => version.token
-            )
-            puts "Plan #{version.token} created."
+          version.update_attributes(data)
+          if version.uses_stripe?
+            Stripe.api_key = PaymentsConfig['secret']
+            plan = Stripe::Plan.retrieve(version.token) rescue plan = nil
+            if plan
+              puts "Plan #{version.token} already exists."
+              plan.name = version.token.titleize
+              plan.save
+            else
+              Stripe::Plan.create(
+                :amount => version.price,
+                :interval => 'month',
+                :name => version.token.titleize,
+                :currency => 'usd',
+                :id => version.token
+              )
+              puts "Plan #{version.token} created."
+            end
           end
         end
       end
